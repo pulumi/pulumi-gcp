@@ -906,7 +906,6 @@ class PluginInstanceAction(dict):
         :param _builtins.str schedule_time_zone: The time zone for the schedule cron expression. If not provided, UTC will
                be used.
                
-               
                <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         :param _builtins.str state: (Output)
                The current state of the plugin action in the plugin instance.
@@ -973,7 +972,6 @@ class PluginInstanceAction(dict):
         """
         The time zone for the schedule cron expression. If not provided, UTC will
         be used.
-
 
         <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         """

@@ -80,6 +80,16 @@ export const getDbServers: typeof import("./getDbServers").getDbServers = null a
 export const getDbServersOutput: typeof import("./getDbServers").getDbServersOutput = null as any;
 utilities.lazyLoad(exports, ["getDbServers","getDbServersOutput"], () => require("./getDbServers"));
 
+export { GetExascaleDbStorageVaultArgs, GetExascaleDbStorageVaultResult, GetExascaleDbStorageVaultOutputArgs } from "./getExascaleDbStorageVault";
+export const getExascaleDbStorageVault: typeof import("./getExascaleDbStorageVault").getExascaleDbStorageVault = null as any;
+export const getExascaleDbStorageVaultOutput: typeof import("./getExascaleDbStorageVault").getExascaleDbStorageVaultOutput = null as any;
+utilities.lazyLoad(exports, ["getExascaleDbStorageVault","getExascaleDbStorageVaultOutput"], () => require("./getExascaleDbStorageVault"));
+
+export { GetExascaleDbStorageVaultsArgs, GetExascaleDbStorageVaultsResult, GetExascaleDbStorageVaultsOutputArgs } from "./getExascaleDbStorageVaults";
+export const getExascaleDbStorageVaults: typeof import("./getExascaleDbStorageVaults").getExascaleDbStorageVaults = null as any;
+export const getExascaleDbStorageVaultsOutput: typeof import("./getExascaleDbStorageVaults").getExascaleDbStorageVaultsOutput = null as any;
+utilities.lazyLoad(exports, ["getExascaleDbStorageVaults","getExascaleDbStorageVaultsOutput"], () => require("./getExascaleDbStorageVaults"));
+
 export { GetGoldengateConnectionTypesArgs, GetGoldengateConnectionTypesResult, GetGoldengateConnectionTypesOutputArgs } from "./getGoldengateConnectionTypes";
 export const getGoldengateConnectionTypes: typeof import("./getGoldengateConnectionTypes").getGoldengateConnectionTypes = null as any;
 export const getGoldengateConnectionTypesOutput: typeof import("./getGoldengateConnectionTypes").getGoldengateConnectionTypesOutput = null as any;

@@ -14,37 +14,51 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpec
     {
         /// <summary>
+        /// Optional. The A2A Agent Card for the agent (if available).
+        /// </summary>
+        public readonly string? AgentCard;
+        /// <summary>
         /// Optional. The OSS agent framework used to develop the agent.
         /// </summary>
         public readonly string? AgentFramework;
         /// <summary>
+        /// Optional. Configuration for building container image.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecBuildSpec? BuildSpec;
+        /// <summary>
         /// Optional. Declarations for object class methods in OpenAPI
         /// specification format.
+        /// **Note**: When deploying via Terraform, this field must be populated manually.
+        /// Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+        /// Depending on the template/framework used (`AgentFramework`), the required class methods and their parameters differ:
+        /// **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+        /// * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+        /// * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
         /// </summary>
         public readonly string? ClassMethods;
         /// <summary>
         /// Deploy from a container image with a defined entrypoint and commands.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecContainerSpec? ContainerSpec;
         /// <summary>
         /// Optional. The specification of a Reasoning Engine deployment.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecDeploymentSpec? DeploymentSpec;
         /// <summary>
-        /// (Output)
         /// The identity to use for the Reasoning Engine.
         /// </summary>
         public readonly string? EffectiveIdentity;
         /// <summary>
+        /// Optional. The resource name of the linked ExampleStore.
+        /// </summary>
+        public readonly string? ExampleStore;
+        /// <summary>
         /// Optional. The identity type to use for the Reasoning Engine.
-        /// If not specified, the `ServiceAccount` field will be used if set,
+        /// If not specified, the 'service_account' field will be used if set,
         /// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
         /// Possible values:
-        /// * `SERVICE_ACCOUNT`: Use a custom service account if the `ServiceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-        /// * `AGENT_IDENTITY`: Use Agent Identity. The `ServiceAccount` field must not be set.
-        /// Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+        /// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+        /// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
         /// </summary>
         public readonly string? IdentityType;
         /// <summary>
@@ -52,7 +66,6 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// Ignored when users directly specify a deployment image through
         /// deploymentSpec.first_party_image_override, but keeping the
         /// FieldBehavior to avoid introducing breaking changes.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecPackageSpec? PackageSpec;
         /// <summary>
@@ -65,13 +78,16 @@ namespace Pulumi.Gcp.Vertex.Outputs
         public readonly string? ServiceAccount;
         /// <summary>
         /// Specification for deploying from source code.
-        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineSpecSourceCodeSpec? SourceCodeSpec;
 
         [OutputConstructor]
         private AiReasoningEngineSpec(
+            string? agentCard,
+
             string? agentFramework,
+
+            Outputs.AiReasoningEngineSpecBuildSpec? buildSpec,
 
             string? classMethods,
 
@@ -81,6 +97,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             string? effectiveIdentity,
 
+            string? exampleStore,
+
             string? identityType,
 
             Outputs.AiReasoningEngineSpecPackageSpec? packageSpec,
@@ -89,11 +107,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             Outputs.AiReasoningEngineSpecSourceCodeSpec? sourceCodeSpec)
         {
+            AgentCard = agentCard;
             AgentFramework = agentFramework;
+            BuildSpec = buildSpec;
             ClassMethods = classMethods;
             ContainerSpec = containerSpec;
             DeploymentSpec = deploymentSpec;
             EffectiveIdentity = effectiveIdentity;
+            ExampleStore = exampleStore;
             IdentityType = identityType;
             PackageSpec = packageSpec;
             ServiceAccount = serviceAccount;

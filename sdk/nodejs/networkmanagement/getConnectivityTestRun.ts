@@ -92,8 +92,7 @@ export interface GetConnectivityTestRunArgs {
     /**
      * Unique name for the connectivity test.
      *
-     *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -205,8 +204,7 @@ export interface GetConnectivityTestRunOutputArgs {
     /**
      * Unique name for the connectivity test.
      *
-     *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

@@ -25,6 +25,10 @@ import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbServersArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbServersPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
@@ -45,6 +49,8 @@ import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClusterResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClustersResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbNodesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbServersResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetExascaleDbStorageVaultResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetExascaleDbStorageVaultsResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateConnectionTypesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentEnvironmentsResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentTypesResult;
@@ -2198,6 +2204,441 @@ public final class OracledatabaseFunctions {
      */
     public static CompletableFuture<GetDbServersResult> getDbServersPlain(GetDbServersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getDbServers:getDbServers", TypeShape.of(GetDbServersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ExascaleDbStorageVault.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vault = OracledatabaseFunctions.getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs.builder()
+     *             .location("us-east4")
+     *             .exascaleDbStorageVaultId("vault-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs args) {
+        return getExascaleDbStorageVault(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ExascaleDbStorageVault.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vault = OracledatabaseFunctions.getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs.builder()
+     *             .location("us-east4")
+     *             .exascaleDbStorageVaultId("vault-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExascaleDbStorageVaultResult> getExascaleDbStorageVaultPlain(GetExascaleDbStorageVaultPlainArgs args) {
+        return getExascaleDbStorageVaultPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about an ExascaleDbStorageVault.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vault = OracledatabaseFunctions.getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs.builder()
+     *             .location("us-east4")
+     *             .exascaleDbStorageVaultId("vault-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault", TypeShape.of(GetExascaleDbStorageVaultResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ExascaleDbStorageVault.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vault = OracledatabaseFunctions.getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs.builder()
+     *             .location("us-east4")
+     *             .exascaleDbStorageVaultId("vault-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExascaleDbStorageVaultResult> getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault", TypeShape.of(GetExascaleDbStorageVaultResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an ExascaleDbStorageVault.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-vault = OracledatabaseFunctions.getExascaleDbStorageVault(GetExascaleDbStorageVaultArgs.builder()
+     *             .location("us-east4")
+     *             .exascaleDbStorageVaultId("vault-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExascaleDbStorageVaultResult> getExascaleDbStorageVaultPlain(GetExascaleDbStorageVaultPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getExascaleDbStorageVault:getExascaleDbStorageVault", TypeShape.of(GetExascaleDbStorageVaultResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all ExascaleDbStorageVaults.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVaults = OracledatabaseFunctions.getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs args) {
+        return getExascaleDbStorageVaults(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all ExascaleDbStorageVaults.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVaults = OracledatabaseFunctions.getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaultsPlain(GetExascaleDbStorageVaultsPlainArgs args) {
+        return getExascaleDbStorageVaultsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all ExascaleDbStorageVaults.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVaults = OracledatabaseFunctions.getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getExascaleDbStorageVaults:getExascaleDbStorageVaults", TypeShape.of(GetExascaleDbStorageVaultsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all ExascaleDbStorageVaults.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVaults = OracledatabaseFunctions.getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getExascaleDbStorageVaults:getExascaleDbStorageVaults", TypeShape.of(GetExascaleDbStorageVaultsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all ExascaleDbStorageVaults.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.exascaleDbStorageVaults).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetExascaleDbStorageVaultsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVaults = OracledatabaseFunctions.getExascaleDbStorageVaults(GetExascaleDbStorageVaultsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetExascaleDbStorageVaultsResult> getExascaleDbStorageVaultsPlain(GetExascaleDbStorageVaultsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getExascaleDbStorageVaults:getExascaleDbStorageVaults", TypeShape.of(GetExascaleDbStorageVaultsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * List all GoldenGate Connection Types in a location.

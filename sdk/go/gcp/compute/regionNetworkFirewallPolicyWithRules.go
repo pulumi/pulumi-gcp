@@ -37,6 +37,84 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			targetForwardingRule, err := compute.NewNetwork(ctx, "target_forwarding_rule", &compute.NetworkArgs{
+//				Name:                  pulumi.String("tf-test-network-_9106"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleProxySubnetwork, err := compute.NewSubnetwork(ctx, "target_forwarding_rule_proxy_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("tf-test-proxy-subnetwork-_27169"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     targetForwardingRule.ID(),
+//				IpCidrRange: pulumi.String("10.20.0.0/24"),
+//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+//				Role:        pulumi.String("ACTIVE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleDefaultSubnetwork, err := compute.NewSubnetwork(ctx, "target_forwarding_rule_default_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("tf-test-default-subnetwork-_75223"),
+//				Region:      pulumi.String("us-west2"),
+//				Network:     targetForwardingRule.ID(),
+//				IpCidrRange: pulumi.String("10.10.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "target_forwarding_rule", &compute.RegionHealthCheckArgs{
+//				Name:   pulumi.String("tf-test-health-check-_41819"),
+//				Region: pulumi.String("us-west2"),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleRegionBackendService, err := compute.NewRegionBackendService(ctx, "target_forwarding_rule", &compute.RegionBackendServiceArgs{
+//				Name:                pulumi.String("tf-test-backend-service-_75092"),
+//				Region:              pulumi.String("us-west2"),
+//				Protocol:            pulumi.String("HTTP"),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				HealthChecks:        targetForwardingRuleRegionHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "target_forwarding_rule", &compute.RegionUrlMapArgs{
+//				Name:           pulumi.String("tf-test-url-map-_2605"),
+//				Region:         pulumi.String("us-west2"),
+//				DefaultService: targetForwardingRuleRegionBackendService.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleRegionTargetHttpProxy, err := compute.NewRegionTargetHttpProxy(ctx, "target_forwarding_rule", &compute.RegionTargetHttpProxyArgs{
+//				Name:   pulumi.String("tf-test-target-http-proxy-_34535"),
+//				Region: pulumi.String("us-west2"),
+//				UrlMap: targetForwardingRuleRegionUrlMap.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetForwardingRuleForwardingRule, err := compute.NewForwardingRule(ctx, "target_forwarding_rule", &compute.ForwardingRuleArgs{
+//				Name:                pulumi.String("tf-test-forwarding-rule-_22375"),
+//				Region:              pulumi.String("us-west2"),
+//				Network:             targetForwardingRule.ID(),
+//				Subnetwork:          targetForwardingRuleDefaultSubnetwork.ID(),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				Target:              targetForwardingRuleRegionTargetHttpProxy.ID(),
+//				IpProtocol:          pulumi.String("TCP"),
+//				PortRange:           pulumi.String("80"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				targetForwardingRuleProxySubnetwork,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			addressGroup1, err := networksecurity.NewAddressGroup(ctx, "address_group_1", &networksecurity.AddressGroupArgs{
 //				Name:        pulumi.String("address-group"),
 //				Parent:      pulumi.String(project.Id),
@@ -152,6 +230,26 @@ import (
 //							Layer4Configs: compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
 //									IpProtocol: pulumi.String("udp"),
+//								},
+//							},
+//						},
+//					},
+//					&compute.RegionNetworkFirewallPolicyWithRulesRuleArgs{
+//						Description: pulumi.String("internal managed lb rule"),
+//						Priority:    pulumi.Int(3000),
+//						Action:      pulumi.String("allow"),
+//						Direction:   pulumi.String("INGRESS"),
+//						TargetType:  pulumi.String("INTERNAL_MANAGED_LB"),
+//						TargetForwardingRules: pulumi.StringArray{
+//							targetForwardingRuleForwardingRule.SelfLink,
+//						},
+//						Match: &compute.RegionNetworkFirewallPolicyWithRulesRuleMatchArgs{
+//							SrcIpRanges: pulumi.StringArray{
+//								pulumi.String("10.0.0.0/8"),
+//							},
+//							Layer4Configs: compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("tcp"),
 //								},
 //							},
 //						},

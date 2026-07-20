@@ -212,7 +212,7 @@ def get_region_ssl_policy(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the SSL Policy.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str region: The region in which the resource belongs. If it
@@ -260,7 +260,7 @@ def get_region_ssl_policy_output(name: pulumi.Input[Optional[_builtins.str]] = N
 
     :param _builtins.str name: The name of the SSL Policy.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str region: The region in which the resource belongs. If it

@@ -55,7 +55,7 @@ export interface GetIstioCanonicalServiceArgs {
      * The name of the canonical service underlying this service.
      * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
      *
-     * - - -
+     * ***
      *
      * Other optional fields include:
      */
@@ -155,7 +155,7 @@ export interface GetIstioCanonicalServiceOutputArgs {
      * The name of the canonical service underlying this service.
      * Corresponds to the destinationCanonicalServiceName metric label in label in Istio metrics.
      *
-     * - - -
+     * ***
      *
      * Other optional fields include:
      */

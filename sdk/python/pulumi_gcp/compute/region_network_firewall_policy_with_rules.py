@@ -459,6 +459,51 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
+        target_forwarding_rule = gcp.compute.Network("target_forwarding_rule",
+            name="tf-test-network-_9106",
+            auto_create_subnetworks=False)
+        target_forwarding_rule_proxy_subnetwork = gcp.compute.Subnetwork("target_forwarding_rule_proxy_subnetwork",
+            name="tf-test-proxy-subnetwork-_27169",
+            region="us-west2",
+            network=target_forwarding_rule.id,
+            ip_cidr_range="10.20.0.0/24",
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        target_forwarding_rule_default_subnetwork = gcp.compute.Subnetwork("target_forwarding_rule_default_subnetwork",
+            name="tf-test-default-subnetwork-_75223",
+            region="us-west2",
+            network=target_forwarding_rule.id,
+            ip_cidr_range="10.10.0.0/24")
+        target_forwarding_rule_region_health_check = gcp.compute.RegionHealthCheck("target_forwarding_rule",
+            name="tf-test-health-check-_41819",
+            region="us-west2",
+            http_health_check={
+                "port": 80,
+            })
+        target_forwarding_rule_region_backend_service = gcp.compute.RegionBackendService("target_forwarding_rule",
+            name="tf-test-backend-service-_75092",
+            region="us-west2",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=target_forwarding_rule_region_health_check.id)
+        target_forwarding_rule_region_url_map = gcp.compute.RegionUrlMap("target_forwarding_rule",
+            name="tf-test-url-map-_2605",
+            region="us-west2",
+            default_service=target_forwarding_rule_region_backend_service.id)
+        target_forwarding_rule_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("target_forwarding_rule",
+            name="tf-test-target-http-proxy-_34535",
+            region="us-west2",
+            url_map=target_forwarding_rule_region_url_map.id)
+        target_forwarding_rule_forwarding_rule = gcp.compute.ForwardingRule("target_forwarding_rule",
+            name="tf-test-forwarding-rule-_22375",
+            region="us-west2",
+            network=target_forwarding_rule.id,
+            subnetwork=target_forwarding_rule_default_subnetwork.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            target=target_forwarding_rule_region_target_http_proxy.id,
+            ip_protocol="TCP",
+            port_range="80",
+            opts = pulumi.ResourceOptions(depends_on=[target_forwarding_rule_proxy_subnetwork]))
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
             name="address-group",
             parent=project.id,
@@ -545,6 +590,20 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         }],
                         "layer4_configs": [{
                             "ip_protocol": "udp",
+                        }],
+                    },
+                },
+                {
+                    "description": "internal managed lb rule",
+                    "priority": 3000,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "target_type": "INTERNAL_MANAGED_LB",
+                    "target_forwarding_rules": [target_forwarding_rule_forwarding_rule.self_link],
+                    "match": {
+                        "src_ip_ranges": ["10.0.0.0/8"],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
                         }],
                     },
                 },
@@ -637,6 +696,51 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
+        target_forwarding_rule = gcp.compute.Network("target_forwarding_rule",
+            name="tf-test-network-_9106",
+            auto_create_subnetworks=False)
+        target_forwarding_rule_proxy_subnetwork = gcp.compute.Subnetwork("target_forwarding_rule_proxy_subnetwork",
+            name="tf-test-proxy-subnetwork-_27169",
+            region="us-west2",
+            network=target_forwarding_rule.id,
+            ip_cidr_range="10.20.0.0/24",
+            purpose="REGIONAL_MANAGED_PROXY",
+            role="ACTIVE")
+        target_forwarding_rule_default_subnetwork = gcp.compute.Subnetwork("target_forwarding_rule_default_subnetwork",
+            name="tf-test-default-subnetwork-_75223",
+            region="us-west2",
+            network=target_forwarding_rule.id,
+            ip_cidr_range="10.10.0.0/24")
+        target_forwarding_rule_region_health_check = gcp.compute.RegionHealthCheck("target_forwarding_rule",
+            name="tf-test-health-check-_41819",
+            region="us-west2",
+            http_health_check={
+                "port": 80,
+            })
+        target_forwarding_rule_region_backend_service = gcp.compute.RegionBackendService("target_forwarding_rule",
+            name="tf-test-backend-service-_75092",
+            region="us-west2",
+            protocol="HTTP",
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=target_forwarding_rule_region_health_check.id)
+        target_forwarding_rule_region_url_map = gcp.compute.RegionUrlMap("target_forwarding_rule",
+            name="tf-test-url-map-_2605",
+            region="us-west2",
+            default_service=target_forwarding_rule_region_backend_service.id)
+        target_forwarding_rule_region_target_http_proxy = gcp.compute.RegionTargetHttpProxy("target_forwarding_rule",
+            name="tf-test-target-http-proxy-_34535",
+            region="us-west2",
+            url_map=target_forwarding_rule_region_url_map.id)
+        target_forwarding_rule_forwarding_rule = gcp.compute.ForwardingRule("target_forwarding_rule",
+            name="tf-test-forwarding-rule-_22375",
+            region="us-west2",
+            network=target_forwarding_rule.id,
+            subnetwork=target_forwarding_rule_default_subnetwork.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            target=target_forwarding_rule_region_target_http_proxy.id,
+            ip_protocol="TCP",
+            port_range="80",
+            opts = pulumi.ResourceOptions(depends_on=[target_forwarding_rule_proxy_subnetwork]))
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
             name="address-group",
             parent=project.id,
@@ -723,6 +827,20 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         }],
                         "layer4_configs": [{
                             "ip_protocol": "udp",
+                        }],
+                    },
+                },
+                {
+                    "description": "internal managed lb rule",
+                    "priority": 3000,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "target_type": "INTERNAL_MANAGED_LB",
+                    "target_forwarding_rules": [target_forwarding_rule_forwarding_rule.self_link],
+                    "match": {
+                        "src_ip_ranges": ["10.0.0.0/8"],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
                         }],
                     },
                 },

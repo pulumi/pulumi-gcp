@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyDailyMaintenanceWindow;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyDisruptionBudget;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyMaintenanceExclusion;
+import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindow;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyRecurringWindow;
 import java.util.List;
 import java.util.Objects;
@@ -29,6 +30,11 @@ public final class GetClusterMaintenancePolicy {
      * 
      */
     private List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+    /**
+     * @return Time window for recurring maintenance operations.
+     * 
+     */
+    private List<GetClusterMaintenancePolicyRecurringMaintenanceWindow> recurringMaintenanceWindows;
     /**
      * @return Time window for recurring maintenance operations.
      * 
@@ -61,6 +67,13 @@ public final class GetClusterMaintenancePolicy {
      * @return Time window for recurring maintenance operations.
      * 
      */
+    public List<GetClusterMaintenancePolicyRecurringMaintenanceWindow> recurringMaintenanceWindows() {
+        return this.recurringMaintenanceWindows;
+    }
+    /**
+     * @return Time window for recurring maintenance operations.
+     * 
+     */
     public List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows() {
         return this.recurringWindows;
     }
@@ -77,6 +90,7 @@ public final class GetClusterMaintenancePolicy {
         private List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows;
         private List<GetClusterMaintenancePolicyDisruptionBudget> disruptionBudgets;
         private List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+        private List<GetClusterMaintenancePolicyRecurringMaintenanceWindow> recurringMaintenanceWindows;
         private List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows;
         public Builder() {}
         public Builder(GetClusterMaintenancePolicy defaults) {
@@ -84,6 +98,7 @@ public final class GetClusterMaintenancePolicy {
     	      this.dailyMaintenanceWindows = defaults.dailyMaintenanceWindows;
     	      this.disruptionBudgets = defaults.disruptionBudgets;
     	      this.maintenanceExclusions = defaults.maintenanceExclusions;
+    	      this.recurringMaintenanceWindows = defaults.recurringMaintenanceWindows;
     	      this.recurringWindows = defaults.recurringWindows;
         }
 
@@ -121,6 +136,17 @@ public final class GetClusterMaintenancePolicy {
             return maintenanceExclusions(List.of(maintenanceExclusions));
         }
         @CustomType.Setter
+        public Builder recurringMaintenanceWindows(List<GetClusterMaintenancePolicyRecurringMaintenanceWindow> recurringMaintenanceWindows) {
+            if (recurringMaintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicy", "recurringMaintenanceWindows");
+            }
+            this.recurringMaintenanceWindows = recurringMaintenanceWindows;
+            return this;
+        }
+        public Builder recurringMaintenanceWindows(GetClusterMaintenancePolicyRecurringMaintenanceWindow... recurringMaintenanceWindows) {
+            return recurringMaintenanceWindows(List.of(recurringMaintenanceWindows));
+        }
+        @CustomType.Setter
         public Builder recurringWindows(List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows) {
             if (recurringWindows == null) {
               throw new MissingRequiredPropertyException("GetClusterMaintenancePolicy", "recurringWindows");
@@ -136,6 +162,7 @@ public final class GetClusterMaintenancePolicy {
             _resultValue.dailyMaintenanceWindows = dailyMaintenanceWindows;
             _resultValue.disruptionBudgets = disruptionBudgets;
             _resultValue.maintenanceExclusions = maintenanceExclusions;
+            _resultValue.recurringMaintenanceWindows = recurringMaintenanceWindows;
             _resultValue.recurringWindows = recurringWindows;
             return _resultValue;
         }

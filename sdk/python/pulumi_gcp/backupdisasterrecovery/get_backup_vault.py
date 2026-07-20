@@ -340,7 +340,7 @@ def get_backup_vault(backup_vault_id: Optional[_builtins.str] = None,
 
     :param _builtins.str backup_vault_id: The id of Backup Vault resource.
            
-           - - -
+           ***
     :param _builtins.str location: The location in which the Backup Vault resource belongs.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -404,7 +404,7 @@ def get_backup_vault_output(backup_vault_id: pulumi.Input[Optional[_builtins.str
 
     :param _builtins.str backup_vault_id: The id of Backup Vault resource.
            
-           - - -
+           ***
     :param _builtins.str location: The location in which the Backup Vault resource belongs.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

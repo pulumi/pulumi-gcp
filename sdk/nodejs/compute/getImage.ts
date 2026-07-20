@@ -59,7 +59,7 @@ export interface GetImageArgs {
      * filter must return exactly one image unless you use `mostRecent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      *
-     * - - -
+     * ***
      */
     name?: string;
     /**
@@ -209,7 +209,7 @@ export interface GetImageOutputArgs {
      * filter must return exactly one image unless you use `mostRecent`.
      * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**

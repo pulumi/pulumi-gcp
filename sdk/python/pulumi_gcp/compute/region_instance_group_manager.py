@@ -74,7 +74,7 @@ class RegionInstanceGroupManagerArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -100,7 +100,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -250,7 +250,7 @@ class RegionInstanceGroupManagerArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -408,7 +408,7 @@ class RegionInstanceGroupManagerArgs:
         """
         Resource policies for this managed instance group. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "resource_policies")
 
@@ -631,7 +631,7 @@ class _RegionInstanceGroupManagerState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -660,7 +660,7 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input['RegionInstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
@@ -827,7 +827,7 @@ class _RegionInstanceGroupManagerState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1021,7 +1021,7 @@ class _RegionInstanceGroupManagerState:
         """
         Resource policies for this managed instance group. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "resource_policies")
 
@@ -1398,7 +1398,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -1424,7 +1424,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulExternalIpArgs', 'RegionInstanceGroupManagerStatefulExternalIpArgsDict']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1740,7 +1740,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -1769,7 +1769,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] self_link: The URL of the created resource.
         :param pulumi.Input[Union['RegionInstanceGroupManagerStandbyPolicyArgs', 'RegionInstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerStatefulDiskArgs', 'RegionInstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
@@ -1890,7 +1890,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -2024,7 +2024,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         """
         Resource policies for this managed instance group. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "resource_policies")
 

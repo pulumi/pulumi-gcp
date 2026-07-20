@@ -40,7 +40,7 @@ class AuthorizedViewArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
@@ -96,7 +96,7 @@ class AuthorizedViewArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        -----
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -175,7 +175,7 @@ class _AuthorizedViewState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -211,7 +211,7 @@ class _AuthorizedViewState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        -----
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -398,7 +398,7 @@ class AuthorizedView(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -568,7 +568,7 @@ class AuthorizedView(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -602,7 +602,7 @@ class AuthorizedView(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        -----
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

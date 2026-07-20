@@ -12,18 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecSourceCodeSpecInlineSource {
     /**
-     * @return Required. Input only.
-     * The application source code archive, provided as a compressed
-     * tarball (.tar.gz) file. A base64-encoded string.
+     * @return Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
      * 
      */
     private @Nullable String sourceArchive;
 
     private AiReasoningEngineSpecSourceCodeSpecInlineSource() {}
     /**
-     * @return Required. Input only.
-     * The application source code archive, provided as a compressed
-     * tarball (.tar.gz) file. A base64-encoded string.
+     * @return Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
      * 
      */
     public Optional<String> sourceArchive() {

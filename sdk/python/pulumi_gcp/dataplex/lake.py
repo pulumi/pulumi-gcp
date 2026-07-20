@@ -48,9 +48,7 @@ class LakeArgs:
         :param pulumi.Input['LakeMetastoreArgs'] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[_builtins.str] name: The name of the lake.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         """
         pulumi.set(__self__, "location", location)
@@ -155,9 +153,7 @@ class LakeArgs:
         """
         The name of the lake.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -221,9 +217,7 @@ class _LakeState:
         :param pulumi.Input[Sequence[pulumi.Input['LakeMetastoreStatusArgs']]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[_builtins.str] name: The name of the lake.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
@@ -400,9 +394,7 @@ class _LakeState:
         """
         The name of the lake.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -554,9 +546,7 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[Union['LakeMetastoreArgs', 'LakeMetastoreArgsDict']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
         :param pulumi.Input[_builtins.str] name: The name of the lake.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         """
         ...
@@ -710,9 +700,7 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['LakeMetastoreStatusArgs', 'LakeMetastoreStatusArgsDict']]]] metastore_statuses: Output only. Metastore status of the lake.
         :param pulumi.Input[_builtins.str] name: The name of the lake.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] service_account: Output only. Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
@@ -837,9 +825,7 @@ class Lake(pulumi.CustomResource):
         """
         The name of the lake.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

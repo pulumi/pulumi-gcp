@@ -20,6 +20,7 @@ import com.pulumi.gcp.compute.outputs.InstanceTemplateReservationAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -1040,6 +1041,22 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tagsFingerprint() {
         return this.tagsFingerprint;
+    }
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    @Export(name="workloadIdentityConfig", refs={InstanceTemplateWorkloadIdentityConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceTemplateWorkloadIdentityConfig> workloadIdentityConfig;
+
+    /**
+     * @return Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    public Output<Optional<InstanceTemplateWorkloadIdentityConfig>> workloadIdentityConfig() {
+        return Codegen.optional(this.workloadIdentityConfig);
     }
 
     /**

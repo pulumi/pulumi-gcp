@@ -17,8 +17,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const project_2 = new gcp.organizations.Project("project-2", {
- *     projectId: "tf-test_44023",
- *     name: "tf-test_50206",
+ *     projectId: "tf-test_91207",
+ *     name: "tf-test_14939",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });
@@ -115,7 +115,7 @@ export class TraceScope extends pulumi.CustomResource {
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
-     * A trace scope can include a maximum of 20 projects.
+     *    A trace scope can include a maximum of 20 projects.
      */
     declare public readonly resourceNames: pulumi.Output<string[]>;
     /**
@@ -215,7 +215,7 @@ export interface TraceScopeState {
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
-     * A trace scope can include a maximum of 20 projects.
+     *    A trace scope can include a maximum of 20 projects.
      */
     resourceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -258,7 +258,7 @@ export interface TraceScopeArgs {
     /**
      * Names of the projects that are included in this trace scope.
      * *  `projects/[PROJECT_ID]`
-     * A trace scope can include a maximum of 20 projects.
+     *    A trace scope can include a maximum of 20 projects.
      */
     resourceNames: pulumi.Input<pulumi.Input<string>[]>;
     /**

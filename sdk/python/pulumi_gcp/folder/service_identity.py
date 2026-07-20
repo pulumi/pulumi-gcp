@@ -27,7 +27,7 @@ class ServiceIdentityArgs:
         :param pulumi.Input[_builtins.str] folder: The folder in which the resource belongs.
         :param pulumi.Input[_builtins.str] service: The service to generate identity for.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "folder", folder)
         pulumi.set(__self__, "service", service)
@@ -50,7 +50,7 @@ class ServiceIdentityArgs:
         """
         The service to generate identity for.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "service")
 
@@ -74,7 +74,7 @@ class _ServiceIdentityState:
         :param pulumi.Input[_builtins.str] member: The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[_builtins.str] service: The service to generate identity for.
                
-               - - -
+               ***
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
@@ -127,7 +127,7 @@ class _ServiceIdentityState:
         """
         The service to generate identity for.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "service")
 
@@ -192,7 +192,7 @@ class ServiceIdentity(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] folder: The folder in which the resource belongs.
         :param pulumi.Input[_builtins.str] service: The service to generate identity for.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -302,7 +302,7 @@ class ServiceIdentity(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] member: The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
         :param pulumi.Input[_builtins.str] service: The service to generate identity for.
                
-               - - -
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -344,7 +344,7 @@ class ServiceIdentity(pulumi.CustomResource):
         """
         The service to generate identity for.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "service")
 

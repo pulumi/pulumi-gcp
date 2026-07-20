@@ -62,7 +62,7 @@ export interface GetMavenArtifactResult {
     readonly id: string;
     readonly location: string;
     /**
-     * The fully qualified name of the fetched artifact. Format:  
+     * The fully qualified name of the fetched artifact. Format:
      * ```
      * projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/mavenArtifacts/{{group_id}}:{{artifact_id}}:{{version}}
      * ```

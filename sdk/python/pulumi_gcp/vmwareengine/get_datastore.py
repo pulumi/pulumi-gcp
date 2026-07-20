@@ -177,7 +177,7 @@ def get_datastore(location: Optional[_builtins.str] = None,
            * Ends with a non-hyphen character
            * Not formatted as a UUID
            * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-           (section 3.5)
+             (section 3.5)
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
@@ -229,7 +229,7 @@ def get_datastore_output(location: pulumi.Input[Optional[_builtins.str]] = None,
            * Ends with a non-hyphen character
            * Not formatted as a UUID
            * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-           (section 3.5)
+             (section 3.5)
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """

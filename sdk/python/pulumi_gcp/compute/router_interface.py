@@ -39,7 +39,7 @@ class RouterInterfaceArgs:
                
                In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -101,7 +101,7 @@ class RouterInterfaceArgs:
 
         In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "router")
 
@@ -303,7 +303,7 @@ class _RouterInterfaceState:
                
                In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] subnetwork: The URI of the subnetwork resource that this interface
                belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[_builtins.str] vpn_tunnel: The name or resource link to the VPN tunnel this
@@ -465,7 +465,7 @@ class _RouterInterfaceState:
 
         In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "router")
 
@@ -584,7 +584,7 @@ class RouterInterface(pulumi.CustomResource):
                
                In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] subnetwork: The URI of the subnetwork resource that this interface
                belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[_builtins.str] vpn_tunnel: The name or resource link to the VPN tunnel this
@@ -738,7 +738,7 @@ class RouterInterface(pulumi.CustomResource):
                
                In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] subnetwork: The URI of the subnetwork resource that this interface
                belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork` can be specified.
         :param pulumi.Input[_builtins.str] vpn_tunnel: The name or resource link to the VPN tunnel this
@@ -857,7 +857,7 @@ class RouterInterface(pulumi.CustomResource):
 
         In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "router")
 

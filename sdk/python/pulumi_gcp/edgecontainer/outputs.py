@@ -185,7 +185,6 @@ class ClusterControlPlaneEncryption(dict):
                If populated, this field contains the error status reported by Cloud KMS.
                Structure is documented below.
                
-               
                <a name="nested_control_plane_encryption_kms_status"></a>The `kms_status` block contains:
         """
         if kms_key is not None:
@@ -239,7 +238,6 @@ class ClusterControlPlaneEncryption(dict):
         populated only if `kms_key_state` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
         If populated, this field contains the error status reported by Cloud KMS.
         Structure is documented below.
-
 
         <a name="nested_control_plane_encryption_kms_status"></a>The `kms_status` block contains:
         """

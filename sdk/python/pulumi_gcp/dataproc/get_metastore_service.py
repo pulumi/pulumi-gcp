@@ -340,7 +340,7 @@ def get_metastore_service(location: Optional[_builtins.str] = None,
 
     :param _builtins.str location: The location where the metastore service resides.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str service_id: The ID of the metastore service.
@@ -404,7 +404,7 @@ def get_metastore_service_output(location: pulumi.Input[Optional[_builtins.str]]
 
     :param _builtins.str location: The location where the metastore service resides.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str service_id: The ID of the metastore service.

@@ -34,11 +34,11 @@ class CurationArgs:
         :param pulumi.Input[_builtins.str] curation_id: The ID to use for the curation resource, which will become the final
                component of the curations's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified ID is already used by another curation resource in the API
-               hub.
+                 the specified ID is already used by another curation resource in the API
+                 hub.
                * If not provided, a system generated ID will be used.
-               This value should be 4-500 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-500 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] display_name: The display name of the curation.
         :param pulumi.Input['CurationEndpointArgs'] endpoint: The endpoint to be triggered for curation.
                The endpoint will be invoked with a request payload containing
@@ -75,11 +75,11 @@ class CurationArgs:
         The ID to use for the curation resource, which will become the final
         component of the curations's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified ID is already used by another curation resource in the API
-        hub.
+          the specified ID is already used by another curation resource in the API
+          hub.
         * If not provided, a system generated ID will be used.
-        This value should be 4-500 characters, and valid characters
-        are /a-z[0-9]-_/.
+          This value should be 4-500 characters, and valid characters
+          are /a-z[0-9]-_/.
         """
         return pulumi.get(self, "curation_id")
 
@@ -195,11 +195,11 @@ class _CurationState:
         :param pulumi.Input[_builtins.str] curation_id: The ID to use for the curation resource, which will become the final
                component of the curations's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified ID is already used by another curation resource in the API
-               hub.
+                 the specified ID is already used by another curation resource in the API
+                 hub.
                * If not provided, a system generated ID will be used.
-               This value should be 4-500 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-500 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -287,11 +287,11 @@ class _CurationState:
         The ID to use for the curation resource, which will become the final
         component of the curations's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified ID is already used by another curation resource in the API
-        hub.
+          the specified ID is already used by another curation resource in the API
+          hub.
         * If not provided, a system generated ID will be used.
-        This value should be 4-500 characters, and valid characters
-        are /a-z[0-9]-_/.
+          This value should be 4-500 characters, and valid characters
+          are /a-z[0-9]-_/.
         """
         return pulumi.get(self, "curation_id")
 
@@ -531,11 +531,11 @@ class Curation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] curation_id: The ID to use for the curation resource, which will become the final
                component of the curations's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified ID is already used by another curation resource in the API
-               hub.
+                 the specified ID is already used by another curation resource in the API
+                 hub.
                * If not provided, a system generated ID will be used.
-               This value should be 4-500 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-500 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -690,11 +690,11 @@ class Curation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] curation_id: The ID to use for the curation resource, which will become the final
                component of the curations's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified ID is already used by another curation resource in the API
-               hub.
+                 the specified ID is already used by another curation resource in the API
+                 hub.
                * If not provided, a system generated ID will be used.
-               This value should be 4-500 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-500 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -769,11 +769,11 @@ class Curation(pulumi.CustomResource):
         The ID to use for the curation resource, which will become the final
         component of the curations's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified ID is already used by another curation resource in the API
-        hub.
+          the specified ID is already used by another curation resource in the API
+          hub.
         * If not provided, a system generated ID will be used.
-        This value should be 4-500 characters, and valid characters
-        are /a-z[0-9]-_/.
+          This value should be 4-500 characters, and valid characters
+          are /a-z[0-9]-_/.
         """
         return pulumi.get(self, "curation_id")
 

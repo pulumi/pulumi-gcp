@@ -92,6 +92,67 @@ import (
 //	}
 //
 // ```
+// ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			infra, err := oracledatabase.NewCloudExadataInfrastructure(ctx, "infra", &oracledatabase.CloudExadataInfrastructureArgs{
+//				CloudExadataInfrastructureId: pulumi.String("my-infra"),
+//				DisplayName:                  pulumi.String("my-infra displayname"),
+//				Location:                     pulumi.String("us-east4"),
+//				Project:                      pulumi.String("my-project"),
+//				Properties: &oracledatabase.CloudExadataInfrastructurePropertiesArgs{
+//					Shape:        pulumi.String("Exadata.X9M"),
+//					ComputeCount: pulumi.Int(2),
+//					StorageCount: pulumi.Int(3),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exascaleConfig, err := oracledatabase.NewCloudExadataInfrastructureExascaleConfig(ctx, "exascale_config", &oracledatabase.CloudExadataInfrastructureExascaleConfigArgs{
+//				CloudExadataInfrastructure: infra.CloudExadataInfrastructureId,
+//				Location:                   pulumi.String("us-east4"),
+//				Project:                    pulumi.String("my-project"),
+//				TotalStorageSizeGb:         pulumi.Int(10240),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oracledatabase.NewExascaleDbStorageVault(ctx, "my_storage_vault", &oracledatabase.ExascaleDbStorageVaultArgs{
+//				ExascaleDbStorageVaultId: pulumi.String("my-instance"),
+//				DisplayName:              pulumi.String("my-instance displayname"),
+//				Location:                 pulumi.String("us-east4"),
+//				Project:                  pulumi.String("my-project"),
+//				ExadataInfrastructure:    infra.Name,
+//				Properties: &oracledatabase.ExascaleDbStorageVaultPropertiesArgs{
+//					ExascaleDbStorageDetails: &oracledatabase.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs{
+//						TotalSizeGbs: pulumi.Int(2048),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exascaleConfig,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -131,6 +192,9 @@ type ExascaleDbStorageVault struct {
 	// The ID of the subscription entitlement associated with the
 	// ExascaleDbStorageVault.
 	EntitlementId pulumi.StringOutput `pulumi:"entitlementId"`
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure pulumi.StringPtrOutput `pulumi:"exadataInfrastructure"`
 	// The ID of the ExascaleDbStorageVault to create. This value is
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
@@ -229,6 +293,9 @@ type exascaleDbStorageVaultState struct {
 	// The ID of the subscription entitlement associated with the
 	// ExascaleDbStorageVault.
 	EntitlementId *string `pulumi:"entitlementId"`
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure *string `pulumi:"exadataInfrastructure"`
 	// The ID of the ExascaleDbStorageVault to create. This value is
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
@@ -281,6 +348,9 @@ type ExascaleDbStorageVaultState struct {
 	// The ID of the subscription entitlement associated with the
 	// ExascaleDbStorageVault.
 	EntitlementId pulumi.StringPtrInput
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure pulumi.StringPtrInput
 	// The ID of the ExascaleDbStorageVault to create. This value is
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
@@ -330,6 +400,9 @@ type exascaleDbStorageVaultArgs struct {
 	// be unique within your project. The name must be 1-255 characters long and
 	// can only contain alphanumeric characters.
 	DisplayName string `pulumi:"displayName"`
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure *string `pulumi:"exadataInfrastructure"`
 	// The ID of the ExascaleDbStorageVault to create. This value is
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
@@ -369,6 +442,9 @@ type ExascaleDbStorageVaultArgs struct {
 	// be unique within your project. The name must be 1-255 characters long and
 	// can only contain alphanumeric characters.
 	DisplayName pulumi.StringInput
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure pulumi.StringPtrInput
 	// The ID of the ExascaleDbStorageVault to create. This value is
 	// restricted to (^a-z?$) and must be a maximum of
 	// 63 characters in length. The value must start with a letter and end with a
@@ -516,6 +592,12 @@ func (o ExascaleDbStorageVaultOutput) EffectiveLabels() pulumi.StringMapOutput {
 // ExascaleDbStorageVault.
 func (o ExascaleDbStorageVaultOutput) EntitlementId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExascaleDbStorageVault) pulumi.StringOutput { return v.EntitlementId }).(pulumi.StringOutput)
+}
+
+// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+func (o ExascaleDbStorageVaultOutput) ExadataInfrastructure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExascaleDbStorageVault) pulumi.StringPtrOutput { return v.ExadataInfrastructure }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the ExascaleDbStorageVault to create. This value is

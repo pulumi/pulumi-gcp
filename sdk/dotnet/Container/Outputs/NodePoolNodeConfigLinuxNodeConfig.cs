@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? CgroupMode;
         /// <summary>
+        /// The custom node init settings.
+        /// </summary>
+        public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInit? CustomNodeInit;
+        /// <summary>
         /// Amounts for 2M and 1G hugepages.
         /// </summary>
         public readonly Outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig? HugepagesConfig;
@@ -52,6 +56,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? cgroupMode,
 
+            Outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInit? customNodeInit,
+
             Outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig? hugepagesConfig,
 
             Outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading? nodeKernelModuleLoading,
@@ -66,6 +72,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             AccurateTimeConfig = accurateTimeConfig;
             CgroupMode = cgroupMode;
+            CustomNodeInit = customNodeInit;
             HugepagesConfig = hugepagesConfig;
             NodeKernelModuleLoading = nodeKernelModuleLoading;
             SwapConfig = swapConfig;

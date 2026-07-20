@@ -896,7 +896,7 @@ class AssetResourceSpecArgsDict(TypedDict):
     """
     Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
 
-    - - -
+    ***
     """
     name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -916,7 +916,7 @@ class AssetResourceSpecArgs:
         """
         :param pulumi.Input[_builtins.str] type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         :param pulumi.Input[_builtins.str] read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
@@ -932,7 +932,7 @@ class AssetResourceSpecArgs:
         """
         Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -1926,12 +1926,32 @@ class DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs:
 
 
 class DatascanDataDocumentationSpecArgsDict(TypedDict):
-    pass
+    catalog_publishing_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If set, the latest DataScan job result will be published to Knowledge Catalog.
+    """
 
 @pulumi.input_type
 class DatascanDataDocumentationSpecArgs:
-    def __init__(__self__):
-        pass
+    def __init__(__self__, *,
+                 catalog_publishing_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] catalog_publishing_enabled: If set, the latest DataScan job result will be published to Knowledge Catalog.
+        """
+        if catalog_publishing_enabled is not None:
+            pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogPublishingEnabled")
+    def catalog_publishing_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set, the latest DataScan job result will be published to Knowledge Catalog.
+        """
+        return pulumi.get(self, "catalog_publishing_enabled")
+
+    @catalog_publishing_enabled.setter
+    def catalog_publishing_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "catalog_publishing_enabled", value)
 
 
 class DatascanDataProfileSpecArgsDict(TypedDict):
@@ -7226,7 +7246,7 @@ class ZoneResourceSpecArgsDict(TypedDict):
     """
     Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
 
-    - - -
+    ***
     """
 
 @pulumi.input_type
@@ -7236,7 +7256,7 @@ class ZoneResourceSpecArgs:
         """
         :param pulumi.Input[_builtins.str] location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "location_type", location_type)
 
@@ -7246,7 +7266,7 @@ class ZoneResourceSpecArgs:
         """
         Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location_type")
 

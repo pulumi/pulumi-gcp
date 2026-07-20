@@ -192,9 +192,7 @@ export class ApiKey extends pulumi.CustomResource {
     /**
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -277,9 +275,7 @@ export interface ApiKeyState {
     /**
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -320,9 +316,7 @@ export interface ApiKeyArgs {
     /**
      * The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**

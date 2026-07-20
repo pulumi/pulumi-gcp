@@ -495,7 +495,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var globalAssoc = new NetworkFirewallPolicyAssociation("globalAssoc", NetworkFirewallPolicyAssociationArgs.builder()
- *             .name("global-policy-assoc-_95154")
+ *             .name("global-policy-assoc-_34962")
  *             .firewallPolicy(fwPolicy.id())
  *             .attachmentTarget(net.id())
  *             .build());

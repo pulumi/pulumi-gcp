@@ -401,8 +401,8 @@ export class RouterPeer extends pulumi.CustomResource {
      * User-specified list of prefix groups to advertise in custom
      * mode, which currently supports the following option:
      * * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
-     * This excludes any routes learned for subnets that use VPC Network
-     * Peering.
+     *   This excludes any routes learned for subnets that use VPC Network
+     *   Peering.
      *
      * Note that this field can only be populated if advertiseMode is `CUSTOM`
      * and overrides the list defined for the router (in the "bgp" message).
@@ -511,13 +511,13 @@ export class RouterPeer extends pulumi.CustomResource {
     /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
-     * you or other users
+     *   you or other users
      * * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
-     * managed by Cloud Interconnect, specifically by an
-     * InterconnectAttachment of type PARTNER. Google automatically
-     * creates, updates, and deletes this type of BGP peer when the
-     * PARTNER InterconnectAttachment is created, updated,
-     * or deleted.
+     *   managed by Cloud Interconnect, specifically by an
+     *   InterconnectAttachment of type PARTNER. Google automatically
+     *   creates, updates, and deletes this type of BGP peer when the
+     *   PARTNER InterconnectAttachment is created, updated,
+     *   or deleted.
      */
     declare public /*out*/ readonly managementType: pulumi.Output<string>;
     /**
@@ -568,8 +568,7 @@ export class RouterPeer extends pulumi.CustomResource {
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      *
-     *
-     * - - -
+     * ***
      */
     declare public readonly router: pulumi.Output<string>;
     /**
@@ -699,8 +698,8 @@ export interface RouterPeerState {
      * User-specified list of prefix groups to advertise in custom
      * mode, which currently supports the following option:
      * * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
-     * This excludes any routes learned for subnets that use VPC Network
-     * Peering.
+     *   This excludes any routes learned for subnets that use VPC Network
+     *   Peering.
      *
      * Note that this field can only be populated if advertiseMode is `CUSTOM`
      * and overrides the list defined for the router (in the "bgp" message).
@@ -809,13 +808,13 @@ export interface RouterPeerState {
     /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
-     * you or other users
+     *   you or other users
      * * `MANAGED_BY_ATTACHMENT` is a BGP peer that is configured and
-     * managed by Cloud Interconnect, specifically by an
-     * InterconnectAttachment of type PARTNER. Google automatically
-     * creates, updates, and deletes this type of BGP peer when the
-     * PARTNER InterconnectAttachment is created, updated,
-     * or deleted.
+     *   managed by Cloud Interconnect, specifically by an
+     *   InterconnectAttachment of type PARTNER. Google automatically
+     *   creates, updates, and deletes this type of BGP peer when the
+     *   PARTNER InterconnectAttachment is created, updated,
+     *   or deleted.
      */
     managementType?: pulumi.Input<string | undefined>;
     /**
@@ -866,8 +865,7 @@ export interface RouterPeerState {
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      *
-     *
-     * - - -
+     * ***
      */
     router?: pulumi.Input<string | undefined>;
     /**
@@ -904,8 +902,8 @@ export interface RouterPeerArgs {
      * User-specified list of prefix groups to advertise in custom
      * mode, which currently supports the following option:
      * * `ALL_SUBNETS`: Advertises all of the router's own VPC subnets.
-     * This excludes any routes learned for subnets that use VPC Network
-     * Peering.
+     *   This excludes any routes learned for subnets that use VPC Network
+     *   Peering.
      *
      * Note that this field can only be populated if advertiseMode is `CUSTOM`
      * and overrides the list defined for the router (in the "bgp" message).
@@ -1051,8 +1049,7 @@ export interface RouterPeerArgs {
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      *
-     *
-     * - - -
+     * ***
      */
     router: pulumi.Input<string>;
     /**

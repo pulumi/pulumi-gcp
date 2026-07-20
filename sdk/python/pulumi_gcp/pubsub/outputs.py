@@ -3090,7 +3090,7 @@ class GetSubscriptionMessageTransformJavascriptUdfResult(dict):
                '''
                  /**
                  * Transforms a Pub/Sub message.
-                 *
+               *   
                  * @return {(Object<string, (string | Object<string, string>)>|null)} - To
                  * filter a message, return 'null'. To transform a message return a map
                  * with the following keys:
@@ -3098,21 +3098,21 @@ class GetSubscriptionMessageTransformJavascriptUdfResult(dict):
                  *   - (optional) 'attributes' : {Object<string, string>}
                  * Returning empty 'attributes' will remove all attributes from the
                  * message.
-                 *
+               *   
                  * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
                  * message. Keys:
                  *   - (required) 'data' : {string}
                  *   - (required) 'attributes' : {Object<string, string>}
-                 *
+               *   
                  * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
                  * Keys:
                  *   - (required) 'message_id'  : {string}
                  *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
                  *   - (optional) 'ordering_key': {string}
-                 */
-                 function <function_name>(message, metadata) {
-                 }
-               '''
+                         */
+                         function <function_name>(message, metadata) {
+                         }
+                       '''
         :param _builtins.str function_name: Name of the JavaScript function that should be applied to Pub/Sub messages.
         """
         pulumi.set(__self__, "code", code)
@@ -3127,7 +3127,7 @@ class GetSubscriptionMessageTransformJavascriptUdfResult(dict):
         '''
           /**
           * Transforms a Pub/Sub message.
-          *
+        *   
           * @return {(Object<string, (string | Object<string, string>)>|null)} - To
           * filter a message, return 'null'. To transform a message return a map
           * with the following keys:
@@ -3135,21 +3135,21 @@ class GetSubscriptionMessageTransformJavascriptUdfResult(dict):
           *   - (optional) 'attributes' : {Object<string, string>}
           * Returning empty 'attributes' will remove all attributes from the
           * message.
-          *
+        *   
           * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
           * message. Keys:
           *   - (required) 'data' : {string}
           *   - (required) 'attributes' : {Object<string, string>}
-          *
+        *   
           * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
           * Keys:
           *   - (required) 'message_id'  : {string}
           *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
           *   - (optional) 'ordering_key': {string}
-          */
-          function <function_name>(message, metadata) {
-          }
-        '''
+                  */
+                  function <function_name>(message, metadata) {
+                  }
+                '''
         """
         return pulumi.get(self, "code")
 
@@ -4043,7 +4043,7 @@ class GetTopicMessageTransformJavascriptUdfResult(dict):
                '''
                  /**
                  * Transforms a Pub/Sub message.
-                 *
+               *   
                  * @return {(Object<string, (string | Object<string, string>)>|null)} - To
                  * filter a message, return 'null'. To transform a message return a map
                  * with the following keys:
@@ -4051,21 +4051,21 @@ class GetTopicMessageTransformJavascriptUdfResult(dict):
                  *   - (optional) 'attributes' : {Object<string, string>}
                  * Returning empty 'attributes' will remove all attributes from the
                  * message.
-                 *
+               *   
                  * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
                  * message. Keys:
                  *   - (required) 'data' : {string}
                  *   - (required) 'attributes' : {Object<string, string>}
-                 *
+               *   
                  * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
                  * Keys:
                  *   - (required) 'message_id'  : {string}
                  *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
                  *   - (optional) 'ordering_key': {string}
-                 */
-                 function <function_name>(message, metadata) {
-                 }
-               '''
+                         */
+                         function <function_name>(message, metadata) {
+                         }
+                       '''
         :param _builtins.str function_name: Name of the JavaScript function that should be applied to Pub/Sub messages.
         """
         pulumi.set(__self__, "code", code)
@@ -4080,7 +4080,7 @@ class GetTopicMessageTransformJavascriptUdfResult(dict):
         '''
           /**
           * Transforms a Pub/Sub message.
-          *
+        *   
           * @return {(Object<string, (string | Object<string, string>)>|null)} - To
           * filter a message, return 'null'. To transform a message return a map
           * with the following keys:
@@ -4088,21 +4088,21 @@ class GetTopicMessageTransformJavascriptUdfResult(dict):
           *   - (optional) 'attributes' : {Object<string, string>}
           * Returning empty 'attributes' will remove all attributes from the
           * message.
-          *
+        *   
           * @param  {(Object<string, (string | Object<string, string>)>} Pub/Sub
           * message. Keys:
           *   - (required) 'data' : {string}
           *   - (required) 'attributes' : {Object<string, string>}
-          *
+        *   
           * @param  {Object<string, any>} metadata - Pub/Sub message metadata.
           * Keys:
           *   - (required) 'message_id'  : {string}
           *   - (optional) 'publish_time': {string} YYYY-MM-DDTHH:MM:SSZ format
           *   - (optional) 'ordering_key': {string}
-          */
-          function <function_name>(message, metadata) {
-          }
-        '''
+                  */
+                  function <function_name>(message, metadata) {
+                  }
+                '''
         """
         return pulumi.get(self, "code")
 

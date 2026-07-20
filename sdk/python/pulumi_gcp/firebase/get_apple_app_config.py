@@ -106,7 +106,7 @@ def get_apple_app_config(app_id: Optional[_builtins.str] = None,
 
     :param _builtins.str app_id: The id of the Firebase iOS App.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -140,7 +140,7 @@ def get_apple_app_config_output(app_id: pulumi.Input[Optional[_builtins.str]] = 
 
     :param _builtins.str app_id: The id of the Firebase iOS App.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

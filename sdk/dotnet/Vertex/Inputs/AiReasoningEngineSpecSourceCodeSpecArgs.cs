@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecSourceCodeSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Specification for the deploying from agent config.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentConfigSource")]
+        public Input<Inputs.AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs>? AgentConfigSource { get; set; }
+
+        /// <summary>
         /// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
         /// Structure is documented below.
         /// </summary>

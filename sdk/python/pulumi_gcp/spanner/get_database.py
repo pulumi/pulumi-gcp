@@ -178,7 +178,7 @@ def get_database(instance: Optional[_builtins.str] = None,
 
     :param _builtins.str instance: The name of the database's spanner instance.
            
-           - - -
+           ***
     :param _builtins.str name: The name of the spanner database.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -224,7 +224,7 @@ def get_database_output(instance: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str instance: The name of the database's spanner instance.
            
-           - - -
+           ***
     :param _builtins.str name: The name of the spanner database.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

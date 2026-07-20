@@ -21,6 +21,9 @@ __all__ = [
     'CollectionVectorSchemaDenseVector',
     'CollectionVectorSchemaDenseVectorVertexEmbeddingConfig',
     'CollectionVectorSchemaSparseVector',
+    'IndexDedicatedInfrastructure',
+    'IndexDedicatedInfrastructureAutoscalingSpec',
+    'IndexDenseScann',
 ]
 
 @pulumi.output_type
@@ -270,5 +273,151 @@ class CollectionVectorSchemaDenseVectorVertexEmbeddingConfig(dict):
 class CollectionVectorSchemaSparseVector(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class IndexDedicatedInfrastructure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingSpec":
+            suggest = "autoscaling_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexDedicatedInfrastructure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexDedicatedInfrastructure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexDedicatedInfrastructure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscaling_spec: Optional['outputs.IndexDedicatedInfrastructureAutoscalingSpec'] = None,
+                 mode: Optional[_builtins.str] = None):
+        """
+        :param 'IndexDedicatedInfrastructureAutoscalingSpecArgs' autoscaling_spec: Autoscaling specification.
+               Structure is documented below.
+        :param _builtins.str mode: Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+               Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+        """
+        if autoscaling_spec is not None:
+            pulumi.set(__self__, "autoscaling_spec", autoscaling_spec)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingSpec")
+    def autoscaling_spec(self) -> Optional['outputs.IndexDedicatedInfrastructureAutoscalingSpec']:
+        """
+        Autoscaling specification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+        Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class IndexDedicatedInfrastructureAutoscalingSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxReplicaCount":
+            suggest = "max_replica_count"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexDedicatedInfrastructureAutoscalingSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexDedicatedInfrastructureAutoscalingSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexDedicatedInfrastructureAutoscalingSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_replica_count: Optional[_builtins.int] = None,
+                 min_replica_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int max_replica_count: The maximum number of replicas. Must be >= `min_replica_count`
+               and <= `1000`. If not set or set to `0`, defaults to the greater
+               of `min_replica_count` and `2` (or `5` for the v1beta version).
+        :param _builtins.int min_replica_count: The minimum number of replicas. If not set or set to `0`, defaults
+               to `2`. Must be >= `1` and <= `1000`.
+        """
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @_builtins.property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of replicas. Must be >= `min_replica_count`
+        and <= `1000`. If not set or set to `0`, defaults to the greater
+        of `min_replica_count` and `2` (or `5` for the v1beta version).
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @_builtins.property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of replicas. If not set or set to `0`, defaults
+        to `2`. Must be >= `1` and <= `1000`.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+
+@pulumi.output_type
+class IndexDenseScann(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "featureNormType":
+            suggest = "feature_norm_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndexDenseScann. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndexDenseScann.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndexDenseScann.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 feature_norm_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str feature_norm_type: Feature norm type for the ScaNN index.
+               Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+        """
+        if feature_norm_type is not None:
+            pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+
+    @_builtins.property
+    @pulumi.getter(name="featureNormType")
+    def feature_norm_type(self) -> Optional[_builtins.str]:
+        """
+        Feature norm type for the ScaNN index.
+        Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+        """
+        return pulumi.get(self, "feature_norm_type")
 
 

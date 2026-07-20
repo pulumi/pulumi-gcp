@@ -24,6 +24,11 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
      */
     private String networkAttachmentUri;
     /**
+     * @return Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
+     */
+    private Boolean pscAutoConnectionPolicyEnabled;
+    /**
      * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
      * 
      */
@@ -58,6 +63,13 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
      */
     public String networkAttachmentUri() {
         return this.networkAttachmentUri;
+    }
+    /**
+     * @return Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
+     */
+    public Boolean pscAutoConnectionPolicyEnabled() {
+        return this.pscAutoConnectionPolicyEnabled;
     }
     /**
      * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
@@ -99,6 +111,7 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
     public static final class Builder {
         private List<String> allowedConsumerProjects;
         private String networkAttachmentUri;
+        private Boolean pscAutoConnectionPolicyEnabled;
         private List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
         private Boolean pscAutoDnsEnabled;
         private Boolean pscEnabled;
@@ -108,6 +121,7 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
     	      this.networkAttachmentUri = defaults.networkAttachmentUri;
+    	      this.pscAutoConnectionPolicyEnabled = defaults.pscAutoConnectionPolicyEnabled;
     	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pscAutoDnsEnabled = defaults.pscAutoDnsEnabled;
     	      this.pscEnabled = defaults.pscEnabled;
@@ -131,6 +145,14 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "networkAttachmentUri");
             }
             this.networkAttachmentUri = networkAttachmentUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscAutoConnectionPolicyEnabled(Boolean pscAutoConnectionPolicyEnabled) {
+            if (pscAutoConnectionPolicyEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscAutoConnectionPolicyEnabled");
+            }
+            this.pscAutoConnectionPolicyEnabled = pscAutoConnectionPolicyEnabled;
             return this;
         }
         @CustomType.Setter
@@ -172,6 +194,7 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
             final var _resultValue = new GetDatabaseInstanceSettingIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
             _resultValue.networkAttachmentUri = networkAttachmentUri;
+            _resultValue.pscAutoConnectionPolicyEnabled = pscAutoConnectionPolicyEnabled;
             _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pscAutoDnsEnabled = pscAutoDnsEnabled;
             _resultValue.pscEnabled = pscEnabled;

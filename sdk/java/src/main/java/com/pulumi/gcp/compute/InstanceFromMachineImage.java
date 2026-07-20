@@ -25,6 +25,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageScratchDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageShieldedInstanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageSourceMachineImageEncryptionKey;
+import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -756,6 +757,20 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      */
     public Output<String> tagsFingerprint() {
         return this.tagsFingerprint;
+    }
+    /**
+     * Workload identity config.
+     * 
+     */
+    @Export(name="workloadIdentityConfig", refs={InstanceFromMachineImageWorkloadIdentityConfig.class}, tree="[0]")
+    private Output<InstanceFromMachineImageWorkloadIdentityConfig> workloadIdentityConfig;
+
+    /**
+     * @return Workload identity config.
+     * 
+     */
+    public Output<InstanceFromMachineImageWorkloadIdentityConfig> workloadIdentityConfig() {
+        return this.workloadIdentityConfig;
     }
     /**
      * The zone that the machine should be created in. If not

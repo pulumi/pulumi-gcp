@@ -160,8 +160,8 @@ export class RolloutKind extends pulumi.CustomResource {
      * There are two supported values strategies which are used to control a rollout.
      * - "Google.Cloud.Simple.AllAtOnce"
      * - "Google.Cloud.Simple.OneLocationAtATime"
-     * A rollout with one of these simple strategies will rollout across
-     * all locations defined in the associated UnitKind's Saas Locations.
+     *   A rollout with one of these simple strategies will rollout across
+     *   all locations defined in the associated UnitKind's Saas Locations.
      */
     declare public readonly rolloutOrchestrationStrategy: pulumi.Output<string | undefined>;
     /**
@@ -344,8 +344,8 @@ export interface RolloutKindState {
      * There are two supported values strategies which are used to control a rollout.
      * - "Google.Cloud.Simple.AllAtOnce"
      * - "Google.Cloud.Simple.OneLocationAtATime"
-     * A rollout with one of these simple strategies will rollout across
-     * all locations defined in the associated UnitKind's Saas Locations.
+     *   A rollout with one of these simple strategies will rollout across
+     *   all locations defined in the associated UnitKind's Saas Locations.
      */
     rolloutOrchestrationStrategy?: pulumi.Input<string | undefined>;
     /**
@@ -438,8 +438,8 @@ export interface RolloutKindArgs {
      * There are two supported values strategies which are used to control a rollout.
      * - "Google.Cloud.Simple.AllAtOnce"
      * - "Google.Cloud.Simple.OneLocationAtATime"
-     * A rollout with one of these simple strategies will rollout across
-     * all locations defined in the associated UnitKind's Saas Locations.
+     *   A rollout with one of these simple strategies will rollout across
+     *   all locations defined in the associated UnitKind's Saas Locations.
      */
     rolloutOrchestrationStrategy?: pulumi.Input<string | undefined>;
     /**

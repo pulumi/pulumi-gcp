@@ -1695,7 +1695,7 @@ class GetApplicationScopeResult(dict):
     def __init__(__self__, *,
                  type: _builtins.str):
         """
-        :param _builtins.str type: Required. Scope Type. 
+        :param _builtins.str type: Required. Scope Type.
                 Possible values:
                REGIONAL
                GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
@@ -1706,7 +1706,7 @@ class GetApplicationScopeResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Required. Scope Type. 
+        Required. Scope Type.
          Possible values:
         REGIONAL
         GLOBAL Possible values: ["REGIONAL", "GLOBAL"]

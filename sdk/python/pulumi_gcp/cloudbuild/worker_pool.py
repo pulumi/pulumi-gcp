@@ -47,8 +47,7 @@ class WorkerPoolArgs:
         :param pulumi.Input[_builtins.str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
-               
-               - - -
+               ***
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input['WorkerPoolPrivateServiceConnectArgs'] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[_builtins.str] project: The project for the resource
@@ -134,8 +133,7 @@ class WorkerPoolArgs:
         """
         User-defined name of the `WorkerPool`.
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -230,8 +228,7 @@ class _WorkerPoolState:
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
-               
-               - - -
+               ***
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input['WorkerPoolPrivateServiceConnectArgs'] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[_builtins.str] project: The project for the resource
@@ -369,8 +366,7 @@ class _WorkerPoolState:
         """
         User-defined name of the `WorkerPool`.
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -568,8 +564,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
-               
-               - - -
+               ***
         :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[_builtins.str] project: The project for the resource
@@ -753,8 +748,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: User-defined name of the `WorkerPool`.
                
-               
-               - - -
+               ***
         :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
         :param pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[_builtins.str] project: The project for the resource
@@ -854,8 +848,7 @@ class WorkerPool(pulumi.CustomResource):
         """
         User-defined name of the `WorkerPool`.
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

@@ -21,6 +21,8 @@ from .get_cloud_vm_cluster import *
 from .get_cloud_vm_clusters import *
 from .get_db_nodes import *
 from .get_db_servers import *
+from .get_exascale_db_storage_vault import *
+from .get_exascale_db_storage_vaults import *
 from .get_goldengate_connection_types import *
 from .get_goldengate_deployment_environments import *
 from .get_goldengate_deployment_types import *

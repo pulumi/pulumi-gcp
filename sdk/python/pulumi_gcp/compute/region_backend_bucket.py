@@ -44,8 +44,8 @@ class RegionBackendBucketArgs:
                Possible values:
                - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
                - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-               This field is required for regional backend buckets.
-               Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+                 This field is required for regional backend buckets.
+                 Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -132,8 +132,8 @@ class RegionBackendBucketArgs:
         Possible values:
         - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
         - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-        This field is required for regional backend buckets.
-        Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+          This field is required for regional backend buckets.
+          Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -203,8 +203,8 @@ class _RegionBackendBucketState:
                Possible values:
                - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
                - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-               This field is required for regional backend buckets.
-               Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+                 This field is required for regional backend buckets.
+                 Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -299,8 +299,8 @@ class _RegionBackendBucketState:
         Possible values:
         - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
         - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-        This field is required for regional backend buckets.
-        Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+          This field is required for regional backend buckets.
+          Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -519,8 +519,8 @@ class RegionBackendBucket(pulumi.CustomResource):
                Possible values:
                - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
                - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-               This field is required for regional backend buckets.
-               Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+                 This field is required for regional backend buckets.
+                 Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -748,8 +748,8 @@ class RegionBackendBucket(pulumi.CustomResource):
                Possible values:
                - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
                - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-               This field is required for regional backend buckets.
-               Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+                 This field is required for regional backend buckets.
+                 Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -824,8 +824,8 @@ class RegionBackendBucket(pulumi.CustomResource):
         Possible values:
         - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
         - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-        This field is required for regional backend buckets.
-        Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+          This field is required for regional backend buckets.
+          Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 

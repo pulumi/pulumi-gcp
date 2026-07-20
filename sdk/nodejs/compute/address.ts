@@ -206,7 +206,7 @@ export class Address extends pulumi.CustomResource {
      * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-     * Partial URL, as in:
+     *   Partial URL, as in:
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
      */
@@ -274,17 +274,17 @@ export class Address extends pulumi.CustomResource {
     /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-     * ranges, load balancers, and similar resources.
+     *   ranges, load balancers, and similar resources.
      * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-     * internal load balancers.
+     *   internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
      * * IPSEC_INTERCONNECT for addresses created from a private IP range that
-     * are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-     * configuration. These addresses are regional resources.
+     *   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+     *   configuration. These addresses are regional resources.
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-     * configure Private Service Connect. Only global internal addresses can use
-     * this purpose.
-     * This should only be set when using an Internal address.
+     *   configure Private Service Connect. Only global internal addresses can use
+     *   this purpose.
+     *   This should only be set when using an Internal address.
      */
     declare public readonly purpose: pulumi.Output<string>;
     /**
@@ -425,7 +425,7 @@ export interface AddressState {
      * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-     * Partial URL, as in:
+     *   Partial URL, as in:
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
      */
@@ -493,17 +493,17 @@ export interface AddressState {
     /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-     * ranges, load balancers, and similar resources.
+     *   ranges, load balancers, and similar resources.
      * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-     * internal load balancers.
+     *   internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
      * * IPSEC_INTERCONNECT for addresses created from a private IP range that
-     * are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-     * configuration. These addresses are regional resources.
+     *   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+     *   configuration. These addresses are regional resources.
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-     * configure Private Service Connect. Only global internal addresses can use
-     * this purpose.
-     * This should only be set when using an Internal address.
+     *   configure Private Service Connect. Only global internal addresses can use
+     *   this purpose.
+     *   This should only be set when using an Internal address.
      */
     purpose?: pulumi.Input<string | undefined>;
     /**
@@ -564,7 +564,7 @@ export interface AddressArgs {
      * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
-     * Partial URL, as in:
+     *   Partial URL, as in:
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
      */
@@ -622,17 +622,17 @@ export interface AddressArgs {
     /**
      * The purpose of this resource, which can be one of the following values.
      * * GCE_ENDPOINT for addresses that are used by VM instances, alias IP
-     * ranges, load balancers, and similar resources.
+     *   ranges, load balancers, and similar resources.
      * * SHARED_LOADBALANCER_VIP for an address that can be used by multiple
-     * internal load balancers.
+     *   internal load balancers.
      * * VPC_PEERING for addresses that are reserved for VPC peer networks.
      * * IPSEC_INTERCONNECT for addresses created from a private IP range that
-     * are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
-     * configuration. These addresses are regional resources.
+     *   are reserved for a VLAN attachment in an HA VPN over Cloud Interconnect
+     *   configuration. These addresses are regional resources.
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
-     * configure Private Service Connect. Only global internal addresses can use
-     * this purpose.
-     * This should only be set when using an Internal address.
+     *   configure Private Service Connect. Only global internal addresses can use
+     *   this purpose.
+     *   This should only be set when using an Internal address.
      */
     purpose?: pulumi.Input<string | undefined>;
     /**

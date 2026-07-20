@@ -267,6 +267,123 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### Oracledatabase Cloud Vmcluster Exascale
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureExascaleConfigArgs;
+ * import com.pulumi.gcp.oracledatabase.ExascaleDbStorageVault;
+ * import com.pulumi.gcp.oracledatabase.ExascaleDbStorageVaultArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.ExascaleDbStorageVaultPropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+ * import com.pulumi.gcp.oracledatabase.inputs.GetDbServersArgs;
+ * import com.pulumi.gcp.oracledatabase.CloudVmCluster;
+ * import com.pulumi.gcp.oracledatabase.CloudVmClusterArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterPropertiesArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var infra = new CloudExadataInfrastructure("infra", CloudExadataInfrastructureArgs.builder()
+ *             .cloudExadataInfrastructureId("my-exadata")
+ *             .displayName("my-exadata displayname")
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
+ *                 .shape("Exadata.X9M")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var exascaleConfig = new CloudExadataInfrastructureExascaleConfig("exascaleConfig", CloudExadataInfrastructureExascaleConfigArgs.builder()
+ *             .cloudExadataInfrastructure(infra.cloudExadataInfrastructureId())
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .totalStorageSizeGb(10240)
+ *             .build());
+ * 
+ *         var vault = new ExascaleDbStorageVault("vault", ExascaleDbStorageVaultArgs.builder()
+ *             .exascaleDbStorageVaultId("my-vault")
+ *             .displayName("my-vault displayname")
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .exadataInfrastructure(infra.name())
+ *             .properties(ExascaleDbStorageVaultPropertiesArgs.builder()
+ *                 .exascaleDbStorageDetails(ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs.builder()
+ *                     .totalSizeGbs(2048)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exascaleConfig)
+ *                 .build());
+ * 
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name("new")
+ *             .project("my-project")
+ *             .build());
+ * 
+ *         final var dbServers = OracledatabaseFunctions.getDbServers(GetDbServersArgs.builder()
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .cloudExadataInfrastructure(infra.cloudExadataInfrastructureId())
+ *             .build());
+ * 
+ *         var myVmcluster = new CloudVmCluster("myVmcluster", CloudVmClusterArgs.builder()
+ *             .cloudVmClusterId("my-instance")
+ *             .displayName("my-instance displayname")
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .exadataInfrastructure(infra.id())
+ *             .network(default_.id())
+ *             .cidr("10.5.0.0/24")
+ *             .backupSubnetCidr("10.6.0.0/24")
+ *             .exascaleDbStorageVault(vault.name())
+ *             .properties(CloudVmClusterPropertiesArgs.builder()
+ *                 .licenseType("LICENSE_INCLUDED")
+ *                 .sshPublicKeys("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody}{@literal @}{@code google.com")
+ *                 .cpuCoreCount(4)
+ *                 .giVersion("23.0.0.0")
+ *                 .hostnamePrefix("hostname1")
+ *                 .memorySizeGb(60)
+ *                 .dbNodeStorageSizeGb(120)
+ *                 .dbServerOcids(                
+ *                     dbServers.applyValue(_dbServers -> _dbServers.dbServers()[0].properties()[0].ocid()),
+ *                     dbServers.applyValue(_dbServers -> _dbServers.dbServers()[1].properties()[0].ocid()))
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exascaleConfig)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -450,6 +567,24 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> exadataInfrastructure() {
         return this.exadataInfrastructure;
+    }
+    /**
+     * The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     * 
+     */
+    @Export(name="exascaleDbStorageVault", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> exascaleDbStorageVault;
+
+    /**
+     * @return The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     * 
+     */
+    public Output<Optional<String>> exascaleDbStorageVault() {
+        return Codegen.optional(this.exascaleDbStorageVault);
     }
     /**
      * GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone

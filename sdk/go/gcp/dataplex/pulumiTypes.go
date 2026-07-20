@@ -3898,6 +3898,8 @@ func (o DatascanDataDiscoverySpecStorageConfigJsonOptionsPtrOutput) TypeInferenc
 }
 
 type DatascanDataDocumentationSpec struct {
+	// If set, the latest DataScan job result will be published to Knowledge Catalog.
+	CatalogPublishingEnabled *bool `pulumi:"catalogPublishingEnabled"`
 }
 
 // DatascanDataDocumentationSpecInput is an input type that accepts DatascanDataDocumentationSpecArgs and DatascanDataDocumentationSpecOutput values.
@@ -3912,6 +3914,8 @@ type DatascanDataDocumentationSpecInput interface {
 }
 
 type DatascanDataDocumentationSpecArgs struct {
+	// If set, the latest DataScan job result will be published to Knowledge Catalog.
+	CatalogPublishingEnabled pulumi.BoolPtrInput `pulumi:"catalogPublishingEnabled"`
 }
 
 func (DatascanDataDocumentationSpecArgs) ElementType() reflect.Type {
@@ -3991,6 +3995,11 @@ func (o DatascanDataDocumentationSpecOutput) ToDatascanDataDocumentationSpecPtrO
 	}).(DatascanDataDocumentationSpecPtrOutput)
 }
 
+// If set, the latest DataScan job result will be published to Knowledge Catalog.
+func (o DatascanDataDocumentationSpecOutput) CatalogPublishingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataDocumentationSpec) *bool { return v.CatalogPublishingEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type DatascanDataDocumentationSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (DatascanDataDocumentationSpecPtrOutput) ElementType() reflect.Type {
@@ -4013,6 +4022,16 @@ func (o DatascanDataDocumentationSpecPtrOutput) Elem() DatascanDataDocumentation
 		var ret DatascanDataDocumentationSpec
 		return ret
 	}).(DatascanDataDocumentationSpecOutput)
+}
+
+// If set, the latest DataScan job result will be published to Knowledge Catalog.
+func (o DatascanDataDocumentationSpecPtrOutput) CatalogPublishingEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataDocumentationSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogPublishingEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DatascanDataProfileSpec struct {

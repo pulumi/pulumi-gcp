@@ -72,12 +72,12 @@ class QaQuestionArgs:
                PREDEFINED
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Questions are tagged for categorization and scoring. Tags can either be:
                - Default Tags: These are predefined categories. They are identified by
-               their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+                 their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
                - Custom Tags: These are user-defined categories. They are identified by
-               their full resource name (e.g.,
-               projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-               Both default and custom tags are used to group questions and to influence
-               the scoring of each question.
+                 their full resource name (e.g.,
+                 projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+                 Both default and custom tags are used to group questions and to influence
+                 the scoring of each question.
         :param pulumi.Input['QaQuestionTuningMetadataArgs'] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
                scorecard containing this question has been tuned.
                Structure is documented below.
@@ -302,12 +302,12 @@ class QaQuestionArgs:
         """
         Questions are tagged for categorization and scoring. Tags can either be:
         - Default Tags: These are predefined categories. They are identified by
-        their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+          their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
         - Custom Tags: These are user-defined categories. They are identified by
-        their full resource name (e.g.,
-        projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-        Both default and custom tags are used to group questions and to influence
-        the scoring of each question.
+          their full resource name (e.g.,
+          projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+          Both default and custom tags are used to group questions and to influence
+          the scoring of each question.
         """
         return pulumi.get(self, "tags")
 
@@ -391,12 +391,12 @@ class _QaQuestionState:
         :param pulumi.Input[_builtins.str] revision: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Questions are tagged for categorization and scoring. Tags can either be:
                - Default Tags: These are predefined categories. They are identified by
-               their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+                 their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
                - Custom Tags: These are user-defined categories. They are identified by
-               their full resource name (e.g.,
-               projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-               Both default and custom tags are used to group questions and to influence
-               the scoring of each question.
+                 their full resource name (e.g.,
+                 projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+                 Both default and custom tags are used to group questions and to influence
+                 the scoring of each question.
         :param pulumi.Input['QaQuestionTuningMetadataArgs'] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
                scorecard containing this question has been tuned.
                Structure is documented below.
@@ -657,12 +657,12 @@ class _QaQuestionState:
         """
         Questions are tagged for categorization and scoring. Tags can either be:
         - Default Tags: These are predefined categories. They are identified by
-        their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+          their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
         - Custom Tags: These are user-defined categories. They are identified by
-        their full resource name (e.g.,
-        projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-        Both default and custom tags are used to group questions and to influence
-        the scoring of each question.
+          their full resource name (e.g.,
+          projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+          Both default and custom tags are used to group questions and to influence
+          the scoring of each question.
         """
         return pulumi.get(self, "tags")
 
@@ -776,12 +776,12 @@ class QaQuestion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] revision: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Questions are tagged for categorization and scoring. Tags can either be:
                - Default Tags: These are predefined categories. They are identified by
-               their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+                 their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
                - Custom Tags: These are user-defined categories. They are identified by
-               their full resource name (e.g.,
-               projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-               Both default and custom tags are used to group questions and to influence
-               the scoring of each question.
+                 their full resource name (e.g.,
+                 projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+                 Both default and custom tags are used to group questions and to influence
+                 the scoring of each question.
         :param pulumi.Input[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
                scorecard containing this question has been tuned.
                Structure is documented below.
@@ -951,12 +951,12 @@ class QaQuestion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] revision: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Questions are tagged for categorization and scoring. Tags can either be:
                - Default Tags: These are predefined categories. They are identified by
-               their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+                 their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
                - Custom Tags: These are user-defined categories. They are identified by
-               their full resource name (e.g.,
-               projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-               Both default and custom tags are used to group questions and to influence
-               the scoring of each question.
+                 their full resource name (e.g.,
+                 projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+                 Both default and custom tags are used to group questions and to influence
+                 the scoring of each question.
         :param pulumi.Input[Union['QaQuestionTuningMetadataArgs', 'QaQuestionTuningMetadataArgsDict']] tuning_metadata: Metadata about the tuning operation for the question. Will only be set if a
                scorecard containing this question has been tuned.
                Structure is documented below.
@@ -1139,12 +1139,12 @@ class QaQuestion(pulumi.CustomResource):
         """
         Questions are tagged for categorization and scoring. Tags can either be:
         - Default Tags: These are predefined categories. They are identified by
-        their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
+          their string value (e.g., "BUSINESS", "COMPLIANCE", and "CUSTOMER").
         - Custom Tags: These are user-defined categories. They are identified by
-        their full resource name (e.g.,
-        projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
-        Both default and custom tags are used to group questions and to influence
-        the scoring of each question.
+          their full resource name (e.g.,
+          projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
+          Both default and custom tags are used to group questions and to influence
+          the scoring of each question.
         """
         return pulumi.get(self, "tags")
 

@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.inputs.InstanceTemplateReservationAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateShieldedInstanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceTemplateWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -662,6 +663,23 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.tagsFingerprint);
     }
 
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<InstanceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    public Optional<Output<InstanceTemplateWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
     private InstanceTemplateState() {}
 
     private InstanceTemplateState(InstanceTemplateState $) {
@@ -701,6 +719,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
         this.tagsFingerprint = $.tagsFingerprint;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
     }
 
     public static Builder builder() {
@@ -1613,6 +1632,29 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder tagsFingerprint(String tagsFingerprint) {
             return tagsFingerprint(Output.of(tagsFingerprint));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload Identity Config. More details about
+         * this configuration option are detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<InstanceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload Identity Config. More details about
+         * this configuration option are detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(InstanceTemplateWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         public InstanceTemplateState build() {

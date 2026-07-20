@@ -47,6 +47,19 @@ namespace Pulumi.Gcp.Container.Inputs
             set => _instanceGroupUrls = value;
         }
 
+        [Input("maintenancePolicies")]
+        private InputList<Inputs.ClusterNodePoolMaintenancePolicyArgs>? _maintenancePolicies;
+
+        /// <summary>
+        /// The maintenance policy to use for the cluster. Structure is
+        /// documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterNodePoolMaintenancePolicyArgs> MaintenancePolicies
+        {
+            get => _maintenancePolicies ?? (_maintenancePolicies = new InputList<Inputs.ClusterNodePoolMaintenancePolicyArgs>());
+            set => _maintenancePolicies = value;
+        }
+
         [Input("managedInstanceGroupUrls")]
         private InputList<string>? _managedInstanceGroupUrls;
 

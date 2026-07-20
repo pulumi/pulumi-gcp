@@ -80,7 +80,7 @@ type GetMcpServerResult struct {
 	// The connection details for the MCP Server.
 	Interfaces  []GetMcpServerInterface `pulumi:"interfaces"`
 	Location    string                  `pulumi:"location"`
-	McpServerId *string                 `pulumi:"mcpServerId"`
+	McpServerId string                  `pulumi:"mcpServerId"`
 	Project     string                  `pulumi:"project"`
 	// A list of tools available with the MCP Server.
 	Tools []GetMcpServerTool `pulumi:"tools"`
@@ -171,8 +171,8 @@ func (o GetMcpServerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMcpServerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-func (o GetMcpServerResultOutput) McpServerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMcpServerResult) *string { return v.McpServerId }).(pulumi.StringPtrOutput)
+func (o GetMcpServerResultOutput) McpServerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMcpServerResult) string { return v.McpServerId }).(pulumi.StringOutput)
 }
 
 func (o GetMcpServerResultOutput) Project() pulumi.StringOutput {

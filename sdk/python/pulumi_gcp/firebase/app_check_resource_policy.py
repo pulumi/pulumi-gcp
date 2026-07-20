@@ -32,7 +32,7 @@ class AppCheckResourcePolicyArgs:
                * `oauth2.googleapis.com` (Google Identity for iOS)
         :param pulumi.Input[_builtins.str] target_resource: Service specific name of the resource object to which this policy applies, in the format:
                * iOS OAuth clients (Google Identity for iOS):
-               `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+                 `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -98,7 +98,7 @@ class AppCheckResourcePolicyArgs:
         """
         Service specific name of the resource object to which this policy applies, in the format:
         * iOS OAuth clients (Google Identity for iOS):
-        `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+          `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         """
         return pulumi.get(self, "target_resource")
 
@@ -231,7 +231,7 @@ class _AppCheckResourcePolicyState:
                * `oauth2.googleapis.com` (Google Identity for iOS)
         :param pulumi.Input[_builtins.str] target_resource: Service specific name of the resource object to which this policy applies, in the format:
                * iOS OAuth clients (Google Identity for iOS):
-               `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+                 `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when this resource policy configuration object was most recently updated.
         """
         if deletion_policy is not None:
@@ -363,7 +363,7 @@ class _AppCheckResourcePolicyState:
         """
         Service specific name of the resource object to which this policy applies, in the format:
         * iOS OAuth clients (Google Identity for iOS):
-        `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+          `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         """
         return pulumi.get(self, "target_resource")
 
@@ -483,7 +483,7 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
                * `oauth2.googleapis.com` (Google Identity for iOS)
         :param pulumi.Input[_builtins.str] target_resource: Service specific name of the resource object to which this policy applies, in the format:
                * iOS OAuth clients (Google Identity for iOS):
-               `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+                 `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         """
         ...
     @overload
@@ -644,7 +644,7 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
                * `oauth2.googleapis.com` (Google Identity for iOS)
         :param pulumi.Input[_builtins.str] target_resource: Service specific name of the resource object to which this policy applies, in the format:
                * iOS OAuth clients (Google Identity for iOS):
-               `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+                 `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when this resource policy configuration object was most recently updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -749,7 +749,7 @@ class AppCheckResourcePolicy(pulumi.CustomResource):
         """
         Service specific name of the resource object to which this policy applies, in the format:
         * iOS OAuth clients (Google Identity for iOS):
-        `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
+          `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauthClientId}`
         """
         return pulumi.get(self, "target_resource")
 

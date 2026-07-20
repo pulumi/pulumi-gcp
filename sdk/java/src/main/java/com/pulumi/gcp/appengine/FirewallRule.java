@@ -40,8 +40,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.ProjectArgs;
  * import com.pulumi.gcp.appengine.Application;
  * import com.pulumi.gcp.appengine.ApplicationArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
  * import com.pulumi.gcp.appengine.FirewallRule;
  * import com.pulumi.gcp.appengine.FirewallRuleArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -68,12 +71,21 @@ import javax.annotation.Nullable;
  *             .locationId("us-central")
  *             .build());
  * 
+ *         // Wait for 5 minutes seconds to ensure IAM permission propagation completes
+ *         var wait300Seconds = new Sleep("wait300Seconds", SleepArgs.builder()
+ *             .createDuration("300s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(app)
+ *                 .build());
+ * 
  *         var rule = new FirewallRule("rule", FirewallRuleArgs.builder()
  *             .project(app.project())
  *             .priority(1000)
  *             .action("ALLOW")
  *             .sourceRange("*")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait300Seconds)
+ *                 .build());
  * 
  *     }
  * }

@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAgentResult {
-    private @Nullable String agentId;
+    private String agentId;
     /**
      * @return Attributes of the Agent.
      * 
@@ -77,8 +77,8 @@ public final class GetAgentResult {
     private String version;
 
     private GetAgentResult() {}
-    public Optional<String> agentId() {
-        return Optional.ofNullable(this.agentId);
+    public String agentId() {
+        return this.agentId;
     }
     /**
      * @return Attributes of the Agent.
@@ -176,7 +176,7 @@ public final class GetAgentResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String agentId;
+        private String agentId;
         private Map<String,String> attributes;
         private String createTime;
         private String description;
@@ -212,8 +212,10 @@ public final class GetAgentResult {
         }
 
         @CustomType.Setter
-        public Builder agentId(@Nullable String agentId) {
-
+        public Builder agentId(String agentId) {
+            if (agentId == null) {
+              throw new MissingRequiredPropertyException("GetAgentResult", "agentId");
+            }
             this.agentId = agentId;
             return this;
         }

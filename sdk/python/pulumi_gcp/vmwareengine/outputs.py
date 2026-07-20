@@ -127,9 +127,9 @@ class ClusterAutoscalingSettings(dict):
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-               Currently the map must contain only one element
-               that describes the autoscaling policy for compute nodes.
-               Structure is documented below.
+                 Currently the map must contain only one element
+                 that describes the autoscaling policy for compute nodes.
+                 Structure is documented below.
         :param _builtins.str cool_down_period: The minimum duration between consecutive autoscale operations.
                It starts once addition or removal of nodes is fully completed.
                Minimum cool down period is 30m.
@@ -160,9 +160,9 @@ class ClusterAutoscalingSettings(dict):
         * Ends with a non-hyphen character
         * Not formatted as a UUID
         * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        Currently the map must contain only one element
-        that describes the autoscaling policy for compute nodes.
-        Structure is documented below.
+          Currently the map must contain only one element
+          that describes the autoscaling policy for compute nodes.
+          Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policies")
 
@@ -1365,9 +1365,9 @@ class PrivateCloudManagementClusterAutoscalingSettings(dict):
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-               Currently the map must contain only one element
-               that describes the autoscaling policy for compute nodes.
-               Structure is documented below.
+                 Currently the map must contain only one element
+                 that describes the autoscaling policy for compute nodes.
+                 Structure is documented below.
         :param _builtins.str cool_down_period: The minimum duration between consecutive autoscale operations.
                It starts once addition or removal of nodes is fully completed.
                Minimum cool down period is 30m.
@@ -1398,9 +1398,9 @@ class PrivateCloudManagementClusterAutoscalingSettings(dict):
         * Ends with a non-hyphen character
         * Not formatted as a UUID
         * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-        Currently the map must contain only one element
-        that describes the autoscaling policy for compute nodes.
-        Structure is documented below.
+          Currently the map must contain only one element
+          that describes the autoscaling policy for compute nodes.
+          Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_policies")
 
@@ -1853,9 +1853,9 @@ class PrivateCloudNetworkConfig(dict):
                The IP address layout version of the management IP address range.
                Possible versions include:
                * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
-               as it does not support all features.
+                 as it does not support all features.
                * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
-               used by all newly created private clouds. This version supports all current features.
+                 used by all newly created private clouds. This version supports all current features.
         :param _builtins.str vmware_engine_network: The relative resource name of the VMware Engine network attached to the private cloud.
                Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
                where {project} can either be a project number or a project ID.
@@ -1898,9 +1898,9 @@ class PrivateCloudNetworkConfig(dict):
         The IP address layout version of the management IP address range.
         Possible versions include:
         * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
-        as it does not support all features.
+          as it does not support all features.
         * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
-        used by all newly created private clouds. This version supports all current features.
+          used by all newly created private clouds. This version supports all current features.
         """
         return pulumi.get(self, "management_ip_address_layout_version")
 
@@ -3363,9 +3363,9 @@ class GetPrivateCloudNetworkConfigResult(dict):
         :param _builtins.int management_ip_address_layout_version: The IP address layout version of the management IP address range.
                Possible versions include:
                * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
-               as it does not support all features.
+                 as it does not support all features.
                * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
-               used by all newly created private clouds. This version supports all current features.
+                 used by all newly created private clouds. This version supports all current features.
         :param _builtins.str vmware_engine_network: The relative resource name of the VMware Engine network attached to the private cloud.
                Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
                where {project} can either be a project number or a project ID.
@@ -3401,9 +3401,9 @@ class GetPrivateCloudNetworkConfigResult(dict):
         The IP address layout version of the management IP address range.
         Possible versions include:
         * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
-        as it does not support all features.
+          as it does not support all features.
         * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
-        used by all newly created private clouds. This version supports all current features.
+          used by all newly created private clouds. This version supports all current features.
         """
         return pulumi.get(self, "management_ip_address_layout_version")
 

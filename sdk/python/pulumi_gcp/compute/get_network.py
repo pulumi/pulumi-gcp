@@ -184,8 +184,7 @@ def get_network(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the network.
            
-           
-           - - -
+           ***
     :param _builtins.str network_profile: A full or partial URL of the network profile to apply to this network.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -231,8 +230,7 @@ def get_network_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = N
 
     :param _builtins.str name: The name of the network.
            
-           
-           - - -
+           ***
     :param _builtins.str network_profile: A full or partial URL of the network profile to apply to this network.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.

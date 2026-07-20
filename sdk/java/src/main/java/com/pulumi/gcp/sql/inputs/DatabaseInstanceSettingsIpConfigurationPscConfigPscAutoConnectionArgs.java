@@ -77,6 +77,36 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
     }
 
     /**
+     * (Output) The service connection policy created for the auto connection.
+     * 
+     */
+    @Import(name="serviceConnectionPolicy")
+    private @Nullable Output<String> serviceConnectionPolicy;
+
+    /**
+     * @return (Output) The service connection policy created for the auto connection.
+     * 
+     */
+    public Optional<Output<String>> serviceConnectionPolicy() {
+        return Optional.ofNullable(this.serviceConnectionPolicy);
+    }
+
+    /**
+     * (Output) The result of the service connection policy creation.
+     * 
+     */
+    @Import(name="serviceConnectionPolicyCreationResult")
+    private @Nullable Output<String> serviceConnectionPolicyCreationResult;
+
+    /**
+     * @return (Output) The result of the service connection policy creation.
+     * 
+     */
+    public Optional<Output<String>> serviceConnectionPolicyCreationResult() {
+        return Optional.ofNullable(this.serviceConnectionPolicyCreationResult);
+    }
+
+    /**
      * (Output) The connection status of the consumer endpoint.
      * 
      */
@@ -98,6 +128,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         this.consumerNetworkStatus = $.consumerNetworkStatus;
         this.consumerServiceProjectId = $.consumerServiceProjectId;
         this.ipAddress = $.ipAddress;
+        this.serviceConnectionPolicy = $.serviceConnectionPolicy;
+        this.serviceConnectionPolicyCreationResult = $.serviceConnectionPolicyCreationResult;
         this.status = $.status;
     }
 
@@ -201,6 +233,48 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param serviceConnectionPolicy (Output) The service connection policy created for the auto connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceConnectionPolicy(@Nullable Output<String> serviceConnectionPolicy) {
+            $.serviceConnectionPolicy = serviceConnectionPolicy;
+            return this;
+        }
+
+        /**
+         * @param serviceConnectionPolicy (Output) The service connection policy created for the auto connection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceConnectionPolicy(String serviceConnectionPolicy) {
+            return serviceConnectionPolicy(Output.of(serviceConnectionPolicy));
+        }
+
+        /**
+         * @param serviceConnectionPolicyCreationResult (Output) The result of the service connection policy creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceConnectionPolicyCreationResult(@Nullable Output<String> serviceConnectionPolicyCreationResult) {
+            $.serviceConnectionPolicyCreationResult = serviceConnectionPolicyCreationResult;
+            return this;
+        }
+
+        /**
+         * @param serviceConnectionPolicyCreationResult (Output) The result of the service connection policy creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceConnectionPolicyCreationResult(String serviceConnectionPolicyCreationResult) {
+            return serviceConnectionPolicyCreationResult(Output.of(serviceConnectionPolicyCreationResult));
         }
 
         /**

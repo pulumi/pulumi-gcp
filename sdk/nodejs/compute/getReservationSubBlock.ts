@@ -55,7 +55,7 @@ export interface GetReservationSubBlockArgs {
     /**
      * The name of the parent reservation.
      *
-     * - - -
+     * ***
      */
     reservation: string;
     /**
@@ -175,7 +175,7 @@ export interface GetReservationSubBlockOutputArgs {
     /**
      * The name of the parent reservation.
      *
-     * - - -
+     * ***
      */
     reservation: pulumi.Input<string>;
     /**

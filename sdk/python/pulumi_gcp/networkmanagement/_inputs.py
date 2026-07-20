@@ -80,10 +80,10 @@ class ConnectivityTestDestinationArgsDict(TypedDict):
     network URI.
     The following are two cases where you may need to provide the project ID:
     1. Only the IP address is specified, and the IP address is within a Google
-    Cloud project.
+       Cloud project.
     2. When you are using Shared VPC and the IP address that you provide is
-    from the service project. In this case, the network that the IP address
-    resides in is defined in the host project.
+       from the service project. In this case, the network that the IP address
+       resides in is defined in the host project.
     """
     redis_cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -131,10 +131,10 @@ class ConnectivityTestDestinationArgs:
                network URI.
                The following are two cases where you may need to provide the project ID:
                1. Only the IP address is specified, and the IP address is within a Google
-               Cloud project.
+                  Cloud project.
                2. When you are using Shared VPC and the IP address that you provide is
-               from the service project. In this case, the network that the IP address
-               resides in is defined in the host project.
+                  from the service project. In this case, the network that the IP address
+                  resides in is defined in the host project.
         :param pulumi.Input[_builtins.str] redis_cluster: A Redis Cluster URI.
         :param pulumi.Input[_builtins.str] redis_instance: A Redis Instance URI.
         """
@@ -299,10 +299,10 @@ class ConnectivityTestDestinationArgs:
         network URI.
         The following are two cases where you may need to provide the project ID:
         1. Only the IP address is specified, and the IP address is within a Google
-        Cloud project.
+           Cloud project.
         2. When you are using Shared VPC and the IP address that you provide is
-        from the service project. In this case, the network that the IP address
-        resides in is defined in the host project.
+           from the service project. In this case, the network that the IP address
+           resides in is defined in the host project.
         """
         return pulumi.get(self, "project_id")
 
@@ -388,10 +388,10 @@ class ConnectivityTestSourceArgsDict(TypedDict):
     network URI.
     The following are two cases where you may need to provide the project ID:
     1. Only the IP address is specified, and the IP address is within a Google
-    Cloud project.
+       Cloud project.
     2. When you are using Shared VPC and the IP address that you provide is
-    from the service project. In this case, the network that the IP address
-    resides in is defined in the host project.
+       from the service project. In this case, the network that the IP address
+       resides in is defined in the host project.
     """
 
 @pulumi.input_type
@@ -429,10 +429,10 @@ class ConnectivityTestSourceArgs:
                network URI.
                The following are two cases where you may need to provide the project ID:
                1. Only the IP address is specified, and the IP address is within a Google
-               Cloud project.
+                  Cloud project.
                2. When you are using Shared VPC and the IP address that you provide is
-               from the service project. In this case, the network that the IP address
-               resides in is defined in the host project.
+                  from the service project. In this case, the network that the IP address
+                  resides in is defined in the host project.
         """
         if app_engine_version is not None:
             pulumi.set(__self__, "app_engine_version", app_engine_version)
@@ -591,10 +591,10 @@ class ConnectivityTestSourceArgs:
         network URI.
         The following are two cases where you may need to provide the project ID:
         1. Only the IP address is specified, and the IP address is within a Google
-        Cloud project.
+           Cloud project.
         2. When you are using Shared VPC and the IP address that you provide is
-        from the service project. In this case, the network that the IP address
-        resides in is defined in the host project.
+           from the service project. In this case, the network that the IP address
+           resides in is defined in the host project.
         """
         return pulumi.get(self, "project_id")
 

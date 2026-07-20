@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyDailyMaintenanceWindowArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyDisruptionBudgetArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs;
+import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyRecurringMaintenanceWindowArgs;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyRecurringWindowArgs;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     /**
      * structure documented below
      * 
-     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
      * 
      */
     @Import(name="disruptionBudget")
@@ -54,7 +55,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
     /**
      * @return structure documented below
      * 
-     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
      * 
      */
     public Optional<Output<ClusterMaintenancePolicyDisruptionBudgetArgs>> disruptionBudget() {
@@ -74,6 +75,21 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<List<ClusterMaintenancePolicyMaintenanceExclusionArgs>>> maintenanceExclusions() {
         return Optional.ofNullable(this.maintenanceExclusions);
+    }
+
+    /**
+     * Defines a recurring window for maintenance operations.
+     * 
+     */
+    @Import(name="recurringMaintenanceWindow")
+    private @Nullable Output<ClusterMaintenancePolicyRecurringMaintenanceWindowArgs> recurringMaintenanceWindow;
+
+    /**
+     * @return Defines a recurring window for maintenance operations.
+     * 
+     */
+    public Optional<Output<ClusterMaintenancePolicyRecurringMaintenanceWindowArgs>> recurringMaintenanceWindow() {
+        return Optional.ofNullable(this.recurringMaintenanceWindow);
     }
 
     /**
@@ -111,6 +127,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         this.dailyMaintenanceWindow = $.dailyMaintenanceWindow;
         this.disruptionBudget = $.disruptionBudget;
         this.maintenanceExclusions = $.maintenanceExclusions;
+        this.recurringMaintenanceWindow = $.recurringMaintenanceWindow;
         this.recurringWindow = $.recurringWindow;
     }
 
@@ -164,7 +181,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         /**
          * @param disruptionBudget structure documented below
          * 
-         * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+         * In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
          * 
          * @return builder
          * 
@@ -177,7 +194,7 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         /**
          * @param disruptionBudget structure documented below
          * 
-         * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+         * In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
          * 
          * @return builder
          * 
@@ -215,6 +232,27 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
          */
         public Builder maintenanceExclusions(ClusterMaintenancePolicyMaintenanceExclusionArgs... maintenanceExclusions) {
             return maintenanceExclusions(List.of(maintenanceExclusions));
+        }
+
+        /**
+         * @param recurringMaintenanceWindow Defines a recurring window for maintenance operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recurringMaintenanceWindow(@Nullable Output<ClusterMaintenancePolicyRecurringMaintenanceWindowArgs> recurringMaintenanceWindow) {
+            $.recurringMaintenanceWindow = recurringMaintenanceWindow;
+            return this;
+        }
+
+        /**
+         * @param recurringMaintenanceWindow Defines a recurring window for maintenance operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recurringMaintenanceWindow(ClusterMaintenancePolicyRecurringMaintenanceWindowArgs recurringMaintenanceWindow) {
+            return recurringMaintenanceWindow(Output.of(recurringMaintenanceWindow));
         }
 
         /**

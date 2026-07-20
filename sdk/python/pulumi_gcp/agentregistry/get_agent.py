@@ -76,7 +76,7 @@ class GetAgentResult:
 
     @_builtins.property
     @pulumi.getter(name="agentId")
-    def agent_id(self) -> Optional[_builtins.str]:
+    def agent_id(self) -> _builtins.str:
         return pulumi.get(self, "agent_id")
 
     @_builtins.property
@@ -229,7 +229,7 @@ def get_agent(agent_id: Optional[_builtins.str] = None,
     :param _builtins.str filter: A filter string that identifies a unique Agent. This or `agent_id` must be set.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -280,7 +280,7 @@ def get_agent_output(agent_id: pulumi.Input[Optional[Optional[_builtins.str]]] =
     :param _builtins.str filter: A filter string that identifies a unique Agent. This or `agent_id` must be set.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

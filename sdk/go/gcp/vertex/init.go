@@ -103,6 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiReasoningEngineIamPolicy{}
 	case "gcp:vertex/aiSchedule:AiSchedule":
 		r = &AiSchedule{}
+	case "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine":
+		r = &AiSemanticGovernancePolicyEngine{}
 	case "gcp:vertex/aiTensorboard:AiTensorboard":
 		r = &AiTensorboard{}
 	case "gcp:vertex/aiTensorboardExperiment:AiTensorboardExperiment":
@@ -325,6 +327,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiSchedule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiSemanticGovernancePolicyEngine",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

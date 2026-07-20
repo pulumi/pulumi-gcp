@@ -194,6 +194,7 @@ class _BindingState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional['BindingSourceArgs']] = None,
                  target: pulumi.Input[Optional['BindingTargetArgs']] = None,
@@ -214,6 +215,7 @@ class _BindingState:
         :param pulumi.Input[_builtins.str] description: The description of the Binding.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name for the Binding.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
+        :param pulumi.Input[_builtins.str] name: The resource name of the Binding.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['BindingSourceArgs'] source: The source of the Binding.
@@ -236,6 +238,8 @@ class _BindingState:
             pulumi.set(__self__, "display_name", display_name)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if source is not None:
@@ -334,6 +338,18 @@ class _BindingState:
     @location.setter
     def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the Binding.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -595,6 +611,7 @@ class Binding(pulumi.CustomResource):
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         super(Binding, __self__).__init__(
             'gcp:agentregistry/binding:Binding',
@@ -613,6 +630,7 @@ class Binding(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[Union['BindingSourceArgs', 'BindingSourceArgsDict']]] = None,
             target: pulumi.Input[Optional[Union['BindingTargetArgs', 'BindingTargetArgsDict']]] = None,
@@ -637,6 +655,7 @@ class Binding(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the Binding.
         :param pulumi.Input[_builtins.str] display_name: User-defined display name for the Binding.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
+        :param pulumi.Input[_builtins.str] name: The resource name of the Binding.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['BindingSourceArgs', 'BindingSourceArgsDict']] source: The source of the Binding.
@@ -656,6 +675,7 @@ class Binding(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["source"] = source
         __props__.__dict__["target"] = target
@@ -723,6 +743,14 @@ class Binding(pulumi.CustomResource):
         The location of the resource.
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the Binding.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -257,6 +258,25 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="trafficConfig")
+    private @Nullable Output<AiReasoningEngineTrafficConfigArgs> trafficConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineTrafficConfigArgs>> trafficConfig() {
+        return Optional.ofNullable(this.trafficConfig);
+    }
+
+    /**
      * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
      * format, with nanosecond resolution and up to nine fractional digits.
      * 
@@ -271,6 +291,23 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> updateTime() {
         return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
+     * (Beta)
+     * Output only. The URL of the reasoning engine.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return (Beta)
+     * Output only. The URL of the reasoning engine.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
     }
 
     private AiReasoningEngineState() {}
@@ -289,7 +326,9 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.spec = $.spec;
+        this.trafficConfig = $.trafficConfig;
         this.updateTime = $.updateTime;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -626,6 +665,31 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param trafficConfig (Optional, Beta)
+         * Optional. Traffic distribution configuration for the Reasoning Engine.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficConfig(@Nullable Output<AiReasoningEngineTrafficConfigArgs> trafficConfig) {
+            $.trafficConfig = trafficConfig;
+            return this;
+        }
+
+        /**
+         * @param trafficConfig (Optional, Beta)
+         * Optional. Traffic distribution configuration for the Reasoning Engine.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficConfig(AiReasoningEngineTrafficConfigArgs trafficConfig) {
+            return trafficConfig(Output.of(trafficConfig));
+        }
+
+        /**
          * @param updateTime The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
          * format, with nanosecond resolution and up to nine fractional digits.
          * 
@@ -646,6 +710,29 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param url (Beta)
+         * Output only. The URL of the reasoning engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url (Beta)
+         * Output only. The URL of the reasoning engine.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public AiReasoningEngineState build() {

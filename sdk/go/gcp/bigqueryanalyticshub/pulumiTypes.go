@@ -3841,6 +3841,166 @@ func (o ListingSubscriptionLinkedResourceArrayOutput) Index(i pulumi.IntInput) L
 	}).(ListingSubscriptionLinkedResourceOutput)
 }
 
+type QueryTemplateRoutine struct {
+	// SQL query logic.
+	DefinitionBody *string `pulumi:"definitionBody"`
+	// Type of routine (e.g., TABLE_VALUED_FUNCTION).
+	// Possible values are: `TABLE_VALUED_FUNCTION`.
+	RoutineType *string `pulumi:"routineType"`
+}
+
+// QueryTemplateRoutineInput is an input type that accepts QueryTemplateRoutineArgs and QueryTemplateRoutineOutput values.
+// You can construct a concrete instance of `QueryTemplateRoutineInput` via:
+//
+//	QueryTemplateRoutineArgs{...}
+type QueryTemplateRoutineInput interface {
+	pulumi.Input
+
+	ToQueryTemplateRoutineOutput() QueryTemplateRoutineOutput
+	ToQueryTemplateRoutineOutputWithContext(context.Context) QueryTemplateRoutineOutput
+}
+
+type QueryTemplateRoutineArgs struct {
+	// SQL query logic.
+	DefinitionBody pulumi.StringPtrInput `pulumi:"definitionBody"`
+	// Type of routine (e.g., TABLE_VALUED_FUNCTION).
+	// Possible values are: `TABLE_VALUED_FUNCTION`.
+	RoutineType pulumi.StringPtrInput `pulumi:"routineType"`
+}
+
+func (QueryTemplateRoutineArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryTemplateRoutine)(nil)).Elem()
+}
+
+func (i QueryTemplateRoutineArgs) ToQueryTemplateRoutineOutput() QueryTemplateRoutineOutput {
+	return i.ToQueryTemplateRoutineOutputWithContext(context.Background())
+}
+
+func (i QueryTemplateRoutineArgs) ToQueryTemplateRoutineOutputWithContext(ctx context.Context) QueryTemplateRoutineOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryTemplateRoutineOutput)
+}
+
+func (i QueryTemplateRoutineArgs) ToQueryTemplateRoutinePtrOutput() QueryTemplateRoutinePtrOutput {
+	return i.ToQueryTemplateRoutinePtrOutputWithContext(context.Background())
+}
+
+func (i QueryTemplateRoutineArgs) ToQueryTemplateRoutinePtrOutputWithContext(ctx context.Context) QueryTemplateRoutinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryTemplateRoutineOutput).ToQueryTemplateRoutinePtrOutputWithContext(ctx)
+}
+
+// QueryTemplateRoutinePtrInput is an input type that accepts QueryTemplateRoutineArgs, QueryTemplateRoutinePtr and QueryTemplateRoutinePtrOutput values.
+// You can construct a concrete instance of `QueryTemplateRoutinePtrInput` via:
+//
+//	        QueryTemplateRoutineArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueryTemplateRoutinePtrInput interface {
+	pulumi.Input
+
+	ToQueryTemplateRoutinePtrOutput() QueryTemplateRoutinePtrOutput
+	ToQueryTemplateRoutinePtrOutputWithContext(context.Context) QueryTemplateRoutinePtrOutput
+}
+
+type queryTemplateRoutinePtrType QueryTemplateRoutineArgs
+
+func QueryTemplateRoutinePtr(v *QueryTemplateRoutineArgs) QueryTemplateRoutinePtrInput {
+	return (*queryTemplateRoutinePtrType)(v)
+}
+
+func (*queryTemplateRoutinePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryTemplateRoutine)(nil)).Elem()
+}
+
+func (i *queryTemplateRoutinePtrType) ToQueryTemplateRoutinePtrOutput() QueryTemplateRoutinePtrOutput {
+	return i.ToQueryTemplateRoutinePtrOutputWithContext(context.Background())
+}
+
+func (i *queryTemplateRoutinePtrType) ToQueryTemplateRoutinePtrOutputWithContext(ctx context.Context) QueryTemplateRoutinePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryTemplateRoutinePtrOutput)
+}
+
+type QueryTemplateRoutineOutput struct{ *pulumi.OutputState }
+
+func (QueryTemplateRoutineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryTemplateRoutine)(nil)).Elem()
+}
+
+func (o QueryTemplateRoutineOutput) ToQueryTemplateRoutineOutput() QueryTemplateRoutineOutput {
+	return o
+}
+
+func (o QueryTemplateRoutineOutput) ToQueryTemplateRoutineOutputWithContext(ctx context.Context) QueryTemplateRoutineOutput {
+	return o
+}
+
+func (o QueryTemplateRoutineOutput) ToQueryTemplateRoutinePtrOutput() QueryTemplateRoutinePtrOutput {
+	return o.ToQueryTemplateRoutinePtrOutputWithContext(context.Background())
+}
+
+func (o QueryTemplateRoutineOutput) ToQueryTemplateRoutinePtrOutputWithContext(ctx context.Context) QueryTemplateRoutinePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryTemplateRoutine) *QueryTemplateRoutine {
+		return &v
+	}).(QueryTemplateRoutinePtrOutput)
+}
+
+// SQL query logic.
+func (o QueryTemplateRoutineOutput) DefinitionBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueryTemplateRoutine) *string { return v.DefinitionBody }).(pulumi.StringPtrOutput)
+}
+
+// Type of routine (e.g., TABLE_VALUED_FUNCTION).
+// Possible values are: `TABLE_VALUED_FUNCTION`.
+func (o QueryTemplateRoutineOutput) RoutineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueryTemplateRoutine) *string { return v.RoutineType }).(pulumi.StringPtrOutput)
+}
+
+type QueryTemplateRoutinePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryTemplateRoutinePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryTemplateRoutine)(nil)).Elem()
+}
+
+func (o QueryTemplateRoutinePtrOutput) ToQueryTemplateRoutinePtrOutput() QueryTemplateRoutinePtrOutput {
+	return o
+}
+
+func (o QueryTemplateRoutinePtrOutput) ToQueryTemplateRoutinePtrOutputWithContext(ctx context.Context) QueryTemplateRoutinePtrOutput {
+	return o
+}
+
+func (o QueryTemplateRoutinePtrOutput) Elem() QueryTemplateRoutineOutput {
+	return o.ApplyT(func(v *QueryTemplateRoutine) QueryTemplateRoutine {
+		if v != nil {
+			return *v
+		}
+		var ret QueryTemplateRoutine
+		return ret
+	}).(QueryTemplateRoutineOutput)
+}
+
+// SQL query logic.
+func (o QueryTemplateRoutinePtrOutput) DefinitionBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryTemplateRoutine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefinitionBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of routine (e.g., TABLE_VALUED_FUNCTION).
+// Possible values are: `TABLE_VALUED_FUNCTION`.
+func (o QueryTemplateRoutinePtrOutput) RoutineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryTemplateRoutine) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoutineType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionPtrInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
@@ -3894,6 +4054,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedDatasetMapArrayInput)(nil)).Elem(), ListingSubscriptionLinkedDatasetMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingSubscriptionLinkedResourceArrayInput)(nil)).Elem(), ListingSubscriptionLinkedResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryTemplateRoutineInput)(nil)).Elem(), QueryTemplateRoutineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryTemplateRoutinePtrInput)(nil)).Elem(), QueryTemplateRoutineArgs{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamMemberConditionOutput{})
@@ -3946,4 +4108,6 @@ func init() {
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedDatasetMapArrayOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceOutput{})
 	pulumi.RegisterOutputType(ListingSubscriptionLinkedResourceArrayOutput{})
+	pulumi.RegisterOutputType(QueryTemplateRoutineOutput{})
+	pulumi.RegisterOutputType(QueryTemplateRoutinePtrOutput{})
 }

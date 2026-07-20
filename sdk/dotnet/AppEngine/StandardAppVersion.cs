@@ -146,6 +146,109 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// });
     /// ```
+    /// ### App Engine Standard App Version Bundled Services
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
+    ///     {
+    ///         AccountId = "gae-sa",
+    ///         DisplayName = "Test Service Account for GAE",
+    ///     });
+    /// 
+    ///     var gaeApi = new Gcp.Projects.IAMMember("gae_api", new()
+    ///     {
+    ///         Project = serviceAccount.Project,
+    ///         Role = "roles/compute.networkUser",
+    ///         Member = serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var storageViewer = new Gcp.Projects.IAMMember("storage_viewer", new()
+    ///     {
+    ///         Project = serviceAccount.Project,
+    ///         Role = "roles/storage.objectViewer",
+    ///         Member = serviceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "tf-test-gae-bkt-bundled",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var requirements = new Gcp.Storage.BucketObject("requirements", new()
+    ///     {
+    ///         Name = "requirements.txt",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+    ///     });
+    /// 
+    ///     var main = new Gcp.Storage.BucketObject("main", new()
+    ///     {
+    ///         Name = "main.py",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("./test-fixtures/hello-world-flask/main.py"),
+    ///     });
+    /// 
+    ///     var gae_std_app_ver_bundled = new Gcp.AppEngine.StandardAppVersion("gae-std-app-ver-bundled", new()
+    ///     {
+    ///         VersionId = "v1",
+    ///         Service = "bundled-service",
+    ///         Runtime = "python310",
+    ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///         {
+    ///             Files = new[]
+    ///             {
+    ///                 new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentFileArgs
+    ///                 {
+    ///                     Name = "main.py",
+    ///                     SourceUrl = Output.Tuple(bucket.Name, main.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var mainName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{mainName}";
+    ///                     }),
+    ///                 },
+    ///                 new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentFileArgs
+    ///                 {
+    ///                     Name = "requirements.txt",
+    ///                     SourceUrl = Output.Tuple(bucket.Name, requirements.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var requirementsName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{requirementsName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///         {
+    ///             Shell = "gunicorn -b :$PORT main:app",
+    ///         },
+    ///         AppEngineBundledServices = new[]
+    ///         {
+    ///             "BUNDLED_SERVICE_TYPE_MAIL",
+    ///             "BUNDLED_SERVICE_TYPE_DATASTORE_V3",
+    ///         },
+    ///         DeleteServiceOnDestroy = true,
+    ///         ServiceAccount = serviceAccount.Email,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gaeApi,
+    ///             storageViewer,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -168,9 +271,18 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Allows App Engine second generation runtimes to access the legacy bundled services.
+        /// Cannot specify both `AppEngineApis` and 'app_engine_bundled_services` together.
         /// </summary>
         [Output("appEngineApis")]
         public Output<bool?> AppEngineApis { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+        /// Cannot specify both `AppEngineApis` and `AppEngineBundledServices` together.
+        /// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+        /// </summary>
+        [Output("appEngineBundledServices")]
+        public Output<ImmutableArray<string>> AppEngineBundledServices { get; private set; } = null!;
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -373,9 +485,24 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Allows App Engine second generation runtimes to access the legacy bundled services.
+        /// Cannot specify both `AppEngineApis` and 'app_engine_bundled_services` together.
         /// </summary>
         [Input("appEngineApis")]
         public Input<bool>? AppEngineApis { get; set; }
+
+        [Input("appEngineBundledServices")]
+        private InputList<string>? _appEngineBundledServices;
+
+        /// <summary>
+        /// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+        /// Cannot specify both `AppEngineApis` and `AppEngineBundledServices` together.
+        /// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+        /// </summary>
+        public InputList<string> AppEngineBundledServices
+        {
+            get => _appEngineBundledServices ?? (_appEngineBundledServices = new InputList<string>());
+            set => _appEngineBundledServices = value;
+        }
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.
@@ -558,9 +685,24 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Allows App Engine second generation runtimes to access the legacy bundled services.
+        /// Cannot specify both `AppEngineApis` and 'app_engine_bundled_services` together.
         /// </summary>
         [Input("appEngineApis")]
         public Input<bool>? AppEngineApis { get; set; }
+
+        [Input("appEngineBundledServices")]
+        private InputList<string>? _appEngineBundledServices;
+
+        /// <summary>
+        /// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+        /// Cannot specify both `AppEngineApis` and `AppEngineBundledServices` together.
+        /// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+        /// </summary>
+        public InputList<string> AppEngineBundledServices
+        {
+            get => _appEngineBundledServices ?? (_appEngineBundledServices = new InputList<string>());
+            set => _appEngineBundledServices = value;
+        }
 
         /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics.

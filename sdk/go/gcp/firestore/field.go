@@ -59,7 +59,7 @@ import (
 //			_, err = firestore.NewField(ctx, "basic", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__40816"),
+//				Collection: pulumi.String("chatrooms__24243"),
 //				Field:      pulumi.String("basic"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -277,7 +277,7 @@ import (
 //			_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__94690"),
+//				Collection: pulumi.String("chatrooms__7495"),
 //				Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -329,7 +329,7 @@ import (
 //			_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__29947"),
+//				Collection: pulumi.String("chatrooms__21912"),
 //				Field:      pulumi.String("*"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -342,6 +342,57 @@ import (
 //						},
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Field Skip Wait
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			database, err := firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				Name:                  pulumi.String("database-id"),
+//				LocationId:            pulumi.String("nam5"),
+//				Type:                  pulumi.String("FIRESTORE_NATIVE"),
+//				DeleteProtectionState: pulumi.String("DELETE_PROTECTION_ENABLED"),
+//				DeletionPolicy:        pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewField(ctx, "skip_wait", &firestore.FieldArgs{
+//				Project:    pulumi.String("my-project-name"),
+//				Database:   database.Name,
+//				Collection: pulumi.String("chatrooms__46731"),
+//				Field:      pulumi.String("skip_wait"),
+//				IndexConfig: &firestore.FieldIndexConfigArgs{
+//					Indexes: firestore.FieldIndexConfigIndexArray{
+//						&firestore.FieldIndexConfigIndexArgs{
+//							Order:      pulumi.String("ASCENDING"),
+//							QueryScope: pulumi.String("COLLECTION_GROUP"),
+//						},
+//						&firestore.FieldIndexConfigIndexArgs{
+//							ArrayConfig: pulumi.String("CONTAINS"),
+//						},
+//					},
+//				},
+//				SkipWait: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -391,6 +442,8 @@ type Field struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Whether to skip waiting for the field operation to complete.
+	SkipWait pulumi.BoolPtrOutput `pulumi:"skipWait"`
 	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrOutput `pulumi:"ttlConfig"`
@@ -457,6 +510,8 @@ type fieldState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Whether to skip waiting for the field operation to complete.
+	SkipWait *bool `pulumi:"skipWait"`
 	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig *FieldTtlConfig `pulumi:"ttlConfig"`
@@ -488,6 +543,8 @@ type FieldState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Whether to skip waiting for the field operation to complete.
+	SkipWait pulumi.BoolPtrInput
 	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrInput
@@ -520,6 +577,8 @@ type fieldArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Whether to skip waiting for the field operation to complete.
+	SkipWait *bool `pulumi:"skipWait"`
 	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig *FieldTtlConfig `pulumi:"ttlConfig"`
@@ -549,6 +608,8 @@ type FieldArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Whether to skip waiting for the field operation to complete.
+	SkipWait pulumi.BoolPtrInput
 	// The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
 	// Structure is documented below.
 	TtlConfig FieldTtlConfigPtrInput
@@ -685,6 +746,11 @@ func (o FieldOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o FieldOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Whether to skip waiting for the field operation to complete.
+func (o FieldOutput) SkipWait() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Field) pulumi.BoolPtrOutput { return v.SkipWait }).(pulumi.BoolPtrOutput)
 }
 
 // The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).

@@ -25,6 +25,12 @@ __all__ = [
     'CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgsDict',
     'CollectionVectorSchemaSparseVectorArgs',
     'CollectionVectorSchemaSparseVectorArgsDict',
+    'IndexDedicatedInfrastructureArgs',
+    'IndexDedicatedInfrastructureArgsDict',
+    'IndexDedicatedInfrastructureAutoscalingSpecArgs',
+    'IndexDedicatedInfrastructureAutoscalingSpecArgsDict',
+    'IndexDenseScannArgs',
+    'IndexDenseScannArgsDict',
 ]
 
 class CollectionEncryptionSpecArgsDict(TypedDict):
@@ -299,5 +305,150 @@ class CollectionVectorSchemaSparseVectorArgsDict(TypedDict):
 class CollectionVectorSchemaSparseVectorArgs:
     def __init__(__self__):
         pass
+
+
+class IndexDedicatedInfrastructureArgsDict(TypedDict):
+    autoscaling_spec: NotRequired[pulumi.Input[Optional['IndexDedicatedInfrastructureAutoscalingSpecArgsDict']]]
+    """
+    Autoscaling specification.
+    Structure is documented below.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+    Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+    """
+
+@pulumi.input_type
+class IndexDedicatedInfrastructureArgs:
+    def __init__(__self__, *,
+                 autoscaling_spec: pulumi.Input[Optional['IndexDedicatedInfrastructureAutoscalingSpecArgs']] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input['IndexDedicatedInfrastructureAutoscalingSpecArgs'] autoscaling_spec: Autoscaling specification.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] mode: Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+               Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+        """
+        if autoscaling_spec is not None:
+            pulumi.set(__self__, "autoscaling_spec", autoscaling_spec)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingSpec")
+    def autoscaling_spec(self) -> pulumi.Input[Optional['IndexDedicatedInfrastructureAutoscalingSpecArgs']]:
+        """
+        Autoscaling specification.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_spec")
+
+    @autoscaling_spec.setter
+    def autoscaling_spec(self, value: pulumi.Input[Optional['IndexDedicatedInfrastructureAutoscalingSpecArgs']]):
+        pulumi.set(self, "autoscaling_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+        Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+
+class IndexDedicatedInfrastructureAutoscalingSpecArgsDict(TypedDict):
+    max_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum number of replicas. Must be >= `min_replica_count`
+    and <= `1000`. If not set or set to `0`, defaults to the greater
+    of `min_replica_count` and `2` (or `5` for the v1beta version).
+    """
+    min_replica_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum number of replicas. If not set or set to `0`, defaults
+    to `2`. Must be >= `1` and <= `1000`.
+    """
+
+@pulumi.input_type
+class IndexDedicatedInfrastructureAutoscalingSpecArgs:
+    def __init__(__self__, *,
+                 max_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] max_replica_count: The maximum number of replicas. Must be >= `min_replica_count`
+               and <= `1000`. If not set or set to `0`, defaults to the greater
+               of `min_replica_count` and `2` (or `5` for the v1beta version).
+        :param pulumi.Input[_builtins.int] min_replica_count: The minimum number of replicas. If not set or set to `0`, defaults
+               to `2`. Must be >= `1` and <= `1000`.
+        """
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @_builtins.property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of replicas. Must be >= `min_replica_count`
+        and <= `1000`. If not set or set to `0`, defaults to the greater
+        of `min_replica_count` and `2` (or `5` for the v1beta version).
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @max_replica_count.setter
+    def max_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_replica_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum number of replicas. If not set or set to `0`, defaults
+        to `2`. Must be >= `1` and <= `1000`.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+    @min_replica_count.setter
+    def min_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "min_replica_count", value)
+
+
+class IndexDenseScannArgsDict(TypedDict):
+    feature_norm_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Feature norm type for the ScaNN index.
+    Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+    """
+
+@pulumi.input_type
+class IndexDenseScannArgs:
+    def __init__(__self__, *,
+                 feature_norm_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] feature_norm_type: Feature norm type for the ScaNN index.
+               Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+        """
+        if feature_norm_type is not None:
+            pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+
+    @_builtins.property
+    @pulumi.getter(name="featureNormType")
+    def feature_norm_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Feature norm type for the ScaNN index.
+        Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+        """
+        return pulumi.get(self, "feature_norm_type")
+
+    @feature_norm_type.setter
+    def feature_norm_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "feature_norm_type", value)
 
 

@@ -35,8 +35,7 @@ class KeystoresAliasesKeyCertFileArgs:
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] cert: Cert content
                
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
         :param pulumi.Input[_builtins.str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -73,8 +72,7 @@ class KeystoresAliasesKeyCertFileArgs:
         """
         Cert content
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "cert")
 
@@ -171,8 +169,7 @@ class _KeystoresAliasesKeyCertFileState:
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] cert: Cert content
                
-               
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesKeyCertFileCertsInfoArgs']]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
@@ -221,8 +218,7 @@ class _KeystoresAliasesKeyCertFileState:
         """
         Cert content
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "cert")
 
@@ -369,8 +365,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] cert: Cert content
                
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] key: Private Key content, omit if uploading to truststore
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
@@ -491,8 +486,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] cert: Cert content
                
-               
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesKeyCertFileCertsInfoArgs', 'KeystoresAliasesKeyCertFileCertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
@@ -532,8 +526,7 @@ class KeystoresAliasesKeyCertFile(pulumi.CustomResource):
         """
         Cert content
 
-
-        - - -
+        ***
         """
         return pulumi.get(self, "cert")
 

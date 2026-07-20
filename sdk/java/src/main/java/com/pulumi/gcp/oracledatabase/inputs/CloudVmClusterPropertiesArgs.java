@@ -529,6 +529,31 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
 
     /**
      * (Output)
+     * The storage management type of the VM Cluster.
+     * Possible values:
+     * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+     * ASM
+     * EXASCALE
+     * 
+     */
+    @Import(name="storageManagementType")
+    private @Nullable Output<String> storageManagementType;
+
+    /**
+     * @return (Output)
+     * The storage management type of the VM Cluster.
+     * Possible values:
+     * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+     * ASM
+     * EXASCALE
+     * 
+     */
+    public Optional<Output<String>> storageManagementType() {
+        return Optional.ofNullable(this.storageManagementType);
+    }
+
+    /**
+     * (Output)
      * The storage allocation for the disk group, in gigabytes (GB).
      * 
      */
@@ -612,6 +637,7 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
         this.sparseDiskgroupEnabled = $.sparseDiskgroupEnabled;
         this.sshPublicKeys = $.sshPublicKeys;
         this.state = $.state;
+        this.storageManagementType = $.storageManagementType;
         this.storageSizeGb = $.storageSizeGb;
         this.systemVersion = $.systemVersion;
         this.timeZone = $.timeZone;
@@ -1343,6 +1369,37 @@ public final class CloudVmClusterPropertiesArgs extends com.pulumi.resources.Res
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param storageManagementType (Output)
+         * The storage management type of the VM Cluster.
+         * Possible values:
+         * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+         * ASM
+         * EXASCALE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageManagementType(@Nullable Output<String> storageManagementType) {
+            $.storageManagementType = storageManagementType;
+            return this;
+        }
+
+        /**
+         * @param storageManagementType (Output)
+         * The storage management type of the VM Cluster.
+         * Possible values:
+         * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+         * ASM
+         * EXASCALE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageManagementType(String storageManagementType) {
+            return storageManagementType(Output.of(storageManagementType));
         }
 
         /**

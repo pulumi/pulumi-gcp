@@ -435,7 +435,6 @@ class MulticloudDataTransferConfigService(dict):
                The state and activation time details for the service.
                Structure is documented below.
                
-               
                <a name="nested_services_states"></a>The `states` block contains:
         """
         pulumi.set(__self__, "service_name", service_name)
@@ -458,7 +457,6 @@ class MulticloudDataTransferConfigService(dict):
         (Output)
         The state and activation time details for the service.
         Structure is documented below.
-
 
         <a name="nested_services_states"></a>The `states` block contains:
         """

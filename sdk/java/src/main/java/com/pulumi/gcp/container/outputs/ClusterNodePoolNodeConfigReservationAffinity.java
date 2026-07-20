@@ -19,8 +19,9 @@ public final class ClusterNodePoolNodeConfigReservationAffinity {
      * 
      * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
      * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
-     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
      * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+     * * `&#34;ANY_RESERVATION_THEN_FAIL&#34;`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
      * 
      */
     private String consumeReservationType;
@@ -42,8 +43,9 @@ public final class ClusterNodePoolNodeConfigReservationAffinity {
      * 
      * * `&#34;UNSPECIFIED&#34;`: Default value. This should not be used.
      * * `&#34;NO_RESERVATION&#34;`: Do not consume from any reserved capacity.
-     * * `&#34;ANY_RESERVATION&#34;`: Consume any reservation available.
+     * * `&#34;ANY_RESERVATION&#34;`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
      * * `&#34;SPECIFIC_RESERVATION&#34;`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+     * * `&#34;ANY_RESERVATION_THEN_FAIL&#34;`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
      * 
      */
     public String consumeReservationType() {

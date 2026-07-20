@@ -29,6 +29,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
      * 
      */
     @Import(name="appEngineApis")
@@ -36,10 +37,30 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
      * 
      */
     public Optional<Output<Boolean>> appEngineApis() {
         return Optional.ofNullable(this.appEngineApis);
+    }
+
+    /**
+     * A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     * 
+     */
+    @Import(name="appEngineBundledServices")
+    private @Nullable Output<List<String>> appEngineBundledServices;
+
+    /**
+     * @return A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     * 
+     */
+    public Optional<Output<List<String>>> appEngineBundledServices() {
+        return Optional.ofNullable(this.appEngineBundledServices);
     }
 
     /**
@@ -403,6 +424,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     private StandardAppVersionArgs(StandardAppVersionArgs $) {
         this.appEngineApis = $.appEngineApis;
+        this.appEngineBundledServices = $.appEngineBundledServices;
         this.automaticScaling = $.automaticScaling;
         this.basicScaling = $.basicScaling;
         this.deleteServiceOnDestroy = $.deleteServiceOnDestroy;
@@ -446,6 +468,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param appEngineApis Allows App Engine second generation runtimes to access the legacy bundled services.
+         * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
          * 
          * @return builder
          * 
@@ -457,12 +480,50 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param appEngineApis Allows App Engine second generation runtimes to access the legacy bundled services.
+         * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
          * 
          * @return builder
          * 
          */
         public Builder appEngineApis(Boolean appEngineApis) {
             return appEngineApis(Output.of(appEngineApis));
+        }
+
+        /**
+         * @param appEngineBundledServices A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+         * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+         * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineBundledServices(@Nullable Output<List<String>> appEngineBundledServices) {
+            $.appEngineBundledServices = appEngineBundledServices;
+            return this;
+        }
+
+        /**
+         * @param appEngineBundledServices A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+         * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+         * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineBundledServices(List<String> appEngineBundledServices) {
+            return appEngineBundledServices(Output.of(appEngineBundledServices));
+        }
+
+        /**
+         * @param appEngineBundledServices A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+         * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+         * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appEngineBundledServices(String... appEngineBundledServices) {
+            return appEngineBundledServices(List.of(appEngineBundledServices));
         }
 
         /**

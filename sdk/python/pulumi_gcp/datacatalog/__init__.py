@@ -14,6 +14,7 @@ from .entry_group_iam_policy import *
 from .get_entry_group_iam_policy import *
 from .get_policy_tag_iam_policy import *
 from .get_tag_template_iam_policy import *
+from .get_taxonomy import *
 from .get_taxonomy_iam_policy import *
 from .policy_tag import *
 from .policy_tag_iam_binding import *

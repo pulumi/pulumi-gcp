@@ -45,7 +45,7 @@ class KeystoresAliasesPkcs12Args:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] password: Password for the PKCS12 file if it's encrypted
         """
         pulumi.set(__self__, "alias", alias)
@@ -142,7 +142,7 @@ class KeystoresAliasesPkcs12Args:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -189,7 +189,7 @@ class _KeystoresAliasesPkcs12State:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] file: PKCS12 file content
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
@@ -255,7 +255,7 @@ class _KeystoresAliasesPkcs12State:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -397,7 +397,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] file: PKCS12 file content
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
@@ -526,7 +526,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] file: PKCS12 file content
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
@@ -579,7 +579,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

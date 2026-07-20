@@ -27,7 +27,7 @@ class GetCloudVmClusterResult:
     """
     A collection of values returned by getCloudVmCluster.
     """
-    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, identity_connectors=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, backup_odb_subnet=None, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, exascale_db_storage_vault=None, gcp_oracle_zone=None, id=None, identity_connectors=None, labels=None, location=None, name=None, network=None, odb_network=None, odb_subnet=None, project=None, properties=None, pulumi_labels=None):
         if backup_odb_subnet and not isinstance(backup_odb_subnet, str):
             raise TypeError("Expected argument 'backup_odb_subnet' to be a str")
         pulumi.set(__self__, "backup_odb_subnet", backup_odb_subnet)
@@ -58,6 +58,9 @@ class GetCloudVmClusterResult:
         if exadata_infrastructure and not isinstance(exadata_infrastructure, str):
             raise TypeError("Expected argument 'exadata_infrastructure' to be a str")
         pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
+        if exascale_db_storage_vault and not isinstance(exascale_db_storage_vault, str):
+            raise TypeError("Expected argument 'exascale_db_storage_vault' to be a str")
+        pulumi.set(__self__, "exascale_db_storage_vault", exascale_db_storage_vault)
         if gcp_oracle_zone and not isinstance(gcp_oracle_zone, str):
             raise TypeError("Expected argument 'gcp_oracle_zone' to be a str")
         pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
@@ -146,6 +149,11 @@ class GetCloudVmClusterResult:
         return pulumi.get(self, "exadata_infrastructure")
 
     @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVault")
+    def exascale_db_storage_vault(self) -> _builtins.str:
+        return pulumi.get(self, "exascale_db_storage_vault")
+
+    @_builtins.property
     @pulumi.getter(name="gcpOracleZone")
     def gcp_oracle_zone(self) -> _builtins.str:
         return pulumi.get(self, "gcp_oracle_zone")
@@ -225,6 +233,7 @@ class AwaitableGetCloudVmClusterResult(GetCloudVmClusterResult):
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             exadata_infrastructure=self.exadata_infrastructure,
+            exascale_db_storage_vault=self.exascale_db_storage_vault,
             gcp_oracle_zone=self.gcp_oracle_zone,
             id=self.id,
             identity_connectors=self.identity_connectors,
@@ -263,7 +272,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
     :param _builtins.str cloud_vm_cluster_id: The ID of the VM Cluster.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -285,6 +294,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[_builtins.str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         exadata_infrastructure=pulumi.get(__ret__, 'exadata_infrastructure'),
+        exascale_db_storage_vault=pulumi.get(__ret__, 'exascale_db_storage_vault'),
         gcp_oracle_zone=pulumi.get(__ret__, 'gcp_oracle_zone'),
         id=pulumi.get(__ret__, 'id'),
         identity_connectors=pulumi.get(__ret__, 'identity_connectors'),
@@ -321,7 +331,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: pulumi.Input[Optional[_buil
     :param _builtins.str cloud_vm_cluster_id: The ID of the VM Cluster.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -342,6 +352,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: pulumi.Input[Optional[_buil
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         exadata_infrastructure=pulumi.get(__response__, 'exadata_infrastructure'),
+        exascale_db_storage_vault=pulumi.get(__response__, 'exascale_db_storage_vault'),
         gcp_oracle_zone=pulumi.get(__response__, 'gcp_oracle_zone'),
         id=pulumi.get(__response__, 'id'),
         identity_connectors=pulumi.get(__response__, 'identity_connectors'),

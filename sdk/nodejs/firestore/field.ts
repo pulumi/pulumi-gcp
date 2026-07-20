@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const basic = new gcp.firestore.Field("basic", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__40816",
+ *     collection: "chatrooms__24243",
  *     field: "basic",
  *     indexConfig: {
  *         indexes: [
@@ -169,7 +169,7 @@ import * as utilities from "../utilities";
  * const matchOverride = new gcp.firestore.Field("match_override", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__94690",
+ *     collection: "chatrooms__7495",
  *     field: "field_with_same_configuration_as_ancestor",
  *     indexConfig: {
  *         indexes: [
@@ -203,7 +203,7 @@ import * as utilities from "../utilities";
  * const wildcard = new gcp.firestore.Field("wildcard", {
  *     project: "my-project-name",
  *     database: database.name,
- *     collection: "chatrooms__29947",
+ *     collection: "chatrooms__21912",
  *     field: "*",
  *     indexConfig: {
  *         indexes: [
@@ -216,6 +216,39 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     },
+ * });
+ * ```
+ * ### Firestore Field Skip Wait
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_ENABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const skipWait = new gcp.firestore.Field("skip_wait", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "chatrooms__46731",
+ *     field: "skip_wait",
+ *     indexConfig: {
+ *         indexes: [
+ *             {
+ *                 order: "ASCENDING",
+ *                 queryScope: "COLLECTION_GROUP",
+ *             },
+ *             {
+ *                 arrayConfig: "CONTAINS",
+ *             },
+ *         ],
+ *     },
+ *     skipWait: true,
  * });
  * ```
  *
@@ -299,6 +332,10 @@ export class Field extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Whether to skip waiting for the field operation to complete.
+     */
+    declare public readonly skipWait: pulumi.Output<boolean | undefined>;
+    /**
      * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
@@ -324,6 +361,7 @@ export class Field extends pulumi.CustomResource {
             resourceInputs["indexConfig"] = state?.indexConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
+            resourceInputs["skipWait"] = state?.skipWait;
             resourceInputs["ttlConfig"] = state?.ttlConfig;
         } else {
             const args = argsOrState as FieldArgs | undefined;
@@ -339,6 +377,7 @@ export class Field extends pulumi.CustomResource {
             resourceInputs["field"] = args?.field;
             resourceInputs["indexConfig"] = args?.indexConfig;
             resourceInputs["project"] = args?.project;
+            resourceInputs["skipWait"] = args?.skipWait;
             resourceInputs["ttlConfig"] = args?.ttlConfig;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -391,6 +430,10 @@ export interface FieldState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * Whether to skip waiting for the field operation to complete.
+     */
+    skipWait?: pulumi.Input<boolean | undefined>;
+    /**
      * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      */
@@ -435,6 +478,10 @@ export interface FieldArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to skip waiting for the field operation to complete.
+     */
+    skipWait?: pulumi.Input<boolean | undefined>;
     /**
      * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.

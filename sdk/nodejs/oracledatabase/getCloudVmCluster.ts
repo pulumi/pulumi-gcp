@@ -44,7 +44,7 @@ export interface GetCloudVmClusterArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -68,6 +68,7 @@ export interface GetCloudVmClusterResult {
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly exadataInfrastructure: string;
+    readonly exascaleDbStorageVault: string;
     readonly gcpOracleZone: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -122,7 +123,7 @@ export interface GetCloudVmClusterOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

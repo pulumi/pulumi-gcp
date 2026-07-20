@@ -180,8 +180,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -268,7 +268,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
      *
-     * - - -
+     * ***
      */
     declare public readonly sourceInstanceTemplate: pulumi.Output<string>;
     /**
@@ -279,6 +279,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    /**
+     * Workload identity config.
+     */
+    declare public readonly workloadIdentityConfig: pulumi.Output<outputs.compute.InstanceFromTemplateWorkloadIdentityConfig>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -350,6 +354,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["sourceInstanceTemplate"] = state?.sourceInstanceTemplate;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
+            resourceInputs["workloadIdentityConfig"] = state?.workloadIdentityConfig;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceFromTemplateArgs | undefined;
@@ -391,6 +396,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
             resourceInputs["sourceInstanceTemplate"] = args?.sourceInstanceTemplate;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -512,8 +518,8 @@ export interface InstanceFromTemplateState {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -600,7 +606,7 @@ export interface InstanceFromTemplateState {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
      *
-     * - - -
+     * ***
      */
     sourceInstanceTemplate?: pulumi.Input<string | undefined>;
     /**
@@ -611,6 +617,10 @@ export interface InstanceFromTemplateState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * Workload identity config.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateWorkloadIdentityConfig | undefined>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -701,8 +711,8 @@ export interface InstanceFromTemplateArgs {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -777,13 +787,17 @@ export interface InstanceFromTemplateArgs {
      * template to create the instance based on. It is recommended to reference
      * instance templates through their unique id (`selfLinkUnique` attribute).
      *
-     * - - -
+     * ***
      */
     sourceInstanceTemplate: pulumi.Input<string>;
     /**
      * The list of tags attached to the instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Workload identity config.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateWorkloadIdentityConfig | undefined>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.

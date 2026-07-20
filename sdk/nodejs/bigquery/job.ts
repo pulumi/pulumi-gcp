@@ -244,19 +244,19 @@ import * as utilities from "../utilities";
  *
  * const count = 2;
  * const sourceDataset: gcp.bigquery.Dataset[] = [];
- * for (const range = {value: 0}; range.value < count; range.value++) {
- *     sourceDataset.push(new gcp.bigquery.Dataset(`source-${range.value}`, {
- *         datasetId: `job_copy_${range.value}_dataset`,
+ * for (let range = 0; range < count; range++) {
+ *     sourceDataset.push(new gcp.bigquery.Dataset(`source-${range}`, {
+ *         datasetId: `job_copy_${range}_dataset`,
  *         friendlyName: "test",
  *         description: "This is a test description",
  *         location: "US",
  *     }));
  * }
  * const source: gcp.bigquery.Table[] = [];
- * for (const range = {value: 0}; range.value < count; range.value++) {
- *     source.push(new gcp.bigquery.Table(`source-${range.value}`, {
- *         datasetId: sourceDataset[range.value].datasetId,
- *         tableId: `job_copy_${range.value}_table`,
+ * for (let range = 0; range < count; range++) {
+ *     source.push(new gcp.bigquery.Table(`source-${range}`, {
+ *         datasetId: sourceDataset[range].datasetId,
+ *         tableId: `job_copy_${range}_table`,
  *         deletionProtection: false,
  *         schema: `[
  *   {

@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.AgentRegistry
     [OutputType]
     public sealed class GetAgentResult
     {
-        public readonly string? AgentId;
+        public readonly string AgentId;
         /// <summary>
         /// Attributes of the Agent.
         /// </summary>
@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.AgentRegistry
 
         [OutputConstructor]
         private GetAgentResult(
-            string? agentId,
+            string agentId,
 
             ImmutableDictionary<string, string> attributes,
 

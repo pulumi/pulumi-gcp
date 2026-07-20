@@ -30,7 +30,7 @@ class ObjectACLArgs:
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket the object is stored in.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the acl to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -72,7 +72,7 @@ class ObjectACLArgs:
         """
         The name of the object to apply the acl to.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "object")
 
@@ -147,7 +147,7 @@ class _ObjectACLState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the acl to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Must be set if `predefined_acl` is not.
@@ -202,7 +202,7 @@ class _ObjectACLState:
         """
         The name of the object to apply the acl to.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "object")
 
@@ -305,7 +305,7 @@ class ObjectACL(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the acl to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Must be set if `predefined_acl` is not.
@@ -431,7 +431,7 @@ class ObjectACL(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] object: The name of the object to apply the acl to.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] predefined_acl: The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] role_entities: List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
                Must be set if `predefined_acl` is not.
@@ -478,7 +478,7 @@ class ObjectACL(pulumi.CustomResource):
         """
         The name of the object to apply the acl to.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "object")
 

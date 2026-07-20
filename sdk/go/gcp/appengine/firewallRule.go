@@ -33,6 +33,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
@@ -55,12 +56,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Wait for 5 minutes seconds to ensure IAM permission propagation completes
+//			wait300Seconds, err := time.NewSleep(ctx, "wait_300_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("300s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				app,
+//			}))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = appengine.NewFirewallRule(ctx, "rule", &appengine.FirewallRuleArgs{
 //				Project:     app.Project,
 //				Priority:    pulumi.Int(1000),
 //				Action:      pulumi.String("ALLOW"),
 //				SourceRange: pulumi.String("*"),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait300Seconds,
+//			}))
 //			if err != nil {
 //				return err
 //			}

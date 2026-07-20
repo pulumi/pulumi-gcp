@@ -67,17 +67,18 @@ type LookupCloudVmClusterArgs struct {
 
 // A collection of values returned by getCloudVmCluster.
 type LookupCloudVmClusterResult struct {
-	BackupOdbSubnet       string            `pulumi:"backupOdbSubnet"`
-	BackupSubnetCidr      string            `pulumi:"backupSubnetCidr"`
-	Cidr                  string            `pulumi:"cidr"`
-	CloudVmClusterId      string            `pulumi:"cloudVmClusterId"`
-	CreateTime            string            `pulumi:"createTime"`
-	DeletionPolicy        string            `pulumi:"deletionPolicy"`
-	DeletionProtection    bool              `pulumi:"deletionProtection"`
-	DisplayName           string            `pulumi:"displayName"`
-	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
-	ExadataInfrastructure string            `pulumi:"exadataInfrastructure"`
-	GcpOracleZone         string            `pulumi:"gcpOracleZone"`
+	BackupOdbSubnet        string            `pulumi:"backupOdbSubnet"`
+	BackupSubnetCidr       string            `pulumi:"backupSubnetCidr"`
+	Cidr                   string            `pulumi:"cidr"`
+	CloudVmClusterId       string            `pulumi:"cloudVmClusterId"`
+	CreateTime             string            `pulumi:"createTime"`
+	DeletionPolicy         string            `pulumi:"deletionPolicy"`
+	DeletionProtection     bool              `pulumi:"deletionProtection"`
+	DisplayName            string            `pulumi:"displayName"`
+	EffectiveLabels        map[string]string `pulumi:"effectiveLabels"`
+	ExadataInfrastructure  string            `pulumi:"exadataInfrastructure"`
+	ExascaleDbStorageVault string            `pulumi:"exascaleDbStorageVault"`
+	GcpOracleZone          string            `pulumi:"gcpOracleZone"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                 string                               `pulumi:"id"`
 	IdentityConnectors []GetCloudVmClusterIdentityConnector `pulumi:"identityConnectors"`
@@ -171,6 +172,10 @@ func (o LookupCloudVmClusterResultOutput) EffectiveLabels() pulumi.StringMapOutp
 
 func (o LookupCloudVmClusterResultOutput) ExadataInfrastructure() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.ExadataInfrastructure }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudVmClusterResultOutput) ExascaleDbStorageVault() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.ExascaleDbStorageVault }).(pulumi.StringOutput)
 }
 
 func (o LookupCloudVmClusterResultOutput) GcpOracleZone() pulumi.StringOutput {

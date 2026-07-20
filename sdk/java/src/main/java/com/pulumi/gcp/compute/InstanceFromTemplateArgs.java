@@ -20,6 +20,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateScratchDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateShieldedInstanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromTemplateWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -589,6 +590,21 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Workload identity config.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<InstanceFromTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload identity config.
+     * 
+     */
+    public Optional<Output<InstanceFromTemplateWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
+    /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
@@ -657,6 +673,7 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.sourceInstanceTemplate = $.sourceInstanceTemplate;
         this.tags = $.tags;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
         this.zone = $.zone;
     }
 
@@ -1493,6 +1510,27 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<InstanceFromTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(InstanceFromTemplateWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         /**

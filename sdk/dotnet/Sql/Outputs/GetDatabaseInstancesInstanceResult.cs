@@ -56,6 +56,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
         /// <summary>
+        /// Whether to enforce the new SQL network architecture.
+        /// </summary>
+        public readonly bool EnforceNewSqlNetworkArchitecture;
+        /// <summary>
         /// The description of final backup if instance enable create final backup during instance deletion.
         /// </summary>
         public readonly string FinalBackupDescription;
@@ -170,6 +174,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string encryptionKeyName,
 
+            bool enforceNewSqlNetworkArchitecture,
+
             string finalBackupDescription,
 
             string firstIpAddress,
@@ -230,6 +236,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DnsName = dnsName;
             DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
+            EnforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             InstanceType = instanceType;

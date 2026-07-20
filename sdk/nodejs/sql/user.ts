@@ -198,7 +198,7 @@ export class User extends pulumi.CustomResource {
      *
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -336,7 +336,7 @@ export interface UserState {
      *
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -423,7 +423,7 @@ export interface UserArgs {
      *
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigCustomNodeInit;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfigSwapConfig;
@@ -30,6 +31,11 @@ public final class ClusterNodeConfigLinuxNodeConfig {
      * 
      */
     private @Nullable String cgroupMode;
+    /**
+     * @return Custom node init settings. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodeConfigLinuxNodeConfigCustomNodeInit customNodeInit;
     /**
      * @return Amounts for 2M and 1G hugepages. Structure is documented below.
      * 
@@ -82,6 +88,13 @@ public final class ClusterNodeConfigLinuxNodeConfig {
      */
     public Optional<String> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
+    }
+    /**
+     * @return Custom node init settings. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInit() {
+        return Optional.ofNullable(this.customNodeInit);
     }
     /**
      * @return Amounts for 2M and 1G hugepages. Structure is documented below.
@@ -140,6 +153,7 @@ public final class ClusterNodeConfigLinuxNodeConfig {
     public static final class Builder {
         private @Nullable ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
         private @Nullable String cgroupMode;
+        private @Nullable ClusterNodeConfigLinuxNodeConfigCustomNodeInit customNodeInit;
         private @Nullable ClusterNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
         private @Nullable ClusterNodeConfigLinuxNodeConfigSwapConfig swapConfig;
@@ -151,6 +165,7 @@ public final class ClusterNodeConfigLinuxNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.accurateTimeConfig = defaults.accurateTimeConfig;
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.customNodeInit = defaults.customNodeInit;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
     	      this.swapConfig = defaults.swapConfig;
@@ -169,6 +184,12 @@ public final class ClusterNodeConfigLinuxNodeConfig {
         public Builder cgroupMode(@Nullable String cgroupMode) {
 
             this.cgroupMode = cgroupMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customNodeInit(@Nullable ClusterNodeConfigLinuxNodeConfigCustomNodeInit customNodeInit) {
+
+            this.customNodeInit = customNodeInit;
             return this;
         }
         @CustomType.Setter
@@ -211,6 +232,7 @@ public final class ClusterNodeConfigLinuxNodeConfig {
             final var _resultValue = new ClusterNodeConfigLinuxNodeConfig();
             _resultValue.accurateTimeConfig = accurateTimeConfig;
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.customNodeInit = customNodeInit;
             _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
             _resultValue.swapConfig = swapConfig;

@@ -175,8 +175,7 @@ def get_android_app(app_id: Optional[_builtins.str] = None,
 
     :param _builtins.str app_id: The app_id of name of the Firebase androidApp.
            
-           
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
@@ -210,8 +209,7 @@ def get_android_app_output(app_id: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str app_id: The app_id of name of the Firebase androidApp.
            
-           
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """

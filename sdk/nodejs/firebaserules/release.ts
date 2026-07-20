@@ -118,9 +118,7 @@ export class Release extends pulumi.CustomResource {
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     declare public readonly rulesetName: pulumi.Output<string>;
     /**
@@ -198,9 +196,7 @@ export interface ReleaseState {
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     rulesetName?: pulumi.Input<string | undefined>;
     /**
@@ -233,9 +229,7 @@ export interface ReleaseArgs {
     /**
      * Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     rulesetName: pulumi.Input<string>;
 }

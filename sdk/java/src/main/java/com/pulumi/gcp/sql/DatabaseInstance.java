@@ -823,6 +823,26 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.encryptionKeyName;
     }
     /**
+     * Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     * 
+     */
+    @Export(name="enforceNewSqlNetworkArchitecture", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enforceNewSqlNetworkArchitecture;
+
+    /**
+     * @return Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     * 
+     */
+    public Output<Boolean> enforceNewSqlNetworkArchitecture() {
+        return this.enforceNewSqlNetworkArchitecture;
+    }
+    /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      * 
      */

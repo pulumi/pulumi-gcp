@@ -244,7 +244,7 @@ def get_private_cloud(location: Optional[_builtins.str] = None,
 
     :param _builtins.str location: Location of the resource.
            
-           - - -
+           ***
     :param _builtins.str name: Name of the resource.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -300,7 +300,7 @@ def get_private_cloud_output(location: pulumi.Input[Optional[_builtins.str]] = N
 
     :param _builtins.str location: Location of the resource.
            
-           - - -
+           ***
     :param _builtins.str name: Name of the resource.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.

@@ -246,7 +246,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -381,7 +381,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      * The zone that instances in this group should be created
      * in.
      *
-     * - - -
+     * ***
      */
     declare public readonly zone: pulumi.Output<string>;
 
@@ -514,7 +514,7 @@ export interface InstanceGroupManagerState {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -649,7 +649,7 @@ export interface InstanceGroupManagerState {
      * The zone that instances in this group should be created
      * in.
      *
-     * - - -
+     * ***
      */
     zone?: pulumi.Input<string | undefined>;
 }
@@ -686,7 +686,7 @@ export interface InstanceGroupManagerArgs {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -800,7 +800,7 @@ export interface InstanceGroupManagerArgs {
      * The zone that instances in this group should be created
      * in.
      *
-     * - - -
+     * ***
      */
     zone?: pulumi.Input<string | undefined>;
 }

@@ -46,7 +46,7 @@ export interface GetEndpointArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -76,7 +76,7 @@ export interface GetEndpointResult {
      * The display name of the Endpoint.
      */
     readonly displayName: string;
-    readonly endpointId?: string;
+    readonly endpointId: string;
     readonly filter?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -137,7 +137,7 @@ export interface GetEndpointOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

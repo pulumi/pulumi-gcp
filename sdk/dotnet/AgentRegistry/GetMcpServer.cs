@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.AgentRegistry
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMcpServerInterfaceResult> Interfaces;
         public readonly string Location;
-        public readonly string? McpServerId;
+        public readonly string McpServerId;
         public readonly string Project;
         /// <summary>
         /// A list of tools available with the MCP Server.
@@ -221,7 +221,7 @@ namespace Pulumi.Gcp.AgentRegistry
 
             string location,
 
-            string? mcpServerId,
+            string mcpServerId,
 
             string project,
 

@@ -196,16 +196,16 @@ def get_cluster_istio_service(cluster_name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str cluster_name: The name of the Kubernetes cluster in which this Istio service 
+    :param _builtins.str cluster_name: The name of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
-    :param _builtins.str location: The location of the Kubernetes cluster in which this Istio service 
+    :param _builtins.str location: The location of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the location resource label in k8s_cluster resources.
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param _builtins.str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
            
-           - - -
+           ***
            
            Other optional fields include:
     :param _builtins.str service_namespace: The namespace of the Istio service underlying this service.
@@ -270,16 +270,16 @@ def get_cluster_istio_service_output(cluster_name: pulumi.Input[Optional[_builti
     ```
 
 
-    :param _builtins.str cluster_name: The name of the Kubernetes cluster in which this Istio service 
+    :param _builtins.str cluster_name: The name of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the clusterName resource label in k8s_cluster resources.
-    :param _builtins.str location: The location of the Kubernetes cluster in which this Istio service 
+    :param _builtins.str location: The location of the Kubernetes cluster in which this Istio service
            is defined. Corresponds to the location resource label in k8s_cluster resources.
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param _builtins.str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
            
-           - - -
+           ***
            
            Other optional fields include:
     :param _builtins.str service_namespace: The namespace of the Istio service underlying this service.

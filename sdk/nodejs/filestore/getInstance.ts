@@ -37,7 +37,7 @@ export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetInstanceArgs {
     /**
-     * The name of the location of the instance. This 
+     * The name of the location of the instance. This
      * can be a region for ENTERPRISE tier instances. If it is not provided,
      * the provider region or zone is used.
      */
@@ -45,7 +45,7 @@ export interface GetInstanceArgs {
     /**
      * The name of a Filestore instance.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -119,7 +119,7 @@ export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.Inv
  */
 export interface GetInstanceOutputArgs {
     /**
-     * The name of the location of the instance. This 
+     * The name of the location of the instance. This
      * can be a region for ENTERPRISE tier instances. If it is not provided,
      * the provider region or zone is used.
      */
@@ -127,7 +127,7 @@ export interface GetInstanceOutputArgs {
     /**
      * The name of a Filestore instance.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

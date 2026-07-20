@@ -131,7 +131,7 @@ export class Notification extends pulumi.CustomResource {
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
      *
-     * - - -
+     * ***
      */
     declare public readonly topic: pulumi.Output<string>;
 
@@ -219,7 +219,7 @@ export interface NotificationState {
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
      *
-     * - - -
+     * ***
      */
     topic?: pulumi.Input<string | undefined>;
 }
@@ -254,7 +254,7 @@ export interface NotificationArgs {
      * i.e. `projects/my-gcp-project/topics/my-topic` or `my-topic`. If the project is not set in the provider,
      * you will need to use the project-level name.
      *
-     * - - -
+     * ***
      */
     topic: pulumi.Input<string>;
 }

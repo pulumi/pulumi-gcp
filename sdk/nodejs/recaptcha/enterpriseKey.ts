@@ -208,9 +208,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
     /**
      * Human-readable display name of this key. Modifiable by user.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
@@ -329,9 +327,7 @@ export interface EnterpriseKeyState {
     /**
      * Human-readable display name of this key. Modifiable by user.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
@@ -395,9 +391,7 @@ export interface EnterpriseKeyArgs {
     /**
      * Human-readable display name of this key. Modifiable by user.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     displayName: pulumi.Input<string>;
     /**

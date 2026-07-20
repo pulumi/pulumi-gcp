@@ -76,7 +76,7 @@ export interface GetPythonPackageResult {
     readonly id: string;
     readonly location: string;
     /**
-     * The fully qualified name of the fetched package. Format:  
+     * The fully qualified name of the fetched package. Format:
      * ```
      * projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/pythonPackages/{{package}}:{{version}}
      * ```

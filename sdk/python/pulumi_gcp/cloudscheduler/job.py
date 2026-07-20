@@ -48,7 +48,7 @@ class JobArgs:
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -131,7 +131,7 @@ class JobArgs:
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
         * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
 
@@ -320,7 +320,7 @@ class _JobState:
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -406,7 +406,7 @@ class _JobState:
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
         * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
 
@@ -779,7 +779,7 @@ class Job(pulumi.CustomResource):
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1078,7 +1078,7 @@ class Job(pulumi.CustomResource):
                * For HTTP targets, between 15 seconds and 30 minutes.
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-               A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+                 A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1151,7 +1151,7 @@ class Job(pulumi.CustomResource):
         * For HTTP targets, between 15 seconds and 30 minutes.
         * For App Engine HTTP targets, between 15 seconds and 24 hours.
         * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
-        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+          A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
 

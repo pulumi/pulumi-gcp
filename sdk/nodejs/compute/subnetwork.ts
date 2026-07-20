@@ -422,7 +422,7 @@ export class Subnetwork extends pulumi.CustomResource {
      * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-     * Partial URL, as in:
+     *   Partial URL, as in:
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */
@@ -441,9 +441,9 @@ export class Subnetwork extends pulumi.CustomResource {
     /**
      * Possible endpoints of this subnetwork. It can be one of the following:
      * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
-     * gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
      * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
-     * IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
      */
     declare public /*out*/ readonly ipv6GceEndpoint: pulumi.Output<string>;
     /**
@@ -711,7 +711,7 @@ export interface SubnetworkState {
      * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-     * Partial URL, as in:
+     *   Partial URL, as in:
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */
@@ -730,9 +730,9 @@ export interface SubnetworkState {
     /**
      * Possible endpoints of this subnetwork. It can be one of the following:
      * * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
-     * gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+     *   gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
      * * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
-     * IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+     *   IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
      */
     ipv6GceEndpoint?: pulumi.Input<string | undefined>;
     /**
@@ -900,7 +900,7 @@ export interface SubnetworkArgs {
      * a dual stack or IPv6-only subnetwork using BYOIP:
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-     * Partial URL, as in:
+     *   Partial URL, as in:
      * * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
      * * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
      */

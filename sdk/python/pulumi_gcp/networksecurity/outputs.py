@@ -2578,7 +2578,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethod(dict):
                1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
                2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
                3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
-               Params cannot be specified for categories 1) and 2).
+                  Params cannot be specified for categories 1) and 2).
         :param Sequence['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs'] params: MCP method parameters to match against.
                Structure is documented below.
         """
@@ -2594,7 +2594,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethod(dict):
         1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
         2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
         3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
-        Params cannot be specified for categories 1) and 2).
+           Params cannot be specified for categories 1) and 2).
         """
         return pulumi.get(self, "name")
 
@@ -5235,7 +5235,7 @@ class GetAddressGroupsAddressGroupResult(dict):
         """
         :param _builtins.str location: The location of the Address Group.
                
-               - - -
+               ***
         :param _builtins.str name: The name of the Address Group.
         """
         pulumi.set(__self__, "capacity", capacity)
@@ -5259,7 +5259,7 @@ class GetAddressGroupsAddressGroupResult(dict):
         """
         The location of the Address Group.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 

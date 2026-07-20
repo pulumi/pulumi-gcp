@@ -284,7 +284,7 @@ def get_reservation_block(name: Optional[_builtins.str] = None,
            is not provided, the provider project is used.
     :param _builtins.str reservation: The name of the parent reservation.
            
-           - - -
+           ***
     :param _builtins.str zone: The zone where the reservation block resides.
     """
     __args__ = dict()
@@ -345,7 +345,7 @@ def get_reservation_block_output(name: pulumi.Input[Optional[_builtins.str]] = N
            is not provided, the provider project is used.
     :param _builtins.str reservation: The name of the parent reservation.
            
-           - - -
+           ***
     :param _builtins.str zone: The zone where the reservation block resides.
     """
     __args__ = dict()

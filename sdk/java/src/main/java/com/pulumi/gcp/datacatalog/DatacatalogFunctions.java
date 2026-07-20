@@ -15,12 +15,15 @@ import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
 import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyPlainArgs;
 import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
 import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyPlainArgs;
+import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyArgs;
 import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
 import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyPlainArgs;
+import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyPlainArgs;
 import com.pulumi.gcp.datacatalog.outputs.GetEntryGroupIamPolicyResult;
 import com.pulumi.gcp.datacatalog.outputs.GetPolicyTagIamPolicyResult;
 import com.pulumi.gcp.datacatalog.outputs.GetTagTemplateIamPolicyResult;
 import com.pulumi.gcp.datacatalog.outputs.GetTaxonomyIamPolicyResult;
+import com.pulumi.gcp.datacatalog.outputs.GetTaxonomyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DatacatalogFunctions {
@@ -643,6 +646,266 @@ public final class DatacatalogFunctions {
      */
     public static CompletableFuture<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyPlain(GetTagTemplateIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", TypeShape.of(GetTagTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Data Catalog Taxonomy. For more information see
+     * [the official documentation](https://cloud.google.com/data-catalog/docs)
+     * and
+     * [API](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyArgs;
+     * import com.pulumi.gcp.datacatalog.PolicyTag;
+     * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatacatalogFunctions.getTaxonomy(GetTaxonomyArgs.builder()
+     *             .displayName("my_taxonomy")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *         var examplePolicyTag = new PolicyTag("examplePolicyTag", PolicyTagArgs.builder()
+     *             .taxonomy(example.id())
+     *             .displayName("example_policy_tag")
+     *             .description("A policy tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTaxonomyResult> getTaxonomy(GetTaxonomyArgs args) {
+        return getTaxonomy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Data Catalog Taxonomy. For more information see
+     * [the official documentation](https://cloud.google.com/data-catalog/docs)
+     * and
+     * [API](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyArgs;
+     * import com.pulumi.gcp.datacatalog.PolicyTag;
+     * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatacatalogFunctions.getTaxonomy(GetTaxonomyArgs.builder()
+     *             .displayName("my_taxonomy")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *         var examplePolicyTag = new PolicyTag("examplePolicyTag", PolicyTagArgs.builder()
+     *             .taxonomy(example.id())
+     *             .displayName("example_policy_tag")
+     *             .description("A policy tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTaxonomyResult> getTaxonomyPlain(GetTaxonomyPlainArgs args) {
+        return getTaxonomyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Data Catalog Taxonomy. For more information see
+     * [the official documentation](https://cloud.google.com/data-catalog/docs)
+     * and
+     * [API](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyArgs;
+     * import com.pulumi.gcp.datacatalog.PolicyTag;
+     * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatacatalogFunctions.getTaxonomy(GetTaxonomyArgs.builder()
+     *             .displayName("my_taxonomy")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *         var examplePolicyTag = new PolicyTag("examplePolicyTag", PolicyTagArgs.builder()
+     *             .taxonomy(example.id())
+     *             .displayName("example_policy_tag")
+     *             .description("A policy tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTaxonomyResult> getTaxonomy(GetTaxonomyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:datacatalog/getTaxonomy:getTaxonomy", TypeShape.of(GetTaxonomyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Data Catalog Taxonomy. For more information see
+     * [the official documentation](https://cloud.google.com/data-catalog/docs)
+     * and
+     * [API](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyArgs;
+     * import com.pulumi.gcp.datacatalog.PolicyTag;
+     * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatacatalogFunctions.getTaxonomy(GetTaxonomyArgs.builder()
+     *             .displayName("my_taxonomy")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *         var examplePolicyTag = new PolicyTag("examplePolicyTag", PolicyTagArgs.builder()
+     *             .taxonomy(example.id())
+     *             .displayName("example_policy_tag")
+     *             .description("A policy tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTaxonomyResult> getTaxonomy(GetTaxonomyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:datacatalog/getTaxonomy:getTaxonomy", TypeShape.of(GetTaxonomyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Data Catalog Taxonomy. For more information see
+     * [the official documentation](https://cloud.google.com/data-catalog/docs)
+     * and
+     * [API](https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.taxonomies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyArgs;
+     * import com.pulumi.gcp.datacatalog.PolicyTag;
+     * import com.pulumi.gcp.datacatalog.PolicyTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DatacatalogFunctions.getTaxonomy(GetTaxonomyArgs.builder()
+     *             .displayName("my_taxonomy")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *         var examplePolicyTag = new PolicyTag("examplePolicyTag", PolicyTagArgs.builder()
+     *             .taxonomy(example.id())
+     *             .displayName("example_policy_tag")
+     *             .description("A policy tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTaxonomyResult> getTaxonomyPlain(GetTaxonomyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:datacatalog/getTaxonomy:getTaxonomy", TypeShape.of(GetTaxonomyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for taxonomy

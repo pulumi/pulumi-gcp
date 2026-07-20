@@ -139,8 +139,7 @@ export class SSLPolicy extends pulumi.CustomResource {
     declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
-     * to establish a connection with the load balancer. When set to`
-     * TLS_1_3`, the profile field must be set to `RESTRICTED`.
+     * to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
      * Default value is `TLS_1_0`.
      * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
@@ -281,8 +280,7 @@ export interface SSLPolicyState {
     fingerprint?: pulumi.Input<string | undefined>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
-     * to establish a connection with the load balancer. When set to`
-     * TLS_1_3`, the profile field must be set to `RESTRICTED`.
+     * to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
      * Default value is `TLS_1_0`.
      * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */
@@ -366,8 +364,7 @@ export interface SSLPolicyArgs {
     description?: pulumi.Input<string | undefined>;
     /**
      * The minimum version of SSL protocol that can be used by the clients
-     * to establish a connection with the load balancer. When set to`
-     * TLS_1_3`, the profile field must be set to `RESTRICTED`.
+     * to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
      * Default value is `TLS_1_0`.
      * Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
      */

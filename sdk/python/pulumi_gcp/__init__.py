@@ -6,7 +6,13 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .location_from_id import *
+from .name_from_id import *
+from .project_from_id import *
 from .provider import *
+from .region_from_id import *
+from .region_from_zone import *
+from .zone_from_id import *
 from ._inputs import *
 
 # Make subpackages available:
@@ -1967,6 +1973,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "bigqueryanalyticshub/queryTemplate",
+  "fqn": "pulumi_gcp.bigqueryanalyticshub",
+  "classes": {
+   "gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate": "QueryTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "bigquerydatapolicy/dataPolicy",
   "fqn": "pulumi_gcp.bigquerydatapolicy",
   "classes": {
@@ -2455,6 +2469,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/dataExport",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/dataExport:DataExport": "DataExport"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/dataTable",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2475,6 +2497,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/environmentGroup",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/environmentGroup:EnvironmentGroup": "EnvironmentGroup"
   }
  },
  {
@@ -2555,6 +2585,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/ruleDeployment:RuleDeployment": "RuleDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/soarDomain",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/soarDomain:SoarDomain": "SoarDomain"
   }
  },
  {
@@ -7751,6 +7789,54 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iap/agentRegistryAgentIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryAgentIamBinding:AgentRegistryAgentIamBinding": "AgentRegistryAgentIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryAgentIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryAgentIamMember:AgentRegistryAgentIamMember": "AgentRegistryAgentIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryAgentIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryAgentIamPolicy:AgentRegistryAgentIamPolicy": "AgentRegistryAgentIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryEndpointIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryEndpointIamBinding:AgentRegistryEndpointIamBinding": "AgentRegistryEndpointIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryEndpointIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryEndpointIamMember:AgentRegistryEndpointIamMember": "AgentRegistryEndpointIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryEndpointIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryEndpointIamPolicy:AgentRegistryEndpointIamPolicy": "AgentRegistryEndpointIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iap/agentRegistryIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
@@ -7771,6 +7857,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.iap",
   "classes": {
    "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy": "AgentRegistryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryMcpServerIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryMcpServerIamBinding:AgentRegistryMcpServerIamBinding": "AgentRegistryMcpServerIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryMcpServerIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryMcpServerIamMember:AgentRegistryMcpServerIamMember": "AgentRegistryMcpServerIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/agentRegistryMcpServerIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/agentRegistryMcpServerIamPolicy:AgentRegistryMcpServerIamPolicy": "AgentRegistryMcpServerIamPolicy"
   }
  },
  {
@@ -11343,6 +11453,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "tags/tagBindingCollection",
+  "fqn": "pulumi_gcp.tags",
+  "classes": {
+   "gcp:tags/tagBindingCollection:TagBindingCollection": "TagBindingCollection"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "tags/tagKey",
   "fqn": "pulumi_gcp.tags",
   "classes": {
@@ -11443,6 +11561,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vectorsearch",
   "classes": {
    "gcp:vectorsearch/collection:Collection": "Collection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vectorsearch/index",
+  "fqn": "pulumi_gcp.vectorsearch",
+  "classes": {
+   "gcp:vectorsearch/index:Index": "Index"
   }
  },
  {
@@ -11771,6 +11897,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiSchedule:AiSchedule": "AiSchedule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiSemanticGovernancePolicyEngine",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine": "AiSemanticGovernancePolicyEngine"
   }
  },
  {

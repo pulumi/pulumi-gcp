@@ -15248,6 +15248,8 @@ type TransferJobTransferSpecAzureBlobStorageDataSource struct {
 	FederatedIdentityConfig *TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig `pulumi:"federatedIdentityConfig"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
+	// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	PrivateNetworkService *string `pulumi:"privateNetworkService"`
 	// The name of the Azure Storage account.
 	StorageAccount string `pulumi:"storageAccount"`
 }
@@ -15274,6 +15276,8 @@ type TransferJobTransferSpecAzureBlobStorageDataSourceArgs struct {
 	FederatedIdentityConfig TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigPtrInput `pulumi:"federatedIdentityConfig"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+	PrivateNetworkService pulumi.StringPtrInput `pulumi:"privateNetworkService"`
 	// The name of the Azure Storage account.
 	StorageAccount pulumi.StringInput `pulumi:"storageAccount"`
 }
@@ -15384,6 +15388,11 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) Path() pulumi.S
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) PrivateNetworkService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) *string { return v.PrivateNetworkService }).(pulumi.StringPtrOutput)
+}
+
 // The name of the Azure Storage account.
 func (o TransferJobTransferSpecAzureBlobStorageDataSourceOutput) StorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAzureBlobStorageDataSource) string { return v.StorageAccount }).(pulumi.StringOutput)
@@ -15460,6 +15469,16 @@ func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) Path() pulum
 			return nil
 		}
 		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+func (o TransferJobTransferSpecAzureBlobStorageDataSourcePtrOutput) PrivateNetworkService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAzureBlobStorageDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateNetworkService
 	}).(pulumi.StringPtrOutput)
 }
 

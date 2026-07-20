@@ -61,7 +61,7 @@ class GetNetworkEndpointGroupsResult:
     @pulumi.getter(name="networkEndpointGroups")
     def network_endpoint_groups(self) -> Sequence['outputs.GetNetworkEndpointGroupsNetworkEndpointGroupResult']:
         """
-        A list of all retrieved Network Endpoint Groups. For list of the attributes, see 
+        A list of all retrieved Network Endpoint Groups. For list of the attributes, see
         the `compute.NetworkEndpointGroup` data source.
         """
         return pulumi.get(self, "network_endpoint_groups")

@@ -35,6 +35,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> InstanceGroupUrls;
         /// <summary>
+        /// The maintenance policy to use for the cluster. Structure is
+        /// documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterNodePoolMaintenancePolicy> MaintenancePolicies;
+        /// <summary>
         /// List of instance group URLs which have been assigned to this node pool.
         /// </summary>
         public readonly ImmutableArray<string> ManagedInstanceGroupUrls;
@@ -115,6 +120,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<string> instanceGroupUrls,
 
+            ImmutableArray<Outputs.ClusterNodePoolMaintenancePolicy> maintenancePolicies,
+
             ImmutableArray<string> managedInstanceGroupUrls,
 
             Outputs.ClusterNodePoolManagement? management,
@@ -147,6 +154,7 @@ namespace Pulumi.Gcp.Container.Outputs
             IgnoreNodeCountChanges = ignoreNodeCountChanges;
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;
+            MaintenancePolicies = maintenancePolicies;
             ManagedInstanceGroupUrls = managedInstanceGroupUrls;
             Management = management;
             MaxPodsPerNode = maxPodsPerNode;

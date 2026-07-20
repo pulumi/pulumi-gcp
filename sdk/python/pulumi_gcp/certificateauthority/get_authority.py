@@ -319,7 +319,7 @@ def get_authority(certificate_authority_id: Optional[_builtins.str] = None,
 
     :param _builtins.str certificate_authority_id: ID of the certificate authority.
            
-           - - -
+           ***
     :param _builtins.str location: The location the certificate authority exists in.
     :param _builtins.str pool: The name of the pool the certificate authority belongs to.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
@@ -385,7 +385,7 @@ def get_authority_output(certificate_authority_id: pulumi.Input[Optional[Optiona
 
     :param _builtins.str certificate_authority_id: ID of the certificate authority.
            
-           - - -
+           ***
     :param _builtins.str location: The location the certificate authority exists in.
     :param _builtins.str pool: The name of the pool the certificate authority belongs to.
     :param _builtins.str project: The ID of the project in which the resource belongs. If it

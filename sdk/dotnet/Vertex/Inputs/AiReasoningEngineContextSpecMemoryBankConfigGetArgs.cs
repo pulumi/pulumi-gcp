@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Vertex.Inputs
 
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("customizationConfigs")]
+        private InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGetArgs>? _customizationConfigs;
+
+        /// <summary>
+        /// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGetArgs> CustomizationConfigs
+        {
+            get => _customizationConfigs ?? (_customizationConfigs = new InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGetArgs>());
+            set => _customizationConfigs = value;
+        }
+
         /// <summary>
         /// If true, no memory revisions will be created for any requests to the Memory Bank.
         /// </summary>
@@ -31,6 +44,19 @@ namespace Pulumi.Gcp.Vertex.Inputs
         /// </summary>
         [Input("similaritySearchConfig")]
         public Input<Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigGetArgs>? SimilaritySearchConfig { get; set; }
+
+        [Input("structuredMemoryConfigs")]
+        private InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigGetArgs>? _structuredMemoryConfigs;
+
+        /// <summary>
+        /// Optional. Structured memory configurations for Agent Engine sub-resources.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigGetArgs> StructuredMemoryConfigs
+        {
+            get => _structuredMemoryConfigs ?? (_structuredMemoryConfigs = new InputList<Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigGetArgs>());
+            set => _structuredMemoryConfigs = value;
+        }
 
         /// <summary>
         /// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.

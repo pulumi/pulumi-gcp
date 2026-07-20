@@ -27,6 +27,7 @@ class ExascaleDbStorageVaultArgs:
                  properties: pulumi.Input['ExascaleDbStorageVaultPropertiesArgs'],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -51,6 +52,8 @@ class ExascaleDbStorageVaultArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
+        :param pulumi.Input[_builtins.str] exadata_infrastructure: The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+               In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
                Example: us-east4-b-r2.
                If not specified, the system will pick a zone based on availability.
@@ -68,6 +71,8 @@ class ExascaleDbStorageVaultArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if exadata_infrastructure is not None:
+            pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
         if gcp_oracle_zone is not None:
             pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
         if labels is not None:
@@ -160,6 +165,19 @@ class ExascaleDbStorageVaultArgs:
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="exadataInfrastructure")
+    def exadata_infrastructure(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        """
+        return pulumi.get(self, "exadata_infrastructure")
+
+    @exadata_infrastructure.setter
+    def exadata_infrastructure(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exadata_infrastructure", value)
+
+    @_builtins.property
     @pulumi.getter(name="gcpOracleZone")
     def gcp_oracle_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -210,6 +228,7 @@ class _ExascaleDbStorageVaultState:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
                  exascale_db_storage_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -235,6 +254,8 @@ class _ExascaleDbStorageVaultState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID of the subscription entitlement associated with the
                ExascaleDbStorageVault.
+        :param pulumi.Input[_builtins.str] exadata_infrastructure: The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+               In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
         :param pulumi.Input[_builtins.str] exascale_db_storage_vault_id: The ID of the ExascaleDbStorageVault to create. This value is
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
@@ -269,6 +290,8 @@ class _ExascaleDbStorageVaultState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if entitlement_id is not None:
             pulumi.set(__self__, "entitlement_id", entitlement_id)
+        if exadata_infrastructure is not None:
+            pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
         if exascale_db_storage_vault_id is not None:
             pulumi.set(__self__, "exascale_db_storage_vault_id", exascale_db_storage_vault_id)
         if gcp_oracle_zone is not None:
@@ -365,6 +388,19 @@ class _ExascaleDbStorageVaultState:
     @entitlement_id.setter
     def entitlement_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entitlement_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exadataInfrastructure")
+    def exadata_infrastructure(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        """
+        return pulumi.get(self, "exadata_infrastructure")
+
+    @exadata_infrastructure.setter
+    def exadata_infrastructure(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exadata_infrastructure", value)
 
     @_builtins.property
     @pulumi.getter(name="exascaleDbStorageVaultId")
@@ -485,6 +521,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
                  exascale_db_storage_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -541,6 +578,42 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        infra = gcp.oracledatabase.CloudExadataInfrastructure("infra",
+            cloud_exadata_infrastructure_id="my-infra",
+            display_name="my-infra displayname",
+            location="us-east4",
+            project="my-project",
+            properties={
+                "shape": "Exadata.X9M",
+                "compute_count": 2,
+                "storage_count": 3,
+            },
+            deletion_protection=True)
+        exascale_config = gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig("exascale_config",
+            cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
+            location="us-east4",
+            project="my-project",
+            total_storage_size_gb=10240)
+        my_storage_vault = gcp.oracledatabase.ExascaleDbStorageVault("my_storage_vault",
+            exascale_db_storage_vault_id="my-instance",
+            display_name="my-instance displayname",
+            location="us-east4",
+            project="my-project",
+            exadata_infrastructure=infra.name,
+            properties={
+                "exascale_db_storage_details": {
+                    "total_size_gbs": 2048,
+                },
+            },
+            deletion_protection=True,
+            opts = pulumi.ResourceOptions(depends_on=[exascale_config]))
+        ```
 
         ## Import
 
@@ -571,6 +644,8 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name for the ExascaleDbStorageVault. The name does not have to
                be unique within your project. The name must be 1-255 characters long and
                can only contain alphanumeric characters.
+        :param pulumi.Input[_builtins.str] exadata_infrastructure: The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+               In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
         :param pulumi.Input[_builtins.str] exascale_db_storage_vault_id: The ID of the ExascaleDbStorageVault to create. This value is
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
@@ -643,6 +718,42 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        infra = gcp.oracledatabase.CloudExadataInfrastructure("infra",
+            cloud_exadata_infrastructure_id="my-infra",
+            display_name="my-infra displayname",
+            location="us-east4",
+            project="my-project",
+            properties={
+                "shape": "Exadata.X9M",
+                "compute_count": 2,
+                "storage_count": 3,
+            },
+            deletion_protection=True)
+        exascale_config = gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig("exascale_config",
+            cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
+            location="us-east4",
+            project="my-project",
+            total_storage_size_gb=10240)
+        my_storage_vault = gcp.oracledatabase.ExascaleDbStorageVault("my_storage_vault",
+            exascale_db_storage_vault_id="my-instance",
+            display_name="my-instance displayname",
+            location="us-east4",
+            project="my-project",
+            exadata_infrastructure=infra.name,
+            properties={
+                "exascale_db_storage_details": {
+                    "total_size_gbs": 2048,
+                },
+            },
+            deletion_protection=True,
+            opts = pulumi.ResourceOptions(depends_on=[exascale_config]))
+        ```
 
         ## Import
 
@@ -679,6 +790,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
                  exascale_db_storage_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -699,6 +811,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["exadata_infrastructure"] = exadata_infrastructure
             if exascale_db_storage_vault_id is None and not opts.urn:
                 raise TypeError("Missing required property 'exascale_db_storage_vault_id'")
             __props__.__dict__["exascale_db_storage_vault_id"] = exascale_db_storage_vault_id
@@ -734,6 +847,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
+            exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
             exascale_db_storage_vault_id: pulumi.Input[Optional[_builtins.str]] = None,
             gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -763,6 +877,8 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID of the subscription entitlement associated with the
                ExascaleDbStorageVault.
+        :param pulumi.Input[_builtins.str] exadata_infrastructure: The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+               In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
         :param pulumi.Input[_builtins.str] exascale_db_storage_vault_id: The ID of the ExascaleDbStorageVault to create. This value is
                restricted to (^a-z?$) and must be a maximum of
                63 characters in length. The value must start with a letter and end with a
@@ -795,6 +911,7 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["entitlement_id"] = entitlement_id
+        __props__.__dict__["exadata_infrastructure"] = exadata_infrastructure
         __props__.__dict__["exascale_db_storage_vault_id"] = exascale_db_storage_vault_id
         __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
         __props__.__dict__["labels"] = labels
@@ -860,6 +977,15 @@ class ExascaleDbStorageVault(pulumi.CustomResource):
         ExascaleDbStorageVault.
         """
         return pulumi.get(self, "entitlement_id")
+
+    @_builtins.property
+    @pulumi.getter(name="exadataInfrastructure")
+    def exadata_infrastructure(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        """
+        return pulumi.get(self, "exadata_infrastructure")
 
     @_builtins.property
     @pulumi.getter(name="exascaleDbStorageVaultId")

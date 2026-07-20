@@ -197,6 +197,7 @@ export interface GetInstanceResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
+    readonly workloadIdentityConfigs: outputs.compute.GetInstanceWorkloadIdentityConfig[];
     readonly zone?: string;
 }
 /**

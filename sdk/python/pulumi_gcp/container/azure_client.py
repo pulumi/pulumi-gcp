@@ -32,9 +32,7 @@ class AzureClientArgs:
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory Tenant ID.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -84,9 +82,7 @@ class AzureClientArgs:
         """
         The Azure Active Directory Tenant ID.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "tenant_id")
 
@@ -165,9 +161,7 @@ class _AzureClientState:
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory Tenant ID.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] uid: Output only. A globally unique identifier for the client.
         """
         if application_id is not None:
@@ -284,9 +278,7 @@ class _AzureClientState:
         """
         The Azure Active Directory Tenant ID.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "tenant_id")
 
@@ -371,9 +363,7 @@ class AzureClient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory Tenant ID.
                
-               
-               
-               - - -
+               ***
         """
         ...
     @overload
@@ -503,9 +493,7 @@ class AzureClient(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] tenant_id: The Azure Active Directory Tenant ID.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] uid: Output only. A globally unique identifier for the client.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -590,9 +578,7 @@ class AzureClient(pulumi.CustomResource):
         """
         The Azure Active Directory Tenant ID.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "tenant_id")
 

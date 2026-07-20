@@ -37,7 +37,7 @@ export interface GetBackupPlanAssociationArgs {
     /**
      * The id of Backupplan association resource.
      *
-     * - - -
+     * ***
      */
     backupPlanAssociationId: string;
     /**
@@ -99,7 +99,7 @@ export interface GetBackupPlanAssociationOutputArgs {
     /**
      * The id of Backupplan association resource.
      *
-     * - - -
+     * ***
      */
     backupPlanAssociationId: pulumi.Input<string>;
     /**

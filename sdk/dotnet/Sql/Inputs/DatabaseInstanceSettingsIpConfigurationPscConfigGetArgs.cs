@@ -30,6 +30,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("networkAttachmentUri")]
         public Input<string>? NetworkAttachmentUri { get; set; }
 
+        /// <summary>
+        /// Whether a service connection policy is created for the auto connections configured for the instance.
+        /// </summary>
+        [Input("pscAutoConnectionPolicyEnabled")]
+        public Input<bool>? PscAutoConnectionPolicyEnabled { get; set; }
+
         [Input("pscAutoConnections")]
         private InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionGetArgs>? _pscAutoConnections;
 
@@ -56,6 +62,8 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+        /// 
+        /// * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
         /// </summary>
         [Input("pscWriteEndpointDnsEnabled")]
         public Input<bool>? PscWriteEndpointDnsEnabled { get; set; }

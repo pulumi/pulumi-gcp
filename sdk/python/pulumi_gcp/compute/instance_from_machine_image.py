@@ -54,6 +54,7 @@ class InstanceFromMachineImageArgs:
                  shielded_instance_config: pulumi.Input[Optional['InstanceFromMachineImageShieldedInstanceConfigArgs']] = None,
                  source_machine_image_encryption_key: pulumi.Input[Optional['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional['InstanceFromMachineImageWorkloadIdentityConfigArgs']] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceFromMachineImage resource.
@@ -61,7 +62,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceFromMachineImageAdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
@@ -83,8 +84,8 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -103,6 +104,7 @@ class InstanceFromMachineImageArgs:
         :param pulumi.Input['InstanceFromMachineImageShieldedInstanceConfigArgs'] shielded_instance_config: The shielded vm config being used by the instance.
         :param pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs'] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
+        :param pulumi.Input['InstanceFromMachineImageWorkloadIdentityConfigArgs'] workload_identity_config: Workload identity config.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -177,6 +179,8 @@ class InstanceFromMachineImageArgs:
             pulumi.set(__self__, "source_machine_image_encryption_key", source_machine_image_encryption_key)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -187,7 +191,7 @@ class InstanceFromMachineImageArgs:
         Name or self link of a machine
         image to create the instance based on.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -374,8 +378,8 @@ class InstanceFromMachineImageArgs:
         """
         A set of key/value label pairs assigned to the instance.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -589,6 +593,18 @@ class InstanceFromMachineImageArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['InstanceFromMachineImageWorkloadIdentityConfigArgs']]:
+        """
+        Workload identity config.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['InstanceFromMachineImageWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -657,6 +673,7 @@ class _InstanceFromMachineImageState:
                  source_machine_image_encryption_key: pulumi.Input[Optional['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_config: pulumi.Input[Optional['InstanceFromMachineImageWorkloadIdentityConfigArgs']] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceFromMachineImage resources.
@@ -692,8 +709,8 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -717,10 +734,11 @@ class _InstanceFromMachineImageState:
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs'] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input['InstanceFromMachineImageWorkloadIdentityConfigArgs'] workload_identity_config: Workload identity config.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -822,6 +840,8 @@ class _InstanceFromMachineImageState:
             pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -1102,8 +1122,8 @@ class _InstanceFromMachineImageState:
         """
         A set of key/value label pairs assigned to the instance.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -1347,7 +1367,7 @@ class _InstanceFromMachineImageState:
         Name or self link of a machine
         image to create the instance based on.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -1390,6 +1410,18 @@ class _InstanceFromMachineImageState:
     @tags_fingerprint.setter
     def tags_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags_fingerprint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['InstanceFromMachineImageWorkloadIdentityConfigArgs']]:
+        """
+        Workload identity config.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['InstanceFromMachineImageWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1450,6 +1482,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  source_machine_image: pulumi.Input[Optional[_builtins.str]] = None,
                  source_machine_image_encryption_key: pulumi.Input[Optional[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['InstanceFromMachineImageWorkloadIdentityConfigArgs', 'InstanceFromMachineImageWorkloadIdentityConfigArgsDict']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1505,8 +1538,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_startup_script: Metadata startup scripts made available within the instance.
@@ -1526,9 +1559,10 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
+        :param pulumi.Input[Union['InstanceFromMachineImageWorkloadIdentityConfigArgs', 'InstanceFromMachineImageWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload identity config.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -1622,6 +1656,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  source_machine_image: pulumi.Input[Optional[_builtins.str]] = None,
                  source_machine_image_encryption_key: pulumi.Input[Optional[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['InstanceFromMachineImageWorkloadIdentityConfigArgs', 'InstanceFromMachineImageWorkloadIdentityConfigArgsDict']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1667,6 +1702,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__.__dict__["source_machine_image"] = source_machine_image
             __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["zone"] = zone
             __props__.__dict__["attached_disks"] = None
             __props__.__dict__["boot_disks"] = None
@@ -1739,6 +1775,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             source_machine_image_encryption_key: pulumi.Input[Optional[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_config: pulumi.Input[Optional[Union['InstanceFromMachineImageWorkloadIdentityConfigArgs', 'InstanceFromMachineImageWorkloadIdentityConfigArgsDict']]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceFromMachineImage':
         """
         Get an existing InstanceFromMachineImage resource's state with the given name, id, and optional extra
@@ -1778,8 +1815,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A set of key/value label pairs assigned to the instance.
                
-               				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                               Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] machine_type: The machine type to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs made available within the instance.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1803,10 +1840,11 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] source_machine_image: Name or self link of a machine
                image to create the instance based on.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs', 'InstanceFromMachineImageSourceMachineImageEncryptionKeyArgsDict']] source_machine_image_encryption_key: Encryption key for the source machine image.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The list of tags attached to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input[Union['InstanceFromMachineImageWorkloadIdentityConfigArgs', 'InstanceFromMachineImageWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload identity config.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If not
                set, the provider zone is used.
                
@@ -1866,6 +1904,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
+        __props__.__dict__["workload_identity_config"] = workload_identity_config
         __props__.__dict__["zone"] = zone
         return InstanceFromMachineImage(resource_name, opts=opts, __props__=__props__)
 
@@ -2058,8 +2097,8 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         """
         A set of key/value label pairs assigned to the instance.
 
-        				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+                        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                        Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -2223,7 +2262,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         Name or self link of a machine
         image to create the instance based on.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source_machine_image")
 
@@ -2250,6 +2289,14 @@ class InstanceFromMachineImage(pulumi.CustomResource):
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Output['outputs.InstanceFromMachineImageWorkloadIdentityConfig']:
+        """
+        Workload identity config.
+        """
+        return pulumi.get(self, "workload_identity_config")
 
     @_builtins.property
     @pulumi.getter

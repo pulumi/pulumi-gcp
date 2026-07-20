@@ -5098,6 +5098,13 @@ type CloudVmClusterProperties struct {
 	// MAINTENANCE_IN_PROGRESS
 	State *string `pulumi:"state"`
 	// (Output)
+	// The storage management type of the VM Cluster.
+	// Possible values:
+	// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+	// ASM
+	// EXASCALE
+	StorageManagementType *string `pulumi:"storageManagementType"`
+	// (Output)
 	// The storage allocation for the disk group, in gigabytes (GB).
 	StorageSizeGb *int `pulumi:"storageSizeGb"`
 	// (Output)
@@ -5214,6 +5221,13 @@ type CloudVmClusterPropertiesArgs struct {
 	// FAILED
 	// MAINTENANCE_IN_PROGRESS
 	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// The storage management type of the VM Cluster.
+	// Possible values:
+	// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+	// ASM
+	// EXASCALE
+	StorageManagementType pulumi.StringPtrInput `pulumi:"storageManagementType"`
 	// (Output)
 	// The storage allocation for the disk group, in gigabytes (GB).
 	StorageSizeGb pulumi.IntPtrInput `pulumi:"storageSizeGb"`
@@ -5483,6 +5497,16 @@ func (o CloudVmClusterPropertiesOutput) SshPublicKeys() pulumi.StringArrayOutput
 // MAINTENANCE_IN_PROGRESS
 func (o CloudVmClusterPropertiesOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudVmClusterProperties) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The storage management type of the VM Cluster.
+// Possible values:
+// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+// ASM
+// EXASCALE
+func (o CloudVmClusterPropertiesOutput) StorageManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudVmClusterProperties) *string { return v.StorageManagementType }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -5850,6 +5874,21 @@ func (o CloudVmClusterPropertiesPtrOutput) State() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The storage management type of the VM Cluster.
+// Possible values:
+// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+// ASM
+// EXASCALE
+func (o CloudVmClusterPropertiesPtrOutput) StorageManagementType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmClusterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageManagementType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34882,6 +34921,12 @@ type GetCloudVmClusterProperty struct {
 	// FAILED
 	// MAINTENANCE_IN_PROGRESS
 	State string `pulumi:"state"`
+	// The storage management type of the VM Cluster.
+	// Possible values:
+	// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+	// ASM
+	// EXASCALE
+	StorageManagementType string `pulumi:"storageManagementType"`
 	// The storage allocation for the disk group, in gigabytes (GB).
 	StorageSizeGb int `pulumi:"storageSizeGb"`
 	// Operating system version of the image.
@@ -34982,6 +35027,12 @@ type GetCloudVmClusterPropertyArgs struct {
 	// FAILED
 	// MAINTENANCE_IN_PROGRESS
 	State pulumi.StringInput `pulumi:"state"`
+	// The storage management type of the VM Cluster.
+	// Possible values:
+	// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+	// ASM
+	// EXASCALE
+	StorageManagementType pulumi.StringInput `pulumi:"storageManagementType"`
 	// The storage allocation for the disk group, in gigabytes (GB).
 	StorageSizeGb pulumi.IntInput `pulumi:"storageSizeGb"`
 	// Operating system version of the image.
@@ -35214,6 +35265,15 @@ func (o GetCloudVmClusterPropertyOutput) SshPublicKeys() pulumi.StringArrayOutpu
 // MAINTENANCE_IN_PROGRESS
 func (o GetCloudVmClusterPropertyOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClusterProperty) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The storage management type of the VM Cluster.
+// Possible values:
+// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+// ASM
+// EXASCALE
+func (o GetCloudVmClusterPropertyOutput) StorageManagementType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClusterProperty) string { return v.StorageManagementType }).(pulumi.StringOutput)
 }
 
 // The storage allocation for the disk group, in gigabytes (GB).
@@ -35513,6 +35573,10 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure string `pulumi:"exadataInfrastructure"`
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault string `pulumi:"exascaleDbStorageVault"`
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone string `pulumi:"gcpOracleZone"`
@@ -35598,6 +35662,10 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure pulumi.StringInput `pulumi:"exadataInfrastructure"`
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault pulumi.StringInput `pulumi:"exascaleDbStorageVault"`
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone pulumi.StringInput `pulumi:"gcpOracleZone"`
@@ -35750,6 +35818,13 @@ func (o GetCloudVmClustersCloudVmClusterOutput) EffectiveLabels() pulumi.StringM
 // projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 func (o GetCloudVmClustersCloudVmClusterOutput) ExadataInfrastructure() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.ExadataInfrastructure }).(pulumi.StringOutput)
+}
+
+// The name of ExascaleDbStorageVault associated with the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+func (o GetCloudVmClustersCloudVmClusterOutput) ExascaleDbStorageVault() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.ExascaleDbStorageVault }).(pulumi.StringOutput)
 }
 
 // GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
@@ -36053,6 +36128,12 @@ type GetCloudVmClustersCloudVmClusterProperty struct {
 	// FAILED
 	// MAINTENANCE_IN_PROGRESS
 	State string `pulumi:"state"`
+	// The storage management type of the VM Cluster.
+	// Possible values:
+	// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+	// ASM
+	// EXASCALE
+	StorageManagementType string `pulumi:"storageManagementType"`
 	// The storage allocation for the disk group, in gigabytes (GB).
 	StorageSizeGb int `pulumi:"storageSizeGb"`
 	// Operating system version of the image.
@@ -36153,6 +36234,12 @@ type GetCloudVmClustersCloudVmClusterPropertyArgs struct {
 	// FAILED
 	// MAINTENANCE_IN_PROGRESS
 	State pulumi.StringInput `pulumi:"state"`
+	// The storage management type of the VM Cluster.
+	// Possible values:
+	// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+	// ASM
+	// EXASCALE
+	StorageManagementType pulumi.StringInput `pulumi:"storageManagementType"`
 	// The storage allocation for the disk group, in gigabytes (GB).
 	StorageSizeGb pulumi.IntInput `pulumi:"storageSizeGb"`
 	// Operating system version of the image.
@@ -36385,6 +36472,15 @@ func (o GetCloudVmClustersCloudVmClusterPropertyOutput) SshPublicKeys() pulumi.S
 // MAINTENANCE_IN_PROGRESS
 func (o GetCloudVmClustersCloudVmClusterPropertyOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterProperty) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The storage management type of the VM Cluster.
+// Possible values:
+// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+// ASM
+// EXASCALE
+func (o GetCloudVmClustersCloudVmClusterPropertyOutput) StorageManagementType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmClusterProperty) string { return v.StorageManagementType }).(pulumi.StringOutput)
 }
 
 // The storage allocation for the disk group, in gigabytes (GB).
@@ -37197,6 +37293,1180 @@ func (o GetDbServersDbServerPropertyArrayOutput) Index(i pulumi.IntInput) GetDbS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbServersDbServerProperty {
 		return vs[0].([]GetDbServersDbServerProperty)[vs[1].(int)]
 	}).(GetDbServersDbServerPropertyOutput)
+}
+
+type GetExascaleDbStorageVaultProperty struct {
+	// The size of additional flash cache in percentage of high capacity
+	// database storage.
+	AdditionalFlashCachePercent int `pulumi:"additionalFlashCachePercent"`
+	// The shape attributes of the VM clusters attached to the
+	// ExascaleDbStorageVault.
+	AttachedShapeAttributes []string `pulumi:"attachedShapeAttributes"`
+	// The shape attributes available for the VM clusters to be attached to the
+	// ExascaleDbStorageVault.
+	AvailableShapeAttributes []string `pulumi:"availableShapeAttributes"`
+	// The storage details of the ExascaleDbStorageVault.
+	ExascaleDbStorageDetails []GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail `pulumi:"exascaleDbStorageDetails"`
+	// Deep link to the OCI console to view this resource.
+	OciUri string `pulumi:"ociUri"`
+	// The OCID for the ExascaleDbStorageVault.
+	Ocid string `pulumi:"ocid"`
+	// The state of the ExascaleDbStorageVault.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	State string `pulumi:"state"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	TimeZones []GetExascaleDbStorageVaultPropertyTimeZone `pulumi:"timeZones"`
+	// The number of VM clusters associated with the ExascaleDbStorageVault.
+	VmClusterCount int `pulumi:"vmClusterCount"`
+	// The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+	VmClusterIds []string `pulumi:"vmClusterIds"`
+}
+
+// GetExascaleDbStorageVaultPropertyInput is an input type that accepts GetExascaleDbStorageVaultPropertyArgs and GetExascaleDbStorageVaultPropertyOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultPropertyInput` via:
+//
+//	GetExascaleDbStorageVaultPropertyArgs{...}
+type GetExascaleDbStorageVaultPropertyInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultPropertyOutput() GetExascaleDbStorageVaultPropertyOutput
+	ToGetExascaleDbStorageVaultPropertyOutputWithContext(context.Context) GetExascaleDbStorageVaultPropertyOutput
+}
+
+type GetExascaleDbStorageVaultPropertyArgs struct {
+	// The size of additional flash cache in percentage of high capacity
+	// database storage.
+	AdditionalFlashCachePercent pulumi.IntInput `pulumi:"additionalFlashCachePercent"`
+	// The shape attributes of the VM clusters attached to the
+	// ExascaleDbStorageVault.
+	AttachedShapeAttributes pulumi.StringArrayInput `pulumi:"attachedShapeAttributes"`
+	// The shape attributes available for the VM clusters to be attached to the
+	// ExascaleDbStorageVault.
+	AvailableShapeAttributes pulumi.StringArrayInput `pulumi:"availableShapeAttributes"`
+	// The storage details of the ExascaleDbStorageVault.
+	ExascaleDbStorageDetails GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput `pulumi:"exascaleDbStorageDetails"`
+	// Deep link to the OCI console to view this resource.
+	OciUri pulumi.StringInput `pulumi:"ociUri"`
+	// The OCID for the ExascaleDbStorageVault.
+	Ocid pulumi.StringInput `pulumi:"ocid"`
+	// The state of the ExascaleDbStorageVault.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	State pulumi.StringInput `pulumi:"state"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	TimeZones GetExascaleDbStorageVaultPropertyTimeZoneArrayInput `pulumi:"timeZones"`
+	// The number of VM clusters associated with the ExascaleDbStorageVault.
+	VmClusterCount pulumi.IntInput `pulumi:"vmClusterCount"`
+	// The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+	VmClusterIds pulumi.StringArrayInput `pulumi:"vmClusterIds"`
+}
+
+func (GetExascaleDbStorageVaultPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultPropertyArgs) ToGetExascaleDbStorageVaultPropertyOutput() GetExascaleDbStorageVaultPropertyOutput {
+	return i.ToGetExascaleDbStorageVaultPropertyOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultPropertyArgs) ToGetExascaleDbStorageVaultPropertyOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultPropertyOutput)
+}
+
+// GetExascaleDbStorageVaultPropertyArrayInput is an input type that accepts GetExascaleDbStorageVaultPropertyArray and GetExascaleDbStorageVaultPropertyArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultPropertyArrayInput` via:
+//
+//	GetExascaleDbStorageVaultPropertyArray{ GetExascaleDbStorageVaultPropertyArgs{...} }
+type GetExascaleDbStorageVaultPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultPropertyArrayOutput() GetExascaleDbStorageVaultPropertyArrayOutput
+	ToGetExascaleDbStorageVaultPropertyArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultPropertyArrayOutput
+}
+
+type GetExascaleDbStorageVaultPropertyArray []GetExascaleDbStorageVaultPropertyInput
+
+func (GetExascaleDbStorageVaultPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultPropertyArray) ToGetExascaleDbStorageVaultPropertyArrayOutput() GetExascaleDbStorageVaultPropertyArrayOutput {
+	return i.ToGetExascaleDbStorageVaultPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultPropertyArray) ToGetExascaleDbStorageVaultPropertyArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultPropertyArrayOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultPropertyOutput) ToGetExascaleDbStorageVaultPropertyOutput() GetExascaleDbStorageVaultPropertyOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyOutput) ToGetExascaleDbStorageVaultPropertyOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyOutput {
+	return o
+}
+
+// The size of additional flash cache in percentage of high capacity
+// database storage.
+func (o GetExascaleDbStorageVaultPropertyOutput) AdditionalFlashCachePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) int { return v.AdditionalFlashCachePercent }).(pulumi.IntOutput)
+}
+
+// The shape attributes of the VM clusters attached to the
+// ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultPropertyOutput) AttachedShapeAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) []string { return v.AttachedShapeAttributes }).(pulumi.StringArrayOutput)
+}
+
+// The shape attributes available for the VM clusters to be attached to the
+// ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultPropertyOutput) AvailableShapeAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) []string { return v.AvailableShapeAttributes }).(pulumi.StringArrayOutput)
+}
+
+// The storage details of the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultPropertyOutput) ExascaleDbStorageDetails() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) []GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail {
+		return v.ExascaleDbStorageDetails
+	}).(GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput)
+}
+
+// Deep link to the OCI console to view this resource.
+func (o GetExascaleDbStorageVaultPropertyOutput) OciUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) string { return v.OciUri }).(pulumi.StringOutput)
+}
+
+// The OCID for the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultPropertyOutput) Ocid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) string { return v.Ocid }).(pulumi.StringOutput)
+}
+
+// The state of the ExascaleDbStorageVault.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// TERMINATING
+// TERMINATED
+// FAILED
+func (o GetExascaleDbStorageVaultPropertyOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Represents a time zone from the
+// [IANA Time Zone Database](https://www.iana.org/time-zones).
+func (o GetExascaleDbStorageVaultPropertyOutput) TimeZones() GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) []GetExascaleDbStorageVaultPropertyTimeZone {
+		return v.TimeZones
+	}).(GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput)
+}
+
+// The number of VM clusters associated with the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultPropertyOutput) VmClusterCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) int { return v.VmClusterCount }).(pulumi.IntOutput)
+}
+
+// The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultPropertyOutput) VmClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultProperty) []string { return v.VmClusterIds }).(pulumi.StringArrayOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultPropertyArrayOutput) ToGetExascaleDbStorageVaultPropertyArrayOutput() GetExascaleDbStorageVaultPropertyArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyArrayOutput) ToGetExascaleDbStorageVaultPropertyArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultProperty {
+		return vs[0].([]GetExascaleDbStorageVaultProperty)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultPropertyOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail struct {
+	// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	AvailableSizeGbs int `pulumi:"availableSizeGbs"`
+	// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	TotalSizeGbs int `pulumi:"totalSizeGbs"`
+}
+
+// GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput is an input type that accepts GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs and GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput` via:
+//
+//	GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs{...}
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput
+	ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(context.Context) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput
+}
+
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs struct {
+	// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	AvailableSizeGbs pulumi.IntInput `pulumi:"availableSizeGbs"`
+	// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	TotalSizeGbs pulumi.IntInput `pulumi:"totalSizeGbs"`
+}
+
+func (GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return i.ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput)
+}
+
+// GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput is an input type that accepts GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray and GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput` via:
+//
+//	GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray{ GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs{...} }
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput
+	ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput
+}
+
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray []GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput
+
+func (GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return i.ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return o
+}
+
+// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+// (GB).
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) AvailableSizeGbs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail) int { return v.AvailableSizeGbs }).(pulumi.IntOutput)
+}
+
+// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+// (GB).
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) TotalSizeGbs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail) int { return v.TotalSizeGbs }).(pulumi.IntOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput() GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) ToGetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail {
+		return vs[0].([]GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyTimeZone struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id string `pulumi:"id"`
+	// IANA Time Zone Database version number. For example "2019a".
+	Version string `pulumi:"version"`
+}
+
+// GetExascaleDbStorageVaultPropertyTimeZoneInput is an input type that accepts GetExascaleDbStorageVaultPropertyTimeZoneArgs and GetExascaleDbStorageVaultPropertyTimeZoneOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultPropertyTimeZoneInput` via:
+//
+//	GetExascaleDbStorageVaultPropertyTimeZoneArgs{...}
+type GetExascaleDbStorageVaultPropertyTimeZoneInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultPropertyTimeZoneOutput() GetExascaleDbStorageVaultPropertyTimeZoneOutput
+	ToGetExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(context.Context) GetExascaleDbStorageVaultPropertyTimeZoneOutput
+}
+
+type GetExascaleDbStorageVaultPropertyTimeZoneArgs struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id pulumi.StringInput `pulumi:"id"`
+	// IANA Time Zone Database version number. For example "2019a".
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetExascaleDbStorageVaultPropertyTimeZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultPropertyTimeZoneArgs) ToGetExascaleDbStorageVaultPropertyTimeZoneOutput() GetExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return i.ToGetExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultPropertyTimeZoneArgs) ToGetExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultPropertyTimeZoneOutput)
+}
+
+// GetExascaleDbStorageVaultPropertyTimeZoneArrayInput is an input type that accepts GetExascaleDbStorageVaultPropertyTimeZoneArray and GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultPropertyTimeZoneArrayInput` via:
+//
+//	GetExascaleDbStorageVaultPropertyTimeZoneArray{ GetExascaleDbStorageVaultPropertyTimeZoneArgs{...} }
+type GetExascaleDbStorageVaultPropertyTimeZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutput() GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput
+	ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput
+}
+
+type GetExascaleDbStorageVaultPropertyTimeZoneArray []GetExascaleDbStorageVaultPropertyTimeZoneInput
+
+func (GetExascaleDbStorageVaultPropertyTimeZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultPropertyTimeZoneArray) ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutput() GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return i.ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultPropertyTimeZoneArray) ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyTimeZoneOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultPropertyTimeZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultPropertyTimeZoneOutput) ToGetExascaleDbStorageVaultPropertyTimeZoneOutput() GetExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyTimeZoneOutput) ToGetExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return o
+}
+
+// IANA Time Zone Database time zone. For example "America/New_York".
+func (o GetExascaleDbStorageVaultPropertyTimeZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultPropertyTimeZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IANA Time Zone Database version number. For example "2019a".
+func (o GetExascaleDbStorageVaultPropertyTimeZoneOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultPropertyTimeZone) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput) ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutput() GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput) ToGetExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultPropertyTimeZone {
+		return vs[0].([]GetExascaleDbStorageVaultPropertyTimeZone)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultPropertyTimeZoneOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVault struct {
+	// The date and time when the ExascaleDbStorageVault was created.
+	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection bool `pulumi:"deletionProtection"`
+	// The display name for the ExascaleDbStorageVault. The name does not have to
+	// be unique within your project. The name must be 1-255 characters long and
+	// can only contain alphanumeric characters.
+	DisplayName string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The ID of the subscription entitlement associated with the
+	// ExascaleDbStorageVault.
+	EntitlementId string `pulumi:"entitlementId"`
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure string `pulumi:"exadataInfrastructure"`
+	// The ID of the ExascaleDbStorageVault to create. This value is
+	// restricted to (^a-z?$) and must be a maximum of
+	// 63 characters in length. The value must start with a letter and end with a
+	// letter or a number.
+	ExascaleDbStorageVaultId string `pulumi:"exascaleDbStorageVaultId"`
+	// The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone string `pulumi:"gcpOracleZone"`
+	// The labels or tags associated with the ExascaleDbStorageVault.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// The location of the resource.
+	//
+	// ***
+	Location string `pulumi:"location"`
+	// Identifier. The resource name of the ExascaleDbStorageVault.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	Name string `pulumi:"name"`
+	// The project to which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+	// The properties of the ExascaleDbStorageVault.
+	// next ID: 12
+	Properties []GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty `pulumi:"properties"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs and GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs{...}
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs struct {
+	// The date and time when the ExascaleDbStorageVault was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
+	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
+	// The display name for the ExascaleDbStorageVault. The name does not have to
+	// be unique within your project. The name must be 1-255 characters long and
+	// can only contain alphanumeric characters.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// The ID of the subscription entitlement associated with the
+	// ExascaleDbStorageVault.
+	EntitlementId pulumi.StringInput `pulumi:"entitlementId"`
+	// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+	// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+	ExadataInfrastructure pulumi.StringInput `pulumi:"exadataInfrastructure"`
+	// The ID of the ExascaleDbStorageVault to create. This value is
+	// restricted to (^a-z?$) and must be a maximum of
+	// 63 characters in length. The value must start with a letter and end with a
+	// letter or a number.
+	ExascaleDbStorageVaultId pulumi.StringInput `pulumi:"exascaleDbStorageVaultId"`
+	// The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
+	// Example: us-east4-b-r2.
+	// If not specified, the system will pick a zone based on availability.
+	GcpOracleZone pulumi.StringInput `pulumi:"gcpOracleZone"`
+	// The labels or tags associated with the ExascaleDbStorageVault.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The location of the resource.
+	//
+	// ***
+	Location pulumi.StringInput `pulumi:"location"`
+	// Identifier. The resource name of the ExascaleDbStorageVault.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	Name pulumi.StringInput `pulumi:"name"`
+	// The project to which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The properties of the ExascaleDbStorageVault.
+	// next ID: 12
+	Properties GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayInput `pulumi:"properties"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+}
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVault)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput)
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultArray and GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultArray{ GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs{...} }
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultArray []GetExascaleDbStorageVaultsExascaleDbStorageVaultInput
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVault)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVault)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput {
+	return o
+}
+
+// The date and time when the ExascaleDbStorageVault was created.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
+}
+
+// The display name for the ExascaleDbStorageVault. The name does not have to
+// be unique within your project. The name must be 1-255 characters long and
+// can only contain alphanumeric characters.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The ID of the subscription entitlement associated with the
+// ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) EntitlementId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.EntitlementId }).(pulumi.StringOutput)
+}
+
+// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) ExadataInfrastructure() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.ExadataInfrastructure }).(pulumi.StringOutput)
+}
+
+// The ID of the ExascaleDbStorageVault to create. This value is
+// restricted to (^a-z?$) and must be a maximum of
+// 63 characters in length. The value must start with a letter and end with a
+// letter or a number.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) ExascaleDbStorageVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.ExascaleDbStorageVaultId }).(pulumi.StringOutput)
+}
+
+// The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
+// Example: us-east4-b-r2.
+// If not specified, the system will pick a zone based on availability.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) GcpOracleZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.GcpOracleZone }).(pulumi.StringOutput)
+}
+
+// The labels or tags associated with the ExascaleDbStorageVault.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The location of the resource.
+//
+// ***
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Identifier. The resource name of the ExascaleDbStorageVault.
+// Format:
+// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project to which the resource belongs. If it
+// is not provided, the provider project is used.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The properties of the ExascaleDbStorageVault.
+// next ID: 12
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) Properties() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) []GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty {
+		return v.Properties
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVault) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVault)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultsExascaleDbStorageVault {
+		return vs[0].([]GetExascaleDbStorageVaultsExascaleDbStorageVault)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty struct {
+	// The size of additional flash cache in percentage of high capacity
+	// database storage.
+	AdditionalFlashCachePercent int `pulumi:"additionalFlashCachePercent"`
+	// The shape attributes of the VM clusters attached to the
+	// ExascaleDbStorageVault.
+	AttachedShapeAttributes []string `pulumi:"attachedShapeAttributes"`
+	// The shape attributes available for the VM clusters to be attached to the
+	// ExascaleDbStorageVault.
+	AvailableShapeAttributes []string `pulumi:"availableShapeAttributes"`
+	// The storage details of the ExascaleDbStorageVault.
+	ExascaleDbStorageDetails []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail `pulumi:"exascaleDbStorageDetails"`
+	// Deep link to the OCI console to view this resource.
+	OciUri string `pulumi:"ociUri"`
+	// The OCID for the ExascaleDbStorageVault.
+	Ocid string `pulumi:"ocid"`
+	// The state of the ExascaleDbStorageVault.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	State string `pulumi:"state"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	TimeZones []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone `pulumi:"timeZones"`
+	// The number of VM clusters associated with the ExascaleDbStorageVault.
+	VmClusterCount int `pulumi:"vmClusterCount"`
+	// The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+	VmClusterIds []string `pulumi:"vmClusterIds"`
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs and GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs{...}
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs struct {
+	// The size of additional flash cache in percentage of high capacity
+	// database storage.
+	AdditionalFlashCachePercent pulumi.IntInput `pulumi:"additionalFlashCachePercent"`
+	// The shape attributes of the VM clusters attached to the
+	// ExascaleDbStorageVault.
+	AttachedShapeAttributes pulumi.StringArrayInput `pulumi:"attachedShapeAttributes"`
+	// The shape attributes available for the VM clusters to be attached to the
+	// ExascaleDbStorageVault.
+	AvailableShapeAttributes pulumi.StringArrayInput `pulumi:"availableShapeAttributes"`
+	// The storage details of the ExascaleDbStorageVault.
+	ExascaleDbStorageDetails GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput `pulumi:"exascaleDbStorageDetails"`
+	// Deep link to the OCI console to view this resource.
+	OciUri pulumi.StringInput `pulumi:"ociUri"`
+	// The OCID for the ExascaleDbStorageVault.
+	Ocid pulumi.StringInput `pulumi:"ocid"`
+	// The state of the ExascaleDbStorageVault.
+	// Possible values:
+	// PROVISIONING
+	// AVAILABLE
+	// UPDATING
+	// TERMINATING
+	// TERMINATED
+	// FAILED
+	State pulumi.StringInput `pulumi:"state"`
+	// Represents a time zone from the
+	// [IANA Time Zone Database](https://www.iana.org/time-zones).
+	TimeZones GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayInput `pulumi:"timeZones"`
+	// The number of VM clusters associated with the ExascaleDbStorageVault.
+	VmClusterCount pulumi.IntInput `pulumi:"vmClusterCount"`
+	// The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+	VmClusterIds pulumi.StringArrayInput `pulumi:"vmClusterIds"`
+}
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput)
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray and GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray{ GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs{...} }
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyInput
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput {
+	return o
+}
+
+// The size of additional flash cache in percentage of high capacity
+// database storage.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) AdditionalFlashCachePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) int {
+		return v.AdditionalFlashCachePercent
+	}).(pulumi.IntOutput)
+}
+
+// The shape attributes of the VM clusters attached to the
+// ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) AttachedShapeAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) []string {
+		return v.AttachedShapeAttributes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The shape attributes available for the VM clusters to be attached to the
+// ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) AvailableShapeAttributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) []string {
+		return v.AvailableShapeAttributes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The storage details of the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) ExascaleDbStorageDetails() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail {
+		return v.ExascaleDbStorageDetails
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput)
+}
+
+// Deep link to the OCI console to view this resource.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) OciUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) string { return v.OciUri }).(pulumi.StringOutput)
+}
+
+// The OCID for the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) Ocid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) string { return v.Ocid }).(pulumi.StringOutput)
+}
+
+// The state of the ExascaleDbStorageVault.
+// Possible values:
+// PROVISIONING
+// AVAILABLE
+// UPDATING
+// TERMINATING
+// TERMINATED
+// FAILED
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Represents a time zone from the
+// [IANA Time Zone Database](https://www.iana.org/time-zones).
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) TimeZones() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone {
+		return v.TimeZones
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput)
+}
+
+// The number of VM clusters associated with the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) VmClusterCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) int { return v.VmClusterCount }).(pulumi.IntOutput)
+}
+
+// The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput) VmClusterIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty) []string { return v.VmClusterIds }).(pulumi.StringArrayOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty {
+		return vs[0].([]GetExascaleDbStorageVaultsExascaleDbStorageVaultProperty)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail struct {
+	// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	AvailableSizeGbs int `pulumi:"availableSizeGbs"`
+	// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	TotalSizeGbs int `pulumi:"totalSizeGbs"`
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs and GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs{...}
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs struct {
+	// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	AvailableSizeGbs pulumi.IntInput `pulumi:"availableSizeGbs"`
+	// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+	// (GB).
+	TotalSizeGbs pulumi.IntInput `pulumi:"totalSizeGbs"`
+}
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput)
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray and GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray{ GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs{...} }
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return o
+}
+
+// The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+// (GB).
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) AvailableSizeGbs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail) int {
+		return v.AvailableSizeGbs
+	}).(pulumi.IntOutput)
+}
+
+// The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+// (GB).
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput) TotalSizeGbs() pulumi.IntOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail) int {
+		return v.TotalSizeGbs
+	}).(pulumi.IntOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail {
+		return vs[0].([]GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id string `pulumi:"id"`
+	// IANA Time Zone Database version number. For example "2019a".
+	Version string `pulumi:"version"`
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs and GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs{...}
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs struct {
+	// IANA Time Zone Database time zone. For example "America/New_York".
+	Id pulumi.StringInput `pulumi:"id"`
+	// IANA Time Zone Database version number. For example "2019a".
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput)
+}
+
+// GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayInput is an input type that accepts GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray and GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput values.
+// You can construct a concrete instance of `GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayInput` via:
+//
+//	GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray{ GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs{...} }
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput
+	ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray []GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneInput
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return i.ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return o
+}
+
+// IANA Time Zone Database time zone. For example "America/New_York".
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IANA Time Zone Database version number. For example "2019a".
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone)(nil)).Elem()
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput() GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput) ToGetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutputWithContext(ctx context.Context) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput {
+	return o
+}
+
+func (o GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput) Index(i pulumi.IntInput) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone {
+		return vs[0].([]GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZone)[vs[1].(int)]
+	}).(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput)
 }
 
 type GetGoldengateConnectionTypesGoldengateConnectionType struct {
@@ -38246,6 +39516,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbServersDbServerArrayInput)(nil)).Elem(), GetDbServersDbServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbServersDbServerPropertyInput)(nil)).Elem(), GetDbServersDbServerPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbServersDbServerPropertyArrayInput)(nil)).Elem(), GetDbServersDbServerPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultPropertyInput)(nil)).Elem(), GetExascaleDbStorageVaultPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultPropertyArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput)(nil)).Elem(), GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultPropertyTimeZoneInput)(nil)).Elem(), GetExascaleDbStorageVaultPropertyTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultPropertyTimeZoneArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultPropertyTimeZoneArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayInput)(nil)).Elem(), GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionTypeInput)(nil)).Elem(), GetGoldengateConnectionTypesGoldengateConnectionTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateConnectionTypesGoldengateConnectionTypeArrayInput)(nil)).Elem(), GetGoldengateConnectionTypesGoldengateConnectionTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentInput)(nil)).Elem(), GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentArgs{})
@@ -38528,6 +39812,20 @@ func init() {
 	pulumi.RegisterOutputType(GetDbServersDbServerArrayOutput{})
 	pulumi.RegisterOutputType(GetDbServersDbServerPropertyOutput{})
 	pulumi.RegisterOutputType(GetDbServersDbServerPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultPropertyOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultPropertyTimeZoneOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultPropertyTimeZoneArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArrayOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneOutput{})
+	pulumi.RegisterOutputType(GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetGoldengateConnectionTypesGoldengateConnectionTypeOutput{})
 	pulumi.RegisterOutputType(GetGoldengateConnectionTypesGoldengateConnectionTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentOutput{})

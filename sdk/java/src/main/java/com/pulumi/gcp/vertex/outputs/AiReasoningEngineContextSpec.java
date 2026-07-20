@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecExampleStoreConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfig;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,6 +13,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineContextSpec {
     /**
+     * @return (Optional, Beta)
+     * Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineContextSpecExampleStoreConfig exampleStoreConfig;
+    /**
      * @return Specification for a Memory Bank, which manages memories for the Agent Engine.
      * Structure is documented below.
      * 
@@ -19,6 +27,15 @@ public final class AiReasoningEngineContextSpec {
     private @Nullable AiReasoningEngineContextSpecMemoryBankConfig memoryBankConfig;
 
     private AiReasoningEngineContextSpec() {}
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineContextSpecExampleStoreConfig> exampleStoreConfig() {
+        return Optional.ofNullable(this.exampleStoreConfig);
+    }
     /**
      * @return Specification for a Memory Bank, which manages memories for the Agent Engine.
      * Structure is documented below.
@@ -37,13 +54,21 @@ public final class AiReasoningEngineContextSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiReasoningEngineContextSpecExampleStoreConfig exampleStoreConfig;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfig memoryBankConfig;
         public Builder() {}
         public Builder(AiReasoningEngineContextSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.exampleStoreConfig = defaults.exampleStoreConfig;
     	      this.memoryBankConfig = defaults.memoryBankConfig;
         }
 
+        @CustomType.Setter
+        public Builder exampleStoreConfig(@Nullable AiReasoningEngineContextSpecExampleStoreConfig exampleStoreConfig) {
+
+            this.exampleStoreConfig = exampleStoreConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder memoryBankConfig(@Nullable AiReasoningEngineContextSpecMemoryBankConfig memoryBankConfig) {
 
@@ -52,6 +77,7 @@ public final class AiReasoningEngineContextSpec {
         }
         public AiReasoningEngineContextSpec build() {
             final var _resultValue = new AiReasoningEngineContextSpec();
+            _resultValue.exampleStoreConfig = exampleStoreConfig;
             _resultValue.memoryBankConfig = memoryBankConfig;
             return _resultValue;
         }

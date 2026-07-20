@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     // 1. Create the Pub/Sub Topic
     ///     var testTopic = new Gcp.PubSub.Topic("test_topic", new()
     ///     {
-    ///         Name = "chronicle-test-topic-my-project-name-_91042",
+    ///         Name = "chronicle-test-topic-my-project-name-_89605",
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     // 3. Create the Pub/Sub Subscription
     ///     var testSubscription = new Gcp.PubSub.Subscription("test_subscription", new()
     ///     {
-    ///         Name = "chronicle-test-sub-my-project-name-_72490",
+    ///         Name = "chronicle-test-sub-my-project-name-_56730",
     ///         Project = "my-project-name",
     ///         Topic = testTopic.Name,
     ///         MessageRetentionDuration = "1200s",
@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.Chronicle
     ///     // 4. Define the GCS Bucket
     ///     var testBucket = new Gcp.Storage.Bucket("test_bucket", new()
     ///     {
-    ///         Name = "chronicle-test-bucket-my-project-name-_89605",
+    ///         Name = "chronicle-test-bucket-my-project-name-_95154",
     ///         Project = "my-project-name",
     ///         Location = "US",
     ///         ForceDestroy = true,

@@ -37,7 +37,7 @@ export interface GetMetastoreServiceArgs {
     /**
      * The location where the metastore service resides.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -121,7 +121,7 @@ export interface GetMetastoreServiceOutputArgs {
     /**
      * The location where the metastore service resides.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

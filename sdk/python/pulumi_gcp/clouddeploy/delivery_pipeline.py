@@ -51,9 +51,7 @@ class DeliveryPipelineArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[_builtins.bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -153,9 +151,7 @@ class DeliveryPipelineArgs:
         """
         Name of the `DeliveryPipeline`. Format is `a-z?`.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -246,9 +242,7 @@ class _DeliveryPipelineState:
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['DeliveryPipelineSerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -428,9 +422,7 @@ class _DeliveryPipelineState:
         """
         Name of the `DeliveryPipeline`. Format is `a-z?`.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -774,9 +766,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
         :param pulumi.Input[_builtins.bool] suspended: When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
@@ -1125,9 +1115,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Name of the `DeliveryPipeline`. Format is `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['DeliveryPipelineSerialPipelineArgs', 'DeliveryPipelineSerialPipelineArgsDict']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -1255,9 +1243,7 @@ class DeliveryPipeline(pulumi.CustomResource):
         """
         Name of the `DeliveryPipeline`. Format is `a-z?`.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

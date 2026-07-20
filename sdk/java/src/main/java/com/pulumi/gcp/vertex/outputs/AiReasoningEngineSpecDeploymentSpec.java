@@ -4,9 +4,12 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecEnv;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecKeepAliveProbe;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,11 +21,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiReasoningEngineSpecDeploymentSpec {
     /**
+     * @return (Optional, Beta)
+     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig agentGatewayConfig;
+    /**
+     * @return (Optional, Beta)
+     * Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+     * Possible values:
+     * * `STABLE`: Stable agent server mode.
+     * * `EXPERIMENTAL`: Experimental agent server mode.
+     *   Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    private @Nullable String agentServerMode;
+    /**
      * @return Optional. Concurrency for each container and agent server.
      * Recommended value: 2 * cpu + 1. Defaults to 9.
      * 
      */
     private @Nullable Integer containerConcurrency;
+    /**
+     * @return (Optional, Beta)
+     * Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+     * 
+     */
+    private @Nullable Boolean dedicatedIngressEndpointEnabled;
     /**
      * @return Optional. Environment variables to be set with the Reasoning
      * Engine deployment.
@@ -30,6 +56,13 @@ public final class AiReasoningEngineSpecDeploymentSpec {
      * 
      */
     private @Nullable List<AiReasoningEngineSpecDeploymentSpecEnv> envs;
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specifies the configuration for keep-alive probe.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecDeploymentSpecKeepAliveProbe keepAliveProbe;
     /**
      * @return Optional. The maximum number of application instances that can be
      * launched to handle increased traffic. Defaults to 100.
@@ -75,12 +108,41 @@ public final class AiReasoningEngineSpecDeploymentSpec {
 
     private AiReasoningEngineSpecDeploymentSpec() {}
     /**
+     * @return (Optional, Beta)
+     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig> agentGatewayConfig() {
+        return Optional.ofNullable(this.agentGatewayConfig);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+     * Possible values:
+     * * `STABLE`: Stable agent server mode.
+     * * `EXPERIMENTAL`: Experimental agent server mode.
+     *   Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    public Optional<String> agentServerMode() {
+        return Optional.ofNullable(this.agentServerMode);
+    }
+    /**
      * @return Optional. Concurrency for each container and agent server.
      * Recommended value: 2 * cpu + 1. Defaults to 9.
      * 
      */
     public Optional<Integer> containerConcurrency() {
         return Optional.ofNullable(this.containerConcurrency);
+    }
+    /**
+     * @return (Optional, Beta)
+     * Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+     * 
+     */
+    public Optional<Boolean> dedicatedIngressEndpointEnabled() {
+        return Optional.ofNullable(this.dedicatedIngressEndpointEnabled);
     }
     /**
      * @return Optional. Environment variables to be set with the Reasoning
@@ -90,6 +152,15 @@ public final class AiReasoningEngineSpecDeploymentSpec {
      */
     public List<AiReasoningEngineSpecDeploymentSpecEnv> envs() {
         return this.envs == null ? List.of() : this.envs;
+    }
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specifies the configuration for keep-alive probe.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecDeploymentSpecKeepAliveProbe> keepAliveProbe() {
+        return Optional.ofNullable(this.keepAliveProbe);
     }
     /**
      * @return Optional. The maximum number of application instances that can be
@@ -153,8 +224,12 @@ public final class AiReasoningEngineSpecDeploymentSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig agentGatewayConfig;
+        private @Nullable String agentServerMode;
         private @Nullable Integer containerConcurrency;
+        private @Nullable Boolean dedicatedIngressEndpointEnabled;
         private @Nullable List<AiReasoningEngineSpecDeploymentSpecEnv> envs;
+        private @Nullable AiReasoningEngineSpecDeploymentSpecKeepAliveProbe keepAliveProbe;
         private @Nullable Integer maxInstances;
         private @Nullable Integer minInstances;
         private @Nullable AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig pscInterfaceConfig;
@@ -163,8 +238,12 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         public Builder() {}
         public Builder(AiReasoningEngineSpecDeploymentSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentGatewayConfig = defaults.agentGatewayConfig;
+    	      this.agentServerMode = defaults.agentServerMode;
     	      this.containerConcurrency = defaults.containerConcurrency;
+    	      this.dedicatedIngressEndpointEnabled = defaults.dedicatedIngressEndpointEnabled;
     	      this.envs = defaults.envs;
+    	      this.keepAliveProbe = defaults.keepAliveProbe;
     	      this.maxInstances = defaults.maxInstances;
     	      this.minInstances = defaults.minInstances;
     	      this.pscInterfaceConfig = defaults.pscInterfaceConfig;
@@ -173,9 +252,27 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         }
 
         @CustomType.Setter
+        public Builder agentGatewayConfig(@Nullable AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig agentGatewayConfig) {
+
+            this.agentGatewayConfig = agentGatewayConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder agentServerMode(@Nullable String agentServerMode) {
+
+            this.agentServerMode = agentServerMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder containerConcurrency(@Nullable Integer containerConcurrency) {
 
             this.containerConcurrency = containerConcurrency;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dedicatedIngressEndpointEnabled(@Nullable Boolean dedicatedIngressEndpointEnabled) {
+
+            this.dedicatedIngressEndpointEnabled = dedicatedIngressEndpointEnabled;
             return this;
         }
         @CustomType.Setter
@@ -186,6 +283,12 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         }
         public Builder envs(AiReasoningEngineSpecDeploymentSpecEnv... envs) {
             return envs(List.of(envs));
+        }
+        @CustomType.Setter
+        public Builder keepAliveProbe(@Nullable AiReasoningEngineSpecDeploymentSpecKeepAliveProbe keepAliveProbe) {
+
+            this.keepAliveProbe = keepAliveProbe;
+            return this;
         }
         @CustomType.Setter
         public Builder maxInstances(@Nullable Integer maxInstances) {
@@ -222,8 +325,12 @@ public final class AiReasoningEngineSpecDeploymentSpec {
         }
         public AiReasoningEngineSpecDeploymentSpec build() {
             final var _resultValue = new AiReasoningEngineSpecDeploymentSpec();
+            _resultValue.agentGatewayConfig = agentGatewayConfig;
+            _resultValue.agentServerMode = agentServerMode;
             _resultValue.containerConcurrency = containerConcurrency;
+            _resultValue.dedicatedIngressEndpointEnabled = dedicatedIngressEndpointEnabled;
             _resultValue.envs = envs;
+            _resultValue.keepAliveProbe = keepAliveProbe;
             _resultValue.maxInstances = maxInstances;
             _resultValue.minInstances = minInstances;
             _resultValue.pscInterfaceConfig = pscInterfaceConfig;

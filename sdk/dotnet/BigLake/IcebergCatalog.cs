@@ -135,6 +135,76 @@ namespace Pulumi.Gcp.BigLake
     /// 
     /// });
     /// ```
+    /// ### Biglake Iceberg Catalog Federated Unity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myIcebergCatalog = new Gcp.BigLake.IcebergCatalog("my_iceberg_catalog", new()
+    ///     {
+    ///         CatalogType = "CATALOG_TYPE_FEDERATED",
+    ///         Name = "my_iceberg_catalog",
+    ///         PrimaryLocation = "us-central1",
+    ///         FederatedCatalogOptions = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsArgs
+    ///         {
+    ///             UnityCatalogInfo = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs
+    ///             {
+    ///                 CatalogName = "my_catalog",
+    ///                 InstanceName = "1.1.gcp.databricks.com",
+    ///                 ServicePrincipalApplicationId = "b3204274-6556-4d40-ad18-556f91659745",
+    ///             },
+    ///             RefreshOptions = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs
+    ///             {
+    ///                 RefreshSchedule = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs
+    ///                 {
+    ///                     RefreshInterval = "300s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Biglake Iceberg Catalog Federated Glue
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myIcebergCatalog = new Gcp.BigLake.IcebergCatalog("my_iceberg_catalog", new()
+    ///     {
+    ///         CatalogType = "CATALOG_TYPE_FEDERATED",
+    ///         Name = "my_iceberg_catalog",
+    ///         PrimaryLocation = "us-central1",
+    ///         FederatedCatalogOptions = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsArgs
+    ///         {
+    ///             GlueCatalogInfo = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs
+    ///             {
+    ///                 AwsRegion = "us-east-1",
+    ///                 AwsRoleArn = "arn:aws:iam::111222333444:role/my-glue-role",
+    ///                 Warehouse = "111222333444:s3tablescatalog/example",
+    ///             },
+    ///             RefreshOptions = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs
+    ///             {
+    ///                 RefreshSchedule = new Gcp.BigLake.Inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs
+    ///                 {
+    ///                     RefreshInterval = "300s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -162,8 +232,17 @@ namespace Pulumi.Gcp.BigLake
         public Output<string> BiglakeServiceAccount { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+        /// </summary>
+        [Output("biglakeServiceAccountId")]
+        public Output<string> BiglakeServiceAccountId { get; private set; } = null!;
+
+        /// <summary>
         /// The catalog type of the IcebergCatalog.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+        /// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+        /// * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+        /// * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         /// </summary>
         [Output("catalogType")]
         public Output<string> CatalogType { get; private set; } = null!;
@@ -199,6 +278,20 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Options for a CATALOG_TYPE_FEDERATED catalog. Required when CatalogType
+        /// is CATALOG_TYPE_FEDERATED.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("federatedCatalogOptions")]
+        public Output<Outputs.IcebergCatalogFederatedCatalogOptions?> FederatedCatalogOptions { get; private set; } = null!;
 
         /// <summary>
         /// The name of the IcebergCatalog.
@@ -299,7 +392,10 @@ namespace Pulumi.Gcp.BigLake
     {
         /// <summary>
         /// The catalog type of the IcebergCatalog.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+        /// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+        /// * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+        /// * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         /// </summary>
         [Input("catalogType", required: true)]
         public Input<string> CatalogType { get; set; } = null!;
@@ -329,6 +425,20 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Options for a CATALOG_TYPE_FEDERATED catalog. Required when CatalogType
+        /// is CATALOG_TYPE_FEDERATED.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("federatedCatalogOptions")]
+        public Input<Inputs.IcebergCatalogFederatedCatalogOptionsArgs>? FederatedCatalogOptions { get; set; }
 
         /// <summary>
         /// The name of the IcebergCatalog.
@@ -377,8 +487,17 @@ namespace Pulumi.Gcp.BigLake
         public Input<string>? BiglakeServiceAccount { get; set; }
 
         /// <summary>
+        /// Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+        /// </summary>
+        [Input("biglakeServiceAccountId")]
+        public Input<string>? BiglakeServiceAccountId { get; set; }
+
+        /// <summary>
         /// The catalog type of the IcebergCatalog.
-        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+        /// * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+        /// * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+        /// * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+        /// Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         /// </summary>
         [Input("catalogType")]
         public Input<string>? CatalogType { get; set; }
@@ -414,6 +533,20 @@ namespace Pulumi.Gcp.BigLake
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Options for a CATALOG_TYPE_FEDERATED catalog. Required when CatalogType
+        /// is CATALOG_TYPE_FEDERATED.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("federatedCatalogOptions")]
+        public Input<Inputs.IcebergCatalogFederatedCatalogOptionsGetArgs>? FederatedCatalogOptions { get; set; }
 
         /// <summary>
         /// The name of the IcebergCatalog.

@@ -35,9 +35,7 @@ class EnterpriseKeyArgs:
 
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input['EnterpriseKeyAndroidSettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -79,9 +77,7 @@ class EnterpriseKeyArgs:
         """
         Human-readable display name of this key. Modifiable by user.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "display_name")
 
@@ -223,9 +219,7 @@ class _EnterpriseKeyState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['EnterpriseKeyIosSettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -313,9 +307,7 @@ class _EnterpriseKeyState:
         """
         Human-readable display name of this key. Modifiable by user.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "display_name")
 
@@ -611,9 +603,7 @@ class EnterpriseKey(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
                
@@ -869,9 +859,7 @@ class EnterpriseKey(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this key. Modifiable by user.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['EnterpriseKeyIosSettingsArgs', 'EnterpriseKeyIosSettingsArgsDict']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
@@ -939,9 +927,7 @@ class EnterpriseKey(pulumi.CustomResource):
         """
         Human-readable display name of this key. Modifiable by user.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "display_name")
 

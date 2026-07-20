@@ -29,7 +29,8 @@ class AiReasoningEngineArgs:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 spec: pulumi.Input[Optional['AiReasoningEngineSpecArgs']] = None):
+                 spec: pulumi.Input[Optional['AiReasoningEngineSpecArgs']] = None,
+                 traffic_config: pulumi.Input[Optional['AiReasoningEngineTrafficConfigArgs']] = None):
         """
         The set of arguments for constructing a AiReasoningEngine resource.
 
@@ -60,6 +61,9 @@ class AiReasoningEngineArgs:
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input['AiReasoningEngineSpecArgs'] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineTrafficConfigArgs'] traffic_config: (Optional, Beta)
+               Optional. Traffic distribution configuration for the Reasoning Engine.
+               Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
         if context_spec is not None:
@@ -78,6 +82,8 @@ class AiReasoningEngineArgs:
             pulumi.set(__self__, "region", region)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if traffic_config is not None:
+            pulumi.set(__self__, "traffic_config", traffic_config)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -205,6 +211,20 @@ class AiReasoningEngineArgs:
     def spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecArgs']]):
         pulumi.set(self, "spec", value)
 
+    @_builtins.property
+    @pulumi.getter(name="trafficConfig")
+    def traffic_config(self) -> pulumi.Input[Optional['AiReasoningEngineTrafficConfigArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Traffic distribution configuration for the Reasoning Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_config")
+
+    @traffic_config.setter
+    def traffic_config(self, value: pulumi.Input[Optional['AiReasoningEngineTrafficConfigArgs']]):
+        pulumi.set(self, "traffic_config", value)
+
 
 @pulumi.input_type
 class _AiReasoningEngineState:
@@ -222,7 +242,9 @@ class _AiReasoningEngineState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional['AiReasoningEngineSpecArgs']] = None,
-                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
+                 traffic_config: pulumi.Input[Optional['AiReasoningEngineTrafficConfigArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AiReasoningEngine resources.
 
@@ -260,8 +282,13 @@ class _AiReasoningEngineState:
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input['AiReasoningEngineSpecArgs'] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineTrafficConfigArgs'] traffic_config: (Optional, Beta)
+               Optional. Traffic distribution configuration for the Reasoning Engine.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
                format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[_builtins.str] url: (Beta)
+               Output only. The URL of the reasoning engine.
         """
         if context_spec is not None:
             pulumi.set(__self__, "context_spec", context_spec)
@@ -289,8 +316,12 @@ class _AiReasoningEngineState:
             pulumi.set(__self__, "region", region)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+        if traffic_config is not None:
+            pulumi.set(__self__, "traffic_config", traffic_config)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter(name="contextSpec")
@@ -470,6 +501,20 @@ class _AiReasoningEngineState:
         pulumi.set(self, "spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="trafficConfig")
+    def traffic_config(self) -> pulumi.Input[Optional['AiReasoningEngineTrafficConfigArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Traffic distribution configuration for the Reasoning Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_config")
+
+    @traffic_config.setter
+    def traffic_config(self, value: pulumi.Input[Optional['AiReasoningEngineTrafficConfigArgs']]):
+        pulumi.set(self, "traffic_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -481,6 +526,19 @@ class _AiReasoningEngineState:
     @update_time.setter
     def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Beta)
+        Output only. The URL of the reasoning engine.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "url", value)
 
 
 @pulumi.type_token("gcp:vertex/aiReasoningEngine:AiReasoningEngine")
@@ -498,6 +556,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
+                 traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']]] = None,
                  __props__=None):
         """
         ReasoningEngine provides a customizable runtime for models to determine which actions to take and in which order.
@@ -854,6 +913,7 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
@@ -861,6 +921,9 @@ class AiReasoningEngine(pulumi.CustomResource):
             display_name="re-ctx-spec",
             description="Reasoning engine with context spec",
             region="us-central1",
+            traffic_config={
+                "traffic_split_always_latest": {},
+            },
             context_spec={
                 "memory_bank_config": {
                     "generation_config": {
@@ -870,6 +933,99 @@ class AiReasoningEngine(pulumi.CustomResource):
                         "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
                     },
                     "disable_memory_revisions": False,
+                    "customization_configs": [
+                        {
+                            "scope_keys": ["user_id"],
+                            "enable_third_person_memories": True,
+                            "consolidation_config": {
+                                "revisions_per_candidate_count": 1,
+                            },
+                            "memory_topics": [{
+                                "managed_memory_topic": {
+                                    "managed_topic_enum": "USER_PREFERENCES",
+                                },
+                            }],
+                        },
+                        {
+                            "scope_keys": [
+                                "user_id",
+                                "session_id",
+                            ],
+                            "enable_third_person_memories": True,
+                            "memory_topics": [{
+                                "custom_memory_topic": {
+                                    "label": "session_scratchpad",
+                                    "description": "Active consideration details, recent queries, and temporary workflow state.",
+                                },
+                            }],
+                        },
+                    ],
+                    "structured_memory_configs": [
+                        {
+                            "scope_keys": ["user_id"],
+                            "schema_configs": [{
+                                "id": "user-profile",
+                                "memory_schema": json.dumps({
+                                    "type": "OBJECT",
+                                    "properties": {
+                                        "name": {
+                                            "type": "STRING",
+                                            "description": "Name of the user.",
+                                        },
+                                        "technical_stack": {
+                                            "type": "STRING",
+                                            "description": "Comma-separated list tools or languages used by the user.",
+                                        },
+                                        "primary_goal": {
+                                            "type": "STRING",
+                                            "description": "The main objective the user is pursuing.",
+                                        },
+                                        "expertise_level": {
+                                            "type": "STRING",
+                                            "description": "Current skill level (e.g., Junior, Senior).",
+                                        },
+                                        "job_status": {
+                                            "type": "STRING",
+                                            "description": "The job status of the individual",
+                                            "enum": [
+                                                "unemployed",
+                                                "part_time",
+                                                "full_time",
+                                                "student",
+                                            ],
+                                        },
+                                    },
+                                }),
+                            }],
+                        },
+                        {
+                            "scope_keys": [
+                                "user_id",
+                                "session_id",
+                            ],
+                            "schema_configs": [{
+                                "id": "conversation-summary",
+                                "memory_schema": json.dumps({
+                                    "type": "OBJECT",
+                                    "properties": {
+                                        "main_topic": {
+                                            "type": "STRING",
+                                            "description": "The primary topic of this specific chat session.",
+                                        },
+                                        "status": {
+                                            "type": "STRING",
+                                            "description": "Current resolution state of the discussion.",
+                                            "enum": [
+                                                "open",
+                                                "in_progress",
+                                                "resolved",
+                                            ],
+                                        },
+                                    },
+                                }),
+                            }],
+                        },
+                    ],
                     "ttl_config": {
                         "default_ttl": "86400s",
                     },
@@ -955,6 +1111,9 @@ class AiReasoningEngine(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']] spec: Optional. Configurations of the ReasoningEngine.
+               Structure is documented below.
+        :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']] traffic_config: (Optional, Beta)
+               Optional. Traffic distribution configuration for the Reasoning Engine.
                Structure is documented below.
         """
         ...
@@ -1318,6 +1477,7 @@ class AiReasoningEngine(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
@@ -1325,6 +1485,9 @@ class AiReasoningEngine(pulumi.CustomResource):
             display_name="re-ctx-spec",
             description="Reasoning engine with context spec",
             region="us-central1",
+            traffic_config={
+                "traffic_split_always_latest": {},
+            },
             context_spec={
                 "memory_bank_config": {
                     "generation_config": {
@@ -1334,6 +1497,99 @@ class AiReasoningEngine(pulumi.CustomResource):
                         "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
                     },
                     "disable_memory_revisions": False,
+                    "customization_configs": [
+                        {
+                            "scope_keys": ["user_id"],
+                            "enable_third_person_memories": True,
+                            "consolidation_config": {
+                                "revisions_per_candidate_count": 1,
+                            },
+                            "memory_topics": [{
+                                "managed_memory_topic": {
+                                    "managed_topic_enum": "USER_PREFERENCES",
+                                },
+                            }],
+                        },
+                        {
+                            "scope_keys": [
+                                "user_id",
+                                "session_id",
+                            ],
+                            "enable_third_person_memories": True,
+                            "memory_topics": [{
+                                "custom_memory_topic": {
+                                    "label": "session_scratchpad",
+                                    "description": "Active consideration details, recent queries, and temporary workflow state.",
+                                },
+                            }],
+                        },
+                    ],
+                    "structured_memory_configs": [
+                        {
+                            "scope_keys": ["user_id"],
+                            "schema_configs": [{
+                                "id": "user-profile",
+                                "memory_schema": json.dumps({
+                                    "type": "OBJECT",
+                                    "properties": {
+                                        "name": {
+                                            "type": "STRING",
+                                            "description": "Name of the user.",
+                                        },
+                                        "technical_stack": {
+                                            "type": "STRING",
+                                            "description": "Comma-separated list tools or languages used by the user.",
+                                        },
+                                        "primary_goal": {
+                                            "type": "STRING",
+                                            "description": "The main objective the user is pursuing.",
+                                        },
+                                        "expertise_level": {
+                                            "type": "STRING",
+                                            "description": "Current skill level (e.g., Junior, Senior).",
+                                        },
+                                        "job_status": {
+                                            "type": "STRING",
+                                            "description": "The job status of the individual",
+                                            "enum": [
+                                                "unemployed",
+                                                "part_time",
+                                                "full_time",
+                                                "student",
+                                            ],
+                                        },
+                                    },
+                                }),
+                            }],
+                        },
+                        {
+                            "scope_keys": [
+                                "user_id",
+                                "session_id",
+                            ],
+                            "schema_configs": [{
+                                "id": "conversation-summary",
+                                "memory_schema": json.dumps({
+                                    "type": "OBJECT",
+                                    "properties": {
+                                        "main_topic": {
+                                            "type": "STRING",
+                                            "description": "The primary topic of this specific chat session.",
+                                        },
+                                        "status": {
+                                            "type": "STRING",
+                                            "description": "Current resolution state of the discussion.",
+                                            "enum": [
+                                                "open",
+                                                "in_progress",
+                                                "resolved",
+                                            ],
+                                        },
+                                    },
+                                }),
+                            }],
+                        },
+                    ],
                     "ttl_config": {
                         "default_ttl": "86400s",
                     },
@@ -1415,6 +1671,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
+                 traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1435,11 +1692,13 @@ class AiReasoningEngine(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["spec"] = spec
+            __props__.__dict__["traffic_config"] = traffic_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["url"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AiReasoningEngine, __self__).__init__(
@@ -1465,7 +1724,9 @@ class AiReasoningEngine(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             spec: pulumi.Input[Optional[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']]] = None,
-            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiReasoningEngine':
+            traffic_config: pulumi.Input[Optional[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> 'AiReasoningEngine':
         """
         Get an existing AiReasoningEngine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1507,8 +1768,13 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region of the reasoning engine. eg us-central1
         :param pulumi.Input[Union['AiReasoningEngineSpecArgs', 'AiReasoningEngineSpecArgsDict']] spec: Optional. Configurations of the ReasoningEngine.
                Structure is documented below.
+        :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']] traffic_config: (Optional, Beta)
+               Optional. Traffic distribution configuration for the Reasoning Engine.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
                format, with nanosecond resolution and up to nine fractional digits.
+        :param pulumi.Input[_builtins.str] url: (Beta)
+               Output only. The URL of the reasoning engine.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1527,12 +1793,14 @@ class AiReasoningEngine(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["spec"] = spec
+        __props__.__dict__["traffic_config"] = traffic_config
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["url"] = url
         return AiReasoningEngine(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="contextSpec")
-    def context_spec(self) -> pulumi.Output[Optional['outputs.AiReasoningEngineContextSpec']]:
+    def context_spec(self) -> pulumi.Output['outputs.AiReasoningEngineContextSpec']:
         """
         (Optional, Beta)
         Optional. Configuration for how Agent Engine sub-resources should manage context.
@@ -1656,6 +1924,16 @@ class AiReasoningEngine(pulumi.CustomResource):
         return pulumi.get(self, "spec")
 
     @_builtins.property
+    @pulumi.getter(name="trafficConfig")
+    def traffic_config(self) -> pulumi.Output['outputs.AiReasoningEngineTrafficConfig']:
+        """
+        (Optional, Beta)
+        Optional. Traffic distribution configuration for the Reasoning Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_config")
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
@@ -1663,4 +1941,13 @@ class AiReasoningEngine(pulumi.CustomResource):
         format, with nanosecond resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Beta)
+        Output only. The URL of the reasoning engine.
+        """
+        return pulumi.get(self, "url")
 

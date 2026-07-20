@@ -35,7 +35,7 @@ export interface GetHealthCheckArgs {
     /**
      * Name of the resource.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -103,7 +103,7 @@ export interface GetHealthCheckOutputArgs {
     /**
      * Name of the resource.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

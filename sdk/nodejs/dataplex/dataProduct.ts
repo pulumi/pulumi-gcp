@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_91980@example.com",
+ *             googleGroup: "tf-test-analysts-_89313@example.com",
  *         },
  *     }],
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const testSa = new gcp.serviceaccount.Account("test_sa", {
- *     accountId: "tf-test-sa-_37118",
+ *     accountId: "tf-test-sa-_60646",
  *     displayName: "Test Service Account",
  * });
  * const example = new gcp.dataplex.DataProduct("example", {
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_80332@example.com",
+ *                 googleGroup: "tf-test-analysts-_9394@example.com",
  *             },
  *         },
  *         {

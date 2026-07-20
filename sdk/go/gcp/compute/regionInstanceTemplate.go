@@ -483,6 +483,9 @@ type RegionInstanceTemplate struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig RegionInstanceTemplateWorkloadIdentityConfigPtrOutput `pulumi:"workloadIdentityConfig"`
 }
 
 // NewRegionInstanceTemplate registers a new resource with the given unique name, arguments, and options.
@@ -642,6 +645,9 @@ type regionInstanceTemplateState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig *RegionInstanceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
 
 type RegionInstanceTemplateState struct {
@@ -761,6 +767,9 @@ type RegionInstanceTemplateState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig RegionInstanceTemplateWorkloadIdentityConfigPtrInput
 }
 
 func (RegionInstanceTemplateState) ElementType() reflect.Type {
@@ -870,6 +879,9 @@ type regionInstanceTemplateArgs struct {
 	ShieldedInstanceConfig *RegionInstanceTemplateShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig *RegionInstanceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
 
 // The set of arguments for constructing a RegionInstanceTemplate resource.
@@ -976,6 +988,9 @@ type RegionInstanceTemplateArgs struct {
 	ShieldedInstanceConfig RegionInstanceTemplateShieldedInstanceConfigPtrInput
 	// Tags to attach to the instance.
 	Tags pulumi.StringArrayInput
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig RegionInstanceTemplateWorkloadIdentityConfigPtrInput
 }
 
 func (RegionInstanceTemplateArgs) ElementType() reflect.Type {
@@ -1301,6 +1316,14 @@ func (o RegionInstanceTemplateOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o RegionInstanceTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+// Workload Identity Config. More details about
+// this configuration option are detailed below.
+func (o RegionInstanceTemplateOutput) WorkloadIdentityConfig() RegionInstanceTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) RegionInstanceTemplateWorkloadIdentityConfigPtrOutput {
+		return v.WorkloadIdentityConfig
+	}).(RegionInstanceTemplateWorkloadIdentityConfigPtrOutput)
 }
 
 type RegionInstanceTemplateArrayOutput struct{ *pulumi.OutputState }

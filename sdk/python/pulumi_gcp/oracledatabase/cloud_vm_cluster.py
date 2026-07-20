@@ -30,6 +30,7 @@ class CloudVmClusterArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
                  odb_network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -60,6 +61,9 @@ class CloudVmClusterArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
         :param pulumi.Input[_builtins.str] display_name: User friendly name for this resource.
+        :param pulumi.Input[_builtins.str] exascale_db_storage_vault: The name of ExascaleDbStorageVault associated with the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the VM Cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -93,6 +97,8 @@ class CloudVmClusterArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if exascale_db_storage_vault is not None:
+            pulumi.set(__self__, "exascale_db_storage_vault", exascale_db_storage_vault)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if network is not None:
@@ -227,6 +233,20 @@ class CloudVmClusterArgs:
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVault")
+    def exascale_db_storage_vault(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of ExascaleDbStorageVault associated with the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        """
+        return pulumi.get(self, "exascale_db_storage_vault")
+
+    @exascale_db_storage_vault.setter
+    def exascale_db_storage_vault(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exascale_db_storage_vault", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -323,6 +343,7 @@ class _CloudVmClusterState:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                 exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input['CloudVmClusterIdentityConnectorArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -359,6 +380,9 @@ class _CloudVmClusterState:
         :param pulumi.Input[_builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
+        :param pulumi.Input[_builtins.str] exascale_db_storage_vault: The name of ExascaleDbStorageVault associated with the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
         :param pulumi.Input[Sequence[pulumi.Input['CloudVmClusterIdentityConnectorArgs']]] identity_connectors: The identity connector details which will allow OCI to securely access
@@ -407,6 +431,8 @@ class _CloudVmClusterState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if exadata_infrastructure is not None:
             pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
+        if exascale_db_storage_vault is not None:
+            pulumi.set(__self__, "exascale_db_storage_vault", exascale_db_storage_vault)
         if gcp_oracle_zone is not None:
             pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
         if identity_connectors is not None:
@@ -561,6 +587,20 @@ class _CloudVmClusterState:
     @exadata_infrastructure.setter
     def exadata_infrastructure(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exadata_infrastructure", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVault")
+    def exascale_db_storage_vault(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of ExascaleDbStorageVault associated with the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        """
+        return pulumi.get(self, "exascale_db_storage_vault")
+
+    @exascale_db_storage_vault.setter
+    def exascale_db_storage_vault(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "exascale_db_storage_vault", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpOracleZone")
@@ -725,6 +765,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                 exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -880,6 +921,72 @@ class CloudVmCluster(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Cloud Vmcluster Exascale
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        infra = gcp.oracledatabase.CloudExadataInfrastructure("infra",
+            cloud_exadata_infrastructure_id="my-exadata",
+            display_name="my-exadata displayname",
+            location="us-east4",
+            project="my-project",
+            properties={
+                "shape": "Exadata.X9M",
+                "compute_count": 2,
+                "storage_count": 3,
+            },
+            deletion_protection=True)
+        exascale_config = gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig("exascale_config",
+            cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
+            location="us-east4",
+            project="my-project",
+            total_storage_size_gb=10240)
+        vault = gcp.oracledatabase.ExascaleDbStorageVault("vault",
+            exascale_db_storage_vault_id="my-vault",
+            display_name="my-vault displayname",
+            location="us-east4",
+            project="my-project",
+            exadata_infrastructure=infra.name,
+            properties={
+                "exascale_db_storage_details": {
+                    "total_size_gbs": 2048,
+                },
+            },
+            deletion_protection=True,
+            opts = pulumi.ResourceOptions(depends_on=[exascale_config]))
+        default = gcp.compute.get_network(name="new",
+            project="my-project")
+        db_servers = gcp.oracledatabase.get_db_servers_output(location="us-east4",
+            project="my-project",
+            cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id)
+        my_vmcluster = gcp.oracledatabase.CloudVmCluster("my_vmcluster",
+            cloud_vm_cluster_id="my-instance",
+            display_name="my-instance displayname",
+            location="us-east4",
+            project="my-project",
+            exadata_infrastructure=infra.id,
+            network=default.id,
+            cidr="10.5.0.0/24",
+            backup_subnet_cidr="10.6.0.0/24",
+            exascale_db_storage_vault=vault.name,
+            properties={
+                "license_type": "LICENSE_INCLUDED",
+                "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+                "cpu_core_count": 4,
+                "gi_version": "23.0.0.0",
+                "hostname_prefix": "hostname1",
+                "memory_size_gb": 60,
+                "db_node_storage_size_gb": 120,
+                "db_server_ocids": [
+                    db_servers.db_servers[0].properties[0].ocid,
+                    db_servers.db_servers[1].properties[0].ocid,
+                ],
+            },
+            deletion_protection=True,
+            opts = pulumi.ResourceOptions(depends_on=[exascale_config]))
+        ```
 
         ## Import
 
@@ -920,6 +1027,9 @@ class CloudVmCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
+        :param pulumi.Input[_builtins.str] exascale_db_storage_vault: The name of ExascaleDbStorageVault associated with the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the VM Cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1092,6 +1202,72 @@ class CloudVmCluster(pulumi.CustomResource):
             },
             deletion_protection=True)
         ```
+        ### Oracledatabase Cloud Vmcluster Exascale
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        infra = gcp.oracledatabase.CloudExadataInfrastructure("infra",
+            cloud_exadata_infrastructure_id="my-exadata",
+            display_name="my-exadata displayname",
+            location="us-east4",
+            project="my-project",
+            properties={
+                "shape": "Exadata.X9M",
+                "compute_count": 2,
+                "storage_count": 3,
+            },
+            deletion_protection=True)
+        exascale_config = gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig("exascale_config",
+            cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id,
+            location="us-east4",
+            project="my-project",
+            total_storage_size_gb=10240)
+        vault = gcp.oracledatabase.ExascaleDbStorageVault("vault",
+            exascale_db_storage_vault_id="my-vault",
+            display_name="my-vault displayname",
+            location="us-east4",
+            project="my-project",
+            exadata_infrastructure=infra.name,
+            properties={
+                "exascale_db_storage_details": {
+                    "total_size_gbs": 2048,
+                },
+            },
+            deletion_protection=True,
+            opts = pulumi.ResourceOptions(depends_on=[exascale_config]))
+        default = gcp.compute.get_network(name="new",
+            project="my-project")
+        db_servers = gcp.oracledatabase.get_db_servers_output(location="us-east4",
+            project="my-project",
+            cloud_exadata_infrastructure=infra.cloud_exadata_infrastructure_id)
+        my_vmcluster = gcp.oracledatabase.CloudVmCluster("my_vmcluster",
+            cloud_vm_cluster_id="my-instance",
+            display_name="my-instance displayname",
+            location="us-east4",
+            project="my-project",
+            exadata_infrastructure=infra.id,
+            network=default.id,
+            cidr="10.5.0.0/24",
+            backup_subnet_cidr="10.6.0.0/24",
+            exascale_db_storage_vault=vault.name,
+            properties={
+                "license_type": "LICENSE_INCLUDED",
+                "ssh_public_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+                "cpu_core_count": 4,
+                "gi_version": "23.0.0.0",
+                "hostname_prefix": "hostname1",
+                "memory_size_gb": 60,
+                "db_node_storage_size_gb": 120,
+                "db_server_ocids": [
+                    db_servers.db_servers[0].properties[0].ocid,
+                    db_servers.db_servers[1].properties[0].ocid,
+                ],
+            },
+            deletion_protection=True,
+            opts = pulumi.ResourceOptions(depends_on=[exascale_config]))
+        ```
 
         ## Import
 
@@ -1133,6 +1309,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+                 exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1161,6 +1338,7 @@ class CloudVmCluster(pulumi.CustomResource):
             if exadata_infrastructure is None and not opts.urn:
                 raise TypeError("Missing required property 'exadata_infrastructure'")
             __props__.__dict__["exadata_infrastructure"] = exadata_infrastructure
+            __props__.__dict__["exascale_db_storage_vault"] = exascale_db_storage_vault
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -1198,6 +1376,7 @@ class CloudVmCluster(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
+            exascale_db_storage_vault: pulumi.Input[Optional[_builtins.str]] = None,
             gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
             identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1238,6 +1417,9 @@ class CloudVmCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
+        :param pulumi.Input[_builtins.str] exascale_db_storage_vault: The name of ExascaleDbStorageVault associated with the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
         :param pulumi.Input[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict']]]] identity_connectors: The identity connector details which will allow OCI to securely access
@@ -1280,6 +1462,7 @@ class CloudVmCluster(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["exadata_infrastructure"] = exadata_infrastructure
+        __props__.__dict__["exascale_db_storage_vault"] = exascale_db_storage_vault
         __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
         __props__.__dict__["identity_connectors"] = identity_connectors
         __props__.__dict__["labels"] = labels
@@ -1384,6 +1567,16 @@ class CloudVmCluster(pulumi.CustomResource):
         projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
         """
         return pulumi.get(self, "exadata_infrastructure")
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVault")
+    def exascale_db_storage_vault(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The name of ExascaleDbStorageVault associated with the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        """
+        return pulumi.get(self, "exascale_db_storage_vault")
 
     @_builtins.property
     @pulumi.getter(name="gcpOracleZone")

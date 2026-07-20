@@ -195,6 +195,25 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     * 
+     */
+    @Import(name="exascaleDbStorageVault")
+    private @Nullable Output<String> exascaleDbStorageVault;
+
+    /**
+     * @return The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     * 
+     */
+    public Optional<Output<String>> exascaleDbStorageVault() {
+        return Optional.ofNullable(this.exascaleDbStorageVault);
+    }
+
+    /**
      * GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
      * 
@@ -404,6 +423,7 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
         this.exadataInfrastructure = $.exadataInfrastructure;
+        this.exascaleDbStorageVault = $.exascaleDbStorageVault;
         this.gcpOracleZone = $.gcpOracleZone;
         this.identityConnectors = $.identityConnectors;
         this.labels = $.labels;
@@ -667,6 +687,31 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
          */
         public Builder exadataInfrastructure(String exadataInfrastructure) {
             return exadataInfrastructure(Output.of(exadataInfrastructure));
+        }
+
+        /**
+         * @param exascaleDbStorageVault The name of ExascaleDbStorageVault associated with the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exascaleDbStorageVault(@Nullable Output<String> exascaleDbStorageVault) {
+            $.exascaleDbStorageVault = exascaleDbStorageVault;
+            return this;
+        }
+
+        /**
+         * @param exascaleDbStorageVault The name of ExascaleDbStorageVault associated with the VM Cluster.
+         * Format:
+         * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exascaleDbStorageVault(String exascaleDbStorageVault) {
+            return exascaleDbStorageVault(Output.of(exascaleDbStorageVault));
         }
 
         /**

@@ -10,9 +10,11 @@ from .custom_list import *
 from .dashboard_chart import *
 from .data_access_label import *
 from .data_access_scope import *
+from .data_export import *
 from .data_table import *
 from .data_table_row import *
 from .environment import *
+from .environment_group import *
 from .feed import *
 from .findings_refinement import *
 from .findings_refinement_deployment import *
@@ -23,6 +25,7 @@ from .reference_list import *
 from .retrohunt import *
 from .rule import *
 from .rule_deployment import *
+from .soar_domain import *
 from .soar_network import *
 from .watchlist import *
 from ._inputs import *

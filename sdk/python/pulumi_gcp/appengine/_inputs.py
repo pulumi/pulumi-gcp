@@ -150,7 +150,7 @@ class ApplicationIapArgsDict(TypedDict):
     """
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+    (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
     (default is false)
     """
     oauth2_client_secret_sha256: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -169,7 +169,7 @@ class ApplicationIapArgs:
         :param pulumi.Input[_builtins.str] oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param pulumi.Input[_builtins.str] oauth2_client_secret: OAuth2 client secret to use for the authentication flow.
                The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-        :param pulumi.Input[_builtins.bool] enabled: (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        :param pulumi.Input[_builtins.bool] enabled: (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
                (default is false)
         :param pulumi.Input[_builtins.str] oauth2_client_secret_sha256: Hex-encoded SHA-256 hash of the client secret.
         """
@@ -209,7 +209,7 @@ class ApplicationIapArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
         (default is false)
         """
         return pulumi.get(self, "enabled")

@@ -18,5 +18,6 @@ from .listing_iam_binding import *
 from .listing_iam_member import *
 from .listing_iam_policy import *
 from .listing_subscription import *
+from .query_template import *
 from ._inputs import *
 from . import outputs

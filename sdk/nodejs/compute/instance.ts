@@ -316,7 +316,7 @@ export class Instance extends pulumi.CustomResource {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      *
-     * - - -
+     * ***
      */
     declare public readonly networkInterfaces: pulumi.Output<outputs.compute.InstanceNetworkInterface[]>;
     /**
@@ -389,6 +389,11 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
     /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    declare public readonly workloadIdentityConfig: pulumi.Output<outputs.compute.InstanceWorkloadIdentityConfig | undefined>;
+    /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
     declare public readonly zone: pulumi.Output<string>;
@@ -450,6 +455,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
+            resourceInputs["workloadIdentityConfig"] = state?.workloadIdentityConfig;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -496,6 +502,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -688,7 +695,7 @@ export interface InstanceState {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      *
-     * - - -
+     * ***
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[] | undefined>;
     /**
@@ -760,6 +767,11 @@ export interface InstanceState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceWorkloadIdentityConfig | undefined>;
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
@@ -911,7 +923,7 @@ export interface InstanceArgs {
      * Networks to attach to the instance. This can
      * be specified multiple times. Structure is documented below.
      *
-     * - - -
+     * ***
      */
     networkInterfaces: pulumi.Input<pulumi.Input<inputs.compute.InstanceNetworkInterface>[]>;
     /**
@@ -971,6 +983,11 @@ export interface InstanceArgs {
      * A list of network tags to attach to the instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceWorkloadIdentityConfig | undefined>;
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */

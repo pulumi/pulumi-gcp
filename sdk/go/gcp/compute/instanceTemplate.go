@@ -528,6 +528,9 @@ type InstanceTemplate struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig InstanceTemplateWorkloadIdentityConfigPtrOutput `pulumi:"workloadIdentityConfig"`
 }
 
 // NewInstanceTemplate registers a new resource with the given unique name, arguments, and options.
@@ -690,6 +693,9 @@ type instanceTemplateState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig *InstanceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
 
 type InstanceTemplateState struct {
@@ -812,6 +818,9 @@ type InstanceTemplateState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig InstanceTemplateWorkloadIdentityConfigPtrInput
 }
 
 func (InstanceTemplateState) ElementType() reflect.Type {
@@ -921,6 +930,9 @@ type instanceTemplateArgs struct {
 	ShieldedInstanceConfig *InstanceTemplateShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig *InstanceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 }
 
 // The set of arguments for constructing a InstanceTemplate resource.
@@ -1027,6 +1039,9 @@ type InstanceTemplateArgs struct {
 	ShieldedInstanceConfig InstanceTemplateShieldedInstanceConfigPtrInput
 	// Tags to attach to the instance.
 	Tags pulumi.StringArrayInput
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig InstanceTemplateWorkloadIdentityConfigPtrInput
 }
 
 func (InstanceTemplateArgs) ElementType() reflect.Type {
@@ -1349,6 +1364,14 @@ func (o InstanceTemplateOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+// Workload Identity Config. More details about
+// this configuration option are detailed below.
+func (o InstanceTemplateOutput) WorkloadIdentityConfig() InstanceTemplateWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateWorkloadIdentityConfigPtrOutput {
+		return v.WorkloadIdentityConfig
+	}).(InstanceTemplateWorkloadIdentityConfigPtrOutput)
 }
 
 type InstanceTemplateArrayOutput struct{ *pulumi.OutputState }

@@ -117,7 +117,7 @@ class RepositoryPubsubConfigArgsDict(TypedDict):
     The format of the Cloud Pub/Sub messages.
     - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
     - JSON: The message payload is a JSON string of SourceRepoEvent.
-    Possible values are: `PROTOBUF`, `JSON`.
+      Possible values are: `PROTOBUF`, `JSON`.
     """
     topic: pulumi.Input[_builtins.str]
     """
@@ -141,7 +141,7 @@ class RepositoryPubsubConfigArgs:
         :param pulumi.Input[_builtins.str] message_format: The format of the Cloud Pub/Sub messages.
                - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
                - JSON: The message payload is a JSON string of SourceRepoEvent.
-               Possible values are: `PROTOBUF`, `JSON`.
+                 Possible values are: `PROTOBUF`, `JSON`.
         :param pulumi.Input[_builtins.str] topic: The identifier for this object. Format specified above.
         :param pulumi.Input[_builtins.str] service_account_email: Email address of the service account used for publishing Cloud Pub/Sub messages.
                This service account needs to be in the same project as the PubsubConfig. When added,
@@ -160,7 +160,7 @@ class RepositoryPubsubConfigArgs:
         The format of the Cloud Pub/Sub messages.
         - PROTOBUF: The message payload is a serialized protocol buffer of SourceRepoEvent.
         - JSON: The message payload is a JSON string of SourceRepoEvent.
-        Possible values are: `PROTOBUF`, `JSON`.
+          Possible values are: `PROTOBUF`, `JSON`.
         """
         return pulumi.get(self, "message_format")
 

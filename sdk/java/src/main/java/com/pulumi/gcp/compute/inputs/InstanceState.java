@@ -19,6 +19,7 @@ import com.pulumi.gcp.compute.inputs.InstanceSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceScratchDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceShieldedInstanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -823,6 +824,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<InstanceWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    public Optional<Output<InstanceWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
+    /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      * 
      */
@@ -884,6 +902,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
         this.tagsFingerprint = $.tagsFingerprint;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
         this.zone = $.zone;
     }
 
@@ -2012,6 +2031,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tagsFingerprint(String tagsFingerprint) {
             return tagsFingerprint(Output.of(tagsFingerprint));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload Identity Config. More details about
+         * this configuration option are detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<InstanceWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload Identity Config. More details about
+         * this configuration option are detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(InstanceWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         /**

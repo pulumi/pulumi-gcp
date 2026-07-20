@@ -165,7 +165,8 @@ type LookupRegionInstanceTemplateResult struct {
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string `pulumi:"tagsFingerprint"`
+	TagsFingerprint         string                                            `pulumi:"tagsFingerprint"`
+	WorkloadIdentityConfigs []GetRegionInstanceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
 }
 
 func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceTemplateResultOutput {
@@ -431,6 +432,12 @@ func (o LookupRegionInstanceTemplateResultOutput) Tags() pulumi.StringArrayOutpu
 // The unique fingerprint of the tags.
 func (o LookupRegionInstanceTemplateResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) WorkloadIdentityConfigs() GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) []GetRegionInstanceTemplateWorkloadIdentityConfig {
+		return v.WorkloadIdentityConfigs
+	}).(GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput)
 }
 
 func init() {

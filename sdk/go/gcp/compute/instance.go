@@ -333,6 +333,9 @@ type Instance struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig InstanceWorkloadIdentityConfigPtrOutput `pulumi:"workloadIdentityConfig"`
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -534,6 +537,9 @@ type instanceState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig *InstanceWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
@@ -692,6 +698,9 @@ type InstanceState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig InstanceWorkloadIdentityConfigPtrInput
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
@@ -834,6 +843,9 @@ type instanceArgs struct {
 	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// A list of network tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig *InstanceWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
@@ -973,6 +985,9 @@ type InstanceArgs struct {
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
 	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayInput
+	// Workload Identity Config. More details about
+	// this configuration option are detailed below.
+	WorkloadIdentityConfig InstanceWorkloadIdentityConfigPtrInput
 	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
@@ -1347,6 +1362,12 @@ func (o InstanceOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+// Workload Identity Config. More details about
+// this configuration option are detailed below.
+func (o InstanceOutput) WorkloadIdentityConfig() InstanceWorkloadIdentityConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceWorkloadIdentityConfigPtrOutput { return v.WorkloadIdentityConfig }).(InstanceWorkloadIdentityConfigPtrOutput)
 }
 
 // The zone that the machine should be created in. If it is not provided, the provider zone is used.

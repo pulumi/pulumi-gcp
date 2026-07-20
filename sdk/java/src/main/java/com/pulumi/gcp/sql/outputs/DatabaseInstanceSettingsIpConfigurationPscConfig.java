@@ -25,6 +25,11 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
      */
     private @Nullable String networkAttachmentUri;
     /**
+     * @return Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
+     */
+    private @Nullable Boolean pscAutoConnectionPolicyEnabled;
+    /**
      * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
      * 
      */
@@ -41,6 +46,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
     private @Nullable Boolean pscEnabled;
     /**
      * @return Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+     * 
+     * * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
      * 
      */
     private @Nullable Boolean pscWriteEndpointDnsEnabled;
@@ -59,6 +66,13 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
      */
     public Optional<String> networkAttachmentUri() {
         return Optional.ofNullable(this.networkAttachmentUri);
+    }
+    /**
+     * @return Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
+     */
+    public Optional<Boolean> pscAutoConnectionPolicyEnabled() {
+        return Optional.ofNullable(this.pscAutoConnectionPolicyEnabled);
     }
     /**
      * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
@@ -84,6 +98,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
     /**
      * @return Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
      * 
+     * * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
      */
     public Optional<Boolean> pscWriteEndpointDnsEnabled() {
         return Optional.ofNullable(this.pscWriteEndpointDnsEnabled);
@@ -100,6 +116,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
     public static final class Builder {
         private @Nullable List<String> allowedConsumerProjects;
         private @Nullable String networkAttachmentUri;
+        private @Nullable Boolean pscAutoConnectionPolicyEnabled;
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
         private @Nullable Boolean pscAutoDnsEnabled;
         private @Nullable Boolean pscEnabled;
@@ -109,6 +126,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
     	      this.networkAttachmentUri = defaults.networkAttachmentUri;
+    	      this.pscAutoConnectionPolicyEnabled = defaults.pscAutoConnectionPolicyEnabled;
     	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pscAutoDnsEnabled = defaults.pscAutoDnsEnabled;
     	      this.pscEnabled = defaults.pscEnabled;
@@ -128,6 +146,12 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
         public Builder networkAttachmentUri(@Nullable String networkAttachmentUri) {
 
             this.networkAttachmentUri = networkAttachmentUri;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscAutoConnectionPolicyEnabled(@Nullable Boolean pscAutoConnectionPolicyEnabled) {
+
+            this.pscAutoConnectionPolicyEnabled = pscAutoConnectionPolicyEnabled;
             return this;
         }
         @CustomType.Setter
@@ -161,6 +185,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
             final var _resultValue = new DatabaseInstanceSettingsIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
             _resultValue.networkAttachmentUri = networkAttachmentUri;
+            _resultValue.pscAutoConnectionPolicyEnabled = pscAutoConnectionPolicyEnabled;
             _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pscAutoDnsEnabled = pscAutoDnsEnabled;
             _resultValue.pscEnabled = pscEnabled;

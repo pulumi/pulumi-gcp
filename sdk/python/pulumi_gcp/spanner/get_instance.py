@@ -214,7 +214,7 @@ def get_instance(config: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the spanner instance.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -264,7 +264,7 @@ def get_instance_output(config: pulumi.Input[Optional[Optional[_builtins.str]]] 
 
     :param _builtins.str name: The name of the spanner instance.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

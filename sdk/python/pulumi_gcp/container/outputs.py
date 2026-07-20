@@ -148,6 +148,9 @@ __all__ = [
     'ClusterMaintenancePolicyDisruptionBudget',
     'ClusterMaintenancePolicyMaintenanceExclusion',
     'ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions',
+    'ClusterMaintenancePolicyRecurringMaintenanceWindow',
+    'ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntil',
+    'ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime',
     'ClusterMaintenancePolicyRecurringWindow',
     'ClusterManagedMachineLearningDiagnosticsConfig',
     'ClusterManagedOpentelemetryConfig',
@@ -197,6 +200,8 @@ __all__ = [
     'ClusterNodeConfigKubeletConfigTopologyManager',
     'ClusterNodeConfigLinuxNodeConfig',
     'ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig',
+    'ClusterNodeConfigLinuxNodeConfigCustomNodeInit',
+    'ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript',
     'ClusterNodeConfigLinuxNodeConfigHugepagesConfig',
     'ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading',
     'ClusterNodeConfigLinuxNodeConfigSwapConfig',
@@ -239,6 +244,8 @@ __all__ = [
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader',
     'ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups',
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig',
+    'ClusterNodePoolMaintenancePolicy',
+    'ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport',
     'ClusterNodePoolManagement',
     'ClusterNodePoolNetworkConfig',
     'ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig',
@@ -280,6 +287,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigKubeletConfigTopologyManager',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript',
     'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading',
     'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig',
@@ -331,6 +340,8 @@ __all__ = [
     'ClusterWorkloadAltsConfig',
     'ClusterWorkloadIdentityConfig',
     'NodePoolAutoscaling',
+    'NodePoolMaintenancePolicy',
+    'NodePoolMaintenancePolicyExclusionUntilEndOfSupport',
     'NodePoolManagement',
     'NodePoolNetworkConfig',
     'NodePoolNetworkConfigAdditionalNodeNetworkConfig',
@@ -372,6 +383,8 @@ __all__ = [
     'NodePoolNodeConfigKubeletConfigTopologyManager',
     'NodePoolNodeConfigLinuxNodeConfig',
     'NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig',
+    'NodePoolNodeConfigLinuxNodeConfigCustomNodeInit',
+    'NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript',
     'NodePoolNodeConfigLinuxNodeConfigHugepagesConfig',
     'NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading',
     'NodePoolNodeConfigLinuxNodeConfigSwapConfig',
@@ -461,6 +474,9 @@ __all__ = [
     'GetClusterMaintenancePolicyDisruptionBudgetResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionResult',
     'GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult',
+    'GetClusterMaintenancePolicyRecurringMaintenanceWindowResult',
+    'GetClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntilResult',
+    'GetClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTimeResult',
     'GetClusterMaintenancePolicyRecurringWindowResult',
     'GetClusterManagedMachineLearningDiagnosticsConfigResult',
     'GetClusterManagedOpentelemetryConfigResult',
@@ -510,6 +526,8 @@ __all__ = [
     'GetClusterNodeConfigKubeletConfigTopologyManagerResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigResult',
+    'GetClusterNodeConfigLinuxNodeConfigCustomNodeInitResult',
+    'GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult',
     'GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingResult',
     'GetClusterNodeConfigLinuxNodeConfigSwapConfigResult',
@@ -552,6 +570,8 @@ __all__ = [
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostHeaderResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupResult',
     'GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult',
+    'GetClusterNodePoolMaintenancePolicyResult',
+    'GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportResult',
     'GetClusterNodePoolManagementResult',
     'GetClusterNodePoolNetworkConfigResult',
     'GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult',
@@ -593,6 +613,8 @@ __all__ = [
     'GetClusterNodePoolNodeConfigKubeletConfigTopologyManagerResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigResult',
+    'GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitResult',
+    'GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigResult',
@@ -2018,7 +2040,7 @@ class AwsClusterNetworking(dict):
         :param Sequence[_builtins.str] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param _builtins.str vpc_id: The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
                
-               - - -
+               ***
         :param _builtins.bool per_node_pool_sg_rules_disabled: Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
@@ -2049,7 +2071,7 @@ class AwsClusterNetworking(dict):
         """
         The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "vpc_id")
 
@@ -2852,7 +2874,7 @@ class AwsNodePoolMaxPodsConstraint(dict):
         """
         :param _builtins.int max_pods_per_node: The maximum number of pods to schedule on a single node.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -2862,7 +2884,7 @@ class AwsNodePoolMaxPodsConstraint(dict):
         """
         The maximum number of pods to schedule on a single node.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -3614,7 +3636,7 @@ class AzureClusterNetworking(dict):
         :param Sequence[_builtins.str] service_address_cidr_blocks: The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
         :param _builtins.str virtual_network_id: The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
@@ -3642,7 +3664,7 @@ class AzureClusterNetworking(dict):
         """
         The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "virtual_network_id")
 
@@ -4053,7 +4075,7 @@ class AzureNodePoolMaxPodsConstraint(dict):
         """
         :param _builtins.int max_pods_per_node: The maximum number of pods to schedule on a single node.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
 
@@ -4063,7 +4085,7 @@ class AzureNodePoolMaxPodsConstraint(dict):
         """
         The maximum number of pods to schedule on a single node.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "max_pods_per_node")
 
@@ -4213,7 +4235,7 @@ class ClusterAddonsConfig(dict):
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
-        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: . 
+        :param 'ClusterAddonsConfigSliceControllerConfigArgs' slice_controller_config: .
                The status of the slice controller addon.
                It is disabled by default. Set `enabled = true` to enable.
         :param 'ClusterAddonsConfigSlurmOperatorConfigArgs' slurm_operator_config: The status of the Slurm Operator addon,
@@ -4456,7 +4478,7 @@ class ClusterAddonsConfig(dict):
     @pulumi.getter(name="sliceControllerConfig")
     def slice_controller_config(self) -> Optional['outputs.ClusterAddonsConfigSliceControllerConfig']:
         """
-        . 
+        .
         The status of the slice controller addon.
         It is disabled by default. Set `enabled = true` to enable.
         """
@@ -4741,7 +4763,7 @@ class ClusterAddonsConfigLustreCsiDriverConfig(dict):
         """
         :param _builtins.bool enabled: Whether the Lustre CSI driver is enabled for this cluster.
         :param _builtins.bool disable_multi_nic: When set to true, this disables multi-NIC support for the Lustre CSI driver. By default, GKE enables multi-NIC support, which allows the Lustre CSI driver to automatically detect and configure all suitable network interfaces on a node to maximize I/O performance for demanding workloads.
-        :param _builtins.bool enable_legacy_lustre_port: which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        :param _builtins.bool enable_legacy_lustre_port: which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
                This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -4770,7 +4792,7 @@ class ClusterAddonsConfigLustreCsiDriverConfig(dict):
     @pulumi.getter(name="enableLegacyLustrePort")
     def enable_legacy_lustre_port(self) -> Optional[_builtins.bool]:
         """
-        which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988. 
+        which allows the Lustre CSI driver to initialize LNet (the virtual networklayer for Lustre kernel module) using port 6988.
         This flag is required to workaround a port conflict with the gke-metadata-server on GKE nodes.
         """
         return pulumi.get(self, "enable_legacy_lustre_port")
@@ -6930,6 +6952,8 @@ class ClusterMaintenancePolicy(dict):
             suggest = "disruption_budget"
         elif key == "maintenanceExclusions":
             suggest = "maintenance_exclusions"
+        elif key == "recurringMaintenanceWindow":
+            suggest = "recurring_maintenance_window"
         elif key == "recurringWindow":
             suggest = "recurring_window"
 
@@ -6948,6 +6972,7 @@ class ClusterMaintenancePolicy(dict):
                  daily_maintenance_window: Optional['outputs.ClusterMaintenancePolicyDailyMaintenanceWindow'] = None,
                  disruption_budget: Optional['outputs.ClusterMaintenancePolicyDisruptionBudget'] = None,
                  maintenance_exclusions: Optional[Sequence['outputs.ClusterMaintenancePolicyMaintenanceExclusion']] = None,
+                 recurring_maintenance_window: Optional['outputs.ClusterMaintenancePolicyRecurringMaintenanceWindow'] = None,
                  recurring_window: Optional['outputs.ClusterMaintenancePolicyRecurringWindow'] = None):
         """
         :param 'ClusterMaintenancePolicyDailyMaintenanceWindowArgs' daily_maintenance_window: Time window specified for daily maintenance operations.
@@ -6957,8 +6982,9 @@ class ClusterMaintenancePolicy(dict):
                Examples:
         :param 'ClusterMaintenancePolicyDisruptionBudgetArgs' disruption_budget: structure documented below
                
-               In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
+               In beta, one of `recurring_window`, `recurring_maintenance_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
         :param Sequence['ClusterMaintenancePolicyMaintenanceExclusionArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        :param 'ClusterMaintenancePolicyRecurringMaintenanceWindowArgs' recurring_maintenance_window: Defines a recurring window for maintenance operations.
         :param 'ClusterMaintenancePolicyRecurringWindowArgs' recurring_window: Time window for recurring maintenance operations.
                
                Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
@@ -6993,6 +7019,8 @@ class ClusterMaintenancePolicy(dict):
             pulumi.set(__self__, "disruption_budget", disruption_budget)
         if maintenance_exclusions is not None:
             pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
+        if recurring_maintenance_window is not None:
+            pulumi.set(__self__, "recurring_maintenance_window", recurring_maintenance_window)
         if recurring_window is not None:
             pulumi.set(__self__, "recurring_window", recurring_window)
 
@@ -7014,7 +7042,7 @@ class ClusterMaintenancePolicy(dict):
         """
         structure documented below
 
-        In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
+        In beta, one of `recurring_window`, `recurring_maintenance_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
         """
         return pulumi.get(self, "disruption_budget")
 
@@ -7025,6 +7053,14 @@ class ClusterMaintenancePolicy(dict):
         Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         """
         return pulumi.get(self, "maintenance_exclusions")
+
+    @_builtins.property
+    @pulumi.getter(name="recurringMaintenanceWindow")
+    def recurring_maintenance_window(self) -> Optional['outputs.ClusterMaintenancePolicyRecurringMaintenanceWindow']:
+        """
+        Defines a recurring window for maintenance operations.
+        """
+        return pulumi.get(self, "recurring_maintenance_window")
 
     @_builtins.property
     @pulumi.getter(name="recurringWindow")
@@ -7368,6 +7404,237 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions(dict):
 
 
 @pulumi.output_type
+class ClusterMaintenancePolicyRecurringMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "windowDuration":
+            suggest = "window_duration"
+        elif key == "windowStartTime":
+            suggest = "window_start_time"
+        elif key == "delayUntil":
+            suggest = "delay_until"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMaintenancePolicyRecurringMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMaintenancePolicyRecurringMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMaintenancePolicyRecurringMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 recurrence: _builtins.str,
+                 window_duration: _builtins.str,
+                 window_start_time: 'outputs.ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime',
+                 delay_until: Optional['outputs.ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntil'] = None):
+        """
+        :param _builtins.str recurrence: Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+               
+               Examples:
+               ```
+               maintenance_policy {
+               recurring_maintenance_window {
+               delay_until {
+               day   = 1
+               month = 8
+               year  = 2019
+               }
+               window_start_time {
+               hours   = 2
+               minutes = 0
+               seconds = 0
+               }
+               window_duration = "4h"
+               recurrence      = "FREQ=DAILY"
+               }
+               }
+               ```
+               
+               ```
+               maintenance_policy {
+               recurring_maintenance_window {
+               delay_until {
+               day   = 1
+               month = 1
+               year  = 2019
+               }
+               window_start_time {
+               hours   = 9
+               minutes = 0
+               seconds = 0
+               }
+               window_duration = "8h"
+               recurrence      = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+               }
+               }
+               ```
+        :param _builtins.str window_duration: The length of each maintenance window instance. Specified as a sequence of decimal numbers, each with an optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        :param 'ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTimeArgs' window_start_time: The time of day when each maintenance window instance begins.
+        :param 'ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntilArgs' delay_until: Specifies the initial date when the recurring window can start.
+        """
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "window_duration", window_duration)
+        pulumi.set(__self__, "window_start_time", window_start_time)
+        if delay_until is not None:
+            pulumi.set(__self__, "delay_until", delay_until)
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> _builtins.str:
+        """
+        Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+
+        Examples:
+        ```
+        maintenance_policy {
+        recurring_maintenance_window {
+        delay_until {
+        day   = 1
+        month = 8
+        year  = 2019
+        }
+        window_start_time {
+        hours   = 2
+        minutes = 0
+        seconds = 0
+        }
+        window_duration = "4h"
+        recurrence      = "FREQ=DAILY"
+        }
+        }
+        ```
+
+        ```
+        maintenance_policy {
+        recurring_maintenance_window {
+        delay_until {
+        day   = 1
+        month = 1
+        year  = 2019
+        }
+        window_start_time {
+        hours   = 9
+        minutes = 0
+        seconds = 0
+        }
+        window_duration = "8h"
+        recurrence      = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+        }
+        }
+        ```
+        """
+        return pulumi.get(self, "recurrence")
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> _builtins.str:
+        """
+        The length of each maintenance window instance. Specified as a sequence of decimal numbers, each with an optional fraction and a unit suffix, such as `"300s"`, `"1.5m"`, and `"2h45m"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
+        """
+        return pulumi.get(self, "window_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="windowStartTime")
+    def window_start_time(self) -> 'outputs.ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime':
+        """
+        The time of day when each maintenance window instance begins.
+        """
+        return pulumi.get(self, "window_start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="delayUntil")
+    def delay_until(self) -> Optional['outputs.ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntil']:
+        """
+        Specifies the initial date when the recurring window can start.
+        """
+        return pulumi.get(self, "delay_until")
+
+
+@pulumi.output_type
+class ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntil(dict):
+    def __init__(__self__, *,
+                 day: _builtins.int,
+                 month: _builtins.int,
+                 year: _builtins.int):
+        """
+        :param _builtins.int day: The day of the month (integer value between 1 and 31).
+        :param _builtins.int month: The month of the year (integer value between 1 and 12).
+        :param _builtins.int year: The year (integer value).
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> _builtins.int:
+        """
+        The day of the month (integer value between 1 and 31).
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> _builtins.int:
+        """
+        The month of the year (integer value between 1 and 12).
+        """
+        return pulumi.get(self, "month")
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> _builtins.int:
+        """
+        The year (integer value).
+        """
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class ClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTime(dict):
+    def __init__(__self__, *,
+                 hours: _builtins.int,
+                 minutes: _builtins.int,
+                 seconds: _builtins.int):
+        """
+        :param _builtins.int hours: The hour of the day (integer value between 0 and 23).
+        :param _builtins.int minutes: The minute of the hour (integer value between 0 and 59).
+        :param _builtins.int seconds: The second of the minute (integer value between 0 and 59).
+        """
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> _builtins.int:
+        """
+        The hour of the day (integer value between 0 and 23).
+        """
+        return pulumi.get(self, "hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> _builtins.int:
+        """
+        The minute of the hour (integer value between 0 and 59).
+        """
+        return pulumi.get(self, "minutes")
+
+    @_builtins.property
+    @pulumi.getter
+    def seconds(self) -> _builtins.int:
+        """
+        The second of the minute (integer value between 0 and 59).
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
 class ClusterMaintenancePolicyRecurringWindow(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7392,6 +7659,48 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
                  end_time: _builtins.str,
                  recurrence: _builtins.str,
                  start_time: _builtins.str):
+        """
+        :param _builtins.str recurrence: Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+               
+               Examples:
+               ```
+               maintenance_policy {
+               recurring_maintenance_window {
+               delay_until {
+               day   = 1
+               month = 8
+               year  = 2019
+               }
+               window_start_time {
+               hours   = 2
+               minutes = 0
+               seconds = 0
+               }
+               window_duration = "4h"
+               recurrence      = "FREQ=DAILY"
+               }
+               }
+               ```
+               
+               ```
+               maintenance_policy {
+               recurring_maintenance_window {
+               delay_until {
+               day   = 1
+               month = 1
+               year  = 2019
+               }
+               window_start_time {
+               hours   = 9
+               minutes = 0
+               seconds = 0
+               }
+               window_duration = "8h"
+               recurrence      = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+               }
+               }
+               ```
+        """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "recurrence", recurrence)
         pulumi.set(__self__, "start_time", start_time)
@@ -7404,6 +7713,48 @@ class ClusterMaintenancePolicyRecurringWindow(dict):
     @_builtins.property
     @pulumi.getter
     def recurrence(self) -> _builtins.str:
+        """
+        Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+
+        Examples:
+        ```
+        maintenance_policy {
+        recurring_maintenance_window {
+        delay_until {
+        day   = 1
+        month = 8
+        year  = 2019
+        }
+        window_start_time {
+        hours   = 2
+        minutes = 0
+        seconds = 0
+        }
+        window_duration = "4h"
+        recurrence      = "FREQ=DAILY"
+        }
+        }
+        ```
+
+        ```
+        maintenance_policy {
+        recurring_maintenance_window {
+        delay_until {
+        day   = 1
+        month = 1
+        year  = 2019
+        }
+        window_start_time {
+        hours   = 9
+        minutes = 0
+        seconds = 0
+        }
+        window_duration = "8h"
+        recurrence      = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+        }
+        }
+        ```
+        """
         return pulumi.get(self, "recurrence")
 
     @_builtins.property
@@ -10668,6 +11019,8 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
             suggest = "accurate_time_config"
         elif key == "cgroupMode":
             suggest = "cgroup_mode"
+        elif key == "customNodeInit":
+            suggest = "custom_node_init"
         elif key == "hugepagesConfig":
             suggest = "hugepages_config"
         elif key == "nodeKernelModuleLoading":
@@ -10693,6 +11046,7 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  accurate_time_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig'] = None,
                  cgroup_mode: Optional[_builtins.str] = None,
+                 custom_node_init: Optional['outputs.ClusterNodeConfigLinuxNodeConfigCustomNodeInit'] = None,
                  hugepages_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
                  node_kernel_module_loading: Optional['outputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading'] = None,
                  swap_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfigSwapConfig'] = None,
@@ -10706,6 +11060,7 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param 'ClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs' custom_node_init: Custom node init settings. Structure is documented below.
         :param 'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param 'ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs' node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
         :param 'ClusterNodeConfigLinuxNodeConfigSwapConfigArgs' swap_config: Swap configuration for the node. Structure is documented below.
@@ -10720,6 +11075,8 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
             pulumi.set(__self__, "accurate_time_config", accurate_time_config)
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if custom_node_init is not None:
+            pulumi.set(__self__, "custom_node_init", custom_node_init)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if node_kernel_module_loading is not None:
@@ -10752,6 +11109,14 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
         return pulumi.get(self, "cgroup_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customNodeInit")
+    def custom_node_init(self) -> Optional['outputs.ClusterNodeConfigLinuxNodeConfigCustomNodeInit']:
+        """
+        Custom node init settings. Structure is documented below.
+        """
+        return pulumi.get(self, "custom_node_init")
 
     @_builtins.property
     @pulumi.getter(name="hugepagesConfig")
@@ -10839,6 +11204,106 @@ class ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig(dict):
         Whether to enable accurate time synchronization with PTP-KVM.
         """
         return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+
+@pulumi.output_type
+class ClusterNodeConfigLinuxNodeConfigCustomNodeInit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initScript":
+            suggest = "init_script"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigLinuxNodeConfigCustomNodeInit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigLinuxNodeConfigCustomNodeInit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigLinuxNodeConfigCustomNodeInit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 init_script: Optional['outputs.ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript'] = None):
+        """
+        :param 'ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs' init_script: The init script configuration. Structure is documented below.
+        """
+        if init_script is not None:
+            pulumi.set(__self__, "init_script", init_script)
+
+    @_builtins.property
+    @pulumi.getter(name="initScript")
+    def init_script(self) -> Optional['outputs.ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript']:
+        """
+        The init script configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "init_script")
+
+
+@pulumi.output_type
+class ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+        elif key == "gcsGeneration":
+            suggest = "gcs_generation"
+        elif key == "gcsUri":
+            suggest = "gcs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None,
+                 gcs_generation: Optional[_builtins.int] = None,
+                 gcs_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: The Google Cloud Secret Manager secret version URI for storing the init script. Format: `projects/PROJECT_ID/secrets/SECRET_NAME/versions/VERSION`. The service account on the nodepool must have access to the secret version. Conflicts with `gcs_uri`.
+        :param _builtins.int gcs_generation: The generation of the init script in Google Cloud Storage. If `gcs_uri` is used, `gcs_generation` is required.
+        :param _builtins.str gcs_uri: The Google Cloud Storage URI for storing the init script. Format: `gs://BUCKET_NAME/OBJECT_NAME`. The service account on the nodepool must have read access to the object. Conflicts with `gcp_secret_manager_secret_uri`. If `gcs_uri` is used, `gcs_generation` is required.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+        if gcs_generation is not None:
+            pulumi.set(__self__, "gcs_generation", gcs_generation)
+        if gcs_uri is not None:
+            pulumi.set(__self__, "gcs_uri", gcs_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        The Google Cloud Secret Manager secret version URI for storing the init script. Format: `projects/PROJECT_ID/secrets/SECRET_NAME/versions/VERSION`. The service account on the nodepool must have access to the secret version. Conflicts with `gcs_uri`.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsGeneration")
+    def gcs_generation(self) -> Optional[_builtins.int]:
+        """
+        The generation of the init script in Google Cloud Storage. If `gcs_uri` is used, `gcs_generation` is required.
+        """
+        return pulumi.get(self, "gcs_generation")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> Optional[_builtins.str]:
+        """
+        The Google Cloud Storage URI for storing the init script. Format: `gs://BUCKET_NAME/OBJECT_NAME`. The service account on the nodepool must have read access to the object. Conflicts with `gcp_secret_manager_secret_uri`. If `gcs_uri` is used, `gcs_generation` is required.
+        """
+        return pulumi.get(self, "gcs_uri")
 
 
 @pulumi.output_type
@@ -11277,8 +11742,9 @@ class ClusterNodeConfigReservationAffinity(dict):
                
                * `"UNSPECIFIED"`: Default value. This should not be used.
                * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-               * `"ANY_RESERVATION"`: Consume any reservation available.
+               * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
                * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+               * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         :param _builtins.str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         :param Sequence[_builtins.str] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
@@ -11297,8 +11763,9 @@ class ClusterNodeConfigReservationAffinity(dict):
 
         * `"UNSPECIFIED"`: Default value. This should not be used.
         * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-        * `"ANY_RESERVATION"`: Consume any reservation available.
+        * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
         * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -11748,6 +12215,8 @@ class ClusterNodePool(dict):
             suggest = "initial_node_count"
         elif key == "instanceGroupUrls":
             suggest = "instance_group_urls"
+        elif key == "maintenancePolicies":
+            suggest = "maintenance_policies"
         elif key == "managedInstanceGroupUrls":
             suggest = "managed_instance_group_urls"
         elif key == "maxPodsPerNode":
@@ -11787,6 +12256,7 @@ class ClusterNodePool(dict):
                  ignore_node_count_changes: Optional[_builtins.bool] = None,
                  initial_node_count: Optional[_builtins.int] = None,
                  instance_group_urls: Optional[Sequence[_builtins.str]] = None,
+                 maintenance_policies: Optional[Sequence['outputs.ClusterNodePoolMaintenancePolicy']] = None,
                  managed_instance_group_urls: Optional[Sequence[_builtins.str]] = None,
                  management: Optional['outputs.ClusterNodePoolManagement'] = None,
                  max_pods_per_node: Optional[_builtins.int] = None,
@@ -11811,13 +12281,15 @@ class ClusterNodePool(dict):
                set this to a value of at least `1`, alongside setting
                `remove_default_node_pool` to `true`.
         :param Sequence[_builtins.str] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
+        :param Sequence['ClusterNodePoolMaintenancePolicyArgs'] maintenance_policies: The maintenance policy to use for the cluster. Structure is
+               documented below.
         :param Sequence[_builtins.str] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
         :param 'ClusterNodePoolManagementArgs' management: Node management configuration, wherein auto-repair and auto-upgrade is configured.
         :param _builtins.int max_pods_per_node: The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
         :param _builtins.str name: The name of the cluster, unique within the project and
                location.
                
-               - - -
+               ***
         :param _builtins.str name_prefix: Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
         :param 'ClusterNodePoolNetworkConfigArgs' network_config: Configuration for
                [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -11848,6 +12320,8 @@ class ClusterNodePool(dict):
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if instance_group_urls is not None:
             pulumi.set(__self__, "instance_group_urls", instance_group_urls)
+        if maintenance_policies is not None:
+            pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         if managed_instance_group_urls is not None:
             pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         if management is not None:
@@ -11915,6 +12389,15 @@ class ClusterNodePool(dict):
         return pulumi.get(self, "instance_group_urls")
 
     @_builtins.property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Optional[Sequence['outputs.ClusterNodePoolMaintenancePolicy']]:
+        """
+        The maintenance policy to use for the cluster. Structure is
+        documented below.
+        """
+        return pulumi.get(self, "maintenance_policies")
+
+    @_builtins.property
     @pulumi.getter(name="managedInstanceGroupUrls")
     def managed_instance_group_urls(self) -> Optional[Sequence[_builtins.str]]:
         """
@@ -11945,7 +12428,7 @@ class ClusterNodePool(dict):
         The name of the cluster, unique within the project and
         location.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -12999,6 +13482,104 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig(dict):
         Whether or not the Google Container Filesystem (GCFS) is enabled
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterNodePoolMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusionUntilEndOfSupports":
+            suggest = "exclusion_until_end_of_supports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclusion_until_end_of_supports: Optional[Sequence['outputs.ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport']] = None):
+        """
+        :param Sequence['ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs'] exclusion_until_end_of_supports: Maintenance exclusion until the end of support.
+        """
+        if exclusion_until_end_of_supports is not None:
+            pulumi.set(__self__, "exclusion_until_end_of_supports", exclusion_until_end_of_supports)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionUntilEndOfSupports")
+    def exclusion_until_end_of_supports(self) -> Optional[Sequence['outputs.ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport']]:
+        """
+        Maintenance exclusion until the end of support.
+        """
+        return pulumi.get(self, "exclusion_until_end_of_supports")
+
+
+@pulumi.output_type
+class ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether to enable the maintenance exclusion until the end of support for this NodePool.
+        :param _builtins.str end_time: End time of the maintenance exclusion.
+        :param _builtins.str start_time: Start time of the maintenance exclusion.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to enable the maintenance exclusion until the end of support for this NodePool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        End time of the maintenance exclusion.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        Start time of the maintenance exclusion.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -16079,6 +16660,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
             suggest = "accurate_time_config"
         elif key == "cgroupMode":
             suggest = "cgroup_mode"
+        elif key == "customNodeInit":
+            suggest = "custom_node_init"
         elif key == "hugepagesConfig":
             suggest = "hugepages_config"
         elif key == "nodeKernelModuleLoading":
@@ -16104,6 +16687,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  accurate_time_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig'] = None,
                  cgroup_mode: Optional[_builtins.str] = None,
+                 custom_node_init: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit'] = None,
                  hugepages_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
                  node_kernel_module_loading: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading'] = None,
                  swap_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig'] = None,
@@ -16117,6 +16701,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param 'ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs' custom_node_init: Custom node init settings. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs' node_kernel_module_loading: Settings for kernel module loading. Structure is documented below.
         :param 'ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs' swap_config: Swap configuration for the node. Structure is documented below.
@@ -16131,6 +16716,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
             pulumi.set(__self__, "accurate_time_config", accurate_time_config)
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if custom_node_init is not None:
+            pulumi.set(__self__, "custom_node_init", custom_node_init)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if node_kernel_module_loading is not None:
@@ -16163,6 +16750,14 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
         return pulumi.get(self, "cgroup_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customNodeInit")
+    def custom_node_init(self) -> Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit']:
+        """
+        Custom node init settings. Structure is documented below.
+        """
+        return pulumi.get(self, "custom_node_init")
 
     @_builtins.property
     @pulumi.getter(name="hugepagesConfig")
@@ -16250,6 +16845,106 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig(dict):
         Whether to enable accurate time synchronization with PTP-KVM.
         """
         return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initScript":
+            suggest = "init_script"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 init_script: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript'] = None):
+        """
+        :param 'ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs' init_script: The init script configuration. Structure is documented below.
+        """
+        if init_script is not None:
+            pulumi.set(__self__, "init_script", init_script)
+
+    @_builtins.property
+    @pulumi.getter(name="initScript")
+    def init_script(self) -> Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript']:
+        """
+        The init script configuration. Structure is documented below.
+        """
+        return pulumi.get(self, "init_script")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+        elif key == "gcsGeneration":
+            suggest = "gcs_generation"
+        elif key == "gcsUri":
+            suggest = "gcs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None,
+                 gcs_generation: Optional[_builtins.int] = None,
+                 gcs_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: The Google Cloud Secret Manager secret version URI for storing the init script. Format: `projects/PROJECT_ID/secrets/SECRET_NAME/versions/VERSION`. The service account on the nodepool must have access to the secret version. Conflicts with `gcs_uri`.
+        :param _builtins.int gcs_generation: The generation of the init script in Google Cloud Storage. If `gcs_uri` is used, `gcs_generation` is required.
+        :param _builtins.str gcs_uri: The Google Cloud Storage URI for storing the init script. Format: `gs://BUCKET_NAME/OBJECT_NAME`. The service account on the nodepool must have read access to the object. Conflicts with `gcp_secret_manager_secret_uri`. If `gcs_uri` is used, `gcs_generation` is required.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+        if gcs_generation is not None:
+            pulumi.set(__self__, "gcs_generation", gcs_generation)
+        if gcs_uri is not None:
+            pulumi.set(__self__, "gcs_uri", gcs_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        The Google Cloud Secret Manager secret version URI for storing the init script. Format: `projects/PROJECT_ID/secrets/SECRET_NAME/versions/VERSION`. The service account on the nodepool must have access to the secret version. Conflicts with `gcs_uri`.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsGeneration")
+    def gcs_generation(self) -> Optional[_builtins.int]:
+        """
+        The generation of the init script in Google Cloud Storage. If `gcs_uri` is used, `gcs_generation` is required.
+        """
+        return pulumi.get(self, "gcs_generation")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> Optional[_builtins.str]:
+        """
+        The Google Cloud Storage URI for storing the init script. Format: `gs://BUCKET_NAME/OBJECT_NAME`. The service account on the nodepool must have read access to the object. Conflicts with `gcp_secret_manager_secret_uri`. If `gcs_uri` is used, `gcs_generation` is required.
+        """
+        return pulumi.get(self, "gcs_uri")
 
 
 @pulumi.output_type
@@ -16688,8 +17383,9 @@ class ClusterNodePoolNodeConfigReservationAffinity(dict):
                
                * `"UNSPECIFIED"`: Default value. This should not be used.
                * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-               * `"ANY_RESERVATION"`: Consume any reservation available.
+               * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
                * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+               * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         :param _builtins.str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         :param Sequence[_builtins.str] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
@@ -16708,8 +17404,9 @@ class ClusterNodePoolNodeConfigReservationAffinity(dict):
 
         * `"UNSPECIFIED"`: Default value. This should not be used.
         * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-        * `"ANY_RESERVATION"`: Consume any reservation available.
+        * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
         * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -17619,7 +18316,7 @@ class ClusterPodAutoscaling(dict):
                Acceptable values are:
                * `"NONE"`: Customers explicitly opt-out of HPA profiles.
                * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
-               See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+                 See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
         """
         pulumi.set(__self__, "hpa_profile", hpa_profile)
 
@@ -17631,7 +18328,7 @@ class ClusterPodAutoscaling(dict):
         Acceptable values are:
         * `"NONE"`: Customers explicitly opt-out of HPA profiles.
         * `"PERFORMANCE"`: PERFORMANCE is used when customers opt-in to the performance HPA profile. In this profile we support a higher number of HPAs per cluster and faster metrics collection for workload autoscaling.
-        See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
+          See [HPAProfile](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#hpaprofile) for more details.
         """
         return pulumi.get(self, "hpa_profile")
 
@@ -18713,7 +19410,7 @@ class NodePoolAutoscaling(dict):
                scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
                * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
                * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-               and reduce preemption risk for Spot VMs.
+                 and reduce preemption risk for Spot VMs.
         :param _builtins.int max_node_count: Maximum number of nodes per zone in the NodePool.
                Must be >= min_node_count. Cannot be used with total limits.
         :param _builtins.int min_node_count: Minimum number of nodes per zone in the NodePool.
@@ -18744,7 +19441,7 @@ class NodePoolAutoscaling(dict):
         scaling-up the node pool. Location policy is supported only in 1.24.1+ clusters.
         * "BALANCED" - Is a best effort policy that aims to balance the sizes of available zones.
         * "ANY" - Instructs the cluster autoscaler to prioritize utilization of unused reservations,
-        and reduce preemption risk for Spot VMs.
+          and reduce preemption risk for Spot VMs.
         """
         return pulumi.get(self, "location_policy")
 
@@ -18785,6 +19482,104 @@ class NodePoolAutoscaling(dict):
         Total size limits are supported only in 1.24.1+ clusters.
         """
         return pulumi.get(self, "total_min_node_count")
+
+
+@pulumi.output_type
+class NodePoolMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusionUntilEndOfSupports":
+            suggest = "exclusion_until_end_of_supports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclusion_until_end_of_supports: Optional[Sequence['outputs.NodePoolMaintenancePolicyExclusionUntilEndOfSupport']] = None):
+        """
+        :param Sequence['NodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs'] exclusion_until_end_of_supports: When enabled, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date. Structure is documented below.
+        """
+        if exclusion_until_end_of_supports is not None:
+            pulumi.set(__self__, "exclusion_until_end_of_supports", exclusion_until_end_of_supports)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionUntilEndOfSupports")
+    def exclusion_until_end_of_supports(self) -> Optional[Sequence['outputs.NodePoolMaintenancePolicyExclusionUntilEndOfSupport']]:
+        """
+        When enabled, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date. Structure is documented below.
+        """
+        return pulumi.get(self, "exclusion_until_end_of_supports")
+
+
+@pulumi.output_type
+class NodePoolMaintenancePolicyExclusionUntilEndOfSupport(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolMaintenancePolicyExclusionUntilEndOfSupport. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolMaintenancePolicyExclusionUntilEndOfSupport.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolMaintenancePolicyExclusionUntilEndOfSupport.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: When true, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date.
+        :param _builtins.str end_time: The time when the maintenance policy is no longer effective, i.e., the node pool version's end of support date.
+        :param _builtins.str start_time: The time when the maintenance policy is first created.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        When true, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        The time when the maintenance policy is no longer effective, i.e., the node pool version's end of support date.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        The time when the maintenance policy is first created.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -21687,6 +22482,8 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
             suggest = "accurate_time_config"
         elif key == "cgroupMode":
             suggest = "cgroup_mode"
+        elif key == "customNodeInit":
+            suggest = "custom_node_init"
         elif key == "hugepagesConfig":
             suggest = "hugepages_config"
         elif key == "nodeKernelModuleLoading":
@@ -21712,6 +22509,7 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
     def __init__(__self__, *,
                  accurate_time_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig'] = None,
                  cgroup_mode: Optional[_builtins.str] = None,
+                 custom_node_init: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInit'] = None,
                  hugepages_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
                  node_kernel_module_loading: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading'] = None,
                  swap_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigSwapConfig'] = None,
@@ -21721,6 +22519,7 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
         """
         :param 'NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs' accurate_time_config: The settings for the accurate time configuration.
         :param _builtins.str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param 'NodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs' custom_node_init: The custom node init settings.
         :param 'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages.
         :param 'NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs' node_kernel_module_loading: The settings for kernel module loading.
         :param 'NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs' swap_config: Swap configuration for the node.
@@ -21732,6 +22531,8 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
             pulumi.set(__self__, "accurate_time_config", accurate_time_config)
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if custom_node_init is not None:
+            pulumi.set(__self__, "custom_node_init", custom_node_init)
         if hugepages_config is not None:
             pulumi.set(__self__, "hugepages_config", hugepages_config)
         if node_kernel_module_loading is not None:
@@ -21760,6 +22561,14 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
         cgroupMode specifies the cgroup mode to be used on the node.
         """
         return pulumi.get(self, "cgroup_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customNodeInit")
+    def custom_node_init(self) -> Optional['outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInit']:
+        """
+        The custom node init settings.
+        """
+        return pulumi.get(self, "custom_node_init")
 
     @_builtins.property
     @pulumi.getter(name="hugepagesConfig")
@@ -21844,6 +22653,106 @@ class NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig(dict):
         Whether to enable accurate time synchronization with PTP-KVM.
         """
         return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigLinuxNodeConfigCustomNodeInit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initScript":
+            suggest = "init_script"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigLinuxNodeConfigCustomNodeInit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigLinuxNodeConfigCustomNodeInit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigLinuxNodeConfigCustomNodeInit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 init_script: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript'] = None):
+        """
+        :param 'NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs' init_script: The init script configuration.
+        """
+        if init_script is not None:
+            pulumi.set(__self__, "init_script", init_script)
+
+    @_builtins.property
+    @pulumi.getter(name="initScript")
+    def init_script(self) -> Optional['outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript']:
+        """
+        The init script configuration.
+        """
+        return pulumi.get(self, "init_script")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcpSecretManagerSecretUri":
+            suggest = "gcp_secret_manager_secret_uri"
+        elif key == "gcsGeneration":
+            suggest = "gcs_generation"
+        elif key == "gcsUri":
+            suggest = "gcs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: Optional[_builtins.str] = None,
+                 gcs_generation: Optional[_builtins.int] = None,
+                 gcs_uri: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: The Secret Manager secret URI of the init script.
+        :param _builtins.int gcs_generation: The GCS generation of the init script.
+        :param _builtins.str gcs_uri: The GCS URI of the init script.
+        """
+        if gcp_secret_manager_secret_uri is not None:
+            pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+        if gcs_generation is not None:
+            pulumi.set(__self__, "gcs_generation", gcs_generation)
+        if gcs_uri is not None:
+            pulumi.set(__self__, "gcs_uri", gcs_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> Optional[_builtins.str]:
+        """
+        The Secret Manager secret URI of the init script.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsGeneration")
+    def gcs_generation(self) -> Optional[_builtins.int]:
+        """
+        The GCS generation of the init script.
+        """
+        return pulumi.get(self, "gcs_generation")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> Optional[_builtins.str]:
+        """
+        The GCS URI of the init script.
+        """
+        return pulumi.get(self, "gcs_uri")
 
 
 @pulumi.output_type
@@ -22272,8 +23181,9 @@ class NodePoolNodeConfigReservationAffinity(dict):
                
                * `"UNSPECIFIED"`: Default value. This should not be used.
                * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-               * `"ANY_RESERVATION"`: Consume any reservation available.
+               * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
                * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+               * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         :param _builtins.str key: The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
         :param Sequence[_builtins.str] values: The list of label values of reservation resources. For example: the name of the specific reservation when using a key of "compute.googleapis.com/reservation-name"
         """
@@ -22292,8 +23202,9 @@ class NodePoolNodeConfigReservationAffinity(dict):
 
         * `"UNSPECIFIED"`: Default value. This should not be used.
         * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-        * `"ANY_RESERVATION"`: Consume any reservation available.
+        * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
         * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -24128,7 +25039,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         """
         :param _builtins.str node_pool_soak_duration: Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
                
-               																A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param Sequence['GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicyArgs'] standard_rollout_policies: Standard policy for the blue-green upgrade.
         """
         pulumi.set(__self__, "node_pool_soak_duration", node_pool_soak_duration)
@@ -24140,7 +25051,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         """
         Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
 
-        																A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         return pulumi.get(self, "node_pool_soak_duration")
 
@@ -24164,7 +25075,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         :param _builtins.float batch_percentage: Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
         :param _builtins.str batch_soak_duration: Soak time after each batch gets drained.
                
-               																			A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                                           A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "batch_node_count", batch_node_count)
         pulumi.set(__self__, "batch_percentage", batch_percentage)
@@ -24192,7 +25103,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
         """
         Soak time after each batch gets drained.
 
-        																			A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+                                                                                    A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         return pulumi.get(self, "batch_soak_duration")
 
@@ -24923,16 +25834,19 @@ class GetClusterMaintenancePolicyResult(dict):
                  daily_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult'],
                  disruption_budgets: Sequence['outputs.GetClusterMaintenancePolicyDisruptionBudgetResult'],
                  maintenance_exclusions: Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult'],
+                 recurring_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowResult'],
                  recurring_windows: Sequence['outputs.GetClusterMaintenancePolicyRecurringWindowResult']):
         """
         :param Sequence['GetClusterMaintenancePolicyDailyMaintenanceWindowArgs'] daily_maintenance_windows: Time window specified for daily maintenance operations. Specify start_time in RFC3339 format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
         :param Sequence['GetClusterMaintenancePolicyDisruptionBudgetArgs'] disruption_budgets: Cluster disruption intervals for minor version and patch version upgrade
         :param Sequence['GetClusterMaintenancePolicyMaintenanceExclusionArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
+        :param Sequence['GetClusterMaintenancePolicyRecurringMaintenanceWindowArgs'] recurring_maintenance_windows: Time window for recurring maintenance operations.
         :param Sequence['GetClusterMaintenancePolicyRecurringWindowArgs'] recurring_windows: Time window for recurring maintenance operations.
         """
         pulumi.set(__self__, "daily_maintenance_windows", daily_maintenance_windows)
         pulumi.set(__self__, "disruption_budgets", disruption_budgets)
         pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
+        pulumi.set(__self__, "recurring_maintenance_windows", recurring_maintenance_windows)
         pulumi.set(__self__, "recurring_windows", recurring_windows)
 
     @_builtins.property
@@ -24958,6 +25872,14 @@ class GetClusterMaintenancePolicyResult(dict):
         Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows.
         """
         return pulumi.get(self, "maintenance_exclusions")
+
+    @_builtins.property
+    @pulumi.getter(name="recurringMaintenanceWindows")
+    def recurring_maintenance_windows(self) -> Sequence['outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowResult']:
+        """
+        Time window for recurring maintenance operations.
+        """
+        return pulumi.get(self, "recurring_maintenance_windows")
 
     @_builtins.property
     @pulumi.getter(name="recurringWindows")
@@ -25086,6 +26008,91 @@ class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptionResult(dict)
         The scope of automatic upgrades to restrict in the exclusion window.
         """
         return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyRecurringMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 delay_untils: Sequence['outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntilResult'],
+                 recurrence: _builtins.str,
+                 window_duration: _builtins.str,
+                 window_start_times: Sequence['outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTimeResult']):
+        pulumi.set(__self__, "delay_untils", delay_untils)
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "window_duration", window_duration)
+        pulumi.set(__self__, "window_start_times", window_start_times)
+
+    @_builtins.property
+    @pulumi.getter(name="delayUntils")
+    def delay_untils(self) -> Sequence['outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntilResult']:
+        return pulumi.get(self, "delay_untils")
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> _builtins.str:
+        return pulumi.get(self, "recurrence")
+
+    @_builtins.property
+    @pulumi.getter(name="windowDuration")
+    def window_duration(self) -> _builtins.str:
+        return pulumi.get(self, "window_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="windowStartTimes")
+    def window_start_times(self) -> Sequence['outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTimeResult']:
+        return pulumi.get(self, "window_start_times")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntilResult(dict):
+    def __init__(__self__, *,
+                 day: _builtins.int,
+                 month: _builtins.int,
+                 year: _builtins.int):
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "month", month)
+        pulumi.set(__self__, "year", year)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> _builtins.int:
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter
+    def month(self) -> _builtins.int:
+        return pulumi.get(self, "month")
+
+    @_builtins.property
+    @pulumi.getter
+    def year(self) -> _builtins.int:
+        return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyRecurringMaintenanceWindowWindowStartTimeResult(dict):
+    def __init__(__self__, *,
+                 hours: _builtins.int,
+                 minutes: _builtins.int,
+                 seconds: _builtins.int):
+        pulumi.set(__self__, "hours", hours)
+        pulumi.set(__self__, "minutes", minutes)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @_builtins.property
+    @pulumi.getter
+    def hours(self) -> _builtins.int:
+        return pulumi.get(self, "hours")
+
+    @_builtins.property
+    @pulumi.getter
+    def minutes(self) -> _builtins.int:
+        return pulumi.get(self, "minutes")
+
+    @_builtins.property
+    @pulumi.getter
+    def seconds(self) -> _builtins.int:
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type
@@ -27311,6 +28318,7 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  accurate_time_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigResult'],
                  cgroup_mode: _builtins.str,
+                 custom_node_inits: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigCustomNodeInitResult'],
                  hugepages_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult'],
                  node_kernel_module_loadings: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingResult'],
                  swap_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigSwapConfigResult'],
@@ -27320,6 +28328,7 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
         """
         :param Sequence['GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs'] accurate_time_configs: The settings for the accurate time configuration.
         :param _builtins.str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param Sequence['GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs'] custom_node_inits: The custom node init settings.
         :param Sequence['GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_configs: Amounts for 2M and 1G hugepages.
         :param Sequence['GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loadings: The settings for kernel module loading.
         :param Sequence['GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs'] swap_configs: Swap configuration for the node.
@@ -27329,6 +28338,7 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
         """
         pulumi.set(__self__, "accurate_time_configs", accurate_time_configs)
         pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        pulumi.set(__self__, "custom_node_inits", custom_node_inits)
         pulumi.set(__self__, "hugepages_configs", hugepages_configs)
         pulumi.set(__self__, "node_kernel_module_loadings", node_kernel_module_loadings)
         pulumi.set(__self__, "swap_configs", swap_configs)
@@ -27351,6 +28361,14 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
         cgroupMode specifies the cgroup mode to be used on the node.
         """
         return pulumi.get(self, "cgroup_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customNodeInits")
+    def custom_node_inits(self) -> Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigCustomNodeInitResult']:
+        """
+        The custom node init settings.
+        """
+        return pulumi.get(self, "custom_node_inits")
 
     @_builtins.property
     @pulumi.getter(name="hugepagesConfigs")
@@ -27417,6 +28435,64 @@ class GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigResult(dict):
         Whether to enable accurate time synchronization with PTP-KVM.
         """
         return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigLinuxNodeConfigCustomNodeInitResult(dict):
+    def __init__(__self__, *,
+                 init_scripts: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult']):
+        """
+        :param Sequence['GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs'] init_scripts: The init script configuration.
+        """
+        pulumi.set(__self__, "init_scripts", init_scripts)
+
+    @_builtins.property
+    @pulumi.getter(name="initScripts")
+    def init_scripts(self) -> Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult']:
+        """
+        The init script configuration.
+        """
+        return pulumi.get(self, "init_scripts")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str,
+                 gcs_generation: _builtins.int,
+                 gcs_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: The Secret Manager secret URI of the init script.
+        :param _builtins.int gcs_generation: The GCS generation of the init script.
+        :param _builtins.str gcs_uri: The GCS URI of the init script.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+        pulumi.set(__self__, "gcs_generation", gcs_generation)
+        pulumi.set(__self__, "gcs_uri", gcs_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        The Secret Manager secret URI of the init script.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsGeneration")
+    def gcs_generation(self) -> _builtins.int:
+        """
+        The GCS generation of the init script.
+        """
+        return pulumi.get(self, "gcs_generation")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> _builtins.str:
+        """
+        The GCS URI of the init script.
+        """
+        return pulumi.get(self, "gcs_uri")
 
 
 @pulumi.output_type
@@ -27990,6 +29066,7 @@ class GetClusterNodePoolResult(dict):
                  ignore_node_count_changes: _builtins.bool,
                  initial_node_count: _builtins.int,
                  instance_group_urls: Sequence[_builtins.str],
+                 maintenance_policies: Sequence['outputs.GetClusterNodePoolMaintenancePolicyResult'],
                  managed_instance_group_urls: Sequence[_builtins.str],
                  managements: Sequence['outputs.GetClusterNodePoolManagementResult'],
                  max_pods_per_node: _builtins.int,
@@ -28009,6 +29086,7 @@ class GetClusterNodePoolResult(dict):
         :param _builtins.bool ignore_node_count_changes: When true, the provider ignores external changes (drift) to the node count by skipping GCE API queries to the Instance Group Managers. This is a performance optimization for large clusters that saves API quota. Setting this to true will result in missing managed_instance_group_urls in the state.
         :param _builtins.int initial_node_count: The initial number of nodes for the pool. In regional or multi-zonal clusters, this is the number of nodes per zone. Changing this will force recreation of the resource.
         :param Sequence[_builtins.str] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
+        :param Sequence['GetClusterNodePoolMaintenancePolicyArgs'] maintenance_policies: Maintenance policy for this NodePool.
         :param Sequence[_builtins.str] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
         :param Sequence['GetClusterNodePoolManagementArgs'] managements: Node management configuration, wherein auto-repair and auto-upgrade is configured.
         :param _builtins.int max_pods_per_node: The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
@@ -28028,6 +29106,7 @@ class GetClusterNodePoolResult(dict):
         pulumi.set(__self__, "ignore_node_count_changes", ignore_node_count_changes)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         pulumi.set(__self__, "instance_group_urls", instance_group_urls)
+        pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         pulumi.set(__self__, "managements", managements)
         pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
@@ -28074,6 +29153,14 @@ class GetClusterNodePoolResult(dict):
         The resource URLs of the managed instance groups associated with this node pool.
         """
         return pulumi.get(self, "instance_group_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> Sequence['outputs.GetClusterNodePoolMaintenancePolicyResult']:
+        """
+        Maintenance policy for this NodePool.
+        """
+        return pulumi.get(self, "maintenance_policies")
 
     @_builtins.property
     @pulumi.getter(name="managedInstanceGroupUrls")
@@ -28828,6 +29915,64 @@ class GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigResult(dict):
         Whether or not GCFS is enabled
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodePoolMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 exclusion_until_end_of_supports: Sequence['outputs.GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportResult']):
+        """
+        :param Sequence['GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs'] exclusion_until_end_of_supports: Maintenance exclusion until the end of support.
+        """
+        pulumi.set(__self__, "exclusion_until_end_of_supports", exclusion_until_end_of_supports)
+
+    @_builtins.property
+    @pulumi.getter(name="exclusionUntilEndOfSupports")
+    def exclusion_until_end_of_supports(self) -> Sequence['outputs.GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportResult']:
+        """
+        Maintenance exclusion until the end of support.
+        """
+        return pulumi.get(self, "exclusion_until_end_of_supports")
+
+
+@pulumi.output_type
+class GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether to enable the maintenance exclusion until the end of support for this NodePool.
+        :param _builtins.str end_time: End time of the maintenance exclusion.
+        :param _builtins.str start_time: Start time of the maintenance exclusion.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether to enable the maintenance exclusion until the end of support for this NodePool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        End time of the maintenance exclusion.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        Start time of the maintenance exclusion.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -30917,6 +32062,7 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  accurate_time_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigResult'],
                  cgroup_mode: _builtins.str,
+                 custom_node_inits: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitResult'],
                  hugepages_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult'],
                  node_kernel_module_loadings: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingResult'],
                  swap_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigResult'],
@@ -30926,6 +32072,7 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
         """
         :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs'] accurate_time_configs: The settings for the accurate time configuration.
         :param _builtins.str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs'] custom_node_inits: The custom node init settings.
         :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_configs: Amounts for 2M and 1G hugepages.
         :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs'] node_kernel_module_loadings: The settings for kernel module loading.
         :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs'] swap_configs: Swap configuration for the node.
@@ -30935,6 +32082,7 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
         """
         pulumi.set(__self__, "accurate_time_configs", accurate_time_configs)
         pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        pulumi.set(__self__, "custom_node_inits", custom_node_inits)
         pulumi.set(__self__, "hugepages_configs", hugepages_configs)
         pulumi.set(__self__, "node_kernel_module_loadings", node_kernel_module_loadings)
         pulumi.set(__self__, "swap_configs", swap_configs)
@@ -30957,6 +32105,14 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
         cgroupMode specifies the cgroup mode to be used on the node.
         """
         return pulumi.get(self, "cgroup_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="customNodeInits")
+    def custom_node_inits(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitResult']:
+        """
+        The custom node init settings.
+        """
+        return pulumi.get(self, "custom_node_inits")
 
     @_builtins.property
     @pulumi.getter(name="hugepagesConfigs")
@@ -31023,6 +32179,64 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigResult(dict):
         Whether to enable accurate time synchronization with PTP-KVM.
         """
         return pulumi.get(self, "enable_ptp_kvm_time_sync")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitResult(dict):
+    def __init__(__self__, *,
+                 init_scripts: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult']):
+        """
+        :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs'] init_scripts: The init script configuration.
+        """
+        pulumi.set(__self__, "init_scripts", init_scripts)
+
+    @_builtins.property
+    @pulumi.getter(name="initScripts")
+    def init_scripts(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult']:
+        """
+        The init script configuration.
+        """
+        return pulumi.get(self, "init_scripts")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptResult(dict):
+    def __init__(__self__, *,
+                 gcp_secret_manager_secret_uri: _builtins.str,
+                 gcs_generation: _builtins.int,
+                 gcs_uri: _builtins.str):
+        """
+        :param _builtins.str gcp_secret_manager_secret_uri: The Secret Manager secret URI of the init script.
+        :param _builtins.int gcs_generation: The GCS generation of the init script.
+        :param _builtins.str gcs_uri: The GCS URI of the init script.
+        """
+        pulumi.set(__self__, "gcp_secret_manager_secret_uri", gcp_secret_manager_secret_uri)
+        pulumi.set(__self__, "gcs_generation", gcs_generation)
+        pulumi.set(__self__, "gcs_uri", gcs_uri)
+
+    @_builtins.property
+    @pulumi.getter(name="gcpSecretManagerSecretUri")
+    def gcp_secret_manager_secret_uri(self) -> _builtins.str:
+        """
+        The Secret Manager secret URI of the init script.
+        """
+        return pulumi.get(self, "gcp_secret_manager_secret_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsGeneration")
+    def gcs_generation(self) -> _builtins.int:
+        """
+        The GCS generation of the init script.
+        """
+        return pulumi.get(self, "gcs_generation")
+
+    @_builtins.property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> _builtins.str:
+        """
+        The GCS URI of the init script.
+        """
+        return pulumi.get(self, "gcs_uri")
 
 
 @pulumi.output_type

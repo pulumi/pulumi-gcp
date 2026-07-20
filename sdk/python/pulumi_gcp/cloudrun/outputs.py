@@ -694,17 +694,17 @@ class ServiceMetadata(dict):
                - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
                - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
                - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-               that can be used in the audience field of ID token for authenticated requests.
+                 that can be used in the audience field of ID token for authenticated requests.
                - `run.googleapis.com/description` sets a user defined description for the Service.
                - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-               for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+                 for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
                - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-               when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+                 when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
                - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
                - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
                - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+                 **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+                 Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param Mapping[str, _builtins.str] effective_annotations: (Output)
                All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param Mapping[str, _builtins.str] effective_labels: (Output)
@@ -769,17 +769,17 @@ class ServiceMetadata(dict):
         - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
         - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
         - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-        that can be used in the audience field of ID token for authenticated requests.
+          that can be used in the audience field of ID token for authenticated requests.
         - `run.googleapis.com/description` sets a user defined description for the Service.
         - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-        for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+          for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-        when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+          when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
         - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
         - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
         - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+          **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+          Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -1258,17 +1258,17 @@ class ServiceTemplateMetadata(dict):
                - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
                - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
                - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-               that can be used in the audience field of ID token for authenticated requests.
+                 that can be used in the audience field of ID token for authenticated requests.
                - `run.googleapis.com/description` sets a user defined description for the Service.
                - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-               for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+                 for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
                - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-               when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+                 when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
                - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
                - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
                - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
-               **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-               Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+                 **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+                 Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param _builtins.int generation: (Output)
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, _builtins.str] labels: Map of string keys and values that can be used to organize and categorize
@@ -1326,17 +1326,17 @@ class ServiceTemplateMetadata(dict):
         - `run.googleapis.com/binary-authorization` sets the [Binary Authorization](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--binary-authorization).
         - `run.googleapis.com/client-name` sets the client name calling the Cloud Run API.
         - `run.googleapis.com/custom-audiences` sets the [custom audiences](https://cloud.google.com/sdk/gcloud/reference/alpha/run/deploy#--add-custom-audiences)
-        that can be used in the audience field of ID token for authenticated requests.
+          that can be used in the audience field of ID token for authenticated requests.
         - `run.googleapis.com/description` sets a user defined description for the Service.
         - `run.googleapis.com/ingress` sets the [ingress settings](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--ingress)
-        for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
+          for the Service. For example, `"run.googleapis.com/ingress" = "all"`.
         - `run.googleapis.com/launch-stage` sets the [launch stage](https://cloud.google.com/run/docs/troubleshooting#launch-stage-validation)
-        when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
+          when a preview feature is used. For example, `"run.googleapis.com/launch-stage": "BETA"`
         - `run.googleapis.com/minScale` sets the [minimum number of container instances](https://cloud.google.com/sdk/gcloud/reference/run/deploy#--min) of the Service.
         - `run.googleapis.com/scalingMode` sets the type of scaling mode for the service. The supported values for scaling mode are "manual" and "automatic". If not provided, it defaults to "automatic".
         - `run.googleapis.com/manualInstanceCount` sets the total instance count for the service in manual scaling mode. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving.
-        **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
-        Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+          **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
+          Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
         return pulumi.get(self, "annotations")
 
@@ -2654,9 +2654,9 @@ class ServiceTemplateSpecContainerResources(dict):
                CPU Limit details:
                - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
                - CPU allocation must comply with memory limits and concurrency rules described in:
-               https://cloud.google.com/run/docs/configuring/services/cpu
-               The values of the map is string form of the 'quantity' k8s type:
-               https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+                 https://cloud.google.com/run/docs/configuring/services/cpu
+                 The values of the map is string form of the 'quantity' k8s type:
+                 https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         :param Mapping[str, _builtins.str] requests: Requests describes the minimum amount of compute resources required.
                If Requests is omitted for a container, it defaults to Limits if that is
                explicitly specified, otherwise to an implementation-defined value.
@@ -2676,9 +2676,9 @@ class ServiceTemplateSpecContainerResources(dict):
         CPU Limit details:
         - For fractional CPU values (e.g. `0.5`, `0.75`, min `0.08`) are also supported.
         - CPU allocation must comply with memory limits and concurrency rules described in:
-        https://cloud.google.com/run/docs/configuring/services/cpu
-        The values of the map is string form of the 'quantity' k8s type:
-        https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+          https://cloud.google.com/run/docs/configuring/services/cpu
+          The values of the map is string form of the 'quantity' k8s type:
+          https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -3170,7 +3170,7 @@ class ServiceTemplateSpecVolumeCsi(dict):
         """
         :param _builtins.str driver: Unique name representing the type of file system to be created. Cloud Run supports the following values:
                * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-               run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
+                 run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         :param _builtins.bool read_only: If true, all mounts created from this volume will be read-only.
         :param Mapping[str, _builtins.str] volume_attributes: Driver-specific attributes. The following options are supported for available drivers:
                * gcsfuse.run.googleapis.com
@@ -3188,7 +3188,7 @@ class ServiceTemplateSpecVolumeCsi(dict):
         """
         Unique name representing the type of file system to be created. Cloud Run supports the following values:
         * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-        run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
+          run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         """
         return pulumi.get(self, "driver")
 
@@ -5151,8 +5151,8 @@ class GetServiceTemplateSpecContainerResourceResult(dict):
                - For fractional CPU values (e.g. '0.5', '0.75', min '0.08') are also supported.
                - CPU allocation must comply with memory limits and concurrency rules described in:
                  https://cloud.google.com/run/docs/configuring/services/cpu
-               The values of the map is string form of the 'quantity' k8s type:
-               https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+                 The values of the map is string form of the 'quantity' k8s type:
+                 https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         :param Mapping[str, _builtins.str] requests: Requests describes the minimum amount of compute resources required.
                If Requests is omitted for a container, it defaults to Limits if that is
                explicitly specified, otherwise to an implementation-defined value.
@@ -5171,8 +5171,8 @@ class GetServiceTemplateSpecContainerResourceResult(dict):
         - For fractional CPU values (e.g. '0.5', '0.75', min '0.08') are also supported.
         - CPU allocation must comply with memory limits and concurrency rules described in:
           https://cloud.google.com/run/docs/configuring/services/cpu
-        The values of the map is string form of the 'quantity' k8s type:
-        https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+          The values of the map is string form of the 'quantity' k8s type:
+          https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 

@@ -200,7 +200,7 @@ def get_cloud_exadata_infrastructure(cloud_exadata_infrastructure_id: Optional[_
     :param _builtins.str cloud_exadata_infrastructure_id: The ID of the ExadataInfrastructure.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project to which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -251,7 +251,7 @@ def get_cloud_exadata_infrastructure_output(cloud_exadata_infrastructure_id: pul
     :param _builtins.str cloud_exadata_infrastructure_id: The ID of the ExadataInfrastructure.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project to which the resource belongs. If it
            is not provided, the provider project is used.
     """

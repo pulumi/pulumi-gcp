@@ -137,6 +137,8 @@ type Service struct {
 	// The spec of the MCP Server. When set, the type of the Service is MCP Server.
 	// Structure is documented below.
 	McpServerSpec ServiceMcpServerSpecPtrOutput `pulumi:"mcpServerSpec"`
+	// The resource name of the Service.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -211,6 +213,8 @@ type serviceState struct {
 	// The spec of the MCP Server. When set, the type of the Service is MCP Server.
 	// Structure is documented below.
 	McpServerSpec *ServiceMcpServerSpec `pulumi:"mcpServerSpec"`
+	// The resource name of the Service.
+	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -250,6 +254,8 @@ type ServiceState struct {
 	// The spec of the MCP Server. When set, the type of the Service is MCP Server.
 	// Structure is documented below.
 	McpServerSpec ServiceMcpServerSpecPtrInput
+	// The resource name of the Service.
+	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -471,6 +477,11 @@ func (o ServiceOutput) Location() pulumi.StringOutput {
 // Structure is documented below.
 func (o ServiceOutput) McpServerSpec() ServiceMcpServerSpecPtrOutput {
 	return o.ApplyT(func(v *Service) ServiceMcpServerSpecPtrOutput { return v.McpServerSpec }).(ServiceMcpServerSpecPtrOutput)
+}
+
+// The resource name of the Service.
+func (o ServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

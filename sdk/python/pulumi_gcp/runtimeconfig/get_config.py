@@ -110,7 +110,7 @@ def get_config(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the Runtime Configurator configuration.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -151,7 +151,7 @@ def get_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str name: The name of the Runtime Configurator configuration.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

@@ -14,16 +14,42 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecDeploymentSpec
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig? AgentGatewayConfig;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+        /// Possible values:
+        /// * `STABLE`: Stable agent server mode.
+        /// * `EXPERIMENTAL`: Experimental agent server mode.
+        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        /// </summary>
+        public readonly string? AgentServerMode;
+        /// <summary>
         /// Optional. Concurrency for each container and agent server.
         /// Recommended value: 2 * cpu + 1. Defaults to 9.
         /// </summary>
         public readonly int? ContainerConcurrency;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+        /// </summary>
+        public readonly bool? DedicatedIngressEndpointEnabled;
         /// <summary>
         /// Optional. Environment variables to be set with the Reasoning
         /// Engine deployment.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecEnv> Envs;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Specifies the configuration for keep-alive probe.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecDeploymentSpecKeepAliveProbe? KeepAliveProbe;
         /// <summary>
         /// Optional. The maximum number of application instances that can be
         /// launched to handle increased traffic. Defaults to 100.
@@ -64,9 +90,17 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private AiReasoningEngineSpecDeploymentSpec(
+            Outputs.AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig? agentGatewayConfig,
+
+            string? agentServerMode,
+
             int? containerConcurrency,
 
+            bool? dedicatedIngressEndpointEnabled,
+
             ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecEnv> envs,
+
+            Outputs.AiReasoningEngineSpecDeploymentSpecKeepAliveProbe? keepAliveProbe,
 
             int? maxInstances,
 
@@ -78,8 +112,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             ImmutableArray<Outputs.AiReasoningEngineSpecDeploymentSpecSecretEnv> secretEnvs)
         {
+            AgentGatewayConfig = agentGatewayConfig;
+            AgentServerMode = agentServerMode;
             ContainerConcurrency = containerConcurrency;
+            DedicatedIngressEndpointEnabled = dedicatedIngressEndpointEnabled;
             Envs = envs;
+            KeepAliveProbe = keepAliveProbe;
             MaxInstances = maxInstances;
             MinInstances = minInstances;
             PscInterfaceConfig = pscInterfaceConfig;

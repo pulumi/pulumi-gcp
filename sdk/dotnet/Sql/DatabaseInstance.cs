@@ -657,6 +657,15 @@ namespace Pulumi.Gcp.Sql
         public Output<string> EncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enforce the new SQL network architecture. 
+        /// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+        /// This follows the gcloud pattern where the flag is an irreversible opt-in.
+        /// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+        /// </summary>
+        [Output("enforceNewSqlNetworkArchitecture")]
+        public Output<bool> EnforceNewSqlNetworkArchitecture { get; private set; } = null!;
+
+        /// <summary>
         /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         /// </summary>
         [Output("finalBackupDescription")]
@@ -939,6 +948,15 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? EncryptionKeyName { get; set; }
 
         /// <summary>
+        /// Whether to enforce the new SQL network architecture. 
+        /// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+        /// This follows the gcloud pattern where the flag is an irreversible opt-in.
+        /// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+        /// </summary>
+        [Input("enforceNewSqlNetworkArchitecture")]
+        public Input<bool>? EnforceNewSqlNetworkArchitecture { get; set; }
+
+        /// <summary>
         /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         /// </summary>
         [Input("finalBackupDescription")]
@@ -1204,6 +1222,15 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("encryptionKeyName")]
         public Input<string>? EncryptionKeyName { get; set; }
+
+        /// <summary>
+        /// Whether to enforce the new SQL network architecture. 
+        /// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+        /// This follows the gcloud pattern where the flag is an irreversible opt-in.
+        /// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+        /// </summary>
+        [Input("enforceNewSqlNetworkArchitecture")]
+        public Input<bool>? EnforceNewSqlNetworkArchitecture { get; set; }
 
         /// <summary>
         /// The description of final backup. Only set this field when `final_backup_config.enabled` is true.

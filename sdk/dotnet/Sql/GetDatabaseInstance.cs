@@ -139,6 +139,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string DnsName;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> DnsNames;
         public readonly string EncryptionKeyName;
+        public readonly bool EnforceNewSqlNetworkArchitecture;
         public readonly string FinalBackupDescription;
         public readonly string FirstIpAddress;
         /// <summary>
@@ -190,6 +191,8 @@ namespace Pulumi.Gcp.Sql
             ImmutableArray<Outputs.GetDatabaseInstanceDnsNameResult> dnsNames,
 
             string encryptionKeyName,
+
+            bool enforceNewSqlNetworkArchitecture,
 
             string finalBackupDescription,
 
@@ -253,6 +256,7 @@ namespace Pulumi.Gcp.Sql
             DnsName = dnsName;
             DnsNames = dnsNames;
             EncryptionKeyName = encryptionKeyName;
+            EnforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             Id = id;

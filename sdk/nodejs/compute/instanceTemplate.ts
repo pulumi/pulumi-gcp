@@ -366,7 +366,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
      * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
      *
-     * - - -
+     * ***
      */
     declare public readonly machineType: pulumi.Output<string>;
     /**
@@ -492,6 +492,11 @@ export class InstanceTemplate extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    declare public readonly workloadIdentityConfig: pulumi.Output<outputs.compute.InstanceTemplateWorkloadIdentityConfig | undefined>;
 
     /**
      * Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -542,6 +547,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
+            resourceInputs["workloadIdentityConfig"] = state?.workloadIdentityConfig;
         } else {
             const args = argsOrState as InstanceTemplateArgs | undefined;
             if (args?.disks === undefined && !opts.urn) {
@@ -578,6 +584,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
@@ -663,7 +670,7 @@ export interface InstanceTemplateState {
      * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
      * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
      *
-     * - - -
+     * ***
      */
     machineType?: pulumi.Input<string | undefined>;
     /**
@@ -789,6 +796,11 @@ export interface InstanceTemplateState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceTemplateWorkloadIdentityConfig | undefined>;
 }
 
 /**
@@ -852,7 +864,7 @@ export interface InstanceTemplateArgs {
      * More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
      * create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
      *
-     * - - -
+     * ***
      */
     machineType: pulumi.Input<string>;
     /**
@@ -953,4 +965,9 @@ export interface InstanceTemplateArgs {
      * Tags to attach to the instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceTemplateWorkloadIdentityConfig | undefined>;
 }

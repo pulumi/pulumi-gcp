@@ -2478,6 +2478,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
             suggest = "allowed_consumer_projects"
         elif key == "networkAttachmentUri":
             suggest = "network_attachment_uri"
+        elif key == "pscAutoConnectionPolicyEnabled":
+            suggest = "psc_auto_connection_policy_enabled"
         elif key == "pscAutoConnections":
             suggest = "psc_auto_connections"
         elif key == "pscAutoDnsEnabled":
@@ -2501,6 +2503,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[Sequence[_builtins.str]] = None,
                  network_attachment_uri: Optional[_builtins.str] = None,
+                 psc_auto_connection_policy_enabled: Optional[_builtins.bool] = None,
                  psc_auto_connections: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection']] = None,
                  psc_auto_dns_enabled: Optional[_builtins.bool] = None,
                  psc_enabled: Optional[_builtins.bool] = None,
@@ -2508,15 +2511,20 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
         """
         :param Sequence[_builtins.str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param _builtins.str network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        :param _builtins.bool psc_auto_connection_policy_enabled: Whether a service connection policy is created for the auto connections configured for the instance.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs'] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param _builtins.bool psc_auto_dns_enabled: Whether PSC auto DNS is enabled for this instance.
         :param _builtins.bool psc_enabled: Whether PSC connectivity is enabled for this instance.
         :param _builtins.bool psc_write_endpoint_dns_enabled: Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+               
+               * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
         """
         if allowed_consumer_projects is not None:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         if network_attachment_uri is not None:
             pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
+        if psc_auto_connection_policy_enabled is not None:
+            pulumi.set(__self__, "psc_auto_connection_policy_enabled", psc_auto_connection_policy_enabled)
         if psc_auto_connections is not None:
             pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         if psc_auto_dns_enabled is not None:
@@ -2541,6 +2549,14 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
         Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         """
         return pulumi.get(self, "network_attachment_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutoConnectionPolicyEnabled")
+    def psc_auto_connection_policy_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether a service connection policy is created for the auto connections configured for the instance.
+        """
+        return pulumi.get(self, "psc_auto_connection_policy_enabled")
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
@@ -2571,6 +2587,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
     def psc_write_endpoint_dns_enabled(self) -> Optional[_builtins.bool]:
         """
         Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+
+        * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
         """
         return pulumi.get(self, "psc_write_endpoint_dns_enabled")
 
@@ -2588,6 +2606,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
             suggest = "consumer_service_project_id"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "serviceConnectionPolicy":
+            suggest = "service_connection_policy"
+        elif key == "serviceConnectionPolicyCreationResult":
+            suggest = "service_connection_policy_creation_result"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection. Access the value via the '{suggest}' property getter instead.")
@@ -2605,12 +2627,16 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
                  consumer_network_status: Optional[_builtins.str] = None,
                  consumer_service_project_id: Optional[_builtins.str] = None,
                  ip_address: Optional[_builtins.str] = None,
+                 service_connection_policy: Optional[_builtins.str] = None,
+                 service_connection_policy_creation_result: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None):
         """
         :param _builtins.str consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
         :param _builtins.str consumer_network_status: (Output) The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
         :param _builtins.str ip_address: (Output) The IP address of the consumer endpoint.
+        :param _builtins.str service_connection_policy: (Output) The service connection policy created for the auto connection.
+        :param _builtins.str service_connection_policy_creation_result: (Output) The result of the service connection policy creation.
         :param _builtins.str status: (Output) The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
@@ -2620,6 +2646,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
             pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if service_connection_policy is not None:
+            pulumi.set(__self__, "service_connection_policy", service_connection_policy)
+        if service_connection_policy_creation_result is not None:
+            pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -2654,6 +2684,22 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
         (Output) The IP address of the consumer endpoint.
         """
         return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicy")
+    def service_connection_policy(self) -> Optional[_builtins.str]:
+        """
+        (Output) The service connection policy created for the auto connection.
+        """
+        return pulumi.get(self, "service_connection_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicyCreationResult")
+    def service_connection_policy_creation_result(self) -> Optional[_builtins.str]:
+        """
+        (Output) The result of the service connection policy creation.
+        """
+        return pulumi.get(self, "service_connection_policy_creation_result")
 
     @_builtins.property
     @pulumi.getter
@@ -5035,6 +5081,7 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[_builtins.str],
                  network_attachment_uri: _builtins.str,
+                 psc_auto_connection_policy_enabled: _builtins.bool,
                  psc_auto_connections: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult'],
                  psc_auto_dns_enabled: _builtins.bool,
                  psc_enabled: _builtins.bool,
@@ -5042,6 +5089,7 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
         """
         :param Sequence[_builtins.str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param _builtins.str network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        :param _builtins.bool psc_auto_connection_policy_enabled: Whether a service connection policy is created for the auto connections configured for the instance.
         :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs'] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param _builtins.bool psc_auto_dns_enabled: Whether PSC auto DNS is enabled for this instance.
         :param _builtins.bool psc_enabled: Whether PSC connectivity is enabled for this instance.
@@ -5049,6 +5097,7 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
         """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
+        pulumi.set(__self__, "psc_auto_connection_policy_enabled", psc_auto_connection_policy_enabled)
         pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         pulumi.set(__self__, "psc_auto_dns_enabled", psc_auto_dns_enabled)
         pulumi.set(__self__, "psc_enabled", psc_enabled)
@@ -5069,6 +5118,14 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
         Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         """
         return pulumi.get(self, "network_attachment_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutoConnectionPolicyEnabled")
+    def psc_auto_connection_policy_enabled(self) -> _builtins.bool:
+        """
+        Whether a service connection policy is created for the auto connections configured for the instance.
+        """
+        return pulumi.get(self, "psc_auto_connection_policy_enabled")
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
@@ -5110,18 +5167,24 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
                  consumer_network_status: _builtins.str,
                  consumer_service_project_id: _builtins.str,
                  ip_address: _builtins.str,
+                 service_connection_policy: _builtins.str,
+                 service_connection_policy_creation_result: _builtins.str,
                  status: _builtins.str):
         """
         :param _builtins.str consumer_network: The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
         :param _builtins.str consumer_network_status: The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
         :param _builtins.str ip_address: The IP address of the consumer endpoint.
+        :param _builtins.str service_connection_policy: The service connection policy created for the auto connection.
+        :param _builtins.str service_connection_policy_creation_result: The result of the service connection policy creation.
         :param _builtins.str status: The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
         pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "service_connection_policy", service_connection_policy)
+        pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
@@ -5155,6 +5218,22 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
         The IP address of the consumer endpoint.
         """
         return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicy")
+    def service_connection_policy(self) -> _builtins.str:
+        """
+        The service connection policy created for the auto connection.
+        """
+        return pulumi.get(self, "service_connection_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicyCreationResult")
+    def service_connection_policy_creation_result(self) -> _builtins.str:
+        """
+        The result of the service connection policy creation.
+        """
+        return pulumi.get(self, "service_connection_policy_creation_result")
 
     @_builtins.property
     @pulumi.getter
@@ -5557,6 +5636,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  dns_name: _builtins.str,
                  dns_names: Sequence['outputs.GetDatabaseInstancesInstanceDnsNameResult'],
                  encryption_key_name: _builtins.str,
+                 enforce_new_sql_network_architecture: _builtins.bool,
                  final_backup_description: _builtins.str,
                  first_ip_address: _builtins.str,
                  instance_type: _builtins.str,
@@ -5597,6 +5677,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.bool deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
         :param _builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+        :param _builtins.bool enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
         :param _builtins.str final_backup_description: The description of final backup if instance enable create final backup during instance deletion.
         :param _builtins.str first_ip_address: The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
         :param _builtins.str instance_type: The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -5631,6 +5712,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "dns_names", dns_names)
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         pulumi.set(__self__, "final_backup_description", final_backup_description)
         pulumi.set(__self__, "first_ip_address", first_ip_address)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -5738,6 +5820,14 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> _builtins.str:
         return pulumi.get(self, "encryption_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceNewSqlNetworkArchitecture")
+    def enforce_new_sql_network_architecture(self) -> _builtins.bool:
+        """
+        Whether to enforce the new SQL network architecture.
+        """
+        return pulumi.get(self, "enforce_new_sql_network_architecture")
 
     @_builtins.property
     @pulumi.getter(name="finalBackupDescription")
@@ -7482,6 +7572,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
     def __init__(__self__, *,
                  allowed_consumer_projects: Sequence[_builtins.str],
                  network_attachment_uri: _builtins.str,
+                 psc_auto_connection_policy_enabled: _builtins.bool,
                  psc_auto_connections: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult'],
                  psc_auto_dns_enabled: _builtins.bool,
                  psc_enabled: _builtins.bool,
@@ -7489,6 +7580,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
         """
         :param Sequence[_builtins.str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param _builtins.str network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        :param _builtins.bool psc_auto_connection_policy_enabled: Whether a service connection policy is created for the auto connections configured for the instance.
         :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs'] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param _builtins.bool psc_auto_dns_enabled: Whether PSC auto DNS is enabled for this instance.
         :param _builtins.bool psc_enabled: Whether PSC connectivity is enabled for this instance.
@@ -7496,6 +7588,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
         """
         pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
+        pulumi.set(__self__, "psc_auto_connection_policy_enabled", psc_auto_connection_policy_enabled)
         pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         pulumi.set(__self__, "psc_auto_dns_enabled", psc_auto_dns_enabled)
         pulumi.set(__self__, "psc_enabled", psc_enabled)
@@ -7516,6 +7609,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
         Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
         """
         return pulumi.get(self, "network_attachment_uri")
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutoConnectionPolicyEnabled")
+    def psc_auto_connection_policy_enabled(self) -> _builtins.bool:
+        """
+        Whether a service connection policy is created for the auto connections configured for the instance.
+        """
+        return pulumi.get(self, "psc_auto_connection_policy_enabled")
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
@@ -7557,18 +7658,24 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
                  consumer_network_status: _builtins.str,
                  consumer_service_project_id: _builtins.str,
                  ip_address: _builtins.str,
+                 service_connection_policy: _builtins.str,
+                 service_connection_policy_creation_result: _builtins.str,
                  status: _builtins.str):
         """
         :param _builtins.str consumer_network: The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
         :param _builtins.str consumer_network_status: The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
         :param _builtins.str ip_address: The IP address of the consumer endpoint.
+        :param _builtins.str service_connection_policy: The service connection policy created for the auto connection.
+        :param _builtins.str service_connection_policy_creation_result: The result of the service connection policy creation.
         :param _builtins.str status: The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
         pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "service_connection_policy", service_connection_policy)
+        pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         pulumi.set(__self__, "status", status)
 
     @_builtins.property
@@ -7602,6 +7709,22 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
         The IP address of the consumer endpoint.
         """
         return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicy")
+    def service_connection_policy(self) -> _builtins.str:
+        """
+        The service connection policy created for the auto connection.
+        """
+        return pulumi.get(self, "service_connection_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicyCreationResult")
+    def service_connection_policy_creation_result(self) -> _builtins.str:
+        """
+        The result of the service connection policy creation.
+        """
+        return pulumi.get(self, "service_connection_policy_creation_result")
 
     @_builtins.property
     @pulumi.getter

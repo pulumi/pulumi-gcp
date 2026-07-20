@@ -38,7 +38,7 @@ class ApiArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         """
@@ -86,7 +86,7 @@ class ApiArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -142,7 +142,7 @@ class _ApiState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this API proxy.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
@@ -194,7 +194,7 @@ class _ApiState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -332,7 +332,7 @@ class Api(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] name: The ID of the API proxy.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization name associated with the Apigee instance.
@@ -441,7 +441,7 @@ class Api(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] detect_md5hash: (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
         :param pulumi.Input[_builtins.str] latest_revision_id: The id of the most recently created revision for this API proxy.
         :param pulumi.Input[_builtins.str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
@@ -485,7 +485,7 @@ class Api(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

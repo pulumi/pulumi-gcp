@@ -186,7 +186,7 @@ def get_app_gateway(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the App Gateway.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str region: The region in which the resource belongs. If it
@@ -233,7 +233,7 @@ def get_app_gateway_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str name: The name of the App Gateway.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str region: The region in which the resource belongs. If it

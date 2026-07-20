@@ -75,7 +75,7 @@ class SubnetworkArgs:
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
@@ -290,7 +290,7 @@ class SubnetworkArgs:
         a dual stack or IPv6-only subnetwork using BYOIP:
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-        Partial URL, as in:
+          Partial URL, as in:
         * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
         * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         """
@@ -589,7 +589,7 @@ class _SubnetworkState:
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
@@ -599,9 +599,9 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] ipv6_gce_endpoint: Possible endpoints of this subnetwork. It can be one of the following:
                * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
-               gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+                 gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
                * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
-               IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+                 IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: This field denotes the VPC flow logging options for this subnetwork. If
                logging is enabled, logs are exported to Cloud Logging. Flow logging
                isn't supported if the subnet `purpose` field is set to subnetwork is
@@ -863,7 +863,7 @@ class _SubnetworkState:
         a dual stack or IPv6-only subnetwork using BYOIP:
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-        Partial URL, as in:
+          Partial URL, as in:
         * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
         * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         """
@@ -906,9 +906,9 @@ class _SubnetworkState:
         """
         Possible endpoints of this subnetwork. It can be one of the following:
         * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
-        gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+          gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
         * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
-        IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+          IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
         """
         return pulumi.get(self, "ipv6_gce_endpoint")
 
@@ -1534,7 +1534,7 @@ class Subnetwork(pulumi.CustomResource):
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
@@ -2061,7 +2061,7 @@ class Subnetwork(pulumi.CustomResource):
                a dual stack or IPv6-only subnetwork using BYOIP:
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-               Partial URL, as in:
+                 Partial URL, as in:
                * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
                * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         :param pulumi.Input[_builtins.str] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation
@@ -2071,9 +2071,9 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[_builtins.str] ipv6_gce_endpoint: Possible endpoints of this subnetwork. It can be one of the following:
                * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
-               gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+                 gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
                * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
-               IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+                 IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
         :param pulumi.Input[Union['SubnetworkLogConfigArgs', 'SubnetworkLogConfigArgsDict']] log_config: This field denotes the VPC flow logging options for this subnetwork. If
                logging is enabled, logs are exported to Cloud Logging. Flow logging
                isn't supported if the subnet `purpose` field is set to subnetwork is
@@ -2270,7 +2270,7 @@ class Subnetwork(pulumi.CustomResource):
         a dual stack or IPv6-only subnetwork using BYOIP:
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
-        Partial URL, as in:
+          Partial URL, as in:
         * `projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}`
         * `regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}`
         """
@@ -2301,9 +2301,9 @@ class Subnetwork(pulumi.CustomResource):
         """
         Possible endpoints of this subnetwork. It can be one of the following:
         * VM_ONLY: The subnetwork can be used for creating instances and IPv6 addresses with VM endpoint type. Such a subnetwork
-        gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
+          gets external IPv6 ranges from a public delegated prefix and cannot be used to create NetLb.
         * VM_AND_FR: The subnetwork can be used for creating both VM instances and Forwarding Rules. It can also be used to reserve
-        IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
+          IPv6 addresses with both VM and FR endpoint types. Such a subnetwork gets its IPv6 range from Google IP Pool directly.
         """
         return pulumi.get(self, "ipv6_gce_endpoint")
 

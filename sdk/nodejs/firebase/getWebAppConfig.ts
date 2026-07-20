@@ -36,7 +36,7 @@ export interface GetWebAppConfigArgs {
     /**
      * the id of the firebase web app
      *
-     * - - -
+     * ***
      */
     webAppId: string;
 }
@@ -118,7 +118,7 @@ export interface GetWebAppConfigOutputArgs {
     /**
      * the id of the firebase web app
      *
-     * - - -
+     * ***
      */
     webAppId: pulumi.Input<string>;
 }

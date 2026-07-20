@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.AgentRegistry
         /// The display name of the Endpoint.
         /// </summary>
         public readonly string DisplayName;
-        public readonly string? EndpointId;
+        public readonly string EndpointId;
         public readonly string? Filter;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.AgentRegistry
 
             string displayName,
 
-            string? endpointId,
+            string endpointId,
 
             string? filter,
 

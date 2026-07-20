@@ -5,6 +5,7 @@ package com.pulumi.gcp.biglake.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsArgs;
 import com.pulumi.gcp.biglake.inputs.IcebergCatalogReplicaArgs;
 import com.pulumi.gcp.biglake.inputs.IcebergCatalogRestrictedLocationsConfigArgs;
 import java.lang.String;
@@ -34,8 +35,26 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+     * 
+     */
+    @Import(name="biglakeServiceAccountId")
+    private @Nullable Output<String> biglakeServiceAccountId;
+
+    /**
+     * @return Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+     * 
+     */
+    public Optional<Output<String>> biglakeServiceAccountId() {
+        return Optional.ofNullable(this.biglakeServiceAccountId);
+    }
+
+    /**
      * The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      * 
      */
     @Import(name="catalogType")
@@ -43,7 +62,10 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      * 
      */
     public Optional<Output<String>> catalogType() {
@@ -124,6 +146,40 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> deletionPolicy() {
         return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="federatedCatalogOptions")
+    private @Nullable Output<IcebergCatalogFederatedCatalogOptionsArgs> federatedCatalogOptions;
+
+    /**
+     * @return Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<IcebergCatalogFederatedCatalogOptionsArgs>> federatedCatalogOptions() {
+        return Optional.ofNullable(this.federatedCatalogOptions);
     }
 
     /**
@@ -253,11 +309,14 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
 
     private IcebergCatalogState(IcebergCatalogState $) {
         this.biglakeServiceAccount = $.biglakeServiceAccount;
+        this.biglakeServiceAccountId = $.biglakeServiceAccountId;
         this.catalogType = $.catalogType;
         this.createTime = $.createTime;
         this.credentialMode = $.credentialMode;
         this.defaultLocation = $.defaultLocation;
         this.deletionPolicy = $.deletionPolicy;
+        this.description = $.description;
+        this.federatedCatalogOptions = $.federatedCatalogOptions;
         this.name = $.name;
         this.primaryLocation = $.primaryLocation;
         this.project = $.project;
@@ -307,8 +366,32 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param biglakeServiceAccountId Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder biglakeServiceAccountId(@Nullable Output<String> biglakeServiceAccountId) {
+            $.biglakeServiceAccountId = biglakeServiceAccountId;
+            return this;
+        }
+
+        /**
+         * @param biglakeServiceAccountId Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder biglakeServiceAccountId(String biglakeServiceAccountId) {
+            return biglakeServiceAccountId(Output.of(biglakeServiceAccountId));
+        }
+
+        /**
          * @param catalogType The catalog type of the IcebergCatalog.
-         * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+         * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+         * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+         * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+         *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
          * 
          * @return builder
          * 
@@ -320,7 +403,10 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param catalogType The catalog type of the IcebergCatalog.
-         * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+         * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+         * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+         * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+         *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
          * 
          * @return builder
          * 
@@ -427,6 +513,52 @@ public final class IcebergCatalogState extends com.pulumi.resources.ResourceArgs
          */
         public Builder deletionPolicy(String deletionPolicy) {
             return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param description A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param federatedCatalogOptions Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+         * is CATALOG_TYPE_FEDERATED.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedCatalogOptions(@Nullable Output<IcebergCatalogFederatedCatalogOptionsArgs> federatedCatalogOptions) {
+            $.federatedCatalogOptions = federatedCatalogOptions;
+            return this;
+        }
+
+        /**
+         * @param federatedCatalogOptions Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+         * is CATALOG_TYPE_FEDERATED.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder federatedCatalogOptions(IcebergCatalogFederatedCatalogOptionsArgs federatedCatalogOptions) {
+            return federatedCatalogOptions(Output.of(federatedCatalogOptions));
         }
 
         /**

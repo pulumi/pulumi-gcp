@@ -941,6 +941,1327 @@ func (o HiveDatabaseIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type IcebergCatalogFederatedCatalogOptions struct {
+	// Configuration for an AWS Glue remote catalog. Exactly one of
+	// unityCatalogInfo or glueCatalogInfo must be specified.
+	// Structure is documented below.
+	GlueCatalogInfo *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo `pulumi:"glueCatalogInfo"`
+	// Configuration for metadata synchronization from the remote catalog.
+	// Structure is documented below.
+	RefreshOptions *IcebergCatalogFederatedCatalogOptionsRefreshOptions `pulumi:"refreshOptions"`
+	// (Output)
+	// Output only. The status of the most recent metadata refresh.
+	// Structure is documented below.
+	RefreshStatuses []IcebergCatalogFederatedCatalogOptionsRefreshStatus `pulumi:"refreshStatuses"`
+	// The secret resource name in Secret Manager, in the format
+	// `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+	// Used to store credentials for authenticating with the remote catalog.
+	SecretName *string `pulumi:"secretName"`
+	// The Service Directory service name for private network connectivity
+	// through Cross-Cloud Interconnect.
+	ServiceDirectoryName *string `pulumi:"serviceDirectoryName"`
+	// Configuration for a Databricks Unity Catalog remote catalog. Exactly
+	// one of unityCatalogInfo or glueCatalogInfo must be specified.
+	// Structure is documented below.
+	UnityCatalogInfo *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo `pulumi:"unityCatalogInfo"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsArgs and IcebergCatalogFederatedCatalogOptionsOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsArgs{...}
+type IcebergCatalogFederatedCatalogOptionsInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsOutput() IcebergCatalogFederatedCatalogOptionsOutput
+	ToIcebergCatalogFederatedCatalogOptionsOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsArgs struct {
+	// Configuration for an AWS Glue remote catalog. Exactly one of
+	// unityCatalogInfo or glueCatalogInfo must be specified.
+	// Structure is documented below.
+	GlueCatalogInfo IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrInput `pulumi:"glueCatalogInfo"`
+	// Configuration for metadata synchronization from the remote catalog.
+	// Structure is documented below.
+	RefreshOptions IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrInput `pulumi:"refreshOptions"`
+	// (Output)
+	// Output only. The status of the most recent metadata refresh.
+	// Structure is documented below.
+	RefreshStatuses IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayInput `pulumi:"refreshStatuses"`
+	// The secret resource name in Secret Manager, in the format
+	// `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+	// Used to store credentials for authenticating with the remote catalog.
+	SecretName pulumi.StringPtrInput `pulumi:"secretName"`
+	// The Service Directory service name for private network connectivity
+	// through Cross-Cloud Interconnect.
+	ServiceDirectoryName pulumi.StringPtrInput `pulumi:"serviceDirectoryName"`
+	// Configuration for a Databricks Unity Catalog remote catalog. Exactly
+	// one of unityCatalogInfo or glueCatalogInfo must be specified.
+	// Structure is documented below.
+	UnityCatalogInfo IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrInput `pulumi:"unityCatalogInfo"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptions)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsOutput() IcebergCatalogFederatedCatalogOptionsOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsOutput)
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsOutput).ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogFederatedCatalogOptionsPtrInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsArgs, IcebergCatalogFederatedCatalogOptionsPtr and IcebergCatalogFederatedCatalogOptionsPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsPtrInput` via:
+//
+//	        IcebergCatalogFederatedCatalogOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogFederatedCatalogOptionsPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsPtrOutput
+	ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsPtrOutput
+}
+
+type icebergCatalogFederatedCatalogOptionsPtrType IcebergCatalogFederatedCatalogOptionsArgs
+
+func IcebergCatalogFederatedCatalogOptionsPtr(v *IcebergCatalogFederatedCatalogOptionsArgs) IcebergCatalogFederatedCatalogOptionsPtrInput {
+	return (*icebergCatalogFederatedCatalogOptionsPtrType)(v)
+}
+
+func (*icebergCatalogFederatedCatalogOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptions)(nil)).Elem()
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsPtrType) ToIcebergCatalogFederatedCatalogOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsPtrType) ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptions)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsOutput() IcebergCatalogFederatedCatalogOptionsOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return o.ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptions {
+		return &v
+	}).(IcebergCatalogFederatedCatalogOptionsPtrOutput)
+}
+
+// Configuration for an AWS Glue remote catalog. Exactly one of
+// unityCatalogInfo or glueCatalogInfo must be specified.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsOutput) GlueCatalogInfo() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo {
+		return v.GlueCatalogInfo
+	}).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput)
+}
+
+// Configuration for metadata synchronization from the remote catalog.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsOutput) RefreshOptions() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptions {
+		return v.RefreshOptions
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput)
+}
+
+// (Output)
+// Output only. The status of the most recent metadata refresh.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsOutput) RefreshStatuses() IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptions) []IcebergCatalogFederatedCatalogOptionsRefreshStatus {
+		return v.RefreshStatuses
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput)
+}
+
+// The secret resource name in Secret Manager, in the format
+// `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+// Used to store credentials for authenticating with the remote catalog.
+func (o IcebergCatalogFederatedCatalogOptionsOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptions) *string { return v.SecretName }).(pulumi.StringPtrOutput)
+}
+
+// The Service Directory service name for private network connectivity
+// through Cross-Cloud Interconnect.
+func (o IcebergCatalogFederatedCatalogOptionsOutput) ServiceDirectoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptions) *string { return v.ServiceDirectoryName }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a Databricks Unity Catalog remote catalog. Exactly
+// one of unityCatalogInfo or glueCatalogInfo must be specified.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsOutput) UnityCatalogInfo() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo {
+		return v.UnityCatalogInfo
+	}).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptions)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) ToIcebergCatalogFederatedCatalogOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) ToIcebergCatalogFederatedCatalogOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) Elem() IcebergCatalogFederatedCatalogOptionsOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) IcebergCatalogFederatedCatalogOptions {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogFederatedCatalogOptions
+		return ret
+	}).(IcebergCatalogFederatedCatalogOptionsOutput)
+}
+
+// Configuration for an AWS Glue remote catalog. Exactly one of
+// unityCatalogInfo or glueCatalogInfo must be specified.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) GlueCatalogInfo() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo {
+		if v == nil {
+			return nil
+		}
+		return v.GlueCatalogInfo
+	}).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput)
+}
+
+// Configuration for metadata synchronization from the remote catalog.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) RefreshOptions() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptions {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshOptions
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput)
+}
+
+// (Output)
+// Output only. The status of the most recent metadata refresh.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) RefreshStatuses() IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) []IcebergCatalogFederatedCatalogOptionsRefreshStatus {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshStatuses
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput)
+}
+
+// The secret resource name in Secret Manager, in the format
+// `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+// Used to store credentials for authenticating with the remote catalog.
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Service Directory service name for private network connectivity
+// through Cross-Cloud Interconnect.
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) ServiceDirectoryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a Databricks Unity Catalog remote catalog. Exactly
+// one of unityCatalogInfo or glueCatalogInfo must be specified.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsPtrOutput) UnityCatalogInfo() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptions) *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo {
+		if v == nil {
+			return nil
+		}
+		return v.UnityCatalogInfo
+	}).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo struct {
+	// The AWS region where the Glue catalog is located.
+	AwsRegion string `pulumi:"awsRegion"`
+	// The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+	AwsRoleArn string `pulumi:"awsRoleArn"`
+	// The AWS Glue warehouse identifier (account ID or S3 table bucket).
+	Warehouse string `pulumi:"warehouse"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs and IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs{...}
+type IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput
+	ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs struct {
+	// The AWS region where the Glue catalog is located.
+	AwsRegion pulumi.StringInput `pulumi:"awsRegion"`
+	// The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+	AwsRoleArn pulumi.StringInput `pulumi:"awsRoleArn"`
+	// The AWS Glue warehouse identifier (account ID or S3 table bucket).
+	Warehouse pulumi.StringInput `pulumi:"warehouse"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput)
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput).ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs, IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtr and IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrInput` via:
+//
+//	        IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput
+	ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput
+}
+
+type icebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrType IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs
+
+func IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtr(v *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrInput {
+	return (*icebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrType)(v)
+}
+
+func (*icebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo)(nil)).Elem()
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrType) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrType) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return o.ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo {
+		return &v
+	}).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput)
+}
+
+// The AWS region where the Glue catalog is located.
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) string { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+// The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) AwsRoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) string { return v.AwsRoleArn }).(pulumi.StringOutput)
+}
+
+// The AWS Glue warehouse identifier (account ID or S3 table bucket).
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput) Warehouse() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) string { return v.Warehouse }).(pulumi.StringOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) ToIcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) Elem() IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo
+		return ret
+	}).(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput)
+}
+
+// The AWS region where the Glue catalog is located.
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) AwsRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AwsRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS Glue warehouse identifier (account ID or S3 table bucket).
+func (o IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput) Warehouse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Warehouse
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptions struct {
+	// Schedule for periodic metadata refresh.
+	// Structure is documented below.
+	RefreshSchedule *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule `pulumi:"refreshSchedule"`
+	// Scope of metadata to synchronize from the remote catalog.
+	// Structure is documented below.
+	RefreshScope *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope `pulumi:"refreshScope"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshOptionsInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs and IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshOptionsInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs{...}
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs struct {
+	// Schedule for periodic metadata refresh.
+	// Structure is documented below.
+	RefreshSchedule IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrInput `pulumi:"refreshSchedule"`
+	// Scope of metadata to synchronize from the remote catalog.
+	// Structure is documented below.
+	RefreshScope IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrInput `pulumi:"refreshScope"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptions)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput)
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput).ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs, IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtr and IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrInput` via:
+//
+//	        IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput
+}
+
+type icebergCatalogFederatedCatalogOptionsRefreshOptionsPtrType IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs
+
+func IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtr(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs) IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrInput {
+	return (*icebergCatalogFederatedCatalogOptionsRefreshOptionsPtrType)(v)
+}
+
+func (*icebergCatalogFederatedCatalogOptionsRefreshOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsRefreshOptions)(nil)).Elem()
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsRefreshOptionsPtrType) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsRefreshOptionsPtrType) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptions)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return o.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogFederatedCatalogOptionsRefreshOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptions {
+		return &v
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput)
+}
+
+// Schedule for periodic metadata refresh.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) RefreshSchedule() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule {
+		return v.RefreshSchedule
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput)
+}
+
+// Scope of metadata to synchronize from the remote catalog.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput) RefreshScope() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope {
+		return v.RefreshScope
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsRefreshOptions)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput) Elem() IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptions) IcebergCatalogFederatedCatalogOptionsRefreshOptions {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogFederatedCatalogOptionsRefreshOptions
+		return ret
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput)
+}
+
+// Schedule for periodic metadata refresh.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput) RefreshSchedule() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshSchedule
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput)
+}
+
+// Scope of metadata to synchronize from the remote catalog.
+// Structure is documented below.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput) RefreshScope() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptions) *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshScope
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule struct {
+	// The interval between metadata refreshes, expressed as a duration
+	// string (e.g., `300s`).
+	// The value must be at least 300s or 0s to disable refresh.
+	RefreshInterval *string `pulumi:"refreshInterval"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs and IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs{...}
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs struct {
+	// The interval between metadata refreshes, expressed as a duration
+	// string (e.g., `300s`).
+	// The value must be at least 300s or 0s to disable refresh.
+	RefreshInterval pulumi.StringPtrInput `pulumi:"refreshInterval"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput)
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput).ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs, IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtr and IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrInput` via:
+//
+//	        IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput
+}
+
+type icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrType IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs
+
+func IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtr(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrInput {
+	return (*icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrType)(v)
+}
+
+func (*icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule)(nil)).Elem()
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrType) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrType) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return o.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule) *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule {
+		return &v
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput)
+}
+
+// The interval between metadata refreshes, expressed as a duration
+// string (e.g., `300s`).
+// The value must be at least 300s or 0s to disable refresh.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule) *string {
+		return v.RefreshInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput) Elem() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule
+		return ret
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput)
+}
+
+// The interval between metadata refreshes, expressed as a duration
+// string (e.g., `300s`).
+// The value must be at least 300s or 0s to disable refresh.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput) RefreshInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope struct {
+	// A list of namespace filters to limit which namespaces are
+	// synchronized from the remote catalog.
+	//
+	// <a name="nestedFederatedCatalogOptionsRefreshStatus"></a>The `refreshStatus` block contains:
+	NamespaceFilters []string `pulumi:"namespaceFilters"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs and IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs{...}
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs struct {
+	// A list of namespace filters to limit which namespaces are
+	// synchronized from the remote catalog.
+	//
+	// <a name="nestedFederatedCatalogOptionsRefreshStatus"></a>The `refreshStatus` block contains:
+	NamespaceFilters pulumi.StringArrayInput `pulumi:"namespaceFilters"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput)
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput).ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs, IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtr and IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrInput` via:
+//
+//	        IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput
+}
+
+type icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrType IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs
+
+func IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtr(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrInput {
+	return (*icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrType)(v)
+}
+
+func (*icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope)(nil)).Elem()
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrType) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrType) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return o.ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope) *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope {
+		return &v
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput)
+}
+
+// A list of namespace filters to limit which namespaces are
+// synchronized from the remote catalog.
+//
+// <a name="nestedFederatedCatalogOptionsRefreshStatus"></a>The `refreshStatus` block contains:
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput) NamespaceFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope) []string {
+		return v.NamespaceFilters
+	}).(pulumi.StringArrayOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput) Elem() IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope) IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope
+		return ret
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput)
+}
+
+// A list of namespace filters to limit which namespaces are
+// synchronized from the remote catalog.
+//
+// <a name="nestedFederatedCatalogOptionsRefreshStatus"></a>The `refreshStatus` block contains:
+func (o IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput) NamespaceFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NamespaceFilters
+	}).(pulumi.StringArrayOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatus struct {
+	// Output only. The end time of the most recent refresh.
+	EndTime *string `pulumi:"endTime"`
+	// Output only. The start time of the most recent refresh.
+	StartTime *string `pulumi:"startTime"`
+	// Output only. The error result of the last failed refresh, if any.
+	Statuses []IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus `pulumi:"statuses"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshStatusInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs and IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshStatusInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs{...}
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs struct {
+	// Output only. The end time of the most recent refresh.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Output only. The start time of the most recent refresh.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Output only. The error result of the last failed refresh, if any.
+	Statuses IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayInput `pulumi:"statuses"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatus)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput)
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshStatusArray and IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshStatusArray{ IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs{...} }
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusArray []IcebergCatalogFederatedCatalogOptionsRefreshStatusInput
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergCatalogFederatedCatalogOptionsRefreshStatus)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusArray) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusArray) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatus)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput {
+	return o
+}
+
+// Output only. The end time of the most recent refresh.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshStatus) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The start time of the most recent refresh.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshStatus) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The error result of the last failed refresh, if any.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput) Statuses() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshStatus) []IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus {
+		return v.Statuses
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergCatalogFederatedCatalogOptionsRefreshStatus)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput) Index(i pulumi.IntInput) IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergCatalogFederatedCatalogOptionsRefreshStatus {
+		return vs[0].([]IcebergCatalogFederatedCatalogOptionsRefreshStatus)[vs[1].(int)]
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus struct {
+	// Output only. The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// Output only. A developer-facing error message in English.
+	Message *string `pulumi:"message"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs and IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs{...}
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs struct {
+	// Output only. The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// Output only. A developer-facing error message in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput)
+}
+
+// IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray and IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray{ IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs{...} }
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput
+	ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray []IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusInput
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput {
+	return o
+}
+
+// Output only. The status code, which should be an enum value of google.rpc.Code.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// Output only. A developer-facing error message in English.
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput() IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput) ToIcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput) Index(i pulumi.IntInput) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus {
+		return vs[0].([]IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus)[vs[1].(int)]
+	}).(IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo struct {
+	// The name of the catalog within the Unity Catalog instance.
+	CatalogName string `pulumi:"catalogName"`
+	// The Databricks workspace instance name.
+	InstanceName string `pulumi:"instanceName"`
+	// The application ID of the Databricks service principal for OIDC authentication.
+	ServicePrincipalApplicationId *string `pulumi:"servicePrincipalApplicationId"`
+}
+
+// IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs and IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoInput` via:
+//
+//	IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs{...}
+type IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput
+	ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput
+}
+
+type IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs struct {
+	// The name of the catalog within the Unity Catalog instance.
+	CatalogName pulumi.StringInput `pulumi:"catalogName"`
+	// The Databricks workspace instance name.
+	InstanceName pulumi.StringInput `pulumi:"instanceName"`
+	// The application ID of the Databricks service principal for OIDC authentication.
+	ServicePrincipalApplicationId pulumi.StringPtrInput `pulumi:"servicePrincipalApplicationId"`
+}
+
+func (IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo)(nil)).Elem()
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput)
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput).ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(ctx)
+}
+
+// IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrInput is an input type that accepts IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs, IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtr and IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput values.
+// You can construct a concrete instance of `IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrInput` via:
+//
+//	        IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrInput interface {
+	pulumi.Input
+
+	ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput
+	ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput
+}
+
+type icebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrType IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs
+
+func IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtr(v *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrInput {
+	return (*icebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrType)(v)
+}
+
+func (*icebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo)(nil)).Elem()
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrType) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return i.ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *icebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrType) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return o.ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(context.Background())
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo {
+		return &v
+	}).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput)
+}
+
+// The name of the catalog within the Unity Catalog instance.
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) CatalogName() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) string { return v.CatalogName }).(pulumi.StringOutput)
+}
+
+// The Databricks workspace instance name.
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) string { return v.InstanceName }).(pulumi.StringOutput)
+}
+
+// The application ID of the Databricks service principal for OIDC authentication.
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput) ServicePrincipalApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) *string {
+		return v.ServicePrincipalApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+type IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo)(nil)).Elem()
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) ToIcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutputWithContext(ctx context.Context) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput {
+	return o
+}
+
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) Elem() IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo {
+		if v != nil {
+			return *v
+		}
+		var ret IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo
+		return ret
+	}).(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput)
+}
+
+// The name of the catalog within the Unity Catalog instance.
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) CatalogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CatalogName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Databricks workspace instance name.
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) InstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The application ID of the Databricks service principal for OIDC authentication.
+func (o IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput) ServicePrincipalApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePrincipalApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
 type IcebergCatalogIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -3453,6 +4774,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamBindingConditionPtrInput)(nil)).Elem(), HiveDatabaseIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamMemberConditionInput)(nil)).Elem(), HiveDatabaseIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamMemberConditionPtrInput)(nil)).Elem(), HiveDatabaseIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsPtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatusInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamBindingConditionPtrInput)(nil)).Elem(), IcebergCatalogIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogIamMemberConditionInput)(nil)).Elem(), IcebergCatalogIamMemberConditionArgs{})
@@ -3497,6 +4834,22 @@ func init() {
 	pulumi.RegisterOutputType(HiveDatabaseIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(HiveDatabaseIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(HiveDatabaseIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshOptionsOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshOptionsPtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedulePtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopePtrOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshStatusOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshStatusArrayOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArrayOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoOutput{})
+	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogIamMemberConditionOutput{})

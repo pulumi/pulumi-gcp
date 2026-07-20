@@ -220,6 +220,115 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// ### Oracledatabase Cloud Vmcluster Exascale
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var infra = new Gcp.OracleDatabase.CloudExadataInfrastructure("infra", new()
+    ///     {
+    ///         CloudExadataInfrastructureId = "my-exadata",
+    ///         DisplayName = "my-exadata displayname",
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.CloudExadataInfrastructurePropertiesArgs
+    ///         {
+    ///             Shape = "Exadata.X9M",
+    ///             ComputeCount = 2,
+    ///             StorageCount = 3,
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var exascaleConfig = new Gcp.OracleDatabase.CloudExadataInfrastructureExascaleConfig("exascale_config", new()
+    ///     {
+    ///         CloudExadataInfrastructure = infra.CloudExadataInfrastructureId,
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         TotalStorageSizeGb = 10240,
+    ///     });
+    /// 
+    ///     var vault = new Gcp.OracleDatabase.ExascaleDbStorageVault("vault", new()
+    ///     {
+    ///         ExascaleDbStorageVaultId = "my-vault",
+    ///         DisplayName = "my-vault displayname",
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         ExadataInfrastructure = infra.Name,
+    ///         Properties = new Gcp.OracleDatabase.Inputs.ExascaleDbStorageVaultPropertiesArgs
+    ///         {
+    ///             ExascaleDbStorageDetails = new Gcp.OracleDatabase.Inputs.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs
+    ///             {
+    ///                 TotalSizeGbs = 2048,
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exascaleConfig,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "new",
+    ///         Project = "my-project",
+    ///     });
+    /// 
+    ///     var dbServers = Gcp.OracleDatabase.GetDbServers.Invoke(new()
+    ///     {
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         CloudExadataInfrastructure = infra.CloudExadataInfrastructureId,
+    ///     });
+    /// 
+    ///     var myVmcluster = new Gcp.OracleDatabase.CloudVmCluster("my_vmcluster", new()
+    ///     {
+    ///         CloudVmClusterId = "my-instance",
+    ///         DisplayName = "my-instance displayname",
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         ExadataInfrastructure = infra.Id,
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Cidr = "10.5.0.0/24",
+    ///         BackupSubnetCidr = "10.6.0.0/24",
+    ///         ExascaleDbStorageVault = vault.Name,
+    ///         Properties = new Gcp.OracleDatabase.Inputs.CloudVmClusterPropertiesArgs
+    ///         {
+    ///             LicenseType = "LICENSE_INCLUDED",
+    ///             SshPublicKeys = new[]
+    ///             {
+    ///                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com",
+    ///             },
+    ///             CpuCoreCount = 4,
+    ///             GiVersion = "23.0.0.0",
+    ///             HostnamePrefix = "hostname1",
+    ///             MemorySizeGb = 60,
+    ///             DbNodeStorageSizeGb = 120,
+    ///             DbServerOcids = new[]
+    ///             {
+    ///                 dbServers.Apply(getDbServersResult =&gt; getDbServersResult.DbServers[0]?.Properties[0]?.Ocid),
+    ///                 dbServers.Apply(getDbServersResult =&gt; getDbServersResult.DbServers[1]?.Properties[0]?.Ocid),
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exascaleConfig,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -311,6 +420,14 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("exadataInfrastructure")]
         public Output<string> ExadataInfrastructure { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of ExascaleDbStorageVault associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        [Output("exascaleDbStorageVault")]
+        public Output<string?> ExascaleDbStorageVault { get; private set; } = null!;
 
         /// <summary>
         /// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
@@ -505,6 +622,14 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("exadataInfrastructure", required: true)]
         public Input<string> ExadataInfrastructure { get; set; } = null!;
 
+        /// <summary>
+        /// The name of ExascaleDbStorageVault associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        [Input("exascaleDbStorageVault")]
+        public Input<string>? ExascaleDbStorageVault { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -653,6 +778,14 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("exadataInfrastructure")]
         public Input<string>? ExadataInfrastructure { get; set; }
+
+        /// <summary>
+        /// The name of ExascaleDbStorageVault associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        [Input("exascaleDbStorageVault")]
+        public Input<string>? ExascaleDbStorageVault { get; set; }
 
         /// <summary>
         /// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone

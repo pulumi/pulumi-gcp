@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:vectorsearch/collection:Collection":
 		r = &Collection{}
+	case "gcp:vectorsearch/index:Index":
+		r = &Index{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vectorsearch/collection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vectorsearch/index",
 		&module{version},
 	)
 }

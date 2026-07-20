@@ -62,7 +62,7 @@ class DiskArgs:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
                * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
                * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-               The AccessMode is only valid for Hyperdisk disk types.
+                 The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the disk. Values include `X86_64`, `ARM64`.
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
@@ -276,7 +276,7 @@ class DiskArgs:
         * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
         * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
         * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-        The AccessMode is only valid for Hyperdisk disk types.
+          The AccessMode is only valid for Hyperdisk disk types.
         """
         return pulumi.get(self, "access_mode")
 
@@ -828,7 +828,7 @@ class _DiskState:
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
                * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
                * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-               The AccessMode is only valid for Hyperdisk disk types.
+                 The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the disk. Values include `X86_64`, `ARM64`.
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
@@ -1099,7 +1099,7 @@ class _DiskState:
         * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
         * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
         * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-        The AccessMode is only valid for Hyperdisk disk types.
+          The AccessMode is only valid for Hyperdisk disk types.
         """
         return pulumi.get(self, "access_mode")
 
@@ -1923,7 +1923,7 @@ class Disk(pulumi.CustomResource):
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
                * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
                * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-               The AccessMode is only valid for Hyperdisk disk types.
+                 The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the disk. Values include `X86_64`, `ARM64`.
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
@@ -2345,7 +2345,7 @@ class Disk(pulumi.CustomResource):
                * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
                * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
                * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-               The AccessMode is only valid for Hyperdisk disk types.
+                 The AccessMode is only valid for Hyperdisk disk types.
         :param pulumi.Input[_builtins.str] architecture: The architecture of the disk. Values include `X86_64`, `ARM64`.
         :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
@@ -2572,7 +2572,7 @@ class Disk(pulumi.CustomResource):
         * READ_WRITE_SINGLE: The default AccessMode, means the disk can be attached to single instance in RW mode.
         * READ_WRITE_MANY: The AccessMode means the disk can be attached to multiple instances in RW mode.
         * READ_ONLY_SINGLE: The AccessMode means the disk can be attached to multiple instances in RO mode.
-        The AccessMode is only valid for Hyperdisk disk types.
+          The AccessMode is only valid for Hyperdisk disk types.
         """
         return pulumi.get(self, "access_mode")
 

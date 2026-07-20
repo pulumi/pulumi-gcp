@@ -80,6 +80,64 @@ namespace Pulumi.Gcp.OracleDatabase
     /// 
     /// });
     /// ```
+    /// ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var infra = new Gcp.OracleDatabase.CloudExadataInfrastructure("infra", new()
+    ///     {
+    ///         CloudExadataInfrastructureId = "my-infra",
+    ///         DisplayName = "my-infra displayname",
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         Properties = new Gcp.OracleDatabase.Inputs.CloudExadataInfrastructurePropertiesArgs
+    ///         {
+    ///             Shape = "Exadata.X9M",
+    ///             ComputeCount = 2,
+    ///             StorageCount = 3,
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    ///     var exascaleConfig = new Gcp.OracleDatabase.CloudExadataInfrastructureExascaleConfig("exascale_config", new()
+    ///     {
+    ///         CloudExadataInfrastructure = infra.CloudExadataInfrastructureId,
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         TotalStorageSizeGb = 10240,
+    ///     });
+    /// 
+    ///     var myStorageVault = new Gcp.OracleDatabase.ExascaleDbStorageVault("my_storage_vault", new()
+    ///     {
+    ///         ExascaleDbStorageVaultId = "my-instance",
+    ///         DisplayName = "my-instance displayname",
+    ///         Location = "us-east4",
+    ///         Project = "my-project",
+    ///         ExadataInfrastructure = infra.Name,
+    ///         Properties = new Gcp.OracleDatabase.Inputs.ExascaleDbStorageVaultPropertiesArgs
+    ///         {
+    ///             ExascaleDbStorageDetails = new Gcp.OracleDatabase.Inputs.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs
+    ///             {
+    ///                 TotalSizeGbs = 2048,
+    ///             },
+    ///         },
+    ///         DeletionProtection = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exascaleConfig,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -143,6 +201,13 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("entitlementId")]
         public Output<string> EntitlementId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        /// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        /// </summary>
+        [Output("exadataInfrastructure")]
+        public Output<string?> ExadataInfrastructure { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the ExascaleDbStorageVault to create. This value is
@@ -282,6 +347,13 @@ namespace Pulumi.Gcp.OracleDatabase
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        /// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        /// </summary>
+        [Input("exadataInfrastructure")]
+        public Input<string>? ExadataInfrastructure { get; set; }
+
+        /// <summary>
         /// The ID of the ExascaleDbStorageVault to create. This value is
         /// restricted to (^a-z?$) and must be a maximum of
         /// 63 characters in length. The value must start with a letter and end with a
@@ -394,6 +466,13 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("entitlementId")]
         public Input<string>? EntitlementId { get; set; }
+
+        /// <summary>
+        /// The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        /// In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        /// </summary>
+        [Input("exadataInfrastructure")]
+        public Input<string>? ExadataInfrastructure { get; set; }
 
         /// <summary>
         /// The ID of the ExascaleDbStorageVault to create. This value is

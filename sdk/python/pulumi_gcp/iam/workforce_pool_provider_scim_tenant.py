@@ -221,7 +221,7 @@ class _WorkforcePoolProviderScimTenantState:
         :param pulumi.Input[_builtins.str] state: The current state of the scim tenant.
                * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
                * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-               deleted after approximately 30 days.
+                 deleted after approximately 30 days.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
         """
         if base_uri is not None:
@@ -415,7 +415,7 @@ class _WorkforcePoolProviderScimTenantState:
         The current state of the scim tenant.
         * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-        deleted after approximately 30 days.
+          deleted after approximately 30 days.
         """
         return pulumi.get(self, "state")
 
@@ -745,7 +745,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: The current state of the scim tenant.
                * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
                * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-               deleted after approximately 30 days.
+                 deleted after approximately 30 days.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -882,7 +882,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         The current state of the scim tenant.
         * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
         * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-        deleted after approximately 30 days.
+          deleted after approximately 30 days.
         """
         return pulumi.get(self, "state")
 

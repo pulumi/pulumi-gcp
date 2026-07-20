@@ -650,6 +650,13 @@ namespace Pulumi.Gcp.Compute
         [Output("tagsFingerprint")]
         public Output<string> TagsFingerprint { get; private set; } = null!;
 
+        /// <summary>
+        /// Workload Identity Config. More details about
+        /// this configuration option are detailed below.
+        /// </summary>
+        [Output("workloadIdentityConfig")]
+        public Output<Outputs.InstanceTemplateWorkloadIdentityConfig?> WorkloadIdentityConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a InstanceTemplate resource with the given unique name, arguments, and options.
@@ -962,6 +969,13 @@ namespace Pulumi.Gcp.Compute
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Workload Identity Config. More details about
+        /// this configuration option are detailed below.
+        /// </summary>
+        [Input("workloadIdentityConfig")]
+        public Input<Inputs.InstanceTemplateWorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
 
         public InstanceTemplateArgs()
         {
@@ -1301,6 +1315,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("tagsFingerprint")]
         public Input<string>? TagsFingerprint { get; set; }
+
+        /// <summary>
+        /// Workload Identity Config. More details about
+        /// this configuration option are detailed below.
+        /// </summary>
+        [Input("workloadIdentityConfig")]
+        public Input<Inputs.InstanceTemplateWorkloadIdentityConfigGetArgs>? WorkloadIdentityConfig { get; set; }
 
         public InstanceTemplateState()
         {

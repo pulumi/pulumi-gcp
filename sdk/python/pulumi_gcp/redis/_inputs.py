@@ -219,10 +219,10 @@ class ClusterCrossClusterReplicationConfigArgsDict(TypedDict):
     """
     The role of the cluster in cross cluster replication. Supported values are:
     1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
-    1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
-    1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
-    1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
-    Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+    2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+    3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+    4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+       Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
     """
     memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgsDict']]]]]
     """
@@ -257,10 +257,10 @@ class ClusterCrossClusterReplicationConfigArgs:
         """
         :param pulumi.Input[_builtins.str] cluster_role: The role of the cluster in cross cluster replication. Supported values are:
                1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
-               1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
-               1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
-               1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
-               Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+               2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+               3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+               4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+                  Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]] memberships: (Output)
                An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
                Structure is documented below.
@@ -288,10 +288,10 @@ class ClusterCrossClusterReplicationConfigArgs:
         """
         The role of the cluster in cross cluster replication. Supported values are:
         1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
-        1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
-        1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
-        1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
-        Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+        3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+        4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+           Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         """
         return pulumi.get(self, "cluster_role")
 
@@ -856,7 +856,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
     - FRIDAY: Friday
     - SATURDAY: Saturday
     - SUNDAY: Sunday
-    Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+      Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
     """
     start_time: pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
     """
@@ -888,7 +888,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs:
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] duration: (Output)
@@ -915,7 +915,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs:
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -1254,7 +1254,7 @@ class ClusterPersistenceConfigArgsDict(TypedDict):
     - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
     - RDB: RDB based Persistence is enabled.
     - AOF: AOF based Persistence is enabled.
-    Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+      Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
     """
     rdb_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgsDict']]]
     """
@@ -1275,7 +1275,7 @@ class ClusterPersistenceConfigArgs:
                - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
                - RDB: RDB based Persistence is enabled.
                - AOF: AOF based Persistence is enabled.
-               Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+                 Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
         :param pulumi.Input['ClusterPersistenceConfigRdbConfigArgs'] rdb_config: RDB configuration. This field will be ignored if mode is not RDB.
                Structure is documented below.
         """
@@ -1307,7 +1307,7 @@ class ClusterPersistenceConfigArgs:
         - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
         - RDB: RDB based Persistence is enabled.
         - AOF: AOF based Persistence is enabled.
-        Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+          Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
         """
         return pulumi.get(self, "mode")
 
@@ -1336,7 +1336,7 @@ class ClusterPersistenceConfigAofConfigArgsDict(TypedDict):
     - NO - Do not explicitly call fsync(). Rely on OS defaults.
     - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
     - ALWAYS - Call fsync() for earch write command.
-    Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+      Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
     """
 
 @pulumi.input_type
@@ -1348,7 +1348,7 @@ class ClusterPersistenceConfigAofConfigArgs:
                - NO - Do not explicitly call fsync(). Rely on OS defaults.
                - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
                - ALWAYS - Call fsync() for earch write command.
-               Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+                 Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
         """
         if append_fsync is not None:
             pulumi.set(__self__, "append_fsync", append_fsync)
@@ -1361,7 +1361,7 @@ class ClusterPersistenceConfigAofConfigArgs:
         - NO - Do not explicitly call fsync(). Rely on OS defaults.
         - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
         - ALWAYS - Call fsync() for earch write command.
-        Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+          Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
         """
         return pulumi.get(self, "append_fsync")
 
@@ -1378,7 +1378,7 @@ class ClusterPersistenceConfigRdbConfigArgsDict(TypedDict):
     - SIX_HOURS:	Snapshot every 6 hours.
     - TWELVE_HOURS:	Snapshot every 12 hours.
     - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-    Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+      Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
     """
     rdb_snapshot_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1398,7 +1398,7 @@ class ClusterPersistenceConfigRdbConfigArgs:
                - SIX_HOURS:	Snapshot every 6 hours.
                - TWELVE_HOURS:	Snapshot every 12 hours.
                - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-               Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+                 Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         :param pulumi.Input[_builtins.str] rdb_snapshot_start_time: The time that the first snapshot was/will be attempted, and to which
                future snapshots will be aligned.
                If not provided, the current time will be used.
@@ -1417,7 +1417,7 @@ class ClusterPersistenceConfigRdbConfigArgs:
         - SIX_HOURS:	Snapshot every 6 hours.
         - TWELVE_HOURS:	Snapshot every 12 hours.
         - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-        Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+          Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         """
         return pulumi.get(self, "rdb_snapshot_period")
 
@@ -2175,7 +2175,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict(TypedDict):
     - FRIDAY: Friday
     - SATURDAY: Saturday
     - SUNDAY: Sunday
-    Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+      Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
     """
     start_time: pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgsDict']
     """
@@ -2207,7 +2207,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs'] start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] duration: (Output)
@@ -2234,7 +2234,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs:
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -2527,7 +2527,7 @@ class InstancePersistenceConfigArgsDict(TypedDict):
     Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
     - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
     - RDB: RDB based Persistence is enabled.
-    Possible values are: `DISABLED`, `RDB`.
+      Possible values are: `DISABLED`, `RDB`.
     """
     rdb_next_snapshot_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2544,7 +2544,7 @@ class InstancePersistenceConfigArgsDict(TypedDict):
     - SIX_HOURS:	Snapshot every 6 hours.
     - TWELVE_HOURS:	Snapshot every 12 hours.
     - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-    Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+      Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
     """
     rdb_snapshot_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2567,7 +2567,7 @@ class InstancePersistenceConfigArgs:
         :param pulumi.Input[_builtins.str] persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
                - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
                - RDB: RDB based Persistence is enabled.
-               Possible values are: `DISABLED`, `RDB`.
+                 Possible values are: `DISABLED`, `RDB`.
         :param pulumi.Input[_builtins.str] rdb_next_snapshot_time: (Output)
                Output only. The next time that a snapshot attempt is scheduled to occur.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
@@ -2578,7 +2578,7 @@ class InstancePersistenceConfigArgs:
                - SIX_HOURS:	Snapshot every 6 hours.
                - TWELVE_HOURS:	Snapshot every 12 hours.
                - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-               Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+                 Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         :param pulumi.Input[_builtins.str] rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted,
                and to which future snapshots will be aligned. If not provided,
                the current time will be used.
@@ -2602,7 +2602,7 @@ class InstancePersistenceConfigArgs:
         Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
         - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
         - RDB: RDB based Persistence is enabled.
-        Possible values are: `DISABLED`, `RDB`.
+          Possible values are: `DISABLED`, `RDB`.
         """
         return pulumi.get(self, "persistence_mode")
 
@@ -2635,7 +2635,7 @@ class InstancePersistenceConfigArgs:
         - SIX_HOURS:	Snapshot every 6 hours.
         - TWELVE_HOURS:	Snapshot every 12 hours.
         - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-        Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+          Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         """
         return pulumi.get(self, "rdb_snapshot_period")
 

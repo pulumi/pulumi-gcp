@@ -39,11 +39,11 @@ class PluginInstanceArgs:
         :param pulumi.Input[_builtins.str] plugin_instance_id: The ID to use for the plugin instance, which will become the final
                component of the plugin instance's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another plugin instance in the plugin
-               resource.
+                 the specified id is already used by another plugin instance in the plugin
+                 resource.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-63 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[Sequence[pulumi.Input['PluginInstanceActionArgs']]] actions: The action status for the plugin instance.
                Structure is documented below.
         :param pulumi.Input['PluginInstanceAuthConfigArgs'] auth_config: AuthConfig represents the authentication information.
@@ -116,11 +116,11 @@ class PluginInstanceArgs:
         The ID to use for the plugin instance, which will become the final
         component of the plugin instance's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified id is already used by another plugin instance in the plugin
-        resource.
+          the specified id is already used by another plugin instance in the plugin
+          resource.
         * If not provided, a system generated id will be used.
-        This value should be 4-63 characters, and valid characters
-        are /a-z[0-9]-_/.
+          This value should be 4-63 characters, and valid characters
+          are /a-z[0-9]-_/.
         """
         return pulumi.get(self, "plugin_instance_id")
 
@@ -241,11 +241,11 @@ class _PluginInstanceState:
         :param pulumi.Input[_builtins.str] plugin_instance_id: The ID to use for the plugin instance, which will become the final
                component of the plugin instance's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another plugin instance in the plugin
-               resource.
+                 the specified id is already used by another plugin instance in the plugin
+                 resource.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-63 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: The current state of the plugin instance (e.g., enabled, disabled,
@@ -427,11 +427,11 @@ class _PluginInstanceState:
         The ID to use for the plugin instance, which will become the final
         component of the plugin instance's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified id is already used by another plugin instance in the plugin
-        resource.
+          the specified id is already used by another plugin instance in the plugin
+          resource.
         * If not provided, a system generated id will be used.
-        This value should be 4-63 characters, and valid characters
-        are /a-z[0-9]-_/.
+          This value should be 4-63 characters, and valid characters
+          are /a-z[0-9]-_/.
         """
         return pulumi.get(self, "plugin_instance_id")
 
@@ -560,11 +560,11 @@ class PluginInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] plugin_instance_id: The ID to use for the plugin instance, which will become the final
                component of the plugin instance's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another plugin instance in the plugin
-               resource.
+                 the specified id is already used by another plugin instance in the plugin
+                 resource.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-63 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -723,11 +723,11 @@ class PluginInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] plugin_instance_id: The ID to use for the plugin instance, which will become the final
                component of the plugin instance's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another plugin instance in the plugin
-               resource.
+                 the specified id is already used by another plugin instance in the plugin
+                 resource.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, and valid characters
-               are /a-z[0-9]-_/.
+                 This value should be 4-63 characters, and valid characters
+                 are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: The current state of the plugin instance (e.g., enabled, disabled,
@@ -860,11 +860,11 @@ class PluginInstance(pulumi.CustomResource):
         The ID to use for the plugin instance, which will become the final
         component of the plugin instance's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified id is already used by another plugin instance in the plugin
-        resource.
+          the specified id is already used by another plugin instance in the plugin
+          resource.
         * If not provided, a system generated id will be used.
-        This value should be 4-63 characters, and valid characters
-        are /a-z[0-9]-_/.
+          This value should be 4-63 characters, and valid characters
+          are /a-z[0-9]-_/.
         """
         return pulumi.get(self, "plugin_instance_id")
 

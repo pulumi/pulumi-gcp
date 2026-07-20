@@ -46,7 +46,7 @@ export interface GetAddressArgs {
     /**
      * A unique name for the resource, required by GCE.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -134,7 +134,7 @@ export interface GetAddressOutputArgs {
     /**
      * A unique name for the resource, required by GCE.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

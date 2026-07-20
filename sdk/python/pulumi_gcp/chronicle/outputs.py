@@ -76,6 +76,8 @@ __all__ = [
     'DataAccessScopeAllowedDataAccessLabelIngestionLabel',
     'DataAccessScopeDeniedDataAccessLabel',
     'DataAccessScopeDeniedDataAccessLabelIngestionLabel',
+    'DataExportDataExportStatus',
+    'DataExportIngestionLabel',
     'DataTableColumnInfo',
     'DataTableScopeInfo',
     'FeedDetails',
@@ -4089,6 +4091,117 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabel(dict):
 
 
 @pulumi.output_type
+class DataExportDataExportStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataRbacFiltered":
+            suggest = "data_rbac_filtered"
+        elif key == "exportedGlobPatterns":
+            suggest = "exported_glob_patterns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataExportDataExportStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataExportDataExportStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataExportDataExportStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_rbac_filtered: Optional[_builtins.bool] = None,
+                 error: Optional[_builtins.str] = None,
+                 exported_glob_patterns: Optional[Sequence[_builtins.str]] = None,
+                 stage: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool data_rbac_filtered: (Output)
+               Indicates whether the data export is filtered by RBAC.
+        :param _builtins.str error: (Output)
+               The error message if the stage is FINISHED_FAILURE.
+        :param Sequence[_builtins.str] exported_glob_patterns: (Output)
+               List of exported glob patterns.
+        :param _builtins.str stage: (Output)
+               The stage/status of a given data export request.
+        """
+        if data_rbac_filtered is not None:
+            pulumi.set(__self__, "data_rbac_filtered", data_rbac_filtered)
+        if error is not None:
+            pulumi.set(__self__, "error", error)
+        if exported_glob_patterns is not None:
+            pulumi.set(__self__, "exported_glob_patterns", exported_glob_patterns)
+        if stage is not None:
+            pulumi.set(__self__, "stage", stage)
+
+    @_builtins.property
+    @pulumi.getter(name="dataRbacFiltered")
+    def data_rbac_filtered(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Indicates whether the data export is filtered by RBAC.
+        """
+        return pulumi.get(self, "data_rbac_filtered")
+
+    @_builtins.property
+    @pulumi.getter
+    def error(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The error message if the stage is FINISHED_FAILURE.
+        """
+        return pulumi.get(self, "error")
+
+    @_builtins.property
+    @pulumi.getter(name="exportedGlobPatterns")
+    def exported_glob_patterns(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        List of exported glob patterns.
+        """
+        return pulumi.get(self, "exported_glob_patterns")
+
+    @_builtins.property
+    @pulumi.getter
+    def stage(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The stage/status of a given data export request.
+        """
+        return pulumi.get(self, "stage")
+
+
+@pulumi.output_type
+class DataExportIngestionLabel(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The key.
+        :param _builtins.str value: The value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class DataTableColumnInfo(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4700,7 +4813,6 @@ class FeedDetails(dict):
                Structure is documented below.
         :param 'FeedDetailsWorkspaceUsersSettingsArgs' workspace_users_settings: Workspace Users settings.
                Structure is documented below.
-               
                
                <a name="nested_details_amazon_s3_settings"></a>The `amazon_s3_settings` block supports:
         """
@@ -5606,7 +5718,6 @@ class FeedDetails(dict):
         Workspace Users settings.
         Structure is documented below.
 
-
         <a name="nested_details_amazon_s3_settings"></a>The `amazon_s3_settings` block supports:
         """
         return pulumi.get(self, "workspace_users_settings")
@@ -6320,7 +6431,6 @@ class FeedDetailsAmazonSqsSettingsAuthentication(dict):
         :param 'FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs' sqs_access_key_secret_auth: Amazon SQS access key and secret auth.
                Structure is documented below.
                
-               
                <a name="nested_details_amazon_sqs_settings_authentication_additional_s3_access_key_secret_auth"></a>The `additional_s3_access_key_secret_auth` block supports:
         """
         if additional_s3_access_key_secret_auth is not None:
@@ -6343,7 +6453,6 @@ class FeedDetailsAmazonSqsSettingsAuthentication(dict):
         """
         Amazon SQS access key and secret auth.
         Structure is documented below.
-
 
         <a name="nested_details_amazon_sqs_settings_authentication_additional_s3_access_key_secret_auth"></a>The `additional_s3_access_key_secret_auth` block supports:
         """
@@ -7608,7 +7717,6 @@ class FeedDetailsAzureBlobStoreSettingsAuthentication(dict):
         :param _builtins.str sas_token: SAS Token.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
-               
                <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         :param _builtins.str shared_key: Shared Key.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -7626,7 +7734,6 @@ class FeedDetailsAzureBlobStoreSettingsAuthentication(dict):
         """
         SAS Token.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
 
         <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         """
@@ -7773,7 +7880,6 @@ class FeedDetailsAzureBlobStoreV2SettingsAuthentication(dict):
         :param _builtins.str sas_token: SAS Token.
                **Note**: This property is sensitive and will not be displayed in the plan.
                
-               
                <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         """
         pulumi.set(__self__, "access_key", access_key)
@@ -7804,7 +7910,6 @@ class FeedDetailsAzureBlobStoreV2SettingsAuthentication(dict):
         """
         SAS Token.
         **Note**: This property is sensitive and will not be displayed in the plan.
-
 
         <a name="nested_details_azure_blob_store_v2_settings_authentication_azure_v2_workload_identity_federation"></a>The `azure_v2_workload_identity_federation` block supports:
         """
@@ -13318,7 +13423,7 @@ class FeedDetailsTrellixHxAlertsSettings(dict):
                Usually a device URL is in the form of either:
                https://xxx.trellix.com/hx/id//
                - or -
-               https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+                 https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
@@ -13344,7 +13449,7 @@ class FeedDetailsTrellixHxAlertsSettings(dict):
         Usually a device URL is in the form of either:
         https://xxx.trellix.com/hx/id//
         - or -
-        https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+          https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         return pulumi.get(self, "endpoint")
 
@@ -13586,7 +13691,7 @@ class FeedDetailsTrellixHxBulkAcqsSettings(dict):
                Usually a device URL is in the form of either:
                https://xxx.trellix.com/hx/id//
                - or -
-               https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+                 https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         :param 'FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs' authentication: TrellixStarXAuthentication contains a oneof with all of the authentication
                types supported by Trellix *X devices.
                Structure is documented below.
@@ -13604,7 +13709,7 @@ class FeedDetailsTrellixHxBulkAcqsSettings(dict):
         Usually a device URL is in the form of either:
         https://xxx.trellix.com/hx/id//
         - or -
-        https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+          https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         return pulumi.get(self, "endpoint")
 
@@ -13850,7 +13955,7 @@ class FeedDetailsTrellixHxHostsSettings(dict):
                Usually a device URL is in the form of either:
                https://xxx.trellix.com/hx/id//
                - or -
-               https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+                 https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         :param 'FeedDetailsTrellixHxHostsSettingsAuthenticationArgs' authentication: TrellixStarXAuthentication contains a oneof with all of the authentication
                types supported by Trellix *X devices.
                Structure is documented below.
@@ -13868,7 +13973,7 @@ class FeedDetailsTrellixHxHostsSettings(dict):
         Usually a device URL is in the form of either:
         https://xxx.trellix.com/hx/id//
         - or -
-        https://htapdeviceproxy.md.mandiant.net/dphb/hx//
+          https://htapdeviceproxy.md.mandiant.net/dphb/hx//
         """
         return pulumi.get(self, "endpoint")
 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.NodePoolAutoscalingArgs;
+import com.pulumi.gcp.container.inputs.NodePoolMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.NodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigArgs;
@@ -151,6 +152,21 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * The maintenance policy of the pool. Structure is documented below.
+     * 
+     */
+    @Import(name="maintenancePolicies")
+    private @Nullable Output<List<NodePoolMaintenancePolicyArgs>> maintenancePolicies;
+
+    /**
+     * @return The maintenance policy of the pool. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<NodePoolMaintenancePolicyArgs>>> maintenancePolicies() {
+        return Optional.ofNullable(this.maintenancePolicies);
     }
 
     /**
@@ -424,6 +440,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.ignoreNodeCountChanges = $.ignoreNodeCountChanges;
         this.initialNodeCount = $.initialNodeCount;
         this.location = $.location;
+        this.maintenancePolicies = $.maintenancePolicies;
         this.management = $.management;
         this.maxPodsPerNode = $.maxPodsPerNode;
         this.name = $.name;
@@ -618,6 +635,37 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maintenancePolicies The maintenance policy of the pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicies(@Nullable Output<List<NodePoolMaintenancePolicyArgs>> maintenancePolicies) {
+            $.maintenancePolicies = maintenancePolicies;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicies The maintenance policy of the pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicies(List<NodePoolMaintenancePolicyArgs> maintenancePolicies) {
+            return maintenancePolicies(Output.of(maintenancePolicies));
+        }
+
+        /**
+         * @param maintenancePolicies The maintenance policy of the pool. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicies(NodePoolMaintenancePolicyArgs... maintenancePolicies) {
+            return maintenancePolicies(List.of(maintenancePolicies));
         }
 
         /**

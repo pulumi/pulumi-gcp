@@ -1458,7 +1458,6 @@ class ClusterStorageResource(dict):
                Lustre](https://cloud.google.com/products/managed-lustre) instance.
                Structure is documented below.
                
-               
                <a name="nested_storage_resources_bucket"></a>The `bucket` block contains:
         """
         pulumi.set(__self__, "config", config)
@@ -1516,7 +1515,6 @@ class ClusterStorageResource(dict):
         A reference to a [Managed
         Lustre](https://cloud.google.com/products/managed-lustre) instance.
         Structure is documented below.
-
 
         <a name="nested_storage_resources_bucket"></a>The `bucket` block contains:
         """

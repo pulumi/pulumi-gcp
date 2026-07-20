@@ -283,7 +283,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_29439")
+            display_name="Basic Folder-_37118")
         ```
         ### Dataform Folder Full
 
@@ -293,10 +293,10 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
             region="us-central1",
-            display_name="Root Folder-_87786")
+            display_name="Root Folder-_80332")
         dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
             region="us-central1",
-            display_name="Nested Folder-_2067",
+            display_name="Nested Folder-_13293",
             containing_folder=dataform_folder_root.id)
         ```
 
@@ -361,7 +361,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_29439")
+            display_name="Basic Folder-_37118")
         ```
         ### Dataform Folder Full
 
@@ -371,10 +371,10 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
             region="us-central1",
-            display_name="Root Folder-_87786")
+            display_name="Root Folder-_80332")
         dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
             region="us-central1",
-            display_name="Nested Folder-_2067",
+            display_name="Nested Folder-_13293",
             containing_folder=dataform_folder_root.id)
         ```
 

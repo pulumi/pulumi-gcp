@@ -86,8 +86,8 @@ class InstanceDirectoryServicesLdapArgsDict(TypedDict):
     The LDAP servers names can come with two formats:
     1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
     2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-    All servers names must be in the same format: either all DNS names or all
-    IP addresses.
+       All servers names must be in the same format: either all DNS names or all
+       IP addresses.
     """
     groups_ou: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -115,8 +115,8 @@ class InstanceDirectoryServicesLdapArgs:
                The LDAP servers names can come with two formats:
                1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
                2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-               All servers names must be in the same format: either all DNS names or all
-               IP addresses.
+                  All servers names must be in the same format: either all DNS names or all
+                  IP addresses.
         :param pulumi.Input[_builtins.str] groups_ou: The groups Organizational Unit (OU) is optional. This parameter is a hint
                to allow faster lookup in the LDAP namespace. In case that this parameter
                is not provided, Filestore instance will query the whole LDAP namespace.
@@ -151,8 +151,8 @@ class InstanceDirectoryServicesLdapArgs:
         The LDAP servers names can come with two formats:
         1. DNS name, for example: `ldap.example1.com`, `ldap.example2.com`.
         2. IP address, for example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`.
-        All servers names must be in the same format: either all DNS names or all
-        IP addresses.
+           All servers names must be in the same format: either all DNS names or all
+           IP addresses.
         """
         return pulumi.get(self, "servers")
 

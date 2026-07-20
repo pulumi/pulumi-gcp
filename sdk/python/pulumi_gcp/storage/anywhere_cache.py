@@ -30,9 +30,13 @@ class AnywhereCacheArgs:
 
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] zone: The zone in which the cache instance needs to be created. For example, `us-central1-a.`
-        :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        :param pulumi.Input[_builtins.str] admission_policy: (Optional, Deprecated)
+               The cache admission policy dictates whether a block should be inserted upon a cache miss.
+               Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+               
+               > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -44,6 +48,9 @@ class AnywhereCacheArgs:
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "zone", zone)
+        if admission_policy is not None:
+            warnings.warn("""`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""", DeprecationWarning)
+            pulumi.log.warn("""admission_policy is deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""")
         if admission_policy is not None:
             pulumi.set(__self__, "admission_policy", admission_policy)
         if deletion_policy is not None:
@@ -79,11 +86,16 @@ class AnywhereCacheArgs:
 
     @_builtins.property
     @pulumi.getter(name="admissionPolicy")
+    @_utilities.deprecated("""`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""")
     def admission_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        (Optional, Deprecated)
         The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
         Default value is `admit-on-first-miss`.
         Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+
+        > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         """
         return pulumi.get(self, "admission_policy")
 
@@ -150,9 +162,13 @@ class _AnywhereCacheState:
         """
         Input properties used for looking up and filtering AnywhereCache resources.
 
-        :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        :param pulumi.Input[_builtins.str] admission_policy: (Optional, Deprecated)
+               The cache admission policy dictates whether a block should be inserted upon a cache miss.
+               Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+               
+               > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         :param pulumi.Input[_builtins.str] anywhere_cache_id: The ID of the Anywhere cache instance.
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] create_time: The creation time of the cache instance in RFC 3339 format.
@@ -169,6 +185,9 @@ class _AnywhereCacheState:
         :param pulumi.Input[_builtins.str] update_time: The modification time of the cache instance metadata in RFC 3339 format.
         :param pulumi.Input[_builtins.str] zone: The zone in which the cache instance needs to be created. For example, `us-central1-a.`
         """
+        if admission_policy is not None:
+            warnings.warn("""`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""", DeprecationWarning)
+            pulumi.log.warn("""admission_policy is deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""")
         if admission_policy is not None:
             pulumi.set(__self__, "admission_policy", admission_policy)
         if anywhere_cache_id is not None:
@@ -194,11 +213,16 @@ class _AnywhereCacheState:
 
     @_builtins.property
     @pulumi.getter(name="admissionPolicy")
+    @_utilities.deprecated("""`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""")
     def admission_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
+        (Optional, Deprecated)
         The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
         Default value is `admit-on-first-miss`.
         Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+
+        > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         """
         return pulumi.get(self, "admission_policy")
 
@@ -389,9 +413,13 @@ class AnywhereCache(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        :param pulumi.Input[_builtins.str] admission_policy: (Optional, Deprecated)
+               The cache admission policy dictates whether a block should be inserted upon a cache miss.
+               Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+               
+               > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -524,9 +552,13 @@ class AnywhereCache(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] admission_policy: The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        :param pulumi.Input[_builtins.str] admission_policy: (Optional, Deprecated)
+               The cache admission policy dictates whether a block should be inserted upon a cache miss.
+               Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
                Default value is `admit-on-first-miss`.
                Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+               
+               > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         :param pulumi.Input[_builtins.str] anywhere_cache_id: The ID of the Anywhere cache instance.
         :param pulumi.Input[_builtins.str] bucket: A reference to Bucket resource
         :param pulumi.Input[_builtins.str] create_time: The creation time of the cache instance in RFC 3339 format.
@@ -562,11 +594,16 @@ class AnywhereCache(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="admissionPolicy")
+    @_utilities.deprecated("""`admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.""")
     def admission_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
+        (Optional, Deprecated)
         The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
         Default value is `admit-on-first-miss`.
         Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+
+        > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         """
         return pulumi.get(self, "admission_policy")
 

@@ -28,9 +28,7 @@ class ReleaseArgs:
 
         :param pulumi.Input[_builtins.str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -54,9 +52,7 @@ class ReleaseArgs:
         """
         Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "ruleset_name")
 
@@ -131,9 +127,7 @@ class _ReleaseState:
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] update_time: Output only. Time the release was updated.
         """
         if create_time is not None:
@@ -222,9 +216,7 @@ class _ReleaseState:
         """
         Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "ruleset_name")
 
@@ -323,9 +315,7 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
                
-               
-               
-               - - -
+               ***
         """
         ...
     @overload
@@ -461,9 +451,7 @@ class Release(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[_builtins.str] ruleset_name: Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] update_time: Output only. Time the release was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -530,9 +518,7 @@ class Release(pulumi.CustomResource):
         """
         Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "ruleset_name")
 

@@ -323,7 +323,7 @@ def get_router_nat(name: Optional[_builtins.str] = None,
     :param _builtins.str region: Region where the router and NAT reside.
     :param _builtins.str router: The name of the Cloud Router in which this NAT will be configured.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['name'] = name
@@ -392,7 +392,7 @@ def get_router_nat_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     :param _builtins.str region: Region where the router and NAT reside.
     :param _builtins.str router: The name of the Cloud Router in which this NAT will be configured.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['name'] = name

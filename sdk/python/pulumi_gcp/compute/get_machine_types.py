@@ -116,10 +116,10 @@ def get_machine_types(filter: Optional[_builtins.str] = None,
 
     example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
         zone=zone)
-    example_instance_template: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
-        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
-            machine_type=range["value"],
+    example_instance_template: list[gcp.compute.InstanceTemplate] = []
+    for example_instance_template_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
+        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{example_instance_template_range['key']}",
+            machine_type=example_instance_template_range["value"],
             disks=[{
                 "source_image": "debian-cloud/debian-11",
                 "auto_delete": True,
@@ -199,10 +199,10 @@ def get_machine_types_output(filter: pulumi.Input[Optional[Optional[_builtins.st
 
     example = gcp.compute.get_machine_types(filter="memoryMb = 16384 AND guestCpus = 8",
         zone=zone)
-    example_instance_template: list[Any] = []
-    for range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
-        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{range['key']}",
-            machine_type=range["value"],
+    example_instance_template: list[gcp.compute.InstanceTemplate] = []
+    for example_instance_template_range in [{"key": k, "value": v} for [k, v] in enumerate(std.toset(input=[__item.name for __item in example.machine_types]).result)]:
+        example_instance_template.append(gcp.compute.InstanceTemplate(f"example-{example_instance_template_range['key']}",
+            machine_type=example_instance_template_range["value"],
             disks=[{
                 "source_image": "debian-cloud/debian-11",
                 "auto_delete": True,

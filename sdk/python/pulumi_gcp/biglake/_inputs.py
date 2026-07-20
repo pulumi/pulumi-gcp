@@ -27,6 +27,22 @@ __all__ = [
     'HiveDatabaseIamBindingConditionArgsDict',
     'HiveDatabaseIamMemberConditionArgs',
     'HiveDatabaseIamMemberConditionArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsArgs',
+    'IcebergCatalogFederatedCatalogOptionsArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs',
+    'IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs',
+    'IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs',
+    'IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs',
+    'IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs',
+    'IcebergCatalogFederatedCatalogOptionsRefreshStatusArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs',
+    'IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgsDict',
+    'IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs',
+    'IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgsDict',
     'IcebergCatalogIamBindingConditionArgs',
     'IcebergCatalogIamBindingConditionArgsDict',
     'IcebergCatalogIamMemberConditionArgs',
@@ -345,6 +361,544 @@ class HiveDatabaseIamMemberConditionArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsArgsDict(TypedDict):
+    glue_catalog_info: NotRequired[pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgsDict']]]
+    """
+    Configuration for an AWS Glue remote catalog. Exactly one of
+    unity_catalog_info or glue_catalog_info must be specified.
+    Structure is documented below.
+    """
+    refresh_options: NotRequired[pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgsDict']]]
+    """
+    Configuration for metadata synchronization from the remote catalog.
+    Structure is documented below.
+    """
+    refresh_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusArgsDict']]]]]
+    """
+    (Output)
+    Output only. The status of the most recent metadata refresh.
+    Structure is documented below.
+    """
+    secret_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The secret resource name in Secret Manager, in the format
+    `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+    Used to store credentials for authenticating with the remote catalog.
+    """
+    service_directory_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Service Directory service name for private network connectivity
+    through Cross-Cloud Interconnect.
+    """
+    unity_catalog_info: NotRequired[pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgsDict']]]
+    """
+    Configuration for a Databricks Unity Catalog remote catalog. Exactly
+    one of unity_catalog_info or glue_catalog_info must be specified.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsArgs:
+    def __init__(__self__, *,
+                 glue_catalog_info: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs']] = None,
+                 refresh_options: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs']] = None,
+                 refresh_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs']]]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 unity_catalog_info: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs']] = None):
+        """
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs'] glue_catalog_info: Configuration for an AWS Glue remote catalog. Exactly one of
+               unity_catalog_info or glue_catalog_info must be specified.
+               Structure is documented below.
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs'] refresh_options: Configuration for metadata synchronization from the remote catalog.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs']]] refresh_statuses: (Output)
+               Output only. The status of the most recent metadata refresh.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] secret_name: The secret resource name in Secret Manager, in the format
+               `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+               Used to store credentials for authenticating with the remote catalog.
+        :param pulumi.Input[_builtins.str] service_directory_name: The Service Directory service name for private network connectivity
+               through Cross-Cloud Interconnect.
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs'] unity_catalog_info: Configuration for a Databricks Unity Catalog remote catalog. Exactly
+               one of unity_catalog_info or glue_catalog_info must be specified.
+               Structure is documented below.
+        """
+        if glue_catalog_info is not None:
+            pulumi.set(__self__, "glue_catalog_info", glue_catalog_info)
+        if refresh_options is not None:
+            pulumi.set(__self__, "refresh_options", refresh_options)
+        if refresh_statuses is not None:
+            pulumi.set(__self__, "refresh_statuses", refresh_statuses)
+        if secret_name is not None:
+            pulumi.set(__self__, "secret_name", secret_name)
+        if service_directory_name is not None:
+            pulumi.set(__self__, "service_directory_name", service_directory_name)
+        if unity_catalog_info is not None:
+            pulumi.set(__self__, "unity_catalog_info", unity_catalog_info)
+
+    @_builtins.property
+    @pulumi.getter(name="glueCatalogInfo")
+    def glue_catalog_info(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs']]:
+        """
+        Configuration for an AWS Glue remote catalog. Exactly one of
+        unity_catalog_info or glue_catalog_info must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "glue_catalog_info")
+
+    @glue_catalog_info.setter
+    def glue_catalog_info(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs']]):
+        pulumi.set(self, "glue_catalog_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshOptions")
+    def refresh_options(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs']]:
+        """
+        Configuration for metadata synchronization from the remote catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "refresh_options")
+
+    @refresh_options.setter
+    def refresh_options(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs']]):
+        pulumi.set(self, "refresh_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshStatuses")
+    def refresh_statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs']]]]:
+        """
+        (Output)
+        Output only. The status of the most recent metadata refresh.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "refresh_statuses")
+
+    @refresh_statuses.setter
+    def refresh_statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs']]]]):
+        pulumi.set(self, "refresh_statuses", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretName")
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The secret resource name in Secret Manager, in the format
+        `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
+        Used to store credentials for authenticating with the remote catalog.
+        """
+        return pulumi.get(self, "secret_name")
+
+    @secret_name.setter
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "secret_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryName")
+    def service_directory_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Service Directory service name for private network connectivity
+        through Cross-Cloud Interconnect.
+        """
+        return pulumi.get(self, "service_directory_name")
+
+    @service_directory_name.setter
+    def service_directory_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_directory_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="unityCatalogInfo")
+    def unity_catalog_info(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs']]:
+        """
+        Configuration for a Databricks Unity Catalog remote catalog. Exactly
+        one of unity_catalog_info or glue_catalog_info must be specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "unity_catalog_info")
+
+    @unity_catalog_info.setter
+    def unity_catalog_info(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs']]):
+        pulumi.set(self, "unity_catalog_info", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgsDict(TypedDict):
+    aws_region: pulumi.Input[_builtins.str]
+    """
+    The AWS region where the Glue catalog is located.
+    """
+    aws_role_arn: pulumi.Input[_builtins.str]
+    """
+    The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+    """
+    warehouse: pulumi.Input[_builtins.str]
+    """
+    The AWS Glue warehouse identifier (account ID or S3 table bucket).
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs:
+    def __init__(__self__, *,
+                 aws_region: pulumi.Input[_builtins.str],
+                 aws_role_arn: pulumi.Input[_builtins.str],
+                 warehouse: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] aws_region: The AWS region where the Glue catalog is located.
+        :param pulumi.Input[_builtins.str] aws_role_arn: The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+        :param pulumi.Input[_builtins.str] warehouse: The AWS Glue warehouse identifier (account ID or S3 table bucket).
+        """
+        pulumi.set(__self__, "aws_region", aws_region)
+        pulumi.set(__self__, "aws_role_arn", aws_role_arn)
+        pulumi.set(__self__, "warehouse", warehouse)
+
+    @_builtins.property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> pulumi.Input[_builtins.str]:
+        """
+        The AWS region where the Glue catalog is located.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @aws_region.setter
+    def aws_region(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "aws_region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsRoleArn")
+    def aws_role_arn(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ARN of the AWS IAM role to assume for accessing the Glue catalog.
+        """
+        return pulumi.get(self, "aws_role_arn")
+
+    @aws_role_arn.setter
+    def aws_role_arn(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "aws_role_arn", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def warehouse(self) -> pulumi.Input[_builtins.str]:
+        """
+        The AWS Glue warehouse identifier (account ID or S3 table bucket).
+        """
+        return pulumi.get(self, "warehouse")
+
+    @warehouse.setter
+    def warehouse(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "warehouse", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgsDict(TypedDict):
+    refresh_schedule: NotRequired[pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgsDict']]]
+    """
+    Schedule for periodic metadata refresh.
+    Structure is documented below.
+    """
+    refresh_scope: NotRequired[pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgsDict']]]
+    """
+    Scope of metadata to synchronize from the remote catalog.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs:
+    def __init__(__self__, *,
+                 refresh_schedule: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs']] = None,
+                 refresh_scope: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs']] = None):
+        """
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs'] refresh_schedule: Schedule for periodic metadata refresh.
+               Structure is documented below.
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs'] refresh_scope: Scope of metadata to synchronize from the remote catalog.
+               Structure is documented below.
+        """
+        if refresh_schedule is not None:
+            pulumi.set(__self__, "refresh_schedule", refresh_schedule)
+        if refresh_scope is not None:
+            pulumi.set(__self__, "refresh_scope", refresh_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshSchedule")
+    def refresh_schedule(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs']]:
+        """
+        Schedule for periodic metadata refresh.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "refresh_schedule")
+
+    @refresh_schedule.setter
+    def refresh_schedule(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs']]):
+        pulumi.set(self, "refresh_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshScope")
+    def refresh_scope(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs']]:
+        """
+        Scope of metadata to synchronize from the remote catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "refresh_scope")
+
+    @refresh_scope.setter
+    def refresh_scope(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs']]):
+        pulumi.set(self, "refresh_scope", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgsDict(TypedDict):
+    refresh_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The interval between metadata refreshes, expressed as a duration
+    string (e.g., `300s`).
+    The value must be at least 300s or 0s to disable refresh.
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs:
+    def __init__(__self__, *,
+                 refresh_interval: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] refresh_interval: The interval between metadata refreshes, expressed as a duration
+               string (e.g., `300s`).
+               The value must be at least 300s or 0s to disable refresh.
+        """
+        if refresh_interval is not None:
+            pulumi.set(__self__, "refresh_interval", refresh_interval)
+
+    @_builtins.property
+    @pulumi.getter(name="refreshInterval")
+    def refresh_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The interval between metadata refreshes, expressed as a duration
+        string (e.g., `300s`).
+        The value must be at least 300s or 0s to disable refresh.
+        """
+        return pulumi.get(self, "refresh_interval")
+
+    @refresh_interval.setter
+    def refresh_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "refresh_interval", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgsDict(TypedDict):
+    namespace_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A list of namespace filters to limit which namespaces are
+    synchronized from the remote catalog.
+
+    <a name="nested_federated_catalog_options_refresh_status"></a>The `refresh_status` block contains:
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScopeArgs:
+    def __init__(__self__, *,
+                 namespace_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespace_filters: A list of namespace filters to limit which namespaces are
+               synchronized from the remote catalog.
+               
+               <a name="nested_federated_catalog_options_refresh_status"></a>The `refresh_status` block contains:
+        """
+        if namespace_filters is not None:
+            pulumi.set(__self__, "namespace_filters", namespace_filters)
+
+    @_builtins.property
+    @pulumi.getter(name="namespaceFilters")
+    def namespace_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of namespace filters to limit which namespaces are
+        synchronized from the remote catalog.
+
+        <a name="nested_federated_catalog_options_refresh_status"></a>The `refresh_status` block contains:
+        """
+        return pulumi.get(self, "namespace_filters")
+
+    @namespace_filters.setter
+    def namespace_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "namespace_filters", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsRefreshStatusArgsDict(TypedDict):
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Output only. The end time of the most recent refresh.
+    """
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Output only. The start time of the most recent refresh.
+    """
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgsDict']]]]]
+    """
+    Output only. The error result of the last failed refresh, if any.
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsRefreshStatusArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 statuses: pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end_time: Output only. The end time of the most recent refresh.
+        :param pulumi.Input[_builtins.str] start_time: Output only. The start time of the most recent refresh.
+        :param pulumi.Input[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs']]] statuses: Output only. The error result of the last failed refresh, if any.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. The end time of the most recent refresh.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "end_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. The start time of the most recent refresh.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "start_time", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def statuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs']]]]:
+        """
+        Output only. The error result of the last failed refresh, if any.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgsDict(TypedDict):
+    code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Output only. The status code, which should be an enum value of google.rpc.Code.
+    """
+    message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Output only. A developer-facing error message in English.
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsRefreshStatusStatusArgs:
+    def __init__(__self__, *,
+                 code: pulumi.Input[Optional[_builtins.int]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] code: Output only. The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[_builtins.str] message: Output only. A developer-facing error message in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Output only. The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "code", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. A developer-facing error message in English.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+class IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgsDict(TypedDict):
+    catalog_name: pulumi.Input[_builtins.str]
+    """
+    The name of the catalog within the Unity Catalog instance.
+    """
+    instance_name: pulumi.Input[_builtins.str]
+    """
+    The Databricks workspace instance name.
+    """
+    service_principal_application_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The application ID of the Databricks service principal for OIDC authentication.
+    """
+
+@pulumi.input_type
+class IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs:
+    def __init__(__self__, *,
+                 catalog_name: pulumi.Input[_builtins.str],
+                 instance_name: pulumi.Input[_builtins.str],
+                 service_principal_application_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] catalog_name: The name of the catalog within the Unity Catalog instance.
+        :param pulumi.Input[_builtins.str] instance_name: The Databricks workspace instance name.
+        :param pulumi.Input[_builtins.str] service_principal_application_id: The application ID of the Databricks service principal for OIDC authentication.
+        """
+        pulumi.set(__self__, "catalog_name", catalog_name)
+        pulumi.set(__self__, "instance_name", instance_name)
+        if service_principal_application_id is not None:
+            pulumi.set(__self__, "service_principal_application_id", service_principal_application_id)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogName")
+    def catalog_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the catalog within the Unity Catalog instance.
+        """
+        return pulumi.get(self, "catalog_name")
+
+    @catalog_name.setter
+    def catalog_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "catalog_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceName")
+    def instance_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Databricks workspace instance name.
+        """
+        return pulumi.get(self, "instance_name")
+
+    @instance_name.setter
+    def instance_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instance_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipalApplicationId")
+    def service_principal_application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The application ID of the Databricks service principal for OIDC authentication.
+        """
+        return pulumi.get(self, "service_principal_application_id")
+
+    @service_principal_application_id.setter
+    def service_principal_application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_principal_application_id", value)
 
 
 class IcebergCatalogIamBindingConditionArgsDict(TypedDict):

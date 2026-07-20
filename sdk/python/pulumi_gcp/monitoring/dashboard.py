@@ -34,7 +34,7 @@ class DashboardArgs:
                legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
                accompanied by a non-removal change (trivial or not).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -63,7 +63,7 @@ class DashboardArgs:
         legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
         accompanied by a non-removal change (trivial or not).
 
-        - - -
+        ***
         """
         return pulumi.get(self, "dashboard_json")
 
@@ -120,7 +120,7 @@ class _DashboardState:
                legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
                accompanied by a non-removal change (trivial or not).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -150,7 +150,7 @@ class _DashboardState:
         legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
         accompanied by a non-removal change (trivial or not).
 
-        - - -
+        ***
         """
         return pulumi.get(self, "dashboard_json")
 
@@ -324,7 +324,7 @@ class Dashboard(pulumi.CustomResource):
                legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
                accompanied by a non-removal change (trivial or not).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -515,7 +515,7 @@ class Dashboard(pulumi.CustomResource):
                legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
                accompanied by a non-removal change (trivial or not).
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -547,7 +547,7 @@ class Dashboard(pulumi.CustomResource):
         legitmate remove-only diffs will also be suppressed. For Terraform to detect the diff, key removals must also be
         accompanied by a non-removal change (trivial or not).
 
-        - - -
+        ***
         """
         return pulumi.get(self, "dashboard_json")
 

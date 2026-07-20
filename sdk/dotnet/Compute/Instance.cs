@@ -512,6 +512,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> TagsFingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// Workload Identity Config. More details about
+        /// this configuration option are detailed below.
+        /// </summary>
+        [Output("workloadIdentityConfig")]
+        public Output<Outputs.InstanceWorkloadIdentityConfig?> WorkloadIdentityConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The zone that the machine should be created in. If it is not provided, the provider zone is used.
         /// </summary>
         [Output("zone")]
@@ -884,6 +891,13 @@ namespace Pulumi.Gcp.Compute
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Workload Identity Config. More details about
+        /// this configuration option are detailed below.
+        /// </summary>
+        [Input("workloadIdentityConfig")]
+        public Input<Inputs.InstanceWorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
 
         /// <summary>
         /// The zone that the machine should be created in. If it is not provided, the provider zone is used.
@@ -1295,6 +1309,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("tagsFingerprint")]
         public Input<string>? TagsFingerprint { get; set; }
+
+        /// <summary>
+        /// Workload Identity Config. More details about
+        /// this configuration option are detailed below.
+        /// </summary>
+        [Input("workloadIdentityConfig")]
+        public Input<Inputs.InstanceWorkloadIdentityConfigGetArgs>? WorkloadIdentityConfig { get; set; }
 
         /// <summary>
         /// The zone that the machine should be created in. If it is not provided, the provider zone is used.

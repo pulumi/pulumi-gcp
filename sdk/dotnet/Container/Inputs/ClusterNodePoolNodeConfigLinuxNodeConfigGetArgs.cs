@@ -29,6 +29,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? CgroupMode { get; set; }
 
         /// <summary>
+        /// Custom node init settings. Structure is documented below.
+        /// </summary>
+        [Input("customNodeInit")]
+        public Input<Inputs.ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitGetArgs>? CustomNodeInit { get; set; }
+
+        /// <summary>
         /// Amounts for 2M and 1G hugepages. Structure is documented below.
         /// </summary>
         [Input("hugepagesConfig")]

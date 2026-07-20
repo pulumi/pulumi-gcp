@@ -201,6 +201,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance policy of the pool. Structure is documented below.
+        /// </summary>
+        [Output("maintenancePolicies")]
+        public Output<ImmutableArray<Outputs.NodePoolMaintenancePolicy>> MaintenancePolicies { get; private set; } = null!;
+
+        /// <summary>
         /// List of instance group URLs which have been assigned to this node pool.
         /// </summary>
         [Output("managedInstanceGroupUrls")]
@@ -419,6 +425,18 @@ namespace Pulumi.Gcp.Container
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        [Input("maintenancePolicies")]
+        private InputList<Inputs.NodePoolMaintenancePolicyArgs>? _maintenancePolicies;
+
+        /// <summary>
+        /// The maintenance policy of the pool. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodePoolMaintenancePolicyArgs> MaintenancePolicies
+        {
+            get => _maintenancePolicies ?? (_maintenancePolicies = new InputList<Inputs.NodePoolMaintenancePolicyArgs>());
+            set => _maintenancePolicies = value;
+        }
+
         /// <summary>
         /// Node management configuration, wherein auto-repair and
         /// auto-upgrade is configured. Structure is documented below.
@@ -614,6 +632,18 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        [Input("maintenancePolicies")]
+        private InputList<Inputs.NodePoolMaintenancePolicyGetArgs>? _maintenancePolicies;
+
+        /// <summary>
+        /// The maintenance policy of the pool. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodePoolMaintenancePolicyGetArgs> MaintenancePolicies
+        {
+            get => _maintenancePolicies ?? (_maintenancePolicies = new InputList<Inputs.NodePoolMaintenancePolicyGetArgs>());
+            set => _maintenancePolicies = value;
+        }
 
         [Input("managedInstanceGroupUrls")]
         private InputList<string>? _managedInstanceGroupUrls;

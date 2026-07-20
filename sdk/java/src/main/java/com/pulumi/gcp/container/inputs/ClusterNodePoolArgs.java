@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoscalingArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigArgs;
@@ -94,6 +95,23 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<String>>> instanceGroupUrls() {
         return Optional.ofNullable(this.instanceGroupUrls);
+    }
+
+    /**
+     * The maintenance policy to use for the cluster. Structure is
+     * documented below.
+     * 
+     */
+    @Import(name="maintenancePolicies")
+    private @Nullable Output<List<ClusterNodePoolMaintenancePolicyArgs>> maintenancePolicies;
+
+    /**
+     * @return The maintenance policy to use for the cluster. Structure is
+     * documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterNodePoolMaintenancePolicyArgs>>> maintenancePolicies() {
+        return Optional.ofNullable(this.maintenancePolicies);
     }
 
     /**
@@ -341,6 +359,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         this.ignoreNodeCountChanges = $.ignoreNodeCountChanges;
         this.initialNodeCount = $.initialNodeCount;
         this.instanceGroupUrls = $.instanceGroupUrls;
+        this.maintenancePolicies = $.maintenancePolicies;
         this.managedInstanceGroupUrls = $.managedInstanceGroupUrls;
         this.management = $.management;
         this.maxPodsPerNode = $.maxPodsPerNode;
@@ -477,6 +496,40 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder instanceGroupUrls(String... instanceGroupUrls) {
             return instanceGroupUrls(List.of(instanceGroupUrls));
+        }
+
+        /**
+         * @param maintenancePolicies The maintenance policy to use for the cluster. Structure is
+         * documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicies(@Nullable Output<List<ClusterNodePoolMaintenancePolicyArgs>> maintenancePolicies) {
+            $.maintenancePolicies = maintenancePolicies;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicies The maintenance policy to use for the cluster. Structure is
+         * documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicies(List<ClusterNodePoolMaintenancePolicyArgs> maintenancePolicies) {
+            return maintenancePolicies(Output.of(maintenancePolicies));
+        }
+
+        /**
+         * @param maintenancePolicies The maintenance policy to use for the cluster. Structure is
+         * documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicies(ClusterNodePoolMaintenancePolicyArgs... maintenancePolicies) {
+            return maintenancePolicies(List.of(maintenancePolicies));
         }
 
         /**

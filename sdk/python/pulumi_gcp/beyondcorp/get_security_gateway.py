@@ -205,7 +205,7 @@ def get_security_gateway(project: Optional[_builtins.str] = None,
            is not provided, the provider project is used.
     :param _builtins.str security_gateway_id: The name of the Security Gateway resource.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project
@@ -250,7 +250,7 @@ def get_security_gateway_output(project: pulumi.Input[Optional[Optional[_builtin
            is not provided, the provider project is used.
     :param _builtins.str security_gateway_id: The name of the Security Gateway resource.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project

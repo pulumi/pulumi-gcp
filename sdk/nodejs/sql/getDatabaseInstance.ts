@@ -56,6 +56,7 @@ export interface GetDatabaseInstanceResult {
     readonly dnsName: string;
     readonly dnsNames: outputs.sql.GetDatabaseInstanceDnsName[];
     readonly encryptionKeyName: string;
+    readonly enforceNewSqlNetworkArchitecture: boolean;
     readonly finalBackupDescription: string;
     readonly firstIpAddress: string;
     /**

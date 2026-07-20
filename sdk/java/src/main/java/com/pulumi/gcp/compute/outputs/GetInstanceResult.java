@@ -19,6 +19,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceScheduling;
 import com.pulumi.gcp.compute.outputs.GetInstanceScratchDisk;
 import com.pulumi.gcp.compute.outputs.GetInstanceServiceAccount;
 import com.pulumi.gcp.compute.outputs.GetInstanceShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.GetInstanceWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -190,6 +191,7 @@ public final class GetInstanceResult {
      * 
      */
     private String tagsFingerprint;
+    private List<GetInstanceWorkloadIdentityConfig> workloadIdentityConfigs;
     private @Nullable String zone;
 
     private GetInstanceResult() {}
@@ -444,6 +446,9 @@ public final class GetInstanceResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
+    public List<GetInstanceWorkloadIdentityConfig> workloadIdentityConfigs() {
+        return this.workloadIdentityConfigs;
+    }
     public Optional<String> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -502,6 +507,7 @@ public final class GetInstanceResult {
         private List<GetInstanceShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
+        private List<GetInstanceWorkloadIdentityConfig> workloadIdentityConfigs;
         private @Nullable String zone;
         public Builder() {}
         public Builder(GetInstanceResult defaults) {
@@ -551,6 +557,7 @@ public final class GetInstanceResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
+    	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
     	      this.zone = defaults.zone;
         }
 
@@ -957,6 +964,17 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder workloadIdentityConfigs(List<GetInstanceWorkloadIdentityConfig> workloadIdentityConfigs) {
+            if (workloadIdentityConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "workloadIdentityConfigs");
+            }
+            this.workloadIdentityConfigs = workloadIdentityConfigs;
+            return this;
+        }
+        public Builder workloadIdentityConfigs(GetInstanceWorkloadIdentityConfig... workloadIdentityConfigs) {
+            return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
+        }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
 
             this.zone = zone;
@@ -1009,6 +1027,7 @@ public final class GetInstanceResult {
             _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;
             _resultValue.tags = tags;
             _resultValue.tagsFingerprint = tagsFingerprint;
+            _resultValue.workloadIdentityConfigs = workloadIdentityConfigs;
             _resultValue.zone = zone;
             return _resultValue;
         }

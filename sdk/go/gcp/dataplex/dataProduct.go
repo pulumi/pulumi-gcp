@@ -51,7 +51,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_91980@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_89313@example.com"),
 //						},
 //					},
 //				},
@@ -80,7 +80,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testSa, err := serviceaccount.NewAccount(ctx, "test_sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_37118"),
+//				AccountId:   pulumi.String("tf-test-sa-_60646"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
@@ -110,7 +110,7 @@ import (
 //						DisplayName: pulumi.String("Data Analyst - Updated"),
 //						Description: pulumi.String("In-place update verified"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_80332@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_9394@example.com"),
 //						},
 //					},
 //					&dataplex.DataProductAccessGroupArgs{

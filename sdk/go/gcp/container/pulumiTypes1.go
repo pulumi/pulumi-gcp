@@ -13,6 +13,2272 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodeConfigHostMaintenancePolicy struct {
+	// .
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+}
+
+// GetClusterNodeConfigHostMaintenancePolicyInput is an input type that accepts GetClusterNodeConfigHostMaintenancePolicyArgs and GetClusterNodeConfigHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigHostMaintenancePolicyInput` via:
+//
+//	GetClusterNodeConfigHostMaintenancePolicyArgs{...}
+type GetClusterNodeConfigHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigHostMaintenancePolicyOutput() GetClusterNodeConfigHostMaintenancePolicyOutput
+	ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(context.Context) GetClusterNodeConfigHostMaintenancePolicyOutput
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyArgs struct {
+	// .
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+}
+
+func (GetClusterNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArgs) ToGetClusterNodeConfigHostMaintenancePolicyOutput() GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return i.ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArgs) ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigHostMaintenancePolicyOutput)
+}
+
+// GetClusterNodeConfigHostMaintenancePolicyArrayInput is an input type that accepts GetClusterNodeConfigHostMaintenancePolicyArray and GetClusterNodeConfigHostMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigHostMaintenancePolicyArrayInput` via:
+//
+//	GetClusterNodeConfigHostMaintenancePolicyArray{ GetClusterNodeConfigHostMaintenancePolicyArgs{...} }
+type GetClusterNodeConfigHostMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodeConfigHostMaintenancePolicyArrayOutput
+	ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(context.Context) GetClusterNodeConfigHostMaintenancePolicyArrayOutput
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyArray []GetClusterNodeConfigHostMaintenancePolicyInput
+
+func (GetClusterNodeConfigHostMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArray) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return i.ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArray) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigHostMaintenancePolicyArrayOutput)
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodeConfigHostMaintenancePolicyOutput() GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+// .
+func (o GetClusterNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigHostMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigHostMaintenancePolicy {
+		return vs[0].([]GetClusterNodeConfigHostMaintenancePolicy)[vs[1].(int)]
+	}).(GetClusterNodeConfigHostMaintenancePolicyOutput)
+}
+
+type GetClusterNodeConfigKubeletConfig struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls []string `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles int `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize string `pulumi:"containerLogMaxSize"`
+	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
+	CpuCfsQuota bool `pulumi:"cpuCfsQuota"`
+	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
+	// Control the CPU management policy on the node.
+	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Contains configuration options to modify node-level parameters for container restart behavior.
+	CrashLoopBackOffs []GetClusterNodeConfigKubeletConfigCrashLoopBackOff `pulumi:"crashLoopBackOffs"`
+	// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+	EvictionMaxPodGracePeriodSeconds int `pulumi:"evictionMaxPodGracePeriodSeconds"`
+	// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+	EvictionMinimumReclaims []GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim `pulumi:"evictionMinimumReclaims"`
+	// Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+	EvictionSoftGracePeriods []GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod `pulumi:"evictionSoftGracePeriods"`
+	// Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+	EvictionSofts []GetClusterNodeConfigKubeletConfigEvictionSoft `pulumi:"evictionSofts"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent int `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent int `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge string `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge string `pulumi:"imageMinimumGcAge"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled string `pulumi:"insecureKubeletReadonlyPortEnabled"`
+	// Set the maximum number of image pulls in parallel.
+	MaxParallelImagePulls int `pulumi:"maxParallelImagePulls"`
+	// Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+	MemoryManagers []GetClusterNodeConfigKubeletConfigMemoryManager `pulumi:"memoryManagers"`
+	// Controls the maximum number of processes allowed to run in a pod.
+	PodPidsLimit int `pulumi:"podPidsLimit"`
+	// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+	ShutdownGracePeriodCriticalPodsSeconds int `pulumi:"shutdownGracePeriodCriticalPodsSeconds"`
+	// Controls the total duration of time (in seconds) the node delays shutdown.
+	ShutdownGracePeriodSeconds int `pulumi:"shutdownGracePeriodSeconds"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill bool `pulumi:"singleProcessOomKill"`
+	// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+	TopologyManagers []GetClusterNodeConfigKubeletConfigTopologyManager `pulumi:"topologyManagers"`
+}
+
+// GetClusterNodeConfigKubeletConfigInput is an input type that accepts GetClusterNodeConfigKubeletConfigArgs and GetClusterNodeConfigKubeletConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigArgs{...}
+type GetClusterNodeConfigKubeletConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigOutput() GetClusterNodeConfigKubeletConfigOutput
+	ToGetClusterNodeConfigKubeletConfigOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigOutput
+}
+
+type GetClusterNodeConfigKubeletConfigArgs struct {
+	// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+	AllowedUnsafeSysctls pulumi.StringArrayInput `pulumi:"allowedUnsafeSysctls"`
+	// Defines the maximum number of container log files that can be present for a container.
+	ContainerLogMaxFiles pulumi.IntInput `pulumi:"containerLogMaxFiles"`
+	// Defines the maximum size of the container log file before it is rotated.
+	ContainerLogMaxSize pulumi.StringInput `pulumi:"containerLogMaxSize"`
+	// Enable CPU CFS quota enforcement for containers that specify CPU limits.
+	CpuCfsQuota pulumi.BoolInput `pulumi:"cpuCfsQuota"`
+	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+	CpuCfsQuotaPeriod pulumi.StringInput `pulumi:"cpuCfsQuotaPeriod"`
+	// Control the CPU management policy on the node.
+	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// Contains configuration options to modify node-level parameters for container restart behavior.
+	CrashLoopBackOffs GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayInput `pulumi:"crashLoopBackOffs"`
+	// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+	EvictionMaxPodGracePeriodSeconds pulumi.IntInput `pulumi:"evictionMaxPodGracePeriodSeconds"`
+	// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+	EvictionMinimumReclaims GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayInput `pulumi:"evictionMinimumReclaims"`
+	// Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+	EvictionSoftGracePeriods GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayInput `pulumi:"evictionSoftGracePeriods"`
+	// Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+	EvictionSofts GetClusterNodeConfigKubeletConfigEvictionSoftArrayInput `pulumi:"evictionSofts"`
+	// Defines the percent of disk usage after which image garbage collection is always run.
+	ImageGcHighThresholdPercent pulumi.IntInput `pulumi:"imageGcHighThresholdPercent"`
+	// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+	ImageGcLowThresholdPercent pulumi.IntInput `pulumi:"imageGcLowThresholdPercent"`
+	// Defines the maximum age an image can be unused before it is garbage collected.
+	ImageMaximumGcAge pulumi.StringInput `pulumi:"imageMaximumGcAge"`
+	// Defines the minimum age for an unused image before it is garbage collected.
+	ImageMinimumGcAge pulumi.StringInput `pulumi:"imageMinimumGcAge"`
+	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+	InsecureKubeletReadonlyPortEnabled pulumi.StringInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
+	// Set the maximum number of image pulls in parallel.
+	MaxParallelImagePulls pulumi.IntInput `pulumi:"maxParallelImagePulls"`
+	// Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+	MemoryManagers GetClusterNodeConfigKubeletConfigMemoryManagerArrayInput `pulumi:"memoryManagers"`
+	// Controls the maximum number of processes allowed to run in a pod.
+	PodPidsLimit pulumi.IntInput `pulumi:"podPidsLimit"`
+	// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+	ShutdownGracePeriodCriticalPodsSeconds pulumi.IntInput `pulumi:"shutdownGracePeriodCriticalPodsSeconds"`
+	// Controls the total duration of time (in seconds) the node delays shutdown.
+	ShutdownGracePeriodSeconds pulumi.IntInput `pulumi:"shutdownGracePeriodSeconds"`
+	// Defines whether to enable single process OOM killer.
+	SingleProcessOomKill pulumi.BoolInput `pulumi:"singleProcessOomKill"`
+	// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+	TopologyManagers GetClusterNodeConfigKubeletConfigTopologyManagerArrayInput `pulumi:"topologyManagers"`
+}
+
+func (GetClusterNodeConfigKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigArgs) ToGetClusterNodeConfigKubeletConfigOutput() GetClusterNodeConfigKubeletConfigOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigArgs) ToGetClusterNodeConfigKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigArray and GetClusterNodeConfigKubeletConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigArray{ GetClusterNodeConfigKubeletConfigArgs{...} }
+type GetClusterNodeConfigKubeletConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigArrayOutput() GetClusterNodeConfigKubeletConfigArrayOutput
+	ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigArray []GetClusterNodeConfigKubeletConfigInput
+
+func (GetClusterNodeConfigKubeletConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigArray) ToGetClusterNodeConfigKubeletConfigArrayOutput() GetClusterNodeConfigKubeletConfigArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigArray) ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) ToGetClusterNodeConfigKubeletConfigOutput() GetClusterNodeConfigKubeletConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigOutput) ToGetClusterNodeConfigKubeletConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigOutput {
+	return o
+}
+
+// Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns which can be set on the Pods.
+func (o GetClusterNodeConfigKubeletConfigOutput) AllowedUnsafeSysctls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []string { return v.AllowedUnsafeSysctls }).(pulumi.StringArrayOutput)
+}
+
+// Defines the maximum number of container log files that can be present for a container.
+func (o GetClusterNodeConfigKubeletConfigOutput) ContainerLogMaxFiles() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ContainerLogMaxFiles }).(pulumi.IntOutput)
+}
+
+// Defines the maximum size of the container log file before it is rotated.
+func (o GetClusterNodeConfigKubeletConfigOutput) ContainerLogMaxSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.ContainerLogMaxSize }).(pulumi.StringOutput)
+}
+
+// Enable CPU CFS quota enforcement for containers that specify CPU limits.
+func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) bool { return v.CpuCfsQuota }).(pulumi.BoolOutput)
+}
+
+// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+func (o GetClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.CpuCfsQuotaPeriod }).(pulumi.StringOutput)
+}
+
+// Control the CPU management policy on the node.
+func (o GetClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Contains configuration options to modify node-level parameters for container restart behavior.
+func (o GetClusterNodeConfigKubeletConfigOutput) CrashLoopBackOffs() GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []GetClusterNodeConfigKubeletConfigCrashLoopBackOff {
+		return v.CrashLoopBackOffs
+	}).(GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput)
+}
+
+// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
+func (o GetClusterNodeConfigKubeletConfigOutput) EvictionMaxPodGracePeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.EvictionMaxPodGracePeriodSeconds }).(pulumi.IntOutput)
+}
+
+// Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
+func (o GetClusterNodeConfigKubeletConfigOutput) EvictionMinimumReclaims() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
+		return v.EvictionMinimumReclaims
+	}).(GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput)
+}
+
+// Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
+func (o GetClusterNodeConfigKubeletConfigOutput) EvictionSoftGracePeriods() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
+		return v.EvictionSoftGracePeriods
+	}).(GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput)
+}
+
+// Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
+func (o GetClusterNodeConfigKubeletConfigOutput) EvictionSofts() GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []GetClusterNodeConfigKubeletConfigEvictionSoft {
+		return v.EvictionSofts
+	}).(GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput)
+}
+
+// Defines the percent of disk usage after which image garbage collection is always run.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageGcHighThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ImageGcHighThresholdPercent }).(pulumi.IntOutput)
+}
+
+// Defines the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageGcLowThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ImageGcLowThresholdPercent }).(pulumi.IntOutput)
+}
+
+// Defines the maximum age an image can be unused before it is garbage collected.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageMaximumGcAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.ImageMaximumGcAge }).(pulumi.StringOutput)
+}
+
+// Defines the minimum age for an unused image before it is garbage collected.
+func (o GetClusterNodeConfigKubeletConfigOutput) ImageMinimumGcAge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.ImageMinimumGcAge }).(pulumi.StringOutput)
+}
+
+// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+func (o GetClusterNodeConfigKubeletConfigOutput) InsecureKubeletReadonlyPortEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) string { return v.InsecureKubeletReadonlyPortEnabled }).(pulumi.StringOutput)
+}
+
+// Set the maximum number of image pulls in parallel.
+func (o GetClusterNodeConfigKubeletConfigOutput) MaxParallelImagePulls() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.MaxParallelImagePulls }).(pulumi.IntOutput)
+}
+
+// Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
+func (o GetClusterNodeConfigKubeletConfigOutput) MemoryManagers() GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []GetClusterNodeConfigKubeletConfigMemoryManager {
+		return v.MemoryManagers
+	}).(GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput)
+}
+
+// Controls the maximum number of processes allowed to run in a pod.
+func (o GetClusterNodeConfigKubeletConfigOutput) PodPidsLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.PodPidsLimit }).(pulumi.IntOutput)
+}
+
+// Controls the portion of total grace period (in seconds) that is specifically reserved for terminating critical pods.
+func (o GetClusterNodeConfigKubeletConfigOutput) ShutdownGracePeriodCriticalPodsSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ShutdownGracePeriodCriticalPodsSeconds }).(pulumi.IntOutput)
+}
+
+// Controls the total duration of time (in seconds) the node delays shutdown.
+func (o GetClusterNodeConfigKubeletConfigOutput) ShutdownGracePeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) int { return v.ShutdownGracePeriodSeconds }).(pulumi.IntOutput)
+}
+
+// Defines whether to enable single process OOM killer.
+func (o GetClusterNodeConfigKubeletConfigOutput) SingleProcessOomKill() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) bool { return v.SingleProcessOomKill }).(pulumi.BoolOutput)
+}
+
+// Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
+func (o GetClusterNodeConfigKubeletConfigOutput) TopologyManagers() GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfig) []GetClusterNodeConfigKubeletConfigTopologyManager {
+		return v.TopologyManagers
+	}).(GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigArrayOutput) ToGetClusterNodeConfigKubeletConfigArrayOutput() GetClusterNodeConfigKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigArrayOutput) ToGetClusterNodeConfigKubeletConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfig {
+		return vs[0].([]GetClusterNodeConfigKubeletConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOff struct {
+	// The maximum duration the backoff delay can accrue to for container restarts.
+	MaxContainerRestartPeriod string `pulumi:"maxContainerRestartPeriod"`
+}
+
+// GetClusterNodeConfigKubeletConfigCrashLoopBackOffInput is an input type that accepts GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs and GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigCrashLoopBackOffInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs{...}
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOffInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput() GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput
+	ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput
+}
+
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs struct {
+	// The maximum duration the backoff delay can accrue to for container restarts.
+	MaxContainerRestartPeriod pulumi.StringInput `pulumi:"maxContainerRestartPeriod"`
+}
+
+func (GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigCrashLoopBackOff)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput() GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray and GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray{ GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs{...} }
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput() GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput
+	ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray []GetClusterNodeConfigKubeletConfigCrashLoopBackOffInput
+
+func (GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigCrashLoopBackOff)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput() GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigCrashLoopBackOff)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput() GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput {
+	return o
+}
+
+// The maximum duration the backoff delay can accrue to for container restarts.
+func (o GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput) MaxContainerRestartPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigCrashLoopBackOff) string { return v.MaxContainerRestartPeriod }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigCrashLoopBackOff)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput() GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput) ToGetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfigCrashLoopBackOff {
+		return vs[0].([]GetClusterNodeConfigKubeletConfigCrashLoopBackOff)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim struct {
+	// Defines percentage of minimum reclaim for imagefs.available.
+	ImagefsAvailable string `pulumi:"imagefsAvailable"`
+	// Defines percentage of minimum reclaim for imagefs.inodesFree.
+	ImagefsInodesFree string `pulumi:"imagefsInodesFree"`
+	// Defines percentage of minimum reclaim for memory.available.
+	MemoryAvailable string `pulumi:"memoryAvailable"`
+	// Defines percentage of minimum reclaim for nodefs.available.
+	NodefsAvailable string `pulumi:"nodefsAvailable"`
+	// Defines percentage of minimum reclaim for nodefs.inodesFree.
+	NodefsInodesFree string `pulumi:"nodefsInodesFree"`
+	// Defines percentage of minimum reclaim for pid.available.
+	PidAvailable string `pulumi:"pidAvailable"`
+}
+
+// GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimInput is an input type that accepts GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs and GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs{...}
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput
+	ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs struct {
+	// Defines percentage of minimum reclaim for imagefs.available.
+	ImagefsAvailable pulumi.StringInput `pulumi:"imagefsAvailable"`
+	// Defines percentage of minimum reclaim for imagefs.inodesFree.
+	ImagefsInodesFree pulumi.StringInput `pulumi:"imagefsInodesFree"`
+	// Defines percentage of minimum reclaim for memory.available.
+	MemoryAvailable pulumi.StringInput `pulumi:"memoryAvailable"`
+	// Defines percentage of minimum reclaim for nodefs.available.
+	NodefsAvailable pulumi.StringInput `pulumi:"nodefsAvailable"`
+	// Defines percentage of minimum reclaim for nodefs.inodesFree.
+	NodefsInodesFree pulumi.StringInput `pulumi:"nodefsInodesFree"`
+	// Defines percentage of minimum reclaim for pid.available.
+	PidAvailable pulumi.StringInput `pulumi:"pidAvailable"`
+}
+
+func (GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray and GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray{ GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs{...} }
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput
+	ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray []GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimInput
+
+func (GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput {
+	return o
+}
+
+// Defines percentage of minimum reclaim for imagefs.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) ImagefsAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim) string { return v.ImagefsAvailable }).(pulumi.StringOutput)
+}
+
+// Defines percentage of minimum reclaim for imagefs.inodesFree.
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) ImagefsInodesFree() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim) string { return v.ImagefsInodesFree }).(pulumi.StringOutput)
+}
+
+// Defines percentage of minimum reclaim for memory.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) MemoryAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim) string { return v.MemoryAvailable }).(pulumi.StringOutput)
+}
+
+// Defines percentage of minimum reclaim for nodefs.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) NodefsAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim) string { return v.NodefsAvailable }).(pulumi.StringOutput)
+}
+
+// Defines percentage of minimum reclaim for nodefs.inodesFree.
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) NodefsInodesFree() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim) string { return v.NodefsInodesFree }).(pulumi.StringOutput)
+}
+
+// Defines percentage of minimum reclaim for pid.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput) PidAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim) string { return v.PidAvailable }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput() GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput) ToGetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim {
+		return vs[0].([]GetClusterNodeConfigKubeletConfigEvictionMinimumReclaim)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoft struct {
+	// Defines percentage of soft eviction threshold for imagefs.available.
+	ImagefsAvailable string `pulumi:"imagefsAvailable"`
+	// Defines percentage of soft eviction threshold for imagefs.inodesFree.
+	ImagefsInodesFree string `pulumi:"imagefsInodesFree"`
+	// Defines quantity of soft eviction threshold for memory.available.
+	MemoryAvailable string `pulumi:"memoryAvailable"`
+	// Defines percentage of soft eviction threshold for nodefs.available.
+	NodefsAvailable string `pulumi:"nodefsAvailable"`
+	// Defines percentage of soft eviction threshold for nodefs.inodesFree.
+	NodefsInodesFree string `pulumi:"nodefsInodesFree"`
+	// Defines percentage of soft eviction threshold for pid.available.
+	PidAvailable string `pulumi:"pidAvailable"`
+}
+
+// GetClusterNodeConfigKubeletConfigEvictionSoftInput is an input type that accepts GetClusterNodeConfigKubeletConfigEvictionSoftArgs and GetClusterNodeConfigKubeletConfigEvictionSoftOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigEvictionSoftInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigEvictionSoftArgs{...}
+type GetClusterNodeConfigKubeletConfigEvictionSoftInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftOutput() GetClusterNodeConfigKubeletConfigEvictionSoftOutput
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftOutput
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftArgs struct {
+	// Defines percentage of soft eviction threshold for imagefs.available.
+	ImagefsAvailable pulumi.StringInput `pulumi:"imagefsAvailable"`
+	// Defines percentage of soft eviction threshold for imagefs.inodesFree.
+	ImagefsInodesFree pulumi.StringInput `pulumi:"imagefsInodesFree"`
+	// Defines quantity of soft eviction threshold for memory.available.
+	MemoryAvailable pulumi.StringInput `pulumi:"memoryAvailable"`
+	// Defines percentage of soft eviction threshold for nodefs.available.
+	NodefsAvailable pulumi.StringInput `pulumi:"nodefsAvailable"`
+	// Defines percentage of soft eviction threshold for nodefs.inodesFree.
+	NodefsInodesFree pulumi.StringInput `pulumi:"nodefsInodesFree"`
+	// Defines percentage of soft eviction threshold for pid.available.
+	PidAvailable pulumi.StringInput `pulumi:"pidAvailable"`
+}
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoft)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftArgs) ToGetClusterNodeConfigKubeletConfigEvictionSoftOutput() GetClusterNodeConfigKubeletConfigEvictionSoftOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigEvictionSoftOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftArgs) ToGetClusterNodeConfigKubeletConfigEvictionSoftOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigEvictionSoftOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigEvictionSoftArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigEvictionSoftArray and GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigEvictionSoftArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigEvictionSoftArray{ GetClusterNodeConfigKubeletConfigEvictionSoftArgs{...} }
+type GetClusterNodeConfigKubeletConfigEvictionSoftArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput() GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftArray []GetClusterNodeConfigKubeletConfigEvictionSoftInput
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigEvictionSoft)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftArray) ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput() GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftArray) ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoft)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftOutput() GetClusterNodeConfigKubeletConfigEvictionSoftOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftOutput {
+	return o
+}
+
+// Defines percentage of soft eviction threshold for imagefs.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) ImagefsAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoft) string { return v.ImagefsAvailable }).(pulumi.StringOutput)
+}
+
+// Defines percentage of soft eviction threshold for imagefs.inodesFree.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) ImagefsInodesFree() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoft) string { return v.ImagefsInodesFree }).(pulumi.StringOutput)
+}
+
+// Defines quantity of soft eviction threshold for memory.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) MemoryAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoft) string { return v.MemoryAvailable }).(pulumi.StringOutput)
+}
+
+// Defines percentage of soft eviction threshold for nodefs.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) NodefsAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoft) string { return v.NodefsAvailable }).(pulumi.StringOutput)
+}
+
+// Defines percentage of soft eviction threshold for nodefs.inodesFree.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) NodefsInodesFree() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoft) string { return v.NodefsInodesFree }).(pulumi.StringOutput)
+}
+
+// Defines percentage of soft eviction threshold for pid.available.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftOutput) PidAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoft) string { return v.PidAvailable }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigEvictionSoft)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput() GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigEvictionSoftOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfigEvictionSoft {
+		return vs[0].([]GetClusterNodeConfigKubeletConfigEvictionSoft)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigEvictionSoftOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod struct {
+	// Defines grace period for the imagefs.available soft eviction threshold
+	ImagefsAvailable string `pulumi:"imagefsAvailable"`
+	// Defines grace period for the imagefs.inodesFree soft eviction threshold.
+	ImagefsInodesFree string `pulumi:"imagefsInodesFree"`
+	// Defines grace period for the memory.available soft eviction threshold.
+	MemoryAvailable string `pulumi:"memoryAvailable"`
+	// Defines grace period for the nodefs.available soft eviction threshold.
+	NodefsAvailable string `pulumi:"nodefsAvailable"`
+	// Defines grace period for the nodefs.inodesFree soft eviction threshold.
+	NodefsInodesFree string `pulumi:"nodefsInodesFree"`
+	// Defines grace period for the pid.available soft eviction threshold.
+	PidAvailable string `pulumi:"pidAvailable"`
+}
+
+// GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodInput is an input type that accepts GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs and GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs{...}
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs struct {
+	// Defines grace period for the imagefs.available soft eviction threshold
+	ImagefsAvailable pulumi.StringInput `pulumi:"imagefsAvailable"`
+	// Defines grace period for the imagefs.inodesFree soft eviction threshold.
+	ImagefsInodesFree pulumi.StringInput `pulumi:"imagefsInodesFree"`
+	// Defines grace period for the memory.available soft eviction threshold.
+	MemoryAvailable pulumi.StringInput `pulumi:"memoryAvailable"`
+	// Defines grace period for the nodefs.available soft eviction threshold.
+	NodefsAvailable pulumi.StringInput `pulumi:"nodefsAvailable"`
+	// Defines grace period for the nodefs.inodesFree soft eviction threshold.
+	NodefsInodesFree pulumi.StringInput `pulumi:"nodefsInodesFree"`
+	// Defines grace period for the pid.available soft eviction threshold.
+	PidAvailable pulumi.StringInput `pulumi:"pidAvailable"`
+}
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray and GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray{ GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs{...} }
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput
+	ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray []GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodInput
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput {
+	return o
+}
+
+// Defines grace period for the imagefs.available soft eviction threshold
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) ImagefsAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod) string { return v.ImagefsAvailable }).(pulumi.StringOutput)
+}
+
+// Defines grace period for the imagefs.inodesFree soft eviction threshold.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) ImagefsInodesFree() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod) string { return v.ImagefsInodesFree }).(pulumi.StringOutput)
+}
+
+// Defines grace period for the memory.available soft eviction threshold.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) MemoryAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod) string { return v.MemoryAvailable }).(pulumi.StringOutput)
+}
+
+// Defines grace period for the nodefs.available soft eviction threshold.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) NodefsAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod) string { return v.NodefsAvailable }).(pulumi.StringOutput)
+}
+
+// Defines grace period for the nodefs.inodesFree soft eviction threshold.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) NodefsInodesFree() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod) string { return v.NodefsInodesFree }).(pulumi.StringOutput)
+}
+
+// Defines grace period for the pid.available soft eviction threshold.
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput) PidAvailable() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod) string { return v.PidAvailable }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput() GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput) ToGetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
+		return vs[0].([]GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriod)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigMemoryManager struct {
+	// The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
+	Policy string `pulumi:"policy"`
+}
+
+// GetClusterNodeConfigKubeletConfigMemoryManagerInput is an input type that accepts GetClusterNodeConfigKubeletConfigMemoryManagerArgs and GetClusterNodeConfigKubeletConfigMemoryManagerOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigMemoryManagerInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigMemoryManagerArgs{...}
+type GetClusterNodeConfigKubeletConfigMemoryManagerInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigMemoryManagerOutput() GetClusterNodeConfigKubeletConfigMemoryManagerOutput
+	ToGetClusterNodeConfigKubeletConfigMemoryManagerOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigMemoryManagerOutput
+}
+
+type GetClusterNodeConfigKubeletConfigMemoryManagerArgs struct {
+	// The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetClusterNodeConfigKubeletConfigMemoryManagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigMemoryManager)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigMemoryManagerArgs) ToGetClusterNodeConfigKubeletConfigMemoryManagerOutput() GetClusterNodeConfigKubeletConfigMemoryManagerOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigMemoryManagerOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigMemoryManagerArgs) ToGetClusterNodeConfigKubeletConfigMemoryManagerOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigMemoryManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigMemoryManagerOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigMemoryManagerArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigMemoryManagerArray and GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigMemoryManagerArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigMemoryManagerArray{ GetClusterNodeConfigKubeletConfigMemoryManagerArgs{...} }
+type GetClusterNodeConfigKubeletConfigMemoryManagerArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput() GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput
+	ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigMemoryManagerArray []GetClusterNodeConfigKubeletConfigMemoryManagerInput
+
+func (GetClusterNodeConfigKubeletConfigMemoryManagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigMemoryManager)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigMemoryManagerArray) ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput() GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigMemoryManagerArray) ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigMemoryManagerOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigMemoryManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigMemoryManager)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigMemoryManagerOutput) ToGetClusterNodeConfigKubeletConfigMemoryManagerOutput() GetClusterNodeConfigKubeletConfigMemoryManagerOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigMemoryManagerOutput) ToGetClusterNodeConfigKubeletConfigMemoryManagerOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigMemoryManagerOutput {
+	return o
+}
+
+// The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
+func (o GetClusterNodeConfigKubeletConfigMemoryManagerOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigMemoryManager) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigMemoryManager)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput) ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput() GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput) ToGetClusterNodeConfigKubeletConfigMemoryManagerArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigMemoryManagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfigMemoryManager {
+		return vs[0].([]GetClusterNodeConfigKubeletConfigMemoryManager)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigMemoryManagerOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigTopologyManager struct {
+	// The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
+	Policy string `pulumi:"policy"`
+	// The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
+	Scope string `pulumi:"scope"`
+}
+
+// GetClusterNodeConfigKubeletConfigTopologyManagerInput is an input type that accepts GetClusterNodeConfigKubeletConfigTopologyManagerArgs and GetClusterNodeConfigKubeletConfigTopologyManagerOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigTopologyManagerInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigTopologyManagerArgs{...}
+type GetClusterNodeConfigKubeletConfigTopologyManagerInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigTopologyManagerOutput() GetClusterNodeConfigKubeletConfigTopologyManagerOutput
+	ToGetClusterNodeConfigKubeletConfigTopologyManagerOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigTopologyManagerOutput
+}
+
+type GetClusterNodeConfigKubeletConfigTopologyManagerArgs struct {
+	// The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetClusterNodeConfigKubeletConfigTopologyManagerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigTopologyManager)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigTopologyManagerArgs) ToGetClusterNodeConfigKubeletConfigTopologyManagerOutput() GetClusterNodeConfigKubeletConfigTopologyManagerOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigTopologyManagerOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigTopologyManagerArgs) ToGetClusterNodeConfigKubeletConfigTopologyManagerOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigTopologyManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigTopologyManagerOutput)
+}
+
+// GetClusterNodeConfigKubeletConfigTopologyManagerArrayInput is an input type that accepts GetClusterNodeConfigKubeletConfigTopologyManagerArray and GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigKubeletConfigTopologyManagerArrayInput` via:
+//
+//	GetClusterNodeConfigKubeletConfigTopologyManagerArray{ GetClusterNodeConfigKubeletConfigTopologyManagerArgs{...} }
+type GetClusterNodeConfigKubeletConfigTopologyManagerArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput() GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput
+	ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutputWithContext(context.Context) GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput
+}
+
+type GetClusterNodeConfigKubeletConfigTopologyManagerArray []GetClusterNodeConfigKubeletConfigTopologyManagerInput
+
+func (GetClusterNodeConfigKubeletConfigTopologyManagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigTopologyManager)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigKubeletConfigTopologyManagerArray) ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput() GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput {
+	return i.ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigKubeletConfigTopologyManagerArray) ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigTopologyManagerOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigTopologyManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigKubeletConfigTopologyManager)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerOutput) ToGetClusterNodeConfigKubeletConfigTopologyManagerOutput() GetClusterNodeConfigKubeletConfigTopologyManagerOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerOutput) ToGetClusterNodeConfigKubeletConfigTopologyManagerOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigTopologyManagerOutput {
+	return o
+}
+
+// The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigTopologyManager) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigKubeletConfigTopologyManager) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigKubeletConfigTopologyManager)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput) ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput() GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput) ToGetClusterNodeConfigKubeletConfigTopologyManagerArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigKubeletConfigTopologyManagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigKubeletConfigTopologyManager {
+		return vs[0].([]GetClusterNodeConfigKubeletConfigTopologyManager)[vs[1].(int)]
+	}).(GetClusterNodeConfigKubeletConfigTopologyManagerOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfig struct {
+	// The settings for the accurate time configuration.
+	AccurateTimeConfigs []GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig `pulumi:"accurateTimeConfigs"`
+	// cgroupMode specifies the cgroup mode to be used on the node.
+	CgroupMode string `pulumi:"cgroupMode"`
+	// The custom node init settings.
+	CustomNodeInits []GetClusterNodeConfigLinuxNodeConfigCustomNodeInit `pulumi:"customNodeInits"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfigs []GetClusterNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfigs"`
+	// The settings for kernel module loading.
+	NodeKernelModuleLoadings []GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading `pulumi:"nodeKernelModuleLoadings"`
+	// Swap configuration for the node.
+	SwapConfigs []GetClusterNodeConfigLinuxNodeConfigSwapConfig `pulumi:"swapConfigs"`
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+	Sysctls map[string]string `pulumi:"sysctls"`
+	// The Linux kernel transparent hugepage defrag setting.
+	TransparentHugepageDefrag string `pulumi:"transparentHugepageDefrag"`
+	// The Linux kernel transparent hugepage setting.
+	TransparentHugepageEnabled string `pulumi:"transparentHugepageEnabled"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigArgs and GetClusterNodeConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigOutput() GetClusterNodeConfigLinuxNodeConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigArgs struct {
+	// The settings for the accurate time configuration.
+	AccurateTimeConfigs GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput `pulumi:"accurateTimeConfigs"`
+	// cgroupMode specifies the cgroup mode to be used on the node.
+	CgroupMode pulumi.StringInput `pulumi:"cgroupMode"`
+	// The custom node init settings.
+	CustomNodeInits GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayInput `pulumi:"customNodeInits"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfigs GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput `pulumi:"hugepagesConfigs"`
+	// The settings for kernel module loading.
+	NodeKernelModuleLoadings GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput `pulumi:"nodeKernelModuleLoadings"`
+	// Swap configuration for the node.
+	SwapConfigs GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayInput `pulumi:"swapConfigs"`
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
+	// The Linux kernel transparent hugepage defrag setting.
+	TransparentHugepageDefrag pulumi.StringInput `pulumi:"transparentHugepageDefrag"`
+	// The Linux kernel transparent hugepage setting.
+	TransparentHugepageEnabled pulumi.StringInput `pulumi:"transparentHugepageEnabled"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigOutput() GetClusterNodeConfigLinuxNodeConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigArray and GetClusterNodeConfigLinuxNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigArray{ GetClusterNodeConfigLinuxNodeConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigArray []GetClusterNodeConfigLinuxNodeConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArray) ToGetClusterNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigArray) ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigOutput() GetClusterNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigOutput {
+	return o
+}
+
+// The settings for the accurate time configuration.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) AccurateTimeConfigs() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) []GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig {
+		return v.AccurateTimeConfigs
+	}).(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput)
+}
+
+// cgroupMode specifies the cgroup mode to be used on the node.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) string { return v.CgroupMode }).(pulumi.StringOutput)
+}
+
+// The custom node init settings.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) CustomNodeInits() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) []GetClusterNodeConfigLinuxNodeConfigCustomNodeInit {
+		return v.CustomNodeInits
+	}).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput)
+}
+
+// Amounts for 2M and 1G hugepages.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) HugepagesConfigs() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) []GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		return v.HugepagesConfigs
+	}).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput)
+}
+
+// The settings for kernel module loading.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) NodeKernelModuleLoadings() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) []GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
+		return v.NodeKernelModuleLoadings
+	}).(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput)
+}
+
+// Swap configuration for the node.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) SwapConfigs() GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) []GetClusterNodeConfigLinuxNodeConfigSwapConfig {
+		return v.SwapConfigs
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput)
+}
+
+// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
+}
+
+// The Linux kernel transparent hugepage defrag setting.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) TransparentHugepageDefrag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) string { return v.TransparentHugepageDefrag }).(pulumi.StringOutput)
+}
+
+// The Linux kernel transparent hugepage setting.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) TransparentHugepageEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) string { return v.TransparentHugepageEnabled }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig struct {
+	// Whether to enable accurate time synchronization with PTP-KVM.
+	EnablePtpKvmTimeSync bool `pulumi:"enablePtpKvmTimeSync"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs and GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs struct {
+	// Whether to enable accurate time synchronization with PTP-KVM.
+	EnablePtpKvmTimeSync pulumi.BoolInput `pulumi:"enablePtpKvmTimeSync"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray and GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray{ GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray []GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return o
+}
+
+// Whether to enable accurate time synchronization with PTP-KVM.
+func (o GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput) EnablePtpKvmTimeSync() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig) bool { return v.EnablePtpKvmTimeSync }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInit struct {
+	// The init script configuration.
+	InitScripts []GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript `pulumi:"initScripts"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs and GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs struct {
+	// The init script configuration.
+	InitScripts GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput `pulumi:"initScripts"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray and GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray{ GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray []GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInput
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return o
+}
+
+// The init script configuration.
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput) InitScripts() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigCustomNodeInit) []GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
+		return v.InitScripts
+	}).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigCustomNodeInit {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigCustomNodeInit)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript struct {
+	// The Secret Manager secret URI of the init script.
+	GcpSecretManagerSecretUri string `pulumi:"gcpSecretManagerSecretUri"`
+	// The GCS generation of the init script.
+	GcsGeneration int `pulumi:"gcsGeneration"`
+	// The GCS URI of the init script.
+	GcsUri string `pulumi:"gcsUri"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs and GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs struct {
+	// The Secret Manager secret URI of the init script.
+	GcpSecretManagerSecretUri pulumi.StringInput `pulumi:"gcpSecretManagerSecretUri"`
+	// The GCS generation of the init script.
+	GcsGeneration pulumi.IntInput `pulumi:"gcsGeneration"`
+	// The GCS URI of the init script.
+	GcsUri pulumi.StringInput `pulumi:"gcsUri"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray and GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray{ GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray []GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return o
+}
+
+// The Secret Manager secret URI of the init script.
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) GcpSecretManagerSecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript) string {
+		return v.GcpSecretManagerSecretUri
+	}).(pulumi.StringOutput)
+}
+
+// The GCS generation of the init script.
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) GcsGeneration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript) int { return v.GcsGeneration }).(pulumi.IntOutput)
+}
+
+// The GCS URI of the init script.
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) GcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript) string { return v.GcsUri }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput() GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfig struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g int `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m int `pulumi:"hugepageSize2m"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs and GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g pulumi.IntInput `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m pulumi.IntInput `pulumi:"hugepageSize2m"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray and GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray{ GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray []GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+// Amount of 1G hugepages.
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize1g() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigHugepagesConfig) int { return v.HugepageSize1g }).(pulumi.IntOutput)
+}
+
+// Amount of 2M hugepages.
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize2m() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigHugepagesConfig) int { return v.HugepageSize2m }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading struct {
+	// The policy for kernel module loading.
+	Policy string `pulumi:"policy"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs and GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput
+	ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs struct {
+	// The policy for kernel module loading.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray and GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray{ GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray []GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput
+
+func (GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput {
+	return o
+}
+
+// The policy for kernel module loading.
+func (o GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput() GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfig struct {
+	// Swap on the node's boot disk.
+	BootDiskProfiles []GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile `pulumi:"bootDiskProfiles"`
+	// Provisions a new, separate local NVMe SSD exclusively for swap.
+	DedicatedLocalSsdProfiles []GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile `pulumi:"dedicatedLocalSsdProfiles"`
+	// Enables or disables swap for the node pool.
+	Enabled bool `pulumi:"enabled"`
+	// If omitted, swap space is encrypted by default.
+	EncryptionConfigs []GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig `pulumi:"encryptionConfigs"`
+	// Swap on the local SSD shared with pod ephemeral storage.
+	EphemeralLocalSsdProfiles []GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile `pulumi:"ephemeralLocalSsdProfiles"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs and GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs struct {
+	// Swap on the node's boot disk.
+	BootDiskProfiles GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput `pulumi:"bootDiskProfiles"`
+	// Provisions a new, separate local NVMe SSD exclusively for swap.
+	DedicatedLocalSsdProfiles GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput `pulumi:"dedicatedLocalSsdProfiles"`
+	// Enables or disables swap for the node pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// If omitted, swap space is encrypted by default.
+	EncryptionConfigs GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput `pulumi:"encryptionConfigs"`
+	// Swap on the local SSD shared with pod ephemeral storage.
+	EphemeralLocalSsdProfiles GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput `pulumi:"ephemeralLocalSsdProfiles"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigArray and GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigArray{ GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigArray []GetClusterNodeConfigLinuxNodeConfigSwapConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return o
+}
+
+// Swap on the node's boot disk.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) BootDiskProfiles() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
+		return v.BootDiskProfiles
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput)
+}
+
+// Provisions a new, separate local NVMe SSD exclusively for swap.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) DedicatedLocalSsdProfiles() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile {
+		return v.DedicatedLocalSsdProfiles
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput)
+}
+
+// Enables or disables swap for the node pool.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// If omitted, swap space is encrypted by default.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) EncryptionConfigs() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig {
+		return v.EncryptionConfigs
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput)
+}
+
+// Swap on the local SSD shared with pod ephemeral storage.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput) EphemeralLocalSsdProfiles() GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfig) []GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile {
+		return v.EphemeralLocalSsdProfiles
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigSwapConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigSwapConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile struct {
+	// Specifies the size of the swap space in gibibytes (GiB).
+	SwapSizeGib int `pulumi:"swapSizeGib"`
+	// Specifies the size of the swap space as a percentage of the boot disk size.
+	SwapSizePercent int `pulumi:"swapSizePercent"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs and GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs struct {
+	// Specifies the size of the swap space in gibibytes (GiB).
+	SwapSizeGib pulumi.IntInput `pulumi:"swapSizeGib"`
+	// Specifies the size of the swap space as a percentage of the boot disk size.
+	SwapSizePercent pulumi.IntInput `pulumi:"swapSizePercent"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray and GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray{ GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray []GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return o
+}
+
+// Specifies the size of the swap space in gibibytes (GiB).
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) SwapSizeGib() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile) int { return v.SwapSizeGib }).(pulumi.IntOutput)
+}
+
+// Specifies the size of the swap space as a percentage of the boot disk size.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput) SwapSizePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile) int { return v.SwapSizePercent }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile struct {
+	// The number of physical local NVMe SSD disks to attach.
+	DiskCount int `pulumi:"diskCount"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs and GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs struct {
+	// The number of physical local NVMe SSD disks to attach.
+	DiskCount pulumi.IntInput `pulumi:"diskCount"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray and GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray{ GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray []GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return o
+}
+
+// The number of physical local NVMe SSD disks to attach.
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput) DiskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile) int { return v.DiskCount }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfile)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig struct {
+	// If true, swap space will not be encrypted. Defaults to false (encrypted).
+	Disabled bool `pulumi:"disabled"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs and GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs struct {
+	// If true, swap space will not be encrypted. Defaults to false (encrypted).
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray and GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray{ GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray []GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return o
+}
+
+// If true, swap space will not be encrypted. Defaults to false (encrypted).
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput)
+}
+
 type GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile struct {
 	// Specifies the size of the swap space in gibibytes (GiB).
 	SwapSizeGib int `pulumi:"swapSizeGib"`
@@ -1505,6 +3771,8 @@ type GetClusterNodePool struct {
 	InitialNodeCount int `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
+	// Maintenance policy for this NodePool.
+	MaintenancePolicies []GetClusterNodePoolMaintenancePolicy `pulumi:"maintenancePolicies"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls []string `pulumi:"managedInstanceGroupUrls"`
 	// Node management configuration, wherein auto-repair and auto-upgrade is configured.
@@ -1555,6 +3823,8 @@ type GetClusterNodePoolArgs struct {
 	InitialNodeCount pulumi.IntInput `pulumi:"initialNodeCount"`
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput `pulumi:"instanceGroupUrls"`
+	// Maintenance policy for this NodePool.
+	MaintenancePolicies GetClusterNodePoolMaintenancePolicyArrayInput `pulumi:"maintenancePolicies"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayInput `pulumi:"managedInstanceGroupUrls"`
 	// Node management configuration, wherein auto-repair and auto-upgrade is configured.
@@ -1654,6 +3924,11 @@ func (o GetClusterNodePoolOutput) InitialNodeCount() pulumi.IntOutput {
 // The resource URLs of the managed instance groups associated with this node pool.
 func (o GetClusterNodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePool) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+// Maintenance policy for this NodePool.
+func (o GetClusterNodePoolOutput) MaintenancePolicies() GetClusterNodePoolMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolMaintenancePolicy { return v.MaintenancePolicies }).(GetClusterNodePoolMaintenancePolicyArrayOutput)
 }
 
 // List of instance group URLs which have been assigned to this node pool.
@@ -4059,6 +6334,220 @@ func (o GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig {
 		return vs[0].([]GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput)
+}
+
+type GetClusterNodePoolMaintenancePolicy struct {
+	// Maintenance exclusion until the end of support.
+	ExclusionUntilEndOfSupports []GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport `pulumi:"exclusionUntilEndOfSupports"`
+}
+
+// GetClusterNodePoolMaintenancePolicyInput is an input type that accepts GetClusterNodePoolMaintenancePolicyArgs and GetClusterNodePoolMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolMaintenancePolicyInput` via:
+//
+//	GetClusterNodePoolMaintenancePolicyArgs{...}
+type GetClusterNodePoolMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolMaintenancePolicyOutput() GetClusterNodePoolMaintenancePolicyOutput
+	ToGetClusterNodePoolMaintenancePolicyOutputWithContext(context.Context) GetClusterNodePoolMaintenancePolicyOutput
+}
+
+type GetClusterNodePoolMaintenancePolicyArgs struct {
+	// Maintenance exclusion until the end of support.
+	ExclusionUntilEndOfSupports GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayInput `pulumi:"exclusionUntilEndOfSupports"`
+}
+
+func (GetClusterNodePoolMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolMaintenancePolicyArgs) ToGetClusterNodePoolMaintenancePolicyOutput() GetClusterNodePoolMaintenancePolicyOutput {
+	return i.ToGetClusterNodePoolMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolMaintenancePolicyArgs) ToGetClusterNodePoolMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolMaintenancePolicyOutput)
+}
+
+// GetClusterNodePoolMaintenancePolicyArrayInput is an input type that accepts GetClusterNodePoolMaintenancePolicyArray and GetClusterNodePoolMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolMaintenancePolicyArrayInput` via:
+//
+//	GetClusterNodePoolMaintenancePolicyArray{ GetClusterNodePoolMaintenancePolicyArgs{...} }
+type GetClusterNodePoolMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolMaintenancePolicyArrayOutput() GetClusterNodePoolMaintenancePolicyArrayOutput
+	ToGetClusterNodePoolMaintenancePolicyArrayOutputWithContext(context.Context) GetClusterNodePoolMaintenancePolicyArrayOutput
+}
+
+type GetClusterNodePoolMaintenancePolicyArray []GetClusterNodePoolMaintenancePolicyInput
+
+func (GetClusterNodePoolMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolMaintenancePolicyArray) ToGetClusterNodePoolMaintenancePolicyArrayOutput() GetClusterNodePoolMaintenancePolicyArrayOutput {
+	return i.ToGetClusterNodePoolMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolMaintenancePolicyArray) ToGetClusterNodePoolMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolMaintenancePolicyArrayOutput)
+}
+
+type GetClusterNodePoolMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolMaintenancePolicyOutput) ToGetClusterNodePoolMaintenancePolicyOutput() GetClusterNodePoolMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetClusterNodePoolMaintenancePolicyOutput) ToGetClusterNodePoolMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyOutput {
+	return o
+}
+
+// Maintenance exclusion until the end of support.
+func (o GetClusterNodePoolMaintenancePolicyOutput) ExclusionUntilEndOfSupports() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolMaintenancePolicy) []GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport {
+		return v.ExclusionUntilEndOfSupports
+	}).(GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput)
+}
+
+type GetClusterNodePoolMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolMaintenancePolicyArrayOutput) ToGetClusterNodePoolMaintenancePolicyArrayOutput() GetClusterNodePoolMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolMaintenancePolicyArrayOutput) ToGetClusterNodePoolMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolMaintenancePolicy {
+		return vs[0].([]GetClusterNodePoolMaintenancePolicy)[vs[1].(int)]
+	}).(GetClusterNodePoolMaintenancePolicyOutput)
+}
+
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport struct {
+	// Whether to enable the maintenance exclusion until the end of support for this NodePool.
+	Enabled bool `pulumi:"enabled"`
+	// End time of the maintenance exclusion.
+	EndTime string `pulumi:"endTime"`
+	// Start time of the maintenance exclusion.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportInput is an input type that accepts GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs and GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportInput` via:
+//
+//	GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs{...}
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput
+	ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutputWithContext(context.Context) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput
+}
+
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs struct {
+	// Whether to enable the maintenance exclusion until the end of support for this NodePool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// End time of the maintenance exclusion.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Start time of the maintenance exclusion.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput {
+	return i.ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput)
+}
+
+// GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayInput is an input type that accepts GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray and GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayInput` via:
+//
+//	GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray{ GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs{...} }
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput
+	ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutputWithContext(context.Context) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput
+}
+
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray []GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportInput
+
+func (GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput {
+	return i.ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput)
+}
+
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput {
+	return o
+}
+
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput {
+	return o
+}
+
+// Whether to enable the maintenance exclusion until the end of support for this NodePool.
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// End time of the maintenance exclusion.
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Start time of the maintenance exclusion.
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput() GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput) ToGetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutputWithContext(ctx context.Context) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport {
+		return vs[0].([]GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupport)[vs[1].(int)]
+	}).(GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput)
 }
 
 type GetClusterNodePoolManagement struct {
@@ -9104,6 +11593,8 @@ type GetClusterNodePoolNodeConfigLinuxNodeConfig struct {
 	AccurateTimeConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig `pulumi:"accurateTimeConfigs"`
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode string `pulumi:"cgroupMode"`
+	// The custom node init settings.
+	CustomNodeInits []GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit `pulumi:"customNodeInits"`
 	// Amounts for 2M and 1G hugepages.
 	HugepagesConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfigs"`
 	// The settings for kernel module loading.
@@ -9134,6 +11625,8 @@ type GetClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
 	AccurateTimeConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput `pulumi:"accurateTimeConfigs"`
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode pulumi.StringInput `pulumi:"cgroupMode"`
+	// The custom node init settings.
+	CustomNodeInits GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayInput `pulumi:"customNodeInits"`
 	// Amounts for 2M and 1G hugepages.
 	HugepagesConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput `pulumi:"hugepagesConfigs"`
 	// The settings for kernel module loading.
@@ -9209,6 +11702,13 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) AccurateTimeConfigs()
 // cgroupMode specifies the cgroup mode to be used on the node.
 func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) string { return v.CgroupMode }).(pulumi.StringOutput)
+}
+
+// The custom node init settings.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) CustomNodeInits() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit {
+		return v.CustomNodeInits
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput)
 }
 
 // Amounts for 2M and 1G hugepages.
@@ -9364,6 +11864,224 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit struct {
+	// The init script configuration.
+	InitScripts []GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript `pulumi:"initScripts"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs struct {
+	// The init script configuration.
+	InitScripts GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput `pulumi:"initScripts"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray and GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray []GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return o
+}
+
+// The init script configuration.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput) InitScripts() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit) []GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
+		return v.InitScripts
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript struct {
+	// The Secret Manager secret URI of the init script.
+	GcpSecretManagerSecretUri string `pulumi:"gcpSecretManagerSecretUri"`
+	// The GCS generation of the init script.
+	GcsGeneration int `pulumi:"gcsGeneration"`
+	// The GCS URI of the init script.
+	GcsUri string `pulumi:"gcsUri"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs struct {
+	// The Secret Manager secret URI of the init script.
+	GcpSecretManagerSecretUri pulumi.StringInput `pulumi:"gcpSecretManagerSecretUri"`
+	// The GCS generation of the init script.
+	GcsGeneration pulumi.IntInput `pulumi:"gcsGeneration"`
+	// The GCS URI of the init script.
+	GcsUri pulumi.StringInput `pulumi:"gcsUri"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray and GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray []GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return o
+}
+
+// The Secret Manager secret URI of the init script.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) GcpSecretManagerSecretUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript) string {
+		return v.GcpSecretManagerSecretUri
+	}).(pulumi.StringOutput)
+}
+
+// The GCS generation of the init script.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) GcsGeneration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript) int {
+		return v.GcsGeneration
+	}).(pulumi.IntOutput)
+}
+
+// The GCS URI of the init script.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput) GcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript) string { return v.GcsUri }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput)
 }
 
 type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig struct {
@@ -14797,6 +17515,42 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), GetClusterNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicyArrayInput)(nil)).Elem(), GetClusterNodeConfigHostMaintenancePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigCrashLoopBackOffInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigCrashLoopBackOffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigCrashLoopBackOffArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoftInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigEvictionSoftArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoftArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigEvictionSoftArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigMemoryManagerInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigMemoryManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigMemoryManagerArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigMemoryManagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigTopologyManagerInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigTopologyManagerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigTopologyManagerArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigTopologyManagerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
@@ -14869,6 +17623,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolMaintenancePolicyInput)(nil)).Elem(), GetClusterNodePoolMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolMaintenancePolicyArrayInput)(nil)).Elem(), GetClusterNodePoolMaintenancePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportInput)(nil)).Elem(), GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayInput)(nil)).Elem(), GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementInput)(nil)).Elem(), GetClusterNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementArrayInput)(nil)).Elem(), GetClusterNodePoolManagementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArgs{})
@@ -14951,6 +17709,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs{})
@@ -15051,6 +17813,42 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigHostMaintenancePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigCrashLoopBackOffOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigCrashLoopBackOffArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigEvictionMinimumReclaimArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigEvictionSoftOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigEvictionSoftArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigMemoryManagerOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigMemoryManagerArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigTopologyManagerOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigTopologyManagerArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput{})
@@ -15123,6 +17921,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigWritableCgroupArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolMaintenancePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolMaintenancePolicyExclusionUntilEndOfSupportArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigOutput{})
@@ -15205,6 +18007,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScriptArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingOutput{})

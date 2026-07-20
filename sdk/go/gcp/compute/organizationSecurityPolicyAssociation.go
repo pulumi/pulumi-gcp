@@ -82,7 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			securityPolicyTarget, err := organizations.NewFolder(ctx, "security_policy_target", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("tf-test-secpol-_64336"),
+//				DisplayName:        pulumi.String("tf-test-secpol-_74000"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_34962"),
+//				ShortName: pulumi.String("tf-test_75125"),
 //				Parent:    securityPolicyTarget.Name,
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})

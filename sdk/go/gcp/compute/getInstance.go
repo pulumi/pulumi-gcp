@@ -143,8 +143,9 @@ type LookupInstanceResult struct {
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string  `pulumi:"tagsFingerprint"`
-	Zone            *string `pulumi:"zone"`
+	TagsFingerprint         string                              `pulumi:"tagsFingerprint"`
+	WorkloadIdentityConfigs []GetInstanceWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
+	Zone                    *string                             `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -400,6 +401,10 @@ func (o LookupInstanceResultOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o LookupInstanceResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) WorkloadIdentityConfigs() GetInstanceWorkloadIdentityConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceWorkloadIdentityConfig { return v.WorkloadIdentityConfigs }).(GetInstanceWorkloadIdentityConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) Zone() pulumi.StringPtrOutput {

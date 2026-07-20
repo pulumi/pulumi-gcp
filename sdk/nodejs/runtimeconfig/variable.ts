@@ -128,7 +128,7 @@ export class Variable extends pulumi.CustomResource {
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      *
-     * - - -
+     * ***
      */
     declare public readonly text: pulumi.Output<string | undefined>;
     /**
@@ -213,7 +213,7 @@ export interface VariableState {
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      *
-     * - - -
+     * ***
      */
     text?: pulumi.Input<string | undefined>;
     /**
@@ -259,7 +259,7 @@ export interface VariableArgs {
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      *
-     * - - -
+     * ***
      */
     text?: pulumi.Input<string | undefined>;
     value?: pulumi.Input<string | undefined>;

@@ -48,7 +48,8 @@ class InstanceTemplateArgs:
                  scheduling: pulumi.Input[Optional['InstanceTemplateSchedulingArgs']] = None,
                  service_account: pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']] = None,
                  shielded_instance_config: pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional['InstanceTemplateWorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a InstanceTemplate resource.
 
@@ -62,7 +63,7 @@ class InstanceTemplateArgs:
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -126,6 +127,8 @@ class InstanceTemplateArgs:
         :param pulumi.Input['InstanceTemplateShieldedInstanceConfigArgs'] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to attach to the instance.
+        :param pulumi.Input['InstanceTemplateWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         """
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -181,6 +184,8 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
     @_builtins.property
     @pulumi.getter
@@ -207,7 +212,7 @@ class InstanceTemplateArgs:
         More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "machine_type")
 
@@ -564,6 +569,19 @@ class InstanceTemplateArgs:
     def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['InstanceTemplateWorkloadIdentityConfigArgs']]:
+        """
+        Workload Identity Config. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['InstanceTemplateWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
+
 
 @pulumi.input_type
 class _InstanceTemplateState:
@@ -603,7 +621,8 @@ class _InstanceTemplateState:
                  service_account: pulumi.Input[Optional['InstanceTemplateServiceAccountArgs']] = None,
                  shielded_instance_config: pulumi.Input[Optional['InstanceTemplateShieldedInstanceConfigArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None):
+                 tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_config: pulumi.Input[Optional['InstanceTemplateWorkloadIdentityConfigArgs']] = None):
         """
         Input properties used for looking up and filtering InstanceTemplate resources.
 
@@ -635,7 +654,7 @@ class _InstanceTemplateState:
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -690,6 +709,8 @@ class _InstanceTemplateState:
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input['InstanceTemplateWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         """
         if advanced_machine_features is not None:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -763,6 +784,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
@@ -928,7 +951,7 @@ class _InstanceTemplateState:
         More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "machine_type")
 
@@ -1243,6 +1266,19 @@ class _InstanceTemplateState:
     def tags_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tags_fingerprint", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['InstanceTemplateWorkloadIdentityConfigArgs']]:
+        """
+        Workload Identity Config. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['InstanceTemplateWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
+
 
 @pulumi.type_token("gcp:compute/instanceTemplate:InstanceTemplate")
 class InstanceTemplate(pulumi.CustomResource):
@@ -1278,6 +1314,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
                  shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['InstanceTemplateWorkloadIdentityConfigArgs', 'InstanceTemplateWorkloadIdentityConfigArgsDict']]] = None,
                  __props__=None):
         """
         > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
@@ -1560,7 +1597,7 @@ class InstanceTemplate(pulumi.CustomResource):
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_startup_script: An alternative to using the
@@ -1608,6 +1645,8 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']] shielded_instance_config: Enable [Shielded VM](https://cloud.google.com/security/shielded-cloud/shielded-vm) on this instance. Shielded VM provides verifiable integrity to prevent against malware and rootkits. Defaults to disabled. Structure is documented below.
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to attach to the instance.
+        :param pulumi.Input[Union['InstanceTemplateWorkloadIdentityConfigArgs', 'InstanceTemplateWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         """
         ...
     @overload
@@ -1911,6 +1950,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
                  shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['InstanceTemplateWorkloadIdentityConfigArgs', 'InstanceTemplateWorkloadIdentityConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1952,6 +1992,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["metadata_fingerprint"] = None
@@ -2007,7 +2048,8 @@ class InstanceTemplate(pulumi.CustomResource):
             service_account: pulumi.Input[Optional[Union['InstanceTemplateServiceAccountArgs', 'InstanceTemplateServiceAccountArgsDict']]] = None,
             shielded_instance_config: pulumi.Input[Optional[Union['InstanceTemplateShieldedInstanceConfigArgs', 'InstanceTemplateShieldedInstanceConfigArgsDict']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceTemplate':
+            tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_config: pulumi.Input[Optional[Union['InstanceTemplateWorkloadIdentityConfigArgs', 'InstanceTemplateWorkloadIdentityConfigArgsDict']]] = None) -> 'InstanceTemplate':
         """
         Get an existing InstanceTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2043,7 +2085,7 @@ class InstanceTemplate(pulumi.CustomResource):
                More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
                create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[_builtins.str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -2098,6 +2140,8 @@ class InstanceTemplate(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags to attach to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input[Union['InstanceTemplateWorkloadIdentityConfigArgs', 'InstanceTemplateWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2139,6 +2183,7 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
+        __props__.__dict__["workload_identity_config"] = workload_identity_config
         return InstanceTemplate(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -2257,7 +2302,7 @@ class InstanceTemplate(pulumi.CustomResource):
         More advanced machine types like [z3](https://cloud.google.com/compute/docs/storage-optimized-machines) will
         create disks that cannot be managed by Terraform by default. You can account for that by using `lifecycle.ignore_changes` or adding these disks into your config.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "machine_type")
 
@@ -2475,4 +2520,13 @@ class InstanceTemplate(pulumi.CustomResource):
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Output[Optional['outputs.InstanceTemplateWorkloadIdentityConfig']]:
+        """
+        Workload Identity Config. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "workload_identity_config")
 

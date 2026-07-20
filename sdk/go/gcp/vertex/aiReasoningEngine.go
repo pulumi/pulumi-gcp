@@ -627,6 +627,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -639,10 +641,70 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"type": "OBJECT",
+//				"properties": map[string]interface{}{
+//					"name": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "Name of the user.",
+//					},
+//					"technical_stack": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "Comma-separated list tools or languages used by the user.",
+//					},
+//					"primary_goal": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "The main objective the user is pursuing.",
+//					},
+//					"expertise_level": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "Current skill level (e.g., Junior, Senior).",
+//					},
+//					"job_status": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "The job status of the individual",
+//						"enum": []string{
+//							"unemployed",
+//							"part_time",
+//							"full_time",
+//							"student",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"type": "OBJECT",
+//				"properties": map[string]interface{}{
+//					"main_topic": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "The primary topic of this specific chat session.",
+//					},
+//					"status": map[string]interface{}{
+//						"type":        "STRING",
+//						"description": "Current resolution state of the discussion.",
+//						"enum": []string{
+//							"open",
+//							"in_progress",
+//							"resolved",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
 //			_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
 //				DisplayName: pulumi.String("re-ctx-spec"),
 //				Description: pulumi.String("Reasoning engine with context spec"),
 //				Region:      pulumi.String("us-central1"),
+//				TrafficConfig: &vertex.AiReasoningEngineTrafficConfigArgs{
+//					TrafficSplitAlwaysLatest: &vertex.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{},
+//				},
 //				ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
 //					MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
 //						GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
@@ -652,6 +714,64 @@ import (
 //							EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
 //						},
 //						DisableMemoryRevisions: pulumi.Bool(false),
+//						CustomizationConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray{
+//							&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{
+//								ScopeKeys: pulumi.StringArray{
+//									pulumi.String("user_id"),
+//								},
+//								EnableThirdPersonMemories: pulumi.Bool(true),
+//								ConsolidationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs{
+//									RevisionsPerCandidateCount: pulumi.Int(1),
+//								},
+//								MemoryTopics: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray{
+//									&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{
+//										ManagedMemoryTopic: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{
+//											ManagedTopicEnum: pulumi.String("USER_PREFERENCES"),
+//										},
+//									},
+//								},
+//							},
+//							&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{
+//								ScopeKeys: pulumi.StringArray{
+//									pulumi.String("user_id"),
+//									pulumi.String("session_id"),
+//								},
+//								EnableThirdPersonMemories: pulumi.Bool(true),
+//								MemoryTopics: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray{
+//									&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{
+//										CustomMemoryTopic: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs{
+//											Label:       pulumi.String("session_scratchpad"),
+//											Description: pulumi.String("Active consideration details, recent queries, and temporary workflow state."),
+//										},
+//									},
+//								},
+//							},
+//						},
+//						StructuredMemoryConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray{
+//							&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{
+//								ScopeKeys: pulumi.StringArray{
+//									pulumi.String("user_id"),
+//								},
+//								SchemaConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{
+//									&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{
+//										Id:           pulumi.String("user-profile"),
+//										MemorySchema: pulumi.String(json0),
+//									},
+//								},
+//							},
+//							&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{
+//								ScopeKeys: pulumi.StringArray{
+//									pulumi.String("user_id"),
+//									pulumi.String("session_id"),
+//								},
+//								SchemaConfigs: vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{
+//									&vertex.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{
+//										Id:           pulumi.String("conversation-summary"),
+//										MemorySchema: pulumi.String(json1),
+//									},
+//								},
+//							},
+//						},
 //						TtlConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{
 //							DefaultTtl: pulumi.String("86400s"),
 //						},
@@ -741,7 +861,7 @@ type AiReasoningEngine struct {
 	// (Optional, Beta)
 	// Optional. Configuration for how Agent Engine sub-resources should manage context.
 	// Structure is documented below.
-	ContextSpec AiReasoningEngineContextSpecPtrOutput `pulumi:"contextSpec"`
+	ContextSpec AiReasoningEngineContextSpecOutput `pulumi:"contextSpec"`
 	// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
 	// with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -785,9 +905,16 @@ type AiReasoningEngine struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec AiReasoningEngineSpecOutput `pulumi:"spec"`
+	// (Optional, Beta)
+	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// Structure is documented below.
+	TrafficConfig AiReasoningEngineTrafficConfigOutput `pulumi:"trafficConfig"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
 	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// (Beta)
+	// Output only. The URL of the reasoning engine.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewAiReasoningEngine registers a new resource with the given unique name, arguments, and options.
@@ -875,9 +1002,16 @@ type aiReasoningEngineState struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec *AiReasoningEngineSpec `pulumi:"spec"`
+	// (Optional, Beta)
+	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// Structure is documented below.
+	TrafficConfig *AiReasoningEngineTrafficConfig `pulumi:"trafficConfig"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
 	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
+	// (Beta)
+	// Output only. The URL of the reasoning engine.
+	Url *string `pulumi:"url"`
 }
 
 type AiReasoningEngineState struct {
@@ -928,9 +1062,16 @@ type AiReasoningEngineState struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec AiReasoningEngineSpecPtrInput
+	// (Optional, Beta)
+	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// Structure is documented below.
+	TrafficConfig AiReasoningEngineTrafficConfigPtrInput
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
 	// format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
+	// (Beta)
+	// Output only. The URL of the reasoning engine.
+	Url pulumi.StringPtrInput
 }
 
 func (AiReasoningEngineState) ElementType() reflect.Type {
@@ -974,6 +1115,10 @@ type aiReasoningEngineArgs struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec *AiReasoningEngineSpec `pulumi:"spec"`
+	// (Optional, Beta)
+	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// Structure is documented below.
+	TrafficConfig *AiReasoningEngineTrafficConfig `pulumi:"trafficConfig"`
 }
 
 // The set of arguments for constructing a AiReasoningEngine resource.
@@ -1014,6 +1159,10 @@ type AiReasoningEngineArgs struct {
 	// Optional. Configurations of the ReasoningEngine.
 	// Structure is documented below.
 	Spec AiReasoningEngineSpecPtrInput
+	// (Optional, Beta)
+	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// Structure is documented below.
+	TrafficConfig AiReasoningEngineTrafficConfigPtrInput
 }
 
 func (AiReasoningEngineArgs) ElementType() reflect.Type {
@@ -1106,8 +1255,8 @@ func (o AiReasoningEngineOutput) ToAiReasoningEngineOutputWithContext(ctx contex
 // (Optional, Beta)
 // Optional. Configuration for how Agent Engine sub-resources should manage context.
 // Structure is documented below.
-func (o AiReasoningEngineOutput) ContextSpec() AiReasoningEngineContextSpecPtrOutput {
-	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineContextSpecPtrOutput { return v.ContextSpec }).(AiReasoningEngineContextSpecPtrOutput)
+func (o AiReasoningEngineOutput) ContextSpec() AiReasoningEngineContextSpecOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineContextSpecOutput { return v.ContextSpec }).(AiReasoningEngineContextSpecOutput)
 }
 
 // The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
@@ -1190,10 +1339,23 @@ func (o AiReasoningEngineOutput) Spec() AiReasoningEngineSpecOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineSpecOutput { return v.Spec }).(AiReasoningEngineSpecOutput)
 }
 
+// (Optional, Beta)
+// Optional. Traffic distribution configuration for the Reasoning Engine.
+// Structure is documented below.
+func (o AiReasoningEngineOutput) TrafficConfig() AiReasoningEngineTrafficConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineTrafficConfigOutput { return v.TrafficConfig }).(AiReasoningEngineTrafficConfigOutput)
+}
+
 // The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
 // format, with nanosecond resolution and up to nine fractional digits.
 func (o AiReasoningEngineOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// (Beta)
+// Output only. The URL of the reasoning engine.
+func (o AiReasoningEngineOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiReasoningEngine) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type AiReasoningEngineArrayOutput struct{ *pulumi.OutputState }

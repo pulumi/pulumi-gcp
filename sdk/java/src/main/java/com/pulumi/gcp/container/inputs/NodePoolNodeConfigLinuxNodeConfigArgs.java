@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs;
@@ -48,6 +49,21 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
      */
     public Optional<Output<String>> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
+    }
+
+    /**
+     * The custom node init settings.
+     * 
+     */
+    @Import(name="customNodeInit")
+    private @Nullable Output<NodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs> customNodeInit;
+
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs>> customNodeInit() {
+        return Optional.ofNullable(this.customNodeInit);
     }
 
     /**
@@ -145,6 +161,7 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
     private NodePoolNodeConfigLinuxNodeConfigArgs(NodePoolNodeConfigLinuxNodeConfigArgs $) {
         this.accurateTimeConfig = $.accurateTimeConfig;
         this.cgroupMode = $.cgroupMode;
+        this.customNodeInit = $.customNodeInit;
         this.hugepagesConfig = $.hugepagesConfig;
         this.nodeKernelModuleLoading = $.nodeKernelModuleLoading;
         this.swapConfig = $.swapConfig;
@@ -211,6 +228,27 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
          */
         public Builder cgroupMode(String cgroupMode) {
             return cgroupMode(Output.of(cgroupMode));
+        }
+
+        /**
+         * @param customNodeInit The custom node init settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customNodeInit(@Nullable Output<NodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs> customNodeInit) {
+            $.customNodeInit = customNodeInit;
+            return this;
+        }
+
+        /**
+         * @param customNodeInit The custom node init settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customNodeInit(NodePoolNodeConfigLinuxNodeConfigCustomNodeInitArgs customNodeInit) {
+            return customNodeInit(Output.of(customNodeInit));
         }
 
         /**

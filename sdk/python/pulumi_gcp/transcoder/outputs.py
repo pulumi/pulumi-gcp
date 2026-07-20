@@ -509,7 +509,6 @@ class JobConfigElementaryStreamVideoStream(dict):
         :param 'JobConfigElementaryStreamVideoStreamH264Args' h264: H264 codec settings
                Structure is documented below.
                
-               
                <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         if h264 is not None:
@@ -521,7 +520,6 @@ class JobConfigElementaryStreamVideoStream(dict):
         """
         H264 codec settings
         Structure is documented below.
-
 
         <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
@@ -1376,7 +1374,7 @@ class JobConfigOverlayAnimationAnimationFade(dict):
                * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
                * `FADE_IN`: Fade the overlay object into view.
                * `FADE_OUT`: Fade the overlay object out of view.
-               Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+                 Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
         :param _builtins.str end_time_offset: The time to end the fade animation, in seconds.
         :param _builtins.str start_time_offset: The time to start the fade animation, in seconds.
         :param 'JobConfigOverlayAnimationAnimationFadeXyArgs' xy: Normalized coordinates based on output video resolution.
@@ -1399,7 +1397,7 @@ class JobConfigOverlayAnimationAnimationFade(dict):
         * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
         * `FADE_IN`: Fade the overlay object into view.
         * `FADE_OUT`: Fade the overlay object out of view.
-        Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+          Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
         """
         return pulumi.get(self, "fade_type")
 
@@ -1928,7 +1926,6 @@ class JobTemplateConfigElementaryStreamVideoStream(dict):
         :param 'JobTemplateConfigElementaryStreamVideoStreamH264Args' h264: H264 codec settings
                Structure is documented below.
                
-               
                <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
         if h264 is not None:
@@ -1940,7 +1937,6 @@ class JobTemplateConfigElementaryStreamVideoStream(dict):
         """
         H264 codec settings
         Structure is documented below.
-
 
         <a name="nested_config_elementary_streams_video_stream_h264"></a>The `h264` block supports:
         """
@@ -2795,7 +2791,7 @@ class JobTemplateConfigOverlayAnimationAnimationFade(dict):
                * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
                * `FADE_IN`: Fade the overlay object into view.
                * `FADE_OUT`: Fade the overlay object out of view.
-               Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+                 Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
         :param _builtins.str end_time_offset: The time to end the fade animation, in seconds.
         :param _builtins.str start_time_offset: The time to start the fade animation, in seconds.
         :param 'JobTemplateConfigOverlayAnimationAnimationFadeXyArgs' xy: Normalized coordinates based on output video resolution.
@@ -2818,7 +2814,7 @@ class JobTemplateConfigOverlayAnimationAnimationFade(dict):
         * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
         * `FADE_IN`: Fade the overlay object into view.
         * `FADE_OUT`: Fade the overlay object out of view.
-        Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+          Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
         """
         return pulumi.get(self, "fade_type")
 

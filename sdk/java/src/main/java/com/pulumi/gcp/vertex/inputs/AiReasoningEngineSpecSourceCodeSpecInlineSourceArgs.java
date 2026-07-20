@@ -16,18 +16,14 @@ public final class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs extends c
     public static final AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs Empty = new AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs();
 
     /**
-     * Required. Input only.
-     * The application source code archive, provided as a compressed
-     * tarball (.tar.gz) file. A base64-encoded string.
+     * Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
      * 
      */
     @Import(name="sourceArchive")
     private @Nullable Output<String> sourceArchive;
 
     /**
-     * @return Required. Input only.
-     * The application source code archive, provided as a compressed
-     * tarball (.tar.gz) file. A base64-encoded string.
+     * @return Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
      * 
      */
     public Optional<Output<String>> sourceArchive() {
@@ -59,9 +55,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs extends c
         }
 
         /**
-         * @param sourceArchive Required. Input only.
-         * The application source code archive, provided as a compressed
-         * tarball (.tar.gz) file. A base64-encoded string.
+         * @param sourceArchive Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
          * 
          * @return builder
          * 
@@ -72,9 +66,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs extends c
         }
 
         /**
-         * @param sourceArchive Required. Input only.
-         * The application source code archive, provided as a compressed
-         * tarball (.tar.gz) file. A base64-encoded string.
+         * @param sourceArchive Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
          * 
          * @return builder
          * 

@@ -49,6 +49,21 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
     }
 
     /**
+     * Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
+     */
+    @Import(name="pscAutoConnectionPolicyEnabled")
+    private @Nullable Output<Boolean> pscAutoConnectionPolicyEnabled;
+
+    /**
+     * @return Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> pscAutoConnectionPolicyEnabled() {
+        return Optional.ofNullable(this.pscAutoConnectionPolicyEnabled);
+    }
+
+    /**
      * A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
      * 
      */
@@ -96,12 +111,16 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
     /**
      * Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
      * 
+     * * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
+     * 
      */
     @Import(name="pscWriteEndpointDnsEnabled")
     private @Nullable Output<Boolean> pscWriteEndpointDnsEnabled;
 
     /**
      * @return Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+     * 
+     * * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
      * 
      */
     public Optional<Output<Boolean>> pscWriteEndpointDnsEnabled() {
@@ -113,6 +132,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
     private DatabaseInstanceSettingsIpConfigurationPscConfigArgs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs $) {
         this.allowedConsumerProjects = $.allowedConsumerProjects;
         this.networkAttachmentUri = $.networkAttachmentUri;
+        this.pscAutoConnectionPolicyEnabled = $.pscAutoConnectionPolicyEnabled;
         this.pscAutoConnections = $.pscAutoConnections;
         this.pscAutoDnsEnabled = $.pscAutoDnsEnabled;
         this.pscEnabled = $.pscEnabled;
@@ -187,6 +207,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
          */
         public Builder networkAttachmentUri(String networkAttachmentUri) {
             return networkAttachmentUri(Output.of(networkAttachmentUri));
+        }
+
+        /**
+         * @param pscAutoConnectionPolicyEnabled Whether a service connection policy is created for the auto connections configured for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnectionPolicyEnabled(@Nullable Output<Boolean> pscAutoConnectionPolicyEnabled) {
+            $.pscAutoConnectionPolicyEnabled = pscAutoConnectionPolicyEnabled;
+            return this;
+        }
+
+        /**
+         * @param pscAutoConnectionPolicyEnabled Whether a service connection policy is created for the auto connections configured for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnectionPolicyEnabled(Boolean pscAutoConnectionPolicyEnabled) {
+            return pscAutoConnectionPolicyEnabled(Output.of(pscAutoConnectionPolicyEnabled));
         }
 
         /**
@@ -265,6 +306,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
         /**
          * @param pscWriteEndpointDnsEnabled Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
          * 
+         * * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
+         * 
          * @return builder
          * 
          */
@@ -275,6 +318,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
 
         /**
          * @param pscWriteEndpointDnsEnabled Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+         * 
+         * * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
          * 
          * @return builder
          * 

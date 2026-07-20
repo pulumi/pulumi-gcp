@@ -163,6 +163,12 @@ namespace Pulumi.Gcp.AgentRegistry
         public Output<Outputs.ServiceMcpServerSpec?> McpServerSpec { get; private set; } = null!;
 
         /// <summary>
+        /// The resource name of the Service.
+        /// </summary>
+        [Output("name")]
+        public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -385,6 +391,12 @@ namespace Pulumi.Gcp.AgentRegistry
         /// </summary>
         [Input("mcpServerSpec")]
         public Input<Inputs.ServiceMcpServerSpecGetArgs>? McpServerSpec { get; set; }
+
+        /// <summary>
+        /// The resource name of the Service.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

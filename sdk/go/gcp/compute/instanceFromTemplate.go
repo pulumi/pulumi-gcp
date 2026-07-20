@@ -190,6 +190,8 @@ type InstanceFromTemplate struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
+	// Workload identity config.
+	WorkloadIdentityConfig InstanceFromTemplateWorkloadIdentityConfigOutput `pulumi:"workloadIdentityConfig"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -347,6 +349,8 @@ type instanceFromTemplateState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
+	// Workload identity config.
+	WorkloadIdentityConfig *InstanceFromTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -467,6 +471,8 @@ type InstanceFromTemplateState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
+	// Workload identity config.
+	WorkloadIdentityConfig InstanceFromTemplateWorkloadIdentityConfigPtrInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -569,6 +575,8 @@ type instanceFromTemplateArgs struct {
 	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
+	// Workload identity config.
+	WorkloadIdentityConfig *InstanceFromTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -668,6 +676,8 @@ type InstanceFromTemplateArgs struct {
 	SourceInstanceTemplate pulumi.StringInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
+	// Workload identity config.
+	WorkloadIdentityConfig InstanceFromTemplateWorkloadIdentityConfigPtrInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
 	//
@@ -1024,6 +1034,13 @@ func (o InstanceFromTemplateOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o InstanceFromTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+// Workload identity config.
+func (o InstanceFromTemplateOutput) WorkloadIdentityConfig() InstanceFromTemplateWorkloadIdentityConfigOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateWorkloadIdentityConfigOutput {
+		return v.WorkloadIdentityConfig
+	}).(InstanceFromTemplateWorkloadIdentityConfigOutput)
 }
 
 // The zone that the machine should be created in. If not

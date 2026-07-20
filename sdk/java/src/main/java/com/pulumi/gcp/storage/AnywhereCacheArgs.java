@@ -18,20 +18,36 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
     public static final AnywhereCacheArgs Empty = new AnywhereCacheArgs();
 
     /**
+     * (Optional, Deprecated)
      * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: &#34;admit-on-second-miss&#34; is deprecated and will fallback to &#34;admit-on-first-miss&#34;.
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
      * 
+     * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * 
+     * @deprecated
+     * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * 
      */
+    @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
     @Import(name="admissionPolicy")
     private @Nullable Output<String> admissionPolicy;
 
     /**
-     * @return The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * @return (Optional, Deprecated)
+     * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: &#34;admit-on-second-miss&#34; is deprecated and will fallback to &#34;admit-on-first-miss&#34;.
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
      * 
+     * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * 
+     * @deprecated
+     * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * 
      */
+    @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
     public Optional<Output<String>> admissionPolicy() {
         return Optional.ofNullable(this.admissionPolicy);
     }
@@ -151,26 +167,42 @@ public final class AnywhereCacheArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param admissionPolicy The cache admission policy dictates whether a block should be inserted upon a cache miss.
+         * @param admissionPolicy (Optional, Deprecated)
+         * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+         * Note: &#34;admit-on-second-miss&#34; is deprecated and will fallback to &#34;admit-on-first-miss&#34;.
          * Default value is `admit-on-first-miss`.
          * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
          * 
+         * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+         * 
          */
+        @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
         public Builder admissionPolicy(@Nullable Output<String> admissionPolicy) {
             $.admissionPolicy = admissionPolicy;
             return this;
         }
 
         /**
-         * @param admissionPolicy The cache admission policy dictates whether a block should be inserted upon a cache miss.
+         * @param admissionPolicy (Optional, Deprecated)
+         * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+         * Note: &#34;admit-on-second-miss&#34; is deprecated and will fallback to &#34;admit-on-first-miss&#34;.
          * Default value is `admit-on-first-miss`.
          * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
          * 
+         * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+         * 
          */
+        @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
         public Builder admissionPolicy(String admissionPolicy) {
             return admissionPolicy(Output.of(admissionPolicy));
         }

@@ -46,7 +46,7 @@ export interface GetAgentArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -60,7 +60,7 @@ export interface GetAgentArgs {
  * A collection of values returned by getAgent.
  */
 export interface GetAgentResult {
-    readonly agentId?: string;
+    readonly agentId: string;
     /**
      * Attributes of the Agent.
      */
@@ -149,7 +149,7 @@ export interface GetAgentOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

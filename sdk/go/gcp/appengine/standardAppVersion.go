@@ -158,6 +158,120 @@ import (
 //	}
 //
 // ```
+// ### App Engine Standard App Version Bundled Services
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("gae-sa"),
+//				DisplayName: pulumi.String("Test Service Account for GAE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gaeApi, err := projects.NewIAMMember(ctx, "gae_api", &projects.IAMMemberArgs{
+//				Project: serviceAccount.Project,
+//				Role:    pulumi.String("roles/compute.networkUser"),
+//				Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			storageViewer, err := projects.NewIAMMember(ctx, "storage_viewer", &projects.IAMMemberArgs{
+//				Project: serviceAccount.Project,
+//				Role:    pulumi.String("roles/storage.objectViewer"),
+//				Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:     pulumi.String("tf-test-gae-bkt-bundled"),
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			requirements, err := storage.NewBucketObject(ctx, "requirements", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("requirements.txt"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			main, err := storage.NewBucketObject(ctx, "main", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("main.py"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world-flask/main.py"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = appengine.NewStandardAppVersion(ctx, "gae-std-app-ver-bundled", &appengine.StandardAppVersionArgs{
+//				VersionId: pulumi.String("v1"),
+//				Service:   pulumi.String("bundled-service"),
+//				Runtime:   pulumi.String("python310"),
+//				Deployment: &appengine.StandardAppVersionDeploymentArgs{
+//					Files: appengine.StandardAppVersionDeploymentFileArray{
+//						&appengine.StandardAppVersionDeploymentFileArgs{
+//							Name: pulumi.String("main.py"),
+//							SourceUrl: pulumi.All(bucket.Name, main.Name).ApplyT(func(_args []interface{}) (string, error) {
+//								bucketName := _args[0].(string)
+//								mainName := _args[1].(string)
+//								return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, mainName), nil
+//							}).(pulumi.StringOutput),
+//						},
+//						&appengine.StandardAppVersionDeploymentFileArgs{
+//							Name: pulumi.String("requirements.txt"),
+//							SourceUrl: pulumi.All(bucket.Name, requirements.Name).ApplyT(func(_args []interface{}) (string, error) {
+//								bucketName := _args[0].(string)
+//								requirementsName := _args[1].(string)
+//								return fmt.Sprintf("https://storage.googleapis.com/%v/%v", bucketName, requirementsName), nil
+//							}).(pulumi.StringOutput),
+//						},
+//					},
+//				},
+//				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+//					Shell: pulumi.String("gunicorn -b :$PORT main:app"),
+//				},
+//				AppEngineBundledServices: pulumi.StringArray{
+//					pulumi.String("BUNDLED_SERVICE_TYPE_MAIL"),
+//					pulumi.String("BUNDLED_SERVICE_TYPE_DATASTORE_V3"),
+//				},
+//				DeleteServiceOnDestroy: pulumi.Bool(true),
+//				ServiceAccount:         serviceAccount.Email,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gaeApi,
+//				storageViewer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -178,7 +292,12 @@ type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
 	AppEngineApis pulumi.BoolPtrOutput `pulumi:"appEngineApis"`
+	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+	// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+	AppEngineBundledServices pulumi.StringArrayOutput `pulumi:"appEngineBundledServices"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrOutput `pulumi:"automaticScaling"`
@@ -289,7 +408,12 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type standardAppVersionState struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
 	AppEngineApis *bool `pulumi:"appEngineApis"`
+	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+	// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+	AppEngineBundledServices []string `pulumi:"appEngineBundledServices"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
@@ -359,7 +483,12 @@ type standardAppVersionState struct {
 
 type StandardAppVersionState struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
 	AppEngineApis pulumi.BoolPtrInput
+	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+	// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+	AppEngineBundledServices pulumi.StringArrayInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
@@ -433,7 +562,12 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 
 type standardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
 	AppEngineApis *bool `pulumi:"appEngineApis"`
+	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+	// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+	AppEngineBundledServices []string `pulumi:"appEngineBundledServices"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling *StandardAppVersionAutomaticScaling `pulumi:"automaticScaling"`
@@ -502,7 +636,12 @@ type standardAppVersionArgs struct {
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
+	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
 	AppEngineApis pulumi.BoolPtrInput
+	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+	// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+	AppEngineBundledServices pulumi.StringArrayInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
 	AutomaticScaling StandardAppVersionAutomaticScalingPtrInput
@@ -656,8 +795,16 @@ func (o StandardAppVersionOutput) ToStandardAppVersionOutputWithContext(ctx cont
 }
 
 // Allows App Engine second generation runtimes to access the legacy bundled services.
+// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
 func (o StandardAppVersionOutput) AppEngineApis() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.BoolPtrOutput { return v.AppEngineApis }).(pulumi.BoolPtrOutput)
+}
+
+// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+// Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+func (o StandardAppVersionOutput) AppEngineBundledServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StandardAppVersion) pulumi.StringArrayOutput { return v.AppEngineBundledServices }).(pulumi.StringArrayOutput)
 }
 
 // Automatic scaling is based on request rate, response latencies, and other application metrics.

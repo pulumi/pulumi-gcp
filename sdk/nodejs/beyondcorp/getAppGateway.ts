@@ -36,7 +36,7 @@ export interface GetAppGatewayArgs {
     /**
      * The name of the App Gateway.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -103,7 +103,7 @@ export interface GetAppGatewayOutputArgs {
     /**
      * The name of the App Gateway.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

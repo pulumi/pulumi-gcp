@@ -3187,7 +3187,7 @@ class SloBasicSliAvailability(dict):
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        :param _builtins.bool enabled: Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -3196,7 +3196,7 @@ class SloBasicSliAvailability(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         """
-        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -3808,7 +3808,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(d
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None):
         """
-        :param _builtins.bool enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        :param _builtins.bool enabled: Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -3817,7 +3817,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(d
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         """
-        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -4509,7 +4509,7 @@ class UptimeCheckConfigHttpCheck(dict):
         :param _builtins.str body: The request body associated with the HTTP POST request. If `content_type` is `URL_ENCODED`, the body passed in must be URL-encoded. Users can provide a `Content-Length` header via the `headers` field or the API will do so. If the `request_method` is `GET` and `body` is not empty, the API will return an error. The maximum byte size is 1 megabyte. Note - As with all bytes fields JSON representations are base64 encoded. e.g. `foo=bar` in URL-encoded form is `foo%3Dbar` and in base64 encoding is `Zm9vJTI1M0RiYXI=`.
         :param _builtins.str content_type: The content type to use for the check.
                Possible values are: `TYPE_UNSPECIFIED`, `URL_ENCODED`, `USER_PROVIDED`.
-        :param _builtins.str custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        :param _builtins.str custom_content_type: A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
         :param Mapping[str, _builtins.str] headers: The list of headers to send as part of the uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described in [RFC 2616 (page 31)](https://www.w3.org/Protocols/rfc2616/rfc2616.txt). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param _builtins.bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if `mask_headers` is set to `true` then the headers will be obscured with `******`.
         :param _builtins.str path: The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
@@ -4592,7 +4592,7 @@ class UptimeCheckConfigHttpCheck(dict):
     @pulumi.getter(name="customContentType")
     def custom_content_type(self) -> Optional[_builtins.str]:
         """
-        A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type`, as well as the following 1. `content_type` is `URL_ENCODED` and `custom_content_type` is set. 2. `content_type` is `USER_PROVIDED` and `custom_content_type` is not set.
+        A user provided content type header to use for the check. The invalid configurations outlined in the `content_type` field apply to custom_content_type` , as well as the following 1.  `content_type`is`URL_ENCODED`and`custom_content_type`is set. 2.`content_type`is`USER_PROVIDED`and`custom_content_type` is not set.
         """
         return pulumi.get(self, "custom_content_type")
 
@@ -4972,7 +4972,6 @@ class UptimeCheckConfigSyntheticMonitor(dict):
         :param 'UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args' cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
                Structure is documented below.
                
-               
                <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
         pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
@@ -4983,7 +4982,6 @@ class UptimeCheckConfigSyntheticMonitor(dict):
         """
         Target a Synthetic Monitor GCFv2 Instance
         Structure is documented below.
-
 
         <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """

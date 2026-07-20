@@ -48,7 +48,7 @@ export interface GetRegionalParameterVersionArgs {
      */
     parameterVersionId: string;
     /**
-     * The project for retrieving the Regional Parameter Version. If it's not specified, 
+     * The project for retrieving the Regional Parameter Version. If it's not specified,
      * the provider project will be used.
      */
     project?: string;
@@ -136,7 +136,7 @@ export interface GetRegionalParameterVersionOutputArgs {
      */
     parameterVersionId: pulumi.Input<string>;
     /**
-     * The project for retrieving the Regional Parameter Version. If it's not specified, 
+     * The project for retrieving the Regional Parameter Version. If it's not specified,
      * the provider project will be used.
      */
     project?: pulumi.Input<string | undefined>;

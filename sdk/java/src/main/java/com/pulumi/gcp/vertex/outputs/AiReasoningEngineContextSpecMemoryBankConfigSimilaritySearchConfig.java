@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {
     /**
-     * @return The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+     * @return Required. The Gemini model used to generate embeddings to lookup similar examples.
      * 
      */
     private String embeddingModel;
 
     private AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig() {}
     /**
-     * @return The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+     * @return Required. The Gemini model used to generate embeddings to lookup similar examples.
      * 
      */
     public String embeddingModel() {

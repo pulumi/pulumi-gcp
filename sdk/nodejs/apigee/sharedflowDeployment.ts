@@ -63,7 +63,7 @@ export class SharedflowDeployment extends pulumi.CustomResource {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -144,7 +144,7 @@ export interface SharedflowDeploymentState {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -181,7 +181,7 @@ export interface SharedflowDeploymentArgs {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

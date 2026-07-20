@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecSourceCodeSpec
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Specification for the deploying from agent config.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineSpecSourceCodeSpecAgentConfigSource? AgentConfigSource;
+        /// <summary>
         /// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
         /// Structure is documented below.
         /// </summary>
@@ -36,6 +42,8 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private AiReasoningEngineSpecSourceCodeSpec(
+            Outputs.AiReasoningEngineSpecSourceCodeSpecAgentConfigSource? agentConfigSource,
+
             Outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource? developerConnectSource,
 
             Outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec? imageSpec,
@@ -44,6 +52,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             Outputs.AiReasoningEngineSpecSourceCodeSpecPythonSpec? pythonSpec)
         {
+            AgentConfigSource = agentConfigSource;
             DeveloperConnectSource = developerConnectSource;
             ImageSpec = imageSpec;
             InlineSource = inlineSource;

@@ -213,7 +213,7 @@ def get_workload_identity_pool_provider(project: Optional[_builtins.str] = None,
     :param _builtins.str workload_identity_pool_provider_id: The id of the provider which is the
            final component of the resource name.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project
@@ -267,7 +267,7 @@ def get_workload_identity_pool_provider_output(project: pulumi.Input[Optional[Op
     :param _builtins.str workload_identity_pool_provider_id: The id of the provider which is the
            final component of the resource name.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project

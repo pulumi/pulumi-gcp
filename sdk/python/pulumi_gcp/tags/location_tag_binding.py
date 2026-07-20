@@ -35,7 +35,7 @@ class LocationTagBindingArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
         """
         pulumi.set(__self__, "parent", parent)
@@ -80,7 +80,7 @@ class LocationTagBindingArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -119,7 +119,7 @@ class _LocationTagBindingState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
         :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
@@ -147,7 +147,7 @@ class _LocationTagBindingState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -319,7 +319,7 @@ class LocationTagBinding(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
         :param pulumi.Input[_builtins.str] tag_value: The TagValue of the TagBinding. Must be either in id format `tagValues/{tag-value-id}`, or namespaced format `{parent-id}/{tag-key-short-name}/{tag-value-short-name}`.
@@ -491,7 +491,7 @@ class LocationTagBinding(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] location: Location of the target resource.
         :param pulumi.Input[_builtins.str] name: The generated id for the TagBinding. This is a string of the form `tagBindings/{full-resource-name}/{tag-value-name}` or `tagBindings/{full-resource-name}/{tag-key-name}`
         :param pulumi.Input[_builtins.str] parent: The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
@@ -519,7 +519,7 @@ class LocationTagBinding(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

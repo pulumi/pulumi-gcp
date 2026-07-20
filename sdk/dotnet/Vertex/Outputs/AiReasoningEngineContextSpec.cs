@@ -14,14 +14,24 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineContextSpec
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineContextSpecExampleStoreConfig? ExampleStoreConfig;
+        /// <summary>
         /// Specification for a Memory Bank, which manages memories for the Agent Engine.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfig? MemoryBankConfig;
 
         [OutputConstructor]
-        private AiReasoningEngineContextSpec(Outputs.AiReasoningEngineContextSpecMemoryBankConfig? memoryBankConfig)
+        private AiReasoningEngineContextSpec(
+            Outputs.AiReasoningEngineContextSpecExampleStoreConfig? exampleStoreConfig,
+
+            Outputs.AiReasoningEngineContextSpecMemoryBankConfig? memoryBankConfig)
         {
+            ExampleStoreConfig = exampleStoreConfig;
             MemoryBankConfig = memoryBankConfig;
         }
     }

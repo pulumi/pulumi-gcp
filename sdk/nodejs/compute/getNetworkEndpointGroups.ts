@@ -61,7 +61,7 @@ export interface GetNetworkEndpointGroupsResult {
      */
     readonly id: string;
     /**
-     * A list of all retrieved Network Endpoint Groups. For list of the attributes, see 
+     * A list of all retrieved Network Endpoint Groups. For list of the attributes, see
      * the `gcp.compute.NetworkEndpointGroup` data source.
      */
     readonly networkEndpointGroups: outputs.compute.GetNetworkEndpointGroupsNetworkEndpointGroup[];

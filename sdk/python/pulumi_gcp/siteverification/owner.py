@@ -35,7 +35,7 @@ class OwnerArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "web_resource_id", web_resource_id)
@@ -78,7 +78,7 @@ class OwnerArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -103,7 +103,7 @@ class _OwnerState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
@@ -126,7 +126,7 @@ class _OwnerState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -265,7 +265,7 @@ class Owner(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
@@ -423,7 +423,7 @@ class Owner(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] email: The email of the user to be added as an owner.
         :param pulumi.Input[_builtins.str] web_resource_id: The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
                such as `webResource/https://www.example.com/`
@@ -448,7 +448,7 @@ class Owner(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

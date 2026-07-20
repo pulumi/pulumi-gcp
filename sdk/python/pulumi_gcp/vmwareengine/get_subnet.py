@@ -187,7 +187,7 @@ def get_subnet(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: Name of the resource. 
+    :param _builtins.str name: Name of the resource.
            UserDefined subnets are named in the format of "service-n", where n ranges from 1 to 5.
            Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
     :param _builtins.str parent: The resource name of the private cloud that this subnet belongs.
@@ -233,7 +233,7 @@ def get_subnet_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     ```
 
 
-    :param _builtins.str name: Name of the resource. 
+    :param _builtins.str name: Name of the resource.
            UserDefined subnets are named in the format of "service-n", where n ranges from 1 to 5.
            Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
     :param _builtins.str parent: The resource name of the private cloud that this subnet belongs.

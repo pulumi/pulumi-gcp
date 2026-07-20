@@ -27,6 +27,7 @@ public final class GetCloudVmClusterResult {
     private String displayName;
     private Map<String,String> effectiveLabels;
     private String exadataInfrastructure;
+    private String exascaleDbStorageVault;
     private String gcpOracleZone;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -74,6 +75,9 @@ public final class GetCloudVmClusterResult {
     }
     public String exadataInfrastructure() {
         return this.exadataInfrastructure;
+    }
+    public String exascaleDbStorageVault() {
+        return this.exascaleDbStorageVault;
     }
     public String gcpOracleZone() {
         return this.gcpOracleZone;
@@ -135,6 +139,7 @@ public final class GetCloudVmClusterResult {
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String exadataInfrastructure;
+        private String exascaleDbStorageVault;
         private String gcpOracleZone;
         private String id;
         private List<GetCloudVmClusterIdentityConnector> identityConnectors;
@@ -160,6 +165,7 @@ public final class GetCloudVmClusterResult {
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.exadataInfrastructure = defaults.exadataInfrastructure;
+    	      this.exascaleDbStorageVault = defaults.exascaleDbStorageVault;
     	      this.gcpOracleZone = defaults.gcpOracleZone;
     	      this.id = defaults.id;
     	      this.identityConnectors = defaults.identityConnectors;
@@ -252,6 +258,14 @@ public final class GetCloudVmClusterResult {
               throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "exadataInfrastructure");
             }
             this.exadataInfrastructure = exadataInfrastructure;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exascaleDbStorageVault(String exascaleDbStorageVault) {
+            if (exascaleDbStorageVault == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClusterResult", "exascaleDbStorageVault");
+            }
+            this.exascaleDbStorageVault = exascaleDbStorageVault;
             return this;
         }
         @CustomType.Setter
@@ -366,6 +380,7 @@ public final class GetCloudVmClusterResult {
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.exadataInfrastructure = exadataInfrastructure;
+            _resultValue.exascaleDbStorageVault = exascaleDbStorageVault;
             _resultValue.gcpOracleZone = gcpOracleZone;
             _resultValue.id = id;
             _resultValue.identityConnectors = identityConnectors;

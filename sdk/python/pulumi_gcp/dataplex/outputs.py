@@ -666,7 +666,7 @@ class AssetResourceSpec(dict):
         """
         :param _builtins.str type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
                
-               - - -
+               ***
         :param _builtins.str name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         :param _builtins.str read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
@@ -682,7 +682,7 @@ class AssetResourceSpec(dict):
         """
         Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -1524,8 +1524,38 @@ class DatascanDataDiscoverySpecStorageConfigJsonOptions(dict):
 
 @pulumi.output_type
 class DatascanDataDocumentationSpec(dict):
-    def __init__(__self__):
-        pass
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogPublishingEnabled":
+            suggest = "catalog_publishing_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatascanDataDocumentationSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatascanDataDocumentationSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatascanDataDocumentationSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog_publishing_enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool catalog_publishing_enabled: If set, the latest DataScan job result will be published to Knowledge Catalog.
+        """
+        if catalog_publishing_enabled is not None:
+            pulumi.set(__self__, "catalog_publishing_enabled", catalog_publishing_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogPublishingEnabled")
+    def catalog_publishing_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If set, the latest DataScan job result will be published to Knowledge Catalog.
+        """
+        return pulumi.get(self, "catalog_publishing_enabled")
 
 
 @pulumi.output_type
@@ -5785,7 +5815,7 @@ class ZoneResourceSpec(dict):
         """
         :param _builtins.str location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "location_type", location_type)
 
@@ -5795,7 +5825,7 @@ class ZoneResourceSpec(dict):
         """
         Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location_type")
 
@@ -5823,9 +5853,9 @@ class GetDataQualityRulesRuleResult(dict):
         :param _builtins.str column: The unnested column which this rule is evaluated against.
         :param _builtins.str description: Description of the rule. (The maximum length is 1,024 characters.)
         :param _builtins.str dimension: The dimension a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "FRESHNESS", "VOLUME"
-        :param _builtins.bool ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. 
+        :param _builtins.bool ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing.
                											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
-        :param _builtins.str name: A mutable name for the rule. 
+        :param _builtins.str name: A mutable name for the rule.
                											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
                											The maximum length is 63 characters.
                											Must start with a letter.
@@ -5887,7 +5917,7 @@ class GetDataQualityRulesRuleResult(dict):
     @pulumi.getter(name="ignoreNull")
     def ignore_null(self) -> _builtins.bool:
         """
-        Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. 
+        Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing.
         											This field is only valid for the following type of rules: RangeExpectation, RegexExpectation, SetExpectation, UniquenessExpectation
         """
         return pulumi.get(self, "ignore_null")
@@ -5896,7 +5926,7 @@ class GetDataQualityRulesRuleResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        A mutable name for the rule. 
+        A mutable name for the rule.
         											The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
         											The maximum length is 63 characters.
         											Must start with a letter.
@@ -6133,7 +6163,7 @@ class GetDataQualityRulesRuleStatisticRangeExpectationResult(dict):
         """
         :param _builtins.str max_value: The maximum column value allowed for a row to pass this validation.
         :param _builtins.str min_value: The minimum column value allowed for a row to pass this validation.
-        :param _builtins.str statistic: The list of aggregate metrics a rule can be evaluated against. 
+        :param _builtins.str statistic: The list of aggregate metrics a rule can be evaluated against.
                																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
         :param _builtins.bool strict_max_enabled: Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
         :param _builtins.bool strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
@@ -6164,7 +6194,7 @@ class GetDataQualityRulesRuleStatisticRangeExpectationResult(dict):
     @pulumi.getter
     def statistic(self) -> _builtins.str:
         """
-        The list of aggregate metrics a rule can be evaluated against. 
+        The list of aggregate metrics a rule can be evaluated against.
         																	Possible values: ["STATISTIC_UNDEFINED", "MEAN", "MIN", "MAX"]
         """
         return pulumi.get(self, "statistic")

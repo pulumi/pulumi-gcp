@@ -30,6 +30,14 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
+        /// The service connection policy created for the auto connection.
+        /// </summary>
+        public readonly string ServiceConnectionPolicy;
+        /// <summary>
+        /// The result of the service connection policy creation.
+        /// </summary>
+        public readonly string ServiceConnectionPolicyCreationResult;
+        /// <summary>
         /// The connection status of the consumer endpoint.
         /// </summary>
         public readonly string Status;
@@ -44,12 +52,18 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string ipAddress,
 
+            string serviceConnectionPolicy,
+
+            string serviceConnectionPolicyCreationResult,
+
             string status)
         {
             ConsumerNetwork = consumerNetwork;
             ConsumerNetworkStatus = consumerNetworkStatus;
             ConsumerServiceProjectId = consumerServiceProjectId;
             IpAddress = ipAddress;
+            ServiceConnectionPolicy = serviceConnectionPolicy;
+            ServiceConnectionPolicyCreationResult = serviceConnectionPolicyCreationResult;
             Status = status;
         }
     }

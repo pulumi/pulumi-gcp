@@ -26,6 +26,7 @@ class StandardAppVersionArgs:
                  runtime: pulumi.Input[_builtins.str],
                  service: pulumi.Input[_builtins.str],
                  app_engine_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 app_engine_bundled_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  automatic_scaling: pulumi.Input[Optional['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: pulumi.Input[Optional['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -53,6 +54,10 @@ class StandardAppVersionArgs:
         :param pulumi.Input[_builtins.str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[_builtins.str] service: AppEngine service resource
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
+               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+               Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -96,6 +101,8 @@ class StandardAppVersionArgs:
         pulumi.set(__self__, "service", service)
         if app_engine_apis is not None:
             pulumi.set(__self__, "app_engine_apis", app_engine_apis)
+        if app_engine_bundled_services is not None:
+            pulumi.set(__self__, "app_engine_bundled_services", app_engine_bundled_services)
         if automatic_scaling is not None:
             pulumi.set(__self__, "automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
@@ -186,12 +193,27 @@ class StandardAppVersionArgs:
     def app_engine_apis(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows App Engine second generation runtimes to access the legacy bundled services.
+        Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
         """
         return pulumi.get(self, "app_engine_apis")
 
     @app_engine_apis.setter
     def app_engine_apis(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "app_engine_apis", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appEngineBundledServices")
+    def app_engine_bundled_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+        Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+        Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+        """
+        return pulumi.get(self, "app_engine_bundled_services")
+
+    @app_engine_bundled_services.setter
+    def app_engine_bundled_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "app_engine_bundled_services", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticScaling")
@@ -421,6 +443,7 @@ class StandardAppVersionArgs:
 class _StandardAppVersionState:
     def __init__(__self__, *,
                  app_engine_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 app_engine_bundled_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  automatic_scaling: pulumi.Input[Optional['StandardAppVersionAutomaticScalingArgs']] = None,
                  basic_scaling: pulumi.Input[Optional['StandardAppVersionBasicScalingArgs']] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -447,6 +470,10 @@ class _StandardAppVersionState:
         Input properties used for looking up and filtering StandardAppVersion resources.
 
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
+               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+               Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
         :param pulumi.Input['StandardAppVersionAutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input['StandardAppVersionBasicScalingArgs'] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -493,6 +520,8 @@ class _StandardAppVersionState:
         """
         if app_engine_apis is not None:
             pulumi.set(__self__, "app_engine_apis", app_engine_apis)
+        if app_engine_bundled_services is not None:
+            pulumi.set(__self__, "app_engine_bundled_services", app_engine_bundled_services)
         if automatic_scaling is not None:
             pulumi.set(__self__, "automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
@@ -543,12 +572,27 @@ class _StandardAppVersionState:
     def app_engine_apis(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows App Engine second generation runtimes to access the legacy bundled services.
+        Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
         """
         return pulumi.get(self, "app_engine_apis")
 
     @app_engine_apis.setter
     def app_engine_apis(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "app_engine_apis", value)
+
+    @_builtins.property
+    @pulumi.getter(name="appEngineBundledServices")
+    def app_engine_bundled_services(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+        Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+        Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+        """
+        return pulumi.get(self, "app_engine_bundled_services")
+
+    @app_engine_bundled_services.setter
+    def app_engine_bundled_services(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "app_engine_bundled_services", value)
 
     @_builtins.property
     @pulumi.getter(name="automaticScaling")
@@ -843,6 +887,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 app_engine_bundled_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']]] = None,
                  basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -963,6 +1008,72 @@ class StandardAppVersion(pulumi.CustomResource):
             noop_on_destroy=True,
             service_account=custom_service_account.email)
         ```
+        ### App Engine Standard App Version Bundled Services
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.serviceaccount.Account("service_account",
+            account_id="gae-sa",
+            display_name="Test Service Account for GAE")
+        gae_api = gcp.projects.IAMMember("gae_api",
+            project=service_account.project,
+            role="roles/compute.networkUser",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
+            project=service_account.project,
+            role="roles/storage.objectViewer",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        bucket = gcp.storage.Bucket("bucket",
+            name="tf-test-gae-bkt-bundled",
+            location="US")
+        requirements = gcp.storage.BucketObject("requirements",
+            name="requirements.txt",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+        main = gcp.storage.BucketObject("main",
+            name="main.py",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/main.py"))
+        gae_std_app_ver_bundled = gcp.appengine.StandardAppVersion("gae-std-app-ver-bundled",
+            version_id="v1",
+            service="bundled-service",
+            runtime="python310",
+            deployment={
+                "files": [
+                    {
+                        "name": "main.py",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            mainName=main.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['mainName']}")
+        ,
+                    },
+                    {
+                        "name": "requirements.txt",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            requirementsName=requirements.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['requirementsName']}")
+        ,
+                    },
+                ],
+            },
+            entrypoint={
+                "shell": "gunicorn -b :$PORT main:app",
+            },
+            app_engine_bundled_services=[
+                "BUNDLED_SERVICE_TYPE_MAIL",
+                "BUNDLED_SERVICE_TYPE_DATASTORE_V3",
+            ],
+            delete_service_on_destroy=True,
+            service_account=service_account.email,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    gae_api,
+                    storage_viewer,
+                ]))
+        ```
 
         ## Import
 
@@ -984,6 +1095,10 @@ class StandardAppVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
+               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+               Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
         :param pulumi.Input[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -1131,6 +1246,72 @@ class StandardAppVersion(pulumi.CustomResource):
             noop_on_destroy=True,
             service_account=custom_service_account.email)
         ```
+        ### App Engine Standard App Version Bundled Services
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.serviceaccount.Account("service_account",
+            account_id="gae-sa",
+            display_name="Test Service Account for GAE")
+        gae_api = gcp.projects.IAMMember("gae_api",
+            project=service_account.project,
+            role="roles/compute.networkUser",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        storage_viewer = gcp.projects.IAMMember("storage_viewer",
+            project=service_account.project,
+            role="roles/storage.objectViewer",
+            member=service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        bucket = gcp.storage.Bucket("bucket",
+            name="tf-test-gae-bkt-bundled",
+            location="US")
+        requirements = gcp.storage.BucketObject("requirements",
+            name="requirements.txt",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+        main = gcp.storage.BucketObject("main",
+            name="main.py",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/hello-world-flask/main.py"))
+        gae_std_app_ver_bundled = gcp.appengine.StandardAppVersion("gae-std-app-ver-bundled",
+            version_id="v1",
+            service="bundled-service",
+            runtime="python310",
+            deployment={
+                "files": [
+                    {
+                        "name": "main.py",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            mainName=main.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['mainName']}")
+        ,
+                    },
+                    {
+                        "name": "requirements.txt",
+                        "source_url": pulumi.Output.all(
+                            bucketName=bucket.name,
+                            requirementsName=requirements.name
+        ).apply(lambda resolved_outputs: f"https://storage.googleapis.com/{resolved_outputs['bucketName']}/{resolved_outputs['requirementsName']}")
+        ,
+                    },
+                ],
+            },
+            entrypoint={
+                "shell": "gunicorn -b :$PORT main:app",
+            },
+            app_engine_bundled_services=[
+                "BUNDLED_SERVICE_TYPE_MAIL",
+                "BUNDLED_SERVICE_TYPE_DATASTORE_V3",
+            ],
+            delete_service_on_destroy=True,
+            service_account=service_account.email,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    gae_api,
+                    storage_viewer,
+                ]))
+        ```
 
         ## Import
 
@@ -1165,6 +1346,7 @@ class StandardAppVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+                 app_engine_bundled_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']]] = None,
                  basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']]] = None,
                  delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1196,6 +1378,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__ = StandardAppVersionArgs.__new__(StandardAppVersionArgs)
 
             __props__.__dict__["app_engine_apis"] = app_engine_apis
+            __props__.__dict__["app_engine_bundled_services"] = app_engine_bundled_services
             __props__.__dict__["automatic_scaling"] = automatic_scaling
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
@@ -1237,6 +1420,7 @@ class StandardAppVersion(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_apis: pulumi.Input[Optional[_builtins.bool]] = None,
+            app_engine_bundled_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             automatic_scaling: pulumi.Input[Optional[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']]] = None,
             basic_scaling: pulumi.Input[Optional[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']]] = None,
             delete_service_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1267,6 +1451,10 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
+               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+               Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
         :param pulumi.Input[Union['StandardAppVersionAutomaticScalingArgs', 'StandardAppVersionAutomaticScalingArgsDict']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics.
                Structure is documented below.
         :param pulumi.Input[Union['StandardAppVersionBasicScalingArgs', 'StandardAppVersionBasicScalingArgsDict']] basic_scaling: Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -1316,6 +1504,7 @@ class StandardAppVersion(pulumi.CustomResource):
         __props__ = _StandardAppVersionState.__new__(_StandardAppVersionState)
 
         __props__.__dict__["app_engine_apis"] = app_engine_apis
+        __props__.__dict__["app_engine_bundled_services"] = app_engine_bundled_services
         __props__.__dict__["automatic_scaling"] = automatic_scaling
         __props__.__dict__["basic_scaling"] = basic_scaling
         __props__.__dict__["delete_service_on_destroy"] = delete_service_on_destroy
@@ -1345,8 +1534,19 @@ class StandardAppVersion(pulumi.CustomResource):
     def app_engine_apis(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Allows App Engine second generation runtimes to access the legacy bundled services.
+        Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
         """
         return pulumi.get(self, "app_engine_apis")
+
+    @_builtins.property
+    @pulumi.getter(name="appEngineBundledServices")
+    def app_engine_bundled_services(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+        Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
+        Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+        """
+        return pulumi.get(self, "app_engine_bundled_services")
 
     @_builtins.property
     @pulumi.getter(name="automaticScaling")

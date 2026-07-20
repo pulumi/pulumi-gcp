@@ -53,23 +53,23 @@ class RowAccessPolicyArgs:
                members that the row-level access policy should be created with.
                grantees types:
                - "user:alice@example.com": An email address that represents a specific
-               Google account.
+                 Google account.
                - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-               address that represents a service account.
+                 address that represents a service account.
                - "group:admins@example.com": An email address that represents a Google
-               group.
+                 group.
                - "domain:example.com":The Google Workspace domain (primary) that
-               represents all the users of that domain.
+                 represents all the users of that domain.
                - "allAuthenticatedUsers": A special identifier that represents all service
-               accounts and all users on the internet who have authenticated with a Google
-               Account. This identifier includes accounts that aren't connected to a
-               Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-               Users who aren't authenticated, such as anonymous visitors, aren't
-               included.
+                 accounts and all users on the internet who have authenticated with a Google
+                 Account. This identifier includes accounts that aren't connected to a
+                 Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+                 Users who aren't authenticated, such as anonymous visitors, aren't
+                 included.
                - "allUsers":A special identifier that represents anyone who is on
-               the internet, including authenticated and unauthenticated users. Because
-               BigQuery requires authentication before a user can access the service,
-               allUsers includes only authenticated users.
+                 the internet, including authenticated and unauthenticated users. Because
+                 BigQuery requires authentication before a user can access the service,
+                 allUsers includes only authenticated users.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -167,23 +167,23 @@ class RowAccessPolicyArgs:
         members that the row-level access policy should be created with.
         grantees types:
         - "user:alice@example.com": An email address that represents a specific
-        Google account.
+          Google account.
         - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-        address that represents a service account.
+          address that represents a service account.
         - "group:admins@example.com": An email address that represents a Google
-        group.
+          group.
         - "domain:example.com":The Google Workspace domain (primary) that
-        represents all the users of that domain.
+          represents all the users of that domain.
         - "allAuthenticatedUsers": A special identifier that represents all service
-        accounts and all users on the internet who have authenticated with a Google
-        Account. This identifier includes accounts that aren't connected to a
-        Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-        Users who aren't authenticated, such as anonymous visitors, aren't
-        included.
+          accounts and all users on the internet who have authenticated with a Google
+          Account. This identifier includes accounts that aren't connected to a
+          Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+          Users who aren't authenticated, such as anonymous visitors, aren't
+          included.
         - "allUsers":A special identifier that represents anyone who is on
-        the internet, including authenticated and unauthenticated users. Because
-        BigQuery requires authentication before a user can access the service,
-        allUsers includes only authenticated users.
+          the internet, including authenticated and unauthenticated users. Because
+          BigQuery requires authentication before a user can access the service,
+          allUsers includes only authenticated users.
         """
         return pulumi.get(self, "grantees")
 
@@ -242,23 +242,23 @@ class _RowAccessPolicyState:
                members that the row-level access policy should be created with.
                grantees types:
                - "user:alice@example.com": An email address that represents a specific
-               Google account.
+                 Google account.
                - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-               address that represents a service account.
+                 address that represents a service account.
                - "group:admins@example.com": An email address that represents a Google
-               group.
+                 group.
                - "domain:example.com":The Google Workspace domain (primary) that
-               represents all the users of that domain.
+                 represents all the users of that domain.
                - "allAuthenticatedUsers": A special identifier that represents all service
-               accounts and all users on the internet who have authenticated with a Google
-               Account. This identifier includes accounts that aren't connected to a
-               Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-               Users who aren't authenticated, such as anonymous visitors, aren't
-               included.
+                 accounts and all users on the internet who have authenticated with a Google
+                 Account. This identifier includes accounts that aren't connected to a
+                 Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+                 Users who aren't authenticated, such as anonymous visitors, aren't
+                 included.
                - "allUsers":A special identifier that represents anyone who is on
-               the internet, including authenticated and unauthenticated users. Because
-               BigQuery requires authentication before a user can access the service,
-               allUsers includes only authenticated users.
+                 the internet, including authenticated and unauthenticated users. Because
+                 BigQuery requires authentication before a user can access the service,
+                 allUsers includes only authenticated users.
         :param pulumi.Input[_builtins.str] last_modified_time: The time when this row access policy was last modified, in milliseconds
                since the epoch.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the row access policy. The ID must contain only
@@ -357,23 +357,23 @@ class _RowAccessPolicyState:
         members that the row-level access policy should be created with.
         grantees types:
         - "user:alice@example.com": An email address that represents a specific
-        Google account.
+          Google account.
         - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-        address that represents a service account.
+          address that represents a service account.
         - "group:admins@example.com": An email address that represents a Google
-        group.
+          group.
         - "domain:example.com":The Google Workspace domain (primary) that
-        represents all the users of that domain.
+          represents all the users of that domain.
         - "allAuthenticatedUsers": A special identifier that represents all service
-        accounts and all users on the internet who have authenticated with a Google
-        Account. This identifier includes accounts that aren't connected to a
-        Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-        Users who aren't authenticated, such as anonymous visitors, aren't
-        included.
+          accounts and all users on the internet who have authenticated with a Google
+          Account. This identifier includes accounts that aren't connected to a
+          Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+          Users who aren't authenticated, such as anonymous visitors, aren't
+          included.
         - "allUsers":A special identifier that represents anyone who is on
-        the internet, including authenticated and unauthenticated users. Because
-        BigQuery requires authentication before a user can access the service,
-        allUsers includes only authenticated users.
+          the internet, including authenticated and unauthenticated users. Because
+          BigQuery requires authentication before a user can access the service,
+          allUsers includes only authenticated users.
         """
         return pulumi.get(self, "grantees")
 
@@ -520,23 +520,23 @@ class RowAccessPolicy(pulumi.CustomResource):
                members that the row-level access policy should be created with.
                grantees types:
                - "user:alice@example.com": An email address that represents a specific
-               Google account.
+                 Google account.
                - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-               address that represents a service account.
+                 address that represents a service account.
                - "group:admins@example.com": An email address that represents a Google
-               group.
+                 group.
                - "domain:example.com":The Google Workspace domain (primary) that
-               represents all the users of that domain.
+                 represents all the users of that domain.
                - "allAuthenticatedUsers": A special identifier that represents all service
-               accounts and all users on the internet who have authenticated with a Google
-               Account. This identifier includes accounts that aren't connected to a
-               Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-               Users who aren't authenticated, such as anonymous visitors, aren't
-               included.
+                 accounts and all users on the internet who have authenticated with a Google
+                 Account. This identifier includes accounts that aren't connected to a
+                 Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+                 Users who aren't authenticated, such as anonymous visitors, aren't
+                 included.
                - "allUsers":A special identifier that represents anyone who is on
-               the internet, including authenticated and unauthenticated users. Because
-               BigQuery requires authentication before a user can access the service,
-               allUsers includes only authenticated users.
+                 the internet, including authenticated and unauthenticated users. Because
+                 BigQuery requires authentication before a user can access the service,
+                 allUsers includes only authenticated users.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the row access policy. The ID must contain only
                letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
                length is 256 characters.
@@ -696,23 +696,23 @@ class RowAccessPolicy(pulumi.CustomResource):
                members that the row-level access policy should be created with.
                grantees types:
                - "user:alice@example.com": An email address that represents a specific
-               Google account.
+                 Google account.
                - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-               address that represents a service account.
+                 address that represents a service account.
                - "group:admins@example.com": An email address that represents a Google
-               group.
+                 group.
                - "domain:example.com":The Google Workspace domain (primary) that
-               represents all the users of that domain.
+                 represents all the users of that domain.
                - "allAuthenticatedUsers": A special identifier that represents all service
-               accounts and all users on the internet who have authenticated with a Google
-               Account. This identifier includes accounts that aren't connected to a
-               Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-               Users who aren't authenticated, such as anonymous visitors, aren't
-               included.
+                 accounts and all users on the internet who have authenticated with a Google
+                 Account. This identifier includes accounts that aren't connected to a
+                 Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+                 Users who aren't authenticated, such as anonymous visitors, aren't
+                 included.
                - "allUsers":A special identifier that represents anyone who is on
-               the internet, including authenticated and unauthenticated users. Because
-               BigQuery requires authentication before a user can access the service,
-               allUsers includes only authenticated users.
+                 the internet, including authenticated and unauthenticated users. Because
+                 BigQuery requires authentication before a user can access the service,
+                 allUsers includes only authenticated users.
         :param pulumi.Input[_builtins.str] last_modified_time: The time when this row access policy was last modified, in milliseconds
                since the epoch.
         :param pulumi.Input[_builtins.str] policy_id: The ID of the row access policy. The ID must contain only
@@ -791,23 +791,23 @@ class RowAccessPolicy(pulumi.CustomResource):
         members that the row-level access policy should be created with.
         grantees types:
         - "user:alice@example.com": An email address that represents a specific
-        Google account.
+          Google account.
         - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-        address that represents a service account.
+          address that represents a service account.
         - "group:admins@example.com": An email address that represents a Google
-        group.
+          group.
         - "domain:example.com":The Google Workspace domain (primary) that
-        represents all the users of that domain.
+          represents all the users of that domain.
         - "allAuthenticatedUsers": A special identifier that represents all service
-        accounts and all users on the internet who have authenticated with a Google
-        Account. This identifier includes accounts that aren't connected to a
-        Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-        Users who aren't authenticated, such as anonymous visitors, aren't
-        included.
+          accounts and all users on the internet who have authenticated with a Google
+          Account. This identifier includes accounts that aren't connected to a
+          Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+          Users who aren't authenticated, such as anonymous visitors, aren't
+          included.
         - "allUsers":A special identifier that represents anyone who is on
-        the internet, including authenticated and unauthenticated users. Because
-        BigQuery requires authentication before a user can access the service,
-        allUsers includes only authenticated users.
+          the internet, including authenticated and unauthenticated users. Because
+          BigQuery requires authentication before a user can access the service,
+          allUsers includes only authenticated users.
         """
         return pulumi.get(self, "grantees")
 

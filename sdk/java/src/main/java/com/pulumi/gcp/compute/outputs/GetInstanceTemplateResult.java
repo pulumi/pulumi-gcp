@@ -15,6 +15,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceTemplateReservationAffinity;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.GetInstanceTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -207,6 +208,7 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private String tagsFingerprint;
+    private List<GetInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
 
     private GetInstanceTemplateResult() {}
     public List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures() {
@@ -469,6 +471,9 @@ public final class GetInstanceTemplateResult {
     public String tagsFingerprint() {
         return this.tagsFingerprint;
     }
+    public List<GetInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs() {
+        return this.workloadIdentityConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -518,6 +523,7 @@ public final class GetInstanceTemplateResult {
         private List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<String> tags;
         private String tagsFingerprint;
+        private List<GetInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs;
         public Builder() {}
         public Builder(GetInstanceTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -560,6 +566,7 @@ public final class GetInstanceTemplateResult {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.tags = defaults.tags;
     	      this.tagsFingerprint = defaults.tagsFingerprint;
+    	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
         }
 
         @CustomType.Setter
@@ -900,6 +907,17 @@ public final class GetInstanceTemplateResult {
             this.tagsFingerprint = tagsFingerprint;
             return this;
         }
+        @CustomType.Setter
+        public Builder workloadIdentityConfigs(List<GetInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfigs) {
+            if (workloadIdentityConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "workloadIdentityConfigs");
+            }
+            this.workloadIdentityConfigs = workloadIdentityConfigs;
+            return this;
+        }
+        public Builder workloadIdentityConfigs(GetInstanceTemplateWorkloadIdentityConfig... workloadIdentityConfigs) {
+            return workloadIdentityConfigs(List.of(workloadIdentityConfigs));
+        }
         public GetInstanceTemplateResult build() {
             final var _resultValue = new GetInstanceTemplateResult();
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
@@ -941,6 +959,7 @@ public final class GetInstanceTemplateResult {
             _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;
             _resultValue.tags = tags;
             _resultValue.tagsFingerprint = tagsFingerprint;
+            _resultValue.workloadIdentityConfigs = workloadIdentityConfigs;
             return _resultValue;
         }
     }

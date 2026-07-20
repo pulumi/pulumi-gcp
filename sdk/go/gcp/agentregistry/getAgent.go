@@ -66,7 +66,7 @@ type GetAgentArgs struct {
 
 // A collection of values returned by getAgent.
 type GetAgentResult struct {
-	AgentId *string `pulumi:"agentId"`
+	AgentId string `pulumi:"agentId"`
 	// Attributes of the Agent.
 	Attributes map[string]string `pulumi:"attributes"`
 	// Create time.
@@ -137,8 +137,8 @@ func (o GetAgentResultOutput) ToGetAgentResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o GetAgentResultOutput) AgentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAgentResult) *string { return v.AgentId }).(pulumi.StringPtrOutput)
+func (o GetAgentResultOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAgentResult) string { return v.AgentId }).(pulumi.StringOutput)
 }
 
 // Attributes of the Agent.

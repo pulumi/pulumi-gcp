@@ -190,7 +190,7 @@ export class GCPolicy extends pulumi.CustomResource {
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
      * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
      *
-     * -----
+     * ***
      */
     declare public readonly ignoreWarnings: pulumi.Output<boolean | undefined>;
     /**
@@ -297,7 +297,7 @@ export interface GCPolicyState {
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
      * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
      *
-     * -----
+     * ***
      */
     ignoreWarnings?: pulumi.Input<boolean | undefined>;
     /**
@@ -355,7 +355,7 @@ export interface GCPolicyArgs {
      * Setting this to `true` allows relaxing the gc policy for replicated clusters by up to 90 days, but keep in mind this may increase how long clusters are inconsistent. Make sure
      * you understand the risks listed at https://cloud.google.com/bigtable/docs/garbage-collection#increasing before setting this option.
      *
-     * -----
+     * ***
      */
     ignoreWarnings?: pulumi.Input<boolean | undefined>;
     /**

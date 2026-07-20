@@ -360,7 +360,7 @@ def get_job(location: Optional[_builtins.str] = None,
 
     :param _builtins.str location: The location of the instance. eg us-central1
            
-           - - -
+           ***
     :param _builtins.str name: The name of the Cloud Run v2 Job.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -428,7 +428,7 @@ def get_job_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = N
 
     :param _builtins.str location: The location of the instance. eg us-central1
            
-           - - -
+           ***
     :param _builtins.str name: The name of the Cloud Run v2 Job.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

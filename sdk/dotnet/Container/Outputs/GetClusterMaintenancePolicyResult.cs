@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Time window for recurring maintenance operations.
         /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowResult> RecurringMaintenanceWindows;
+        /// <summary>
+        /// Time window for recurring maintenance operations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringWindowResult> RecurringWindows;
 
         [OutputConstructor]
@@ -38,11 +42,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult> maintenanceExclusions,
 
+            ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringMaintenanceWindowResult> recurringMaintenanceWindows,
+
             ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringWindowResult> recurringWindows)
         {
             DailyMaintenanceWindows = dailyMaintenanceWindows;
             DisruptionBudgets = disruptionBudgets;
             MaintenanceExclusions = maintenanceExclusions;
+            RecurringMaintenanceWindows = recurringMaintenanceWindows;
             RecurringWindows = recurringWindows;
         }
     }

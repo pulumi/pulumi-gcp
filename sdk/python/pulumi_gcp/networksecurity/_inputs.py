@@ -3449,7 +3449,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgsDict(TypedDict):
     1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
     2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
     3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
-    Params cannot be specified for categories 1) and 2).
+       Params cannot be specified for categories 1) and 2).
     """
     params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict']]]]]
     """
@@ -3467,7 +3467,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgs:
                1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
                2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
                3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
-               Params cannot be specified for categories 1) and 2).
+                  Params cannot be specified for categories 1) and 2).
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]] params: MCP method parameters to match against.
                Structure is documented below.
         """
@@ -3483,7 +3483,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgs:
         1) “tools”, “prompts”, “resources” - these will match against all sub methods under the respective methods.
         2) “prompts/list”, “tools/list”, “resources/list”, “resources/templates/list”
         3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
-        Params cannot be specified for categories 1) and 2).
+           Params cannot be specified for categories 1) and 2).
         """
         return pulumi.get(self, "name")
 

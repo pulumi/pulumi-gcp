@@ -230,9 +230,7 @@ export class Target extends pulumi.CustomResource {
     /**
      * Name of the `Target`. Format is `a-z?`.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -420,9 +418,7 @@ export interface TargetState {
     /**
      * Name of the `Target`. Format is `a-z?`.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -521,9 +517,7 @@ export interface TargetArgs {
     /**
      * Name of the `Target`. Format is `a-z?`.
      *
-     *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**

@@ -236,10 +236,10 @@ class ClusterCrossClusterReplicationConfig(dict):
         """
         :param _builtins.str cluster_role: The role of the cluster in cross cluster replication. Supported values are:
                1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
-               1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
-               1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
-               1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
-               Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+               2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+               3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+               4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+                  Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         :param Sequence['ClusterCrossClusterReplicationConfigMembershipArgs'] memberships: (Output)
                An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
                Structure is documented below.
@@ -267,10 +267,10 @@ class ClusterCrossClusterReplicationConfig(dict):
         """
         The role of the cluster in cross cluster replication. Supported values are:
         1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
-        1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
-        1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
-        1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
-        Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+        3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+        4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+           Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         """
         return pulumi.get(self, "cluster_role")
 
@@ -714,7 +714,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow(dict):
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param 'ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param _builtins.str duration: (Output)
@@ -741,7 +741,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow(dict):
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -1021,7 +1021,7 @@ class ClusterPersistenceConfig(dict):
                - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
                - RDB: RDB based Persistence is enabled.
                - AOF: AOF based Persistence is enabled.
-               Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+                 Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
         :param 'ClusterPersistenceConfigRdbConfigArgs' rdb_config: RDB configuration. This field will be ignored if mode is not RDB.
                Structure is documented below.
         """
@@ -1049,7 +1049,7 @@ class ClusterPersistenceConfig(dict):
         - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
         - RDB: RDB based Persistence is enabled.
         - AOF: AOF based Persistence is enabled.
-        Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+          Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
         """
         return pulumi.get(self, "mode")
 
@@ -1089,7 +1089,7 @@ class ClusterPersistenceConfigAofConfig(dict):
                - NO - Do not explicitly call fsync(). Rely on OS defaults.
                - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
                - ALWAYS - Call fsync() for earch write command.
-               Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+                 Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
         """
         if append_fsync is not None:
             pulumi.set(__self__, "append_fsync", append_fsync)
@@ -1102,7 +1102,7 @@ class ClusterPersistenceConfigAofConfig(dict):
         - NO - Do not explicitly call fsync(). Rely on OS defaults.
         - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
         - ALWAYS - Call fsync() for earch write command.
-        Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+          Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
         """
         return pulumi.get(self, "append_fsync")
 
@@ -1137,7 +1137,7 @@ class ClusterPersistenceConfigRdbConfig(dict):
                - SIX_HOURS:	Snapshot every 6 hours.
                - TWELVE_HOURS:	Snapshot every 12 hours.
                - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-               Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+                 Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         :param _builtins.str rdb_snapshot_start_time: The time that the first snapshot was/will be attempted, and to which
                future snapshots will be aligned.
                If not provided, the current time will be used.
@@ -1156,7 +1156,7 @@ class ClusterPersistenceConfigRdbConfig(dict):
         - SIX_HOURS:	Snapshot every 6 hours.
         - TWELVE_HOURS:	Snapshot every 12 hours.
         - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-        Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+          Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         """
         return pulumi.get(self, "rdb_snapshot_period")
 
@@ -1799,7 +1799,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: Required. Start time of the window in UTC time.
                Structure is documented below.
         :param _builtins.str duration: (Output)
@@ -1826,7 +1826,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -2064,7 +2064,7 @@ class InstancePersistenceConfig(dict):
         :param _builtins.str persistence_mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
                - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
                - RDB: RDB based Persistence is enabled.
-               Possible values are: `DISABLED`, `RDB`.
+                 Possible values are: `DISABLED`, `RDB`.
         :param _builtins.str rdb_next_snapshot_time: (Output)
                Output only. The next time that a snapshot attempt is scheduled to occur.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
@@ -2075,7 +2075,7 @@ class InstancePersistenceConfig(dict):
                - SIX_HOURS:	Snapshot every 6 hours.
                - TWELVE_HOURS:	Snapshot every 12 hours.
                - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-               Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+                 Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         :param _builtins.str rdb_snapshot_start_time: Optional. Date and time that the first snapshot was/will be attempted,
                and to which future snapshots will be aligned. If not provided,
                the current time will be used.
@@ -2099,7 +2099,7 @@ class InstancePersistenceConfig(dict):
         Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
         - DISABLED: 	Persistence is disabled for the instance, and any existing snapshots are deleted.
         - RDB: RDB based Persistence is enabled.
-        Possible values are: `DISABLED`, `RDB`.
+          Possible values are: `DISABLED`, `RDB`.
         """
         return pulumi.get(self, "persistence_mode")
 
@@ -2124,7 +2124,7 @@ class InstancePersistenceConfig(dict):
         - SIX_HOURS:	Snapshot every 6 hours.
         - TWELVE_HOURS:	Snapshot every 12 hours.
         - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
-        Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+          Possible values are: `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
         """
         return pulumi.get(self, "rdb_snapshot_period")
 
@@ -2328,11 +2328,11 @@ class GetClusterCrossClusterReplicationConfigResult(dict):
                
                1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
                
-               1. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+               2. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
                
-               1. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+               3. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
                
-               1. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+               4. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
         :param Sequence['GetClusterCrossClusterReplicationConfigMembershipArgs'] memberships: An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
         :param Sequence['GetClusterCrossClusterReplicationConfigPrimaryClusterArgs'] primary_clusters: Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
         :param Sequence['GetClusterCrossClusterReplicationConfigSecondaryClusterArgs'] secondary_clusters: List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type 'PRIMARY'.
@@ -2352,11 +2352,11 @@ class GetClusterCrossClusterReplicationConfigResult(dict):
 
         1. 'CLUSTER_ROLE_UNSPECIFIED': This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
 
-        1. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
+        2. 'NONE': This is an independent cluster that previously participated in cross cluster replication(either as a 'PRIMARY' or 'SECONDARY' cluster). It allows both reads and writes.
 
-        1. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+        3. 'PRIMARY': This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
 
-        1. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
+        4. 'SECONDARY': This cluster replicates data from the primary cluster. It allows only reads. Possible values: ["CLUSTER_ROLE_UNSPECIFIED", "NONE", "PRIMARY", "SECONDARY"]
         """
         return pulumi.get(self, "cluster_role")
 

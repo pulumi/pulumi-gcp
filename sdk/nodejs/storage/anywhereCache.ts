@@ -78,9 +78,15 @@ export class AnywhereCache extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional, Deprecated)
      * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+     *
+     * > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     *
+     * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      */
     declare public readonly admissionPolicy: pulumi.Output<string | undefined>;
     /**
@@ -183,9 +189,15 @@ export class AnywhereCache extends pulumi.CustomResource {
  */
 export interface AnywhereCacheState {
     /**
+     * (Optional, Deprecated)
      * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+     *
+     * > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     *
+     * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      */
     admissionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -240,9 +252,15 @@ export interface AnywhereCacheState {
  */
 export interface AnywhereCacheArgs {
     /**
+     * (Optional, Deprecated)
      * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+     *
+     * > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     *
+     * @deprecated `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      */
     admissionPolicy?: pulumi.Input<string | undefined>;
     /**

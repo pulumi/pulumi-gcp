@@ -161,7 +161,7 @@ export class Cluster extends pulumi.CustomResource {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -191,7 +191,7 @@ export class Cluster extends pulumi.CustomResource {
      * The name of the cluster, unique within the project and
      * zone.
      *
-     * - - -
+     * ***
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -274,7 +274,7 @@ export interface ClusterState {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -304,7 +304,7 @@ export interface ClusterState {
      * The name of the cluster, unique within the project and
      * zone.
      *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -345,7 +345,7 @@ export interface ClusterArgs {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -369,7 +369,7 @@ export interface ClusterArgs {
      * The name of the cluster, unique within the project and
      * zone.
      *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**

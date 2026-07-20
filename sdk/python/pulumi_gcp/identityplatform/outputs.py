@@ -1296,7 +1296,6 @@ class InboundSamlConfigSpConfig(dict):
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
-               
                <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         :param _builtins.str sp_entity_id: Unique identifier for all SAML entities.
         """
@@ -1322,7 +1321,6 @@ class InboundSamlConfigSpConfig(dict):
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
@@ -1639,7 +1637,6 @@ class TenantInboundSamlConfigSpConfig(dict):
                The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
                Structure is documented below.
                
-               
                <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
@@ -1670,7 +1667,6 @@ class TenantInboundSamlConfigSpConfig(dict):
         (Output)
         The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
         Structure is documented below.
-
 
         <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """

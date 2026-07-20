@@ -40,7 +40,7 @@ export interface GetSecurityGatewayArgs {
     /**
      * The name of the Security Gateway resource.
      *
-     * - - -
+     * ***
      */
     securityGatewayId: string;
 }
@@ -103,7 +103,7 @@ export interface GetSecurityGatewayOutputArgs {
     /**
      * The name of the Security Gateway resource.
      *
-     * - - -
+     * ***
      */
     securityGatewayId: pulumi.Input<string>;
 }

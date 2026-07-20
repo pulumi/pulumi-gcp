@@ -46,14 +46,14 @@ class AssetsExportJobArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                Labels must meet the following constraints:
                * Keys and values can contain only lowercase letters, numeric characters,
-               underscores, and dashes.
+                 underscores, and dashes.
                * All characters must use UTF-8 encoding, and international characters are
-               allowed.
+                 allowed.
                * Keys must start with a lowercase letter or international character.
                * Each resource is limited to a maximum of 64 labels.
-               Both keys and values are additionally constrained to be <= 128 bytes.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 Both keys and values are additionally constrained to be <= 128 bytes.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['AssetsExportJobPerformanceDataArgs'] performance_data: Configuration for performance data exports.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -141,14 +141,14 @@ class AssetsExportJobArgs:
         Labels as key value pairs.
         Labels must meet the following constraints:
         * Keys and values can contain only lowercase letters, numeric characters,
-        underscores, and dashes.
+          underscores, and dashes.
         * All characters must use UTF-8 encoding, and international characters are
-        allowed.
+          allowed.
         * Keys must start with a lowercase letter or international character.
         * Each resource is limited to a maximum of 64 labels.
-        Both keys and values are additionally constrained to be <= 128 bytes.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+          Both keys and values are additionally constrained to be <= 128 bytes.
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+          Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -247,14 +247,14 @@ class _AssetsExportJobState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                Labels must meet the following constraints:
                * Keys and values can contain only lowercase letters, numeric characters,
-               underscores, and dashes.
+                 underscores, and dashes.
                * All characters must use UTF-8 encoding, and international characters are
-               allowed.
+                 allowed.
                * Keys must start with a lowercase letter or international character.
                * Each resource is limited to a maximum of 64 labels.
-               Both keys and values are additionally constrained to be <= 128 bytes.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 Both keys and values are additionally constrained to be <= 128 bytes.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. Resource name.
         :param pulumi.Input[Sequence[pulumi.Input['AssetsExportJobNetworkDependencyArgs']]] network_dependencies: Configuration for network dependencies exports.
@@ -392,14 +392,14 @@ class _AssetsExportJobState:
         Labels as key value pairs.
         Labels must meet the following constraints:
         * Keys and values can contain only lowercase letters, numeric characters,
-        underscores, and dashes.
+          underscores, and dashes.
         * All characters must use UTF-8 encoding, and international characters are
-        allowed.
+          allowed.
         * Keys must start with a lowercase letter or international character.
         * Each resource is limited to a maximum of 64 labels.
-        Both keys and values are additionally constrained to be <= 128 bytes.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+          Both keys and values are additionally constrained to be <= 128 bytes.
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+          Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 
@@ -607,14 +607,14 @@ class AssetsExportJob(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                Labels must meet the following constraints:
                * Keys and values can contain only lowercase letters, numeric characters,
-               underscores, and dashes.
+                 underscores, and dashes.
                * All characters must use UTF-8 encoding, and international characters are
-               allowed.
+                 allowed.
                * Keys must start with a lowercase letter or international character.
                * Each resource is limited to a maximum of 64 labels.
-               Both keys and values are additionally constrained to be <= 128 bytes.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 Both keys and values are additionally constrained to be <= 128 bytes.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Union['AssetsExportJobPerformanceDataArgs', 'AssetsExportJobPerformanceDataArgsDict']] performance_data: Configuration for performance data exports.
                Structure is documented below.
@@ -779,14 +779,14 @@ class AssetsExportJob(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels as key value pairs.
                Labels must meet the following constraints:
                * Keys and values can contain only lowercase letters, numeric characters,
-               underscores, and dashes.
+                 underscores, and dashes.
                * All characters must use UTF-8 encoding, and international characters are
-               allowed.
+                 allowed.
                * Keys must start with a lowercase letter or international character.
                * Each resource is limited to a maximum of 64 labels.
-               Both keys and values are additionally constrained to be <= 128 bytes.
-               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-               Please refer to the field `effective_labels` for all of the labels present on the resource.
+                 Both keys and values are additionally constrained to be <= 128 bytes.
+                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+                 Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] name: Identifier. Resource name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AssetsExportJobNetworkDependencyArgs', 'AssetsExportJobNetworkDependencyArgsDict']]]] network_dependencies: Configuration for network dependencies exports.
@@ -888,14 +888,14 @@ class AssetsExportJob(pulumi.CustomResource):
         Labels as key value pairs.
         Labels must meet the following constraints:
         * Keys and values can contain only lowercase letters, numeric characters,
-        underscores, and dashes.
+          underscores, and dashes.
         * All characters must use UTF-8 encoding, and international characters are
-        allowed.
+          allowed.
         * Keys must start with a lowercase letter or international character.
         * Each resource is limited to a maximum of 64 labels.
-        Both keys and values are additionally constrained to be <= 128 bytes.
-        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-        Please refer to the field `effective_labels` for all of the labels present on the resource.
+          Both keys and values are additionally constrained to be <= 128 bytes.
+          **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+          Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
 

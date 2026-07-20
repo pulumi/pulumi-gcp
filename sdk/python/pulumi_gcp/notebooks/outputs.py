@@ -1004,15 +1004,15 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
                `subnet` is specified, the "default" network of the project is
                used, if it exists. A full URL or partial URI. Examples:
                * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-               regions/global/default`
+                 regions/global/default`
                * `projects/[project_id]/regions/global/default`
-               Runtimes are managed resources inside Google Infrastructure.
-               Runtimes support the following network configurations:
+                 Runtimes are managed resources inside Google Infrastructure.
+                 Runtimes support the following network configurations:
                * Google Managed Network (Network & subnet are empty)
                * Consumer Project VPC (network & subnet are required). Requires
-               configuring Private Service Access.
+                 configuring Private Service Access.
                * Shared VPC (network & subnet are required). Requires
-               configuring Private Service Access.
+                 configuring Private Service Access.
         :param _builtins.str nic_type: The type of vNIC to be used on this interface. This may be gVNIC
                or VirtioNet.
                Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
@@ -1024,7 +1024,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
                communications. Cannot be specified with network. A full URL or
                partial URI are valid. Examples:
                * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-               regions/us-east1/subnetworks/sub0`
+                 regions/us-east1/subnetworks/sub0`
                * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         :param Sequence[_builtins.str] tags: The Compute Engine tags to add to runtime (see [Tagging instances]
                (https://cloud.google.com/compute/docs/
@@ -1163,15 +1163,15 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
         `subnet` is specified, the "default" network of the project is
         used, if it exists. A full URL or partial URI. Examples:
         * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-        regions/global/default`
+          regions/global/default`
         * `projects/[project_id]/regions/global/default`
-        Runtimes are managed resources inside Google Infrastructure.
-        Runtimes support the following network configurations:
+          Runtimes are managed resources inside Google Infrastructure.
+          Runtimes support the following network configurations:
         * Google Managed Network (Network & subnet are empty)
         * Consumer Project VPC (network & subnet are required). Requires
-        configuring Private Service Access.
+          configuring Private Service Access.
         * Shared VPC (network & subnet are required). Requires
-        configuring Private Service Access.
+          configuring Private Service Access.
         """
         return pulumi.get(self, "network")
 
@@ -1211,7 +1211,7 @@ class RuntimeVirtualMachineVirtualMachineConfig(dict):
         communications. Cannot be specified with network. A full URL or
         partial URI are valid. Examples:
         * `https://www.googleapis.com/compute/v1/projects/[project_id]/
-        regions/us-east1/subnetworks/sub0`
+          regions/us-east1/subnetworks/sub0`
         * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         """
         return pulumi.get(self, "subnet")

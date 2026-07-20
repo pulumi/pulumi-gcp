@@ -27,7 +27,7 @@ class GetRegionInstanceTemplateResult:
     """
     A collection of values returned by getRegionInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, deletion_policy=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, numeric_id=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, deletion_policy=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, numeric_id=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, workload_identity_configs=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -145,6 +145,9 @@ class GetRegionInstanceTemplateResult:
         if tags_fingerprint and not isinstance(tags_fingerprint, str):
             raise TypeError("Expected argument 'tags_fingerprint' to be a str")
         pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if workload_identity_configs and not isinstance(workload_identity_configs, list):
+            raise TypeError("Expected argument 'workload_identity_configs' to be a list")
+        pulumi.set(__self__, "workload_identity_configs", workload_identity_configs)
 
     @_builtins.property
     @pulumi.getter(name="advancedMachineFeatures")
@@ -444,6 +447,11 @@ class GetRegionInstanceTemplateResult:
         """
         return pulumi.get(self, "tags_fingerprint")
 
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfigs")
+    def workload_identity_configs(self) -> Sequence['outputs.GetRegionInstanceTemplateWorkloadIdentityConfigResult']:
+        return pulumi.get(self, "workload_identity_configs")
+
 
 class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
     # pylint: disable=using-constant-test
@@ -489,7 +497,8 @@ class AwaitableGetRegionInstanceTemplateResult(GetRegionInstanceTemplateResult):
             service_accounts=self.service_accounts,
             shielded_instance_configs=self.shielded_instance_configs,
             tags=self.tags,
-            tags_fingerprint=self.tags_fingerprint)
+            tags_fingerprint=self.tags_fingerprint,
+            workload_identity_configs=self.workload_identity_configs)
 
 
 def get_region_instance_template(filter: Optional[_builtins.str] = None,
@@ -576,7 +585,8 @@ def get_region_instance_template(filter: Optional[_builtins.str] = None,
         service_accounts=pulumi.get(__ret__, 'service_accounts'),
         shielded_instance_configs=pulumi.get(__ret__, 'shielded_instance_configs'),
         tags=pulumi.get(__ret__, 'tags'),
-        tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'))
+        tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'),
+        workload_identity_configs=pulumi.get(__ret__, 'workload_identity_configs'))
 def get_region_instance_template_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         most_recent: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -660,4 +670,5 @@ def get_region_instance_template_output(filter: pulumi.Input[Optional[Optional[_
         service_accounts=pulumi.get(__response__, 'service_accounts'),
         shielded_instance_configs=pulumi.get(__response__, 'shielded_instance_configs'),
         tags=pulumi.get(__response__, 'tags'),
-        tags_fingerprint=pulumi.get(__response__, 'tags_fingerprint')))
+        tags_fingerprint=pulumi.get(__response__, 'tags_fingerprint'),
+        workload_identity_configs=pulumi.get(__response__, 'workload_identity_configs')))

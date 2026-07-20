@@ -129,6 +129,10 @@ export class Binding extends pulumi.CustomResource {
      */
     declare public readonly location: pulumi.Output<string>;
     /**
+     * The resource name of the Binding.
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -168,6 +172,7 @@ export class Binding extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["location"] = state?.location;
+            resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["source"] = state?.source;
             resourceInputs["target"] = state?.target;
@@ -199,6 +204,7 @@ export class Binding extends pulumi.CustomResource {
             resourceInputs["source"] = args?.source;
             resourceInputs["target"] = args?.target;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -244,6 +250,10 @@ export interface BindingState {
      * The location of the resource.
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * The resource name of the Binding.
+     */
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

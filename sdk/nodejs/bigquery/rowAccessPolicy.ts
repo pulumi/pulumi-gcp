@@ -119,23 +119,23 @@ export class RowAccessPolicy extends pulumi.CustomResource {
      * members that the row-level access policy should be created with.
      * grantees types:
      * - "user:alice@example.com": An email address that represents a specific
-     * Google account.
+     *   Google account.
      * - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-     * address that represents a service account.
+     *   address that represents a service account.
      * - "group:admins@example.com": An email address that represents a Google
-     * group.
+     *   group.
      * - "domain:example.com":The Google Workspace domain (primary) that
-     * represents all the users of that domain.
+     *   represents all the users of that domain.
      * - "allAuthenticatedUsers": A special identifier that represents all service
-     * accounts and all users on the internet who have authenticated with a Google
-     * Account. This identifier includes accounts that aren't connected to a
-     * Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-     * Users who aren't authenticated, such as anonymous visitors, aren't
-     * included.
+     *   accounts and all users on the internet who have authenticated with a Google
+     *   Account. This identifier includes accounts that aren't connected to a
+     *   Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+     *   Users who aren't authenticated, such as anonymous visitors, aren't
+     *   included.
      * - "allUsers":A special identifier that represents anyone who is on
-     * the internet, including authenticated and unauthenticated users. Because
-     * BigQuery requires authentication before a user can access the service,
-     * allUsers includes only authenticated users.
+     *   the internet, including authenticated and unauthenticated users. Because
+     *   BigQuery requires authentication before a user can access the service,
+     *   allUsers includes only authenticated users.
      */
     declare public readonly grantees: pulumi.Output<string[] | undefined>;
     /**
@@ -249,23 +249,23 @@ export interface RowAccessPolicyState {
      * members that the row-level access policy should be created with.
      * grantees types:
      * - "user:alice@example.com": An email address that represents a specific
-     * Google account.
+     *   Google account.
      * - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-     * address that represents a service account.
+     *   address that represents a service account.
      * - "group:admins@example.com": An email address that represents a Google
-     * group.
+     *   group.
      * - "domain:example.com":The Google Workspace domain (primary) that
-     * represents all the users of that domain.
+     *   represents all the users of that domain.
      * - "allAuthenticatedUsers": A special identifier that represents all service
-     * accounts and all users on the internet who have authenticated with a Google
-     * Account. This identifier includes accounts that aren't connected to a
-     * Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-     * Users who aren't authenticated, such as anonymous visitors, aren't
-     * included.
+     *   accounts and all users on the internet who have authenticated with a Google
+     *   Account. This identifier includes accounts that aren't connected to a
+     *   Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+     *   Users who aren't authenticated, such as anonymous visitors, aren't
+     *   included.
      * - "allUsers":A special identifier that represents anyone who is on
-     * the internet, including authenticated and unauthenticated users. Because
-     * BigQuery requires authentication before a user can access the service,
-     * allUsers includes only authenticated users.
+     *   the internet, including authenticated and unauthenticated users. Because
+     *   BigQuery requires authentication before a user can access the service,
+     *   allUsers includes only authenticated users.
      */
     grantees?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -324,23 +324,23 @@ export interface RowAccessPolicyArgs {
      * members that the row-level access policy should be created with.
      * grantees types:
      * - "user:alice@example.com": An email address that represents a specific
-     * Google account.
+     *   Google account.
      * - "serviceAccount:my-other-app@appspot.gserviceaccount.com": An email
-     * address that represents a service account.
+     *   address that represents a service account.
      * - "group:admins@example.com": An email address that represents a Google
-     * group.
+     *   group.
      * - "domain:example.com":The Google Workspace domain (primary) that
-     * represents all the users of that domain.
+     *   represents all the users of that domain.
      * - "allAuthenticatedUsers": A special identifier that represents all service
-     * accounts and all users on the internet who have authenticated with a Google
-     * Account. This identifier includes accounts that aren't connected to a
-     * Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
-     * Users who aren't authenticated, such as anonymous visitors, aren't
-     * included.
+     *   accounts and all users on the internet who have authenticated with a Google
+     *   Account. This identifier includes accounts that aren't connected to a
+     *   Google Workspace or Cloud Identity domain, such as personal Gmail accounts.
+     *   Users who aren't authenticated, such as anonymous visitors, aren't
+     *   included.
      * - "allUsers":A special identifier that represents anyone who is on
-     * the internet, including authenticated and unauthenticated users. Because
-     * BigQuery requires authentication before a user can access the service,
-     * allUsers includes only authenticated users.
+     *   the internet, including authenticated and unauthenticated users. Because
+     *   BigQuery requires authentication before a user can access the service,
+     *   allUsers includes only authenticated users.
      */
     grantees?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

@@ -57,7 +57,7 @@ export interface GetAddressGroupsArgs {
     /**
      * The location of the Address Group.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -142,7 +142,7 @@ export interface GetAddressGroupsOutputArgs {
     /**
      * The location of the Address Group.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

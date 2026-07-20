@@ -44,7 +44,7 @@ export function getCryptoKeyLatestVersion(args: GetCryptoKeyLatestVersionArgs, o
  */
 export interface GetCryptoKeyLatestVersionArgs {
     /**
-     * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+     * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
      * `gcp.kms.CryptoKey` resource/datasource.
      */
     cryptoKey: string;
@@ -127,7 +127,7 @@ export function getCryptoKeyLatestVersionOutput(args: GetCryptoKeyLatestVersionO
  */
 export interface GetCryptoKeyLatestVersionOutputArgs {
     /**
-     * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+     * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
      * `gcp.kms.CryptoKey` resource/datasource.
      */
     cryptoKey: pulumi.Input<string>;

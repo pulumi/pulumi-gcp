@@ -44,7 +44,7 @@ class AuthzPolicyArgs:
                2. If there are any DENY policies that match the request, the request is denied.
                3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-               Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+                  Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input['AuthzPolicyTargetArgs'] target: Specifies the set of resources to which this policy should be applied to.
                Structure is documented below.
@@ -112,7 +112,7 @@ class AuthzPolicyArgs:
         2. If there are any DENY policies that match the request, the request is denied.
         3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
         4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-        Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+           Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         """
         return pulumi.get(self, "action")
 
@@ -304,7 +304,7 @@ class _AuthzPolicyState:
                2. If there are any DENY policies that match the request, the request is denied.
                3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-               Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+                  Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
@@ -388,7 +388,7 @@ class _AuthzPolicyState:
         2. If there are any DENY policies that match the request, the request is denied.
         3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
         4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-        Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+           Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         """
         return pulumi.get(self, "action")
 
@@ -692,7 +692,7 @@ class AuthzPolicy(pulumi.CustomResource):
                2. If there are any DENY policies that match the request, the request is denied.
                3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-               Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+                  Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -897,7 +897,7 @@ class AuthzPolicy(pulumi.CustomResource):
                2. If there are any DENY policies that match the request, the request is denied.
                3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
                4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-               Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+                  Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
@@ -970,7 +970,7 @@ class AuthzPolicy(pulumi.CustomResource):
         2. If there are any DENY policies that match the request, the request is denied.
         3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
         4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
-        Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
+           Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         """
         return pulumi.get(self, "action")
 

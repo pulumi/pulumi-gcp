@@ -189,7 +189,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
@@ -263,7 +263,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      *
-     * - - -
+     * ***
      */
     declare public readonly resourcePolicies: pulumi.Output<outputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**
@@ -472,7 +472,7 @@ export interface RegionInstanceGroupManagerState {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -546,7 +546,7 @@ export interface RegionInstanceGroupManagerState {
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      *
-     * - - -
+     * ***
      */
     resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**
@@ -655,7 +655,7 @@ export interface RegionInstanceGroupManagerArgs {
      * management without updating or deleting the resource in the API.
      * When set to "DELETE", deleting the resource is allowed.
      *
-     * - - -
+     * ***
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -717,7 +717,7 @@ export interface RegionInstanceGroupManagerArgs {
     /**
      * Resource policies for this managed instance group. Structure is documented below.
      *
-     * - - -
+     * ***
      */
     resourcePolicies?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerResourcePolicies | undefined>;
     /**

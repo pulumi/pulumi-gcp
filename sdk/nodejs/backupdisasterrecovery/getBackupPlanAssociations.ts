@@ -44,7 +44,7 @@ export interface GetBackupPlanAssociationsArgs {
     project?: string;
     /**
      * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-     * - - -
+     * ***
      *
      * @deprecated `resourceType` is deprecated and will be removed in a future major release.
      */
@@ -111,7 +111,7 @@ export interface GetBackupPlanAssociationsOutputArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
-     * - - -
+     * ***
      *
      * @deprecated `resourceType` is deprecated and will be removed in a future major release.
      */

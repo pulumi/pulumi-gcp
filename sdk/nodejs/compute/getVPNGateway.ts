@@ -34,8 +34,7 @@ export interface GetVPNGatewayArgs {
     /**
      * The name of the VPN gateway.
      *
-     *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -107,8 +106,7 @@ export interface GetVPNGatewayOutputArgs {
     /**
      * The name of the VPN gateway.
      *
-     *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

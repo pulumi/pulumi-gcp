@@ -54,15 +54,15 @@ class V2FolderSccBigQueryExportArgs:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] location: The BigQuery export configuration is stored in this location. If not provided, Use global as default.
         """
         pulumi.set(__self__, "big_query_export_id", big_query_export_id)
@@ -162,15 +162,15 @@ class V2FolderSccBigQueryExportArgs:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -235,15 +235,15 @@ class _V2FolderSccBigQueryExportState:
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] folder: The folder where Cloud Security Command Center Big Query Export
                Config lives in.
         :param pulumi.Input[_builtins.str] location: The BigQuery export configuration is stored in this location. If not provided, Use global as default.
@@ -367,15 +367,15 @@ class _V2FolderSccBigQueryExportState:
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -561,15 +561,15 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] folder: The folder where Cloud Security Command Center Big Query Export
                Config lives in.
         :param pulumi.Input[_builtins.str] location: The BigQuery export configuration is stored in this location. If not provided, Use global as default.
@@ -742,15 +742,15 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
                map to those defined in the corresponding resource.
                The supported operators are:
                * = for all value types.
-               * >, <, >=, <= for integer values.
+               * > , <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] folder: The folder where Cloud Security Command Center Big Query Export
                Config lives in.
         :param pulumi.Input[_builtins.str] location: The BigQuery export configuration is stored in this location. If not provided, Use global as default.
@@ -847,15 +847,15 @@ class V2FolderSccBigQueryExport(pulumi.CustomResource):
         map to those defined in the corresponding resource.
         The supported operators are:
         * = for all value types.
-        * >, <, >=, <= for integer values.
+        * > , <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 

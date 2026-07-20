@@ -1011,7 +1011,6 @@ class PluginInstanceActionArgsDict(TypedDict):
     The time zone for the schedule cron expression. If not provided, UTC will
     be used.
 
-
     <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
     """
     state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -1048,7 +1047,6 @@ class PluginInstanceActionArgs:
                plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
         :param pulumi.Input[_builtins.str] schedule_time_zone: The time zone for the schedule cron expression. If not provided, UTC will
                be used.
-               
                
                <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         :param pulumi.Input[_builtins.str] state: (Output)
@@ -1132,7 +1130,6 @@ class PluginInstanceActionArgs:
         """
         The time zone for the schedule cron expression. If not provided, UTC will
         be used.
-
 
         <a name="nested_actions_hub_instance_action"></a>The `hub_instance_action` block contains:
         """
