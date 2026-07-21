@@ -482,7 +482,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id = gcp.dataplex.Glossary("category_test_id",
-            glossary_id="tf-test-glossary_37135",
+            glossary_id="tf-test-glossary_22061",
             location="us-central1")
         category_test_id_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id",
             parent=pulumi.Output.all(
@@ -492,7 +492,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-basic_42503")
+            category_id="tf-test-category-basic_60461")
         ```
         ### Dataplex Glossary Category Full
 
@@ -501,7 +501,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id_full = gcp.dataplex.Glossary("category_test_id_full",
-            glossary_id="tf-test-glossary_9991",
+            glossary_id="tf-test-glossary_45397",
             location="us-central1")
         category_test_id_full_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id_full",
             parent=pulumi.Output.all(
@@ -511,7 +511,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id_full.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-full_12125",
+            category_id="tf-test-category-full_16451",
             labels={
                 "tag": "test-tf",
             },
@@ -575,7 +575,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id = gcp.dataplex.Glossary("category_test_id",
-            glossary_id="tf-test-glossary_37135",
+            glossary_id="tf-test-glossary_22061",
             location="us-central1")
         category_test_id_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id",
             parent=pulumi.Output.all(
@@ -585,7 +585,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-basic_42503")
+            category_id="tf-test-category-basic_60461")
         ```
         ### Dataplex Glossary Category Full
 
@@ -594,7 +594,7 @@ class GlossaryCategory(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         category_test_id_full = gcp.dataplex.Glossary("category_test_id_full",
-            glossary_id="tf-test-glossary_9991",
+            glossary_id="tf-test-glossary_45397",
             location="us-central1")
         category_test_id_full_glossary_category = gcp.dataplex.GlossaryCategory("category_test_id_full",
             parent=pulumi.Output.all(
@@ -604,7 +604,7 @@ class GlossaryCategory(pulumi.CustomResource):
         ,
             glossary_id=category_test_id_full.glossary_id,
             location="us-central1",
-            category_id="tf-test-category-full_12125",
+            category_id="tf-test-category-full_16451",
             labels={
                 "tag": "test-tf",
             },

@@ -314,9 +314,9 @@ def get_snapshot(filter: Optional[_builtins.str] = None,
            See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots/list#body.QUERY_PARAMETERS.filter) for reference.
            If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
            If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`
-    :param _builtins.bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+    :param _builtins.bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
            
-           - - -
+           ***
     :param _builtins.str name: The name of the compute snapshot. One of `name` or `filter` must be provided.
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
@@ -387,9 +387,9 @@ def get_snapshot_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] 
            See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots/list#body.QUERY_PARAMETERS.filter) for reference.
            If multiple compute snapshot match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
            If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Example `sourceDisk eq '.*(.*/data-disk$).*'`
-    :param _builtins.bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+    :param _builtins.bool most_recent: If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
            
-           - - -
+           ***
     :param _builtins.str name: The name of the compute snapshot. One of `name` or `filter` must be provided.
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.

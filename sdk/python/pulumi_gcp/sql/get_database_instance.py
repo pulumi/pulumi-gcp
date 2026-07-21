@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -58,6 +58,9 @@ class GetDatabaseInstanceResult:
         if encryption_key_name and not isinstance(encryption_key_name, str):
             raise TypeError("Expected argument 'encryption_key_name' to be a str")
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if enforce_new_sql_network_architecture and not isinstance(enforce_new_sql_network_architecture, bool):
+            raise TypeError("Expected argument 'enforce_new_sql_network_architecture' to be a bool")
+        pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         if final_backup_description and not isinstance(final_backup_description, str):
             raise TypeError("Expected argument 'final_backup_description' to be a str")
         pulumi.set(__self__, "final_backup_description", final_backup_description)
@@ -186,6 +189,11 @@ class GetDatabaseInstanceResult:
     @pulumi.getter(name="encryptionKeyName")
     def encryption_key_name(self) -> _builtins.str:
         return pulumi.get(self, "encryption_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="enforceNewSqlNetworkArchitecture")
+    def enforce_new_sql_network_architecture(self) -> _builtins.bool:
+        return pulumi.get(self, "enforce_new_sql_network_architecture")
 
     @_builtins.property
     @pulumi.getter(name="finalBackupDescription")
@@ -337,6 +345,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             dns_name=self.dns_name,
             dns_names=self.dns_names,
             encryption_key_name=self.encryption_key_name,
+            enforce_new_sql_network_architecture=self.enforce_new_sql_network_architecture,
             final_backup_description=self.final_backup_description,
             first_ip_address=self.first_ip_address,
             id=self.id,
@@ -401,6 +410,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         dns_name=pulumi.get(__ret__, 'dns_name'),
         dns_names=pulumi.get(__ret__, 'dns_names'),
         encryption_key_name=pulumi.get(__ret__, 'encryption_key_name'),
+        enforce_new_sql_network_architecture=pulumi.get(__ret__, 'enforce_new_sql_network_architecture'),
         final_backup_description=pulumi.get(__ret__, 'final_backup_description'),
         first_ip_address=pulumi.get(__ret__, 'first_ip_address'),
         id=pulumi.get(__ret__, 'id'),
@@ -462,6 +472,7 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         dns_name=pulumi.get(__response__, 'dns_name'),
         dns_names=pulumi.get(__response__, 'dns_names'),
         encryption_key_name=pulumi.get(__response__, 'encryption_key_name'),
+        enforce_new_sql_network_architecture=pulumi.get(__response__, 'enforce_new_sql_network_architecture'),
         final_backup_description=pulumi.get(__response__, 'final_backup_description'),
         first_ip_address=pulumi.get(__response__, 'first_ip_address'),
         id=pulumi.get(__response__, 'id'),

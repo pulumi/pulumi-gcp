@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			example, err := dataplex.NewLake(ctx, "example", &dataplex.LakeArgs{
-//				Name:     pulumi.String("tf-test-lake_34242"),
+//				Name:     pulumi.String("tf-test-lake_44339"),
 //				Location: pulumi.String("us-central1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTask(ctx, "example", &dataplex.TaskArgs{
-//				TaskId:      pulumi.String("tf-test-task_9723"),
+//				TaskId:      pulumi.String("tf-test-task_34599"),
 //				Location:    pulumi.String("us-central1"),
 //				Lake:        example.Name,
 //				Description: pulumi.String("Test Task Basic"),
@@ -102,7 +102,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// VPC network
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-workstation-cluster_22061"),
+//				Name:                  pulumi.String("tf-test-workstation-cluster_79513"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -113,7 +113,7 @@ import (
 //				return err
 //			}
 //			exampleSpark, err := dataplex.NewLake(ctx, "example_spark", &dataplex.LakeArgs{
-//				Name:     pulumi.String("tf-test-lake_60461"),
+//				Name:     pulumi.String("tf-test-lake_55500"),
 //				Location: pulumi.String("us-central1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
@@ -121,7 +121,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTask(ctx, "example_spark", &dataplex.TaskArgs{
-//				TaskId:   pulumi.String("tf-test-task_45397"),
+//				TaskId:   pulumi.String("tf-test-task_12223"),
 //				Location: pulumi.String("us-central1"),
 //				Lake:     exampleSpark.Name,
 //				TriggerSpec: &dataplex.TaskTriggerSpecArgs{
@@ -197,7 +197,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// VPC network
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-workstation-cluster_16451"),
+//				Name:                  pulumi.String("tf-test-workstation-cluster_49547"),
 //				AutoCreateSubnetworks: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			exampleNotebook, err := dataplex.NewLake(ctx, "example_notebook", &dataplex.LakeArgs{
-//				Name:     pulumi.String("tf-test-lake_3686"),
+//				Name:     pulumi.String("tf-test-lake_48675"),
 //				Location: pulumi.String("us-central1"),
 //				Project:  pulumi.String("my-project-name"),
 //			})
@@ -216,7 +216,7 @@ import (
 //				return err
 //			}
 //			_, err = dataplex.NewTask(ctx, "example_notebook", &dataplex.TaskArgs{
-//				TaskId:   pulumi.String("tf-test-task_54136"),
+//				TaskId:   pulumi.String("tf-test-task_42702"),
 //				Location: pulumi.String("us-central1"),
 //				Lake:     exampleNotebook.Name,
 //				TriggerSpec: &dataplex.TaskTriggerSpecArgs{

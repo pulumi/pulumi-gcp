@@ -38,7 +38,7 @@ export interface GetAutonomousDatabasesArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -92,7 +92,7 @@ export interface GetAutonomousDatabasesOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

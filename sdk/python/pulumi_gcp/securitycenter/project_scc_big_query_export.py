@@ -51,13 +51,13 @@ class ProjectSccBigQueryExportArgs:
                * = for all value types.
                * \\>, <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -144,13 +144,13 @@ class ProjectSccBigQueryExportArgs:
         * = for all value types.
         * \\>, <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -215,13 +215,13 @@ class _ProjectSccBigQueryExportState:
                * = for all value types.
                * \\>, <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] most_recent_editor: Email address of the user who last edited the BigQuery export.
                This field is set by the server and will be ignored if provided on export creation or update.
         :param pulumi.Input[_builtins.str] name: The resource name of this export, in the format
@@ -342,13 +342,13 @@ class _ProjectSccBigQueryExportState:
         * = for all value types.
         * \\>, <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 
@@ -519,13 +519,13 @@ class ProjectSccBigQueryExport(pulumi.CustomResource):
                * = for all value types.
                * \\>, <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -690,13 +690,13 @@ class ProjectSccBigQueryExport(pulumi.CustomResource):
                * = for all value types.
                * \\>, <, >=, <= for integer values.
                * :, meaning substring matching, for strings.
-               The supported value types are:
+                 The supported value types are:
                * string literals in quotes.
                * integer literals without quotes.
                * boolean literals true and false without quotes.
-               See
-               [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-               for information on how to write a filter.
+                 See
+                 [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+                 for information on how to write a filter.
         :param pulumi.Input[_builtins.str] most_recent_editor: Email address of the user who last edited the BigQuery export.
                This field is set by the server and will be ignored if provided on export creation or update.
         :param pulumi.Input[_builtins.str] name: The resource name of this export, in the format
@@ -791,13 +791,13 @@ class ProjectSccBigQueryExport(pulumi.CustomResource):
         * = for all value types.
         * \\>, <, >=, <= for integer values.
         * :, meaning substring matching, for strings.
-        The supported value types are:
+          The supported value types are:
         * string literals in quotes.
         * integer literals without quotes.
         * boolean literals true and false without quotes.
-        See
-        [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
-        for information on how to write a filter.
+          See
+          [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
+          for information on how to write a filter.
         """
         return pulumi.get(self, "filter")
 

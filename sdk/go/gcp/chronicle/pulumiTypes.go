@@ -9912,6 +9912,248 @@ func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) IngestionLa
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataExportDataExportStatus struct {
+	// (Output)
+	// Indicates whether the data export is filtered by RBAC.
+	DataRbacFiltered *bool `pulumi:"dataRbacFiltered"`
+	// (Output)
+	// The error message if the stage is FINISHED_FAILURE.
+	Error *string `pulumi:"error"`
+	// (Output)
+	// List of exported glob patterns.
+	ExportedGlobPatterns []string `pulumi:"exportedGlobPatterns"`
+	// (Output)
+	// The stage/status of a given data export request.
+	Stage *string `pulumi:"stage"`
+}
+
+// DataExportDataExportStatusInput is an input type that accepts DataExportDataExportStatusArgs and DataExportDataExportStatusOutput values.
+// You can construct a concrete instance of `DataExportDataExportStatusInput` via:
+//
+//	DataExportDataExportStatusArgs{...}
+type DataExportDataExportStatusInput interface {
+	pulumi.Input
+
+	ToDataExportDataExportStatusOutput() DataExportDataExportStatusOutput
+	ToDataExportDataExportStatusOutputWithContext(context.Context) DataExportDataExportStatusOutput
+}
+
+type DataExportDataExportStatusArgs struct {
+	// (Output)
+	// Indicates whether the data export is filtered by RBAC.
+	DataRbacFiltered pulumi.BoolPtrInput `pulumi:"dataRbacFiltered"`
+	// (Output)
+	// The error message if the stage is FINISHED_FAILURE.
+	Error pulumi.StringPtrInput `pulumi:"error"`
+	// (Output)
+	// List of exported glob patterns.
+	ExportedGlobPatterns pulumi.StringArrayInput `pulumi:"exportedGlobPatterns"`
+	// (Output)
+	// The stage/status of a given data export request.
+	Stage pulumi.StringPtrInput `pulumi:"stage"`
+}
+
+func (DataExportDataExportStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExportDataExportStatus)(nil)).Elem()
+}
+
+func (i DataExportDataExportStatusArgs) ToDataExportDataExportStatusOutput() DataExportDataExportStatusOutput {
+	return i.ToDataExportDataExportStatusOutputWithContext(context.Background())
+}
+
+func (i DataExportDataExportStatusArgs) ToDataExportDataExportStatusOutputWithContext(ctx context.Context) DataExportDataExportStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExportDataExportStatusOutput)
+}
+
+// DataExportDataExportStatusArrayInput is an input type that accepts DataExportDataExportStatusArray and DataExportDataExportStatusArrayOutput values.
+// You can construct a concrete instance of `DataExportDataExportStatusArrayInput` via:
+//
+//	DataExportDataExportStatusArray{ DataExportDataExportStatusArgs{...} }
+type DataExportDataExportStatusArrayInput interface {
+	pulumi.Input
+
+	ToDataExportDataExportStatusArrayOutput() DataExportDataExportStatusArrayOutput
+	ToDataExportDataExportStatusArrayOutputWithContext(context.Context) DataExportDataExportStatusArrayOutput
+}
+
+type DataExportDataExportStatusArray []DataExportDataExportStatusInput
+
+func (DataExportDataExportStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExportDataExportStatus)(nil)).Elem()
+}
+
+func (i DataExportDataExportStatusArray) ToDataExportDataExportStatusArrayOutput() DataExportDataExportStatusArrayOutput {
+	return i.ToDataExportDataExportStatusArrayOutputWithContext(context.Background())
+}
+
+func (i DataExportDataExportStatusArray) ToDataExportDataExportStatusArrayOutputWithContext(ctx context.Context) DataExportDataExportStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExportDataExportStatusArrayOutput)
+}
+
+type DataExportDataExportStatusOutput struct{ *pulumi.OutputState }
+
+func (DataExportDataExportStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExportDataExportStatus)(nil)).Elem()
+}
+
+func (o DataExportDataExportStatusOutput) ToDataExportDataExportStatusOutput() DataExportDataExportStatusOutput {
+	return o
+}
+
+func (o DataExportDataExportStatusOutput) ToDataExportDataExportStatusOutputWithContext(ctx context.Context) DataExportDataExportStatusOutput {
+	return o
+}
+
+// (Output)
+// Indicates whether the data export is filtered by RBAC.
+func (o DataExportDataExportStatusOutput) DataRbacFiltered() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataExportDataExportStatus) *bool { return v.DataRbacFiltered }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The error message if the stage is FINISHED_FAILURE.
+func (o DataExportDataExportStatusOutput) Error() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExportDataExportStatus) *string { return v.Error }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// List of exported glob patterns.
+func (o DataExportDataExportStatusOutput) ExportedGlobPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DataExportDataExportStatus) []string { return v.ExportedGlobPatterns }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The stage/status of a given data export request.
+func (o DataExportDataExportStatusOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataExportDataExportStatus) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+type DataExportDataExportStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (DataExportDataExportStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExportDataExportStatus)(nil)).Elem()
+}
+
+func (o DataExportDataExportStatusArrayOutput) ToDataExportDataExportStatusArrayOutput() DataExportDataExportStatusArrayOutput {
+	return o
+}
+
+func (o DataExportDataExportStatusArrayOutput) ToDataExportDataExportStatusArrayOutputWithContext(ctx context.Context) DataExportDataExportStatusArrayOutput {
+	return o
+}
+
+func (o DataExportDataExportStatusArrayOutput) Index(i pulumi.IntInput) DataExportDataExportStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataExportDataExportStatus {
+		return vs[0].([]DataExportDataExportStatus)[vs[1].(int)]
+	}).(DataExportDataExportStatusOutput)
+}
+
+type DataExportIngestionLabel struct {
+	// The key.
+	Key string `pulumi:"key"`
+	// The value.
+	Value string `pulumi:"value"`
+}
+
+// DataExportIngestionLabelInput is an input type that accepts DataExportIngestionLabelArgs and DataExportIngestionLabelOutput values.
+// You can construct a concrete instance of `DataExportIngestionLabelInput` via:
+//
+//	DataExportIngestionLabelArgs{...}
+type DataExportIngestionLabelInput interface {
+	pulumi.Input
+
+	ToDataExportIngestionLabelOutput() DataExportIngestionLabelOutput
+	ToDataExportIngestionLabelOutputWithContext(context.Context) DataExportIngestionLabelOutput
+}
+
+type DataExportIngestionLabelArgs struct {
+	// The key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DataExportIngestionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExportIngestionLabel)(nil)).Elem()
+}
+
+func (i DataExportIngestionLabelArgs) ToDataExportIngestionLabelOutput() DataExportIngestionLabelOutput {
+	return i.ToDataExportIngestionLabelOutputWithContext(context.Background())
+}
+
+func (i DataExportIngestionLabelArgs) ToDataExportIngestionLabelOutputWithContext(ctx context.Context) DataExportIngestionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExportIngestionLabelOutput)
+}
+
+// DataExportIngestionLabelArrayInput is an input type that accepts DataExportIngestionLabelArray and DataExportIngestionLabelArrayOutput values.
+// You can construct a concrete instance of `DataExportIngestionLabelArrayInput` via:
+//
+//	DataExportIngestionLabelArray{ DataExportIngestionLabelArgs{...} }
+type DataExportIngestionLabelArrayInput interface {
+	pulumi.Input
+
+	ToDataExportIngestionLabelArrayOutput() DataExportIngestionLabelArrayOutput
+	ToDataExportIngestionLabelArrayOutputWithContext(context.Context) DataExportIngestionLabelArrayOutput
+}
+
+type DataExportIngestionLabelArray []DataExportIngestionLabelInput
+
+func (DataExportIngestionLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExportIngestionLabel)(nil)).Elem()
+}
+
+func (i DataExportIngestionLabelArray) ToDataExportIngestionLabelArrayOutput() DataExportIngestionLabelArrayOutput {
+	return i.ToDataExportIngestionLabelArrayOutputWithContext(context.Background())
+}
+
+func (i DataExportIngestionLabelArray) ToDataExportIngestionLabelArrayOutputWithContext(ctx context.Context) DataExportIngestionLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataExportIngestionLabelArrayOutput)
+}
+
+type DataExportIngestionLabelOutput struct{ *pulumi.OutputState }
+
+func (DataExportIngestionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataExportIngestionLabel)(nil)).Elem()
+}
+
+func (o DataExportIngestionLabelOutput) ToDataExportIngestionLabelOutput() DataExportIngestionLabelOutput {
+	return o
+}
+
+func (o DataExportIngestionLabelOutput) ToDataExportIngestionLabelOutputWithContext(ctx context.Context) DataExportIngestionLabelOutput {
+	return o
+}
+
+// The key.
+func (o DataExportIngestionLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExportIngestionLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value.
+func (o DataExportIngestionLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DataExportIngestionLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DataExportIngestionLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (DataExportIngestionLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataExportIngestionLabel)(nil)).Elem()
+}
+
+func (o DataExportIngestionLabelArrayOutput) ToDataExportIngestionLabelArrayOutput() DataExportIngestionLabelArrayOutput {
+	return o
+}
+
+func (o DataExportIngestionLabelArrayOutput) ToDataExportIngestionLabelArrayOutputWithContext(ctx context.Context) DataExportIngestionLabelArrayOutput {
+	return o
+}
+
+func (o DataExportIngestionLabelArrayOutput) Index(i pulumi.IntInput) DataExportIngestionLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataExportIngestionLabel {
+		return vs[0].([]DataExportIngestionLabel)[vs[1].(int)]
+	}).(DataExportIngestionLabelOutput)
+}
+
 type DataTableColumnInfo struct {
 	// Column Index. 0,1,2...
 	ColumnIndex int `pulumi:"columnIndex"`
@@ -49959,6 +50201,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelArrayInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExportDataExportStatusInput)(nil)).Elem(), DataExportDataExportStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExportDataExportStatusArrayInput)(nil)).Elem(), DataExportDataExportStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExportIngestionLabelInput)(nil)).Elem(), DataExportIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataExportIngestionLabelArrayInput)(nil)).Elem(), DataExportIngestionLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTableColumnInfoInput)(nil)).Elem(), DataTableColumnInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTableColumnInfoArrayInput)(nil)).Elem(), DataTableColumnInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTableScopeInfoInput)(nil)).Elem(), DataTableScopeInfoArgs{})
@@ -50527,6 +50773,10 @@ func init() {
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelArrayOutput{})
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput{})
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput{})
+	pulumi.RegisterOutputType(DataExportDataExportStatusOutput{})
+	pulumi.RegisterOutputType(DataExportDataExportStatusArrayOutput{})
+	pulumi.RegisterOutputType(DataExportIngestionLabelOutput{})
+	pulumi.RegisterOutputType(DataExportIngestionLabelArrayOutput{})
 	pulumi.RegisterOutputType(DataTableColumnInfoOutput{})
 	pulumi.RegisterOutputType(DataTableColumnInfoArrayOutput{})
 	pulumi.RegisterOutputType(DataTableScopeInfoOutput{})

@@ -62,7 +62,6 @@ import * as utilities from "../utilities";
  *             adminUsername: "admin",
  *             adminPassword: "123Abpassword!",
  *             deployment: "deployment",
- *             oggVersion: "oggoracle:23.26.2.0.0_260417.1915_14223",
  *         },
  *         maintenanceWindow: {
  *             day: "MONDAY",

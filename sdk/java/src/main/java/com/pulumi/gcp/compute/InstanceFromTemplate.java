@@ -24,6 +24,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateScratchDisk;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -767,6 +768,20 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tagsFingerprint() {
         return this.tagsFingerprint;
+    }
+    /**
+     * Workload identity config.
+     * 
+     */
+    @Export(name="workloadIdentityConfig", refs={InstanceFromTemplateWorkloadIdentityConfig.class}, tree="[0]")
+    private Output<InstanceFromTemplateWorkloadIdentityConfig> workloadIdentityConfig;
+
+    /**
+     * @return Workload identity config.
+     * 
+     */
+    public Output<InstanceFromTemplateWorkloadIdentityConfig> workloadIdentityConfig() {
+        return this.workloadIdentityConfig;
     }
     /**
      * The zone that the machine should be created in. If not

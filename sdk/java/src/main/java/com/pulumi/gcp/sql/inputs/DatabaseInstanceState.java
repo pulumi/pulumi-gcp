@@ -236,6 +236,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     * 
+     */
+    @Import(name="enforceNewSqlNetworkArchitecture")
+    private @Nullable Output<Boolean> enforceNewSqlNetworkArchitecture;
+
+    /**
+     * @return Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     * 
+     */
+    public Optional<Output<Boolean>> enforceNewSqlNetworkArchitecture() {
+        return Optional.ofNullable(this.enforceNewSqlNetworkArchitecture);
+    }
+
+    /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      * 
      */
@@ -649,6 +670,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.dnsName = $.dnsName;
         this.dnsNames = $.dnsNames;
         this.encryptionKeyName = $.encryptionKeyName;
+        this.enforceNewSqlNetworkArchitecture = $.enforceNewSqlNetworkArchitecture;
         this.finalBackupDescription = $.finalBackupDescription;
         this.firstIpAddress = $.firstIpAddress;
         this.instanceType = $.instanceType;
@@ -980,6 +1002,33 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder encryptionKeyName(String encryptionKeyName) {
             return encryptionKeyName(Output.of(encryptionKeyName));
+        }
+
+        /**
+         * @param enforceNewSqlNetworkArchitecture Whether to enforce the new SQL network architecture.
+         * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+         * This follows the gcloud pattern where the flag is an irreversible opt-in.
+         * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceNewSqlNetworkArchitecture(@Nullable Output<Boolean> enforceNewSqlNetworkArchitecture) {
+            $.enforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
+            return this;
+        }
+
+        /**
+         * @param enforceNewSqlNetworkArchitecture Whether to enforce the new SQL network architecture.
+         * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+         * This follows the gcloud pattern where the flag is an irreversible opt-in.
+         * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceNewSqlNetworkArchitecture(Boolean enforceNewSqlNetworkArchitecture) {
+            return enforceNewSqlNetworkArchitecture(Output.of(enforceNewSqlNetworkArchitecture));
         }
 
         /**

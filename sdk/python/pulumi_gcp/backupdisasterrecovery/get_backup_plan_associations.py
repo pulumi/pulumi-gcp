@@ -114,7 +114,7 @@ def get_backup_plan_associations(location: Optional[_builtins.str] = None,
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['location'] = location
@@ -150,7 +150,7 @@ def get_backup_plan_associations_output(location: pulumi.Input[Optional[_builtin
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param _builtins.str resource_type: The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resource_type` is deprecated and will be removed in a future major release.
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['location'] = location

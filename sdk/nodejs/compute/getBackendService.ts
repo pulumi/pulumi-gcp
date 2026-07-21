@@ -41,7 +41,7 @@ export interface GetBackendServiceArgs {
     /**
      * The name of the Backend Service.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -173,7 +173,7 @@ export interface GetBackendServiceOutputArgs {
     /**
      * The name of the Backend Service.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

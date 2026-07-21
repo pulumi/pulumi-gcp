@@ -37,7 +37,7 @@ export interface GetDatabaseArgs {
     /**
      * The name of the database's spanner instance.
      *
-     * - - -
+     * ***
      */
     instance: string;
     /**
@@ -103,7 +103,7 @@ export interface GetDatabaseOutputArgs {
     /**
      * The name of the database's spanner instance.
      *
-     * - - -
+     * ***
      */
     instance: pulumi.Input<string>;
     /**

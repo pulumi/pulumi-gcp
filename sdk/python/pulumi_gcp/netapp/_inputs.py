@@ -340,7 +340,7 @@ class VolumeBlockDeviceArgsDict(TypedDict):
     The name must meet the following requirements:
     *   Be between 1 and 255 characters long.
     *   Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
-    and the following special characters: "-", "_", "}", "{", ".".
+        and the following special characters: "-", "_", "}", "{", ".".
     *   Spaces are not allowed.
     """
     size_gib: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -376,7 +376,7 @@ class VolumeBlockDeviceArgs:
                The name must meet the following requirements:
                *   Be between 1 and 255 characters long.
                *   Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
-               and the following special characters: "-", "_", "}", "{", ".".
+                   and the following special characters: "-", "_", "}", "{", ".".
                *   Spaces are not allowed.
         :param pulumi.Input[_builtins.int] size_gib: (Output)
                The size of the block device in GiB.
@@ -446,7 +446,7 @@ class VolumeBlockDeviceArgs:
         The name must meet the following requirements:
         *   Be between 1 and 255 characters long.
         *   Contain only uppercase or lowercase letters (A-Z, a-z), numbers (0-9),
-        and the following special characters: "-", "_", "}", "{", ".".
+            and the following special characters: "-", "_", "}", "{", ".".
         *   Spaces are not allowed.
         """
         return pulumi.get(self, "name")

@@ -51,7 +51,7 @@ class TransferJobArgs:
                is not provided, the provider project is used.
         :param pulumi.Input['TransferJobReplicationSpecArgs'] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
-               - - -
+               ***
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
@@ -177,7 +177,7 @@ class TransferJobArgs:
         """
         Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "replication_spec")
 
@@ -273,7 +273,7 @@ class _TransferJobState:
                is not provided, the provider project is used.
         :param pulumi.Input['TransferJobReplicationSpecArgs'] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
-               - - -
+               ***
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
@@ -442,7 +442,7 @@ class _TransferJobState:
         """
         Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "replication_spec")
 
@@ -648,7 +648,7 @@ class TransferJob(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
-               - - -
+               ***
         :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
@@ -876,7 +876,7 @@ class TransferJob(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
-               - - -
+               ***
         :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[_builtins.str] service_account: The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
         :param pulumi.Input[_builtins.str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
@@ -995,7 +995,7 @@ class TransferJob(pulumi.CustomResource):
         """
         Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "replication_spec")
 

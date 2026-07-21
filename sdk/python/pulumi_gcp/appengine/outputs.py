@@ -132,7 +132,7 @@ class ApplicationIap(dict):
         :param _builtins.str oauth2_client_id: OAuth2 client ID to use for the authentication flow.
         :param _builtins.str oauth2_client_secret: OAuth2 client secret to use for the authentication flow.
                The SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field.
-        :param _builtins.bool enabled: (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        :param _builtins.bool enabled: (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
                (default is false)
         :param _builtins.str oauth2_client_secret_sha256: Hex-encoded SHA-256 hash of the client secret.
         """
@@ -164,7 +164,7 @@ class ApplicationIap(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         """
-        (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests. 
+        (Optional) Whether the serving infrastructure will authenticate and authorize all incoming requests.
         (default is false)
         """
         return pulumi.get(self, "enabled")

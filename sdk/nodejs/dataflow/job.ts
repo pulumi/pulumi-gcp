@@ -229,7 +229,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      *
-     * - - -
+     * ***
      */
     declare public readonly tempGcsLocation: pulumi.Output<string>;
     /**
@@ -430,7 +430,7 @@ export interface JobState {
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      *
-     * - - -
+     * ***
      */
     tempGcsLocation?: pulumi.Input<string | undefined>;
     /**
@@ -535,7 +535,7 @@ export interface JobArgs {
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      *
-     * - - -
+     * ***
      */
     tempGcsLocation: pulumi.Input<string>;
     /**

@@ -186,7 +186,7 @@ export class Intent extends pulumi.CustomResource {
     /**
      * The priority of this intent. Higher numbers represent higher priorities.
      * - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-     * to the Normal priority in the console.
+     *   to the Normal priority in the console.
      * - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     declare public readonly priority: pulumi.Output<number>;
@@ -209,8 +209,8 @@ export class Intent extends pulumi.CustomResource {
      * Indicates whether webhooks are enabled for the intent.
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-     * filling prompt is forwarded to the webhook.
-     * Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+     *   filling prompt is forwarded to the webhook.
+     *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
     declare public readonly webhookState: pulumi.Output<string>;
 
@@ -338,7 +338,7 @@ export interface IntentState {
     /**
      * The priority of this intent. Higher numbers represent higher priorities.
      * - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-     * to the Normal priority in the console.
+     *   to the Normal priority in the console.
      * - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     priority?: pulumi.Input<number | undefined>;
@@ -361,8 +361,8 @@ export interface IntentState {
      * Indicates whether webhooks are enabled for the intent.
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-     * filling prompt is forwarded to the webhook.
-     * Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+     *   filling prompt is forwarded to the webhook.
+     *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
     webhookState?: pulumi.Input<string | undefined>;
 }
@@ -424,7 +424,7 @@ export interface IntentArgs {
     /**
      * The priority of this intent. Higher numbers represent higher priorities.
      * - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-     * to the Normal priority in the console.
+     *   to the Normal priority in the console.
      * - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
     priority?: pulumi.Input<number | undefined>;
@@ -441,8 +441,8 @@ export interface IntentArgs {
      * Indicates whether webhooks are enabled for the intent.
      * * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
      * * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-     * filling prompt is forwarded to the webhook.
-     * Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+     *   filling prompt is forwarded to the webhook.
+     *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      */
     webhookState?: pulumi.Input<string | undefined>;
 }

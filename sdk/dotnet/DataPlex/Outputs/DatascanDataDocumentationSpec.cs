@@ -13,9 +13,15 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     [OutputType]
     public sealed class DatascanDataDocumentationSpec
     {
+        /// <summary>
+        /// If set, the latest DataScan job result will be published to Knowledge Catalog.
+        /// </summary>
+        public readonly bool? CatalogPublishingEnabled;
+
         [OutputConstructor]
-        private DatascanDataDocumentationSpec()
+        private DatascanDataDocumentationSpec(bool? catalogPublishingEnabled)
         {
+            CatalogPublishingEnabled = catalogPublishingEnabled;
         }
     }
 }

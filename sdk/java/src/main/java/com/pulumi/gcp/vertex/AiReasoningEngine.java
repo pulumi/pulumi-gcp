@@ -13,6 +13,7 @@ import com.pulumi.gcp.vertex.inputs.AiReasoningEngineState;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineEncryptionSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpec;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineTrafficConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -674,11 +675,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.vertex.AiReasoningEngine;
  * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs;
  * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -699,6 +710,10 @@ import javax.annotation.Nullable;
  *             .displayName("re-ctx-spec")
  *             .description("Reasoning engine with context spec")
  *             .region("us-central1")
+ *             .trafficConfig(AiReasoningEngineTrafficConfigArgs.builder()
+ *                 .trafficSplitAlwaysLatest(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs.builder()
+ *                     .build())
+ *                 .build())
  *             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
  *                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
  *                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
@@ -708,6 +723,97 @@ import javax.annotation.Nullable;
  *                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
  *                         .build())
  *                     .disableMemoryRevisions(false)
+ *                     .customizationConfigs(                    
+ *                         AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs.builder()
+ *                             .scopeKeys("user_id")
+ *                             .enableThirdPersonMemories(true)
+ *                             .consolidationConfig(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs.builder()
+ *                                 .revisionsPerCandidateCount(1)
+ *                                 .build())
+ *                             .memoryTopics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs.builder()
+ *                                 .managedMemoryTopic(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs.builder()
+ *                                     .managedTopicEnum("USER_PREFERENCES")
+ *                                     .build())
+ *                                 .build())
+ *                             .build(),
+ *                         AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs.builder()
+ *                             .scopeKeys(                            
+ *                                 "user_id",
+ *                                 "session_id")
+ *                             .enableThirdPersonMemories(true)
+ *                             .memoryTopics(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs.builder()
+ *                                 .customMemoryTopic(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs.builder()
+ *                                     .label("session_scratchpad")
+ *                                     .description("Active consideration details, recent queries, and temporary workflow state.")
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                     .structuredMemoryConfigs(                    
+ *                         AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs.builder()
+ *                             .scopeKeys("user_id")
+ *                             .schemaConfigs(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs.builder()
+ *                                 .id("user-profile")
+ *                                 .memorySchema(serializeJson(
+ *                                     jsonObject(
+ *                                         jsonProperty("type", "OBJECT"),
+ *                                         jsonProperty("properties", jsonObject(
+ *                                             jsonProperty("name", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "Name of the user.")
+ *                                             )),
+ *                                             jsonProperty("technical_stack", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "Comma-separated list tools or languages used by the user.")
+ *                                             )),
+ *                                             jsonProperty("primary_goal", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "The main objective the user is pursuing.")
+ *                                             )),
+ *                                             jsonProperty("expertise_level", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "Current skill level (e.g., Junior, Senior).")
+ *                                             )),
+ *                                             jsonProperty("job_status", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "The job status of the individual"),
+ *                                                 jsonProperty("enum", jsonArray(
+ *                                                     "unemployed", 
+ *                                                     "part_time", 
+ *                                                     "full_time", 
+ *                                                     "student"
+ *                                                 ))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 .build())
+ *                             .build(),
+ *                         AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs.builder()
+ *                             .scopeKeys(                            
+ *                                 "user_id",
+ *                                 "session_id")
+ *                             .schemaConfigs(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs.builder()
+ *                                 .id("conversation-summary")
+ *                                 .memorySchema(serializeJson(
+ *                                     jsonObject(
+ *                                         jsonProperty("type", "OBJECT"),
+ *                                         jsonProperty("properties", jsonObject(
+ *                                             jsonProperty("main_topic", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "The primary topic of this specific chat session.")
+ *                                             )),
+ *                                             jsonProperty("status", jsonObject(
+ *                                                 jsonProperty("type", "STRING"),
+ *                                                 jsonProperty("description", "Current resolution state of the discussion."),
+ *                                                 jsonProperty("enum", jsonArray(
+ *                                                     "open", 
+ *                                                     "in_progress", 
+ *                                                     "resolved"
+ *                                                 ))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 .build())
+ *                             .build())
  *                     .ttlConfig(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs.builder()
  *                         .defaultTtl("86400s")
  *                         .build())
@@ -812,7 +918,7 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="contextSpec", refs={AiReasoningEngineContextSpec.class}, tree="[0]")
-    private Output</* @Nullable */ AiReasoningEngineContextSpec> contextSpec;
+    private Output<AiReasoningEngineContextSpec> contextSpec;
 
     /**
      * @return (Optional, Beta)
@@ -820,8 +926,8 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<Optional<AiReasoningEngineContextSpec>> contextSpec() {
-        return Codegen.optional(this.contextSpec);
+    public Output<AiReasoningEngineContextSpec> contextSpec() {
+        return this.contextSpec;
     }
     /**
      * The timestamp of when the Index was created in RFC3339 UTC &#34;Zulu&#34; format,
@@ -1030,6 +1136,24 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
         return this.spec;
     }
     /**
+     * (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="trafficConfig", refs={AiReasoningEngineTrafficConfig.class}, tree="[0]")
+    private Output<AiReasoningEngineTrafficConfig> trafficConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     * 
+     */
+    public Output<AiReasoningEngineTrafficConfig> trafficConfig() {
+        return this.trafficConfig;
+    }
+    /**
      * The timestamp of when the Index was last updated in RFC3339 UTC &#34;Zulu&#34;
      * format, with nanosecond resolution and up to nine fractional digits.
      * 
@@ -1044,6 +1168,22 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * (Beta)
+     * Output only. The URL of the reasoning engine.
+     * 
+     */
+    @Export(name="url", refs={String.class}, tree="[0]")
+    private Output<String> url;
+
+    /**
+     * @return (Beta)
+     * Output only. The URL of the reasoning engine.
+     * 
+     */
+    public Output<String> url() {
+        return this.url;
     }
 
     /**

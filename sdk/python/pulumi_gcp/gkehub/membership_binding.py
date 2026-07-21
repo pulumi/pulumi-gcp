@@ -467,16 +467,16 @@ class MembershipBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_28257",
+            membership_id="tf-test-membership_26240",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_49175")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_35711")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
-            membership_binding_id="tf-test-membership-binding_79411",
+            membership_binding_id="tf-test-membership-binding_85072",
             scope=scope.name,
             membership_id=membership.membership_id,
             location="global",
@@ -559,16 +559,16 @@ class MembershipBinding(pulumi.CustomResource):
             network="default",
             subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
-            membership_id="tf-test-membership_28257",
+            membership_id="tf-test-membership_26240",
             endpoint={
                 "gke_cluster": {
                     "resource_link": primary.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[primary]))
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_49175")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_35711")
         membership_binding = gcp.gkehub.MembershipBinding("membership_binding",
-            membership_binding_id="tf-test-membership-binding_79411",
+            membership_binding_id="tf-test-membership-binding_85072",
             scope=scope.name,
             membership_id=membership.membership_id,
             location="global",

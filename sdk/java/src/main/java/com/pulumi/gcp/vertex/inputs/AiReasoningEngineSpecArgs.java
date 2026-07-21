@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecBuildSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecContainerSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecPackageSpecArgs;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineSpecArgs Empty = new AiReasoningEngineSpecArgs();
+
+    /**
+     * Optional. The A2A Agent Card for the agent (if available).
+     * 
+     */
+    @Import(name="agentCard")
+    private @Nullable Output<String> agentCard;
+
+    /**
+     * @return Optional. The A2A Agent Card for the agent (if available).
+     * 
+     */
+    public Optional<Output<String>> agentCard() {
+        return Optional.ofNullable(this.agentCard);
+    }
 
     /**
      * Optional. The OSS agent framework used to develop the agent.
@@ -35,8 +51,29 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Optional. Configuration for building container image.
+     * 
+     */
+    @Import(name="buildSpec")
+    private @Nullable Output<AiReasoningEngineSpecBuildSpecArgs> buildSpec;
+
+    /**
+     * @return Optional. Configuration for building container image.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecBuildSpecArgs>> buildSpec() {
+        return Optional.ofNullable(this.buildSpec);
+    }
+
+    /**
      * Optional. Declarations for object class methods in OpenAPI
      * specification format.
+     * **Note**: When deploying via Terraform, this field must be populated manually.
+     * Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+     * Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+     * **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+     * * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+     * * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
      * 
      */
     @Import(name="classMethods")
@@ -45,6 +82,12 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     /**
      * @return Optional. Declarations for object class methods in OpenAPI
      * specification format.
+     * **Note**: When deploying via Terraform, this field must be populated manually.
+     * Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+     * Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+     * **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+     * * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+     * * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
      * 
      */
     public Optional<Output<String>> classMethods() {
@@ -53,7 +96,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * Deploy from a container image with a defined entrypoint and commands.
-     * Structure is documented below.
      * 
      */
     @Import(name="containerSpec")
@@ -61,7 +103,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Deploy from a container image with a defined entrypoint and commands.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AiReasoningEngineSpecContainerSpecArgs>> containerSpec() {
@@ -70,7 +111,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * Optional. The specification of a Reasoning Engine deployment.
-     * Structure is documented below.
      * 
      */
     @Import(name="deploymentSpec")
@@ -78,7 +118,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Optional. The specification of a Reasoning Engine deployment.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AiReasoningEngineSpecDeploymentSpecArgs>> deploymentSpec() {
@@ -86,7 +125,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Output)
      * The identity to use for the Reasoning Engine.
      * 
      */
@@ -94,8 +132,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     private @Nullable Output<String> effectiveIdentity;
 
     /**
-     * @return (Output)
-     * The identity to use for the Reasoning Engine.
+     * @return The identity to use for the Reasoning Engine.
      * 
      */
     public Optional<Output<String>> effectiveIdentity() {
@@ -103,13 +140,27 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Optional. The resource name of the linked ExampleStore.
+     * 
+     */
+    @Import(name="exampleStore")
+    private @Nullable Output<String> exampleStore;
+
+    /**
+     * @return Optional. The resource name of the linked ExampleStore.
+     * 
+     */
+    public Optional<Output<String>> exampleStore() {
+        return Optional.ofNullable(this.exampleStore);
+    }
+
+    /**
      * Optional. The identity type to use for the Reasoning Engine.
-     * If not specified, the `serviceAccount` field will be used if set,
+     * If not specified, the &#39;service_account&#39; field will be used if set,
      * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
      * Possible values:
-     * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-     * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-     *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+     * * &#39;SERVICE_ACCOUNT&#39;: Use a custom service account if the &#39;service_account&#39; field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+     * * &#39;AGENT_IDENTITY&#39;: Use Agent Identity. The &#39;service_account&#39; field must not be set. Possible values: [&#34;SERVICE_ACCOUNT&#34;, &#34;AGENT_IDENTITY&#34;]
      * 
      */
     @Import(name="identityType")
@@ -117,12 +168,11 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Optional. The identity type to use for the Reasoning Engine.
-     * If not specified, the `serviceAccount` field will be used if set,
+     * If not specified, the &#39;service_account&#39; field will be used if set,
      * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
      * Possible values:
-     * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-     * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-     *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+     * * &#39;SERVICE_ACCOUNT&#39;: Use a custom service account if the &#39;service_account&#39; field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+     * * &#39;AGENT_IDENTITY&#39;: Use Agent Identity. The &#39;service_account&#39; field must not be set. Possible values: [&#34;SERVICE_ACCOUNT&#34;, &#34;AGENT_IDENTITY&#34;]
      * 
      */
     public Optional<Output<String>> identityType() {
@@ -134,7 +184,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
      * Ignored when users directly specify a deployment image through
      * deploymentSpec.first_party_image_override, but keeping the
      * fieldBehavior to avoid introducing breaking changes.
-     * Structure is documented below.
      * 
      */
     @Import(name="packageSpec")
@@ -145,7 +194,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
      * Ignored when users directly specify a deployment image through
      * deploymentSpec.first_party_image_override, but keeping the
      * fieldBehavior to avoid introducing breaking changes.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AiReasoningEngineSpecPackageSpecArgs>> packageSpec() {
@@ -177,7 +225,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * Specification for deploying from source code.
-     * Structure is documented below.
      * 
      */
     @Import(name="sourceCodeSpec")
@@ -185,7 +232,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Specification for deploying from source code.
-     * Structure is documented below.
      * 
      */
     public Optional<Output<AiReasoningEngineSpecSourceCodeSpecArgs>> sourceCodeSpec() {
@@ -195,11 +241,14 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
     private AiReasoningEngineSpecArgs() {}
 
     private AiReasoningEngineSpecArgs(AiReasoningEngineSpecArgs $) {
+        this.agentCard = $.agentCard;
         this.agentFramework = $.agentFramework;
+        this.buildSpec = $.buildSpec;
         this.classMethods = $.classMethods;
         this.containerSpec = $.containerSpec;
         this.deploymentSpec = $.deploymentSpec;
         this.effectiveIdentity = $.effectiveIdentity;
+        this.exampleStore = $.exampleStore;
         this.identityType = $.identityType;
         this.packageSpec = $.packageSpec;
         this.serviceAccount = $.serviceAccount;
@@ -225,6 +274,27 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param agentCard Optional. The A2A Agent Card for the agent (if available).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentCard(@Nullable Output<String> agentCard) {
+            $.agentCard = agentCard;
+            return this;
+        }
+
+        /**
+         * @param agentCard Optional. The A2A Agent Card for the agent (if available).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentCard(String agentCard) {
+            return agentCard(Output.of(agentCard));
+        }
+
+        /**
          * @param agentFramework Optional. The OSS agent framework used to develop the agent.
          * 
          * @return builder
@@ -246,8 +316,35 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param buildSpec Optional. Configuration for building container image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildSpec(@Nullable Output<AiReasoningEngineSpecBuildSpecArgs> buildSpec) {
+            $.buildSpec = buildSpec;
+            return this;
+        }
+
+        /**
+         * @param buildSpec Optional. Configuration for building container image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildSpec(AiReasoningEngineSpecBuildSpecArgs buildSpec) {
+            return buildSpec(Output.of(buildSpec));
+        }
+
+        /**
          * @param classMethods Optional. Declarations for object class methods in OpenAPI
          * specification format.
+         * **Note**: When deploying via Terraform, this field must be populated manually.
+         * Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+         * Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+         * **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+         * * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+         * * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
          * 
          * @return builder
          * 
@@ -260,6 +357,12 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         /**
          * @param classMethods Optional. Declarations for object class methods in OpenAPI
          * specification format.
+         * **Note**: When deploying via Terraform, this field must be populated manually.
+         * Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+         * Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+         * **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+         * * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+         * * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
          * 
          * @return builder
          * 
@@ -270,7 +373,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param containerSpec Deploy from a container image with a defined entrypoint and commands.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -282,7 +384,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param containerSpec Deploy from a container image with a defined entrypoint and commands.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -293,7 +394,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param deploymentSpec Optional. The specification of a Reasoning Engine deployment.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -305,7 +405,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param deploymentSpec Optional. The specification of a Reasoning Engine deployment.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -315,8 +414,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectiveIdentity (Output)
-         * The identity to use for the Reasoning Engine.
+         * @param effectiveIdentity The identity to use for the Reasoning Engine.
          * 
          * @return builder
          * 
@@ -327,8 +425,7 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param effectiveIdentity (Output)
-         * The identity to use for the Reasoning Engine.
+         * @param effectiveIdentity The identity to use for the Reasoning Engine.
          * 
          * @return builder
          * 
@@ -338,13 +435,33 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param exampleStore Optional. The resource name of the linked ExampleStore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exampleStore(@Nullable Output<String> exampleStore) {
+            $.exampleStore = exampleStore;
+            return this;
+        }
+
+        /**
+         * @param exampleStore Optional. The resource name of the linked ExampleStore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exampleStore(String exampleStore) {
+            return exampleStore(Output.of(exampleStore));
+        }
+
+        /**
          * @param identityType Optional. The identity type to use for the Reasoning Engine.
-         * If not specified, the `serviceAccount` field will be used if set,
+         * If not specified, the &#39;service_account&#39; field will be used if set,
          * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
          * Possible values:
-         * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-         * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-         *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+         * * &#39;SERVICE_ACCOUNT&#39;: Use a custom service account if the &#39;service_account&#39; field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+         * * &#39;AGENT_IDENTITY&#39;: Use Agent Identity. The &#39;service_account&#39; field must not be set. Possible values: [&#34;SERVICE_ACCOUNT&#34;, &#34;AGENT_IDENTITY&#34;]
          * 
          * @return builder
          * 
@@ -356,12 +473,11 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param identityType Optional. The identity type to use for the Reasoning Engine.
-         * If not specified, the `serviceAccount` field will be used if set,
+         * If not specified, the &#39;service_account&#39; field will be used if set,
          * otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
          * Possible values:
-         * * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-         * * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-         *   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+         * * &#39;SERVICE_ACCOUNT&#39;: Use a custom service account if the &#39;service_account&#39; field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+         * * &#39;AGENT_IDENTITY&#39;: Use Agent Identity. The &#39;service_account&#39; field must not be set. Possible values: [&#34;SERVICE_ACCOUNT&#34;, &#34;AGENT_IDENTITY&#34;]
          * 
          * @return builder
          * 
@@ -375,7 +491,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
          * Ignored when users directly specify a deployment image through
          * deploymentSpec.first_party_image_override, but keeping the
          * fieldBehavior to avoid introducing breaking changes.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -390,7 +505,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
          * Ignored when users directly specify a deployment image through
          * deploymentSpec.first_party_image_override, but keeping the
          * fieldBehavior to avoid introducing breaking changes.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -430,7 +544,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param sourceCodeSpec Specification for deploying from source code.
-         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -442,7 +555,6 @@ public final class AiReasoningEngineSpecArgs extends com.pulumi.resources.Resour
 
         /**
          * @param sourceCodeSpec Specification for deploying from source code.
-         * Structure is documented below.
          * 
          * @return builder
          * 

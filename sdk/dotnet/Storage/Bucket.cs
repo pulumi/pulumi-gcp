@@ -315,6 +315,36 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
+    /// ### Enabling RAPID Storage Bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var zonalBucket = new Gcp.Storage.Bucket("zonal_bucket", new()
+    ///     {
+    ///         Location = "US-CENTRAL1",
+    ///         CustomPlacementConfig = new Gcp.Storage.Inputs.BucketCustomPlacementConfigArgs
+    ///         {
+    ///             DataLocations = new[]
+    ///             {
+    ///                 "US-CENTRAL1-B",
+    ///             },
+    ///         },
+    ///         Name = "zonal-rapid-bucket",
+    ///         StorageClass = "RAPID",
+    ///         HierarchicalNamespace = new Gcp.Storage.Inputs.BucketHierarchicalNamespaceArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:storage/bucket:Bucket")]
     public partial class Bucket : global::Pulumi.CustomResource

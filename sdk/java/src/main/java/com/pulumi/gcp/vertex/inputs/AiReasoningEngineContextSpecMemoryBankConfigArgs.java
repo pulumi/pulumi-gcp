@@ -5,10 +5,13 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +20,23 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineContextSpecMemoryBankConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineContextSpecMemoryBankConfigArgs Empty = new AiReasoningEngineContextSpecMemoryBankConfigArgs();
+
+    /**
+     * Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customizationConfigs")
+    private @Nullable Output<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs>> customizationConfigs;
+
+    /**
+     * @return Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs>>> customizationConfigs() {
+        return Optional.ofNullable(this.customizationConfigs);
+    }
 
     /**
      * If true, no memory revisions will be created for any requests to the Memory Bank.
@@ -68,6 +88,23 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigArgs extends com.
     }
 
     /**
+     * Optional. Structured memory configurations for Agent Engine sub-resources.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="structuredMemoryConfigs")
+    private @Nullable Output<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs>> structuredMemoryConfigs;
+
+    /**
+     * @return Optional. Structured memory configurations for Agent Engine sub-resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs>>> structuredMemoryConfigs() {
+        return Optional.ofNullable(this.structuredMemoryConfigs);
+    }
+
+    /**
      * Configuration for automatic TTL (&#34;time-to-live&#34;) of the memories in the Memory Bank.
      * Structure is documented below.
      * 
@@ -87,9 +124,11 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigArgs extends com.
     private AiReasoningEngineContextSpecMemoryBankConfigArgs() {}
 
     private AiReasoningEngineContextSpecMemoryBankConfigArgs(AiReasoningEngineContextSpecMemoryBankConfigArgs $) {
+        this.customizationConfigs = $.customizationConfigs;
         this.disableMemoryRevisions = $.disableMemoryRevisions;
         this.generationConfig = $.generationConfig;
         this.similaritySearchConfig = $.similaritySearchConfig;
+        this.structuredMemoryConfigs = $.structuredMemoryConfigs;
         this.ttlConfig = $.ttlConfig;
     }
 
@@ -109,6 +148,40 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigArgs extends com.
 
         public Builder(AiReasoningEngineContextSpecMemoryBankConfigArgs defaults) {
             $ = new AiReasoningEngineContextSpecMemoryBankConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customizationConfigs Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizationConfigs(@Nullable Output<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs>> customizationConfigs) {
+            $.customizationConfigs = customizationConfigs;
+            return this;
+        }
+
+        /**
+         * @param customizationConfigs Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizationConfigs(List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs> customizationConfigs) {
+            return customizationConfigs(Output.of(customizationConfigs));
+        }
+
+        /**
+         * @param customizationConfigs Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizationConfigs(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs... customizationConfigs) {
+            return customizationConfigs(List.of(customizationConfigs));
         }
 
         /**
@@ -176,6 +249,40 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigArgs extends com.
          */
         public Builder similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs similaritySearchConfig) {
             return similaritySearchConfig(Output.of(similaritySearchConfig));
+        }
+
+        /**
+         * @param structuredMemoryConfigs Optional. Structured memory configurations for Agent Engine sub-resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder structuredMemoryConfigs(@Nullable Output<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs>> structuredMemoryConfigs) {
+            $.structuredMemoryConfigs = structuredMemoryConfigs;
+            return this;
+        }
+
+        /**
+         * @param structuredMemoryConfigs Optional. Structured memory configurations for Agent Engine sub-resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder structuredMemoryConfigs(List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs> structuredMemoryConfigs) {
+            return structuredMemoryConfigs(Output.of(structuredMemoryConfigs));
+        }
+
+        /**
+         * @param structuredMemoryConfigs Optional. Structured memory configurations for Agent Engine sub-resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder structuredMemoryConfigs(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs... structuredMemoryConfigs) {
+            return structuredMemoryConfigs(List.of(structuredMemoryConfigs));
         }
 
         /**

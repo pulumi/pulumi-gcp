@@ -47,6 +47,7 @@ from .ai_reasoning_engine_iam_binding import *
 from .ai_reasoning_engine_iam_member import *
 from .ai_reasoning_engine_iam_policy import *
 from .ai_schedule import *
+from .ai_semantic_governance_policy_engine import *
 from .ai_tensorboard import *
 from .ai_tensorboard_experiment import *
 from .ai_tensorboard_run import *

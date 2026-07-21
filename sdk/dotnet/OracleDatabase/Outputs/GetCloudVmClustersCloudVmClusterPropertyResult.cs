@@ -151,6 +151,14 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// The storage management type of the VM Cluster.
+        /// Possible values:
+        /// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+        /// ASM
+        /// EXASCALE
+        /// </summary>
+        public readonly string StorageManagementType;
+        /// <summary>
         /// The storage allocation for the disk group, in gigabytes (GB).
         /// </summary>
         public readonly int StorageSizeGb;
@@ -224,6 +232,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string state,
 
+            string storageManagementType,
+
             int storageSizeGb,
 
             string systemVersion,
@@ -259,6 +269,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             SparseDiskgroupEnabled = sparseDiskgroupEnabled;
             SshPublicKeys = sshPublicKeys;
             State = state;
+            StorageManagementType = storageManagementType;
             StorageSizeGb = storageSizeGb;
             SystemVersion = systemVersion;
             TimeZones = timeZones;

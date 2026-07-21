@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfig
     {
         /// <summary>
+        /// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig> CustomizationConfigs;
+        /// <summary>
         /// If true, no memory revisions will be created for any requests to the Memory Bank.
         /// </summary>
         public readonly bool? DisableMemoryRevisions;
@@ -28,6 +33,11 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig? SimilaritySearchConfig;
         /// <summary>
+        /// Optional. Structured memory configurations for Agent Engine sub-resources.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig> StructuredMemoryConfigs;
+        /// <summary>
         /// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
         /// Structure is documented below.
         /// </summary>
@@ -35,17 +45,23 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
         [OutputConstructor]
         private AiReasoningEngineContextSpecMemoryBankConfig(
+            ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig> customizationConfigs,
+
             bool? disableMemoryRevisions,
 
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig? generationConfig,
 
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig? similaritySearchConfig,
 
+            ImmutableArray<Outputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig> structuredMemoryConfigs,
+
             Outputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfig? ttlConfig)
         {
+            CustomizationConfigs = customizationConfigs;
             DisableMemoryRevisions = disableMemoryRevisions;
             GenerationConfig = generationConfig;
             SimilaritySearchConfig = similaritySearchConfig;
+            StructuredMemoryConfigs = structuredMemoryConfigs;
             TtlConfig = ttlConfig;
         }
     }

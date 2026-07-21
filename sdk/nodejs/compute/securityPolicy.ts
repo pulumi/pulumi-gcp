@@ -275,7 +275,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * The name of the security policy.
      *
-     * - - -
+     * ***
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -304,12 +304,12 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-     * They filter requests before they hit the origin servers.
+     *   They filter requests before they hit the origin servers.
      * * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-     * They filter requests before the request is served from Google's cache.
+     *   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     *   They filter requests before the request is served from Google's cache.
      * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-     * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+     *   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -413,7 +413,7 @@ export interface SecurityPolicyState {
     /**
      * The name of the security policy.
      *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -442,12 +442,12 @@ export interface SecurityPolicyState {
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-     * They filter requests before they hit the origin servers.
+     *   They filter requests before they hit the origin servers.
      * * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-     * They filter requests before the request is served from Google's cache.
+     *   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     *   They filter requests before the request is served from Google's cache.
      * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-     * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+     *   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -487,7 +487,7 @@ export interface SecurityPolicyArgs {
     /**
      * The name of the security policy.
      *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -508,12 +508,12 @@ export interface SecurityPolicyArgs {
     /**
      * The type indicates the intended use of the security policy. This field can be set only at resource creation time.
      * * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
-     * They filter requests before they hit the origin servers.
+     *   They filter requests before they hit the origin servers.
      * * `CLOUD_ARMOR_EDGE` - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services
-     * (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
-     * They filter requests before the request is served from Google's cache.
+     *   (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage).
+     *   They filter requests before the request is served from Google's cache.
      * * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
-     * managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
+     *   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      */
     type?: pulumi.Input<string | undefined>;
 }

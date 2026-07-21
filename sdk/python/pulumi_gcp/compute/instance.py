@@ -55,6 +55,7 @@ class InstanceArgs:
                  service_account: pulumi.Input[Optional['InstanceServiceAccountArgs']] = None,
                  shielded_instance_config: pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional['InstanceWorkloadIdentityConfigArgs']] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -73,7 +74,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading  on this VM. Structure is documented below
         :param pulumi.Input[_builtins.bool] allow_stopping_for_update: If true, allows this provider to stop the instance to update its properties.
                If you try to update a property that requires stopping the instance without setting this field, the update will fail.
@@ -158,6 +159,8 @@ class InstanceArgs:
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of network tags to attach to the instance.
+        :param pulumi.Input['InstanceWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         pulumi.set(__self__, "boot_disk", boot_disk)
@@ -225,6 +228,8 @@ class InstanceArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -268,7 +273,7 @@ class InstanceArgs:
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -702,6 +707,19 @@ class InstanceArgs:
         pulumi.set(self, "tags", value)
 
     @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['InstanceWorkloadIdentityConfigArgs']]:
+        """
+        Workload Identity Config. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['InstanceWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -761,6 +779,7 @@ class _InstanceState:
                  shielded_instance_config: pulumi.Input[Optional['InstanceShieldedInstanceConfigArgs']] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 workload_identity_config: pulumi.Input[Optional['InstanceWorkloadIdentityConfigArgs']] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
@@ -846,7 +865,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -874,6 +893,8 @@ class _InstanceState:
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input['InstanceWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         if advanced_machine_features is not None:
@@ -964,6 +985,8 @@ class _InstanceState:
             pulumi.set(__self__, "tags", tags)
         if tags_fingerprint is not None:
             pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if workload_identity_config is not None:
+            pulumi.set(__self__, "workload_identity_config", workload_identity_config)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -1371,7 +1394,7 @@ class _InstanceState:
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1561,6 +1584,19 @@ class _InstanceState:
         pulumi.set(self, "tags_fingerprint", value)
 
     @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Input[Optional['InstanceWorkloadIdentityConfigArgs']]:
+        """
+        Workload Identity Config. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "workload_identity_config")
+
+    @workload_identity_config.setter
+    def workload_identity_config(self, value: pulumi.Input[Optional['InstanceWorkloadIdentityConfigArgs']]):
+        pulumi.set(self, "workload_identity_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1613,6 +1649,7 @@ class Instance(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[Union['InstanceServiceAccountArgs', 'InstanceServiceAccountArgsDict']]] = None,
                  shielded_instance_config: pulumi.Input[Optional[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['InstanceWorkloadIdentityConfigArgs', 'InstanceWorkloadIdentityConfigArgsDict']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -1801,7 +1838,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkInterfaceArgs', 'InstanceNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceNetworkPerformanceConfigArgs', 'InstanceNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1826,6 +1863,8 @@ class Instance(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of network tags to attach to the instance.
+        :param pulumi.Input[Union['InstanceWorkloadIdentityConfigArgs', 'InstanceWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         ...
@@ -1993,6 +2032,7 @@ class Instance(pulumi.CustomResource):
                  service_account: pulumi.Input[Optional[Union['InstanceServiceAccountArgs', 'InstanceServiceAccountArgsDict']]] = None,
                  shielded_instance_config: pulumi.Input[Optional[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 workload_identity_config: pulumi.Input[Optional[Union['InstanceWorkloadIdentityConfigArgs', 'InstanceWorkloadIdentityConfigArgsDict']]] = None,
                  zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2043,6 +2083,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["zone"] = zone
             __props__.__dict__["cpu_platform"] = None
             __props__.__dict__["creation_timestamp"] = None
@@ -2110,6 +2151,7 @@ class Instance(pulumi.CustomResource):
             shielded_instance_config: pulumi.Input[Optional[Union['InstanceShieldedInstanceConfigArgs', 'InstanceShieldedInstanceConfigArgsDict']]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             tags_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            workload_identity_config: pulumi.Input[Optional[Union['InstanceWorkloadIdentityConfigArgs', 'InstanceWorkloadIdentityConfigArgsDict']]] = None,
             zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -2199,7 +2241,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkInterfaceArgs', 'InstanceNetworkInterfaceArgsDict']]]] network_interfaces: Networks to attach to the instance. This can
                be specified multiple times. Structure is documented below.
                
-               - - -
+               ***
         :param pulumi.Input[Union['InstanceNetworkPerformanceConfigArgs', 'InstanceNetworkPerformanceConfigArgsDict']] network_performance_config: Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -2227,6 +2269,8 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[_builtins.str] tags_fingerprint: The unique fingerprint of the tags.
+        :param pulumi.Input[Union['InstanceWorkloadIdentityConfigArgs', 'InstanceWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity Config. More details about
+               this configuration option are detailed below.
         :param pulumi.Input[_builtins.str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2277,6 +2321,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["shielded_instance_config"] = shielded_instance_config
         __props__.__dict__["tags"] = tags
         __props__.__dict__["tags_fingerprint"] = tags_fingerprint
+        __props__.__dict__["workload_identity_config"] = workload_identity_config
         __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -2568,7 +2613,7 @@ class Instance(pulumi.CustomResource):
         Networks to attach to the instance. This can
         be specified multiple times. Structure is documented below.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2696,6 +2741,15 @@ class Instance(pulumi.CustomResource):
         The unique fingerprint of the tags.
         """
         return pulumi.get(self, "tags_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfig")
+    def workload_identity_config(self) -> pulumi.Output[Optional['outputs.InstanceWorkloadIdentityConfig']]:
+        """
+        Workload Identity Config. More details about
+        this configuration option are detailed below.
+        """
+        return pulumi.get(self, "workload_identity_config")
 
     @_builtins.property
     @pulumi.getter

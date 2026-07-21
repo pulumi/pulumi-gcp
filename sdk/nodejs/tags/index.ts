@@ -45,6 +45,11 @@ export type TagBinding = import("./tagBinding").TagBinding;
 export const TagBinding: typeof import("./tagBinding").TagBinding = null as any;
 utilities.lazyLoad(exports, ["TagBinding"], () => require("./tagBinding"));
 
+export { TagBindingCollectionArgs, TagBindingCollectionState } from "./tagBindingCollection";
+export type TagBindingCollection = import("./tagBindingCollection").TagBindingCollection;
+export const TagBindingCollection: typeof import("./tagBindingCollection").TagBindingCollection = null as any;
+utilities.lazyLoad(exports, ["TagBindingCollection"], () => require("./tagBindingCollection"));
+
 export { TagKeyArgs, TagKeyState } from "./tagKey";
 export type TagKey = import("./tagKey").TagKey;
 export const TagKey: typeof import("./tagKey").TagKey = null as any;
@@ -94,6 +99,8 @@ const _module = {
                 return new LocationTagBinding(name, <any>undefined, { urn })
             case "gcp:tags/tagBinding:TagBinding":
                 return new TagBinding(name, <any>undefined, { urn })
+            case "gcp:tags/tagBindingCollection:TagBindingCollection":
+                return new TagBindingCollection(name, <any>undefined, { urn })
             case "gcp:tags/tagKey:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
             case "gcp:tags/tagKeyIamBinding:TagKeyIamBinding":
@@ -117,6 +124,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "tags/locationTagBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "tags/tagBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagBindingCollection", _module)
 pulumi.runtime.registerResourceModule("gcp", "tags/tagKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "tags/tagKeyIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "tags/tagKeyIamMember", _module)

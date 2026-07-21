@@ -169,6 +169,7 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExadataInfrastructure;
+        public readonly string ExascaleDbStorageVault;
         public readonly string GcpOracleZone;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -207,6 +208,8 @@ namespace Pulumi.Gcp.OracleDatabase
 
             string exadataInfrastructure,
 
+            string exascaleDbStorageVault,
+
             string gcpOracleZone,
 
             string id,
@@ -241,6 +244,7 @@ namespace Pulumi.Gcp.OracleDatabase
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             ExadataInfrastructure = exadataInfrastructure;
+            ExascaleDbStorageVault = exascaleDbStorageVault;
             GcpOracleZone = gcpOracleZone;
             Id = id;
             IdentityConnectors = identityConnectors;

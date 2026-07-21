@@ -176,7 +176,7 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
      * The current state of the scim tenant.
      * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
      * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-     * deleted after approximately 30 days.
+     *   deleted after approximately 30 days.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -312,7 +312,7 @@ export interface WorkforcePoolProviderScimTenantState {
      * The current state of the scim tenant.
      * * ACTIVE: The scim tenant is active and may be used to validate authentication credentials.
      * * DELETED: The scim tenant is soft-deleted. Soft-deleted scim tenants are permanently
-     * deleted after approximately 30 days.
+     *   deleted after approximately 30 days.
      */
     state?: pulumi.Input<string | undefined>;
     /**

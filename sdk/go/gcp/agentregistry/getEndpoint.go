@@ -74,7 +74,7 @@ type GetEndpointResult struct {
 	Description string `pulumi:"description"`
 	// The display name of the Endpoint.
 	DisplayName string  `pulumi:"displayName"`
-	EndpointId  *string `pulumi:"endpointId"`
+	EndpointId  string  `pulumi:"endpointId"`
 	Filter      *string `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -151,8 +151,8 @@ func (o GetEndpointResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEndpointResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-func (o GetEndpointResultOutput) EndpointId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetEndpointResult) *string { return v.EndpointId }).(pulumi.StringPtrOutput)
+func (o GetEndpointResultOutput) EndpointId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEndpointResult) string { return v.EndpointId }).(pulumi.StringOutput)
 }
 
 func (o GetEndpointResultOutput) Filter() pulumi.StringPtrOutput {

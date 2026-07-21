@@ -264,15 +264,15 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * attachment. Can only be specified at attachment creation for PARTNER or
      * DEDICATED attachments.
      * * NONE - This is the default value, which means that the VLAN attachment
-     * carries unencrypted traffic. VMs are able to send traffic to, or receive
-     * traffic from, such a VLAN attachment.
+     *   carries unencrypted traffic. VMs are able to send traffic to, or receive
+     *   traffic from, such a VLAN attachment.
      * * IPSEC - The VLAN attachment carries only encrypted traffic that is
-     * encrypted by an IPsec device, such as an HA VPN gateway or third-party
-     * IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-     * such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-     * attachment must be created with this option.
-     * Default value is `NONE`.
-     * Possible values are: `NONE`, `IPSEC`.
+     *   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+     *   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+     *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+     *   attachment must be created with this option.
+     *   Default value is `NONE`.
+     *   Possible values are: `NONE`, `IPSEC`.
      */
     declare public readonly encryption: pulumi.Output<string | undefined>;
     /**
@@ -630,15 +630,15 @@ export interface InterconnectAttachmentState {
      * attachment. Can only be specified at attachment creation for PARTNER or
      * DEDICATED attachments.
      * * NONE - This is the default value, which means that the VLAN attachment
-     * carries unencrypted traffic. VMs are able to send traffic to, or receive
-     * traffic from, such a VLAN attachment.
+     *   carries unencrypted traffic. VMs are able to send traffic to, or receive
+     *   traffic from, such a VLAN attachment.
      * * IPSEC - The VLAN attachment carries only encrypted traffic that is
-     * encrypted by an IPsec device, such as an HA VPN gateway or third-party
-     * IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-     * such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-     * attachment must be created with this option.
-     * Default value is `NONE`.
-     * Possible values are: `NONE`, `IPSEC`.
+     *   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+     *   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+     *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+     *   attachment must be created with this option.
+     *   Default value is `NONE`.
+     *   Possible values are: `NONE`, `IPSEC`.
      */
     encryption?: pulumi.Input<string | undefined>;
     /**
@@ -862,15 +862,15 @@ export interface InterconnectAttachmentArgs {
      * attachment. Can only be specified at attachment creation for PARTNER or
      * DEDICATED attachments.
      * * NONE - This is the default value, which means that the VLAN attachment
-     * carries unencrypted traffic. VMs are able to send traffic to, or receive
-     * traffic from, such a VLAN attachment.
+     *   carries unencrypted traffic. VMs are able to send traffic to, or receive
+     *   traffic from, such a VLAN attachment.
      * * IPSEC - The VLAN attachment carries only encrypted traffic that is
-     * encrypted by an IPsec device, such as an HA VPN gateway or third-party
-     * IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
-     * such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
-     * attachment must be created with this option.
-     * Default value is `NONE`.
-     * Possible values are: `NONE`, `IPSEC`.
+     *   encrypted by an IPsec device, such as an HA VPN gateway or third-party
+     *   IPsec VPN. VMs cannot directly send traffic to, or receive traffic from,
+     *   such a VLAN attachment. To use HA VPN over Cloud Interconnect, the VLAN
+     *   attachment must be created with this option.
+     *   Default value is `NONE`.
+     *   Possible values are: `NONE`, `IPSEC`.
      */
     encryption?: pulumi.Input<string | undefined>;
     /**

@@ -34,7 +34,7 @@ export interface GetSSLPolicyArgs {
     /**
      * The name of the SSL Policy.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -121,7 +121,7 @@ export interface GetSSLPolicyOutputArgs {
     /**
      * The name of the SSL Policy.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

@@ -29,7 +29,7 @@ class ProjectMetadataItemArgs:
         :param pulumi.Input[_builtins.str] key: The metadata key to set.
         :param pulumi.Input[_builtins.str] value: The value to set for the given metadata key.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -64,7 +64,7 @@ class ProjectMetadataItemArgs:
         """
         The value to set for the given metadata key.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "value")
 
@@ -124,7 +124,7 @@ class _ProjectMetadataItemState:
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] value: The value to set for the given metadata key.
                
-               - - -
+               ***
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -183,7 +183,7 @@ class _ProjectMetadataItemState:
         """
         The value to set for the given metadata key.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "value")
 
@@ -248,7 +248,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] value: The value to set for the given metadata key.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -356,7 +356,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] value: The value to set for the given metadata key.
                
-               - - -
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,7 +404,7 @@ class ProjectMetadataItem(pulumi.CustomResource):
         """
         The value to set for the given metadata key.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "value")
 

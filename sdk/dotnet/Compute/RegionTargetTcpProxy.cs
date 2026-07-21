@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute
     ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
     ///     {
     ///         Name = "health-check",
-    ///         Region = "europe-west4",
+    ///         Region = "us-central1",
     ///         TimeoutSec = 1,
     ///         CheckIntervalSec = 1,
     ///         TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Compute
     ///         Name = "backend-service",
     ///         Protocol = "TCP",
     ///         TimeoutSec = 10,
-    ///         Region = "europe-west4",
+    ///         Region = "us-central1",
     ///         HealthChecks = defaultRegionHealthCheck.Id,
     ///         LoadBalancingScheme = "INTERNAL_MANAGED",
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Compute
     ///     var @default = new Gcp.Compute.RegionTargetTcpProxy("default", new()
     ///     {
     ///         Name = "test-proxy",
-    ///         Region = "europe-west4",
+    ///         Region = "us-central1",
     ///         BackendService = defaultRegionBackendService.Id,
     ///     });
     /// 

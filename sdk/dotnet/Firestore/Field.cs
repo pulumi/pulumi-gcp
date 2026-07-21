@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__40816",
+    ///         Collection = "chatrooms__24243",
     ///         FieldId = "basic",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -230,7 +230,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__94690",
+    ///         Collection = "chatrooms__7495",
     ///         FieldId = "field_with_same_configuration_as_ancestor",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__29947",
+    ///         Collection = "chatrooms__21912",
     ///         FieldId = "*",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -295,6 +295,52 @@ namespace Pulumi.Gcp.Firestore
     ///                 },
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Field Skip Wait
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var skipWait = new Gcp.Firestore.Field("skip_wait", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms__46731",
+    ///         FieldId = "skip_wait",
+    ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
+    ///         {
+    ///             Indexes = new[]
+    ///             {
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     Order = "ASCENDING",
+    ///                     QueryScope = "COLLECTION_GROUP",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.FieldIndexConfigIndexArgs
+    ///                 {
+    ///                     ArrayConfig = "CONTAINS",
+    ///                 },
+    ///             },
+    ///         },
+    ///         SkipWait = true,
     ///     });
     /// 
     /// });
@@ -367,6 +413,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to skip waiting for the field operation to complete.
+        /// </summary>
+        [Output("skipWait")]
+        public Output<bool?> SkipWait { get; private set; } = null!;
 
         /// <summary>
         /// The TTL configuration for this Field. If set to an empty (i.e. `TtlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
@@ -468,6 +520,12 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Whether to skip waiting for the field operation to complete.
+        /// </summary>
+        [Input("skipWait")]
+        public Input<bool>? SkipWait { get; set; }
+
+        /// <summary>
         /// The TTL configuration for this Field. If set to an empty (i.e. `TtlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
@@ -534,6 +592,12 @@ namespace Pulumi.Gcp.Firestore
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Whether to skip waiting for the field operation to complete.
+        /// </summary>
+        [Input("skipWait")]
+        public Input<bool>? SkipWait { get; set; }
 
         /// <summary>
         /// The TTL configuration for this Field. If set to an empty (i.e. `TtlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).

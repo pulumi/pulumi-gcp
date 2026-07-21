@@ -286,12 +286,12 @@ def get_instance(location: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str location: The name of the location of the instance. This 
+    :param _builtins.str location: The name of the location of the instance. This
            can be a region for ENTERPRISE tier instances. If it is not provided,
            the provider region or zone is used.
     :param _builtins.str name: The name of a Filestore instance.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -348,12 +348,12 @@ def get_instance_output(location: pulumi.Input[Optional[Optional[_builtins.str]]
     ```
 
 
-    :param _builtins.str location: The name of the location of the instance. This 
+    :param _builtins.str location: The name of the location of the instance. This
            can be a region for ENTERPRISE tier instances. If it is not provided,
            the provider region or zone is used.
     :param _builtins.str name: The name of a Filestore instance.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

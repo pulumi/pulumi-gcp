@@ -229,12 +229,30 @@ __all__ = [
     'AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict',
     'AiReasoningEngineContextSpecArgs',
     'AiReasoningEngineContextSpecArgsDict',
+    'AiReasoningEngineContextSpecExampleStoreConfigArgs',
+    'AiReasoningEngineContextSpecExampleStoreConfigArgsDict',
+    'AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs',
+    'AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs',
@@ -247,12 +265,24 @@ __all__ = [
     'AiReasoningEngineIamMemberConditionArgsDict',
     'AiReasoningEngineSpecArgs',
     'AiReasoningEngineSpecArgsDict',
+    'AiReasoningEngineSpecBuildSpecArgs',
+    'AiReasoningEngineSpecBuildSpecArgsDict',
     'AiReasoningEngineSpecContainerSpecArgs',
     'AiReasoningEngineSpecContainerSpecArgsDict',
     'AiReasoningEngineSpecDeploymentSpecArgs',
     'AiReasoningEngineSpecDeploymentSpecArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs',
+    'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs',
+    'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs',
+    'AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgsDict',
     'AiReasoningEngineSpecDeploymentSpecEnvArgs',
     'AiReasoningEngineSpecDeploymentSpecEnvArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs',
+    'AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgsDict',
+    'AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs',
+    'AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgsDict',
     'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs',
     'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict',
     'AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs',
@@ -265,6 +295,12 @@ __all__ = [
     'AiReasoningEngineSpecPackageSpecArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecArgs',
     'AiReasoningEngineSpecSourceCodeSpecArgsDict',
+    'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs',
+    'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgsDict',
+    'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs',
+    'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgsDict',
+    'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs',
+    'AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs',
@@ -275,6 +311,14 @@ __all__ = [
     'AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs',
     'AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict',
+    'AiReasoningEngineTrafficConfigArgs',
+    'AiReasoningEngineTrafficConfigArgsDict',
+    'AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs',
+    'AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgsDict',
+    'AiReasoningEngineTrafficConfigTrafficSplitManualArgs',
+    'AiReasoningEngineTrafficConfigTrafficSplitManualArgsDict',
+    'AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs',
+    'AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgsDict',
     'AiScheduleCreateNotebookExecutionJobRequestArgs',
     'AiScheduleCreateNotebookExecutionJobRequestArgsDict',
     'AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs',
@@ -3000,14 +3044,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
     The placeholders in this value are replaced as follows:
     * ENDPOINT: The last segment (following `endpoints/`)of the
-    Endpoint.name][] field of the Endpoint where this Model has been
-    deployed. (Vertex AI makes this value available to your container code
-    as the [`AIP_ENDPOINT_ID` environment
-    variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+      Endpoint.name][] field of the Endpoint where this Model has been
+      deployed. (Vertex AI makes this value available to your container code
+      as the [`AIP_ENDPOINT_ID` environment
+      variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-    (Vertex AI makes this value available to your container code as the
-    [`AIP_DEPLOYED_MODEL_ID` environment
-    variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+      (Vertex AI makes this value available to your container code as the
+      [`AIP_DEPLOYED_MODEL_ID` environment
+      variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     """
     liveness_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict']]]
     """
@@ -3053,14 +3097,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
     The placeholders in this value are replaced as follows:
     * ENDPOINT: The last segment (following `endpoints/`)of the
-    Endpoint.name][] field of the Endpoint where this Model has been
-    deployed. (Vertex AI makes this value available to your container code
-    as the [`AIP_ENDPOINT_ID` environment
-    variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+      Endpoint.name][] field of the Endpoint where this Model has been
+      deployed. (Vertex AI makes this value available to your container code
+      as the [`AIP_ENDPOINT_ID` environment
+      variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-    (Vertex AI makes this value available to your container code
-    as the [`AIP_DEPLOYED_MODEL_ID` environment
-    variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+      (Vertex AI makes this value available to your container code
+      as the [`AIP_DEPLOYED_MODEL_ID` environment
+      variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     """
     shared_memory_size_mb: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -3217,14 +3261,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
                you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
                The placeholders in this value are replaced as follows:
                * ENDPOINT: The last segment (following `endpoints/`)of the
-               Endpoint.name][] field of the Endpoint where this Model has been
-               deployed. (Vertex AI makes this value available to your container code
-               as the [`AIP_ENDPOINT_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 Endpoint.name][] field of the Endpoint where this Model has been
+                 deployed. (Vertex AI makes this value available to your container code
+                 as the [`AIP_ENDPOINT_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
                * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-               (Vertex AI makes this value available to your container code as the
-               [`AIP_DEPLOYED_MODEL_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 (Vertex AI makes this value available to your container code as the
+                 [`AIP_DEPLOYED_MODEL_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs'] liveness_probe: Probe describes a health check to be performed against a container to
                determine whether it is alive or ready to receive traffic.
                Structure is documented below.
@@ -3261,14 +3305,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
                you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
                The placeholders in this value are replaced as follows:
                * ENDPOINT: The last segment (following `endpoints/`)of the
-               Endpoint.name][] field of the Endpoint where this Model has been
-               deployed. (Vertex AI makes this value available to your container code
-               as the [`AIP_ENDPOINT_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 Endpoint.name][] field of the Endpoint where this Model has been
+                 deployed. (Vertex AI makes this value available to your container code
+                 as the [`AIP_ENDPOINT_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
                * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-               (Vertex AI makes this value available to your container code
-               as the [`AIP_DEPLOYED_MODEL_ID` environment
-               variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+                 (Vertex AI makes this value available to your container code
+                 as the [`AIP_DEPLOYED_MODEL_ID` environment
+                 variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         :param pulumi.Input[_builtins.str] shared_memory_size_mb: The amount of the VM memory to reserve as the shared memory for the model
                in megabytes.
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs'] startup_probe: Probe describes a health check to be performed against a container to
@@ -3508,14 +3552,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
         The placeholders in this value are replaced as follows:
         * ENDPOINT: The last segment (following `endpoints/`)of the
-        Endpoint.name][] field of the Endpoint where this Model has been
-        deployed. (Vertex AI makes this value available to your container code
-        as the [`AIP_ENDPOINT_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          Endpoint.name][] field of the Endpoint where this Model has been
+          deployed. (Vertex AI makes this value available to your container code
+          as the [`AIP_ENDPOINT_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-        (Vertex AI makes this value available to your container code as the
-        [`AIP_DEPLOYED_MODEL_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          (Vertex AI makes this value available to your container code as the
+          [`AIP_DEPLOYED_MODEL_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         """
         return pulumi.get(self, "health_route")
 
@@ -3585,14 +3629,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs:
         you deploy this Model to an Endpoint:/v1/endpoints/ENDPOINT/deployedModels/DEPLOYED_MODEL:predict
         The placeholders in this value are replaced as follows:
         * ENDPOINT: The last segment (following `endpoints/`)of the
-        Endpoint.name][] field of the Endpoint where this Model has been
-        deployed. (Vertex AI makes this value available to your container code
-        as the [`AIP_ENDPOINT_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          Endpoint.name][] field of the Endpoint where this Model has been
+          deployed. (Vertex AI makes this value available to your container code
+          as the [`AIP_ENDPOINT_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         * DEPLOYED_MODEL: DeployedModel.id of the `DeployedModel`.
-        (Vertex AI makes this value available to your container code
-        as the [`AIP_DEPLOYED_MODEL_ID` environment
-        variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
+          (Vertex AI makes this value available to your container code
+          as the [`AIP_DEPLOYED_MODEL_ID` environment
+          variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
         """
         return pulumi.get(self, "predict_route")
 
@@ -8390,6 +8434,12 @@ class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs:
 
 
 class AiReasoningEngineContextSpecArgsDict(TypedDict):
+    example_store_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigArgsDict']]]
+    """
+    (Optional, Beta)
+    Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+    Structure is documented below.
+    """
     memory_bank_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgsDict']]]
     """
     Specification for a Memory Bank, which manages memories for the Agent Engine.
@@ -8399,13 +8449,33 @@ class AiReasoningEngineContextSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineContextSpecArgs:
     def __init__(__self__, *,
+                 example_store_config: pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigArgs']] = None,
                  memory_bank_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgs']] = None):
         """
+        :param pulumi.Input['AiReasoningEngineContextSpecExampleStoreConfigArgs'] example_store_config: (Optional, Beta)
+               Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+               Structure is documented below.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigArgs'] memory_bank_config: Specification for a Memory Bank, which manages memories for the Agent Engine.
                Structure is documented below.
         """
+        if example_store_config is not None:
+            pulumi.set(__self__, "example_store_config", example_store_config)
         if memory_bank_config is not None:
             pulumi.set(__self__, "memory_bank_config", memory_bank_config)
+
+    @_builtins.property
+    @pulumi.getter(name="exampleStoreConfig")
+    def example_store_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "example_store_config")
+
+    @example_store_config.setter
+    def example_store_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigArgs']]):
+        pulumi.set(self, "example_store_config", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryBankConfig")
@@ -8421,7 +8491,72 @@ class AiReasoningEngineContextSpecArgs:
         pulumi.set(self, "memory_bank_config", value)
 
 
+class AiReasoningEngineContextSpecExampleStoreConfigArgsDict(TypedDict):
+    similarity_search_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgsDict']]]
+    """
+    Optional. Configuration for how to perform similarity search on examples.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecExampleStoreConfigArgs:
+    def __init__(__self__, *,
+                 similarity_search_config: pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs'] similarity_search_config: Optional. Configuration for how to perform similarity search on examples.
+               Structure is documented below.
+        """
+        if similarity_search_config is not None:
+            pulumi.set(__self__, "similarity_search_config", similarity_search_config)
+
+    @_builtins.property
+    @pulumi.getter(name="similaritySearchConfig")
+    def similarity_search_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs']]:
+        """
+        Optional. Configuration for how to perform similarity search on examples.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "similarity_search_config")
+
+    @similarity_search_config.setter
+    def similarity_search_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs']]):
+        pulumi.set(self, "similarity_search_config", value)
+
+
+class AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgsDict(TypedDict):
+    embedding_model: pulumi.Input[_builtins.str]
+    """
+    Required. The Gemini model used to generate embeddings to lookup similar examples.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs:
+    def __init__(__self__, *,
+                 embedding_model: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] embedding_model: Required. The Gemini model used to generate embeddings to lookup similar examples.
+        """
+        pulumi.set(__self__, "embedding_model", embedding_model)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModel")
+    def embedding_model(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The Gemini model used to generate embeddings to lookup similar examples.
+        """
+        return pulumi.get(self, "embedding_model")
+
+    @embedding_model.setter
+    def embedding_model(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "embedding_model", value)
+
+
 class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
+    customization_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgsDict']]]]]
+    """
+    Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+    Structure is documented below.
+    """
     disable_memory_revisions: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     If true, no memory revisions will be created for any requests to the Memory Bank.
@@ -8436,6 +8571,11 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
     Configuration for how to perform similarity search on memories.
     Structure is documented below.
     """
+    structured_memory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgsDict']]]]]
+    """
+    Optional. Structured memory configurations for Agent Engine sub-resources.
+    Structure is documented below.
+    """
     ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict']]]
     """
     Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
@@ -8445,27 +8585,50 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineContextSpecMemoryBankConfigArgs:
     def __init__(__self__, *,
+                 customization_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs']]]] = None,
                  disable_memory_revisions: pulumi.Input[Optional[_builtins.bool]] = None,
                  generation_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']] = None,
                  similarity_search_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']] = None,
+                 structured_memory_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs']]]] = None,
                  ttl_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs']]] customization_configs: Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+               Structure is documented below.
         :param pulumi.Input[_builtins.bool] disable_memory_revisions: If true, no memory revisions will be created for any requests to the Memory Bank.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs'] generation_config: Configuration for how to generate memories for the Memory Bank.
                Structure is documented below.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs'] similarity_search_config: Configuration for how to perform similarity search on memories.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs']]] structured_memory_configs: Optional. Structured memory configurations for Agent Engine sub-resources.
+               Structure is documented below.
         :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs'] ttl_config: Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
                Structure is documented below.
         """
+        if customization_configs is not None:
+            pulumi.set(__self__, "customization_configs", customization_configs)
         if disable_memory_revisions is not None:
             pulumi.set(__self__, "disable_memory_revisions", disable_memory_revisions)
         if generation_config is not None:
             pulumi.set(__self__, "generation_config", generation_config)
         if similarity_search_config is not None:
             pulumi.set(__self__, "similarity_search_config", similarity_search_config)
+        if structured_memory_configs is not None:
+            pulumi.set(__self__, "structured_memory_configs", structured_memory_configs)
         if ttl_config is not None:
             pulumi.set(__self__, "ttl_config", ttl_config)
+
+    @_builtins.property
+    @pulumi.getter(name="customizationConfigs")
+    def customization_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs']]]]:
+        """
+        Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customization_configs")
+
+    @customization_configs.setter
+    def customization_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs']]]]):
+        pulumi.set(self, "customization_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="disableMemoryRevisions")
@@ -8506,6 +8669,19 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgs:
         pulumi.set(self, "similarity_search_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="structuredMemoryConfigs")
+    def structured_memory_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs']]]]:
+        """
+        Optional. Structured memory configurations for Agent Engine sub-resources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "structured_memory_configs")
+
+    @structured_memory_configs.setter
+    def structured_memory_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs']]]]):
+        pulumi.set(self, "structured_memory_configs", value)
+
+    @_builtins.property
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]:
         """
@@ -8517,6 +8693,263 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgs:
     @ttl_config.setter
     def ttl_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]):
         pulumi.set(self, "ttl_config", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgsDict(TypedDict):
+    consolidation_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgsDict']]]
+    """
+    Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
+    Structure is documented below.
+    """
+    enable_third_person_memories: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Optional. Generate memories in the third person if set to true.
+    """
+    memory_topics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgsDict']]]]]
+    """
+    Optional. List of topics that the memory should be associated with.
+    Structure is documented below.
+    """
+    scope_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. List of scope keys that this customization config applies to.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs:
+    def __init__(__self__, *,
+                 consolidation_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs']] = None,
+                 enable_third_person_memories: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_topics: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs']]]] = None,
+                 scope_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs'] consolidation_config: Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] enable_third_person_memories: Optional. Generate memories in the third person if set to true.
+        :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs']]] memory_topics: Optional. List of topics that the memory should be associated with.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scope_keys: Optional. List of scope keys that this customization config applies to.
+        """
+        if consolidation_config is not None:
+            pulumi.set(__self__, "consolidation_config", consolidation_config)
+        if enable_third_person_memories is not None:
+            pulumi.set(__self__, "enable_third_person_memories", enable_third_person_memories)
+        if memory_topics is not None:
+            pulumi.set(__self__, "memory_topics", memory_topics)
+        if scope_keys is not None:
+            pulumi.set(__self__, "scope_keys", scope_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="consolidationConfig")
+    def consolidation_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs']]:
+        """
+        Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consolidation_config")
+
+    @consolidation_config.setter
+    def consolidation_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs']]):
+        pulumi.set(self, "consolidation_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableThirdPersonMemories")
+    def enable_third_person_memories(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional. Generate memories in the third person if set to true.
+        """
+        return pulumi.get(self, "enable_third_person_memories")
+
+    @enable_third_person_memories.setter
+    def enable_third_person_memories(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_third_person_memories", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memoryTopics")
+    def memory_topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs']]]]:
+        """
+        Optional. List of topics that the memory should be associated with.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memory_topics")
+
+    @memory_topics.setter
+    def memory_topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs']]]]):
+        pulumi.set(self, "memory_topics", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scopeKeys")
+    def scope_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. List of scope keys that this customization config applies to.
+        """
+        return pulumi.get(self, "scope_keys")
+
+    @scope_keys.setter
+    def scope_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scope_keys", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgsDict(TypedDict):
+    revisions_per_candidate_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of revisions to consider per candidate count.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs:
+    def __init__(__self__, *,
+                 revisions_per_candidate_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] revisions_per_candidate_count: Number of revisions to consider per candidate count.
+        """
+        if revisions_per_candidate_count is not None:
+            pulumi.set(__self__, "revisions_per_candidate_count", revisions_per_candidate_count)
+
+    @_builtins.property
+    @pulumi.getter(name="revisionsPerCandidateCount")
+    def revisions_per_candidate_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of revisions to consider per candidate count.
+        """
+        return pulumi.get(self, "revisions_per_candidate_count")
+
+    @revisions_per_candidate_count.setter
+    def revisions_per_candidate_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "revisions_per_candidate_count", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgsDict(TypedDict):
+    custom_memory_topic: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgsDict']]]
+    """
+    Optional. Custom memory topic.
+    Structure is documented below.
+    """
+    managed_memory_topic: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgsDict']]]
+    """
+    Optional. Managed memory topic.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs:
+    def __init__(__self__, *,
+                 custom_memory_topic: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs']] = None,
+                 managed_memory_topic: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs'] custom_memory_topic: Optional. Custom memory topic.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs'] managed_memory_topic: Optional. Managed memory topic.
+               Structure is documented below.
+        """
+        if custom_memory_topic is not None:
+            pulumi.set(__self__, "custom_memory_topic", custom_memory_topic)
+        if managed_memory_topic is not None:
+            pulumi.set(__self__, "managed_memory_topic", managed_memory_topic)
+
+    @_builtins.property
+    @pulumi.getter(name="customMemoryTopic")
+    def custom_memory_topic(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs']]:
+        """
+        Optional. Custom memory topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_memory_topic")
+
+    @custom_memory_topic.setter
+    def custom_memory_topic(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs']]):
+        pulumi.set(self, "custom_memory_topic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedMemoryTopic")
+    def managed_memory_topic(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs']]:
+        """
+        Optional. Managed memory topic.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "managed_memory_topic")
+
+    @managed_memory_topic.setter
+    def managed_memory_topic(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs']]):
+        pulumi.set(self, "managed_memory_topic", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Description of custom memory topic.
+    """
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Label of custom memory topic.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of custom memory topic.
+        :param pulumi.Input[_builtins.str] label: Label of custom memory topic.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of custom memory topic.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Label of custom memory topic.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgsDict(TypedDict):
+    managed_topic_enum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs:
+    def __init__(__self__, *,
+                 managed_topic_enum: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] managed_topic_enum: Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+        """
+        if managed_topic_enum is not None:
+            pulumi.set(__self__, "managed_topic_enum", managed_topic_enum)
+
+    @_builtins.property
+    @pulumi.getter(name="managedTopicEnum")
+    def managed_topic_enum(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+        """
+        return pulumi.get(self, "managed_topic_enum")
+
+    @managed_topic_enum.setter
+    def managed_topic_enum(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "managed_topic_enum", value)
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict(TypedDict):
@@ -8550,7 +8983,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs:
 class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict(TypedDict):
     embedding_model: pulumi.Input[_builtins.str]
     """
-    The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+    Required. The Gemini model used to generate embeddings to lookup similar examples.
     """
 
 @pulumi.input_type
@@ -8558,7 +8991,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs:
     def __init__(__self__, *,
                  embedding_model: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] embedding_model: The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        :param pulumi.Input[_builtins.str] embedding_model: Required. The Gemini model used to generate embeddings to lookup similar examples.
         """
         pulumi.set(__self__, "embedding_model", embedding_model)
 
@@ -8566,13 +8999,113 @@ class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs:
     @pulumi.getter(name="embeddingModel")
     def embedding_model(self) -> pulumi.Input[_builtins.str]:
         """
-        The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        Required. The Gemini model used to generate embeddings to lookup similar examples.
         """
         return pulumi.get(self, "embedding_model")
 
     @embedding_model.setter
     def embedding_model(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "embedding_model", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgsDict(TypedDict):
+    schema_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgsDict']]]]]
+    """
+    Optional. List of schema configs that this structured memory config applies to.
+    Structure is documented below.
+    """
+    scope_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. List of scope keys that this structured memory config applies to.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs:
+    def __init__(__self__, *,
+                 schema_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs']]]] = None,
+                 scope_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs']]] schema_configs: Optional. List of schema configs that this structured memory config applies to.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scope_keys: Optional. List of scope keys that this structured memory config applies to.
+        """
+        if schema_configs is not None:
+            pulumi.set(__self__, "schema_configs", schema_configs)
+        if scope_keys is not None:
+            pulumi.set(__self__, "scope_keys", scope_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="schemaConfigs")
+    def schema_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs']]]]:
+        """
+        Optional. List of schema configs that this structured memory config applies to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schema_configs")
+
+    @schema_configs.setter
+    def schema_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs']]]]):
+        pulumi.set(self, "schema_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scopeKeys")
+    def scope_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. List of scope keys that this structured memory config applies to.
+        """
+        return pulumi.get(self, "scope_keys")
+
+    @scope_keys.setter
+    def scope_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "scope_keys", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    Required. Unique ID identifying the memory schema.
+    """
+    memory_schema: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 memory_schema: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Required. Unique ID identifying the memory schema.
+        :param pulumi.Input[_builtins.str] memory_schema: Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+        """
+        pulumi.set(__self__, "id", id)
+        if memory_schema is not None:
+            pulumi.set(__self__, "memory_schema", memory_schema)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Unique ID identifying the memory schema.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="memorySchema")
+    def memory_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+        """
+        return pulumi.get(self, "memory_schema")
+
+    @memory_schema.setter
+    def memory_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "memory_schema", value)
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict(TypedDict):
@@ -8845,39 +9378,53 @@ class AiReasoningEngineIamMemberConditionArgs:
 
 
 class AiReasoningEngineSpecArgsDict(TypedDict):
+    agent_card: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The A2A Agent Card for the agent (if available).
+    """
     agent_framework: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The OSS agent framework used to develop the agent.
+    """
+    build_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecBuildSpecArgsDict']]]
+    """
+    Optional. Configuration for building container image.
     """
     class_methods: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. Declarations for object class methods in OpenAPI
     specification format.
+    **Note**: When deploying via Terraform, this field must be populated manually.
+    Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+    Depending on the template/framework used (`agent_framework`), the required class methods and their parameters differ:
+    **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+    * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+    * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
     """
     container_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgsDict']]]
     """
     Deploy from a container image with a defined entrypoint and commands.
-    Structure is documented below.
     """
     deployment_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgsDict']]]
     """
     Optional. The specification of a Reasoning Engine deployment.
-    Structure is documented below.
     """
     effective_identity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Output)
     The identity to use for the Reasoning Engine.
+    """
+    example_store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The resource name of the linked ExampleStore.
     """
     identity_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The identity type to use for the Reasoning Engine.
-    If not specified, the `service_account` field will be used if set,
+    If not specified, the 'service_account' field will be used if set,
     otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
     Possible values:
-    * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-    * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
-    Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+    * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+    * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
     """
     package_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgsDict']]]
     """
@@ -8885,7 +9432,6 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     Ignored when users directly specify a deployment image through
     deploymentSpec.first_party_image_override, but keeping the
     field_behavior to avoid introducing breaking changes.
-    Structure is documented below.
     """
     service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8898,53 +9444,62 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     source_code_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgsDict']]]
     """
     Specification for deploying from source code.
-    Structure is documented below.
     """
 
 @pulumi.input_type
 class AiReasoningEngineSpecArgs:
     def __init__(__self__, *,
+                 agent_card: pulumi.Input[Optional[_builtins.str]] = None,
                  agent_framework: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_spec: pulumi.Input[Optional['AiReasoningEngineSpecBuildSpecArgs']] = None,
                  class_methods: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec: pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']] = None,
                  deployment_spec: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']] = None,
                  effective_identity: pulumi.Input[Optional[_builtins.str]] = None,
+                 example_store: pulumi.Input[Optional[_builtins.str]] = None,
                  identity_type: pulumi.Input[Optional[_builtins.str]] = None,
                  package_spec: pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgs']] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  source_code_spec: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']] = None):
         """
+        :param pulumi.Input[_builtins.str] agent_card: Optional. The A2A Agent Card for the agent (if available).
         :param pulumi.Input[_builtins.str] agent_framework: Optional. The OSS agent framework used to develop the agent.
+        :param pulumi.Input['AiReasoningEngineSpecBuildSpecArgs'] build_spec: Optional. Configuration for building container image.
         :param pulumi.Input[_builtins.str] class_methods: Optional. Declarations for object class methods in OpenAPI
                specification format.
+               **Note**: When deploying via Terraform, this field must be populated manually.
+               Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+               Depending on the template/framework used (`agent_framework`), the required class methods and their parameters differ:
+               **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+               * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+               * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
         :param pulumi.Input['AiReasoningEngineSpecContainerSpecArgs'] container_spec: Deploy from a container image with a defined entrypoint and commands.
-               Structure is documented below.
         :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecArgs'] deployment_spec: Optional. The specification of a Reasoning Engine deployment.
-               Structure is documented below.
-        :param pulumi.Input[_builtins.str] effective_identity: (Output)
-               The identity to use for the Reasoning Engine.
+        :param pulumi.Input[_builtins.str] effective_identity: The identity to use for the Reasoning Engine.
+        :param pulumi.Input[_builtins.str] example_store: Optional. The resource name of the linked ExampleStore.
         :param pulumi.Input[_builtins.str] identity_type: Optional. The identity type to use for the Reasoning Engine.
-               If not specified, the `service_account` field will be used if set,
+               If not specified, the 'service_account' field will be used if set,
                otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
                Possible values:
-               * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-               * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
-               Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+               * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+               * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
         :param pulumi.Input['AiReasoningEngineSpecPackageSpecArgs'] package_spec: Optional. User provided package spec of the ReasoningEngine.
                Ignored when users directly specify a deployment image through
                deploymentSpec.first_party_image_override, but keeping the
                field_behavior to avoid introducing breaking changes.
-               Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account: Optional. The service account that the Reasoning Engine artifact runs
                as. It should have "roles/storage.objectViewer" for reading the user
                project's Cloud Storage and "roles/aiplatform.user" for using Vertex
                extensions. If not specified, the Vertex AI Reasoning Engine service
                Agent in the project will be used.
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecArgs'] source_code_spec: Specification for deploying from source code.
-               Structure is documented below.
         """
+        if agent_card is not None:
+            pulumi.set(__self__, "agent_card", agent_card)
         if agent_framework is not None:
             pulumi.set(__self__, "agent_framework", agent_framework)
+        if build_spec is not None:
+            pulumi.set(__self__, "build_spec", build_spec)
         if class_methods is not None:
             pulumi.set(__self__, "class_methods", class_methods)
         if container_spec is not None:
@@ -8953,6 +9508,8 @@ class AiReasoningEngineSpecArgs:
             pulumi.set(__self__, "deployment_spec", deployment_spec)
         if effective_identity is not None:
             pulumi.set(__self__, "effective_identity", effective_identity)
+        if example_store is not None:
+            pulumi.set(__self__, "example_store", example_store)
         if identity_type is not None:
             pulumi.set(__self__, "identity_type", identity_type)
         if package_spec is not None:
@@ -8961,6 +9518,18 @@ class AiReasoningEngineSpecArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source_code_spec is not None:
             pulumi.set(__self__, "source_code_spec", source_code_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="agentCard")
+    def agent_card(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The A2A Agent Card for the agent (if available).
+        """
+        return pulumi.get(self, "agent_card")
+
+    @agent_card.setter
+    def agent_card(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_card", value)
 
     @_builtins.property
     @pulumi.getter(name="agentFramework")
@@ -8975,11 +9544,29 @@ class AiReasoningEngineSpecArgs:
         pulumi.set(self, "agent_framework", value)
 
     @_builtins.property
+    @pulumi.getter(name="buildSpec")
+    def build_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecBuildSpecArgs']]:
+        """
+        Optional. Configuration for building container image.
+        """
+        return pulumi.get(self, "build_spec")
+
+    @build_spec.setter
+    def build_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecBuildSpecArgs']]):
+        pulumi.set(self, "build_spec", value)
+
+    @_builtins.property
     @pulumi.getter(name="classMethods")
     def class_methods(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. Declarations for object class methods in OpenAPI
         specification format.
+        **Note**: When deploying via Terraform, this field must be populated manually.
+        Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+        Depending on the template/framework used (`agent_framework`), the required class methods and their parameters differ:
+        **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+        * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+        * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
         """
         return pulumi.get(self, "class_methods")
 
@@ -8992,7 +9579,6 @@ class AiReasoningEngineSpecArgs:
     def container_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']]:
         """
         Deploy from a container image with a defined entrypoint and commands.
-        Structure is documented below.
         """
         return pulumi.get(self, "container_spec")
 
@@ -9005,7 +9591,6 @@ class AiReasoningEngineSpecArgs:
     def deployment_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']]:
         """
         Optional. The specification of a Reasoning Engine deployment.
-        Structure is documented below.
         """
         return pulumi.get(self, "deployment_spec")
 
@@ -9017,7 +9602,6 @@ class AiReasoningEngineSpecArgs:
     @pulumi.getter(name="effectiveIdentity")
     def effective_identity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Output)
         The identity to use for the Reasoning Engine.
         """
         return pulumi.get(self, "effective_identity")
@@ -9027,16 +9611,27 @@ class AiReasoningEngineSpecArgs:
         pulumi.set(self, "effective_identity", value)
 
     @_builtins.property
+    @pulumi.getter(name="exampleStore")
+    def example_store(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The resource name of the linked ExampleStore.
+        """
+        return pulumi.get(self, "example_store")
+
+    @example_store.setter
+    def example_store(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "example_store", value)
+
+    @_builtins.property
     @pulumi.getter(name="identityType")
     def identity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The identity type to use for the Reasoning Engine.
-        If not specified, the `service_account` field will be used if set,
+        If not specified, the 'service_account' field will be used if set,
         otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
         Possible values:
-        * `SERVICE_ACCOUNT`: Use a custom service account if the `service_account` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-        * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
-        Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+        * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+        * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
         """
         return pulumi.get(self, "identity_type")
 
@@ -9052,7 +9647,6 @@ class AiReasoningEngineSpecArgs:
         Ignored when users directly specify a deployment image through
         deploymentSpec.first_party_image_override, but keeping the
         field_behavior to avoid introducing breaking changes.
-        Structure is documented below.
         """
         return pulumi.get(self, "package_spec")
 
@@ -9081,13 +9675,41 @@ class AiReasoningEngineSpecArgs:
     def source_code_spec(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']]:
         """
         Specification for deploying from source code.
-        Structure is documented below.
         """
         return pulumi.get(self, "source_code_spec")
 
     @source_code_spec.setter
     def source_code_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']]):
         pulumi.set(self, "source_code_spec", value)
+
+
+class AiReasoningEngineSpecBuildSpecArgsDict(TypedDict):
+    worker_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecBuildSpecArgs:
+    def __init__(__self__, *,
+                 worker_pool: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] worker_pool: Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+        """
+        if worker_pool is not None:
+            pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @_builtins.property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+        """
+        return pulumi.get(self, "worker_pool")
+
+    @worker_pool.setter
+    def worker_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "worker_pool", value)
 
 
 class AiReasoningEngineSpecContainerSpecArgsDict(TypedDict):
@@ -9125,15 +9747,41 @@ class AiReasoningEngineSpecContainerSpecArgs:
 
 
 class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
+    agent_gateway_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgsDict']]]
+    """
+    (Optional, Beta)
+    Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+    Structure is documented below.
+    """
+    agent_server_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Optional, Beta)
+    Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+    Possible values:
+    * `STABLE`: Stable agent server mode.
+    * `EXPERIMENTAL`: Experimental agent server mode.
+      Possible values are: `STABLE`, `EXPERIMENTAL`.
+    """
     container_concurrency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Optional. Concurrency for each container and agent server.
     Recommended value: 2 * cpu + 1. Defaults to 9.
     """
+    dedicated_ingress_endpoint_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    (Optional, Beta)
+    Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+    """
     envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgsDict']]]]]
     """
     Optional. Environment variables to be set with the Reasoning
     Engine deployment.
+    Structure is documented below.
+    """
+    keep_alive_probe: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgsDict']]]
+    """
+    (Optional, Beta)
+    Optional. Specifies the configuration for keep-alive probe.
     Structure is documented below.
     """
     max_instances: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -9177,18 +9825,36 @@ class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecDeploymentSpecArgs:
     def __init__(__self__, *,
+                 agent_gateway_config: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs']] = None,
+                 agent_server_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  container_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 dedicated_ingress_endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  envs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]] = None,
+                 keep_alive_probe: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs']] = None,
                  max_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  min_instances: pulumi.Input[Optional[_builtins.int]] = None,
                  psc_interface_config: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']] = None,
                  resource_limits: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  secret_envs: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]] = None):
         """
+        :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs'] agent_gateway_config: (Optional, Beta)
+               Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] agent_server_mode: (Optional, Beta)
+               Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+               Possible values:
+               * `STABLE`: Stable agent server mode.
+               * `EXPERIMENTAL`: Experimental agent server mode.
+                 Possible values are: `STABLE`, `EXPERIMENTAL`.
         :param pulumi.Input[_builtins.int] container_concurrency: Optional. Concurrency for each container and agent server.
                Recommended value: 2 * cpu + 1. Defaults to 9.
+        :param pulumi.Input[_builtins.bool] dedicated_ingress_endpoint_enabled: (Optional, Beta)
+               Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
         :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]] envs: Optional. Environment variables to be set with the Reasoning
                Engine deployment.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs'] keep_alive_probe: (Optional, Beta)
+               Optional. Specifies the configuration for keep-alive probe.
                Structure is documented below.
         :param pulumi.Input[_builtins.int] max_instances: Optional. The maximum number of application instances that can be
                launched to handle increased traffic. Defaults to 100.
@@ -9213,10 +9879,18 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
                Platform Reasoning Engine service Agent.
                Structure is documented below.
         """
+        if agent_gateway_config is not None:
+            pulumi.set(__self__, "agent_gateway_config", agent_gateway_config)
+        if agent_server_mode is not None:
+            pulumi.set(__self__, "agent_server_mode", agent_server_mode)
         if container_concurrency is not None:
             pulumi.set(__self__, "container_concurrency", container_concurrency)
+        if dedicated_ingress_endpoint_enabled is not None:
+            pulumi.set(__self__, "dedicated_ingress_endpoint_enabled", dedicated_ingress_endpoint_enabled)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
+        if keep_alive_probe is not None:
+            pulumi.set(__self__, "keep_alive_probe", keep_alive_probe)
         if max_instances is not None:
             pulumi.set(__self__, "max_instances", max_instances)
         if min_instances is not None:
@@ -9227,6 +9901,37 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
             pulumi.set(__self__, "resource_limits", resource_limits)
         if secret_envs is not None:
             pulumi.set(__self__, "secret_envs", secret_envs)
+
+    @_builtins.property
+    @pulumi.getter(name="agentGatewayConfig")
+    def agent_gateway_config(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_gateway_config")
+
+    @agent_gateway_config.setter
+    def agent_gateway_config(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs']]):
+        pulumi.set(self, "agent_gateway_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentServerMode")
+    def agent_server_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+        Possible values:
+        * `STABLE`: Stable agent server mode.
+        * `EXPERIMENTAL`: Experimental agent server mode.
+          Possible values are: `STABLE`, `EXPERIMENTAL`.
+        """
+        return pulumi.get(self, "agent_server_mode")
+
+    @agent_server_mode.setter
+    def agent_server_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "agent_server_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="containerConcurrency")
@@ -9242,6 +9947,19 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         pulumi.set(self, "container_concurrency", value)
 
     @_builtins.property
+    @pulumi.getter(name="dedicatedIngressEndpointEnabled")
+    def dedicated_ingress_endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        (Optional, Beta)
+        Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+        """
+        return pulumi.get(self, "dedicated_ingress_endpoint_enabled")
+
+    @dedicated_ingress_endpoint_enabled.setter
+    def dedicated_ingress_endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "dedicated_ingress_endpoint_enabled", value)
+
+    @_builtins.property
     @pulumi.getter
     def envs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]:
         """
@@ -9254,6 +9972,20 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
     @envs.setter
     def envs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]):
         pulumi.set(self, "envs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keepAliveProbe")
+    def keep_alive_probe(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Specifies the configuration for keep-alive probe.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "keep_alive_probe")
+
+    @keep_alive_probe.setter
+    def keep_alive_probe(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs']]):
+        pulumi.set(self, "keep_alive_probe", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstances")
@@ -9333,6 +10065,117 @@ class AiReasoningEngineSpecDeploymentSpecArgs:
         pulumi.set(self, "secret_envs", value)
 
 
+class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgsDict(TypedDict):
+    agent_to_anywhere_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgsDict']]]
+    """
+    Optional. Configuration for traffic originating from the Reasoning Engine.
+    Structure is documented below.
+    """
+    client_to_agent_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgsDict']]]
+    """
+    Optional. Configuration for traffic targeting the Reasoning Engine.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs:
+    def __init__(__self__, *,
+                 agent_to_anywhere_config: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs']] = None,
+                 client_to_agent_config: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs'] agent_to_anywhere_config: Optional. Configuration for traffic originating from the Reasoning Engine.
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs'] client_to_agent_config: Optional. Configuration for traffic targeting the Reasoning Engine.
+               Structure is documented below.
+        """
+        if agent_to_anywhere_config is not None:
+            pulumi.set(__self__, "agent_to_anywhere_config", agent_to_anywhere_config)
+        if client_to_agent_config is not None:
+            pulumi.set(__self__, "client_to_agent_config", client_to_agent_config)
+
+    @_builtins.property
+    @pulumi.getter(name="agentToAnywhereConfig")
+    def agent_to_anywhere_config(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs']]:
+        """
+        Optional. Configuration for traffic originating from the Reasoning Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_to_anywhere_config")
+
+    @agent_to_anywhere_config.setter
+    def agent_to_anywhere_config(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs']]):
+        pulumi.set(self, "agent_to_anywhere_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientToAgentConfig")
+    def client_to_agent_config(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs']]:
+        """
+        Optional. Configuration for traffic targeting the Reasoning Engine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_to_agent_config")
+
+    @client_to_agent_config.setter
+    def client_to_agent_config(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs']]):
+        pulumi.set(self, "client_to_agent_config", value)
+
+
+class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgsDict(TypedDict):
+    agent_gateway: pulumi.Input[_builtins.str]
+    """
+    Required. The resource name of the Agent Gateway for outbound traffic.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs:
+    def __init__(__self__, *,
+                 agent_gateway: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] agent_gateway: Required. The resource name of the Agent Gateway for outbound traffic.
+        """
+        pulumi.set(__self__, "agent_gateway", agent_gateway)
+
+    @_builtins.property
+    @pulumi.getter(name="agentGateway")
+    def agent_gateway(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The resource name of the Agent Gateway for outbound traffic.
+        """
+        return pulumi.get(self, "agent_gateway")
+
+    @agent_gateway.setter
+    def agent_gateway(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "agent_gateway", value)
+
+
+class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgsDict(TypedDict):
+    agent_gateway: pulumi.Input[_builtins.str]
+    """
+    Required. The resource name of the Agent Gateway to use for inbound traffic.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs:
+    def __init__(__self__, *,
+                 agent_gateway: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] agent_gateway: Required. The resource name of the Agent Gateway to use for inbound traffic.
+        """
+        pulumi.set(__self__, "agent_gateway", agent_gateway)
+
+    @_builtins.property
+    @pulumi.getter(name="agentGateway")
+    def agent_gateway(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The resource name of the Agent Gateway to use for inbound traffic.
+        """
+        return pulumi.get(self, "agent_gateway")
+
+    @agent_gateway.setter
+    def agent_gateway(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "agent_gateway", value)
+
+
 class AiReasoningEngineSpecDeploymentSpecEnvArgsDict(TypedDict):
     name: pulumi.Input[_builtins.str]
     """
@@ -9402,6 +10245,106 @@ class AiReasoningEngineSpecDeploymentSpecEnvArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+class AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgsDict(TypedDict):
+    http_get: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgsDict']]]
+    """
+    Specifies the HTTP GET configuration for the probe.
+    Structure is documented below.
+    """
+    max_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs:
+    def __init__(__self__, *,
+                 http_get: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs']] = None,
+                 max_seconds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs'] http_get: Specifies the HTTP GET configuration for the probe.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.int] max_seconds: Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+        """
+        if http_get is not None:
+            pulumi.set(__self__, "http_get", http_get)
+        if max_seconds is not None:
+            pulumi.set(__self__, "max_seconds", max_seconds)
+
+    @_builtins.property
+    @pulumi.getter(name="httpGet")
+    def http_get(self) -> pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs']]:
+        """
+        Specifies the HTTP GET configuration for the probe.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_get")
+
+    @http_get.setter
+    def http_get(self, value: pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs']]):
+        pulumi.set(self, "http_get", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxSeconds")
+    def max_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+        """
+        return pulumi.get(self, "max_seconds")
+
+    @max_seconds.setter
+    def max_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_seconds", value)
+
+
+class AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgsDict(TypedDict):
+    path: pulumi.Input[_builtins.str]
+    """
+    Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Optional. Specifies the port number on the container to which the request is sent.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[_builtins.str],
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] path: Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+        :param pulumi.Input[_builtins.int] port: Optional. Specifies the port number on the container to which the request is sent.
+        """
+        pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optional. Specifies the port number on the container to which the request is sent.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
 
 
 class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict(TypedDict):
@@ -9773,6 +10716,12 @@ class AiReasoningEngineSpecPackageSpecArgs:
 
 
 class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
+    agent_config_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgsDict']]]
+    """
+    (Optional, Beta)
+    Optional. Specification for the deploying from agent config.
+    Structure is documented below.
+    """
     developer_connect_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgsDict']]]
     """
     Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
@@ -9797,11 +10746,15 @@ class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
 @pulumi.input_type
 class AiReasoningEngineSpecSourceCodeSpecArgs:
     def __init__(__self__, *,
+                 agent_config_source: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs']] = None,
                  developer_connect_source: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']] = None,
                  image_spec: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']] = None,
                  inline_source: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']] = None,
                  python_spec: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']] = None):
         """
+        :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs'] agent_config_source: (Optional, Beta)
+               Optional. Specification for the deploying from agent config.
+               Structure is documented below.
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs'] developer_connect_source: Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
                Structure is documented below.
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs'] image_spec: Configuration for building an image with custom config file.
@@ -9811,6 +10764,8 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
         :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs'] python_spec: Specification for running a Python application from source.
                Structure is documented below.
         """
+        if agent_config_source is not None:
+            pulumi.set(__self__, "agent_config_source", agent_config_source)
         if developer_connect_source is not None:
             pulumi.set(__self__, "developer_connect_source", developer_connect_source)
         if image_spec is not None:
@@ -9819,6 +10774,20 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
             pulumi.set(__self__, "inline_source", inline_source)
         if python_spec is not None:
             pulumi.set(__self__, "python_spec", python_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="agentConfigSource")
+    def agent_config_source(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs']]:
+        """
+        (Optional, Beta)
+        Optional. Specification for the deploying from agent config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "agent_config_source")
+
+    @agent_config_source.setter
+    def agent_config_source(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs']]):
+        pulumi.set(self, "agent_config_source", value)
 
     @_builtins.property
     @pulumi.getter(name="developerConnectSource")
@@ -9871,6 +10840,117 @@ class AiReasoningEngineSpecSourceCodeSpecArgs:
     @python_spec.setter
     def python_spec(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]):
         pulumi.set(self, "python_spec", value)
+
+
+class AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgsDict(TypedDict):
+    adk_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgsDict']]]
+    """
+    Required. Configuration for the Agent Development Kit (ADK).
+    Structure is documented below.
+    """
+    inline_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgsDict']]]
+    """
+    Optional. Any additional files needed to interpret the config.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs:
+    def __init__(__self__, *,
+                 adk_config: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs']] = None,
+                 inline_source: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs'] adk_config: Required. Configuration for the Agent Development Kit (ADK).
+               Structure is documented below.
+        :param pulumi.Input['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs'] inline_source: Optional. Any additional files needed to interpret the config.
+               Structure is documented below.
+        """
+        if adk_config is not None:
+            pulumi.set(__self__, "adk_config", adk_config)
+        if inline_source is not None:
+            pulumi.set(__self__, "inline_source", inline_source)
+
+    @_builtins.property
+    @pulumi.getter(name="adkConfig")
+    def adk_config(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs']]:
+        """
+        Required. Configuration for the Agent Development Kit (ADK).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "adk_config")
+
+    @adk_config.setter
+    def adk_config(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs']]):
+        pulumi.set(self, "adk_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inlineSource")
+    def inline_source(self) -> pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs']]:
+        """
+        Optional. Any additional files needed to interpret the config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "inline_source")
+
+    @inline_source.setter
+    def inline_source(self, value: pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs']]):
+        pulumi.set(self, "inline_source", value)
+
+
+class AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgsDict(TypedDict):
+    json_config: pulumi.Input[_builtins.str]
+    """
+    Required. The value of the ADK config in JSON format.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs:
+    def __init__(__self__, *,
+                 json_config: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] json_config: Required. The value of the ADK config in JSON format.
+        """
+        pulumi.set(__self__, "json_config", json_config)
+
+    @_builtins.property
+    @pulumi.getter(name="jsonConfig")
+    def json_config(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The value of the ADK config in JSON format.
+        """
+        return pulumi.get(self, "json_config")
+
+    @json_config.setter
+    def json_config(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "json_config", value)
+
+
+class AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgsDict(TypedDict):
+    source_archive: pulumi.Input[_builtins.str]
+    """
+    Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs:
+    def __init__(__self__, *,
+                 source_archive: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] source_archive: Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+        """
+        pulumi.set(__self__, "source_archive", source_archive)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceArchive")
+    def source_archive(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+        """
+        return pulumi.get(self, "source_archive")
+
+    @source_archive.setter
+    def source_archive(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "source_archive", value)
 
 
 class AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgsDict(TypedDict):
@@ -10002,9 +11082,7 @@ class AiReasoningEngineSpecSourceCodeSpecImageSpecArgs:
 class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict(TypedDict):
     source_archive: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Required. Input only.
-    The application source code archive, provided as a compressed
-    tarball (.tar.gz) file. A base64-encoded string.
+    Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
     """
 
 @pulumi.input_type
@@ -10012,9 +11090,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs:
     def __init__(__self__, *,
                  source_archive: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] source_archive: Required. Input only.
-               The application source code archive, provided as a compressed
-               tarball (.tar.gz) file. A base64-encoded string.
+        :param pulumi.Input[_builtins.str] source_archive: Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
         """
         if source_archive is not None:
             pulumi.set(__self__, "source_archive", source_archive)
@@ -10023,9 +11099,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs:
     @pulumi.getter(name="sourceArchive")
     def source_archive(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required. Input only.
-        The application source code archive, provided as a compressed
-        tarball (.tar.gz) file. A base64-encoded string.
+        Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
         """
         return pulumi.get(self, "source_archive")
 
@@ -10148,6 +11222,155 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs:
     @version.setter
     def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
+
+
+class AiReasoningEngineTrafficConfigArgsDict(TypedDict):
+    traffic_split_always_latest: NotRequired[pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgsDict']]]
+    """
+    Optional. Traffic distribution configuration, where all traffic is sent to the
+    latest Runtime Revision.
+    """
+    traffic_split_manual: NotRequired[pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitManualArgsDict']]]
+    """
+    Optional. Manual traffic distribution configuration, where the user specifies the
+    Runtime Revision IDs and the percentage of traffic to send to each.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineTrafficConfigArgs:
+    def __init__(__self__, *,
+                 traffic_split_always_latest: pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs']] = None,
+                 traffic_split_manual: pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitManualArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs'] traffic_split_always_latest: Optional. Traffic distribution configuration, where all traffic is sent to the
+               latest Runtime Revision.
+        :param pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitManualArgs'] traffic_split_manual: Optional. Manual traffic distribution configuration, where the user specifies the
+               Runtime Revision IDs and the percentage of traffic to send to each.
+               Structure is documented below.
+        """
+        if traffic_split_always_latest is not None:
+            pulumi.set(__self__, "traffic_split_always_latest", traffic_split_always_latest)
+        if traffic_split_manual is not None:
+            pulumi.set(__self__, "traffic_split_manual", traffic_split_manual)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficSplitAlwaysLatest")
+    def traffic_split_always_latest(self) -> pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs']]:
+        """
+        Optional. Traffic distribution configuration, where all traffic is sent to the
+        latest Runtime Revision.
+        """
+        return pulumi.get(self, "traffic_split_always_latest")
+
+    @traffic_split_always_latest.setter
+    def traffic_split_always_latest(self, value: pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs']]):
+        pulumi.set(self, "traffic_split_always_latest", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficSplitManual")
+    def traffic_split_manual(self) -> pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitManualArgs']]:
+        """
+        Optional. Manual traffic distribution configuration, where the user specifies the
+        Runtime Revision IDs and the percentage of traffic to send to each.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_split_manual")
+
+    @traffic_split_manual.setter
+    def traffic_split_manual(self, value: pulumi.Input[Optional['AiReasoningEngineTrafficConfigTrafficSplitManualArgs']]):
+        pulumi.set(self, "traffic_split_manual", value)
+
+
+class AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs:
+    def __init__(__self__):
+        pass
+
+
+class AiReasoningEngineTrafficConfigTrafficSplitManualArgsDict(TypedDict):
+    targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgsDict']]]]]
+    """
+    Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+    percentages must equal to 100.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineTrafficConfigTrafficSplitManualArgs:
+    def __init__(__self__, *,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs']]] targets: Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+               percentages must equal to 100.
+               Structure is documented below.
+        """
+        if targets is not None:
+            pulumi.set(__self__, "targets", targets)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs']]]]:
+        """
+        Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+        percentages must equal to 100.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs']]]]):
+        pulumi.set(self, "targets", value)
+
+
+class AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgsDict(TypedDict):
+    percent: pulumi.Input[_builtins.int]
+    """
+    Required. Specifies percent of the traffic to this Runtime Revision.
+    """
+    runtime_revision_name: pulumi.Input[_builtins.str]
+    """
+    Required. The Runtime Revision name to which to send this portion of traffic.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs:
+    def __init__(__self__, *,
+                 percent: pulumi.Input[_builtins.int],
+                 runtime_revision_name: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] percent: Required. Specifies percent of the traffic to this Runtime Revision.
+        :param pulumi.Input[_builtins.str] runtime_revision_name: Required. The Runtime Revision name to which to send this portion of traffic.
+        """
+        pulumi.set(__self__, "percent", percent)
+        pulumi.set(__self__, "runtime_revision_name", runtime_revision_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def percent(self) -> pulumi.Input[_builtins.int]:
+        """
+        Required. Specifies percent of the traffic to this Runtime Revision.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "percent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="runtimeRevisionName")
+    def runtime_revision_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Required. The Runtime Revision name to which to send this portion of traffic.
+        """
+        return pulumi.get(self, "runtime_revision_name")
+
+    @runtime_revision_name.setter
+    def runtime_revision_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "runtime_revision_name", value)
 
 
 class AiScheduleCreateNotebookExecutionJobRequestArgsDict(TypedDict):

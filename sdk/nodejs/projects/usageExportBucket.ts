@@ -72,7 +72,7 @@ export class UsageExportBucket extends pulumi.CustomResource {
     /**
      * The bucket to store reports in.
      *
-     * - - -
+     * ***
      */
     declare public readonly bucketName: pulumi.Output<string>;
     /**
@@ -132,7 +132,7 @@ export interface UsageExportBucketState {
     /**
      * The bucket to store reports in.
      *
-     * - - -
+     * ***
      */
     bucketName?: pulumi.Input<string | undefined>;
     /**
@@ -161,7 +161,7 @@ export interface UsageExportBucketArgs {
     /**
      * The bucket to store reports in.
      *
-     * - - -
+     * ***
      */
     bucketName: pulumi.Input<string>;
     /**

@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigCustomNodeInit;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfigSwapConfig;
@@ -26,6 +27,11 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      * 
      */
     private String cgroupMode;
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    private List<GetClusterNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits;
     /**
      * @return Amounts for 2M and 1G hugepages.
      * 
@@ -71,6 +77,13 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
      */
     public String cgroupMode() {
         return this.cgroupMode;
+    }
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    public List<GetClusterNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits() {
+        return this.customNodeInits;
     }
     /**
      * @return Amounts for 2M and 1G hugepages.
@@ -126,6 +139,7 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     public static final class Builder {
         private List<GetClusterNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs;
         private String cgroupMode;
+        private List<GetClusterNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits;
         private List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
         private List<GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
         private List<GetClusterNodeConfigLinuxNodeConfigSwapConfig> swapConfigs;
@@ -137,6 +151,7 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.accurateTimeConfigs = defaults.accurateTimeConfigs;
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.customNodeInits = defaults.customNodeInits;
     	      this.hugepagesConfigs = defaults.hugepagesConfigs;
     	      this.nodeKernelModuleLoadings = defaults.nodeKernelModuleLoadings;
     	      this.swapConfigs = defaults.swapConfigs;
@@ -163,6 +178,17 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
             }
             this.cgroupMode = cgroupMode;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customNodeInits(List<GetClusterNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits) {
+            if (customNodeInits == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "customNodeInits");
+            }
+            this.customNodeInits = customNodeInits;
+            return this;
+        }
+        public Builder customNodeInits(GetClusterNodeConfigLinuxNodeConfigCustomNodeInit... customNodeInits) {
+            return customNodeInits(List.of(customNodeInits));
         }
         @CustomType.Setter
         public Builder hugepagesConfigs(List<GetClusterNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs) {
@@ -225,6 +251,7 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
             final var _resultValue = new GetClusterNodeConfigLinuxNodeConfig();
             _resultValue.accurateTimeConfigs = accurateTimeConfigs;
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.customNodeInits = customNodeInits;
             _resultValue.hugepagesConfigs = hugepagesConfigs;
             _resultValue.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
             _resultValue.swapConfigs = swapConfigs;

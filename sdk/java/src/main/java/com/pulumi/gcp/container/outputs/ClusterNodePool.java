@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoscaling;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfig;
@@ -47,6 +48,12 @@ public final class ClusterNodePool {
      * 
      */
     private @Nullable List<String> instanceGroupUrls;
+    /**
+     * @return The maintenance policy to use for the cluster. Structure is
+     * documented below.
+     * 
+     */
+    private @Nullable List<ClusterNodePoolMaintenancePolicy> maintenancePolicies;
     /**
      * @return List of instance group URLs which have been assigned to this node pool.
      * 
@@ -165,6 +172,14 @@ public final class ClusterNodePool {
      */
     public List<String> instanceGroupUrls() {
         return this.instanceGroupUrls == null ? List.of() : this.instanceGroupUrls;
+    }
+    /**
+     * @return The maintenance policy to use for the cluster. Structure is
+     * documented below.
+     * 
+     */
+    public List<ClusterNodePoolMaintenancePolicy> maintenancePolicies() {
+        return this.maintenancePolicies == null ? List.of() : this.maintenancePolicies;
     }
     /**
      * @return List of instance group URLs which have been assigned to this node pool.
@@ -292,6 +307,7 @@ public final class ClusterNodePool {
         private @Nullable Boolean ignoreNodeCountChanges;
         private @Nullable Integer initialNodeCount;
         private @Nullable List<String> instanceGroupUrls;
+        private @Nullable List<ClusterNodePoolMaintenancePolicy> maintenancePolicies;
         private @Nullable List<String> managedInstanceGroupUrls;
         private @Nullable ClusterNodePoolManagement management;
         private @Nullable Integer maxPodsPerNode;
@@ -313,6 +329,7 @@ public final class ClusterNodePool {
     	      this.ignoreNodeCountChanges = defaults.ignoreNodeCountChanges;
     	      this.initialNodeCount = defaults.initialNodeCount;
     	      this.instanceGroupUrls = defaults.instanceGroupUrls;
+    	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.managedInstanceGroupUrls = defaults.managedInstanceGroupUrls;
     	      this.management = defaults.management;
     	      this.maxPodsPerNode = defaults.maxPodsPerNode;
@@ -355,6 +372,15 @@ public final class ClusterNodePool {
         }
         public Builder instanceGroupUrls(String... instanceGroupUrls) {
             return instanceGroupUrls(List.of(instanceGroupUrls));
+        }
+        @CustomType.Setter
+        public Builder maintenancePolicies(@Nullable List<ClusterNodePoolMaintenancePolicy> maintenancePolicies) {
+
+            this.maintenancePolicies = maintenancePolicies;
+            return this;
+        }
+        public Builder maintenancePolicies(ClusterNodePoolMaintenancePolicy... maintenancePolicies) {
+            return maintenancePolicies(List.of(maintenancePolicies));
         }
         @CustomType.Setter
         public Builder managedInstanceGroupUrls(@Nullable List<String> managedInstanceGroupUrls) {
@@ -455,6 +481,7 @@ public final class ClusterNodePool {
             _resultValue.ignoreNodeCountChanges = ignoreNodeCountChanges;
             _resultValue.initialNodeCount = initialNodeCount;
             _resultValue.instanceGroupUrls = instanceGroupUrls;
+            _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.managedInstanceGroupUrls = managedInstanceGroupUrls;
             _resultValue.management = management;
             _resultValue.maxPodsPerNode = maxPodsPerNode;

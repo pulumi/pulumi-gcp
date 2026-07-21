@@ -21,12 +21,30 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:iap/agentRegistryAgentIamBinding:AgentRegistryAgentIamBinding":
+		r = &AgentRegistryAgentIamBinding{}
+	case "gcp:iap/agentRegistryAgentIamMember:AgentRegistryAgentIamMember":
+		r = &AgentRegistryAgentIamMember{}
+	case "gcp:iap/agentRegistryAgentIamPolicy:AgentRegistryAgentIamPolicy":
+		r = &AgentRegistryAgentIamPolicy{}
+	case "gcp:iap/agentRegistryEndpointIamBinding:AgentRegistryEndpointIamBinding":
+		r = &AgentRegistryEndpointIamBinding{}
+	case "gcp:iap/agentRegistryEndpointIamMember:AgentRegistryEndpointIamMember":
+		r = &AgentRegistryEndpointIamMember{}
+	case "gcp:iap/agentRegistryEndpointIamPolicy:AgentRegistryEndpointIamPolicy":
+		r = &AgentRegistryEndpointIamPolicy{}
 	case "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding":
 		r = &AgentRegistryIamBinding{}
 	case "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember":
 		r = &AgentRegistryIamMember{}
 	case "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy":
 		r = &AgentRegistryIamPolicy{}
+	case "gcp:iap/agentRegistryMcpServerIamBinding:AgentRegistryMcpServerIamBinding":
+		r = &AgentRegistryMcpServerIamBinding{}
+	case "gcp:iap/agentRegistryMcpServerIamMember:AgentRegistryMcpServerIamMember":
+		r = &AgentRegistryMcpServerIamMember{}
+	case "gcp:iap/agentRegistryMcpServerIamPolicy:AgentRegistryMcpServerIamPolicy":
+		r = &AgentRegistryMcpServerIamPolicy{}
 	case "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding":
 		r = &AppEngineServiceIamBinding{}
 	case "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember":
@@ -134,6 +152,36 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"iap/agentRegistryAgentIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryAgentIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryAgentIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryEndpointIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryEndpointIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryEndpointIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"iap/agentRegistryIamBinding",
 		&module{version},
 	)
@@ -145,6 +193,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/agentRegistryIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryMcpServerIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryMcpServerIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/agentRegistryMcpServerIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

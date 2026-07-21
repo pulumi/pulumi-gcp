@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_policy=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, erase_windows_vss_signature=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_policy=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, erase_windows_vss_signature=None, guest_accelerators=None, hostname=None, id=None, instance_encryption_keys=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, workload_identity_configs=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -163,6 +163,9 @@ class GetInstanceResult:
         if tags_fingerprint and not isinstance(tags_fingerprint, str):
             raise TypeError("Expected argument 'tags_fingerprint' to be a str")
         pulumi.set(__self__, "tags_fingerprint", tags_fingerprint)
+        if workload_identity_configs and not isinstance(workload_identity_configs, list):
+            raise TypeError("Expected argument 'workload_identity_configs' to be a list")
+        pulumi.set(__self__, "workload_identity_configs", workload_identity_configs)
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
@@ -480,6 +483,11 @@ class GetInstanceResult:
         return pulumi.get(self, "tags_fingerprint")
 
     @_builtins.property
+    @pulumi.getter(name="workloadIdentityConfigs")
+    def workload_identity_configs(self) -> Sequence['outputs.GetInstanceWorkloadIdentityConfigResult']:
+        return pulumi.get(self, "workload_identity_configs")
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "zone")
@@ -536,6 +544,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             shielded_instance_configs=self.shielded_instance_configs,
             tags=self.tags,
             tags_fingerprint=self.tags_fingerprint,
+            workload_identity_configs=self.workload_identity_configs,
             zone=self.zone)
 
 
@@ -624,6 +633,7 @@ def get_instance(name: Optional[_builtins.str] = None,
         shielded_instance_configs=pulumi.get(__ret__, 'shielded_instance_configs'),
         tags=pulumi.get(__ret__, 'tags'),
         tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'),
+        workload_identity_configs=pulumi.get(__ret__, 'workload_identity_configs'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_instance_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -709,4 +719,5 @@ def get_instance_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = 
         shielded_instance_configs=pulumi.get(__response__, 'shielded_instance_configs'),
         tags=pulumi.get(__response__, 'tags'),
         tags_fingerprint=pulumi.get(__response__, 'tags_fingerprint'),
+        workload_identity_configs=pulumi.get(__response__, 'workload_identity_configs'),
         zone=pulumi.get(__response__, 'zone')))

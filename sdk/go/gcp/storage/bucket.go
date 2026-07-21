@@ -349,6 +349,41 @@ import (
 //	}
 //
 // ```
+// ### Enabling RAPID Storage Bucket
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewBucket(ctx, "zonal_bucket", &storage.BucketArgs{
+//				Location: pulumi.String("US-CENTRAL1"),
+//				CustomPlacementConfig: &storage.BucketCustomPlacementConfigArgs{
+//					DataLocations: pulumi.StringArray{
+//						pulumi.String("US-CENTRAL1-B"),
+//					},
+//				},
+//				Name:         pulumi.String("zonal-rapid-bucket"),
+//				StorageClass: pulumi.String("RAPID"),
+//				HierarchicalNamespace: &storage.BucketHierarchicalNamespaceArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Bucket struct {
 	pulumi.CustomResourceState
 

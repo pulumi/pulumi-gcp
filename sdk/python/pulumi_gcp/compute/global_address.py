@@ -39,8 +39,8 @@ class GlobalAddressArgs:
         :param pulumi.Input[_builtins.str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -119,8 +119,8 @@ class GlobalAddressArgs:
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
-        Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          Default value is `EXTERNAL`.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -289,8 +289,8 @@ class _GlobalAddressState:
         :param pulumi.Input[_builtins.str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -386,8 +386,8 @@ class _GlobalAddressState:
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
-        Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          Default value is `EXTERNAL`.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 
@@ -670,8 +670,8 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -858,8 +858,8 @@ class GlobalAddress(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] address_type: The type of the address to reserve.
                * EXTERNAL indicates public/external single IP address.
                * INTERNAL indicates internal IP ranges belonging to some network.
-               Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL`.
+                 Default value is `EXTERNAL`.
+                 Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -940,8 +940,8 @@ class GlobalAddress(pulumi.CustomResource):
         The type of the address to reserve.
         * EXTERNAL indicates public/external single IP address.
         * INTERNAL indicates internal IP ranges belonging to some network.
-        Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL`.
+          Default value is `EXTERNAL`.
+          Possible values are: `EXTERNAL`, `INTERNAL`.
         """
         return pulumi.get(self, "address_type")
 

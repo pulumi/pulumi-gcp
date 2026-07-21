@@ -351,7 +351,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      *
-     * - - -
+     * ***
      */
     declare public readonly machineType: pulumi.Output<string>;
     /**
@@ -468,6 +468,11 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    declare public readonly workloadIdentityConfig: pulumi.Output<outputs.compute.RegionInstanceTemplateWorkloadIdentityConfig | undefined>;
 
     /**
      * Create a RegionInstanceTemplate resource with the given unique name, arguments, and options.
@@ -518,6 +523,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["shieldedInstanceConfig"] = state?.shieldedInstanceConfig;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
+            resourceInputs["workloadIdentityConfig"] = state?.workloadIdentityConfig;
         } else {
             const args = argsOrState as RegionInstanceTemplateArgs | undefined;
             if (args?.disks === undefined && !opts.urn) {
@@ -555,6 +561,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["shieldedInstanceConfig"] = args?.shieldedInstanceConfig;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
@@ -645,7 +652,7 @@ export interface RegionInstanceTemplateState {
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      *
-     * - - -
+     * ***
      */
     machineType?: pulumi.Input<string | undefined>;
     /**
@@ -762,6 +769,11 @@ export interface RegionInstanceTemplateState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.RegionInstanceTemplateWorkloadIdentityConfig | undefined>;
 }
 
 /**
@@ -831,7 +843,7 @@ export interface RegionInstanceTemplateArgs {
      *
      * To create a machine with a [custom type](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
      *
-     * - - -
+     * ***
      */
     machineType: pulumi.Input<string>;
     /**
@@ -928,4 +940,9 @@ export interface RegionInstanceTemplateArgs {
      * Tags to attach to the instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.RegionInstanceTemplateWorkloadIdentityConfig | undefined>;
 }

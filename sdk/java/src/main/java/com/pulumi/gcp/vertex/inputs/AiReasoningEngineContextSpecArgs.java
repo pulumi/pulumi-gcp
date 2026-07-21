@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecExampleStoreConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,25 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineContextSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineContextSpecArgs Empty = new AiReasoningEngineContextSpecArgs();
+
+    /**
+     * (Optional, Beta)
+     * Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="exampleStoreConfig")
+    private @Nullable Output<AiReasoningEngineContextSpecExampleStoreConfigArgs> exampleStoreConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineContextSpecExampleStoreConfigArgs>> exampleStoreConfig() {
+        return Optional.ofNullable(this.exampleStoreConfig);
+    }
 
     /**
      * Specification for a Memory Bank, which manages memories for the Agent Engine.
@@ -35,6 +55,7 @@ public final class AiReasoningEngineContextSpecArgs extends com.pulumi.resources
     private AiReasoningEngineContextSpecArgs() {}
 
     private AiReasoningEngineContextSpecArgs(AiReasoningEngineContextSpecArgs $) {
+        this.exampleStoreConfig = $.exampleStoreConfig;
         this.memoryBankConfig = $.memoryBankConfig;
     }
 
@@ -54,6 +75,31 @@ public final class AiReasoningEngineContextSpecArgs extends com.pulumi.resources
 
         public Builder(AiReasoningEngineContextSpecArgs defaults) {
             $ = new AiReasoningEngineContextSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param exampleStoreConfig (Optional, Beta)
+         * Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exampleStoreConfig(@Nullable Output<AiReasoningEngineContextSpecExampleStoreConfigArgs> exampleStoreConfig) {
+            $.exampleStoreConfig = exampleStoreConfig;
+            return this;
+        }
+
+        /**
+         * @param exampleStoreConfig (Optional, Beta)
+         * Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exampleStoreConfig(AiReasoningEngineContextSpecExampleStoreConfigArgs exampleStoreConfig) {
+            return exampleStoreConfig(Output.of(exampleStoreConfig));
         }
 
         /**

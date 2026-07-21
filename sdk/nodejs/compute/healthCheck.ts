@@ -498,7 +498,7 @@ export class HealthCheck extends pulumi.CustomResource {
      * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
      * * The checkIntervalSec field must be at least 30.
      * * The health check cannot be used with BackendService nor with managed
-     * instance group auto-healing.
+     *   instance group auto-healing.
      */
     declare public readonly sourceRegions: pulumi.Output<string[] | undefined>;
     /**
@@ -681,7 +681,7 @@ export interface HealthCheckState {
      * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
      * * The checkIntervalSec field must be at least 30.
      * * The health check cannot be used with BackendService nor with managed
-     * instance group auto-healing.
+     *   instance group auto-healing.
      */
     sourceRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -796,7 +796,7 @@ export interface HealthCheckArgs {
      * * The proxyHeader field for HTTP, HTTPS, and TCP is not supported.
      * * The checkIntervalSec field must be at least 30.
      * * The health check cannot be used with BackendService nor with managed
-     * instance group auto-healing.
+     *   instance group auto-healing.
      */
     sourceRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

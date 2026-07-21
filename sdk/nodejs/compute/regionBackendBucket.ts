@@ -193,8 +193,8 @@ export class RegionBackendBucket extends pulumi.CustomResource {
      * Possible values:
      * - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
      * - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-     * This field is required for regional backend buckets.
-     * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     *   This field is required for regional backend buckets.
+     *   Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
     declare public readonly loadBalancingScheme: pulumi.Output<string>;
     /**
@@ -298,8 +298,8 @@ export interface RegionBackendBucketState {
      * Possible values:
      * - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
      * - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-     * This field is required for regional backend buckets.
-     * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     *   This field is required for regional backend buckets.
+     *   Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**
@@ -355,8 +355,8 @@ export interface RegionBackendBucketArgs {
      * Possible values:
      * - 'INTERNAL_MANAGED': for regional internal Application Load Balancers
      * - 'EXTERNAL_MANAGED': for regional external Application Load Balancers
-     * This field is required for regional backend buckets.
-     * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+     *   This field is required for regional backend buckets.
+     *   Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string | undefined>;
     /**

@@ -545,7 +545,6 @@ class MulticloudDataTransferConfigServiceArgsDict(TypedDict):
     The state and activation time details for the service.
     Structure is documented below.
 
-
     <a name="nested_services_states"></a>The `states` block contains:
     """
 
@@ -560,7 +559,6 @@ class MulticloudDataTransferConfigServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]] states: (Output)
                The state and activation time details for the service.
                Structure is documented below.
-               
                
                <a name="nested_services_states"></a>The `states` block contains:
         """
@@ -588,7 +586,6 @@ class MulticloudDataTransferConfigServiceArgs:
         (Output)
         The state and activation time details for the service.
         Structure is documented below.
-
 
         <a name="nested_services_states"></a>The `states` block contains:
         """

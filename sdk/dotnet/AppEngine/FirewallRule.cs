@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.AppEngine
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -46,12 +47,30 @@ namespace Pulumi.Gcp.AppEngine
     ///         LocationId = "us-central",
     ///     });
     /// 
+    ///     // Wait for 5 minutes seconds to ensure IAM permission propagation completes
+    ///     var wait300Seconds = new Time.Sleep("wait_300_seconds", new()
+    ///     {
+    ///         CreateDuration = "300s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             app,
+    ///         },
+    ///     });
+    /// 
     ///     var rule = new Gcp.AppEngine.FirewallRule("rule", new()
     ///     {
     ///         Project = app.Project,
     ///         Priority = 1000,
     ///         Action = "ALLOW",
     ///         SourceRange = "*",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait300Seconds,
+    ///         },
     ///     });
     /// 
     /// });

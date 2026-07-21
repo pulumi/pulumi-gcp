@@ -14,9 +14,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineSpecSourceCodeSpecInlineSource
     {
         /// <summary>
-        /// Required. Input only.
-        /// The application source code archive, provided as a compressed
-        /// tarball (.tar.gz) file. A base64-encoded string.
+        /// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
         /// </summary>
         public readonly string? SourceArchive;
 

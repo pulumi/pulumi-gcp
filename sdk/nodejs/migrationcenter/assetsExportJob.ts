@@ -111,14 +111,14 @@ export class AssetsExportJob extends pulumi.CustomResource {
      * Labels as key value pairs.
      * Labels must meet the following constraints:
      * * Keys and values can contain only lowercase letters, numeric characters,
-     * underscores, and dashes.
+     *   underscores, and dashes.
      * * All characters must use UTF-8 encoding, and international characters are
-     * allowed.
+     *   allowed.
      * * Keys must start with a lowercase letter or international character.
      * * Each resource is limited to a maximum of 64 labels.
-     * Both keys and values are additionally constrained to be <= 128 bytes.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     *   Both keys and values are additionally constrained to be <= 128 bytes.
+     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -269,14 +269,14 @@ export interface AssetsExportJobState {
      * Labels as key value pairs.
      * Labels must meet the following constraints:
      * * Keys and values can contain only lowercase letters, numeric characters,
-     * underscores, and dashes.
+     *   underscores, and dashes.
      * * All characters must use UTF-8 encoding, and international characters are
-     * allowed.
+     *   allowed.
      * * Keys must start with a lowercase letter or international character.
      * * Each resource is limited to a maximum of 64 labels.
-     * Both keys and values are additionally constrained to be <= 128 bytes.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     *   Both keys and values are additionally constrained to be <= 128 bytes.
+     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -353,14 +353,14 @@ export interface AssetsExportJobArgs {
      * Labels as key value pairs.
      * Labels must meet the following constraints:
      * * Keys and values can contain only lowercase letters, numeric characters,
-     * underscores, and dashes.
+     *   underscores, and dashes.
      * * All characters must use UTF-8 encoding, and international characters are
-     * allowed.
+     *   allowed.
      * * Keys must start with a lowercase letter or international character.
      * * Each resource is limited to a maximum of 64 labels.
-     * Both keys and values are additionally constrained to be <= 128 bytes.
-     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     *   Both keys and values are additionally constrained to be <= 128 bytes.
+     *   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *   Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

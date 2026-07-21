@@ -3,15 +3,44 @@
 
 package com.pulumi.gcp.dataplex.inputs;
 
-
+import com.pulumi.core.Output;
+import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatascanDataDocumentationSpecArgs Empty = new DatascanDataDocumentationSpecArgs();
 
+    /**
+     * If set, the latest DataScan job result will be published to Knowledge Catalog.
+     * 
+     */
+    @Import(name="catalogPublishingEnabled")
+    private @Nullable Output<Boolean> catalogPublishingEnabled;
+
+    /**
+     * @return If set, the latest DataScan job result will be published to Knowledge Catalog.
+     * 
+     */
+    public Optional<Output<Boolean>> catalogPublishingEnabled() {
+        return Optional.ofNullable(this.catalogPublishingEnabled);
+    }
+
+    private DatascanDataDocumentationSpecArgs() {}
+
+    private DatascanDataDocumentationSpecArgs(DatascanDataDocumentationSpecArgs $) {
+        this.catalogPublishingEnabled = $.catalogPublishingEnabled;
+    }
+
     public static Builder builder() {
         return new Builder();
+    }
+    public static Builder builder(DatascanDataDocumentationSpecArgs defaults) {
+        return new Builder(defaults);
     }
 
     public static final class Builder {
@@ -20,6 +49,32 @@ public final class DatascanDataDocumentationSpecArgs extends com.pulumi.resource
         public Builder() {
             $ = new DatascanDataDocumentationSpecArgs();
         }
+
+        public Builder(DatascanDataDocumentationSpecArgs defaults) {
+            $ = new DatascanDataDocumentationSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param catalogPublishingEnabled If set, the latest DataScan job result will be published to Knowledge Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogPublishingEnabled(@Nullable Output<Boolean> catalogPublishingEnabled) {
+            $.catalogPublishingEnabled = catalogPublishingEnabled;
+            return this;
+        }
+
+        /**
+         * @param catalogPublishingEnabled If set, the latest DataScan job result will be published to Knowledge Catalog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catalogPublishingEnabled(Boolean catalogPublishingEnabled) {
+            return catalogPublishingEnabled(Output.of(catalogPublishingEnabled));
+        }
+
         public DatascanDataDocumentationSpecArgs build() {
             return $;
         }

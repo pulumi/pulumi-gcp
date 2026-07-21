@@ -43,6 +43,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+        /// </summary>
+        [Input("privateNetworkService")]
+        public Input<string>? PrivateNetworkService { get; set; }
+
+        /// <summary>
         /// The name of the Azure Storage account.
         /// </summary>
         [Input("storageAccount", required: true)]

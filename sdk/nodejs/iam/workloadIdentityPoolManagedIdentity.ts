@@ -152,9 +152,9 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * The current state of the managed identity.
      * * `ACTIVE`: The managed identity is active.
      * * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-     * identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-     * soft-deleted managed identity until it is permanently deleted.
+     *   permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+     *   identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+     *   soft-deleted managed identity until it is permanently deleted.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -169,7 +169,7 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     declare public readonly workloadIdentityPoolManagedIdentityId: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     declare public readonly workloadIdentityPoolNamespaceId: pulumi.Output<string>;
 
@@ -275,9 +275,9 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * The current state of the managed identity.
      * * `ACTIVE`: The managed identity is active.
      * * `DELETED`: The managed identity is soft-deleted. Soft-deleted managed identities are
-     * permanently deleted after approximately 30 days. You can restore a soft-deleted managed
-     * identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
-     * soft-deleted managed identity until it is permanently deleted.
+     *   permanently deleted after approximately 30 days. You can restore a soft-deleted managed
+     *   identity using UndeleteWorkloadIdentityPoolManagedIdentity. You cannot reuse the ID of a
+     *   soft-deleted managed identity until it is permanently deleted.
      */
     state?: pulumi.Input<string | undefined>;
     /**
@@ -292,7 +292,7 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolManagedIdentityId?: pulumi.Input<string | undefined>;
     /**
@@ -301,7 +301,7 @@ export interface WorkloadIdentityPoolManagedIdentityState {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId?: pulumi.Input<string | undefined>;
 }
@@ -352,7 +352,7 @@ export interface WorkloadIdentityPoolManagedIdentityArgs {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolManagedIdentityId: pulumi.Input<string>;
     /**
@@ -361,7 +361,7 @@ export interface WorkloadIdentityPoolManagedIdentityArgs {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId: pulumi.Input<string>;
 }

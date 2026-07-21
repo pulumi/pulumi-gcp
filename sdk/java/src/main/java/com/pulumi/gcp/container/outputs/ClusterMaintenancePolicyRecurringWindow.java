@@ -11,6 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class ClusterMaintenancePolicyRecurringWindow {
     private String endTime;
+    /**
+     * @return Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+     * 
+     * Examples:
+     * 
+     */
     private String recurrence;
     private String startTime;
 
@@ -18,6 +24,12 @@ public final class ClusterMaintenancePolicyRecurringWindow {
     public String endTime() {
         return this.endTime;
     }
+    /**
+     * @return Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+     * 
+     * Examples:
+     * 
+     */
     public String recurrence() {
         return this.recurrence;
     }

@@ -35,7 +35,7 @@ export interface GetBackendBucketArgs {
     /**
      * Name of the resource.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -97,7 +97,7 @@ export interface GetBackendBucketOutputArgs {
     /**
      * Name of the resource.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

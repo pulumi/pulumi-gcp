@@ -25,6 +25,11 @@ export type DataAccessScope = import("./dataAccessScope").DataAccessScope;
 export const DataAccessScope: typeof import("./dataAccessScope").DataAccessScope = null as any;
 utilities.lazyLoad(exports, ["DataAccessScope"], () => require("./dataAccessScope"));
 
+export { DataExportArgs, DataExportState } from "./dataExport";
+export type DataExport = import("./dataExport").DataExport;
+export const DataExport: typeof import("./dataExport").DataExport = null as any;
+utilities.lazyLoad(exports, ["DataExport"], () => require("./dataExport"));
+
 export { DataTableArgs, DataTableState } from "./dataTable";
 export type DataTable = import("./dataTable").DataTable;
 export const DataTable: typeof import("./dataTable").DataTable = null as any;
@@ -39,6 +44,11 @@ export { EnvironmentArgs, EnvironmentState } from "./environment";
 export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+
+export { EnvironmentGroupArgs, EnvironmentGroupState } from "./environmentGroup";
+export type EnvironmentGroup = import("./environmentGroup").EnvironmentGroup;
+export const EnvironmentGroup: typeof import("./environmentGroup").EnvironmentGroup = null as any;
+utilities.lazyLoad(exports, ["EnvironmentGroup"], () => require("./environmentGroup"));
 
 export { FeedArgs, FeedState } from "./feed";
 export type Feed = import("./feed").Feed;
@@ -90,6 +100,11 @@ export type RuleDeployment = import("./ruleDeployment").RuleDeployment;
 export const RuleDeployment: typeof import("./ruleDeployment").RuleDeployment = null as any;
 utilities.lazyLoad(exports, ["RuleDeployment"], () => require("./ruleDeployment"));
 
+export { SoarDomainArgs, SoarDomainState } from "./soarDomain";
+export type SoarDomain = import("./soarDomain").SoarDomain;
+export const SoarDomain: typeof import("./soarDomain").SoarDomain = null as any;
+utilities.lazyLoad(exports, ["SoarDomain"], () => require("./soarDomain"));
+
 export { SoarNetworkArgs, SoarNetworkState } from "./soarNetwork";
 export type SoarNetwork = import("./soarNetwork").SoarNetwork;
 export const SoarNetwork: typeof import("./soarNetwork").SoarNetwork = null as any;
@@ -113,12 +128,16 @@ const _module = {
                 return new DataAccessLabel(name, <any>undefined, { urn })
             case "gcp:chronicle/dataAccessScope:DataAccessScope":
                 return new DataAccessScope(name, <any>undefined, { urn })
+            case "gcp:chronicle/dataExport:DataExport":
+                return new DataExport(name, <any>undefined, { urn })
             case "gcp:chronicle/dataTable:DataTable":
                 return new DataTable(name, <any>undefined, { urn })
             case "gcp:chronicle/dataTableRow:DataTableRow":
                 return new DataTableRow(name, <any>undefined, { urn })
             case "gcp:chronicle/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "gcp:chronicle/environmentGroup:EnvironmentGroup":
+                return new EnvironmentGroup(name, <any>undefined, { urn })
             case "gcp:chronicle/feed:Feed":
                 return new Feed(name, <any>undefined, { urn })
             case "gcp:chronicle/findingsRefinement:FindingsRefinement":
@@ -139,6 +158,8 @@ const _module = {
                 return new Rule(name, <any>undefined, { urn })
             case "gcp:chronicle/ruleDeployment:RuleDeployment":
                 return new RuleDeployment(name, <any>undefined, { urn })
+            case "gcp:chronicle/soarDomain:SoarDomain":
+                return new SoarDomain(name, <any>undefined, { urn })
             case "gcp:chronicle/soarNetwork:SoarNetwork":
                 return new SoarNetwork(name, <any>undefined, { urn })
             case "gcp:chronicle/watchlist:Watchlist":
@@ -152,9 +173,11 @@ pulumi.runtime.registerResourceModule("gcp", "chronicle/customList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dashboardChart", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/dataExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTable", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataTableRow", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/environment", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/environmentGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/feed", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinement", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/findingsRefinementDeployment", _module)
@@ -165,5 +188,6 @@ pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/retrohunt", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/rule", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/ruleDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/soarDomain", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/soarNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/watchlist", _module)

@@ -110,7 +110,7 @@ var substituteRandomSuffix = (func() tfbridge.DocsEdit {
 		Edit: func(_ string, content []byte) ([]byte, error) {
 			return pattern.ReplaceAllFunc(content, func([]byte) []byte {
 				//nolint:gosec
-				return []byte(fmt.Sprintf("_%d", randGen.Intn(100000)))
+				return fmt.Appendf(nil, "_%d", randGen.Intn(100000))
 			}), nil
 		},
 	}

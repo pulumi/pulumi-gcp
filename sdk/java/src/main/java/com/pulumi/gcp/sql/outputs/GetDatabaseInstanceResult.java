@@ -34,6 +34,7 @@ public final class GetDatabaseInstanceResult {
     private String dnsName;
     private List<GetDatabaseInstanceDnsName> dnsNames;
     private String encryptionKeyName;
+    private Boolean enforceNewSqlNetworkArchitecture;
     private String finalBackupDescription;
     private String firstIpAddress;
     /**
@@ -95,6 +96,9 @@ public final class GetDatabaseInstanceResult {
     }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
+    }
+    public Boolean enforceNewSqlNetworkArchitecture() {
+        return this.enforceNewSqlNetworkArchitecture;
     }
     public String finalBackupDescription() {
         return this.finalBackupDescription;
@@ -198,6 +202,7 @@ public final class GetDatabaseInstanceResult {
         private String dnsName;
         private List<GetDatabaseInstanceDnsName> dnsNames;
         private String encryptionKeyName;
+        private Boolean enforceNewSqlNetworkArchitecture;
         private String finalBackupDescription;
         private String firstIpAddress;
         private String id;
@@ -237,6 +242,7 @@ public final class GetDatabaseInstanceResult {
     	      this.dnsName = defaults.dnsName;
     	      this.dnsNames = defaults.dnsNames;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
+    	      this.enforceNewSqlNetworkArchitecture = defaults.enforceNewSqlNetworkArchitecture;
     	      this.finalBackupDescription = defaults.finalBackupDescription;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
@@ -352,6 +358,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "encryptionKeyName");
             }
             this.encryptionKeyName = encryptionKeyName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enforceNewSqlNetworkArchitecture(Boolean enforceNewSqlNetworkArchitecture) {
+            if (enforceNewSqlNetworkArchitecture == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "enforceNewSqlNetworkArchitecture");
+            }
+            this.enforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             return this;
         }
         @CustomType.Setter
@@ -596,6 +610,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.dnsName = dnsName;
             _resultValue.dnsNames = dnsNames;
             _resultValue.encryptionKeyName = encryptionKeyName;
+            _resultValue.enforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             _resultValue.finalBackupDescription = finalBackupDescription;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.id = id;

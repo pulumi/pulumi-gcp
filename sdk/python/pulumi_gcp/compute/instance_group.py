@@ -56,7 +56,7 @@ class InstanceGroupArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] zone: The zone that this instance group should be created in.
                
-               - - -
+               ***
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -180,7 +180,7 @@ class InstanceGroupArgs:
         """
         The zone that this instance group should be created in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "zone")
 
@@ -231,7 +231,7 @@ class _InstanceGroupState:
         :param pulumi.Input[_builtins.int] size: The number of instances in the group.
         :param pulumi.Input[_builtins.str] zone: The zone that this instance group should be created in.
                
-               - - -
+               ***
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -383,7 +383,7 @@ class _InstanceGroupState:
         """
         The zone that this instance group should be created in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "zone")
 
@@ -496,7 +496,7 @@ class InstanceGroup(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] zone: The zone that this instance group should be created in.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -662,7 +662,7 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] size: The number of instances in the group.
         :param pulumi.Input[_builtins.str] zone: The zone that this instance group should be created in.
                
-               - - -
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -773,7 +773,7 @@ class InstanceGroup(pulumi.CustomResource):
         """
         The zone that this instance group should be created in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "zone")
 

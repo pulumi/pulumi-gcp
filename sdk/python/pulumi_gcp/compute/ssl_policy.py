@@ -47,8 +47,7 @@ class SSLPolicyArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer. When set to`
-               TLS_1_3`, the profile field must be set to `RESTRICTED`.
+               to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
                Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -153,8 +152,7 @@ class SSLPolicyArgs:
     def min_tls_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer. When set to`
-        TLS_1_3`, the profile field must be set to `RESTRICTED`.
+        to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
         Default value is `TLS_1_0`.
         Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
@@ -278,8 +276,7 @@ class _SSLPolicyState:
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer. When set to`
-               TLS_1_3`, the profile field must be set to `RESTRICTED`.
+               to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
                Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -430,8 +427,7 @@ class _SSLPolicyState:
     def min_tls_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer. When set to`
-        TLS_1_3`, the profile field must be set to `RESTRICTED`.
+        to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
         Default value is `TLS_1_0`.
         Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """
@@ -626,8 +622,7 @@ class SSLPolicy(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer. When set to`
-               TLS_1_3`, the profile field must be set to `RESTRICTED`.
+               to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
                Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -825,8 +820,7 @@ class SSLPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this
                object. This field is used in optimistic locking.
         :param pulumi.Input[_builtins.str] min_tls_version: The minimum version of SSL protocol that can be used by the clients
-               to establish a connection with the load balancer. When set to`
-               TLS_1_3`, the profile field must be set to `RESTRICTED`.
+               to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
                Default value is `TLS_1_0`.
                Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         :param pulumi.Input[_builtins.str] name: Name of the resource. Provided by the client when the resource is
@@ -946,8 +940,7 @@ class SSLPolicy(pulumi.CustomResource):
     def min_tls_version(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The minimum version of SSL protocol that can be used by the clients
-        to establish a connection with the load balancer. When set to`
-        TLS_1_3`, the profile field must be set to `RESTRICTED`.
+        to establish a connection with the load balancer. When set to`TLS_1_3`, the profile field must be set to `RESTRICTED`.
         Default value is `TLS_1_0`.
         Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
         """

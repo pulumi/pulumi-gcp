@@ -110,7 +110,7 @@ export class CxGenerator extends pulumi.CustomResource {
     /**
      * The language to create generators for the following fields:
      * * Generator.prompt_text.text
-     * If not specified, the agent's default language is used.
+     *   If not specified, the agent's default language is used.
      */
     declare public readonly languageCode: pulumi.Output<string | undefined>;
     /**
@@ -209,7 +209,7 @@ export interface CxGeneratorState {
     /**
      * The language to create generators for the following fields:
      * * Generator.prompt_text.text
-     * If not specified, the agent's default language is used.
+     *   If not specified, the agent's default language is used.
      */
     languageCode?: pulumi.Input<string | undefined>;
     /**
@@ -264,7 +264,7 @@ export interface CxGeneratorArgs {
     /**
      * The language to create generators for the following fields:
      * * Generator.prompt_text.text
-     * If not specified, the agent's default language is used.
+     *   If not specified, the agent's default language is used.
      */
     languageCode?: pulumi.Input<string | undefined>;
     /**

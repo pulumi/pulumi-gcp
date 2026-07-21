@@ -557,7 +557,7 @@ class _DataConnectorState:
                - All functionalities, including data synchronization, are halted.
                - Any ongoing data synchronization job will be canceled.
                - No future data synchronization runs will be scheduled nor can be
-               triggered.
+                 triggered.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] name: The full resource name of the Data Connector.
@@ -961,7 +961,7 @@ class _DataConnectorState:
         - All functionalities, including data synchronization, are halted.
         - Any ongoing data synchronization job will be canceled.
         - No future data synchronization runs will be scheduled nor can be
-        triggered.
+          triggered.
         """
         return pulumi.get(self, "latest_pause_time")
 
@@ -1763,7 +1763,7 @@ class DataConnector(pulumi.CustomResource):
                - All functionalities, including data synchronization, are halted.
                - Any ongoing data synchronization job will be canceled.
                - No future data synchronization runs will be scheduled nor can be
-               triggered.
+                 triggered.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
         :param pulumi.Input[_builtins.str] name: The full resource name of the Data Connector.
@@ -2054,7 +2054,7 @@ class DataConnector(pulumi.CustomResource):
         - All functionalities, including data synchronization, are halted.
         - Any ongoing data synchronization job will be canceled.
         - No future data synchronization runs will be scheduled nor can be
-        triggered.
+          triggered.
         """
         return pulumi.get(self, "latest_pause_time")
 

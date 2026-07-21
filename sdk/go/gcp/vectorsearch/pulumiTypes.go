@@ -787,6 +787,481 @@ func (o CollectionVectorSchemaSparseVectorPtrOutput) Elem() CollectionVectorSche
 	}).(CollectionVectorSchemaSparseVectorOutput)
 }
 
+type IndexDedicatedInfrastructure struct {
+	// Autoscaling specification.
+	// Structure is documented below.
+	AutoscalingSpec *IndexDedicatedInfrastructureAutoscalingSpec `pulumi:"autoscalingSpec"`
+	// Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+	// Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+	Mode *string `pulumi:"mode"`
+}
+
+// IndexDedicatedInfrastructureInput is an input type that accepts IndexDedicatedInfrastructureArgs and IndexDedicatedInfrastructureOutput values.
+// You can construct a concrete instance of `IndexDedicatedInfrastructureInput` via:
+//
+//	IndexDedicatedInfrastructureArgs{...}
+type IndexDedicatedInfrastructureInput interface {
+	pulumi.Input
+
+	ToIndexDedicatedInfrastructureOutput() IndexDedicatedInfrastructureOutput
+	ToIndexDedicatedInfrastructureOutputWithContext(context.Context) IndexDedicatedInfrastructureOutput
+}
+
+type IndexDedicatedInfrastructureArgs struct {
+	// Autoscaling specification.
+	// Structure is documented below.
+	AutoscalingSpec IndexDedicatedInfrastructureAutoscalingSpecPtrInput `pulumi:"autoscalingSpec"`
+	// Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+	// Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (IndexDedicatedInfrastructureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexDedicatedInfrastructure)(nil)).Elem()
+}
+
+func (i IndexDedicatedInfrastructureArgs) ToIndexDedicatedInfrastructureOutput() IndexDedicatedInfrastructureOutput {
+	return i.ToIndexDedicatedInfrastructureOutputWithContext(context.Background())
+}
+
+func (i IndexDedicatedInfrastructureArgs) ToIndexDedicatedInfrastructureOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDedicatedInfrastructureOutput)
+}
+
+func (i IndexDedicatedInfrastructureArgs) ToIndexDedicatedInfrastructurePtrOutput() IndexDedicatedInfrastructurePtrOutput {
+	return i.ToIndexDedicatedInfrastructurePtrOutputWithContext(context.Background())
+}
+
+func (i IndexDedicatedInfrastructureArgs) ToIndexDedicatedInfrastructurePtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDedicatedInfrastructureOutput).ToIndexDedicatedInfrastructurePtrOutputWithContext(ctx)
+}
+
+// IndexDedicatedInfrastructurePtrInput is an input type that accepts IndexDedicatedInfrastructureArgs, IndexDedicatedInfrastructurePtr and IndexDedicatedInfrastructurePtrOutput values.
+// You can construct a concrete instance of `IndexDedicatedInfrastructurePtrInput` via:
+//
+//	        IndexDedicatedInfrastructureArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexDedicatedInfrastructurePtrInput interface {
+	pulumi.Input
+
+	ToIndexDedicatedInfrastructurePtrOutput() IndexDedicatedInfrastructurePtrOutput
+	ToIndexDedicatedInfrastructurePtrOutputWithContext(context.Context) IndexDedicatedInfrastructurePtrOutput
+}
+
+type indexDedicatedInfrastructurePtrType IndexDedicatedInfrastructureArgs
+
+func IndexDedicatedInfrastructurePtr(v *IndexDedicatedInfrastructureArgs) IndexDedicatedInfrastructurePtrInput {
+	return (*indexDedicatedInfrastructurePtrType)(v)
+}
+
+func (*indexDedicatedInfrastructurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexDedicatedInfrastructure)(nil)).Elem()
+}
+
+func (i *indexDedicatedInfrastructurePtrType) ToIndexDedicatedInfrastructurePtrOutput() IndexDedicatedInfrastructurePtrOutput {
+	return i.ToIndexDedicatedInfrastructurePtrOutputWithContext(context.Background())
+}
+
+func (i *indexDedicatedInfrastructurePtrType) ToIndexDedicatedInfrastructurePtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDedicatedInfrastructurePtrOutput)
+}
+
+type IndexDedicatedInfrastructureOutput struct{ *pulumi.OutputState }
+
+func (IndexDedicatedInfrastructureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexDedicatedInfrastructure)(nil)).Elem()
+}
+
+func (o IndexDedicatedInfrastructureOutput) ToIndexDedicatedInfrastructureOutput() IndexDedicatedInfrastructureOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructureOutput) ToIndexDedicatedInfrastructureOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructureOutput) ToIndexDedicatedInfrastructurePtrOutput() IndexDedicatedInfrastructurePtrOutput {
+	return o.ToIndexDedicatedInfrastructurePtrOutputWithContext(context.Background())
+}
+
+func (o IndexDedicatedInfrastructureOutput) ToIndexDedicatedInfrastructurePtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexDedicatedInfrastructure) *IndexDedicatedInfrastructure {
+		return &v
+	}).(IndexDedicatedInfrastructurePtrOutput)
+}
+
+// Autoscaling specification.
+// Structure is documented below.
+func (o IndexDedicatedInfrastructureOutput) AutoscalingSpec() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return o.ApplyT(func(v IndexDedicatedInfrastructure) *IndexDedicatedInfrastructureAutoscalingSpec {
+		return v.AutoscalingSpec
+	}).(IndexDedicatedInfrastructureAutoscalingSpecPtrOutput)
+}
+
+// Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+// Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+func (o IndexDedicatedInfrastructureOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexDedicatedInfrastructure) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type IndexDedicatedInfrastructurePtrOutput struct{ *pulumi.OutputState }
+
+func (IndexDedicatedInfrastructurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexDedicatedInfrastructure)(nil)).Elem()
+}
+
+func (o IndexDedicatedInfrastructurePtrOutput) ToIndexDedicatedInfrastructurePtrOutput() IndexDedicatedInfrastructurePtrOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructurePtrOutput) ToIndexDedicatedInfrastructurePtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructurePtrOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructurePtrOutput) Elem() IndexDedicatedInfrastructureOutput {
+	return o.ApplyT(func(v *IndexDedicatedInfrastructure) IndexDedicatedInfrastructure {
+		if v != nil {
+			return *v
+		}
+		var ret IndexDedicatedInfrastructure
+		return ret
+	}).(IndexDedicatedInfrastructureOutput)
+}
+
+// Autoscaling specification.
+// Structure is documented below.
+func (o IndexDedicatedInfrastructurePtrOutput) AutoscalingSpec() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return o.ApplyT(func(v *IndexDedicatedInfrastructure) *IndexDedicatedInfrastructureAutoscalingSpec {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingSpec
+	}).(IndexDedicatedInfrastructureAutoscalingSpecPtrOutput)
+}
+
+// Mode of the dedicated infrastructure. Defaults to `PERFORMANCE_OPTIMIZED`.
+// Possible values are: `MODE_UNSPECIFIED`, `STORAGE_OPTIMIZED`, `PERFORMANCE_OPTIMIZED`.
+func (o IndexDedicatedInfrastructurePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndexDedicatedInfrastructure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type IndexDedicatedInfrastructureAutoscalingSpec struct {
+	// The maximum number of replicas. Must be >= `minReplicaCount`
+	// and <= `1000`. If not set or set to `0`, defaults to the greater
+	// of `minReplicaCount` and `2` (or `5` for the v1beta version).
+	MaxReplicaCount *int `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas. If not set or set to `0`, defaults
+	// to `2`. Must be >= `1` and <= `1000`.
+	MinReplicaCount *int `pulumi:"minReplicaCount"`
+}
+
+// IndexDedicatedInfrastructureAutoscalingSpecInput is an input type that accepts IndexDedicatedInfrastructureAutoscalingSpecArgs and IndexDedicatedInfrastructureAutoscalingSpecOutput values.
+// You can construct a concrete instance of `IndexDedicatedInfrastructureAutoscalingSpecInput` via:
+//
+//	IndexDedicatedInfrastructureAutoscalingSpecArgs{...}
+type IndexDedicatedInfrastructureAutoscalingSpecInput interface {
+	pulumi.Input
+
+	ToIndexDedicatedInfrastructureAutoscalingSpecOutput() IndexDedicatedInfrastructureAutoscalingSpecOutput
+	ToIndexDedicatedInfrastructureAutoscalingSpecOutputWithContext(context.Context) IndexDedicatedInfrastructureAutoscalingSpecOutput
+}
+
+type IndexDedicatedInfrastructureAutoscalingSpecArgs struct {
+	// The maximum number of replicas. Must be >= `minReplicaCount`
+	// and <= `1000`. If not set or set to `0`, defaults to the greater
+	// of `minReplicaCount` and `2` (or `5` for the v1beta version).
+	MaxReplicaCount pulumi.IntPtrInput `pulumi:"maxReplicaCount"`
+	// The minimum number of replicas. If not set or set to `0`, defaults
+	// to `2`. Must be >= `1` and <= `1000`.
+	MinReplicaCount pulumi.IntPtrInput `pulumi:"minReplicaCount"`
+}
+
+func (IndexDedicatedInfrastructureAutoscalingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexDedicatedInfrastructureAutoscalingSpec)(nil)).Elem()
+}
+
+func (i IndexDedicatedInfrastructureAutoscalingSpecArgs) ToIndexDedicatedInfrastructureAutoscalingSpecOutput() IndexDedicatedInfrastructureAutoscalingSpecOutput {
+	return i.ToIndexDedicatedInfrastructureAutoscalingSpecOutputWithContext(context.Background())
+}
+
+func (i IndexDedicatedInfrastructureAutoscalingSpecArgs) ToIndexDedicatedInfrastructureAutoscalingSpecOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureAutoscalingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDedicatedInfrastructureAutoscalingSpecOutput)
+}
+
+func (i IndexDedicatedInfrastructureAutoscalingSpecArgs) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutput() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return i.ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i IndexDedicatedInfrastructureAutoscalingSpecArgs) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDedicatedInfrastructureAutoscalingSpecOutput).ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(ctx)
+}
+
+// IndexDedicatedInfrastructureAutoscalingSpecPtrInput is an input type that accepts IndexDedicatedInfrastructureAutoscalingSpecArgs, IndexDedicatedInfrastructureAutoscalingSpecPtr and IndexDedicatedInfrastructureAutoscalingSpecPtrOutput values.
+// You can construct a concrete instance of `IndexDedicatedInfrastructureAutoscalingSpecPtrInput` via:
+//
+//	        IndexDedicatedInfrastructureAutoscalingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexDedicatedInfrastructureAutoscalingSpecPtrInput interface {
+	pulumi.Input
+
+	ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutput() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput
+	ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(context.Context) IndexDedicatedInfrastructureAutoscalingSpecPtrOutput
+}
+
+type indexDedicatedInfrastructureAutoscalingSpecPtrType IndexDedicatedInfrastructureAutoscalingSpecArgs
+
+func IndexDedicatedInfrastructureAutoscalingSpecPtr(v *IndexDedicatedInfrastructureAutoscalingSpecArgs) IndexDedicatedInfrastructureAutoscalingSpecPtrInput {
+	return (*indexDedicatedInfrastructureAutoscalingSpecPtrType)(v)
+}
+
+func (*indexDedicatedInfrastructureAutoscalingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexDedicatedInfrastructureAutoscalingSpec)(nil)).Elem()
+}
+
+func (i *indexDedicatedInfrastructureAutoscalingSpecPtrType) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutput() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return i.ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *indexDedicatedInfrastructureAutoscalingSpecPtrType) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDedicatedInfrastructureAutoscalingSpecPtrOutput)
+}
+
+type IndexDedicatedInfrastructureAutoscalingSpecOutput struct{ *pulumi.OutputState }
+
+func (IndexDedicatedInfrastructureAutoscalingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexDedicatedInfrastructureAutoscalingSpec)(nil)).Elem()
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecOutput) ToIndexDedicatedInfrastructureAutoscalingSpecOutput() IndexDedicatedInfrastructureAutoscalingSpecOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecOutput) ToIndexDedicatedInfrastructureAutoscalingSpecOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureAutoscalingSpecOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecOutput) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutput() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return o.ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecOutput) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexDedicatedInfrastructureAutoscalingSpec) *IndexDedicatedInfrastructureAutoscalingSpec {
+		return &v
+	}).(IndexDedicatedInfrastructureAutoscalingSpecPtrOutput)
+}
+
+// The maximum number of replicas. Must be >= `minReplicaCount`
+// and <= `1000`. If not set or set to `0`, defaults to the greater
+// of `minReplicaCount` and `2` (or `5` for the v1beta version).
+func (o IndexDedicatedInfrastructureAutoscalingSpecOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IndexDedicatedInfrastructureAutoscalingSpec) *int { return v.MaxReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of replicas. If not set or set to `0`, defaults
+// to `2`. Must be >= `1` and <= `1000`.
+func (o IndexDedicatedInfrastructureAutoscalingSpecOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v IndexDedicatedInfrastructureAutoscalingSpec) *int { return v.MinReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+type IndexDedicatedInfrastructureAutoscalingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexDedicatedInfrastructureAutoscalingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexDedicatedInfrastructureAutoscalingSpec)(nil)).Elem()
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecPtrOutput) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutput() IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecPtrOutput) ToIndexDedicatedInfrastructureAutoscalingSpecPtrOutputWithContext(ctx context.Context) IndexDedicatedInfrastructureAutoscalingSpecPtrOutput {
+	return o
+}
+
+func (o IndexDedicatedInfrastructureAutoscalingSpecPtrOutput) Elem() IndexDedicatedInfrastructureAutoscalingSpecOutput {
+	return o.ApplyT(func(v *IndexDedicatedInfrastructureAutoscalingSpec) IndexDedicatedInfrastructureAutoscalingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret IndexDedicatedInfrastructureAutoscalingSpec
+		return ret
+	}).(IndexDedicatedInfrastructureAutoscalingSpecOutput)
+}
+
+// The maximum number of replicas. Must be >= `minReplicaCount`
+// and <= `1000`. If not set or set to `0`, defaults to the greater
+// of `minReplicaCount` and `2` (or `5` for the v1beta version).
+func (o IndexDedicatedInfrastructureAutoscalingSpecPtrOutput) MaxReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IndexDedicatedInfrastructureAutoscalingSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of replicas. If not set or set to `0`, defaults
+// to `2`. Must be >= `1` and <= `1000`.
+func (o IndexDedicatedInfrastructureAutoscalingSpecPtrOutput) MinReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *IndexDedicatedInfrastructureAutoscalingSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type IndexDenseScann struct {
+	// Feature norm type for the ScaNN index.
+	// Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+	FeatureNormType *string `pulumi:"featureNormType"`
+}
+
+// IndexDenseScannInput is an input type that accepts IndexDenseScannArgs and IndexDenseScannOutput values.
+// You can construct a concrete instance of `IndexDenseScannInput` via:
+//
+//	IndexDenseScannArgs{...}
+type IndexDenseScannInput interface {
+	pulumi.Input
+
+	ToIndexDenseScannOutput() IndexDenseScannOutput
+	ToIndexDenseScannOutputWithContext(context.Context) IndexDenseScannOutput
+}
+
+type IndexDenseScannArgs struct {
+	// Feature norm type for the ScaNN index.
+	// Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+	FeatureNormType pulumi.StringPtrInput `pulumi:"featureNormType"`
+}
+
+func (IndexDenseScannArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexDenseScann)(nil)).Elem()
+}
+
+func (i IndexDenseScannArgs) ToIndexDenseScannOutput() IndexDenseScannOutput {
+	return i.ToIndexDenseScannOutputWithContext(context.Background())
+}
+
+func (i IndexDenseScannArgs) ToIndexDenseScannOutputWithContext(ctx context.Context) IndexDenseScannOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDenseScannOutput)
+}
+
+func (i IndexDenseScannArgs) ToIndexDenseScannPtrOutput() IndexDenseScannPtrOutput {
+	return i.ToIndexDenseScannPtrOutputWithContext(context.Background())
+}
+
+func (i IndexDenseScannArgs) ToIndexDenseScannPtrOutputWithContext(ctx context.Context) IndexDenseScannPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDenseScannOutput).ToIndexDenseScannPtrOutputWithContext(ctx)
+}
+
+// IndexDenseScannPtrInput is an input type that accepts IndexDenseScannArgs, IndexDenseScannPtr and IndexDenseScannPtrOutput values.
+// You can construct a concrete instance of `IndexDenseScannPtrInput` via:
+//
+//	        IndexDenseScannArgs{...}
+//
+//	or:
+//
+//	        nil
+type IndexDenseScannPtrInput interface {
+	pulumi.Input
+
+	ToIndexDenseScannPtrOutput() IndexDenseScannPtrOutput
+	ToIndexDenseScannPtrOutputWithContext(context.Context) IndexDenseScannPtrOutput
+}
+
+type indexDenseScannPtrType IndexDenseScannArgs
+
+func IndexDenseScannPtr(v *IndexDenseScannArgs) IndexDenseScannPtrInput {
+	return (*indexDenseScannPtrType)(v)
+}
+
+func (*indexDenseScannPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexDenseScann)(nil)).Elem()
+}
+
+func (i *indexDenseScannPtrType) ToIndexDenseScannPtrOutput() IndexDenseScannPtrOutput {
+	return i.ToIndexDenseScannPtrOutputWithContext(context.Background())
+}
+
+func (i *indexDenseScannPtrType) ToIndexDenseScannPtrOutputWithContext(ctx context.Context) IndexDenseScannPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexDenseScannPtrOutput)
+}
+
+type IndexDenseScannOutput struct{ *pulumi.OutputState }
+
+func (IndexDenseScannOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexDenseScann)(nil)).Elem()
+}
+
+func (o IndexDenseScannOutput) ToIndexDenseScannOutput() IndexDenseScannOutput {
+	return o
+}
+
+func (o IndexDenseScannOutput) ToIndexDenseScannOutputWithContext(ctx context.Context) IndexDenseScannOutput {
+	return o
+}
+
+func (o IndexDenseScannOutput) ToIndexDenseScannPtrOutput() IndexDenseScannPtrOutput {
+	return o.ToIndexDenseScannPtrOutputWithContext(context.Background())
+}
+
+func (o IndexDenseScannOutput) ToIndexDenseScannPtrOutputWithContext(ctx context.Context) IndexDenseScannPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexDenseScann) *IndexDenseScann {
+		return &v
+	}).(IndexDenseScannPtrOutput)
+}
+
+// Feature norm type for the ScaNN index.
+// Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+func (o IndexDenseScannOutput) FeatureNormType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IndexDenseScann) *string { return v.FeatureNormType }).(pulumi.StringPtrOutput)
+}
+
+type IndexDenseScannPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexDenseScannPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexDenseScann)(nil)).Elem()
+}
+
+func (o IndexDenseScannPtrOutput) ToIndexDenseScannPtrOutput() IndexDenseScannPtrOutput {
+	return o
+}
+
+func (o IndexDenseScannPtrOutput) ToIndexDenseScannPtrOutputWithContext(ctx context.Context) IndexDenseScannPtrOutput {
+	return o
+}
+
+func (o IndexDenseScannPtrOutput) Elem() IndexDenseScannOutput {
+	return o.ApplyT(func(v *IndexDenseScann) IndexDenseScann {
+		if v != nil {
+			return *v
+		}
+		var ret IndexDenseScann
+		return ret
+	}).(IndexDenseScannOutput)
+}
+
+// Feature norm type for the ScaNN index.
+// Possible values are: `FEATURE_NORM_TYPE_UNSPECIFIED`, `NONE`, `UNIT_L2_NORM`.
+func (o IndexDenseScannPtrOutput) FeatureNormType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IndexDenseScann) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FeatureNormType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionEncryptionSpecInput)(nil)).Elem(), CollectionEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionEncryptionSpecPtrInput)(nil)).Elem(), CollectionEncryptionSpecArgs{})
@@ -798,6 +1273,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaDenseVectorVertexEmbeddingConfigPtrInput)(nil)).Elem(), CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaSparseVectorInput)(nil)).Elem(), CollectionVectorSchemaSparseVectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaSparseVectorPtrInput)(nil)).Elem(), CollectionVectorSchemaSparseVectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructureInput)(nil)).Elem(), IndexDedicatedInfrastructureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructurePtrInput)(nil)).Elem(), IndexDedicatedInfrastructureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructureAutoscalingSpecInput)(nil)).Elem(), IndexDedicatedInfrastructureAutoscalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructureAutoscalingSpecPtrInput)(nil)).Elem(), IndexDedicatedInfrastructureAutoscalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexDenseScannInput)(nil)).Elem(), IndexDenseScannArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexDenseScannPtrInput)(nil)).Elem(), IndexDenseScannArgs{})
 	pulumi.RegisterOutputType(CollectionEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(CollectionEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaOutput{})
@@ -808,4 +1289,10 @@ func init() {
 	pulumi.RegisterOutputType(CollectionVectorSchemaDenseVectorVertexEmbeddingConfigPtrOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaSparseVectorOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaSparseVectorPtrOutput{})
+	pulumi.RegisterOutputType(IndexDedicatedInfrastructureOutput{})
+	pulumi.RegisterOutputType(IndexDedicatedInfrastructurePtrOutput{})
+	pulumi.RegisterOutputType(IndexDedicatedInfrastructureAutoscalingSpecOutput{})
+	pulumi.RegisterOutputType(IndexDedicatedInfrastructureAutoscalingSpecPtrOutput{})
+	pulumi.RegisterOutputType(IndexDenseScannOutput{})
+	pulumi.RegisterOutputType(IndexDenseScannPtrOutput{})
 }

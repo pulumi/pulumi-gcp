@@ -58,18 +58,19 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
-	AvailableMaintenanceVersions []string                     `pulumi:"availableMaintenanceVersions"`
-	BackupdrBackup               string                       `pulumi:"backupdrBackup"`
-	Clones                       []GetDatabaseInstanceClone   `pulumi:"clones"`
-	ConnectionName               string                       `pulumi:"connectionName"`
-	DatabaseVersion              string                       `pulumi:"databaseVersion"`
-	DeletionPolicy               string                       `pulumi:"deletionPolicy"`
-	DeletionProtection           bool                         `pulumi:"deletionProtection"`
-	DnsName                      string                       `pulumi:"dnsName"`
-	DnsNames                     []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
-	EncryptionKeyName            string                       `pulumi:"encryptionKeyName"`
-	FinalBackupDescription       string                       `pulumi:"finalBackupDescription"`
-	FirstIpAddress               string                       `pulumi:"firstIpAddress"`
+	AvailableMaintenanceVersions     []string                     `pulumi:"availableMaintenanceVersions"`
+	BackupdrBackup                   string                       `pulumi:"backupdrBackup"`
+	Clones                           []GetDatabaseInstanceClone   `pulumi:"clones"`
+	ConnectionName                   string                       `pulumi:"connectionName"`
+	DatabaseVersion                  string                       `pulumi:"databaseVersion"`
+	DeletionPolicy                   string                       `pulumi:"deletionPolicy"`
+	DeletionProtection               bool                         `pulumi:"deletionProtection"`
+	DnsName                          string                       `pulumi:"dnsName"`
+	DnsNames                         []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
+	EncryptionKeyName                string                       `pulumi:"encryptionKeyName"`
+	EnforceNewSqlNetworkArchitecture bool                         `pulumi:"enforceNewSqlNetworkArchitecture"`
+	FinalBackupDescription           string                       `pulumi:"finalBackupDescription"`
+	FirstIpAddress                   string                       `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string                                         `pulumi:"id"`
 	InstanceType               string                                         `pulumi:"instanceType"`
@@ -171,6 +172,10 @@ func (o LookupDatabaseInstanceResultOutput) DnsNames() GetDatabaseInstanceDnsNam
 
 func (o LookupDatabaseInstanceResultOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) EnforceNewSqlNetworkArchitecture() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnforceNewSqlNetworkArchitecture }).(pulumi.BoolOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) FinalBackupDescription() pulumi.StringOutput {

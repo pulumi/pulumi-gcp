@@ -2103,7 +2103,7 @@ class AutonomousDatabasePropertiesConnectionStringAllConnectionStringArgs:
 class AutonomousDatabasePropertiesConnectionStringProfileArgsDict(TypedDict):
     consumer_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The current consumer group being used by the connection. 
+    The current consumer group being used by the connection.
      Possible values:
      CONSUMER_GROUP_UNSPECIFIED
     HIGH
@@ -2119,7 +2119,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgsDict(TypedDict):
     """
     host_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The host name format being currently used in connection string. 
+    The host name format being currently used in connection string.
      Possible values:
      HOST_FORMAT_UNSPECIFIED
     FQDN
@@ -2132,7 +2132,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgsDict(TypedDict):
     """
     protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The protocol being used by the connection. 
+    The protocol being used by the connection.
      Possible values:
      PROTOCOL_UNSPECIFIED
     TCP
@@ -2140,7 +2140,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgsDict(TypedDict):
     """
     session_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The current session mode of the connection. 
+    The current session mode of the connection.
      Possible values:
      SESSION_MODE_UNSPECIFIED
     DIRECT
@@ -2148,7 +2148,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgsDict(TypedDict):
     """
     syntax_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The syntax of the connection string. 
+    The syntax of the connection string.
      Possible values:
      SYNTAX_FORMAT_UNSPECIFIED
     LONG
@@ -2157,7 +2157,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgsDict(TypedDict):
     """
     tls_authentication: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    This field indicates the TLS authentication type of the connection. 
+    This field indicates the TLS authentication type of the connection.
      Possible values:
      TLS_AUTHENTICATION_UNSPECIFIED
     SERVER
@@ -2181,7 +2181,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
                  tls_authentication: pulumi.Input[Optional[_builtins.str]] = None,
                  value: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] consumer_group: The current consumer group being used by the connection. 
+        :param pulumi.Input[_builtins.str] consumer_group: The current consumer group being used by the connection.
                 Possible values:
                 CONSUMER_GROUP_UNSPECIFIED
                HIGH
@@ -2191,30 +2191,30 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
                TPURGENT
         :param pulumi.Input[_builtins.str] display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
-        :param pulumi.Input[_builtins.str] host_format: The host name format being currently used in connection string. 
+        :param pulumi.Input[_builtins.str] host_format: The host name format being currently used in connection string.
                 Possible values:
                 HOST_FORMAT_UNSPECIFIED
                FQDN
                IP
         :param pulumi.Input[_builtins.bool] is_regional: This field indicates if the connection string is regional and is only
                applicable for cross-region Data Guard.
-        :param pulumi.Input[_builtins.str] protocol: The protocol being used by the connection. 
+        :param pulumi.Input[_builtins.str] protocol: The protocol being used by the connection.
                 Possible values:
                 PROTOCOL_UNSPECIFIED
                TCP
                TCPS
-        :param pulumi.Input[_builtins.str] session_mode: The current session mode of the connection. 
+        :param pulumi.Input[_builtins.str] session_mode: The current session mode of the connection.
                 Possible values:
                 SESSION_MODE_UNSPECIFIED
                DIRECT
                INDIRECT
-        :param pulumi.Input[_builtins.str] syntax_format: The syntax of the connection string. 
+        :param pulumi.Input[_builtins.str] syntax_format: The syntax of the connection string.
                 Possible values:
                 SYNTAX_FORMAT_UNSPECIFIED
                LONG
                EZCONNECT
                EZCONNECTPLUS
-        :param pulumi.Input[_builtins.str] tls_authentication: This field indicates the TLS authentication type of the connection. 
+        :param pulumi.Input[_builtins.str] tls_authentication: This field indicates the TLS authentication type of the connection.
                 Possible values:
                 TLS_AUTHENTICATION_UNSPECIFIED
                SERVER
@@ -2244,7 +2244,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter(name="consumerGroup")
     def consumer_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The current consumer group being used by the connection. 
+        The current consumer group being used by the connection.
          Possible values:
          CONSUMER_GROUP_UNSPECIFIED
         HIGH
@@ -2276,7 +2276,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter(name="hostFormat")
     def host_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The host name format being currently used in connection string. 
+        The host name format being currently used in connection string.
          Possible values:
          HOST_FORMAT_UNSPECIFIED
         FQDN
@@ -2305,7 +2305,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The protocol being used by the connection. 
+        The protocol being used by the connection.
          Possible values:
          PROTOCOL_UNSPECIFIED
         TCP
@@ -2321,7 +2321,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter(name="sessionMode")
     def session_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The current session mode of the connection. 
+        The current session mode of the connection.
          Possible values:
          SESSION_MODE_UNSPECIFIED
         DIRECT
@@ -2337,7 +2337,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter(name="syntaxFormat")
     def syntax_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The syntax of the connection string. 
+        The syntax of the connection string.
          Possible values:
          SYNTAX_FORMAT_UNSPECIFIED
         LONG
@@ -2354,7 +2354,7 @@ class AutonomousDatabasePropertiesConnectionStringProfileArgs:
     @pulumi.getter(name="tlsAuthentication")
     def tls_authentication(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        This field indicates the TLS authentication type of the connection. 
+        This field indicates the TLS authentication type of the connection.
          Possible values:
          TLS_AUTHENTICATION_UNSPECIFIED
         SERVER
@@ -4310,6 +4310,15 @@ class CloudVmClusterPropertiesArgsDict(TypedDict):
     FAILED
     MAINTENANCE_IN_PROGRESS
     """
+    storage_management_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The storage management type of the VM Cluster.
+    Possible values:
+    STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+    ASM
+    EXASCALE
+    """
     storage_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     (Output)
@@ -4359,6 +4368,7 @@ class CloudVmClusterPropertiesArgs:
                  sparse_diskgroup_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ssh_public_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_management_type: pulumi.Input[Optional[_builtins.str]] = None,
                  storage_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  system_version: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone: pulumi.Input[Optional['CloudVmClusterPropertiesTimeZoneArgs']] = None):
@@ -4427,6 +4437,12 @@ class CloudVmClusterPropertiesArgs:
                TERMINATED
                FAILED
                MAINTENANCE_IN_PROGRESS
+        :param pulumi.Input[_builtins.str] storage_management_type: (Output)
+               The storage management type of the VM Cluster.
+               Possible values:
+               STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+               ASM
+               EXASCALE
         :param pulumi.Input[_builtins.int] storage_size_gb: (Output)
                The storage allocation for the disk group, in gigabytes (GB).
         :param pulumi.Input[_builtins.str] system_version: (Output)
@@ -4491,6 +4507,8 @@ class CloudVmClusterPropertiesArgs:
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if storage_management_type is not None:
+            pulumi.set(__self__, "storage_management_type", storage_management_type)
         if storage_size_gb is not None:
             pulumi.set(__self__, "storage_size_gb", storage_size_gb)
         if system_version is not None:
@@ -4880,6 +4898,23 @@ class CloudVmClusterPropertiesArgs:
     @state.setter
     def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storageManagementType")
+    def storage_management_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The storage management type of the VM Cluster.
+        Possible values:
+        STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+        ASM
+        EXASCALE
+        """
+        return pulumi.get(self, "storage_management_type")
+
+    @storage_management_type.setter
+    def storage_management_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "storage_management_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSizeGb")
@@ -11184,7 +11219,6 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgsDict(T
     GOOGLE_CLOUD_STORAGE
     AZURE_DATA_LAKE_STORAGE
 
-
     <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
     """
     amazon_s3_iceberg_storage: NotRequired[pulumi.Input[Optional['GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgsDict']]]
@@ -11217,7 +11251,6 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs:
                GOOGLE_CLOUD_STORAGE
                AZURE_DATA_LAKE_STORAGE
                
-               
                <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
         :param pulumi.Input['GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs'] amazon_s3_iceberg_storage: The Amazon S3 Iceberg storage.
                Structure is documented below.
@@ -11243,7 +11276,6 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs:
         AMAZON_S3
         GOOGLE_CLOUD_STORAGE
         AZURE_DATA_LAKE_STORAGE
-
 
         <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
         """

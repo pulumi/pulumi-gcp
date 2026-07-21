@@ -384,6 +384,9 @@ import * as utilities from "../utilities";
  *     displayName: "re-ctx-spec",
  *     description: "Reasoning engine with context spec",
  *     region: "us-central1",
+ *     trafficConfig: {
+ *         trafficSplitAlwaysLatest: {},
+ *     },
  *     contextSpec: {
  *         memoryBankConfig: {
  *             generationConfig: {
@@ -393,6 +396,99 @@ import * as utilities from "../utilities";
  *                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
  *             },
  *             disableMemoryRevisions: false,
+ *             customizationConfigs: [
+ *                 {
+ *                     scopeKeys: ["user_id"],
+ *                     enableThirdPersonMemories: true,
+ *                     consolidationConfig: {
+ *                         revisionsPerCandidateCount: 1,
+ *                     },
+ *                     memoryTopics: [{
+ *                         managedMemoryTopic: {
+ *                             managedTopicEnum: "USER_PREFERENCES",
+ *                         },
+ *                     }],
+ *                 },
+ *                 {
+ *                     scopeKeys: [
+ *                         "user_id",
+ *                         "session_id",
+ *                     ],
+ *                     enableThirdPersonMemories: true,
+ *                     memoryTopics: [{
+ *                         customMemoryTopic: {
+ *                             label: "session_scratchpad",
+ *                             description: "Active consideration details, recent queries, and temporary workflow state.",
+ *                         },
+ *                     }],
+ *                 },
+ *             ],
+ *             structuredMemoryConfigs: [
+ *                 {
+ *                     scopeKeys: ["user_id"],
+ *                     schemaConfigs: [{
+ *                         id: "user-profile",
+ *                         memorySchema: JSON.stringify({
+ *                             type: "OBJECT",
+ *                             properties: {
+ *                                 name: {
+ *                                     type: "STRING",
+ *                                     description: "Name of the user.",
+ *                                 },
+ *                                 technical_stack: {
+ *                                     type: "STRING",
+ *                                     description: "Comma-separated list tools or languages used by the user.",
+ *                                 },
+ *                                 primary_goal: {
+ *                                     type: "STRING",
+ *                                     description: "The main objective the user is pursuing.",
+ *                                 },
+ *                                 expertise_level: {
+ *                                     type: "STRING",
+ *                                     description: "Current skill level (e.g., Junior, Senior).",
+ *                                 },
+ *                                 job_status: {
+ *                                     type: "STRING",
+ *                                     description: "The job status of the individual",
+ *                                     "enum": [
+ *                                         "unemployed",
+ *                                         "part_time",
+ *                                         "full_time",
+ *                                         "student",
+ *                                     ],
+ *                                 },
+ *                             },
+ *                         }),
+ *                     }],
+ *                 },
+ *                 {
+ *                     scopeKeys: [
+ *                         "user_id",
+ *                         "session_id",
+ *                     ],
+ *                     schemaConfigs: [{
+ *                         id: "conversation-summary",
+ *                         memorySchema: JSON.stringify({
+ *                             type: "OBJECT",
+ *                             properties: {
+ *                                 main_topic: {
+ *                                     type: "STRING",
+ *                                     description: "The primary topic of this specific chat session.",
+ *                                 },
+ *                                 status: {
+ *                                     type: "STRING",
+ *                                     description: "Current resolution state of the discussion.",
+ *                                     "enum": [
+ *                                         "open",
+ *                                         "in_progress",
+ *                                         "resolved",
+ *                                     ],
+ *                                 },
+ *                             },
+ *                         }),
+ *                     }],
+ *                 },
+ *             ],
  *             ttlConfig: {
  *                 defaultTtl: "86400s",
  *             },
@@ -484,7 +580,7 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      * Optional. Configuration for how Agent Engine sub-resources should manage context.
      * Structure is documented below.
      */
-    declare public readonly contextSpec: pulumi.Output<outputs.vertex.AiReasoningEngineContextSpec | undefined>;
+    declare public readonly contextSpec: pulumi.Output<outputs.vertex.AiReasoningEngineContextSpec>;
     /**
      * The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
      * with nanosecond resolution and up to nine fractional digits.
@@ -553,10 +649,21 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      */
     declare public readonly spec: pulumi.Output<outputs.vertex.AiReasoningEngineSpec>;
     /**
+     * (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     */
+    declare public readonly trafficConfig: pulumi.Output<outputs.vertex.AiReasoningEngineTrafficConfig>;
+    /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
      * format, with nanosecond resolution and up to nine fractional digits.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * (Beta)
+     * Output only. The URL of the reasoning engine.
+     */
+    declare public /*out*/ readonly url: pulumi.Output<string>;
 
     /**
      * Create a AiReasoningEngine resource with the given unique name, arguments, and options.
@@ -584,7 +691,9 @@ export class AiReasoningEngine extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["region"] = state?.region;
             resourceInputs["spec"] = state?.spec;
+            resourceInputs["trafficConfig"] = state?.trafficConfig;
             resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as AiReasoningEngineArgs | undefined;
             if (args?.displayName === undefined && !opts.urn) {
@@ -599,11 +708,13 @@ export class AiReasoningEngine extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
             resourceInputs["spec"] = args?.spec;
+            resourceInputs["trafficConfig"] = args?.trafficConfig;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -690,10 +801,21 @@ export interface AiReasoningEngineState {
      */
     spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec | undefined>;
     /**
+     * (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     */
+    trafficConfig?: pulumi.Input<inputs.vertex.AiReasoningEngineTrafficConfig | undefined>;
+    /**
      * The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
      * format, with nanosecond resolution and up to nine fractional digits.
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * (Beta)
+     * Output only. The URL of the reasoning engine.
+     */
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -754,4 +876,10 @@ export interface AiReasoningEngineArgs {
      * Structure is documented below.
      */
     spec?: pulumi.Input<inputs.vertex.AiReasoningEngineSpec | undefined>;
+    /**
+     * (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     */
+    trafficConfig?: pulumi.Input<inputs.vertex.AiReasoningEngineTrafficConfig | undefined>;
 }

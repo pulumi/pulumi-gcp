@@ -64,6 +64,16 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? SecurityProfileGroup;
         /// <summary>
+        /// A list of forwarding rules to which this rule applies.
+        /// This field allows you to control which load balancers get this rule.
+        /// For example, the following are valid values:
+        /// - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+        /// - projects/project/global/forwardingRules/forwardingRule
+        /// - projects/project/regions/region/forwardingRules/forwardingRule
+        /// </summary>
+        public readonly ImmutableArray<string> TargetForwardingRules;
+        /// <summary>
         /// A list of secure tags that controls which instances the firewall rule
         /// applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
         /// firewall rule applies only to instances in the VPC network that have one
@@ -83,6 +93,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// instances that are applied with this rule.
         /// </summary>
         public readonly ImmutableArray<string> TargetServiceAccounts;
+        /// <summary>
+        /// Target types of the firewall policy rule.
+        /// Default value is INSTANCES.
+        /// When TargetType is INTERNAL_MANAGED_LB, TargetForwardingRules must be set
+        /// Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+        /// </summary>
+        public readonly string? TargetType;
         /// <summary>
         /// Boolean flag indicating if the traffic should be TLS decrypted.
         /// It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
@@ -109,9 +126,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? securityProfileGroup,
 
+            ImmutableArray<string> targetForwardingRules,
+
             ImmutableArray<Outputs.RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags,
 
             ImmutableArray<string> targetServiceAccounts,
+
+            string? targetType,
 
             bool? tlsInspect)
         {
@@ -124,8 +145,10 @@ namespace Pulumi.Gcp.Compute.Outputs
             Priority = priority;
             RuleName = ruleName;
             SecurityProfileGroup = securityProfileGroup;
+            TargetForwardingRules = targetForwardingRules;
             TargetSecureTags = targetSecureTags;
             TargetServiceAccounts = targetServiceAccounts;
+            TargetType = targetType;
             TlsInspect = tlsInspect;
         }
     }

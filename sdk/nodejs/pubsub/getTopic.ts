@@ -37,7 +37,7 @@ export interface GetTopicArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -100,7 +100,7 @@ export interface GetTopicOutputArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

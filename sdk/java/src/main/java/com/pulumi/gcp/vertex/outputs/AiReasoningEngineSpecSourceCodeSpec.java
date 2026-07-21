@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecAgentConfigSource;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecImageSpec;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineSpecSourceCodeSpecInlineSource;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AiReasoningEngineSpecSourceCodeSpec {
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specification for the deploying from agent config.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineSpecSourceCodeSpecAgentConfigSource agentConfigSource;
     /**
      * @return Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
      * Structure is documented below.
@@ -40,6 +48,15 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
     private @Nullable AiReasoningEngineSpecSourceCodeSpecPythonSpec pythonSpec;
 
     private AiReasoningEngineSpecSourceCodeSpec() {}
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specification for the deploying from agent config.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineSpecSourceCodeSpecAgentConfigSource> agentConfigSource() {
+        return Optional.ofNullable(this.agentConfigSource);
+    }
     /**
      * @return Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
      * Structure is documented below.
@@ -82,6 +99,7 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiReasoningEngineSpecSourceCodeSpecAgentConfigSource agentConfigSource;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecImageSpec imageSpec;
         private @Nullable AiReasoningEngineSpecSourceCodeSpecInlineSource inlineSource;
@@ -89,12 +107,19 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
         public Builder() {}
         public Builder(AiReasoningEngineSpecSourceCodeSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentConfigSource = defaults.agentConfigSource;
     	      this.developerConnectSource = defaults.developerConnectSource;
     	      this.imageSpec = defaults.imageSpec;
     	      this.inlineSource = defaults.inlineSource;
     	      this.pythonSpec = defaults.pythonSpec;
         }
 
+        @CustomType.Setter
+        public Builder agentConfigSource(@Nullable AiReasoningEngineSpecSourceCodeSpecAgentConfigSource agentConfigSource) {
+
+            this.agentConfigSource = agentConfigSource;
+            return this;
+        }
         @CustomType.Setter
         public Builder developerConnectSource(@Nullable AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource developerConnectSource) {
 
@@ -121,6 +146,7 @@ public final class AiReasoningEngineSpecSourceCodeSpec {
         }
         public AiReasoningEngineSpecSourceCodeSpec build() {
             final var _resultValue = new AiReasoningEngineSpecSourceCodeSpec();
+            _resultValue.agentConfigSource = agentConfigSource;
             _resultValue.developerConnectSource = developerConnectSource;
             _resultValue.imageSpec = imageSpec;
             _resultValue.inlineSource = inlineSource;

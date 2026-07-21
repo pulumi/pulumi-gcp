@@ -57,6 +57,46 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ * ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const infra = new gcp.oracledatabase.CloudExadataInfrastructure("infra", {
+ *     cloudExadataInfrastructureId: "my-infra",
+ *     displayName: "my-infra displayname",
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     properties: {
+ *         shape: "Exadata.X9M",
+ *         computeCount: 2,
+ *         storageCount: 3,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const exascaleConfig = new gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig("exascale_config", {
+ *     cloudExadataInfrastructure: infra.cloudExadataInfrastructureId,
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     totalStorageSizeGb: 10240,
+ * });
+ * const myStorageVault = new gcp.oracledatabase.ExascaleDbStorageVault("my_storage_vault", {
+ *     exascaleDbStorageVaultId: "my-instance",
+ *     displayName: "my-instance displayname",
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     exadataInfrastructure: infra.name,
+ *     properties: {
+ *         exascaleDbStorageDetails: {
+ *             totalSizeGbs: 2048,
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * }, {
+ *     dependsOn: [exascaleConfig],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -135,6 +175,11 @@ export class ExascaleDbStorageVault extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly entitlementId: pulumi.Output<string>;
     /**
+     * The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     */
+    declare public readonly exadataInfrastructure: pulumi.Output<string | undefined>;
+    /**
      * The ID of the ExascaleDbStorageVault to create. This value is
      * restricted to (^a-z?$) and must be a maximum of
      * 63 characters in length. The value must start with a letter and end with a
@@ -199,6 +244,7 @@ export class ExascaleDbStorageVault extends pulumi.CustomResource {
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["entitlementId"] = state?.entitlementId;
+            resourceInputs["exadataInfrastructure"] = state?.exadataInfrastructure;
             resourceInputs["exascaleDbStorageVaultId"] = state?.exascaleDbStorageVaultId;
             resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
             resourceInputs["labels"] = state?.labels;
@@ -224,6 +270,7 @@ export class ExascaleDbStorageVault extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["exadataInfrastructure"] = args?.exadataInfrastructure;
             resourceInputs["exascaleDbStorageVaultId"] = args?.exascaleDbStorageVaultId;
             resourceInputs["gcpOracleZone"] = args?.gcpOracleZone;
             resourceInputs["labels"] = args?.labels;
@@ -279,6 +326,11 @@ export interface ExascaleDbStorageVaultState {
      * ExascaleDbStorageVault.
      */
     entitlementId?: pulumi.Input<string | undefined>;
+    /**
+     * The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     */
+    exadataInfrastructure?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ExascaleDbStorageVault to create. This value is
      * restricted to (^a-z?$) and must be a maximum of
@@ -349,6 +401,11 @@ export interface ExascaleDbStorageVaultArgs {
      * can only contain alphanumeric characters.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     */
+    exadataInfrastructure?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ExascaleDbStorageVault to create. This value is
      * restricted to (^a-z?$) and must be a maximum of

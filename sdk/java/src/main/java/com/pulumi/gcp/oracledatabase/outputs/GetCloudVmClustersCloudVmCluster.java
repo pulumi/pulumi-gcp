@@ -78,6 +78,13 @@ public final class GetCloudVmClustersCloudVmCluster {
      */
     private String exadataInfrastructure;
     /**
+     * @return The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     * 
+     */
+    private String exascaleDbStorageVault;
+    /**
      * @return GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
      * 
@@ -234,6 +241,15 @@ public final class GetCloudVmClustersCloudVmCluster {
         return this.exadataInfrastructure;
     }
     /**
+     * @return The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     * 
+     */
+    public String exascaleDbStorageVault() {
+        return this.exascaleDbStorageVault;
+    }
+    /**
      * @return GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
      * 
@@ -347,6 +363,7 @@ public final class GetCloudVmClustersCloudVmCluster {
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String exadataInfrastructure;
+        private String exascaleDbStorageVault;
         private String gcpOracleZone;
         private List<GetCloudVmClustersCloudVmClusterIdentityConnector> identityConnectors;
         private Map<String,String> labels;
@@ -371,6 +388,7 @@ public final class GetCloudVmClustersCloudVmCluster {
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.exadataInfrastructure = defaults.exadataInfrastructure;
+    	      this.exascaleDbStorageVault = defaults.exascaleDbStorageVault;
     	      this.gcpOracleZone = defaults.gcpOracleZone;
     	      this.identityConnectors = defaults.identityConnectors;
     	      this.labels = defaults.labels;
@@ -462,6 +480,14 @@ public final class GetCloudVmClustersCloudVmCluster {
               throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "exadataInfrastructure");
             }
             this.exadataInfrastructure = exadataInfrastructure;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder exascaleDbStorageVault(String exascaleDbStorageVault) {
+            if (exascaleDbStorageVault == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "exascaleDbStorageVault");
+            }
+            this.exascaleDbStorageVault = exascaleDbStorageVault;
             return this;
         }
         @CustomType.Setter
@@ -570,6 +596,7 @@ public final class GetCloudVmClustersCloudVmCluster {
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.exadataInfrastructure = exadataInfrastructure;
+            _resultValue.exascaleDbStorageVault = exascaleDbStorageVault;
             _resultValue.gcpOracleZone = gcpOracleZone;
             _resultValue.identityConnectors = identityConnectors;
             _resultValue.labels = labels;

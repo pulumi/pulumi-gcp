@@ -13,6 +13,944 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetHealthCheckHttpHealthCheck struct {
+	// The value of the host header in the HTTP health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host string `pulumi:"host"`
+	// The TCP port number for the HTTP health check request.
+	// The default value is 80.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The request path of the HTTP health check request.
+	// The default value is /.
+	RequestPath string `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
+}
+
+// GetHealthCheckHttpHealthCheckInput is an input type that accepts GetHealthCheckHttpHealthCheckArgs and GetHealthCheckHttpHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpHealthCheckInput` via:
+//
+//	GetHealthCheckHttpHealthCheckArgs{...}
+type GetHealthCheckHttpHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpHealthCheckOutput() GetHealthCheckHttpHealthCheckOutput
+	ToGetHealthCheckHttpHealthCheckOutputWithContext(context.Context) GetHealthCheckHttpHealthCheckOutput
+}
+
+type GetHealthCheckHttpHealthCheckArgs struct {
+	// The value of the host header in the HTTP health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The TCP port number for the HTTP health check request.
+	// The default value is 80.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The request path of the HTTP health check request.
+	// The default value is /.
+	RequestPath pulumi.StringInput `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttpHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpHealthCheckArgs) ToGetHealthCheckHttpHealthCheckOutput() GetHealthCheckHttpHealthCheckOutput {
+	return i.ToGetHealthCheckHttpHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpHealthCheckArgs) ToGetHealthCheckHttpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpHealthCheckOutput)
+}
+
+// GetHealthCheckHttpHealthCheckArrayInput is an input type that accepts GetHealthCheckHttpHealthCheckArray and GetHealthCheckHttpHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpHealthCheckArrayInput` via:
+//
+//	GetHealthCheckHttpHealthCheckArray{ GetHealthCheckHttpHealthCheckArgs{...} }
+type GetHealthCheckHttpHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpHealthCheckArrayOutput() GetHealthCheckHttpHealthCheckArrayOutput
+	ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttpHealthCheckArrayOutput
+}
+
+type GetHealthCheckHttpHealthCheckArray []GetHealthCheckHttpHealthCheckInput
+
+func (GetHealthCheckHttpHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpHealthCheckArray) ToGetHealthCheckHttpHealthCheckArrayOutput() GetHealthCheckHttpHealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpHealthCheckArray) ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpHealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttpHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) ToGetHealthCheckHttpHealthCheckOutput() GetHealthCheckHttpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) ToGetHealthCheckHttpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckOutput {
+	return o
+}
+
+// The value of the host header in the HTTP health check request.
+// If left empty (default value), the public IP on behalf of which this health
+// check is performed will be used.
+func (o GetHealthCheckHttpHealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The TCP port number for the HTTP health check request.
+// The default value is 80.
+func (o GetHealthCheckHttpHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o GetHealthCheckHttpHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, HTTP health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+func (o GetHealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// The request path of the HTTP health check request.
+// The default value is /.
+func (o GetHealthCheckHttpHealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
+func (o GetHealthCheckHttpHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttpHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpHealthCheckArrayOutput) ToGetHealthCheckHttpHealthCheckArrayOutput() GetHealthCheckHttpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckArrayOutput) ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttpHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttpHealthCheck {
+		return vs[0].([]GetHealthCheckHttpHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttpHealthCheckOutput)
+}
+
+type GetHealthCheckHttpsHealthCheck struct {
+	// The value of the host header in the HTTPS health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host string `pulumi:"host"`
+	// The TCP port number for the HTTPS health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTPS health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The request path of the HTTPS health check request.
+	// The default value is /.
+	RequestPath string `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
+}
+
+// GetHealthCheckHttpsHealthCheckInput is an input type that accepts GetHealthCheckHttpsHealthCheckArgs and GetHealthCheckHttpsHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpsHealthCheckInput` via:
+//
+//	GetHealthCheckHttpsHealthCheckArgs{...}
+type GetHealthCheckHttpsHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpsHealthCheckOutput() GetHealthCheckHttpsHealthCheckOutput
+	ToGetHealthCheckHttpsHealthCheckOutputWithContext(context.Context) GetHealthCheckHttpsHealthCheckOutput
+}
+
+type GetHealthCheckHttpsHealthCheckArgs struct {
+	// The value of the host header in the HTTPS health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The TCP port number for the HTTPS health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTPS health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The request path of the HTTPS health check request.
+	// The default value is /.
+	RequestPath pulumi.StringInput `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttpsHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpsHealthCheckArgs) ToGetHealthCheckHttpsHealthCheckOutput() GetHealthCheckHttpsHealthCheckOutput {
+	return i.ToGetHealthCheckHttpsHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpsHealthCheckArgs) ToGetHealthCheckHttpsHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpsHealthCheckOutput)
+}
+
+// GetHealthCheckHttpsHealthCheckArrayInput is an input type that accepts GetHealthCheckHttpsHealthCheckArray and GetHealthCheckHttpsHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpsHealthCheckArrayInput` via:
+//
+//	GetHealthCheckHttpsHealthCheckArray{ GetHealthCheckHttpsHealthCheckArgs{...} }
+type GetHealthCheckHttpsHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpsHealthCheckArrayOutput() GetHealthCheckHttpsHealthCheckArrayOutput
+	ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttpsHealthCheckArrayOutput
+}
+
+type GetHealthCheckHttpsHealthCheckArray []GetHealthCheckHttpsHealthCheckInput
+
+func (GetHealthCheckHttpsHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpsHealthCheckArray) ToGetHealthCheckHttpsHealthCheckArrayOutput() GetHealthCheckHttpsHealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpsHealthCheckArray) ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpsHealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttpsHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpsHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) ToGetHealthCheckHttpsHealthCheckOutput() GetHealthCheckHttpsHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) ToGetHealthCheckHttpsHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckOutput {
+	return o
+}
+
+// The value of the host header in the HTTPS health check request.
+// If left empty (default value), the public IP on behalf of which this health
+// check is performed will be used.
+func (o GetHealthCheckHttpsHealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The TCP port number for the HTTPS health check request.
+// The default value is 443.
+func (o GetHealthCheckHttpsHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o GetHealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, HTTPS health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+func (o GetHealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// The request path of the HTTPS health check request.
+// The default value is /.
+func (o GetHealthCheckHttpsHealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
+func (o GetHealthCheckHttpsHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttpsHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpsHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpsHealthCheckArrayOutput) ToGetHealthCheckHttpsHealthCheckArrayOutput() GetHealthCheckHttpsHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckArrayOutput) ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttpsHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttpsHealthCheck {
+		return vs[0].([]GetHealthCheckHttpsHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttpsHealthCheckOutput)
+}
+
+type GetHealthCheckLogConfig struct {
+	// Indicates whether or not to export logs. This is false by default,
+	// which means no health check logging will be done.
+	Enable bool `pulumi:"enable"`
+}
+
+// GetHealthCheckLogConfigInput is an input type that accepts GetHealthCheckLogConfigArgs and GetHealthCheckLogConfigOutput values.
+// You can construct a concrete instance of `GetHealthCheckLogConfigInput` via:
+//
+//	GetHealthCheckLogConfigArgs{...}
+type GetHealthCheckLogConfigInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput
+	ToGetHealthCheckLogConfigOutputWithContext(context.Context) GetHealthCheckLogConfigOutput
+}
+
+type GetHealthCheckLogConfigArgs struct {
+	// Indicates whether or not to export logs. This is false by default,
+	// which means no health check logging will be done.
+	Enable pulumi.BoolInput `pulumi:"enable"`
+}
+
+func (GetHealthCheckLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i GetHealthCheckLogConfigArgs) ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput {
+	return i.ToGetHealthCheckLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckLogConfigArgs) ToGetHealthCheckLogConfigOutputWithContext(ctx context.Context) GetHealthCheckLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckLogConfigOutput)
+}
+
+// GetHealthCheckLogConfigArrayInput is an input type that accepts GetHealthCheckLogConfigArray and GetHealthCheckLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckLogConfigArrayInput` via:
+//
+//	GetHealthCheckLogConfigArray{ GetHealthCheckLogConfigArgs{...} }
+type GetHealthCheckLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput
+	ToGetHealthCheckLogConfigArrayOutputWithContext(context.Context) GetHealthCheckLogConfigArrayOutput
+}
+
+type GetHealthCheckLogConfigArray []GetHealthCheckLogConfigInput
+
+func (GetHealthCheckLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i GetHealthCheckLogConfigArray) ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput {
+	return i.ToGetHealthCheckLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckLogConfigArray) ToGetHealthCheckLogConfigArrayOutputWithContext(ctx context.Context) GetHealthCheckLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckLogConfigArrayOutput)
+}
+
+type GetHealthCheckLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutputWithContext(ctx context.Context) GetHealthCheckLogConfigOutput {
+	return o
+}
+
+// Indicates whether or not to export logs. This is false by default,
+// which means no health check logging will be done.
+func (o GetHealthCheckLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHealthCheckLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetHealthCheckLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) ToGetHealthCheckLogConfigArrayOutputWithContext(ctx context.Context) GetHealthCheckLogConfigArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) Index(i pulumi.IntInput) GetHealthCheckLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckLogConfig {
+		return vs[0].([]GetHealthCheckLogConfig)[vs[1].(int)]
+	}).(GetHealthCheckLogConfigOutput)
+}
+
+type GetHealthCheckSslHealthCheck struct {
+	// The TCP port number for the SSL health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, SSL health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The application data to send once the SSL connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request string `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
+}
+
+// GetHealthCheckSslHealthCheckInput is an input type that accepts GetHealthCheckSslHealthCheckArgs and GetHealthCheckSslHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckSslHealthCheckInput` via:
+//
+//	GetHealthCheckSslHealthCheckArgs{...}
+type GetHealthCheckSslHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput
+	ToGetHealthCheckSslHealthCheckOutputWithContext(context.Context) GetHealthCheckSslHealthCheckOutput
+}
+
+type GetHealthCheckSslHealthCheckArgs struct {
+	// The TCP port number for the SSL health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, SSL health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The application data to send once the SSL connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request pulumi.StringInput `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckSslHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckSslHealthCheckArgs) ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput {
+	return i.ToGetHealthCheckSslHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckSslHealthCheckArgs) ToGetHealthCheckSslHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckSslHealthCheckOutput)
+}
+
+// GetHealthCheckSslHealthCheckArrayInput is an input type that accepts GetHealthCheckSslHealthCheckArray and GetHealthCheckSslHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckSslHealthCheckArrayInput` via:
+//
+//	GetHealthCheckSslHealthCheckArray{ GetHealthCheckSslHealthCheckArgs{...} }
+type GetHealthCheckSslHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput
+	ToGetHealthCheckSslHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckSslHealthCheckArrayOutput
+}
+
+type GetHealthCheckSslHealthCheckArray []GetHealthCheckSslHealthCheckInput
+
+func (GetHealthCheckSslHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckSslHealthCheckArray) ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput {
+	return i.ToGetHealthCheckSslHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckSslHealthCheckArray) ToGetHealthCheckSslHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckSslHealthCheckArrayOutput)
+}
+
+type GetHealthCheckSslHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckSslHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckOutput {
+	return o
+}
+
+// The TCP port number for the SSL health check request.
+// The default value is 443.
+func (o GetHealthCheckSslHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o GetHealthCheckSslHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, SSL health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+func (o GetHealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// The application data to send once the SSL connection has been
+// established (default value is empty). If both request and response are
+// empty, the connection establishment alone will indicate health. The request
+// data can only be ASCII.
+func (o GetHealthCheckSslHealthCheckOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Request }).(pulumi.StringOutput)
+}
+
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
+func (o GetHealthCheckSslHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckSslHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckSslHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) ToGetHealthCheckSslHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckSslHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckSslHealthCheck {
+		return vs[0].([]GetHealthCheckSslHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckSslHealthCheckOutput)
+}
+
+type GetHealthCheckTcpHealthCheck struct {
+	// The TCP port number for the TCP health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, TCP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The application data to send once the TCP connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request string `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
+}
+
+// GetHealthCheckTcpHealthCheckInput is an input type that accepts GetHealthCheckTcpHealthCheckArgs and GetHealthCheckTcpHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckTcpHealthCheckInput` via:
+//
+//	GetHealthCheckTcpHealthCheckArgs{...}
+type GetHealthCheckTcpHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput
+	ToGetHealthCheckTcpHealthCheckOutputWithContext(context.Context) GetHealthCheckTcpHealthCheckOutput
+}
+
+type GetHealthCheckTcpHealthCheckArgs struct {
+	// The TCP port number for the TCP health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, TCP health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The application data to send once the TCP connection has been
+	// established (default value is empty). If both request and response are
+	// empty, the connection establishment alone will indicate health. The request
+	// data can only be ASCII.
+	Request pulumi.StringInput `pulumi:"request"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckTcpHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckTcpHealthCheckArgs) ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput {
+	return i.ToGetHealthCheckTcpHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTcpHealthCheckArgs) ToGetHealthCheckTcpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTcpHealthCheckOutput)
+}
+
+// GetHealthCheckTcpHealthCheckArrayInput is an input type that accepts GetHealthCheckTcpHealthCheckArray and GetHealthCheckTcpHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckTcpHealthCheckArrayInput` via:
+//
+//	GetHealthCheckTcpHealthCheckArray{ GetHealthCheckTcpHealthCheckArgs{...} }
+type GetHealthCheckTcpHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput
+	ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckTcpHealthCheckArrayOutput
+}
+
+type GetHealthCheckTcpHealthCheckArray []GetHealthCheckTcpHealthCheckInput
+
+func (GetHealthCheckTcpHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckTcpHealthCheckArray) ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput {
+	return i.ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTcpHealthCheckArray) ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTcpHealthCheckArrayOutput)
+}
+
+type GetHealthCheckTcpHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTcpHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckOutput {
+	return o
+}
+
+// The TCP port number for the TCP health check request.
+// The default value is 443.
+func (o GetHealthCheckTcpHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o GetHealthCheckTcpHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, TCP health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+func (o GetHealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// The application data to send once the TCP connection has been
+// established (default value is empty). If both request and response are
+// empty, the connection establishment alone will indicate health. The request
+// data can only be ASCII.
+func (o GetHealthCheckTcpHealthCheckOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Request }).(pulumi.StringOutput)
+}
+
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
+func (o GetHealthCheckTcpHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckTcpHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTcpHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckTcpHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckTcpHealthCheck {
+		return vs[0].([]GetHealthCheckTcpHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckTcpHealthCheckOutput)
+}
+
 type GetImagesImage struct {
 	// The size of the image tar.gz archive stored in Google Cloud Storage in bytes.
 	ArchiveSizeBytes int `pulumi:"archiveSizeBytes"`
@@ -10415,6 +11353,218 @@ func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulumi.Int
 	}).(GetInstanceTemplateShieldedInstanceConfigOutput)
 }
 
+type GetInstanceTemplateWorkloadIdentityConfig struct {
+	// Identity SPIFFE id.
+	Identity string `pulumi:"identity"`
+	// Specifies whether identity certificates are enabled.
+	IdentityCertificateEnabled bool `pulumi:"identityCertificateEnabled"`
+}
+
+// GetInstanceTemplateWorkloadIdentityConfigInput is an input type that accepts GetInstanceTemplateWorkloadIdentityConfigArgs and GetInstanceTemplateWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateWorkloadIdentityConfigInput` via:
+//
+//	GetInstanceTemplateWorkloadIdentityConfigArgs{...}
+type GetInstanceTemplateWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateWorkloadIdentityConfigOutput() GetInstanceTemplateWorkloadIdentityConfigOutput
+	ToGetInstanceTemplateWorkloadIdentityConfigOutputWithContext(context.Context) GetInstanceTemplateWorkloadIdentityConfigOutput
+}
+
+type GetInstanceTemplateWorkloadIdentityConfigArgs struct {
+	// Identity SPIFFE id.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Specifies whether identity certificates are enabled.
+	IdentityCertificateEnabled pulumi.BoolInput `pulumi:"identityCertificateEnabled"`
+}
+
+func (GetInstanceTemplateWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateWorkloadIdentityConfigArgs) ToGetInstanceTemplateWorkloadIdentityConfigOutput() GetInstanceTemplateWorkloadIdentityConfigOutput {
+	return i.ToGetInstanceTemplateWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateWorkloadIdentityConfigArgs) ToGetInstanceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetInstanceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateWorkloadIdentityConfigOutput)
+}
+
+// GetInstanceTemplateWorkloadIdentityConfigArrayInput is an input type that accepts GetInstanceTemplateWorkloadIdentityConfigArray and GetInstanceTemplateWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateWorkloadIdentityConfigArrayInput` via:
+//
+//	GetInstanceTemplateWorkloadIdentityConfigArray{ GetInstanceTemplateWorkloadIdentityConfigArgs{...} }
+type GetInstanceTemplateWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateWorkloadIdentityConfigArrayOutput() GetInstanceTemplateWorkloadIdentityConfigArrayOutput
+	ToGetInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Context) GetInstanceTemplateWorkloadIdentityConfigArrayOutput
+}
+
+type GetInstanceTemplateWorkloadIdentityConfigArray []GetInstanceTemplateWorkloadIdentityConfigInput
+
+func (GetInstanceTemplateWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateWorkloadIdentityConfigArray) ToGetInstanceTemplateWorkloadIdentityConfigArrayOutput() GetInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return i.ToGetInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateWorkloadIdentityConfigArray) ToGetInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateWorkloadIdentityConfigArrayOutput)
+}
+
+type GetInstanceTemplateWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateWorkloadIdentityConfigOutput) ToGetInstanceTemplateWorkloadIdentityConfigOutput() GetInstanceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateWorkloadIdentityConfigOutput) ToGetInstanceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetInstanceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+// Identity SPIFFE id.
+func (o GetInstanceTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateWorkloadIdentityConfig) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Specifies whether identity certificates are enabled.
+func (o GetInstanceTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateWorkloadIdentityConfig) bool { return v.IdentityCertificateEnabled }).(pulumi.BoolOutput)
+}
+
+type GetInstanceTemplateWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateWorkloadIdentityConfigArrayOutput) ToGetInstanceTemplateWorkloadIdentityConfigArrayOutput() GetInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateWorkloadIdentityConfigArrayOutput) ToGetInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateWorkloadIdentityConfig {
+		return vs[0].([]GetInstanceTemplateWorkloadIdentityConfig)[vs[1].(int)]
+	}).(GetInstanceTemplateWorkloadIdentityConfigOutput)
+}
+
+type GetInstanceWorkloadIdentityConfig struct {
+	// Identity SPIFFE id.
+	Identity string `pulumi:"identity"`
+	// Specifies whether identity certificates are enabled.
+	IdentityCertificateEnabled bool `pulumi:"identityCertificateEnabled"`
+}
+
+// GetInstanceWorkloadIdentityConfigInput is an input type that accepts GetInstanceWorkloadIdentityConfigArgs and GetInstanceWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `GetInstanceWorkloadIdentityConfigInput` via:
+//
+//	GetInstanceWorkloadIdentityConfigArgs{...}
+type GetInstanceWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceWorkloadIdentityConfigOutput() GetInstanceWorkloadIdentityConfigOutput
+	ToGetInstanceWorkloadIdentityConfigOutputWithContext(context.Context) GetInstanceWorkloadIdentityConfigOutput
+}
+
+type GetInstanceWorkloadIdentityConfigArgs struct {
+	// Identity SPIFFE id.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Specifies whether identity certificates are enabled.
+	IdentityCertificateEnabled pulumi.BoolInput `pulumi:"identityCertificateEnabled"`
+}
+
+func (GetInstanceWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetInstanceWorkloadIdentityConfigArgs) ToGetInstanceWorkloadIdentityConfigOutput() GetInstanceWorkloadIdentityConfigOutput {
+	return i.ToGetInstanceWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceWorkloadIdentityConfigArgs) ToGetInstanceWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetInstanceWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceWorkloadIdentityConfigOutput)
+}
+
+// GetInstanceWorkloadIdentityConfigArrayInput is an input type that accepts GetInstanceWorkloadIdentityConfigArray and GetInstanceWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceWorkloadIdentityConfigArrayInput` via:
+//
+//	GetInstanceWorkloadIdentityConfigArray{ GetInstanceWorkloadIdentityConfigArgs{...} }
+type GetInstanceWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceWorkloadIdentityConfigArrayOutput() GetInstanceWorkloadIdentityConfigArrayOutput
+	ToGetInstanceWorkloadIdentityConfigArrayOutputWithContext(context.Context) GetInstanceWorkloadIdentityConfigArrayOutput
+}
+
+type GetInstanceWorkloadIdentityConfigArray []GetInstanceWorkloadIdentityConfigInput
+
+func (GetInstanceWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetInstanceWorkloadIdentityConfigArray) ToGetInstanceWorkloadIdentityConfigArrayOutput() GetInstanceWorkloadIdentityConfigArrayOutput {
+	return i.ToGetInstanceWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceWorkloadIdentityConfigArray) ToGetInstanceWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetInstanceWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceWorkloadIdentityConfigArrayOutput)
+}
+
+type GetInstanceWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetInstanceWorkloadIdentityConfigOutput) ToGetInstanceWorkloadIdentityConfigOutput() GetInstanceWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o GetInstanceWorkloadIdentityConfigOutput) ToGetInstanceWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetInstanceWorkloadIdentityConfigOutput {
+	return o
+}
+
+// Identity SPIFFE id.
+func (o GetInstanceWorkloadIdentityConfigOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceWorkloadIdentityConfig) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Specifies whether identity certificates are enabled.
+func (o GetInstanceWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceWorkloadIdentityConfig) bool { return v.IdentityCertificateEnabled }).(pulumi.BoolOutput)
+}
+
+type GetInstanceWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetInstanceWorkloadIdentityConfigArrayOutput) ToGetInstanceWorkloadIdentityConfigArrayOutput() GetInstanceWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceWorkloadIdentityConfigArrayOutput) ToGetInstanceWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetInstanceWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceWorkloadIdentityConfig {
+		return vs[0].([]GetInstanceWorkloadIdentityConfig)[vs[1].(int)]
+	}).(GetInstanceWorkloadIdentityConfigOutput)
+}
+
 type GetInterconnectLocationsLocation struct {
 	// The postal address of the Point of Presence.
 	Address string `pulumi:"address"`
@@ -14084,16 +15234,16 @@ type GetRegionBackendServiceHaPolicy struct {
 	// Supported values are:
 	//
 	// * 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
-	//             update the leader.
+	//           update the leader.
 	//
 	// * 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
-	//            leader. This method is faster than updating the leader using the
-	//            haPolicy.leader API. Fast IP move works as follows: The VM hosting the
-	//            network endpoint that should become the new leader sends either a
-	//            Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
-	//            packet (IPv6). Google Cloud immediately but temporarily associates the
-	//            forwarding rule IP address with that VM, and both new and in-flight packets
-	//            are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+	//          leader. This method is faster than updating the leader using the
+	//          haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+	//          network endpoint that should become the new leader sends either a
+	//          Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+	//          packet (IPv6). Google Cloud immediately but temporarily associates the
+	//          forwarding rule IP address with that VM, and both new and in-flight packets
+	//          are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
 	FastIpMove string `pulumi:"fastIpMove"`
 	// Selects one of the network endpoints attached to the backend NEGs of this service as the
 	// active endpoint (the leader) that receives all traffic.
@@ -14116,16 +15266,16 @@ type GetRegionBackendServiceHaPolicyArgs struct {
 	// Supported values are:
 	//
 	// * 'DISABLED': Fast IP Move is disabled. You can only use the haPolicy.leader API to
-	//             update the leader.
+	//           update the leader.
 	//
 	// * 'GARP_RA': Provides a method to very quickly define a new network endpoint as the
-	//            leader. This method is faster than updating the leader using the
-	//            haPolicy.leader API. Fast IP move works as follows: The VM hosting the
-	//            network endpoint that should become the new leader sends either a
-	//            Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
-	//            packet (IPv6). Google Cloud immediately but temporarily associates the
-	//            forwarding rule IP address with that VM, and both new and in-flight packets
-	//            are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
+	//          leader. This method is faster than updating the leader using the
+	//          haPolicy.leader API. Fast IP move works as follows: The VM hosting the
+	//          network endpoint that should become the new leader sends either a
+	//          Gratuitous ARP (GARP) packet (IPv4) or an ICMPv6 Router Advertisement(RA)
+	//          packet (IPv6). Google Cloud immediately but temporarily associates the
+	//          forwarding rule IP address with that VM, and both new and in-flight packets
+	//          are quickly delivered to that VM. Possible values: ["DISABLED", "GARP_RA"]
 	FastIpMove pulumi.StringInput `pulumi:"fastIpMove"`
 	// Selects one of the network endpoints attached to the backend NEGs of this service as the
 	// active endpoint (the leader) that receives all traffic.
@@ -23907,6 +25057,112 @@ func (o GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateShieldedInstanceConfig {
 		return vs[0].([]GetRegionInstanceTemplateShieldedInstanceConfig)[vs[1].(int)]
 	}).(GetRegionInstanceTemplateShieldedInstanceConfigOutput)
+}
+
+type GetRegionInstanceTemplateWorkloadIdentityConfig struct {
+	// Identity SPIFFE id.
+	Identity string `pulumi:"identity"`
+	// Specifies whether identity certificates are enabled.
+	IdentityCertificateEnabled bool `pulumi:"identityCertificateEnabled"`
+}
+
+// GetRegionInstanceTemplateWorkloadIdentityConfigInput is an input type that accepts GetRegionInstanceTemplateWorkloadIdentityConfigArgs and GetRegionInstanceTemplateWorkloadIdentityConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateWorkloadIdentityConfigInput` via:
+//
+//	GetRegionInstanceTemplateWorkloadIdentityConfigArgs{...}
+type GetRegionInstanceTemplateWorkloadIdentityConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateWorkloadIdentityConfigOutput() GetRegionInstanceTemplateWorkloadIdentityConfigOutput
+	ToGetRegionInstanceTemplateWorkloadIdentityConfigOutputWithContext(context.Context) GetRegionInstanceTemplateWorkloadIdentityConfigOutput
+}
+
+type GetRegionInstanceTemplateWorkloadIdentityConfigArgs struct {
+	// Identity SPIFFE id.
+	Identity pulumi.StringInput `pulumi:"identity"`
+	// Specifies whether identity certificates are enabled.
+	IdentityCertificateEnabled pulumi.BoolInput `pulumi:"identityCertificateEnabled"`
+}
+
+func (GetRegionInstanceTemplateWorkloadIdentityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateWorkloadIdentityConfigArgs) ToGetRegionInstanceTemplateWorkloadIdentityConfigOutput() GetRegionInstanceTemplateWorkloadIdentityConfigOutput {
+	return i.ToGetRegionInstanceTemplateWorkloadIdentityConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateWorkloadIdentityConfigArgs) ToGetRegionInstanceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateWorkloadIdentityConfigOutput)
+}
+
+// GetRegionInstanceTemplateWorkloadIdentityConfigArrayInput is an input type that accepts GetRegionInstanceTemplateWorkloadIdentityConfigArray and GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceTemplateWorkloadIdentityConfigArrayInput` via:
+//
+//	GetRegionInstanceTemplateWorkloadIdentityConfigArray{ GetRegionInstanceTemplateWorkloadIdentityConfigArgs{...} }
+type GetRegionInstanceTemplateWorkloadIdentityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput() GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput
+	ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Context) GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput
+}
+
+type GetRegionInstanceTemplateWorkloadIdentityConfigArray []GetRegionInstanceTemplateWorkloadIdentityConfigInput
+
+func (GetRegionInstanceTemplateWorkloadIdentityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceTemplateWorkloadIdentityConfigArray) ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput() GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return i.ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceTemplateWorkloadIdentityConfigArray) ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput)
+}
+
+type GetRegionInstanceTemplateWorkloadIdentityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateWorkloadIdentityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigOutput) ToGetRegionInstanceTemplateWorkloadIdentityConfigOutput() GetRegionInstanceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigOutput) ToGetRegionInstanceTemplateWorkloadIdentityConfigOutputWithContext(ctx context.Context) GetRegionInstanceTemplateWorkloadIdentityConfigOutput {
+	return o
+}
+
+// Identity SPIFFE id.
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateWorkloadIdentityConfig) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// Specifies whether identity certificates are enabled.
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigOutput) IdentityCertificateEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateWorkloadIdentityConfig) bool { return v.IdentityCertificateEnabled }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceTemplateWorkloadIdentityConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput) ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput() GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput) ToGetRegionInstanceTemplateWorkloadIdentityConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceTemplateWorkloadIdentityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceTemplateWorkloadIdentityConfig {
+		return vs[0].([]GetRegionInstanceTemplateWorkloadIdentityConfig)[vs[1].(int)]
+	}).(GetRegionInstanceTemplateWorkloadIdentityConfigOutput)
 }
 
 type GetRegionNetworkEndpointGroupAppEngine struct {
@@ -40435,6 +41691,16 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpHealthCheckInput)(nil)).Elem(), GetHealthCheckHttpHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckHttpHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpsHealthCheckInput)(nil)).Elem(), GetHealthCheckHttpsHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpsHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckHttpsHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckLogConfigInput)(nil)).Elem(), GetHealthCheckLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckLogConfigArrayInput)(nil)).Elem(), GetHealthCheckLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckSslHealthCheckInput)(nil)).Elem(), GetHealthCheckSslHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckSslHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckSslHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTcpHealthCheckInput)(nil)).Elem(), GetHealthCheckTcpHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckTcpHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckTcpHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAdvancedMachineFeatureInput)(nil)).Elem(), GetInstanceAdvancedMachineFeatureArgs{})
@@ -40593,6 +41859,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigArrayInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateWorkloadIdentityConfigInput)(nil)).Elem(), GetInstanceTemplateWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetInstanceTemplateWorkloadIdentityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceWorkloadIdentityConfigInput)(nil)).Elem(), GetInstanceWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetInstanceWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectLocationsLocationInput)(nil)).Elem(), GetInterconnectLocationsLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterconnectLocationsLocationArrayInput)(nil)).Elem(), GetInterconnectLocationsLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesMachineTypeInput)(nil)).Elem(), GetMachineTypesMachineTypeArgs{})
@@ -40791,6 +42061,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetRegionInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateShieldedInstanceConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateWorkloadIdentityConfigInput)(nil)).Elem(), GetRegionInstanceTemplateWorkloadIdentityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetRegionInstanceTemplateWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupAppEngineInput)(nil)).Elem(), GetRegionNetworkEndpointGroupAppEngineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupAppEngineArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupAppEngineArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudFunctionInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudFunctionArgs{})
@@ -41043,6 +42315,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpsHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpsHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckLogConfigOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAdvancedMachineFeatureOutput{})
@@ -41201,6 +42483,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateWorkloadIdentityConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInterconnectLocationsLocationOutput{})
 	pulumi.RegisterOutputType(GetInterconnectLocationsLocationArrayOutput{})
 	pulumi.RegisterOutputType(GetMachineTypesMachineTypeOutput{})
@@ -41399,6 +42685,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateWorkloadIdentityConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceTemplateWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupAppEngineOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupAppEngineArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudFunctionOutput{})

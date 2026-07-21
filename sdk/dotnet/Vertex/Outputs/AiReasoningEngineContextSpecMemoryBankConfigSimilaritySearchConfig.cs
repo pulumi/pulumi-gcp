@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig
     {
         /// <summary>
-        /// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        /// Required. The Gemini model used to generate embeddings to lookup similar examples.
         /// </summary>
         public readonly string EmbeddingModel;
 

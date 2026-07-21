@@ -298,6 +298,7 @@ class FirewallRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
@@ -308,11 +309,15 @@ class FirewallRule(pulumi.CustomResource):
         app = gcp.appengine.Application("app",
             project=my_project.project_id,
             location_id="us-central")
+        # Wait for 5 minutes seconds to ensure IAM permission propagation completes
+        wait300_seconds = time.Sleep("wait_300_seconds", create_duration="300s",
+        opts = pulumi.ResourceOptions(depends_on=[app]))
         rule = gcp.appengine.FirewallRule("rule",
             project=app.project,
             priority=1000,
             action="ALLOW",
-            source_range="*")
+            source_range="*",
+            opts = pulumi.ResourceOptions(depends_on=[wait300_seconds]))
         ```
 
         ## Import
@@ -375,6 +380,7 @@ class FirewallRule(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
         my_project = gcp.organizations.Project("my_project",
             name="tf-test-project",
@@ -385,11 +391,15 @@ class FirewallRule(pulumi.CustomResource):
         app = gcp.appengine.Application("app",
             project=my_project.project_id,
             location_id="us-central")
+        # Wait for 5 minutes seconds to ensure IAM permission propagation completes
+        wait300_seconds = time.Sleep("wait_300_seconds", create_duration="300s",
+        opts = pulumi.ResourceOptions(depends_on=[app]))
         rule = gcp.appengine.FirewallRule("rule",
             project=app.project,
             priority=1000,
             action="ALLOW",
-            source_range="*")
+            source_range="*",
+            opts = pulumi.ResourceOptions(depends_on=[wait300_seconds]))
         ```
 
         ## Import

@@ -76,6 +76,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * DataDocumentationScan related setting.
+     * Structure is documented below.
      * 
      */
     @Import(name="dataDocumentationSpec")
@@ -83,6 +84,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return DataDocumentationScan related setting.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<DatascanDataDocumentationSpecArgs>> dataDocumentationSpec() {
@@ -519,6 +521,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataDocumentationSpec DataDocumentationScan related setting.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -530,6 +533,7 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param dataDocumentationSpec DataDocumentationScan related setting.
+         * Structure is documented below.
          * 
          * @return builder
          * 

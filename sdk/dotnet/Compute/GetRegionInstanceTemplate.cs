@@ -348,6 +348,7 @@ namespace Pulumi.Gcp.Compute
         /// The unique fingerprint of the tags.
         /// </summary>
         public readonly string TagsFingerprint;
+        public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
 
         [OutputConstructor]
         private GetRegionInstanceTemplateResult(
@@ -427,7 +428,9 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> tags,
 
-            string tagsFingerprint)
+            string tagsFingerprint,
+
+            ImmutableArray<Outputs.GetRegionInstanceTemplateWorkloadIdentityConfigResult> workloadIdentityConfigs)
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
             CanIpForward = canIpForward;
@@ -468,6 +471,7 @@ namespace Pulumi.Gcp.Compute
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
             Tags = tags;
             TagsFingerprint = tagsFingerprint;
+            WorkloadIdentityConfigs = workloadIdentityConfigs;
         }
     }
 }

@@ -406,7 +406,7 @@ def get_region_disk(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of a specific disk.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param _builtins.str region: A reference to the region where the disk resides.
@@ -472,7 +472,7 @@ def get_region_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str name: The name of a specific disk.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     :param _builtins.str region: A reference to the region where the disk resides.

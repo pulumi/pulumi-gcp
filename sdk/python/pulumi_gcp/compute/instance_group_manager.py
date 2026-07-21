@@ -71,7 +71,7 @@ class InstanceGroupManagerArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
@@ -116,7 +116,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[_builtins.str] zone: The zone that instances in this group should be created
                in.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "base_instance_name", base_instance_name)
         pulumi.set(__self__, "versions", versions)
@@ -238,7 +238,7 @@ class InstanceGroupManagerArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -514,7 +514,7 @@ class InstanceGroupManagerArgs:
         The zone that instances in this group should be created
         in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "zone")
 
@@ -581,7 +581,7 @@ class _InstanceGroupManagerState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
@@ -634,7 +634,7 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[_builtins.str] zone: The zone that instances in this group should be created
                in.
                
-               - - -
+               ***
         """
         if all_instances_config is not None:
             pulumi.set(__self__, "all_instances_config", all_instances_config)
@@ -770,7 +770,7 @@ class _InstanceGroupManagerState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1129,7 +1129,7 @@ class _InstanceGroupManagerState:
         The zone that instances in this group should be created
         in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "zone")
 
@@ -1342,7 +1342,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
         $ terraform import google_compute_instance_group_manager.default {{name}}
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']] all_instances_config: Properties to set on all instances in the group. After setting
@@ -1363,7 +1362,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
@@ -1411,7 +1410,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] zone: The zone that instances in this group should be created
                in.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -1590,7 +1589,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         $ terraform import google_compute_instance_group_manager.default {{project}}/{{name}}
         $ terraform import google_compute_instance_group_manager.default {{name}}
 
-
         :param str resource_name: The name of the resource.
         :param InstanceGroupManagerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1747,7 +1745,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
@@ -1800,7 +1798,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] zone: The zone that instances in this group should be created
                in.
                
-               - - -
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1892,7 +1890,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -2139,7 +2137,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         The zone that instances in this group should be created
         in.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "zone")
 

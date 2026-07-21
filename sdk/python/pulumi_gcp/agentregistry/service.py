@@ -217,6 +217,7 @@ class _ServiceState:
                  interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceInterfaceArgs']]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  mcp_server_spec: pulumi.Input[Optional['ServiceMcpServerSpecArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  registry_resource: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -242,6 +243,7 @@ class _ServiceState:
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input['ServiceMcpServerSpecArgs'] mcp_server_spec: The spec of the MCP Server. When set, the type of the Service is MCP Server.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The resource name of the Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] registry_resource: The resource name of the resulting Agent, MCP Server, or Endpoint.
@@ -266,6 +268,8 @@ class _ServiceState:
             pulumi.set(__self__, "location", location)
         if mcp_server_spec is not None:
             pulumi.set(__self__, "mcp_server_spec", mcp_server_spec)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if registry_resource is not None:
@@ -391,6 +395,18 @@ class _ServiceState:
     @mcp_server_spec.setter
     def mcp_server_spec(self, value: pulumi.Input[Optional['ServiceMcpServerSpecArgs']]):
         pulumi.set(self, "mcp_server_spec", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource name of the Service.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -661,6 +677,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["registry_resource"] = None
             __props__.__dict__["update_time"] = None
         super(Service, __self__).__init__(
@@ -682,6 +699,7 @@ class Service(pulumi.CustomResource):
             interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceInterfaceArgs', 'ServiceInterfaceArgsDict']]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             mcp_server_spec: pulumi.Input[Optional[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             registry_resource: pulumi.Input[Optional[_builtins.str]] = None,
             service_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -711,6 +729,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] location: The location of the resource.
         :param pulumi.Input[Union['ServiceMcpServerSpecArgs', 'ServiceMcpServerSpecArgsDict']] mcp_server_spec: The spec of the MCP Server. When set, the type of the Service is MCP Server.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] name: The resource name of the Service.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] registry_resource: The resource name of the resulting Agent, MCP Server, or Endpoint.
@@ -730,6 +749,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["interfaces"] = interfaces
         __props__.__dict__["location"] = location
         __props__.__dict__["mcp_server_spec"] = mcp_server_spec
+        __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["registry_resource"] = registry_resource
         __props__.__dict__["service_id"] = service_id
@@ -816,6 +836,14 @@ class Service(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "mcp_server_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource name of the Service.
+        """
+        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter

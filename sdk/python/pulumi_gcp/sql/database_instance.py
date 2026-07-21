@@ -27,6 +27,7 @@ class DatabaseInstanceArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -81,6 +82,10 @@ class DatabaseInstanceArgs:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.bool] enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
+               By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+               This follows the gcloud pattern where the flag is an irreversible opt-in.
+               See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
@@ -101,7 +106,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -130,6 +135,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if enforce_new_sql_network_architecture is not None:
+            pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         if final_backup_description is not None:
             pulumi.set(__self__, "final_backup_description", final_backup_description)
         if instance_type is not None:
@@ -266,6 +273,21 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "encryption_key_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="enforceNewSqlNetworkArchitecture")
+    def enforce_new_sql_network_architecture(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enforce the new SQL network architecture.
+        By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+        This follows the gcloud pattern where the flag is an irreversible opt-in.
+        See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+        """
+        return pulumi.get(self, "enforce_new_sql_network_architecture")
+
+    @enforce_new_sql_network_architecture.setter
+    def enforce_new_sql_network_architecture(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enforce_new_sql_network_architecture", value)
+
+    @_builtins.property
     @pulumi.getter(name="finalBackupDescription")
     def final_backup_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -377,7 +399,7 @@ class DatabaseInstanceArgs:
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "region")
 
@@ -503,6 +525,7 @@ class _DatabaseInstanceState:
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_names: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceDnsNameArgs']]]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
                  first_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -570,6 +593,10 @@ class _DatabaseInstanceState:
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.bool] enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
+               By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+               This follows the gcloud pattern where the flag is an irreversible opt-in.
+               See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -594,7 +621,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -635,6 +662,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "dns_names", dns_names)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
+        if enforce_new_sql_network_architecture is not None:
+            pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         if final_backup_description is not None:
             pulumi.set(__self__, "final_backup_description", final_backup_description)
         if first_ip_address is not None:
@@ -836,6 +865,21 @@ class _DatabaseInstanceState:
         pulumi.set(self, "encryption_key_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="enforceNewSqlNetworkArchitecture")
+    def enforce_new_sql_network_architecture(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to enforce the new SQL network architecture.
+        By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+        This follows the gcloud pattern where the flag is an irreversible opt-in.
+        See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+        """
+        return pulumi.get(self, "enforce_new_sql_network_architecture")
+
+    @enforce_new_sql_network_architecture.setter
+    def enforce_new_sql_network_architecture(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enforce_new_sql_network_architecture", value)
+
+    @_builtins.property
     @pulumi.getter(name="finalBackupDescription")
     def final_backup_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -1004,7 +1048,7 @@ class _DatabaseInstanceState:
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "region")
 
@@ -1163,6 +1207,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1535,6 +1580,10 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.bool] enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
+               By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+               This follows the gcloud pattern where the flag is an irreversible opt-in.
+               See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
@@ -1555,7 +1604,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -1918,6 +1967,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1952,6 +2002,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_key_name"] = encryption_key_name
+            __props__.__dict__["enforce_new_sql_network_architecture"] = enforce_new_sql_network_architecture
             __props__.__dict__["final_backup_description"] = final_backup_description
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["maintenance_version"] = maintenance_version
@@ -2003,6 +2054,7 @@ class DatabaseInstance(pulumi.CustomResource):
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
             dns_names: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceDnsNameArgs', 'DatabaseInstanceDnsNameArgsDict']]]]] = None,
             encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
             final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
             first_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2074,6 +2126,10 @@ class DatabaseInstance(pulumi.CustomResource):
                manually, please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#service-account).
                That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
                key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
+        :param pulumi.Input[_builtins.bool] enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
+               By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+               This follows the gcloud pattern where the flag is an irreversible opt-in.
+               See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -2098,7 +2154,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
                
-               - - -
+               ***
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_names: List of replica names. Can be updated.
@@ -2133,6 +2189,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dns_names"] = dns_names
         __props__.__dict__["encryption_key_name"] = encryption_key_name
+        __props__.__dict__["enforce_new_sql_network_architecture"] = enforce_new_sql_network_architecture
         __props__.__dict__["final_backup_description"] = final_backup_description
         __props__.__dict__["first_ip_address"] = first_ip_address
         __props__.__dict__["instance_type"] = instance_type
@@ -2270,6 +2327,17 @@ class DatabaseInstance(pulumi.CustomResource):
         return pulumi.get(self, "encryption_key_name")
 
     @_builtins.property
+    @pulumi.getter(name="enforceNewSqlNetworkArchitecture")
+    def enforce_new_sql_network_architecture(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to enforce the new SQL network architecture.
+        By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+        This follows the gcloud pattern where the flag is an irreversible opt-in.
+        See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+        """
+        return pulumi.get(self, "enforce_new_sql_network_architecture")
+
+    @_builtins.property
     @pulumi.getter(name="finalBackupDescription")
     def final_backup_description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -2386,7 +2454,7 @@ class DatabaseInstance(pulumi.CustomResource):
         The region the instance will sit in. If a region is not provided in the resource definition,
         the provider region will be used instead.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "region")
 

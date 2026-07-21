@@ -50,7 +50,7 @@ export interface GetConnectorArgs {
     /**
      * Name of the resource.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -133,7 +133,7 @@ export interface GetConnectorOutputArgs {
     /**
      * Name of the resource.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

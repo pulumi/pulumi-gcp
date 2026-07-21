@@ -329,7 +329,7 @@ def get_global_forwarding_rule(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the global forwarding rule.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -388,7 +388,7 @@ def get_global_forwarding_rule_output(name: pulumi.Input[Optional[_builtins.str]
 
     :param _builtins.str name: The name of the global forwarding rule.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

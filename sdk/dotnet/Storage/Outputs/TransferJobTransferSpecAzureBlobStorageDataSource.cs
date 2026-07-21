@@ -34,6 +34,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
+        /// Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+        /// </summary>
+        public readonly string? PrivateNetworkService;
+        /// <summary>
         /// The name of the Azure Storage account.
         /// </summary>
         public readonly string StorageAccount;
@@ -50,6 +54,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string? path,
 
+            string? privateNetworkService,
+
             string storageAccount)
         {
             AzureCredentials = azureCredentials;
@@ -57,6 +63,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             CredentialsSecret = credentialsSecret;
             FederatedIdentityConfig = federatedIdentityConfig;
             Path = path;
+            PrivateNetworkService = privateNetworkService;
             StorageAccount = storageAccount;
         }
     }

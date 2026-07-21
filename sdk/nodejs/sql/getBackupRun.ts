@@ -43,7 +43,7 @@ export interface GetBackupRunArgs {
      */
     instance: string;
     /**
-     * Toggles use of the most recent backup run if multiple backups exist for a 
+     * Toggles use of the most recent backup run if multiple backups exist for a
      * Cloud SQL instance.
      */
     mostRecent?: boolean;
@@ -71,7 +71,7 @@ export interface GetBackupRunResult {
     readonly mostRecent?: boolean;
     readonly project: string;
     /**
-     * The time the backup operation actually started in UTC timezone in RFC 3339 format, for 
+     * The time the backup operation actually started in UTC timezone in RFC 3339 format, for
      * example 2012-11-15T16:19:00.094Z.
      */
     readonly startTime: string;
@@ -119,7 +119,7 @@ export interface GetBackupRunOutputArgs {
      */
     instance: pulumi.Input<string>;
     /**
-     * Toggles use of the most recent backup run if multiple backups exist for a 
+     * Toggles use of the most recent backup run if multiple backups exist for a
      * Cloud SQL instance.
      */
     mostRecent?: pulumi.Input<boolean | undefined>;

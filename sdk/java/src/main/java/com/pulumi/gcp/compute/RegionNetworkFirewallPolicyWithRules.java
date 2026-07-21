@@ -34,6 +34,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.networksecurity.AddressGroup;
  * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
  * import com.pulumi.gcp.tags.TagKey;
@@ -47,6 +62,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs;
  * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs;
  * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -62,6 +78,68 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .build());
+ * 
+ *         var targetForwardingRule = new Network("targetForwardingRule", NetworkArgs.builder()
+ *             .name("tf-test-network-_9106")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var targetForwardingRuleProxySubnetwork = new Subnetwork("targetForwardingRuleProxySubnetwork", SubnetworkArgs.builder()
+ *             .name("tf-test-proxy-subnetwork-_27169")
+ *             .region("us-west2")
+ *             .network(targetForwardingRule.id())
+ *             .ipCidrRange("10.20.0.0/24")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .role("ACTIVE")
+ *             .build());
+ * 
+ *         var targetForwardingRuleDefaultSubnetwork = new Subnetwork("targetForwardingRuleDefaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("tf-test-default-subnetwork-_75223")
+ *             .region("us-west2")
+ *             .network(targetForwardingRule.id())
+ *             .ipCidrRange("10.10.0.0/24")
+ *             .build());
+ * 
+ *         var targetForwardingRuleRegionHealthCheck = new RegionHealthCheck("targetForwardingRuleRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .name("tf-test-health-check-_41819")
+ *             .region("us-west2")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var targetForwardingRuleRegionBackendService = new RegionBackendService("targetForwardingRuleRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("tf-test-backend-service-_75092")
+ *             .region("us-west2")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(targetForwardingRuleRegionHealthCheck.id())
+ *             .build());
+ * 
+ *         var targetForwardingRuleRegionUrlMap = new RegionUrlMap("targetForwardingRuleRegionUrlMap", RegionUrlMapArgs.builder()
+ *             .name("tf-test-url-map-_2605")
+ *             .region("us-west2")
+ *             .defaultService(targetForwardingRuleRegionBackendService.id())
+ *             .build());
+ * 
+ *         var targetForwardingRuleRegionTargetHttpProxy = new RegionTargetHttpProxy("targetForwardingRuleRegionTargetHttpProxy", RegionTargetHttpProxyArgs.builder()
+ *             .name("tf-test-target-http-proxy-_34535")
+ *             .region("us-west2")
+ *             .urlMap(targetForwardingRuleRegionUrlMap.id())
+ *             .build());
+ * 
+ *         var targetForwardingRuleForwardingRule = new ForwardingRule("targetForwardingRuleForwardingRule", ForwardingRuleArgs.builder()
+ *             .name("tf-test-forwarding-rule-_22375")
+ *             .region("us-west2")
+ *             .network(targetForwardingRule.id())
+ *             .subnetwork(targetForwardingRuleDefaultSubnetwork.id())
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .target(targetForwardingRuleRegionTargetHttpProxy.id())
+ *             .ipProtocol("TCP")
+ *             .portRange("80")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(targetForwardingRuleProxySubnetwork)
+ *                 .build());
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
  *             .name("address-group")
@@ -146,6 +224,20 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
  *                             .ipProtocol("udp")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 RegionNetworkFirewallPolicyWithRulesRuleArgs.builder()
+ *                     .description("internal managed lb rule")
+ *                     .priority(3000)
+ *                     .action("allow")
+ *                     .direction("INGRESS")
+ *                     .targetType("INTERNAL_MANAGED_LB")
+ *                     .targetForwardingRules(targetForwardingRuleForwardingRule.selfLink())
+ *                     .match(RegionNetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .srcIpRanges("10.0.0.0/8")
+ *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
  *                             .build())
  *                         .build())
  *                     .build())

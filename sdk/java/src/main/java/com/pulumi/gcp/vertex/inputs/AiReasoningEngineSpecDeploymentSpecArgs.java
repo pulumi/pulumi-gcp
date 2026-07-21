@@ -5,9 +5,12 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -20,6 +23,50 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineSpecDeploymentSpecArgs Empty = new AiReasoningEngineSpecDeploymentSpecArgs();
+
+    /**
+     * (Optional, Beta)
+     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="agentGatewayConfig")
+    private @Nullable Output<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs> agentGatewayConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs>> agentGatewayConfig() {
+        return Optional.ofNullable(this.agentGatewayConfig);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+     * Possible values:
+     * * `STABLE`: Stable agent server mode.
+     * * `EXPERIMENTAL`: Experimental agent server mode.
+     *   Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    @Import(name="agentServerMode")
+    private @Nullable Output<String> agentServerMode;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+     * Possible values:
+     * * `STABLE`: Stable agent server mode.
+     * * `EXPERIMENTAL`: Experimental agent server mode.
+     *   Possible values are: `STABLE`, `EXPERIMENTAL`.
+     * 
+     */
+    public Optional<Output<String>> agentServerMode() {
+        return Optional.ofNullable(this.agentServerMode);
+    }
 
     /**
      * Optional. Concurrency for each container and agent server.
@@ -39,6 +86,23 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     }
 
     /**
+     * (Optional, Beta)
+     * Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+     * 
+     */
+    @Import(name="dedicatedIngressEndpointEnabled")
+    private @Nullable Output<Boolean> dedicatedIngressEndpointEnabled;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+     * 
+     */
+    public Optional<Output<Boolean>> dedicatedIngressEndpointEnabled() {
+        return Optional.ofNullable(this.dedicatedIngressEndpointEnabled);
+    }
+
+    /**
      * Optional. Environment variables to be set with the Reasoning
      * Engine deployment.
      * Structure is documented below.
@@ -55,6 +119,25 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
      */
     public Optional<Output<List<AiReasoningEngineSpecDeploymentSpecEnvArgs>>> envs() {
         return Optional.ofNullable(this.envs);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Optional. Specifies the configuration for keep-alive probe.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="keepAliveProbe")
+    private @Nullable Output<AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs> keepAliveProbe;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specifies the configuration for keep-alive probe.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs>> keepAliveProbe() {
+        return Optional.ofNullable(this.keepAliveProbe);
     }
 
     /**
@@ -169,8 +252,12 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
     private AiReasoningEngineSpecDeploymentSpecArgs() {}
 
     private AiReasoningEngineSpecDeploymentSpecArgs(AiReasoningEngineSpecDeploymentSpecArgs $) {
+        this.agentGatewayConfig = $.agentGatewayConfig;
+        this.agentServerMode = $.agentServerMode;
         this.containerConcurrency = $.containerConcurrency;
+        this.dedicatedIngressEndpointEnabled = $.dedicatedIngressEndpointEnabled;
         this.envs = $.envs;
+        this.keepAliveProbe = $.keepAliveProbe;
         this.maxInstances = $.maxInstances;
         this.minInstances = $.minInstances;
         this.pscInterfaceConfig = $.pscInterfaceConfig;
@@ -197,6 +284,62 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
         }
 
         /**
+         * @param agentGatewayConfig (Optional, Beta)
+         * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentGatewayConfig(@Nullable Output<AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs> agentGatewayConfig) {
+            $.agentGatewayConfig = agentGatewayConfig;
+            return this;
+        }
+
+        /**
+         * @param agentGatewayConfig (Optional, Beta)
+         * Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentGatewayConfig(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs agentGatewayConfig) {
+            return agentGatewayConfig(Output.of(agentGatewayConfig));
+        }
+
+        /**
+         * @param agentServerMode (Optional, Beta)
+         * Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+         * Possible values:
+         * * `STABLE`: Stable agent server mode.
+         * * `EXPERIMENTAL`: Experimental agent server mode.
+         *   Possible values are: `STABLE`, `EXPERIMENTAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentServerMode(@Nullable Output<String> agentServerMode) {
+            $.agentServerMode = agentServerMode;
+            return this;
+        }
+
+        /**
+         * @param agentServerMode (Optional, Beta)
+         * Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+         * Possible values:
+         * * `STABLE`: Stable agent server mode.
+         * * `EXPERIMENTAL`: Experimental agent server mode.
+         *   Possible values are: `STABLE`, `EXPERIMENTAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentServerMode(String agentServerMode) {
+            return agentServerMode(Output.of(agentServerMode));
+        }
+
+        /**
          * @param containerConcurrency Optional. Concurrency for each container and agent server.
          * Recommended value: 2 * cpu + 1. Defaults to 9.
          * 
@@ -217,6 +360,29 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
          */
         public Builder containerConcurrency(Integer containerConcurrency) {
             return containerConcurrency(Output.of(containerConcurrency));
+        }
+
+        /**
+         * @param dedicatedIngressEndpointEnabled (Optional, Beta)
+         * Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIngressEndpointEnabled(@Nullable Output<Boolean> dedicatedIngressEndpointEnabled) {
+            $.dedicatedIngressEndpointEnabled = dedicatedIngressEndpointEnabled;
+            return this;
+        }
+
+        /**
+         * @param dedicatedIngressEndpointEnabled (Optional, Beta)
+         * Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedIngressEndpointEnabled(Boolean dedicatedIngressEndpointEnabled) {
+            return dedicatedIngressEndpointEnabled(Output.of(dedicatedIngressEndpointEnabled));
         }
 
         /**
@@ -254,6 +420,31 @@ public final class AiReasoningEngineSpecDeploymentSpecArgs extends com.pulumi.re
          */
         public Builder envs(AiReasoningEngineSpecDeploymentSpecEnvArgs... envs) {
             return envs(List.of(envs));
+        }
+
+        /**
+         * @param keepAliveProbe (Optional, Beta)
+         * Optional. Specifies the configuration for keep-alive probe.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepAliveProbe(@Nullable Output<AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs> keepAliveProbe) {
+            $.keepAliveProbe = keepAliveProbe;
+            return this;
+        }
+
+        /**
+         * @param keepAliveProbe (Optional, Beta)
+         * Optional. Specifies the configuration for keep-alive probe.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keepAliveProbe(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs keepAliveProbe) {
+            return keepAliveProbe(Output.of(keepAliveProbe));
         }
 
         /**

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.container.NodePoolArgs;
 import com.pulumi.gcp.container.inputs.NodePoolState;
 import com.pulumi.gcp.container.outputs.NodePoolAutoscaling;
+import com.pulumi.gcp.container.outputs.NodePoolMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.NodePoolManagement;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfig;
@@ -308,6 +309,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * The maintenance policy of the pool. Structure is documented below.
+     * 
+     */
+    @Export(name="maintenancePolicies", refs={List.class,NodePoolMaintenancePolicy.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NodePoolMaintenancePolicy>> maintenancePolicies;
+
+    /**
+     * @return The maintenance policy of the pool. Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<NodePoolMaintenancePolicy>>> maintenancePolicies() {
+        return Codegen.optional(this.maintenancePolicies);
     }
     /**
      * List of instance group URLs which have been assigned to this node pool.

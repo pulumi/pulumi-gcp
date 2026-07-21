@@ -19,8 +19,9 @@ namespace Pulumi.Gcp.Container.Outputs
         /// 
         /// * `"UNSPECIFIED"`: Default value. This should not be used.
         /// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
-        /// * `"ANY_RESERVATION"`: Consume any reservation available.
+        /// * `"ANY_RESERVATION"`: Consume any non-specific reservation available, with a fallback to on-demand capacity in case of none reservaition being claimable.
         /// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
+        /// * `"ANY_RESERVATION_THEN_FAIL"`: Consume any non-specific reservation available, without a fallback to on-demand capacity in case of none reservaition being claimable.
         /// </summary>
         public readonly string ConsumeReservationType;
         /// <summary>

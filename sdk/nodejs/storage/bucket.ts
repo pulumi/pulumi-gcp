@@ -214,6 +214,24 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Enabling RAPID Storage Bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const zonalBucket = new gcp.storage.Bucket("zonal_bucket", {
+ *     location: "US-CENTRAL1",
+ *     customPlacementConfig: {
+ *         dataLocations: ["US-CENTRAL1-B"],
+ *     },
+ *     name: "zonal-rapid-bucket",
+ *     storageClass: "RAPID",
+ *     hierarchicalNamespace: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
  */
 export class Bucket extends pulumi.CustomResource {
     /**
@@ -303,7 +321,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
-     * - - -
+     * ***
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -534,7 +552,7 @@ export interface BucketState {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -672,7 +690,7 @@ export interface BucketArgs {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

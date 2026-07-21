@@ -117,7 +117,6 @@ class CertificateManagedArgsDict(TypedDict):
     specified for this Managed Certificate.
     Structure is documented below.
 
-
     <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
     """
     dns_authorizations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
@@ -162,7 +161,6 @@ class CertificateManagedArgs:
                specified for this Managed Certificate.
                Structure is documented below.
                
-               
                <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: The domains for which a managed SSL certificate will be generated.
@@ -197,7 +195,6 @@ class CertificateManagedArgs:
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
-
 
         <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         """

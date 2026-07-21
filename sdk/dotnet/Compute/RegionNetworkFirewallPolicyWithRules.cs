@@ -26,6 +26,81 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
+    ///     var targetForwardingRule = new Gcp.Compute.Network("target_forwarding_rule", new()
+    ///     {
+    ///         Name = "tf-test-network-_9106",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var targetForwardingRuleProxySubnetwork = new Gcp.Compute.Subnetwork("target_forwarding_rule_proxy_subnetwork", new()
+    ///     {
+    ///         Name = "tf-test-proxy-subnetwork-_27169",
+    ///         Region = "us-west2",
+    ///         Network = targetForwardingRule.Id,
+    ///         IpCidrRange = "10.20.0.0/24",
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         Role = "ACTIVE",
+    ///     });
+    /// 
+    ///     var targetForwardingRuleDefaultSubnetwork = new Gcp.Compute.Subnetwork("target_forwarding_rule_default_subnetwork", new()
+    ///     {
+    ///         Name = "tf-test-default-subnetwork-_75223",
+    ///         Region = "us-west2",
+    ///         Network = targetForwardingRule.Id,
+    ///         IpCidrRange = "10.10.0.0/24",
+    ///     });
+    /// 
+    ///     var targetForwardingRuleRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("target_forwarding_rule", new()
+    ///     {
+    ///         Name = "tf-test-health-check-_41819",
+    ///         Region = "us-west2",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var targetForwardingRuleRegionBackendService = new Gcp.Compute.RegionBackendService("target_forwarding_rule", new()
+    ///     {
+    ///         Name = "tf-test-backend-service-_75092",
+    ///         Region = "us-west2",
+    ///         Protocol = "HTTP",
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = targetForwardingRuleRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var targetForwardingRuleRegionUrlMap = new Gcp.Compute.RegionUrlMap("target_forwarding_rule", new()
+    ///     {
+    ///         Name = "tf-test-url-map-_2605",
+    ///         Region = "us-west2",
+    ///         DefaultService = targetForwardingRuleRegionBackendService.Id,
+    ///     });
+    /// 
+    ///     var targetForwardingRuleRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("target_forwarding_rule", new()
+    ///     {
+    ///         Name = "tf-test-target-http-proxy-_34535",
+    ///         Region = "us-west2",
+    ///         UrlMap = targetForwardingRuleRegionUrlMap.Id,
+    ///     });
+    /// 
+    ///     var targetForwardingRuleForwardingRule = new Gcp.Compute.ForwardingRule("target_forwarding_rule", new()
+    ///     {
+    ///         Name = "tf-test-forwarding-rule-_22375",
+    ///         Region = "us-west2",
+    ///         Network = targetForwardingRule.Id,
+    ///         Subnetwork = targetForwardingRuleDefaultSubnetwork.Id,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         Target = targetForwardingRuleRegionTargetHttpProxy.Id,
+    ///         IpProtocol = "TCP",
+    ///         PortRange = "80",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             targetForwardingRuleProxySubnetwork,
+    ///         },
+    ///     });
+    /// 
     ///     var addressGroup1 = new Gcp.NetworkSecurity.AddressGroup("address_group_1", new()
     ///     {
     ///         Name = "address-group",
@@ -165,6 +240,32 @@ namespace Pulumi.Gcp.Compute
     ///                         new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
     ///                         {
     ///                             IpProtocol = "udp",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleArgs
+    ///             {
+    ///                 Description = "internal managed lb rule",
+    ///                 Priority = 3000,
+    ///                 Action = "allow",
+    ///                 Direction = "INGRESS",
+    ///                 TargetType = "INTERNAL_MANAGED_LB",
+    ///                 TargetForwardingRules = new[]
+    ///                 {
+    ///                     targetForwardingRuleForwardingRule.SelfLink,
+    ///                 },
+    ///                 Match = new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchArgs
+    ///                 {
+    ///                     SrcIpRanges = new[]
+    ///                     {
+    ///                         "10.0.0.0/8",
+    ///                     },
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "tcp",
     ///                         },
     ///                     },
     ///                 },

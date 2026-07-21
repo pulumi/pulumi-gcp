@@ -68,9 +68,9 @@ class V2PolicyOrchestratorForOrganizationArgs:
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "orchestrated_resource", orchestrated_resource)
@@ -214,9 +214,9 @@ class V2PolicyOrchestratorForOrganizationArgs:
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -298,9 +298,9 @@ class _V2PolicyOrchestratorForOrganizationState:
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when the policy orchestrator resource was last modified.
         """
         if action is not None:
@@ -557,9 +557,9 @@ class _V2PolicyOrchestratorForOrganizationState:
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -708,9 +708,9 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         ...
     @overload
@@ -937,9 +937,9 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         :param pulumi.Input[_builtins.str] update_time: Output only. Timestamp when the policy orchestrator resource was last modified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1124,9 +1124,9 @@ class V2PolicyOrchestratorForOrganization(pulumi.CustomResource):
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 

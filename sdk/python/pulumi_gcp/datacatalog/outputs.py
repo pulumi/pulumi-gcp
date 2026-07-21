@@ -305,7 +305,6 @@ class EntryGcsFilesetSpec(dict):
                Sample files contained in this fileset, not all files contained in this fileset are represented here.
                Structure is documented below.
                
-               
                <a name="nested_gcs_fileset_spec_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
         pulumi.set(__self__, "file_patterns", file_patterns)
@@ -337,7 +336,6 @@ class EntryGcsFilesetSpec(dict):
         (Output)
         Sample files contained in this fileset, not all files contained in this fileset are represented here.
         Structure is documented below.
-
 
         <a name="nested_gcs_fileset_spec_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """

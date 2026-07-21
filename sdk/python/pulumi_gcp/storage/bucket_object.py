@@ -76,7 +76,7 @@ class BucketObjectArgs:
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[_builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -347,7 +347,7 @@ class BucketObjectArgs:
         A path to the data you want to upload. Must be defined
         if `content` is not.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source")
 
@@ -467,7 +467,7 @@ class _BucketObjectState:
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[_builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -838,7 +838,7 @@ class _BucketObjectState:
         A path to the data you want to upload. Must be defined
         if `content` is not.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source")
 
@@ -1013,7 +1013,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[_builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -1254,7 +1254,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
                if `content` is not.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] source_md5hash: User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
         :param pulumi.Input[_builtins.str] storage_class: The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
                Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -1506,7 +1506,7 @@ class BucketObject(pulumi.CustomResource):
         A path to the data you want to upload. Must be defined
         if `content` is not.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "source")
 

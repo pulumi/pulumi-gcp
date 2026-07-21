@@ -134,8 +134,7 @@ def get_token(identifier: Optional[_builtins.str] = None,
            this site or domain.
            Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
            
-           
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['identifier'] = identifier
@@ -196,8 +195,7 @@ def get_token_output(identifier: pulumi.Input[Optional[_builtins.str]] = None,
            this site or domain.
            Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
            
-           
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['identifier'] = identifier

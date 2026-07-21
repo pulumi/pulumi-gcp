@@ -39,7 +39,7 @@ class SharedflowDeploymentArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] service_account: The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
         """
         pulumi.set(__self__, "environment", environment)
@@ -110,7 +110,7 @@ class SharedflowDeploymentArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -150,7 +150,7 @@ class _SharedflowDeploymentState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
@@ -181,7 +181,7 @@ class _SharedflowDeploymentState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -296,7 +296,7 @@ class SharedflowDeployment(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
@@ -407,7 +407,7 @@ class SharedflowDeployment(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] environment: The resource ID of the environment.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Sharedflow
         :param pulumi.Input[_builtins.str] revision: Revision of the Sharedflow to be deployed.
@@ -437,7 +437,7 @@ class SharedflowDeployment(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 

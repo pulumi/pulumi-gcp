@@ -65,6 +65,11 @@ export type ListingSubscription = import("./listingSubscription").ListingSubscri
 export const ListingSubscription: typeof import("./listingSubscription").ListingSubscription = null as any;
 utilities.lazyLoad(exports, ["ListingSubscription"], () => require("./listingSubscription"));
 
+export { QueryTemplateArgs, QueryTemplateState } from "./queryTemplate";
+export type QueryTemplate = import("./queryTemplate").QueryTemplate;
+export const QueryTemplate: typeof import("./queryTemplate").QueryTemplate = null as any;
+utilities.lazyLoad(exports, ["QueryTemplate"], () => require("./queryTemplate"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -90,6 +95,8 @@ const _module = {
                 return new ListingIamPolicy(name, <any>undefined, { urn })
             case "gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription":
                 return new ListingSubscription(name, <any>undefined, { urn })
+            case "gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate":
+                return new QueryTemplate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -105,3 +112,4 @@ pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamBin
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/listingSubscription", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigqueryanalyticshub/queryTemplate", _module)

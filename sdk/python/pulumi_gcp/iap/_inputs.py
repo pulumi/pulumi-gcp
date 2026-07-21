@@ -15,10 +15,22 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AgentRegistryAgentIamBindingConditionArgs',
+    'AgentRegistryAgentIamBindingConditionArgsDict',
+    'AgentRegistryAgentIamMemberConditionArgs',
+    'AgentRegistryAgentIamMemberConditionArgsDict',
+    'AgentRegistryEndpointIamBindingConditionArgs',
+    'AgentRegistryEndpointIamBindingConditionArgsDict',
+    'AgentRegistryEndpointIamMemberConditionArgs',
+    'AgentRegistryEndpointIamMemberConditionArgsDict',
     'AgentRegistryIamBindingConditionArgs',
     'AgentRegistryIamBindingConditionArgsDict',
     'AgentRegistryIamMemberConditionArgs',
     'AgentRegistryIamMemberConditionArgsDict',
+    'AgentRegistryMcpServerIamBindingConditionArgs',
+    'AgentRegistryMcpServerIamBindingConditionArgsDict',
+    'AgentRegistryMcpServerIamMemberConditionArgs',
+    'AgentRegistryMcpServerIamMemberConditionArgsDict',
     'AppEngineServiceIamBindingConditionArgs',
     'AppEngineServiceIamBindingConditionArgsDict',
     'AppEngineServiceIamMemberConditionArgs',
@@ -100,6 +112,322 @@ __all__ = [
     'WebTypeComputeIamMemberConditionArgs',
     'WebTypeComputeIamMemberConditionArgsDict',
 ]
+
+class AgentRegistryAgentIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
+
+@pulumi.input_type
+class AgentRegistryAgentIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AgentRegistryAgentIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
+
+@pulumi.input_type
+class AgentRegistryAgentIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AgentRegistryEndpointIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
+
+@pulumi.input_type
+class AgentRegistryEndpointIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AgentRegistryEndpointIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
+
+@pulumi.input_type
+class AgentRegistryEndpointIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
 
 class AgentRegistryIamBindingConditionArgsDict(TypedDict):
     expression: pulumi.Input[_builtins.str]
@@ -200,6 +528,164 @@ class AgentRegistryIamMemberConditionArgsDict(TypedDict):
 
 @pulumi.input_type
 class AgentRegistryIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AgentRegistryMcpServerIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
+
+@pulumi.input_type
+class AgentRegistryMcpServerIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[_builtins.str] title: A title for the expression, i.e. a short string describing its purpose.
+        :param pulumi.Input[_builtins.str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class AgentRegistryMcpServerIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    """
+    Textual representation of an expression in Common Expression Language syntax.
+    """
+    title: pulumi.Input[_builtins.str]
+    """
+    A title for the expression, i.e. a short string describing its purpose.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+    > **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
+    identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
+    consider it to be an entirely different resource and will treat it as such.
+    """
+
+@pulumi.input_type
+class AgentRegistryMcpServerIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[_builtins.str],
                  title: pulumi.Input[_builtins.str],
@@ -748,15 +1234,15 @@ class SettingsAccessSettingsArgsDict(TypedDict):
     """
     GCIP claims and endpoint configurations for 3p identity providers.
     * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
-    Structure is documented below.
+      Structure is documented below.
     """
     identity_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Identity sources that IAP can use to authenticate the end user. Only one identity source
     can be configured. The possible values are:
     * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
-    Identity Federation.
-    Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+      Identity Federation.
+      Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
     """
     oauth_settings: NotRequired[pulumi.Input[Optional['SettingsAccessSettingsOauthSettingsArgsDict']]]
     """
@@ -792,12 +1278,12 @@ class SettingsAccessSettingsArgs:
                Structure is documented below.
         :param pulumi.Input['SettingsAccessSettingsGcipSettingsArgs'] gcip_settings: GCIP claims and endpoint configurations for 3p identity providers.
                * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identity_sources: Identity sources that IAP can use to authenticate the end user. Only one identity source
                can be configured. The possible values are:
                * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
-               Identity Federation.
-               Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+                 Identity Federation.
+                 Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
         :param pulumi.Input['SettingsAccessSettingsOauthSettingsArgs'] oauth_settings: Settings to configure IAP's OAuth behavior.
                Structure is documented below.
         :param pulumi.Input['SettingsAccessSettingsReauthSettingsArgs'] reauth_settings: Settings to configure reauthentication policies in IAP.
@@ -853,7 +1339,7 @@ class SettingsAccessSettingsArgs:
         """
         GCIP claims and endpoint configurations for 3p identity providers.
         * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "gcip_settings")
 
@@ -868,8 +1354,8 @@ class SettingsAccessSettingsArgs:
         Identity sources that IAP can use to authenticate the end user. Only one identity source
         can be configured. The possible values are:
         * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
-        Identity Federation.
-        Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+          Identity Federation.
+          Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
         """
         return pulumi.get(self, "identity_sources")
 
@@ -1209,7 +1695,7 @@ class SettingsAccessSettingsReauthSettingsArgsDict(TypedDict):
     * `LOGIN`: Prompts the user to log in again.
     * `SECURE_KEY`: User must use their secure key 2nd factor device.
     * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
-    Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+      Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
     """
     policy_type: pulumi.Input[_builtins.str]
     """
@@ -1217,9 +1703,9 @@ class SettingsAccessSettingsReauthSettingsArgsDict(TypedDict):
     Policies are merged from higher in the hierarchy to lower in the hierarchy.
     The possible values are:
     * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
-    Effective policy may only be the same or stricter.
+      Effective policy may only be the same or stricter.
     * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
-    Possible values are: `MINIMUM`, `DEFAULT`.
+      Possible values are: `MINIMUM`, `DEFAULT`.
     """
 
 @pulumi.input_type
@@ -1236,14 +1722,14 @@ class SettingsAccessSettingsReauthSettingsArgs:
                * `LOGIN`: Prompts the user to log in again.
                * `SECURE_KEY`: User must use their secure key 2nd factor device.
                * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
-               Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+                 Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
         :param pulumi.Input[_builtins.str] policy_type: How IAP determines the effective policy in cases of hierarchical policies.
                Policies are merged from higher in the hierarchy to lower in the hierarchy.
                The possible values are:
                * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
-               Effective policy may only be the same or stricter.
+                 Effective policy may only be the same or stricter.
                * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
-               Possible values are: `MINIMUM`, `DEFAULT`.
+                 Possible values are: `MINIMUM`, `DEFAULT`.
         """
         pulumi.set(__self__, "max_age", max_age)
         pulumi.set(__self__, "method", method)
@@ -1271,7 +1757,7 @@ class SettingsAccessSettingsReauthSettingsArgs:
         * `LOGIN`: Prompts the user to log in again.
         * `SECURE_KEY`: User must use their secure key 2nd factor device.
         * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
-        Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+          Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
         """
         return pulumi.get(self, "method")
 
@@ -1287,9 +1773,9 @@ class SettingsAccessSettingsReauthSettingsArgs:
         Policies are merged from higher in the hierarchy to lower in the hierarchy.
         The possible values are:
         * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
-        Effective policy may only be the same or stricter.
+          Effective policy may only be the same or stricter.
         * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
-        Possible values are: `MINIMUM`, `DEFAULT`.
+          Possible values are: `MINIMUM`, `DEFAULT`.
         """
         return pulumi.get(self, "policy_type")
 
@@ -1304,7 +1790,6 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgsDict(TypedDict):
     OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
     federation services.
     Structure is documented below.
-
 
     <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
     """
@@ -1323,7 +1808,6 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
                federation services.
                Structure is documented below.
                
-               
                <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         :param pulumi.Input[_builtins.str] workforce_pools: The workforce pool resources. Only one workforce pool is accepted.
         """
@@ -1339,7 +1823,6 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
         OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
         federation services.
         Structure is documented below.
-
 
         <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         """
@@ -1635,10 +2118,10 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgsDict(TypedDict)
     Possible values are:
     * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
     * `JWT`: Propagate attributes in the JWT of the form:
-    "additional_claims": { "my_attribute": ["value1", "value2"] }
+      "additional_claims": { "my_attribute": ["value1", "value2"] }
     * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
-    additional_claims": { "my_attribute": ["value1", "value2"] }
-    Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+      additional_claims": { "my_attribute": ["value1", "value2"] }
+      Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
     """
 
 @pulumi.input_type
@@ -1658,10 +2141,10 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgs:
                Possible values are:
                * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
                * `JWT`: Propagate attributes in the JWT of the form:
-               "additional_claims": { "my_attribute": ["value1", "value2"] }
+                 "additional_claims": { "my_attribute": ["value1", "value2"] }
                * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
-               additional_claims": { "my_attribute": ["value1", "value2"] }
-               Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+                 additional_claims": { "my_attribute": ["value1", "value2"] }
+                 Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
@@ -1706,10 +2189,10 @@ class SettingsApplicationSettingsAttributePropagationSettingsArgs:
         Possible values are:
         * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
         * `JWT`: Propagate attributes in the JWT of the form:
-        "additional_claims": { "my_attribute": ["value1", "value2"] }
+          "additional_claims": { "my_attribute": ["value1", "value2"] }
         * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
-        additional_claims": { "my_attribute": ["value1", "value2"] }
-        Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+          additional_claims": { "my_attribute": ["value1", "value2"] }
+          Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
         """
         return pulumi.get(self, "output_credentials")
 

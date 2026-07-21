@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigLinuxNodeConfigSwapConfigArgs;
@@ -56,6 +57,21 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
+    }
+
+    /**
+     * Custom node init settings. Structure is documented below.
+     * 
+     */
+    @Import(name="customNodeInit")
+    private @Nullable Output<ClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs> customNodeInit;
+
+    /**
+     * @return Custom node init settings. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs>> customNodeInit() {
+        return Optional.ofNullable(this.customNodeInit);
     }
 
     /**
@@ -159,6 +175,7 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
     private ClusterNodeConfigLinuxNodeConfigArgs(ClusterNodeConfigLinuxNodeConfigArgs $) {
         this.accurateTimeConfig = $.accurateTimeConfig;
         this.cgroupMode = $.cgroupMode;
+        this.customNodeInit = $.customNodeInit;
         this.hugepagesConfig = $.hugepagesConfig;
         this.nodeKernelModuleLoading = $.nodeKernelModuleLoading;
         this.swapConfig = $.swapConfig;
@@ -233,6 +250,27 @@ public final class ClusterNodeConfigLinuxNodeConfigArgs extends com.pulumi.resou
          */
         public Builder cgroupMode(String cgroupMode) {
             return cgroupMode(Output.of(cgroupMode));
+        }
+
+        /**
+         * @param customNodeInit Custom node init settings. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customNodeInit(@Nullable Output<ClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs> customNodeInit) {
+            $.customNodeInit = customNodeInit;
+            return this;
+        }
+
+        /**
+         * @param customNodeInit Custom node init settings. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customNodeInit(ClusterNodeConfigLinuxNodeConfigCustomNodeInitArgs customNodeInit) {
+            return customNodeInit(Output.of(customNodeInit));
         }
 
         /**

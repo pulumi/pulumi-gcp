@@ -65,7 +65,6 @@ func TestExpandGlob(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run("", func(t *testing.T) {
 			actual := expandGlob(tt.path, tt.value)
 			assert.ElementsMatch(t, tt.expected, actual)
@@ -111,7 +110,6 @@ func TestAddPrefix(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run("", func(t *testing.T) {
 			actual := addPrefix(tt.prefix, tt.ends)
 			assert.Equal(t, tt.expected, actual)
@@ -247,7 +245,6 @@ func TestEnsureLabelPathsExist(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			transform := ensureLabelPathsExist(tt.paths)
 			actual, err := transform(context.Background(), tt.input)
@@ -336,7 +333,6 @@ func TestFixEmptyLabels(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			result, err := fixEmptyLabels(context.Background(), tt.inputs)
 			require.NoError(t, err)

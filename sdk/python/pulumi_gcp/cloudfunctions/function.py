@@ -61,7 +61,7 @@ class FunctionArgs:
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
-               - - -
+               ***
         :param pulumi.Input['FunctionAutomaticUpdatePolicyArgs'] automatic_update_policy: Security patches are applied automatically to the runtime without requiring the function to be redeployed. This should be specified as an empty block and cannot be set alongside `on_deploy_update_policy`.
         :param pulumi.Input[_builtins.int] available_memory_mb: Memory (in MB), available to the function. Default value is `256`. Possible values include `128`, `256`, `512`, `1024`, etc.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
@@ -184,7 +184,7 @@ class FunctionArgs:
         The runtime in which the function is going to run.
         Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "runtime")
 
@@ -686,7 +686,7 @@ class _FunctionState:
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretEnvironmentVariableArgs']]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionSecretVolumeArgs']]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -1097,7 +1097,7 @@ class _FunctionState:
         The runtime in which the function is going to run.
         Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "runtime")
 
@@ -1432,7 +1432,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -1746,7 +1746,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] runtime: The runtime in which the function is going to run.
                Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretEnvironmentVariableArgs', 'FunctionSecretEnvironmentVariableArgsDict']]]] secret_environment_variables: Secret environment variables configuration. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FunctionSecretVolumeArgs', 'FunctionSecretVolumeArgsDict']]]] secret_volumes: Secret volumes configuration. Structure is documented below.
         :param pulumi.Input[_builtins.str] service_account_email: If provided, the self-provided service account to run the function with.
@@ -2024,7 +2024,7 @@ class Function(pulumi.CustomResource):
         The runtime in which the function is going to run.
         Eg. `"nodejs20"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "runtime")
 

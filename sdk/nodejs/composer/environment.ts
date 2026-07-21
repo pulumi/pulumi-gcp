@@ -440,8 +440,8 @@ export class Environment extends pulumi.CustomResource {
     /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -530,8 +530,8 @@ export interface EnvironmentState {
     /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -576,8 +576,8 @@ export interface EnvironmentArgs {
     /**
      * User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: a-z?. Label values must be between 0 and 63 characters long and must conform to the regular expression (a-z?)?. No more than 64 labels can be associated with a given environment. Both keys and values must be <= 128 bytes in size.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**

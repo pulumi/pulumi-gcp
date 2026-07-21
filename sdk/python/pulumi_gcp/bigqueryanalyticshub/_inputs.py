@@ -67,6 +67,8 @@ __all__ = [
     'ListingSubscriptionLinkedDatasetMapArgsDict',
     'ListingSubscriptionLinkedResourceArgs',
     'ListingSubscriptionLinkedResourceArgsDict',
+    'QueryTemplateRoutineArgs',
+    'QueryTemplateRoutineArgsDict',
 ]
 
 class DataExchangeIamBindingConditionArgsDict(TypedDict):
@@ -1546,5 +1548,57 @@ class ListingSubscriptionLinkedResourceArgs:
     @listing.setter
     def listing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listing", value)
+
+
+class QueryTemplateRoutineArgsDict(TypedDict):
+    definition_body: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    SQL query logic.
+    """
+    routine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of routine (e.g., TABLE_VALUED_FUNCTION).
+    Possible values are: `TABLE_VALUED_FUNCTION`.
+    """
+
+@pulumi.input_type
+class QueryTemplateRoutineArgs:
+    def __init__(__self__, *,
+                 definition_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 routine_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] definition_body: SQL query logic.
+        :param pulumi.Input[_builtins.str] routine_type: Type of routine (e.g., TABLE_VALUED_FUNCTION).
+               Possible values are: `TABLE_VALUED_FUNCTION`.
+        """
+        if definition_body is not None:
+            pulumi.set(__self__, "definition_body", definition_body)
+        if routine_type is not None:
+            pulumi.set(__self__, "routine_type", routine_type)
+
+    @_builtins.property
+    @pulumi.getter(name="definitionBody")
+    def definition_body(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        SQL query logic.
+        """
+        return pulumi.get(self, "definition_body")
+
+    @definition_body.setter
+    def definition_body(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "definition_body", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routineType")
+    def routine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of routine (e.g., TABLE_VALUED_FUNCTION).
+        Possible values are: `TABLE_VALUED_FUNCTION`.
+        """
+        return pulumi.get(self, "routine_type")
+
+    @routine_type.setter
+    def routine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routine_type", value)
 
 

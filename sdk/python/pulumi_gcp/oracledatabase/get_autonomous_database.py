@@ -272,7 +272,7 @@ def get_autonomous_database(autonomous_database_id: Optional[_builtins.str] = No
     :param _builtins.str autonomous_database_id: The ID of the AutonomousDatabase.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project to which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -331,7 +331,7 @@ def get_autonomous_database_output(autonomous_database_id: pulumi.Input[Optional
     :param _builtins.str autonomous_database_id: The ID of the AutonomousDatabase.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project to which the resource belongs. If it
            is not provided, the provider project is used.
     """

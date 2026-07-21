@@ -18,6 +18,60 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
+ * const targetForwardingRule = new gcp.compute.Network("target_forwarding_rule", {
+ *     name: "tf-test-network-_9106",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const targetForwardingRuleProxySubnetwork = new gcp.compute.Subnetwork("target_forwarding_rule_proxy_subnetwork", {
+ *     name: "tf-test-proxy-subnetwork-_27169",
+ *     region: "us-west2",
+ *     network: targetForwardingRule.id,
+ *     ipCidrRange: "10.20.0.0/24",
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     role: "ACTIVE",
+ * });
+ * const targetForwardingRuleDefaultSubnetwork = new gcp.compute.Subnetwork("target_forwarding_rule_default_subnetwork", {
+ *     name: "tf-test-default-subnetwork-_75223",
+ *     region: "us-west2",
+ *     network: targetForwardingRule.id,
+ *     ipCidrRange: "10.10.0.0/24",
+ * });
+ * const targetForwardingRuleRegionHealthCheck = new gcp.compute.RegionHealthCheck("target_forwarding_rule", {
+ *     name: "tf-test-health-check-_41819",
+ *     region: "us-west2",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const targetForwardingRuleRegionBackendService = new gcp.compute.RegionBackendService("target_forwarding_rule", {
+ *     name: "tf-test-backend-service-_75092",
+ *     region: "us-west2",
+ *     protocol: "HTTP",
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: targetForwardingRuleRegionHealthCheck.id,
+ * });
+ * const targetForwardingRuleRegionUrlMap = new gcp.compute.RegionUrlMap("target_forwarding_rule", {
+ *     name: "tf-test-url-map-_2605",
+ *     region: "us-west2",
+ *     defaultService: targetForwardingRuleRegionBackendService.id,
+ * });
+ * const targetForwardingRuleRegionTargetHttpProxy = new gcp.compute.RegionTargetHttpProxy("target_forwarding_rule", {
+ *     name: "tf-test-target-http-proxy-_34535",
+ *     region: "us-west2",
+ *     urlMap: targetForwardingRuleRegionUrlMap.id,
+ * });
+ * const targetForwardingRuleForwardingRule = new gcp.compute.ForwardingRule("target_forwarding_rule", {
+ *     name: "tf-test-forwarding-rule-_22375",
+ *     region: "us-west2",
+ *     network: targetForwardingRule.id,
+ *     subnetwork: targetForwardingRuleDefaultSubnetwork.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     target: targetForwardingRuleRegionTargetHttpProxy.id,
+ *     ipProtocol: "TCP",
+ *     portRange: "80",
+ * }, {
+ *     dependsOn: [targetForwardingRuleProxySubnetwork],
+ * });
  * const addressGroup1 = new gcp.networksecurity.AddressGroup("address_group_1", {
  *     name: "address-group",
  *     parent: project.then(project => project.id),
@@ -107,6 +161,20 @@ import * as utilities from "../utilities";
  *                 }],
  *                 layer4Configs: [{
  *                     ipProtocol: "udp",
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             description: "internal managed lb rule",
+ *             priority: 3000,
+ *             action: "allow",
+ *             direction: "INGRESS",
+ *             targetType: "INTERNAL_MANAGED_LB",
+ *             targetForwardingRules: [targetForwardingRuleForwardingRule.selfLink],
+ *             match: {
+ *                 srcIpRanges: ["10.0.0.0/8"],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
  *                 }],
  *             },
  *         },

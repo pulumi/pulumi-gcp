@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.biglake.IcebergCatalogArgs;
 import com.pulumi.gcp.biglake.inputs.IcebergCatalogState;
+import com.pulumi.gcp.biglake.outputs.IcebergCatalogFederatedCatalogOptions;
 import com.pulumi.gcp.biglake.outputs.IcebergCatalogReplica;
 import com.pulumi.gcp.biglake.outputs.IcebergCatalogRestrictedLocationsConfig;
 import java.lang.String;
@@ -182,6 +183,106 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Biglake Iceberg Catalog Federated Unity
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.biglake.IcebergCatalog;
+ * import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myIcebergCatalog = new IcebergCatalog("myIcebergCatalog", IcebergCatalogArgs.builder()
+ *             .catalogType("CATALOG_TYPE_FEDERATED")
+ *             .name("my_iceberg_catalog")
+ *             .primaryLocation("us-central1")
+ *             .federatedCatalogOptions(IcebergCatalogFederatedCatalogOptionsArgs.builder()
+ *                 .unityCatalogInfo(IcebergCatalogFederatedCatalogOptionsUnityCatalogInfoArgs.builder()
+ *                     .catalogName("my_catalog")
+ *                     .instanceName("1.1.gcp.databricks.com")
+ *                     .servicePrincipalApplicationId("b3204274-6556-4d40-ad18-556f91659745")
+ *                     .build())
+ *                 .refreshOptions(IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs.builder()
+ *                     .refreshSchedule(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs.builder()
+ *                         .refreshInterval("300s")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Biglake Iceberg Catalog Federated Glue
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.biglake.IcebergCatalog;
+ * import com.pulumi.gcp.biglake.IcebergCatalogArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs;
+ * import com.pulumi.gcp.biglake.inputs.IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myIcebergCatalog = new IcebergCatalog("myIcebergCatalog", IcebergCatalogArgs.builder()
+ *             .catalogType("CATALOG_TYPE_FEDERATED")
+ *             .name("my_iceberg_catalog")
+ *             .primaryLocation("us-central1")
+ *             .federatedCatalogOptions(IcebergCatalogFederatedCatalogOptionsArgs.builder()
+ *                 .glueCatalogInfo(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs.builder()
+ *                     .awsRegion("us-east-1")
+ *                     .awsRoleArn("arn:aws:iam::111222333444:role/my-glue-role")
+ *                     .warehouse("111222333444:s3tablescatalog/example")
+ *                     .build())
+ *                 .refreshOptions(IcebergCatalogFederatedCatalogOptionsRefreshOptionsArgs.builder()
+ *                     .refreshSchedule(IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScheduleArgs.builder()
+ *                         .refreshInterval("300s")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -217,8 +318,25 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
         return this.biglakeServiceAccount;
     }
     /**
+     * Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+     * 
+     */
+    @Export(name="biglakeServiceAccountId", refs={String.class}, tree="[0]")
+    private Output<String> biglakeServiceAccountId;
+
+    /**
+     * @return Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+     * 
+     */
+    public Output<String> biglakeServiceAccountId() {
+        return this.biglakeServiceAccountId;
+    }
+    /**
      * The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      * 
      */
     @Export(name="catalogType", refs={String.class}, tree="[0]")
@@ -226,7 +344,10 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      * 
      */
     public Output<String> catalogType() {
@@ -303,6 +424,38 @@ public class IcebergCatalog extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deletionPolicy() {
         return this.deletionPolicy;
+    }
+    /**
+     * A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="federatedCatalogOptions", refs={IcebergCatalogFederatedCatalogOptions.class}, tree="[0]")
+    private Output</* @Nullable */ IcebergCatalogFederatedCatalogOptions> federatedCatalogOptions;
+
+    /**
+     * @return Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<IcebergCatalogFederatedCatalogOptions>> federatedCatalogOptions() {
+        return Codegen.optional(this.federatedCatalogOptions);
     }
     /**
      * The name of the IcebergCatalog.

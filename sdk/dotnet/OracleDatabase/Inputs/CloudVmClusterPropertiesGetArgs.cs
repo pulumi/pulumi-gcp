@@ -241,6 +241,17 @@ namespace Pulumi.Gcp.OracleDatabase.Inputs
 
         /// <summary>
         /// (Output)
+        /// The storage management type of the VM Cluster.
+        /// Possible values:
+        /// STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+        /// ASM
+        /// EXASCALE
+        /// </summary>
+        [Input("storageManagementType")]
+        public Input<string>? StorageManagementType { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// The storage allocation for the disk group, in gigabytes (GB).
         /// </summary>
         [Input("storageSizeGb")]

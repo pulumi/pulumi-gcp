@@ -37,6 +37,18 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
+        /// (Output) The service connection policy created for the auto connection.
+        /// </summary>
+        [Input("serviceConnectionPolicy")]
+        public Input<string>? ServiceConnectionPolicy { get; set; }
+
+        /// <summary>
+        /// (Output) The result of the service connection policy creation.
+        /// </summary>
+        [Input("serviceConnectionPolicyCreationResult")]
+        public Input<string>? ServiceConnectionPolicyCreationResult { get; set; }
+
+        /// <summary>
         /// (Output) The connection status of the consumer endpoint.
         /// </summary>
         [Input("status")]

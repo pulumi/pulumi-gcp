@@ -231,7 +231,7 @@ def get_notification_channel(display_name: Optional[_builtins.str] = None,
            If it is not provided, the provider project is used.
     :param _builtins.str type: The type of the notification channel.
            
-           - - -
+           ***
            
            Other optional fields include:
     :param Mapping[str, _builtins.str] user_labels: User-provided key-value labels to filter by.
@@ -313,7 +313,7 @@ def get_notification_channel_output(display_name: pulumi.Input[Optional[Optional
            If it is not provided, the provider project is used.
     :param _builtins.str type: The type of the notification channel.
            
-           - - -
+           ***
            
            Other optional fields include:
     :param Mapping[str, _builtins.str] user_labels: User-provided key-value labels to filter by.

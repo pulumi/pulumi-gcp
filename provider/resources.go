@@ -6,6 +6,7 @@ import (
 	"context"
 	"fmt"
 	"path"
+	"slices"
 	"strings"
 	"sync/atomic"
 	"unicode"
@@ -27,10 +28,10 @@ import (
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
-	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/provider"
 
 	"github.com/pulumi/pulumi-gcp/provider/v9/pkg/version"
 )
@@ -402,7 +403,8 @@ var noProjectErr string
 func preConfigureCallbackWithLogger(
 	credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption,
 ) tfbridge.PreConfigureCallbackWithLogger {
-	return func(ctx context.Context, _ *provider.HostClient, vars resource.PropertyMap, _ shim.ResourceConfig) error {
+	return func(ctx context.Context, _ *provider.HostClient, vars resource.PropertyMap,
+		_ shim.ResourceConfig) error {
 		if !credentialsValidationRun.CompareAndSwap(false, true) {
 			return nil
 		}
@@ -476,10 +478,8 @@ func preConfigureCallbackWithLogger(
 				tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("failed to get regions list: %v", err))
 				return nil
 			}
-			for _, region := range regionList {
-				if region == config.Region {
-					return nil
-				}
+			if slices.Contains(regionList, config.Region) {
+				return nil
 			}
 			tfbridge.GetLogger(ctx).Warn(fmt.Sprintf(wrongRegionErr, config.Region, config.Project))
 		}
@@ -3029,6 +3029,7 @@ func Provider() tfbridge.ProviderInfo {
 		"google_workbench_instance_iam_member",
 		"google_workbench_instance_iam_policy",
 		"google_kms_key_ring",
+		"google_tags_tag_binding_collection",
 	}
 
 	for _, name := range allowMissingResourceDocs {

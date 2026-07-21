@@ -116,6 +116,78 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Oracledatabase Exascale Db Storage Vault Dedicated Exadata Infrastructure
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructure;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig;
+ * import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureExascaleConfigArgs;
+ * import com.pulumi.gcp.oracledatabase.ExascaleDbStorageVault;
+ * import com.pulumi.gcp.oracledatabase.ExascaleDbStorageVaultArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.ExascaleDbStorageVaultPropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var infra = new CloudExadataInfrastructure("infra", CloudExadataInfrastructureArgs.builder()
+ *             .cloudExadataInfrastructureId("my-infra")
+ *             .displayName("my-infra displayname")
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .properties(CloudExadataInfrastructurePropertiesArgs.builder()
+ *                 .shape("Exadata.X9M")
+ *                 .computeCount(2)
+ *                 .storageCount(3)
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *         var exascaleConfig = new CloudExadataInfrastructureExascaleConfig("exascaleConfig", CloudExadataInfrastructureExascaleConfigArgs.builder()
+ *             .cloudExadataInfrastructure(infra.cloudExadataInfrastructureId())
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .totalStorageSizeGb(10240)
+ *             .build());
+ * 
+ *         var myStorageVault = new ExascaleDbStorageVault("myStorageVault", ExascaleDbStorageVaultArgs.builder()
+ *             .exascaleDbStorageVaultId("my-instance")
+ *             .displayName("my-instance displayname")
+ *             .location("us-east4")
+ *             .project("my-project")
+ *             .exadataInfrastructure(infra.name())
+ *             .properties(ExascaleDbStorageVaultPropertiesArgs.builder()
+ *                 .exascaleDbStorageDetails(ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs.builder()
+ *                     .totalSizeGbs(2048)
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exascaleConfig)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -235,6 +307,22 @@ public class ExascaleDbStorageVault extends com.pulumi.resources.CustomResource 
      */
     public Output<String> entitlementId() {
         return this.entitlementId;
+    }
+    /**
+     * The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     * 
+     */
+    @Export(name="exadataInfrastructure", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> exadataInfrastructure;
+
+    /**
+     * @return The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     * 
+     */
+    public Output<Optional<String>> exadataInfrastructure() {
+        return Codegen.optional(this.exadataInfrastructure);
     }
     /**
      * The ID of the ExascaleDbStorageVault to create. This value is

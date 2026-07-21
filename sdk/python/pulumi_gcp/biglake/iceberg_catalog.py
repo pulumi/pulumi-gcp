@@ -25,6 +25,8 @@ class IcebergCatalogArgs:
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_catalog_options: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -33,7 +35,10 @@ class IcebergCatalogArgs:
         The set of arguments for constructing a IcebergCatalog resource.
 
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+               * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+               * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+               * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+                 Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
         :param pulumi.Input[_builtins.str] default_location: The default storage location for the catalog, e.g., `gs://my-bucket`.
@@ -45,6 +50,10 @@ class IcebergCatalogArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsArgs'] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+               is CATALOG_TYPE_FEDERATED.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -65,6 +74,10 @@ class IcebergCatalogArgs:
             pulumi.set(__self__, "default_location", default_location)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if federated_catalog_options is not None:
+            pulumi.set(__self__, "federated_catalog_options", federated_catalog_options)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if primary_location is not None:
@@ -79,7 +92,10 @@ class IcebergCatalogArgs:
     def catalog_type(self) -> pulumi.Input[_builtins.str]:
         """
         The catalog type of the IcebergCatalog.
-        Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+        * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+        * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+        * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+          Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         """
         return pulumi.get(self, "catalog_type")
 
@@ -130,6 +146,32 @@ class IcebergCatalogArgs:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="federatedCatalogOptions")
+    def federated_catalog_options(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsArgs']]:
+        """
+        Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+        is CATALOG_TYPE_FEDERATED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "federated_catalog_options")
+
+    @federated_catalog_options.setter
+    def federated_catalog_options(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsArgs']]):
+        pulumi.set(self, "federated_catalog_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -192,11 +234,14 @@ class IcebergCatalogArgs:
 class _IcebergCatalogState:
     def __init__(__self__, *,
                  biglake_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 biglake_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                  catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_catalog_options: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -208,8 +253,12 @@ class _IcebergCatalogState:
         Input properties used for looking up and filtering IcebergCatalog resources.
 
         :param pulumi.Input[_builtins.str] biglake_service_account: Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
+        :param pulumi.Input[_builtins.str] biglake_service_account_id: Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+               * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+               * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+               * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+                 Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time of the IcebergCatalog.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
@@ -222,6 +271,10 @@ class _IcebergCatalogState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        :param pulumi.Input['IcebergCatalogFederatedCatalogOptionsArgs'] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+               is CATALOG_TYPE_FEDERATED.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -241,6 +294,8 @@ class _IcebergCatalogState:
         """
         if biglake_service_account is not None:
             pulumi.set(__self__, "biglake_service_account", biglake_service_account)
+        if biglake_service_account_id is not None:
+            pulumi.set(__self__, "biglake_service_account_id", biglake_service_account_id)
         if catalog_type is not None:
             pulumi.set(__self__, "catalog_type", catalog_type)
         if create_time is not None:
@@ -251,6 +306,10 @@ class _IcebergCatalogState:
             pulumi.set(__self__, "default_location", default_location)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if federated_catalog_options is not None:
+            pulumi.set(__self__, "federated_catalog_options", federated_catalog_options)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if primary_location is not None:
@@ -279,11 +338,26 @@ class _IcebergCatalogState:
         pulumi.set(self, "biglake_service_account", value)
 
     @_builtins.property
+    @pulumi.getter(name="biglakeServiceAccountId")
+    def biglake_service_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+        """
+        return pulumi.get(self, "biglake_service_account_id")
+
+    @biglake_service_account_id.setter
+    def biglake_service_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "biglake_service_account_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The catalog type of the IcebergCatalog.
-        Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+        * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+        * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+        * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+          Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         """
         return pulumi.get(self, "catalog_type")
 
@@ -346,6 +420,32 @@ class _IcebergCatalogState:
     @deletion_policy.setter
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="federatedCatalogOptions")
+    def federated_catalog_options(self) -> pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsArgs']]:
+        """
+        Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+        is CATALOG_TYPE_FEDERATED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "federated_catalog_options")
+
+    @federated_catalog_options.setter
+    def federated_catalog_options(self, value: pulumi.Input[Optional['IcebergCatalogFederatedCatalogOptionsArgs']]):
+        pulumi.set(self, "federated_catalog_options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -451,6 +551,8 @@ class IcebergCatalog(pulumi.CustomResource):
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,6 +636,52 @@ class IcebergCatalog(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Biglake Iceberg Catalog Federated Unity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            catalog_type="CATALOG_TYPE_FEDERATED",
+            name="my_iceberg_catalog",
+            primary_location="us-central1",
+            federated_catalog_options={
+                "unity_catalog_info": {
+                    "catalog_name": "my_catalog",
+                    "instance_name": "1.1.gcp.databricks.com",
+                    "service_principal_application_id": "b3204274-6556-4d40-ad18-556f91659745",
+                },
+                "refresh_options": {
+                    "refresh_schedule": {
+                        "refresh_interval": "300s",
+                    },
+                },
+            })
+        ```
+        ### Biglake Iceberg Catalog Federated Glue
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            catalog_type="CATALOG_TYPE_FEDERATED",
+            name="my_iceberg_catalog",
+            primary_location="us-central1",
+            federated_catalog_options={
+                "glue_catalog_info": {
+                    "aws_region": "us-east-1",
+                    "aws_role_arn": "arn:aws:iam::111222333444:role/my-glue-role",
+                    "warehouse": "111222333444:s3tablescatalog/example",
+                },
+                "refresh_options": {
+                    "refresh_schedule": {
+                        "refresh_interval": "300s",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -555,7 +703,10 @@ class IcebergCatalog(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+               * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+               * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+               * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+                 Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
         :param pulumi.Input[_builtins.str] default_location: The default storage location for the catalog, e.g., `gs://my-bucket`.
@@ -567,6 +718,10 @@ class IcebergCatalog(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        :param pulumi.Input[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+               is CATALOG_TYPE_FEDERATED.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -664,6 +819,52 @@ class IcebergCatalog(pulumi.CustomResource):
                 ],
             })
         ```
+        ### Biglake Iceberg Catalog Federated Unity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            catalog_type="CATALOG_TYPE_FEDERATED",
+            name="my_iceberg_catalog",
+            primary_location="us-central1",
+            federated_catalog_options={
+                "unity_catalog_info": {
+                    "catalog_name": "my_catalog",
+                    "instance_name": "1.1.gcp.databricks.com",
+                    "service_principal_application_id": "b3204274-6556-4d40-ad18-556f91659745",
+                },
+                "refresh_options": {
+                    "refresh_schedule": {
+                        "refresh_interval": "300s",
+                    },
+                },
+            })
+        ```
+        ### Biglake Iceberg Catalog Federated Glue
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_iceberg_catalog = gcp.biglake.IcebergCatalog("my_iceberg_catalog",
+            catalog_type="CATALOG_TYPE_FEDERATED",
+            name="my_iceberg_catalog",
+            primary_location="us-central1",
+            federated_catalog_options={
+                "glue_catalog_info": {
+                    "aws_region": "us-east-1",
+                    "aws_role_arn": "arn:aws:iam::111222333444:role/my-glue-role",
+                    "warehouse": "111222333444:s3tablescatalog/example",
+                },
+                "refresh_options": {
+                    "refresh_schedule": {
+                        "refresh_interval": "300s",
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -701,6 +902,8 @@ class IcebergCatalog(pulumi.CustomResource):
                  credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  default_location: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -720,11 +923,14 @@ class IcebergCatalog(pulumi.CustomResource):
             __props__.__dict__["credential_mode"] = credential_mode
             __props__.__dict__["default_location"] = default_location
             __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["description"] = description
+            __props__.__dict__["federated_catalog_options"] = federated_catalog_options
             __props__.__dict__["name"] = name
             __props__.__dict__["primary_location"] = primary_location
             __props__.__dict__["project"] = project
             __props__.__dict__["restricted_locations_config"] = restricted_locations_config
             __props__.__dict__["biglake_service_account"] = None
+            __props__.__dict__["biglake_service_account_id"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["replicas"] = None
             __props__.__dict__["storage_regions"] = None
@@ -740,11 +946,14 @@ class IcebergCatalog(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             biglake_service_account: pulumi.Input[Optional[_builtins.str]] = None,
+            biglake_service_account_id: pulumi.Input[Optional[_builtins.str]] = None,
             catalog_type: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             credential_mode: pulumi.Input[Optional[_builtins.str]] = None,
             default_location: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            federated_catalog_options: pulumi.Input[Optional[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -760,8 +969,12 @@ class IcebergCatalog(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] biglake_service_account: Output only. The service account used for credential vending. It might be empty if credential vending was never enabled for the catalog.
+        :param pulumi.Input[_builtins.str] biglake_service_account_id: Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
         :param pulumi.Input[_builtins.str] catalog_type: The catalog type of the IcebergCatalog.
-               Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+               * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+               * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+               * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+                 Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation time of the IcebergCatalog.
         :param pulumi.Input[_builtins.str] credential_mode: The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
                Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
@@ -774,6 +987,10 @@ class IcebergCatalog(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        :param pulumi.Input[Union['IcebergCatalogFederatedCatalogOptionsArgs', 'IcebergCatalogFederatedCatalogOptionsArgsDict']] federated_catalog_options: Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+               is CATALOG_TYPE_FEDERATED.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The name of the IcebergCatalog.
                For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
                exact same value of the GCS bucket's name. For example, for a bucket:
@@ -796,11 +1013,14 @@ class IcebergCatalog(pulumi.CustomResource):
         __props__ = _IcebergCatalogState.__new__(_IcebergCatalogState)
 
         __props__.__dict__["biglake_service_account"] = biglake_service_account
+        __props__.__dict__["biglake_service_account_id"] = biglake_service_account_id
         __props__.__dict__["catalog_type"] = catalog_type
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["credential_mode"] = credential_mode
         __props__.__dict__["default_location"] = default_location
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["description"] = description
+        __props__.__dict__["federated_catalog_options"] = federated_catalog_options
         __props__.__dict__["name"] = name
         __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
@@ -819,11 +1039,22 @@ class IcebergCatalog(pulumi.CustomResource):
         return pulumi.get(self, "biglake_service_account")
 
     @_builtins.property
+    @pulumi.getter(name="biglakeServiceAccountId")
+    def biglake_service_account_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+        """
+        return pulumi.get(self, "biglake_service_account_id")
+
+    @_builtins.property
     @pulumi.getter(name="catalogType")
     def catalog_type(self) -> pulumi.Output[_builtins.str]:
         """
         The catalog type of the IcebergCatalog.
-        Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+        * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+        * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+        * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+          Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
         """
         return pulumi.get(self, "catalog_type")
 
@@ -866,6 +1097,24 @@ class IcebergCatalog(pulumi.CustomResource):
         When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="federatedCatalogOptions")
+    def federated_catalog_options(self) -> pulumi.Output[Optional['outputs.IcebergCatalogFederatedCatalogOptions']]:
+        """
+        Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalog_type
+        is CATALOG_TYPE_FEDERATED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "federated_catalog_options")
 
     @_builtins.property
     @pulumi.getter

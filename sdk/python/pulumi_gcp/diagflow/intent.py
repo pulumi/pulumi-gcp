@@ -62,7 +62,7 @@ class IntentArgs:
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[_builtins.int] priority: The priority of this intent. Higher numbers represent higher priorities.
                - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-               to the Normal priority in the console.
+                 to the Normal priority in the console.
                - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -70,8 +70,8 @@ class IntentArgs:
         :param pulumi.Input[_builtins.str] webhook_state: Indicates whether webhooks are enabled for the intent.
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-               filling prompt is forwarded to the webhook.
-               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+                 filling prompt is forwarded to the webhook.
+                 Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         pulumi.set(__self__, "display_name", display_name)
         if action is not None:
@@ -227,7 +227,7 @@ class IntentArgs:
         """
         The priority of this intent. Higher numbers represent higher priorities.
         - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        to the Normal priority in the console.
+          to the Normal priority in the console.
         - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         """
         return pulumi.get(self, "priority")
@@ -268,8 +268,8 @@ class IntentArgs:
         Indicates whether webhooks are enabled for the intent.
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-        filling prompt is forwarded to the webhook.
-        Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+          filling prompt is forwarded to the webhook.
+          Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         return pulumi.get(self, "webhook_state")
 
@@ -330,7 +330,7 @@ class _IntentState:
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[_builtins.int] priority: The priority of this intent. Higher numbers represent higher priorities.
                - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-               to the Normal priority in the console.
+                 to the Normal priority in the console.
                - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -341,8 +341,8 @@ class _IntentState:
         :param pulumi.Input[_builtins.str] webhook_state: Indicates whether webhooks are enabled for the intent.
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-               filling prompt is forwarded to the webhook.
-               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+                 filling prompt is forwarded to the webhook.
+                 Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -532,7 +532,7 @@ class _IntentState:
         """
         The priority of this intent. Higher numbers represent higher priorities.
         - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        to the Normal priority in the console.
+          to the Normal priority in the console.
         - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         """
         return pulumi.get(self, "priority")
@@ -587,8 +587,8 @@ class _IntentState:
         Indicates whether webhooks are enabled for the intent.
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-        filling prompt is forwarded to the webhook.
-        Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+          filling prompt is forwarded to the webhook.
+          Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         return pulumi.get(self, "webhook_state")
 
@@ -725,7 +725,7 @@ class Intent(pulumi.CustomResource):
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[_builtins.int] priority: The priority of this intent. Higher numbers represent higher priorities.
                - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-               to the Normal priority in the console.
+                 to the Normal priority in the console.
                - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -733,8 +733,8 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] webhook_state: Indicates whether webhooks are enabled for the intent.
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-               filling prompt is forwarded to the webhook.
-               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+                 filling prompt is forwarded to the webhook.
+                 Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         ...
     @overload
@@ -941,7 +941,7 @@ class Intent(pulumi.CustomResource):
                Format: projects/<Project ID>/agent/intents/<Intent ID>.
         :param pulumi.Input[_builtins.int] priority: The priority of this intent. Higher numbers represent higher priorities.
                - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-               to the Normal priority in the console.
+                 to the Normal priority in the console.
                - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -952,8 +952,8 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] webhook_state: Indicates whether webhooks are enabled for the intent.
                * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
                * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-               filling prompt is forwarded to the webhook.
-               Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+                 filling prompt is forwarded to the webhook.
+                 Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1088,7 +1088,7 @@ class Intent(pulumi.CustomResource):
         """
         The priority of this intent. Higher numbers represent higher priorities.
         - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds
-        to the Normal priority in the console.
+          to the Normal priority in the console.
         - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
         """
         return pulumi.get(self, "priority")
@@ -1127,8 +1127,8 @@ class Intent(pulumi.CustomResource):
         Indicates whether webhooks are enabled for the intent.
         * WEBHOOK_STATE_ENABLED: Webhook is enabled in the agent and in the intent.
         * WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING: Webhook is enabled in the agent and in the intent. Also, each slot
-        filling prompt is forwarded to the webhook.
-        Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
+          filling prompt is forwarded to the webhook.
+          Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
         """
         return pulumi.get(self, "webhook_state")
 

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyDailyMaintenanceWindow;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyDisruptionBudget;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyMaintenanceExclusion;
+import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyRecurringMaintenanceWindow;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyRecurringWindow;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +28,7 @@ public final class ClusterMaintenancePolicy {
     /**
      * @return structure documented below
      * 
-     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
      * 
      */
     private @Nullable ClusterMaintenancePolicyDisruptionBudget disruptionBudget;
@@ -36,6 +37,11 @@ public final class ClusterMaintenancePolicy {
      * 
      */
     private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+    /**
+     * @return Defines a recurring window for maintenance operations.
+     * 
+     */
+    private @Nullable ClusterMaintenancePolicyRecurringMaintenanceWindow recurringMaintenanceWindow;
     /**
      * @return Time window for recurring maintenance operations.
      * 
@@ -64,7 +70,7 @@ public final class ClusterMaintenancePolicy {
     /**
      * @return structure documented below
      * 
-     * In beta, one or the other of `recurringWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
+     * In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
      * 
      */
     public Optional<ClusterMaintenancePolicyDisruptionBudget> disruptionBudget() {
@@ -76,6 +82,13 @@ public final class ClusterMaintenancePolicy {
      */
     public List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions() {
         return this.maintenanceExclusions == null ? List.of() : this.maintenanceExclusions;
+    }
+    /**
+     * @return Defines a recurring window for maintenance operations.
+     * 
+     */
+    public Optional<ClusterMaintenancePolicyRecurringMaintenanceWindow> recurringMaintenanceWindow() {
+        return Optional.ofNullable(this.recurringMaintenanceWindow);
     }
     /**
      * @return Time window for recurring maintenance operations.
@@ -104,6 +117,7 @@ public final class ClusterMaintenancePolicy {
         private @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
         private @Nullable ClusterMaintenancePolicyDisruptionBudget disruptionBudget;
         private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
+        private @Nullable ClusterMaintenancePolicyRecurringMaintenanceWindow recurringMaintenanceWindow;
         private @Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow;
         public Builder() {}
         public Builder(ClusterMaintenancePolicy defaults) {
@@ -111,6 +125,7 @@ public final class ClusterMaintenancePolicy {
     	      this.dailyMaintenanceWindow = defaults.dailyMaintenanceWindow;
     	      this.disruptionBudget = defaults.disruptionBudget;
     	      this.maintenanceExclusions = defaults.maintenanceExclusions;
+    	      this.recurringMaintenanceWindow = defaults.recurringMaintenanceWindow;
     	      this.recurringWindow = defaults.recurringWindow;
         }
 
@@ -136,6 +151,12 @@ public final class ClusterMaintenancePolicy {
             return maintenanceExclusions(List.of(maintenanceExclusions));
         }
         @CustomType.Setter
+        public Builder recurringMaintenanceWindow(@Nullable ClusterMaintenancePolicyRecurringMaintenanceWindow recurringMaintenanceWindow) {
+
+            this.recurringMaintenanceWindow = recurringMaintenanceWindow;
+            return this;
+        }
+        @CustomType.Setter
         public Builder recurringWindow(@Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow) {
 
             this.recurringWindow = recurringWindow;
@@ -146,6 +167,7 @@ public final class ClusterMaintenancePolicy {
             _resultValue.dailyMaintenanceWindow = dailyMaintenanceWindow;
             _resultValue.disruptionBudget = disruptionBudget;
             _resultValue.maintenanceExclusions = maintenanceExclusions;
+            _resultValue.recurringMaintenanceWindow = recurringMaintenanceWindow;
             _resultValue.recurringWindow = recurringWindow;
             return _resultValue;
         }

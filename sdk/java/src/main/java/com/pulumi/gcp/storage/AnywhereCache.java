@@ -94,18 +94,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:storage/anywhereCache:AnywhereCache")
 public class AnywhereCache extends com.pulumi.resources.CustomResource {
     /**
+     * (Optional, Deprecated)
      * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: &#34;admit-on-second-miss&#34; is deprecated and will fallback to &#34;admit-on-first-miss&#34;.
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
      * 
+     * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * 
+     * @deprecated
+     * `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+     * 
      */
+    @Deprecated /* `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`. */
     @Export(name="admissionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> admissionPolicy;
 
     /**
-     * @return The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * @return (Optional, Deprecated)
+     * The cache admission policy dictates whether a block should be inserted upon a cache miss.
+     * Note: &#34;admit-on-second-miss&#34; is deprecated and will fallback to &#34;admit-on-first-miss&#34;.
      * Default value is `admit-on-first-miss`.
      * Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+     * 
+     * &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
      * 
      */
     public Output<Optional<String>> admissionPolicy() {

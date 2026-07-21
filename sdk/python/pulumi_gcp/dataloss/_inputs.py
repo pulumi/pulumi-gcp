@@ -609,6 +609,10 @@ __all__ = [
     'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict',
     'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs',
     'PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict',
+    'PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs',
+    'PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgsDict',
+    'PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs',
+    'PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgsDict',
     'PreventionInspectTemplateInspectConfigRuleSetArgs',
     'PreventionInspectTemplateInspectConfigRuleSetArgsDict',
     'PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgs',
@@ -2977,9 +2981,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     If the context is not set, plaintext would be used as is for encryption. If the context is set but:
     1. there is no record present when transforming a given value or
     2. the field is not present when transforming a given value,
-    plaintext would be used as is for encryption.
-    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-    Structure is documented below.
+       plaintext would be used as is for encryption.
+       Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+       Structure is documented below.
     """
     crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]]
     """
@@ -2995,8 +2999,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
     *   reverse a surrogate that does not correspond to an actual identifier
     *   be unable to parse the surrogate and result in an error
-    Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-    Structure is documented below.
+        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+        Structure is documented below.
     """
 
 @pulumi.input_type
@@ -3010,9 +3014,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
-               plaintext would be used as is for encryption.
-               Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-               Structure is documented below.
+                  plaintext would be used as is for encryption.
+                  Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+                  Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs'] crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs'] surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
@@ -3022,8 +3026,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
                *   reverse a surrogate that does not correspond to an actual identifier
                *   be unable to parse the surrogate and result in an error
-               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-               Structure is documented below.
+                   Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+                   Structure is documented below.
         """
         if context is not None:
             pulumi.set(__self__, "context", context)
@@ -3040,9 +3044,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1. there is no record present when transforming a given value or
         2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
+           plaintext would be used as is for encryption.
+           Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+           Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -3074,8 +3078,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         *   reverse a surrogate that does not correspond to an actual identifier
         *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
+            Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+            Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -3658,12 +3662,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     If the context is set but:
     1.  there is no record present when transforming a given value or
     2.  the field is not present when transforming a given value,
-    a default tweak will be used.
-    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+        a default tweak will be used.
+        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+        The tweak is constructed as a sequence of bytes in big endian byte order such that:
     *   a 64 bit integer is encoded followed by a single byte of value 1
     *   a string is encoded in UTF-8 format followed by a single byte of value 2
-    Structure is documented below.
+        Structure is documented below.
     """
     crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]]
     """
@@ -3704,12 +3708,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+                   a default tweak will be used.
+                   Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+                   The tweak is constructed as a sequence of bytes in big endian byte order such that:
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
-               Structure is documented below.
+                   Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
@@ -3755,12 +3759,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
         If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+            a default tweak will be used.
+            Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+            The tweak is constructed as a sequence of bytes in big endian byte order such that:
         *   a 64 bit integer is encoded followed by a single byte of value 1
         *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
+            Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -5209,7 +5213,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Example Use Cases:
     - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
     - Redact a field if the date of birth field is greater than 85.
-    Structure is documented below.
+      Structure is documented below.
     """
     info_type_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict']]]
     """
@@ -5240,7 +5244,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                Example Use Cases:
                - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
                - Redact a field if the date of birth field is greater than 85.
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs'] info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
                Only one of `primitive_transformation` or `info_type_transformations` must be specified.
                Structure is documented below.
@@ -5279,7 +5283,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         Example Use Cases:
         - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range.
         - Redact a field if the date of birth field is greater than 85.
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
@@ -7653,8 +7657,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
     *   reverse a surrogate that does not correspond to an actual identifier
     *   be unable to parse the surrogate and result in an error
-    Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-    Structure is documented below.
+        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+        Structure is documented below.
     """
     context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]]
     """
@@ -7662,9 +7666,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     If the context is not set, plaintext would be used as is for encryption. If the context is set but:
     1. there is no record present when transforming a given value or
     2. the field is not present when transforming a given value,
-    plaintext would be used as is for encryption.
-    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-    Structure is documented below.
+       plaintext would be used as is for encryption.
+       Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+       Structure is documented below.
     """
 
 @pulumi.input_type
@@ -7683,15 +7687,15 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
                *   reverse a surrogate that does not correspond to an actual identifier
                *   be unable to parse the surrogate and result in an error
-               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-               Structure is documented below.
+                   Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+                   Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs'] context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
-               plaintext would be used as is for encryption.
-               Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-               Structure is documented below.
+                  plaintext would be used as is for encryption.
+                  Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+                  Structure is documented below.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
         pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
@@ -7722,8 +7726,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         *   reverse a surrogate that does not correspond to an actual identifier
         *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
+            Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+            Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -7739,9 +7743,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1. there is no record present when transforming a given value or
         2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
+           plaintext would be used as is for encryption.
+           Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+           Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -8326,12 +8330,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     If the context is set but:
     1.  there is no record present when transforming a given value or
     2.  the field is not present when transforming a given value,
-    a default tweak will be used.
-    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+        a default tweak will be used.
+        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+        The tweak is constructed as a sequence of bytes in big endian byte order such that:
     *   a 64 bit integer is encoded followed by a single byte of value 1
     *   a string is encoded in UTF-8 format followed by a single byte of value 2
-    Structure is documented below.
+        Structure is documented below.
     """
     custom_alphabet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -8369,12 +8373,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+                   a default tweak will be used.
+                   Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+                   The tweak is constructed as a sequence of bytes in big endian byte order such that:
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
-               Structure is documented below.
+                   Structure is documented below.
         :param pulumi.Input[_builtins.str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
                ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|:;"'<,>.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
         :param pulumi.Input[_builtins.int] radix: The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
@@ -8430,12 +8434,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+            a default tweak will be used.
+            Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+            The tweak is constructed as a sequence of bytes in big endian byte order such that:
         *   a 64 bit integer is encoded followed by a single byte of value 1
         *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
+            Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -11393,9 +11397,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     If the context is not set, plaintext would be used as is for encryption. If the context is set but:
     1. there is no record present when transforming a given value or
     2. the field is not present when transforming a given value,
-    plaintext would be used as is for encryption.
-    Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-    Structure is documented below.
+       plaintext would be used as is for encryption.
+       Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+       Structure is documented below.
     """
     crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]]
     """
@@ -11411,8 +11415,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
     *   reverse a surrogate that does not correspond to an actual identifier
     *   be unable to parse the surrogate and result in an error
-    Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-    Structure is documented below.
+        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+        Structure is documented below.
     """
 
 @pulumi.input_type
@@ -11426,9 +11430,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                If the context is not set, plaintext would be used as is for encryption. If the context is set but:
                1. there is no record present when transforming a given value or
                2. the field is not present when transforming a given value,
-               plaintext would be used as is for encryption.
-               Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-               Structure is documented below.
+                  plaintext would be used as is for encryption.
+                  Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+                  Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs'] crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
                Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs'] surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
@@ -11438,8 +11442,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
                *   reverse a surrogate that does not correspond to an actual identifier
                *   be unable to parse the surrogate and result in an error
-               Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-               Structure is documented below.
+                   Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+                   Structure is documented below.
         """
         if context is not None:
             pulumi.set(__self__, "context", context)
@@ -11456,9 +11460,9 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is not set, plaintext would be used as is for encryption. If the context is set but:
         1. there is no record present when transforming a given value or
         2. the field is not present when transforming a given value,
-        plaintext would be used as is for encryption.
-        Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
-        Structure is documented below.
+           plaintext would be used as is for encryption.
+           Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
+           Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -11490,8 +11494,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either
         *   reverse a surrogate that does not correspond to an actual identifier
         *   be unable to parse the surrogate and result in an error
-        Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
-        Structure is documented below.
+            Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
+            Structure is documented below.
         """
         return pulumi.get(self, "surrogate_info_type")
 
@@ -12074,12 +12078,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     If the context is set but:
     1.  there is no record present when transforming a given value or
     2.  the field is not present when transforming a given value,
-    a default tweak will be used.
-    Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-    The tweak is constructed as a sequence of bytes in big endian byte order such that:
+        a default tweak will be used.
+        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+        The tweak is constructed as a sequence of bytes in big endian byte order such that:
     *   a 64 bit integer is encoded followed by a single byte of value 1
     *   a string is encoded in UTF-8 format followed by a single byte of value 2
-    Structure is documented below.
+        Structure is documented below.
     """
     crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]]
     """
@@ -12120,12 +12124,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                If the context is set but:
                1.  there is no record present when transforming a given value or
                2.  the field is not present when transforming a given value,
-               a default tweak will be used.
-               Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-               The tweak is constructed as a sequence of bytes in big endian byte order such that:
+                   a default tweak will be used.
+                   Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+                   The tweak is constructed as a sequence of bytes in big endian byte order such that:
                *   a 64 bit integer is encoded followed by a single byte of value 1
                *   a string is encoded in UTF-8 format followed by a single byte of value 2
-               Structure is documented below.
+                   Structure is documented below.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \\[2, 95\\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
@@ -12171,12 +12175,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
         If the context is set but:
         1.  there is no record present when transforming a given value or
         2.  the field is not present when transforming a given value,
-        a default tweak will be used.
-        Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
-        The tweak is constructed as a sequence of bytes in big endian byte order such that:
+            a default tweak will be used.
+            Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string.
+            The tweak is constructed as a sequence of bytes in big endian byte order such that:
         *   a 64 bit integer is encoded followed by a single byte of value 1
         *   a string is encoded in UTF-8 format followed by a single byte of value 2
-        Structure is documented below.
+            Structure is documented below.
         """
         return pulumi.get(self, "context")
 
@@ -18235,7 +18239,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict(TypedDic
     Amazon S3 bucket conditions.
     Structure is documented below.
 
-
     <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
     """
     min_age: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -18252,7 +18255,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs:
         :param pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgs'] amazon_s3_bucket_conditions: Amazon S3 bucket conditions.
                Structure is documented below.
                
-               
                <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
         :param pulumi.Input[_builtins.str] min_age: Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
         """
@@ -18267,7 +18269,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs:
         """
         Amazon S3 bucket conditions.
         Structure is documented below.
-
 
         <a name="nested_targets_other_cloud_target_conditions_amazon_s3_bucket_conditions"></a>The `amazon_s3_bucket_conditions` block supports:
         """
@@ -18522,7 +18523,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
     Regex for Cloud Storage.
     Structure is documented below.
 
-
     <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
     """
 
@@ -18533,7 +18533,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         """
         :param pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgs'] amazon_s3_bucket_regex: Regex for Cloud Storage.
                Structure is documented below.
-               
                
                <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
         """
@@ -18546,7 +18545,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
         """
         Regex for Cloud Storage.
         Structure is documented below.
-
 
         <a name="nested_targets_other_cloud_target_filter_collection_include_regexes_patterns_amazon_s3_bucket_regex"></a>The `amazon_s3_bucket_regex` block supports:
         """
@@ -18650,7 +18648,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDic
     Amazon S3 bucket.
     Structure is documented below.
 
-
     <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
     """
 
@@ -18661,7 +18658,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgs:
         """
         :param pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgs'] amazon_s3_bucket: Amazon S3 bucket.
                Structure is documented below.
-               
                
                <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
         """
@@ -18674,7 +18670,6 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgs:
         """
         Amazon S3 bucket.
         Structure is documented below.
-
 
         <a name="nested_targets_other_cloud_target_filter_single_resource_amazon_s3_bucket"></a>The `amazon_s3_bucket` block supports:
         """
@@ -18897,6 +18892,13 @@ class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
     Default value is `POSSIBLE`.
     Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
     """
+    min_likelihood_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgsDict']]]]]
+    """
+    Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+    The system only returns a finding if its likelihood is above this threshold. If this field
+    is not set, the system uses the InspectConfig min_likelihood.
+    Structure is documented below.
+    """
     rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgsDict']]]]]
     """
     Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
@@ -18914,6 +18916,7 @@ class PreventionInspectTemplateInspectConfigArgs:
                  info_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgs']]]] = None,
                  limits: pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsArgs']] = None,
                  min_likelihood: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_likelihood_per_info_types: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs']]]] = None,
                  rule_sets: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] content_options: List of options defining data content to scan. If empty, text, images, and other content will be included.
@@ -18932,6 +18935,10 @@ class PreventionInspectTemplateInspectConfigArgs:
         :param pulumi.Input[_builtins.str] min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
                Default value is `POSSIBLE`.
                Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs']]] min_likelihood_per_info_types: Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+               The system only returns a finding if its likelihood is above this threshold. If this field
+               is not set, the system uses the InspectConfig min_likelihood.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgs']]] rule_sets: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
                other rules are executed in the order they are specified for each info type.
                Structure is documented below.
@@ -18950,6 +18957,8 @@ class PreventionInspectTemplateInspectConfigArgs:
             pulumi.set(__self__, "limits", limits)
         if min_likelihood is not None:
             pulumi.set(__self__, "min_likelihood", min_likelihood)
+        if min_likelihood_per_info_types is not None:
+            pulumi.set(__self__, "min_likelihood_per_info_types", min_likelihood_per_info_types)
         if rule_sets is not None:
             pulumi.set(__self__, "rule_sets", rule_sets)
 
@@ -19045,6 +19054,21 @@ class PreventionInspectTemplateInspectConfigArgs:
     @min_likelihood.setter
     def min_likelihood(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihoodPerInfoTypes")
+    def min_likelihood_per_info_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs']]]]:
+        """
+        Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+        The system only returns a finding if its likelihood is above this threshold. If this field
+        is not set, the system uses the InspectConfig min_likelihood.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "min_likelihood_per_info_types")
+
+    @min_likelihood_per_info_types.setter
+    def min_likelihood_per_info_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs']]]]):
+        pulumi.set(self, "min_likelihood_per_info_types", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleSets")
@@ -19941,6 +19965,114 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     @score.setter
     def score(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "score", value)
+
+
+class PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgsDict(TypedDict):
+    min_likelihood: pulumi.Input[_builtins.str]
+    """
+    Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+    Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+    """
+    info_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgsDict']]]
+    """
+    Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+    If InfoTypeLikelihood does not have an info_type, the configuration fails.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs:
+    def __init__(__self__, *,
+                 min_likelihood: pulumi.Input[_builtins.str],
+                 info_type: pulumi.Input[Optional['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] min_likelihood: Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+               Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        :param pulumi.Input['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs'] info_type: Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+               If InfoTypeLikelihood does not have an info_type, the configuration fails.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "min_likelihood", min_likelihood)
+        if info_type is not None:
+            pulumi.set(__self__, "info_type", info_type)
+
+    @_builtins.property
+    @pulumi.getter(name="minLikelihood")
+    def min_likelihood(self) -> pulumi.Input[_builtins.str]:
+        """
+        Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
+        Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
+        """
+        return pulumi.get(self, "min_likelihood")
+
+    @min_likelihood.setter
+    def min_likelihood(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "min_likelihood", value)
+
+    @_builtins.property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> pulumi.Input[Optional['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs']]:
+        """
+        Type of information the likeliness threshold applies to. Only one likelihood per info_type should be provided.
+        If InfoTypeLikelihood does not have an info_type, the configuration fails.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: pulumi.Input[Optional['PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs']]):
+        pulumi.set(self, "info_type", value)
+
+
+class PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+    listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+    """
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Version name for this InfoType.
+    """
+
+@pulumi.input_type
+class PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoTypeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+               listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        :param pulumi.Input[_builtins.str] version: Version name for this InfoType.
+        """
+        pulumi.set(__self__, "name", name)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
+        listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Version name for this InfoType.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "version", value)
 
 
 class PreventionInspectTemplateInspectConfigRuleSetArgsDict(TypedDict):

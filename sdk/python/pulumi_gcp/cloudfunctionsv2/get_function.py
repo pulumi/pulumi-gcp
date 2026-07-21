@@ -216,7 +216,7 @@ def get_function(location: Optional[_builtins.str] = None,
 
     :param _builtins.str location: The location in which the resource belongs.
            
-           - - -
+           ***
     :param _builtins.str name: The name of a Cloud Function (2nd gen).
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -268,7 +268,7 @@ def get_function_output(location: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str location: The location in which the resource belongs.
            
-           - - -
+           ***
     :param _builtins.str name: The name of a Cloud Function (2nd gen).
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

@@ -136,6 +136,21 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The resource name of the Binding.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The resource name of the Binding.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -211,6 +226,7 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.displayName = $.displayName;
         this.location = $.location;
+        this.name = $.name;
         this.project = $.project;
         this.source = $.source;
         this.target = $.target;
@@ -392,6 +408,27 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param name The resource name of the Binding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The resource name of the Binding.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

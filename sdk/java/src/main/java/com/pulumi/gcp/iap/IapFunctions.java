@@ -9,8 +9,14 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyPlainArgs;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetAgentRegistryIamPolicyPlainArgs;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineVersionIamPolicyArgs;
@@ -41,7 +47,10 @@ import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyPlainArgs;
+import com.pulumi.gcp.iap.outputs.GetAgentRegistryAgentIamPolicyResult;
+import com.pulumi.gcp.iap.outputs.GetAgentRegistryEndpointIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetAgentRegistryIamPolicyResult;
+import com.pulumi.gcp.iap.outputs.GetAgentRegistryMcpServerIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetAppEngineServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetAppEngineVersionIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetClientResult;
@@ -60,6 +69,426 @@ import com.pulumi.gcp.iap.outputs.GetWebTypeComputeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class IapFunctions {
+    /**
+     * Retrieves the current IAM policy data for agentregistryagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .agentId(default_.agentId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs args) {
+        return getAgentRegistryAgentIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .agentId(default_.agentId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicyPlain(GetAgentRegistryAgentIamPolicyPlainArgs args) {
+        return getAgentRegistryAgentIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .agentId(default_.agentId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryAgentIamPolicy:getAgentRegistryAgentIamPolicy", TypeShape.of(GetAgentRegistryAgentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .agentId(default_.agentId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryAgentIamPolicy:getAgentRegistryAgentIamPolicy", TypeShape.of(GetAgentRegistryAgentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryagent
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryAgentIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .agentId(default_.agentId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryAgentIamPolicyResult> getAgentRegistryAgentIamPolicyPlain(GetAgentRegistryAgentIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getAgentRegistryAgentIamPolicy:getAgentRegistryAgentIamPolicy", TypeShape.of(GetAgentRegistryAgentIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryendpoint
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .endpointId(default_.endpointId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs args) {
+        return getAgentRegistryEndpointIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryendpoint
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .endpointId(default_.endpointId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolicyPlain(GetAgentRegistryEndpointIamPolicyPlainArgs args) {
+        return getAgentRegistryEndpointIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryendpoint
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .endpointId(default_.endpointId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryEndpointIamPolicy:getAgentRegistryEndpointIamPolicy", TypeShape.of(GetAgentRegistryEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryendpoint
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .endpointId(default_.endpointId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryEndpointIamPolicy:getAgentRegistryEndpointIamPolicy", TypeShape.of(GetAgentRegistryEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistryendpoint
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryEndpointIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .endpointId(default_.endpointId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryEndpointIamPolicyResult> getAgentRegistryEndpointIamPolicyPlain(GetAgentRegistryEndpointIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getAgentRegistryEndpointIamPolicy:getAgentRegistryEndpointIamPolicy", TypeShape.of(GetAgentRegistryEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for agentregistry
      * 
@@ -264,6 +693,216 @@ public final class IapFunctions {
      */
     public static CompletableFuture<GetAgentRegistryIamPolicyResult> getAgentRegistryIamPolicyPlain(GetAgentRegistryIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getAgentRegistryIamPolicy:getAgentRegistryIamPolicy", TypeShape.of(GetAgentRegistryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistrymcpserver
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .mcpServerId(default_.mcpServerId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs args) {
+        return getAgentRegistryMcpServerIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistrymcpserver
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .mcpServerId(default_.mcpServerId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPolicyPlain(GetAgentRegistryMcpServerIamPolicyPlainArgs args) {
+        return getAgentRegistryMcpServerIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistrymcpserver
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .mcpServerId(default_.mcpServerId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryMcpServerIamPolicy:getAgentRegistryMcpServerIamPolicy", TypeShape.of(GetAgentRegistryMcpServerIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistrymcpserver
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .mcpServerId(default_.mcpServerId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAgentRegistryMcpServerIamPolicy:getAgentRegistryMcpServerIamPolicy", TypeShape.of(GetAgentRegistryMcpServerIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for agentregistrymcpserver
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAgentRegistryMcpServerIamPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .mcpServerId(default_.mcpServerId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAgentRegistryMcpServerIamPolicyResult> getAgentRegistryMcpServerIamPolicyPlain(GetAgentRegistryMcpServerIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getAgentRegistryMcpServerIamPolicy:getAgentRegistryMcpServerIamPolicy", TypeShape.of(GetAgentRegistryMcpServerIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for appengineservice

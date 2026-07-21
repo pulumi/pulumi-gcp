@@ -182,7 +182,7 @@ def get_regional_parameter_version(location: Optional[_builtins.str] = None,
     :param _builtins.str parameter: The parameter for obtaining the Regional Parameter Version.
            This can be either the reference of the regional parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the regional parameter as in `{{parameter_id}}`.
     :param _builtins.str parameter_version_id: The version of the regional parameter to get.
-    :param _builtins.str project: The project for retrieving the Regional Parameter Version. If it's not specified, 
+    :param _builtins.str project: The project for retrieving the Regional Parameter Version. If it's not specified,
            the provider project will be used.
     """
     __args__ = dict()
@@ -229,7 +229,7 @@ def get_regional_parameter_version_output(location: pulumi.Input[Optional[Option
     :param _builtins.str parameter: The parameter for obtaining the Regional Parameter Version.
            This can be either the reference of the regional parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the regional parameter as in `{{parameter_id}}`.
     :param _builtins.str parameter_version_id: The version of the regional parameter to get.
-    :param _builtins.str project: The project for retrieving the Regional Parameter Version. If it's not specified, 
+    :param _builtins.str project: The project for retrieving the Regional Parameter Version. If it's not specified,
            the provider project will be used.
     """
     __args__ = dict()

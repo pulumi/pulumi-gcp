@@ -39,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
 //				Name:             pulumi.String("health-check"),
-//				Region:           pulumi.String("europe-west4"),
+//				Region:           pulumi.String("us-central1"),
 //				TimeoutSec:       pulumi.Int(1),
 //				CheckIntervalSec: pulumi.Int(1),
 //				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
@@ -53,7 +53,7 @@ import (
 //				Name:                pulumi.String("backend-service"),
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
-//				Region:              pulumi.String("europe-west4"),
+//				Region:              pulumi.String("us-central1"),
 //				HealthChecks:        defaultRegionHealthCheck.ID(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //			})
@@ -62,7 +62,7 @@ import (
 //			}
 //			_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
 //				Name:           pulumi.String("test-proxy"),
-//				Region:         pulumi.String("europe-west4"),
+//				Region:         pulumi.String("us-central1"),
 //				BackendService: defaultRegionBackendService.ID(),
 //			})
 //			if err != nil {

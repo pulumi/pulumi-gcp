@@ -199,7 +199,7 @@ export class Datastore extends pulumi.CustomResource {
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-     * (section 3.5)
+     *   (section 3.5)
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -320,7 +320,7 @@ export interface DatastoreState {
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-     * (section 3.5)
+     *   (section 3.5)
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -385,7 +385,7 @@ export interface DatastoreArgs {
      * * Ends with a non-hyphen character
      * * Not formatted as a UUID
      * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-     * (section 3.5)
+     *   (section 3.5)
      */
     name?: pulumi.Input<string | undefined>;
     /**

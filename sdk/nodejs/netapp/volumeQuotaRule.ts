@@ -157,9 +157,9 @@ export class VolumeQuotaRule extends pulumi.CustomResource {
      * Valid targets for volumes with NFS protocol enabled:
      * - UNIX UID for individual user quota
      * - UNIX GID for individual group quota
-     * Valid targets for volumes with SMB protocol enabled:
+     *   Valid targets for volumes with SMB protocol enabled:
      * - Windows SID for individual user quota
-     * Leave empty for default quotas
+     *   Leave empty for default quotas
      */
     declare public readonly target: pulumi.Output<string | undefined>;
     /**
@@ -301,9 +301,9 @@ export interface VolumeQuotaRuleState {
      * Valid targets for volumes with NFS protocol enabled:
      * - UNIX UID for individual user quota
      * - UNIX GID for individual group quota
-     * Valid targets for volumes with SMB protocol enabled:
+     *   Valid targets for volumes with SMB protocol enabled:
      * - Windows SID for individual user quota
-     * Leave empty for default quotas
+     *   Leave empty for default quotas
      */
     target?: pulumi.Input<string | undefined>;
     /**
@@ -363,9 +363,9 @@ export interface VolumeQuotaRuleArgs {
      * Valid targets for volumes with NFS protocol enabled:
      * - UNIX UID for individual user quota
      * - UNIX GID for individual group quota
-     * Valid targets for volumes with SMB protocol enabled:
+     *   Valid targets for volumes with SMB protocol enabled:
      * - Windows SID for individual user quota
-     * Leave empty for default quotas
+     *   Leave empty for default quotas
      */
     target?: pulumi.Input<string | undefined>;
     /**

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        /// Required. The Gemini model used to generate embeddings to lookup similar examples.
         /// </summary>
         [Input("embeddingModel", required: true)]
         public Input<string> EmbeddingModel { get; set; } = null!;

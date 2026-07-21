@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * });
  * // 1. Create the Pub/Sub Topic
  * const testTopic = new gcp.pubsub.Topic("test_topic", {
- *     name: "chronicle-test-topic-my-project-name-_91042",
+ *     name: "chronicle-test-topic-my-project-name-_89605",
  *     project: "my-project-name",
  * });
  * // 2. Grant GCS permission to publish to the topic
@@ -63,14 +63,14 @@ import * as utilities from "../utilities";
  * });
  * // 3. Create the Pub/Sub Subscription
  * const testSubscription = new gcp.pubsub.Subscription("test_subscription", {
- *     name: "chronicle-test-sub-my-project-name-_72490",
+ *     name: "chronicle-test-sub-my-project-name-_56730",
  *     project: "my-project-name",
  *     topic: testTopic.name,
  *     messageRetentionDuration: "1200s",
  * });
  * // 4. Define the GCS Bucket
  * const testBucket = new gcp.storage.Bucket("test_bucket", {
- *     name: "chronicle-test-bucket-my-project-name-_89605",
+ *     name: "chronicle-test-bucket-my-project-name-_95154",
  *     project: "my-project-name",
  *     location: "US",
  *     forceDestroy: true,

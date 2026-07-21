@@ -278,6 +278,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mcpServerSpec);
     }
     /**
+     * The resource name of the Service.
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
+    private Output<String> name;
+
+    /**
+     * @return The resource name of the Service.
+     * 
+     */
+    public Output<String> name() {
+        return this.name;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 

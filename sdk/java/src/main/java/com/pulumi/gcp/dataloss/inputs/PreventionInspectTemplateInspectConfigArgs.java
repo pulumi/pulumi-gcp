@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -145,6 +146,27 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
     }
 
     /**
+     * Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+     * The system only returns a finding if its likelihood is above this threshold. If this field
+     * is not set, the system uses the InspectConfig min_likelihood.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="minLikelihoodPerInfoTypes")
+    private @Nullable Output<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs>> minLikelihoodPerInfoTypes;
+
+    /**
+     * @return Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+     * The system only returns a finding if its likelihood is above this threshold. If this field
+     * is not set, the system uses the InspectConfig min_likelihood.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs>>> minLikelihoodPerInfoTypes() {
+        return Optional.ofNullable(this.minLikelihoodPerInfoTypes);
+    }
+
+    /**
      * Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
      * other rules are executed in the order they are specified for each info type.
      * Structure is documented below.
@@ -173,6 +195,7 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
         this.infoTypes = $.infoTypes;
         this.limits = $.limits;
         this.minLikelihood = $.minLikelihood;
+        this.minLikelihoodPerInfoTypes = $.minLikelihoodPerInfoTypes;
         this.ruleSets = $.ruleSets;
     }
 
@@ -393,6 +416,46 @@ public final class PreventionInspectTemplateInspectConfigArgs extends com.pulumi
          */
         public Builder minLikelihood(String minLikelihood) {
             return minLikelihood(Output.of(minLikelihood));
+        }
+
+        /**
+         * @param minLikelihoodPerInfoTypes Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+         * The system only returns a finding if its likelihood is above this threshold. If this field
+         * is not set, the system uses the InspectConfig min_likelihood.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minLikelihoodPerInfoTypes(@Nullable Output<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs>> minLikelihoodPerInfoTypes) {
+            $.minLikelihoodPerInfoTypes = minLikelihoodPerInfoTypes;
+            return this;
+        }
+
+        /**
+         * @param minLikelihoodPerInfoTypes Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+         * The system only returns a finding if its likelihood is above this threshold. If this field
+         * is not set, the system uses the InspectConfig min_likelihood.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minLikelihoodPerInfoTypes(List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs> minLikelihoodPerInfoTypes) {
+            return minLikelihoodPerInfoTypes(Output.of(minLikelihoodPerInfoTypes));
+        }
+
+        /**
+         * @param minLikelihoodPerInfoTypes Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+         * The system only returns a finding if its likelihood is above this threshold. If this field
+         * is not set, the system uses the InspectConfig min_likelihood.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minLikelihoodPerInfoTypes(PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs... minLikelihoodPerInfoTypes) {
+            return minLikelihoodPerInfoTypes(List.of(minLikelihoodPerInfoTypes));
         }
 
         /**

@@ -51,6 +51,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly string? MinLikelihood;
         /// <summary>
+        /// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+        /// The system only returns a finding if its likelihood is above this threshold. If this field
+        /// is not set, the system uses the InspectConfig min_likelihood.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType> MinLikelihoodPerInfoTypes;
+        /// <summary>
         /// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
         /// other rules are executed in the order they are specified for each info type.
         /// Structure is documented below.
@@ -73,6 +80,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             string? minLikelihood,
 
+            ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType> minLikelihoodPerInfoTypes,
+
             ImmutableArray<Outputs.PreventionInspectTemplateInspectConfigRuleSet> ruleSets)
         {
             ContentOptions = contentOptions;
@@ -82,6 +91,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             InfoTypes = infoTypes;
             Limits = limits;
             MinLikelihood = minLikelihood;
+            MinLikelihoodPerInfoTypes = minLikelihoodPerInfoTypes;
             RuleSets = ruleSets;
         }
     }

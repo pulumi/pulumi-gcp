@@ -184,7 +184,7 @@ def get_workload_identity_pool(project: Optional[_builtins.str] = None,
     :param _builtins.str workload_identity_pool_id: The id of the pool which is the
            final component of the resource name.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project
@@ -232,7 +232,7 @@ def get_workload_identity_pool_output(project: pulumi.Input[Optional[Optional[_b
     :param _builtins.str workload_identity_pool_id: The id of the pool which is the
            final component of the resource name.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project

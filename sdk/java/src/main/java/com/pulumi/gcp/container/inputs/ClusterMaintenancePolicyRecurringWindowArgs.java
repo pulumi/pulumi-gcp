@@ -21,9 +21,21 @@ public final class ClusterMaintenancePolicyRecurringWindowArgs extends com.pulum
         return this.endTime;
     }
 
+    /**
+     * Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+     * 
+     * Examples:
+     * 
+     */
     @Import(name="recurrence", required=true)
     private Output<String> recurrence;
 
+    /**
+     * @return Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+     * 
+     * Examples:
+     * 
+     */
     public Output<String> recurrence() {
         return this.recurrence;
     }
@@ -70,11 +82,27 @@ public final class ClusterMaintenancePolicyRecurringWindowArgs extends com.pulum
             return endTime(Output.of(endTime));
         }
 
+        /**
+         * @param recurrence Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+         * 
+         * Examples:
+         * 
+         * @return builder
+         * 
+         */
         public Builder recurrence(Output<String> recurrence) {
             $.recurrence = recurrence;
             return this;
         }
 
+        /**
+         * @param recurrence Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+         * 
+         * Examples:
+         * 
+         * @return builder
+         * 
+         */
         public Builder recurrence(String recurrence) {
             return recurrence(Output.of(recurrence));
         }

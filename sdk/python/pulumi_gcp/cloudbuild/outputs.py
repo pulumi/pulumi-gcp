@@ -940,7 +940,6 @@ class TriggerBuildArtifactsObjects(dict):
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
                
-               
                <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """
         if location is not None:
@@ -975,7 +974,6 @@ class TriggerBuildArtifactsObjects(dict):
         (Output)
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
-
 
         <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """
@@ -3888,7 +3886,7 @@ class GetTriggerBuildArtifactObjectResult(dict):
         """
         :param _builtins.str location: The Cloud Build location for the trigger.
                
-               - - -
+               ***
         :param Sequence[_builtins.str] paths: Path globs used to match files in the build's workspace.
         :param Sequence['GetTriggerBuildArtifactObjectTimingArgs'] timings: Output only. Stores timing information for pushing all artifact objects.
         """
@@ -3902,7 +3900,7 @@ class GetTriggerBuildArtifactObjectResult(dict):
         """
         The Cloud Build location for the trigger.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 

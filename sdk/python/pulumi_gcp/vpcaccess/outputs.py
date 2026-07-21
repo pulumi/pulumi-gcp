@@ -77,7 +77,7 @@ class GetConnectorSubnetResult(dict):
         """
         :param _builtins.str name: Name of the resource.
                
-               - - -
+               ***
         :param _builtins.str project_id: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
         pulumi.set(__self__, "name", name)
@@ -89,7 +89,7 @@ class GetConnectorSubnetResult(dict):
         """
         Name of the resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

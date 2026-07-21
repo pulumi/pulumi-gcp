@@ -115,7 +115,7 @@ export class Instance extends pulumi.CustomResource {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      *
-     * -----
+     * ***
      */
     declare public readonly clusters: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
@@ -139,7 +139,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
      *
-     * -----
+     * ***
      */
     declare public readonly edition: pulumi.Output<string | undefined>;
     /**
@@ -243,7 +243,7 @@ export interface InstanceState {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      *
-     * -----
+     * ***
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[] | undefined>;
     /**
@@ -267,7 +267,7 @@ export interface InstanceState {
     /**
      * The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
      *
-     * -----
+     * ***
      */
     edition?: pulumi.Input<string | undefined>;
     /**
@@ -323,7 +323,7 @@ export interface InstanceArgs {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      *
-     * -----
+     * ***
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[] | undefined>;
     /**
@@ -347,7 +347,7 @@ export interface InstanceArgs {
     /**
      * The edition of the Bigtable instance. One of "ENTERPRISE" or "ENTERPRISE_PLUS". Defaults to "ENTERPRISE". Details can be found at the [Cloud Bigtable editions page](https://docs.cloud.google.com/bigtable/docs/editions-overview).
      *
-     * -----
+     * ***
      */
     edition?: pulumi.Input<string | undefined>;
     /**

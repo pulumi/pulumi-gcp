@@ -200,6 +200,16 @@ public final class CloudVmClusterProperties {
     private @Nullable String state;
     /**
      * @return (Output)
+     * The storage management type of the VM Cluster.
+     * Possible values:
+     * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+     * ASM
+     * EXASCALE
+     * 
+     */
+    private @Nullable String storageManagementType;
+    /**
+     * @return (Output)
      * The storage allocation for the disk group, in gigabytes (GB).
      * 
      */
@@ -459,6 +469,18 @@ public final class CloudVmClusterProperties {
     }
     /**
      * @return (Output)
+     * The storage management type of the VM Cluster.
+     * Possible values:
+     * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+     * ASM
+     * EXASCALE
+     * 
+     */
+    public Optional<String> storageManagementType() {
+        return Optional.ofNullable(this.storageManagementType);
+    }
+    /**
+     * @return (Output)
      * The storage allocation for the disk group, in gigabytes (GB).
      * 
      */
@@ -521,6 +543,7 @@ public final class CloudVmClusterProperties {
         private @Nullable Boolean sparseDiskgroupEnabled;
         private @Nullable List<String> sshPublicKeys;
         private @Nullable String state;
+        private @Nullable String storageManagementType;
         private @Nullable Integer storageSizeGb;
         private @Nullable String systemVersion;
         private @Nullable CloudVmClusterPropertiesTimeZone timeZone;
@@ -556,6 +579,7 @@ public final class CloudVmClusterProperties {
     	      this.sparseDiskgroupEnabled = defaults.sparseDiskgroupEnabled;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
     	      this.state = defaults.state;
+    	      this.storageManagementType = defaults.storageManagementType;
     	      this.storageSizeGb = defaults.storageSizeGb;
     	      this.systemVersion = defaults.systemVersion;
     	      this.timeZone = defaults.timeZone;
@@ -749,6 +773,12 @@ public final class CloudVmClusterProperties {
             return this;
         }
         @CustomType.Setter
+        public Builder storageManagementType(@Nullable String storageManagementType) {
+
+            this.storageManagementType = storageManagementType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageSizeGb(@Nullable Integer storageSizeGb) {
 
             this.storageSizeGb = storageSizeGb;
@@ -797,6 +827,7 @@ public final class CloudVmClusterProperties {
             _resultValue.sparseDiskgroupEnabled = sparseDiskgroupEnabled;
             _resultValue.sshPublicKeys = sshPublicKeys;
             _resultValue.state = state;
+            _resultValue.storageManagementType = storageManagementType;
             _resultValue.storageSizeGb = storageSizeGb;
             _resultValue.systemVersion = systemVersion;
             _resultValue.timeZone = timeZone;

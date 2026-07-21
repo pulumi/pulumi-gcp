@@ -33,6 +33,16 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
      */
     private @Nullable String ipAddress;
     /**
+     * @return (Output) The service connection policy created for the auto connection.
+     * 
+     */
+    private @Nullable String serviceConnectionPolicy;
+    /**
+     * @return (Output) The result of the service connection policy creation.
+     * 
+     */
+    private @Nullable String serviceConnectionPolicyCreationResult;
+    /**
      * @return (Output) The connection status of the consumer endpoint.
      * 
      */
@@ -68,6 +78,20 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         return Optional.ofNullable(this.ipAddress);
     }
     /**
+     * @return (Output) The service connection policy created for the auto connection.
+     * 
+     */
+    public Optional<String> serviceConnectionPolicy() {
+        return Optional.ofNullable(this.serviceConnectionPolicy);
+    }
+    /**
+     * @return (Output) The result of the service connection policy creation.
+     * 
+     */
+    public Optional<String> serviceConnectionPolicyCreationResult() {
+        return Optional.ofNullable(this.serviceConnectionPolicyCreationResult);
+    }
+    /**
      * @return (Output) The connection status of the consumer endpoint.
      * 
      */
@@ -88,6 +112,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         private @Nullable String consumerNetworkStatus;
         private @Nullable String consumerServiceProjectId;
         private @Nullable String ipAddress;
+        private @Nullable String serviceConnectionPolicy;
+        private @Nullable String serviceConnectionPolicyCreationResult;
         private @Nullable String status;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection defaults) {
@@ -96,6 +122,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
     	      this.consumerNetworkStatus = defaults.consumerNetworkStatus;
     	      this.consumerServiceProjectId = defaults.consumerServiceProjectId;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.serviceConnectionPolicy = defaults.serviceConnectionPolicy;
+    	      this.serviceConnectionPolicyCreationResult = defaults.serviceConnectionPolicyCreationResult;
     	      this.status = defaults.status;
         }
 
@@ -126,6 +154,18 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
             return this;
         }
         @CustomType.Setter
+        public Builder serviceConnectionPolicy(@Nullable String serviceConnectionPolicy) {
+
+            this.serviceConnectionPolicy = serviceConnectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceConnectionPolicyCreationResult(@Nullable String serviceConnectionPolicyCreationResult) {
+
+            this.serviceConnectionPolicyCreationResult = serviceConnectionPolicyCreationResult;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(@Nullable String status) {
 
             this.status = status;
@@ -137,6 +177,8 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
             _resultValue.consumerNetworkStatus = consumerNetworkStatus;
             _resultValue.consumerServiceProjectId = consumerServiceProjectId;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.serviceConnectionPolicy = serviceConnectionPolicy;
+            _resultValue.serviceConnectionPolicyCreationResult = serviceConnectionPolicyCreationResult;
             _resultValue.status = status;
             return _resultValue;
         }

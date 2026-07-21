@@ -36,7 +36,7 @@ export interface GetAppConnectorArgs {
     /**
      * The name of the App Connector.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -100,7 +100,7 @@ export interface GetAppConnectorOutputArgs {
     /**
      * The name of the App Connector.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

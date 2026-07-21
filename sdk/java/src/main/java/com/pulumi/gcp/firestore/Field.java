@@ -12,6 +12,7 @@ import com.pulumi.gcp.firestore.FieldArgs;
 import com.pulumi.gcp.firestore.inputs.FieldState;
 import com.pulumi.gcp.firestore.outputs.FieldIndexConfig;
 import com.pulumi.gcp.firestore.outputs.FieldTtlConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -74,7 +75,7 @@ import javax.annotation.Nullable;
  *         var basic = new Field("basic", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__40816")
+ *             .collection("chatrooms__24243")
  *             .field("basic")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -338,7 +339,7 @@ import javax.annotation.Nullable;
  *         var matchOverride = new Field("matchOverride", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__94690")
+ *             .collection("chatrooms__7495")
  *             .field("field_with_same_configuration_as_ancestor")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -398,7 +399,7 @@ import javax.annotation.Nullable;
  *         var wildcard = new Field("wildcard", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__29947")
+ *             .collection("chatrooms__21912")
  *             .field("*")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -410,6 +411,65 @@ import javax.annotation.Nullable;
  *                         .arrayConfig("CONTAINS")
  *                         .build())
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Firestore Field Skip Wait
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Field;
+ * import com.pulumi.gcp.firestore.FieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigIndexArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var skipWait = new Field("skipWait", FieldArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("chatrooms__46731")
+ *             .field("skip_wait")
+ *             .indexConfig(FieldIndexConfigArgs.builder()
+ *                 .indexes(                
+ *                     FieldIndexConfigIndexArgs.builder()
+ *                         .order("ASCENDING")
+ *                         .queryScope("COLLECTION_GROUP")
+ *                         .build(),
+ *                     FieldIndexConfigIndexArgs.builder()
+ *                         .arrayConfig("CONTAINS")
+ *                         .build())
+ *                 .build())
+ *             .skipWait(true)
  *             .build());
  * 
  *     }
@@ -551,6 +611,20 @@ public class Field extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Whether to skip waiting for the field operation to complete.
+     * 
+     */
+    @Export(name="skipWait", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipWait;
+
+    /**
+     * @return Whether to skip waiting for the field operation to complete.
+     * 
+     */
+    public Output<Optional<Boolean>> skipWait() {
+        return Codegen.optional(this.skipWait);
     }
     /**
      * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).

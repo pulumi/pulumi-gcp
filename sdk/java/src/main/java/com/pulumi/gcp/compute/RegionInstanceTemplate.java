@@ -20,6 +20,7 @@ import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateReservationAffinity;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateServiceAccount;
 import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.RegionInstanceTemplateWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -987,6 +988,22 @@ public class RegionInstanceTemplate extends com.pulumi.resources.CustomResource 
      */
     public Output<String> tagsFingerprint() {
         return this.tagsFingerprint;
+    }
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    @Export(name="workloadIdentityConfig", refs={RegionInstanceTemplateWorkloadIdentityConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RegionInstanceTemplateWorkloadIdentityConfig> workloadIdentityConfig;
+
+    /**
+     * @return Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    public Output<Optional<RegionInstanceTemplateWorkloadIdentityConfig>> workloadIdentityConfig() {
+        return Codegen.optional(this.workloadIdentityConfig);
     }
 
     /**

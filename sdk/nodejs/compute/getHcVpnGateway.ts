@@ -36,8 +36,7 @@ export interface GetHcVpnGatewayArgs {
     /**
      * The name of the forwarding rule.
      *
-     *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -106,8 +105,7 @@ export interface GetHcVpnGatewayOutputArgs {
     /**
      * The name of the forwarding rule.
      *
-     *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

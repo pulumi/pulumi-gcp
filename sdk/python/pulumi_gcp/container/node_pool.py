@@ -27,6 +27,7 @@ class NodePoolArgs:
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]]] = None,
                  management: pulumi.Input[Optional['NodePoolManagementArgs']] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -46,7 +47,7 @@ class NodePoolArgs:
 
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
-               - - -
+               ***
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Configuration required by cluster autoscaler to adjust
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -67,7 +68,8 @@ class NodePoolArgs:
                ignore subsequent changes to this field.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
-               - - -
+               ***
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
         :param pulumi.Input['NodePoolManagementArgs'] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in this node pool.
@@ -120,6 +122,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_policies is not None:
+            pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if max_pods_per_node is not None:
@@ -155,7 +159,7 @@ class NodePoolArgs:
         """
         The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "cluster")
 
@@ -231,13 +235,25 @@ class NodePoolArgs:
         """
         The location (region or zone) of the cluster.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 
     @location.setter
     def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]]]:
+        """
+        The maintenance policy of the pool. Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policies")
+
+    @maintenance_policies.setter
+    def maintenance_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]]]):
+        pulumi.set(self, "maintenance_policies", value)
 
     @_builtins.property
     @pulumi.getter
@@ -444,6 +460,7 @@ class _NodePoolState:
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]]] = None,
                  managed_instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  management: pulumi.Input[Optional['NodePoolManagementArgs']] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
@@ -467,7 +484,7 @@ class _NodePoolState:
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -487,7 +504,8 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
-               - - -
+               ***
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
         :param pulumi.Input['NodePoolManagementArgs'] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
@@ -544,6 +562,8 @@ class _NodePoolState:
             pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_policies is not None:
+            pulumi.set(__self__, "maintenance_policies", maintenance_policies)
         if managed_instance_group_urls is not None:
             pulumi.set(__self__, "managed_instance_group_urls", managed_instance_group_urls)
         if management is not None:
@@ -596,7 +616,7 @@ class _NodePoolState:
         """
         The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "cluster")
 
@@ -671,13 +691,25 @@ class _NodePoolState:
         """
         The location (region or zone) of the cluster.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 
     @location.setter
     def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]]]:
+        """
+        The maintenance policy of the pool. Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policies")
+
+    @maintenance_policies.setter
+    def maintenance_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolMaintenancePolicyArgs']]]]):
+        pulumi.set(self, "maintenance_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="managedInstanceGroupUrls")
@@ -907,6 +939,7 @@ class NodePool(pulumi.CustomResource):
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]]] = None,
                  management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1010,7 +1043,7 @@ class NodePool(pulumi.CustomResource):
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1029,7 +1062,8 @@ class NodePool(pulumi.CustomResource):
                ignore subsequent changes to this field.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
-               - - -
+               ***
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
         :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
         :param pulumi.Input[_builtins.int] max_pods_per_node: The maximum number of pods per node in this node pool.
@@ -1180,6 +1214,7 @@ class NodePool(pulumi.CustomResource):
                  ignore_node_count_changes: pulumi.Input[Optional[_builtins.bool]] = None,
                  initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]]] = None,
                  management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
                  max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1211,6 +1246,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["ignore_node_count_changes"] = ignore_node_count_changes
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_policies"] = maintenance_policies
             __props__.__dict__["management"] = management
             __props__.__dict__["max_pods_per_node"] = max_pods_per_node
             __props__.__dict__["name"] = name
@@ -1245,6 +1281,7 @@ class NodePool(pulumi.CustomResource):
             initial_node_count: pulumi.Input[Optional[_builtins.int]] = None,
             instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]]] = None,
             managed_instance_group_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             management: pulumi.Input[Optional[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']]] = None,
             max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1272,7 +1309,7 @@ class NodePool(pulumi.CustomResource):
                the size of the node pool to the current cluster usage. Structure is documented below.
         :param pulumi.Input[_builtins.str] cluster: The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1292,7 +1329,8 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_group_urls: The resource URLs of the managed instance groups associated with this node pool.
         :param pulumi.Input[_builtins.str] location: The location (region or zone) of the cluster.
                
-               - - -
+               ***
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolMaintenancePolicyArgs', 'NodePoolMaintenancePolicyArgsDict']]]] maintenance_policies: The maintenance policy of the pool. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] managed_instance_group_urls: List of instance group URLs which have been assigned to this node pool.
         :param pulumi.Input[Union['NodePoolManagementArgs', 'NodePoolManagementArgsDict']] management: Node management configuration, wherein auto-repair and
                auto-upgrade is configured. Structure is documented below.
@@ -1346,6 +1384,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["initial_node_count"] = initial_node_count
         __props__.__dict__["instance_group_urls"] = instance_group_urls
         __props__.__dict__["location"] = location
+        __props__.__dict__["maintenance_policies"] = maintenance_policies
         __props__.__dict__["managed_instance_group_urls"] = managed_instance_group_urls
         __props__.__dict__["management"] = management
         __props__.__dict__["max_pods_per_node"] = max_pods_per_node
@@ -1379,7 +1418,7 @@ class NodePool(pulumi.CustomResource):
         """
         The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "cluster")
 
@@ -1434,9 +1473,17 @@ class NodePool(pulumi.CustomResource):
         """
         The location (region or zone) of the cluster.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicies")
+    def maintenance_policies(self) -> pulumi.Output[Optional[Sequence['outputs.NodePoolMaintenancePolicy']]]:
+        """
+        The maintenance policy of the pool. Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policies")
 
     @_builtins.property
     @pulumi.getter(name="managedInstanceGroupUrls")

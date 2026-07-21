@@ -425,6 +425,48 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Enabling RAPID Storage Bucket
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
+ * import com.pulumi.gcp.storage.inputs.BucketHierarchicalNamespaceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var zonalBucket = new Bucket("zonalBucket", BucketArgs.builder()
+ *             .location("US-CENTRAL1")
+ *             .customPlacementConfig(BucketCustomPlacementConfigArgs.builder()
+ *                 .dataLocations("US-CENTRAL1-B")
+ *                 .build())
+ *             .name("zonal-rapid-bucket")
+ *             .storageClass("RAPID")
+ *             .hierarchicalNamespace(BucketHierarchicalNamespaceArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  */
 @ResourceType(type="gcp:storage/bucket:Bucket")

@@ -174,6 +174,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The resource name of the Service.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The resource name of the Service.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -247,6 +262,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.interfaces = $.interfaces;
         this.location = $.location;
         this.mcpServerSpec = $.mcpServerSpec;
+        this.name = $.name;
         this.project = $.project;
         this.registryResource = $.registryResource;
         this.serviceId = $.serviceId;
@@ -487,6 +503,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mcpServerSpec(ServiceMcpServerSpecArgs mcpServerSpec) {
             return mcpServerSpec(Output.of(mcpServerSpec));
+        }
+
+        /**
+         * @param name The resource name of the Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The resource name of the Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

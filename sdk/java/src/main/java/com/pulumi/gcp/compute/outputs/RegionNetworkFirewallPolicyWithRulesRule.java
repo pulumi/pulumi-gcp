@@ -77,6 +77,17 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
      */
     private @Nullable String securityProfileGroup;
     /**
+     * @return A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    private @Nullable List<String> targetForwardingRules;
+    /**
      * @return A list of secure tags that controls which instances the firewall rule
      * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
      * firewall rule applies only to instances in the VPC network that have one
@@ -98,6 +109,14 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
      * 
      */
     private @Nullable List<String> targetServiceAccounts;
+    /**
+     * @return Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    private @Nullable String targetType;
     /**
      * @return Boolean flag indicating if the traffic should be TLS decrypted.
      * It can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
@@ -184,6 +203,19 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
         return Optional.ofNullable(this.securityProfileGroup);
     }
     /**
+     * @return A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    public List<String> targetForwardingRules() {
+        return this.targetForwardingRules == null ? List.of() : this.targetForwardingRules;
+    }
+    /**
      * @return A list of secure tags that controls which instances the firewall rule
      * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
      * firewall rule applies only to instances in the VPC network that have one
@@ -208,6 +240,16 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
      */
     public List<String> targetServiceAccounts() {
         return this.targetServiceAccounts == null ? List.of() : this.targetServiceAccounts;
+    }
+    /**
+     * @return Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    public Optional<String> targetType() {
+        return Optional.ofNullable(this.targetType);
     }
     /**
      * @return Boolean flag indicating if the traffic should be TLS decrypted.
@@ -236,8 +278,10 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
         private Integer priority;
         private @Nullable String ruleName;
         private @Nullable String securityProfileGroup;
+        private @Nullable List<String> targetForwardingRules;
         private @Nullable List<RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags;
         private @Nullable List<String> targetServiceAccounts;
+        private @Nullable String targetType;
         private @Nullable Boolean tlsInspect;
         public Builder() {}
         public Builder(RegionNetworkFirewallPolicyWithRulesRule defaults) {
@@ -251,8 +295,10 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
     	      this.priority = defaults.priority;
     	      this.ruleName = defaults.ruleName;
     	      this.securityProfileGroup = defaults.securityProfileGroup;
+    	      this.targetForwardingRules = defaults.targetForwardingRules;
     	      this.targetSecureTags = defaults.targetSecureTags;
     	      this.targetServiceAccounts = defaults.targetServiceAccounts;
+    	      this.targetType = defaults.targetType;
     	      this.tlsInspect = defaults.tlsInspect;
         }
 
@@ -317,6 +363,15 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
             return this;
         }
         @CustomType.Setter
+        public Builder targetForwardingRules(@Nullable List<String> targetForwardingRules) {
+
+            this.targetForwardingRules = targetForwardingRules;
+            return this;
+        }
+        public Builder targetForwardingRules(String... targetForwardingRules) {
+            return targetForwardingRules(List.of(targetForwardingRules));
+        }
+        @CustomType.Setter
         public Builder targetSecureTags(@Nullable List<RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag> targetSecureTags) {
 
             this.targetSecureTags = targetSecureTags;
@@ -335,6 +390,12 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
             return targetServiceAccounts(List.of(targetServiceAccounts));
         }
         @CustomType.Setter
+        public Builder targetType(@Nullable String targetType) {
+
+            this.targetType = targetType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tlsInspect(@Nullable Boolean tlsInspect) {
 
             this.tlsInspect = tlsInspect;
@@ -351,8 +412,10 @@ public final class RegionNetworkFirewallPolicyWithRulesRule {
             _resultValue.priority = priority;
             _resultValue.ruleName = ruleName;
             _resultValue.securityProfileGroup = securityProfileGroup;
+            _resultValue.targetForwardingRules = targetForwardingRules;
             _resultValue.targetSecureTags = targetSecureTags;
             _resultValue.targetServiceAccounts = targetServiceAccounts;
+            _resultValue.targetType = targetType;
             _resultValue.tlsInspect = tlsInspect;
             return _resultValue;
         }

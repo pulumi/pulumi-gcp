@@ -35,7 +35,7 @@ public final class GetEndpointResult {
      * 
      */
     private String displayName;
-    private @Nullable String endpointId;
+    private String endpointId;
     private @Nullable String filter;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -89,8 +89,8 @@ public final class GetEndpointResult {
     public String displayName() {
         return this.displayName;
     }
-    public Optional<String> endpointId() {
-        return Optional.ofNullable(this.endpointId);
+    public String endpointId() {
+        return this.endpointId;
     }
     public Optional<String> filter() {
         return Optional.ofNullable(this.filter);
@@ -143,7 +143,7 @@ public final class GetEndpointResult {
         private String createTime;
         private String description;
         private String displayName;
-        private @Nullable String endpointId;
+        private String endpointId;
         private @Nullable String filter;
         private String id;
         private List<GetEndpointInterface> interfaces;
@@ -201,8 +201,10 @@ public final class GetEndpointResult {
             return this;
         }
         @CustomType.Setter
-        public Builder endpointId(@Nullable String endpointId) {
-
+        public Builder endpointId(String endpointId) {
+            if (endpointId == null) {
+              throw new MissingRequiredPropertyException("GetEndpointResult", "endpointId");
+            }
             this.endpointId = endpointId;
             return this;
         }

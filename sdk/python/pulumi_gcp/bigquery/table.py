@@ -131,7 +131,7 @@ class TableArgs:
         :param pulumi.Input[_builtins.str] schema: A JSON schema for the table.
         :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data
                type definition in field schema. Structure is documented below.
-        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_metadata_view: View sets the optional parameter "view": Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned. Possible values: TABLE_METADATA_VIEW_UNSPECIFIED, BASIC, STORAGE_STATS, FULL
         :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created
@@ -534,7 +534,7 @@ class TableArgs:
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> pulumi.Input[Optional['TableTableConstraintsArgs']]:
         """
-        Defines the primary key and foreign keys. 
+        Defines the primary key and foreign keys.
         Structure is documented below.
         """
         return pulumi.get(self, "table_constraints")
@@ -731,7 +731,7 @@ class _TableState:
         :param pulumi.Input['TableSchemaForeignTypeInfoArgs'] schema_foreign_type_info: Specifies metadata of the foreign data
                type definition in field schema. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1282,7 +1282,7 @@ class _TableState:
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> pulumi.Input[Optional['TableTableConstraintsArgs']]:
         """
-        Defines the primary key and foreign keys. 
+        Defines the primary key and foreign keys.
         Structure is documented below.
         """
         return pulumi.get(self, "table_constraints")
@@ -1562,7 +1562,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] schema: A JSON schema for the table.
         :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data
                type definition in field schema. Structure is documented below.
-        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1903,7 +1903,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[Union['TableSchemaForeignTypeInfoArgs', 'TableSchemaForeignTypeInfoArgsDict']] schema_foreign_type_info: Specifies metadata of the foreign data
                type definition in field schema. Structure is documented below.
         :param pulumi.Input[_builtins.str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys. 
+        :param pulumi.Input[Union['TableTableConstraintsArgs', 'TableTableConstraintsArgsDict']] table_constraints: Defines the primary key and foreign keys.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -2287,7 +2287,7 @@ class Table(pulumi.CustomResource):
     @pulumi.getter(name="tableConstraints")
     def table_constraints(self) -> pulumi.Output[Optional['outputs.TableTableConstraints']]:
         """
-        Defines the primary key and foreign keys. 
+        Defines the primary key and foreign keys.
         Structure is documented below.
         """
         return pulumi.get(self, "table_constraints")

@@ -41,14 +41,14 @@ class PluginArgs:
         :param pulumi.Input[_builtins.str] plugin_id: The ID to use for the Plugin resource, which will become the final
                component of the Plugin's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another Plugin resource in the API hub
-               instance.
+                 the specified id is already used by another Plugin resource in the API hub
+                 instance.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, overall resource name which will be
-               of format
-               `projects/{project}/locations/{location}/plugins/{plugin}`,
-               its length is limited to 1000 characters and valid characters are
-               /a-z[0-9]-_/.
+                 This value should be 4-63 characters, overall resource name which will be
+                 of format
+                 `projects/{project}/locations/{location}/plugins/{plugin}`,
+                 its length is limited to 1000 characters and valid characters are
+                 /a-z[0-9]-_/.
         :param pulumi.Input[Sequence[pulumi.Input['PluginActionsConfigArgs']]] actions_configs: The configuration of actions supported by the plugin.
                Structure is documented below.
         :param pulumi.Input['PluginConfigTemplateArgs'] config_template: ConfigTemplate represents the configuration template for a plugin.
@@ -125,14 +125,14 @@ class PluginArgs:
         The ID to use for the Plugin resource, which will become the final
         component of the Plugin's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified id is already used by another Plugin resource in the API hub
-        instance.
+          the specified id is already used by another Plugin resource in the API hub
+          instance.
         * If not provided, a system generated id will be used.
-        This value should be 4-63 characters, overall resource name which will be
-        of format
-        `projects/{project}/locations/{location}/plugins/{plugin}`,
-        its length is limited to 1000 characters and valid characters are
-        /a-z[0-9]-_/.
+          This value should be 4-63 characters, overall resource name which will be
+          of format
+          `projects/{project}/locations/{location}/plugins/{plugin}`,
+          its length is limited to 1000 characters and valid characters are
+          /a-z[0-9]-_/.
         """
         return pulumi.get(self, "plugin_id")
 
@@ -310,14 +310,14 @@ class _PluginState:
         :param pulumi.Input[_builtins.str] plugin_id: The ID to use for the Plugin resource, which will become the final
                component of the Plugin's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another Plugin resource in the API hub
-               instance.
+                 the specified id is already used by another Plugin resource in the API hub
+                 instance.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, overall resource name which will be
-               of format
-               `projects/{project}/locations/{location}/plugins/{plugin}`,
-               its length is limited to 1000 characters and valid characters are
-               /a-z[0-9]-_/.
+                 This value should be 4-63 characters, overall resource name which will be
+                 of format
+                 `projects/{project}/locations/{location}/plugins/{plugin}`,
+                 its length is limited to 1000 characters and valid characters are
+                 /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: Represents the state of the plugin.
@@ -534,14 +534,14 @@ class _PluginState:
         The ID to use for the Plugin resource, which will become the final
         component of the Plugin's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified id is already used by another Plugin resource in the API hub
-        instance.
+          the specified id is already used by another Plugin resource in the API hub
+          instance.
         * If not provided, a system generated id will be used.
-        This value should be 4-63 characters, overall resource name which will be
-        of format
-        `projects/{project}/locations/{location}/plugins/{plugin}`,
-        its length is limited to 1000 characters and valid characters are
-        /a-z[0-9]-_/.
+          This value should be 4-63 characters, overall resource name which will be
+          of format
+          `projects/{project}/locations/{location}/plugins/{plugin}`,
+          its length is limited to 1000 characters and valid characters are
+          /a-z[0-9]-_/.
         """
         return pulumi.get(self, "plugin_id")
 
@@ -741,14 +741,14 @@ class Plugin(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] plugin_id: The ID to use for the Plugin resource, which will become the final
                component of the Plugin's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another Plugin resource in the API hub
-               instance.
+                 the specified id is already used by another Plugin resource in the API hub
+                 instance.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, overall resource name which will be
-               of format
-               `projects/{project}/locations/{location}/plugins/{plugin}`,
-               its length is limited to 1000 characters and valid characters are
-               /a-z[0-9]-_/.
+                 This value should be 4-63 characters, overall resource name which will be
+                 of format
+                 `projects/{project}/locations/{location}/plugins/{plugin}`,
+                 its length is limited to 1000 characters and valid characters are
+                 /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -985,14 +985,14 @@ class Plugin(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] plugin_id: The ID to use for the Plugin resource, which will become the final
                component of the Plugin's resource name. This field is optional.
                * If provided, the same will be used. The service will throw an error if
-               the specified id is already used by another Plugin resource in the API hub
-               instance.
+                 the specified id is already used by another Plugin resource in the API hub
+                 instance.
                * If not provided, a system generated id will be used.
-               This value should be 4-63 characters, overall resource name which will be
-               of format
-               `projects/{project}/locations/{location}/plugins/{plugin}`,
-               its length is limited to 1000 characters and valid characters are
-               /a-z[0-9]-_/.
+                 This value should be 4-63 characters, overall resource name which will be
+                 of format
+                 `projects/{project}/locations/{location}/plugins/{plugin}`,
+                 its length is limited to 1000 characters and valid characters are
+                 /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] state: Represents the state of the plugin.
@@ -1150,14 +1150,14 @@ class Plugin(pulumi.CustomResource):
         The ID to use for the Plugin resource, which will become the final
         component of the Plugin's resource name. This field is optional.
         * If provided, the same will be used. The service will throw an error if
-        the specified id is already used by another Plugin resource in the API hub
-        instance.
+          the specified id is already used by another Plugin resource in the API hub
+          instance.
         * If not provided, a system generated id will be used.
-        This value should be 4-63 characters, overall resource name which will be
-        of format
-        `projects/{project}/locations/{location}/plugins/{plugin}`,
-        its length is limited to 1000 characters and valid characters are
-        /a-z[0-9]-_/.
+          This value should be 4-63 characters, overall resource name which will be
+          of format
+          `projects/{project}/locations/{location}/plugins/{plugin}`,
+          its length is limited to 1000 characters and valid characters are
+          /a-z[0-9]-_/.
         """
         return pulumi.get(self, "plugin_id")
 

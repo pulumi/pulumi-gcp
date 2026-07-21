@@ -143,6 +143,10 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly mcpServerSpec: pulumi.Output<outputs.agentregistry.ServiceMcpServerSpec | undefined>;
     /**
+     * The resource name of the Service.
+     */
+    declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -182,6 +186,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["interfaces"] = state?.interfaces;
             resourceInputs["location"] = state?.location;
             resourceInputs["mcpServerSpec"] = state?.mcpServerSpec;
+            resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["registryResource"] = state?.registryResource;
             resourceInputs["serviceId"] = state?.serviceId;
@@ -205,6 +210,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceId"] = args?.serviceId;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["registryResource"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -262,6 +268,10 @@ export interface ServiceState {
      * Structure is documented below.
      */
     mcpServerSpec?: pulumi.Input<inputs.agentregistry.ServiceMcpServerSpec | undefined>;
+    /**
+     * The resource name of the Service.
+     */
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -162,8 +162,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
@@ -247,7 +247,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      * Name or self link of a machine
      * image to create the instance based on.
      *
-     * - - -
+     * ***
      */
     declare public readonly sourceMachineImage: pulumi.Output<string>;
     /**
@@ -262,6 +262,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      * The unique fingerprint of the tags.
      */
     declare public /*out*/ readonly tagsFingerprint: pulumi.Output<string>;
+    /**
+     * Workload identity config.
+     */
+    declare public readonly workloadIdentityConfig: pulumi.Output<outputs.compute.InstanceFromMachineImageWorkloadIdentityConfig>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -333,6 +337,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["sourceMachineImageEncryptionKey"] = state?.sourceMachineImageEncryptionKey;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["tagsFingerprint"] = state?.tagsFingerprint;
+            resourceInputs["workloadIdentityConfig"] = state?.workloadIdentityConfig;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as InstanceFromMachineImageArgs | undefined;
@@ -372,6 +377,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["sourceMachineImage"] = args?.sourceMachineImage;
             resourceInputs["sourceMachineImageEncryptionKey"] = args?.sourceMachineImageEncryptionKey;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["zone"] = args?.zone;
             resourceInputs["attachedDisks"] = undefined /*out*/;
             resourceInputs["bootDisks"] = undefined /*out*/;
@@ -496,8 +502,8 @@ export interface InstanceFromMachineImageState {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -581,7 +587,7 @@ export interface InstanceFromMachineImageState {
      * Name or self link of a machine
      * image to create the instance based on.
      *
-     * - - -
+     * ***
      */
     sourceMachineImage?: pulumi.Input<string | undefined>;
     /**
@@ -596,6 +602,10 @@ export interface InstanceFromMachineImageState {
      * The unique fingerprint of the tags.
      */
     tagsFingerprint?: pulumi.Input<string | undefined>;
+    /**
+     * Workload identity config.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageWorkloadIdentityConfig | undefined>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
@@ -677,8 +687,8 @@ export interface InstanceFromMachineImageArgs {
     /**
      * A set of key/value label pairs assigned to the instance.
      *
-     * 				**Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-     * 				Please refer to the field 'effective_labels' for all of the labels present on the resource.
+     *                 **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     *                 Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
@@ -746,7 +756,7 @@ export interface InstanceFromMachineImageArgs {
      * Name or self link of a machine
      * image to create the instance based on.
      *
-     * - - -
+     * ***
      */
     sourceMachineImage: pulumi.Input<string>;
     /**
@@ -757,6 +767,10 @@ export interface InstanceFromMachineImageArgs {
      * The list of tags attached to the instance.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Workload identity config.
+     */
+    workloadIdentityConfig?: pulumi.Input<inputs.compute.InstanceFromMachineImageWorkloadIdentityConfig | undefined>;
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.

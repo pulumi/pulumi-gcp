@@ -135,9 +135,9 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      * The current state of the namespace.
      * * `ACTIVE`: The namespace is active.
      * * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-     * after approximately 30 days. You can restore a soft-deleted namespace using
-     * UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-     * until it is permanently deleted.
+     *   after approximately 30 days. You can restore a soft-deleted namespace using
+     *   UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+     *   until it is permanently deleted.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export class WorkloadIdentityPoolNamespace extends pulumi.CustomResource {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     declare public readonly workloadIdentityPoolNamespaceId: pulumi.Output<string>;
 
@@ -244,9 +244,9 @@ export interface WorkloadIdentityPoolNamespaceState {
      * The current state of the namespace.
      * * `ACTIVE`: The namespace is active.
      * * `DELETED`: The namespace is soft-deleted. Soft-deleted namespaces are permanently deleted
-     * after approximately 30 days. You can restore a soft-deleted namespace using
-     * UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
-     * until it is permanently deleted.
+     *   after approximately 30 days. You can restore a soft-deleted namespace using
+     *   UndeleteWorkloadIdentityPoolNamespace. You cannot reuse the ID of a soft-deleted namespace
+     *   until it is permanently deleted.
      */
     state?: pulumi.Input<string | undefined>;
     /**
@@ -261,7 +261,7 @@ export interface WorkloadIdentityPoolNamespaceState {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId?: pulumi.Input<string | undefined>;
 }
@@ -306,7 +306,7 @@ export interface WorkloadIdentityPoolNamespaceArgs {
      * * contain only lowercase alphanumeric characters or `-`
      * * start with an alphanumeric character
      * * end with an alphanumeric character
-     * The prefix `gcp-` will be reserved for future uses.
+     *   The prefix `gcp-` will be reserved for future uses.
      */
     workloadIdentityPoolNamespaceId: pulumi.Input<string>;
 }

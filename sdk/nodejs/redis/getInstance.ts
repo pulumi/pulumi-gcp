@@ -39,7 +39,7 @@ export interface GetInstanceArgs {
     /**
      * The name of a Redis instance.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -135,7 +135,7 @@ export interface GetInstanceOutputArgs {
     /**
      * The name of a Redis instance.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

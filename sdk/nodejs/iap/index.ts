@@ -5,6 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AgentRegistryAgentIamBindingArgs, AgentRegistryAgentIamBindingState } from "./agentRegistryAgentIamBinding";
+export type AgentRegistryAgentIamBinding = import("./agentRegistryAgentIamBinding").AgentRegistryAgentIamBinding;
+export const AgentRegistryAgentIamBinding: typeof import("./agentRegistryAgentIamBinding").AgentRegistryAgentIamBinding = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryAgentIamBinding"], () => require("./agentRegistryAgentIamBinding"));
+
+export { AgentRegistryAgentIamMemberArgs, AgentRegistryAgentIamMemberState } from "./agentRegistryAgentIamMember";
+export type AgentRegistryAgentIamMember = import("./agentRegistryAgentIamMember").AgentRegistryAgentIamMember;
+export const AgentRegistryAgentIamMember: typeof import("./agentRegistryAgentIamMember").AgentRegistryAgentIamMember = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryAgentIamMember"], () => require("./agentRegistryAgentIamMember"));
+
+export { AgentRegistryAgentIamPolicyArgs, AgentRegistryAgentIamPolicyState } from "./agentRegistryAgentIamPolicy";
+export type AgentRegistryAgentIamPolicy = import("./agentRegistryAgentIamPolicy").AgentRegistryAgentIamPolicy;
+export const AgentRegistryAgentIamPolicy: typeof import("./agentRegistryAgentIamPolicy").AgentRegistryAgentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryAgentIamPolicy"], () => require("./agentRegistryAgentIamPolicy"));
+
+export { AgentRegistryEndpointIamBindingArgs, AgentRegistryEndpointIamBindingState } from "./agentRegistryEndpointIamBinding";
+export type AgentRegistryEndpointIamBinding = import("./agentRegistryEndpointIamBinding").AgentRegistryEndpointIamBinding;
+export const AgentRegistryEndpointIamBinding: typeof import("./agentRegistryEndpointIamBinding").AgentRegistryEndpointIamBinding = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryEndpointIamBinding"], () => require("./agentRegistryEndpointIamBinding"));
+
+export { AgentRegistryEndpointIamMemberArgs, AgentRegistryEndpointIamMemberState } from "./agentRegistryEndpointIamMember";
+export type AgentRegistryEndpointIamMember = import("./agentRegistryEndpointIamMember").AgentRegistryEndpointIamMember;
+export const AgentRegistryEndpointIamMember: typeof import("./agentRegistryEndpointIamMember").AgentRegistryEndpointIamMember = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryEndpointIamMember"], () => require("./agentRegistryEndpointIamMember"));
+
+export { AgentRegistryEndpointIamPolicyArgs, AgentRegistryEndpointIamPolicyState } from "./agentRegistryEndpointIamPolicy";
+export type AgentRegistryEndpointIamPolicy = import("./agentRegistryEndpointIamPolicy").AgentRegistryEndpointIamPolicy;
+export const AgentRegistryEndpointIamPolicy: typeof import("./agentRegistryEndpointIamPolicy").AgentRegistryEndpointIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryEndpointIamPolicy"], () => require("./agentRegistryEndpointIamPolicy"));
+
 export { AgentRegistryIamBindingArgs, AgentRegistryIamBindingState } from "./agentRegistryIamBinding";
 export type AgentRegistryIamBinding = import("./agentRegistryIamBinding").AgentRegistryIamBinding;
 export const AgentRegistryIamBinding: typeof import("./agentRegistryIamBinding").AgentRegistryIamBinding = null as any;
@@ -19,6 +49,21 @@ export { AgentRegistryIamPolicyArgs, AgentRegistryIamPolicyState } from "./agent
 export type AgentRegistryIamPolicy = import("./agentRegistryIamPolicy").AgentRegistryIamPolicy;
 export const AgentRegistryIamPolicy: typeof import("./agentRegistryIamPolicy").AgentRegistryIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AgentRegistryIamPolicy"], () => require("./agentRegistryIamPolicy"));
+
+export { AgentRegistryMcpServerIamBindingArgs, AgentRegistryMcpServerIamBindingState } from "./agentRegistryMcpServerIamBinding";
+export type AgentRegistryMcpServerIamBinding = import("./agentRegistryMcpServerIamBinding").AgentRegistryMcpServerIamBinding;
+export const AgentRegistryMcpServerIamBinding: typeof import("./agentRegistryMcpServerIamBinding").AgentRegistryMcpServerIamBinding = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryMcpServerIamBinding"], () => require("./agentRegistryMcpServerIamBinding"));
+
+export { AgentRegistryMcpServerIamMemberArgs, AgentRegistryMcpServerIamMemberState } from "./agentRegistryMcpServerIamMember";
+export type AgentRegistryMcpServerIamMember = import("./agentRegistryMcpServerIamMember").AgentRegistryMcpServerIamMember;
+export const AgentRegistryMcpServerIamMember: typeof import("./agentRegistryMcpServerIamMember").AgentRegistryMcpServerIamMember = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryMcpServerIamMember"], () => require("./agentRegistryMcpServerIamMember"));
+
+export { AgentRegistryMcpServerIamPolicyArgs, AgentRegistryMcpServerIamPolicyState } from "./agentRegistryMcpServerIamPolicy";
+export type AgentRegistryMcpServerIamPolicy = import("./agentRegistryMcpServerIamPolicy").AgentRegistryMcpServerIamPolicy;
+export const AgentRegistryMcpServerIamPolicy: typeof import("./agentRegistryMcpServerIamPolicy").AgentRegistryMcpServerIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AgentRegistryMcpServerIamPolicy"], () => require("./agentRegistryMcpServerIamPolicy"));
 
 export { AppEngineServiceIamBindingArgs, AppEngineServiceIamBindingState } from "./appEngineServiceIamBinding";
 export type AppEngineServiceIamBinding = import("./appEngineServiceIamBinding").AppEngineServiceIamBinding;
@@ -60,10 +105,25 @@ export type Client = import("./client").Client;
 export const Client: typeof import("./client").Client = null as any;
 utilities.lazyLoad(exports, ["Client"], () => require("./client"));
 
+export { GetAgentRegistryAgentIamPolicyArgs, GetAgentRegistryAgentIamPolicyResult, GetAgentRegistryAgentIamPolicyOutputArgs } from "./getAgentRegistryAgentIamPolicy";
+export const getAgentRegistryAgentIamPolicy: typeof import("./getAgentRegistryAgentIamPolicy").getAgentRegistryAgentIamPolicy = null as any;
+export const getAgentRegistryAgentIamPolicyOutput: typeof import("./getAgentRegistryAgentIamPolicy").getAgentRegistryAgentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentRegistryAgentIamPolicy","getAgentRegistryAgentIamPolicyOutput"], () => require("./getAgentRegistryAgentIamPolicy"));
+
+export { GetAgentRegistryEndpointIamPolicyArgs, GetAgentRegistryEndpointIamPolicyResult, GetAgentRegistryEndpointIamPolicyOutputArgs } from "./getAgentRegistryEndpointIamPolicy";
+export const getAgentRegistryEndpointIamPolicy: typeof import("./getAgentRegistryEndpointIamPolicy").getAgentRegistryEndpointIamPolicy = null as any;
+export const getAgentRegistryEndpointIamPolicyOutput: typeof import("./getAgentRegistryEndpointIamPolicy").getAgentRegistryEndpointIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentRegistryEndpointIamPolicy","getAgentRegistryEndpointIamPolicyOutput"], () => require("./getAgentRegistryEndpointIamPolicy"));
+
 export { GetAgentRegistryIamPolicyArgs, GetAgentRegistryIamPolicyResult, GetAgentRegistryIamPolicyOutputArgs } from "./getAgentRegistryIamPolicy";
 export const getAgentRegistryIamPolicy: typeof import("./getAgentRegistryIamPolicy").getAgentRegistryIamPolicy = null as any;
 export const getAgentRegistryIamPolicyOutput: typeof import("./getAgentRegistryIamPolicy").getAgentRegistryIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAgentRegistryIamPolicy","getAgentRegistryIamPolicyOutput"], () => require("./getAgentRegistryIamPolicy"));
+
+export { GetAgentRegistryMcpServerIamPolicyArgs, GetAgentRegistryMcpServerIamPolicyResult, GetAgentRegistryMcpServerIamPolicyOutputArgs } from "./getAgentRegistryMcpServerIamPolicy";
+export const getAgentRegistryMcpServerIamPolicy: typeof import("./getAgentRegistryMcpServerIamPolicy").getAgentRegistryMcpServerIamPolicy = null as any;
+export const getAgentRegistryMcpServerIamPolicyOutput: typeof import("./getAgentRegistryMcpServerIamPolicy").getAgentRegistryMcpServerIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAgentRegistryMcpServerIamPolicy","getAgentRegistryMcpServerIamPolicyOutput"], () => require("./getAgentRegistryMcpServerIamPolicy"));
 
 export { GetAppEngineServiceIamPolicyArgs, GetAppEngineServiceIamPolicyResult, GetAppEngineServiceIamPolicyOutputArgs } from "./getAppEngineServiceIamPolicy";
 export const getAppEngineServiceIamPolicy: typeof import("./getAppEngineServiceIamPolicy").getAppEngineServiceIamPolicy = null as any;
@@ -335,12 +395,30 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:iap/agentRegistryAgentIamBinding:AgentRegistryAgentIamBinding":
+                return new AgentRegistryAgentIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryAgentIamMember:AgentRegistryAgentIamMember":
+                return new AgentRegistryAgentIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryAgentIamPolicy:AgentRegistryAgentIamPolicy":
+                return new AgentRegistryAgentIamPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryEndpointIamBinding:AgentRegistryEndpointIamBinding":
+                return new AgentRegistryEndpointIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryEndpointIamMember:AgentRegistryEndpointIamMember":
+                return new AgentRegistryEndpointIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryEndpointIamPolicy:AgentRegistryEndpointIamPolicy":
+                return new AgentRegistryEndpointIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/agentRegistryIamBinding:AgentRegistryIamBinding":
                 return new AgentRegistryIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/agentRegistryIamMember:AgentRegistryIamMember":
                 return new AgentRegistryIamMember(name, <any>undefined, { urn })
             case "gcp:iap/agentRegistryIamPolicy:AgentRegistryIamPolicy":
                 return new AgentRegistryIamPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryMcpServerIamBinding:AgentRegistryMcpServerIamBinding":
+                return new AgentRegistryMcpServerIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryMcpServerIamMember:AgentRegistryMcpServerIamMember":
+                return new AgentRegistryMcpServerIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/agentRegistryMcpServerIamPolicy:AgentRegistryMcpServerIamPolicy":
+                return new AgentRegistryMcpServerIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding":
                 return new AppEngineServiceIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember":
@@ -438,9 +516,18 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryAgentIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryAgentIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryAgentIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryEndpointIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryEndpointIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryEndpointIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryMcpServerIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryMcpServerIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/agentRegistryMcpServerIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineServiceIamPolicy", _module)

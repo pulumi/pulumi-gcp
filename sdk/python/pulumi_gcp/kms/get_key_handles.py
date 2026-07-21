@@ -123,9 +123,9 @@ def get_key_handles(location: Optional[_builtins.str] = None,
            A full list of valid locations can be found by running `gcloud kms locations list`.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param _builtins.str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+    :param _builtins.str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['location'] = location
@@ -168,9 +168,9 @@ def get_key_handles_output(location: pulumi.Input[Optional[_builtins.str]] = Non
            A full list of valid locations can be found by running `gcloud kms locations list`.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
-    :param _builtins.str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+    :param _builtins.str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['location'] = location

@@ -40,7 +40,7 @@ export interface GetPrivateCloudArgs {
     /**
      * Location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -116,7 +116,7 @@ export interface GetPrivateCloudOutputArgs {
     /**
      * Location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

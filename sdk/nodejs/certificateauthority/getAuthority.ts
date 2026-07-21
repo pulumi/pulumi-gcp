@@ -41,7 +41,7 @@ export interface GetAuthorityArgs {
     /**
      * ID of the certificate authority.
      *
-     * - - -
+     * ***
      */
     certificateAuthorityId?: string;
     /**
@@ -133,7 +133,7 @@ export interface GetAuthorityOutputArgs {
     /**
      * ID of the certificate authority.
      *
-     * - - -
+     * ***
      */
     certificateAuthorityId?: pulumi.Input<string | undefined>;
     /**

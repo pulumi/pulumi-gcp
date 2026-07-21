@@ -38,7 +38,7 @@ export interface GetFunctionArgs {
     /**
      * The name of a Cloud Function.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -186,7 +186,7 @@ export interface GetFunctionOutputArgs {
     /**
      * The name of a Cloud Function.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

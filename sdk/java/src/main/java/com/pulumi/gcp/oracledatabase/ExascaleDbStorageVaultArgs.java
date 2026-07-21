@@ -79,6 +79,23 @@ public final class ExascaleDbStorageVaultArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     * 
+     */
+    @Import(name="exadataInfrastructure")
+    private @Nullable Output<String> exadataInfrastructure;
+
+    /**
+     * @return The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+     * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+     * 
+     */
+    public Optional<Output<String>> exadataInfrastructure() {
+        return Optional.ofNullable(this.exadataInfrastructure);
+    }
+
+    /**
      * The ID of the ExascaleDbStorageVault to create. This value is
      * restricted to (^a-z?$) and must be a maximum of
      * 63 characters in length. The value must start with a letter and end with a
@@ -194,6 +211,7 @@ public final class ExascaleDbStorageVaultArgs extends com.pulumi.resources.Resou
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
+        this.exadataInfrastructure = $.exadataInfrastructure;
         this.exascaleDbStorageVaultId = $.exascaleDbStorageVaultId;
         this.gcpOracleZone = $.gcpOracleZone;
         this.labels = $.labels;
@@ -295,6 +313,29 @@ public final class ExascaleDbStorageVaultArgs extends com.pulumi.resources.Resou
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param exadataInfrastructure The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+         * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exadataInfrastructure(@Nullable Output<String> exadataInfrastructure) {
+            $.exadataInfrastructure = exadataInfrastructure;
+            return this;
+        }
+
+        /**
+         * @param exadataInfrastructure The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+         * In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder exadataInfrastructure(String exadataInfrastructure) {
+            return exadataInfrastructure(Output.of(exadataInfrastructure));
         }
 
         /**

@@ -69,8 +69,7 @@ export interface GetTokenArgs {
      * this site or domain.
      * Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
      *
-     *
-     * - - -
+     * ***
      */
     verificationMethod: string;
 }
@@ -156,8 +155,7 @@ export interface GetTokenOutputArgs {
      * this site or domain.
      * Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
      *
-     *
-     * - - -
+     * ***
      */
     verificationMethod: pulumi.Input<string>;
 }

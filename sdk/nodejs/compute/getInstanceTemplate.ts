@@ -212,6 +212,7 @@ export interface GetInstanceTemplateResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
+    readonly workloadIdentityConfigs: outputs.compute.GetInstanceTemplateWorkloadIdentityConfig[];
 }
 /**
  * > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.

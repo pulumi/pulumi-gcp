@@ -48,7 +48,7 @@ public final class GetMcpServerResult {
      */
     private List<GetMcpServerInterface> interfaces;
     private String location;
-    private @Nullable String mcpServerId;
+    private String mcpServerId;
     private String project;
     /**
      * @return A list of tools available with the MCP Server.
@@ -115,8 +115,8 @@ public final class GetMcpServerResult {
     public String location() {
         return this.location;
     }
-    public Optional<String> mcpServerId() {
-        return Optional.ofNullable(this.mcpServerId);
+    public String mcpServerId() {
+        return this.mcpServerId;
     }
     public String project() {
         return this.project;
@@ -160,7 +160,7 @@ public final class GetMcpServerResult {
         private String id;
         private List<GetMcpServerInterface> interfaces;
         private String location;
-        private @Nullable String mcpServerId;
+        private String mcpServerId;
         private String project;
         private List<GetMcpServerTool> tools;
         private String updateTime;
@@ -249,8 +249,10 @@ public final class GetMcpServerResult {
             return this;
         }
         @CustomType.Setter
-        public Builder mcpServerId(@Nullable String mcpServerId) {
-
+        public Builder mcpServerId(String mcpServerId) {
+            if (mcpServerId == null) {
+              throw new MissingRequiredPropertyException("GetMcpServerResult", "mcpServerId");
+            }
             this.mcpServerId = mcpServerId;
             return this;
         }

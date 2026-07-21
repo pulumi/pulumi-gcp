@@ -27,6 +27,7 @@ class FieldArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  index_config: pulumi.Input[Optional['FieldIndexConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl_config: pulumi.Input[Optional['FieldTtlConfigArgs']] = None):
         """
         The set of arguments for constructing a Field resource.
@@ -47,6 +48,7 @@ class FieldArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the field operation to complete.
         :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
@@ -60,6 +62,8 @@ class FieldArgs:
             pulumi.set(__self__, "index_config", index_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_wait is not None:
+            pulumi.set(__self__, "skip_wait", skip_wait)
         if ttl_config is not None:
             pulumi.set(__self__, "ttl_config", ttl_config)
 
@@ -146,6 +150,18 @@ class FieldArgs:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the field operation to complete.
+        """
+        return pulumi.get(self, "skip_wait")
+
+    @skip_wait.setter
+    def skip_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_wait", value)
+
+    @_builtins.property
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Input[Optional['FieldTtlConfigArgs']]:
         """
@@ -169,6 +185,7 @@ class _FieldState:
                  index_config: pulumi.Input[Optional['FieldIndexConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl_config: pulumi.Input[Optional['FieldTtlConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Field resources.
@@ -191,6 +208,7 @@ class _FieldState:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the field operation to complete.
         :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
@@ -208,6 +226,8 @@ class _FieldState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if skip_wait is not None:
+            pulumi.set(__self__, "skip_wait", skip_wait)
         if ttl_config is not None:
             pulumi.set(__self__, "ttl_config", ttl_config)
 
@@ -307,6 +327,18 @@ class _FieldState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the field operation to complete.
+        """
+        return pulumi.get(self, "skip_wait")
+
+    @skip_wait.setter
+    def skip_wait(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_wait", value)
+
+    @_builtins.property
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Input[Optional['FieldTtlConfigArgs']]:
         """
@@ -332,6 +364,7 @@ class Field(pulumi.CustomResource):
                  field: pulumi.Input[Optional[_builtins.str]] = None,
                  index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None,
                  __props__=None):
         """
@@ -368,7 +401,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__40816",
+            collection="chatrooms__24243",
             field="basic",
             index_config={
                 "indexes": [
@@ -486,7 +519,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__94690",
+            collection="chatrooms__7495",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -518,7 +551,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__29947",
+            collection="chatrooms__21912",
             field="*",
             index_config={
                 "indexes": [
@@ -531,6 +564,37 @@ class Field(pulumi.CustomResource):
                     },
                 ],
             })
+        ```
+        ### Firestore Field Skip Wait
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        skip_wait = gcp.firestore.Field("skip_wait",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__46731",
+            field="skip_wait",
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                        "query_scope": "COLLECTION_GROUP",
+                    },
+                    {
+                        "array_config": "CONTAINS",
+                    },
+                ],
+            },
+            skip_wait=True)
         ```
 
         ## Import
@@ -564,6 +628,7 @@ class Field(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the field operation to complete.
         :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
@@ -607,7 +672,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__40816",
+            collection="chatrooms__24243",
             field="basic",
             index_config={
                 "indexes": [
@@ -725,7 +790,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__94690",
+            collection="chatrooms__7495",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -757,7 +822,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__29947",
+            collection="chatrooms__21912",
             field="*",
             index_config={
                 "indexes": [
@@ -770,6 +835,37 @@ class Field(pulumi.CustomResource):
                     },
                 ],
             })
+        ```
+        ### Firestore Field Skip Wait
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        skip_wait = gcp.firestore.Field("skip_wait",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms__46731",
+            field="skip_wait",
+            index_config={
+                "indexes": [
+                    {
+                        "order": "ASCENDING",
+                        "query_scope": "COLLECTION_GROUP",
+                    },
+                    {
+                        "array_config": "CONTAINS",
+                    },
+                ],
+            },
+            skip_wait=True)
         ```
 
         ## Import
@@ -806,6 +902,7 @@ class Field(pulumi.CustomResource):
                  field: pulumi.Input[Optional[_builtins.str]] = None,
                  index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
                  ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -826,6 +923,7 @@ class Field(pulumi.CustomResource):
             __props__.__dict__["field"] = field
             __props__.__dict__["index_config"] = index_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["skip_wait"] = skip_wait
             __props__.__dict__["ttl_config"] = ttl_config
             __props__.__dict__["name"] = None
         super(Field, __self__).__init__(
@@ -845,6 +943,7 @@ class Field(pulumi.CustomResource):
             index_config: pulumi.Input[Optional[Union['FieldIndexConfigArgs', 'FieldIndexConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_wait: pulumi.Input[Optional[_builtins.bool]] = None,
             ttl_config: pulumi.Input[Optional[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']]] = None) -> 'Field':
         """
         Get an existing Field resource's state with the given name, id, and optional extra
@@ -871,6 +970,7 @@ class Field(pulumi.CustomResource):
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.bool] skip_wait: Whether to skip waiting for the field operation to complete.
         :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
@@ -885,6 +985,7 @@ class Field(pulumi.CustomResource):
         __props__.__dict__["index_config"] = index_config
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["skip_wait"] = skip_wait
         __props__.__dict__["ttl_config"] = ttl_config
         return Field(resource_name, opts=opts, __props__=__props__)
 
@@ -954,6 +1055,14 @@ class Field(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="skipWait")
+    def skip_wait(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to skip waiting for the field operation to complete.
+        """
+        return pulumi.get(self, "skip_wait")
 
     @_builtins.property
     @pulumi.getter(name="ttlConfig")

@@ -233,7 +233,7 @@ class InstanceCrossInstanceReplicationConfig(dict):
                2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
                3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
                4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
-               Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+                  Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         :param Sequence['InstanceCrossInstanceReplicationConfigMembershipArgs'] memberships: (Output)
                An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
                Structure is documented below.
@@ -264,7 +264,7 @@ class InstanceCrossInstanceReplicationConfig(dict):
         2. `NONE`: This is an independent instance that previously participated in cross instance replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
         3. `PRIMARY`: This instance serves as the replication source for secondary instance that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
         4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
-        Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+           Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
         """
         return pulumi.get(self, "instance_role")
 
@@ -1211,7 +1211,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
                - FRIDAY: Friday
                - SATURDAY: Saturday
                - SUNDAY: Sunday
-               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+                 Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         :param 'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs' start_time: Start time of the window in UTC time.
                Structure is documented below.
         :param _builtins.str duration: (Output)
@@ -1238,7 +1238,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow(dict):
         - FRIDAY: Friday
         - SATURDAY: Saturday
         - SUNDAY: Sunday
-        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+          Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
 
@@ -2563,10 +2563,10 @@ class GetInstanceEndpointConnectionPscAutoConnectionResult(dict):
                  psc_connection_id: _builtins.str,
                  service_attachment: _builtins.str):
         """
-        :param _builtins.str connection_type: Output Only. Type of a PSC Connection. 
+        :param _builtins.str connection_type: Output Only. Type of a PSC Connection.
                 Possible values:
-                CONNECTION_TYPE_DISCOVERY 
-                CONNECTION_TYPE_PRIMARY 
+                CONNECTION_TYPE_DISCOVERY
+                CONNECTION_TYPE_PRIMARY
                 CONNECTION_TYPE_READER
         :param _builtins.str forwarding_rule: Output only. The URI of the consumer side forwarding rule.
                Format:
@@ -2593,10 +2593,10 @@ class GetInstanceEndpointConnectionPscAutoConnectionResult(dict):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> _builtins.str:
         """
-        Output Only. Type of a PSC Connection. 
+        Output Only. Type of a PSC Connection.
          Possible values:
-         CONNECTION_TYPE_DISCOVERY 
-         CONNECTION_TYPE_PRIMARY 
+         CONNECTION_TYPE_DISCOVERY
+         CONNECTION_TYPE_PRIMARY
          CONNECTION_TYPE_READER
         """
         return pulumi.get(self, "connection_type")
@@ -2987,7 +2987,7 @@ class GetInstancePersistenceConfigResult(dict):
                  rdb_configs: Sequence['outputs.GetInstancePersistenceConfigRdbConfigResult']):
         """
         :param Sequence['GetInstancePersistenceConfigAofConfigArgs'] aof_configs: Configuration for AOF based persistence.
-        :param _builtins.str mode: Optional. Current persistence mode. 
+        :param _builtins.str mode: Optional. Current persistence mode.
                 Possible values:
                DISABLED
                RDB
@@ -3010,7 +3010,7 @@ class GetInstancePersistenceConfigResult(dict):
     @pulumi.getter
     def mode(self) -> _builtins.str:
         """
-        Optional. Current persistence mode. 
+        Optional. Current persistence mode.
          Possible values:
         DISABLED
         RDB
@@ -3032,7 +3032,7 @@ class GetInstancePersistenceConfigAofConfigResult(dict):
     def __init__(__self__, *,
                  append_fsync: _builtins.str):
         """
-        :param _builtins.str append_fsync: Optional. The fsync mode. 
+        :param _builtins.str append_fsync: Optional. The fsync mode.
                 Possible values:
                 NEVER
                EVERY_SEC
@@ -3044,7 +3044,7 @@ class GetInstancePersistenceConfigAofConfigResult(dict):
     @pulumi.getter(name="appendFsync")
     def append_fsync(self) -> _builtins.str:
         """
-        Optional. The fsync mode. 
+        Optional. The fsync mode.
          Possible values:
          NEVER
         EVERY_SEC
@@ -3059,7 +3059,7 @@ class GetInstancePersistenceConfigRdbConfigResult(dict):
                  rdb_snapshot_period: _builtins.str,
                  rdb_snapshot_start_time: _builtins.str):
         """
-        :param _builtins.str rdb_snapshot_period: Optional. Period between RDB snapshots. 
+        :param _builtins.str rdb_snapshot_period: Optional. Period between RDB snapshots.
                 Possible values:
                 ONE_HOUR
                SIX_HOURS
@@ -3076,7 +3076,7 @@ class GetInstancePersistenceConfigRdbConfigResult(dict):
     @pulumi.getter(name="rdbSnapshotPeriod")
     def rdb_snapshot_period(self) -> _builtins.str:
         """
-        Optional. Period between RDB snapshots. 
+        Optional. Period between RDB snapshots.
          Possible values:
          ONE_HOUR
         SIX_HOURS
@@ -3138,10 +3138,10 @@ class GetInstancePscAutoConnectionResult(dict):
                  psc_connection_status: _builtins.str,
                  service_attachment: _builtins.str):
         """
-        :param _builtins.str connection_type: Output Only. Type of a PSC Connection. 
+        :param _builtins.str connection_type: Output Only. Type of a PSC Connection.
                 Possible values:
-                CONNECTION_TYPE_DISCOVERY 
-                CONNECTION_TYPE_PRIMARY 
+                CONNECTION_TYPE_DISCOVERY
+                CONNECTION_TYPE_PRIMARY
                 CONNECTION_TYPE_READER
         :param _builtins.str forwarding_rule: Output only. The URI of the consumer side forwarding rule.
                Format:
@@ -3153,9 +3153,9 @@ class GetInstancePscAutoConnectionResult(dict):
         :param _builtins.str project_id: Output only. The consumer project_id where the forwarding rule is created from.
         :param _builtins.str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the
                service attachment.
-        :param _builtins.str psc_connection_status: Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists. 
+        :param _builtins.str psc_connection_status: Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
                 Possible values:
-                ACTIVE 
+                ACTIVE
                 NOT_FOUND
         :param _builtins.str service_attachment: Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
         """
@@ -3173,10 +3173,10 @@ class GetInstancePscAutoConnectionResult(dict):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> _builtins.str:
         """
-        Output Only. Type of a PSC Connection. 
+        Output Only. Type of a PSC Connection.
          Possible values:
-         CONNECTION_TYPE_DISCOVERY 
-         CONNECTION_TYPE_PRIMARY 
+         CONNECTION_TYPE_DISCOVERY
+         CONNECTION_TYPE_PRIMARY
          CONNECTION_TYPE_READER
         """
         return pulumi.get(self, "connection_type")
@@ -3237,9 +3237,9 @@ class GetInstancePscAutoConnectionResult(dict):
     @pulumi.getter(name="pscConnectionStatus")
     def psc_connection_status(self) -> _builtins.str:
         """
-        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists. 
+        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
          Possible values:
-         ACTIVE 
+         ACTIVE
          NOT_FOUND
         """
         return pulumi.get(self, "psc_connection_status")
@@ -3328,7 +3328,7 @@ class GetInstanceZoneDistributionConfigResult(dict):
                  mode: _builtins.str,
                  zone: _builtins.str):
         """
-        :param _builtins.str mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE. 
+        :param _builtins.str mode: Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
                 Possible values:
                 MULTI_ZONE
                SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]
@@ -3342,7 +3342,7 @@ class GetInstanceZoneDistributionConfigResult(dict):
     @pulumi.getter
     def mode(self) -> _builtins.str:
         """
-        Optional. Current zone distribution mode. Defaults to MULTI_ZONE. 
+        Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
          Possible values:
          MULTI_ZONE
         SINGLE_ZONE Possible values: ["MULTI_ZONE", "SINGLE_ZONE"]

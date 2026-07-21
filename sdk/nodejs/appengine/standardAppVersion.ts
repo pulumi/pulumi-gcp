@@ -103,6 +103,72 @@ import * as utilities from "../utilities";
  *     serviceAccount: customServiceAccount.email,
  * });
  * ```
+ * ### App Engine Standard App Version Bundled Services
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
+ *     accountId: "gae-sa",
+ *     displayName: "Test Service Account for GAE",
+ * });
+ * const gaeApi = new gcp.projects.IAMMember("gae_api", {
+ *     project: serviceAccount.project,
+ *     role: "roles/compute.networkUser",
+ *     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
+ * });
+ * const storageViewer = new gcp.projects.IAMMember("storage_viewer", {
+ *     project: serviceAccount.project,
+ *     role: "roles/storage.objectViewer",
+ *     member: pulumi.interpolate`serviceAccount:${serviceAccount.email}`,
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "tf-test-gae-bkt-bundled",
+ *     location: "US",
+ * });
+ * const requirements = new gcp.storage.BucketObject("requirements", {
+ *     name: "requirements.txt",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world-flask/requirements.txt"),
+ * });
+ * const main = new gcp.storage.BucketObject("main", {
+ *     name: "main.py",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world-flask/main.py"),
+ * });
+ * const gae_std_app_ver_bundled = new gcp.appengine.StandardAppVersion("gae-std-app-ver-bundled", {
+ *     versionId: "v1",
+ *     service: "bundled-service",
+ *     runtime: "python310",
+ *     deployment: {
+ *         files: [
+ *             {
+ *                 name: "main.py",
+ *                 sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${main.name}`,
+ *             },
+ *             {
+ *                 name: "requirements.txt",
+ *                 sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${requirements.name}`,
+ *             },
+ *         ],
+ *     },
+ *     entrypoint: {
+ *         shell: "gunicorn -b :$PORT main:app",
+ *     },
+ *     appEngineBundledServices: [
+ *         "BUNDLED_SERVICE_TYPE_MAIL",
+ *         "BUNDLED_SERVICE_TYPE_DATASTORE_V3",
+ *     ],
+ *     deleteServiceOnDestroy: true,
+ *     serviceAccount: serviceAccount.email,
+ * }, {
+ *     dependsOn: [
+ *         gaeApi,
+ *         storageViewer,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -150,8 +216,15 @@ export class StandardAppVersion extends pulumi.CustomResource {
 
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
      */
     declare public readonly appEngineApis: pulumi.Output<boolean | undefined>;
+    /**
+     * A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     */
+    declare public readonly appEngineBundledServices: pulumi.Output<string[] | undefined>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
@@ -276,6 +349,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
             resourceInputs["appEngineApis"] = state?.appEngineApis;
+            resourceInputs["appEngineBundledServices"] = state?.appEngineBundledServices;
             resourceInputs["automaticScaling"] = state?.automaticScaling;
             resourceInputs["basicScaling"] = state?.basicScaling;
             resourceInputs["deleteServiceOnDestroy"] = state?.deleteServiceOnDestroy;
@@ -313,6 +387,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             resourceInputs["appEngineApis"] = args?.appEngineApis;
+            resourceInputs["appEngineBundledServices"] = args?.appEngineBundledServices;
             resourceInputs["automaticScaling"] = args?.automaticScaling;
             resourceInputs["basicScaling"] = args?.basicScaling;
             resourceInputs["deleteServiceOnDestroy"] = args?.deleteServiceOnDestroy;
@@ -347,8 +422,15 @@ export class StandardAppVersion extends pulumi.CustomResource {
 export interface StandardAppVersionState {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
      */
     appEngineApis?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     */
+    appEngineBundledServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
@@ -466,8 +548,15 @@ export interface StandardAppVersionState {
 export interface StandardAppVersionArgs {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
      */
     appEngineApis?: pulumi.Input<boolean | undefined>;
+    /**
+     * A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     */
+    appEngineBundledServices?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.

@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
  *             .name("health-check")
- *             .region("europe-west4")
+ *             .region("us-central1")
  *             .timeoutSec(1)
  *             .checkIntervalSec(1)
  *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
@@ -72,14 +72,14 @@ import javax.annotation.Nullable;
  *             .name("backend-service")
  *             .protocol("TCP")
  *             .timeoutSec(10)
- *             .region("europe-west4")
+ *             .region("us-central1")
  *             .healthChecks(defaultRegionHealthCheck.id())
  *             .loadBalancingScheme("INTERNAL_MANAGED")
  *             .build());
  * 
  *         var default_ = new RegionTargetTcpProxy("default", RegionTargetTcpProxyArgs.builder()
  *             .name("test-proxy")
- *             .region("europe-west4")
+ *             .region("us-central1")
  *             .backendService(defaultRegionBackendService.id())
  *             .build());
  * 

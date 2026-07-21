@@ -170,7 +170,7 @@ def get_parameter_version(parameter: Optional[_builtins.str] = None,
     :param _builtins.str parameter: The parameter for obtaining the Parameter Version.
            This can be either the reference of the parameter as in `projects/{{project}}/locations/global/parameters/{{parameter_id}}` or only the name of the parameter as in `{{parameter_id}}`.
     :param _builtins.str parameter_version_id: The version of the parameter to get.
-    :param _builtins.str project: The project for retrieving the Parameter Version. If it's not specified, 
+    :param _builtins.str project: The project for retrieving the Parameter Version. If it's not specified,
            the provider project will be used.
     """
     __args__ = dict()
@@ -212,7 +212,7 @@ def get_parameter_version_output(parameter: pulumi.Input[Optional[_builtins.str]
     :param _builtins.str parameter: The parameter for obtaining the Parameter Version.
            This can be either the reference of the parameter as in `projects/{{project}}/locations/global/parameters/{{parameter_id}}` or only the name of the parameter as in `{{parameter_id}}`.
     :param _builtins.str parameter_version_id: The version of the parameter to get.
-    :param _builtins.str project: The project for retrieving the Parameter Version. If it's not specified, 
+    :param _builtins.str project: The project for retrieving the Parameter Version. If it's not specified,
            the provider project will be used.
     """
     __args__ = dict()

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigCustomNodeInit;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigSwapConfig;
@@ -26,6 +27,11 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private @Nullable String cgroupMode;
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigLinuxNodeConfigCustomNodeInit customNodeInit;
     /**
      * @return Amounts for 2M and 1G hugepages.
      * 
@@ -71,6 +77,13 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      */
     public Optional<String> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
+    }
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    public Optional<NodePoolNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInit() {
+        return Optional.ofNullable(this.customNodeInit);
     }
     /**
      * @return Amounts for 2M and 1G hugepages.
@@ -126,6 +139,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     public static final class Builder {
         private @Nullable NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig accurateTimeConfig;
         private @Nullable String cgroupMode;
+        private @Nullable NodePoolNodeConfigLinuxNodeConfigCustomNodeInit customNodeInit;
         private @Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading nodeKernelModuleLoading;
         private @Nullable NodePoolNodeConfigLinuxNodeConfigSwapConfig swapConfig;
@@ -137,6 +151,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.accurateTimeConfig = defaults.accurateTimeConfig;
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.customNodeInit = defaults.customNodeInit;
     	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.nodeKernelModuleLoading = defaults.nodeKernelModuleLoading;
     	      this.swapConfig = defaults.swapConfig;
@@ -155,6 +170,12 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
         public Builder cgroupMode(@Nullable String cgroupMode) {
 
             this.cgroupMode = cgroupMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder customNodeInit(@Nullable NodePoolNodeConfigLinuxNodeConfigCustomNodeInit customNodeInit) {
+
+            this.customNodeInit = customNodeInit;
             return this;
         }
         @CustomType.Setter
@@ -197,6 +218,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
             final var _resultValue = new NodePoolNodeConfigLinuxNodeConfig();
             _resultValue.accurateTimeConfig = accurateTimeConfig;
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.customNodeInit = customNodeInit;
             _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.nodeKernelModuleLoading = nodeKernelModuleLoading;
             _resultValue.swapConfig = swapConfig;

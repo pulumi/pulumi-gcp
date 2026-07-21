@@ -20,6 +20,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageScratchDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageShieldedInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -752,6 +753,21 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     }
 
     /**
+     * Workload identity config.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<InstanceFromMachineImageWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload identity config.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
+    /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
@@ -829,6 +845,7 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         this.sourceMachineImageEncryptionKey = $.sourceMachineImageEncryptionKey;
         this.tags = $.tags;
         this.tagsFingerprint = $.tagsFingerprint;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
         this.zone = $.zone;
     }
 
@@ -1902,6 +1919,27 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          */
         public Builder tagsFingerprint(String tagsFingerprint) {
             return tagsFingerprint(Output.of(tagsFingerprint));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<InstanceFromMachineImageWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(InstanceFromMachineImageWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         /**

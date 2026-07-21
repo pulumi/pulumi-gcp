@@ -18,6 +18,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageShieldedInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSourceMachineImageEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -551,6 +552,21 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Workload identity config.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<InstanceFromMachineImageWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload identity config.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
+    /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
@@ -615,6 +631,7 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         this.sourceMachineImage = $.sourceMachineImage;
         this.sourceMachineImageEncryptionKey = $.sourceMachineImageEncryptionKey;
         this.tags = $.tags;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
         this.zone = $.zone;
     }
 
@@ -1381,6 +1398,27 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<InstanceFromMachineImageWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload identity config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(InstanceFromMachineImageWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         /**

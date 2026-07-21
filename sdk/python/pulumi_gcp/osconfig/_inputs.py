@@ -6478,7 +6478,7 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgsDict(TypedDict):
     Specifies the relative value defined as a percentage,
     which will be multiplied by a reference value.
 
-    --------------------------------------------------------------------------------
+    ***
     """
 
 @pulumi.input_type
@@ -6491,7 +6491,7 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
         :param pulumi.Input[_builtins.int] percent: Specifies the relative value defined as a percentage,
                which will be multiplied by a reference value.
                
-               --------------------------------------------------------------------------------
+               ***
         """
         if fixed is not None:
             pulumi.set(__self__, "fixed", fixed)
@@ -6517,7 +6517,7 @@ class OsPolicyAssignmentRolloutDisruptionBudgetArgs:
         Specifies the relative value defined as a percentage,
         which will be multiplied by a reference value.
 
-        --------------------------------------------------------------------------------
+        ***
         """
         return pulumi.get(self, "percent")
 
@@ -8753,9 +8753,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict(TypedDict):
     * Must be between 1-63 characters.
     * Must end with a number or a letter.
     * Must be unique within the project.
-    For DELETE action, ID must be specified explicitly during
-    PolicyOrchestrator creation.
-
+      For DELETE action, ID must be specified explicitly during
+      PolicyOrchestrator creation.
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
@@ -8790,9 +8789,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgs:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-               For DELETE action, ID must be specified explicitly during
-               PolicyOrchestrator creation.
-               
+                 For DELETE action, ID must be specified explicitly during
+                 PolicyOrchestrator creation.
                
                <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs'] os_policy_assignment_v1_payload: OS policy assignment is an API resource that is used to
@@ -8826,9 +8824,8 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgs:
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
         * Must be unique within the project.
-        For DELETE action, ID must be specified explicitly during
-        PolicyOrchestrator creation.
-
+          For DELETE action, ID must be specified explicitly during
+          PolicyOrchestrator creation.
 
         <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
         """
@@ -11083,7 +11080,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
-    Structure is documented below.
+      Structure is documented below.
     """
     deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
@@ -11095,7 +11092,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
-    Structure is documented below.
+      Structure is documented below.
     """
     msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
@@ -11112,14 +11109,14 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
-    Structure is documented below.
+      Structure is documented below.
     """
     zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
     - remove: `zypper -y rm package`
-    Structure is documented below.
+      Structure is documented below.
     """
 
 @pulumi.input_type
@@ -11139,13 +11136,13 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs'] apt: A package managed by APT.
                - install: `apt-get update && apt-get -y install [name]`
                - remove: `apt-get -y remove [name]`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs'] deb: A deb package file. dpkg packages only support INSTALLED state.
                Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs'] googet: A package managed by GooGet.
                - install: `googet -noconfirm install package`
                - remove: `googet -noconfirm remove package`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs'] msi: An MSI package. MSI packages only support INSTALLED state.
                Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs'] rpm: An RPM package file. RPM packages only support INSTALLED state.
@@ -11153,11 +11150,11 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs'] yum: A package managed by YUM.
                - install: `yum -y install package`
                - remove: `yum -y remove package`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A package managed by Zypper.
                - install: `zypper -y install package`
                - remove: `zypper -y rm package`
-               Structure is documented below.
+                 Structure is documented below.
         """
         pulumi.set(__self__, "desired_state", desired_state)
         if apt is not None:
@@ -11195,7 +11192,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         A package managed by APT.
         - install: `apt-get update && apt-get -y install [name]`
         - remove: `apt-get -y remove [name]`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "apt")
 
@@ -11223,7 +11220,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         A package managed by GooGet.
         - install: `googet -noconfirm install package`
         - remove: `googet -noconfirm remove package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "googet")
 
@@ -11264,7 +11261,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         A package managed by YUM.
         - install: `yum -y install package`
         - remove: `yum -y remove package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "yum")
 
@@ -11279,7 +11276,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         A package managed by Zypper.
         - install: `zypper -y install package`
         - remove: `zypper -y rm package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "zypper")
 
@@ -11327,7 +11324,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Whether dependencies should also be installed.
     - install when false: `dpkg -i package`
     - install when true: `apt-get update && apt-get -y install
-    package.deb`
+      package.deb`
     """
 
 @pulumi.input_type
@@ -11341,7 +11338,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         :param pulumi.Input[_builtins.bool] pull_deps: Whether dependencies should also be installed.
                - install when false: `dpkg -i package`
                - install when true: `apt-get update && apt-get -y install
-               package.deb`
+                 package.deb`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -11367,7 +11364,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         Whether dependencies should also be installed.
         - install when false: `dpkg -i package`
         - install when true: `apt-get update && apt-get -y install
-        package.deb`
+          package.deb`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -11919,7 +11916,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Whether dependencies should also be installed.
     - install when false: `rpm --upgrade --replacepkgs package.rpm`
     - install when true: `yum -y install package.rpm` or
-    `zypper -y install package.rpm`
+      `zypper -y install package.rpm`
     """
 
 @pulumi.input_type
@@ -11933,7 +11930,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         :param pulumi.Input[_builtins.bool] pull_deps: Whether dependencies should also be installed.
                - install when false: `rpm --upgrade --replacepkgs package.rpm`
                - install when true: `yum -y install package.rpm` or
-               `zypper -y install package.rpm`
+                 `zypper -y install package.rpm`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -11959,7 +11956,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
         Whether dependencies should also be installed.
         - install when false: `rpm --upgrade --replacepkgs package.rpm`
         - install when true: `yum -y install package.rpm` or
-        `zypper -y install package.rpm`
+          `zypper -y install package.rpm`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -13138,9 +13135,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDi
     Allowed values:
     - `ACTIVE` - orchestrator is actively looking for actions to be taken.
     - `STOPPED` - orchestrator won't make any changes.
-    Note: There might be more states added in the future. We use string here
-    instead of an enum, to avoid the need of propagating new states to all the
-    client code.
+      Note: There might be more states added in the future. We use string here
+      instead of an enum, to avoid the need of propagating new states to all the
+      client code.
     """
 
 @pulumi.input_type
@@ -13181,9 +13178,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -13309,9 +13306,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs:
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -13512,9 +13509,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsD
     Allowed values:
     - `ACTIVE` - orchestrator is actively looking for actions to be taken.
     - `STOPPED` - orchestrator won't make any changes.
-    Note: There might be more states added in the future. We use string here
-    instead of an enum, to avoid the need of propagating new states to all the
-    client code.
+      Note: There might be more states added in the future. We use string here
+      instead of an enum, to avoid the need of propagating new states to all the
+      client code.
     """
 
 @pulumi.input_type
@@ -13555,9 +13552,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         if errors is not None:
             pulumi.set(__self__, "errors", errors)
@@ -13683,9 +13680,9 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs:
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -13848,9 +13845,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgsDict(TypedDict)
     * Must be between 1-63 characters.
     * Must end with a number or a letter.
     * Must be unique within the project.
-    For DELETE action, ID must be specified explicitly during
-    PolicyOrchestrator creation.
-
+      For DELETE action, ID must be specified explicitly during
+      PolicyOrchestrator creation.
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
@@ -13885,9 +13881,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-               For DELETE action, ID must be specified explicitly during
-               PolicyOrchestrator creation.
-               
+                 For DELETE action, ID must be specified explicitly during
+                 PolicyOrchestrator creation.
                
                <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs'] os_policy_assignment_v1_payload: OS policy assignment is an API resource that is used to
@@ -13921,9 +13916,8 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgs:
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
         * Must be unique within the project.
-        For DELETE action, ID must be specified explicitly during
-        PolicyOrchestrator creation.
-
+          For DELETE action, ID must be specified explicitly during
+          PolicyOrchestrator creation.
 
         <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
         """
@@ -16229,7 +16223,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
-    Structure is documented below.
+      Structure is documented below.
     """
     deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
@@ -16241,7 +16235,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
-    Structure is documented below.
+      Structure is documented below.
     """
     msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
@@ -16258,14 +16252,14 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
-    Structure is documented below.
+      Structure is documented below.
     """
     zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
     - remove: `zypper -y rm package`
-    Structure is documented below.
+      Structure is documented below.
     """
 
 @pulumi.input_type
@@ -16288,13 +16282,13 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs'] apt: A package managed by APT.
                - install: `apt-get update && apt-get -y install [name]`
                - remove: `apt-get -y remove [name]`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs'] deb: A deb package file. dpkg packages only support INSTALLED state.
                Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs'] googet: A package managed by GooGet.
                - install: `googet -noconfirm install package`
                - remove: `googet -noconfirm remove package`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs'] msi: An MSI package. MSI packages only support INSTALLED state.
                Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs'] rpm: An RPM package file. RPM packages only support INSTALLED state.
@@ -16302,11 +16296,11 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs'] yum: A package managed by YUM.
                - install: `yum -y install package`
                - remove: `yum -y remove package`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A package managed by Zypper.
                - install: `zypper -y install package`
                - remove: `zypper -y rm package`
-               Structure is documented below.
+                 Structure is documented below.
         """
         pulumi.set(__self__, "desired_state", desired_state)
         if apt is not None:
@@ -16347,7 +16341,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         A package managed by APT.
         - install: `apt-get update && apt-get -y install [name]`
         - remove: `apt-get -y remove [name]`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "apt")
 
@@ -16375,7 +16369,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         A package managed by GooGet.
         - install: `googet -noconfirm install package`
         - remove: `googet -noconfirm remove package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "googet")
 
@@ -16416,7 +16410,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         A package managed by YUM.
         - install: `yum -y install package`
         - remove: `yum -y remove package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "yum")
 
@@ -16431,7 +16425,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         A package managed by Zypper.
         - install: `zypper -y install package`
         - remove: `zypper -y rm package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "zypper")
 
@@ -16479,7 +16473,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Whether dependencies should also be installed.
     - install when false: `dpkg -i package`
     - install when true: `apt-get update && apt-get -y install
-    package.deb`
+      package.deb`
     """
 
 @pulumi.input_type
@@ -16493,7 +16487,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         :param pulumi.Input[_builtins.bool] pull_deps: Whether dependencies should also be installed.
                - install when false: `dpkg -i package`
                - install when true: `apt-get update && apt-get -y install
-               package.deb`
+                 package.deb`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -16519,7 +16513,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         Whether dependencies should also be installed.
         - install when false: `dpkg -i package`
         - install when true: `apt-get update && apt-get -y install
-        package.deb`
+          package.deb`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -17071,7 +17065,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Whether dependencies should also be installed.
     - install when false: `rpm --upgrade --replacepkgs package.rpm`
     - install when true: `yum -y install package.rpm` or
-    `zypper -y install package.rpm`
+      `zypper -y install package.rpm`
     """
 
 @pulumi.input_type
@@ -17085,7 +17079,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         :param pulumi.Input[_builtins.bool] pull_deps: Whether dependencies should also be installed.
                - install when false: `rpm --upgrade --replacepkgs package.rpm`
                - install when true: `yum -y install package.rpm` or
-               `zypper -y install package.rpm`
+                 `zypper -y install package.rpm`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -17111,7 +17105,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
         Whether dependencies should also be installed.
         - install when false: `rpm --upgrade --replacepkgs package.rpm`
         - install when true: `yum -y install package.rpm` or
-        `zypper -y install package.rpm`
+          `zypper -y install package.rpm`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -18295,9 +18289,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
     Allowed values:
     - `ACTIVE` - orchestrator is actively looking for actions to be taken.
     - `STOPPED` - orchestrator won't make any changes.
-    Note: There might be more states added in the future. We use string here
-    instead of an enum, to avoid the need of propagating new states to all the
-    client code.
+      Note: There might be more states added in the future. We use string here
+      instead of an enum, to avoid the need of propagating new states to all the
+      client code.
     """
 
 @pulumi.input_type
@@ -18337,9 +18331,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -18464,9 +18458,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -18654,9 +18648,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
     Allowed values:
     - `ACTIVE` - orchestrator is actively looking for actions to be taken.
     - `STOPPED` - orchestrator won't make any changes.
-    Note: There might be more states added in the future. We use string here
-    instead of an enum, to avoid the need of propagating new states to all the
-    client code.
+      Note: There might be more states added in the future. We use string here
+      instead of an enum, to avoid the need of propagating new states to all the
+      client code.
     """
 
 @pulumi.input_type
@@ -18696,9 +18690,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -18823,9 +18817,9 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -18976,9 +18970,8 @@ class V2PolicyOrchestratorOrchestratedResourceArgsDict(TypedDict):
     * Must be between 1-63 characters.
     * Must end with a number or a letter.
     * Must be unique within the project.
-    For DELETE action, ID must be specified explicitly during
-    PolicyOrchestrator creation.
-
+      For DELETE action, ID must be specified explicitly during
+      PolicyOrchestrator creation.
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
@@ -19013,9 +19006,8 @@ class V2PolicyOrchestratorOrchestratedResourceArgs:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
-               For DELETE action, ID must be specified explicitly during
-               PolicyOrchestrator creation.
-               
+                 For DELETE action, ID must be specified explicitly during
+                 PolicyOrchestrator creation.
                
                <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs'] os_policy_assignment_v1_payload: OS policy assignment is an API resource that is used to
@@ -19049,9 +19041,8 @@ class V2PolicyOrchestratorOrchestratedResourceArgs:
         * Must be between 1-63 characters.
         * Must end with a number or a letter.
         * Must be unique within the project.
-        For DELETE action, ID must be specified explicitly during
-        PolicyOrchestrator creation.
-
+          For DELETE action, ID must be specified explicitly during
+          PolicyOrchestrator creation.
 
         <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
         """
@@ -21331,7 +21322,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
-    Structure is documented below.
+      Structure is documented below.
     """
     deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
@@ -21343,7 +21334,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
-    Structure is documented below.
+      Structure is documented below.
     """
     msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
@@ -21360,14 +21351,14 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
-    Structure is documented below.
+      Structure is documented below.
     """
     zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
     - remove: `zypper -y rm package`
-    Structure is documented below.
+      Structure is documented below.
     """
 
 @pulumi.input_type
@@ -21390,13 +21381,13 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs'] apt: A package managed by APT.
                - install: `apt-get update && apt-get -y install [name]`
                - remove: `apt-get -y remove [name]`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs'] deb: A deb package file. dpkg packages only support INSTALLED state.
                Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs'] googet: A package managed by GooGet.
                - install: `googet -noconfirm install package`
                - remove: `googet -noconfirm remove package`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs'] msi: An MSI package. MSI packages only support INSTALLED state.
                Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs'] rpm: An RPM package file. RPM packages only support INSTALLED state.
@@ -21404,11 +21395,11 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs'] yum: A package managed by YUM.
                - install: `yum -y install package`
                - remove: `yum -y remove package`
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs'] zypper: A package managed by Zypper.
                - install: `zypper -y install package`
                - remove: `zypper -y rm package`
-               Structure is documented below.
+                 Structure is documented below.
         """
         pulumi.set(__self__, "desired_state", desired_state)
         if apt is not None:
@@ -21449,7 +21440,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         A package managed by APT.
         - install: `apt-get update && apt-get -y install [name]`
         - remove: `apt-get -y remove [name]`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "apt")
 
@@ -21477,7 +21468,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         A package managed by GooGet.
         - install: `googet -noconfirm install package`
         - remove: `googet -noconfirm remove package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "googet")
 
@@ -21518,7 +21509,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         A package managed by YUM.
         - install: `yum -y install package`
         - remove: `yum -y remove package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "yum")
 
@@ -21533,7 +21524,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         A package managed by Zypper.
         - install: `zypper -y install package`
         - remove: `zypper -y rm package`
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "zypper")
 
@@ -21581,7 +21572,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Whether dependencies should also be installed.
     - install when false: `dpkg -i package`
     - install when true: `apt-get update && apt-get -y install
-    package.deb`
+      package.deb`
     """
 
 @pulumi.input_type
@@ -21595,7 +21586,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         :param pulumi.Input[_builtins.bool] pull_deps: Whether dependencies should also be installed.
                - install when false: `dpkg -i package`
                - install when true: `apt-get update && apt-get -y install
-               package.deb`
+                 package.deb`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -21621,7 +21612,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         Whether dependencies should also be installed.
         - install when false: `dpkg -i package`
         - install when true: `apt-get update && apt-get -y install
-        package.deb`
+          package.deb`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -22173,7 +22164,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Whether dependencies should also be installed.
     - install when false: `rpm --upgrade --replacepkgs package.rpm`
     - install when true: `yum -y install package.rpm` or
-    `zypper -y install package.rpm`
+      `zypper -y install package.rpm`
     """
 
 @pulumi.input_type
@@ -22187,7 +22178,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         :param pulumi.Input[_builtins.bool] pull_deps: Whether dependencies should also be installed.
                - install when false: `rpm --upgrade --replacepkgs package.rpm`
                - install when true: `yum -y install package.rpm` or
-               `zypper -y install package.rpm`
+                 `zypper -y install package.rpm`
         """
         pulumi.set(__self__, "source", source)
         if pull_deps is not None:
@@ -22213,7 +22204,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
         Whether dependencies should also be installed.
         - install when false: `rpm --upgrade --replacepkgs package.rpm`
         - install when true: `yum -y install package.rpm` or
-        `zypper -y install package.rpm`
+          `zypper -y install package.rpm`
         """
         return pulumi.get(self, "pull_deps")
 
@@ -23397,9 +23388,9 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict(TypedD
     Allowed values:
     - `ACTIVE` - orchestrator is actively looking for actions to be taken.
     - `STOPPED` - orchestrator won't make any changes.
-    Note: There might be more states added in the future. We use string here
-    instead of an enum, to avoid the need of propagating new states to all the
-    client code.
+      Note: There might be more states added in the future. We use string here
+      instead of an enum, to avoid the need of propagating new states to all the
+      client code.
     """
 
 @pulumi.input_type
@@ -23439,9 +23430,9 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -23566,9 +23557,9 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs:
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 
@@ -23756,9 +23747,9 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict(Typed
     Allowed values:
     - `ACTIVE` - orchestrator is actively looking for actions to be taken.
     - `STOPPED` - orchestrator won't make any changes.
-    Note: There might be more states added in the future. We use string here
-    instead of an enum, to avoid the need of propagating new states to all the
-    client code.
+      Note: There might be more states added in the future. We use string here
+      instead of an enum, to avoid the need of propagating new states to all the
+      client code.
     """
 
 @pulumi.input_type
@@ -23798,9 +23789,9 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
                Allowed values:
                - `ACTIVE` - orchestrator is actively looking for actions to be taken.
                - `STOPPED` - orchestrator won't make any changes.
-               Note: There might be more states added in the future. We use string here
-               instead of an enum, to avoid the need of propagating new states to all the
-               client code.
+                 Note: There might be more states added in the future. We use string here
+                 instead of an enum, to avoid the need of propagating new states to all the
+                 client code.
         """
         if error is not None:
             pulumi.set(__self__, "error", error)
@@ -23925,9 +23916,9 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs:
         Allowed values:
         - `ACTIVE` - orchestrator is actively looking for actions to be taken.
         - `STOPPED` - orchestrator won't make any changes.
-        Note: There might be more states added in the future. We use string here
-        instead of an enum, to avoid the need of propagating new states to all the
-        client code.
+          Note: There might be more states added in the future. We use string here
+          instead of an enum, to avoid the need of propagating new states to all the
+          client code.
         """
         return pulumi.get(self, "state")
 

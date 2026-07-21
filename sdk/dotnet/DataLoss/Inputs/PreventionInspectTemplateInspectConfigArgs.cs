@@ -81,6 +81,21 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("minLikelihood")]
         public Input<string>? MinLikelihood { get; set; }
 
+        [Input("minLikelihoodPerInfoTypes")]
+        private InputList<Inputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs>? _minLikelihoodPerInfoTypes;
+
+        /// <summary>
+        /// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+        /// The system only returns a finding if its likelihood is above this threshold. If this field
+        /// is not set, the system uses the InspectConfig min_likelihood.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs> MinLikelihoodPerInfoTypes
+        {
+            get => _minLikelihoodPerInfoTypes ?? (_minLikelihoodPerInfoTypes = new InputList<Inputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeArgs>());
+            set => _minLikelihoodPerInfoTypes = value;
+        }
+
         [Input("ruleSets")]
         private InputList<Inputs.PreventionInspectTemplateInspectConfigRuleSetArgs>? _ruleSets;
 

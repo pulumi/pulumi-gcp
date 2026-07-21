@@ -118,6 +118,8 @@ type Binding struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The location of the resource.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The resource name of the Binding.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -196,6 +198,8 @@ type bindingState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
+	// The resource name of the Binding.
+	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -230,6 +234,8 @@ type BindingState struct {
 	DisplayName pulumi.StringPtrInput
 	// The location of the resource.
 	Location pulumi.StringPtrInput
+	// The resource name of the Binding.
+	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -434,6 +440,11 @@ func (o BindingOutput) DisplayName() pulumi.StringPtrOutput {
 // The location of the resource.
 func (o BindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The resource name of the Binding.
+func (o BindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Binding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

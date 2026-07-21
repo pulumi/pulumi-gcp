@@ -169,6 +169,118 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### App Engine Standard App Version Bundled Services
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.appengine.StandardAppVersion;
+ * import com.pulumi.gcp.appengine.StandardAppVersionArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentFileArgs;
+ * import com.pulumi.gcp.appengine.inputs.StandardAppVersionEntrypointArgs;
+ * import com.pulumi.asset.FileAsset;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
+ *             .accountId("gae-sa")
+ *             .displayName("Test Service Account for GAE")
+ *             .build());
+ * 
+ *         var gaeApi = new IAMMember("gaeApi", IAMMemberArgs.builder()
+ *             .project(serviceAccount.project())
+ *             .role("roles/compute.networkUser")
+ *             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var storageViewer = new IAMMember("storageViewer", IAMMemberArgs.builder()
+ *             .project(serviceAccount.project())
+ *             .role("roles/storage.objectViewer")
+ *             .member(serviceAccount.email().applyValue(_email -> String.format("serviceAccount:%s", _email)))
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("tf-test-gae-bkt-bundled")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var requirements = new BucketObject("requirements", BucketObjectArgs.builder()
+ *             .name("requirements.txt")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("./test-fixtures/hello-world-flask/requirements.txt"))
+ *             .build());
+ * 
+ *         var main = new BucketObject("main", BucketObjectArgs.builder()
+ *             .name("main.py")
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset("./test-fixtures/hello-world-flask/main.py"))
+ *             .build());
+ * 
+ *         var gae_std_app_ver_bundled = new StandardAppVersion("gae-std-app-ver-bundled", StandardAppVersionArgs.builder()
+ *             .versionId("v1")
+ *             .service("bundled-service")
+ *             .runtime("python310")
+ *             .deployment(StandardAppVersionDeploymentArgs.builder()
+ *                 .files(                
+ *                     StandardAppVersionDeploymentFileArgs.builder()
+ *                         .name("main.py")
+ *                         .sourceUrl(Output.tuple(bucket.name(), main.name()).applyValue(values -> {
+ *                             var bucketName = values.t1;
+ *                             var mainName = values.t2;
+ *                             return String.format("https://storage.googleapis.com/%s/%s", bucketName,mainName);
+ *                         }))
+ *                         .build(),
+ *                     StandardAppVersionDeploymentFileArgs.builder()
+ *                         .name("requirements.txt")
+ *                         .sourceUrl(Output.tuple(bucket.name(), requirements.name()).applyValue(values -> {
+ *                             var bucketName = values.t1;
+ *                             var requirementsName = values.t2;
+ *                             return String.format("https://storage.googleapis.com/%s/%s", bucketName,requirementsName);
+ *                         }))
+ *                         .build())
+ *                 .build())
+ *             .entrypoint(StandardAppVersionEntrypointArgs.builder()
+ *                 .shell("gunicorn -b :$PORT main:app")
+ *                 .build())
+ *             .appEngineBundledServices(            
+ *                 "BUNDLED_SERVICE_TYPE_MAIL",
+ *                 "BUNDLED_SERVICE_TYPE_DATASTORE_V3")
+ *             .deleteServiceOnDestroy(true)
+ *             .serviceAccount(serviceAccount.email())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     gaeApi,
+ *                     storageViewer)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -191,6 +303,7 @@ import javax.annotation.Nullable;
 public class StandardAppVersion extends com.pulumi.resources.CustomResource {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
      * 
      */
     @Export(name="appEngineApis", refs={Boolean.class}, tree="[0]")
@@ -198,10 +311,29 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Allows App Engine second generation runtimes to access the legacy bundled services.
+     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
      * 
      */
     public Output<Optional<Boolean>> appEngineApis() {
         return Codegen.optional(this.appEngineApis);
+    }
+    /**
+     * A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     * 
+     */
+    @Export(name="appEngineBundledServices", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> appEngineBundledServices;
+
+    /**
+     * @return A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
+     * Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
+     * 
+     */
+    public Output<Optional<List<String>>> appEngineBundledServices() {
+        return Codegen.optional(this.appEngineBundledServices);
     }
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics.

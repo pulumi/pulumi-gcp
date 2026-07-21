@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -191,6 +192,25 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.spec);
     }
 
+    /**
+     * (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="trafficConfig")
+    private @Nullable Output<AiReasoningEngineTrafficConfigArgs> trafficConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineTrafficConfigArgs>> trafficConfig() {
+        return Optional.ofNullable(this.trafficConfig);
+    }
+
     private AiReasoningEngineArgs() {}
 
     private AiReasoningEngineArgs(AiReasoningEngineArgs $) {
@@ -203,6 +223,7 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
         this.project = $.project;
         this.region = $.region;
         this.spec = $.spec;
+        this.trafficConfig = $.trafficConfig;
     }
 
     public static Builder builder() {
@@ -446,6 +467,31 @@ public final class AiReasoningEngineArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder spec(AiReasoningEngineSpecArgs spec) {
             return spec(Output.of(spec));
+        }
+
+        /**
+         * @param trafficConfig (Optional, Beta)
+         * Optional. Traffic distribution configuration for the Reasoning Engine.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficConfig(@Nullable Output<AiReasoningEngineTrafficConfigArgs> trafficConfig) {
+            $.trafficConfig = trafficConfig;
+            return this;
+        }
+
+        /**
+         * @param trafficConfig (Optional, Beta)
+         * Optional. Traffic distribution configuration for the Reasoning Engine.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficConfig(AiReasoningEngineTrafficConfigArgs trafficConfig) {
+            return trafficConfig(Output.of(trafficConfig));
         }
 
         public AiReasoningEngineArgs build() {

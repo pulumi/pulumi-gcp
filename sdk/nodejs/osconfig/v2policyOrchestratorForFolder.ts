@@ -248,9 +248,9 @@ export class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
      * Allowed values:
      * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
      * - `STOPPED` - orchestrator won't make any changes.
-     * Note: There might be more states added in the future. We use string here
-     * instead of an enum, to avoid the need of propagating new states to all the
-     * client code.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      */
     declare public readonly state: pulumi.Output<string | undefined>;
     /**
@@ -424,9 +424,9 @@ export interface V2PolicyOrchestratorForFolderState {
      * Allowed values:
      * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
      * - `STOPPED` - orchestrator won't make any changes.
-     * Note: There might be more states added in the future. We use string here
-     * instead of an enum, to avoid the need of propagating new states to all the
-     * client code.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      */
     state?: pulumi.Input<string | undefined>;
     /**
@@ -496,9 +496,9 @@ export interface V2PolicyOrchestratorForFolderArgs {
      * Allowed values:
      * - `ACTIVE` - orchestrator is actively looking for actions to be taken.
      * - `STOPPED` - orchestrator won't make any changes.
-     * Note: There might be more states added in the future. We use string here
-     * instead of an enum, to avoid the need of propagating new states to all the
-     * client code.
+     *   Note: There might be more states added in the future. We use string here
+     *   instead of an enum, to avoid the need of propagating new states to all the
+     *   client code.
      */
     state?: pulumi.Input<string | undefined>;
 }

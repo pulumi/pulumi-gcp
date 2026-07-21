@@ -178,7 +178,7 @@ def get_backup_plan_association(backup_plan_association_id: Optional[_builtins.s
 
     :param _builtins.str backup_plan_association_id: The id of Backupplan association resource.
            
-           - - -
+           ***
     :param _builtins.str location: The location in which the Backupplan association resource belongs.
     """
     __args__ = dict()
@@ -222,7 +222,7 @@ def get_backup_plan_association_output(backup_plan_association_id: pulumi.Input[
 
     :param _builtins.str backup_plan_association_id: The id of Backupplan association resource.
            
-           - - -
+           ***
     :param _builtins.str location: The location in which the Backupplan association resource belongs.
     """
     __args__ = dict()

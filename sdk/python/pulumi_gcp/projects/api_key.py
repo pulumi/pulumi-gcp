@@ -39,9 +39,7 @@ class ApiKeyArgs:
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[_builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
         :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
@@ -94,9 +92,7 @@ class ApiKeyArgs:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -165,9 +161,7 @@ class _ApiKeyState:
         :param pulumi.Input[_builtins.str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[_builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input['ApiKeyRestrictionsArgs'] restrictions: Key restrictions.
         :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
@@ -237,9 +231,7 @@ class _ApiKeyState:
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -451,9 +443,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name of this API key. Modifiable by user.
         :param pulumi.Input[_builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
         :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
@@ -670,9 +660,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_string: Output only. An encrypted and signed value held by this key. This field can be accessed only through the `GetKeyString` method.
         :param pulumi.Input[_builtins.str] name: The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
                
-               
-               
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The project for the resource
         :param pulumi.Input[Union['ApiKeyRestrictionsArgs', 'ApiKeyRestrictionsArgsDict']] restrictions: Key restrictions.
         :param pulumi.Input[_builtins.str] service_account_email: The email of the service account the key is bound to. If this field is specified, the key is a service account bound key and auth enabled. See [Documentation](https://cloud.google.com/docs/authentication/api-keys?#api-keys-bound-sa) for more details.
@@ -727,9 +715,7 @@ class ApiKey(pulumi.CustomResource):
         """
         The resource name of the key. The name must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the name must match the regular expression: `a-z?`.
 
-
-
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

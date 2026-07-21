@@ -183,6 +183,15 @@ public final class GetCloudVmClusterProperty {
      */
     private String state;
     /**
+     * @return The storage management type of the VM Cluster.
+     * Possible values:
+     * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+     * ASM
+     * EXASCALE
+     * 
+     */
+    private String storageManagementType;
+    /**
      * @return The storage allocation for the disk group, in gigabytes (GB).
      * 
      */
@@ -425,6 +434,17 @@ public final class GetCloudVmClusterProperty {
         return this.state;
     }
     /**
+     * @return The storage management type of the VM Cluster.
+     * Possible values:
+     * STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+     * ASM
+     * EXASCALE
+     * 
+     */
+    public String storageManagementType() {
+        return this.storageManagementType;
+    }
+    /**
      * @return The storage allocation for the disk group, in gigabytes (GB).
      * 
      */
@@ -485,6 +505,7 @@ public final class GetCloudVmClusterProperty {
         private Boolean sparseDiskgroupEnabled;
         private List<String> sshPublicKeys;
         private String state;
+        private String storageManagementType;
         private Integer storageSizeGb;
         private String systemVersion;
         private List<GetCloudVmClusterPropertyTimeZone> timeZones;
@@ -520,6 +541,7 @@ public final class GetCloudVmClusterProperty {
     	      this.sparseDiskgroupEnabled = defaults.sparseDiskgroupEnabled;
     	      this.sshPublicKeys = defaults.sshPublicKeys;
     	      this.state = defaults.state;
+    	      this.storageManagementType = defaults.storageManagementType;
     	      this.storageSizeGb = defaults.storageSizeGb;
     	      this.systemVersion = defaults.systemVersion;
     	      this.timeZones = defaults.timeZones;
@@ -770,6 +792,14 @@ public final class GetCloudVmClusterProperty {
             return this;
         }
         @CustomType.Setter
+        public Builder storageManagementType(String storageManagementType) {
+            if (storageManagementType == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClusterProperty", "storageManagementType");
+            }
+            this.storageManagementType = storageManagementType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageSizeGb(Integer storageSizeGb) {
             if (storageSizeGb == null) {
               throw new MissingRequiredPropertyException("GetCloudVmClusterProperty", "storageSizeGb");
@@ -827,6 +857,7 @@ public final class GetCloudVmClusterProperty {
             _resultValue.sparseDiskgroupEnabled = sparseDiskgroupEnabled;
             _resultValue.sshPublicKeys = sshPublicKeys;
             _resultValue.state = state;
+            _resultValue.storageManagementType = storageManagementType;
             _resultValue.storageSizeGb = storageSizeGb;
             _resultValue.systemVersion = systemVersion;
             _resultValue.timeZones = timeZones;

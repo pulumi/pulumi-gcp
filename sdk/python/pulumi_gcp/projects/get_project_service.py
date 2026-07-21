@@ -135,7 +135,7 @@ def get_project_service(project: Optional[_builtins.str] = None,
            is not provided, the provider project is used.
     :param _builtins.str service: The name of the Google Platform project service.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project
@@ -183,7 +183,7 @@ def get_project_service_output(project: pulumi.Input[Optional[Optional[_builtins
            is not provided, the provider project is used.
     :param _builtins.str service: The name of the Google Platform project service.
            
-           - - -
+           ***
     """
     __args__ = dict()
     __args__['project'] = project

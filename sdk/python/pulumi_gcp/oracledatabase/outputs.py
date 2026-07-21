@@ -152,6 +152,13 @@ __all__ = [
     'GetDbNodesDbNodePropertyResult',
     'GetDbServersDbServerResult',
     'GetDbServersDbServerPropertyResult',
+    'GetExascaleDbStorageVaultPropertyResult',
+    'GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult',
+    'GetExascaleDbStorageVaultPropertyTimeZoneResult',
+    'GetExascaleDbStorageVaultsExascaleDbStorageVaultResult',
+    'GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyResult',
+    'GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult',
+    'GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneResult',
     'GetGoldengateConnectionTypesGoldengateConnectionTypeResult',
     'GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentResult',
     'GetGoldengateDeploymentTypesGoldengateDeploymentTypeResult',
@@ -1540,7 +1547,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
                  tls_authentication: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str consumer_group: The current consumer group being used by the connection. 
+        :param _builtins.str consumer_group: The current consumer group being used by the connection.
                 Possible values:
                 CONSUMER_GROUP_UNSPECIFIED
                HIGH
@@ -1550,30 +1557,30 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
                TPURGENT
         :param _builtins.str display_name: The display name for the Autonomous Database. The name does not have to
                be unique within your project.
-        :param _builtins.str host_format: The host name format being currently used in connection string. 
+        :param _builtins.str host_format: The host name format being currently used in connection string.
                 Possible values:
                 HOST_FORMAT_UNSPECIFIED
                FQDN
                IP
         :param _builtins.bool is_regional: This field indicates if the connection string is regional and is only
                applicable for cross-region Data Guard.
-        :param _builtins.str protocol: The protocol being used by the connection. 
+        :param _builtins.str protocol: The protocol being used by the connection.
                 Possible values:
                 PROTOCOL_UNSPECIFIED
                TCP
                TCPS
-        :param _builtins.str session_mode: The current session mode of the connection. 
+        :param _builtins.str session_mode: The current session mode of the connection.
                 Possible values:
                 SESSION_MODE_UNSPECIFIED
                DIRECT
                INDIRECT
-        :param _builtins.str syntax_format: The syntax of the connection string. 
+        :param _builtins.str syntax_format: The syntax of the connection string.
                 Possible values:
                 SYNTAX_FORMAT_UNSPECIFIED
                LONG
                EZCONNECT
                EZCONNECTPLUS
-        :param _builtins.str tls_authentication: This field indicates the TLS authentication type of the connection. 
+        :param _builtins.str tls_authentication: This field indicates the TLS authentication type of the connection.
                 Possible values:
                 TLS_AUTHENTICATION_UNSPECIFIED
                SERVER
@@ -1603,7 +1610,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter(name="consumerGroup")
     def consumer_group(self) -> Optional[_builtins.str]:
         """
-        The current consumer group being used by the connection. 
+        The current consumer group being used by the connection.
          Possible values:
          CONSUMER_GROUP_UNSPECIFIED
         HIGH
@@ -1627,7 +1634,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter(name="hostFormat")
     def host_format(self) -> Optional[_builtins.str]:
         """
-        The host name format being currently used in connection string. 
+        The host name format being currently used in connection string.
          Possible values:
          HOST_FORMAT_UNSPECIFIED
         FQDN
@@ -1648,7 +1655,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
         """
-        The protocol being used by the connection. 
+        The protocol being used by the connection.
          Possible values:
          PROTOCOL_UNSPECIFIED
         TCP
@@ -1660,7 +1667,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter(name="sessionMode")
     def session_mode(self) -> Optional[_builtins.str]:
         """
-        The current session mode of the connection. 
+        The current session mode of the connection.
          Possible values:
          SESSION_MODE_UNSPECIFIED
         DIRECT
@@ -1672,7 +1679,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter(name="syntaxFormat")
     def syntax_format(self) -> Optional[_builtins.str]:
         """
-        The syntax of the connection string. 
+        The syntax of the connection string.
          Possible values:
          SYNTAX_FORMAT_UNSPECIFIED
         LONG
@@ -1685,7 +1692,7 @@ class AutonomousDatabasePropertiesConnectionStringProfile(dict):
     @pulumi.getter(name="tlsAuthentication")
     def tls_authentication(self) -> Optional[_builtins.str]:
         """
-        This field indicates the TLS authentication type of the connection. 
+        This field indicates the TLS authentication type of the connection.
          Possible values:
          TLS_AUTHENTICATION_UNSPECIFIED
         SERVER
@@ -3068,6 +3075,8 @@ class CloudVmClusterProperties(dict):
             suggest = "sparse_diskgroup_enabled"
         elif key == "sshPublicKeys":
             suggest = "ssh_public_keys"
+        elif key == "storageManagementType":
+            suggest = "storage_management_type"
         elif key == "storageSizeGb":
             suggest = "storage_size_gb"
         elif key == "systemVersion":
@@ -3116,6 +3125,7 @@ class CloudVmClusterProperties(dict):
                  sparse_diskgroup_enabled: Optional[_builtins.bool] = None,
                  ssh_public_keys: Optional[Sequence[_builtins.str]] = None,
                  state: Optional[_builtins.str] = None,
+                 storage_management_type: Optional[_builtins.str] = None,
                  storage_size_gb: Optional[_builtins.int] = None,
                  system_version: Optional[_builtins.str] = None,
                  time_zone: Optional['outputs.CloudVmClusterPropertiesTimeZone'] = None):
@@ -3184,6 +3194,12 @@ class CloudVmClusterProperties(dict):
                TERMINATED
                FAILED
                MAINTENANCE_IN_PROGRESS
+        :param _builtins.str storage_management_type: (Output)
+               The storage management type of the VM Cluster.
+               Possible values:
+               STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+               ASM
+               EXASCALE
         :param _builtins.int storage_size_gb: (Output)
                The storage allocation for the disk group, in gigabytes (GB).
         :param _builtins.str system_version: (Output)
@@ -3248,6 +3264,8 @@ class CloudVmClusterProperties(dict):
             pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if storage_management_type is not None:
+            pulumi.set(__self__, "storage_management_type", storage_management_type)
         if storage_size_gb is not None:
             pulumi.set(__self__, "storage_size_gb", storage_size_gb)
         if system_version is not None:
@@ -3521,6 +3539,19 @@ class CloudVmClusterProperties(dict):
         MAINTENANCE_IN_PROGRESS
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="storageManagementType")
+    def storage_management_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The storage management type of the VM Cluster.
+        Possible values:
+        STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+        ASM
+        EXASCALE
+        """
+        return pulumi.get(self, "storage_management_type")
 
     @_builtins.property
     @pulumi.getter(name="storageSizeGb")
@@ -8342,7 +8373,6 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage(dict):
                GOOGLE_CLOUD_STORAGE
                AZURE_DATA_LAKE_STORAGE
                
-               
                <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
         :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs' amazon_s3_iceberg_storage: The Amazon S3 Iceberg storage.
                Structure is documented below.
@@ -8368,7 +8398,6 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage(dict):
         AMAZON_S3
         GOOGLE_CLOUD_STORAGE
         AZURE_DATA_LAKE_STORAGE
-
 
         <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
         """
@@ -13413,7 +13442,7 @@ class GetAutonomousDatabasePropertyResult(dict):
         :param _builtins.int cpu_core_count: The number of CPU cores to be made available to the database.
         :param Sequence['GetAutonomousDatabasePropertyCustomerContactArgs'] customer_contacts: The list of customer contacts.
         :param _builtins.str data_safe_state: The current state of the Data Safe registration for the
-               Autonomous Database. 
+               Autonomous Database.
                 Possible values:
                 DATA_SAFE_STATE_UNSPECIFIED
                REGISTERING
@@ -13423,7 +13452,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                FAILED
         :param _builtins.int data_storage_size_gb: The size of the data stored in the database, in gigabytes.
         :param _builtins.int data_storage_size_tb: The size of the data stored in the database, in terabytes.
-        :param _builtins.str database_management_state: The current state of database management for the Autonomous Database. 
+        :param _builtins.str database_management_state: The current state of database management for the Autonomous Database.
                 Possible values:
                 DATABASE_MANAGEMENT_STATE_UNSPECIFIED
                ENABLING
@@ -13432,7 +13461,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                NOT_ENABLED
                FAILED_ENABLING
                FAILED_DISABLING
-        :param _builtins.str db_edition: The edition of the Autonomous Databases. 
+        :param _builtins.str db_edition: The edition of the Autonomous Databases.
                 Possible values:
                 DATABASE_EDITION_UNSPECIFIED
                STANDARD_EDITION
@@ -13452,7 +13481,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                Data Guard enabled.
         :param _builtins.bool is_storage_auto_scaling_enabled: This field indicates if auto scaling is enabled for the Autonomous Database
                storage.
-        :param _builtins.str license_type: The license type used for the Autonomous Database. 
+        :param _builtins.str license_type: The license type used for the Autonomous Database.
                 Possible values:
                 LICENSE_TYPE_UNSPECIFIED
                LICENSE_INCLUDED
@@ -13461,7 +13490,7 @@ class GetAutonomousDatabasePropertyResult(dict):
         :param _builtins.int local_adg_auto_failover_max_data_loss_limit: This field indicates the maximum data loss limit for an Autonomous
                Database, in seconds.
         :param _builtins.str local_disaster_recovery_type: This field indicates the local disaster recovery (DR) type of an
-               Autonomous Database. 
+               Autonomous Database.
                 Possible values:
                 LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
                ADG
@@ -13470,7 +13499,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseStandbySummary
         :param _builtins.str maintenance_begin_time: The date and time when maintenance will begin.
         :param _builtins.str maintenance_end_time: The date and time when maintenance will end.
-        :param _builtins.str maintenance_schedule_type: The maintenance schedule of the Autonomous Database. 
+        :param _builtins.str maintenance_schedule_type: The maintenance schedule of the Autonomous Database.
                 Possible values:
                 MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
                EARLY
@@ -13484,7 +13513,7 @@ class GetAutonomousDatabasePropertyResult(dict):
         :param _builtins.str oci_url: The Oracle Cloud Infrastructure link for the Autonomous Database.
         :param _builtins.str ocid: OCID of the Autonomous Database.
                https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
-        :param _builtins.str open_mode: This field indicates the current mode of the Autonomous Database. 
+        :param _builtins.str open_mode: This field indicates the current mode of the Autonomous Database.
                 Possible values:
                 OPEN_MODE_UNSPECIFIED
                READ_ONLY
@@ -13499,7 +13528,7 @@ class GetAutonomousDatabasePropertyResult(dict):
                FAILED_DISABLING
         :param Sequence[_builtins.str] peer_db_ids: The list of OCIDs of standby databases located in Autonomous Data Guard
                remote regions that are associated with the source database.
-        :param _builtins.str permission_level: The permission level of the Autonomous Database. 
+        :param _builtins.str permission_level: The permission level of the Autonomous Database.
                 Possible values:
                 PERMISSION_LEVEL_UNSPECIFIED
                RESTRICTED
@@ -13507,17 +13536,17 @@ class GetAutonomousDatabasePropertyResult(dict):
         :param _builtins.str private_endpoint: The private endpoint for the Autonomous Database.
         :param _builtins.str private_endpoint_ip: The private endpoint IP address for the Autonomous Database.
         :param _builtins.str private_endpoint_label: The private endpoint label for the Autonomous Database.
-        :param _builtins.str refreshable_mode: The refresh mode of the cloned Autonomous Database. 
+        :param _builtins.str refreshable_mode: The refresh mode of the cloned Autonomous Database.
                 Possible values:
                 REFRESHABLE_MODE_UNSPECIFIED
                AUTOMATIC
                MANUAL
-        :param _builtins.str refreshable_state: The refresh State of the clone. 
+        :param _builtins.str refreshable_state: The refresh State of the clone.
                 Possible values:
                 REFRESHABLE_STATE_UNSPECIFIED
                REFRESHING
                NOT_REFRESHING
-        :param _builtins.str role: The Data Guard role of the Autonomous Database. 
+        :param _builtins.str role: The Data Guard role of the Autonomous Database.
                 Possible values:
                 ROLE_UNSPECIFIED
                PRIMARY
@@ -13742,7 +13771,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     def data_safe_state(self) -> _builtins.str:
         """
         The current state of the Data Safe registration for the
-        Autonomous Database. 
+        Autonomous Database.
          Possible values:
          DATA_SAFE_STATE_UNSPECIFIED
         REGISTERING
@@ -13773,7 +13802,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="databaseManagementState")
     def database_management_state(self) -> _builtins.str:
         """
-        The current state of database management for the Autonomous Database. 
+        The current state of database management for the Autonomous Database.
          Possible values:
          DATABASE_MANAGEMENT_STATE_UNSPECIFIED
         ENABLING
@@ -13789,7 +13818,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="dbEdition")
     def db_edition(self) -> _builtins.str:
         """
-        The edition of the Autonomous Databases. 
+        The edition of the Autonomous Databases.
          Possible values:
          DATABASE_EDITION_UNSPECIFIED
         STANDARD_EDITION
@@ -13858,7 +13887,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="licenseType")
     def license_type(self) -> _builtins.str:
         """
-        The license type used for the Autonomous Database. 
+        The license type used for the Autonomous Database.
          Possible values:
          LICENSE_TYPE_UNSPECIFIED
         LICENSE_INCLUDED
@@ -13888,7 +13917,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     def local_disaster_recovery_type(self) -> _builtins.str:
         """
         This field indicates the local disaster recovery (DR) type of an
-        Autonomous Database. 
+        Autonomous Database.
          Possible values:
          LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
         ADG
@@ -13925,7 +13954,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="maintenanceScheduleType")
     def maintenance_schedule_type(self) -> _builtins.str:
         """
-        The maintenance schedule of the Autonomous Database. 
+        The maintenance schedule of the Autonomous Database.
          Possible values:
          MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
         EARLY
@@ -13995,7 +14024,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="openMode")
     def open_mode(self) -> _builtins.str:
         """
-        This field indicates the current mode of the Autonomous Database. 
+        This field indicates the current mode of the Autonomous Database.
          Possible values:
          OPEN_MODE_UNSPECIFIED
         READ_ONLY
@@ -14031,7 +14060,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="permissionLevel")
     def permission_level(self) -> _builtins.str:
         """
-        The permission level of the Autonomous Database. 
+        The permission level of the Autonomous Database.
          Possible values:
          PERMISSION_LEVEL_UNSPECIFIED
         RESTRICTED
@@ -14067,7 +14096,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="refreshableMode")
     def refreshable_mode(self) -> _builtins.str:
         """
-        The refresh mode of the cloned Autonomous Database. 
+        The refresh mode of the cloned Autonomous Database.
          Possible values:
          REFRESHABLE_MODE_UNSPECIFIED
         AUTOMATIC
@@ -14079,7 +14108,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="refreshableState")
     def refreshable_state(self) -> _builtins.str:
         """
-        The refresh State of the clone. 
+        The refresh State of the clone.
          Possible values:
          REFRESHABLE_STATE_UNSPECIFIED
         REFRESHING
@@ -14091,7 +14120,7 @@ class GetAutonomousDatabasePropertyResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        The Data Guard role of the Autonomous Database. 
+        The Data Guard role of the Autonomous Database.
          Possible values:
          ROLE_UNSPECIFIED
         PRIMARY
@@ -14365,7 +14394,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
                  tls_authentication: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str consumer_group: The current consumer group being used by the connection. 
+        :param _builtins.str consumer_group: The current consumer group being used by the connection.
                 Possible values:
                 CONSUMER_GROUP_UNSPECIFIED
                HIGH
@@ -14374,30 +14403,30 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
                TP
                TPURGENT
         :param _builtins.str display_name: The display name for the database connection.
-        :param _builtins.str host_format: The host name format being currently used in connection string. 
+        :param _builtins.str host_format: The host name format being currently used in connection string.
                 Possible values:
                 HOST_FORMAT_UNSPECIFIED
                FQDN
                IP
         :param _builtins.bool is_regional: This field indicates if the connection string is regional and is only
                applicable for cross-region Data Guard.
-        :param _builtins.str protocol: The protocol being used by the connection. 
+        :param _builtins.str protocol: The protocol being used by the connection.
                 Possible values:
                 PROTOCOL_UNSPECIFIED
                TCP
                TCPS
-        :param _builtins.str session_mode: The current session mode of the connection. 
+        :param _builtins.str session_mode: The current session mode of the connection.
                 Possible values:
                 SESSION_MODE_UNSPECIFIED
                DIRECT
                INDIRECT
-        :param _builtins.str syntax_format: The syntax of the connection string. 
+        :param _builtins.str syntax_format: The syntax of the connection string.
                 Possible values:
                 SYNTAX_FORMAT_UNSPECIFIED
                LONG
                EZCONNECT
                EZCONNECTPLUS
-        :param _builtins.str tls_authentication: This field indicates the TLS authentication type of the connection. 
+        :param _builtins.str tls_authentication: This field indicates the TLS authentication type of the connection.
                 Possible values:
                 TLS_AUTHENTICATION_UNSPECIFIED
                SERVER
@@ -14418,7 +14447,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
     @pulumi.getter(name="consumerGroup")
     def consumer_group(self) -> _builtins.str:
         """
-        The current consumer group being used by the connection. 
+        The current consumer group being used by the connection.
          Possible values:
          CONSUMER_GROUP_UNSPECIFIED
         HIGH
@@ -14441,7 +14470,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
     @pulumi.getter(name="hostFormat")
     def host_format(self) -> _builtins.str:
         """
-        The host name format being currently used in connection string. 
+        The host name format being currently used in connection string.
          Possible values:
          HOST_FORMAT_UNSPECIFIED
         FQDN
@@ -14462,7 +14491,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.str:
         """
-        The protocol being used by the connection. 
+        The protocol being used by the connection.
          Possible values:
          PROTOCOL_UNSPECIFIED
         TCP
@@ -14474,7 +14503,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
     @pulumi.getter(name="sessionMode")
     def session_mode(self) -> _builtins.str:
         """
-        The current session mode of the connection. 
+        The current session mode of the connection.
          Possible values:
          SESSION_MODE_UNSPECIFIED
         DIRECT
@@ -14486,7 +14515,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
     @pulumi.getter(name="syntaxFormat")
     def syntax_format(self) -> _builtins.str:
         """
-        The syntax of the connection string. 
+        The syntax of the connection string.
          Possible values:
          SYNTAX_FORMAT_UNSPECIFIED
         LONG
@@ -14499,7 +14528,7 @@ class GetAutonomousDatabasePropertyConnectionStringProfileResult(dict):
     @pulumi.getter(name="tlsAuthentication")
     def tls_authentication(self) -> _builtins.str:
         """
-        This field indicates the TLS authentication type of the connection. 
+        This field indicates the TLS authentication type of the connection.
          Possible values:
          TLS_AUTHENTICATION_UNSPECIFIED
         SERVER
@@ -15001,13 +15030,13 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param _builtins.str entitlement_id: The ID of the subscription entitlement associated with the Autonomous
                Database.
-        :param Mapping[str, _builtins.str] labels: The labels or tags associated with the Autonomous Database. 
+        :param Mapping[str, _builtins.str] labels: The labels or tags associated with the Autonomous Database.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param _builtins.str location: The location of the resource.
                
-               - - -
+               ***
         :param _builtins.str name: Identifier. The name of the Autonomous Database resource in the following format:
                projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
         :param _builtins.str network: The name of the VPC network used by the Autonomous Database.
@@ -15155,7 +15184,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
         """
-        The labels or tags associated with the Autonomous Database. 
+        The labels or tags associated with the Autonomous Database.
 
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -15168,7 +15197,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         """
         The location of the resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 
@@ -15346,7 +15375,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         :param _builtins.int cpu_core_count: The number of CPU cores to be made available to the database.
         :param Sequence['GetAutonomousDatabasesAutonomousDatabasePropertyCustomerContactArgs'] customer_contacts: The list of customer contacts.
         :param _builtins.str data_safe_state: The current state of the Data Safe registration for the
-               Autonomous Database. 
+               Autonomous Database.
                 Possible values:
                 DATA_SAFE_STATE_UNSPECIFIED
                REGISTERING
@@ -15356,7 +15385,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                FAILED
         :param _builtins.int data_storage_size_gb: The size of the data stored in the database, in gigabytes.
         :param _builtins.int data_storage_size_tb: The size of the data stored in the database, in terabytes.
-        :param _builtins.str database_management_state: The current state of database management for the Autonomous Database. 
+        :param _builtins.str database_management_state: The current state of database management for the Autonomous Database.
                 Possible values:
                 DATABASE_MANAGEMENT_STATE_UNSPECIFIED
                ENABLING
@@ -15365,7 +15394,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                NOT_ENABLED
                FAILED_ENABLING
                FAILED_DISABLING
-        :param _builtins.str db_edition: The edition of the Autonomous Databases. 
+        :param _builtins.str db_edition: The edition of the Autonomous Databases.
                 Possible values:
                 DATABASE_EDITION_UNSPECIFIED
                STANDARD_EDITION
@@ -15385,7 +15414,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                Data Guard enabled.
         :param _builtins.bool is_storage_auto_scaling_enabled: This field indicates if auto scaling is enabled for the Autonomous Database
                storage.
-        :param _builtins.str license_type: The license type used for the Autonomous Database. 
+        :param _builtins.str license_type: The license type used for the Autonomous Database.
                 Possible values:
                 LICENSE_TYPE_UNSPECIFIED
                LICENSE_INCLUDED
@@ -15394,7 +15423,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         :param _builtins.int local_adg_auto_failover_max_data_loss_limit: This field indicates the maximum data loss limit for an Autonomous
                Database, in seconds.
         :param _builtins.str local_disaster_recovery_type: This field indicates the local disaster recovery (DR) type of an
-               Autonomous Database. 
+               Autonomous Database.
                 Possible values:
                 LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
                ADG
@@ -15403,7 +15432,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseStandbySummary
         :param _builtins.str maintenance_begin_time: The date and time when maintenance will begin.
         :param _builtins.str maintenance_end_time: The date and time when maintenance will end.
-        :param _builtins.str maintenance_schedule_type: The maintenance schedule of the Autonomous Database. 
+        :param _builtins.str maintenance_schedule_type: The maintenance schedule of the Autonomous Database.
                 Possible values:
                 MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
                EARLY
@@ -15417,7 +15446,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         :param _builtins.str oci_url: The Oracle Cloud Infrastructure link for the Autonomous Database.
         :param _builtins.str ocid: OCID of the Autonomous Database.
                https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
-        :param _builtins.str open_mode: This field indicates the current mode of the Autonomous Database. 
+        :param _builtins.str open_mode: This field indicates the current mode of the Autonomous Database.
                 Possible values:
                 OPEN_MODE_UNSPECIFIED
                READ_ONLY
@@ -15432,7 +15461,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
                FAILED_DISABLING
         :param Sequence[_builtins.str] peer_db_ids: The list of OCIDs of standby databases located in Autonomous Data Guard
                remote regions that are associated with the source database.
-        :param _builtins.str permission_level: The permission level of the Autonomous Database. 
+        :param _builtins.str permission_level: The permission level of the Autonomous Database.
                 Possible values:
                 PERMISSION_LEVEL_UNSPECIFIED
                RESTRICTED
@@ -15440,17 +15469,17 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
         :param _builtins.str private_endpoint: The private endpoint for the Autonomous Database.
         :param _builtins.str private_endpoint_ip: The private endpoint IP address for the Autonomous Database.
         :param _builtins.str private_endpoint_label: The private endpoint label for the Autonomous Database.
-        :param _builtins.str refreshable_mode: The refresh mode of the cloned Autonomous Database. 
+        :param _builtins.str refreshable_mode: The refresh mode of the cloned Autonomous Database.
                 Possible values:
                 REFRESHABLE_MODE_UNSPECIFIED
                AUTOMATIC
                MANUAL
-        :param _builtins.str refreshable_state: The refresh State of the clone. 
+        :param _builtins.str refreshable_state: The refresh State of the clone.
                 Possible values:
                 REFRESHABLE_STATE_UNSPECIFIED
                REFRESHING
                NOT_REFRESHING
-        :param _builtins.str role: The Data Guard role of the Autonomous Database. 
+        :param _builtins.str role: The Data Guard role of the Autonomous Database.
                 Possible values:
                 ROLE_UNSPECIFIED
                PRIMARY
@@ -15675,7 +15704,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     def data_safe_state(self) -> _builtins.str:
         """
         The current state of the Data Safe registration for the
-        Autonomous Database. 
+        Autonomous Database.
          Possible values:
          DATA_SAFE_STATE_UNSPECIFIED
         REGISTERING
@@ -15706,7 +15735,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="databaseManagementState")
     def database_management_state(self) -> _builtins.str:
         """
-        The current state of database management for the Autonomous Database. 
+        The current state of database management for the Autonomous Database.
          Possible values:
          DATABASE_MANAGEMENT_STATE_UNSPECIFIED
         ENABLING
@@ -15722,7 +15751,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="dbEdition")
     def db_edition(self) -> _builtins.str:
         """
-        The edition of the Autonomous Databases. 
+        The edition of the Autonomous Databases.
          Possible values:
          DATABASE_EDITION_UNSPECIFIED
         STANDARD_EDITION
@@ -15791,7 +15820,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="licenseType")
     def license_type(self) -> _builtins.str:
         """
-        The license type used for the Autonomous Database. 
+        The license type used for the Autonomous Database.
          Possible values:
          LICENSE_TYPE_UNSPECIFIED
         LICENSE_INCLUDED
@@ -15821,7 +15850,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     def local_disaster_recovery_type(self) -> _builtins.str:
         """
         This field indicates the local disaster recovery (DR) type of an
-        Autonomous Database. 
+        Autonomous Database.
          Possible values:
          LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
         ADG
@@ -15858,7 +15887,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="maintenanceScheduleType")
     def maintenance_schedule_type(self) -> _builtins.str:
         """
-        The maintenance schedule of the Autonomous Database. 
+        The maintenance schedule of the Autonomous Database.
          Possible values:
          MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
         EARLY
@@ -15928,7 +15957,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="openMode")
     def open_mode(self) -> _builtins.str:
         """
-        This field indicates the current mode of the Autonomous Database. 
+        This field indicates the current mode of the Autonomous Database.
          Possible values:
          OPEN_MODE_UNSPECIFIED
         READ_ONLY
@@ -15964,7 +15993,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="permissionLevel")
     def permission_level(self) -> _builtins.str:
         """
-        The permission level of the Autonomous Database. 
+        The permission level of the Autonomous Database.
          Possible values:
          PERMISSION_LEVEL_UNSPECIFIED
         RESTRICTED
@@ -16000,7 +16029,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="refreshableMode")
     def refreshable_mode(self) -> _builtins.str:
         """
-        The refresh mode of the cloned Autonomous Database. 
+        The refresh mode of the cloned Autonomous Database.
          Possible values:
          REFRESHABLE_MODE_UNSPECIFIED
         AUTOMATIC
@@ -16012,7 +16041,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter(name="refreshableState")
     def refreshable_state(self) -> _builtins.str:
         """
-        The refresh State of the clone. 
+        The refresh State of the clone.
          Possible values:
          REFRESHABLE_STATE_UNSPECIFIED
         REFRESHING
@@ -16024,7 +16053,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyResult(dict):
     @pulumi.getter
     def role(self) -> _builtins.str:
         """
-        The Data Guard role of the Autonomous Database. 
+        The Data Guard role of the Autonomous Database.
          Possible values:
          ROLE_UNSPECIFIED
         PRIMARY
@@ -16298,7 +16327,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
                  tls_authentication: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str consumer_group: The current consumer group being used by the connection. 
+        :param _builtins.str consumer_group: The current consumer group being used by the connection.
                 Possible values:
                 CONSUMER_GROUP_UNSPECIFIED
                HIGH
@@ -16307,30 +16336,30 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
                TP
                TPURGENT
         :param _builtins.str display_name: The display name for the database connection.
-        :param _builtins.str host_format: The host name format being currently used in connection string. 
+        :param _builtins.str host_format: The host name format being currently used in connection string.
                 Possible values:
                 HOST_FORMAT_UNSPECIFIED
                FQDN
                IP
         :param _builtins.bool is_regional: This field indicates if the connection string is regional and is only
                applicable for cross-region Data Guard.
-        :param _builtins.str protocol: The protocol being used by the connection. 
+        :param _builtins.str protocol: The protocol being used by the connection.
                 Possible values:
                 PROTOCOL_UNSPECIFIED
                TCP
                TCPS
-        :param _builtins.str session_mode: The current session mode of the connection. 
+        :param _builtins.str session_mode: The current session mode of the connection.
                 Possible values:
                 SESSION_MODE_UNSPECIFIED
                DIRECT
                INDIRECT
-        :param _builtins.str syntax_format: The syntax of the connection string. 
+        :param _builtins.str syntax_format: The syntax of the connection string.
                 Possible values:
                 SYNTAX_FORMAT_UNSPECIFIED
                LONG
                EZCONNECT
                EZCONNECTPLUS
-        :param _builtins.str tls_authentication: This field indicates the TLS authentication type of the connection. 
+        :param _builtins.str tls_authentication: This field indicates the TLS authentication type of the connection.
                 Possible values:
                 TLS_AUTHENTICATION_UNSPECIFIED
                SERVER
@@ -16351,7 +16380,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
     @pulumi.getter(name="consumerGroup")
     def consumer_group(self) -> _builtins.str:
         """
-        The current consumer group being used by the connection. 
+        The current consumer group being used by the connection.
          Possible values:
          CONSUMER_GROUP_UNSPECIFIED
         HIGH
@@ -16374,7 +16403,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
     @pulumi.getter(name="hostFormat")
     def host_format(self) -> _builtins.str:
         """
-        The host name format being currently used in connection string. 
+        The host name format being currently used in connection string.
          Possible values:
          HOST_FORMAT_UNSPECIFIED
         FQDN
@@ -16395,7 +16424,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
     @pulumi.getter
     def protocol(self) -> _builtins.str:
         """
-        The protocol being used by the connection. 
+        The protocol being used by the connection.
          Possible values:
          PROTOCOL_UNSPECIFIED
         TCP
@@ -16407,7 +16436,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
     @pulumi.getter(name="sessionMode")
     def session_mode(self) -> _builtins.str:
         """
-        The current session mode of the connection. 
+        The current session mode of the connection.
          Possible values:
          SESSION_MODE_UNSPECIFIED
         DIRECT
@@ -16419,7 +16448,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
     @pulumi.getter(name="syntaxFormat")
     def syntax_format(self) -> _builtins.str:
         """
-        The syntax of the connection string. 
+        The syntax of the connection string.
          Possible values:
          SYNTAX_FORMAT_UNSPECIFIED
         LONG
@@ -16432,7 +16461,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringProfileRes
     @pulumi.getter(name="tlsAuthentication")
     def tls_authentication(self) -> _builtins.str:
         """
-        This field indicates the TLS authentication type of the connection. 
+        This field indicates the TLS authentication type of the connection.
          Possible values:
          TLS_AUTHENTICATION_UNSPECIFIED
         SERVER
@@ -16948,7 +16977,7 @@ class GetCloudExadataInfrastructurePropertyResult(dict):
                https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
         :param _builtins.str shape: The shape of the Exadata Infrastructure. The shape determines the
                amount of CPU, storage, and memory resources allocated to the instance.
-        :param _builtins.str state: The current lifecycle state of the Exadata Infrastructure. 
+        :param _builtins.str state: The current lifecycle state of the Exadata Infrastructure.
                 Possible values:
                 STATE_UNSPECIFIED
                PROVISIONING
@@ -17189,7 +17218,7 @@ class GetCloudExadataInfrastructurePropertyResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The current lifecycle state of the Exadata Infrastructure. 
+        The current lifecycle state of the Exadata Infrastructure.
          Possible values:
          STATE_UNSPECIFIED
         PROVISIONING
@@ -17280,12 +17309,12 @@ class GetCloudExadataInfrastructurePropertyMaintenanceWindowResult(dict):
                The lead time is in weeks and valid value is between 1 to 4.
         :param Sequence[_builtins.str] months: Months during the year when maintenance should be performed.
         :param _builtins.str patching_mode: Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
-                or "NONROLLING". Default value is ROLLING. 
+                or "NONROLLING". Default value is ROLLING.
                 Possible values:
                 PATCHING_MODE_UNSPECIFIED
                ROLLING
                NON_ROLLING
-        :param _builtins.str preference: The maintenance window scheduling preference. 
+        :param _builtins.str preference: The maintenance window scheduling preference.
                 Possible values:
                 MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED
                CUSTOM_PREFERENCE
@@ -17368,7 +17397,7 @@ class GetCloudExadataInfrastructurePropertyMaintenanceWindowResult(dict):
     def patching_mode(self) -> _builtins.str:
         """
         Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
-         or "NONROLLING". Default value is ROLLING. 
+         or "NONROLLING". Default value is ROLLING.
          Possible values:
          PATCHING_MODE_UNSPECIFIED
         ROLLING
@@ -17380,7 +17409,7 @@ class GetCloudExadataInfrastructurePropertyMaintenanceWindowResult(dict):
     @pulumi.getter
     def preference(self) -> _builtins.str:
         """
-        The maintenance window scheduling preference. 
+        The maintenance window scheduling preference.
          Possible values:
          MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED
         CUSTOM_PREFERENCE
@@ -17434,13 +17463,13 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
         :param _builtins.str entitlement_id: Entitlement ID of the private offer against which this infrastructure
                resource is provisioned.
         :param _builtins.str gcp_oracle_zone: GCP location where Oracle Exadata is hosted.
-        :param Mapping[str, _builtins.str] labels: Labels or tags associated with the resource. 
+        :param Mapping[str, _builtins.str] labels: Labels or tags associated with the resource.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param _builtins.str location: The location of the resource.
                
-               - - -
+               ***
         :param _builtins.str name: Identifier. The name of the Exadata Infrastructure resource with the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}
         :param _builtins.str project: The project to which the resource belongs. If it
@@ -17541,7 +17570,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
         """
-        Labels or tags associated with the resource. 
+        Labels or tags associated with the resource.
 
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -17554,7 +17583,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
         """
         The location of the resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 
@@ -17657,7 +17686,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyResult(dic
                https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
         :param _builtins.str shape: The shape of the Exadata Infrastructure. The shape determines the
                amount of CPU, storage, and memory resources allocated to the instance.
-        :param _builtins.str state: The current lifecycle state of the Exadata Infrastructure. 
+        :param _builtins.str state: The current lifecycle state of the Exadata Infrastructure.
                 Possible values:
                 STATE_UNSPECIFIED
                PROVISIONING
@@ -17898,7 +17927,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyResult(dic
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The current lifecycle state of the Exadata Infrastructure. 
+        The current lifecycle state of the Exadata Infrastructure.
          Possible values:
          STATE_UNSPECIFIED
         PROVISIONING
@@ -17989,12 +18018,12 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanc
                The lead time is in weeks and valid value is between 1 to 4.
         :param Sequence[_builtins.str] months: Months during the year when maintenance should be performed.
         :param _builtins.str patching_mode: Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
-                or "NONROLLING". Default value is ROLLING. 
+                or "NONROLLING". Default value is ROLLING.
                 Possible values:
                 PATCHING_MODE_UNSPECIFIED
                ROLLING
                NON_ROLLING
-        :param _builtins.str preference: The maintenance window scheduling preference. 
+        :param _builtins.str preference: The maintenance window scheduling preference.
                 Possible values:
                 MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED
                CUSTOM_PREFERENCE
@@ -18077,7 +18106,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanc
     def patching_mode(self) -> _builtins.str:
         """
         Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
-         or "NONROLLING". Default value is ROLLING. 
+         or "NONROLLING". Default value is ROLLING.
          Possible values:
          PATCHING_MODE_UNSPECIFIED
         ROLLING
@@ -18089,7 +18118,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanc
     @pulumi.getter
     def preference(self) -> _builtins.str:
         """
-        The maintenance window scheduling preference. 
+        The maintenance window scheduling preference.
          Possible values:
          MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED
         CUSTOM_PREFERENCE
@@ -18181,6 +18210,7 @@ class GetCloudVmClusterPropertyResult(dict):
                  sparse_diskgroup_enabled: _builtins.bool,
                  ssh_public_keys: Sequence[_builtins.str],
                  state: _builtins.str,
+                 storage_management_type: _builtins.str,
                  storage_size_gb: _builtins.int,
                  system_version: _builtins.str,
                  time_zones: Sequence['outputs.GetCloudVmClusterPropertyTimeZoneResult']):
@@ -18192,7 +18222,7 @@ class GetCloudVmClusterPropertyResult(dict):
         :param _builtins.int db_node_storage_size_gb: Local storage per VM
         :param Sequence[_builtins.str] db_server_ocids: OCID of database servers.
         :param Sequence['GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionArgs'] diagnostics_data_collection_options: Data collection options for diagnostics.
-        :param _builtins.str disk_redundancy: The type of redundancy. 
+        :param _builtins.str disk_redundancy: The type of redundancy.
                 Possible values:
                 DISK_REDUNDANCY_UNSPECIFIED
                HIGH
@@ -18205,7 +18235,7 @@ class GetCloudVmClusterPropertyResult(dict):
                format: "-" with some suffix.
                ex: sp2-yi0xq where "sp2" is the hostname_prefix.
         :param _builtins.str hostname_prefix: Prefix for VM cluster host names.
-        :param _builtins.str license_type: License type of VM Cluster. 
+        :param _builtins.str license_type: License type of VM Cluster.
                 Possible values:
                 LICENSE_TYPE_UNSPECIFIED
                LICENSE_INCLUDED
@@ -18225,7 +18255,7 @@ class GetCloudVmClusterPropertyResult(dict):
         :param _builtins.str shape: Shape of VM Cluster.
         :param _builtins.bool sparse_diskgroup_enabled: Use exadata sparse snapshots.
         :param Sequence[_builtins.str] ssh_public_keys: SSH public keys to be stored with cluster.
-        :param _builtins.str state: State of the cluster. 
+        :param _builtins.str state: State of the cluster.
                 Possible values:
                 STATE_UNSPECIFIED
                PROVISIONING
@@ -18235,6 +18265,11 @@ class GetCloudVmClusterPropertyResult(dict):
                TERMINATED
                FAILED
                MAINTENANCE_IN_PROGRESS
+        :param _builtins.str storage_management_type: The storage management type of the VM Cluster.
+               Possible values:
+               STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+               ASM
+               EXASCALE
         :param _builtins.int storage_size_gb: The storage allocation for the disk group, in gigabytes (GB).
         :param _builtins.str system_version: Operating system version of the image.
         :param Sequence['GetCloudVmClusterPropertyTimeZoneArgs'] time_zones: Represents a time zone from the
@@ -18269,6 +18304,7 @@ class GetCloudVmClusterPropertyResult(dict):
         pulumi.set(__self__, "sparse_diskgroup_enabled", sparse_diskgroup_enabled)
         pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "storage_management_type", storage_management_type)
         pulumi.set(__self__, "storage_size_gb", storage_size_gb)
         pulumi.set(__self__, "system_version", system_version)
         pulumi.set(__self__, "time_zones", time_zones)
@@ -18333,7 +18369,7 @@ class GetCloudVmClusterPropertyResult(dict):
     @pulumi.getter(name="diskRedundancy")
     def disk_redundancy(self) -> _builtins.str:
         """
-        The type of redundancy. 
+        The type of redundancy.
          Possible values:
          DISK_REDUNDANCY_UNSPECIFIED
         HIGH
@@ -18388,7 +18424,7 @@ class GetCloudVmClusterPropertyResult(dict):
     @pulumi.getter(name="licenseType")
     def license_type(self) -> _builtins.str:
         """
-        License type of VM Cluster. 
+        License type of VM Cluster.
          Possible values:
          LICENSE_TYPE_UNSPECIFIED
         LICENSE_INCLUDED
@@ -18513,7 +18549,7 @@ class GetCloudVmClusterPropertyResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State of the cluster. 
+        State of the cluster.
          Possible values:
          STATE_UNSPECIFIED
         PROVISIONING
@@ -18525,6 +18561,18 @@ class GetCloudVmClusterPropertyResult(dict):
         MAINTENANCE_IN_PROGRESS
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="storageManagementType")
+    def storage_management_type(self) -> _builtins.str:
+        """
+        The storage management type of the VM Cluster.
+        Possible values:
+        STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+        ASM
+        EXASCALE
+        """
+        return pulumi.get(self, "storage_management_type")
 
     @_builtins.property
     @pulumi.getter(name="storageSizeGb")
@@ -18636,6 +18684,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                  display_name: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
                  exadata_infrastructure: _builtins.str,
+                 exascale_db_storage_vault: _builtins.str,
                  gcp_oracle_zone: _builtins.str,
                  identity_connectors: Sequence['outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult'],
                  labels: Mapping[str, _builtins.str],
@@ -18670,17 +18719,20 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         :param _builtins.str exadata_infrastructure: The name of the Exadata Infrastructure resource on which VM cluster
                resource is created, in the following format:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
+        :param _builtins.str exascale_db_storage_vault: The name of ExascaleDbStorageVault associated with the VM Cluster.
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
         :param _builtins.str gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
         :param Sequence['GetCloudVmClustersCloudVmClusterIdentityConnectorArgs'] identity_connectors: The identity connector details which will allow OCI to securely access
                the resources in the customer project.
-        :param Mapping[str, _builtins.str] labels: Labels or tags associated with the VM Cluster. 
+        :param Mapping[str, _builtins.str] labels: Labels or tags associated with the VM Cluster.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param _builtins.str location: The location of the resource.
                
-               - - -
+               ***
         :param _builtins.str name: Identifier. The name of the VM Cluster resource with the format:
                projects/{project}/locations/{region}/cloudVmClusters/{cloud_vm_cluster}
         :param _builtins.str network: The name of the VPC network.
@@ -18709,6 +18761,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
+        pulumi.set(__self__, "exascale_db_storage_vault", exascale_db_storage_vault)
         pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
         pulumi.set(__self__, "identity_connectors", identity_connectors)
         pulumi.set(__self__, "labels", labels)
@@ -18814,6 +18867,16 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         return pulumi.get(self, "exadata_infrastructure")
 
     @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVault")
+    def exascale_db_storage_vault(self) -> _builtins.str:
+        """
+        The name of ExascaleDbStorageVault associated with the VM Cluster.
+        Format:
+        projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        """
+        return pulumi.get(self, "exascale_db_storage_vault")
+
+    @_builtins.property
     @pulumi.getter(name="gcpOracleZone")
     def gcp_oracle_zone(self) -> _builtins.str:
         """
@@ -18835,7 +18898,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
         """
-        Labels or tags associated with the VM Cluster. 
+        Labels or tags associated with the VM Cluster.
 
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -18848,7 +18911,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         """
         The location of the resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "location")
 
@@ -18992,6 +19055,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
                  sparse_diskgroup_enabled: _builtins.bool,
                  ssh_public_keys: Sequence[_builtins.str],
                  state: _builtins.str,
+                 storage_management_type: _builtins.str,
                  storage_size_gb: _builtins.int,
                  system_version: _builtins.str,
                  time_zones: Sequence['outputs.GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult']):
@@ -19003,7 +19067,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         :param _builtins.int db_node_storage_size_gb: Local storage per VM
         :param Sequence[_builtins.str] db_server_ocids: OCID of database servers.
         :param Sequence['GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionArgs'] diagnostics_data_collection_options: Data collection options for diagnostics.
-        :param _builtins.str disk_redundancy: The type of redundancy. 
+        :param _builtins.str disk_redundancy: The type of redundancy.
                 Possible values:
                 DISK_REDUNDANCY_UNSPECIFIED
                HIGH
@@ -19016,7 +19080,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
                format: "-" with some suffix.
                ex: sp2-yi0xq where "sp2" is the hostname_prefix.
         :param _builtins.str hostname_prefix: Prefix for VM cluster host names.
-        :param _builtins.str license_type: License type of VM Cluster. 
+        :param _builtins.str license_type: License type of VM Cluster.
                 Possible values:
                 LICENSE_TYPE_UNSPECIFIED
                LICENSE_INCLUDED
@@ -19036,7 +19100,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         :param _builtins.str shape: Shape of VM Cluster.
         :param _builtins.bool sparse_diskgroup_enabled: Use exadata sparse snapshots.
         :param Sequence[_builtins.str] ssh_public_keys: SSH public keys to be stored with cluster.
-        :param _builtins.str state: State of the cluster. 
+        :param _builtins.str state: State of the cluster.
                 Possible values:
                 STATE_UNSPECIFIED
                PROVISIONING
@@ -19046,6 +19110,11 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
                TERMINATED
                FAILED
                MAINTENANCE_IN_PROGRESS
+        :param _builtins.str storage_management_type: The storage management type of the VM Cluster.
+               Possible values:
+               STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+               ASM
+               EXASCALE
         :param _builtins.int storage_size_gb: The storage allocation for the disk group, in gigabytes (GB).
         :param _builtins.str system_version: Operating system version of the image.
         :param Sequence['GetCloudVmClustersCloudVmClusterPropertyTimeZoneArgs'] time_zones: Represents a time zone from the
@@ -19080,6 +19149,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         pulumi.set(__self__, "sparse_diskgroup_enabled", sparse_diskgroup_enabled)
         pulumi.set(__self__, "ssh_public_keys", ssh_public_keys)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "storage_management_type", storage_management_type)
         pulumi.set(__self__, "storage_size_gb", storage_size_gb)
         pulumi.set(__self__, "system_version", system_version)
         pulumi.set(__self__, "time_zones", time_zones)
@@ -19144,7 +19214,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
     @pulumi.getter(name="diskRedundancy")
     def disk_redundancy(self) -> _builtins.str:
         """
-        The type of redundancy. 
+        The type of redundancy.
          Possible values:
          DISK_REDUNDANCY_UNSPECIFIED
         HIGH
@@ -19199,7 +19269,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
     @pulumi.getter(name="licenseType")
     def license_type(self) -> _builtins.str:
         """
-        License type of VM Cluster. 
+        License type of VM Cluster.
          Possible values:
          LICENSE_TYPE_UNSPECIFIED
         LICENSE_INCLUDED
@@ -19324,7 +19394,7 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State of the cluster. 
+        State of the cluster.
          Possible values:
          STATE_UNSPECIFIED
         PROVISIONING
@@ -19336,6 +19406,18 @@ class GetCloudVmClustersCloudVmClusterPropertyResult(dict):
         MAINTENANCE_IN_PROGRESS
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="storageManagementType")
+    def storage_management_type(self) -> _builtins.str:
+        """
+        The storage management type of the VM Cluster.
+        Possible values:
+        STORAGE_MANAGEMENT_TYPE_UNSPECIFIED
+        ASM
+        EXASCALE
+        """
+        return pulumi.get(self, "storage_management_type")
 
     @_builtins.property
     @pulumi.getter(name="storageSizeGb")
@@ -19694,6 +19776,628 @@ class GetDbServersDbServerPropertyResult(dict):
         Output only
         """
         return pulumi.get(self, "vm_count")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultPropertyResult(dict):
+    def __init__(__self__, *,
+                 additional_flash_cache_percent: _builtins.int,
+                 attached_shape_attributes: Sequence[_builtins.str],
+                 available_shape_attributes: Sequence[_builtins.str],
+                 exascale_db_storage_details: Sequence['outputs.GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult'],
+                 oci_uri: _builtins.str,
+                 ocid: _builtins.str,
+                 state: _builtins.str,
+                 time_zones: Sequence['outputs.GetExascaleDbStorageVaultPropertyTimeZoneResult'],
+                 vm_cluster_count: _builtins.int,
+                 vm_cluster_ids: Sequence[_builtins.str]):
+        """
+        :param _builtins.int additional_flash_cache_percent: The size of additional flash cache in percentage of high capacity
+               database storage.
+        :param Sequence[_builtins.str] attached_shape_attributes: The shape attributes of the VM clusters attached to the
+               ExascaleDbStorageVault.
+        :param Sequence[_builtins.str] available_shape_attributes: The shape attributes available for the VM clusters to be attached to the
+               ExascaleDbStorageVault.
+        :param Sequence['GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs'] exascale_db_storage_details: The storage details of the ExascaleDbStorageVault.
+        :param _builtins.str oci_uri: Deep link to the OCI console to view this resource.
+        :param _builtins.str ocid: The OCID for the ExascaleDbStorageVault.
+        :param _builtins.str state: The state of the ExascaleDbStorageVault.
+               Possible values:
+               PROVISIONING
+               AVAILABLE
+               UPDATING
+               TERMINATING
+               TERMINATED
+               FAILED
+        :param Sequence['GetExascaleDbStorageVaultPropertyTimeZoneArgs'] time_zones: Represents a time zone from the
+               [IANA Time Zone Database](https://www.iana.org/time-zones).
+        :param _builtins.int vm_cluster_count: The number of VM clusters associated with the ExascaleDbStorageVault.
+        :param Sequence[_builtins.str] vm_cluster_ids: The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+        """
+        pulumi.set(__self__, "additional_flash_cache_percent", additional_flash_cache_percent)
+        pulumi.set(__self__, "attached_shape_attributes", attached_shape_attributes)
+        pulumi.set(__self__, "available_shape_attributes", available_shape_attributes)
+        pulumi.set(__self__, "exascale_db_storage_details", exascale_db_storage_details)
+        pulumi.set(__self__, "oci_uri", oci_uri)
+        pulumi.set(__self__, "ocid", ocid)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "time_zones", time_zones)
+        pulumi.set(__self__, "vm_cluster_count", vm_cluster_count)
+        pulumi.set(__self__, "vm_cluster_ids", vm_cluster_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalFlashCachePercent")
+    def additional_flash_cache_percent(self) -> _builtins.int:
+        """
+        The size of additional flash cache in percentage of high capacity
+        database storage.
+        """
+        return pulumi.get(self, "additional_flash_cache_percent")
+
+    @_builtins.property
+    @pulumi.getter(name="attachedShapeAttributes")
+    def attached_shape_attributes(self) -> Sequence[_builtins.str]:
+        """
+        The shape attributes of the VM clusters attached to the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "attached_shape_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="availableShapeAttributes")
+    def available_shape_attributes(self) -> Sequence[_builtins.str]:
+        """
+        The shape attributes available for the VM clusters to be attached to the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "available_shape_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageDetails")
+    def exascale_db_storage_details(self) -> Sequence['outputs.GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult']:
+        """
+        The storage details of the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "exascale_db_storage_details")
+
+    @_builtins.property
+    @pulumi.getter(name="ociUri")
+    def oci_uri(self) -> _builtins.str:
+        """
+        Deep link to the OCI console to view this resource.
+        """
+        return pulumi.get(self, "oci_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> _builtins.str:
+        """
+        The OCID for the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the ExascaleDbStorageVault.
+        Possible values:
+        PROVISIONING
+        AVAILABLE
+        UPDATING
+        TERMINATING
+        TERMINATED
+        FAILED
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZones")
+    def time_zones(self) -> Sequence['outputs.GetExascaleDbStorageVaultPropertyTimeZoneResult']:
+        """
+        Represents a time zone from the
+        [IANA Time Zone Database](https://www.iana.org/time-zones).
+        """
+        return pulumi.get(self, "time_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClusterCount")
+    def vm_cluster_count(self) -> _builtins.int:
+        """
+        The number of VM clusters associated with the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "vm_cluster_count")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClusterIds")
+    def vm_cluster_ids(self) -> Sequence[_builtins.str]:
+        """
+        The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "vm_cluster_ids")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult(dict):
+    def __init__(__self__, *,
+                 available_size_gbs: _builtins.int,
+                 total_size_gbs: _builtins.int):
+        """
+        :param _builtins.int available_size_gbs: The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+               (GB).
+        :param _builtins.int total_size_gbs: The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+               (GB).
+        """
+        pulumi.set(__self__, "available_size_gbs", available_size_gbs)
+        pulumi.set(__self__, "total_size_gbs", total_size_gbs)
+
+    @_builtins.property
+    @pulumi.getter(name="availableSizeGbs")
+    def available_size_gbs(self) -> _builtins.int:
+        """
+        The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+        (GB).
+        """
+        return pulumi.get(self, "available_size_gbs")
+
+    @_builtins.property
+    @pulumi.getter(name="totalSizeGbs")
+    def total_size_gbs(self) -> _builtins.int:
+        """
+        The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+        (GB).
+        """
+        return pulumi.get(self, "total_size_gbs")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultPropertyTimeZoneResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str id: IANA Time Zone Database time zone. For example "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number. For example "2019a".
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IANA Time Zone Database time zone. For example "America/New_York".
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        IANA Time Zone Database version number. For example "2019a".
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultsExascaleDbStorageVaultResult(dict):
+    def __init__(__self__, *,
+                 create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
+                 deletion_protection: _builtins.bool,
+                 display_name: _builtins.str,
+                 effective_labels: Mapping[str, _builtins.str],
+                 entitlement_id: _builtins.str,
+                 exadata_infrastructure: _builtins.str,
+                 exascale_db_storage_vault_id: _builtins.str,
+                 gcp_oracle_zone: _builtins.str,
+                 labels: Mapping[str, _builtins.str],
+                 location: _builtins.str,
+                 name: _builtins.str,
+                 project: _builtins.str,
+                 properties: Sequence['outputs.GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyResult'],
+                 pulumi_labels: Mapping[str, _builtins.str]):
+        """
+        :param _builtins.str create_time: The date and time when the ExascaleDbStorageVault was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+        :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        :param _builtins.str display_name: The display name for the ExascaleDbStorageVault. The name does not have to
+               be unique within your project. The name must be 1-255 characters long and
+               can only contain alphanumeric characters.
+        :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        :param _builtins.str entitlement_id: The ID of the subscription entitlement associated with the
+               ExascaleDbStorageVault.
+        :param _builtins.str exadata_infrastructure: The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+               In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        :param _builtins.str exascale_db_storage_vault_id: The ID of the ExascaleDbStorageVault to create. This value is
+               restricted to (^a-z?$) and must be a maximum of
+               63 characters in length. The value must start with a letter and end with a
+               letter or a number.
+        :param _builtins.str gcp_oracle_zone: The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
+               Example: us-east4-b-r2.
+               If not specified, the system will pick a zone based on availability.
+        :param Mapping[str, _builtins.str] labels: The labels or tags associated with the ExascaleDbStorageVault.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param _builtins.str location: The location of the resource.
+               
+               ***
+        :param _builtins.str name: Identifier. The resource name of the ExascaleDbStorageVault.
+               Format:
+               projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        :param _builtins.str project: The project to which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param Sequence['GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyArgs'] properties: The properties of the ExascaleDbStorageVault.
+               next ID: 12
+        :param Mapping[str, _builtins.str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "entitlement_id", entitlement_id)
+        pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
+        pulumi.set(__self__, "exascale_db_storage_vault_id", exascale_db_storage_vault_id)
+        pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The date and time when the ExascaleDbStorageVault was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> _builtins.bool:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The display name for the ExascaleDbStorageVault. The name does not have to
+        be unique within your project. The name must be 1-255 characters long and
+        can only contain alphanumeric characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="entitlementId")
+    def entitlement_id(self) -> _builtins.str:
+        """
+        The ID of the subscription entitlement associated with the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "entitlement_id")
+
+    @_builtins.property
+    @pulumi.getter(name="exadataInfrastructure")
+    def exadata_infrastructure(self) -> _builtins.str:
+        """
+        The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created.
+        In the format: projects/{project}/locations/{region}/cloudExadataInfrastructures/{cloud_extradata_infrastructure}
+        """
+        return pulumi.get(self, "exadata_infrastructure")
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageVaultId")
+    def exascale_db_storage_vault_id(self) -> _builtins.str:
+        """
+        The ID of the ExascaleDbStorageVault to create. This value is
+        restricted to (^a-z?$) and must be a maximum of
+        63 characters in length. The value must start with a letter and end with a
+        letter or a number.
+        """
+        return pulumi.get(self, "exascale_db_storage_vault_id")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpOracleZone")
+    def gcp_oracle_zone(self) -> _builtins.str:
+        """
+        The GCP Oracle zone where Oracle ExascaleDbStorageVault is hosted.
+        Example: us-east4-b-r2.
+        If not specified, the system will pick a zone based on availability.
+        """
+        return pulumi.get(self, "gcp_oracle_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        The labels or tags associated with the ExascaleDbStorageVault.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> _builtins.str:
+        """
+        The location of the resource.
+
+        ***
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Identifier. The resource name of the ExascaleDbStorageVault.
+        Format:
+        projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> _builtins.str:
+        """
+        The project to which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Sequence['outputs.GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyResult']:
+        """
+        The properties of the ExascaleDbStorageVault.
+        next ID: 12
+        """
+        return pulumi.get(self, "properties")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, _builtins.str]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyResult(dict):
+    def __init__(__self__, *,
+                 additional_flash_cache_percent: _builtins.int,
+                 attached_shape_attributes: Sequence[_builtins.str],
+                 available_shape_attributes: Sequence[_builtins.str],
+                 exascale_db_storage_details: Sequence['outputs.GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult'],
+                 oci_uri: _builtins.str,
+                 ocid: _builtins.str,
+                 state: _builtins.str,
+                 time_zones: Sequence['outputs.GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneResult'],
+                 vm_cluster_count: _builtins.int,
+                 vm_cluster_ids: Sequence[_builtins.str]):
+        """
+        :param _builtins.int additional_flash_cache_percent: The size of additional flash cache in percentage of high capacity
+               database storage.
+        :param Sequence[_builtins.str] attached_shape_attributes: The shape attributes of the VM clusters attached to the
+               ExascaleDbStorageVault.
+        :param Sequence[_builtins.str] available_shape_attributes: The shape attributes available for the VM clusters to be attached to the
+               ExascaleDbStorageVault.
+        :param Sequence['GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailArgs'] exascale_db_storage_details: The storage details of the ExascaleDbStorageVault.
+        :param _builtins.str oci_uri: Deep link to the OCI console to view this resource.
+        :param _builtins.str ocid: The OCID for the ExascaleDbStorageVault.
+        :param _builtins.str state: The state of the ExascaleDbStorageVault.
+               Possible values:
+               PROVISIONING
+               AVAILABLE
+               UPDATING
+               TERMINATING
+               TERMINATED
+               FAILED
+        :param Sequence['GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneArgs'] time_zones: Represents a time zone from the
+               [IANA Time Zone Database](https://www.iana.org/time-zones).
+        :param _builtins.int vm_cluster_count: The number of VM clusters associated with the ExascaleDbStorageVault.
+        :param Sequence[_builtins.str] vm_cluster_ids: The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+        """
+        pulumi.set(__self__, "additional_flash_cache_percent", additional_flash_cache_percent)
+        pulumi.set(__self__, "attached_shape_attributes", attached_shape_attributes)
+        pulumi.set(__self__, "available_shape_attributes", available_shape_attributes)
+        pulumi.set(__self__, "exascale_db_storage_details", exascale_db_storage_details)
+        pulumi.set(__self__, "oci_uri", oci_uri)
+        pulumi.set(__self__, "ocid", ocid)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "time_zones", time_zones)
+        pulumi.set(__self__, "vm_cluster_count", vm_cluster_count)
+        pulumi.set(__self__, "vm_cluster_ids", vm_cluster_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalFlashCachePercent")
+    def additional_flash_cache_percent(self) -> _builtins.int:
+        """
+        The size of additional flash cache in percentage of high capacity
+        database storage.
+        """
+        return pulumi.get(self, "additional_flash_cache_percent")
+
+    @_builtins.property
+    @pulumi.getter(name="attachedShapeAttributes")
+    def attached_shape_attributes(self) -> Sequence[_builtins.str]:
+        """
+        The shape attributes of the VM clusters attached to the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "attached_shape_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="availableShapeAttributes")
+    def available_shape_attributes(self) -> Sequence[_builtins.str]:
+        """
+        The shape attributes available for the VM clusters to be attached to the
+        ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "available_shape_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="exascaleDbStorageDetails")
+    def exascale_db_storage_details(self) -> Sequence['outputs.GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult']:
+        """
+        The storage details of the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "exascale_db_storage_details")
+
+    @_builtins.property
+    @pulumi.getter(name="ociUri")
+    def oci_uri(self) -> _builtins.str:
+        """
+        Deep link to the OCI console to view this resource.
+        """
+        return pulumi.get(self, "oci_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> _builtins.str:
+        """
+        The OCID for the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        The state of the ExascaleDbStorageVault.
+        Possible values:
+        PROVISIONING
+        AVAILABLE
+        UPDATING
+        TERMINATING
+        TERMINATED
+        FAILED
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="timeZones")
+    def time_zones(self) -> Sequence['outputs.GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneResult']:
+        """
+        Represents a time zone from the
+        [IANA Time Zone Database](https://www.iana.org/time-zones).
+        """
+        return pulumi.get(self, "time_zones")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClusterCount")
+    def vm_cluster_count(self) -> _builtins.int:
+        """
+        The number of VM clusters associated with the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "vm_cluster_count")
+
+    @_builtins.property
+    @pulumi.getter(name="vmClusterIds")
+    def vm_cluster_ids(self) -> Sequence[_builtins.str]:
+        """
+        The list of VM cluster OCIDs associated with the ExascaleDbStorageVault.
+        """
+        return pulumi.get(self, "vm_cluster_ids")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetailResult(dict):
+    def __init__(__self__, *,
+                 available_size_gbs: _builtins.int,
+                 total_size_gbs: _builtins.int):
+        """
+        :param _builtins.int available_size_gbs: The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+               (GB).
+        :param _builtins.int total_size_gbs: The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+               (GB).
+        """
+        pulumi.set(__self__, "available_size_gbs", available_size_gbs)
+        pulumi.set(__self__, "total_size_gbs", total_size_gbs)
+
+    @_builtins.property
+    @pulumi.getter(name="availableSizeGbs")
+    def available_size_gbs(self) -> _builtins.int:
+        """
+        The available storage capacity for the ExascaleDbStorageVault, in gigabytes
+        (GB).
+        """
+        return pulumi.get(self, "available_size_gbs")
+
+    @_builtins.property
+    @pulumi.getter(name="totalSizeGbs")
+    def total_size_gbs(self) -> _builtins.int:
+        """
+        The total storage allocation for the ExascaleDbStorageVault, in gigabytes
+        (GB).
+        """
+        return pulumi.get(self, "total_size_gbs")
+
+
+@pulumi.output_type
+class GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyTimeZoneResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str id: IANA Time Zone Database time zone. For example "America/New_York".
+        :param _builtins.str version: IANA Time Zone Database version number. For example "2019a".
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IANA Time Zone Database time zone. For example "America/New_York".
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        IANA Time Zone Database version number. For example "2019a".
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

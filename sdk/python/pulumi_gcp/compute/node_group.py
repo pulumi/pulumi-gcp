@@ -53,7 +53,7 @@ class NodeGroupArgs:
                Specifies the frequency of planned maintenance events. Set to one of the following:
                - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-               Possible values are: `AS_NEEDED`, `RECURRENT`.
+                 Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -164,7 +164,7 @@ class NodeGroupArgs:
         Specifies the frequency of planned maintenance events. Set to one of the following:
         - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-        Possible values are: `AS_NEEDED`, `RECURRENT`.
+          Possible values are: `AS_NEEDED`, `RECURRENT`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -286,7 +286,7 @@ class _NodeGroupState:
                Specifies the frequency of planned maintenance events. Set to one of the following:
                - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-               Possible values are: `AS_NEEDED`, `RECURRENT`.
+                 Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input['NodeGroupMaintenanceWindowArgs'] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -407,7 +407,7 @@ class _NodeGroupState:
         Specifies the frequency of planned maintenance events. Set to one of the following:
         - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-        Possible values are: `AS_NEEDED`, `RECURRENT`.
+          Possible values are: `AS_NEEDED`, `RECURRENT`.
         """
         return pulumi.get(self, "maintenance_interval")
 
@@ -700,7 +700,7 @@ class NodeGroup(pulumi.CustomResource):
                Specifies the frequency of planned maintenance events. Set to one of the following:
                - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-               Possible values are: `AS_NEEDED`, `RECURRENT`.
+                 Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -956,7 +956,7 @@ class NodeGroup(pulumi.CustomResource):
                Specifies the frequency of planned maintenance events. Set to one of the following:
                - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
                - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-               Possible values are: `AS_NEEDED`, `RECURRENT`.
+                 Possible values are: `AS_NEEDED`, `RECURRENT`.
         :param pulumi.Input[_builtins.str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT.
         :param pulumi.Input[Union['NodeGroupMaintenanceWindowArgs', 'NodeGroupMaintenanceWindowArgsDict']] maintenance_window: contains properties for the timeframe of maintenance
                Structure is documented below.
@@ -1047,7 +1047,7 @@ class NodeGroup(pulumi.CustomResource):
         Specifies the frequency of planned maintenance events. Set to one of the following:
         - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
         - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
-        Possible values are: `AS_NEEDED`, `RECURRENT`.
+          Possible values are: `AS_NEEDED`, `RECURRENT`.
         """
         return pulumi.get(self, "maintenance_interval")
 

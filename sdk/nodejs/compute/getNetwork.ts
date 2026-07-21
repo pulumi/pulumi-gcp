@@ -36,8 +36,7 @@ export interface GetNetworkArgs {
     /**
      * The name of the network.
      *
-     *
-     * - - -
+     * ***
      */
     name?: string;
     /**
@@ -132,8 +131,7 @@ export interface GetNetworkOutputArgs {
     /**
      * The name of the network.
      *
-     *
-     * - - -
+     * ***
      */
     name?: pulumi.Input<string | undefined>;
     /**

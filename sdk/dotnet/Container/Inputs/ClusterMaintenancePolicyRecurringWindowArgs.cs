@@ -15,6 +15,48 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("endTime", required: true)]
         public Input<string> EndTime { get; set; } = null!;
 
+        /// <summary>
+        /// Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
+        /// 
+        /// Examples:
+        /// ```
+        /// maintenance_policy {
+        /// recurring_maintenance_window {
+        /// delay_until {
+        /// day   = 1
+        /// month = 8
+        /// year  = 2019
+        /// }
+        /// window_start_time {
+        /// hours   = 2
+        /// minutes = 0
+        /// seconds = 0
+        /// }
+        /// window_duration = "4h"
+        /// recurrence      = "FREQ=DAILY"
+        /// }
+        /// }
+        /// ```
+        /// 
+        /// ```
+        /// maintenance_policy {
+        /// recurring_maintenance_window {
+        /// delay_until {
+        /// day   = 1
+        /// month = 1
+        /// year  = 2019
+        /// }
+        /// window_start_time {
+        /// hours   = 9
+        /// minutes = 0
+        /// seconds = 0
+        /// }
+        /// window_duration = "8h"
+        /// recurrence      = "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+        /// }
+        /// }
+        /// ```
+        /// </summary>
         [Input("recurrence", required: true)]
         public Input<string> Recurrence { get; set; } = null!;
 

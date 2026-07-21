@@ -56,7 +56,6 @@ func TestAggregateIAMExemptedMembersReplacement(t *testing.T) {
 		"google_organization_iam.html.markdown",
 		"google_project_iam.html.markdown",
 	} {
-		doc := doc
 		t.Run(doc, func(t *testing.T) {
 			t.Parallel()
 
@@ -100,7 +99,6 @@ func TestEffectiveLabels(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.text, func(t *testing.T) {
 			actual, err := fixupEffectiveLabels.Edit("doc.md", []byte(tt.text))
 			require.NoError(t, err)
@@ -141,7 +139,6 @@ Some more text.`,
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(strings.ReplaceAll(tt.text, "\n", " "), func(t *testing.T) {
 			t.Parallel()
 			actual, err := removeSecretsInPlainTextNote.Edit("doc.md", []byte(tt.text))
@@ -194,7 +191,6 @@ func TestBetaDescription(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.text, func(t *testing.T) {
 			t.Parallel()
 			actual, err := removeBetaFromDescriptionField.Edit("doc.md", []byte(tt.text))
@@ -215,7 +211,6 @@ func TestRewriteMembersField(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 		t.Run(tt.text, func(t *testing.T) {
 			actual, err := rewritemembersField.Edit("doc.md", []byte(tt.text))
 			require.NoError(t, err)

@@ -45,7 +45,7 @@ class TableArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[_builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -53,9 +53,9 @@ class TableArgs:
         :param pulumi.Input[_builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
                					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
                				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-               					
-               					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-               					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+               
+                                   The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                                   the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
                > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -139,7 +139,7 @@ class TableArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        -----
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -191,9 +191,9 @@ class TableArgs:
         Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
         					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
         				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-        					
-        					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-        					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+
+                            The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                            the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         """
         return pulumi.get(self, "row_key_schema")
 
@@ -242,7 +242,7 @@ class _TableState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[_builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
@@ -251,9 +251,9 @@ class _TableState:
         :param pulumi.Input[_builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
                					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
                				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-               					
-               					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-               					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+               
+                                   The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                                   the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
                > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -326,7 +326,7 @@ class _TableState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        -----
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -390,9 +390,9 @@ class _TableState:
         Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
         					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
         				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-        					
-        					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-        					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+
+                            The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                            the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         """
         return pulumi.get(self, "row_key_schema")
 
@@ -522,7 +522,7 @@ class Table(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[_builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
@@ -531,9 +531,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
                					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
                				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-               					
-               					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-               					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+               
+                                   The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                                   the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
                > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -705,7 +705,7 @@ class Table(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               -----
+               ***
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[_builtins.str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
@@ -714,9 +714,9 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] row_key_schema: Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
                					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
                				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-               					
-               					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-               					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+               
+                                   The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                                   the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
                > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
@@ -772,7 +772,7 @@ class Table(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        -----
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -816,9 +816,9 @@ class Table(pulumi.CustomResource):
         Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
         					Note that in-place update is not supported, and any in-place modification to the schema will lead to failure.
         				    To update a schema, please clear it (by omitting the field), and update the resource again with a new schema.\\n
-        					
-        					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
-        					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
+
+                            The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
+                            the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         """
         return pulumi.get(self, "row_key_schema")
 

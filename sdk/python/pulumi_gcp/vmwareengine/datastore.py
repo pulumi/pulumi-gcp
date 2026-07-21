@@ -49,7 +49,7 @@ class DatastoreArgs:
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-               (section 3.5)
+                 (section 3.5)
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -131,7 +131,7 @@ class DatastoreArgs:
         * Ends with a non-hyphen character
         * Not formatted as a UUID
         * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-        (section 3.5)
+          (section 3.5)
         """
         return pulumi.get(self, "name")
 
@@ -189,7 +189,7 @@ class _DatastoreState:
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-               (section 3.5)
+                 (section 3.5)
         :param pulumi.Input['DatastoreNfsDatastoreArgs'] nfs_datastore: The NFS datastore configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -306,7 +306,7 @@ class _DatastoreState:
         * Ends with a non-hyphen character
         * Not formatted as a UUID
         * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-        (section 3.5)
+          (section 3.5)
         """
         return pulumi.get(self, "name")
 
@@ -539,7 +539,7 @@ class Datastore(pulumi.CustomResource):
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-               (section 3.5)
+                 (section 3.5)
         :param pulumi.Input[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']] nfs_datastore: The NFS datastore configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -766,7 +766,7 @@ class Datastore(pulumi.CustomResource):
                * Ends with a non-hyphen character
                * Not formatted as a UUID
                * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-               (section 3.5)
+                 (section 3.5)
         :param pulumi.Input[Union['DatastoreNfsDatastoreArgs', 'DatastoreNfsDatastoreArgsDict']] nfs_datastore: The NFS datastore configuration.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -857,7 +857,7 @@ class Datastore(pulumi.CustomResource):
         * Ends with a non-hyphen character
         * Not formatted as a UUID
         * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
-        (section 3.5)
+          (section 3.5)
         """
         return pulumi.get(self, "name")
 

@@ -263,7 +263,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                location.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -1305,7 +1305,7 @@ class ClusterArgs:
         The name of the cluster, unique within the project and
         location.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -2045,7 +2045,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                location.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -3164,7 +3164,7 @@ class _ClusterState:
         The name of the cluster, unique within the project and
         location.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -4070,7 +4070,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                location.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -4777,7 +4777,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                location.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -5563,7 +5563,7 @@ class Cluster(pulumi.CustomResource):
         The name of the cluster, unique within the project and
         location.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

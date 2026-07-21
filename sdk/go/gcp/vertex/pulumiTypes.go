@@ -18879,6 +18879,10 @@ func (o AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput) Elem() AiRagE
 }
 
 type AiReasoningEngineContextSpec struct {
+	// (Optional, Beta)
+	// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+	// Structure is documented below.
+	ExampleStoreConfig *AiReasoningEngineContextSpecExampleStoreConfig `pulumi:"exampleStoreConfig"`
 	// Specification for a Memory Bank, which manages memories for the Agent Engine.
 	// Structure is documented below.
 	MemoryBankConfig *AiReasoningEngineContextSpecMemoryBankConfig `pulumi:"memoryBankConfig"`
@@ -18896,6 +18900,10 @@ type AiReasoningEngineContextSpecInput interface {
 }
 
 type AiReasoningEngineContextSpecArgs struct {
+	// (Optional, Beta)
+	// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+	// Structure is documented below.
+	ExampleStoreConfig AiReasoningEngineContextSpecExampleStoreConfigPtrInput `pulumi:"exampleStoreConfig"`
 	// Specification for a Memory Bank, which manages memories for the Agent Engine.
 	// Structure is documented below.
 	MemoryBankConfig AiReasoningEngineContextSpecMemoryBankConfigPtrInput `pulumi:"memoryBankConfig"`
@@ -18978,6 +18986,15 @@ func (o AiReasoningEngineContextSpecOutput) ToAiReasoningEngineContextSpecPtrOut
 	}).(AiReasoningEngineContextSpecPtrOutput)
 }
 
+// (Optional, Beta)
+// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecOutput) ExampleStoreConfig() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpec) *AiReasoningEngineContextSpecExampleStoreConfig {
+		return v.ExampleStoreConfig
+	}).(AiReasoningEngineContextSpecExampleStoreConfigPtrOutput)
+}
+
 // Specification for a Memory Bank, which manages memories for the Agent Engine.
 // Structure is documented below.
 func (o AiReasoningEngineContextSpecOutput) MemoryBankConfig() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
@@ -19010,6 +19027,18 @@ func (o AiReasoningEngineContextSpecPtrOutput) Elem() AiReasoningEngineContextSp
 	}).(AiReasoningEngineContextSpecOutput)
 }
 
+// (Optional, Beta)
+// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecPtrOutput) ExampleStoreConfig() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpec) *AiReasoningEngineContextSpecExampleStoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ExampleStoreConfig
+	}).(AiReasoningEngineContextSpecExampleStoreConfigPtrOutput)
+}
+
 // Specification for a Memory Bank, which manages memories for the Agent Engine.
 // Structure is documented below.
 func (o AiReasoningEngineContextSpecPtrOutput) MemoryBankConfig() AiReasoningEngineContextSpecMemoryBankConfigPtrOutput {
@@ -19021,7 +19050,292 @@ func (o AiReasoningEngineContextSpecPtrOutput) MemoryBankConfig() AiReasoningEng
 	}).(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput)
 }
 
+type AiReasoningEngineContextSpecExampleStoreConfig struct {
+	// Optional. Configuration for how to perform similarity search on examples.
+	// Structure is documented below.
+	SimilaritySearchConfig *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig `pulumi:"similaritySearchConfig"`
+}
+
+// AiReasoningEngineContextSpecExampleStoreConfigInput is an input type that accepts AiReasoningEngineContextSpecExampleStoreConfigArgs and AiReasoningEngineContextSpecExampleStoreConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecExampleStoreConfigInput` via:
+//
+//	AiReasoningEngineContextSpecExampleStoreConfigArgs{...}
+type AiReasoningEngineContextSpecExampleStoreConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecExampleStoreConfigOutput() AiReasoningEngineContextSpecExampleStoreConfigOutput
+	ToAiReasoningEngineContextSpecExampleStoreConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecExampleStoreConfigOutput
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigArgs struct {
+	// Optional. Configuration for how to perform similarity search on examples.
+	// Structure is documented below.
+	SimilaritySearchConfig AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrInput `pulumi:"similaritySearchConfig"`
+}
+
+func (AiReasoningEngineContextSpecExampleStoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigOutput() AiReasoningEngineContextSpecExampleStoreConfigOutput {
+	return i.ToAiReasoningEngineContextSpecExampleStoreConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecExampleStoreConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecExampleStoreConfigOutput).ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecExampleStoreConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecExampleStoreConfigArgs, AiReasoningEngineContextSpecExampleStoreConfigPtr and AiReasoningEngineContextSpecExampleStoreConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecExampleStoreConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecExampleStoreConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecExampleStoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput
+	ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecExampleStoreConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecExampleStoreConfigPtrType AiReasoningEngineContextSpecExampleStoreConfigArgs
+
+func AiReasoningEngineContextSpecExampleStoreConfigPtr(v *AiReasoningEngineContextSpecExampleStoreConfigArgs) AiReasoningEngineContextSpecExampleStoreConfigPtrInput {
+	return (*aiReasoningEngineContextSpecExampleStoreConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecExampleStoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecExampleStoreConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecExampleStoreConfigPtrType) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecExampleStoreConfigPtrType) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecExampleStoreConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecExampleStoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigOutput() AiReasoningEngineContextSpecExampleStoreConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecExampleStoreConfig) *AiReasoningEngineContextSpecExampleStoreConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecExampleStoreConfigPtrOutput)
+}
+
+// Optional. Configuration for how to perform similarity search on examples.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecExampleStoreConfigOutput) SimilaritySearchConfig() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecExampleStoreConfig) *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig {
+		return v.SimilaritySearchConfig
+	}).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecExampleStoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecExampleStoreConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigPtrOutput) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigPtrOutput) ToAiReasoningEngineContextSpecExampleStoreConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigPtrOutput) Elem() AiReasoningEngineContextSpecExampleStoreConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecExampleStoreConfig) AiReasoningEngineContextSpecExampleStoreConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecExampleStoreConfig
+		return ret
+	}).(AiReasoningEngineContextSpecExampleStoreConfigOutput)
+}
+
+// Optional. Configuration for how to perform similarity search on examples.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecExampleStoreConfigPtrOutput) SimilaritySearchConfig() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecExampleStoreConfig) *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SimilaritySearchConfig
+	}).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig struct {
+	// Required. The Gemini model used to generate embeddings to lookup similar examples.
+	EmbeddingModel string `pulumi:"embeddingModel"`
+}
+
+// AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigInput is an input type that accepts AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs and AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigInput` via:
+//
+//	AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs{...}
+type AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput
+	ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs struct {
+	// Required. The Gemini model used to generate embeddings to lookup similar examples.
+	EmbeddingModel pulumi.StringInput `pulumi:"embeddingModel"`
+}
+
+func (AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput {
+	return i.ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput).ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs, AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtr and AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput
+	ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrType AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs
+
+func AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtr(v *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrInput {
+	return (*aiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrType) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrType) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig) *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput)
+}
+
+// Required. The Gemini model used to generate embeddings to lookup similar examples.
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput) EmbeddingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig) string {
+		return v.EmbeddingModel
+	}).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput) ToAiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput) Elem() AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig) AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig
+		return ret
+	}).(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput)
+}
+
+// Required. The Gemini model used to generate embeddings to lookup similar examples.
+func (o AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput) EmbeddingModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EmbeddingModel
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiReasoningEngineContextSpecMemoryBankConfig struct {
+	// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+	// Structure is documented below.
+	CustomizationConfigs []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig `pulumi:"customizationConfigs"`
 	// If true, no memory revisions will be created for any requests to the Memory Bank.
 	DisableMemoryRevisions *bool `pulumi:"disableMemoryRevisions"`
 	// Configuration for how to generate memories for the Memory Bank.
@@ -19030,6 +19344,9 @@ type AiReasoningEngineContextSpecMemoryBankConfig struct {
 	// Configuration for how to perform similarity search on memories.
 	// Structure is documented below.
 	SimilaritySearchConfig *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig `pulumi:"similaritySearchConfig"`
+	// Optional. Structured memory configurations for Agent Engine sub-resources.
+	// Structure is documented below.
+	StructuredMemoryConfigs []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig `pulumi:"structuredMemoryConfigs"`
 	// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
 	// Structure is documented below.
 	TtlConfig *AiReasoningEngineContextSpecMemoryBankConfigTtlConfig `pulumi:"ttlConfig"`
@@ -19047,6 +19364,9 @@ type AiReasoningEngineContextSpecMemoryBankConfigInput interface {
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigArgs struct {
+	// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+	// Structure is documented below.
+	CustomizationConfigs AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayInput `pulumi:"customizationConfigs"`
 	// If true, no memory revisions will be created for any requests to the Memory Bank.
 	DisableMemoryRevisions pulumi.BoolPtrInput `pulumi:"disableMemoryRevisions"`
 	// Configuration for how to generate memories for the Memory Bank.
@@ -19055,6 +19375,9 @@ type AiReasoningEngineContextSpecMemoryBankConfigArgs struct {
 	// Configuration for how to perform similarity search on memories.
 	// Structure is documented below.
 	SimilaritySearchConfig AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput `pulumi:"similaritySearchConfig"`
+	// Optional. Structured memory configurations for Agent Engine sub-resources.
+	// Structure is documented below.
+	StructuredMemoryConfigs AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayInput `pulumi:"structuredMemoryConfigs"`
 	// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
 	// Structure is documented below.
 	TtlConfig AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput `pulumi:"ttlConfig"`
@@ -19137,6 +19460,14 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) ToAiReasoningEngineC
 	}).(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput)
 }
 
+// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) CustomizationConfigs() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig {
+		return v.CustomizationConfigs
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput)
+}
+
 // If true, no memory revisions will be created for any requests to the Memory Bank.
 func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) DisableMemoryRevisions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) *bool { return v.DisableMemoryRevisions }).(pulumi.BoolPtrOutput)
@@ -19156,6 +19487,14 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) SimilaritySearchConf
 	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {
 		return v.SimilaritySearchConfig
 	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
+}
+
+// Optional. Structured memory configurations for Agent Engine sub-resources.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigOutput) StructuredMemoryConfigs() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfig) []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig {
+		return v.StructuredMemoryConfigs
+	}).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput)
 }
 
 // Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
@@ -19190,6 +19529,17 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) Elem() AiReasonin
 	}).(AiReasoningEngineContextSpecMemoryBankConfigOutput)
 }
 
+// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) CustomizationConfigs() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CustomizationConfigs
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput)
+}
+
 // If true, no memory revisions will be created for any requests to the Memory Bank.
 func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) DisableMemoryRevisions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) *bool {
@@ -19222,6 +19572,17 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) SimilaritySearchC
 	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
 }
 
+// Optional. Structured memory configurations for Agent Engine sub-resources.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) StructuredMemoryConfigs() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfig) []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StructuredMemoryConfigs
+	}).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput)
+}
+
 // Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
 // Structure is documented below.
 func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) TtlConfig() AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput {
@@ -19231,6 +19592,696 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigPtrOutput) TtlConfig() AiRea
 		}
 		return v.TtlConfig
 	}).(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig struct {
+	// Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
+	// Structure is documented below.
+	ConsolidationConfig *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig `pulumi:"consolidationConfig"`
+	// Optional. Generate memories in the third person if set to true.
+	EnableThirdPersonMemories *bool `pulumi:"enableThirdPersonMemories"`
+	// Optional. List of topics that the memory should be associated with.
+	// Structure is documented below.
+	MemoryTopics []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic `pulumi:"memoryTopics"`
+	// Optional. List of scope keys that this customization config applies to.
+	ScopeKeys []string `pulumi:"scopeKeys"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs struct {
+	// Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
+	// Structure is documented below.
+	ConsolidationConfig AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrInput `pulumi:"consolidationConfig"`
+	// Optional. Generate memories in the third person if set to true.
+	EnableThirdPersonMemories pulumi.BoolPtrInput `pulumi:"enableThirdPersonMemories"`
+	// Optional. List of topics that the memory should be associated with.
+	// Structure is documented below.
+	MemoryTopics AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayInput `pulumi:"memoryTopics"`
+	// Optional. List of scope keys that this customization config applies to.
+	ScopeKeys pulumi.StringArrayInput `pulumi:"scopeKeys"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray{ AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{...} }
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigInput
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput {
+	return o
+}
+
+// Optional. Configuration for how many memory revisions Memory Bank considers when consolidating each memory candidate.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) ConsolidationConfig() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig {
+		return v.ConsolidationConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput)
+}
+
+// Optional. Generate memories in the third person if set to true.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) EnableThirdPersonMemories() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig) *bool {
+		return v.EnableThirdPersonMemories
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. List of topics that the memory should be associated with.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) MemoryTopics() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig) []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic {
+		return v.MemoryTopics
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput)
+}
+
+// Optional. List of scope keys that this customization config applies to.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput) ScopeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig) []string { return v.ScopeKeys }).(pulumi.StringArrayOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput) Index(i pulumi.IntInput) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig {
+		return vs[0].([]AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig)[vs[1].(int)]
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig struct {
+	// Number of revisions to consider per candidate count.
+	RevisionsPerCandidateCount *int `pulumi:"revisionsPerCandidateCount"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs struct {
+	// Number of revisions to consider per candidate count.
+	RevisionsPerCandidateCount pulumi.IntPtrInput `pulumi:"revisionsPerCandidateCount"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput)
+}
+
+// Number of revisions to consider per candidate count.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput) RevisionsPerCandidateCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig) *int {
+		return v.RevisionsPerCandidateCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput)
+}
+
+// Number of revisions to consider per candidate count.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput) RevisionsPerCandidateCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RevisionsPerCandidateCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic struct {
+	// Optional. Custom memory topic.
+	// Structure is documented below.
+	CustomMemoryTopic *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic `pulumi:"customMemoryTopic"`
+	// Optional. Managed memory topic.
+	// Structure is documented below.
+	ManagedMemoryTopic *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic `pulumi:"managedMemoryTopic"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs struct {
+	// Optional. Custom memory topic.
+	// Structure is documented below.
+	CustomMemoryTopic AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrInput `pulumi:"customMemoryTopic"`
+	// Optional. Managed memory topic.
+	// Structure is documented below.
+	ManagedMemoryTopic AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput `pulumi:"managedMemoryTopic"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray{ AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{...} }
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray []AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicInput
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput {
+	return o
+}
+
+// Optional. Custom memory topic.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput) CustomMemoryTopic() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic {
+		return v.CustomMemoryTopic
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput)
+}
+
+// Optional. Managed memory topic.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput) ManagedMemoryTopic() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic {
+		return v.ManagedMemoryTopic
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput) Index(i pulumi.IntInput) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic {
+		return vs[0].([]AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic)[vs[1].(int)]
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic struct {
+	// Description of custom memory topic.
+	Description *string `pulumi:"description"`
+	// Label of custom memory topic.
+	Label *string `pulumi:"label"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs struct {
+	// Description of custom memory topic.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Label of custom memory topic.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput).ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs, AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtr and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrType AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtr(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput)
+}
+
+// Description of custom memory topic.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic) *string {
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label of custom memory topic.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic) *string {
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput)
+}
+
+// Description of custom memory topic.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Label of custom memory topic.
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Label
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic struct {
+	// Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+	ManagedTopicEnum *string `pulumi:"managedTopicEnum"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs struct {
+	// Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+	ManagedTopicEnum pulumi.StringPtrInput `pulumi:"managedTopicEnum"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput).ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs, AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtr and AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrType AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtr(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic) *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput)
+}
+
+// Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput) ManagedTopicEnum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic) *string {
+		return v.ManagedTopicEnum
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic) AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput)
+}
+
+// Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
+func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput) ManagedTopicEnum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedTopicEnum
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig struct {
@@ -19371,7 +20422,7 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) M
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig struct {
-	// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+	// Required. The Gemini model used to generate embeddings to lookup similar examples.
 	EmbeddingModel string `pulumi:"embeddingModel"`
 }
 
@@ -19387,7 +20438,7 @@ type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput int
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs struct {
-	// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+	// Required. The Gemini model used to generate embeddings to lookup similar examples.
 	EmbeddingModel pulumi.StringInput `pulumi:"embeddingModel"`
 }
 
@@ -19468,7 +20519,7 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput
 	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput)
 }
 
-// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+// Required. The Gemini model used to generate embeddings to lookup similar examples.
 func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput) EmbeddingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig) string {
 		return v.EmbeddingModel
@@ -19499,7 +20550,7 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOut
 	}).(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput)
 }
 
-// The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+// Required. The Gemini model used to generate embeddings to lookup similar examples.
 func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput) EmbeddingModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig) *string {
 		if v == nil {
@@ -19507,6 +20558,229 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOut
 		}
 		return &v.EmbeddingModel
 	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig struct {
+	// Optional. List of schema configs that this structured memory config applies to.
+	// Structure is documented below.
+	SchemaConfigs []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig `pulumi:"schemaConfigs"`
+	// Optional. List of scope keys that this structured memory config applies to.
+	ScopeKeys []string `pulumi:"scopeKeys"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs struct {
+	// Optional. List of schema configs that this structured memory config applies to.
+	// Structure is documented below.
+	SchemaConfigs AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayInput `pulumi:"schemaConfigs"`
+	// Optional. List of scope keys that this structured memory config applies to.
+	ScopeKeys pulumi.StringArrayInput `pulumi:"scopeKeys"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray and AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray{ AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{...} }
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigInput
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput {
+	return o
+}
+
+// Optional. List of schema configs that this structured memory config applies to.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput) SchemaConfigs() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig) []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig {
+		return v.SchemaConfigs
+	}).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput)
+}
+
+// Optional. List of scope keys that this structured memory config applies to.
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput) ScopeKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig) []string {
+		return v.ScopeKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput) Index(i pulumi.IntInput) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig {
+		return vs[0].([]AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig)[vs[1].(int)]
+	}).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig struct {
+	// Required. Unique ID identifying the memory schema.
+	Id string `pulumi:"id"`
+	// Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+	MemorySchema *string `pulumi:"memorySchema"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs struct {
+	// Required. Unique ID identifying the memory schema.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+	MemorySchema pulumi.StringPtrInput `pulumi:"memorySchema"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray and AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{ AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{...} }
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray []AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigInput
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput {
+	return o
+}
+
+// Required. Unique ID identifying the memory schema.
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig) string {
+		return v.Id
+	}).(pulumi.StringOutput)
+}
+
+// Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput) MemorySchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig) *string {
+		return v.MemorySchema
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput() AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput) ToAiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput) Index(i pulumi.IntInput) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig {
+		return vs[0].([]AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig)[vs[1].(int)]
+	}).(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput)
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigTtlConfig struct {
@@ -20353,33 +21627,40 @@ func (o AiReasoningEngineIamMemberConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type AiReasoningEngineSpec struct {
+	// Optional. The A2A Agent Card for the agent (if available).
+	AgentCard *string `pulumi:"agentCard"`
 	// Optional. The OSS agent framework used to develop the agent.
 	AgentFramework *string `pulumi:"agentFramework"`
+	// Optional. Configuration for building container image.
+	BuildSpec *AiReasoningEngineSpecBuildSpec `pulumi:"buildSpec"`
 	// Optional. Declarations for object class methods in OpenAPI
 	// specification format.
+	// **Note**: When deploying via Terraform, this field must be populated manually.
+	// Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+	// Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+	// **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+	// * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+	// * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
 	ClassMethods *string `pulumi:"classMethods"`
 	// Deploy from a container image with a defined entrypoint and commands.
-	// Structure is documented below.
 	ContainerSpec *AiReasoningEngineSpecContainerSpec `pulumi:"containerSpec"`
 	// Optional. The specification of a Reasoning Engine deployment.
-	// Structure is documented below.
 	DeploymentSpec *AiReasoningEngineSpecDeploymentSpec `pulumi:"deploymentSpec"`
-	// (Output)
 	// The identity to use for the Reasoning Engine.
 	EffectiveIdentity *string `pulumi:"effectiveIdentity"`
+	// Optional. The resource name of the linked ExampleStore.
+	ExampleStore *string `pulumi:"exampleStore"`
 	// Optional. The identity type to use for the Reasoning Engine.
-	// If not specified, the `serviceAccount` field will be used if set,
+	// If not specified, the 'service_account' field will be used if set,
 	// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
 	// Possible values:
-	// * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-	// * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-	//   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+	// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+	// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
 	IdentityType *string `pulumi:"identityType"`
 	// Optional. User provided package spec of the ReasoningEngine.
 	// Ignored when users directly specify a deployment image through
 	// deploymentSpec.first_party_image_override, but keeping the
 	// fieldBehavior to avoid introducing breaking changes.
-	// Structure is documented below.
 	PackageSpec *AiReasoningEngineSpecPackageSpec `pulumi:"packageSpec"`
 	// Optional. The service account that the Reasoning Engine artifact runs
 	// as. It should have "roles/storage.objectViewer" for reading the user
@@ -20388,7 +21669,6 @@ type AiReasoningEngineSpec struct {
 	// Agent in the project will be used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Specification for deploying from source code.
-	// Structure is documented below.
 	SourceCodeSpec *AiReasoningEngineSpecSourceCodeSpec `pulumi:"sourceCodeSpec"`
 }
 
@@ -20404,33 +21684,40 @@ type AiReasoningEngineSpecInput interface {
 }
 
 type AiReasoningEngineSpecArgs struct {
+	// Optional. The A2A Agent Card for the agent (if available).
+	AgentCard pulumi.StringPtrInput `pulumi:"agentCard"`
 	// Optional. The OSS agent framework used to develop the agent.
 	AgentFramework pulumi.StringPtrInput `pulumi:"agentFramework"`
+	// Optional. Configuration for building container image.
+	BuildSpec AiReasoningEngineSpecBuildSpecPtrInput `pulumi:"buildSpec"`
 	// Optional. Declarations for object class methods in OpenAPI
 	// specification format.
+	// **Note**: When deploying via Terraform, this field must be populated manually.
+	// Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+	// Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+	// **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+	// * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+	// * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
 	ClassMethods pulumi.StringPtrInput `pulumi:"classMethods"`
 	// Deploy from a container image with a defined entrypoint and commands.
-	// Structure is documented below.
 	ContainerSpec AiReasoningEngineSpecContainerSpecPtrInput `pulumi:"containerSpec"`
 	// Optional. The specification of a Reasoning Engine deployment.
-	// Structure is documented below.
 	DeploymentSpec AiReasoningEngineSpecDeploymentSpecPtrInput `pulumi:"deploymentSpec"`
-	// (Output)
 	// The identity to use for the Reasoning Engine.
 	EffectiveIdentity pulumi.StringPtrInput `pulumi:"effectiveIdentity"`
+	// Optional. The resource name of the linked ExampleStore.
+	ExampleStore pulumi.StringPtrInput `pulumi:"exampleStore"`
 	// Optional. The identity type to use for the Reasoning Engine.
-	// If not specified, the `serviceAccount` field will be used if set,
+	// If not specified, the 'service_account' field will be used if set,
 	// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
 	// Possible values:
-	// * `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-	// * `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-	//   Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+	// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+	// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
 	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
 	// Optional. User provided package spec of the ReasoningEngine.
 	// Ignored when users directly specify a deployment image through
 	// deploymentSpec.first_party_image_override, but keeping the
 	// fieldBehavior to avoid introducing breaking changes.
-	// Structure is documented below.
 	PackageSpec AiReasoningEngineSpecPackageSpecPtrInput `pulumi:"packageSpec"`
 	// Optional. The service account that the Reasoning Engine artifact runs
 	// as. It should have "roles/storage.objectViewer" for reading the user
@@ -20439,7 +21726,6 @@ type AiReasoningEngineSpecArgs struct {
 	// Agent in the project will be used.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Specification for deploying from source code.
-	// Structure is documented below.
 	SourceCodeSpec AiReasoningEngineSpecSourceCodeSpecPtrInput `pulumi:"sourceCodeSpec"`
 }
 
@@ -20520,42 +21806,59 @@ func (o AiReasoningEngineSpecOutput) ToAiReasoningEngineSpecPtrOutputWithContext
 	}).(AiReasoningEngineSpecPtrOutput)
 }
 
+// Optional. The A2A Agent Card for the agent (if available).
+func (o AiReasoningEngineSpecOutput) AgentCard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.AgentCard }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The OSS agent framework used to develop the agent.
 func (o AiReasoningEngineSpecOutput) AgentFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.AgentFramework }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Configuration for building container image.
+func (o AiReasoningEngineSpecOutput) BuildSpec() AiReasoningEngineSpecBuildSpecPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecBuildSpec { return v.BuildSpec }).(AiReasoningEngineSpecBuildSpecPtrOutput)
+}
+
 // Optional. Declarations for object class methods in OpenAPI
 // specification format.
+// **Note**: When deploying via Terraform, this field must be populated manually.
+// Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+// Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+// **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+// * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+// * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
 func (o AiReasoningEngineSpecOutput) ClassMethods() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.ClassMethods }).(pulumi.StringPtrOutput)
 }
 
 // Deploy from a container image with a defined entrypoint and commands.
-// Structure is documented below.
 func (o AiReasoningEngineSpecOutput) ContainerSpec() AiReasoningEngineSpecContainerSpecPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecContainerSpec { return v.ContainerSpec }).(AiReasoningEngineSpecContainerSpecPtrOutput)
 }
 
 // Optional. The specification of a Reasoning Engine deployment.
-// Structure is documented below.
 func (o AiReasoningEngineSpecOutput) DeploymentSpec() AiReasoningEngineSpecDeploymentSpecPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecDeploymentSpec { return v.DeploymentSpec }).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
 }
 
-// (Output)
 // The identity to use for the Reasoning Engine.
 func (o AiReasoningEngineSpecOutput) EffectiveIdentity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.EffectiveIdentity }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The resource name of the linked ExampleStore.
+func (o AiReasoningEngineSpecOutput) ExampleStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.ExampleStore }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The identity type to use for the Reasoning Engine.
-// If not specified, the `serviceAccount` field will be used if set,
+// If not specified, the 'service_account' field will be used if set,
 // otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
 // Possible values:
-//   - `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-//   - `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-//     Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
 func (o AiReasoningEngineSpecOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
 }
@@ -20564,7 +21867,6 @@ func (o AiReasoningEngineSpecOutput) IdentityType() pulumi.StringPtrOutput {
 // Ignored when users directly specify a deployment image through
 // deploymentSpec.first_party_image_override, but keeping the
 // fieldBehavior to avoid introducing breaking changes.
-// Structure is documented below.
 func (o AiReasoningEngineSpecOutput) PackageSpec() AiReasoningEngineSpecPackageSpecPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecPackageSpec { return v.PackageSpec }).(AiReasoningEngineSpecPackageSpecPtrOutput)
 }
@@ -20579,7 +21881,6 @@ func (o AiReasoningEngineSpecOutput) ServiceAccount() pulumi.StringPtrOutput {
 }
 
 // Specification for deploying from source code.
-// Structure is documented below.
 func (o AiReasoningEngineSpecOutput) SourceCodeSpec() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpec) *AiReasoningEngineSpecSourceCodeSpec { return v.SourceCodeSpec }).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
 }
@@ -20608,6 +21909,16 @@ func (o AiReasoningEngineSpecPtrOutput) Elem() AiReasoningEngineSpecOutput {
 	}).(AiReasoningEngineSpecOutput)
 }
 
+// Optional. The A2A Agent Card for the agent (if available).
+func (o AiReasoningEngineSpecPtrOutput) AgentCard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentCard
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The OSS agent framework used to develop the agent.
 func (o AiReasoningEngineSpecPtrOutput) AgentFramework() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
@@ -20618,8 +21929,24 @@ func (o AiReasoningEngineSpecPtrOutput) AgentFramework() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Configuration for building container image.
+func (o AiReasoningEngineSpecPtrOutput) BuildSpec() AiReasoningEngineSpecBuildSpecPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpec) *AiReasoningEngineSpecBuildSpec {
+		if v == nil {
+			return nil
+		}
+		return v.BuildSpec
+	}).(AiReasoningEngineSpecBuildSpecPtrOutput)
+}
+
 // Optional. Declarations for object class methods in OpenAPI
 // specification format.
+// **Note**: When deploying via Terraform, this field must be populated manually.
+// Otherwise, client SDKs (like `agent_engines.get()`) will not be able to discover the methods, and calls to the engine (or A2A integrations) will fail.
+// Depending on the template/framework used (`agentFramework`), the required class methods and their parameters differ:
+// **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
+// * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
+// * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
 func (o AiReasoningEngineSpecPtrOutput) ClassMethods() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
 		if v == nil {
@@ -20630,7 +21957,6 @@ func (o AiReasoningEngineSpecPtrOutput) ClassMethods() pulumi.StringPtrOutput {
 }
 
 // Deploy from a container image with a defined entrypoint and commands.
-// Structure is documented below.
 func (o AiReasoningEngineSpecPtrOutput) ContainerSpec() AiReasoningEngineSpecContainerSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *AiReasoningEngineSpecContainerSpec {
 		if v == nil {
@@ -20641,7 +21967,6 @@ func (o AiReasoningEngineSpecPtrOutput) ContainerSpec() AiReasoningEngineSpecCon
 }
 
 // Optional. The specification of a Reasoning Engine deployment.
-// Structure is documented below.
 func (o AiReasoningEngineSpecPtrOutput) DeploymentSpec() AiReasoningEngineSpecDeploymentSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *AiReasoningEngineSpecDeploymentSpec {
 		if v == nil {
@@ -20651,7 +21976,6 @@ func (o AiReasoningEngineSpecPtrOutput) DeploymentSpec() AiReasoningEngineSpecDe
 	}).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
 }
 
-// (Output)
 // The identity to use for the Reasoning Engine.
 func (o AiReasoningEngineSpecPtrOutput) EffectiveIdentity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
@@ -20662,13 +21986,22 @@ func (o AiReasoningEngineSpecPtrOutput) EffectiveIdentity() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The resource name of the linked ExampleStore.
+func (o AiReasoningEngineSpecPtrOutput) ExampleStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExampleStore
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. The identity type to use for the Reasoning Engine.
-// If not specified, the `serviceAccount` field will be used if set,
+// If not specified, the 'service_account' field will be used if set,
 // otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
 // Possible values:
-//   - `SERVICE_ACCOUNT`: Use a custom service account if the `serviceAccount` field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
-//   - `AGENT_IDENTITY`: Use Agent Identity. The `serviceAccount` field must not be set.
-//     Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
+// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
+// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
 func (o AiReasoningEngineSpecPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *string {
 		if v == nil {
@@ -20682,7 +22015,6 @@ func (o AiReasoningEngineSpecPtrOutput) IdentityType() pulumi.StringPtrOutput {
 // Ignored when users directly specify a deployment image through
 // deploymentSpec.first_party_image_override, but keeping the
 // fieldBehavior to avoid introducing breaking changes.
-// Structure is documented below.
 func (o AiReasoningEngineSpecPtrOutput) PackageSpec() AiReasoningEngineSpecPackageSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *AiReasoningEngineSpecPackageSpec {
 		if v == nil {
@@ -20707,7 +22039,6 @@ func (o AiReasoningEngineSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput 
 }
 
 // Specification for deploying from source code.
-// Structure is documented below.
 func (o AiReasoningEngineSpecPtrOutput) SourceCodeSpec() AiReasoningEngineSpecSourceCodeSpecPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpec) *AiReasoningEngineSpecSourceCodeSpec {
 		if v == nil {
@@ -20715,6 +22046,143 @@ func (o AiReasoningEngineSpecPtrOutput) SourceCodeSpec() AiReasoningEngineSpecSo
 		}
 		return v.SourceCodeSpec
 	}).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecBuildSpec struct {
+	// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+	WorkerPool *string `pulumi:"workerPool"`
+}
+
+// AiReasoningEngineSpecBuildSpecInput is an input type that accepts AiReasoningEngineSpecBuildSpecArgs and AiReasoningEngineSpecBuildSpecOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecBuildSpecInput` via:
+//
+//	AiReasoningEngineSpecBuildSpecArgs{...}
+type AiReasoningEngineSpecBuildSpecInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecBuildSpecOutput() AiReasoningEngineSpecBuildSpecOutput
+	ToAiReasoningEngineSpecBuildSpecOutputWithContext(context.Context) AiReasoningEngineSpecBuildSpecOutput
+}
+
+type AiReasoningEngineSpecBuildSpecArgs struct {
+	// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
+}
+
+func (AiReasoningEngineSpecBuildSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecBuildSpec)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecBuildSpecArgs) ToAiReasoningEngineSpecBuildSpecOutput() AiReasoningEngineSpecBuildSpecOutput {
+	return i.ToAiReasoningEngineSpecBuildSpecOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecBuildSpecArgs) ToAiReasoningEngineSpecBuildSpecOutputWithContext(ctx context.Context) AiReasoningEngineSpecBuildSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecBuildSpecOutput)
+}
+
+func (i AiReasoningEngineSpecBuildSpecArgs) ToAiReasoningEngineSpecBuildSpecPtrOutput() AiReasoningEngineSpecBuildSpecPtrOutput {
+	return i.ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecBuildSpecArgs) ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecBuildSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecBuildSpecOutput).ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecBuildSpecPtrInput is an input type that accepts AiReasoningEngineSpecBuildSpecArgs, AiReasoningEngineSpecBuildSpecPtr and AiReasoningEngineSpecBuildSpecPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecBuildSpecPtrInput` via:
+//
+//	        AiReasoningEngineSpecBuildSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecBuildSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecBuildSpecPtrOutput() AiReasoningEngineSpecBuildSpecPtrOutput
+	ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(context.Context) AiReasoningEngineSpecBuildSpecPtrOutput
+}
+
+type aiReasoningEngineSpecBuildSpecPtrType AiReasoningEngineSpecBuildSpecArgs
+
+func AiReasoningEngineSpecBuildSpecPtr(v *AiReasoningEngineSpecBuildSpecArgs) AiReasoningEngineSpecBuildSpecPtrInput {
+	return (*aiReasoningEngineSpecBuildSpecPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecBuildSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecBuildSpec)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecBuildSpecPtrType) ToAiReasoningEngineSpecBuildSpecPtrOutput() AiReasoningEngineSpecBuildSpecPtrOutput {
+	return i.ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecBuildSpecPtrType) ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecBuildSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecBuildSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecBuildSpecOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecBuildSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecBuildSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecBuildSpecOutput) ToAiReasoningEngineSpecBuildSpecOutput() AiReasoningEngineSpecBuildSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecBuildSpecOutput) ToAiReasoningEngineSpecBuildSpecOutputWithContext(ctx context.Context) AiReasoningEngineSpecBuildSpecOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecBuildSpecOutput) ToAiReasoningEngineSpecBuildSpecPtrOutput() AiReasoningEngineSpecBuildSpecPtrOutput {
+	return o.ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecBuildSpecOutput) ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecBuildSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecBuildSpec) *AiReasoningEngineSpecBuildSpec {
+		return &v
+	}).(AiReasoningEngineSpecBuildSpecPtrOutput)
+}
+
+// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+func (o AiReasoningEngineSpecBuildSpecOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecBuildSpec) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecBuildSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecBuildSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecBuildSpec)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecBuildSpecPtrOutput) ToAiReasoningEngineSpecBuildSpecPtrOutput() AiReasoningEngineSpecBuildSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecBuildSpecPtrOutput) ToAiReasoningEngineSpecBuildSpecPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecBuildSpecPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecBuildSpecPtrOutput) Elem() AiReasoningEngineSpecBuildSpecOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecBuildSpec) AiReasoningEngineSpecBuildSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecBuildSpec
+		return ret
+	}).(AiReasoningEngineSpecBuildSpecOutput)
+}
+
+// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
+func (o AiReasoningEngineSpecBuildSpecPtrOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecBuildSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerPool
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiReasoningEngineSpecContainerSpec struct {
@@ -20863,13 +22331,31 @@ func (o AiReasoningEngineSpecContainerSpecPtrOutput) ImageUri() pulumi.StringPtr
 }
 
 type AiReasoningEngineSpecDeploymentSpec struct {
+	// (Optional, Beta)
+	// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+	// Structure is documented below.
+	AgentGatewayConfig *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig `pulumi:"agentGatewayConfig"`
+	// (Optional, Beta)
+	// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+	// Possible values:
+	// * `STABLE`: Stable agent server mode.
+	// * `EXPERIMENTAL`: Experimental agent server mode.
+	//   Possible values are: `STABLE`, `EXPERIMENTAL`.
+	AgentServerMode *string `pulumi:"agentServerMode"`
 	// Optional. Concurrency for each container and agent server.
 	// Recommended value: 2 * cpu + 1. Defaults to 9.
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
+	// (Optional, Beta)
+	// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+	DedicatedIngressEndpointEnabled *bool `pulumi:"dedicatedIngressEndpointEnabled"`
 	// Optional. Environment variables to be set with the Reasoning
 	// Engine deployment.
 	// Structure is documented below.
 	Envs []AiReasoningEngineSpecDeploymentSpecEnv `pulumi:"envs"`
+	// (Optional, Beta)
+	// Optional. Specifies the configuration for keep-alive probe.
+	// Structure is documented below.
+	KeepAliveProbe *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe `pulumi:"keepAliveProbe"`
 	// Optional. The maximum number of application instances that can be
 	// launched to handle increased traffic. Defaults to 100.
 	// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
@@ -20911,13 +22397,31 @@ type AiReasoningEngineSpecDeploymentSpecInput interface {
 }
 
 type AiReasoningEngineSpecDeploymentSpecArgs struct {
+	// (Optional, Beta)
+	// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+	// Structure is documented below.
+	AgentGatewayConfig AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput `pulumi:"agentGatewayConfig"`
+	// (Optional, Beta)
+	// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+	// Possible values:
+	// * `STABLE`: Stable agent server mode.
+	// * `EXPERIMENTAL`: Experimental agent server mode.
+	//   Possible values are: `STABLE`, `EXPERIMENTAL`.
+	AgentServerMode pulumi.StringPtrInput `pulumi:"agentServerMode"`
 	// Optional. Concurrency for each container and agent server.
 	// Recommended value: 2 * cpu + 1. Defaults to 9.
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
+	// (Optional, Beta)
+	// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+	DedicatedIngressEndpointEnabled pulumi.BoolPtrInput `pulumi:"dedicatedIngressEndpointEnabled"`
 	// Optional. Environment variables to be set with the Reasoning
 	// Engine deployment.
 	// Structure is documented below.
 	Envs AiReasoningEngineSpecDeploymentSpecEnvArrayInput `pulumi:"envs"`
+	// (Optional, Beta)
+	// Optional. Specifies the configuration for keep-alive probe.
+	// Structure is documented below.
+	KeepAliveProbe AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrInput `pulumi:"keepAliveProbe"`
 	// Optional. The maximum number of application instances that can be
 	// launched to handle increased traffic. Defaults to 100.
 	// Range: [1, 1000]. If VPC-SC or PSC-I is enabled, the acceptable
@@ -21024,10 +22528,35 @@ func (o AiReasoningEngineSpecDeploymentSpecOutput) ToAiReasoningEngineSpecDeploy
 	}).(AiReasoningEngineSpecDeploymentSpecPtrOutput)
 }
 
+// (Optional, Beta)
+// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) AgentGatewayConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
+		return v.AgentGatewayConfig
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+// Possible values:
+//   - `STABLE`: Stable agent server mode.
+//   - `EXPERIMENTAL`: Experimental agent server mode.
+//     Possible values are: `STABLE`, `EXPERIMENTAL`.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) AgentServerMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *string { return v.AgentServerMode }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Concurrency for each container and agent server.
 // Recommended value: 2 * cpu + 1. Defaults to 9.
 func (o AiReasoningEngineSpecDeploymentSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) DedicatedIngressEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *bool { return v.DedicatedIngressEndpointEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Environment variables to be set with the Reasoning
@@ -21035,6 +22564,15 @@ func (o AiReasoningEngineSpecDeploymentSpecOutput) ContainerConcurrency() pulumi
 // Structure is documented below.
 func (o AiReasoningEngineSpecDeploymentSpecOutput) Envs() AiReasoningEngineSpecDeploymentSpecEnvArrayOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) []AiReasoningEngineSpecDeploymentSpecEnv { return v.Envs }).(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput)
+}
+
+// (Optional, Beta)
+// Optional. Specifies the configuration for keep-alive probe.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecOutput) KeepAliveProbe() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpec) *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe {
+		return v.KeepAliveProbe
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput)
 }
 
 // Optional. The maximum number of application instances that can be
@@ -21107,6 +22645,33 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Elem() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecDeploymentSpecOutput)
 }
 
+// (Optional, Beta)
+// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) AgentGatewayConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AgentGatewayConfig
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+// Possible values:
+//   - `STABLE`: Stable agent server mode.
+//   - `EXPERIMENTAL`: Experimental agent server mode.
+//     Possible values are: `STABLE`, `EXPERIMENTAL`.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) AgentServerMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AgentServerMode
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Concurrency for each container and agent server.
 // Recommended value: 2 * cpu + 1. Defaults to 9.
 func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
@@ -21116,6 +22681,17 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) ContainerConcurrency() pul
 		}
 		return v.ContainerConcurrency
 	}).(pulumi.IntPtrOutput)
+}
+
+// (Optional, Beta)
+// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) DedicatedIngressEndpointEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DedicatedIngressEndpointEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Environment variables to be set with the Reasoning
@@ -21128,6 +22704,18 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) Envs() AiReasoningEngineSp
 		}
 		return v.Envs
 	}).(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput)
+}
+
+// (Optional, Beta)
+// Optional. Specifies the configuration for keep-alive probe.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) KeepAliveProbe() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpec) *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAliveProbe
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput)
 }
 
 // Optional. The maximum number of application instances that can be
@@ -21195,6 +22783,452 @@ func (o AiReasoningEngineSpecDeploymentSpecPtrOutput) SecretEnvs() AiReasoningEn
 		}
 		return v.SecretEnvs
 	}).(AiReasoningEngineSpecDeploymentSpecSecretEnvArrayOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig struct {
+	// Optional. Configuration for traffic originating from the Reasoning Engine.
+	// Structure is documented below.
+	AgentToAnywhereConfig *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig `pulumi:"agentToAnywhereConfig"`
+	// Optional. Configuration for traffic targeting the Reasoning Engine.
+	// Structure is documented below.
+	ClientToAgentConfig *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig `pulumi:"clientToAgentConfig"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs and AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs{...}
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs struct {
+	// Optional. Configuration for traffic originating from the Reasoning Engine.
+	// Structure is documented below.
+	AgentToAnywhereConfig AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrInput `pulumi:"agentToAnywhereConfig"`
+	// Optional. Configuration for traffic targeting the Reasoning Engine.
+	// Structure is documented below.
+	ClientToAgentConfig AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrInput `pulumi:"clientToAgentConfig"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput)
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput).ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs, AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtr and AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput` via:
+//
+//	        AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput
+}
+
+type aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrType AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs
+
+func AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtr(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput {
+	return (*aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return o.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
+		return &v
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput)
+}
+
+// Optional. Configuration for traffic originating from the Reasoning Engine.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) AgentToAnywhereConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig {
+		return v.AgentToAnywhereConfig
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput)
+}
+
+// Optional. Configuration for traffic targeting the Reasoning Engine.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput) ClientToAgentConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig {
+		return v.ClientToAgentConfig
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput) Elem() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig
+		return ret
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput)
+}
+
+// Optional. Configuration for traffic originating from the Reasoning Engine.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput) AgentToAnywhereConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AgentToAnywhereConfig
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput)
+}
+
+// Optional. Configuration for traffic targeting the Reasoning Engine.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput) ClientToAgentConfig() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ClientToAgentConfig
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig struct {
+	// Required. The resource name of the Agent Gateway for outbound traffic.
+	AgentGateway string `pulumi:"agentGateway"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs and AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs{...}
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs struct {
+	// Required. The resource name of the Agent Gateway for outbound traffic.
+	AgentGateway pulumi.StringInput `pulumi:"agentGateway"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput)
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput).ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs, AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtr and AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrInput` via:
+//
+//	        AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput
+}
+
+type aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrType AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs
+
+func AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtr(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrInput {
+	return (*aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return o.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig {
+		return &v
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput)
+}
+
+// Required. The resource name of the Agent Gateway for outbound traffic.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput) AgentGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig) string {
+		return v.AgentGateway
+	}).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput) Elem() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig
+		return ret
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput)
+}
+
+// Required. The resource name of the Agent Gateway for outbound traffic.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput) AgentGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AgentGateway
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig struct {
+	// Required. The resource name of the Agent Gateway to use for inbound traffic.
+	AgentGateway string `pulumi:"agentGateway"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs and AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs{...}
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs struct {
+	// Required. The resource name of the Agent Gateway to use for inbound traffic.
+	AgentGateway pulumi.StringInput `pulumi:"agentGateway"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput)
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput).ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs, AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtr and AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrInput` via:
+//
+//	        AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput
+	ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput
+}
+
+type aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrType AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs
+
+func AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtr(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrInput {
+	return (*aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrType) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return o.ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig) *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig {
+		return &v
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput)
+}
+
+// Required. The resource name of the Agent Gateway to use for inbound traffic.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput) AgentGateway() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig) string {
+		return v.AgentGateway
+	}).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput) ToAiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput) Elem() AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig) AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig
+		return ret
+	}).(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput)
+}
+
+// Required. The resource name of the Agent Gateway to use for inbound traffic.
+func (o AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput) AgentGateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AgentGateway
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiReasoningEngineSpecDeploymentSpecEnv struct {
@@ -21325,6 +23359,324 @@ func (o AiReasoningEngineSpecDeploymentSpecEnvArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineSpecDeploymentSpecEnv {
 		return vs[0].([]AiReasoningEngineSpecDeploymentSpecEnv)[vs[1].(int)]
 	}).(AiReasoningEngineSpecDeploymentSpecEnvOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbe struct {
+	// Specifies the HTTP GET configuration for the probe.
+	// Structure is documented below.
+	HttpGet *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet `pulumi:"httpGet"`
+	// Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+	MaxSeconds *int `pulumi:"maxSeconds"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecKeepAliveProbeInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs and AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecKeepAliveProbeInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs{...}
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs struct {
+	// Specifies the HTTP GET configuration for the probe.
+	// Structure is documented below.
+	HttpGet AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrInput `pulumi:"httpGet"`
+	// Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+	MaxSeconds pulumi.IntPtrInput `pulumi:"maxSeconds"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbe)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput)
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput).ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs, AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtr and AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrInput` via:
+//
+//	        AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput
+}
+
+type aiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrType AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs
+
+func AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtr(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs) AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrInput {
+	return (*aiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrType)(v)
+}
+
+func (*aiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecKeepAliveProbe)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrType) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrType) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbe)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return o.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecDeploymentSpecKeepAliveProbe) *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe {
+		return &v
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput)
+}
+
+// Specifies the HTTP GET configuration for the probe.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) HttpGet() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecKeepAliveProbe) *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet {
+		return v.HttpGet
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput)
+}
+
+// Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput) MaxSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecKeepAliveProbe) *int { return v.MaxSeconds }).(pulumi.IntPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecKeepAliveProbe)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput) Elem() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe) AiReasoningEngineSpecDeploymentSpecKeepAliveProbe {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecDeploymentSpecKeepAliveProbe
+		return ret
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput)
+}
+
+// Specifies the HTTP GET configuration for the probe.
+// Structure is documented below.
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput) HttpGet() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe) *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet {
+		if v == nil {
+			return nil
+		}
+		return v.HttpGet
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput)
+}
+
+// Optional. Specifies the maximum duration (in seconds) to keep the instance alive via this probe. Can be a maximum of 3600 seconds (1 hour).
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput) MaxSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbe) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet struct {
+	// Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+	Path string `pulumi:"path"`
+	// Optional. Specifies the port number on the container to which the request is sent.
+	Port *int `pulumi:"port"`
+}
+
+// AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs and AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetInput` via:
+//
+//	AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs{...}
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs struct {
+	// Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+	Path pulumi.StringInput `pulumi:"path"`
+	// Optional. Specifies the port number on the container to which the request is sent.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput)
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput).ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrInput is an input type that accepts AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs, AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtr and AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrInput` via:
+//
+//	        AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput
+	ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput
+}
+
+type aiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrType AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs
+
+func AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtr(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrInput {
+	return (*aiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrType) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return i.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrType) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return o.ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet) *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet {
+		return &v
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput)
+}
+
+// Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies the port number on the container to which the request is sent.
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput) ToAiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput) Elem() AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet) AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet
+		return ret
+	}).(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput)
+}
+
+// Required. Specifies the path of the HTTP GET request (e.g., `"/is_busy"`).
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the port number on the container to which the request is sent.
+func (o AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGet) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type AiReasoningEngineSpecDeploymentSpecPscInterfaceConfig struct {
@@ -22048,6 +24400,10 @@ func (o AiReasoningEngineSpecPackageSpecPtrOutput) RequirementsGcsUri() pulumi.S
 }
 
 type AiReasoningEngineSpecSourceCodeSpec struct {
+	// (Optional, Beta)
+	// Optional. Specification for the deploying from agent config.
+	// Structure is documented below.
+	AgentConfigSource *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource `pulumi:"agentConfigSource"`
 	// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
 	// Structure is documented below.
 	DeveloperConnectSource *AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource `pulumi:"developerConnectSource"`
@@ -22074,6 +24430,10 @@ type AiReasoningEngineSpecSourceCodeSpecInput interface {
 }
 
 type AiReasoningEngineSpecSourceCodeSpecArgs struct {
+	// (Optional, Beta)
+	// Optional. Specification for the deploying from agent config.
+	// Structure is documented below.
+	AgentConfigSource AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput `pulumi:"agentConfigSource"`
 	// Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
 	// Structure is documented below.
 	DeveloperConnectSource AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput `pulumi:"developerConnectSource"`
@@ -22165,6 +24525,15 @@ func (o AiReasoningEngineSpecSourceCodeSpecOutput) ToAiReasoningEngineSpecSource
 	}).(AiReasoningEngineSpecSourceCodeSpecPtrOutput)
 }
 
+// (Optional, Beta)
+// Optional. Specification for the deploying from agent config.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecOutput) AgentConfigSource() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource {
+		return v.AgentConfigSource
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput)
+}
+
 // Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
 // Structure is documented below.
 func (o AiReasoningEngineSpecSourceCodeSpecOutput) DeveloperConnectSource() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
@@ -22221,6 +24590,18 @@ func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) Elem() AiReasoningEngineSp
 	}).(AiReasoningEngineSpecSourceCodeSpecOutput)
 }
 
+// (Optional, Beta)
+// Optional. Specification for the deploying from agent config.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) AgentConfigSource() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpec) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource {
+		if v == nil {
+			return nil
+		}
+		return v.AgentConfigSource
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput)
+}
+
 // Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
 // Structure is documented below.
 func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) DeveloperConnectSource() AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput {
@@ -22263,6 +24644,450 @@ func (o AiReasoningEngineSpecSourceCodeSpecPtrOutput) PythonSpec() AiReasoningEn
 		}
 		return v.PythonSpec
 	}).(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSource struct {
+	// Required. Configuration for the Agent Development Kit (ADK).
+	// Structure is documented below.
+	AdkConfig *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig `pulumi:"adkConfig"`
+	// Optional. Any additional files needed to interpret the config.
+	// Structure is documented below.
+	InlineSource *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource `pulumi:"inlineSource"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs and AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs struct {
+	// Required. Configuration for the Agent Development Kit (ADK).
+	// Structure is documented below.
+	AdkConfig AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrInput `pulumi:"adkConfig"`
+	// Optional. Any additional files needed to interpret the config.
+	// Structure is documented below.
+	InlineSource AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrInput `pulumi:"inlineSource"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSource)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput).ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs, AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtr and AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrType AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs
+
+func AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtr(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecAgentConfigSource)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecAgentConfigSource) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput)
+}
+
+// Required. Configuration for the Agent Development Kit (ADK).
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) AdkConfig() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecAgentConfigSource) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig {
+		return v.AdkConfig
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput)
+}
+
+// Optional. Any additional files needed to interpret the config.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput) InlineSource() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecAgentConfigSource) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource {
+		return v.InlineSource
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecAgentConfigSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource) AiReasoningEngineSpecSourceCodeSpecAgentConfigSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecAgentConfigSource
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput)
+}
+
+// Required. Configuration for the Agent Development Kit (ADK).
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput) AdkConfig() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdkConfig
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput)
+}
+
+// Optional. Any additional files needed to interpret the config.
+// Structure is documented below.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput) InlineSource() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSource) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource {
+		if v == nil {
+			return nil
+		}
+		return v.InlineSource
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig struct {
+	// Required. The value of the ADK config in JSON format.
+	JsonConfig string `pulumi:"jsonConfig"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs and AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs struct {
+	// Required. The value of the ADK config in JSON format.
+	JsonConfig pulumi.StringInput `pulumi:"jsonConfig"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput).ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs, AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtr and AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrType AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs
+
+func AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtr(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrType) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrType) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput)
+}
+
+// Required. The value of the ADK config in JSON format.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput) JsonConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig) string { return v.JsonConfig }).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput)
+}
+
+// Required. The value of the ADK config in JSON format.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput) JsonConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JsonConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource struct {
+	// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+	SourceArchive string `pulumi:"sourceArchive"`
+}
+
+// AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs and AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceInput` via:
+//
+//	AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs{...}
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs struct {
+	// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+	SourceArchive pulumi.StringInput `pulumi:"sourceArchive"`
+}
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource)(nil)).Elem()
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput)
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput).ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrInput is an input type that accepts AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs, AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtr and AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrInput` via:
+//
+//	        AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput
+	ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput
+}
+
+type aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrType AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs
+
+func AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtr(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrInput {
+	return (*aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrType)(v)
+}
+
+func (*aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return i.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrType) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return o.ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource) *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource {
+		return &v
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput)
+}
+
+// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput) SourceArchive() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource) string {
+		return v.SourceArchive
+	}).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource)(nil)).Elem()
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput) ToAiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutputWithContext(ctx context.Context) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput) Elem() AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource) AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource
+		return ret
+	}).(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput)
+}
+
+// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
+func (o AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput) SourceArchive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceArchive
+	}).(pulumi.StringPtrOutput)
 }
 
 type AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSource struct {
@@ -22723,9 +25548,7 @@ func (o AiReasoningEngineSpecSourceCodeSpecImageSpecPtrOutput) BuildArgs() pulum
 }
 
 type AiReasoningEngineSpecSourceCodeSpecInlineSource struct {
-	// Required. Input only.
-	// The application source code archive, provided as a compressed
-	// tarball (.tar.gz) file. A base64-encoded string.
+	// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
 	SourceArchive *string `pulumi:"sourceArchive"`
 }
 
@@ -22741,9 +25564,7 @@ type AiReasoningEngineSpecSourceCodeSpecInlineSourceInput interface {
 }
 
 type AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs struct {
-	// Required. Input only.
-	// The application source code archive, provided as a compressed
-	// tarball (.tar.gz) file. A base64-encoded string.
+	// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
 	SourceArchive pulumi.StringPtrInput `pulumi:"sourceArchive"`
 }
 
@@ -22824,9 +25645,7 @@ func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) ToAiReasoningEngi
 	}).(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput)
 }
 
-// Required. Input only.
-// The application source code archive, provided as a compressed
-// tarball (.tar.gz) file. A base64-encoded string.
+// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
 func (o AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput) SourceArchive() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiReasoningEngineSpecSourceCodeSpecInlineSource) *string { return v.SourceArchive }).(pulumi.StringPtrOutput)
 }
@@ -22855,9 +25674,7 @@ func (o AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) Elem() AiReaso
 	}).(AiReasoningEngineSpecSourceCodeSpecInlineSourceOutput)
 }
 
-// Required. Input only.
-// The application source code archive, provided as a compressed
-// tarball (.tar.gz) file. A base64-encoded string.
+// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
 func (o AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput) SourceArchive() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineSpecSourceCodeSpecInlineSource) *string {
 		if v == nil {
@@ -23095,6 +25912,549 @@ func (o AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput) Version() pulumi
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfig struct {
+	// Optional. Traffic distribution configuration, where all traffic is sent to the
+	// latest Runtime Revision.
+	TrafficSplitAlwaysLatest *AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest `pulumi:"trafficSplitAlwaysLatest"`
+	// Optional. Manual traffic distribution configuration, where the user specifies the
+	// Runtime Revision IDs and the percentage of traffic to send to each.
+	// Structure is documented below.
+	TrafficSplitManual *AiReasoningEngineTrafficConfigTrafficSplitManual `pulumi:"trafficSplitManual"`
+}
+
+// AiReasoningEngineTrafficConfigInput is an input type that accepts AiReasoningEngineTrafficConfigArgs and AiReasoningEngineTrafficConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigInput` via:
+//
+//	AiReasoningEngineTrafficConfigArgs{...}
+type AiReasoningEngineTrafficConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigOutput() AiReasoningEngineTrafficConfigOutput
+	ToAiReasoningEngineTrafficConfigOutputWithContext(context.Context) AiReasoningEngineTrafficConfigOutput
+}
+
+type AiReasoningEngineTrafficConfigArgs struct {
+	// Optional. Traffic distribution configuration, where all traffic is sent to the
+	// latest Runtime Revision.
+	TrafficSplitAlwaysLatest AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrInput `pulumi:"trafficSplitAlwaysLatest"`
+	// Optional. Manual traffic distribution configuration, where the user specifies the
+	// Runtime Revision IDs and the percentage of traffic to send to each.
+	// Structure is documented below.
+	TrafficSplitManual AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput `pulumi:"trafficSplitManual"`
+}
+
+func (AiReasoningEngineTrafficConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineTrafficConfigArgs) ToAiReasoningEngineTrafficConfigOutput() AiReasoningEngineTrafficConfigOutput {
+	return i.ToAiReasoningEngineTrafficConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigArgs) ToAiReasoningEngineTrafficConfigOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigOutput)
+}
+
+func (i AiReasoningEngineTrafficConfigArgs) ToAiReasoningEngineTrafficConfigPtrOutput() AiReasoningEngineTrafficConfigPtrOutput {
+	return i.ToAiReasoningEngineTrafficConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigArgs) ToAiReasoningEngineTrafficConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigOutput).ToAiReasoningEngineTrafficConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineTrafficConfigPtrInput is an input type that accepts AiReasoningEngineTrafficConfigArgs, AiReasoningEngineTrafficConfigPtr and AiReasoningEngineTrafficConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigPtrInput` via:
+//
+//	        AiReasoningEngineTrafficConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineTrafficConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigPtrOutput() AiReasoningEngineTrafficConfigPtrOutput
+	ToAiReasoningEngineTrafficConfigPtrOutputWithContext(context.Context) AiReasoningEngineTrafficConfigPtrOutput
+}
+
+type aiReasoningEngineTrafficConfigPtrType AiReasoningEngineTrafficConfigArgs
+
+func AiReasoningEngineTrafficConfigPtr(v *AiReasoningEngineTrafficConfigArgs) AiReasoningEngineTrafficConfigPtrInput {
+	return (*aiReasoningEngineTrafficConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineTrafficConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineTrafficConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineTrafficConfigPtrType) ToAiReasoningEngineTrafficConfigPtrOutput() AiReasoningEngineTrafficConfigPtrOutput {
+	return i.ToAiReasoningEngineTrafficConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineTrafficConfigPtrType) ToAiReasoningEngineTrafficConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigOutput) ToAiReasoningEngineTrafficConfigOutput() AiReasoningEngineTrafficConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigOutput) ToAiReasoningEngineTrafficConfigOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigOutput) ToAiReasoningEngineTrafficConfigPtrOutput() AiReasoningEngineTrafficConfigPtrOutput {
+	return o.ToAiReasoningEngineTrafficConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineTrafficConfigOutput) ToAiReasoningEngineTrafficConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineTrafficConfig) *AiReasoningEngineTrafficConfig {
+		return &v
+	}).(AiReasoningEngineTrafficConfigPtrOutput)
+}
+
+// Optional. Traffic distribution configuration, where all traffic is sent to the
+// latest Runtime Revision.
+func (o AiReasoningEngineTrafficConfigOutput) TrafficSplitAlwaysLatest() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineTrafficConfig) *AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest {
+		return v.TrafficSplitAlwaysLatest
+	}).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput)
+}
+
+// Optional. Manual traffic distribution configuration, where the user specifies the
+// Runtime Revision IDs and the percentage of traffic to send to each.
+// Structure is documented below.
+func (o AiReasoningEngineTrafficConfigOutput) TrafficSplitManual() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineTrafficConfig) *AiReasoningEngineTrafficConfigTrafficSplitManual {
+		return v.TrafficSplitManual
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineTrafficConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigPtrOutput) ToAiReasoningEngineTrafficConfigPtrOutput() AiReasoningEngineTrafficConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigPtrOutput) ToAiReasoningEngineTrafficConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigPtrOutput) Elem() AiReasoningEngineTrafficConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineTrafficConfig) AiReasoningEngineTrafficConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineTrafficConfig
+		return ret
+	}).(AiReasoningEngineTrafficConfigOutput)
+}
+
+// Optional. Traffic distribution configuration, where all traffic is sent to the
+// latest Runtime Revision.
+func (o AiReasoningEngineTrafficConfigPtrOutput) TrafficSplitAlwaysLatest() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineTrafficConfig) *AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest {
+		if v == nil {
+			return nil
+		}
+		return v.TrafficSplitAlwaysLatest
+	}).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput)
+}
+
+// Optional. Manual traffic distribution configuration, where the user specifies the
+// Runtime Revision IDs and the percentage of traffic to send to each.
+// Structure is documented below.
+func (o AiReasoningEngineTrafficConfigPtrOutput) TrafficSplitManual() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineTrafficConfig) *AiReasoningEngineTrafficConfigTrafficSplitManual {
+		if v == nil {
+			return nil
+		}
+		return v.TrafficSplitManual
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest struct {
+}
+
+// AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestInput is an input type that accepts AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs and AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestInput` via:
+//
+//	AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{...}
+type AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput
+	ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutputWithContext(context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs struct {
+}
+
+func (AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest)(nil)).Elem()
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput)
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput).ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrInput is an input type that accepts AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs, AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtr and AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrInput` via:
+//
+//	        AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput
+	ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput
+}
+
+type aiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrType AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs
+
+func AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtr(v *AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrInput {
+	return (*aiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrType)(v)
+}
+
+func (*aiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrType) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrType) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return o.ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest) *AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest {
+		return &v
+	}).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput) ToAiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput) Elem() AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput {
+	return o.ApplyT(func(v *AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest) AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatest
+		return ret
+	}).(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManual struct {
+	// Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+	// percentages must equal to 100.
+	// Structure is documented below.
+	Targets []AiReasoningEngineTrafficConfigTrafficSplitManualTarget `pulumi:"targets"`
+}
+
+// AiReasoningEngineTrafficConfigTrafficSplitManualInput is an input type that accepts AiReasoningEngineTrafficConfigTrafficSplitManualArgs and AiReasoningEngineTrafficConfigTrafficSplitManualOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigTrafficSplitManualInput` via:
+//
+//	AiReasoningEngineTrafficConfigTrafficSplitManualArgs{...}
+type AiReasoningEngineTrafficConfigTrafficSplitManualInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualOutput() AiReasoningEngineTrafficConfigTrafficSplitManualOutput
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualOutputWithContext(context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualOutput
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualArgs struct {
+	// Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+	// percentages must equal to 100.
+	// Structure is documented below.
+	Targets AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayInput `pulumi:"targets"`
+}
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManual)(nil)).Elem()
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualArgs) ToAiReasoningEngineTrafficConfigTrafficSplitManualOutput() AiReasoningEngineTrafficConfigTrafficSplitManualOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitManualOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualArgs) ToAiReasoningEngineTrafficConfigTrafficSplitManualOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitManualOutput)
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualArgs) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualArgs) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitManualOutput).ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput is an input type that accepts AiReasoningEngineTrafficConfigTrafficSplitManualArgs, AiReasoningEngineTrafficConfigTrafficSplitManualPtr and AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput` via:
+//
+//	        AiReasoningEngineTrafficConfigTrafficSplitManualArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput
+}
+
+type aiReasoningEngineTrafficConfigTrafficSplitManualPtrType AiReasoningEngineTrafficConfigTrafficSplitManualArgs
+
+func AiReasoningEngineTrafficConfigTrafficSplitManualPtr(v *AiReasoningEngineTrafficConfigTrafficSplitManualArgs) AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput {
+	return (*aiReasoningEngineTrafficConfigTrafficSplitManualPtrType)(v)
+}
+
+func (*aiReasoningEngineTrafficConfigTrafficSplitManualPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineTrafficConfigTrafficSplitManual)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineTrafficConfigTrafficSplitManualPtrType) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineTrafficConfigTrafficSplitManualPtrType) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManual)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualOutput() AiReasoningEngineTrafficConfigTrafficSplitManualOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return o.ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineTrafficConfigTrafficSplitManual) *AiReasoningEngineTrafficConfigTrafficSplitManual {
+		return &v
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput)
+}
+
+// Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+// percentages must equal to 100.
+// Structure is documented below.
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualOutput) Targets() AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput {
+	return o.ApplyT(func(v AiReasoningEngineTrafficConfigTrafficSplitManual) []AiReasoningEngineTrafficConfigTrafficSplitManualTarget {
+		return v.Targets
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineTrafficConfigTrafficSplitManual)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput() AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualPtrOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput) Elem() AiReasoningEngineTrafficConfigTrafficSplitManualOutput {
+	return o.ApplyT(func(v *AiReasoningEngineTrafficConfigTrafficSplitManual) AiReasoningEngineTrafficConfigTrafficSplitManual {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineTrafficConfigTrafficSplitManual
+		return ret
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualOutput)
+}
+
+// Optional. A list of traffic targets for the Runtimes Revisions. The sum of
+// percentages must equal to 100.
+// Structure is documented below.
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput) Targets() AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput {
+	return o.ApplyT(func(v *AiReasoningEngineTrafficConfigTrafficSplitManual) []AiReasoningEngineTrafficConfigTrafficSplitManualTarget {
+		if v == nil {
+			return nil
+		}
+		return v.Targets
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualTarget struct {
+	// Required. Specifies percent of the traffic to this Runtime Revision.
+	Percent int `pulumi:"percent"`
+	// Required. The Runtime Revision name to which to send this portion of traffic.
+	RuntimeRevisionName string `pulumi:"runtimeRevisionName"`
+}
+
+// AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput is an input type that accepts AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs and AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput` via:
+//
+//	AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs{...}
+type AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput() AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutputWithContext(context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs struct {
+	// Required. Specifies percent of the traffic to this Runtime Revision.
+	Percent pulumi.IntInput `pulumi:"percent"`
+	// Required. The Runtime Revision name to which to send this portion of traffic.
+	RuntimeRevisionName pulumi.StringInput `pulumi:"runtimeRevisionName"`
+}
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualTarget)(nil)).Elem()
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput() AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput)
+}
+
+// AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayInput is an input type that accepts AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray and AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput values.
+// You can construct a concrete instance of `AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayInput` via:
+//
+//	AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray{ AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs{...} }
+type AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput() AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput
+	ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutputWithContext(context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray []AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineTrafficConfigTrafficSplitManualTarget)(nil)).Elem()
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput() AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput {
+	return i.ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualTarget)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput() AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput {
+	return o
+}
+
+// Required. Specifies percent of the traffic to this Runtime Revision.
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v AiReasoningEngineTrafficConfigTrafficSplitManualTarget) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+// Required. The Runtime Revision name to which to send this portion of traffic.
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) RuntimeRevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiReasoningEngineTrafficConfigTrafficSplitManualTarget) string { return v.RuntimeRevisionName }).(pulumi.StringOutput)
+}
+
+type AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiReasoningEngineTrafficConfigTrafficSplitManualTarget)(nil)).Elem()
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput() AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput) ToAiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutputWithContext(ctx context.Context) AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput {
+	return o
+}
+
+func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput) Index(i pulumi.IntInput) AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiReasoningEngineTrafficConfigTrafficSplitManualTarget {
+		return vs[0].([]AiReasoningEngineTrafficConfigTrafficSplitManualTarget)[vs[1].(int)]
+	}).(AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput)
 }
 
 type AiScheduleCreateNotebookExecutionJobRequest struct {
@@ -28387,12 +31747,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecInput)(nil)).Elem(), AiReasoningEngineContextSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecExampleStoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecExampleStoreConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs{})
@@ -28405,12 +31783,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineIamMemberConditionPtrInput)(nil)).Elem(), AiReasoningEngineIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecInput)(nil)).Elem(), AiReasoningEngineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecBuildSpecInput)(nil)).Elem(), AiReasoningEngineSpecBuildSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecBuildSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecBuildSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecContainerSpecInput)(nil)).Elem(), AiReasoningEngineSpecContainerSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecContainerSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecContainerSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecEnvInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecEnvArrayInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbeInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecKeepAliveProbeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigInput)(nil)).Elem(), AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{})
@@ -28422,6 +31812,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecPackageSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecPackageSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigArgs{})
@@ -28432,6 +31828,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrInput)(nil)).Elem(), AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigInput)(nil)).Elem(), AiReasoningEngineTrafficConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigPtrInput)(nil)).Elem(), AiReasoningEngineTrafficConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualPtrInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayInput)(nil)).Elem(), AiReasoningEngineTrafficConfigTrafficSplitManualTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestPtrInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobInput)(nil)).Elem(), AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{})
@@ -28704,12 +32108,30 @@ func init() {
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigUnprovisionedPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecExampleStoreConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecExampleStoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArrayOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArrayOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArrayOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigOutput{})
@@ -28722,12 +32144,24 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecBuildSpecOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecBuildSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecContainerSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecContainerSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigAgentToAnywhereConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigClientToAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecEnvOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecEnvArrayOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecKeepAliveProbePtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecKeepAliveProbeHttpGetPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigOutput{})
@@ -28739,6 +32173,12 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineSpecPackageSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourcePtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceAdkConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourceOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceInlineSourcePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourcePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceConfigOutput{})
@@ -28749,6 +32189,14 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecInlineSourcePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineSpecSourceCodeSpecPythonSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineTrafficConfigTrafficSplitManualTargetArrayOutput{})
 	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestOutput{})
 	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestPtrOutput{})
 	pulumi.RegisterOutputType(AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobOutput{})

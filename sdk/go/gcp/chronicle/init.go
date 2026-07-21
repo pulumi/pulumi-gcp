@@ -29,12 +29,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataAccessLabel{}
 	case "gcp:chronicle/dataAccessScope:DataAccessScope":
 		r = &DataAccessScope{}
+	case "gcp:chronicle/dataExport:DataExport":
+		r = &DataExport{}
 	case "gcp:chronicle/dataTable:DataTable":
 		r = &DataTable{}
 	case "gcp:chronicle/dataTableRow:DataTableRow":
 		r = &DataTableRow{}
 	case "gcp:chronicle/environment:Environment":
 		r = &Environment{}
+	case "gcp:chronicle/environmentGroup:EnvironmentGroup":
+		r = &EnvironmentGroup{}
 	case "gcp:chronicle/feed:Feed":
 		r = &Feed{}
 	case "gcp:chronicle/findingsRefinement:FindingsRefinement":
@@ -55,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Rule{}
 	case "gcp:chronicle/ruleDeployment:RuleDeployment":
 		r = &RuleDeployment{}
+	case "gcp:chronicle/soarDomain:SoarDomain":
+		r = &SoarDomain{}
 	case "gcp:chronicle/soarNetwork:SoarNetwork":
 		r = &SoarNetwork{}
 	case "gcp:chronicle/watchlist:Watchlist":
@@ -94,6 +100,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"chronicle/dataExport",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"chronicle/dataTable",
 		&module{version},
 	)
@@ -105,6 +116,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/environment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/environmentGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -155,6 +171,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/ruleDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/soarDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

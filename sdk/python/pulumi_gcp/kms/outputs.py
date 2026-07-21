@@ -1208,7 +1208,7 @@ class GetCryptoKeyVersionsVersionResult(dict):
                  version: _builtins.int):
         """
         :param _builtins.str algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-        :param _builtins.str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        :param _builtins.str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
                `kms.CryptoKey` resource/datasource.
         """
         pulumi.set(__self__, "algorithm", algorithm)
@@ -1232,7 +1232,7 @@ class GetCryptoKeyVersionsVersionResult(dict):
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> _builtins.str:
         """
-        The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
         `kms.CryptoKey` resource/datasource.
         """
         return pulumi.get(self, "crypto_key")
@@ -1338,7 +1338,6 @@ class GetCryptoKeysKeyResult(dict):
                By default, this field is absent, and all justification codes are allowed.
                This field is currently in beta and is subject to change.
         :param Mapping[str, _builtins.str] labels: Labels with user-defined metadata to apply to this resource.
-               
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -1453,7 +1452,6 @@ class GetCryptoKeysKeyResult(dict):
     def labels(self) -> Mapping[str, _builtins.str]:
         """
         Labels with user-defined metadata to apply to this resource.
-
 
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -1740,9 +1738,9 @@ class GetKeyHandlesKeyHandleResult(dict):
         """
         :param _builtins.str kms_key: The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
         :param _builtins.str name: The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
-        :param _builtins.str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+        :param _builtins.str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
                
-               - - -
+               ***
         """
         pulumi.set(__self__, "kms_key", kms_key)
         pulumi.set(__self__, "name", name)
@@ -1768,9 +1766,9 @@ class GetKeyHandlesKeyHandleResult(dict):
     @pulumi.getter(name="resourceTypeSelector")
     def resource_type_selector(self) -> _builtins.str:
         """
-        The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+        The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "resource_type_selector")
 

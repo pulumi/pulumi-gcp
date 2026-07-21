@@ -42,7 +42,7 @@ export interface GetMcpServerArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -86,7 +86,7 @@ export interface GetMcpServerResult {
      */
     readonly interfaces: outputs.agentregistry.GetMcpServerInterface[];
     readonly location: string;
-    readonly mcpServerId?: string;
+    readonly mcpServerId: string;
     readonly project: string;
     /**
      * A list of tools available with the MCP Server.
@@ -137,7 +137,7 @@ export interface GetMcpServerOutputArgs {
     /**
      * The location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

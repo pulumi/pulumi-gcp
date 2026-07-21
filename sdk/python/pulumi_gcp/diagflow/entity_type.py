@@ -34,9 +34,9 @@ class EntityTypeArgs:
         :param pulumi.Input[_builtins.str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
                * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-               types can contain references to other entity types (with or without aliases).
+                 types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -79,9 +79,9 @@ class EntityTypeArgs:
         Indicates the kind of entity type.
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
         * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-        types can contain references to other entity types (with or without aliases).
+          types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 
@@ -171,9 +171,9 @@ class _EntityTypeState:
         :param pulumi.Input[_builtins.str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
                * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-               types can contain references to other entity types (with or without aliases).
+                 types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the entity type.
                Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -255,9 +255,9 @@ class _EntityTypeState:
         Indicates the kind of entity type.
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
         * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-        types can contain references to other entity types (with or without aliases).
+          types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 
@@ -376,9 +376,9 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
                * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-               types can contain references to other entity types (with or without aliases).
+                 types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -522,9 +522,9 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] kind: Indicates the kind of entity type.
                * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
                * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-               types can contain references to other entity types (with or without aliases).
+                 types can contain references to other entity types (with or without aliases).
                * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-               Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+                 Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         :param pulumi.Input[_builtins.str] name: The unique identifier of the entity type.
                Format: projects/<Project ID>/agent/entityTypes/<Entity type ID>.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -588,9 +588,9 @@ class EntityType(pulumi.CustomResource):
         Indicates the kind of entity type.
         * KIND_MAP: Map entity types allow mapping of a group of synonyms to a reference value.
         * KIND_LIST: List entity types contain a set of entries that do not map to reference values. However, list entity
-        types can contain references to other entity types (with or without aliases).
+          types can contain references to other entity types (with or without aliases).
         * KIND_REGEXP: Regexp entity types allow to specify regular expressions in entries values.
-        Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
+          Possible values are: `KIND_MAP`, `KIND_LIST`, `KIND_REGEXP`.
         """
         return pulumi.get(self, "kind")
 

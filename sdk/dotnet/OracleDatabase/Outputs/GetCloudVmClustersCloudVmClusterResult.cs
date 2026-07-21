@@ -66,6 +66,12 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string ExadataInfrastructure;
         /// <summary>
+        /// The name of ExascaleDbStorageVault associated with the VM Cluster.
+        /// Format:
+        /// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+        /// </summary>
+        public readonly string ExascaleDbStorageVault;
+        /// <summary>
         /// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
         /// of Exadata infrastructure.
         /// </summary>
@@ -149,6 +155,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string exadataInfrastructure,
 
+            string exascaleDbStorageVault,
+
             string gcpOracleZone,
 
             ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult> identityConnectors,
@@ -181,6 +189,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             ExadataInfrastructure = exadataInfrastructure;
+            ExascaleDbStorageVault = exascaleDbStorageVault;
             GcpOracleZone = gcpOracleZone;
             IdentityConnectors = identityConnectors;
             Labels = labels;

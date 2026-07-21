@@ -4833,7 +4833,6 @@ class CertificateConfig(dict):
         :param 'CertificateConfigPublicKeyArgs' public_key: A PublicKey describes a public key.
                Structure is documented below.
                
-               
                <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         :param 'CertificateConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
@@ -4854,7 +4853,6 @@ class CertificateConfig(dict):
         """
         A PublicKey describes a public key.
         Structure is documented below.
-
 
         <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """

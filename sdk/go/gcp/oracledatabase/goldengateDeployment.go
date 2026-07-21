@@ -90,7 +90,6 @@ import (
 //						AdminUsername: pulumi.String("admin"),
 //						AdminPassword: pulumi.String("123Abpassword!"),
 //						Deployment:    pulumi.String("deployment"),
-//						OggVersion:    pulumi.String("oggoracle:23.26.2.0.0_260417.1915_14223"),
 //					},
 //					MaintenanceWindow: &oracledatabase.GoldengateDeploymentPropertiesMaintenanceWindowArgs{
 //						Day:       pulumi.String("MONDAY"),

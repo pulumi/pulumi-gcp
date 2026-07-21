@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var opsAgentPolicy = new Gcp.Compute.ZoneVmExtensionPolicy("ops_agent_policy", new()
     ///     {
-    ///         Name = "zonal-ops-agent-vme-policy-_75223",
+    ///         Name = "zonal-ops-agent-vme-policy-_79169",
     ///         Zone = "us-central1-a",
     ///         ExtensionPolicies = new[]
     ///         {

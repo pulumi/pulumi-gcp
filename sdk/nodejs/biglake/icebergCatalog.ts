@@ -93,6 +93,54 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Biglake Iceberg Catalog Federated Unity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myIcebergCatalog = new gcp.biglake.IcebergCatalog("my_iceberg_catalog", {
+ *     catalogType: "CATALOG_TYPE_FEDERATED",
+ *     name: "my_iceberg_catalog",
+ *     primaryLocation: "us-central1",
+ *     federatedCatalogOptions: {
+ *         unityCatalogInfo: {
+ *             catalogName: "my_catalog",
+ *             instanceName: "1.1.gcp.databricks.com",
+ *             servicePrincipalApplicationId: "b3204274-6556-4d40-ad18-556f91659745",
+ *         },
+ *         refreshOptions: {
+ *             refreshSchedule: {
+ *                 refreshInterval: "300s",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Biglake Iceberg Catalog Federated Glue
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myIcebergCatalog = new gcp.biglake.IcebergCatalog("my_iceberg_catalog", {
+ *     catalogType: "CATALOG_TYPE_FEDERATED",
+ *     name: "my_iceberg_catalog",
+ *     primaryLocation: "us-central1",
+ *     federatedCatalogOptions: {
+ *         glueCatalogInfo: {
+ *             awsRegion: "us-east-1",
+ *             awsRoleArn: "arn:aws:iam::111222333444:role/my-glue-role",
+ *             warehouse: "111222333444:s3tablescatalog/example",
+ *         },
+ *         refreshOptions: {
+ *             refreshSchedule: {
+ *                 refreshInterval: "300s",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -143,8 +191,15 @@ export class IcebergCatalog extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly biglakeServiceAccount: pulumi.Output<string>;
     /**
+     * Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+     */
+    declare public /*out*/ readonly biglakeServiceAccountId: pulumi.Output<string>;
+    /**
      * The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      */
     declare public readonly catalogType: pulumi.Output<string>;
     /**
@@ -171,6 +226,16 @@ export class IcebergCatalog extends pulumi.CustomResource {
      * When set to "DELETE", deleting the resource is allowed.
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
+     * A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
+     * Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     */
+    declare public readonly federatedCatalogOptions: pulumi.Output<outputs.biglake.IcebergCatalogFederatedCatalogOptions | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
@@ -223,11 +288,14 @@ export class IcebergCatalog extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IcebergCatalogState | undefined;
             resourceInputs["biglakeServiceAccount"] = state?.biglakeServiceAccount;
+            resourceInputs["biglakeServiceAccountId"] = state?.biglakeServiceAccountId;
             resourceInputs["catalogType"] = state?.catalogType;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["credentialMode"] = state?.credentialMode;
             resourceInputs["defaultLocation"] = state?.defaultLocation;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["federatedCatalogOptions"] = state?.federatedCatalogOptions;
             resourceInputs["name"] = state?.name;
             resourceInputs["primaryLocation"] = state?.primaryLocation;
             resourceInputs["project"] = state?.project;
@@ -244,11 +312,14 @@ export class IcebergCatalog extends pulumi.CustomResource {
             resourceInputs["credentialMode"] = args?.credentialMode;
             resourceInputs["defaultLocation"] = args?.defaultLocation;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["federatedCatalogOptions"] = args?.federatedCatalogOptions;
             resourceInputs["name"] = args?.name;
             resourceInputs["primaryLocation"] = args?.primaryLocation;
             resourceInputs["project"] = args?.project;
             resourceInputs["restrictedLocationsConfig"] = args?.restrictedLocationsConfig;
             resourceInputs["biglakeServiceAccount"] = undefined /*out*/;
+            resourceInputs["biglakeServiceAccountId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["replicas"] = undefined /*out*/;
             resourceInputs["storageRegions"] = undefined /*out*/;
@@ -268,8 +339,15 @@ export interface IcebergCatalogState {
      */
     biglakeServiceAccount?: pulumi.Input<string | undefined>;
     /**
+     * Output only. The unique ID of the service account used for credential vending. Used for federation scenarios.
+     */
+    biglakeServiceAccountId?: pulumi.Input<string | undefined>;
+    /**
      * The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      */
     catalogType?: pulumi.Input<string | undefined>;
     /**
@@ -296,6 +374,16 @@ export interface IcebergCatalogState {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     */
+    federatedCatalogOptions?: pulumi.Input<inputs.biglake.IcebergCatalogFederatedCatalogOptions | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
@@ -341,7 +429,10 @@ export interface IcebergCatalogState {
 export interface IcebergCatalogArgs {
     /**
      * The catalog type of the IcebergCatalog.
-     * Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`.
+     * * `CATALOG_TYPE_GCS_BUCKET`: Google Cloud Storage bucket catalog type.
+     * * `CATALOG_TYPE_BIGLAKE`: BigLake catalog type.
+     * * `CATALOG_TYPE_FEDERATED`: Federated catalog type, for integrating with external Iceberg REST Catalogs such as Databricks Unity Catalog or AWS Glue.
+     *   Possible values are: `CATALOG_TYPE_GCS_BUCKET`, `CATALOG_TYPE_BIGLAKE`, `CATALOG_TYPE_FEDERATED`.
      */
     catalogType: pulumi.Input<string>;
     /**
@@ -364,6 +455,16 @@ export interface IcebergCatalogArgs {
      * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
+     * is CATALOG_TYPE_FEDERATED.
+     * Structure is documented below.
+     */
+    federatedCatalogOptions?: pulumi.Input<inputs.biglake.IcebergCatalogFederatedCatalogOptions | undefined>;
     /**
      * The name of the IcebergCatalog.
      * For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the

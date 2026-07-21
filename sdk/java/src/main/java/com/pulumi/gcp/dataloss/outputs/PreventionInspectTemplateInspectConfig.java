@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigLimits;
+import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSet;
 import java.lang.Boolean;
 import java.lang.String;
@@ -61,6 +62,14 @@ public final class PreventionInspectTemplateInspectConfig {
      * 
      */
     private @Nullable String minLikelihood;
+    /**
+     * @return Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+     * The system only returns a finding if its likelihood is above this threshold. If this field
+     * is not set, the system uses the InspectConfig min_likelihood.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType> minLikelihoodPerInfoTypes;
     /**
      * @return Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
      * other rules are executed in the order they are specified for each info type.
@@ -129,6 +138,16 @@ public final class PreventionInspectTemplateInspectConfig {
         return Optional.ofNullable(this.minLikelihood);
     }
     /**
+     * @return Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
+     * The system only returns a finding if its likelihood is above this threshold. If this field
+     * is not set, the system uses the InspectConfig min_likelihood.
+     * Structure is documented below.
+     * 
+     */
+    public List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType> minLikelihoodPerInfoTypes() {
+        return this.minLikelihoodPerInfoTypes == null ? List.of() : this.minLikelihoodPerInfoTypes;
+    }
+    /**
      * @return Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
      * other rules are executed in the order they are specified for each info type.
      * Structure is documented below.
@@ -154,6 +173,7 @@ public final class PreventionInspectTemplateInspectConfig {
         private @Nullable List<PreventionInspectTemplateInspectConfigInfoType> infoTypes;
         private @Nullable PreventionInspectTemplateInspectConfigLimits limits;
         private @Nullable String minLikelihood;
+        private @Nullable List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType> minLikelihoodPerInfoTypes;
         private @Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets;
         public Builder() {}
         public Builder(PreventionInspectTemplateInspectConfig defaults) {
@@ -165,6 +185,7 @@ public final class PreventionInspectTemplateInspectConfig {
     	      this.infoTypes = defaults.infoTypes;
     	      this.limits = defaults.limits;
     	      this.minLikelihood = defaults.minLikelihood;
+    	      this.minLikelihoodPerInfoTypes = defaults.minLikelihoodPerInfoTypes;
     	      this.ruleSets = defaults.ruleSets;
         }
 
@@ -220,6 +241,15 @@ public final class PreventionInspectTemplateInspectConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder minLikelihoodPerInfoTypes(@Nullable List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType> minLikelihoodPerInfoTypes) {
+
+            this.minLikelihoodPerInfoTypes = minLikelihoodPerInfoTypes;
+            return this;
+        }
+        public Builder minLikelihoodPerInfoTypes(PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType... minLikelihoodPerInfoTypes) {
+            return minLikelihoodPerInfoTypes(List.of(minLikelihoodPerInfoTypes));
+        }
+        @CustomType.Setter
         public Builder ruleSets(@Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets) {
 
             this.ruleSets = ruleSets;
@@ -237,6 +267,7 @@ public final class PreventionInspectTemplateInspectConfig {
             _resultValue.infoTypes = infoTypes;
             _resultValue.limits = limits;
             _resultValue.minLikelihood = minLikelihood;
+            _resultValue.minLikelihoodPerInfoTypes = minLikelihoodPerInfoTypes;
             _resultValue.ruleSets = ruleSets;
             return _resultValue;
         }

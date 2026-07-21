@@ -3051,6 +3051,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict(TypedDict):
     """
     Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
     """
+    psc_auto_connection_policy_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether a service connection policy is created for the auto connections configured for the instance.
+    """
     psc_auto_connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict']]]]]
     """
     A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
@@ -3066,6 +3070,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict(TypedDict):
     psc_write_endpoint_dns_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+
+    * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
     """
 
 @pulumi.input_type
@@ -3073,6 +3079,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     def __init__(__self__, *,
                  allowed_consumer_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  network_attachment_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_auto_connection_policy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]] = None,
                  psc_auto_dns_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  psc_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3080,15 +3087,20 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         :param pulumi.Input[_builtins.str] network_attachment_uri: Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
+        :param pulumi.Input[_builtins.bool] psc_auto_connection_policy_enabled: Whether a service connection policy is created for the auto connections configured for the instance.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param pulumi.Input[_builtins.bool] psc_auto_dns_enabled: Whether PSC auto DNS is enabled for this instance.
         :param pulumi.Input[_builtins.bool] psc_enabled: Whether PSC connectivity is enabled for this instance.
         :param pulumi.Input[_builtins.bool] psc_write_endpoint_dns_enabled: Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+               
+               * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
         """
         if allowed_consumer_projects is not None:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
         if network_attachment_uri is not None:
             pulumi.set(__self__, "network_attachment_uri", network_attachment_uri)
+        if psc_auto_connection_policy_enabled is not None:
+            pulumi.set(__self__, "psc_auto_connection_policy_enabled", psc_auto_connection_policy_enabled)
         if psc_auto_connections is not None:
             pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         if psc_auto_dns_enabled is not None:
@@ -3121,6 +3133,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     @network_attachment_uri.setter
     def network_attachment_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_attachment_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscAutoConnectionPolicyEnabled")
+    def psc_auto_connection_policy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether a service connection policy is created for the auto connections configured for the instance.
+        """
+        return pulumi.get(self, "psc_auto_connection_policy_enabled")
+
+    @psc_auto_connection_policy_enabled.setter
+    def psc_auto_connection_policy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "psc_auto_connection_policy_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="pscAutoConnections")
@@ -3163,6 +3187,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     def psc_write_endpoint_dns_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether PSC write endpoint DNS is enabled for this instance. This is only supported for Enterprise Plus edition instances.
+
+        * `settings.ip_configuration.psc_config.psc_auto_connection_policy_enabled` - (Optional) Whether a service connection policy is created for the auto connections configured for the instance.
         """
         return pulumi.get(self, "psc_write_endpoint_dns_enabled")
 
@@ -3188,6 +3214,14 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(
     """
     (Output) The IP address of the consumer endpoint.
     """
+    service_connection_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output) The service connection policy created for the auto connection.
+    """
+    service_connection_policy_creation_result: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output) The result of the service connection policy creation.
+    """
     status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output) The connection status of the consumer endpoint.
@@ -3200,12 +3234,16 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
                  consumer_network_status: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_service_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_connection_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_connection_policy_creation_result: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
         :param pulumi.Input[_builtins.str] consumer_network_status: (Output) The connection policy status of the consumer network.
         :param pulumi.Input[_builtins.str] consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
         :param pulumi.Input[_builtins.str] ip_address: (Output) The IP address of the consumer endpoint.
+        :param pulumi.Input[_builtins.str] service_connection_policy: (Output) The service connection policy created for the auto connection.
+        :param pulumi.Input[_builtins.str] service_connection_policy_creation_result: (Output) The result of the service connection policy creation.
         :param pulumi.Input[_builtins.str] status: (Output) The connection status of the consumer endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
@@ -3215,6 +3253,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
             pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if service_connection_policy is not None:
+            pulumi.set(__self__, "service_connection_policy", service_connection_policy)
+        if service_connection_policy_creation_result is not None:
+            pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -3265,6 +3307,30 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
     @ip_address.setter
     def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicy")
+    def service_connection_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output) The service connection policy created for the auto connection.
+        """
+        return pulumi.get(self, "service_connection_policy")
+
+    @service_connection_policy.setter
+    def service_connection_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_connection_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceConnectionPolicyCreationResult")
+    def service_connection_policy_creation_result(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output) The result of the service connection policy creation.
+        """
+        return pulumi.get(self, "service_connection_policy_creation_result")
+
+    @service_connection_policy_creation_result.setter
+    def service_connection_policy_creation_result(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_connection_policy_creation_result", value)
 
     @_builtins.property
     @pulumi.getter

@@ -422,10 +422,10 @@ export class Instance extends pulumi.CustomResource {
      * Optional. Read replica mode. Can only be specified when trying to create the instance.
      * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
      * - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-     * instance cannot scale up or down the number of replicas.
+     *   instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-     * can scale up and down the number of replicas.
-     * Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
+     *   can scale up and down the number of replicas.
+     *   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
      */
     declare public readonly readReplicasMode: pulumi.Output<string>;
     /**
@@ -475,15 +475,15 @@ export class Instance extends pulumi.CustomResource {
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
-     * Default value is `BASIC`.
-     * Possible values are: `BASIC`, `STANDARD_HA`.
+     *   Default value is `BASIC`.
+     *   Possible values are: `BASIC`, `STANDARD_HA`.
      */
     declare public readonly tier: pulumi.Output<string | undefined>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
      * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
-     * Default value is `DISABLED`.
-     * Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
+     *   Default value is `DISABLED`.
+     *   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
      */
     declare public readonly transitEncryptionMode: pulumi.Output<string | undefined>;
 
@@ -763,10 +763,10 @@ export interface InstanceState {
      * Optional. Read replica mode. Can only be specified when trying to create the instance.
      * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
      * - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-     * instance cannot scale up or down the number of replicas.
+     *   instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-     * can scale up and down the number of replicas.
-     * Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
+     *   can scale up and down the number of replicas.
+     *   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
      */
     readReplicasMode?: pulumi.Input<string | undefined>;
     /**
@@ -816,15 +816,15 @@ export interface InstanceState {
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
-     * Default value is `BASIC`.
-     * Possible values are: `BASIC`, `STANDARD_HA`.
+     *   Default value is `BASIC`.
+     *   Possible values are: `BASIC`, `STANDARD_HA`.
      */
     tier?: pulumi.Input<string | undefined>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
      * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
-     * Default value is `DISABLED`.
-     * Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
+     *   Default value is `DISABLED`.
+     *   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
      */
     transitEncryptionMode?: pulumi.Input<string | undefined>;
 }
@@ -930,10 +930,10 @@ export interface InstanceArgs {
      * Optional. Read replica mode. Can only be specified when trying to create the instance.
      * If not set, Memorystore Redis backend will default to READ_REPLICAS_DISABLED.
      * - READ_REPLICAS_DISABLED: If disabled, read endpoint will not be provided and the
-     * instance cannot scale up or down the number of replicas.
+     *   instance cannot scale up or down the number of replicas.
      * - READ_REPLICAS_ENABLED: If enabled, read endpoint will be provided and the instance
-     * can scale up and down the number of replicas.
-     * Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
+     *   can scale up and down the number of replicas.
+     *   Possible values are: `READ_REPLICAS_DISABLED`, `READ_REPLICAS_ENABLED`.
      */
     readReplicasMode?: pulumi.Input<string | undefined>;
     /**
@@ -978,15 +978,15 @@ export interface InstanceArgs {
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
-     * Default value is `BASIC`.
-     * Possible values are: `BASIC`, `STANDARD_HA`.
+     *   Default value is `BASIC`.
+     *   Possible values are: `BASIC`, `STANDARD_HA`.
      */
     tier?: pulumi.Input<string | undefined>;
     /**
      * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
      * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentication
-     * Default value is `DISABLED`.
-     * Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
+     *   Default value is `DISABLED`.
+     *   Possible values are: `SERVER_AUTHENTICATION`, `DISABLED`.
      */
     transitEncryptionMode?: pulumi.Input<string | undefined>;
 }

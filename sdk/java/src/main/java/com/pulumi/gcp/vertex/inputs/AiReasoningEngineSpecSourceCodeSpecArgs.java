@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecImageSpecArgs;
 import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs;
@@ -17,6 +18,25 @@ import javax.annotation.Nullable;
 public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineSpecSourceCodeSpecArgs Empty = new AiReasoningEngineSpecSourceCodeSpecArgs();
+
+    /**
+     * (Optional, Beta)
+     * Optional. Specification for the deploying from agent config.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="agentConfigSource")
+    private @Nullable Output<AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs> agentConfigSource;
+
+    /**
+     * @return (Optional, Beta)
+     * Optional. Specification for the deploying from agent config.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs>> agentConfigSource() {
+        return Optional.ofNullable(this.agentConfigSource);
+    }
 
     /**
      * Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
@@ -89,6 +109,7 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
     private AiReasoningEngineSpecSourceCodeSpecArgs() {}
 
     private AiReasoningEngineSpecSourceCodeSpecArgs(AiReasoningEngineSpecSourceCodeSpecArgs $) {
+        this.agentConfigSource = $.agentConfigSource;
         this.developerConnectSource = $.developerConnectSource;
         this.imageSpec = $.imageSpec;
         this.inlineSource = $.inlineSource;
@@ -111,6 +132,31 @@ public final class AiReasoningEngineSpecSourceCodeSpecArgs extends com.pulumi.re
 
         public Builder(AiReasoningEngineSpecSourceCodeSpecArgs defaults) {
             $ = new AiReasoningEngineSpecSourceCodeSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param agentConfigSource (Optional, Beta)
+         * Optional. Specification for the deploying from agent config.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentConfigSource(@Nullable Output<AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs> agentConfigSource) {
+            $.agentConfigSource = agentConfigSource;
+            return this;
+        }
+
+        /**
+         * @param agentConfigSource (Optional, Beta)
+         * Optional. Specification for the deploying from agent config.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder agentConfigSource(AiReasoningEngineSpecSourceCodeSpecAgentConfigSourceArgs agentConfigSource) {
+            return agentConfigSource(Output.of(agentConfigSource));
         }
 
         /**

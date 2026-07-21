@@ -84,11 +84,11 @@ export class Curation extends pulumi.CustomResource {
      * The ID to use for the curation resource, which will become the final
      * component of the curations's resource name. This field is optional.
      * * If provided, the same will be used. The service will throw an error if
-     * the specified ID is already used by another curation resource in the API
-     * hub.
+     *   the specified ID is already used by another curation resource in the API
+     *   hub.
      * * If not provided, a system generated ID will be used.
-     * This value should be 4-500 characters, and valid characters
-     * are /a-z[0-9]-_/.
+     *   This value should be 4-500 characters, and valid characters
+     *   are /a-z[0-9]-_/.
      */
     declare public readonly curationId: pulumi.Output<string>;
     /**
@@ -239,11 +239,11 @@ export interface CurationState {
      * The ID to use for the curation resource, which will become the final
      * component of the curations's resource name. This field is optional.
      * * If provided, the same will be used. The service will throw an error if
-     * the specified ID is already used by another curation resource in the API
-     * hub.
+     *   the specified ID is already used by another curation resource in the API
+     *   hub.
      * * If not provided, a system generated ID will be used.
-     * This value should be 4-500 characters, and valid characters
-     * are /a-z[0-9]-_/.
+     *   This value should be 4-500 characters, and valid characters
+     *   are /a-z[0-9]-_/.
      */
     curationId?: pulumi.Input<string | undefined>;
     /**
@@ -330,11 +330,11 @@ export interface CurationArgs {
      * The ID to use for the curation resource, which will become the final
      * component of the curations's resource name. This field is optional.
      * * If provided, the same will be used. The service will throw an error if
-     * the specified ID is already used by another curation resource in the API
-     * hub.
+     *   the specified ID is already used by another curation resource in the API
+     *   hub.
      * * If not provided, a system generated ID will be used.
-     * This value should be 4-500 characters, and valid characters
-     * are /a-z[0-9]-_/.
+     *   This value should be 4-500 characters, and valid characters
+     *   are /a-z[0-9]-_/.
      */
     curationId: pulumi.Input<string>;
     /**

@@ -158,7 +158,7 @@ def get_certificate_map(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the certificate map.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -198,7 +198,7 @@ def get_certificate_map_output(name: pulumi.Input[Optional[_builtins.str]] = Non
 
     :param _builtins.str name: The name of the certificate map.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

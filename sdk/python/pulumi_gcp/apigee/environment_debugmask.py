@@ -33,7 +33,7 @@ class EnvironmentDebugmaskArgs:
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment associated with the debug mask, in the format
                `organizations/{{org_name}}/environments/{{env_name}}`.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fault_x_paths: List of XPath expressions that specify the XML elements or attributes that the
                debug mask applies to for fault messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] namespaces: Map of namespace prefixes to URIs used to evaluate the configured XPath
@@ -71,7 +71,7 @@ class EnvironmentDebugmaskArgs:
         The Apigee environment associated with the debug mask, in the format
         `organizations/{{org_name}}/environments/{{env_name}}`.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "env_id")
 
@@ -188,7 +188,7 @@ class _EnvironmentDebugmaskState:
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment associated with the debug mask, in the format
                `organizations/{{org_name}}/environments/{{env_name}}`.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fault_x_paths: List of XPath expressions that specify the XML elements or attributes that the
                debug mask applies to for fault messages.
         :param pulumi.Input[_builtins.str] name: The fully qualified name of the debug mask, in the format
@@ -231,7 +231,7 @@ class _EnvironmentDebugmaskState:
         The Apigee environment associated with the debug mask, in the format
         `organizations/{{org_name}}/environments/{{env_name}}`.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "env_id")
 
@@ -434,7 +434,7 @@ class EnvironmentDebugmask(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment associated with the debug mask, in the format
                `organizations/{{org_name}}/environments/{{env_name}}`.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fault_x_paths: List of XPath expressions that specify the XML elements or attributes that the
                debug mask applies to for fault messages.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] namespaces: Map of namespace prefixes to URIs used to evaluate the configured XPath
@@ -598,7 +598,7 @@ class EnvironmentDebugmask(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] env_id: The Apigee environment associated with the debug mask, in the format
                `organizations/{{org_name}}/environments/{{env_name}}`.
                
-               - - -
+               ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fault_x_paths: List of XPath expressions that specify the XML elements or attributes that the
                debug mask applies to for fault messages.
         :param pulumi.Input[_builtins.str] name: The fully qualified name of the debug mask, in the format
@@ -637,7 +637,7 @@ class EnvironmentDebugmask(pulumi.CustomResource):
         The Apigee environment associated with the debug mask, in the format
         `organizations/{{org_name}}/environments/{{env_name}}`.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "env_id")
 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
 import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -145,6 +146,21 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to skip waiting for the field operation to complete.
+     * 
+     */
+    @Import(name="skipWait")
+    private @Nullable Output<Boolean> skipWait;
+
+    /**
+     * @return Whether to skip waiting for the field operation to complete.
+     * 
+     */
+    public Optional<Output<Boolean>> skipWait() {
+        return Optional.ofNullable(this.skipWait);
+    }
+
+    /**
      * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
@@ -171,6 +187,7 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
         this.indexConfig = $.indexConfig;
         this.name = $.name;
         this.project = $.project;
+        this.skipWait = $.skipWait;
         this.ttlConfig = $.ttlConfig;
     }
 
@@ -359,6 +376,27 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param skipWait Whether to skip waiting for the field operation to complete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWait(@Nullable Output<Boolean> skipWait) {
+            $.skipWait = skipWait;
+            return this;
+        }
+
+        /**
+         * @param skipWait Whether to skip waiting for the field operation to complete.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipWait(Boolean skipWait) {
+            return skipWait(Output.of(skipWait));
         }
 
         /**

@@ -433,7 +433,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_8270",
+    ///         Name = "tf-test-bucket-name-_49082",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -476,16 +476,16 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_41150",
+    ///         Name = "tf-test-bucket-name-_60365",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var tfTestConnection = new Gcp.BigQuery.Connection("tf_test_connection", new()
     ///     {
-    ///         ConnectionId = "tf-test-connection-_89313",
+    ///         ConnectionId = "tf-test-connection-_80215",
     ///         Location = "us-central1",
-    ///         FriendlyName = "tf-test-connection-_60646",
+    ///         FriendlyName = "tf-test-connection-_59033",
     ///         Description = "a bigquery connection for tf test",
     ///         CloudResource = null,
     ///     });
@@ -578,7 +578,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestBucket = new Gcp.Storage.Bucket("tf_test_bucket", new()
     ///     {
-    ///         Name = "tf-test-bucket-name-_9394",
+    ///         Name = "tf-test-bucket-name-_32081",
     ///         Location = "us-west1",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -624,14 +624,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__11380",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__10393",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__35305",
+    ///         TableId = "tf_dataplex_test_table_id__33052",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -705,7 +705,10 @@ namespace Pulumi.Gcp.DataPlex
     ///                 OnDemand = null,
     ///             },
     ///         },
-    ///         DataDocumentationSpec = null,
+    ///         DataDocumentationSpec = new Gcp.DataPlex.Inputs.DatascanDataDocumentationSpecArgs
+    ///         {
+    ///             CatalogPublishingEnabled = true,
+    ///         },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -723,14 +726,14 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfDataplexTestDataset = new Gcp.BigQuery.Dataset("tf_dataplex_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_dataplex_test_dataset_id__62793",
+    ///         DatasetId = "tf_dataplex_test_dataset_id__3684",
     ///         DefaultTableExpirationMs = 3600000,
     ///     });
     /// 
     ///     var tfDataplexTestTable = new Gcp.BigQuery.Table("tf_dataplex_test_table", new()
     ///     {
     ///         DatasetId = tfDataplexTestDataset.DatasetId,
-    ///         TableId = "tf_dataplex_test_table_id__55438",
+    ///         TableId = "tf_dataplex_test_table_id__10719",
     ///         DeletionProtection = false,
     ///         Schema = @"    [
     ///     {
@@ -825,7 +828,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_test_ds__32706",
+    ///         DatasetId = "tf_test_ds__1443",
     ///         DefaultTableExpirationMs = 3600000,
     ///         DeleteContentsOnDestroy = true,
     ///         Project = "my-project-name",
@@ -834,7 +837,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
     ///     {
     ///         DatasetId = tfTestDataset.DatasetId,
-    ///         TableId = "tf_test_tbl__49082",
+    ///         TableId = "tf_test_tbl__26032",
     ///         DeletionProtection = false,
     ///         Project = "my-project-name",
     ///         Schema = @"    [
@@ -906,7 +909,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         AccountId = "tf-test-sa-_60365",
+    ///         AccountId = "tf-test-sa-_8647",
     ///         DisplayName = "DataScan Service Account",
     ///         Project = "my-project-name",
     ///     });
@@ -945,7 +948,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_test_ds__80215",
+    ///         DatasetId = "tf_test_ds__50610",
     ///         DefaultTableExpirationMs = 3600000,
     ///         DeleteContentsOnDestroy = true,
     ///         Project = "my-project-name",
@@ -962,7 +965,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
     ///     {
     ///         DatasetId = tfTestDataset.DatasetId,
-    ///         TableId = "tf_test_tbl__59033",
+    ///         TableId = "tf_test_tbl__77124",
     ///         DeletionProtection = false,
     ///         Project = "my-project-name",
     ///         Schema = @"    [
@@ -1039,7 +1042,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         AccountId = "tf-test-sa-_32081",
+    ///         AccountId = "tf-test-sa-_15335",
     ///         DisplayName = "DataScan Service Account",
     ///         Project = "my-project-name",
     ///     });
@@ -1067,7 +1070,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_test_dataset_id__10393",
+    ///         DatasetId = "tf_test_dataset_id__20665",
     ///         DefaultTableExpirationMs = 3600000,
     ///         DeleteContentsOnDestroy = true,
     ///         Project = "my-project-name",
@@ -1085,7 +1088,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
     ///     {
     ///         DatasetId = tfTestDataset.DatasetId,
-    ///         TableId = "tf_test_table_id__33052",
+    ///         TableId = "tf_test_table_id__85160",
     ///         DeletionProtection = false,
     ///         Project = "my-project-name",
     ///         Schema = @"    [
@@ -1101,7 +1104,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var testGroup = new Gcp.DataPlex.EntryGroup("test_group", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "test-group-_3684",
+    ///         EntryGroupId = "test-group-_92130",
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -1109,7 +1112,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = testGroup.EntryGroupId,
-    ///         EntryId = "test-entry-_10719",
+    ///         EntryId = "test-entry-_16199",
     ///         EntryType = "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         Aspects = new[]
@@ -1347,7 +1350,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         AccountId = "tf-test-sa-_1443",
+    ///         AccountId = "tf-test-sa-_21563",
     ///         DisplayName = "DataScan Service Account",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///     });
@@ -1387,7 +1390,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var testGroup = new Gcp.DataPlex.EntryGroup("test_group", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "test-group-_26032",
+    ///         EntryGroupId = "test-group-_25141",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///     });
     /// 
@@ -1395,7 +1398,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = testGroup.EntryGroupId,
-    ///         EntryId = "test-entry-_8647",
+    ///         EntryId = "test-entry-_30827",
     ///         EntryType = "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         Aspects = new[]
@@ -1423,7 +1426,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     ///     var tfTestDataset = new Gcp.BigQuery.Dataset("tf_test_dataset", new()
     ///     {
-    ///         DatasetId = "tf_test_dataset_id__50610",
+    ///         DatasetId = "tf_test_dataset_id__6529",
     ///         DefaultTableExpirationMs = 3600000,
     ///         Location = "us-central1",
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
@@ -1440,7 +1443,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var tfTestTable = new Gcp.BigQuery.Table("tf_test_table", new()
     ///     {
     ///         DatasetId = tfTestDataset.DatasetId,
-    ///         TableId = "tf_test_table_id__77124",
+    ///         TableId = "tf_test_table_id__16178",
     ///         DeletionProtection = false,
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Schema = @"    [
@@ -1561,6 +1564,7 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// DataDocumentationScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Output("dataDocumentationSpec")]
         public Output<Outputs.DatascanDataDocumentationSpec?> DataDocumentationSpec { get; private set; } = null!;
@@ -1761,6 +1765,7 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// DataDocumentationScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataDocumentationSpec")]
         public Input<Inputs.DatascanDataDocumentationSpecArgs>? DataDocumentationSpec { get; set; }
@@ -1880,6 +1885,7 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// DataDocumentationScan related setting.
+        /// Structure is documented below.
         /// </summary>
         [Input("dataDocumentationSpec")]
         public Input<Inputs.DatascanDataDocumentationSpecGetArgs>? DataDocumentationSpec { get; set; }

@@ -40,7 +40,7 @@ export interface GetNetworkArgs {
     /**
      * Location of the resource.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -108,7 +108,7 @@ export interface GetNetworkOutputArgs {
     /**
      * Location of the resource.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

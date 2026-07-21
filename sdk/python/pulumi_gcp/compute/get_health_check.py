@@ -248,7 +248,7 @@ def get_health_check(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: Name of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -298,7 +298,7 @@ def get_health_check_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str name: Name of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

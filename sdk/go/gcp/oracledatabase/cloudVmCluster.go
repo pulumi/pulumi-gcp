@@ -242,6 +242,116 @@ import (
 //	}
 //
 // ```
+// ### Oracledatabase Cloud Vmcluster Exascale
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			infra, err := oracledatabase.NewCloudExadataInfrastructure(ctx, "infra", &oracledatabase.CloudExadataInfrastructureArgs{
+//				CloudExadataInfrastructureId: pulumi.String("my-exadata"),
+//				DisplayName:                  pulumi.String("my-exadata displayname"),
+//				Location:                     pulumi.String("us-east4"),
+//				Project:                      pulumi.String("my-project"),
+//				Properties: &oracledatabase.CloudExadataInfrastructurePropertiesArgs{
+//					Shape:        pulumi.String("Exadata.X9M"),
+//					ComputeCount: pulumi.Int(2),
+//					StorageCount: pulumi.Int(3),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exascaleConfig, err := oracledatabase.NewCloudExadataInfrastructureExascaleConfig(ctx, "exascale_config", &oracledatabase.CloudExadataInfrastructureExascaleConfigArgs{
+//				CloudExadataInfrastructure: infra.CloudExadataInfrastructureId,
+//				Location:                   pulumi.String("us-east4"),
+//				Project:                    pulumi.String("my-project"),
+//				TotalStorageSizeGb:         pulumi.Int(10240),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vault, err := oracledatabase.NewExascaleDbStorageVault(ctx, "vault", &oracledatabase.ExascaleDbStorageVaultArgs{
+//				ExascaleDbStorageVaultId: pulumi.String("my-vault"),
+//				DisplayName:              pulumi.String("my-vault displayname"),
+//				Location:                 pulumi.String("us-east4"),
+//				Project:                  pulumi.String("my-project"),
+//				ExadataInfrastructure:    infra.Name,
+//				Properties: &oracledatabase.ExascaleDbStorageVaultPropertiesArgs{
+//					ExascaleDbStorageDetails: &oracledatabase.ExascaleDbStorageVaultPropertiesExascaleDbStorageDetailsArgs{
+//						TotalSizeGbs: pulumi.Int(2048),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exascaleConfig,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name:    pulumi.StringRef("new"),
+//				Project: pulumi.StringRef("my-project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			dbServers := oracledatabase.GetDbServersOutput(ctx, oracledatabase.GetDbServersOutputArgs{
+//				Location:                   pulumi.String("us-east4"),
+//				Project:                    pulumi.String("my-project"),
+//				CloudExadataInfrastructure: infra.CloudExadataInfrastructureId,
+//			}, nil)
+//			_, err = oracledatabase.NewCloudVmCluster(ctx, "my_vmcluster", &oracledatabase.CloudVmClusterArgs{
+//				CloudVmClusterId:       pulumi.String("my-instance"),
+//				DisplayName:            pulumi.String("my-instance displayname"),
+//				Location:               pulumi.String("us-east4"),
+//				Project:                pulumi.String("my-project"),
+//				ExadataInfrastructure:  infra.ID(),
+//				Network:                pulumi.String(_default.Id),
+//				Cidr:                   pulumi.String("10.5.0.0/24"),
+//				BackupSubnetCidr:       pulumi.String("10.6.0.0/24"),
+//				ExascaleDbStorageVault: vault.Name,
+//				Properties: &oracledatabase.CloudVmClusterPropertiesArgs{
+//					LicenseType: pulumi.String("LICENSE_INCLUDED"),
+//					SshPublicKeys: pulumi.StringArray{
+//						pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"),
+//					},
+//					CpuCoreCount:        pulumi.Int(4),
+//					GiVersion:           pulumi.String("23.0.0.0"),
+//					HostnamePrefix:      pulumi.String("hostname1"),
+//					MemorySizeGb:        pulumi.Int(60),
+//					DbNodeStorageSizeGb: pulumi.Int(120),
+//					DbServerOcids: pulumi.StringArray{
+//						dbServers.ApplyT(func(dbServers oracledatabase.GetDbServersResult) (*string, error) {
+//							return dbServers.DbServers[0].Properties[0].Ocid, nil
+//						}).(pulumi.StringPtrOutput),
+//						dbServers.ApplyT(func(dbServers oracledatabase.GetDbServersResult) (*string, error) {
+//							return dbServers.DbServers[1].Properties[0].Ocid, nil
+//						}).(pulumi.StringPtrOutput),
+//					},
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exascaleConfig,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -293,6 +403,10 @@ type CloudVmCluster struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure pulumi.StringOutput `pulumi:"exadataInfrastructure"`
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault pulumi.StringPtrOutput `pulumi:"exascaleDbStorageVault"`
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone pulumi.StringOutput `pulumi:"gcpOracleZone"`
@@ -409,6 +523,10 @@ type cloudVmClusterState struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure *string `pulumi:"exadataInfrastructure"`
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault *string `pulumi:"exascaleDbStorageVault"`
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone *string `pulumi:"gcpOracleZone"`
@@ -482,6 +600,10 @@ type CloudVmClusterState struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure pulumi.StringPtrInput
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault pulumi.StringPtrInput
 	// GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
 	// of Exadata infrastructure.
 	GcpOracleZone pulumi.StringPtrInput
@@ -555,6 +677,10 @@ type cloudVmClusterArgs struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure string `pulumi:"exadataInfrastructure"`
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault *string `pulumi:"exascaleDbStorageVault"`
 	// Labels or tags associated with the VM Cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -612,6 +738,10 @@ type CloudVmClusterArgs struct {
 	// resource is created, in the following format:
 	// projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 	ExadataInfrastructure pulumi.StringInput
+	// The name of ExascaleDbStorageVault associated with the VM Cluster.
+	// Format:
+	// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+	ExascaleDbStorageVault pulumi.StringPtrInput
 	// Labels or tags associated with the VM Cluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -786,6 +916,13 @@ func (o CloudVmClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 // projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
 func (o CloudVmClusterOutput) ExadataInfrastructure() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.ExadataInfrastructure }).(pulumi.StringOutput)
+}
+
+// The name of ExascaleDbStorageVault associated with the VM Cluster.
+// Format:
+// projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+func (o CloudVmClusterOutput) ExascaleDbStorageVault() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringPtrOutput { return v.ExascaleDbStorageVault }).(pulumi.StringPtrOutput)
 }
 
 // GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone

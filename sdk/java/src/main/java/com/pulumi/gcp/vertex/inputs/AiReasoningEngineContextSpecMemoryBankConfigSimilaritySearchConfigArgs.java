@@ -15,14 +15,14 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchC
     public static final AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs Empty = new AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs();
 
     /**
-     * The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+     * Required. The Gemini model used to generate embeddings to lookup similar examples.
      * 
      */
     @Import(name="embeddingModel", required=true)
     private Output<String> embeddingModel;
 
     /**
-     * @return The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+     * @return Required. The Gemini model used to generate embeddings to lookup similar examples.
      * 
      */
     public Output<String> embeddingModel() {
@@ -54,7 +54,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchC
         }
 
         /**
-         * @param embeddingModel The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+         * @param embeddingModel Required. The Gemini model used to generate embeddings to lookup similar examples.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchC
         }
 
         /**
-         * @param embeddingModel The model used to generate embeddings to lookup similar memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+         * @param embeddingModel Required. The Gemini model used to generate embeddings to lookup similar examples.
          * 
          * @return builder
          * 

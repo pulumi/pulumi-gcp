@@ -19,12 +19,9 @@ import javax.annotation.Nullable;
 /**
  * The FindingsRefinementDeployment resource represents the deployment state of a findings refinement.
  * 
- * &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- * 
  * To get more information about FindingsRefinementDeployment, see:
  * 
- * * [API documentation](https://docs.cloud.google.com/chronicle/docs/reference/rest/v1beta/FindingsRefinementDeployment)
+ * * [API documentation](https://docs.cloud.google.com/chronicle/docs/reference/rest/v1/FindingsRefinementDeployment)
  * * How-to Guides
  *     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
  * 

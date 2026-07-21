@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var opsAgentPolicy = new ZoneVmExtensionPolicy("opsAgentPolicy", ZoneVmExtensionPolicyArgs.builder()
- *             .name("zonal-ops-agent-vme-policy-_75223")
+ *             .name("zonal-ops-agent-vme-policy-_79169")
  *             .zone("us-central1-a")
  *             .extensionPolicies(ZoneVmExtensionPolicyExtensionPolicyArgs.builder()
  *                 .extensionName("ops-agent")

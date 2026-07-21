@@ -5745,7 +5745,6 @@ class CertificateConfigArgsDict(TypedDict):
     A PublicKey describes a public key.
     Structure is documented below.
 
-
     <a name="nested_config_x509_config"></a>The `x509_config` block supports:
     """
     subject_config: pulumi.Input['CertificateConfigSubjectConfigArgsDict']
@@ -5775,7 +5774,6 @@ class CertificateConfigArgs:
         :param pulumi.Input['CertificateConfigPublicKeyArgs'] public_key: A PublicKey describes a public key.
                Structure is documented below.
                
-               
                <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input['CertificateConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
@@ -5796,7 +5794,6 @@ class CertificateConfigArgs:
         """
         A PublicKey describes a public key.
         Structure is documented below.
-
 
         <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """

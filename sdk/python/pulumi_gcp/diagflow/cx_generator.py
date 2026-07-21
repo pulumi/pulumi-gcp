@@ -43,7 +43,7 @@ class CxGeneratorArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
-               If not specified, the agent's default language is used.
+                 If not specified, the agent's default language is used.
         :param pulumi.Input['CxGeneratorLlmModelSettingsArgs'] llm_model_settings: The LLM model settings.
                Structure is documented below.
         :param pulumi.Input['CxGeneratorModelParameterArgs'] model_parameter: Parameters passed to the LLM to configure its behavior.
@@ -116,7 +116,7 @@ class CxGeneratorArgs:
         """
         The language to create generators for the following fields:
         * Generator.prompt_text.text
-        If not specified, the agent's default language is used.
+          If not specified, the agent's default language is used.
         """
         return pulumi.get(self, "language_code")
 
@@ -201,7 +201,7 @@ class _CxGeneratorState:
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the generator, unique within the agent.
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
-               If not specified, the agent's default language is used.
+                 If not specified, the agent's default language is used.
         :param pulumi.Input['CxGeneratorLlmModelSettingsArgs'] llm_model_settings: The LLM model settings.
                Structure is documented below.
         :param pulumi.Input['CxGeneratorModelParameterArgs'] model_parameter: Parameters passed to the LLM to configure its behavior.
@@ -269,7 +269,7 @@ class _CxGeneratorState:
         """
         The language to create generators for the following fields:
         * Generator.prompt_text.text
-        If not specified, the agent's default language is used.
+          If not specified, the agent's default language is used.
         """
         return pulumi.get(self, "language_code")
 
@@ -441,7 +441,7 @@ class CxGenerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the generator, unique within the agent.
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
-               If not specified, the agent's default language is used.
+                 If not specified, the agent's default language is used.
         :param pulumi.Input[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']] llm_model_settings: The LLM model settings.
                Structure is documented below.
         :param pulumi.Input[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']] model_parameter: Parameters passed to the LLM to configure its behavior.
@@ -598,7 +598,7 @@ class CxGenerator(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the generator, unique within the agent.
         :param pulumi.Input[_builtins.str] language_code: The language to create generators for the following fields:
                * Generator.prompt_text.text
-               If not specified, the agent's default language is used.
+                 If not specified, the agent's default language is used.
         :param pulumi.Input[Union['CxGeneratorLlmModelSettingsArgs', 'CxGeneratorLlmModelSettingsArgsDict']] llm_model_settings: The LLM model settings.
                Structure is documented below.
         :param pulumi.Input[Union['CxGeneratorModelParameterArgs', 'CxGeneratorModelParameterArgsDict']] model_parameter: Parameters passed to the LLM to configure its behavior.
@@ -654,7 +654,7 @@ class CxGenerator(pulumi.CustomResource):
         """
         The language to create generators for the following fields:
         * Generator.prompt_text.text
-        If not specified, the agent's default language is used.
+          If not specified, the agent's default language is used.
         """
         return pulumi.get(self, "language_code")
 

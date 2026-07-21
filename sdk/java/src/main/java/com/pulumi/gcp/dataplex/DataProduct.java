@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 .groupId("analyst")
  *                 .displayName("Data Analyst")
  *                 .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                     .googleGroup("tf-test-analysts-_91980}{@literal @}{@code example.com")
+ *                     .googleGroup("tf-test-analysts-_89313}{@literal @}{@code example.com")
  *                     .build())
  *                 .build())
  *             .build());
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var testSa = new Account("testSa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_37118")
+ *             .accountId("tf-test-sa-_60646")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *                     .displayName("Data Analyst - Updated")
  *                     .description("In-place update verified")
  *                     .principal(DataProductAccessGroupPrincipalArgs.builder()
- *                         .googleGroup("tf-test-analysts-_80332}{@literal @}{@code example.com")
+ *                         .googleGroup("tf-test-analysts-_9394}{@literal @}{@code example.com")
  *                         .build())
  *                     .build(),
  *                 DataProductAccessGroupArgs.builder()

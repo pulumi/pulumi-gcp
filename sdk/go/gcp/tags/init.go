@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LocationTagBinding{}
 	case "gcp:tags/tagBinding:TagBinding":
 		r = &TagBinding{}
+	case "gcp:tags/tagBindingCollection:TagBindingCollection":
+		r = &TagBindingCollection{}
 	case "gcp:tags/tagKey:TagKey":
 		r = &TagKey{}
 	case "gcp:tags/tagKeyIamBinding:TagKeyIamBinding":
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"tags/tagBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagBindingCollection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

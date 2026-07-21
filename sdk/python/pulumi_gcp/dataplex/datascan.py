@@ -47,6 +47,7 @@ class DatascanArgs:
         :param pulumi.Input['DatascanDataDiscoverySpecArgs'] data_discovery_spec: DataDiscoveryScan related setting.
                Structure is documented below.
         :param pulumi.Input['DatascanDataDocumentationSpecArgs'] data_documentation_spec: DataDocumentationScan related setting.
+               Structure is documented below.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
@@ -161,6 +162,7 @@ class DatascanArgs:
     def data_documentation_spec(self) -> pulumi.Input[Optional['DatascanDataDocumentationSpecArgs']]:
         """
         DataDocumentationScan related setting.
+        Structure is documented below.
         """
         return pulumi.get(self, "data_documentation_spec")
 
@@ -312,6 +314,7 @@ class _DatascanState:
         :param pulumi.Input['DatascanDataDiscoverySpecArgs'] data_discovery_spec: DataDiscoveryScan related setting.
                Structure is documented below.
         :param pulumi.Input['DatascanDataDocumentationSpecArgs'] data_documentation_spec: DataDocumentationScan related setting.
+               Structure is documented below.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
@@ -437,6 +440,7 @@ class _DatascanState:
     def data_documentation_spec(self) -> pulumi.Input[Optional['DatascanDataDocumentationSpecArgs']]:
         """
         DataDocumentationScan related setting.
+        Structure is documented below.
         """
         return pulumi.get(self, "data_documentation_spec")
 
@@ -998,7 +1002,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_8270",
+            name="tf-test-bucket-name-_49082",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -1026,13 +1030,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_41150",
+            name="tf-test-bucket-name-_60365",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_89313",
+            connection_id="tf-test-connection-_80215",
             location="us-central1",
-            friendly_name="tf-test-connection-_60646",
+            friendly_name="tf-test-connection-_59033",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1100,7 +1104,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_9394",
+            name="tf-test-bucket-name-_32081",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1130,11 +1134,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__11380",
+            dataset_id="tf_dataplex_test_dataset_id__10393",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__35305",
+            table_id="tf_dataplex_test_table_id__33052",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1201,7 +1205,9 @@ class Datascan(pulumi.CustomResource):
                     "on_demand": {},
                 },
             },
-            data_documentation_spec={},
+            data_documentation_spec={
+                "catalog_publishing_enabled": True,
+            },
             project="my-project-name")
         ```
         ### Dataplex Datascan Onetime Documentation
@@ -1211,11 +1217,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__62793",
+            dataset_id="tf_dataplex_test_dataset_id__3684",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__55438",
+            table_id="tf_dataplex_test_table_id__10719",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1294,13 +1300,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__32706",
+            dataset_id="tf_test_ds__1443",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name")
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__49082",
+            table_id="tf_test_tbl__26032",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -1347,7 +1353,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_60365",
+            account_id="tf-test-sa-_8647",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -1365,7 +1371,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__80215",
+            dataset_id="tf_test_ds__50610",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -1376,7 +1382,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__59033",
+            table_id="tf_test_tbl__77124",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -1429,7 +1435,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_32081",
+            account_id="tf-test-sa-_15335",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -1445,7 +1451,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__10393",
+            dataset_id="tf_test_dataset_id__20665",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -1457,7 +1463,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__33052",
+            table_id="tf_test_table_id__85160",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -1470,12 +1476,12 @@ class Datascan(pulumi.CustomResource):
         \"\"\")
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_3684",
+            entry_group_id="test-group-_92130",
             project="my-project-name")
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_10719",
+            entry_id="test-entry-_16199",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -1615,7 +1621,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_1443",
+            account_id="tf-test-sa-_21563",
             display_name="DataScan Service Account",
             project=project.project_id)
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -1634,12 +1640,12 @@ class Datascan(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_26032",
+            entry_group_id="test-group-_25141",
             project=project.project_id)
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_8647",
+            entry_id="test-entry-_30827",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -1654,7 +1660,7 @@ class Datascan(pulumi.CustomResource):
                 },
             }])
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__50610",
+            dataset_id="tf_test_dataset_id__6529",
             default_table_expiration_ms=3600000,
             location="us-central1",
             project=project.project_id,
@@ -1665,7 +1671,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__77124",
+            table_id="tf_test_table_id__16178",
             deletion_protection=False,
             project=project.project_id,
             schema=\"\"\"    [
@@ -1743,6 +1749,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']] data_discovery_spec: DataDiscoveryScan related setting.
                Structure is documented below.
         :param pulumi.Input[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']] data_documentation_spec: DataDocumentationScan related setting.
+               Structure is documented below.
         :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
         :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
@@ -2063,7 +2070,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_8270",
+            name="tf-test-bucket-name-_49082",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -2091,13 +2098,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_41150",
+            name="tf-test-bucket-name-_60365",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_89313",
+            connection_id="tf-test-connection-_80215",
             location="us-central1",
-            friendly_name="tf-test-connection-_60646",
+            friendly_name="tf-test-connection-_59033",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -2165,7 +2172,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_9394",
+            name="tf-test-bucket-name-_32081",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -2195,11 +2202,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__11380",
+            dataset_id="tf_dataplex_test_dataset_id__10393",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__35305",
+            table_id="tf_dataplex_test_table_id__33052",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -2266,7 +2273,9 @@ class Datascan(pulumi.CustomResource):
                     "on_demand": {},
                 },
             },
-            data_documentation_spec={},
+            data_documentation_spec={
+                "catalog_publishing_enabled": True,
+            },
             project="my-project-name")
         ```
         ### Dataplex Datascan Onetime Documentation
@@ -2276,11 +2285,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__62793",
+            dataset_id="tf_dataplex_test_dataset_id__3684",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__55438",
+            table_id="tf_dataplex_test_table_id__10719",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -2359,13 +2368,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__32706",
+            dataset_id="tf_test_ds__1443",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name")
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__49082",
+            table_id="tf_test_tbl__26032",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -2412,7 +2421,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_60365",
+            account_id="tf-test-sa-_8647",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -2430,7 +2439,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__80215",
+            dataset_id="tf_test_ds__50610",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -2441,7 +2450,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__59033",
+            table_id="tf_test_tbl__77124",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -2494,7 +2503,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_32081",
+            account_id="tf-test-sa-_15335",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -2510,7 +2519,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__10393",
+            dataset_id="tf_test_dataset_id__20665",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -2522,7 +2531,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__33052",
+            table_id="tf_test_table_id__85160",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -2535,12 +2544,12 @@ class Datascan(pulumi.CustomResource):
         \"\"\")
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_3684",
+            entry_group_id="test-group-_92130",
             project="my-project-name")
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_10719",
+            entry_id="test-entry-_16199",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -2680,7 +2689,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_1443",
+            account_id="tf-test-sa-_21563",
             display_name="DataScan Service Account",
             project=project.project_id)
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -2699,12 +2708,12 @@ class Datascan(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_26032",
+            entry_group_id="test-group-_25141",
             project=project.project_id)
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_8647",
+            entry_id="test-entry-_30827",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -2719,7 +2728,7 @@ class Datascan(pulumi.CustomResource):
                 },
             }])
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__50610",
+            dataset_id="tf_test_dataset_id__6529",
             default_table_expiration_ms=3600000,
             location="us-central1",
             project=project.project_id,
@@ -2730,7 +2739,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__77124",
+            table_id="tf_test_table_id__16178",
             deletion_protection=False,
             project=project.project_id,
             schema=\"\"\"    [
@@ -2918,6 +2927,7 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[Union['DatascanDataDiscoverySpecArgs', 'DatascanDataDiscoverySpecArgsDict']] data_discovery_spec: DataDiscoveryScan related setting.
                Structure is documented below.
         :param pulumi.Input[Union['DatascanDataDocumentationSpecArgs', 'DatascanDataDocumentationSpecArgsDict']] data_documentation_spec: DataDocumentationScan related setting.
+               Structure is documented below.
         :param pulumi.Input[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
         :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
@@ -3013,6 +3023,7 @@ class Datascan(pulumi.CustomResource):
     def data_documentation_spec(self) -> pulumi.Output[Optional['outputs.DatascanDataDocumentationSpec']]:
         """
         DataDocumentationScan related setting.
+        Structure is documented below.
         """
         return pulumi.get(self, "data_documentation_spec")
 

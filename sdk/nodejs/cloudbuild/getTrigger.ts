@@ -42,7 +42,7 @@ export interface GetTriggerArgs {
     /**
      * The Cloud Build location for the trigger.
      *
-     * - - -
+     * ***
      */
     location: string;
     /**
@@ -127,7 +127,7 @@ export interface GetTriggerOutputArgs {
     /**
      * The Cloud Build location for the trigger.
      *
-     * - - -
+     * ***
      */
     location: pulumi.Input<string>;
     /**

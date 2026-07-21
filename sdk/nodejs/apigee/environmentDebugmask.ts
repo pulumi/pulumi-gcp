@@ -108,7 +108,7 @@ export class EnvironmentDebugmask extends pulumi.CustomResource {
      * The Apigee environment associated with the debug mask, in the format
      * `organizations/{{org_name}}/environments/{{env_name}}`.
      *
-     * - - -
+     * ***
      */
     declare public readonly envId: pulumi.Output<string>;
     /**
@@ -201,7 +201,7 @@ export interface EnvironmentDebugmaskState {
      * The Apigee environment associated with the debug mask, in the format
      * `organizations/{{org_name}}/environments/{{env_name}}`.
      *
-     * - - -
+     * ***
      */
     envId?: pulumi.Input<string | undefined>;
     /**
@@ -253,7 +253,7 @@ export interface EnvironmentDebugmaskArgs {
      * The Apigee environment associated with the debug mask, in the format
      * `organizations/{{org_name}}/environments/{{env_name}}`.
      *
-     * - - -
+     * ***
      */
     envId: pulumi.Input<string>;
     /**

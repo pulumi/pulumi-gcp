@@ -128,7 +128,7 @@ class GetMcpServerResult:
 
     @_builtins.property
     @pulumi.getter(name="mcpServerId")
-    def mcp_server_id(self) -> Optional[_builtins.str]:
+    def mcp_server_id(self) -> _builtins.str:
         return pulumi.get(self, "mcp_server_id")
 
     @_builtins.property
@@ -204,7 +204,7 @@ def get_mcp_server(filter: Optional[_builtins.str] = None,
     :param _builtins.str filter: A filter string that identifies a unique MCP server. This or `mcp_server_id` must be set.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str mcp_server_id: The unique identifier for the MCP Server. This or `filter` must be set.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
@@ -253,7 +253,7 @@ def get_mcp_server_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]
     :param _builtins.str filter: A filter string that identifies a unique MCP server. This or `mcp_server_id` must be set.
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str mcp_server_id: The unique identifier for the MCP Server. This or `filter` must be set.
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

@@ -186,6 +186,8 @@ type NodePool struct {
 	//
 	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
+	// The maintenance policy of the pool. Structure is documented below.
+	MaintenancePolicies NodePoolMaintenancePolicyArrayOutput `pulumi:"maintenancePolicies"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayOutput `pulumi:"managedInstanceGroupUrls"`
 	// Node management configuration, wherein auto-repair and
@@ -310,6 +312,8 @@ type nodePoolState struct {
 	//
 	// ***
 	Location *string `pulumi:"location"`
+	// The maintenance policy of the pool. Structure is documented below.
+	MaintenancePolicies []NodePoolMaintenancePolicy `pulumi:"maintenancePolicies"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls []string `pulumi:"managedInstanceGroupUrls"`
 	// Node management configuration, wherein auto-repair and
@@ -402,6 +406,8 @@ type NodePoolState struct {
 	//
 	// ***
 	Location pulumi.StringPtrInput
+	// The maintenance policy of the pool. Structure is documented below.
+	MaintenancePolicies NodePoolMaintenancePolicyArrayInput
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayInput
 	// Node management configuration, wherein auto-repair and
@@ -496,6 +502,8 @@ type nodePoolArgs struct {
 	//
 	// ***
 	Location *string `pulumi:"location"`
+	// The maintenance policy of the pool. Structure is documented below.
+	MaintenancePolicies []NodePoolMaintenancePolicy `pulumi:"maintenancePolicies"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management *NodePoolManagement `pulumi:"management"`
@@ -584,6 +592,8 @@ type NodePoolArgs struct {
 	//
 	// ***
 	Location pulumi.StringPtrInput
+	// The maintenance policy of the pool. Structure is documented below.
+	MaintenancePolicies NodePoolMaintenancePolicyArrayInput
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
 	Management NodePoolManagementPtrInput
@@ -778,6 +788,11 @@ func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 // ***
 func (o NodePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The maintenance policy of the pool. Structure is documented below.
+func (o NodePoolOutput) MaintenancePolicies() NodePoolMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolMaintenancePolicyArrayOutput { return v.MaintenancePolicies }).(NodePoolMaintenancePolicyArrayOutput)
 }
 
 // List of instance group URLs which have been assigned to this node pool.

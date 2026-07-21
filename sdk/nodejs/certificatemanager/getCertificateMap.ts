@@ -35,7 +35,7 @@ export interface GetCertificateMapArgs {
     /**
      * The name of the certificate map.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -93,7 +93,7 @@ export interface GetCertificateMapOutputArgs {
     /**
      * The name of the certificate map.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

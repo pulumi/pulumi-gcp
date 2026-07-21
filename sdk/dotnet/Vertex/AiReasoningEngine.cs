@@ -582,6 +582,7 @@ namespace Pulumi.Gcp.Vertex
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -594,6 +595,10 @@ namespace Pulumi.Gcp.Vertex
     ///         DisplayName = "re-ctx-spec",
     ///         Description = "Reasoning engine with context spec",
     ///         Region = "us-central1",
+    ///         TrafficConfig = new Gcp.Vertex.Inputs.AiReasoningEngineTrafficConfigArgs
+    ///         {
+    ///             TrafficSplitAlwaysLatest = null,
+    ///         },
     ///         ContextSpec = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecArgs
     ///         {
     ///             MemoryBankConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigArgs
@@ -607,6 +612,145 @@ namespace Pulumi.Gcp.Vertex
     ///                     EmbeddingModel = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/text-embedding-005",
     ///                 },
     ///                 DisableMemoryRevisions = false,
+    ///                 CustomizationConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs
+    ///                     {
+    ///                         ScopeKeys = new[]
+    ///                         {
+    ///                             "user_id",
+    ///                         },
+    ///                         EnableThirdPersonMemories = true,
+    ///                         ConsolidationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigConsolidationConfigArgs
+    ///                         {
+    ///                             RevisionsPerCandidateCount = 1,
+    ///                         },
+    ///                         MemoryTopics = new[]
+    ///                         {
+    ///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs
+    ///                             {
+    ///                                 ManagedMemoryTopic = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs
+    ///                                 {
+    ///                                     ManagedTopicEnum = "USER_PREFERENCES",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigArgs
+    ///                     {
+    ///                         ScopeKeys = new[]
+    ///                         {
+    ///                             "user_id",
+    ///                             "session_id",
+    ///                         },
+    ///                         EnableThirdPersonMemories = true,
+    ///                         MemoryTopics = new[]
+    ///                         {
+    ///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicArgs
+    ///                             {
+    ///                                 CustomMemoryTopic = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs
+    ///                                 {
+    ///                                     Label = "session_scratchpad",
+    ///                                     Description = "Active consideration details, recent queries, and temporary workflow state.",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 StructuredMemoryConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs
+    ///                     {
+    ///                         ScopeKeys = new[]
+    ///                         {
+    ///                             "user_id",
+    ///                         },
+    ///                         SchemaConfigs = new[]
+    ///                         {
+    ///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs
+    ///                             {
+    ///                                 Id = "user-profile",
+    ///                                 MemorySchema = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["type"] = "OBJECT",
+    ///                                     ["properties"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["name"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "Name of the user.",
+    ///                                         },
+    ///                                         ["technical_stack"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "Comma-separated list tools or languages used by the user.",
+    ///                                         },
+    ///                                         ["primary_goal"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "The main objective the user is pursuing.",
+    ///                                         },
+    ///                                         ["expertise_level"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "Current skill level (e.g., Junior, Senior).",
+    ///                                         },
+    ///                                         ["job_status"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "The job status of the individual",
+    ///                                             ["enum"] = new[]
+    ///                                             {
+    ///                                                 "unemployed",
+    ///                                                 "part_time",
+    ///                                                 "full_time",
+    ///                                                 "student",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 }),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs
+    ///                     {
+    ///                         ScopeKeys = new[]
+    ///                         {
+    ///                             "user_id",
+    ///                             "session_id",
+    ///                         },
+    ///                         SchemaConfigs = new[]
+    ///                         {
+    ///                             new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfigArgs
+    ///                             {
+    ///                                 Id = "conversation-summary",
+    ///                                 MemorySchema = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["type"] = "OBJECT",
+    ///                                     ["properties"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["main_topic"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "The primary topic of this specific chat session.",
+    ///                                         },
+    ///                                         ["status"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["type"] = "STRING",
+    ///                                             ["description"] = "Current resolution state of the discussion.",
+    ///                                             ["enum"] = new[]
+    ///                                             {
+    ///                                                 "open",
+    ///                                                 "in_progress",
+    ///                                                 "resolved",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 }),
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
     ///                 TtlConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs
     ///                 {
     ///                     DefaultTtl = "86400s",
@@ -691,7 +835,7 @@ namespace Pulumi.Gcp.Vertex
         /// Structure is documented below.
         /// </summary>
         [Output("contextSpec")]
-        public Output<Outputs.AiReasoningEngineContextSpec?> ContextSpec { get; private set; } = null!;
+        public Output<Outputs.AiReasoningEngineContextSpec> ContextSpec { get; private set; } = null!;
 
         /// <summary>
         /// The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
@@ -785,11 +929,26 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiReasoningEngineSpec> Spec { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Traffic distribution configuration for the Reasoning Engine.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("trafficConfig")]
+        public Output<Outputs.AiReasoningEngineTrafficConfig> TrafficConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
         /// format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// (Beta)
+        /// Output only. The URL of the reasoning engine.
+        /// </summary>
+        [Output("url")]
+        public Output<string> Url { get; private set; } = null!;
 
 
         /// <summary>
@@ -919,6 +1078,14 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("spec")]
         public Input<Inputs.AiReasoningEngineSpecArgs>? Spec { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Traffic distribution configuration for the Reasoning Engine.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("trafficConfig")]
+        public Input<Inputs.AiReasoningEngineTrafficConfigArgs>? TrafficConfig { get; set; }
 
         public AiReasoningEngineArgs()
         {
@@ -1054,11 +1221,26 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiReasoningEngineSpecGetArgs>? Spec { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Traffic distribution configuration for the Reasoning Engine.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("trafficConfig")]
+        public Input<Inputs.AiReasoningEngineTrafficConfigGetArgs>? TrafficConfig { get; set; }
+
+        /// <summary>
         /// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
         /// format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// (Beta)
+        /// Output only. The URL of the reasoning engine.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public AiReasoningEngineState()
         {

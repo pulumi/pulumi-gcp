@@ -138,7 +138,8 @@ type LookupInstanceTemplateResult struct {
 	// Tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
-	TagsFingerprint string `pulumi:"tagsFingerprint"`
+	TagsFingerprint         string                                      `pulumi:"tagsFingerprint"`
+	WorkloadIdentityConfigs []GetInstanceTemplateWorkloadIdentityConfig `pulumi:"workloadIdentityConfigs"`
 }
 
 func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceTemplateResultOutput {
@@ -404,6 +405,12 @@ func (o LookupInstanceTemplateResultOutput) Tags() pulumi.StringArrayOutput {
 // The unique fingerprint of the tags.
 func (o LookupInstanceTemplateResultOutput) TagsFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.TagsFingerprint }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) WorkloadIdentityConfigs() GetInstanceTemplateWorkloadIdentityConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateWorkloadIdentityConfig {
+		return v.WorkloadIdentityConfigs
+	}).(GetInstanceTemplateWorkloadIdentityConfigArrayOutput)
 }
 
 func init() {

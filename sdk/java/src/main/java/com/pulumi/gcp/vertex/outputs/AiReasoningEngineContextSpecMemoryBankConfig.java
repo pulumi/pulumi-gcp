@@ -4,16 +4,25 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig;
 import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigTtlConfig;
 import java.lang.Boolean;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class AiReasoningEngineContextSpecMemoryBankConfig {
+    /**
+     * @return Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig> customizationConfigs;
     /**
      * @return If true, no memory revisions will be created for any requests to the Memory Bank.
      * 
@@ -32,6 +41,12 @@ public final class AiReasoningEngineContextSpecMemoryBankConfig {
      */
     private @Nullable AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig similaritySearchConfig;
     /**
+     * @return Optional. Structured memory configurations for Agent Engine sub-resources.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig> structuredMemoryConfigs;
+    /**
      * @return Configuration for automatic TTL (&#34;time-to-live&#34;) of the memories in the Memory Bank.
      * Structure is documented below.
      * 
@@ -39,6 +54,14 @@ public final class AiReasoningEngineContextSpecMemoryBankConfig {
     private @Nullable AiReasoningEngineContextSpecMemoryBankConfigTtlConfig ttlConfig;
 
     private AiReasoningEngineContextSpecMemoryBankConfig() {}
+    /**
+     * @return Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
+     * Structure is documented below.
+     * 
+     */
+    public List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig> customizationConfigs() {
+        return this.customizationConfigs == null ? List.of() : this.customizationConfigs;
+    }
     /**
      * @return If true, no memory revisions will be created for any requests to the Memory Bank.
      * 
@@ -63,6 +86,14 @@ public final class AiReasoningEngineContextSpecMemoryBankConfig {
         return Optional.ofNullable(this.similaritySearchConfig);
     }
     /**
+     * @return Optional. Structured memory configurations for Agent Engine sub-resources.
+     * Structure is documented below.
+     * 
+     */
+    public List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig> structuredMemoryConfigs() {
+        return this.structuredMemoryConfigs == null ? List.of() : this.structuredMemoryConfigs;
+    }
+    /**
      * @return Configuration for automatic TTL (&#34;time-to-live&#34;) of the memories in the Memory Bank.
      * Structure is documented below.
      * 
@@ -80,19 +111,32 @@ public final class AiReasoningEngineContextSpecMemoryBankConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig> customizationConfigs;
         private @Nullable Boolean disableMemoryRevisions;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig generationConfig;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig similaritySearchConfig;
+        private @Nullable List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig> structuredMemoryConfigs;
         private @Nullable AiReasoningEngineContextSpecMemoryBankConfigTtlConfig ttlConfig;
         public Builder() {}
         public Builder(AiReasoningEngineContextSpecMemoryBankConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.customizationConfigs = defaults.customizationConfigs;
     	      this.disableMemoryRevisions = defaults.disableMemoryRevisions;
     	      this.generationConfig = defaults.generationConfig;
     	      this.similaritySearchConfig = defaults.similaritySearchConfig;
+    	      this.structuredMemoryConfigs = defaults.structuredMemoryConfigs;
     	      this.ttlConfig = defaults.ttlConfig;
         }
 
+        @CustomType.Setter
+        public Builder customizationConfigs(@Nullable List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig> customizationConfigs) {
+
+            this.customizationConfigs = customizationConfigs;
+            return this;
+        }
+        public Builder customizationConfigs(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig... customizationConfigs) {
+            return customizationConfigs(List.of(customizationConfigs));
+        }
         @CustomType.Setter
         public Builder disableMemoryRevisions(@Nullable Boolean disableMemoryRevisions) {
 
@@ -112,6 +156,15 @@ public final class AiReasoningEngineContextSpecMemoryBankConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder structuredMemoryConfigs(@Nullable List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig> structuredMemoryConfigs) {
+
+            this.structuredMemoryConfigs = structuredMemoryConfigs;
+            return this;
+        }
+        public Builder structuredMemoryConfigs(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig... structuredMemoryConfigs) {
+            return structuredMemoryConfigs(List.of(structuredMemoryConfigs));
+        }
+        @CustomType.Setter
         public Builder ttlConfig(@Nullable AiReasoningEngineContextSpecMemoryBankConfigTtlConfig ttlConfig) {
 
             this.ttlConfig = ttlConfig;
@@ -119,9 +172,11 @@ public final class AiReasoningEngineContextSpecMemoryBankConfig {
         }
         public AiReasoningEngineContextSpecMemoryBankConfig build() {
             final var _resultValue = new AiReasoningEngineContextSpecMemoryBankConfig();
+            _resultValue.customizationConfigs = customizationConfigs;
             _resultValue.disableMemoryRevisions = disableMemoryRevisions;
             _resultValue.generationConfig = generationConfig;
             _resultValue.similaritySearchConfig = similaritySearchConfig;
+            _resultValue.structuredMemoryConfigs = structuredMemoryConfigs;
             _resultValue.ttlConfig = ttlConfig;
             return _resultValue;
         }

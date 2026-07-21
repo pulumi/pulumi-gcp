@@ -25,8 +25,7 @@ export interface GetWebAppArgs {
     /**
      * The appIp of name of the Firebase webApp.
      *
-     *
-     * - - -
+     * ***
      */
     appId: string;
     /**
@@ -81,8 +80,7 @@ export interface GetWebAppOutputArgs {
     /**
      * The appIp of name of the Firebase webApp.
      *
-     *
-     * - - -
+     * ***
      */
     appId: pulumi.Input<string>;
     /**

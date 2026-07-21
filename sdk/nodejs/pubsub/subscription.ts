@@ -243,7 +243,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_48153",
+ *         filenameSuffix: "-_34995",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -280,7 +280,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_58845",
+ *         filenameSuffix: "-_10996",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -318,7 +318,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_9305",
+ *         filenameSuffix: "-_80411",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -362,7 +362,7 @@ import * as utilities from "../utilities";
  *     cloudStorageConfig: {
  *         bucket: example.name,
  *         filenamePrefix: "pre-",
- *         filenameSuffix: "-_48542",
+ *         filenameSuffix: "-_44263",
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
@@ -611,8 +611,8 @@ export class Subscription extends pulumi.CustomResource {
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
     declare public readonly enableExactlyOnceDelivery: pulumi.Output<boolean | undefined>;
     /**
@@ -849,8 +849,8 @@ export interface SubscriptionState {
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
     enableExactlyOnceDelivery?: pulumi.Input<boolean | undefined>;
     /**
@@ -1016,8 +1016,8 @@ export interface SubscriptionArgs {
      * of a message with a given value of messageId on this Subscriptions':
      * - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
      * - An acknowledged message will not be resent to a subscriber.
-     * Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
-     * is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
+     *   Note that subscribers may still receive multiple copies of a message when `enableExactlyOnceDelivery`
+     *   is true if the message was published multiple times by a publisher client. These copies are considered distinct by Pub/Sub and have distinct messageId values
      */
     enableExactlyOnceDelivery?: pulumi.Input<boolean | undefined>;
     /**

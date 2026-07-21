@@ -13,9 +13,7 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only.
-        /// The application source code archive, provided as a compressed
-        /// tarball (.tar.gz) file. A base64-encoded string.
+        /// Required. Input only. The application source code archive, provided as a compressed tarball (.tar.gz) file.
         /// </summary>
         [Input("sourceArchive")]
         public Input<string>? SourceArchive { get; set; }

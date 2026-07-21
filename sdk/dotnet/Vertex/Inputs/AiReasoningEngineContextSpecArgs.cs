@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineContextSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("exampleStoreConfig")]
+        public Input<Inputs.AiReasoningEngineContextSpecExampleStoreConfigArgs>? ExampleStoreConfig { get; set; }
+
+        /// <summary>
         /// Specification for a Memory Bank, which manages memories for the Agent Engine.
         /// Structure is documented below.
         /// </summary>

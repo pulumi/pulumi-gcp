@@ -13,11 +13,37 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineSpecDeploymentSpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Agent Gateway configuration for a Reasoning Engine deployment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("agentGatewayConfig")]
+        public Input<Inputs.AiReasoningEngineSpecDeploymentSpecAgentGatewayConfigGetArgs>? AgentGatewayConfig { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. The agent server mode specifies what features are used when deploy the agent to agent engine.
+        /// Possible values:
+        /// * `STABLE`: Stable agent server mode.
+        /// * `EXPERIMENTAL`: Experimental agent server mode.
+        /// Possible values are: `STABLE`, `EXPERIMENTAL`.
+        /// </summary>
+        [Input("agentServerMode")]
+        public Input<string>? AgentServerMode { get; set; }
+
+        /// <summary>
         /// Optional. Concurrency for each container and agent server.
         /// Recommended value: 2 * cpu + 1. Defaults to 9.
         /// </summary>
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Whether to enable dedicated ingress endpoint for the deployment. If true, the deployment will be accessible via a dedicated endpoint. This is required to enable GKE V2 runtime.
+        /// </summary>
+        [Input("dedicatedIngressEndpointEnabled")]
+        public Input<bool>? DedicatedIngressEndpointEnabled { get; set; }
 
         [Input("envs")]
         private InputList<Inputs.AiReasoningEngineSpecDeploymentSpecEnvGetArgs>? _envs;
@@ -32,6 +58,14 @@ namespace Pulumi.Gcp.Vertex.Inputs
             get => _envs ?? (_envs = new InputList<Inputs.AiReasoningEngineSpecDeploymentSpecEnvGetArgs>());
             set => _envs = value;
         }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Optional. Specifies the configuration for keep-alive probe.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("keepAliveProbe")]
+        public Input<Inputs.AiReasoningEngineSpecDeploymentSpecKeepAliveProbeGetArgs>? KeepAliveProbe { get; set; }
 
         /// <summary>
         /// Optional. The maximum number of application instances that can be

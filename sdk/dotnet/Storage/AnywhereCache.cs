@@ -79,9 +79,13 @@ namespace Pulumi.Gcp.Storage
     public partial class AnywhereCache : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        /// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
         /// Default value is `admit-on-first-miss`.
         /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+        /// 
+        /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         /// </summary>
         [Output("admissionPolicy")]
         public Output<string?> AdmissionPolicy { get; private set; } = null!;
@@ -198,9 +202,13 @@ namespace Pulumi.Gcp.Storage
     public sealed class AnywhereCacheArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        /// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
         /// Default value is `admit-on-first-miss`.
         /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+        /// 
+        /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         /// </summary>
         [Input("admissionPolicy")]
         public Input<string>? AdmissionPolicy { get; set; }
@@ -249,9 +257,13 @@ namespace Pulumi.Gcp.Storage
     public sealed class AnywhereCacheState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Deprecated)
         /// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+        /// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
         /// Default value is `admit-on-first-miss`.
         /// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+        /// 
+        /// &gt; **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
         /// </summary>
         [Input("admissionPolicy")]
         public Input<string>? AdmissionPolicy { get; set; }

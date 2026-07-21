@@ -41,7 +41,7 @@ class ClusterArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
                Does not affect auto scaling decomissioning from an autoscaling policy.
                Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -56,7 +56,7 @@ class ClusterArgs:
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster and associated nodes will be created in.
@@ -105,7 +105,7 @@ class ClusterArgs:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -153,7 +153,7 @@ class ClusterArgs:
         The name of the cluster, unique within the project and
         zone.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -226,7 +226,7 @@ class _ClusterState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
@@ -244,7 +244,7 @@ class _ClusterState:
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -298,7 +298,7 @@ class _ClusterState:
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -360,7 +360,7 @@ class _ClusterState:
         The name of the cluster, unique within the project and
         zone.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 
@@ -557,7 +557,7 @@ class Cluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] graceful_decommission_timeout: Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
                Does not affect auto scaling decomissioning from an autoscaling policy.
                Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -572,7 +572,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region in which the cluster and associated nodes will be created in.
@@ -777,7 +777,7 @@ class Cluster(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
                
-               - - -
+               ***
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: The list of labels (key/value pairs) to be applied to
                instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
                which is the name of the cluster.
@@ -795,7 +795,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the cluster, unique within the project and
                zone.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the `cluster` will exist. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
@@ -840,7 +840,7 @@ class Cluster(pulumi.CustomResource):
         management without updating or deleting the resource in the API.
         When set to "DELETE", deleting the resource is allowed.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -886,7 +886,7 @@ class Cluster(pulumi.CustomResource):
         The name of the cluster, unique within the project and
         zone.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "name")
 

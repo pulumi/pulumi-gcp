@@ -24,6 +24,7 @@ import com.pulumi.gcp.compute.outputs.InstanceScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceScratchDisk;
 import com.pulumi.gcp.compute.outputs.InstanceServiceAccount;
 import com.pulumi.gcp.compute.outputs.InstanceShieldedInstanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -950,6 +951,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tagsFingerprint() {
         return this.tagsFingerprint;
+    }
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    @Export(name="workloadIdentityConfig", refs={InstanceWorkloadIdentityConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceWorkloadIdentityConfig> workloadIdentityConfig;
+
+    /**
+     * @return Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    public Output<Optional<InstanceWorkloadIdentityConfig>> workloadIdentityConfig() {
+        return Codegen.optional(this.workloadIdentityConfig);
     }
     /**
      * The zone that the machine should be created in. If it is not provided, the provider zone is used.

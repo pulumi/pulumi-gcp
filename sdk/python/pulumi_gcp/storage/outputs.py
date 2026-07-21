@@ -5380,6 +5380,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
             suggest = "credentials_secret"
         elif key == "federatedIdentityConfig":
             suggest = "federated_identity_config"
+        elif key == "privateNetworkService":
+            suggest = "private_network_service"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAzureBlobStorageDataSource. Access the value via the '{suggest}' property getter instead.")
@@ -5398,7 +5400,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
                  azure_credentials: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials'] = None,
                  credentials_secret: Optional[_builtins.str] = None,
                  federated_identity_config: Optional['outputs.TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig'] = None,
-                 path: Optional[_builtins.str] = None):
+                 path: Optional[_builtins.str] = None,
+                 private_network_service: Optional[_builtins.str] = None):
         """
         :param _builtins.str container: The container to transfer from the Azure Storage account.`
         :param _builtins.str storage_account: The name of the Azure Storage account.
@@ -5406,6 +5409,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
         :param _builtins.str credentials_secret: ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
         :param 'TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs' federated_identity_config: Federated identity config of a user registered Azure application. Structure documented below.
         :param _builtins.str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        :param _builtins.str private_network_service: Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
         """
         pulumi.set(__self__, "container", container)
         pulumi.set(__self__, "storage_account", storage_account)
@@ -5417,6 +5421,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
             pulumi.set(__self__, "federated_identity_config", federated_identity_config)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if private_network_service is not None:
+            pulumi.set(__self__, "private_network_service", private_network_service)
 
     @_builtins.property
     @pulumi.getter
@@ -5465,6 +5471,14 @@ class TransferJobTransferSpecAzureBlobStorageDataSource(dict):
         Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="privateNetworkService")
+    def private_network_service(self) -> Optional[_builtins.str]:
+        """
+        Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+        """
+        return pulumi.get(self, "private_network_service")
 
 
 @pulumi.output_type

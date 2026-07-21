@@ -40,6 +40,11 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
      */
     private @Nullable String path;
     /**
+     * @return Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+     * 
+     */
+    private @Nullable String privateNetworkService;
+    /**
      * @return The name of the Azure Storage account.
      * 
      */
@@ -82,6 +87,13 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
         return Optional.ofNullable(this.path);
     }
     /**
+     * @return Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+     * 
+     */
+    public Optional<String> privateNetworkService() {
+        return Optional.ofNullable(this.privateNetworkService);
+    }
+    /**
      * @return The name of the Azure Storage account.
      * 
      */
@@ -103,6 +115,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
         private @Nullable String credentialsSecret;
         private @Nullable TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfig federatedIdentityConfig;
         private @Nullable String path;
+        private @Nullable String privateNetworkService;
         private String storageAccount;
         public Builder() {}
         public Builder(TransferJobTransferSpecAzureBlobStorageDataSource defaults) {
@@ -112,6 +125,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
     	      this.credentialsSecret = defaults.credentialsSecret;
     	      this.federatedIdentityConfig = defaults.federatedIdentityConfig;
     	      this.path = defaults.path;
+    	      this.privateNetworkService = defaults.privateNetworkService;
     	      this.storageAccount = defaults.storageAccount;
         }
 
@@ -148,6 +162,12 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
             return this;
         }
         @CustomType.Setter
+        public Builder privateNetworkService(@Nullable String privateNetworkService) {
+
+            this.privateNetworkService = privateNetworkService;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageAccount(String storageAccount) {
             if (storageAccount == null) {
               throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSource", "storageAccount");
@@ -162,6 +182,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
             _resultValue.credentialsSecret = credentialsSecret;
             _resultValue.federatedIdentityConfig = federatedIdentityConfig;
             _resultValue.path = path;
+            _resultValue.privateNetworkService = privateNetworkService;
             _resultValue.storageAccount = storageAccount;
             return _resultValue;
         }

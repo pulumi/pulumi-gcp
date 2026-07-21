@@ -66,13 +66,13 @@ class CxSecuritySettingsArgs:
                Each value may be one of: `DIALOGFLOW_HISTORY`.
         :param pulumi.Input[_builtins.str] redaction_scope: Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
                * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-               Possible values are: `REDACT_DISK_STORAGE`.
+                 Possible values are: `REDACT_DISK_STORAGE`.
         :param pulumi.Input[_builtins.str] redaction_strategy: Defines how we redact data. If not set, defaults to not redacting.
                * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-               Possible values are: `REDACT_WITH_SERVICE`.
+                 Possible values are: `REDACT_WITH_SERVICE`.
         :param pulumi.Input[_builtins.str] retention_strategy: Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
                * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-               Possible values are: `REMOVE_AFTER_CONVERSATION`.
+                 Possible values are: `REMOVE_AFTER_CONVERSATION`.
         :param pulumi.Input[_builtins.int] retention_window_days: Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
                Only one of `retention_window_days` and `retention_strategy` may be set.
         """
@@ -233,7 +233,7 @@ class CxSecuritySettingsArgs:
         """
         Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-        Possible values are: `REDACT_DISK_STORAGE`.
+          Possible values are: `REDACT_DISK_STORAGE`.
         """
         return pulumi.get(self, "redaction_scope")
 
@@ -247,7 +247,7 @@ class CxSecuritySettingsArgs:
         """
         Defines how we redact data. If not set, defaults to not redacting.
         * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-        Possible values are: `REDACT_WITH_SERVICE`.
+          Possible values are: `REDACT_WITH_SERVICE`.
         """
         return pulumi.get(self, "redaction_strategy")
 
@@ -261,7 +261,7 @@ class CxSecuritySettingsArgs:
         """
         Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
         * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-        Possible values are: `REMOVE_AFTER_CONVERSATION`.
+          Possible values are: `REMOVE_AFTER_CONVERSATION`.
         """
         return pulumi.get(self, "retention_strategy")
 
@@ -334,13 +334,13 @@ class _CxSecuritySettingsState:
                Each value may be one of: `DIALOGFLOW_HISTORY`.
         :param pulumi.Input[_builtins.str] redaction_scope: Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
                * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-               Possible values are: `REDACT_DISK_STORAGE`.
+                 Possible values are: `REDACT_DISK_STORAGE`.
         :param pulumi.Input[_builtins.str] redaction_strategy: Defines how we redact data. If not set, defaults to not redacting.
                * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-               Possible values are: `REDACT_WITH_SERVICE`.
+                 Possible values are: `REDACT_WITH_SERVICE`.
         :param pulumi.Input[_builtins.str] retention_strategy: Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
                * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-               Possible values are: `REMOVE_AFTER_CONVERSATION`.
+                 Possible values are: `REMOVE_AFTER_CONVERSATION`.
         :param pulumi.Input[_builtins.int] retention_window_days: Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
                Only one of `retention_window_days` and `retention_strategy` may be set.
         """
@@ -518,7 +518,7 @@ class _CxSecuritySettingsState:
         """
         Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-        Possible values are: `REDACT_DISK_STORAGE`.
+          Possible values are: `REDACT_DISK_STORAGE`.
         """
         return pulumi.get(self, "redaction_scope")
 
@@ -532,7 +532,7 @@ class _CxSecuritySettingsState:
         """
         Defines how we redact data. If not set, defaults to not redacting.
         * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-        Possible values are: `REDACT_WITH_SERVICE`.
+          Possible values are: `REDACT_WITH_SERVICE`.
         """
         return pulumi.get(self, "redaction_strategy")
 
@@ -546,7 +546,7 @@ class _CxSecuritySettingsState:
         """
         Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
         * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-        Possible values are: `REMOVE_AFTER_CONVERSATION`.
+          Possible values are: `REMOVE_AFTER_CONVERSATION`.
         """
         return pulumi.get(self, "retention_strategy")
 
@@ -714,13 +714,13 @@ class CxSecuritySettings(pulumi.CustomResource):
                Each value may be one of: `DIALOGFLOW_HISTORY`.
         :param pulumi.Input[_builtins.str] redaction_scope: Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
                * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-               Possible values are: `REDACT_DISK_STORAGE`.
+                 Possible values are: `REDACT_DISK_STORAGE`.
         :param pulumi.Input[_builtins.str] redaction_strategy: Defines how we redact data. If not set, defaults to not redacting.
                * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-               Possible values are: `REDACT_WITH_SERVICE`.
+                 Possible values are: `REDACT_WITH_SERVICE`.
         :param pulumi.Input[_builtins.str] retention_strategy: Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
                * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-               Possible values are: `REMOVE_AFTER_CONVERSATION`.
+                 Possible values are: `REMOVE_AFTER_CONVERSATION`.
         :param pulumi.Input[_builtins.int] retention_window_days: Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
                Only one of `retention_window_days` and `retention_strategy` may be set.
         """
@@ -942,13 +942,13 @@ class CxSecuritySettings(pulumi.CustomResource):
                Each value may be one of: `DIALOGFLOW_HISTORY`.
         :param pulumi.Input[_builtins.str] redaction_scope: Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
                * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-               Possible values are: `REDACT_DISK_STORAGE`.
+                 Possible values are: `REDACT_DISK_STORAGE`.
         :param pulumi.Input[_builtins.str] redaction_strategy: Defines how we redact data. If not set, defaults to not redacting.
                * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-               Possible values are: `REDACT_WITH_SERVICE`.
+                 Possible values are: `REDACT_WITH_SERVICE`.
         :param pulumi.Input[_builtins.str] retention_strategy: Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
                * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-               Possible values are: `REMOVE_AFTER_CONVERSATION`.
+                 Possible values are: `REMOVE_AFTER_CONVERSATION`.
         :param pulumi.Input[_builtins.int] retention_window_days: Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
                Only one of `retention_window_days` and `retention_strategy` may be set.
         """
@@ -1077,7 +1077,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         """
         Defines what types of data to redact. If not set, defaults to not redacting any kind of data.
         * REDACT_DISK_STORAGE: On data to be written to disk or similar devices that are capable of holding data even if power is disconnected. This includes data that are temporarily saved on disk.
-        Possible values are: `REDACT_DISK_STORAGE`.
+          Possible values are: `REDACT_DISK_STORAGE`.
         """
         return pulumi.get(self, "redaction_scope")
 
@@ -1087,7 +1087,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         """
         Defines how we redact data. If not set, defaults to not redacting.
         * REDACT_WITH_SERVICE: Call redaction service to clean up the data to be persisted.
-        Possible values are: `REDACT_WITH_SERVICE`.
+          Possible values are: `REDACT_WITH_SERVICE`.
         """
         return pulumi.get(self, "redaction_strategy")
 
@@ -1097,7 +1097,7 @@ class CxSecuritySettings(pulumi.CustomResource):
         """
         Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
         * REMOVE_AFTER_CONVERSATION: Removes data when the conversation ends. If there is no conversation explicitly established, a default conversation ends when the corresponding Dialogflow session ends.
-        Possible values are: `REMOVE_AFTER_CONVERSATION`.
+          Possible values are: `REMOVE_AFTER_CONVERSATION`.
         """
         return pulumi.get(self, "retention_strategy")
 

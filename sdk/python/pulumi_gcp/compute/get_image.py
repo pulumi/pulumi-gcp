@@ -320,7 +320,7 @@ def get_image(family: Optional[_builtins.str] = None,
            filter must return exactly one image unless you use `most_recent`.
            Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.
@@ -392,7 +392,7 @@ def get_image_output(family: pulumi.Input[Optional[Optional[_builtins.str]]] = N
            filter must return exactly one image unless you use `most_recent`.
            Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.

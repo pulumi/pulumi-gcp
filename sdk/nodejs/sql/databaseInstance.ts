@@ -45,13 +45,13 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const apps: gcp.compute.Instance[] = [];
- * for (const range = {value: 0}; range.value < 8; range.value++) {
- *     apps.push(new gcp.compute.Instance(`apps-${range.value}`, {
+ * for (let range = 0; range < 8; range++) {
+ *     apps.push(new gcp.compute.Instance(`apps-${range}`, {
  *         networkInterfaces: [{
  *             accessConfigs: [{}],
  *             network: "default",
  *         }],
- *         name: `apps-${range.value + 1}`,
+ *         name: `apps-${range + 1}`,
  *         machineType: "f1-micro",
  *         bootDisk: {
  *             initializeParams: {
@@ -479,6 +479,13 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly encryptionKeyName: pulumi.Output<string>;
     /**
+     * Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     */
+    declare public readonly enforceNewSqlNetworkArchitecture: pulumi.Output<boolean>;
+    /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      */
     declare public readonly finalBackupDescription: pulumi.Output<string | undefined>;
@@ -540,7 +547,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
-     * - - -
+     * ***
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -617,6 +624,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["dnsName"] = state?.dnsName;
             resourceInputs["dnsNames"] = state?.dnsNames;
             resourceInputs["encryptionKeyName"] = state?.encryptionKeyName;
+            resourceInputs["enforceNewSqlNetworkArchitecture"] = state?.enforceNewSqlNetworkArchitecture;
             resourceInputs["finalBackupDescription"] = state?.finalBackupDescription;
             resourceInputs["firstIpAddress"] = state?.firstIpAddress;
             resourceInputs["instanceType"] = state?.instanceType;
@@ -653,6 +661,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
+            resourceInputs["enforceNewSqlNetworkArchitecture"] = args?.enforceNewSqlNetworkArchitecture;
             resourceInputs["finalBackupDescription"] = args?.finalBackupDescription;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
@@ -764,6 +773,13 @@ export interface DatabaseInstanceState {
      */
     encryptionKeyName?: pulumi.Input<string | undefined>;
     /**
+     * Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     */
+    enforceNewSqlNetworkArchitecture?: pulumi.Input<boolean | undefined>;
+    /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      */
     finalBackupDescription?: pulumi.Input<string | undefined>;
@@ -825,7 +841,7 @@ export interface DatabaseInstanceState {
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
-     * - - -
+     * ***
      */
     region?: pulumi.Input<string | undefined>;
     /**
@@ -937,6 +953,13 @@ export interface DatabaseInstanceArgs {
      */
     encryptionKeyName?: pulumi.Input<string | undefined>;
     /**
+     * Whether to enforce the new SQL network architecture.
+     * By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+     * This follows the gcloud pattern where the flag is an irreversible opt-in.
+     * See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+     */
+    enforceNewSqlNetworkArchitecture?: pulumi.Input<boolean | undefined>;
+    /**
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      */
     finalBackupDescription?: pulumi.Input<string | undefined>;
@@ -981,7 +1004,7 @@ export interface DatabaseInstanceArgs {
      * The region the instance will sit in. If a region is not provided in the resource definition,
      * the provider region will be used instead.
      *
-     * - - -
+     * ***
      */
     region?: pulumi.Input<string | undefined>;
     /**

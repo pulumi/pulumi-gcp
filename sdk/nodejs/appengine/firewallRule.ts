@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
  * const myProject = new gcp.organizations.Project("my_project", {
  *     name: "tf-test-project",
@@ -33,11 +34,17 @@ import * as utilities from "../utilities";
  *     project: myProject.projectId,
  *     locationId: "us-central",
  * });
+ * // Wait for 5 minutes seconds to ensure IAM permission propagation completes
+ * const wait300Seconds = new time.Sleep("wait_300_seconds", {createDuration: "300s"}, {
+ *     dependsOn: [app],
+ * });
  * const rule = new gcp.appengine.FirewallRule("rule", {
  *     project: app.project,
  *     priority: 1000,
  *     action: "ALLOW",
  *     sourceRange: "*",
+ * }, {
+ *     dependsOn: [wait300Seconds],
  * });
  * ```
  *

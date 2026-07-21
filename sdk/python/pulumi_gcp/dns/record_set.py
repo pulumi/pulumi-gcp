@@ -37,7 +37,7 @@ class RecordSetArgs:
         :param pulumi.Input[_builtins.str] name: The DNS name this record set will apply to.
         :param pulumi.Input[_builtins.str] type: The DNS record set type.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -98,7 +98,7 @@ class RecordSetArgs:
         """
         The DNS record set type.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -209,7 +209,7 @@ class _RecordSetState:
         :param pulumi.Input[_builtins.int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[_builtins.str] type: The DNS record set type.
                
-               - - -
+               ***
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -328,7 +328,7 @@ class _RecordSetState:
         """
         The DNS record set type.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 
@@ -630,7 +630,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[_builtins.str] type: The DNS record set type.
                
-               - - -
+               ***
         """
         ...
     @overload
@@ -985,7 +985,7 @@ class RecordSet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[_builtins.str] type: The DNS record set type.
                
-               - - -
+               ***
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1073,7 +1073,7 @@ class RecordSet(pulumi.CustomResource):
         """
         The DNS record set type.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "type")
 

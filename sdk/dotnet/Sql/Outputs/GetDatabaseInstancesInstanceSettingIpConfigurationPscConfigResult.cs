@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string NetworkAttachmentUri;
         /// <summary>
+        /// Whether a service connection policy is created for the auto connections configured for the instance.
+        /// </summary>
+        public readonly bool PscAutoConnectionPolicyEnabled;
+        /// <summary>
         /// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult> PscAutoConnections;
@@ -44,6 +48,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string networkAttachmentUri,
 
+            bool pscAutoConnectionPolicyEnabled,
+
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult> pscAutoConnections,
 
             bool pscAutoDnsEnabled,
@@ -54,6 +60,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         {
             AllowedConsumerProjects = allowedConsumerProjects;
             NetworkAttachmentUri = networkAttachmentUri;
+            PscAutoConnectionPolicyEnabled = pscAutoConnectionPolicyEnabled;
             PscAutoConnections = pscAutoConnections;
             PscAutoDnsEnabled = pscAutoDnsEnabled;
             PscEnabled = pscEnabled;

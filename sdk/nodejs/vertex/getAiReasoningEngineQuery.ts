@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as std from "@pulumi/std";
  *
  * const defaultAiReasoningEngine = new gcp.vertex.AiReasoningEngine("default", {
- *     displayName: "vertex-mds-_14939",
+ *     displayName: "vertex-mds-_48234",
  *     description: "Retrieves tenant project number",
  *     region: "us-central1",
  *     spec: {
@@ -69,7 +69,7 @@ export interface GetAiReasoningEngineQueryArgs {
     /**
      * The ID of the Vertex AI Reasoning Engine to query.
      *
-     * - - -
+     * ***
      */
     reasoningEngineId: string;
     /**
@@ -107,7 +107,7 @@ export interface GetAiReasoningEngineQueryResult {
  * import * as std from "@pulumi/std";
  *
  * const defaultAiReasoningEngine = new gcp.vertex.AiReasoningEngine("default", {
- *     displayName: "vertex-mds-_14939",
+ *     displayName: "vertex-mds-_48234",
  *     description: "Retrieves tenant project number",
  *     region: "us-central1",
  *     spec: {
@@ -161,7 +161,7 @@ export interface GetAiReasoningEngineQueryOutputArgs {
     /**
      * The ID of the Vertex AI Reasoning Engine to query.
      *
-     * - - -
+     * ***
      */
     reasoningEngineId: pulumi.Input<string>;
     /**

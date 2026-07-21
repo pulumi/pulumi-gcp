@@ -99,7 +99,7 @@ class EdgeCacheOriginArgs:
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -352,7 +352,7 @@ class EdgeCacheOriginArgs:
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+          Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -460,7 +460,7 @@ class _EdgeCacheOriginState:
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input['EdgeCacheOriginTimeoutArgs'] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -743,7 +743,7 @@ class _EdgeCacheOriginState:
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+          Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 
@@ -970,7 +970,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input[Union['EdgeCacheOriginTimeoutArgs', 'EdgeCacheOriginTimeoutArgsDict']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1260,7 +1260,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
                - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
                - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
                - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-               Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+                 Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         :param pulumi.Input[Union['EdgeCacheOriginTimeoutArgs', 'EdgeCacheOriginTimeoutArgsDict']] timeout: The connection and HTTP timeout configuration for this origin.
                Structure is documented below.
         """
@@ -1466,7 +1466,7 @@ class EdgeCacheOrigin(pulumi.CustomResource):
         - RETRIABLE_4XX: Retry for retriable 4xx response codes, which include HTTP 409 (Conflict) and HTTP 429 (Too Many Requests)
         - NOT_FOUND: Retry if the origin returns a HTTP 404 (Not Found). This can be useful when generating video content, and the segment is not available yet.
         - FORBIDDEN: Retry if the origin returns a HTTP 403 (Forbidden).
-        Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
+          Each value may be one of: `CONNECT_FAILURE`, `HTTP_5XX`, `GATEWAY_ERROR`, `RETRIABLE_4XX`, `NOT_FOUND`, `FORBIDDEN`.
         """
         return pulumi.get(self, "retry_conditions")
 

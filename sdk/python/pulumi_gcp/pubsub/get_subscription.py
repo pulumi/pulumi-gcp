@@ -259,7 +259,7 @@ def get_subscription(name: Optional[_builtins.str] = None,
 
     :param _builtins.str name: The name of the Cloud Pub/Sub Subscription.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -312,7 +312,7 @@ def get_subscription_output(name: pulumi.Input[Optional[_builtins.str]] = None,
 
     :param _builtins.str name: The name of the Cloud Pub/Sub Subscription.
            
-           - - -
+           ***
     :param _builtins.str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """

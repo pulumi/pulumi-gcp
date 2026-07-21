@@ -37,7 +37,7 @@ export interface GetRegionSslCertificateArgs {
     /**
      * The name of the certificate.
      *
-     * - - -
+     * ***
      */
     name: string;
     /**
@@ -108,7 +108,7 @@ export interface GetRegionSslCertificateOutputArgs {
     /**
      * The name of the certificate.
      *
-     * - - -
+     * ***
      */
     name: pulumi.Input<string>;
     /**

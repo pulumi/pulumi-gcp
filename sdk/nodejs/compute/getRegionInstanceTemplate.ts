@@ -217,6 +217,7 @@ export interface GetRegionInstanceTemplateResult {
      * The unique fingerprint of the tags.
      */
     readonly tagsFingerprint: string;
+    readonly workloadIdentityConfigs: outputs.compute.GetRegionInstanceTemplateWorkloadIdentityConfig[];
 }
 /**
  * Get information about a VM instance template resource within GCE. For more information see

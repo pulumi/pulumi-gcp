@@ -56,7 +56,7 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -203,7 +203,7 @@ class FlexTemplateJobArgs:
         """
         If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "create_ignore_already_exists")
 
@@ -535,7 +535,7 @@ class _FlexTemplateJobState:
                Template.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -698,7 +698,7 @@ class _FlexTemplateJobState:
         """
         If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "create_ignore_already_exists")
 
@@ -1170,7 +1170,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1439,7 +1439,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
-               - - -
+               ***
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1559,7 +1559,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 
-        - - -
+        ***
         """
         return pulumi.get(self, "create_ignore_already_exists")
 

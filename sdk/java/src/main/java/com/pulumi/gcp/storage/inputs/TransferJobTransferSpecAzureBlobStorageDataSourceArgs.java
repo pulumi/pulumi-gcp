@@ -94,6 +94,21 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
     }
 
     /**
+     * Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+     * 
+     */
+    @Import(name="privateNetworkService")
+    private @Nullable Output<String> privateNetworkService;
+
+    /**
+     * @return Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+     * 
+     */
+    public Optional<Output<String>> privateNetworkService() {
+        return Optional.ofNullable(this.privateNetworkService);
+    }
+
+    /**
      * The name of the Azure Storage account.
      * 
      */
@@ -116,6 +131,7 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         this.credentialsSecret = $.credentialsSecret;
         this.federatedIdentityConfig = $.federatedIdentityConfig;
         this.path = $.path;
+        this.privateNetworkService = $.privateNetworkService;
         this.storageAccount = $.storageAccount;
     }
 
@@ -240,6 +256,27 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param privateNetworkService Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetworkService(@Nullable Output<String> privateNetworkService) {
+            $.privateNetworkService = privateNetworkService;
+            return this;
+        }
+
+        /**
+         * @param privateNetworkService Service Directory Service to be used as the endpoint for transfers from a customer-managed VPC. Format: `projects/{projectId}/locations/{location}/namespaces/{namespace}/services/{service}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateNetworkService(String privateNetworkService) {
+            return privateNetworkService(Output.of(privateNetworkService));
         }
 
         /**

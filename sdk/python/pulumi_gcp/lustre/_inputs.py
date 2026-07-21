@@ -349,12 +349,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict(TypedDict):
     * A month and day, with a zero year (for example, an anniversary).
     * A year on its own, with a zero month and a zero day.
     * A year and month, with a zero day (for example, a credit card expiration
-    date).
-    Related types:
+      date).
+      Related types:
     * google.type.TimeOfDay
     * google.type.DateTime
     * google.protobuf.Timestamp
-    Structure is documented below.
+      Structure is documented below.
     """
     start_date: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgsDict']
     """
@@ -366,12 +366,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict(TypedDict):
     * A month and day, with a zero year (for example, an anniversary).
     * A year on its own, with a zero month and a zero day.
     * A year and month, with a zero day (for example, a credit card expiration
-    date).
-    Related types:
+      date).
+      Related types:
     * google.type.TimeOfDay
     * google.type.DateTime
     * google.protobuf.Timestamp
-    Structure is documented below.
+      Structure is documented below.
     """
     time: pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgsDict']
     """
@@ -396,12 +396,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs:
                * A month and day, with a zero year (for example, an anniversary).
                * A year on its own, with a zero month and a zero day.
                * A year and month, with a zero day (for example, a credit card expiration
-               date).
-               Related types:
+                 date).
+                 Related types:
                * google.type.TimeOfDay
                * google.type.DateTime
                * google.protobuf.Timestamp
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowStartDateArgs'] start_date: Represents a whole or partial calendar date, such as a birthday. The time of
                day and time zone are either specified elsewhere or are insignificant. The
                date is relative to the Gregorian Calendar. This can represent one of the
@@ -410,12 +410,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs:
                * A month and day, with a zero year (for example, an anniversary).
                * A year on its own, with a zero month and a zero day.
                * A year and month, with a zero day (for example, a credit card expiration
-               date).
-               Related types:
+                 date).
+                 Related types:
                * google.type.TimeOfDay
                * google.type.DateTime
                * google.protobuf.Timestamp
-               Structure is documented below.
+                 Structure is documented below.
         :param pulumi.Input['InstanceMaintenancePolicyMaintenanceExclusionWindowTimeArgs'] time: Represents a time of day. The date and time zone are either not significant
                or are specified elsewhere. An API may choose to allow leap seconds. Related
                types are google.type.Date and `google.protobuf.Timestamp`.
@@ -437,12 +437,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs:
         * A month and day, with a zero year (for example, an anniversary).
         * A year on its own, with a zero month and a zero day.
         * A year and month, with a zero day (for example, a credit card expiration
-        date).
-        Related types:
+          date).
+          Related types:
         * google.type.TimeOfDay
         * google.type.DateTime
         * google.protobuf.Timestamp
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "end_date")
 
@@ -462,12 +462,12 @@ class InstanceMaintenancePolicyMaintenanceExclusionWindowArgs:
         * A month and day, with a zero year (for example, an anniversary).
         * A year on its own, with a zero month and a zero day.
         * A year and month, with a zero day (for example, a credit card expiration
-        date).
-        Related types:
+          date).
+          Related types:
         * google.type.TimeOfDay
         * google.type.DateTime
         * google.protobuf.Timestamp
-        Structure is documented below.
+          Structure is documented below.
         """
         return pulumi.get(self, "start_date")
 

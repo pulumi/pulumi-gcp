@@ -165,6 +165,82 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  * });
  * ```
+ * ### Oracledatabase Cloud Vmcluster Exascale
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const infra = new gcp.oracledatabase.CloudExadataInfrastructure("infra", {
+ *     cloudExadataInfrastructureId: "my-exadata",
+ *     displayName: "my-exadata displayname",
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     properties: {
+ *         shape: "Exadata.X9M",
+ *         computeCount: 2,
+ *         storageCount: 3,
+ *     },
+ *     deletionProtection: true,
+ * });
+ * const exascaleConfig = new gcp.oracledatabase.CloudExadataInfrastructureExascaleConfig("exascale_config", {
+ *     cloudExadataInfrastructure: infra.cloudExadataInfrastructureId,
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     totalStorageSizeGb: 10240,
+ * });
+ * const vault = new gcp.oracledatabase.ExascaleDbStorageVault("vault", {
+ *     exascaleDbStorageVaultId: "my-vault",
+ *     displayName: "my-vault displayname",
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     exadataInfrastructure: infra.name,
+ *     properties: {
+ *         exascaleDbStorageDetails: {
+ *             totalSizeGbs: 2048,
+ *         },
+ *     },
+ *     deletionProtection: true,
+ * }, {
+ *     dependsOn: [exascaleConfig],
+ * });
+ * const _default = gcp.compute.getNetwork({
+ *     name: "new",
+ *     project: "my-project",
+ * });
+ * const dbServers = gcp.oracledatabase.getDbServersOutput({
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     cloudExadataInfrastructure: infra.cloudExadataInfrastructureId,
+ * });
+ * const myVmcluster = new gcp.oracledatabase.CloudVmCluster("my_vmcluster", {
+ *     cloudVmClusterId: "my-instance",
+ *     displayName: "my-instance displayname",
+ *     location: "us-east4",
+ *     project: "my-project",
+ *     exadataInfrastructure: infra.id,
+ *     network: _default.then(_default => _default.id),
+ *     cidr: "10.5.0.0/24",
+ *     backupSubnetCidr: "10.6.0.0/24",
+ *     exascaleDbStorageVault: vault.name,
+ *     properties: {
+ *         licenseType: "LICENSE_INCLUDED",
+ *         sshPublicKeys: ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"],
+ *         cpuCoreCount: 4,
+ *         giVersion: "23.0.0.0",
+ *         hostnamePrefix: "hostname1",
+ *         memorySizeGb: 60,
+ *         dbNodeStorageSizeGb: 120,
+ *         dbServerOcids: [
+ *             dbServers.apply(dbServers => dbServers.dbServers?.[0]?.properties?.[0]?.ocid),
+ *             dbServers.apply(dbServers => dbServers.dbServers?.[1]?.properties?.[0]?.ocid),
+ *         ],
+ *     },
+ *     deletionProtection: true,
+ * }, {
+ *     dependsOn: [exascaleConfig],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -263,6 +339,12 @@ export class CloudVmCluster extends pulumi.CustomResource {
      */
     declare public readonly exadataInfrastructure: pulumi.Output<string>;
     /**
+     * The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     */
+    declare public readonly exascaleDbStorageVault: pulumi.Output<string | undefined>;
+    /**
      * GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
      */
@@ -346,6 +428,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["exadataInfrastructure"] = state?.exadataInfrastructure;
+            resourceInputs["exascaleDbStorageVault"] = state?.exascaleDbStorageVault;
             resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
             resourceInputs["identityConnectors"] = state?.identityConnectors;
             resourceInputs["labels"] = state?.labels;
@@ -376,6 +459,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["exadataInfrastructure"] = args?.exadataInfrastructure;
+            resourceInputs["exascaleDbStorageVault"] = args?.exascaleDbStorageVault;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["network"] = args?.network;
@@ -453,6 +537,12 @@ export interface CloudVmClusterState {
      * projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
      */
     exadataInfrastructure?: pulumi.Input<string | undefined>;
+    /**
+     * The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     */
+    exascaleDbStorageVault?: pulumi.Input<string | undefined>;
     /**
      * GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
      * of Exadata infrastructure.
@@ -563,6 +653,12 @@ export interface CloudVmClusterArgs {
      * projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
      */
     exadataInfrastructure: pulumi.Input<string>;
+    /**
+     * The name of ExascaleDbStorageVault associated with the VM Cluster.
+     * Format:
+     * projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}
+     */
+    exascaleDbStorageVault?: pulumi.Input<string | undefined>;
     /**
      * Labels or tags associated with the VM Cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

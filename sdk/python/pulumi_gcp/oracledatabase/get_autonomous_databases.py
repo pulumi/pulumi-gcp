@@ -98,7 +98,7 @@ def get_autonomous_databases(location: Optional[_builtins.str] = None,
 
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project to which the resource belongs. If it
            is not provided, the provider project is used.
     """
@@ -134,7 +134,7 @@ def get_autonomous_databases_output(location: pulumi.Input[Optional[_builtins.st
 
     :param _builtins.str location: The location of the resource.
            
-           - - -
+           ***
     :param _builtins.str project: The project to which the resource belongs. If it
            is not provided, the provider project is used.
     """

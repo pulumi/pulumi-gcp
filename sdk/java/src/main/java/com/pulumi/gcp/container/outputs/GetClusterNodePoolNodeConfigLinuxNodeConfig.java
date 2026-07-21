@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig;
@@ -26,6 +27,11 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private String cgroupMode;
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits;
     /**
      * @return Amounts for 2M and 1G hugepages.
      * 
@@ -71,6 +77,13 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
      */
     public String cgroupMode() {
         return this.cgroupMode;
+    }
+    /**
+     * @return The custom node init settings.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits() {
+        return this.customNodeInits;
     }
     /**
      * @return Amounts for 2M and 1G hugepages.
@@ -126,6 +139,7 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     public static final class Builder {
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig> accurateTimeConfigs;
         private String cgroupMode;
+        private List<GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits;
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading> nodeKernelModuleLoadings;
         private List<GetClusterNodePoolNodeConfigLinuxNodeConfigSwapConfig> swapConfigs;
@@ -137,6 +151,7 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.accurateTimeConfigs = defaults.accurateTimeConfigs;
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.customNodeInits = defaults.customNodeInits;
     	      this.hugepagesConfigs = defaults.hugepagesConfigs;
     	      this.nodeKernelModuleLoadings = defaults.nodeKernelModuleLoadings;
     	      this.swapConfigs = defaults.swapConfigs;
@@ -163,6 +178,17 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
             }
             this.cgroupMode = cgroupMode;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customNodeInits(List<GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit> customNodeInits) {
+            if (customNodeInits == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigLinuxNodeConfig", "customNodeInits");
+            }
+            this.customNodeInits = customNodeInits;
+            return this;
+        }
+        public Builder customNodeInits(GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit... customNodeInits) {
+            return customNodeInits(List.of(customNodeInits));
         }
         @CustomType.Setter
         public Builder hugepagesConfigs(List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs) {
@@ -225,6 +251,7 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
             final var _resultValue = new GetClusterNodePoolNodeConfigLinuxNodeConfig();
             _resultValue.accurateTimeConfigs = accurateTimeConfigs;
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.customNodeInits = customNodeInits;
             _resultValue.hugepagesConfigs = hugepagesConfigs;
             _resultValue.nodeKernelModuleLoadings = nodeKernelModuleLoadings;
             _resultValue.swapConfigs = swapConfigs;

@@ -581,6 +581,11 @@ type DatabaseInstance struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringOutput `pulumi:"encryptionKeyName"`
+	// Whether to enforce the new SQL network architecture.
+	// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+	// This follows the gcloud pattern where the flag is an irreversible opt-in.
+	// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+	EnforceNewSqlNetworkArchitecture pulumi.BoolOutput `pulumi:"enforceNewSqlNetworkArchitecture"`
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription pulumi.StringPtrOutput `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned.
@@ -750,6 +755,11 @@ type databaseInstanceState struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	// Whether to enforce the new SQL network architecture.
+	// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+	// This follows the gcloud pattern where the flag is an irreversible opt-in.
+	// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+	EnforceNewSqlNetworkArchitecture *bool `pulumi:"enforceNewSqlNetworkArchitecture"`
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned.
@@ -871,6 +881,11 @@ type DatabaseInstanceState struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
+	// Whether to enforce the new SQL network architecture.
+	// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+	// This follows the gcloud pattern where the flag is an irreversible opt-in.
+	// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+	EnforceNewSqlNetworkArchitecture pulumi.BoolPtrInput
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription pulumi.StringPtrInput
 	// The first IPv4 address of any type assigned.
@@ -987,6 +1002,11 @@ type databaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName *string `pulumi:"encryptionKeyName"`
+	// Whether to enforce the new SQL network architecture.
+	// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+	// This follows the gcloud pattern where the flag is an irreversible opt-in.
+	// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+	EnforceNewSqlNetworkArchitecture *bool `pulumi:"enforceNewSqlNetworkArchitecture"`
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -1085,6 +1105,11 @@ type DatabaseInstanceArgs struct {
 	// That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
 	// key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 	EncryptionKeyName pulumi.StringPtrInput
+	// Whether to enforce the new SQL network architecture.
+	// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+	// This follows the gcloud pattern where the flag is an irreversible opt-in.
+	// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+	EnforceNewSqlNetworkArchitecture pulumi.BoolPtrInput
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription pulumi.StringPtrInput
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -1305,6 +1330,14 @@ func (o DatabaseInstanceOutput) DnsNames() DatabaseInstanceDnsNameArrayOutput {
 // key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
 func (o DatabaseInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.EncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// Whether to enforce the new SQL network architecture.
+// By default, new Cloud SQL instances created in projects created after August 2021 use the new network architecture.
+// This follows the gcloud pattern where the flag is an irreversible opt-in.
+// See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
+func (o DatabaseInstanceOutput) EnforceNewSqlNetworkArchitecture() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolOutput { return v.EnforceNewSqlNetworkArchitecture }).(pulumi.BoolOutput)
 }
 
 // The description of final backup. Only set this field when `final_backup_config.enabled` is true.

@@ -45,6 +45,11 @@ export const getTagTemplateIamPolicy: typeof import("./getTagTemplateIamPolicy")
 export const getTagTemplateIamPolicyOutput: typeof import("./getTagTemplateIamPolicy").getTagTemplateIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getTagTemplateIamPolicy","getTagTemplateIamPolicyOutput"], () => require("./getTagTemplateIamPolicy"));
 
+export { GetTaxonomyArgs, GetTaxonomyResult, GetTaxonomyOutputArgs } from "./getTaxonomy";
+export const getTaxonomy: typeof import("./getTaxonomy").getTaxonomy = null as any;
+export const getTaxonomyOutput: typeof import("./getTaxonomy").getTaxonomyOutput = null as any;
+utilities.lazyLoad(exports, ["getTaxonomy","getTaxonomyOutput"], () => require("./getTaxonomy"));
+
 export { GetTaxonomyIamPolicyArgs, GetTaxonomyIamPolicyResult, GetTaxonomyIamPolicyOutputArgs } from "./getTaxonomyIamPolicy";
 export const getTaxonomyIamPolicy: typeof import("./getTaxonomyIamPolicy").getTaxonomyIamPolicy = null as any;
 export const getTaxonomyIamPolicyOutput: typeof import("./getTaxonomyIamPolicy").getTaxonomyIamPolicyOutput = null as any;

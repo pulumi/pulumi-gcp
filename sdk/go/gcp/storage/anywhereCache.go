@@ -81,9 +81,15 @@ import (
 type AnywhereCache struct {
 	pulumi.CustomResourceState
 
+	// (Optional, Deprecated)
 	// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+	// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
 	// Default value is `admit-on-first-miss`.
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+	//
+	// > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+	//
+	// Deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
 	AdmissionPolicy pulumi.StringPtrOutput `pulumi:"admissionPolicy"`
 	// The ID of the Anywhere cache instance.
 	AnywhereCacheId pulumi.StringOutput `pulumi:"anywhereCacheId"`
@@ -148,9 +154,15 @@ func GetAnywhereCache(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AnywhereCache resources.
 type anywhereCacheState struct {
+	// (Optional, Deprecated)
 	// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+	// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
 	// Default value is `admit-on-first-miss`.
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+	//
+	// > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+	//
+	// Deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
 	AdmissionPolicy *string `pulumi:"admissionPolicy"`
 	// The ID of the Anywhere cache instance.
 	AnywhereCacheId *string `pulumi:"anywhereCacheId"`
@@ -180,9 +192,15 @@ type anywhereCacheState struct {
 }
 
 type AnywhereCacheState struct {
+	// (Optional, Deprecated)
 	// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+	// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
 	// Default value is `admit-on-first-miss`.
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+	//
+	// > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+	//
+	// Deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
 	AdmissionPolicy pulumi.StringPtrInput
 	// The ID of the Anywhere cache instance.
 	AnywhereCacheId pulumi.StringPtrInput
@@ -216,9 +234,15 @@ func (AnywhereCacheState) ElementType() reflect.Type {
 }
 
 type anywhereCacheArgs struct {
+	// (Optional, Deprecated)
 	// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+	// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
 	// Default value is `admit-on-first-miss`.
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+	//
+	// > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+	//
+	// Deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
 	AdmissionPolicy *string `pulumi:"admissionPolicy"`
 	// A reference to Bucket resource
 	Bucket string `pulumi:"bucket"`
@@ -239,9 +263,15 @@ type anywhereCacheArgs struct {
 
 // The set of arguments for constructing a AnywhereCache resource.
 type AnywhereCacheArgs struct {
+	// (Optional, Deprecated)
 	// The cache admission policy dictates whether a block should be inserted upon a cache miss.
+	// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
 	// Default value is `admit-on-first-miss`.
 	// Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+	//
+	// > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+	//
+	// Deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
 	AdmissionPolicy pulumi.StringPtrInput
 	// A reference to Bucket resource
 	Bucket pulumi.StringInput
@@ -347,9 +377,15 @@ func (o AnywhereCacheOutput) ToAnywhereCacheOutputWithContext(ctx context.Contex
 	return o
 }
 
+// (Optional, Deprecated)
 // The cache admission policy dictates whether a block should be inserted upon a cache miss.
+// Note: "admit-on-second-miss" is deprecated and will fallback to "admit-on-first-miss".
 // Default value is `admit-on-first-miss`.
 // Possible values are: `admit-on-first-miss`, `admit-on-second-miss`.
+//
+// > **Warning:** `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
+//
+// Deprecated: `admit-on-second-miss` is deprecated and will be removed in a future major release. The backend will ignore this attribute and treat it as `admit-on-first-miss`.
 func (o AnywhereCacheOutput) AdmissionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnywhereCache) pulumi.StringPtrOutput { return v.AdmissionPolicy }).(pulumi.StringPtrOutput)
 }

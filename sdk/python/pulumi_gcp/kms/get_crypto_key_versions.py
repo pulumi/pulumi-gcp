@@ -112,7 +112,7 @@ def get_crypto_key_versions(crypto_key: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+    :param _builtins.str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
            `kms.CryptoKey` resource/datasource.
     :param _builtins.str filter: The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
            
@@ -158,7 +158,7 @@ def get_crypto_key_versions_output(crypto_key: pulumi.Input[Optional[_builtins.s
     ```
 
 
-    :param _builtins.str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+    :param _builtins.str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
            `kms.CryptoKey` resource/datasource.
     :param _builtins.str filter: The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
            

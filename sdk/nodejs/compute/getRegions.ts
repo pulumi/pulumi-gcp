@@ -15,12 +15,12 @@ import * as utilities from "../utilities";
  * const available = gcp.compute.getRegions({});
  * const cluster: gcp.compute.Subnetwork[] = [];
  * available.then(available => available.names).length.apply(rangeBody => {
- *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
- *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+ *     for (let range = 0; range < rangeBody; range++) {
+ *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
  *             name: "my-network",
- *             ipCidrRange: `10.36.${range.value}.0/24`,
+ *             ipCidrRange: `10.36.${range}.0/24`,
  *             network: "my-network",
- *             region: available.then(available => available.names[range.value]),
+ *             region: available.then(available => available.names[range]),
  *         }));
  *     }
  * });
@@ -76,12 +76,12 @@ export interface GetRegionsResult {
  * const available = gcp.compute.getRegions({});
  * const cluster: gcp.compute.Subnetwork[] = [];
  * available.then(available => available.names).length.apply(rangeBody => {
- *     for (const range = {value: 0}; range.value < rangeBody; range.value++) {
- *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range.value}`, {
+ *     for (let range = 0; range < rangeBody; range++) {
+ *         cluster.push(new gcp.compute.Subnetwork(`cluster-${range}`, {
  *             name: "my-network",
- *             ipCidrRange: `10.36.${range.value}.0/24`,
+ *             ipCidrRange: `10.36.${range}.0/24`,
  *             network: "my-network",
- *             region: available.then(available => available.names[range.value]),
+ *             region: available.then(available => available.names[range]),
  *         }));
  *     }
  * });

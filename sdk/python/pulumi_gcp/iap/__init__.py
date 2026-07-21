@@ -6,9 +6,18 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .agent_registry_agent_iam_binding import *
+from .agent_registry_agent_iam_member import *
+from .agent_registry_agent_iam_policy import *
+from .agent_registry_endpoint_iam_binding import *
+from .agent_registry_endpoint_iam_member import *
+from .agent_registry_endpoint_iam_policy import *
 from .agent_registry_iam_binding import *
 from .agent_registry_iam_member import *
 from .agent_registry_iam_policy import *
+from .agent_registry_mcp_server_iam_binding import *
+from .agent_registry_mcp_server_iam_member import *
+from .agent_registry_mcp_server_iam_policy import *
 from .app_engine_service_iam_binding import *
 from .app_engine_service_iam_member import *
 from .app_engine_service_iam_policy import *
@@ -17,7 +26,10 @@ from .app_engine_version_iam_member import *
 from .app_engine_version_iam_policy import *
 from .brand import *
 from .client import *
+from .get_agent_registry_agent_iam_policy import *
+from .get_agent_registry_endpoint_iam_policy import *
 from .get_agent_registry_iam_policy import *
+from .get_agent_registry_mcp_server_iam_policy import *
 from .get_app_engine_service_iam_policy import *
 from .get_app_engine_version_iam_policy import *
 from .get_client import *

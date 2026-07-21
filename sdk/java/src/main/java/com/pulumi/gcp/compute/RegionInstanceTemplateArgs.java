@@ -16,6 +16,7 @@ import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateReservationAffinityAr
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateShieldedInstanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -552,6 +553,23 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    @Import(name="workloadIdentityConfig")
+    private @Nullable Output<RegionInstanceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig;
+
+    /**
+     * @return Workload Identity Config. More details about
+     * this configuration option are detailed below.
+     * 
+     */
+    public Optional<Output<RegionInstanceTemplateWorkloadIdentityConfigArgs>> workloadIdentityConfig() {
+        return Optional.ofNullable(this.workloadIdentityConfig);
+    }
+
     private RegionInstanceTemplateArgs() {}
 
     private RegionInstanceTemplateArgs(RegionInstanceTemplateArgs $) {
@@ -584,6 +602,7 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.tags = $.tags;
+        this.workloadIdentityConfig = $.workloadIdentityConfig;
     }
 
     public static Builder builder() {
@@ -1343,6 +1362,29 @@ public final class RegionInstanceTemplateArgs extends com.pulumi.resources.Resou
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload Identity Config. More details about
+         * this configuration option are detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(@Nullable Output<RegionInstanceTemplateWorkloadIdentityConfigArgs> workloadIdentityConfig) {
+            $.workloadIdentityConfig = workloadIdentityConfig;
+            return this;
+        }
+
+        /**
+         * @param workloadIdentityConfig Workload Identity Config. More details about
+         * this configuration option are detailed below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadIdentityConfig(RegionInstanceTemplateWorkloadIdentityConfigArgs workloadIdentityConfig) {
+            return workloadIdentityConfig(Output.of(workloadIdentityConfig));
         }
 
         public RegionInstanceTemplateArgs build() {

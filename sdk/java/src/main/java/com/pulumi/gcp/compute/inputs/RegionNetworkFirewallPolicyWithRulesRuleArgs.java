@@ -185,6 +185,33 @@ public final class RegionNetworkFirewallPolicyWithRulesRuleArgs extends com.pulu
     }
 
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    @Import(name="targetForwardingRules")
+    private @Nullable Output<List<String>> targetForwardingRules;
+
+    /**
+     * @return A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    public Optional<Output<List<String>>> targetForwardingRules() {
+        return Optional.ofNullable(this.targetForwardingRules);
+    }
+
+    /**
      * A list of secure tags that controls which instances the firewall rule
      * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
      * firewall rule applies only to instances in the VPC network that have one
@@ -239,6 +266,27 @@ public final class RegionNetworkFirewallPolicyWithRulesRuleArgs extends com.pulu
     }
 
     /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    @Import(name="targetType")
+    private @Nullable Output<String> targetType;
+
+    /**
+     * @return Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    public Optional<Output<String>> targetType() {
+        return Optional.ofNullable(this.targetType);
+    }
+
+    /**
      * Boolean flag indicating if the traffic should be TLS decrypted.
      * It can be set only if action = &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
@@ -267,8 +315,10 @@ public final class RegionNetworkFirewallPolicyWithRulesRuleArgs extends com.pulu
         this.priority = $.priority;
         this.ruleName = $.ruleName;
         this.securityProfileGroup = $.securityProfileGroup;
+        this.targetForwardingRules = $.targetForwardingRules;
         this.targetSecureTags = $.targetSecureTags;
         this.targetServiceAccounts = $.targetServiceAccounts;
+        this.targetType = $.targetType;
         this.tlsInspect = $.tlsInspect;
     }
 
@@ -508,6 +558,55 @@ public final class RegionNetworkFirewallPolicyWithRulesRuleArgs extends com.pulu
         }
 
         /**
+         * @param targetForwardingRules A list of forwarding rules to which this rule applies.
+         * This field allows you to control which load balancers get this rule.
+         * For example, the following are valid values:
+         * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+         * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * - projects/project/global/forwardingRules/forwardingRule
+         * - projects/project/regions/region/forwardingRules/forwardingRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetForwardingRules(@Nullable Output<List<String>> targetForwardingRules) {
+            $.targetForwardingRules = targetForwardingRules;
+            return this;
+        }
+
+        /**
+         * @param targetForwardingRules A list of forwarding rules to which this rule applies.
+         * This field allows you to control which load balancers get this rule.
+         * For example, the following are valid values:
+         * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+         * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * - projects/project/global/forwardingRules/forwardingRule
+         * - projects/project/regions/region/forwardingRules/forwardingRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetForwardingRules(List<String> targetForwardingRules) {
+            return targetForwardingRules(Output.of(targetForwardingRules));
+        }
+
+        /**
+         * @param targetForwardingRules A list of forwarding rules to which this rule applies.
+         * This field allows you to control which load balancers get this rule.
+         * For example, the following are valid values:
+         * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+         * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+         * - projects/project/global/forwardingRules/forwardingRule
+         * - projects/project/regions/region/forwardingRules/forwardingRule
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetForwardingRules(String... targetForwardingRules) {
+            return targetForwardingRules(List.of(targetForwardingRules));
+        }
+
+        /**
          * @param targetSecureTags A list of secure tags that controls which instances the firewall rule
          * applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the
          * firewall rule applies only to instances in the VPC network that have one
@@ -603,6 +702,33 @@ public final class RegionNetworkFirewallPolicyWithRulesRuleArgs extends com.pulu
          */
         public Builder targetServiceAccounts(String... targetServiceAccounts) {
             return targetServiceAccounts(List.of(targetServiceAccounts));
+        }
+
+        /**
+         * @param targetType Target types of the firewall policy rule.
+         * Default value is INSTANCES.
+         * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+         * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetType(@Nullable Output<String> targetType) {
+            $.targetType = targetType;
+            return this;
+        }
+
+        /**
+         * @param targetType Target types of the firewall policy rule.
+         * Default value is INSTANCES.
+         * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+         * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetType(String targetType) {
+            return targetType(Output.of(targetType));
         }
 
         /**

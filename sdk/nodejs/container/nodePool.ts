@@ -129,7 +129,7 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
-     * - - -
+     * ***
      */
     declare public readonly cluster: pulumi.Output<string>;
     /**
@@ -164,9 +164,13 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * The location (region or zone) of the cluster.
      *
-     * - - -
+     * ***
      */
     declare public readonly location: pulumi.Output<string>;
+    /**
+     * The maintenance policy of the pool. Structure is documented below.
+     */
+    declare public readonly maintenancePolicies: pulumi.Output<outputs.container.NodePoolMaintenancePolicy[] | undefined>;
     /**
      * List of instance group URLs which have been assigned to this node pool.
      */
@@ -275,6 +279,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["initialNodeCount"] = state?.initialNodeCount;
             resourceInputs["instanceGroupUrls"] = state?.instanceGroupUrls;
             resourceInputs["location"] = state?.location;
+            resourceInputs["maintenancePolicies"] = state?.maintenancePolicies;
             resourceInputs["managedInstanceGroupUrls"] = state?.managedInstanceGroupUrls;
             resourceInputs["management"] = state?.management;
             resourceInputs["maxPodsPerNode"] = state?.maxPodsPerNode;
@@ -302,6 +307,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["ignoreNodeCountChanges"] = args?.ignoreNodeCountChanges;
             resourceInputs["initialNodeCount"] = args?.initialNodeCount;
             resourceInputs["location"] = args?.location;
+            resourceInputs["maintenancePolicies"] = args?.maintenancePolicies;
             resourceInputs["management"] = args?.management;
             resourceInputs["maxPodsPerNode"] = args?.maxPodsPerNode;
             resourceInputs["name"] = args?.name;
@@ -337,7 +343,7 @@ export interface NodePoolState {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
-     * - - -
+     * ***
      */
     cluster?: pulumi.Input<string | undefined>;
     /**
@@ -372,9 +378,13 @@ export interface NodePoolState {
     /**
      * The location (region or zone) of the cluster.
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * The maintenance policy of the pool. Structure is documented below.
+     */
+    maintenancePolicies?: pulumi.Input<pulumi.Input<inputs.container.NodePoolMaintenancePolicy>[] | undefined>;
     /**
      * List of instance group URLs which have been assigned to this node pool.
      */
@@ -476,7 +486,7 @@ export interface NodePoolArgs {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      *
-     * - - -
+     * ***
      */
     cluster: pulumi.Input<string>;
     /**
@@ -507,9 +517,13 @@ export interface NodePoolArgs {
     /**
      * The location (region or zone) of the cluster.
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * The maintenance policy of the pool. Structure is documented below.
+     */
+    maintenancePolicies?: pulumi.Input<pulumi.Input<inputs.container.NodePoolMaintenancePolicy>[] | undefined>;
     /**
      * Node management configuration, wherein auto-repair and
      * auto-upgrade is configured. Structure is documented below.

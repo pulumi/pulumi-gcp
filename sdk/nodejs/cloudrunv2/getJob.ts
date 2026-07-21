@@ -39,7 +39,7 @@ export interface GetJobArgs {
     /**
      * The location of the instance. eg us-central1
      *
-     * - - -
+     * ***
      */
     location?: string;
     /**
@@ -127,7 +127,7 @@ export interface GetJobOutputArgs {
     /**
      * The location of the instance. eg us-central1
      *
-     * - - -
+     * ***
      */
     location?: pulumi.Input<string | undefined>;
     /**

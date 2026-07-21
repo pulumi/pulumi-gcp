@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
  *     name: "health-check",
- *     region: "europe-west4",
+ *     region: "us-central1",
  *     timeoutSec: 1,
  *     checkIntervalSec: 1,
  *     tcpHealthCheck: {
@@ -36,13 +36,13 @@ import * as utilities from "../utilities";
  *     name: "backend-service",
  *     protocol: "TCP",
  *     timeoutSec: 10,
- *     region: "europe-west4",
+ *     region: "us-central1",
  *     healthChecks: defaultRegionHealthCheck.id,
  *     loadBalancingScheme: "INTERNAL_MANAGED",
  * });
  * const _default = new gcp.compute.RegionTargetTcpProxy("default", {
  *     name: "test-proxy",
- *     region: "europe-west4",
+ *     region: "us-central1",
  *     backendService: defaultRegionBackendService.id,
  * });
  * ```
