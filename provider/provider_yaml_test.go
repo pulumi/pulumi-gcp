@@ -1,5 +1,4 @@
 //go:build !go && !nodejs && !python && !dotnet
-// +build !go,!nodejs,!python,!dotnet
 
 // Copyright 2016-2024, Pulumi Corporation.
 //
@@ -284,7 +283,6 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 	}
 
 	for _, tc := range testCases {
-		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
 			d := filepath.Join("test-programs", tc.program)
 			testUpgrade(t, d)
@@ -327,15 +325,14 @@ runtime:
 	// Apply the relevant changes expected to upgrade successfully v7 -> v8:
 	// `ports` is now an Object, not a maxItemsOne list
 	// `deletionProtection` is a new field
-	firstProgram := []byte(fmt.Sprintf(
+	firstProgram := fmt.Appendf(nil,
 		pulumiYaml,
 		"",
-		"ports:\n                        - containerPort: 8080"))
-	secondProgram := []byte(fmt.Sprintf(
+		"ports:\n                        - containerPort: 8080")
+	secondProgram := fmt.Appendf(nil,
 		pulumiYaml,
 		"\n            deletionProtection: false",
-		"ports:\n                        containerPort: 8080"),
-	)
+		"ports:\n                        containerPort: 8080")
 
 	testDir := t.TempDir()
 	err := os.WriteFile(filepath.Join(testDir, "Pulumi.yaml"), firstProgram, 0o600)
@@ -701,15 +698,15 @@ func TestEnvTokenNotInState(t *testing.T) {
 	stack := test.ExportStack(t)
 	data, err := stack.Deployment.MarshalJSON()
 	require.NoError(t, err)
-	var stateMap map[string]interface{}
+	var stateMap map[string]any
 	err = json.Unmarshal(data, &stateMap)
 	require.NoError(t, err)
 
-	resourcesJSON := stateMap["resources"].([]interface{})
+	resourcesJSON := stateMap["resources"].([]any)
 	// Stack is first, provider is second
-	providerJSON := resourcesJSON[1].(map[string]interface{})
-	inputsJSON := providerJSON["inputs"].(map[string]interface{})
-	outputsJSON := providerJSON["outputs"].(map[string]interface{})
+	providerJSON := resourcesJSON[1].(map[string]any)
+	inputsJSON := providerJSON["inputs"].(map[string]any)
+	outputsJSON := providerJSON["outputs"].(map[string]any)
 
 	require.NotContains(t, inputsJSON, "accessToken")
 	require.NotContains(t, outputsJSON, "accessToken")
@@ -989,29 +986,29 @@ func pulumiTestDeleteFromState(t *testing.T, ptest *pulumitest.PulumiTest, resou
 }
 
 // extractFieldFromState extracts a specified field from a specific resource in the state
-func extractFieldFromState(t *testing.T, state interface{}, resourceUrn string, field string) map[string]interface{} {
+func extractFieldFromState(t *testing.T, state any, resourceUrn string, field string) map[string]any {
 	// Marshal the state to JSON
 	stateData, err := json.Marshal(state)
 	require.NoError(t, err)
 
 	// Parse into a map
-	var stateMap map[string]interface{}
+	var stateMap map[string]any
 	require.NoError(t, json.Unmarshal(stateData, &stateMap))
 
 	// Extract deployment from the state
-	deployment, _ := stateMap["deployment"].(map[string]interface{})
-	resources, _ := deployment["resources"].([]interface{})
+	deployment, _ := stateMap["deployment"].(map[string]any)
+	resources, _ := deployment["resources"].([]any)
 
 	// Find the resource
 	for _, resource := range resources {
-		if resourceMap, ok := resource.(map[string]interface{}); ok {
+		if resourceMap, ok := resource.(map[string]any); ok {
 			if urn, ok := resourceMap["urn"].(string); ok && urn == resourceUrn {
 				// Extract the outputs (which contain the actual resource properties)
-				outputs, ok := resourceMap["outputs"].(map[string]interface{})
+				outputs, ok := resourceMap["outputs"].(map[string]any)
 				require.True(t, ok, "Resource should have outputs")
 
 				// Extract the labels field
-				labels, ok := outputs[field].(map[string]interface{})
+				labels, ok := outputs[field].(map[string]any)
 				require.True(t, ok, fmt.Sprintf("%s resource should have %s field", resourceUrn, field))
 				return labels
 			}
@@ -1170,19 +1167,19 @@ func TestEmptyLabels(t *testing.T) {
 	}{
 		{"empty-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
-				Value: map[string]interface{}{
+				Value: map[string]any{
 					"empty":                   "",
 					"goog-pulumi-provisioned": "true",
 					"static":                  "value",
 				},
 				Secret: true,
 			},
-			"labels": auto.OutputValue{Value: map[string]interface{}{
+			"labels": auto.OutputValue{Value: map[string]any{
 				"empty":  "",
 				"static": "value",
 			}},
 			"pulumiLabels": auto.OutputValue{
-				Value: map[string]interface{}{
+				Value: map[string]any{
 					"empty":                   "",
 					"goog-pulumi-provisioned": "true",
 					"static":                  "value",
@@ -1192,15 +1189,15 @@ func TestEmptyLabels(t *testing.T) {
 		})},
 		{"empty-alone-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
-				Value: map[string]interface{}{
+				Value: map[string]any{
 					"empty":                   "",
 					"goog-pulumi-provisioned": "true",
 				},
 				Secret: true,
 			},
-			"labels": auto.OutputValue{Value: map[string]interface{}{"empty": ""}},
+			"labels": auto.OutputValue{Value: map[string]any{"empty": ""}},
 			"pulumiLabels": auto.OutputValue{
-				Value: map[string]interface{}{
+				Value: map[string]any{
 					"empty":                   "",
 					"goog-pulumi-provisioned": "true",
 				},
@@ -1209,16 +1206,16 @@ func TestEmptyLabels(t *testing.T) {
 		})},
 		{"empty-default-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
-				Value: map[string]interface{}{
+				Value: map[string]any{
 					"empty-default":           "",
 					"goog-pulumi-provisioned": "true",
 					"static":                  "value",
 				},
 				Secret: true,
 			},
-			"labels": auto.OutputValue{Value: map[string]interface{}{"static": "value"}},
+			"labels": auto.OutputValue{Value: map[string]any{"static": "value"}},
 			"pulumiLabels": auto.OutputValue{
-				Value: map[string]interface{}{
+				Value: map[string]any{
 					"empty-default":           "",
 					"goog-pulumi-provisioned": "true",
 					"static":                  "value",
@@ -1231,19 +1228,19 @@ func TestEmptyLabels(t *testing.T) {
 			"empty-label-cluster",
 			autogold.Expect(auto.OutputMap{
 				"effectiveLabels": auto.OutputValue{
-					Value: map[string]interface{}{
+					Value: map[string]any{
 						"environment":             "dev",
 						"goog-pulumi-provisioned": "true",
 						"test":                    "",
 					},
 					Secret: true,
 				},
-				"labels": auto.OutputValue{Value: map[string]interface{}{
+				"labels": auto.OutputValue{Value: map[string]any{
 					"environment": "dev",
 					"test":        "",
 				}},
 				"pulumiLabels": auto.OutputValue{
-					Value: map[string]interface{}{
+					Value: map[string]any{
 						"environment":             "dev",
 						"goog-pulumi-provisioned": "true",
 						"test":                    "",
@@ -1255,7 +1252,6 @@ func TestEmptyLabels(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		tt := tt
 
 		t.Run(tt.program, func(t *testing.T) {
 			pt := pulumiTest(t, "test-programs/"+tt.program)
@@ -1308,12 +1304,12 @@ Resources:
 	upResult := pt.Up(t)
 	autogold.Expect(auto.OutputMap{
 		"effectiveLabels": auto.OutputValue{
-			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
+			Value:  map[string]any{"goog-pulumi-provisioned": "true"},
 			Secret: true,
 		},
 		"labels": auto.OutputValue{},
 		"pulumiLabels": auto.OutputValue{
-			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
+			Value:  map[string]any{"goog-pulumi-provisioned": "true"},
 			Secret: true,
 		},
 	}).Equal(t, upResult.Outputs)
@@ -1326,16 +1322,16 @@ Resources:
 	upResult = pt.Up(t) // This changes state, even though it should refresh cleanly.
 	autogold.Expect(auto.OutputMap{
 		"effectiveLabels": auto.OutputValue{
-			Value: map[string]interface{}{
+			Value: map[string]any{
 				"goog-pulumi-provisioned": "true",
 				"unmanaged":               "value",
 				"unmanaged_empty":         "",
 			},
 			Secret: true,
 		},
-		"labels": auto.OutputValue{Value: map[string]interface{}{}},
+		"labels": auto.OutputValue{Value: map[string]any{}},
 		"pulumiLabels": auto.OutputValue{
-			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
+			Value:  map[string]any{"goog-pulumi-provisioned": "true"},
 			Secret: true,
 		},
 	}).Equal(t, upResult.Outputs)
