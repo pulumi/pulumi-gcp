@@ -20,7 +20,8 @@ public final class GetDataSourceBackupConfigInfo {
      */
     private List<GetDataSourceBackupConfigInfoBackupApplianceBackupConfig> backupApplianceBackupConfigs;
     /**
-     * @return Configuration for a Google Cloud resource.
+     * @return Details about the GCP backup configuration. Structure is documented below.
+     * The `gcpBackupConfig` block contains:
      * 
      */
     private List<GetDataSourceBackupConfigInfoGcpBackupConfig> gcpBackupConfigs;
@@ -30,12 +31,12 @@ public final class GetDataSourceBackupConfigInfo {
      */
     private Map<String,String> lastBackupError;
     /**
-     * @return LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+     * @return The state of the last backup attempt.
      * 
      */
     private String lastBackupState;
     /**
-     * @return If the last backup were successful, this field has the consistency date.
+     * @return The consistency time of the last successful backup.
      * 
      */
     private String lastSuccessfulBackupConsistencyTime;
@@ -49,7 +50,8 @@ public final class GetDataSourceBackupConfigInfo {
         return this.backupApplianceBackupConfigs;
     }
     /**
-     * @return Configuration for a Google Cloud resource.
+     * @return Details about the GCP backup configuration. Structure is documented below.
+     * The `gcpBackupConfig` block contains:
      * 
      */
     public List<GetDataSourceBackupConfigInfoGcpBackupConfig> gcpBackupConfigs() {
@@ -63,14 +65,14 @@ public final class GetDataSourceBackupConfigInfo {
         return this.lastBackupError;
     }
     /**
-     * @return LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+     * @return The state of the last backup attempt.
      * 
      */
     public String lastBackupState() {
         return this.lastBackupState;
     }
     /**
-     * @return If the last backup were successful, this field has the consistency date.
+     * @return The consistency time of the last successful backup.
      * 
      */
     public String lastSuccessfulBackupConsistencyTime() {

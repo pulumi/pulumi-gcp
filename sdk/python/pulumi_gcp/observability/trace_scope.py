@@ -337,8 +337,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_91207",
-            name="tf-test_14939",
+            project_id="tf-test_45598",
+            name="tf-test_64623",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",
@@ -406,8 +406,8 @@ class TraceScope(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         project_2 = gcp.organizations.Project("project-2",
-            project_id="tf-test_91207",
-            name="tf-test_14939",
+            project_id="tf-test_45598",
+            name="tf-test_64623",
             org_id="123456789",
             deletion_policy="DELETE")
         observability_trace_scope = gcp.observability.TraceScope("observability_trace_scope",

@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewZoneVmExtensionPolicy(ctx, "ops_agent_policy", &compute.ZoneVmExtensionPolicyArgs{
-//				Name: pulumi.String("zonal-ops-agent-vme-policy-_79169"),
+//				Name: pulumi.String("zonal-ops-agent-vme-policy-_80332"),
 //				Zone: pulumi.String("us-central1-a"),
 //				ExtensionPolicies: compute.ZoneVmExtensionPolicyExtensionPolicyArray{
 //					&compute.ZoneVmExtensionPolicyExtensionPolicyArgs{

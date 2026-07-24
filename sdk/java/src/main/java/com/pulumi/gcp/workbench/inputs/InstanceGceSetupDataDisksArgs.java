@@ -6,6 +6,7 @@ package com.pulumi.gcp.workbench.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -89,6 +90,21 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.kmsKey);
     }
 
+    /**
+     * Optional. Resource policies applied to this disk.
+     * 
+     */
+    @Import(name="resourcePolicies")
+    private @Nullable Output<List<String>> resourcePolicies;
+
+    /**
+     * @return Optional. Resource policies applied to this disk.
+     * 
+     */
+    public Optional<Output<List<String>>> resourcePolicies() {
+        return Optional.ofNullable(this.resourcePolicies);
+    }
+
     private InstanceGceSetupDataDisksArgs() {}
 
     private InstanceGceSetupDataDisksArgs(InstanceGceSetupDataDisksArgs $) {
@@ -96,6 +112,7 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.kmsKey = $.kmsKey;
+        this.resourcePolicies = $.resourcePolicies;
     }
 
     public static Builder builder() {
@@ -212,6 +229,37 @@ public final class InstanceGceSetupDataDisksArgs extends com.pulumi.resources.Re
          */
         public Builder kmsKey(String kmsKey) {
             return kmsKey(Output.of(kmsKey));
+        }
+
+        /**
+         * @param resourcePolicies Optional. Resource policies applied to this disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(@Nullable Output<List<String>> resourcePolicies) {
+            $.resourcePolicies = resourcePolicies;
+            return this;
+        }
+
+        /**
+         * @param resourcePolicies Optional. Resource policies applied to this disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(List<String> resourcePolicies) {
+            return resourcePolicies(Output.of(resourcePolicies));
+        }
+
+        /**
+         * @param resourcePolicies Optional. Resource policies applied to this disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(String... resourcePolicies) {
+            return resourcePolicies(List.of(resourcePolicies));
         }
 
         public InstanceGceSetupDataDisksArgs build() {

@@ -5449,8 +5449,12 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfi
 }
 
 type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument *bool `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation *bool `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing *bool `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation *bool `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -5475,8 +5479,12 @@ type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInp
 }
 
 type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument pulumi.BoolPtrInput `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation pulumi.BoolPtrInput `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing pulumi.BoolPtrInput `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation pulumi.BoolPtrInput `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -5566,10 +5574,24 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput)
 }
 
+// If true, the processed document will be made available for the GetProcessedDocument API.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableGetProcessedDocument() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		return v.EnableGetProcessedDocument
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If true, the LLM based annotation is added to the image during parsing.
 func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
 		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the pdf layout will be refined using an LLM.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableLlmLayoutParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		return v.EnableLlmLayoutParsing
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -5632,6 +5654,16 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput)
 }
 
+// If true, the processed document will be made available for the GetProcessedDocument API.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) EnableGetProcessedDocument() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGetProcessedDocument
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If true, the LLM based annotation is added to the image during parsing.
 func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
@@ -5639,6 +5671,16 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 			return nil
 		}
 		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the pdf layout will be refined using an LLM.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) EnableLlmLayoutParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableLlmLayoutParsing
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -6086,8 +6128,12 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConf
 }
 
 type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument *bool `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation *bool `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing *bool `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation *bool `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -6112,8 +6158,12 @@ type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigIn
 }
 
 type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument pulumi.BoolPtrInput `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation pulumi.BoolPtrInput `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing pulumi.BoolPtrInput `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation pulumi.BoolPtrInput `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -6203,10 +6253,24 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfi
 	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput)
 }
 
+// If true, the processed document will be made available for the GetProcessedDocument API.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableGetProcessedDocument() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		return v.EnableGetProcessedDocument
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If true, the LLM based annotation is added to the image during parsing.
 func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
 		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the pdf layout will be refined using an LLM.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableLlmLayoutParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		return v.EnableLlmLayoutParsing
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -6269,6 +6333,16 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfi
 	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput)
 }
 
+// If true, the processed document will be made available for the GetProcessedDocument API.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) EnableGetProcessedDocument() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableGetProcessedDocument
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If true, the LLM based annotation is added to the image during parsing.
 func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) EnableImageAnnotation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
@@ -6276,6 +6350,16 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfi
 			return nil
 		}
 		return v.EnableImageAnnotation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the pdf layout will be refined using an LLM.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) EnableLlmLayoutParsing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableLlmLayoutParsing
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -11997,8 +12081,12 @@ func (o GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingCo
 }
 
 type GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument bool `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation bool `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing bool `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation bool `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -12023,8 +12111,12 @@ type GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
 }
 
 type GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument pulumi.BoolInput `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation pulumi.BoolInput `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing pulumi.BoolInput `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation pulumi.BoolInput `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -12088,10 +12180,24 @@ func (o GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingCon
 	return o
 }
 
+// If true, the processed document will be made available for the GetProcessedDocument API.
+func (o GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableGetProcessedDocument() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) bool {
+		return v.EnableGetProcessedDocument
+	}).(pulumi.BoolOutput)
+}
+
 // If true, the LLM based annotation is added to the image during parsing.
 func (o GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableImageAnnotation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) bool {
 		return v.EnableImageAnnotation
+	}).(pulumi.BoolOutput)
+}
+
+// If true, the pdf layout will be refined using an LLM.
+func (o GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) EnableLlmLayoutParsing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) bool {
+		return v.EnableLlmLayoutParsing
 	}).(pulumi.BoolOutput)
 }
 
@@ -12465,8 +12571,12 @@ func (o GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingC
 }
 
 type GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument bool `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation bool `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing bool `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation bool `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -12491,8 +12601,12 @@ type GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfi
 }
 
 type GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs struct {
+	// If true, the processed document will be made available for the GetProcessedDocument API.
+	EnableGetProcessedDocument pulumi.BoolInput `pulumi:"enableGetProcessedDocument"`
 	// If true, the LLM based annotation is added to the image during parsing.
 	EnableImageAnnotation pulumi.BoolInput `pulumi:"enableImageAnnotation"`
+	// If true, the pdf layout will be refined using an LLM.
+	EnableLlmLayoutParsing pulumi.BoolInput `pulumi:"enableLlmLayoutParsing"`
 	// If true, the LLM based annotation is added to the table during parsing.
 	EnableTableAnnotation pulumi.BoolInput `pulumi:"enableTableAnnotation"`
 	// List of HTML classes to exclude from the parsed content.
@@ -12556,10 +12670,24 @@ func (o GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingCo
 	return o
 }
 
+// If true, the processed document will be made available for the GetProcessedDocument API.
+func (o GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableGetProcessedDocument() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) bool {
+		return v.EnableGetProcessedDocument
+	}).(pulumi.BoolOutput)
+}
+
 // If true, the LLM based annotation is added to the image during parsing.
 func (o GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableImageAnnotation() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) bool {
 		return v.EnableImageAnnotation
+	}).(pulumi.BoolOutput)
+}
+
+// If true, the pdf layout will be refined using an LLM.
+func (o GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) EnableLlmLayoutParsing() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) bool {
+		return v.EnableLlmLayoutParsing
 	}).(pulumi.BoolOutput)
 }
 

@@ -42,7 +42,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_11380"),
+//				DataProductId: pulumi.String("tf-test-dp-_80215"),
 //				DisplayName:   pulumi.String("Parent Data Product"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -53,7 +53,7 @@ import (
 //						GroupId:     pulumi.String("analyst"),
 //						DisplayName: pulumi.String("Data Analyst"),
 //						Principal: &dataplex.DataProductAccessGroupPrincipalArgs{
-//							GoogleGroup: pulumi.String("tf-test-analysts-_35305@example.com"),
+//							GoogleGroup: pulumi.String("tf-test-analysts-_59033@example.com"),
 //						},
 //					},
 //				},
@@ -63,7 +63,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__62793"),
+//				DatasetId: pulumi.String("tf_test_dataset__32081"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -108,7 +108,7 @@ import (
 //			example, err := dataplex.NewDataProduct(ctx, "example", &dataplex.DataProductArgs{
 //				Project:       pulumi.String("my-project-name"),
 //				Location:      pulumi.String("us-central1"),
-//				DataProductId: pulumi.String("tf-test-dp-_55438"),
+//				DataProductId: pulumi.String("tf-test-dp-_10393"),
 //				DisplayName:   pulumi.String("Full Example Parent DP"),
 //				OwnerEmails: pulumi.StringArray{
 //					pulumi.String("gterraformtestuser@gmail.com"),
@@ -137,7 +137,7 @@ import (
 //			}
 //			exampleDataset, err := bigquery.NewDataset(ctx, "example", &bigquery.DatasetArgs{
 //				Project:   pulumi.String("my-project-name"),
-//				DatasetId: pulumi.String("tf_test_dataset__32706"),
+//				DatasetId: pulumi.String("tf_test_dataset__33052"),
 //				Location:  pulumi.String("us-central1"),
 //			})
 //			if err != nil {

@@ -401,7 +401,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__24243",
+            collection="chatrooms__35762",
             field="basic",
             index_config={
                 "indexes": [
@@ -519,7 +519,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__7495",
+            collection="chatrooms__24469",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -551,7 +551,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__21912",
+            collection="chatrooms__79580",
             field="*",
             index_config={
                 "indexes": [
@@ -581,7 +581,7 @@ class Field(pulumi.CustomResource):
         skip_wait = gcp.firestore.Field("skip_wait",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__46731",
+            collection="chatrooms__98863",
             field="skip_wait",
             index_config={
                 "indexes": [
@@ -672,7 +672,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__24243",
+            collection="chatrooms__35762",
             field="basic",
             index_config={
                 "indexes": [
@@ -790,7 +790,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__7495",
+            collection="chatrooms__24469",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -822,7 +822,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__21912",
+            collection="chatrooms__79580",
             field="*",
             index_config={
                 "indexes": [
@@ -852,7 +852,7 @@ class Field(pulumi.CustomResource):
         skip_wait = gcp.firestore.Field("skip_wait",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__46731",
+            collection="chatrooms__98863",
             field="skip_wait",
             index_config={
                 "indexes": [

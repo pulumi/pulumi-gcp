@@ -651,7 +651,7 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
             description="This is a simple packet mirroring rule description",
             direction="INGRESS",
             disabled=False,
-            firewall_policy=basic_network_firewall_policy.name,
+            firewall_policy=basic_network_firewall_policy.id,
             priority=1000,
             rule_name="test-rule",
             match={
@@ -787,7 +787,7 @@ class NetworkFirewallPolicyPacketMirroringRule(pulumi.CustomResource):
             description="This is a simple packet mirroring rule description",
             direction="INGRESS",
             disabled=False,
-            firewall_policy=basic_network_firewall_policy.name,
+            firewall_policy=basic_network_firewall_policy.id,
             priority=1000,
             rule_name="test-rule",
             match={

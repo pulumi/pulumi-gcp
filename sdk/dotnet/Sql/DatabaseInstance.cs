@@ -678,6 +678,12 @@ namespace Pulumi.Gcp.Sql
         public Output<string> FirstIpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// When this parameter is set to `True`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `DatabaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        /// </summary>
+        [Output("includeReplicasForMajorVersionUpgrade")]
+        public Output<bool?> IncludeReplicasForMajorVersionUpgrade { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         /// </summary>
         [Output("instanceType")]
@@ -830,6 +836,12 @@ namespace Pulumi.Gcp.Sql
         [Output("settings")]
         public Output<Outputs.DatabaseInstanceSettings> Settings { get; private set; } = null!;
 
+        /// <summary>
+        /// When set to `True`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        /// </summary>
+        [Output("switchTransactionLogsToCloudStorageEnabled")]
+        public Output<bool?> SwitchTransactionLogsToCloudStorageEnabled { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -961,6 +973,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("finalBackupDescription")]
         public Input<string>? FinalBackupDescription { get; set; }
+
+        /// <summary>
+        /// When this parameter is set to `True`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `DatabaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        /// </summary>
+        [Input("includeReplicasForMajorVersionUpgrade")]
+        public Input<bool>? IncludeReplicasForMajorVersionUpgrade { get; set; }
 
         /// <summary>
         /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -1114,6 +1132,12 @@ namespace Pulumi.Gcp.Sql
         [Input("settings")]
         public Input<Inputs.DatabaseInstanceSettingsArgs>? Settings { get; set; }
 
+        /// <summary>
+        /// When set to `True`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        /// </summary>
+        [Input("switchTransactionLogsToCloudStorageEnabled")]
+        public Input<bool>? SwitchTransactionLogsToCloudStorageEnabled { get; set; }
+
         public DatabaseInstanceArgs()
         {
         }
@@ -1243,6 +1267,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("firstIpAddress")]
         public Input<string>? FirstIpAddress { get; set; }
+
+        /// <summary>
+        /// When this parameter is set to `True`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `DatabaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        /// </summary>
+        [Input("includeReplicasForMajorVersionUpgrade")]
+        public Input<bool>? IncludeReplicasForMajorVersionUpgrade { get; set; }
 
         /// <summary>
         /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
@@ -1446,6 +1476,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("settings")]
         public Input<Inputs.DatabaseInstanceSettingsGetArgs>? Settings { get; set; }
+
+        /// <summary>
+        /// When set to `True`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        /// </summary>
+        [Input("switchTransactionLogsToCloudStorageEnabled")]
+        public Input<bool>? SwitchTransactionLogsToCloudStorageEnabled { get; set; }
 
         public DatabaseInstanceState()
         {

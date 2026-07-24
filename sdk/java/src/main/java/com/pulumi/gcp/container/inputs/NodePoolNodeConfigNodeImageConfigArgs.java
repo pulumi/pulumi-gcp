@@ -16,14 +16,14 @@ public final class NodePoolNodeConfigNodeImageConfigArgs extends com.pulumi.reso
     public static final NodePoolNodeConfigNodeImageConfigArgs Empty = new NodePoolNodeConfigNodeImageConfigArgs();
 
     /**
-     * The name of the image to use for this node.
+     * The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     @Import(name="image")
     private @Nullable Output<String> image;
 
     /**
-     * @return The name of the image to use for this node.
+     * @return The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     public Optional<Output<String>> image() {
@@ -31,14 +31,14 @@ public final class NodePoolNodeConfigNodeImageConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * The project containing the image to use for this node.
+     * The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     @Import(name="imageProject")
     private @Nullable Output<String> imageProject;
 
     /**
-     * @return The project containing the image to use for this node.
+     * @return The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     public Optional<Output<String>> imageProject() {
@@ -71,7 +71,7 @@ public final class NodePoolNodeConfigNodeImageConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param image The name of the image to use for this node.
+         * @param image The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class NodePoolNodeConfigNodeImageConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param image The name of the image to use for this node.
+         * @param image The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class NodePoolNodeConfigNodeImageConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param imageProject The project containing the image to use for this node.
+         * @param imageProject The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class NodePoolNodeConfigNodeImageConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param imageProject The project containing the image to use for this node.
+         * @param imageProject The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
          * 
          * @return builder
          * 

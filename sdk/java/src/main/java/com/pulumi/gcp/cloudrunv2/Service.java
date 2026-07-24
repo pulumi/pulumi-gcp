@@ -1078,7 +1078,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sourcebucket = new Bucket("sourcebucket", BucketArgs.builder()
- *             .name(String.format("%s-tf-test-gcf-source_64336", project.projectId()))
+ *             .name(String.format("%s-tf-test-gcf-source_75125", project.projectId()))
  *             .location("US")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -1163,6 +1163,48 @@ import javax.annotation.Nullable;
  *                         .medium("DISK")
  *                         .sizeLimit("10Gi")
  *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Cloudrunv2 Service Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .tags(Map.of("tagKeys/1234", "tagValues/5678"))
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .build())
  *             .build());
@@ -1750,6 +1792,24 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<ServiceScaling> scaling() {
         return this.scaling;
+    }
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The template used to create revisions for this Service.

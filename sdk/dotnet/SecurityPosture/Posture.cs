@@ -44,6 +44,38 @@ namespace Pulumi.Gcp.SecurityPosture
     ///         {
     ///             new Gcp.SecurityPosture.Inputs.PosturePolicySetArgs
     ///             {
+    ///                 PolicySetId = "list_constraint_policy_set",
+    ///                 Description = "set of org policies with a list constraint",
+    ///                 Policies = new[]
+    ///                 {
+    ///                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyArgs
+    ///                     {
+    ///                         PolicyId = "resource_locations_policy",
+    ///                         Constraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintArgs
+    ///                         {
+    ///                             OrgPolicyConstraint = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs
+    ///                             {
+    ///                                 CannedConstraintId = "gcp.resourceLocations",
+    ///                                 PolicyRules = new[]
+    ///                                 {
+    ///                                     new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs
+    ///                                     {
+    ///                                         Values = new Gcp.SecurityPosture.Inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs
+    ///                                         {
+    ///                                             AllowedValues = new[]
+    ///                                             {
+    ///                                                 "in:us-locations",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.SecurityPosture.Inputs.PosturePolicySetArgs
+    ///             {
     ///                 PolicySetId = "org_policy_set",
     ///                 Description = "set of org policies",
     ///                 Policies = new[]

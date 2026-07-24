@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,25 @@ import javax.annotation.Nullable;
 public final class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs Empty = new ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs();
+
+    /**
+     * Specifies which Google services are allowed to be accessed from
+     * VPC networks in the service perimeter.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="allowedServicePatterns")
+    private @Nullable Output<List<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs>> allowedServicePatterns;
+
+    /**
+     * @return Specifies which Google services are allowed to be accessed from
+     * VPC networks in the service perimeter.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs>>> allowedServicePatterns() {
+        return Optional.ofNullable(this.allowedServicePatterns);
+    }
 
     /**
      * The list of APIs usable within the Service Perimeter.
@@ -51,11 +71,30 @@ public final class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesA
         return Optional.ofNullable(this.enableRestriction);
     }
 
+    /**
+     * Defines the enforcement scopes of service patterns.
+     * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+     * 
+     */
+    @Import(name="servicePatternsEnforcementScopes")
+    private @Nullable Output<List<String>> servicePatternsEnforcementScopes;
+
+    /**
+     * @return Defines the enforcement scopes of service patterns.
+     * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+     * 
+     */
+    public Optional<Output<List<String>>> servicePatternsEnforcementScopes() {
+        return Optional.ofNullable(this.servicePatternsEnforcementScopes);
+    }
+
     private ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs() {}
 
     private ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs $) {
+        this.allowedServicePatterns = $.allowedServicePatterns;
         this.allowedServices = $.allowedServices;
         this.enableRestriction = $.enableRestriction;
+        this.servicePatternsEnforcementScopes = $.servicePatternsEnforcementScopes;
     }
 
     public static Builder builder() {
@@ -74,6 +113,43 @@ public final class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesA
 
         public Builder(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs defaults) {
             $ = new ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedServicePatterns Specifies which Google services are allowed to be accessed from
+         * VPC networks in the service perimeter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedServicePatterns(@Nullable Output<List<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs>> allowedServicePatterns) {
+            $.allowedServicePatterns = allowedServicePatterns;
+            return this;
+        }
+
+        /**
+         * @param allowedServicePatterns Specifies which Google services are allowed to be accessed from
+         * VPC networks in the service perimeter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedServicePatterns(List<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs> allowedServicePatterns) {
+            return allowedServicePatterns(Output.of(allowedServicePatterns));
+        }
+
+        /**
+         * @param allowedServicePatterns Specifies which Google services are allowed to be accessed from
+         * VPC networks in the service perimeter.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedServicePatterns(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs... allowedServicePatterns) {
+            return allowedServicePatterns(List.of(allowedServicePatterns));
         }
 
         /**
@@ -131,6 +207,40 @@ public final class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesA
          */
         public Builder enableRestriction(Boolean enableRestriction) {
             return enableRestriction(Output.of(enableRestriction));
+        }
+
+        /**
+         * @param servicePatternsEnforcementScopes Defines the enforcement scopes of service patterns.
+         * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePatternsEnforcementScopes(@Nullable Output<List<String>> servicePatternsEnforcementScopes) {
+            $.servicePatternsEnforcementScopes = servicePatternsEnforcementScopes;
+            return this;
+        }
+
+        /**
+         * @param servicePatternsEnforcementScopes Defines the enforcement scopes of service patterns.
+         * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePatternsEnforcementScopes(List<String> servicePatternsEnforcementScopes) {
+            return servicePatternsEnforcementScopes(Output.of(servicePatternsEnforcementScopes));
+        }
+
+        /**
+         * @param servicePatternsEnforcementScopes Defines the enforcement scopes of service patterns.
+         * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePatternsEnforcementScopes(String... servicePatternsEnforcementScopes) {
+            return servicePatternsEnforcementScopes(List.of(servicePatternsEnforcementScopes));
         }
 
         public ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs build() {

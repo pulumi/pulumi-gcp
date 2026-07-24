@@ -40,7 +40,8 @@ class FutureReservationArgs:
                  scheduling_type: pulumi.Input[Optional[_builtins.str]] = None,
                  share_settings: pulumi.Input[Optional['FutureReservationShareSettingsArgs']] = None,
                  specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
-                 specific_sku_properties: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']] = None):
+                 specific_sku_properties: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FutureReservation resource.
 
@@ -68,7 +69,7 @@ class FutureReservationArgs:
                RFC1035. Specifically, the name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
-               characters must be a dash, lowercase letter, or digit, except the las
+               characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param pulumi.Input['FutureReservationParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
@@ -87,6 +88,7 @@ class FutureReservationArgs:
         :param pulumi.Input[_builtins.bool] specific_reservation_required: Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
         :param pulumi.Input['FutureReservationSpecificSkuPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] zone: The zone where the future reservation is located.
         """
         pulumi.set(__self__, "time_window", time_window)
         if aggregate_reservation is not None:
@@ -127,6 +129,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
         if specific_sku_properties is not None:
             pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @_builtins.property
     @pulumi.getter(name="timeWindow")
@@ -255,7 +259,7 @@ class FutureReservationArgs:
         RFC1035. Specifically, the name must be 1-63 characters long and match
         the regular expression `a-z?` which means the
         first character must be a lowercase letter, and all following
-        characters must be a dash, lowercase letter, or digit, except the las
+        characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
@@ -391,6 +395,18 @@ class FutureReservationArgs:
     def specific_sku_properties(self, value: pulumi.Input[Optional['FutureReservationSpecificSkuPropertiesArgs']]):
         pulumi.set(self, "specific_sku_properties", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The zone where the future reservation is located.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "zone", value)
+
 
 @pulumi.input_type
 class _FutureReservationState:
@@ -446,7 +462,7 @@ class _FutureReservationState:
                RFC1035. Specifically, the name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
-               characters must be a dash, lowercase letter, or digit, except the las
+               characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param pulumi.Input['FutureReservationParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
@@ -471,7 +487,7 @@ class _FutureReservationState:
                Structure is documented below.
         :param pulumi.Input['FutureReservationTimeWindowArgs'] time_window: Time window for this Future Reservation.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] zone: URL of the Zone where this future reservation resides.
+        :param pulumi.Input[_builtins.str] zone: The zone where the future reservation is located.
         """
         if aggregate_reservation is not None:
             pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
@@ -650,7 +666,7 @@ class _FutureReservationState:
         RFC1035. Specifically, the name must be 1-63 characters long and match
         the regular expression `a-z?` which means the
         first character must be a lowercase letter, and all following
-        characters must be a dash, lowercase letter, or digit, except the las
+        characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
@@ -840,7 +856,7 @@ class _FutureReservationState:
     @pulumi.getter
     def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        URL of the Zone where this future reservation resides.
+        The zone where the future reservation is located.
         """
         return pulumi.get(self, "zone")
 
@@ -875,6 +891,7 @@ class FutureReservation(pulumi.CustomResource):
                  specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  specific_sku_properties: pulumi.Input[Optional[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
                  time_window: pulumi.Input[Optional[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Represents a future reservation resource in Compute Engine. Future reservations allow users
@@ -907,6 +924,7 @@ class FutureReservation(pulumi.CustomResource):
         gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
             name="gce-future-reservation",
             project="my-project-name",
+            zone="us-central1-a",
             auto_delete_auto_created_reservations=True,
             planning_status="DRAFT",
             name_prefix="fr-basic",
@@ -930,6 +948,7 @@ class FutureReservation(pulumi.CustomResource):
         gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
             name="gce-future-reservation-aggregate-reservation",
             project="my-project-name",
+            zone="us-central1-a",
             auto_delete_auto_created_reservations=True,
             planning_status="DRAFT",
             name_prefix="fr-basic",
@@ -1000,7 +1019,7 @@ class FutureReservation(pulumi.CustomResource):
                RFC1035. Specifically, the name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
-               characters must be a dash, lowercase letter, or digit, except the las
+               characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param pulumi.Input[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
@@ -1021,6 +1040,7 @@ class FutureReservation(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']] time_window: Time window for this Future Reservation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] zone: The zone where the future reservation is located.
         """
         ...
     @overload
@@ -1059,6 +1079,7 @@ class FutureReservation(pulumi.CustomResource):
         gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
             name="gce-future-reservation",
             project="my-project-name",
+            zone="us-central1-a",
             auto_delete_auto_created_reservations=True,
             planning_status="DRAFT",
             name_prefix="fr-basic",
@@ -1082,6 +1103,7 @@ class FutureReservation(pulumi.CustomResource):
         gce_future_reservation = gcp.compute.FutureReservation("gce_future_reservation",
             name="gce-future-reservation-aggregate-reservation",
             project="my-project-name",
+            zone="us-central1-a",
             auto_delete_auto_created_reservations=True,
             planning_status="DRAFT",
             name_prefix="fr-basic",
@@ -1163,6 +1185,7 @@ class FutureReservation(pulumi.CustomResource):
                  specific_reservation_required: pulumi.Input[Optional[_builtins.bool]] = None,
                  specific_sku_properties: pulumi.Input[Optional[Union['FutureReservationSpecificSkuPropertiesArgs', 'FutureReservationSpecificSkuPropertiesArgsDict']]] = None,
                  time_window: pulumi.Input[Optional[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1194,11 +1217,11 @@ class FutureReservation(pulumi.CustomResource):
             if time_window is None and not opts.urn:
                 raise TypeError("Missing required property 'time_window'")
             __props__.__dict__["time_window"] = time_window
+            __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["statuses"] = None
-            __props__.__dict__["zone"] = None
         super(FutureReservation, __self__).__init__(
             'gcp:compute/futureReservation:FutureReservation',
             resource_name,
@@ -1264,7 +1287,7 @@ class FutureReservation(pulumi.CustomResource):
                RFC1035. Specifically, the name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
                first character must be a lowercase letter, and all following
-               characters must be a dash, lowercase letter, or digit, except the las
+               characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         :param pulumi.Input[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
@@ -1289,7 +1312,7 @@ class FutureReservation(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['FutureReservationTimeWindowArgs', 'FutureReservationTimeWindowArgsDict']] time_window: Time window for this Future Reservation.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] zone: URL of the Zone where this future reservation resides.
+        :param pulumi.Input[_builtins.str] zone: The zone where the future reservation is located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1412,7 +1435,7 @@ class FutureReservation(pulumi.CustomResource):
         RFC1035. Specifically, the name must be 1-63 characters long and match
         the regular expression `a-z?` which means the
         first character must be a lowercase letter, and all following
-        characters must be a dash, lowercase letter, or digit, except the las
+        characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
@@ -1542,7 +1565,7 @@ class FutureReservation(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[_builtins.str]:
         """
-        URL of the Zone where this future reservation resides.
+        The zone where the future reservation is located.
         """
         return pulumi.get(self, "zone")
 

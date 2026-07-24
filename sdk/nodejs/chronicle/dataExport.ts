@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * const testBucket = new gcp.storage.Bucket("test_bucket", {
- *     name: "chronicle-test-bucket-my-project-name-_91042",
+ *     name: "chronicle-test-bucket-my-project-name-_56730",
  *     project: "my-project-name",
  *     location: "us",
  *     forceDestroy: true,
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * const testBucket = new gcp.storage.Bucket("test_bucket", {
- *     name: "chronicle-test-bucket-my-project-name-_72490",
+ *     name: "chronicle-test-bucket-my-project-name-_95154",
  *     project: "my-project-name",
  *     location: "us",
  *     forceDestroy: true,

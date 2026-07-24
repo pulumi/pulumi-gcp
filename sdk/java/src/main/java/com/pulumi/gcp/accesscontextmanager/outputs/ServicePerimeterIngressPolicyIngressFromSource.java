@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,6 +24,13 @@ public final class ServicePerimeterIngressPolicyIngressFromSource {
      * 
      */
     private @Nullable String accessLevel;
+    /**
+     * @return A Private Service Connect endpoint that is allowed to access the perimeter.
+     * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint pscEndpoint;
     /**
      * @return A Google Cloud resource that is allowed to ingress the perimeter.
      * Requests from these resources will be allowed to access perimeter data.
@@ -53,6 +61,15 @@ public final class ServicePerimeterIngressPolicyIngressFromSource {
         return Optional.ofNullable(this.accessLevel);
     }
     /**
+     * @return A Private Service Connect endpoint that is allowed to access the perimeter.
+     * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint> pscEndpoint() {
+        return Optional.ofNullable(this.pscEndpoint);
+    }
+    /**
      * @return A Google Cloud resource that is allowed to ingress the perimeter.
      * Requests from these resources will be allowed to access perimeter data.
      * Currently only projects and VPCs are allowed.
@@ -78,11 +95,13 @@ public final class ServicePerimeterIngressPolicyIngressFromSource {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String accessLevel;
+        private @Nullable ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint pscEndpoint;
         private @Nullable String resource;
         public Builder() {}
         public Builder(ServicePerimeterIngressPolicyIngressFromSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
+    	      this.pscEndpoint = defaults.pscEndpoint;
     	      this.resource = defaults.resource;
         }
 
@@ -90,6 +109,12 @@ public final class ServicePerimeterIngressPolicyIngressFromSource {
         public Builder accessLevel(@Nullable String accessLevel) {
 
             this.accessLevel = accessLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscEndpoint(@Nullable ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint pscEndpoint) {
+
+            this.pscEndpoint = pscEndpoint;
             return this;
         }
         @CustomType.Setter
@@ -101,6 +126,7 @@ public final class ServicePerimeterIngressPolicyIngressFromSource {
         public ServicePerimeterIngressPolicyIngressFromSource build() {
             final var _resultValue = new ServicePerimeterIngressPolicyIngressFromSource();
             _resultValue.accessLevel = accessLevel;
+            _resultValue.pscEndpoint = pscEndpoint;
             _resultValue.resource = resource;
             return _resultValue;
         }

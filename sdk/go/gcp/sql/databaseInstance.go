@@ -590,6 +590,8 @@ type DatabaseInstance struct {
 	FinalBackupDescription pulumi.StringPtrOutput `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringOutput `pulumi:"firstIpAddress"`
+	// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade pulumi.BoolPtrOutput `pulumi:"includeReplicasForMajorVersionUpgrade"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringOutput                  `pulumi:"instanceType"`
 	IpAddresses  DatabaseInstanceIpAddressArrayOutput `pulumi:"ipAddresses"`
@@ -655,6 +657,8 @@ type DatabaseInstance struct {
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings DatabaseInstanceSettingsOutput `pulumi:"settings"`
+	// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled pulumi.BoolPtrOutput `pulumi:"switchTransactionLogsToCloudStorageEnabled"`
 }
 
 // NewDatabaseInstance registers a new resource with the given unique name, arguments, and options.
@@ -764,6 +768,8 @@ type databaseInstanceState struct {
 	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress *string `pulumi:"firstIpAddress"`
+	// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade *bool `pulumi:"includeReplicasForMajorVersionUpgrade"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType *string                     `pulumi:"instanceType"`
 	IpAddresses  []DatabaseInstanceIpAddress `pulumi:"ipAddresses"`
@@ -829,6 +835,8 @@ type databaseInstanceState struct {
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings *DatabaseInstanceSettings `pulumi:"settings"`
+	// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled *bool `pulumi:"switchTransactionLogsToCloudStorageEnabled"`
 }
 
 type DatabaseInstanceState struct {
@@ -890,6 +898,8 @@ type DatabaseInstanceState struct {
 	FinalBackupDescription pulumi.StringPtrInput
 	// The first IPv4 address of any type assigned.
 	FirstIpAddress pulumi.StringPtrInput
+	// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade pulumi.BoolPtrInput
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringPtrInput
 	IpAddresses  DatabaseInstanceIpAddressArrayInput
@@ -955,6 +965,8 @@ type DatabaseInstanceState struct {
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings DatabaseInstanceSettingsPtrInput
+	// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled pulumi.BoolPtrInput
 }
 
 func (DatabaseInstanceState) ElementType() reflect.Type {
@@ -1009,6 +1021,8 @@ type databaseInstanceArgs struct {
 	EnforceNewSqlNetworkArchitecture *bool `pulumi:"enforceNewSqlNetworkArchitecture"`
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription *string `pulumi:"finalBackupDescription"`
+	// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade *bool `pulumi:"includeReplicasForMajorVersionUpgrade"`
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType *string `pulumi:"instanceType"`
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -1061,6 +1075,8 @@ type databaseInstanceArgs struct {
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings *DatabaseInstanceSettings `pulumi:"settings"`
+	// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled *bool `pulumi:"switchTransactionLogsToCloudStorageEnabled"`
 }
 
 // The set of arguments for constructing a DatabaseInstance resource.
@@ -1112,6 +1128,8 @@ type DatabaseInstanceArgs struct {
 	EnforceNewSqlNetworkArchitecture pulumi.BoolPtrInput
 	// The description of final backup. Only set this field when `final_backup_config.enabled` is true.
 	FinalBackupDescription pulumi.StringPtrInput
+	// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade pulumi.BoolPtrInput
 	// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 	InstanceType pulumi.StringPtrInput
 	// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
@@ -1164,6 +1182,8 @@ type DatabaseInstanceArgs struct {
 	// The settings to use for the database. The
 	// configuration is detailed below. Required if `clone` is not set.
 	Settings DatabaseInstanceSettingsPtrInput
+	// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled pulumi.BoolPtrInput
 }
 
 func (DatabaseInstanceArgs) ElementType() reflect.Type {
@@ -1350,6 +1370,11 @@ func (o DatabaseInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.FirstIpAddress }).(pulumi.StringOutput)
 }
 
+// When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+func (o DatabaseInstanceOutput) IncludeReplicasForMajorVersionUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.IncludeReplicasForMajorVersionUpgrade }).(pulumi.BoolPtrOutput)
+}
+
 // The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
 func (o DatabaseInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
@@ -1484,6 +1509,11 @@ func (o DatabaseInstanceOutput) ServiceAccountEmailAddress() pulumi.StringOutput
 // configuration is detailed below. Required if `clone` is not set.
 func (o DatabaseInstanceOutput) Settings() DatabaseInstanceSettingsOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceSettingsOutput { return v.Settings }).(DatabaseInstanceSettingsOutput)
+}
+
+// When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+func (o DatabaseInstanceOutput) SwitchTransactionLogsToCloudStorageEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.SwitchTransactionLogsToCloudStorageEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceArrayOutput struct{ *pulumi.OutputState }

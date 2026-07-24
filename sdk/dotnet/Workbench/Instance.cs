@@ -205,14 +205,11 @@ namespace Pulumi.Gcp.Workbench
     ///         Name = "wbi-test-default",
     ///     });
     /// 
-    ///     var actAsPermission = new Gcp.ServiceAccount.IAMBinding("act_as_permission", new()
+    ///     var actAsPermission = new Gcp.ServiceAccount.IAMMember("act_as_permission", new()
     ///     {
     ///         ServiceAccountId = "projects/my-project-name/serviceAccounts/my@service-account.com",
     ///         Role = "roles/iam.serviceAccountUser",
-    ///         Members = new[]
-    ///         {
-    ///             "user:example@example.com",
-    ///         },
+    ///         Member = "user:example@example.com",
     ///     });
     /// 
     ///     var gpuReservation = new Gcp.Compute.Reservation("gpu_reservation", new()
@@ -225,6 +222,7 @@ namespace Pulumi.Gcp.Workbench
     ///             InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
     ///             {
     ///                 MachineType = "n1-standard-4",
+    ///                 MinCpuPlatform = "Intel Broadwell",
     ///                 GuestAccelerators = new[]
     ///                 {
     ///                     new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs
@@ -238,13 +236,32 @@ namespace Pulumi.Gcp.Workbench
     ///         SpecificReservationRequired = true,
     ///     });
     /// 
+    ///     var myPolicy = new Gcp.Compute.ResourcePolicy("my_policy", new()
+    ///     {
+    ///         Name = "wbi-policy",
+    ///         Region = "us-central1",
+    ///         SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///         {
+    ///             Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///             {
+    ///                 DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+    ///                 {
+    ///                     DaysInCycle = 1,
+    ///                     StartTime = "04:00",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
     ///     var instance = new Gcp.Workbench.Instance("instance", new()
     ///     {
     ///         Name = "workbench-instance",
     ///         Location = "us-central1-a",
+    ///         EnableDeletionProtection = false,
     ///         GceSetup = new Gcp.Workbench.Inputs.InstanceGceSetupArgs
     ///         {
     ///             MachineType = "n1-standard-4",
+    ///             MinCpuPlatform = "Intel Broadwell",
     ///             AcceleratorConfigs = new[]
     ///             {
     ///                 new Gcp.Workbench.Inputs.InstanceGceSetupAcceleratorConfigArgs
@@ -280,6 +297,10 @@ namespace Pulumi.Gcp.Workbench
     ///                 DiskType = "PD_SSD",
     ///                 DiskEncryption = "CMEK",
     ///                 KmsKey = "my-crypto-key",
+    ///                 ResourcePolicies = new[]
+    ///                 {
+    ///                     myPolicy.Id,
+    ///                 },
     ///             },
     ///             NetworkInterfaces = new[]
     ///             {
@@ -339,6 +360,7 @@ namespace Pulumi.Gcp.Workbench
     ///             @static,
     ///             actAsPermission,
     ///             gpuReservation,
+    ///             myPolicy,
     ///         },
     ///     });
     /// 
@@ -488,6 +510,12 @@ namespace Pulumi.Gcp.Workbench
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If true, deletion protection will be enabled for this Workbench Instance.
+        /// </summary>
+        [Output("enableDeletionProtection")]
+        public Output<bool> EnableDeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// Flag to enable managed end user credentials for the instance.
@@ -677,6 +705,12 @@ namespace Pulumi.Gcp.Workbench
         public Input<bool>? DisableProxyAccess { get; set; }
 
         /// <summary>
+        /// Optional. If true, deletion protection will be enabled for this Workbench Instance.
+        /// </summary>
+        [Input("enableDeletionProtection")]
+        public Input<bool>? EnableDeletionProtection { get; set; }
+
+        /// <summary>
         /// Flag to enable managed end user credentials for the instance.
         /// </summary>
         [Input("enableManagedEuc")]
@@ -812,6 +846,12 @@ namespace Pulumi.Gcp.Workbench
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Optional. If true, deletion protection will be enabled for this Workbench Instance.
+        /// </summary>
+        [Input("enableDeletionProtection")]
+        public Input<bool>? EnableDeletionProtection { get; set; }
 
         /// <summary>
         /// Flag to enable managed end user credentials for the instance.

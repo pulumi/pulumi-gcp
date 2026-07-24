@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.InstanceFromTemplateSchedulingPreemptionNoticeDurationGetArgs>? PreemptionNoticeDuration { get; set; }
 
         /// <summary>
-        /// Whether the instance is spot. If this is set as SPOT.
+        /// Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
         /// </summary>
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }

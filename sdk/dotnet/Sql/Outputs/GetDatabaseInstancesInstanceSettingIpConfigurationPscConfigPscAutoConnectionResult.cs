@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string ConsumerServiceProjectId;
         /// <summary>
+        /// The status of the automated DNS provisioning for the instance.
+        /// </summary>
+        public readonly string InstanceAutoDnsStatus;
+        /// <summary>
         /// The IP address of the consumer endpoint.
         /// </summary>
         public readonly string IpAddress;
@@ -41,6 +45,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The connection status of the consumer endpoint.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The status of the automated DNS provisioning for the write endpoint.
+        /// </summary>
+        public readonly string WriteEndpointAutoDnsStatus;
 
         [OutputConstructor]
         private GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
@@ -50,21 +58,27 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string consumerServiceProjectId,
 
+            string instanceAutoDnsStatus,
+
             string ipAddress,
 
             string serviceConnectionPolicy,
 
             string serviceConnectionPolicyCreationResult,
 
-            string status)
+            string status,
+
+            string writeEndpointAutoDnsStatus)
         {
             ConsumerNetwork = consumerNetwork;
             ConsumerNetworkStatus = consumerNetworkStatus;
             ConsumerServiceProjectId = consumerServiceProjectId;
+            InstanceAutoDnsStatus = instanceAutoDnsStatus;
             IpAddress = ipAddress;
             ServiceConnectionPolicy = serviceConnectionPolicy;
             ServiceConnectionPolicyCreationResult = serviceConnectionPolicyCreationResult;
             Status = status;
+            WriteEndpointAutoDnsStatus = writeEndpointAutoDnsStatus;
         }
     }
 }

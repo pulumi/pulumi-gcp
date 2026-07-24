@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_52865",
- *     name: "tf-test_85840",
+ *     projectId: "tf-test_22811",
+ *     name: "tf-test_91042",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });

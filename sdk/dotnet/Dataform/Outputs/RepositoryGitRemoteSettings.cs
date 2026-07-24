@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Dataform.Outputs
         /// </summary>
         public readonly string DefaultBranch;
         /// <summary>
+        /// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+        /// </summary>
+        public readonly string? GitRepositoryLink;
+        /// <summary>
         /// Authentication fields for remote uris using SSH protocol.
         /// Structure is documented below.
         /// </summary>
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.Dataform.Outputs
 
             string defaultBranch,
 
+            string? gitRepositoryLink,
+
             Outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig? sshAuthenticationConfig,
 
             string? tokenStatus,
@@ -50,6 +56,7 @@ namespace Pulumi.Gcp.Dataform.Outputs
         {
             AuthenticationTokenSecretVersion = authenticationTokenSecretVersion;
             DefaultBranch = defaultBranch;
+            GitRepositoryLink = gitRepositoryLink;
             SshAuthenticationConfig = sshAuthenticationConfig;
             TokenStatus = tokenStatus;
             Url = url;

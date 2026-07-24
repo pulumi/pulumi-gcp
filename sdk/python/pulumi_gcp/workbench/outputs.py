@@ -55,6 +55,8 @@ class InstanceGceSetup(dict):
             suggest = "enable_ip_forwarding"
         elif key == "machineType":
             suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
         elif key == "networkInterfaces":
             suggest = "network_interfaces"
         elif key == "reservationAffinity":
@@ -87,6 +89,7 @@ class InstanceGceSetup(dict):
                  enable_ip_forwarding: Optional[_builtins.bool] = None,
                  machine_type: Optional[_builtins.str] = None,
                  metadata: Optional[Mapping[str, _builtins.str]] = None,
+                 min_cpu_platform: Optional[_builtins.str] = None,
                  network_interfaces: Optional[Sequence['outputs.InstanceGceSetupNetworkInterface']] = None,
                  reservation_affinity: Optional['outputs.InstanceGceSetupReservationAffinity'] = None,
                  service_accounts: Optional[Sequence['outputs.InstanceGceSetupServiceAccount']] = None,
@@ -111,6 +114,7 @@ class InstanceGceSetup(dict):
                https://cloud.google.com/vpc/docs/using-routes#canipforward
         :param _builtins.str machine_type: Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
         :param Mapping[str, _builtins.str] metadata: Optional. Custom metadata to apply to this instance.
+        :param _builtins.str min_cpu_platform: Optional. The minimum CPU platform to use for this instance.
         :param Sequence['InstanceGceSetupNetworkInterfaceArgs'] network_interfaces: The network interfaces for the VM. Supports only one interface.
                Structure is documented below.
         :param 'InstanceGceSetupReservationAffinityArgs' reservation_affinity: Reservations that this instance can consume from.
@@ -145,6 +149,8 @@ class InstanceGceSetup(dict):
             pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if reservation_affinity is not None:
@@ -237,6 +243,14 @@ class InstanceGceSetup(dict):
         Optional. Custom metadata to apply to this instance.
         """
         return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[_builtins.str]:
+        """
+        Optional. The minimum CPU platform to use for this instance.
+        """
+        return pulumi.get(self, "min_cpu_platform")
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
@@ -521,6 +535,8 @@ class InstanceGceSetupDataDisks(dict):
             suggest = "disk_type"
         elif key == "kmsKey":
             suggest = "kms_key"
+        elif key == "resourcePolicies":
+            suggest = "resource_policies"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InstanceGceSetupDataDisks. Access the value via the '{suggest}' property getter instead.")
@@ -537,7 +553,8 @@ class InstanceGceSetupDataDisks(dict):
                  disk_encryption: Optional[_builtins.str] = None,
                  disk_size_gb: Optional[_builtins.str] = None,
                  disk_type: Optional[_builtins.str] = None,
-                 kms_key: Optional[_builtins.str] = None):
+                 kms_key: Optional[_builtins.str] = None,
+                 resource_policies: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str disk_encryption: Optional. Input only. Disk encryption method used on the boot
                and data disks, defaults to GMEK.
@@ -550,6 +567,7 @@ class InstanceGceSetupDataDisks(dict):
         :param _builtins.str kms_key: 'Optional. The KMS key used to encrypt the disks,
                only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
                Learn more about using your own encryption keys.'
+        :param Sequence[_builtins.str] resource_policies: Optional. Resource policies applied to this disk.
         """
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
@@ -559,6 +577,8 @@ class InstanceGceSetupDataDisks(dict):
             pulumi.set(__self__, "disk_type", disk_type)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
@@ -598,6 +618,14 @@ class InstanceGceSetupDataDisks(dict):
         Learn more about using your own encryption keys.'
         """
         return pulumi.get(self, "kms_key")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Optional. Resource policies applied to this disk.
+        """
+        return pulumi.get(self, "resource_policies")
 
 
 @pulumi.output_type

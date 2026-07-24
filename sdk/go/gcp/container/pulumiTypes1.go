@@ -2487,9 +2487,9 @@ func (o GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput) Index(i pulumi.I
 }
 
 type GetClusterNodeConfigNodeImageConfig struct {
-	// The name of the image to use for this node.
+	// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	Image string `pulumi:"image"`
-	// The project containing the image to use for this node.
+	// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	ImageProject string `pulumi:"imageProject"`
 }
 
@@ -2505,9 +2505,9 @@ type GetClusterNodeConfigNodeImageConfigInput interface {
 }
 
 type GetClusterNodeConfigNodeImageConfigArgs struct {
-	// The name of the image to use for this node.
+	// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	Image pulumi.StringInput `pulumi:"image"`
-	// The project containing the image to use for this node.
+	// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	ImageProject pulumi.StringInput `pulumi:"imageProject"`
 }
 
@@ -2562,12 +2562,12 @@ func (o GetClusterNodeConfigNodeImageConfigOutput) ToGetClusterNodeConfigNodeIma
 	return o
 }
 
-// The name of the image to use for this node.
+// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 func (o GetClusterNodeConfigNodeImageConfigOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigNodeImageConfig) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// The project containing the image to use for this node.
+// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 func (o GetClusterNodeConfigNodeImageConfigOutput) ImageProject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigNodeImageConfig) string { return v.ImageProject }).(pulumi.StringOutput)
 }
@@ -12940,9 +12940,9 @@ func (o GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput) Index(i 
 }
 
 type GetClusterNodePoolNodeConfigNodeImageConfig struct {
-	// The name of the image to use for this node.
+	// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	Image string `pulumi:"image"`
-	// The project containing the image to use for this node.
+	// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	ImageProject string `pulumi:"imageProject"`
 }
 
@@ -12958,9 +12958,9 @@ type GetClusterNodePoolNodeConfigNodeImageConfigInput interface {
 }
 
 type GetClusterNodePoolNodeConfigNodeImageConfigArgs struct {
-	// The name of the image to use for this node.
+	// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	Image pulumi.StringInput `pulumi:"image"`
-	// The project containing the image to use for this node.
+	// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 	ImageProject pulumi.StringInput `pulumi:"imageProject"`
 }
 
@@ -13015,12 +13015,12 @@ func (o GetClusterNodePoolNodeConfigNodeImageConfigOutput) ToGetClusterNodePoolN
 	return o
 }
 
-// The name of the image to use for this node.
+// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 func (o GetClusterNodePoolNodeConfigNodeImageConfigOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigNodeImageConfig) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// The project containing the image to use for this node.
+// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
 func (o GetClusterNodePoolNodeConfigNodeImageConfigOutput) ImageProject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigNodeImageConfig) string { return v.ImageProject }).(pulumi.StringOutput)
 }

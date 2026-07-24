@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintArgs;
  * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs;
  * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs;
+ * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs;
  * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs;
  * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs;
  * import com.pulumi.gcp.securityposture.inputs.PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs;
@@ -80,6 +81,23 @@ import javax.annotation.Nullable;
  *             .state("ACTIVE")
  *             .description("a new posture")
  *             .policySets(            
+ *                 PosturePolicySetArgs.builder()
+ *                     .policySetId("list_constraint_policy_set")
+ *                     .description("set of org policies with a list constraint")
+ *                     .policies(PosturePolicySetPolicyArgs.builder()
+ *                         .policyId("resource_locations_policy")
+ *                         .constraint(PosturePolicySetPolicyConstraintArgs.builder()
+ *                             .orgPolicyConstraint(PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs.builder()
+ *                                 .cannedConstraintId("gcp.resourceLocations")
+ *                                 .policyRules(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs.builder()
+ *                                     .values(PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs.builder()
+ *                                         .allowedValues("in:us-locations")
+ *                                         .build())
+ *                                     .build())
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build(),
  *                 PosturePolicySetArgs.builder()
  *                     .policySetId("org_policy_set")
  *                     .description("set of org policies")

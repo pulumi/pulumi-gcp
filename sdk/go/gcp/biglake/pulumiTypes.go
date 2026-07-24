@@ -941,6 +941,1675 @@ func (o HiveDatabaseIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type HiveTableIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HiveTableIamBindingConditionInput is an input type that accepts HiveTableIamBindingConditionArgs and HiveTableIamBindingConditionOutput values.
+// You can construct a concrete instance of `HiveTableIamBindingConditionInput` via:
+//
+//	HiveTableIamBindingConditionArgs{...}
+type HiveTableIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToHiveTableIamBindingConditionOutput() HiveTableIamBindingConditionOutput
+	ToHiveTableIamBindingConditionOutputWithContext(context.Context) HiveTableIamBindingConditionOutput
+}
+
+type HiveTableIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HiveTableIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableIamBindingCondition)(nil)).Elem()
+}
+
+func (i HiveTableIamBindingConditionArgs) ToHiveTableIamBindingConditionOutput() HiveTableIamBindingConditionOutput {
+	return i.ToHiveTableIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i HiveTableIamBindingConditionArgs) ToHiveTableIamBindingConditionOutputWithContext(ctx context.Context) HiveTableIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableIamBindingConditionOutput)
+}
+
+func (i HiveTableIamBindingConditionArgs) ToHiveTableIamBindingConditionPtrOutput() HiveTableIamBindingConditionPtrOutput {
+	return i.ToHiveTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HiveTableIamBindingConditionArgs) ToHiveTableIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveTableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableIamBindingConditionOutput).ToHiveTableIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// HiveTableIamBindingConditionPtrInput is an input type that accepts HiveTableIamBindingConditionArgs, HiveTableIamBindingConditionPtr and HiveTableIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `HiveTableIamBindingConditionPtrInput` via:
+//
+//	        HiveTableIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveTableIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToHiveTableIamBindingConditionPtrOutput() HiveTableIamBindingConditionPtrOutput
+	ToHiveTableIamBindingConditionPtrOutputWithContext(context.Context) HiveTableIamBindingConditionPtrOutput
+}
+
+type hiveTableIamBindingConditionPtrType HiveTableIamBindingConditionArgs
+
+func HiveTableIamBindingConditionPtr(v *HiveTableIamBindingConditionArgs) HiveTableIamBindingConditionPtrInput {
+	return (*hiveTableIamBindingConditionPtrType)(v)
+}
+
+func (*hiveTableIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableIamBindingCondition)(nil)).Elem()
+}
+
+func (i *hiveTableIamBindingConditionPtrType) ToHiveTableIamBindingConditionPtrOutput() HiveTableIamBindingConditionPtrOutput {
+	return i.ToHiveTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveTableIamBindingConditionPtrType) ToHiveTableIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveTableIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableIamBindingConditionPtrOutput)
+}
+
+type HiveTableIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (HiveTableIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableIamBindingCondition)(nil)).Elem()
+}
+
+func (o HiveTableIamBindingConditionOutput) ToHiveTableIamBindingConditionOutput() HiveTableIamBindingConditionOutput {
+	return o
+}
+
+func (o HiveTableIamBindingConditionOutput) ToHiveTableIamBindingConditionOutputWithContext(ctx context.Context) HiveTableIamBindingConditionOutput {
+	return o
+}
+
+func (o HiveTableIamBindingConditionOutput) ToHiveTableIamBindingConditionPtrOutput() HiveTableIamBindingConditionPtrOutput {
+	return o.ToHiveTableIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HiveTableIamBindingConditionOutput) ToHiveTableIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveTableIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveTableIamBindingCondition) *HiveTableIamBindingCondition {
+		return &v
+	}).(HiveTableIamBindingConditionPtrOutput)
+}
+
+func (o HiveTableIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HiveTableIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HiveTableIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HiveTableIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveTableIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableIamBindingCondition)(nil)).Elem()
+}
+
+func (o HiveTableIamBindingConditionPtrOutput) ToHiveTableIamBindingConditionPtrOutput() HiveTableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HiveTableIamBindingConditionPtrOutput) ToHiveTableIamBindingConditionPtrOutputWithContext(ctx context.Context) HiveTableIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o HiveTableIamBindingConditionPtrOutput) Elem() HiveTableIamBindingConditionOutput {
+	return o.ApplyT(func(v *HiveTableIamBindingCondition) HiveTableIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HiveTableIamBindingCondition
+		return ret
+	}).(HiveTableIamBindingConditionOutput)
+}
+
+func (o HiveTableIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveTableIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveTableIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveTableIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// HiveTableIamMemberConditionInput is an input type that accepts HiveTableIamMemberConditionArgs and HiveTableIamMemberConditionOutput values.
+// You can construct a concrete instance of `HiveTableIamMemberConditionInput` via:
+//
+//	HiveTableIamMemberConditionArgs{...}
+type HiveTableIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToHiveTableIamMemberConditionOutput() HiveTableIamMemberConditionOutput
+	ToHiveTableIamMemberConditionOutputWithContext(context.Context) HiveTableIamMemberConditionOutput
+}
+
+type HiveTableIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (HiveTableIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableIamMemberCondition)(nil)).Elem()
+}
+
+func (i HiveTableIamMemberConditionArgs) ToHiveTableIamMemberConditionOutput() HiveTableIamMemberConditionOutput {
+	return i.ToHiveTableIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i HiveTableIamMemberConditionArgs) ToHiveTableIamMemberConditionOutputWithContext(ctx context.Context) HiveTableIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableIamMemberConditionOutput)
+}
+
+func (i HiveTableIamMemberConditionArgs) ToHiveTableIamMemberConditionPtrOutput() HiveTableIamMemberConditionPtrOutput {
+	return i.ToHiveTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i HiveTableIamMemberConditionArgs) ToHiveTableIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveTableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableIamMemberConditionOutput).ToHiveTableIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// HiveTableIamMemberConditionPtrInput is an input type that accepts HiveTableIamMemberConditionArgs, HiveTableIamMemberConditionPtr and HiveTableIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `HiveTableIamMemberConditionPtrInput` via:
+//
+//	        HiveTableIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveTableIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToHiveTableIamMemberConditionPtrOutput() HiveTableIamMemberConditionPtrOutput
+	ToHiveTableIamMemberConditionPtrOutputWithContext(context.Context) HiveTableIamMemberConditionPtrOutput
+}
+
+type hiveTableIamMemberConditionPtrType HiveTableIamMemberConditionArgs
+
+func HiveTableIamMemberConditionPtr(v *HiveTableIamMemberConditionArgs) HiveTableIamMemberConditionPtrInput {
+	return (*hiveTableIamMemberConditionPtrType)(v)
+}
+
+func (*hiveTableIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableIamMemberCondition)(nil)).Elem()
+}
+
+func (i *hiveTableIamMemberConditionPtrType) ToHiveTableIamMemberConditionPtrOutput() HiveTableIamMemberConditionPtrOutput {
+	return i.ToHiveTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveTableIamMemberConditionPtrType) ToHiveTableIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveTableIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableIamMemberConditionPtrOutput)
+}
+
+type HiveTableIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (HiveTableIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableIamMemberCondition)(nil)).Elem()
+}
+
+func (o HiveTableIamMemberConditionOutput) ToHiveTableIamMemberConditionOutput() HiveTableIamMemberConditionOutput {
+	return o
+}
+
+func (o HiveTableIamMemberConditionOutput) ToHiveTableIamMemberConditionOutputWithContext(ctx context.Context) HiveTableIamMemberConditionOutput {
+	return o
+}
+
+func (o HiveTableIamMemberConditionOutput) ToHiveTableIamMemberConditionPtrOutput() HiveTableIamMemberConditionPtrOutput {
+	return o.ToHiveTableIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o HiveTableIamMemberConditionOutput) ToHiveTableIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveTableIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveTableIamMemberCondition) *HiveTableIamMemberCondition {
+		return &v
+	}).(HiveTableIamMemberConditionPtrOutput)
+}
+
+func (o HiveTableIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o HiveTableIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o HiveTableIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type HiveTableIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveTableIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableIamMemberCondition)(nil)).Elem()
+}
+
+func (o HiveTableIamMemberConditionPtrOutput) ToHiveTableIamMemberConditionPtrOutput() HiveTableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HiveTableIamMemberConditionPtrOutput) ToHiveTableIamMemberConditionPtrOutputWithContext(ctx context.Context) HiveTableIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o HiveTableIamMemberConditionPtrOutput) Elem() HiveTableIamMemberConditionOutput {
+	return o.ApplyT(func(v *HiveTableIamMemberCondition) HiveTableIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret HiveTableIamMemberCondition
+		return ret
+	}).(HiveTableIamMemberConditionOutput)
+}
+
+func (o HiveTableIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveTableIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HiveTableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveTablePartitionKey struct {
+	// Comment of the field.
+	Comment *string `pulumi:"comment"`
+	// Name of the field.
+	Name string `pulumi:"name"`
+	// Type of the field.
+	Type string `pulumi:"type"`
+}
+
+// HiveTablePartitionKeyInput is an input type that accepts HiveTablePartitionKeyArgs and HiveTablePartitionKeyOutput values.
+// You can construct a concrete instance of `HiveTablePartitionKeyInput` via:
+//
+//	HiveTablePartitionKeyArgs{...}
+type HiveTablePartitionKeyInput interface {
+	pulumi.Input
+
+	ToHiveTablePartitionKeyOutput() HiveTablePartitionKeyOutput
+	ToHiveTablePartitionKeyOutputWithContext(context.Context) HiveTablePartitionKeyOutput
+}
+
+type HiveTablePartitionKeyArgs struct {
+	// Comment of the field.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of the field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of the field.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (HiveTablePartitionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTablePartitionKey)(nil)).Elem()
+}
+
+func (i HiveTablePartitionKeyArgs) ToHiveTablePartitionKeyOutput() HiveTablePartitionKeyOutput {
+	return i.ToHiveTablePartitionKeyOutputWithContext(context.Background())
+}
+
+func (i HiveTablePartitionKeyArgs) ToHiveTablePartitionKeyOutputWithContext(ctx context.Context) HiveTablePartitionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTablePartitionKeyOutput)
+}
+
+// HiveTablePartitionKeyArrayInput is an input type that accepts HiveTablePartitionKeyArray and HiveTablePartitionKeyArrayOutput values.
+// You can construct a concrete instance of `HiveTablePartitionKeyArrayInput` via:
+//
+//	HiveTablePartitionKeyArray{ HiveTablePartitionKeyArgs{...} }
+type HiveTablePartitionKeyArrayInput interface {
+	pulumi.Input
+
+	ToHiveTablePartitionKeyArrayOutput() HiveTablePartitionKeyArrayOutput
+	ToHiveTablePartitionKeyArrayOutputWithContext(context.Context) HiveTablePartitionKeyArrayOutput
+}
+
+type HiveTablePartitionKeyArray []HiveTablePartitionKeyInput
+
+func (HiveTablePartitionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTablePartitionKey)(nil)).Elem()
+}
+
+func (i HiveTablePartitionKeyArray) ToHiveTablePartitionKeyArrayOutput() HiveTablePartitionKeyArrayOutput {
+	return i.ToHiveTablePartitionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i HiveTablePartitionKeyArray) ToHiveTablePartitionKeyArrayOutputWithContext(ctx context.Context) HiveTablePartitionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTablePartitionKeyArrayOutput)
+}
+
+type HiveTablePartitionKeyOutput struct{ *pulumi.OutputState }
+
+func (HiveTablePartitionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTablePartitionKey)(nil)).Elem()
+}
+
+func (o HiveTablePartitionKeyOutput) ToHiveTablePartitionKeyOutput() HiveTablePartitionKeyOutput {
+	return o
+}
+
+func (o HiveTablePartitionKeyOutput) ToHiveTablePartitionKeyOutputWithContext(ctx context.Context) HiveTablePartitionKeyOutput {
+	return o
+}
+
+// Comment of the field.
+func (o HiveTablePartitionKeyOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTablePartitionKey) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of the field.
+func (o HiveTablePartitionKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTablePartitionKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of the field.
+func (o HiveTablePartitionKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTablePartitionKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type HiveTablePartitionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (HiveTablePartitionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTablePartitionKey)(nil)).Elem()
+}
+
+func (o HiveTablePartitionKeyArrayOutput) ToHiveTablePartitionKeyArrayOutput() HiveTablePartitionKeyArrayOutput {
+	return o
+}
+
+func (o HiveTablePartitionKeyArrayOutput) ToHiveTablePartitionKeyArrayOutputWithContext(ctx context.Context) HiveTablePartitionKeyArrayOutput {
+	return o
+}
+
+func (o HiveTablePartitionKeyArrayOutput) Index(i pulumi.IntInput) HiveTablePartitionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveTablePartitionKey {
+		return vs[0].([]HiveTablePartitionKey)[vs[1].(int)]
+	}).(HiveTablePartitionKeyOutput)
+}
+
+type HiveTableStorageDescriptor struct {
+	// Reducer grouping columns, clustering columns, and bucketing columns.
+	BucketCols []string `pulumi:"bucketCols"`
+	// Specifies the columns of the table (the schema).
+	// Structure is documented below.
+	Columns []HiveTableStorageDescriptorColumn `pulumi:"columns"`
+	// Whether the table data is compressed.
+	Compressed *bool `pulumi:"compressed"`
+	// The fully qualified Java class name of the input format.
+	InputFormat *string `pulumi:"inputFormat"`
+	// The Cloud Storage URI where the table data is located.
+	LocationUri *string `pulumi:"locationUri"`
+	// The number of buckets in the table.
+	NumBuckets *int `pulumi:"numBuckets"`
+	// The fully qualified Java class name of the output format.
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Key-value pairs for the storage descriptor.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Serialization and deserialization information.
+	// Structure is documented below.
+	SerdeInfo *HiveTableStorageDescriptorSerdeInfo `pulumi:"serdeInfo"`
+	// Table data skew information.
+	// Structure is documented below.
+	SkewedInfo *HiveTableStorageDescriptorSkewedInfo `pulumi:"skewedInfo"`
+	// Sort order of the data in each bucket.
+	// Structure is documented below.
+	SortCols []HiveTableStorageDescriptorSortCol `pulumi:"sortCols"`
+	// Whether the table is stored as sub directories.
+	StoredAsSubDirs *bool `pulumi:"storedAsSubDirs"`
+}
+
+// HiveTableStorageDescriptorInput is an input type that accepts HiveTableStorageDescriptorArgs and HiveTableStorageDescriptorOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorInput` via:
+//
+//	HiveTableStorageDescriptorArgs{...}
+type HiveTableStorageDescriptorInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorOutput() HiveTableStorageDescriptorOutput
+	ToHiveTableStorageDescriptorOutputWithContext(context.Context) HiveTableStorageDescriptorOutput
+}
+
+type HiveTableStorageDescriptorArgs struct {
+	// Reducer grouping columns, clustering columns, and bucketing columns.
+	BucketCols pulumi.StringArrayInput `pulumi:"bucketCols"`
+	// Specifies the columns of the table (the schema).
+	// Structure is documented below.
+	Columns HiveTableStorageDescriptorColumnArrayInput `pulumi:"columns"`
+	// Whether the table data is compressed.
+	Compressed pulumi.BoolPtrInput `pulumi:"compressed"`
+	// The fully qualified Java class name of the input format.
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// The Cloud Storage URI where the table data is located.
+	LocationUri pulumi.StringPtrInput `pulumi:"locationUri"`
+	// The number of buckets in the table.
+	NumBuckets pulumi.IntPtrInput `pulumi:"numBuckets"`
+	// The fully qualified Java class name of the output format.
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Key-value pairs for the storage descriptor.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Serialization and deserialization information.
+	// Structure is documented below.
+	SerdeInfo HiveTableStorageDescriptorSerdeInfoPtrInput `pulumi:"serdeInfo"`
+	// Table data skew information.
+	// Structure is documented below.
+	SkewedInfo HiveTableStorageDescriptorSkewedInfoPtrInput `pulumi:"skewedInfo"`
+	// Sort order of the data in each bucket.
+	// Structure is documented below.
+	SortCols HiveTableStorageDescriptorSortColArrayInput `pulumi:"sortCols"`
+	// Whether the table is stored as sub directories.
+	StoredAsSubDirs pulumi.BoolPtrInput `pulumi:"storedAsSubDirs"`
+}
+
+func (HiveTableStorageDescriptorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptor)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorArgs) ToHiveTableStorageDescriptorOutput() HiveTableStorageDescriptorOutput {
+	return i.ToHiveTableStorageDescriptorOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorArgs) ToHiveTableStorageDescriptorOutputWithContext(ctx context.Context) HiveTableStorageDescriptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorOutput)
+}
+
+func (i HiveTableStorageDescriptorArgs) ToHiveTableStorageDescriptorPtrOutput() HiveTableStorageDescriptorPtrOutput {
+	return i.ToHiveTableStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorArgs) ToHiveTableStorageDescriptorPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorOutput).ToHiveTableStorageDescriptorPtrOutputWithContext(ctx)
+}
+
+// HiveTableStorageDescriptorPtrInput is an input type that accepts HiveTableStorageDescriptorArgs, HiveTableStorageDescriptorPtr and HiveTableStorageDescriptorPtrOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorPtrInput` via:
+//
+//	        HiveTableStorageDescriptorArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveTableStorageDescriptorPtrInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorPtrOutput() HiveTableStorageDescriptorPtrOutput
+	ToHiveTableStorageDescriptorPtrOutputWithContext(context.Context) HiveTableStorageDescriptorPtrOutput
+}
+
+type hiveTableStorageDescriptorPtrType HiveTableStorageDescriptorArgs
+
+func HiveTableStorageDescriptorPtr(v *HiveTableStorageDescriptorArgs) HiveTableStorageDescriptorPtrInput {
+	return (*hiveTableStorageDescriptorPtrType)(v)
+}
+
+func (*hiveTableStorageDescriptorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableStorageDescriptor)(nil)).Elem()
+}
+
+func (i *hiveTableStorageDescriptorPtrType) ToHiveTableStorageDescriptorPtrOutput() HiveTableStorageDescriptorPtrOutput {
+	return i.ToHiveTableStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveTableStorageDescriptorPtrType) ToHiveTableStorageDescriptorPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorPtrOutput)
+}
+
+type HiveTableStorageDescriptorOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptor)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorOutput) ToHiveTableStorageDescriptorOutput() HiveTableStorageDescriptorOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorOutput) ToHiveTableStorageDescriptorOutputWithContext(ctx context.Context) HiveTableStorageDescriptorOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorOutput) ToHiveTableStorageDescriptorPtrOutput() HiveTableStorageDescriptorPtrOutput {
+	return o.ToHiveTableStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (o HiveTableStorageDescriptorOutput) ToHiveTableStorageDescriptorPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveTableStorageDescriptor) *HiveTableStorageDescriptor {
+		return &v
+	}).(HiveTableStorageDescriptorPtrOutput)
+}
+
+// Reducer grouping columns, clustering columns, and bucketing columns.
+func (o HiveTableStorageDescriptorOutput) BucketCols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) []string { return v.BucketCols }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the columns of the table (the schema).
+// Structure is documented below.
+func (o HiveTableStorageDescriptorOutput) Columns() HiveTableStorageDescriptorColumnArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) []HiveTableStorageDescriptorColumn { return v.Columns }).(HiveTableStorageDescriptorColumnArrayOutput)
+}
+
+// Whether the table data is compressed.
+func (o HiveTableStorageDescriptorOutput) Compressed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *bool { return v.Compressed }).(pulumi.BoolPtrOutput)
+}
+
+// The fully qualified Java class name of the input format.
+func (o HiveTableStorageDescriptorOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage URI where the table data is located.
+func (o HiveTableStorageDescriptorOutput) LocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *string { return v.LocationUri }).(pulumi.StringPtrOutput)
+}
+
+// The number of buckets in the table.
+func (o HiveTableStorageDescriptorOutput) NumBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *int { return v.NumBuckets }).(pulumi.IntPtrOutput)
+}
+
+// The fully qualified Java class name of the output format.
+func (o HiveTableStorageDescriptorOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Key-value pairs for the storage descriptor.
+func (o HiveTableStorageDescriptorOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Serialization and deserialization information.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorOutput) SerdeInfo() HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *HiveTableStorageDescriptorSerdeInfo { return v.SerdeInfo }).(HiveTableStorageDescriptorSerdeInfoPtrOutput)
+}
+
+// Table data skew information.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorOutput) SkewedInfo() HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *HiveTableStorageDescriptorSkewedInfo { return v.SkewedInfo }).(HiveTableStorageDescriptorSkewedInfoPtrOutput)
+}
+
+// Sort order of the data in each bucket.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorOutput) SortCols() HiveTableStorageDescriptorSortColArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) []HiveTableStorageDescriptorSortCol { return v.SortCols }).(HiveTableStorageDescriptorSortColArrayOutput)
+}
+
+// Whether the table is stored as sub directories.
+func (o HiveTableStorageDescriptorOutput) StoredAsSubDirs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptor) *bool { return v.StoredAsSubDirs }).(pulumi.BoolPtrOutput)
+}
+
+type HiveTableStorageDescriptorPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableStorageDescriptor)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorPtrOutput) ToHiveTableStorageDescriptorPtrOutput() HiveTableStorageDescriptorPtrOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorPtrOutput) ToHiveTableStorageDescriptorPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorPtrOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorPtrOutput) Elem() HiveTableStorageDescriptorOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) HiveTableStorageDescriptor {
+		if v != nil {
+			return *v
+		}
+		var ret HiveTableStorageDescriptor
+		return ret
+	}).(HiveTableStorageDescriptorOutput)
+}
+
+// Reducer grouping columns, clustering columns, and bucketing columns.
+func (o HiveTableStorageDescriptorPtrOutput) BucketCols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketCols
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the columns of the table (the schema).
+// Structure is documented below.
+func (o HiveTableStorageDescriptorPtrOutput) Columns() HiveTableStorageDescriptorColumnArrayOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) []HiveTableStorageDescriptorColumn {
+		if v == nil {
+			return nil
+		}
+		return v.Columns
+	}).(HiveTableStorageDescriptorColumnArrayOutput)
+}
+
+// Whether the table data is compressed.
+func (o HiveTableStorageDescriptorPtrOutput) Compressed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Compressed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The fully qualified Java class name of the input format.
+func (o HiveTableStorageDescriptorPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage URI where the table data is located.
+func (o HiveTableStorageDescriptorPtrOutput) LocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of buckets in the table.
+func (o HiveTableStorageDescriptorPtrOutput) NumBuckets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumBuckets
+	}).(pulumi.IntPtrOutput)
+}
+
+// The fully qualified Java class name of the output format.
+func (o HiveTableStorageDescriptorPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key-value pairs for the storage descriptor.
+func (o HiveTableStorageDescriptorPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Serialization and deserialization information.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorPtrOutput) SerdeInfo() HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *HiveTableStorageDescriptorSerdeInfo {
+		if v == nil {
+			return nil
+		}
+		return v.SerdeInfo
+	}).(HiveTableStorageDescriptorSerdeInfoPtrOutput)
+}
+
+// Table data skew information.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorPtrOutput) SkewedInfo() HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *HiveTableStorageDescriptorSkewedInfo {
+		if v == nil {
+			return nil
+		}
+		return v.SkewedInfo
+	}).(HiveTableStorageDescriptorSkewedInfoPtrOutput)
+}
+
+// Sort order of the data in each bucket.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorPtrOutput) SortCols() HiveTableStorageDescriptorSortColArrayOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) []HiveTableStorageDescriptorSortCol {
+		if v == nil {
+			return nil
+		}
+		return v.SortCols
+	}).(HiveTableStorageDescriptorSortColArrayOutput)
+}
+
+// Whether the table is stored as sub directories.
+func (o HiveTableStorageDescriptorPtrOutput) StoredAsSubDirs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptor) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StoredAsSubDirs
+	}).(pulumi.BoolPtrOutput)
+}
+
+type HiveTableStorageDescriptorColumn struct {
+	// Comment of the field.
+	Comment *string `pulumi:"comment"`
+	// Name of the field.
+	Name string `pulumi:"name"`
+	// Type of the field.
+	Type string `pulumi:"type"`
+}
+
+// HiveTableStorageDescriptorColumnInput is an input type that accepts HiveTableStorageDescriptorColumnArgs and HiveTableStorageDescriptorColumnOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorColumnInput` via:
+//
+//	HiveTableStorageDescriptorColumnArgs{...}
+type HiveTableStorageDescriptorColumnInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorColumnOutput() HiveTableStorageDescriptorColumnOutput
+	ToHiveTableStorageDescriptorColumnOutputWithContext(context.Context) HiveTableStorageDescriptorColumnOutput
+}
+
+type HiveTableStorageDescriptorColumnArgs struct {
+	// Comment of the field.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// Name of the field.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of the field.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (HiveTableStorageDescriptorColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorColumn)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorColumnArgs) ToHiveTableStorageDescriptorColumnOutput() HiveTableStorageDescriptorColumnOutput {
+	return i.ToHiveTableStorageDescriptorColumnOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorColumnArgs) ToHiveTableStorageDescriptorColumnOutputWithContext(ctx context.Context) HiveTableStorageDescriptorColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorColumnOutput)
+}
+
+// HiveTableStorageDescriptorColumnArrayInput is an input type that accepts HiveTableStorageDescriptorColumnArray and HiveTableStorageDescriptorColumnArrayOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorColumnArrayInput` via:
+//
+//	HiveTableStorageDescriptorColumnArray{ HiveTableStorageDescriptorColumnArgs{...} }
+type HiveTableStorageDescriptorColumnArrayInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorColumnArrayOutput() HiveTableStorageDescriptorColumnArrayOutput
+	ToHiveTableStorageDescriptorColumnArrayOutputWithContext(context.Context) HiveTableStorageDescriptorColumnArrayOutput
+}
+
+type HiveTableStorageDescriptorColumnArray []HiveTableStorageDescriptorColumnInput
+
+func (HiveTableStorageDescriptorColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorColumn)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorColumnArray) ToHiveTableStorageDescriptorColumnArrayOutput() HiveTableStorageDescriptorColumnArrayOutput {
+	return i.ToHiveTableStorageDescriptorColumnArrayOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorColumnArray) ToHiveTableStorageDescriptorColumnArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorColumnArrayOutput)
+}
+
+type HiveTableStorageDescriptorColumnOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorColumn)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorColumnOutput) ToHiveTableStorageDescriptorColumnOutput() HiveTableStorageDescriptorColumnOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorColumnOutput) ToHiveTableStorageDescriptorColumnOutputWithContext(ctx context.Context) HiveTableStorageDescriptorColumnOutput {
+	return o
+}
+
+// Comment of the field.
+func (o HiveTableStorageDescriptorColumnOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorColumn) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Name of the field.
+func (o HiveTableStorageDescriptorColumnOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorColumn) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of the field.
+func (o HiveTableStorageDescriptorColumnOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorColumn) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type HiveTableStorageDescriptorColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorColumn)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorColumnArrayOutput) ToHiveTableStorageDescriptorColumnArrayOutput() HiveTableStorageDescriptorColumnArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorColumnArrayOutput) ToHiveTableStorageDescriptorColumnArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorColumnArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorColumnArrayOutput) Index(i pulumi.IntInput) HiveTableStorageDescriptorColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveTableStorageDescriptorColumn {
+		return vs[0].([]HiveTableStorageDescriptorColumn)[vs[1].(int)]
+	}).(HiveTableStorageDescriptorColumnOutput)
+}
+
+type HiveTableStorageDescriptorSerdeInfo struct {
+	// Description of the SerDe.
+	Description *string `pulumi:"description"`
+	// The fully qualified Java class name of the deserializer.
+	DeserializerClass *string `pulumi:"deserializerClass"`
+	// Name of the SerDe, table name by default.
+	Name string `pulumi:"name"`
+	// Parameters of the SerDe.
+	Parameters map[string]string `pulumi:"parameters"`
+	// The SerDe type.
+	// Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+	SerdeType *string `pulumi:"serdeType"`
+	// The fully qualified Java class name of the serialization library.
+	SerializationLib string `pulumi:"serializationLib"`
+	// The fully qualified Java class name of the serializer.
+	SerializerClass *string `pulumi:"serializerClass"`
+}
+
+// HiveTableStorageDescriptorSerdeInfoInput is an input type that accepts HiveTableStorageDescriptorSerdeInfoArgs and HiveTableStorageDescriptorSerdeInfoOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSerdeInfoInput` via:
+//
+//	HiveTableStorageDescriptorSerdeInfoArgs{...}
+type HiveTableStorageDescriptorSerdeInfoInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSerdeInfoOutput() HiveTableStorageDescriptorSerdeInfoOutput
+	ToHiveTableStorageDescriptorSerdeInfoOutputWithContext(context.Context) HiveTableStorageDescriptorSerdeInfoOutput
+}
+
+type HiveTableStorageDescriptorSerdeInfoArgs struct {
+	// Description of the SerDe.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The fully qualified Java class name of the deserializer.
+	DeserializerClass pulumi.StringPtrInput `pulumi:"deserializerClass"`
+	// Name of the SerDe, table name by default.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Parameters of the SerDe.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// The SerDe type.
+	// Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+	SerdeType pulumi.StringPtrInput `pulumi:"serdeType"`
+	// The fully qualified Java class name of the serialization library.
+	SerializationLib pulumi.StringInput `pulumi:"serializationLib"`
+	// The fully qualified Java class name of the serializer.
+	SerializerClass pulumi.StringPtrInput `pulumi:"serializerClass"`
+}
+
+func (HiveTableStorageDescriptorSerdeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSerdeInfoArgs) ToHiveTableStorageDescriptorSerdeInfoOutput() HiveTableStorageDescriptorSerdeInfoOutput {
+	return i.ToHiveTableStorageDescriptorSerdeInfoOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSerdeInfoArgs) ToHiveTableStorageDescriptorSerdeInfoOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSerdeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSerdeInfoOutput)
+}
+
+func (i HiveTableStorageDescriptorSerdeInfoArgs) ToHiveTableStorageDescriptorSerdeInfoPtrOutput() HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return i.ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSerdeInfoArgs) ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSerdeInfoOutput).ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(ctx)
+}
+
+// HiveTableStorageDescriptorSerdeInfoPtrInput is an input type that accepts HiveTableStorageDescriptorSerdeInfoArgs, HiveTableStorageDescriptorSerdeInfoPtr and HiveTableStorageDescriptorSerdeInfoPtrOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSerdeInfoPtrInput` via:
+//
+//	        HiveTableStorageDescriptorSerdeInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveTableStorageDescriptorSerdeInfoPtrInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSerdeInfoPtrOutput() HiveTableStorageDescriptorSerdeInfoPtrOutput
+	ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(context.Context) HiveTableStorageDescriptorSerdeInfoPtrOutput
+}
+
+type hiveTableStorageDescriptorSerdeInfoPtrType HiveTableStorageDescriptorSerdeInfoArgs
+
+func HiveTableStorageDescriptorSerdeInfoPtr(v *HiveTableStorageDescriptorSerdeInfoArgs) HiveTableStorageDescriptorSerdeInfoPtrInput {
+	return (*hiveTableStorageDescriptorSerdeInfoPtrType)(v)
+}
+
+func (*hiveTableStorageDescriptorSerdeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (i *hiveTableStorageDescriptorSerdeInfoPtrType) ToHiveTableStorageDescriptorSerdeInfoPtrOutput() HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return i.ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveTableStorageDescriptorSerdeInfoPtrType) ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSerdeInfoPtrOutput)
+}
+
+type HiveTableStorageDescriptorSerdeInfoOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSerdeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoOutput) ToHiveTableStorageDescriptorSerdeInfoOutput() HiveTableStorageDescriptorSerdeInfoOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoOutput) ToHiveTableStorageDescriptorSerdeInfoOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSerdeInfoOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoOutput) ToHiveTableStorageDescriptorSerdeInfoPtrOutput() HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return o.ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoOutput) ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveTableStorageDescriptorSerdeInfo) *HiveTableStorageDescriptorSerdeInfo {
+		return &v
+	}).(HiveTableStorageDescriptorSerdeInfoPtrOutput)
+}
+
+// Description of the SerDe.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the deserializer.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) DeserializerClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) *string { return v.DeserializerClass }).(pulumi.StringPtrOutput)
+}
+
+// Name of the SerDe, table name by default.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Parameters of the SerDe.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// The SerDe type.
+// Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) SerdeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) *string { return v.SerdeType }).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the serialization library.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) SerializationLib() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) string { return v.SerializationLib }).(pulumi.StringOutput)
+}
+
+// The fully qualified Java class name of the serializer.
+func (o HiveTableStorageDescriptorSerdeInfoOutput) SerializerClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSerdeInfo) *string { return v.SerializerClass }).(pulumi.StringPtrOutput)
+}
+
+type HiveTableStorageDescriptorSerdeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSerdeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) ToHiveTableStorageDescriptorSerdeInfoPtrOutput() HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) ToHiveTableStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSerdeInfoPtrOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) Elem() HiveTableStorageDescriptorSerdeInfoOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) HiveTableStorageDescriptorSerdeInfo {
+		if v != nil {
+			return *v
+		}
+		var ret HiveTableStorageDescriptorSerdeInfo
+		return ret
+	}).(HiveTableStorageDescriptorSerdeInfoOutput)
+}
+
+// Description of the SerDe.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the deserializer.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) DeserializerClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeserializerClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the SerDe, table name by default.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Parameters of the SerDe.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// The SerDe type.
+// Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) SerdeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerdeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the serialization library.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) SerializationLib() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SerializationLib
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified Java class name of the serializer.
+func (o HiveTableStorageDescriptorSerdeInfoPtrOutput) SerializerClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializerClass
+	}).(pulumi.StringPtrOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfo struct {
+	// The column names that are skewed.
+	SkewedColNames []string `pulumi:"skewedColNames"`
+	// The skewed column values.
+	// Structure is documented below.
+	SkewedColValues []HiveTableStorageDescriptorSkewedInfoSkewedColValue `pulumi:"skewedColValues"`
+	// The skewed key values locations.
+	// Structure is documented below.
+	SkewedKeyValuesLocations []HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation `pulumi:"skewedKeyValuesLocations"`
+}
+
+// HiveTableStorageDescriptorSkewedInfoInput is an input type that accepts HiveTableStorageDescriptorSkewedInfoArgs and HiveTableStorageDescriptorSkewedInfoOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSkewedInfoInput` via:
+//
+//	HiveTableStorageDescriptorSkewedInfoArgs{...}
+type HiveTableStorageDescriptorSkewedInfoInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSkewedInfoOutput() HiveTableStorageDescriptorSkewedInfoOutput
+	ToHiveTableStorageDescriptorSkewedInfoOutputWithContext(context.Context) HiveTableStorageDescriptorSkewedInfoOutput
+}
+
+type HiveTableStorageDescriptorSkewedInfoArgs struct {
+	// The column names that are skewed.
+	SkewedColNames pulumi.StringArrayInput `pulumi:"skewedColNames"`
+	// The skewed column values.
+	// Structure is documented below.
+	SkewedColValues HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayInput `pulumi:"skewedColValues"`
+	// The skewed key values locations.
+	// Structure is documented below.
+	SkewedKeyValuesLocations HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayInput `pulumi:"skewedKeyValuesLocations"`
+}
+
+func (HiveTableStorageDescriptorSkewedInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfo)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoArgs) ToHiveTableStorageDescriptorSkewedInfoOutput() HiveTableStorageDescriptorSkewedInfoOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoArgs) ToHiveTableStorageDescriptorSkewedInfoOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoOutput)
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoArgs) ToHiveTableStorageDescriptorSkewedInfoPtrOutput() HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoArgs) ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoOutput).ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(ctx)
+}
+
+// HiveTableStorageDescriptorSkewedInfoPtrInput is an input type that accepts HiveTableStorageDescriptorSkewedInfoArgs, HiveTableStorageDescriptorSkewedInfoPtr and HiveTableStorageDescriptorSkewedInfoPtrOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSkewedInfoPtrInput` via:
+//
+//	        HiveTableStorageDescriptorSkewedInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type HiveTableStorageDescriptorSkewedInfoPtrInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSkewedInfoPtrOutput() HiveTableStorageDescriptorSkewedInfoPtrOutput
+	ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(context.Context) HiveTableStorageDescriptorSkewedInfoPtrOutput
+}
+
+type hiveTableStorageDescriptorSkewedInfoPtrType HiveTableStorageDescriptorSkewedInfoArgs
+
+func HiveTableStorageDescriptorSkewedInfoPtr(v *HiveTableStorageDescriptorSkewedInfoArgs) HiveTableStorageDescriptorSkewedInfoPtrInput {
+	return (*hiveTableStorageDescriptorSkewedInfoPtrType)(v)
+}
+
+func (*hiveTableStorageDescriptorSkewedInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableStorageDescriptorSkewedInfo)(nil)).Elem()
+}
+
+func (i *hiveTableStorageDescriptorSkewedInfoPtrType) ToHiveTableStorageDescriptorSkewedInfoPtrOutput() HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *hiveTableStorageDescriptorSkewedInfoPtrType) ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoPtrOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSkewedInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfo)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoOutput) ToHiveTableStorageDescriptorSkewedInfoOutput() HiveTableStorageDescriptorSkewedInfoOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoOutput) ToHiveTableStorageDescriptorSkewedInfoOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoOutput) ToHiveTableStorageDescriptorSkewedInfoPtrOutput() HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return o.ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(context.Background())
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoOutput) ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HiveTableStorageDescriptorSkewedInfo) *HiveTableStorageDescriptorSkewedInfo {
+		return &v
+	}).(HiveTableStorageDescriptorSkewedInfoPtrOutput)
+}
+
+// The column names that are skewed.
+func (o HiveTableStorageDescriptorSkewedInfoOutput) SkewedColNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSkewedInfo) []string { return v.SkewedColNames }).(pulumi.StringArrayOutput)
+}
+
+// The skewed column values.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorSkewedInfoOutput) SkewedColValues() HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSkewedInfo) []HiveTableStorageDescriptorSkewedInfoSkewedColValue {
+		return v.SkewedColValues
+	}).(HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput)
+}
+
+// The skewed key values locations.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorSkewedInfoOutput) SkewedKeyValuesLocations() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSkewedInfo) []HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation {
+		return v.SkewedKeyValuesLocations
+	}).(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSkewedInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveTableStorageDescriptorSkewedInfo)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoPtrOutput) ToHiveTableStorageDescriptorSkewedInfoPtrOutput() HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoPtrOutput) ToHiveTableStorageDescriptorSkewedInfoPtrOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoPtrOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoPtrOutput) Elem() HiveTableStorageDescriptorSkewedInfoOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSkewedInfo) HiveTableStorageDescriptorSkewedInfo {
+		if v != nil {
+			return *v
+		}
+		var ret HiveTableStorageDescriptorSkewedInfo
+		return ret
+	}).(HiveTableStorageDescriptorSkewedInfoOutput)
+}
+
+// The column names that are skewed.
+func (o HiveTableStorageDescriptorSkewedInfoPtrOutput) SkewedColNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSkewedInfo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SkewedColNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The skewed column values.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorSkewedInfoPtrOutput) SkewedColValues() HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSkewedInfo) []HiveTableStorageDescriptorSkewedInfoSkewedColValue {
+		if v == nil {
+			return nil
+		}
+		return v.SkewedColValues
+	}).(HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput)
+}
+
+// The skewed key values locations.
+// Structure is documented below.
+func (o HiveTableStorageDescriptorSkewedInfoPtrOutput) SkewedKeyValuesLocations() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput {
+	return o.ApplyT(func(v *HiveTableStorageDescriptorSkewedInfo) []HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation {
+		if v == nil {
+			return nil
+		}
+		return v.SkewedKeyValuesLocations
+	}).(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedColValue struct {
+	// (Required)
+	Values []string `pulumi:"values"`
+}
+
+// HiveTableStorageDescriptorSkewedInfoSkewedColValueInput is an input type that accepts HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs and HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSkewedInfoSkewedColValueInput` via:
+//
+//	HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs{...}
+type HiveTableStorageDescriptorSkewedInfoSkewedColValueInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutput() HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput
+	ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutputWithContext(context.Context) HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs struct {
+	// (Required)
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedColValue)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutput() HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput)
+}
+
+// HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayInput is an input type that accepts HiveTableStorageDescriptorSkewedInfoSkewedColValueArray and HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayInput` via:
+//
+//	HiveTableStorageDescriptorSkewedInfoSkewedColValueArray{ HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs{...} }
+type HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput() HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput
+	ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutputWithContext(context.Context) HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedColValueArray []HiveTableStorageDescriptorSkewedInfoSkewedColValueInput
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedColValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorSkewedInfoSkewedColValue)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedColValueArray) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput() HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedColValueArray) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedColValue)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutput() HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput {
+	return o
+}
+
+// (Required)
+func (o HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSkewedInfoSkewedColValue) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorSkewedInfoSkewedColValue)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput() HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput) Index(i pulumi.IntInput) HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveTableStorageDescriptorSkewedInfoSkewedColValue {
+		return vs[0].([]HiveTableStorageDescriptorSkewedInfoSkewedColValue)[vs[1].(int)]
+	}).(HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation struct {
+	// (Required)
+	Location string `pulumi:"location"`
+	// (Required)
+	Values []string `pulumi:"values"`
+}
+
+// HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationInput is an input type that accepts HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs and HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationInput` via:
+//
+//	HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs{...}
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput
+	ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutputWithContext(context.Context) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs struct {
+	// (Required)
+	Location pulumi.StringInput `pulumi:"location"`
+	// (Required)
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput)
+}
+
+// HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayInput is an input type that accepts HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray and HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayInput` via:
+//
+//	HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray{ HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs{...} }
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput
+	ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutputWithContext(context.Context) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray []HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationInput
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput {
+	return i.ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput {
+	return o
+}
+
+// (Required)
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// (Required)
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput() HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput) ToHiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput) Index(i pulumi.IntInput) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation {
+		return vs[0].([]HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocation)[vs[1].(int)]
+	}).(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput)
+}
+
+type HiveTableStorageDescriptorSortCol struct {
+	// The column name.
+	Col string `pulumi:"col"`
+	// Sort order: 1 for Ascending, 0 for Descending.
+	Order int `pulumi:"order"`
+}
+
+// HiveTableStorageDescriptorSortColInput is an input type that accepts HiveTableStorageDescriptorSortColArgs and HiveTableStorageDescriptorSortColOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSortColInput` via:
+//
+//	HiveTableStorageDescriptorSortColArgs{...}
+type HiveTableStorageDescriptorSortColInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSortColOutput() HiveTableStorageDescriptorSortColOutput
+	ToHiveTableStorageDescriptorSortColOutputWithContext(context.Context) HiveTableStorageDescriptorSortColOutput
+}
+
+type HiveTableStorageDescriptorSortColArgs struct {
+	// The column name.
+	Col pulumi.StringInput `pulumi:"col"`
+	// Sort order: 1 for Ascending, 0 for Descending.
+	Order pulumi.IntInput `pulumi:"order"`
+}
+
+func (HiveTableStorageDescriptorSortColArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSortCol)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSortColArgs) ToHiveTableStorageDescriptorSortColOutput() HiveTableStorageDescriptorSortColOutput {
+	return i.ToHiveTableStorageDescriptorSortColOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSortColArgs) ToHiveTableStorageDescriptorSortColOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSortColOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSortColOutput)
+}
+
+// HiveTableStorageDescriptorSortColArrayInput is an input type that accepts HiveTableStorageDescriptorSortColArray and HiveTableStorageDescriptorSortColArrayOutput values.
+// You can construct a concrete instance of `HiveTableStorageDescriptorSortColArrayInput` via:
+//
+//	HiveTableStorageDescriptorSortColArray{ HiveTableStorageDescriptorSortColArgs{...} }
+type HiveTableStorageDescriptorSortColArrayInput interface {
+	pulumi.Input
+
+	ToHiveTableStorageDescriptorSortColArrayOutput() HiveTableStorageDescriptorSortColArrayOutput
+	ToHiveTableStorageDescriptorSortColArrayOutputWithContext(context.Context) HiveTableStorageDescriptorSortColArrayOutput
+}
+
+type HiveTableStorageDescriptorSortColArray []HiveTableStorageDescriptorSortColInput
+
+func (HiveTableStorageDescriptorSortColArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorSortCol)(nil)).Elem()
+}
+
+func (i HiveTableStorageDescriptorSortColArray) ToHiveTableStorageDescriptorSortColArrayOutput() HiveTableStorageDescriptorSortColArrayOutput {
+	return i.ToHiveTableStorageDescriptorSortColArrayOutputWithContext(context.Background())
+}
+
+func (i HiveTableStorageDescriptorSortColArray) ToHiveTableStorageDescriptorSortColArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSortColArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveTableStorageDescriptorSortColArrayOutput)
+}
+
+type HiveTableStorageDescriptorSortColOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSortColOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HiveTableStorageDescriptorSortCol)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSortColOutput) ToHiveTableStorageDescriptorSortColOutput() HiveTableStorageDescriptorSortColOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSortColOutput) ToHiveTableStorageDescriptorSortColOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSortColOutput {
+	return o
+}
+
+// The column name.
+func (o HiveTableStorageDescriptorSortColOutput) Col() pulumi.StringOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSortCol) string { return v.Col }).(pulumi.StringOutput)
+}
+
+// Sort order: 1 for Ascending, 0 for Descending.
+func (o HiveTableStorageDescriptorSortColOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v HiveTableStorageDescriptorSortCol) int { return v.Order }).(pulumi.IntOutput)
+}
+
+type HiveTableStorageDescriptorSortColArrayOutput struct{ *pulumi.OutputState }
+
+func (HiveTableStorageDescriptorSortColArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HiveTableStorageDescriptorSortCol)(nil)).Elem()
+}
+
+func (o HiveTableStorageDescriptorSortColArrayOutput) ToHiveTableStorageDescriptorSortColArrayOutput() HiveTableStorageDescriptorSortColArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSortColArrayOutput) ToHiveTableStorageDescriptorSortColArrayOutputWithContext(ctx context.Context) HiveTableStorageDescriptorSortColArrayOutput {
+	return o
+}
+
+func (o HiveTableStorageDescriptorSortColArrayOutput) Index(i pulumi.IntInput) HiveTableStorageDescriptorSortColOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HiveTableStorageDescriptorSortCol {
+		return vs[0].([]HiveTableStorageDescriptorSortCol)[vs[1].(int)]
+	}).(HiveTableStorageDescriptorSortColOutput)
+}
+
 type IcebergCatalogFederatedCatalogOptions struct {
 	// Configuration for an AWS Glue remote catalog. Exactly one of
 	// unityCatalogInfo or glueCatalogInfo must be specified.
@@ -4774,6 +6443,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamBindingConditionPtrInput)(nil)).Elem(), HiveDatabaseIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamMemberConditionInput)(nil)).Elem(), HiveDatabaseIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveDatabaseIamMemberConditionPtrInput)(nil)).Elem(), HiveDatabaseIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableIamBindingConditionInput)(nil)).Elem(), HiveTableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableIamBindingConditionPtrInput)(nil)).Elem(), HiveTableIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableIamMemberConditionInput)(nil)).Elem(), HiveTableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableIamMemberConditionPtrInput)(nil)).Elem(), HiveTableIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTablePartitionKeyInput)(nil)).Elem(), HiveTablePartitionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTablePartitionKeyArrayInput)(nil)).Elem(), HiveTablePartitionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorInput)(nil)).Elem(), HiveTableStorageDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorPtrInput)(nil)).Elem(), HiveTableStorageDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorColumnInput)(nil)).Elem(), HiveTableStorageDescriptorColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorColumnArrayInput)(nil)).Elem(), HiveTableStorageDescriptorColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSerdeInfoInput)(nil)).Elem(), HiveTableStorageDescriptorSerdeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSerdeInfoPtrInput)(nil)).Elem(), HiveTableStorageDescriptorSerdeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoInput)(nil)).Elem(), HiveTableStorageDescriptorSkewedInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoPtrInput)(nil)).Elem(), HiveTableStorageDescriptorSkewedInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedColValueInput)(nil)).Elem(), HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayInput)(nil)).Elem(), HiveTableStorageDescriptorSkewedInfoSkewedColValueArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationInput)(nil)).Elem(), HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayInput)(nil)).Elem(), HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSortColInput)(nil)).Elem(), HiveTableStorageDescriptorSortColArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HiveTableStorageDescriptorSortColArrayInput)(nil)).Elem(), HiveTableStorageDescriptorSortColArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsPtrInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoInput)(nil)).Elem(), IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs{})
@@ -4834,6 +6523,26 @@ func init() {
 	pulumi.RegisterOutputType(HiveDatabaseIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(HiveDatabaseIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(HiveDatabaseIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(HiveTableIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(HiveTableIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(HiveTableIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(HiveTableIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(HiveTablePartitionKeyOutput{})
+	pulumi.RegisterOutputType(HiveTablePartitionKeyArrayOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorPtrOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorColumnOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorColumnArrayOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSerdeInfoOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSerdeInfoPtrOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSkewedInfoOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSkewedInfoPtrOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSkewedInfoSkewedColValueOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSkewedInfoSkewedColValueArrayOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArrayOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSortColOutput{})
+	pulumi.RegisterOutputType(HiveTableStorageDescriptorSortColArrayOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsPtrOutput{})
 	pulumi.RegisterOutputType(IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoOutput{})

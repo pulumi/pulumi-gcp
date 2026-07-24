@@ -43,6 +43,18 @@ namespace Pulumi.Gcp.Workbench.Inputs
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
 
+        [Input("resourcePolicies")]
+        private InputList<string>? _resourcePolicies;
+
+        /// <summary>
+        /// Optional. Resource policies applied to this disk.
+        /// </summary>
+        public InputList<string> ResourcePolicies
+        {
+            get => _resourcePolicies ?? (_resourcePolicies = new InputList<string>());
+            set => _resourcePolicies = value;
+        }
+
         public InstanceGceSetupDataDisksGetArgs()
         {
         }

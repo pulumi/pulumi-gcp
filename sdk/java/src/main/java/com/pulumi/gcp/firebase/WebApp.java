@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(default_.name())
  *             .name("firebase-config.json")
- *             .content(Output.tuple(basicWebApp.appId(), basic, basic, StdFunctions.lookup(LookupArgs.builder()
+ *             .content(Output.tuple(basicWebApp.appId(), basic, StdFunctions.lookup(LookupArgs.builder()
  *                 .map(basic)
  *                 .key("database_url")
  *                 .default_("")
@@ -97,16 +97,15 @@ import javax.annotation.Nullable;
  *                 .build())).applyValue(values -> {
  *                 var appId = values.t1;
  *                 var basic = values.t2;
- *                 var basic1 = values.t3;
- *                 var invoke = values.t4;
- *                 var invoke1 = values.t5;
- *                 var invoke2 = values.t6;
- *                 var invoke3 = values.t7;
+ *                 var invoke = values.t3;
+ *                 var invoke1 = values.t4;
+ *                 var invoke2 = values.t5;
+ *                 var invoke3 = values.t6;
  *                 return serializeJson(
  *                     jsonObject(
  *                         jsonProperty("appId", appId),
  *                         jsonProperty("apiKey", basic.apiKey()),
- *                         jsonProperty("authDomain", basic1.authDomain()),
+ *                         jsonProperty("authDomain", basic.authDomain()),
  *                         jsonProperty("databaseURL", invoke.result()),
  *                         jsonProperty("storageBucket", invoke1.result()),
  *                         jsonProperty("messagingSenderId", invoke2.result()),

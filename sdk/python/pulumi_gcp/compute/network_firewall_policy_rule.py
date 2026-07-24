@@ -1011,7 +1011,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         global_assoc = gcp.compute.NetworkFirewallPolicyAssociation("global_assoc",
-            name="global-policy-assoc-_34962",
+            name="global-policy-assoc-_8493",
             firewall_policy=fw_policy.id,
             attachment_target=net.id)
         ```
@@ -1333,7 +1333,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 }],
             })
         global_assoc = gcp.compute.NetworkFirewallPolicyAssociation("global_assoc",
-            name="global-policy-assoc-_34962",
+            name="global-policy-assoc-_8493",
             firewall_policy=fw_policy.id,
             attachment_target=net.id)
         ```

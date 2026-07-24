@@ -2023,8 +2023,12 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(d
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableImageAnnotation":
+        if key == "enableGetProcessedDocument":
+            suggest = "enable_get_processed_document"
+        elif key == "enableImageAnnotation":
             suggest = "enable_image_annotation"
+        elif key == "enableLlmLayoutParsing":
+            suggest = "enable_llm_layout_parsing"
         elif key == "enableTableAnnotation":
             suggest = "enable_table_annotation"
         elif key == "excludeHtmlClasses":
@@ -2048,22 +2052,30 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(d
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enable_get_processed_document: Optional[_builtins.bool] = None,
                  enable_image_annotation: Optional[_builtins.bool] = None,
+                 enable_llm_layout_parsing: Optional[_builtins.bool] = None,
                  enable_table_annotation: Optional[_builtins.bool] = None,
                  exclude_html_classes: Optional[Sequence[_builtins.str]] = None,
                  exclude_html_elements: Optional[Sequence[_builtins.str]] = None,
                  exclude_html_ids: Optional[Sequence[_builtins.str]] = None,
                  structured_content_types: Optional[Sequence[_builtins.str]] = None):
         """
+        :param _builtins.bool enable_get_processed_document: If true, the processed document will be made available for the GetProcessedDocument API.
         :param _builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param _builtins.bool enable_llm_layout_parsing: If true, the pdf layout will be refined using an LLM.
         :param _builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
         :param Sequence[_builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
         :param Sequence[_builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
         """
+        if enable_get_processed_document is not None:
+            pulumi.set(__self__, "enable_get_processed_document", enable_get_processed_document)
         if enable_image_annotation is not None:
             pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        if enable_llm_layout_parsing is not None:
+            pulumi.set(__self__, "enable_llm_layout_parsing", enable_llm_layout_parsing)
         if enable_table_annotation is not None:
             pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
         if exclude_html_classes is not None:
@@ -2076,12 +2088,28 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig(d
             pulumi.set(__self__, "structured_content_types", structured_content_types)
 
     @_builtins.property
+    @pulumi.getter(name="enableGetProcessedDocument")
+    def enable_get_processed_document(self) -> Optional[_builtins.bool]:
+        """
+        If true, the processed document will be made available for the GetProcessedDocument API.
+        """
+        return pulumi.get(self, "enable_get_processed_document")
+
+    @_builtins.property
     @pulumi.getter(name="enableImageAnnotation")
     def enable_image_annotation(self) -> Optional[_builtins.bool]:
         """
         If true, the LLM based annotation is added to the image during parsing.
         """
         return pulumi.get(self, "enable_image_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableLlmLayoutParsing")
+    def enable_llm_layout_parsing(self) -> Optional[_builtins.bool]:
+        """
+        If true, the pdf layout will be refined using an LLM.
+        """
+        return pulumi.get(self, "enable_llm_layout_parsing")
 
     @_builtins.property
     @pulumi.getter(name="enableTableAnnotation")
@@ -2252,8 +2280,12 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig(
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableImageAnnotation":
+        if key == "enableGetProcessedDocument":
+            suggest = "enable_get_processed_document"
+        elif key == "enableImageAnnotation":
             suggest = "enable_image_annotation"
+        elif key == "enableLlmLayoutParsing":
+            suggest = "enable_llm_layout_parsing"
         elif key == "enableTableAnnotation":
             suggest = "enable_table_annotation"
         elif key == "excludeHtmlClasses":
@@ -2277,22 +2309,30 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig(
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enable_get_processed_document: Optional[_builtins.bool] = None,
                  enable_image_annotation: Optional[_builtins.bool] = None,
+                 enable_llm_layout_parsing: Optional[_builtins.bool] = None,
                  enable_table_annotation: Optional[_builtins.bool] = None,
                  exclude_html_classes: Optional[Sequence[_builtins.str]] = None,
                  exclude_html_elements: Optional[Sequence[_builtins.str]] = None,
                  exclude_html_ids: Optional[Sequence[_builtins.str]] = None,
                  structured_content_types: Optional[Sequence[_builtins.str]] = None):
         """
+        :param _builtins.bool enable_get_processed_document: If true, the processed document will be made available for the GetProcessedDocument API.
         :param _builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param _builtins.bool enable_llm_layout_parsing: If true, the pdf layout will be refined using an LLM.
         :param _builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
         :param Sequence[_builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
         :param Sequence[_builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
         """
+        if enable_get_processed_document is not None:
+            pulumi.set(__self__, "enable_get_processed_document", enable_get_processed_document)
         if enable_image_annotation is not None:
             pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        if enable_llm_layout_parsing is not None:
+            pulumi.set(__self__, "enable_llm_layout_parsing", enable_llm_layout_parsing)
         if enable_table_annotation is not None:
             pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
         if exclude_html_classes is not None:
@@ -2305,12 +2345,28 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig(
             pulumi.set(__self__, "structured_content_types", structured_content_types)
 
     @_builtins.property
+    @pulumi.getter(name="enableGetProcessedDocument")
+    def enable_get_processed_document(self) -> Optional[_builtins.bool]:
+        """
+        If true, the processed document will be made available for the GetProcessedDocument API.
+        """
+        return pulumi.get(self, "enable_get_processed_document")
+
+    @_builtins.property
     @pulumi.getter(name="enableImageAnnotation")
     def enable_image_annotation(self) -> Optional[_builtins.bool]:
         """
         If true, the LLM based annotation is added to the image during parsing.
         """
         return pulumi.get(self, "enable_image_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableLlmLayoutParsing")
+    def enable_llm_layout_parsing(self) -> Optional[_builtins.bool]:
+        """
+        If true, the pdf layout will be refined using an LLM.
+        """
+        return pulumi.get(self, "enable_llm_layout_parsing")
 
     @_builtins.property
     @pulumi.getter(name="enableTableAnnotation")
@@ -4318,26 +4374,40 @@ class GetDataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConf
 @pulumi.output_type
 class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigResult(dict):
     def __init__(__self__, *,
+                 enable_get_processed_document: _builtins.bool,
                  enable_image_annotation: _builtins.bool,
+                 enable_llm_layout_parsing: _builtins.bool,
                  enable_table_annotation: _builtins.bool,
                  exclude_html_classes: Sequence[_builtins.str],
                  exclude_html_elements: Sequence[_builtins.str],
                  exclude_html_ids: Sequence[_builtins.str],
                  structured_content_types: Sequence[_builtins.str]):
         """
+        :param _builtins.bool enable_get_processed_document: If true, the processed document will be made available for the GetProcessedDocument API.
         :param _builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param _builtins.bool enable_llm_layout_parsing: If true, the pdf layout will be refined using an LLM.
         :param _builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
         :param Sequence[_builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
         :param Sequence[_builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.
         """
+        pulumi.set(__self__, "enable_get_processed_document", enable_get_processed_document)
         pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        pulumi.set(__self__, "enable_llm_layout_parsing", enable_llm_layout_parsing)
         pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
         pulumi.set(__self__, "exclude_html_classes", exclude_html_classes)
         pulumi.set(__self__, "exclude_html_elements", exclude_html_elements)
         pulumi.set(__self__, "exclude_html_ids", exclude_html_ids)
         pulumi.set(__self__, "structured_content_types", structured_content_types)
+
+    @_builtins.property
+    @pulumi.getter(name="enableGetProcessedDocument")
+    def enable_get_processed_document(self) -> _builtins.bool:
+        """
+        If true, the processed document will be made available for the GetProcessedDocument API.
+        """
+        return pulumi.get(self, "enable_get_processed_document")
 
     @_builtins.property
     @pulumi.getter(name="enableImageAnnotation")
@@ -4346,6 +4416,14 @@ class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfi
         If true, the LLM based annotation is added to the image during parsing.
         """
         return pulumi.get(self, "enable_image_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableLlmLayoutParsing")
+    def enable_llm_layout_parsing(self) -> _builtins.bool:
+        """
+        If true, the pdf layout will be refined using an LLM.
+        """
+        return pulumi.get(self, "enable_llm_layout_parsing")
 
     @_builtins.property
     @pulumi.getter(name="enableTableAnnotation")
@@ -4462,26 +4540,40 @@ class GetDataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingCon
 @pulumi.output_type
 class GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult(dict):
     def __init__(__self__, *,
+                 enable_get_processed_document: _builtins.bool,
                  enable_image_annotation: _builtins.bool,
+                 enable_llm_layout_parsing: _builtins.bool,
                  enable_table_annotation: _builtins.bool,
                  exclude_html_classes: Sequence[_builtins.str],
                  exclude_html_elements: Sequence[_builtins.str],
                  exclude_html_ids: Sequence[_builtins.str],
                  structured_content_types: Sequence[_builtins.str]):
         """
+        :param _builtins.bool enable_get_processed_document: If true, the processed document will be made available for the GetProcessedDocument API.
         :param _builtins.bool enable_image_annotation: If true, the LLM based annotation is added to the image during parsing.
+        :param _builtins.bool enable_llm_layout_parsing: If true, the pdf layout will be refined using an LLM.
         :param _builtins.bool enable_table_annotation: If true, the LLM based annotation is added to the table during parsing.
         :param Sequence[_builtins.str] exclude_html_classes: List of HTML classes to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_elements: List of HTML elements to exclude from the parsed content.
         :param Sequence[_builtins.str] exclude_html_ids: List of HTML ids to exclude from the parsed content.
         :param Sequence[_builtins.str] structured_content_types: Contains the required structure types to extract from the document. Supported values: 'shareholder-structure'.
         """
+        pulumi.set(__self__, "enable_get_processed_document", enable_get_processed_document)
         pulumi.set(__self__, "enable_image_annotation", enable_image_annotation)
+        pulumi.set(__self__, "enable_llm_layout_parsing", enable_llm_layout_parsing)
         pulumi.set(__self__, "enable_table_annotation", enable_table_annotation)
         pulumi.set(__self__, "exclude_html_classes", exclude_html_classes)
         pulumi.set(__self__, "exclude_html_elements", exclude_html_elements)
         pulumi.set(__self__, "exclude_html_ids", exclude_html_ids)
         pulumi.set(__self__, "structured_content_types", structured_content_types)
+
+    @_builtins.property
+    @pulumi.getter(name="enableGetProcessedDocument")
+    def enable_get_processed_document(self) -> _builtins.bool:
+        """
+        If true, the processed document will be made available for the GetProcessedDocument API.
+        """
+        return pulumi.get(self, "enable_get_processed_document")
 
     @_builtins.property
     @pulumi.getter(name="enableImageAnnotation")
@@ -4490,6 +4582,14 @@ class GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConf
         If true, the LLM based annotation is added to the image during parsing.
         """
         return pulumi.get(self, "enable_image_annotation")
+
+    @_builtins.property
+    @pulumi.getter(name="enableLlmLayoutParsing")
+    def enable_llm_layout_parsing(self) -> _builtins.bool:
+        """
+        If true, the pdf layout will be refined using an LLM.
+        """
+        return pulumi.get(self, "enable_llm_layout_parsing")
 
     @_builtins.property
     @pulumi.getter(name="enableTableAnnotation")

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string BackupPlanDescription;
         /// <summary>
-        /// The names of the backup plan rules which point to this backupvault
+        /// The rules of the backup plan.
         /// </summary>
         public readonly ImmutableArray<string> BackupPlanRules;
 

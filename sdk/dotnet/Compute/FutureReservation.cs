@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "gce-future-reservation",
     ///         Project = "my-project-name",
+    ///         Zone = "us-central1-a",
     ///         AutoDeleteAutoCreatedReservations = true,
     ///         PlanningStatus = "DRAFT",
     ///         NamePrefix = "fr-basic",
@@ -79,6 +80,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "gce-future-reservation-aggregate-reservation",
     ///         Project = "my-project-name",
+    ///         Zone = "us-central1-a",
     ///         AutoDeleteAutoCreatedReservations = true,
     ///         PlanningStatus = "DRAFT",
     ///         NamePrefix = "fr-basic",
@@ -206,7 +208,7 @@ namespace Pulumi.Gcp.Compute
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
         /// the regular expression `a-z?` which means the
         /// first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the las
+        /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
         /// </summary>
         [Output("name")]
@@ -306,7 +308,7 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.FutureReservationTimeWindow> TimeWindow { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the Zone where this future reservation resides.
+        /// The zone where the future reservation is located.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -420,7 +422,7 @@ namespace Pulumi.Gcp.Compute
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
         /// the regular expression `a-z?` which means the
         /// first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the las
+        /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
@@ -500,6 +502,12 @@ namespace Pulumi.Gcp.Compute
         [Input("timeWindow", required: true)]
         public Input<Inputs.FutureReservationTimeWindowArgs> TimeWindow { get; set; } = null!;
 
+        /// <summary>
+        /// The zone where the future reservation is located.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
+
         public FutureReservationArgs()
         {
         }
@@ -577,7 +585,7 @@ namespace Pulumi.Gcp.Compute
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
         /// the regular expression `a-z?` which means the
         /// first character must be a lowercase letter, and all following
-        /// characters must be a dash, lowercase letter, or digit, except the las
+        /// characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.
         /// </summary>
         [Input("name")]
@@ -683,7 +691,7 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.FutureReservationTimeWindowGetArgs>? TimeWindow { get; set; }
 
         /// <summary>
-        /// URL of the Zone where this future reservation resides.
+        /// The zone where the future reservation is located.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

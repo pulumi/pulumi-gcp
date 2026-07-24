@@ -47,6 +47,29 @@ import (
 //				Description: pulumi.String("a new posture"),
 //				PolicySets: securityposture.PosturePolicySetArray{
 //					&securityposture.PosturePolicySetArgs{
+//						PolicySetId: pulumi.String("list_constraint_policy_set"),
+//						Description: pulumi.String("set of org policies with a list constraint"),
+//						Policies: securityposture.PosturePolicySetPolicyArray{
+//							&securityposture.PosturePolicySetPolicyArgs{
+//								PolicyId: pulumi.String("resource_locations_policy"),
+//								Constraint: &securityposture.PosturePolicySetPolicyConstraintArgs{
+//									OrgPolicyConstraint: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs{
+//										CannedConstraintId: pulumi.String("gcp.resourceLocations"),
+//										PolicyRules: securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArray{
+//											&securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgs{
+//												Values: &securityposture.PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs{
+//													AllowedValues: pulumi.StringArray{
+//														pulumi.String("in:us-locations"),
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&securityposture.PosturePolicySetArgs{
 //						PolicySetId: pulumi.String("org_policy_set"),
 //						Description: pulumi.String("set of org policies"),
 //						Policies: securityposture.PosturePolicySetPolicyArray{

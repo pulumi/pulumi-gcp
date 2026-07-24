@@ -789,10 +789,10 @@ class Transport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         primary_network = gcp.compute.Network("primary-network",
-            name="tf-test-my-vpc-network_50206",
+            name="tf-test-my-vpc-network_86474",
             auto_create_subnetworks=False)
         primary = gcp.networkconnectivity.Transport("primary",
-            name="tf-test-basic-transport_9873",
+            name="tf-test-basic-transport_95761",
             region="us-east4",
             description="A sample transport",
             remote_profile=f"https://networkconnectivity.googleapis.com/v1/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -883,10 +883,10 @@ class Transport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         primary_network = gcp.compute.Network("primary-network",
-            name="tf-test-my-vpc-network_50206",
+            name="tf-test-my-vpc-network_86474",
             auto_create_subnetworks=False)
         primary = gcp.networkconnectivity.Transport("primary",
-            name="tf-test-basic-transport_9873",
+            name="tf-test-basic-transport_95761",
             region="us-east4",
             description="A sample transport",
             remote_profile=f"https://networkconnectivity.googleapis.com/v1/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",

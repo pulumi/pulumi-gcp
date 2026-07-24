@@ -20,9 +20,9 @@ import * as utilities from "../utilities";
  * const sample = gcp.dns.getManagedZone({
  *     name: "sample-zone",
  * });
- * const rs = Promise.all([sample, sample]).then(([sample, sample1]) => gcp.dns.getRecordSet({
+ * const rs = sample.then(sample => gcp.dns.getRecordSet({
  *     managedZone: sample.name,
- *     name: `my-record.${sample1.dnsName}`,
+ *     name: `my-record.${sample.dnsName}`,
  *     type: "A",
  * }));
  * ```
@@ -96,9 +96,9 @@ export interface GetRecordSetResult {
  * const sample = gcp.dns.getManagedZone({
  *     name: "sample-zone",
  * });
- * const rs = Promise.all([sample, sample]).then(([sample, sample1]) => gcp.dns.getRecordSet({
+ * const rs = sample.then(sample => gcp.dns.getRecordSet({
  *     managedZone: sample.name,
- *     name: `my-record.${sample1.dnsName}`,
+ *     name: `my-record.${sample.dnsName}`,
  *     type: "A",
  * }));
  * ```

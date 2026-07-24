@@ -197,7 +197,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_21197"});
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "tf_test_dataset_id_60302"});
  * const customMaskingRoutine = new gcp.bigquery.Routine("custom_masking_routine", {
  *     datasetId: test.datasetId,
  *     routineId: "custom_masking_routine",

@@ -166,7 +166,9 @@ type RegionCommitment struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp pulumi.StringOutput `pulumi:"endTimestamp"`
-	// Specifies the already existing reservations to attach to the Commitment.
+	// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+	// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+	// change another field at the same time.
 	ExistingReservations pulumi.StringPtrOutput `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
@@ -262,7 +264,9 @@ type regionCommitmentState struct {
 	Description *string `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp *string `pulumi:"endTimestamp"`
-	// Specifies the already existing reservations to attach to the Commitment.
+	// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+	// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+	// change another field at the same time.
 	ExistingReservations *string `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
@@ -326,7 +330,9 @@ type RegionCommitmentState struct {
 	Description pulumi.StringPtrInput
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp pulumi.StringPtrInput
-	// Specifies the already existing reservations to attach to the Commitment.
+	// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+	// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+	// change another field at the same time.
 	ExistingReservations pulumi.StringPtrInput
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
@@ -388,7 +394,9 @@ type regionCommitmentArgs struct {
 	Category *string `pulumi:"category"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Specifies the already existing reservations to attach to the Commitment.
+	// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+	// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+	// change another field at the same time.
 	ExistingReservations *string `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
@@ -438,7 +446,9 @@ type RegionCommitmentArgs struct {
 	Category pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Specifies the already existing reservations to attach to the Commitment.
+	// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+	// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+	// change another field at the same time.
 	ExistingReservations pulumi.StringPtrInput
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
@@ -597,7 +607,9 @@ func (o RegionCommitmentOutput) EndTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.EndTimestamp }).(pulumi.StringOutput)
 }
 
-// Specifies the already existing reservations to attach to the Commitment.
+// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+// change another field at the same time.
 func (o RegionCommitmentOutput) ExistingReservations() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringPtrOutput { return v.ExistingReservations }).(pulumi.StringPtrOutput)
 }

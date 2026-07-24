@@ -4299,10 +4299,11 @@ class GetDataSourceBackupConfigInfoResult(dict):
                  last_successful_backup_consistency_time: _builtins.str):
         """
         :param Sequence['GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs'] backup_appliance_backup_configs: Configuration for an application backed up by a Backup Appliance.
-        :param Sequence['GetDataSourceBackupConfigInfoGcpBackupConfigArgs'] gcp_backup_configs: Configuration for a Google Cloud resource.
+        :param Sequence['GetDataSourceBackupConfigInfoGcpBackupConfigArgs'] gcp_backup_configs: Details about the GCP backup configuration. Structure is documented below.
+               The `gcp_backup_config` block contains:
         :param Mapping[str, _builtins.str] last_backup_error: If the last backup failed, this field has the error message.
-        :param _builtins.str last_backup_state: LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
-        :param _builtins.str last_successful_backup_consistency_time: If the last backup were successful, this field has the consistency date.
+        :param _builtins.str last_backup_state: The state of the last backup attempt.
+        :param _builtins.str last_successful_backup_consistency_time: The consistency time of the last successful backup.
         """
         pulumi.set(__self__, "backup_appliance_backup_configs", backup_appliance_backup_configs)
         pulumi.set(__self__, "gcp_backup_configs", gcp_backup_configs)
@@ -4322,7 +4323,8 @@ class GetDataSourceBackupConfigInfoResult(dict):
     @pulumi.getter(name="gcpBackupConfigs")
     def gcp_backup_configs(self) -> Sequence['outputs.GetDataSourceBackupConfigInfoGcpBackupConfigResult']:
         """
-        Configuration for a Google Cloud resource.
+        Details about the GCP backup configuration. Structure is documented below.
+        The `gcp_backup_config` block contains:
         """
         return pulumi.get(self, "gcp_backup_configs")
 
@@ -4338,7 +4340,7 @@ class GetDataSourceBackupConfigInfoResult(dict):
     @pulumi.getter(name="lastBackupState")
     def last_backup_state(self) -> _builtins.str:
         """
-        LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        The state of the last backup attempt.
         """
         return pulumi.get(self, "last_backup_state")
 
@@ -4346,7 +4348,7 @@ class GetDataSourceBackupConfigInfoResult(dict):
     @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
     def last_successful_backup_consistency_time(self) -> _builtins.str:
         """
-        If the last backup were successful, this field has the consistency date.
+        The consistency time of the last successful backup.
         """
         return pulumi.get(self, "last_successful_backup_consistency_time")
 
@@ -4446,7 +4448,7 @@ class GetDataSourceBackupConfigInfoGcpBackupConfigResult(dict):
         :param _builtins.str backup_plan: The name of the backup plan.
         :param _builtins.str backup_plan_association: The name of the backup plan association.
         :param _builtins.str backup_plan_description: The description of the backup plan.
-        :param Sequence[_builtins.str] backup_plan_rules: The names of the backup plan rules which point to this backupvault
+        :param Sequence[_builtins.str] backup_plan_rules: The rules of the backup plan.
         """
         pulumi.set(__self__, "backup_plan", backup_plan)
         pulumi.set(__self__, "backup_plan_association", backup_plan_association)
@@ -4481,7 +4483,7 @@ class GetDataSourceBackupConfigInfoGcpBackupConfigResult(dict):
     @pulumi.getter(name="backupPlanRules")
     def backup_plan_rules(self) -> Sequence[_builtins.str]:
         """
-        The names of the backup plan rules which point to this backupvault
+        The rules of the backup plan.
         """
         return pulumi.get(self, "backup_plan_rules")
 
@@ -4779,6 +4781,7 @@ class GetDataSourceReferencesDataSourceReferenceResult(dict):
 @pulumi.output_type
 class GetDataSourcesDataSourceResult(dict):
     def __init__(__self__, *,
+                 backup_blocked_by_vault_access_restriction: _builtins.bool,
                  backup_config_infos: Sequence['outputs.GetDataSourcesDataSourceBackupConfigInfoResult'],
                  backup_count: _builtins.str,
                  config_state: _builtins.str,
@@ -4792,6 +4795,7 @@ class GetDataSourcesDataSourceResult(dict):
                  total_stored_bytes: _builtins.str,
                  update_time: _builtins.str):
         """
+        :param _builtins.bool backup_blocked_by_vault_access_restriction: This field is set to true if the backup is blocked by vault access restriction.
         :param Sequence['GetDataSourcesDataSourceBackupConfigInfoArgs'] backup_config_infos: An object containing information about the backup configuration.
         :param _builtins.str backup_count: Number of backups in the data source.
         :param _builtins.str config_state: The configuration state of the DataSource.
@@ -4805,6 +4809,7 @@ class GetDataSourcesDataSourceResult(dict):
         :param _builtins.str total_stored_bytes: The number of bytes (metadata and data) stored in this datasource.
         :param _builtins.str update_time: Timestamp of when the DataSource was last updated.
         """
+        pulumi.set(__self__, "backup_blocked_by_vault_access_restriction", backup_blocked_by_vault_access_restriction)
         pulumi.set(__self__, "backup_config_infos", backup_config_infos)
         pulumi.set(__self__, "backup_count", backup_count)
         pulumi.set(__self__, "config_state", config_state)
@@ -4817,6 +4822,14 @@ class GetDataSourcesDataSourceResult(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "total_stored_bytes", total_stored_bytes)
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="backupBlockedByVaultAccessRestriction")
+    def backup_blocked_by_vault_access_restriction(self) -> _builtins.bool:
+        """
+        This field is set to true if the backup is blocked by vault access restriction.
+        """
+        return pulumi.get(self, "backup_blocked_by_vault_access_restriction")
 
     @_builtins.property
     @pulumi.getter(name="backupConfigInfos")

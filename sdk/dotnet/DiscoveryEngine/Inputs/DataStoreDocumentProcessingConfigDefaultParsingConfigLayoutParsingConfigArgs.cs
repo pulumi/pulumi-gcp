@@ -13,10 +13,22 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
     public sealed class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If true, the processed document will be made available for the GetProcessedDocument API.
+        /// </summary>
+        [Input("enableGetProcessedDocument")]
+        public Input<bool>? EnableGetProcessedDocument { get; set; }
+
+        /// <summary>
         /// If true, the LLM based annotation is added to the image during parsing.
         /// </summary>
         [Input("enableImageAnnotation")]
         public Input<bool>? EnableImageAnnotation { get; set; }
+
+        /// <summary>
+        /// If true, the pdf layout will be refined using an LLM.
+        /// </summary>
+        [Input("enableLlmLayoutParsing")]
+        public Input<bool>? EnableLlmLayoutParsing { get; set; }
 
         /// <summary>
         /// If true, the LLM based annotation is added to the table during parsing.

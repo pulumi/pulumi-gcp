@@ -36,6 +36,10 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// Learn more about using your own encryption keys.'
         /// </summary>
         public readonly string? KmsKey;
+        /// <summary>
+        /// Optional. Resource policies applied to this disk.
+        /// </summary>
+        public readonly ImmutableArray<string> ResourcePolicies;
 
         [OutputConstructor]
         private InstanceGceSetupDataDisks(
@@ -45,12 +49,15 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             string? diskType,
 
-            string? kmsKey)
+            string? kmsKey,
+
+            ImmutableArray<string> resourcePolicies)
         {
             DiskEncryption = diskEncryption;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             KmsKey = kmsKey;
+            ResourcePolicies = resourcePolicies;
         }
     }
 }

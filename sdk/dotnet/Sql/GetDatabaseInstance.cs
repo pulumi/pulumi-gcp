@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.Sql
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool IncludeReplicasForMajorVersionUpgrade;
         public readonly string InstanceType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceIpAddressResult> IpAddresses;
         public readonly string MaintenanceVersion;
@@ -169,6 +170,7 @@ namespace Pulumi.Gcp.Sql
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceServerCaCertResult> ServerCaCerts;
         public readonly string ServiceAccountEmailAddress;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> Settings;
+        public readonly bool SwitchTransactionLogsToCloudStorageEnabled;
 
         [OutputConstructor]
         private GetDatabaseInstanceResult(
@@ -199,6 +201,8 @@ namespace Pulumi.Gcp.Sql
             string firstIpAddress,
 
             string id,
+
+            bool includeReplicasForMajorVersionUpgrade,
 
             string instanceType,
 
@@ -244,7 +248,9 @@ namespace Pulumi.Gcp.Sql
 
             string serviceAccountEmailAddress,
 
-            ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> settings)
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> settings,
+
+            bool switchTransactionLogsToCloudStorageEnabled)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackupdrBackup = backupdrBackup;
@@ -260,6 +266,7 @@ namespace Pulumi.Gcp.Sql
             FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
             Id = id;
+            IncludeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
             InstanceType = instanceType;
             IpAddresses = ipAddresses;
             MaintenanceVersion = maintenanceVersion;
@@ -283,6 +290,7 @@ namespace Pulumi.Gcp.Sql
             ServerCaCerts = serverCaCerts;
             ServiceAccountEmailAddress = serviceAccountEmailAddress;
             Settings = settings;
+            SwitchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
         }
     }
 }

@@ -1601,6 +1601,8 @@ type WorkstationConfigHostGceInstance struct {
 	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
 	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+	InstanceMetadata map[string]string `pulumi:"instanceMetadata"`
 	// The name of a Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation startup.
@@ -1652,6 +1654,8 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
 	// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+	InstanceMetadata pulumi.StringMapInput `pulumi:"instanceMetadata"`
 	// The name of a Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation startup.
@@ -1795,6 +1799,11 @@ func (o WorkstationConfigHostGceInstanceOutput) EnableNestedVirtualization() pul
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+func (o WorkstationConfigHostGceInstanceOutput) InstanceMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) map[string]string { return v.InstanceMetadata }).(pulumi.StringMapOutput)
+}
+
 // The name of a Compute Engine machine type.
 func (o WorkstationConfigHostGceInstanceOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -1933,6 +1942,16 @@ func (o WorkstationConfigHostGceInstancePtrOutput) EnableNestedVirtualization() 
 		}
 		return v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+func (o WorkstationConfigHostGceInstancePtrOutput) InstanceMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceMetadata
+	}).(pulumi.StringMapOutput)
 }
 
 // The name of a Compute Engine machine type.

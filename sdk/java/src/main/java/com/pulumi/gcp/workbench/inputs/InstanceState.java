@@ -124,6 +124,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     * 
+     */
+    @Import(name="enableDeletionProtection")
+    private @Nullable Output<Boolean> enableDeletionProtection;
+
+    /**
+     * @return Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDeletionProtection() {
+        return Optional.ofNullable(this.enableDeletionProtection);
+    }
+
+    /**
      * Flag to enable managed end user credentials for the instance.
      * 
      */
@@ -406,6 +421,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.desiredState = $.desiredState;
         this.disableProxyAccess = $.disableProxyAccess;
         this.effectiveLabels = $.effectiveLabels;
+        this.enableDeletionProtection = $.enableDeletionProtection;
         this.enableManagedEuc = $.enableManagedEuc;
         this.enableThirdPartyIdentity = $.enableThirdPartyIdentity;
         this.gceSetup = $.gceSetup;
@@ -578,6 +594,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param enableDeletionProtection Optional. If true, deletion protection will be enabled for this Workbench Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDeletionProtection(@Nullable Output<Boolean> enableDeletionProtection) {
+            $.enableDeletionProtection = enableDeletionProtection;
+            return this;
+        }
+
+        /**
+         * @param enableDeletionProtection Optional. If true, deletion protection will be enabled for this Workbench Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDeletionProtection(Boolean enableDeletionProtection) {
+            return enableDeletionProtection(Output.of(enableDeletionProtection));
         }
 
         /**

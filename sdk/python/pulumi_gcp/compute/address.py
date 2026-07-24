@@ -52,8 +52,9 @@ class AddressArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-               The PDP must support enhanced IPv4 allocations.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+               If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -201,8 +202,9 @@ class AddressArgs:
     @pulumi.getter(name="ipCollection")
     def ip_collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-        The PDP must support enhanced IPv4 allocations.
+        Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+        If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
         Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -429,8 +431,9 @@ class _AddressState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-               The PDP must support enhanced IPv4 allocations.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+               If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -634,8 +637,9 @@ class _AddressState:
     @pulumi.getter(name="ipCollection")
     def ip_collection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-        The PDP must support enhanced IPv4 allocations.
+        Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+        If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
         Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -1028,8 +1032,9 @@ class Address(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-               The PDP must support enhanced IPv4 allocations.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+               If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -1333,8 +1338,9 @@ class Address(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-               The PDP must support enhanced IPv4 allocations.
+        :param pulumi.Input[_builtins.str] ip_collection: Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+               If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+               If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
                Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
                Full resource URL, as in:
                * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -1492,8 +1498,9 @@ class Address(pulumi.CustomResource):
     @pulumi.getter(name="ipCollection")
     def ip_collection(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-        The PDP must support enhanced IPv4 allocations.
+        Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+        If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+        If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
         Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
         Full resource URL, as in:
         * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`

@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.Dataform.Inputs
         public Input<string> DefaultBranch { get; set; } = null!;
 
         /// <summary>
+        /// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+        /// </summary>
+        [Input("gitRepositoryLink")]
+        public Input<string>? GitRepositoryLink { get; set; }
+
+        /// <summary>
         /// Authentication fields for remote uris using SSH protocol.
         /// Structure is documented below.
         /// </summary>

@@ -5483,6 +5483,10 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput) Sources() Service
 type ServicePerimeterDryRunEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -5506,6 +5510,10 @@ type ServicePerimeterDryRunEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -5571,6 +5579,15 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput) AccessLevel() 
 	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput) PscEndpoint() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressFromSource) *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -5599,6 +5616,147 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromSourceArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterDryRunEgressPolicyEgressFromSource {
 		return vs[0].([]ServicePerimeterDryRunEgressPolicyEgressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput)
+}
+
+type ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs and ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs{...}
+type ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput
+	ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput).ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs, ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtr and ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrType ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs
+
+func ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtr(v *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint) *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint) ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterDryRunEgressPolicyEgressTo struct {
@@ -6297,6 +6455,10 @@ type ServicePerimeterDryRunIngressPolicyIngressFromSource struct {
 	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
 	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
 	// Currently only projects are allowed. Format `projects/{project_number}`
@@ -6327,6 +6489,10 @@ type ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs struct {
 	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
 	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
 	// Currently only projects are allowed. Format `projects/{project_number}`
@@ -6399,6 +6565,15 @@ func (o ServicePerimeterDryRunIngressPolicyIngressFromSourceOutput) AccessLevel(
 	return o.ApplyT(func(v ServicePerimeterDryRunIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourceOutput) PscEndpoint() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunIngressPolicyIngressFromSource) *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to ingress the perimeter.
 // Requests from these resources will be allowed to access perimeter data.
 // Currently only projects are allowed. Format `projects/{project_number}`
@@ -6427,6 +6602,149 @@ func (o ServicePerimeterDryRunIngressPolicyIngressFromSourceArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterDryRunIngressPolicyIngressFromSource {
 		return vs[0].([]ServicePerimeterDryRunIngressPolicyIngressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterDryRunIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs and ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs{...}
+type ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput
+	ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput).ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs, ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtr and ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrType ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs
+
+func ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtr(v *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint) *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint) ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterDryRunIngressPolicyIngressTo struct {
@@ -7128,6 +7446,10 @@ func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Sources() ServicePerime
 type ServicePerimeterEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -7151,6 +7473,10 @@ type ServicePerimeterEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -7216,6 +7542,15 @@ func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) AccessLevel() pulumi
 	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterEgressPolicyEgressFromSourceOutput) PscEndpoint() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFromSource) *ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -7244,6 +7579,147 @@ func (o ServicePerimeterEgressPolicyEgressFromSourceArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterEgressPolicyEgressFromSource {
 		return vs[0].([]ServicePerimeterEgressPolicyEgressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterEgressPolicyEgressFromSourceOutput)
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterEgressPolicyEgressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs and ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterEgressPolicyEgressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs{...}
+type ServicePerimeterEgressPolicyEgressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput
+	ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput).ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs, ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtr and ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrType ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs
+
+func ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtr(v *ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint) *ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint) ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterEgressPolicyEgressTo struct {
@@ -7942,6 +8418,10 @@ type ServicePerimeterIngressPolicyIngressFromSource struct {
 	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
 	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
 	// Currently only projects and VPCs are allowed.
@@ -7975,6 +8455,10 @@ type ServicePerimeterIngressPolicyIngressFromSourceArgs struct {
 	// Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
 	// If * is specified, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to ingress the perimeter.
 	// Requests from these resources will be allowed to access perimeter data.
 	// Currently only projects and VPCs are allowed.
@@ -8050,6 +8534,15 @@ func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) AccessLevel() pulu
 	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterIngressPolicyIngressFromSourceOutput) PscEndpoint() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressFromSource) *ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to ingress the perimeter.
 // Requests from these resources will be allowed to access perimeter data.
 // Currently only projects and VPCs are allowed.
@@ -8081,6 +8574,147 @@ func (o ServicePerimeterIngressPolicyIngressFromSourceArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterIngressPolicyIngressFromSource {
 		return vs[0].([]ServicePerimeterIngressPolicyIngressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterIngressPolicyIngressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs and ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterIngressPolicyIngressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs{...}
+type ServicePerimeterIngressPolicyIngressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput
+	ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput).ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs, ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtr and ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrType ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs
+
+func ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtr(v *ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint) *ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint) ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterIngressPolicyIngressTo struct {
@@ -9228,6 +9862,10 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Sources() ServicePe
 type ServicePerimeterSpecEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -9251,6 +9889,10 @@ type ServicePerimeterSpecEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -9316,6 +9958,15 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) AccessLevel() pu
 	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourceOutput) PscEndpoint() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFromSource) *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -9344,6 +9995,147 @@ func (o ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecEgressPolicyEgressFromSource {
 		return vs[0].([]ServicePerimeterSpecEgressPolicyEgressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs and ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{...}
+type ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput
+	ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput).ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs, ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtr and ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs
+
+func ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtr(v *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterSpecEgressPolicyEgressTo struct {
@@ -10158,6 +10950,10 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() Service
 type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -10181,6 +10977,10 @@ type ServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
 type ServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -10246,6 +11046,15 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() 
 	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) PscEndpoint() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -10274,6 +11083,147 @@ func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecIngressPolicyIngressFromSource {
 		return vs[0].([]ServicePerimeterSpecIngressPolicyIngressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs and ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{...}
+type ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput
+	ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput).ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs, ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtr and ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs
+
+func ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtr(v *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterSpecIngressPolicyIngressTo struct {
@@ -10739,12 +11689,19 @@ func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOu
 }
 
 type ServicePerimeterSpecVpcAccessibleServices struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices []string `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction *bool `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes []string `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 // ServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimeterSpecVpcAccessibleServicesOutput values.
@@ -10759,12 +11716,19 @@ type ServicePerimeterSpecVpcAccessibleServicesInput interface {
 }
 
 type ServicePerimeterSpecVpcAccessibleServicesArgs struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes pulumi.StringArrayInput `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 func (ServicePerimeterSpecVpcAccessibleServicesArgs) ElementType() reflect.Type {
@@ -10844,6 +11808,15 @@ func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ToServicePerimeterSpecV
 	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServicePatterns() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern {
+		return v.AllowedServicePatterns
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -10854,6 +11827,12 @@ func (o ServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServices() pulum
 // list of APIs specified in 'allowedServices'.
 func (o ServicePerimeterSpecVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimeterSpecVpcAccessibleServicesOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServices) []string { return v.ServicePatternsEnforcementScopes }).(pulumi.StringArrayOutput)
 }
 
 type ServicePerimeterSpecVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
@@ -10880,6 +11859,18 @@ func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) Elem() ServicePerime
 	}).(ServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServicePatterns() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServices) []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServicePatterns
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -10900,6 +11891,399 @@ func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) EnableRestriction() 
 		}
 		return v.EnableRestriction
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimeterSpecVpcAccessibleServicesPtrOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern *string `pulumi:"pattern"`
+	// Supported service to allow.
+	Service *string `pulumi:"service"`
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs and ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput` via:
+//
+//	ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs{...}
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Supported service to allow.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray and ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput` via:
+//
+//	ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray{ ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs{...} }
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+// Modifiers to apply to the requests that match the URL pattern.
+// Structure is documented below.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) Modifiers() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern) []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier {
+		return v.Modifiers
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+// URL pattern to allow.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// Supported service to allow.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern {
+		return vs[0].([]ServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)[vs[1].(int)]
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader `pulumi:"addRequestHeader"`
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs and ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput` via:
+//
+//	ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs{...}
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput `pulumi:"addRequestHeader"`
+}
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray and ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput` via:
+//
+//	ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray{ ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs{...} }
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray []ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+// Adds additional HTTP request headers.
+// Structure is documented below.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) AddRequestHeader() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier) *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return v.AddRequestHeader
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier {
+		return vs[0].([]ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)[vs[1].(int)]
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader struct {
+	// HTTP header key.
+	Key string `pulumi:"key"`
+	// HTTP header value.
+	Value string `pulumi:"value"`
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs and ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput` via:
+//
+//	ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs struct {
+	// HTTP header key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// HTTP header value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput).ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput is an input type that accepts ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs, ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr and ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput` via:
+//
+//	        ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+	ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+}
+
+type servicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs
+
+func ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr(v *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput {
+	return (*servicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType)(v)
+}
+
+func (*servicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return &v
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Elem() ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader
+		return ret
+	}).(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterStatus struct {
@@ -11587,6 +12971,10 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Sources() Service
 type ServicePerimeterStatusEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -11610,6 +12998,10 @@ type ServicePerimeterStatusEgressPolicyEgressFromSourceInput interface {
 type ServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -11675,6 +13067,15 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) AccessLevel() 
 	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourceOutput) PscEndpoint() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFromSource) *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -11703,6 +13104,147 @@ func (o ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusEgressPolicyEgressFromSource {
 		return vs[0].([]ServicePerimeterStatusEgressPolicyEgressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterStatusEgressPolicyEgressFromSourceOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs and ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{...}
+type ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput
+	ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput).ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs, ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtr and ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs
+
+func ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtr(v *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterStatusEgressPolicyEgressTo struct {
@@ -12517,6 +14059,10 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() Servi
 type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -12540,6 +14086,10 @@ type ServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
 type ServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -12605,6 +14155,15 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel(
 	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) PscEndpoint() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -12633,6 +14192,149 @@ func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) Index(i
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusIngressPolicyIngressFromSource {
 		return vs[0].([]ServicePerimeterStatusIngressPolicyIngressFromSource)[vs[1].(int)]
 	}).(ServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs and ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{...}
+type ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput
+	ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput).ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs, ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtr and ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput
+	ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs
+
+func ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtr(v *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput {
+	return (*servicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimeterStatusIngressPolicyIngressTo struct {
@@ -13100,12 +14802,19 @@ func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray
 }
 
 type ServicePerimeterStatusVpcAccessibleServices struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices []string `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction *bool `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes []string `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 // ServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimeterStatusVpcAccessibleServicesOutput values.
@@ -13120,12 +14829,19 @@ type ServicePerimeterStatusVpcAccessibleServicesInput interface {
 }
 
 type ServicePerimeterStatusVpcAccessibleServicesArgs struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes pulumi.StringArrayInput `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 func (ServicePerimeterStatusVpcAccessibleServicesArgs) ElementType() reflect.Type {
@@ -13205,6 +14921,15 @@ func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ToServicePerimeterSta
 	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServicePatterns() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern {
+		return v.AllowedServicePatterns
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -13215,6 +14940,14 @@ func (o ServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServices() pul
 // list of APIs specified in 'allowedServices'.
 func (o ServicePerimeterStatusVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimeterStatusVpcAccessibleServicesOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServices) []string {
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServicePerimeterStatusVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
@@ -13241,6 +14974,18 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) Elem() ServicePeri
 	}).(ServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServicePatterns() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServices) []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServicePatterns
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -13261,6 +15006,399 @@ func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) EnableRestriction(
 		}
 		return v.EnableRestriction
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimeterStatusVpcAccessibleServicesPtrOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern *string `pulumi:"pattern"`
+	// Supported service to allow.
+	Service *string `pulumi:"service"`
+}
+
+// ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs and ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput` via:
+//
+//	ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs{...}
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Supported service to allow.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+// ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray and ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput` via:
+//
+//	ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray{ ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs{...} }
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+// Modifiers to apply to the requests that match the URL pattern.
+// Structure is documented below.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) Modifiers() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern) []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier {
+		return v.Modifiers
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+// URL pattern to allow.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern) *string { return v.Pattern }).(pulumi.StringPtrOutput)
+}
+
+// Supported service to allow.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern {
+		return vs[0].([]ServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)[vs[1].(int)]
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader `pulumi:"addRequestHeader"`
+}
+
+// ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs and ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput` via:
+//
+//	ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs{...}
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput `pulumi:"addRequestHeader"`
+}
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+// ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray and ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput` via:
+//
+//	ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray{ ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs{...} }
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray []ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+// Adds additional HTTP request headers.
+// Structure is documented below.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) AddRequestHeader() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier) *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return v.AddRequestHeader
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier {
+		return vs[0].([]ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)[vs[1].(int)]
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader struct {
+	// HTTP header key.
+	Key string `pulumi:"key"`
+	// HTTP header value.
+	Value string `pulumi:"value"`
+}
+
+// ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs and ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput` via:
+//
+//	ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs struct {
+	// HTTP header key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// HTTP header value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput).ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput is an input type that accepts ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs, ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr and ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput` via:
+//
+//	        ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+	ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+}
+
+type servicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs
+
+func ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr(v *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput {
+	return (*servicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType)(v)
+}
+
+func (*servicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return &v
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Elem() ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader
+		return ret
+	}).(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeter struct {
@@ -14236,6 +16374,10 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) So
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -14259,6 +16401,10 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput inte
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -14326,6 +16472,15 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput) PscEndpoint() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -14354,6 +16509,149 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource {
 		return vs[0].([]ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource)[vs[1].(int)]
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput).ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs, ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtr and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs
+
+func ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtr(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput {
+	return (*servicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
@@ -15174,6 +17472,10 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -15197,6 +17499,10 @@ type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput in
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -15264,6 +17570,15 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) PscEndpoint() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -15292,6 +17607,149 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
 		return vs[0].([]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource)[vs[1].(int)]
 	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput).ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs, ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtr and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs
+
+func ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtr(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput {
+	return (*servicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo struct {
@@ -15763,12 +18221,19 @@ func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMeth
 }
 
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServices struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices []string `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction *bool `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes []string `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 // ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput values.
@@ -15783,12 +18248,19 @@ type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput interface {
 }
 
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes pulumi.StringArrayInput `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs) ElementType() reflect.Type {
@@ -15868,6 +18340,15 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ToServ
 	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServicePatterns() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern {
+		return v.AllowedServicePatterns
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -15878,6 +18359,14 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) Allowe
 // list of APIs specified in 'allowedServices'.
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServices) []string {
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
@@ -15904,6 +18393,18 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) Ele
 	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServicePatterns() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServices) []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServicePatterns
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -15924,6 +18425,403 @@ func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) Ena
 		}
 		return v.EnableRestriction
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern *string `pulumi:"pattern"`
+	// Supported service to allow.
+	Service *string `pulumi:"service"`
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs{...}
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Supported service to allow.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray{ ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs{...} }
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+// Modifiers to apply to the requests that match the URL pattern.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) Modifiers() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern) []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier {
+		return v.Modifiers
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+// URL pattern to allow.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern) *string {
+		return v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported service to allow.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern) *string {
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader `pulumi:"addRequestHeader"`
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs{...}
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput `pulumi:"addRequestHeader"`
+}
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray{ ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs{...} }
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray []ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+// Adds additional HTTP request headers.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput) AddRequestHeader() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier) *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return v.AddRequestHeader
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifier)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader struct {
+	// HTTP header key.
+	Key string `pulumi:"key"`
+	// HTTP header value.
+	Value string `pulumi:"value"`
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput` via:
+//
+//	ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs struct {
+	// HTTP header key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// HTTP header value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput).ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs, ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr and ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput` via:
+//
+//	        ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+	ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs
+
+func ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput {
+	return (*servicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Elem() ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader
+		return ret
+	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterStatus struct {
@@ -16625,6 +19523,10 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -16648,6 +19550,10 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput in
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -16715,6 +19621,15 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput) PscEndpoint() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -16743,6 +19658,149 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource {
 		return vs[0].([]ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource)[vs[1].(int)]
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput).ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs, ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtr and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs
+
+func ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtr(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput {
+	return (*servicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
@@ -17565,6 +20623,10 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel *string `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -17588,6 +20650,10 @@ type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
 	// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+	// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+	// Structure is documented below.
+	PscEndpoint ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput `pulumi:"pscEndpoint"`
 	// A Google Cloud resource that is allowed to egress the perimeter.
 	// Requests from these resources are allowed to access data outside the perimeter.
 	// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -17655,6 +20721,15 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) PscEndpoint() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint {
+		return v.PscEndpoint
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
 // A Google Cloud resource that is allowed to egress the perimeter.
 // Requests from these resources are allowed to access data outside the perimeter.
 // Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -17685,6 +20760,149 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
 		return vs[0].([]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource)[vs[1].(int)]
 	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs struct {
+	// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+	// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput).ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs, ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtr and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput` via:
+//
+//	        ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs
+
+func ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtr(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput {
+	return (*servicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrType) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) *string {
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint
+		return ret
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput)
+}
+
+// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo struct {
@@ -18156,12 +21374,19 @@ func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMe
 }
 
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServices struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices []string `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction *bool `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes []string `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 // ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput values.
@@ -18176,12 +21401,19 @@ type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput interface
 }
 
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs struct {
+	// Specifies which Google services are allowed to be accessed from
+	// VPC networks in the service perimeter.
+	// Structure is documented below.
+	AllowedServicePatterns ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput `pulumi:"allowedServicePatterns"`
 	// The list of APIs usable within the Service Perimeter.
 	// Must be empty unless `enableRestriction` is True.
 	AllowedServices pulumi.StringArrayInput `pulumi:"allowedServices"`
 	// Whether to restrict API calls within the Service Perimeter to the
 	// list of APIs specified in 'allowedServices'.
 	EnableRestriction pulumi.BoolPtrInput `pulumi:"enableRestriction"`
+	// Defines the enforcement scopes of service patterns.
+	// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+	ServicePatternsEnforcementScopes pulumi.StringArrayInput `pulumi:"servicePatternsEnforcementScopes"`
 }
 
 func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs) ElementType() reflect.Type {
@@ -18261,6 +21493,15 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ToSe
 	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServicePatterns() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern {
+		return v.AllowedServicePatterns
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -18273,6 +21514,14 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) Allo
 // list of APIs specified in 'allowedServices'.
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) EnableRestriction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) *bool { return v.EnableRestriction }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServices) []string {
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput struct{ *pulumi.OutputState }
@@ -18299,6 +21548,18 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) E
 	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput)
 }
 
+// Specifies which Google services are allowed to be accessed from
+// VPC networks in the service perimeter.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServicePatterns() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServices) []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServicePatterns
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
 // The list of APIs usable within the Service Perimeter.
 // Must be empty unless `enableRestriction` is True.
 func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) AllowedServices() pulumi.StringArrayOutput {
@@ -18319,6 +21580,403 @@ func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) E
 		}
 		return v.EnableRestriction
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the enforcement scopes of service patterns.
+// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput) ServicePatternsEnforcementScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServices) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePatternsEnforcementScopes
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern *string `pulumi:"pattern"`
+	// Supported service to allow.
+	Service *string `pulumi:"service"`
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs{...}
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs struct {
+	// Modifiers to apply to the requests that match the URL pattern.
+	// Structure is documented below.
+	Modifiers ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput `pulumi:"modifiers"`
+	// URL pattern to allow.
+	Pattern pulumi.StringPtrInput `pulumi:"pattern"`
+	// Supported service to allow.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray{ ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs{...} }
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return o
+}
+
+// Modifiers to apply to the requests that match the URL pattern.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) Modifiers() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern) []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier {
+		return v.Modifiers
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+// URL pattern to allow.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) Pattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern) *string {
+		return v.Pattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported service to allow.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern) *string {
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePattern)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader `pulumi:"addRequestHeader"`
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs{...}
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs struct {
+	// Adds additional HTTP request headers.
+	// Structure is documented below.
+	AddRequestHeader ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput `pulumi:"addRequestHeader"`
+}
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray{ ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs{...} }
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray []ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return o
+}
+
+// Adds additional HTTP request headers.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput) AddRequestHeader() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier) *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return v.AddRequestHeader
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader struct {
+	// HTTP header key.
+	Key string `pulumi:"key"`
+	// HTTP header value.
+	Value string `pulumi:"value"`
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput` via:
+//
+//	ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs struct {
+	// HTTP header key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// HTTP header value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput).ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs, ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr and ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput` via:
+//
+//	        ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+	ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs
+
+func ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtr(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput {
+	return (*servicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrType) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) ToServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Elem() ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader
+		return ret
+	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput)
+}
+
+// HTTP header key.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP header value.
+func (o ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetSupportedServiceSupportedMethod struct {
@@ -18636,6 +22294,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterDryRunEgressPolicyEgressToOperationArgs{})
@@ -18646,6 +22306,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromPtrInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromSourceInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressToInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressToPtrInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterDryRunIngressPolicyIngressToOperationInput)(nil)).Elem(), ServicePerimeterDryRunIngressPolicyIngressToOperationArgs{})
@@ -18656,6 +22318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterEgressPolicyEgressToOperationArgs{})
@@ -18666,6 +22330,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromPtrInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromSourceInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressToInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressToPtrInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterIngressPolicyIngressToOperationInput)(nil)).Elem(), ServicePerimeterIngressPolicyIngressToOperationArgs{})
@@ -18680,6 +22346,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterSpecEgressPolicyEgressToOperationArgs{})
@@ -18692,6 +22360,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromPtrInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSourceInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToPtrInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToOperationInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressToOperationArgs{})
@@ -18700,6 +22370,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput)(nil)).Elem(), ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesPtrInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput)(nil)).Elem(), ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusInput)(nil)).Elem(), ServicePerimeterStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusPtrInput)(nil)).Elem(), ServicePerimeterStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyArgs{})
@@ -18708,6 +22384,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimeterStatusEgressPolicyEgressToOperationArgs{})
@@ -18720,6 +22398,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromPtrInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSourceInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToPtrInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToOperationInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressToOperationArgs{})
@@ -18728,6 +22408,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput)(nil)).Elem(), ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesPtrInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput)(nil)).Elem(), ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterInput)(nil)).Elem(), ServicePerimetersServicePerimeterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecArgs{})
@@ -18738,6 +22424,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{})
@@ -18750,6 +22438,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{})
@@ -18758,6 +22448,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyArgs{})
@@ -18766,6 +22462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{})
@@ -18778,6 +22476,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{})
@@ -18786,6 +22486,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrInput)(nil)).Elem(), ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServiceSupportedMethodInput)(nil)).Elem(), GetSupportedServiceSupportedMethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServiceSupportedMethodArrayInput)(nil)).Elem(), GetSupportedServiceSupportedMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSupportedServicesSupportedServiceInput)(nil)).Elem(), GetSupportedServicesSupportedServiceArgs{})
@@ -18856,6 +22562,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunEgressPolicyEgressToOperationOutput{})
@@ -18866,6 +22574,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterDryRunIngressPolicyIngressToOperationOutput{})
@@ -18876,6 +22586,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterEgressPolicyEgressToOperationOutput{})
@@ -18886,6 +22598,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterIngressPolicyIngressToOperationOutput{})
@@ -18900,6 +22614,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOperationOutput{})
@@ -18912,6 +22628,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOperationOutput{})
@@ -18920,6 +22638,12 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyOutput{})
@@ -18928,6 +22652,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOperationOutput{})
@@ -18940,6 +22666,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOperationOutput{})
@@ -18948,6 +22676,12 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecOutput{})
@@ -18958,6 +22692,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput{})
@@ -18970,6 +22706,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput{})
@@ -18978,6 +22716,12 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyOutput{})
@@ -18986,6 +22730,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput{})
@@ -18998,6 +22744,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput{})
@@ -19006,6 +22754,12 @@ func init() {
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderPtrOutput{})
 	pulumi.RegisterOutputType(GetSupportedServiceSupportedMethodOutput{})
 	pulumi.RegisterOutputType(GetSupportedServiceSupportedMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetSupportedServicesSupportedServiceOutput{})

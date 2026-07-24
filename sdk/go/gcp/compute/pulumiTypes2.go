@@ -13,6 +13,2349 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetForwardingRulesRule struct {
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'allPorts' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
+	//   lacking destination port information (for example, UDP fragments after the
+	//   first fragment) to be forwarded to the backends configured with this
+	//   forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+	//   true.
+	AllPorts bool `pulumi:"allPorts"`
+	// This field is used along with the 'backend_service' field for
+	// internal load balancing or with the 'target' field for internal
+	// TargetInstance.
+	//
+	// If the field is set to 'TRUE', clients can access ILB from all
+	// regions.
+	//
+	// Otherwise only allows access from clients in the same region as the
+	// internal load balancer.
+	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess bool `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	//
+	// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService string `pulumi:"backendService"`
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule string `pulumi:"baseForwardingRule"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
+	Description string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId int `pulumi:"forwardingRuleId"`
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced 'target' or 'backendService'.
+	//
+	// While creating a forwarding rule, specifying an 'IPAddress' is
+	// required under the following circumstances:
+	//
+	// * When the 'target' is set to 'targetGrpcProxy' and
+	//   'validateForProxyless' is set to 'true', the
+	//   'IPAddress' should be set to '0.0.0.0'.
+	// * When the 'target' is a Private Service Connect Google APIs
+	//   bundle, you must specify an 'IPAddress'.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	//
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	//
+	// * IP address number, as in '100.1.2.3'
+	// * IPv6 address range, as in '2600:1234::/96'
+	// * Full resource URL, as in
+	//   'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+	// * Partial URL or by name, as in:
+	//   * 'projects/project_id/regions/region/addresses/address-name'
+	//   * 'regions/region/addresses/address-name'
+	//   * 'global/addresses/address-name'
+	//   * 'address-name'
+	//
+	// The forwarding rule's 'target' or 'backendService',
+	// and in most cases, also the 'loadBalancingScheme', determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//
+	// When reading an 'IPAddress', the API always returns the IP
+	// address number.
+	IpAddress string `pulumi:"ipAddress"`
+	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+	// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+	// Use one of the following formats to specify a sub-PDP when creating an
+	// IPv6 NetLB forwarding rule using BYOIP:
+	// Full resource URL, as in:
+	//   * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//     Partial URL, as in:
+	//   * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//   * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	IpCollection string `pulumi:"ipCollection"`
+	// The IP protocol to which this rule applies.
+	//
+	// For protocol forwarding, valid
+	// options are 'TCP', 'UDP', 'ESP',
+	// 'AH', 'SCTP', 'ICMP' and
+	// 'L3_DEFAULT'.
+	//
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+	//
+	// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+	// backend service with UNSPECIFIED protocol.
+	// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+	IpProtocol string `pulumi:"ipProtocol"`
+	// The IP address version that will be used by this forwarding rule.
+	// Valid options are IPV4 and IPV6.
+	//
+	// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+	IpVersion string `pulumi:"ipVersion"`
+	// Indicates whether or not this load balancer can be used as a collector for
+	// packet mirroring. To prevent mirroring loops, instances behind this
+	// load balancer will not have their traffic mirrored even if a
+	// 'PacketMirroring' rule applies to them.
+	//
+	// This can only be set to true for load balancers that have their
+	// 'loadBalancingScheme' set to 'INTERNAL'.
+	IsMirroringCollector bool `pulumi:"isMirroringCollector"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint string `pulumi:"labelFingerprint"`
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Specifies the forwarding rule type.
+	//
+	// Note that an empty string value ('""') is also supported for some use
+	// cases, for example PSC (private service connection) regional forwarding
+	// rules.
+	//
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+	LoadBalancingScheme string `pulumi:"loadBalancingScheme"`
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	//
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
+	Name string `pulumi:"name"`
+	// This field is not used for external load balancing.
+	//
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
+	Network string `pulumi:"network"`
+	// This signifies the networking tier used for configuring
+	// this load balancer and can only take the following values:
+	// 'PREMIUM', 'STANDARD'.
+	//
+	// For regional ForwardingRule, the valid values are 'PREMIUM' and
+	// 'STANDARD'. For GlobalForwardingRule, the valid value is
+	// 'PREMIUM'.
+	//
+	// If this field is not specified, it is assumed to be 'PREMIUM'.
+	// If 'IPAddress' is specified, this value must be equal to the
+	// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+	NetworkTier string `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone bool `pulumi:"noAutomateDnsZone"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'portRange' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+	// 'portRange's.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+	// cannot have overlapping 'portRange's.
+	//
+	// @pattern: \d+(?:-\d+)?
+	PortRange string `pulumi:"portRange"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'ports' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair if they share at least one port
+	// number.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+	// they share at least one port number.
+	//
+	// @pattern: \d+(?:-\d+)?
+	Ports []string `pulumi:"ports"`
+	// The name of the project.
+	Project string `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc bool `pulumi:"recreateClosedPsc"`
+	// The region you want to get the forwarding rules from.
+	//
+	// These arguments must be set in either the provider or the resource in order for the information to be queried.
+	Region string `pulumi:"region"`
+	// The URI of the resource.
+	SelfLink string `pulumi:"selfLink"`
+	// Service Directory resources to register this forwarding rule with.
+	//
+	// Currently, only supports a single Service Directory resource.
+	ServiceDirectoryRegistrations []GetForwardingRulesRuleServiceDirectoryRegistration `pulumi:"serviceDirectoryRegistrations"`
+	// An optional prefix to the service name for this Forwarding Rule.
+	// If specified, will be the first label of the fully qualified service
+	// name.
+	//
+	// The label must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the label must be 1-63 characters long and match the
+	// regular expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceLabel string `pulumi:"serviceLabel"`
+	// The internal fully qualified service name for this Forwarding Rule.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceName string `pulumi:"serviceName"`
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges []string `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	//
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
+	//
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	Target string `pulumi:"target"`
+}
+
+// GetForwardingRulesRuleInput is an input type that accepts GetForwardingRulesRuleArgs and GetForwardingRulesRuleOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleInput` via:
+//
+//	GetForwardingRulesRuleArgs{...}
+type GetForwardingRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleOutput() GetForwardingRulesRuleOutput
+	ToGetForwardingRulesRuleOutputWithContext(context.Context) GetForwardingRulesRuleOutput
+}
+
+type GetForwardingRulesRuleArgs struct {
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'allPorts' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+	//   L3_DEFAULT.
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal and external protocol forwarding.
+	// * Set this field to true to allow packets addressed to any port or packets
+	//   lacking destination port information (for example, UDP fragments after the
+	//   first fragment) to be forwarded to the backends configured with this
+	//   forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+	//   true.
+	AllPorts pulumi.BoolInput `pulumi:"allPorts"`
+	// This field is used along with the 'backend_service' field for
+	// internal load balancing or with the 'target' field for internal
+	// TargetInstance.
+	//
+	// If the field is set to 'TRUE', clients can access ILB from all
+	// regions.
+	//
+	// Otherwise only allows access from clients in the same region as the
+	// internal load balancer.
+	AllowGlobalAccess pulumi.BoolInput `pulumi:"allowGlobalAccess"`
+	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+	AllowPscGlobalAccess pulumi.BoolInput `pulumi:"allowPscGlobalAccess"`
+	// Identifies the backend service to which the forwarding rule sends traffic.
+	//
+	// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+	// must be omitted for all other load balancer types.
+	BackendService pulumi.StringInput `pulumi:"backendService"`
+	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule pulumi.StringInput `pulumi:"baseForwardingRule"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringInput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
+	// An optional description of this resource. Provide this property when
+	// you create the resource.
+	Description pulumi.StringInput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId pulumi.IntInput `pulumi:"forwardingRuleId"`
+	// IP address for which this forwarding rule accepts traffic. When a client
+	// sends traffic to this IP address, the forwarding rule directs the traffic
+	// to the referenced 'target' or 'backendService'.
+	//
+	// While creating a forwarding rule, specifying an 'IPAddress' is
+	// required under the following circumstances:
+	//
+	// * When the 'target' is set to 'targetGrpcProxy' and
+	//   'validateForProxyless' is set to 'true', the
+	//   'IPAddress' should be set to '0.0.0.0'.
+	// * When the 'target' is a Private Service Connect Google APIs
+	//   bundle, you must specify an 'IPAddress'.
+	//
+	// Otherwise, you can optionally specify an IP address that references an
+	// existing static (reserved) IP address resource. When omitted, Google Cloud
+	// assigns an ephemeral IP address.
+	//
+	// Use one of the following formats to specify an IP address while creating a
+	// forwarding rule:
+	//
+	// * IP address number, as in '100.1.2.3'
+	// * IPv6 address range, as in '2600:1234::/96'
+	// * Full resource URL, as in
+	//   'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+	// * Partial URL or by name, as in:
+	//   * 'projects/project_id/regions/region/addresses/address-name'
+	//   * 'regions/region/addresses/address-name'
+	//   * 'global/addresses/address-name'
+	//   * 'address-name'
+	//
+	// The forwarding rule's 'target' or 'backendService',
+	// and in most cases, also the 'loadBalancingScheme', determine the
+	// type of IP address that you can use. For detailed information, see
+	// [IP address
+	// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//
+	// When reading an 'IPAddress', the API always returns the IP
+	// address number.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+	// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+	// Use one of the following formats to specify a sub-PDP when creating an
+	// IPv6 NetLB forwarding rule using BYOIP:
+	// Full resource URL, as in:
+	//   * 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//     Partial URL, as in:
+	//   * 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	//   * 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+	IpCollection pulumi.StringInput `pulumi:"ipCollection"`
+	// The IP protocol to which this rule applies.
+	//
+	// For protocol forwarding, valid
+	// options are 'TCP', 'UDP', 'ESP',
+	// 'AH', 'SCTP', 'ICMP' and
+	// 'L3_DEFAULT'.
+	//
+	// The valid IP protocols are different for different load balancing products
+	// as described in [Load balancing
+	// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+	//
+	// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+	// backend service with UNSPECIFIED protocol.
+	// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// The IP address version that will be used by this forwarding rule.
+	// Valid options are IPV4 and IPV6.
+	//
+	// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+	IpVersion pulumi.StringInput `pulumi:"ipVersion"`
+	// Indicates whether or not this load balancer can be used as a collector for
+	// packet mirroring. To prevent mirroring loops, instances behind this
+	// load balancer will not have their traffic mirrored even if a
+	// 'PacketMirroring' rule applies to them.
+	//
+	// This can only be set to true for load balancers that have their
+	// 'loadBalancingScheme' set to 'INTERNAL'.
+	IsMirroringCollector pulumi.BoolInput `pulumi:"isMirroringCollector"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint pulumi.StringInput `pulumi:"labelFingerprint"`
+	// Labels to apply to this forwarding rule.  A list of key->value pairs.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Specifies the forwarding rule type.
+	//
+	// Note that an empty string value ('""') is also supported for some use
+	// cases, for example PSC (private service connection) regional forwarding
+	// rules.
+	//
+	// For more information about forwarding rules, refer to
+	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+	LoadBalancingScheme pulumi.StringInput `pulumi:"loadBalancingScheme"`
+	// Name of the resource; provided by the client when the resource is created.
+	// The name must be 1-63 characters long, and comply with
+	// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+	//
+	// Specifically, the name must be 1-63 characters long and match the regular
+	// expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters must
+	// be a dash, lowercase letter, or digit, except the last character, which
+	// cannot be a dash.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, the forwarding rule name must be a 1-20 characters string with
+	// lowercase letters and numbers and must start with a letter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// This field is not used for external load balancing.
+	//
+	// For Internal TCP/UDP Load Balancing, this field identifies the network that
+	// the load balanced IP should belong to for this Forwarding Rule.
+	// If the subnetwork is specified, the network of the subnetwork will be used.
+	// If neither subnetwork nor this field is specified, the default network will
+	// be used.
+	//
+	// For Private Service Connect forwarding rules that forward traffic to Google
+	// APIs, a network must be provided.
+	Network pulumi.StringInput `pulumi:"network"`
+	// This signifies the networking tier used for configuring
+	// this load balancer and can only take the following values:
+	// 'PREMIUM', 'STANDARD'.
+	//
+	// For regional ForwardingRule, the valid values are 'PREMIUM' and
+	// 'STANDARD'. For GlobalForwardingRule, the valid value is
+	// 'PREMIUM'.
+	//
+	// If this field is not specified, it is assumed to be 'PREMIUM'.
+	// If 'IPAddress' is specified, this value must be equal to the
+	// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolInput `pulumi:"noAutomateDnsZone"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'portRange' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: external passthrough
+	//   Network Load Balancers, internal and external proxy Network Load
+	//   Balancers, internal and external Application Load Balancers, external
+	//   protocol forwarding, and Classic VPN.
+	// * Some products have restrictions on what ports can be used. See
+	//   [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+	//   for details.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+	// 'portRange's.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+	// cannot have overlapping 'portRange's.
+	//
+	// @pattern: \d+(?:-\d+)?
+	PortRange pulumi.StringInput `pulumi:"portRange"`
+	// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+	// Only packets addressed to ports in the specified range will be forwarded
+	// to the backends configured with this forwarding rule.
+	//
+	// The 'ports' field has the following limitations:
+	// * It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+	//   and
+	// * It's applicable only to the following products: internal passthrough
+	//   Network Load Balancers, backend service-based external passthrough Network
+	//   Load Balancers, and internal protocol forwarding.
+	// * You can specify a list of up to five ports by number, separated by
+	//   commas. The ports can be contiguous or discontiguous.
+	//
+	// For external forwarding rules, two or more forwarding rules cannot use the
+	// same '[IPAddress, IPProtocol]' pair if they share at least one port
+	// number.
+	//
+	// For internal forwarding rules within the same VPC network, two or more
+	// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+	// they share at least one port number.
+	//
+	// @pattern: \d+(?:-\d+)?
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+	// The name of the project.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+	PscConnectionStatus pulumi.StringInput `pulumi:"pscConnectionStatus"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+	RecreateClosedPsc pulumi.BoolInput `pulumi:"recreateClosedPsc"`
+	// The region you want to get the forwarding rules from.
+	//
+	// These arguments must be set in either the provider or the resource in order for the information to be queried.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The URI of the resource.
+	SelfLink pulumi.StringInput `pulumi:"selfLink"`
+	// Service Directory resources to register this forwarding rule with.
+	//
+	// Currently, only supports a single Service Directory resource.
+	ServiceDirectoryRegistrations GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput `pulumi:"serviceDirectoryRegistrations"`
+	// An optional prefix to the service name for this Forwarding Rule.
+	// If specified, will be the first label of the fully qualified service
+	// name.
+	//
+	// The label must be 1-63 characters long, and comply with RFC1035.
+	// Specifically, the label must be 1-63 characters long and match the
+	// regular expression 'a-z?' which means the first
+	// character must be a lowercase letter, and all following characters
+	// must be a dash, lowercase letter, or digit, except the last
+	// character, which cannot be a dash.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceLabel pulumi.StringInput `pulumi:"serviceLabel"`
+	// The internal fully qualified service name for this Forwarding Rule.
+	//
+	// This field is only used for INTERNAL load balancing.
+	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges pulumi.StringArrayInput `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	//
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The URL of the target resource to receive the matched traffic.  For
+	// regional forwarding rules, this target must be in the same region as the
+	// forwarding rule. For global forwarding rules, this target must be a global
+	// load balancing resource.
+	//
+	// The forwarded traffic must be of a type appropriate to the target object.
+	// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+	//
+	// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (GetForwardingRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleArgs) ToGetForwardingRulesRuleOutput() GetForwardingRulesRuleOutput {
+	return i.ToGetForwardingRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleArgs) ToGetForwardingRulesRuleOutputWithContext(ctx context.Context) GetForwardingRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleOutput)
+}
+
+// GetForwardingRulesRuleArrayInput is an input type that accepts GetForwardingRulesRuleArray and GetForwardingRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleArrayInput` via:
+//
+//	GetForwardingRulesRuleArray{ GetForwardingRulesRuleArgs{...} }
+type GetForwardingRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleArrayOutput() GetForwardingRulesRuleArrayOutput
+	ToGetForwardingRulesRuleArrayOutputWithContext(context.Context) GetForwardingRulesRuleArrayOutput
+}
+
+type GetForwardingRulesRuleArray []GetForwardingRulesRuleInput
+
+func (GetForwardingRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleArray) ToGetForwardingRulesRuleArrayOutput() GetForwardingRulesRuleArrayOutput {
+	return i.ToGetForwardingRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleArray) ToGetForwardingRulesRuleArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleArrayOutput)
+}
+
+type GetForwardingRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleOutput) ToGetForwardingRulesRuleOutput() GetForwardingRulesRuleOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleOutput) ToGetForwardingRulesRuleOutputWithContext(ctx context.Context) GetForwardingRulesRuleOutput {
+	return o
+}
+
+// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+//
+// The 'allPorts' field has the following limitations:
+//   - It requires that the forwarding rule 'IPProtocol' be TCP, UDP, SCTP, or
+//     L3_DEFAULT.
+//   - It's applicable only to the following products: internal passthrough
+//     Network Load Balancers, backend service-based external passthrough Network
+//     Load Balancers, and internal and external protocol forwarding.
+//   - Set this field to true to allow packets addressed to any port or packets
+//     lacking destination port information (for example, UDP fragments after the
+//     first fragment) to be forwarded to the backends configured with this
+//     forwarding rule. The L3_DEFAULT protocol requires 'allPorts' be set to
+//     true.
+func (o GetForwardingRulesRuleOutput) AllPorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.AllPorts }).(pulumi.BoolOutput)
+}
+
+// This field is used along with the 'backend_service' field for
+// internal load balancing or with the 'target' field for internal
+// TargetInstance.
+//
+// If the field is set to 'TRUE', clients can access ILB from all
+// regions.
+//
+// Otherwise only allows access from clients in the same region as the
+// internal load balancer.
+func (o GetForwardingRulesRuleOutput) AllowGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.AllowGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+func (o GetForwardingRulesRuleOutput) AllowPscGlobalAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.AllowPscGlobalAccess }).(pulumi.BoolOutput)
+}
+
+// Identifies the backend service to which the forwarding rule sends traffic.
+//
+// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+// must be omitted for all other load balancer types.
+func (o GetForwardingRulesRuleOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+func (o GetForwardingRulesRuleOutput) BaseForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GetForwardingRulesRuleOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetForwardingRulesRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when
+// you create the resource.
+func (o GetForwardingRulesRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
+func (o GetForwardingRulesRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o GetForwardingRulesRuleOutput) ForwardingRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) int { return v.ForwardingRuleId }).(pulumi.IntOutput)
+}
+
+// IP address for which this forwarding rule accepts traffic. When a client
+// sends traffic to this IP address, the forwarding rule directs the traffic
+// to the referenced 'target' or 'backendService'.
+//
+// While creating a forwarding rule, specifying an 'IPAddress' is
+// required under the following circumstances:
+//
+//   - When the 'target' is set to 'targetGrpcProxy' and
+//     'validateForProxyless' is set to 'true', the
+//     'IPAddress' should be set to '0.0.0.0'.
+//   - When the 'target' is a Private Service Connect Google APIs
+//     bundle, you must specify an 'IPAddress'.
+//
+// Otherwise, you can optionally specify an IP address that references an
+// existing static (reserved) IP address resource. When omitted, Google Cloud
+// assigns an ephemeral IP address.
+//
+// Use one of the following formats to specify an IP address while creating a
+// forwarding rule:
+//
+//   - IP address number, as in '100.1.2.3'
+//   - IPv6 address range, as in '2600:1234::/96'
+//   - Full resource URL, as in
+//     'https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name'
+//   - Partial URL or by name, as in:
+//   - 'projects/project_id/regions/region/addresses/address-name'
+//   - 'regions/region/addresses/address-name'
+//   - 'global/addresses/address-name'
+//   - 'address-name'
+//
+// The forwarding rule's 'target' or 'backendService',
+// and in most cases, also the 'loadBalancingScheme', determine the
+// type of IP address that you can use. For detailed information, see
+// [IP address
+// specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+//
+// When reading an 'IPAddress', the API always returns the IP
+// address number.
+func (o GetForwardingRulesRuleOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Resource reference of a PublicDelegatedPrefix. The PDP must be a sub-PDP
+// in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
+// Use one of the following formats to specify a sub-PDP when creating an
+// IPv6 NetLB forwarding rule using BYOIP:
+// Full resource URL, as in:
+//   - 'https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+//     Partial URL, as in:
+//   - 'projects/{{projectId}}/regions/region/publicDelegatedPrefixes/{{sub-pdp-name}}'
+//   - 'regions/{{region}}/publicDelegatedPrefixes/{{sub-pdp-name}}'
+func (o GetForwardingRulesRuleOutput) IpCollection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpCollection }).(pulumi.StringOutput)
+}
+
+// The IP protocol to which this rule applies.
+//
+// For protocol forwarding, valid
+// options are 'TCP', 'UDP', 'ESP',
+// 'AH', 'SCTP', 'ICMP' and
+// 'L3_DEFAULT'.
+//
+// The valid IP protocols are different for different load balancing products
+// as described in [Load balancing
+// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+//
+// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+// backend service with UNSPECIFIED protocol.
+// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP. Possible values: ["TCP", "UDP", "ESP", "AH", "SCTP", "ICMP", "L3_DEFAULT"]
+func (o GetForwardingRulesRuleOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// The IP address version that will be used by this forwarding rule.
+// Valid options are IPV4 and IPV6.
+//
+// If not set, the IPv4 address will be used by default. Possible values: ["IPV4", "IPV6"]
+func (o GetForwardingRulesRuleOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.IpVersion }).(pulumi.StringOutput)
+}
+
+// Indicates whether or not this load balancer can be used as a collector for
+// packet mirroring. To prevent mirroring loops, instances behind this
+// load balancer will not have their traffic mirrored even if a
+// 'PacketMirroring' rule applies to them.
+//
+// This can only be set to true for load balancers that have their
+// 'loadBalancingScheme' set to 'INTERNAL'.
+func (o GetForwardingRulesRuleOutput) IsMirroringCollector() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.IsMirroringCollector }).(pulumi.BoolOutput)
+}
+
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
+func (o GetForwardingRulesRuleOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// Labels to apply to this forwarding rule.  A list of key->value pairs.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+func (o GetForwardingRulesRuleOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Specifies the forwarding rule type.
+//
+// Note that an empty string value ('""') is also supported for some use
+// cases, for example PSC (private service connection) regional forwarding
+// rules.
+//
+// For more information about forwarding rules, refer to
+// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts). Default value: "EXTERNAL" Possible values: ["EXTERNAL", "EXTERNAL_MANAGED", "INTERNAL", "INTERNAL_MANAGED"]
+func (o GetForwardingRulesRuleOutput) LoadBalancingScheme() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.LoadBalancingScheme }).(pulumi.StringOutput)
+}
+
+// Name of the resource; provided by the client when the resource is created.
+// The name must be 1-63 characters long, and comply with
+// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
+//
+// Specifically, the name must be 1-63 characters long and match the regular
+// expression 'a-z?' which means the first
+// character must be a lowercase letter, and all following characters must
+// be a dash, lowercase letter, or digit, except the last character, which
+// cannot be a dash.
+//
+// For Private Service Connect forwarding rules that forward traffic to Google
+// APIs, the forwarding rule name must be a 1-20 characters string with
+// lowercase letters and numbers and must start with a letter.
+func (o GetForwardingRulesRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// This field is not used for external load balancing.
+//
+// For Internal TCP/UDP Load Balancing, this field identifies the network that
+// the load balanced IP should belong to for this Forwarding Rule.
+// If the subnetwork is specified, the network of the subnetwork will be used.
+// If neither subnetwork nor this field is specified, the default network will
+// be used.
+//
+// For Private Service Connect forwarding rules that forward traffic to Google
+// APIs, a network must be provided.
+func (o GetForwardingRulesRuleOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// This signifies the networking tier used for configuring
+// this load balancer and can only take the following values:
+// 'PREMIUM', 'STANDARD'.
+//
+// For regional ForwardingRule, the valid values are 'PREMIUM' and
+// 'STANDARD'. For GlobalForwardingRule, the valid value is
+// 'PREMIUM'.
+//
+// If this field is not specified, it is assumed to be 'PREMIUM'.
+// If 'IPAddress' is specified, this value must be equal to the
+// networkTier of the Address. Possible values: ["PREMIUM", "STANDARD"]
+func (o GetForwardingRulesRuleOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+func (o GetForwardingRulesRuleOutput) NoAutomateDnsZone() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.NoAutomateDnsZone }).(pulumi.BoolOutput)
+}
+
+// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+//
+// The 'portRange' field has the following limitations:
+//   - It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: external passthrough
+//     Network Load Balancers, internal and external proxy Network Load
+//     Balancers, internal and external Application Load Balancers, external
+//     protocol forwarding, and Classic VPN.
+//   - Some products have restrictions on what ports can be used. See
+//     [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
+//     for details.
+//
+// For external forwarding rules, two or more forwarding rules cannot use the
+// same '[IPAddress, IPProtocol]' pair, and cannot have overlapping
+// 'portRange's.
+//
+// For internal forwarding rules within the same VPC network, two or more
+// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair, and
+// cannot have overlapping 'portRange's.
+//
+// @pattern: \d+(?:-\d+)?
+func (o GetForwardingRulesRuleOutput) PortRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PortRange }).(pulumi.StringOutput)
+}
+
+// The 'ports', 'portRange', and 'allPorts' fields are mutually exclusive.
+// Only packets addressed to ports in the specified range will be forwarded
+// to the backends configured with this forwarding rule.
+//
+// The 'ports' field has the following limitations:
+//   - It requires that the forwarding rule 'IPProtocol' be TCP, UDP, or SCTP,
+//     and
+//   - It's applicable only to the following products: internal passthrough
+//     Network Load Balancers, backend service-based external passthrough Network
+//     Load Balancers, and internal protocol forwarding.
+//   - You can specify a list of up to five ports by number, separated by
+//     commas. The ports can be contiguous or discontiguous.
+//
+// For external forwarding rules, two or more forwarding rules cannot use the
+// same '[IPAddress, IPProtocol]' pair if they share at least one port
+// number.
+//
+// For internal forwarding rules within the same VPC network, two or more
+// forwarding rules cannot use the same '[IPAddress, IPProtocol]' pair if
+// they share at least one port number.
+//
+// @pattern: \d+(?:-\d+)?
+func (o GetForwardingRulesRuleOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+// The name of the project.
+func (o GetForwardingRulesRuleOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Forwarding Rule.
+func (o GetForwardingRulesRuleOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The PSC connection status of the PSC Forwarding Rule. Possible values: 'STATUS_UNSPECIFIED', 'PENDING', 'ACCEPTED', 'REJECTED', 'CLOSED'
+func (o GetForwardingRulesRuleOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetForwardingRulesRuleOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to make terraform recreate the ForwardingRule when the status is closed
+func (o GetForwardingRulesRuleOutput) RecreateClosedPsc() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) bool { return v.RecreateClosedPsc }).(pulumi.BoolOutput)
+}
+
+// The region you want to get the forwarding rules from.
+//
+// These arguments must be set in either the provider or the resource in order for the information to be queried.
+func (o GetForwardingRulesRuleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URI of the resource.
+func (o GetForwardingRulesRuleOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Service Directory resources to register this forwarding rule with.
+//
+// Currently, only supports a single Service Directory resource.
+func (o GetForwardingRulesRuleOutput) ServiceDirectoryRegistrations() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) []GetForwardingRulesRuleServiceDirectoryRegistration {
+		return v.ServiceDirectoryRegistrations
+	}).(GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+// An optional prefix to the service name for this Forwarding Rule.
+// If specified, will be the first label of the fully qualified service
+// name.
+//
+// The label must be 1-63 characters long, and comply with RFC1035.
+// Specifically, the label must be 1-63 characters long and match the
+// regular expression 'a-z?' which means the first
+// character must be a lowercase letter, and all following characters
+// must be a dash, lowercase letter, or digit, except the last
+// character, which cannot be a dash.
+//
+// This field is only used for INTERNAL load balancing.
+func (o GetForwardingRulesRuleOutput) ServiceLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.ServiceLabel }).(pulumi.StringOutput)
+}
+
+// The internal fully qualified service name for this Forwarding Rule.
+//
+// This field is only used for INTERNAL load balancing.
+func (o GetForwardingRulesRuleOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+func (o GetForwardingRulesRuleOutput) SourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) []string { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// This field identifies the subnetwork that the load balanced IP should
+// belong to for this Forwarding Rule, used in internal load balancing and
+// network load balancing with IPv6.
+//
+// If the network specified is in auto subnet mode, this field is optional.
+// However, a subnetwork must be specified if the network is in custom subnet
+// mode or when creating external forwarding rule with IPv6.
+func (o GetForwardingRulesRuleOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the target resource to receive the matched traffic.  For
+// regional forwarding rules, this target must be in the same region as the
+// forwarding rule. For global forwarding rules, this target must be a global
+// load balancing resource.
+//
+// The forwarded traffic must be of a type appropriate to the target object.
+// *  For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+//
+// For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
+func (o GetForwardingRulesRuleOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRule)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleArrayOutput) ToGetForwardingRulesRuleArrayOutput() GetForwardingRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleArrayOutput) ToGetForwardingRulesRuleArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesRule {
+		return vs[0].([]GetForwardingRulesRule)[vs[1].(int)]
+	}).(GetForwardingRulesRuleOutput)
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistration struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace string `pulumi:"namespace"`
+	// Service Directory service to register the forwarding rule under.
+	Service string `pulumi:"service"`
+}
+
+// GetForwardingRulesRuleServiceDirectoryRegistrationInput is an input type that accepts GetForwardingRulesRuleServiceDirectoryRegistrationArgs and GetForwardingRulesRuleServiceDirectoryRegistrationOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleServiceDirectoryRegistrationInput` via:
+//
+//	GetForwardingRulesRuleServiceDirectoryRegistrationArgs{...}
+type GetForwardingRulesRuleServiceDirectoryRegistrationInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationOutput() GetForwardingRulesRuleServiceDirectoryRegistrationOutput
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationOutput
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationArgs struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Service Directory service to register the forwarding rule under.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArgs) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutput() GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return i.ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArgs) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleServiceDirectoryRegistrationOutput)
+}
+
+// GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput is an input type that accepts GetForwardingRulesRuleServiceDirectoryRegistrationArray and GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput` via:
+//
+//	GetForwardingRulesRuleServiceDirectoryRegistrationArray{ GetForwardingRulesRuleServiceDirectoryRegistrationArgs{...} }
+type GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput
+	ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationArray []GetForwardingRulesRuleServiceDirectoryRegistrationInput
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArray) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return i.ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetForwardingRulesRuleServiceDirectoryRegistrationArray) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutput() GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+// Service Directory namespace to register the forwarding rule under.
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Service Directory service to register the forwarding rule under.
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetForwardingRulesRuleServiceDirectoryRegistration) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetForwardingRulesRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRulesRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) GetForwardingRulesRuleServiceDirectoryRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRulesRuleServiceDirectoryRegistration {
+		return vs[0].([]GetForwardingRulesRuleServiceDirectoryRegistration)[vs[1].(int)]
+	}).(GetForwardingRulesRuleServiceDirectoryRegistrationOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilter struct {
+	// The list of label value pairs that must match labels in the
+	// provided metadata based on filterMatchCriteria
+	//
+	// This list must not be empty and can have at the most 64 entries.
+	FilterLabels []GetGlobalForwardingRuleMetadataFilterFilterLabel `pulumi:"filterLabels"`
+	// Specifies how individual filterLabel matches within the list of
+	// filterLabels contribute towards the overall metadataFilter match.
+	//
+	// MATCH_ANY - At least one of the filterLabels must have a matching
+	// label in the provided metadata.
+	// MATCH_ALL - All filterLabels must have matching labels in the
+	// provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
+	FilterMatchCriteria string `pulumi:"filterMatchCriteria"`
+}
+
+// GetGlobalForwardingRuleMetadataFilterInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArgs and GetGlobalForwardingRuleMetadataFilterOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterArgs{...}
+type GetGlobalForwardingRuleMetadataFilterInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput
+	ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterArgs struct {
+	// The list of label value pairs that must match labels in the
+	// provided metadata based on filterMatchCriteria
+	//
+	// This list must not be empty and can have at the most 64 entries.
+	FilterLabels GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput `pulumi:"filterLabels"`
+	// Specifies how individual filterLabel matches within the list of
+	// filterLabels contribute towards the overall metadataFilter match.
+	//
+	// MATCH_ANY - At least one of the filterLabels must have a matching
+	// label in the provided metadata.
+	// MATCH_ALL - All filterLabels must have matching labels in the
+	// provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
+	FilterMatchCriteria pulumi.StringInput `pulumi:"filterMatchCriteria"`
+}
+
+func (GetGlobalForwardingRuleMetadataFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArgs) ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArgs) ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterOutput)
+}
+
+// GetGlobalForwardingRuleMetadataFilterArrayInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterArray and GetGlobalForwardingRuleMetadataFilterArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterArrayInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterArray{ GetGlobalForwardingRuleMetadataFilterArgs{...} }
+type GetGlobalForwardingRuleMetadataFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput
+	ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterArray []GetGlobalForwardingRuleMetadataFilterInput
+
+func (GetGlobalForwardingRuleMetadataFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArray) ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterArray) ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterArrayOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMetadataFilterOutput() GetGlobalForwardingRuleMetadataFilterOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterOutput) ToGetGlobalForwardingRuleMetadataFilterOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterOutput {
+	return o
+}
+
+// The list of label value pairs that must match labels in the
+// provided metadata based on filterMatchCriteria
+//
+// This list must not be empty and can have at the most 64 entries.
+func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterLabels() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) []GetGlobalForwardingRuleMetadataFilterFilterLabel {
+		return v.FilterLabels
+	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+// Specifies how individual filterLabel matches within the list of
+// filterLabels contribute towards the overall metadataFilter match.
+//
+// MATCH_ANY - At least one of the filterLabels must have a matching
+// label in the provided metadata.
+// MATCH_ALL - All filterLabels must have matching labels in the
+// provided metadata. Possible values: ["MATCH_ANY", "MATCH_ALL"]
+func (o GetGlobalForwardingRuleMetadataFilterOutput) FilterMatchCriteria() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilter) string { return v.FilterMatchCriteria }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilter)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) ToGetGlobalForwardingRuleMetadataFilterArrayOutput() GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) ToGetGlobalForwardingRuleMetadataFilterArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleMetadataFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilter {
+		return vs[0].([]GetGlobalForwardingRuleMetadataFilter)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleMetadataFilterOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
+	// The name of the global forwarding rule.
+	//
+	// ***
+	Name string `pulumi:"name"`
+	// The value that the label must match. The value has a maximum
+	// length of 1024 characters.
+	Value string `pulumi:"value"`
+}
+
+// GetGlobalForwardingRuleMetadataFilterFilterLabelInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterFilterLabelArgs and GetGlobalForwardingRuleMetadataFilterFilterLabelOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterFilterLabelInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{...}
+type GetGlobalForwardingRuleMetadataFilterFilterLabelInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
+	// The name of the global forwarding rule.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value that the label must match. The value has a maximum
+	// length of 1024 characters.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArgs) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+// GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput is an input type that accepts GetGlobalForwardingRuleMetadataFilterFilterLabelArray and GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput` via:
+//
+//	GetGlobalForwardingRuleMetadataFilterFilterLabelArray{ GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{...} }
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput
+	ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArray []GetGlobalForwardingRuleMetadataFilterFilterLabelInput
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return i.ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleMetadataFilterFilterLabelArray) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return o
+}
+
+// The name of the global forwarding rule.
+//
+// ***
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value that the label must match. The value has a maximum
+// length of 1024 characters.
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleMetadataFilterFilterLabel)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput() GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) ToGetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleMetadataFilterFilterLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilterFilterLabel {
+		return vs[0].([]GetGlobalForwardingRuleMetadataFilterFilterLabel)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistration struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace string `pulumi:"namespace"`
+	// [Optional] Service Directory region to register this global forwarding rule under.
+	// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+	// Google APIs Forwarding Rules on the same network should use the same Service
+	// Directory region.
+	ServiceDirectoryRegion string `pulumi:"serviceDirectoryRegion"`
+}
+
+// GetGlobalForwardingRuleServiceDirectoryRegistrationInput is an input type that accepts GetGlobalForwardingRuleServiceDirectoryRegistrationArgs and GetGlobalForwardingRuleServiceDirectoryRegistrationOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleServiceDirectoryRegistrationInput` via:
+//
+//	GetGlobalForwardingRuleServiceDirectoryRegistrationArgs{...}
+type GetGlobalForwardingRuleServiceDirectoryRegistrationInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationOutput
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArgs struct {
+	// Service Directory namespace to register the forwarding rule under.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// [Optional] Service Directory region to register this global forwarding rule under.
+	// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+	// Google APIs Forwarding Rules on the same network should use the same Service
+	// Directory region.
+	ServiceDirectoryRegion pulumi.StringInput `pulumi:"serviceDirectoryRegion"`
+}
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArgs) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return i.ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArgs) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleServiceDirectoryRegistrationOutput)
+}
+
+// GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput is an input type that accepts GetGlobalForwardingRuleServiceDirectoryRegistrationArray and GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput` via:
+//
+//	GetGlobalForwardingRuleServiceDirectoryRegistrationArray{ GetGlobalForwardingRuleServiceDirectoryRegistrationArgs{...} }
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArray []GetGlobalForwardingRuleServiceDirectoryRegistrationInput
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArray) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return i.ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArray) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+// Service Directory namespace to register the forwarding rule under.
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// [Optional] Service Directory region to register this global forwarding rule under.
+// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+// Google APIs Forwarding Rules on the same network should use the same Service
+// Directory region.
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ServiceDirectoryRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleServiceDirectoryRegistration) string { return v.ServiceDirectoryRegion }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleServiceDirectoryRegistration {
+		return vs[0].([]GetGlobalForwardingRuleServiceDirectoryRegistration)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleServiceDirectoryRegistrationOutput)
+}
+
+type GetHcVpnGatewayParam struct {
+	// Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetHcVpnGatewayParamInput is an input type that accepts GetHcVpnGatewayParamArgs and GetHcVpnGatewayParamOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayParamInput` via:
+//
+//	GetHcVpnGatewayParamArgs{...}
+type GetHcVpnGatewayParamInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayParamOutput() GetHcVpnGatewayParamOutput
+	ToGetHcVpnGatewayParamOutputWithContext(context.Context) GetHcVpnGatewayParamOutput
+}
+
+type GetHcVpnGatewayParamArgs struct {
+	// Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+	// and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetHcVpnGatewayParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayParam)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayParamArgs) ToGetHcVpnGatewayParamOutput() GetHcVpnGatewayParamOutput {
+	return i.ToGetHcVpnGatewayParamOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayParamArgs) ToGetHcVpnGatewayParamOutputWithContext(ctx context.Context) GetHcVpnGatewayParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayParamOutput)
+}
+
+// GetHcVpnGatewayParamArrayInput is an input type that accepts GetHcVpnGatewayParamArray and GetHcVpnGatewayParamArrayOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayParamArrayInput` via:
+//
+//	GetHcVpnGatewayParamArray{ GetHcVpnGatewayParamArgs{...} }
+type GetHcVpnGatewayParamArrayInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayParamArrayOutput() GetHcVpnGatewayParamArrayOutput
+	ToGetHcVpnGatewayParamArrayOutputWithContext(context.Context) GetHcVpnGatewayParamArrayOutput
+}
+
+type GetHcVpnGatewayParamArray []GetHcVpnGatewayParamInput
+
+func (GetHcVpnGatewayParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayParam)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayParamArray) ToGetHcVpnGatewayParamArrayOutput() GetHcVpnGatewayParamArrayOutput {
+	return i.ToGetHcVpnGatewayParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayParamArray) ToGetHcVpnGatewayParamArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayParamArrayOutput)
+}
+
+type GetHcVpnGatewayParamOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayParam)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayParamOutput) ToGetHcVpnGatewayParamOutput() GetHcVpnGatewayParamOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayParamOutput) ToGetHcVpnGatewayParamOutputWithContext(ctx context.Context) GetHcVpnGatewayParamOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the HaVpnGateway. Tag keys and values have the
+// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
+// and values are in the format tagValues/456.
+func (o GetHcVpnGatewayParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetHcVpnGatewayParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayParam)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayParamArrayOutput) ToGetHcVpnGatewayParamArrayOutput() GetHcVpnGatewayParamArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayParamArrayOutput) ToGetHcVpnGatewayParamArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayParamArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayParamArrayOutput) Index(i pulumi.IntInput) GetHcVpnGatewayParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHcVpnGatewayParam {
+		return vs[0].([]GetHcVpnGatewayParam)[vs[1].(int)]
+	}).(GetHcVpnGatewayParamOutput)
+}
+
+type GetHcVpnGatewayVpnInterface struct {
+	// The numeric ID of this VPN gateway interface.
+	Id int `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value
+	// of this field is present, the VPN Gateway will be used for
+	// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+	// traffic for this VPN Gateway interface will go through the
+	// specified interconnect attachment resource.
+	//
+	// Not currently available publicly.
+	InterconnectAttachment string `pulumi:"interconnectAttachment"`
+	// The external IP address for this VPN gateway interface.
+	IpAddress string `pulumi:"ipAddress"`
+}
+
+// GetHcVpnGatewayVpnInterfaceInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArgs and GetHcVpnGatewayVpnInterfaceOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayVpnInterfaceInput` via:
+//
+//	GetHcVpnGatewayVpnInterfaceArgs{...}
+type GetHcVpnGatewayVpnInterfaceInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput
+	ToGetHcVpnGatewayVpnInterfaceOutputWithContext(context.Context) GetHcVpnGatewayVpnInterfaceOutput
+}
+
+type GetHcVpnGatewayVpnInterfaceArgs struct {
+	// The numeric ID of this VPN gateway interface.
+	Id pulumi.IntInput `pulumi:"id"`
+	// URL of the interconnect attachment resource. When the value
+	// of this field is present, the VPN Gateway will be used for
+	// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+	// traffic for this VPN Gateway interface will go through the
+	// specified interconnect attachment resource.
+	//
+	// Not currently available publicly.
+	InterconnectAttachment pulumi.StringInput `pulumi:"interconnectAttachment"`
+	// The external IP address for this VPN gateway interface.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+}
+
+func (GetHcVpnGatewayVpnInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArgs) ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput {
+	return i.ToGetHcVpnGatewayVpnInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArgs) ToGetHcVpnGatewayVpnInterfaceOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayVpnInterfaceOutput)
+}
+
+// GetHcVpnGatewayVpnInterfaceArrayInput is an input type that accepts GetHcVpnGatewayVpnInterfaceArray and GetHcVpnGatewayVpnInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetHcVpnGatewayVpnInterfaceArrayInput` via:
+//
+//	GetHcVpnGatewayVpnInterfaceArray{ GetHcVpnGatewayVpnInterfaceArgs{...} }
+type GetHcVpnGatewayVpnInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput
+	ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput
+}
+
+type GetHcVpnGatewayVpnInterfaceArray []GetHcVpnGatewayVpnInterfaceInput
+
+func (GetHcVpnGatewayVpnInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArray) ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return i.ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetHcVpnGatewayVpnInterfaceArray) ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHcVpnGatewayVpnInterfaceArrayOutput)
+}
+
+type GetHcVpnGatewayVpnInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayVpnInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutput() GetHcVpnGatewayVpnInterfaceOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceOutput) ToGetHcVpnGatewayVpnInterfaceOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceOutput {
+	return o
+}
+
+// The numeric ID of this VPN gateway interface.
+func (o GetHcVpnGatewayVpnInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// URL of the interconnect attachment resource. When the value
+// of this field is present, the VPN Gateway will be used for
+// IPsec-encrypted Cloud Interconnect; all Egress or Ingress
+// traffic for this VPN Gateway interface will go through the
+// specified interconnect attachment resource.
+//
+// Not currently available publicly.
+func (o GetHcVpnGatewayVpnInterfaceOutput) InterconnectAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.InterconnectAttachment }).(pulumi.StringOutput)
+}
+
+// The external IP address for this VPN gateway interface.
+func (o GetHcVpnGatewayVpnInterfaceOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayVpnInterface) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+type GetHcVpnGatewayVpnInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHcVpnGatewayVpnInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHcVpnGatewayVpnInterface)(nil)).Elem()
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) ToGetHcVpnGatewayVpnInterfaceArrayOutput() GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) ToGetHcVpnGatewayVpnInterfaceArrayOutputWithContext(ctx context.Context) GetHcVpnGatewayVpnInterfaceArrayOutput {
+	return o
+}
+
+func (o GetHcVpnGatewayVpnInterfaceArrayOutput) Index(i pulumi.IntInput) GetHcVpnGatewayVpnInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHcVpnGatewayVpnInterface {
+		return vs[0].([]GetHcVpnGatewayVpnInterface)[vs[1].(int)]
+	}).(GetHcVpnGatewayVpnInterfaceOutput)
+}
+
+type GetHealthCheckGrpcHealthCheck struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	//   - Empty serviceName means the overall status of all services at the backend.
+	//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//     The grpcServiceName can only be ASCII.
+	GrpcServiceName string `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, gRPC health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+}
+
+// GetHealthCheckGrpcHealthCheckInput is an input type that accepts GetHealthCheckGrpcHealthCheckArgs and GetHealthCheckGrpcHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcHealthCheckInput` via:
+//
+//	GetHealthCheckGrpcHealthCheckArgs{...}
+type GetHealthCheckGrpcHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput
+	ToGetHealthCheckGrpcHealthCheckOutputWithContext(context.Context) GetHealthCheckGrpcHealthCheckOutput
+}
+
+type GetHealthCheckGrpcHealthCheckArgs struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	//   - Empty serviceName means the overall status of all services at the backend.
+	//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//     The grpcServiceName can only be ASCII.
+	GrpcServiceName pulumi.StringInput `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portName and portSpecification are not set
+	// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, gRPC health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+}
+
+func (GetHealthCheckGrpcHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcHealthCheckArgs) ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput {
+	return i.ToGetHealthCheckGrpcHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcHealthCheckArgs) ToGetHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcHealthCheckOutput)
+}
+
+// GetHealthCheckGrpcHealthCheckArrayInput is an input type that accepts GetHealthCheckGrpcHealthCheckArray and GetHealthCheckGrpcHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcHealthCheckArrayInput` via:
+//
+//	GetHealthCheckGrpcHealthCheckArray{ GetHealthCheckGrpcHealthCheckArgs{...} }
+type GetHealthCheckGrpcHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput
+	ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckGrpcHealthCheckArrayOutput
+}
+
+type GetHealthCheckGrpcHealthCheckArray []GetHealthCheckGrpcHealthCheckInput
+
+func (GetHealthCheckGrpcHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcHealthCheckArray) ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput {
+	return i.ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcHealthCheckArray) ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcHealthCheckArrayOutput)
+}
+
+type GetHealthCheckGrpcHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+//   - Empty serviceName means the overall status of all services at the backend.
+//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//     The grpcServiceName can only be ASCII.
+func (o GetHealthCheckGrpcHealthCheckOutput) GrpcServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.GrpcServiceName }).(pulumi.StringOutput)
+}
+
+// The port number for the health check request.
+// Must be specified if portName and portSpecification are not set
+// or if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+func (o GetHealthCheckGrpcHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o GetHealthCheckGrpcHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, gRPC health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckGrpcHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckGrpcHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckGrpcHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckGrpcHealthCheck {
+		return vs[0].([]GetHealthCheckGrpcHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckGrpcHealthCheckOutput)
+}
+
+type GetHealthCheckGrpcTlsHealthCheck struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	//   - Empty serviceName means the overall status of all services at the backend.
+	//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//     The grpcServiceName can only be ASCII.
+	GrpcServiceName string `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port int `pulumi:"port"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': Not supported for GRPC with TLS health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, gRPC with TLS health check follows behavior specified in the 'port' field. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+}
+
+// GetHealthCheckGrpcTlsHealthCheckInput is an input type that accepts GetHealthCheckGrpcTlsHealthCheckArgs and GetHealthCheckGrpcTlsHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcTlsHealthCheckInput` via:
+//
+//	GetHealthCheckGrpcTlsHealthCheckArgs{...}
+type GetHealthCheckGrpcTlsHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcTlsHealthCheckOutput() GetHealthCheckGrpcTlsHealthCheckOutput
+	ToGetHealthCheckGrpcTlsHealthCheckOutputWithContext(context.Context) GetHealthCheckGrpcTlsHealthCheckOutput
+}
+
+type GetHealthCheckGrpcTlsHealthCheckArgs struct {
+	// The gRPC service name for the health check.
+	// The value of grpcServiceName has the following meanings by convention:
+	//   - Empty serviceName means the overall status of all services at the backend.
+	//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+	//     The grpcServiceName can only be ASCII.
+	GrpcServiceName pulumi.StringInput `pulumi:"grpcServiceName"`
+	// The port number for the health check request.
+	// Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': Not supported for GRPC with TLS health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, gRPC with TLS health check follows behavior specified in the 'port' field. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+}
+
+func (GetHealthCheckGrpcTlsHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcTlsHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcTlsHealthCheckArgs) ToGetHealthCheckGrpcTlsHealthCheckOutput() GetHealthCheckGrpcTlsHealthCheckOutput {
+	return i.ToGetHealthCheckGrpcTlsHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcTlsHealthCheckArgs) ToGetHealthCheckGrpcTlsHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcTlsHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcTlsHealthCheckOutput)
+}
+
+// GetHealthCheckGrpcTlsHealthCheckArrayInput is an input type that accepts GetHealthCheckGrpcTlsHealthCheckArray and GetHealthCheckGrpcTlsHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcTlsHealthCheckArrayInput` via:
+//
+//	GetHealthCheckGrpcTlsHealthCheckArray{ GetHealthCheckGrpcTlsHealthCheckArgs{...} }
+type GetHealthCheckGrpcTlsHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcTlsHealthCheckArrayOutput() GetHealthCheckGrpcTlsHealthCheckArrayOutput
+	ToGetHealthCheckGrpcTlsHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckGrpcTlsHealthCheckArrayOutput
+}
+
+type GetHealthCheckGrpcTlsHealthCheckArray []GetHealthCheckGrpcTlsHealthCheckInput
+
+func (GetHealthCheckGrpcTlsHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcTlsHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcTlsHealthCheckArray) ToGetHealthCheckGrpcTlsHealthCheckArrayOutput() GetHealthCheckGrpcTlsHealthCheckArrayOutput {
+	return i.ToGetHealthCheckGrpcTlsHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcTlsHealthCheckArray) ToGetHealthCheckGrpcTlsHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcTlsHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcTlsHealthCheckArrayOutput)
+}
+
+type GetHealthCheckGrpcTlsHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcTlsHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcTlsHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcTlsHealthCheckOutput) ToGetHealthCheckGrpcTlsHealthCheckOutput() GetHealthCheckGrpcTlsHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcTlsHealthCheckOutput) ToGetHealthCheckGrpcTlsHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcTlsHealthCheckOutput {
+	return o
+}
+
+// The gRPC service name for the health check.
+// The value of grpcServiceName has the following meanings by convention:
+//   - Empty serviceName means the overall status of all services at the backend.
+//   - Non-empty serviceName means the health of that gRPC service, as defined by the owner of the service.
+//     The grpcServiceName can only be ASCII.
+func (o GetHealthCheckGrpcTlsHealthCheckOutput) GrpcServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcTlsHealthCheck) string { return v.GrpcServiceName }).(pulumi.StringOutput)
+}
+
+// The port number for the health check request.
+// Must be specified if portSpecification is USE_FIXED_PORT. Valid values are 1 through 65535.
+func (o GetHealthCheckGrpcTlsHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcTlsHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': Not supported for GRPC with TLS health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, gRPC with TLS health check follows behavior specified in the 'port' field. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckGrpcTlsHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcTlsHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckGrpcTlsHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcTlsHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcTlsHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcTlsHealthCheckArrayOutput) ToGetHealthCheckGrpcTlsHealthCheckArrayOutput() GetHealthCheckGrpcTlsHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcTlsHealthCheckArrayOutput) ToGetHealthCheckGrpcTlsHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcTlsHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcTlsHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckGrpcTlsHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckGrpcTlsHealthCheck {
+		return vs[0].([]GetHealthCheckGrpcTlsHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckGrpcTlsHealthCheckOutput)
+}
+
+type GetHealthCheckHttp2HealthCheck struct {
+	// The value of the host header in the HTTP2 health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host string `pulumi:"host"`
+	// The TCP port number for the HTTP2 health check request.
+	// The default value is 443.
+	Port int `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName string `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP2 health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification string `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader string `pulumi:"proxyHeader"`
+	// The request path of the HTTP2 health check request.
+	// The default value is /.
+	RequestPath string `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response string `pulumi:"response"`
+}
+
+// GetHealthCheckHttp2HealthCheckInput is an input type that accepts GetHealthCheckHttp2HealthCheckArgs and GetHealthCheckHttp2HealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttp2HealthCheckInput` via:
+//
+//	GetHealthCheckHttp2HealthCheckArgs{...}
+type GetHealthCheckHttp2HealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput
+	ToGetHealthCheckHttp2HealthCheckOutputWithContext(context.Context) GetHealthCheckHttp2HealthCheckOutput
+}
+
+type GetHealthCheckHttp2HealthCheckArgs struct {
+	// The value of the host header in the HTTP2 health check request.
+	// If left empty (default value), the public IP on behalf of which this health
+	// check is performed will be used.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The TCP port number for the HTTP2 health check request.
+	// The default value is 443.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+	// portName are defined, port takes precedence.
+	PortName pulumi.StringInput `pulumi:"portName"`
+	// Specifies how port is selected for health checking, can be one of the
+	// following values:
+	//
+	//   * 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+	//
+	//   * 'USE_NAMED_PORT': The 'portName' is used for health checking.
+	//
+	//   * 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+	//   network endpoint is used for health checking. For other backends, the
+	//   port or named port specified in the Backend Service is used for health
+	//   checking.
+	//
+	// If not specified, HTTP2 health check follows behavior specified in 'port' and
+	// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	// Specifies the type of proxy header to append before sending data to the
+	// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+	ProxyHeader pulumi.StringInput `pulumi:"proxyHeader"`
+	// The request path of the HTTP2 health check request.
+	// The default value is /.
+	RequestPath pulumi.StringInput `pulumi:"requestPath"`
+	// The bytes to match against the beginning of the response data. If left empty
+	// (the default value), any response will indicate health. The response data
+	// can only be ASCII.
+	Response pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttp2HealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttp2HealthCheckArgs) ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput {
+	return i.ToGetHealthCheckHttp2HealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttp2HealthCheckArgs) ToGetHealthCheckHttp2HealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttp2HealthCheckOutput)
+}
+
+// GetHealthCheckHttp2HealthCheckArrayInput is an input type that accepts GetHealthCheckHttp2HealthCheckArray and GetHealthCheckHttp2HealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttp2HealthCheckArrayInput` via:
+//
+//	GetHealthCheckHttp2HealthCheckArray{ GetHealthCheckHttp2HealthCheckArgs{...} }
+type GetHealthCheckHttp2HealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput
+	ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttp2HealthCheckArrayOutput
+}
+
+type GetHealthCheckHttp2HealthCheckArray []GetHealthCheckHttp2HealthCheckInput
+
+func (GetHealthCheckHttp2HealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttp2HealthCheckArray) ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttp2HealthCheckArray) ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttp2HealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttp2HealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttp2HealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckOutput {
+	return o
+}
+
+// The value of the host header in the HTTP2 health check request.
+// If left empty (default value), the public IP on behalf of which this health
+// check is performed will be used.
+func (o GetHealthCheckHttp2HealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The TCP port number for the HTTP2 health check request.
+// The default value is 443.
+func (o GetHealthCheckHttp2HealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Port name as defined in InstanceGroup#NamedPort#name. If both port and
+// portName are defined, port takes precedence.
+func (o GetHealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+// Specifies how port is selected for health checking, can be one of the
+// following values:
+//
+//   - 'USE_FIXED_PORT': The port number in 'port' is used for health checking.
+//
+//   - 'USE_NAMED_PORT': The 'portName' is used for health checking.
+//
+//   - 'USE_SERVING_PORT': For NetworkEndpointGroup, the port specified for each
+//     network endpoint is used for health checking. For other backends, the
+//     port or named port specified in the Backend Service is used for health
+//     checking.
+//
+// If not specified, HTTP2 health check follows behavior specified in 'port' and
+// 'portName' fields. Possible values: ["USE_FIXED_PORT", "USE_NAMED_PORT", "USE_SERVING_PORT"]
+func (o GetHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the
+// backend. Default value: "NONE" Possible values: ["NONE", "PROXY_V1"]
+func (o GetHealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// The request path of the HTTP2 health check request.
+// The default value is /.
+func (o GetHealthCheckHttp2HealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+// The bytes to match against the beginning of the response data. If left empty
+// (the default value), any response will indicate health. The response data
+// can only be ASCII.
+func (o GetHealthCheckHttp2HealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttp2HealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttp2HealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttp2HealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttp2HealthCheck {
+		return vs[0].([]GetHealthCheckHttp2HealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttp2HealthCheckOutput)
+}
+
 type GetHealthCheckHttpHealthCheck struct {
 	// The value of the host header in the HTTP health check request.
 	// If left empty (default value), the public IP on behalf of which this health
@@ -6423,7 +8766,7 @@ type GetInstanceScheduling struct {
 	Preemptible bool `pulumi:"preemptible"`
 	// The duration of the notice that the instance will receive before it is preempted.
 	PreemptionNoticeDurations []GetInstanceSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDurations"`
-	// Describe the type of preemptible VM.
+	// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 	ProvisioningModel string `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown bool `pulumi:"skipGuestOsShutdown"`
@@ -6478,7 +8821,7 @@ type GetInstanceSchedulingArgs struct {
 	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
 	// The duration of the notice that the instance will receive before it is preempted.
 	PreemptionNoticeDurations GetInstanceSchedulingPreemptionNoticeDurationArrayInput `pulumi:"preemptionNoticeDurations"`
-	// Describe the type of preemptible VM.
+	// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown pulumi.BoolInput `pulumi:"skipGuestOsShutdown"`
@@ -6621,7 +8964,7 @@ func (o GetInstanceSchedulingOutput) PreemptionNoticeDurations() GetInstanceSche
 	}).(GetInstanceSchedulingPreemptionNoticeDurationArrayOutput)
 }
 
-// Describe the type of preemptible VM.
+// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 func (o GetInstanceSchedulingOutput) ProvisioningModel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) string { return v.ProvisioningModel }).(pulumi.StringOutput)
 }
@@ -10079,7 +12422,7 @@ type GetInstanceTemplateScheduling struct {
 	Preemptible bool `pulumi:"preemptible"`
 	// The duration of the notice that the instance will receive before it is preempted.
 	PreemptionNoticeDurations []GetInstanceTemplateSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDurations"`
-	// Describe the type of preemptible VM.
+	// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 	ProvisioningModel string `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown bool `pulumi:"skipGuestOsShutdown"`
@@ -10141,7 +12484,7 @@ type GetInstanceTemplateSchedulingArgs struct {
 	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
 	// The duration of the notice that the instance will receive before it is preempted.
 	PreemptionNoticeDurations GetInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput `pulumi:"preemptionNoticeDurations"`
-	// Describe the type of preemptible VM.
+	// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown pulumi.BoolInput `pulumi:"skipGuestOsShutdown"`
@@ -10297,7 +12640,7 @@ func (o GetInstanceTemplateSchedulingOutput) PreemptionNoticeDurations() GetInst
 	}).(GetInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput)
 }
 
-// Describe the type of preemptible VM.
+// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 func (o GetInstanceTemplateSchedulingOutput) ProvisioningModel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.ProvisioningModel }).(pulumi.StringOutput)
 }
@@ -23785,7 +26128,7 @@ type GetRegionInstanceTemplateScheduling struct {
 	Preemptible bool `pulumi:"preemptible"`
 	// The duration of the notice that the instance will receive before it is preempted.
 	PreemptionNoticeDurations []GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration `pulumi:"preemptionNoticeDurations"`
-	// Describe the type of preemptible VM.
+	// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 	ProvisioningModel string `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown bool `pulumi:"skipGuestOsShutdown"`
@@ -23847,7 +26190,7 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
 	// The duration of the notice that the instance will receive before it is preempted.
 	PreemptionNoticeDurations GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayInput `pulumi:"preemptionNoticeDurations"`
-	// Describe the type of preemptible VM.
+	// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 	ProvisioningModel pulumi.StringInput `pulumi:"provisioningModel"`
 	// Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
 	SkipGuestOsShutdown pulumi.BoolInput `pulumi:"skipGuestOsShutdown"`
@@ -24003,7 +26346,7 @@ func (o GetRegionInstanceTemplateSchedulingOutput) PreemptionNoticeDurations() G
 	}).(GetRegionInstanceTemplateSchedulingPreemptionNoticeDurationArrayOutput)
 }
 
-// Describe the type of preemptible VM.
+// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
 func (o GetRegionInstanceTemplateSchedulingOutput) ProvisioningModel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) string { return v.ProvisioningModel }).(pulumi.StringOutput)
 }
@@ -41691,6 +44034,26 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleInput)(nil)).Elem(), GetForwardingRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleArrayInput)(nil)).Elem(), GetForwardingRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetForwardingRulesRuleServiceDirectoryRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRulesRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetForwardingRulesRuleServiceDirectoryRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetGlobalForwardingRuleServiceDirectoryRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetGlobalForwardingRuleServiceDirectoryRegistrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayParamInput)(nil)).Elem(), GetHcVpnGatewayParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayParamArrayInput)(nil)).Elem(), GetHcVpnGatewayParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayVpnInterfaceInput)(nil)).Elem(), GetHcVpnGatewayVpnInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayVpnInterfaceArrayInput)(nil)).Elem(), GetHcVpnGatewayVpnInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcHealthCheckInput)(nil)).Elem(), GetHealthCheckGrpcHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckGrpcHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcTlsHealthCheckInput)(nil)).Elem(), GetHealthCheckGrpcTlsHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcTlsHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckGrpcTlsHealthCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttp2HealthCheckInput)(nil)).Elem(), GetHealthCheckHttp2HealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttp2HealthCheckArrayInput)(nil)).Elem(), GetHealthCheckHttp2HealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpHealthCheckInput)(nil)).Elem(), GetHealthCheckHttpHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpHealthCheckArrayInput)(nil)).Elem(), GetHealthCheckHttpHealthCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckHttpsHealthCheckInput)(nil)).Elem(), GetHealthCheckHttpsHealthCheckArgs{})
@@ -42315,6 +44678,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleServiceDirectoryRegistrationOutput{})
+	pulumi.RegisterOutputType(GetForwardingRulesRuleServiceDirectoryRegistrationArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleServiceDirectoryRegistrationOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayParamOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayParamArrayOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceOutput{})
+	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcTlsHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcTlsHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckHttpsHealthCheckOutput{})

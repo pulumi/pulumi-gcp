@@ -89,6 +89,7 @@ export interface GetJobResult {
     readonly reconciling: boolean;
     readonly runExecutionToken: string;
     readonly startExecutionToken: string;
+    readonly tags: {[key: string]: string};
     readonly templates: outputs.cloudrunv2.GetJobTemplate[];
     readonly terminalConditions: outputs.cloudrunv2.GetJobTerminalCondition[];
     readonly uid: string;

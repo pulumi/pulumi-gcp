@@ -20,9 +20,6 @@ import * as utilities from "../utilities";
  * Reading an uninitialized or deprovisioned engine returns the singleton
  * with state INACTIVE rather than reporting it as absent.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about SemanticGovernancePolicyEngine, see:
  * * How-to Guides
  *     * [Semantic governance overview](https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/semantic-governance-overview)

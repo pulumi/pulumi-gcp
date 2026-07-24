@@ -369,7 +369,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
-//				DatasetId: pulumi.String("tf_test_dataset_id_21197"),
+//				DatasetId: pulumi.String("tf_test_dataset_id_60302"),
 //			})
 //			if err != nil {
 //				return err

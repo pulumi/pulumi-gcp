@@ -64,13 +64,13 @@ import * as utilities from "../utilities";
  *     machineType: output(Promise.all([example, std.startswith({
  *         input: mt.name,
  *         prefix: "c3-",
- *     }), example, std.startswith({
+ *     }), std.startswith({
  *         input: mt.name,
  *         prefix: "c2-",
- *     }), example, std.startswith({
+ *     }), std.startswith({
  *         input: mt.name,
  *         prefix: "n2-",
- *     })]).then(([example, invoke, example1, invoke1, example2, invoke2]) => std.coalescelist({
+ *     })]).then(([example, invoke, invoke1, invoke2]) => std.coalescelist({
  *         input: [
  *             .filter(mt => invoke.result).map(mt => (mt.name)),
  *             .filter(mt => invoke1.result).map(mt => (mt.name)),
@@ -187,13 +187,13 @@ export interface GetMachineTypesResult {
  *     machineType: output(Promise.all([example, std.startswith({
  *         input: mt.name,
  *         prefix: "c3-",
- *     }), example, std.startswith({
+ *     }), std.startswith({
  *         input: mt.name,
  *         prefix: "c2-",
- *     }), example, std.startswith({
+ *     }), std.startswith({
  *         input: mt.name,
  *         prefix: "n2-",
- *     })]).then(([example, invoke, example1, invoke1, example2, invoke2]) => std.coalescelist({
+ *     })]).then(([example, invoke, invoke1, invoke2]) => std.coalescelist({
  *         input: [
  *             .filter(mt => invoke.result).map(mt => (mt.name)),
  *             .filter(mt => invoke1.result).map(mt => (mt.name)),

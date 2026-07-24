@@ -42,6 +42,7 @@ public final class GetDatabaseInstanceResult {
      * 
      */
     private String id;
+    private Boolean includeReplicasForMajorVersionUpgrade;
     private String instanceType;
     private List<GetDatabaseInstanceIpAddress> ipAddresses;
     private String maintenanceVersion;
@@ -65,6 +66,7 @@ public final class GetDatabaseInstanceResult {
     private List<GetDatabaseInstanceServerCaCert> serverCaCerts;
     private String serviceAccountEmailAddress;
     private List<GetDatabaseInstanceSetting> settings;
+    private Boolean switchTransactionLogsToCloudStorageEnabled;
 
     private GetDatabaseInstanceResult() {}
     public List<String> availableMaintenanceVersions() {
@@ -112,6 +114,9 @@ public final class GetDatabaseInstanceResult {
      */
     public String id() {
         return this.id;
+    }
+    public Boolean includeReplicasForMajorVersionUpgrade() {
+        return this.includeReplicasForMajorVersionUpgrade;
     }
     public String instanceType() {
         return this.instanceType;
@@ -182,6 +187,9 @@ public final class GetDatabaseInstanceResult {
     public List<GetDatabaseInstanceSetting> settings() {
         return this.settings;
     }
+    public Boolean switchTransactionLogsToCloudStorageEnabled() {
+        return this.switchTransactionLogsToCloudStorageEnabled;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -206,6 +214,7 @@ public final class GetDatabaseInstanceResult {
         private String finalBackupDescription;
         private String firstIpAddress;
         private String id;
+        private Boolean includeReplicasForMajorVersionUpgrade;
         private String instanceType;
         private List<GetDatabaseInstanceIpAddress> ipAddresses;
         private String maintenanceVersion;
@@ -229,6 +238,7 @@ public final class GetDatabaseInstanceResult {
         private List<GetDatabaseInstanceServerCaCert> serverCaCerts;
         private String serviceAccountEmailAddress;
         private List<GetDatabaseInstanceSetting> settings;
+        private Boolean switchTransactionLogsToCloudStorageEnabled;
         public Builder() {}
         public Builder(GetDatabaseInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -246,6 +256,7 @@ public final class GetDatabaseInstanceResult {
     	      this.finalBackupDescription = defaults.finalBackupDescription;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.id = defaults.id;
+    	      this.includeReplicasForMajorVersionUpgrade = defaults.includeReplicasForMajorVersionUpgrade;
     	      this.instanceType = defaults.instanceType;
     	      this.ipAddresses = defaults.ipAddresses;
     	      this.maintenanceVersion = defaults.maintenanceVersion;
@@ -269,6 +280,7 @@ public final class GetDatabaseInstanceResult {
     	      this.serverCaCerts = defaults.serverCaCerts;
     	      this.serviceAccountEmailAddress = defaults.serviceAccountEmailAddress;
     	      this.settings = defaults.settings;
+    	      this.switchTransactionLogsToCloudStorageEnabled = defaults.switchTransactionLogsToCloudStorageEnabled;
         }
 
         @CustomType.Setter
@@ -390,6 +402,14 @@ public final class GetDatabaseInstanceResult {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeReplicasForMajorVersionUpgrade(Boolean includeReplicasForMajorVersionUpgrade) {
+            if (includeReplicasForMajorVersionUpgrade == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "includeReplicasForMajorVersionUpgrade");
+            }
+            this.includeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
             return this;
         }
         @CustomType.Setter
@@ -598,6 +618,14 @@ public final class GetDatabaseInstanceResult {
         public Builder settings(GetDatabaseInstanceSetting... settings) {
             return settings(List.of(settings));
         }
+        @CustomType.Setter
+        public Builder switchTransactionLogsToCloudStorageEnabled(Boolean switchTransactionLogsToCloudStorageEnabled) {
+            if (switchTransactionLogsToCloudStorageEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "switchTransactionLogsToCloudStorageEnabled");
+            }
+            this.switchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
+            return this;
+        }
         public GetDatabaseInstanceResult build() {
             final var _resultValue = new GetDatabaseInstanceResult();
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
@@ -614,6 +642,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.finalBackupDescription = finalBackupDescription;
             _resultValue.firstIpAddress = firstIpAddress;
             _resultValue.id = id;
+            _resultValue.includeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
             _resultValue.instanceType = instanceType;
             _resultValue.ipAddresses = ipAddresses;
             _resultValue.maintenanceVersion = maintenanceVersion;
@@ -637,6 +666,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.serverCaCerts = serverCaCerts;
             _resultValue.serviceAccountEmailAddress = serviceAccountEmailAddress;
             _resultValue.settings = settings;
+            _resultValue.switchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
             return _resultValue;
         }
     }

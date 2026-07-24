@@ -180,7 +180,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> EndTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the already existing reservations to attach to the Commitment.
+        /// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+        /// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+        /// change another field at the same time.
         /// </summary>
         [Output("existingReservations")]
         public Output<string?> ExistingReservations { get; private set; } = null!;
@@ -345,7 +347,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies the already existing reservations to attach to the Commitment.
+        /// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+        /// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+        /// change another field at the same time.
         /// </summary>
         [Input("existingReservations")]
         public Input<string>? ExistingReservations { get; set; }
@@ -471,7 +475,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? EndTimestamp { get; set; }
 
         /// <summary>
-        /// Specifies the already existing reservations to attach to the Commitment.
+        /// Specifies the already existing reservations to attach to the Commitment. This field will suppress
+        /// diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+        /// change another field at the same time.
         /// </summary>
         [Input("existingReservations")]
         public Input<string>? ExistingReservations { get; set; }

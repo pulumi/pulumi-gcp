@@ -25,6 +25,7 @@ class InstanceArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  gce_setup: pulumi.Input[Optional['InstanceGceSetupArgs']] = None,
@@ -45,6 +46,7 @@ class InstanceArgs:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
+        :param pulumi.Input[_builtins.bool] enable_deletion_protection: Optional. If true, deletion protection will be enabled for this Workbench Instance.
         :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
@@ -72,6 +74,8 @@ class InstanceArgs:
             pulumi.set(__self__, "desired_state", desired_state)
         if disable_proxy_access is not None:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
+        if enable_deletion_protection is not None:
+            pulumi.set(__self__, "enable_deletion_protection", enable_deletion_protection)
         if enable_managed_euc is not None:
             pulumi.set(__self__, "enable_managed_euc", enable_managed_euc)
         if enable_third_party_identity is not None:
@@ -141,6 +145,18 @@ class InstanceArgs:
     @disable_proxy_access.setter
     def disable_proxy_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_proxy_access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeletionProtection")
+    def enable_deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional. If true, deletion protection will be enabled for this Workbench Instance.
+        """
+        return pulumi.get(self, "enable_deletion_protection")
+
+    @enable_deletion_protection.setter
+    def enable_deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="enableManagedEuc")
@@ -259,6 +275,7 @@ class _InstanceState:
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  gce_setup: pulumi.Input[Optional['InstanceGceSetupArgs']] = None,
@@ -290,6 +307,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] enable_deletion_protection: Optional. If true, deletion protection will be enabled for this Workbench Instance.
         :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
@@ -336,6 +354,8 @@ class _InstanceState:
             pulumi.set(__self__, "disable_proxy_access", disable_proxy_access)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if enable_deletion_protection is not None:
+            pulumi.set(__self__, "enable_deletion_protection", enable_deletion_protection)
         if enable_managed_euc is not None:
             pulumi.set(__self__, "enable_managed_euc", enable_managed_euc)
         if enable_third_party_identity is not None:
@@ -446,6 +466,18 @@ class _InstanceState:
     @effective_labels.setter
     def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeletionProtection")
+    def enable_deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional. If true, deletion protection will be enabled for this Workbench Instance.
+        """
+        return pulumi.get(self, "enable_deletion_protection")
+
+    @enable_deletion_protection.setter
+    def enable_deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="enableManagedEuc")
@@ -666,6 +698,7 @@ class Instance(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
@@ -795,10 +828,10 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
         static = gcp.compute.Address("static", name="wbi-test-default")
-        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+        act_as_permission = gcp.serviceaccount.IAMMember("act_as_permission",
             service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
             role="roles/iam.serviceAccountUser",
-            members=["user:example@example.com"])
+            member="user:example@example.com")
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
             zone="us-central1-a",
@@ -806,6 +839,7 @@ class Instance(pulumi.CustomResource):
                 "count": 1,
                 "instance_properties": {
                     "machine_type": "n1-standard-4",
+                    "min_cpu_platform": "Intel Broadwell",
                     "guest_accelerators": [{
                         "accelerator_type": "nvidia-tesla-t4",
                         "accelerator_count": 1,
@@ -813,11 +847,24 @@ class Instance(pulumi.CustomResource):
                 },
             },
             specific_reservation_required=True)
+        my_policy = gcp.compute.ResourcePolicy("my_policy",
+            name="wbi-policy",
+            region="us-central1",
+            snapshot_schedule_policy={
+                "schedule": {
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
+                    },
+                },
+            })
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
+            enable_deletion_protection=False,
             gce_setup={
                 "machine_type": "n1-standard-4",
+                "min_cpu_platform": "Intel Broadwell",
                 "accelerator_configs": [{
                     "type": "NVIDIA_TESLA_T4",
                     "core_count": "1",
@@ -842,6 +889,7 @@ class Instance(pulumi.CustomResource):
                     "disk_type": "PD_SSD",
                     "disk_encryption": "CMEK",
                     "kms_key": "my-crypto-key",
+                    "resource_policies": [my_policy.id],
                 },
                 "network_interfaces": [{
                     "network": my_network.id,
@@ -880,6 +928,7 @@ class Instance(pulumi.CustomResource):
                     static,
                     act_as_permission,
                     gpu_reservation,
+                    my_policy,
                 ]))
         ```
         ### Workbench Instance Confidential Compute
@@ -957,6 +1006,7 @@ class Instance(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
+        :param pulumi.Input[_builtins.bool] enable_deletion_protection: Optional. If true, deletion protection will be enabled for this Workbench Instance.
         :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
@@ -1103,10 +1153,10 @@ class Instance(pulumi.CustomResource):
             region="us-central1",
             ip_cidr_range="10.0.1.0/24")
         static = gcp.compute.Address("static", name="wbi-test-default")
-        act_as_permission = gcp.serviceaccount.IAMBinding("act_as_permission",
+        act_as_permission = gcp.serviceaccount.IAMMember("act_as_permission",
             service_account_id="projects/my-project-name/serviceAccounts/my@service-account.com",
             role="roles/iam.serviceAccountUser",
-            members=["user:example@example.com"])
+            member="user:example@example.com")
         gpu_reservation = gcp.compute.Reservation("gpu_reservation",
             name="wbi-reservation",
             zone="us-central1-a",
@@ -1114,6 +1164,7 @@ class Instance(pulumi.CustomResource):
                 "count": 1,
                 "instance_properties": {
                     "machine_type": "n1-standard-4",
+                    "min_cpu_platform": "Intel Broadwell",
                     "guest_accelerators": [{
                         "accelerator_type": "nvidia-tesla-t4",
                         "accelerator_count": 1,
@@ -1121,11 +1172,24 @@ class Instance(pulumi.CustomResource):
                 },
             },
             specific_reservation_required=True)
+        my_policy = gcp.compute.ResourcePolicy("my_policy",
+            name="wbi-policy",
+            region="us-central1",
+            snapshot_schedule_policy={
+                "schedule": {
+                    "daily_schedule": {
+                        "days_in_cycle": 1,
+                        "start_time": "04:00",
+                    },
+                },
+            })
         instance = gcp.workbench.Instance("instance",
             name="workbench-instance",
             location="us-central1-a",
+            enable_deletion_protection=False,
             gce_setup={
                 "machine_type": "n1-standard-4",
+                "min_cpu_platform": "Intel Broadwell",
                 "accelerator_configs": [{
                     "type": "NVIDIA_TESLA_T4",
                     "core_count": "1",
@@ -1150,6 +1214,7 @@ class Instance(pulumi.CustomResource):
                     "disk_type": "PD_SSD",
                     "disk_encryption": "CMEK",
                     "kms_key": "my-crypto-key",
+                    "resource_policies": [my_policy.id],
                 },
                 "network_interfaces": [{
                     "network": my_network.id,
@@ -1188,6 +1253,7 @@ class Instance(pulumi.CustomResource):
                     static,
                     act_as_permission,
                     gpu_reservation,
+                    my_policy,
                 ]))
         ```
         ### Workbench Instance Confidential Compute
@@ -1273,6 +1339,7 @@ class Instance(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
                  gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
@@ -1294,6 +1361,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["disable_proxy_access"] = disable_proxy_access
+            __props__.__dict__["enable_deletion_protection"] = enable_deletion_protection
             __props__.__dict__["enable_managed_euc"] = enable_managed_euc
             __props__.__dict__["enable_third_party_identity"] = enable_third_party_identity
             __props__.__dict__["gce_setup"] = gce_setup
@@ -1333,6 +1401,7 @@ class Instance(pulumi.CustomResource):
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             disable_proxy_access: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            enable_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_managed_euc: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_third_party_identity: pulumi.Input[Optional[_builtins.bool]] = None,
             gce_setup: pulumi.Input[Optional[Union['InstanceGceSetupArgs', 'InstanceGceSetupArgsDict']]] = None,
@@ -1368,6 +1437,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Workbench Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.bool] disable_proxy_access: Optional. If true, the workbench instance will not register with the proxy.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.bool] enable_deletion_protection: Optional. If true, deletion protection will be enabled for this Workbench Instance.
         :param pulumi.Input[_builtins.bool] enable_managed_euc: Flag to enable managed end user credentials for the instance.
         :param pulumi.Input[_builtins.bool] enable_third_party_identity: Flag that specifies that a notebook can be accessed with third party
                identity provider.
@@ -1412,6 +1482,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["disable_proxy_access"] = disable_proxy_access
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["enable_deletion_protection"] = enable_deletion_protection
         __props__.__dict__["enable_managed_euc"] = enable_managed_euc
         __props__.__dict__["enable_third_party_identity"] = enable_third_party_identity
         __props__.__dict__["gce_setup"] = gce_setup
@@ -1483,6 +1554,14 @@ class Instance(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="enableDeletionProtection")
+    def enable_deletion_protection(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Optional. If true, deletion protection will be enabled for this Workbench Instance.
+        """
+        return pulumi.get(self, "enable_deletion_protection")
 
     @_builtins.property
     @pulumi.getter(name="enableManagedEuc")

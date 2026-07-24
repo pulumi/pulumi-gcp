@@ -231,6 +231,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+        /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         /// </summary>
         [Output("backupPlan")]
         public Output<string> BackupPlan { get; private set; } = null!;
@@ -361,6 +362,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+        /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         /// </summary>
         [Input("backupPlan", required: true)]
         public Input<string> BackupPlan { get; set; } = null!;
@@ -422,6 +424,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+        /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         /// </summary>
         [Input("backupPlan")]
         public Input<string>? BackupPlan { get; set; }

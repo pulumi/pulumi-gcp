@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -28,6 +29,25 @@ public final class ServicePerimeterEgressPolicyEgressFromSourceArgs extends com.
      */
     public Optional<Output<String>> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
+    }
+
+    /**
+     * A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+     * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscEndpoint")
+    private @Nullable Output<ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs> pscEndpoint;
+
+    /**
+     * @return A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+     * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs>> pscEndpoint() {
+        return Optional.ofNullable(this.pscEndpoint);
     }
 
     /**
@@ -59,6 +79,7 @@ public final class ServicePerimeterEgressPolicyEgressFromSourceArgs extends com.
 
     private ServicePerimeterEgressPolicyEgressFromSourceArgs(ServicePerimeterEgressPolicyEgressFromSourceArgs $) {
         this.accessLevel = $.accessLevel;
+        this.pscEndpoint = $.pscEndpoint;
         this.resource = $.resource;
     }
 
@@ -99,6 +120,31 @@ public final class ServicePerimeterEgressPolicyEgressFromSourceArgs extends com.
          */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
+        }
+
+        /**
+         * @param pscEndpoint A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+         * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscEndpoint(@Nullable Output<ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs> pscEndpoint) {
+            $.pscEndpoint = pscEndpoint;
+            return this;
+        }
+
+        /**
+         * @param pscEndpoint A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+         * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscEndpoint(ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs pscEndpoint) {
+            return pscEndpoint(Output.of(pscEndpoint));
         }
 
         /**

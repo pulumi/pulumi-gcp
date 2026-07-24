@@ -3210,6 +3210,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(
     """
     The project ID of consumer service project of this consumer endpoint.
     """
+    instance_auto_dns_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output) The status of the automated DNS provisioning for the instance.
+    """
     ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output) The IP address of the consumer endpoint.
@@ -3226,6 +3230,10 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(
     """
     (Output) The connection status of the consumer endpoint.
     """
+    write_endpoint_auto_dns_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output) The status of the automated DNS provisioning for the write endpoint.
+    """
 
 @pulumi.input_type
 class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
@@ -3233,24 +3241,30 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
                  consumer_network: pulumi.Input[_builtins.str],
                  consumer_network_status: pulumi.Input[Optional[_builtins.str]] = None,
                  consumer_service_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_auto_dns_status: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  service_connection_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  service_connection_policy_creation_result: pulumi.Input[Optional[_builtins.str]] = None,
-                 status: pulumi.Input[Optional[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 write_endpoint_auto_dns_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
         :param pulumi.Input[_builtins.str] consumer_network_status: (Output) The connection policy status of the consumer network.
         :param pulumi.Input[_builtins.str] consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param pulumi.Input[_builtins.str] instance_auto_dns_status: (Output) The status of the automated DNS provisioning for the instance.
         :param pulumi.Input[_builtins.str] ip_address: (Output) The IP address of the consumer endpoint.
         :param pulumi.Input[_builtins.str] service_connection_policy: (Output) The service connection policy created for the auto connection.
         :param pulumi.Input[_builtins.str] service_connection_policy_creation_result: (Output) The result of the service connection policy creation.
         :param pulumi.Input[_builtins.str] status: (Output) The connection status of the consumer endpoint.
+        :param pulumi.Input[_builtins.str] write_endpoint_auto_dns_status: (Output) The status of the automated DNS provisioning for the write endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
         if consumer_network_status is not None:
             pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         if consumer_service_project_id is not None:
             pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        if instance_auto_dns_status is not None:
+            pulumi.set(__self__, "instance_auto_dns_status", instance_auto_dns_status)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if service_connection_policy is not None:
@@ -3259,6 +3273,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
             pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if write_endpoint_auto_dns_status is not None:
+            pulumi.set(__self__, "write_endpoint_auto_dns_status", write_endpoint_auto_dns_status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -3295,6 +3311,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
     @consumer_service_project_id.setter
     def consumer_service_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consumer_service_project_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceAutoDnsStatus")
+    def instance_auto_dns_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output) The status of the automated DNS provisioning for the instance.
+        """
+        return pulumi.get(self, "instance_auto_dns_status")
+
+    @instance_auto_dns_status.setter
+    def instance_auto_dns_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_auto_dns_status", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
@@ -3343,6 +3371,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
     @status.setter
     def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="writeEndpointAutoDnsStatus")
+    def write_endpoint_auto_dns_status(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output) The status of the automated DNS provisioning for the write endpoint.
+        """
+        return pulumi.get(self, "write_endpoint_auto_dns_status")
+
+    @write_endpoint_auto_dns_status.setter
+    def write_endpoint_auto_dns_status(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "write_endpoint_auto_dns_status", value)
 
 
 class DatabaseInstanceSettingsLocationPreferenceArgsDict(TypedDict):

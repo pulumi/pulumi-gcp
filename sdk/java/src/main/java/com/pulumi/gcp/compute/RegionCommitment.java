@@ -268,14 +268,18 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
         return this.endTimestamp;
     }
     /**
-     * Specifies the already existing reservations to attach to the Commitment.
+     * Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      * 
      */
     @Export(name="existingReservations", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> existingReservations;
 
     /**
-     * @return Specifies the already existing reservations to attach to the Commitment.
+     * @return Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      * 
      */
     public Output<Optional<String>> existingReservations() {

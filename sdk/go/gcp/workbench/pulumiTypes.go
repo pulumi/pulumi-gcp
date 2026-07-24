@@ -40,6 +40,8 @@ type InstanceGceSetup struct {
 	MachineType *string `pulumi:"machineType"`
 	// Optional. Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
+	// Optional. The minimum CPU platform to use for this instance.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The network interfaces for the VM. Supports only one interface.
 	// Structure is documented below.
 	NetworkInterfaces []InstanceGceSetupNetworkInterface `pulumi:"networkInterfaces"`
@@ -101,6 +103,8 @@ type InstanceGceSetupArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Optional. Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// Optional. The minimum CPU platform to use for this instance.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The network interfaces for the VM. Supports only one interface.
 	// Structure is documented below.
 	NetworkInterfaces InstanceGceSetupNetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
@@ -254,6 +258,11 @@ func (o InstanceGceSetupOutput) MachineType() pulumi.StringPtrOutput {
 // Optional. Custom metadata to apply to this instance.
 func (o InstanceGceSetupOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceGceSetup) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Optional. The minimum CPU platform to use for this instance.
+func (o InstanceGceSetupOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetup) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
 
 // The network interfaces for the VM. Supports only one interface.
@@ -415,6 +424,16 @@ func (o InstanceGceSetupPtrOutput) Metadata() pulumi.StringMapOutput {
 		}
 		return v.Metadata
 	}).(pulumi.StringMapOutput)
+}
+
+// Optional. The minimum CPU platform to use for this instance.
+func (o InstanceGceSetupPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
 }
 
 // The network interfaces for the VM. Supports only one interface.
@@ -1134,6 +1153,8 @@ type InstanceGceSetupDataDisks struct {
 	// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 	// Learn more about using your own encryption keys.'
 	KmsKey *string `pulumi:"kmsKey"`
+	// Optional. Resource policies applied to this disk.
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
 }
 
 // InstanceGceSetupDataDisksInput is an input type that accepts InstanceGceSetupDataDisksArgs and InstanceGceSetupDataDisksOutput values.
@@ -1163,6 +1184,8 @@ type InstanceGceSetupDataDisksArgs struct {
 	// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
 	// Learn more about using your own encryption keys.'
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// Optional. Resource policies applied to this disk.
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 }
 
 func (InstanceGceSetupDataDisksArgs) ElementType() reflect.Type {
@@ -1269,6 +1292,11 @@ func (o InstanceGceSetupDataDisksOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetupDataDisks) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Resource policies applied to this disk.
+func (o InstanceGceSetupDataDisksOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstanceGceSetupDataDisks) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
+}
+
 type InstanceGceSetupDataDisksPtrOutput struct{ *pulumi.OutputState }
 
 func (InstanceGceSetupDataDisksPtrOutput) ElementType() reflect.Type {
@@ -1338,6 +1366,16 @@ func (o InstanceGceSetupDataDisksPtrOutput) KmsKey() pulumi.StringPtrOutput {
 		}
 		return v.KmsKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Resource policies applied to this disk.
+func (o InstanceGceSetupDataDisksPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceGceSetupDataDisks) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePolicies
+	}).(pulumi.StringArrayOutput)
 }
 
 type InstanceGceSetupNetworkInterface struct {

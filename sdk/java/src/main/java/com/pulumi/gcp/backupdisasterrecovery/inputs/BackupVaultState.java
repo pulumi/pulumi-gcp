@@ -337,6 +337,21 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, we will force update access restriction even if some non compliant data sources are present.
+     * 
+     */
+    @Import(name="forceUpdateAccessRestriction")
+    private @Nullable Output<Boolean> forceUpdateAccessRestriction;
+
+    /**
+     * @return If set to true, we will force update access restriction even if some non compliant data sources are present.
+     * 
+     */
+    public Optional<Output<Boolean>> forceUpdateAccessRestriction() {
+        return Optional.ofNullable(this.forceUpdateAccessRestriction);
+    }
+
+    /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
@@ -476,6 +491,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * ACTIVE
      * DELETING
      * ERROR
+     * UPDATING
      * 
      */
     @Import(name="state")
@@ -489,6 +505,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      * ACTIVE
      * DELETING
      * ERROR
+     * UPDATING
      * 
      */
     public Optional<Output<String>> state() {
@@ -561,6 +578,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.forceDelete = $.forceDelete;
         this.forceUpdate = $.forceUpdate;
+        this.forceUpdateAccessRestriction = $.forceUpdateAccessRestriction;
         this.ignoreBackupPlanReferences = $.ignoreBackupPlanReferences;
         this.ignoreInactiveDatasources = $.ignoreInactiveDatasources;
         this.labels = $.labels;
@@ -1020,6 +1038,27 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param forceUpdateAccessRestriction If set to true, we will force update access restriction even if some non compliant data sources are present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceUpdateAccessRestriction(@Nullable Output<Boolean> forceUpdateAccessRestriction) {
+            $.forceUpdateAccessRestriction = forceUpdateAccessRestriction;
+            return this;
+        }
+
+        /**
+         * @param forceUpdateAccessRestriction If set to true, we will force update access restriction even if some non compliant data sources are present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceUpdateAccessRestriction(Boolean forceUpdateAccessRestriction) {
+            return forceUpdateAccessRestriction(Output.of(forceUpdateAccessRestriction));
+        }
+
+        /**
          * @param ignoreBackupPlanReferences If set, the following restrictions against deletion of the backup vault instance can be overridden:
          * * deletion of a backup vault instance that is being referenced by an active backup plan.
          * 
@@ -1207,6 +1246,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * ACTIVE
          * DELETING
          * ERROR
+         * UPDATING
          * 
          * @return builder
          * 
@@ -1224,6 +1264,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          * ACTIVE
          * DELETING
          * ERROR
+         * UPDATING
          * 
          * @return builder
          * 

@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Compute
     ///         Description = "This is a simple packet mirroring rule description",
     ///         Direction = "INGRESS",
     ///         Disabled = false,
-    ///         FirewallPolicy = basicNetworkFirewallPolicy.Name,
+    ///         FirewallPolicy = basicNetworkFirewallPolicy.Id,
     ///         Priority = 1000,
     ///         RuleName = "test-rule",
     ///         Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyPacketMirroringRuleMatchArgs

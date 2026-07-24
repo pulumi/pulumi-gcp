@@ -476,7 +476,7 @@ class DataExport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         test_bucket = gcp.storage.Bucket("test_bucket",
-            name="chronicle-test-bucket-my-project-name-_91042",
+            name="chronicle-test-bucket-my-project-name-_56730",
             project="my-project-name",
             location="us",
             force_destroy=True)
@@ -495,7 +495,7 @@ class DataExport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         test_bucket = gcp.storage.Bucket("test_bucket",
-            name="chronicle-test-bucket-my-project-name-_72490",
+            name="chronicle-test-bucket-my-project-name-_95154",
             project="my-project-name",
             location="us",
             force_destroy=True)
@@ -569,7 +569,7 @@ class DataExport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         test_bucket = gcp.storage.Bucket("test_bucket",
-            name="chronicle-test-bucket-my-project-name-_91042",
+            name="chronicle-test-bucket-my-project-name-_56730",
             project="my-project-name",
             location="us",
             force_destroy=True)
@@ -588,7 +588,7 @@ class DataExport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         test_bucket = gcp.storage.Bucket("test_bucket",
-            name="chronicle-test-bucket-my-project-name-_72490",
+            name="chronicle-test-bucket-my-project-name-_95154",
             project="my-project-name",
             location="us",
             force_destroy=True)

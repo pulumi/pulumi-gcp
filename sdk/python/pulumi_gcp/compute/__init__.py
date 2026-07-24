@@ -127,6 +127,7 @@ from .global_address import *
 from .global_forwarding_rule import *
 from .global_network_endpoint import *
 from .global_network_endpoint_group import *
+from .global_vm_extension_policy import *
 from .ha_vpn_gateway import *
 from .health_check import *
 from .http_health_check import *

@@ -610,6 +610,11 @@ export type GlobalNetworkEndpointGroup = import("./globalNetworkEndpointGroup").
 export const GlobalNetworkEndpointGroup: typeof import("./globalNetworkEndpointGroup").GlobalNetworkEndpointGroup = null as any;
 utilities.lazyLoad(exports, ["GlobalNetworkEndpointGroup"], () => require("./globalNetworkEndpointGroup"));
 
+export { GlobalVmExtensionPolicyArgs, GlobalVmExtensionPolicyState } from "./globalVmExtensionPolicy";
+export type GlobalVmExtensionPolicy = import("./globalVmExtensionPolicy").GlobalVmExtensionPolicy;
+export const GlobalVmExtensionPolicy: typeof import("./globalVmExtensionPolicy").GlobalVmExtensionPolicy = null as any;
+utilities.lazyLoad(exports, ["GlobalVmExtensionPolicy"], () => require("./globalVmExtensionPolicy"));
+
 export { HaVpnGatewayArgs, HaVpnGatewayState } from "./haVpnGateway";
 export type HaVpnGateway = import("./haVpnGateway").HaVpnGateway;
 export const HaVpnGateway: typeof import("./haVpnGateway").HaVpnGateway = null as any;
@@ -1484,6 +1489,8 @@ const _module = {
                 return new GlobalNetworkEndpoint(name, <any>undefined, { urn })
             case "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup":
                 return new GlobalNetworkEndpointGroup(name, <any>undefined, { urn })
+            case "gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy":
+                return new GlobalVmExtensionPolicy(name, <any>undefined, { urn })
             case "gcp:compute/haVpnGateway:HaVpnGateway":
                 return new HaVpnGateway(name, <any>undefined, { urn })
             case "gcp:compute/healthCheck:HealthCheck":
@@ -1842,6 +1849,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/globalAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalForwardingRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalNetworkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/globalNetworkEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/globalVmExtensionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/haVpnGateway", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/healthCheck", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/httpHealthCheck", _module)

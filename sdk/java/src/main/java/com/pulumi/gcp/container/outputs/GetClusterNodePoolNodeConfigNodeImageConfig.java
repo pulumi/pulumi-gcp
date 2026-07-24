@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodePoolNodeConfigNodeImageConfig {
     /**
-     * @return The name of the image to use for this node.
+     * @return The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     private String image;
     /**
-     * @return The project containing the image to use for this node.
+     * @return The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     private String imageProject;
 
     private GetClusterNodePoolNodeConfigNodeImageConfig() {}
     /**
-     * @return The name of the image to use for this node.
+     * @return The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     public String image() {
         return this.image;
     }
     /**
-     * @return The project containing the image to use for this node.
+     * @return The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     public String imageProject() {

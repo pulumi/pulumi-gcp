@@ -42,6 +42,7 @@ class ServiceArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling: pulumi.Input[Optional['ServiceScalingArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  traffics: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
@@ -98,6 +99,9 @@ class ServiceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         """
@@ -141,6 +145,8 @@ class ServiceArgs:
             pulumi.set(__self__, "project", project)
         if scaling is not None:
             pulumi.set(__self__, "scaling", scaling)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if traffics is not None:
             pulumi.set(__self__, "traffics", traffics)
 
@@ -429,6 +435,20 @@ class ServiceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def traffics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
@@ -479,6 +499,7 @@ class _ServiceState:
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
                  scaling: pulumi.Input[Optional['ServiceScalingArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional['ServiceTemplateArgs']] = None,
                  terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]]] = None,
                  traffic_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
@@ -560,6 +581,9 @@ class _ServiceState:
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         :param pulumi.Input['ServiceScalingArgs'] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input['ServiceTemplateArgs'] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTerminalConditionArgs']]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -644,6 +668,8 @@ class _ServiceState:
             pulumi.set(__self__, "reconciling", reconciling)
         if scaling is not None:
             pulumi.set(__self__, "scaling", scaling)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if terminal_conditions is not None:
@@ -1118,6 +1144,20 @@ class _ServiceState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def template(self) -> pulumi.Input[Optional['ServiceTemplateArgs']]:
         """
         The template used to create revisions for this Service.
@@ -1244,6 +1284,7 @@ class Service(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
                  traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
                  __props__=None):
@@ -1770,7 +1811,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         sourcebucket = gcp.storage.Bucket("sourcebucket",
-            name=f"{project.project_id}-tf-test-gcf-source_64336",
+            name=f"{project.project_id}-tf-test-gcf-source_75125",
             location="US",
             uniform_bucket_level_access=True)
         source_tar = gcp.storage.BucketObject("source_tar",
@@ -1823,6 +1864,25 @@ class Service(pulumi.CustomResource):
                         "medium": "DISK",
                         "size_limit": "10Gi",
                     },
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            tags={
+                "tagKeys/1234": "tagValues/5678",
+            },
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
             })
         ```
@@ -1896,6 +1956,9 @@ class Service(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
@@ -2430,7 +2493,7 @@ class Service(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         sourcebucket = gcp.storage.Bucket("sourcebucket",
-            name=f"{project.project_id}-tf-test-gcf-source_64336",
+            name=f"{project.project_id}-tf-test-gcf-source_75125",
             location="US",
             uniform_bucket_level_access=True)
         source_tar = gcp.storage.BucketObject("source_tar",
@@ -2483,6 +2546,25 @@ class Service(pulumi.CustomResource):
                         "medium": "DISK",
                         "size_limit": "10Gi",
                     },
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            tags={
+                "tagKeys/1234": "tagValues/5678",
+            },
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],
             })
         ```
@@ -2539,6 +2621,7 @@ class Service(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
                  traffics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
                  __props__=None):
@@ -2572,6 +2655,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["scaling"] = scaling
+            __props__.__dict__["tags"] = tags
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
@@ -2644,6 +2728,7 @@ class Service(pulumi.CustomResource):
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             scaling: pulumi.Input[Optional[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             template: pulumi.Input[Optional[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']]] = None,
             terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict']]]]] = None,
             traffic_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceTrafficStatusArgs', 'ServiceTrafficStatusArgsDict']]]]] = None,
@@ -2729,6 +2814,9 @@ class Service(pulumi.CustomResource):
                If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
         :param pulumi.Input[Union['ServiceScalingArgs', 'ServiceScalingArgsDict']] scaling: Scaling settings that apply to the whole service
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Union['ServiceTemplateArgs', 'ServiceTemplateArgsDict']] template: The template used to create revisions for this Service.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceTerminalConditionArgs', 'ServiceTerminalConditionArgsDict']]]] terminal_conditions: The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -2782,6 +2870,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["scaling"] = scaling
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
         __props__.__dict__["traffic_statuses"] = traffic_statuses
@@ -3106,6 +3195,16 @@ class Service(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "scaling")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

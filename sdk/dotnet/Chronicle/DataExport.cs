@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     ///     var testBucket = new Gcp.Storage.Bucket("test_bucket", new()
     ///     {
-    ///         Name = "chronicle-test-bucket-my-project-name-_91042",
+    ///         Name = "chronicle-test-bucket-my-project-name-_56730",
     ///         Project = "my-project-name",
     ///         Location = "us",
     ///         ForceDestroy = true,
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Chronicle
     /// 
     ///     var testBucket = new Gcp.Storage.Bucket("test_bucket", new()
     ///     {
-    ///         Name = "chronicle-test-bucket-my-project-name-_72490",
+    ///         Name = "chronicle-test-bucket-my-project-name-_95154",
     ///         Project = "my-project-name",
     ///         Location = "us",
     ///         ForceDestroy = true,

@@ -248,6 +248,21 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, we will force update access restriction even if some non compliant data sources are present.
+     * 
+     */
+    @Import(name="forceUpdateAccessRestriction")
+    private @Nullable Output<Boolean> forceUpdateAccessRestriction;
+
+    /**
+     * @return If set to true, we will force update access restriction even if some non compliant data sources are present.
+     * 
+     */
+    public Optional<Output<Boolean>> forceUpdateAccessRestriction() {
+        return Optional.ofNullable(this.forceUpdateAccessRestriction);
+    }
+
+    /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
@@ -347,6 +362,7 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptionConfig = $.encryptionConfig;
         this.forceDelete = $.forceDelete;
         this.forceUpdate = $.forceUpdate;
+        this.forceUpdateAccessRestriction = $.forceUpdateAccessRestriction;
         this.ignoreBackupPlanReferences = $.ignoreBackupPlanReferences;
         this.ignoreInactiveDatasources = $.ignoreInactiveDatasources;
         this.labels = $.labels;
@@ -670,6 +686,27 @@ public final class BackupVaultArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceUpdate(Boolean forceUpdate) {
             return forceUpdate(Output.of(forceUpdate));
+        }
+
+        /**
+         * @param forceUpdateAccessRestriction If set to true, we will force update access restriction even if some non compliant data sources are present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceUpdateAccessRestriction(@Nullable Output<Boolean> forceUpdateAccessRestriction) {
+            $.forceUpdateAccessRestriction = forceUpdateAccessRestriction;
+            return this;
+        }
+
+        /**
+         * @param forceUpdateAccessRestriction If set to true, we will force update access restriction even if some non compliant data sources are present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceUpdateAccessRestriction(Boolean forceUpdateAccessRestriction) {
+            return forceUpdateAccessRestriction(Output.of(forceUpdateAccessRestriction));
         }
 
         /**

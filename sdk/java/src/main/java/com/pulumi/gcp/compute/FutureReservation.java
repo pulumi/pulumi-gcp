@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  *         var gceFutureReservation = new FutureReservation("gceFutureReservation", FutureReservationArgs.builder()
  *             .name("gce-future-reservation")
  *             .project("my-project-name")
+ *             .zone("us-central1-a")
  *             .autoDeleteAutoCreatedReservations(true)
  *             .planningStatus("DRAFT")
  *             .namePrefix("fr-basic")
@@ -126,6 +127,7 @@ import javax.annotation.Nullable;
  *         var gceFutureReservation = new FutureReservation("gceFutureReservation", FutureReservationArgs.builder()
  *             .name("gce-future-reservation-aggregate-reservation")
  *             .project("my-project-name")
+ *             .zone("us-central1-a")
  *             .autoDeleteAutoCreatedReservations(true)
  *             .planningStatus("DRAFT")
  *             .namePrefix("fr-basic")
@@ -328,7 +330,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
      */
@@ -341,7 +343,7 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
      */
@@ -563,14 +565,14 @@ public class FutureReservation extends com.pulumi.resources.CustomResource {
         return this.timeWindow;
     }
     /**
-     * URL of the Zone where this future reservation resides.
+     * The zone where the future reservation is located.
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**
-     * @return URL of the Zone where this future reservation resides.
+     * @return The zone where the future reservation is located.
      * 
      */
     public Output<String> zone() {

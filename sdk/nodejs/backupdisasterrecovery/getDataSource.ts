@@ -59,6 +59,7 @@ export interface GetDataSourceArgs {
  * A collection of values returned by getDataSource.
  */
 export interface GetDataSourceResult {
+    readonly backupBlockedByVaultAccessRestriction: boolean;
     readonly backupConfigInfos: outputs.backupdisasterrecovery.GetDataSourceBackupConfigInfo[];
     readonly backupCount: string;
     readonly backupVaultId: string;

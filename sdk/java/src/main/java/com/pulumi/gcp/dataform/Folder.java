@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderBasic = new Folder("dataformFolderBasic", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Basic Folder-_37118")
+ *             .displayName("Basic Folder-_8270")
  *             .build());
  * 
  *     }
@@ -84,12 +84,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var dataformFolderRoot = new Folder("dataformFolderRoot", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Root Folder-_80332")
+ *             .displayName("Root Folder-_41150")
  *             .build());
  * 
  *         var dataformFolderFull = new Folder("dataformFolderFull", FolderArgs.builder()
  *             .region("us-central1")
- *             .displayName("Nested Folder-_13293")
+ *             .displayName("Nested Folder-_89313")
  *             .containingFolder(dataformFolderRoot.id())
  *             .build());
  * 

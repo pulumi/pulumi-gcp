@@ -5240,6 +5240,8 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection struct {
 	ConsumerNetworkStatus *string `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId *string `pulumi:"consumerServiceProjectId"`
+	// (Output) The status of the automated DNS provisioning for the instance.
+	InstanceAutoDnsStatus *string `pulumi:"instanceAutoDnsStatus"`
 	// (Output) The IP address of the consumer endpoint.
 	IpAddress *string `pulumi:"ipAddress"`
 	// (Output) The service connection policy created for the auto connection.
@@ -5248,6 +5250,8 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection struct {
 	ServiceConnectionPolicyCreationResult *string `pulumi:"serviceConnectionPolicyCreationResult"`
 	// (Output) The connection status of the consumer endpoint.
 	Status *string `pulumi:"status"`
+	// (Output) The status of the automated DNS provisioning for the write endpoint.
+	WriteEndpointAutoDnsStatus *string `pulumi:"writeEndpointAutoDnsStatus"`
 }
 
 // DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs and DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput values.
@@ -5268,6 +5272,8 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs struc
 	ConsumerNetworkStatus pulumi.StringPtrInput `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId pulumi.StringPtrInput `pulumi:"consumerServiceProjectId"`
+	// (Output) The status of the automated DNS provisioning for the instance.
+	InstanceAutoDnsStatus pulumi.StringPtrInput `pulumi:"instanceAutoDnsStatus"`
 	// (Output) The IP address of the consumer endpoint.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// (Output) The service connection policy created for the auto connection.
@@ -5276,6 +5282,8 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs struc
 	ServiceConnectionPolicyCreationResult pulumi.StringPtrInput `pulumi:"serviceConnectionPolicyCreationResult"`
 	// (Output) The connection status of the consumer endpoint.
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// (Output) The status of the automated DNS provisioning for the write endpoint.
+	WriteEndpointAutoDnsStatus pulumi.StringPtrInput `pulumi:"writeEndpointAutoDnsStatus"`
 }
 
 func (DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
@@ -5350,6 +5358,13 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Output) The status of the automated DNS provisioning for the instance.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) InstanceAutoDnsStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string {
+		return v.InstanceAutoDnsStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // (Output) The IP address of the consumer endpoint.
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
@@ -5372,6 +5387,13 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput)
 // (Output) The connection status of the consumer endpoint.
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// (Output) The status of the automated DNS provisioning for the write endpoint.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) WriteEndpointAutoDnsStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string {
+		return v.WriteEndpointAutoDnsStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -10703,6 +10725,8 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection struct 
 	ConsumerNetworkStatus string `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId string `pulumi:"consumerServiceProjectId"`
+	// The status of the automated DNS provisioning for the instance.
+	InstanceAutoDnsStatus string `pulumi:"instanceAutoDnsStatus"`
 	// The IP address of the consumer endpoint.
 	IpAddress string `pulumi:"ipAddress"`
 	// The service connection policy created for the auto connection.
@@ -10711,6 +10735,8 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection struct 
 	ServiceConnectionPolicyCreationResult string `pulumi:"serviceConnectionPolicyCreationResult"`
 	// The connection status of the consumer endpoint.
 	Status string `pulumi:"status"`
+	// The status of the automated DNS provisioning for the write endpoint.
+	WriteEndpointAutoDnsStatus string `pulumi:"writeEndpointAutoDnsStatus"`
 }
 
 // GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs and GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput values.
@@ -10731,6 +10757,8 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs str
 	ConsumerNetworkStatus pulumi.StringInput `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId pulumi.StringInput `pulumi:"consumerServiceProjectId"`
+	// The status of the automated DNS provisioning for the instance.
+	InstanceAutoDnsStatus pulumi.StringInput `pulumi:"instanceAutoDnsStatus"`
 	// The IP address of the consumer endpoint.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// The service connection policy created for the auto connection.
@@ -10739,6 +10767,8 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs str
 	ServiceConnectionPolicyCreationResult pulumi.StringInput `pulumi:"serviceConnectionPolicyCreationResult"`
 	// The connection status of the consumer endpoint.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The status of the automated DNS provisioning for the write endpoint.
+	WriteEndpointAutoDnsStatus pulumi.StringInput `pulumi:"writeEndpointAutoDnsStatus"`
 }
 
 func (GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
@@ -10813,6 +10843,13 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutpu
 	}).(pulumi.StringOutput)
 }
 
+// The status of the automated DNS provisioning for the instance.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) InstanceAutoDnsStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.InstanceAutoDnsStatus
+	}).(pulumi.StringOutput)
+}
+
 // The IP address of the consumer endpoint.
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string { return v.IpAddress }).(pulumi.StringOutput)
@@ -10835,6 +10872,13 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutpu
 // The connection status of the consumer endpoint.
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The status of the automated DNS provisioning for the write endpoint.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) WriteEndpointAutoDnsStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.WriteEndpointAutoDnsStatus
+	}).(pulumi.StringOutput)
 }
 
 type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
@@ -11776,6 +11820,8 @@ type GetDatabaseInstancesInstance struct {
 	FinalBackupDescription string `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
 	FirstIpAddress string `pulumi:"firstIpAddress"`
+	// When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when 'database_version' is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade bool `pulumi:"includeReplicasForMajorVersionUpgrade"`
 	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType string                                  `pulumi:"instanceType"`
 	IpAddresses  []GetDatabaseInstancesInstanceIpAddress `pulumi:"ipAddresses"`
@@ -11820,6 +11866,8 @@ type GetDatabaseInstancesInstance struct {
 	ServiceAccountEmailAddress string `pulumi:"serviceAccountEmailAddress"`
 	// The settings to use for the database. The configuration is detailed below.
 	Settings []GetDatabaseInstancesInstanceSetting `pulumi:"settings"`
+	// When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled bool `pulumi:"switchTransactionLogsToCloudStorageEnabled"`
 }
 
 // GetDatabaseInstancesInstanceInput is an input type that accepts GetDatabaseInstancesInstanceArgs and GetDatabaseInstancesInstanceOutput values.
@@ -11864,6 +11912,8 @@ type GetDatabaseInstancesInstanceArgs struct {
 	FinalBackupDescription pulumi.StringInput `pulumi:"finalBackupDescription"`
 	// The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
 	FirstIpAddress pulumi.StringInput `pulumi:"firstIpAddress"`
+	// When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when 'database_version' is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+	IncludeReplicasForMajorVersionUpgrade pulumi.BoolInput `pulumi:"includeReplicasForMajorVersionUpgrade"`
 	// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
 	InstanceType pulumi.StringInput                              `pulumi:"instanceType"`
 	IpAddresses  GetDatabaseInstancesInstanceIpAddressArrayInput `pulumi:"ipAddresses"`
@@ -11908,6 +11958,8 @@ type GetDatabaseInstancesInstanceArgs struct {
 	ServiceAccountEmailAddress pulumi.StringInput `pulumi:"serviceAccountEmailAddress"`
 	// The settings to use for the database. The configuration is detailed below.
 	Settings GetDatabaseInstancesInstanceSettingArrayInput `pulumi:"settings"`
+	// When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+	SwitchTransactionLogsToCloudStorageEnabled pulumi.BoolInput `pulumi:"switchTransactionLogsToCloudStorageEnabled"`
 }
 
 func (GetDatabaseInstancesInstanceArgs) ElementType() reflect.Type {
@@ -12028,6 +12080,11 @@ func (o GetDatabaseInstancesInstanceOutput) FinalBackupDescription() pulumi.Stri
 // The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
 func (o GetDatabaseInstancesInstanceOutput) FirstIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.FirstIpAddress }).(pulumi.StringOutput)
+}
+
+// When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when 'database_version' is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+func (o GetDatabaseInstancesInstanceOutput) IncludeReplicasForMajorVersionUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.IncludeReplicasForMajorVersionUpgrade }).(pulumi.BoolOutput)
 }
 
 // The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -12152,6 +12209,11 @@ func (o GetDatabaseInstancesInstanceOutput) ServiceAccountEmailAddress() pulumi.
 // The settings to use for the database. The configuration is detailed below.
 func (o GetDatabaseInstancesInstanceOutput) Settings() GetDatabaseInstancesInstanceSettingArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceSetting { return v.Settings }).(GetDatabaseInstancesInstanceSettingArrayOutput)
+}
+
+// When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+func (o GetDatabaseInstancesInstanceOutput) SwitchTransactionLogsToCloudStorageEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.SwitchTransactionLogsToCloudStorageEnabled }).(pulumi.BoolOutput)
 }
 
 type GetDatabaseInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
@@ -15583,6 +15645,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectio
 	ConsumerNetworkStatus string `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId string `pulumi:"consumerServiceProjectId"`
+	// The status of the automated DNS provisioning for the instance.
+	InstanceAutoDnsStatus string `pulumi:"instanceAutoDnsStatus"`
 	// The IP address of the consumer endpoint.
 	IpAddress string `pulumi:"ipAddress"`
 	// The service connection policy created for the auto connection.
@@ -15591,6 +15655,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectio
 	ServiceConnectionPolicyCreationResult string `pulumi:"serviceConnectionPolicyCreationResult"`
 	// The connection status of the consumer endpoint.
 	Status string `pulumi:"status"`
+	// The status of the automated DNS provisioning for the write endpoint.
+	WriteEndpointAutoDnsStatus string `pulumi:"writeEndpointAutoDnsStatus"`
 }
 
 // GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput values.
@@ -15611,6 +15677,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectio
 	ConsumerNetworkStatus pulumi.StringInput `pulumi:"consumerNetworkStatus"`
 	// The project ID of consumer service project of this consumer endpoint.
 	ConsumerServiceProjectId pulumi.StringInput `pulumi:"consumerServiceProjectId"`
+	// The status of the automated DNS provisioning for the instance.
+	InstanceAutoDnsStatus pulumi.StringInput `pulumi:"instanceAutoDnsStatus"`
 	// The IP address of the consumer endpoint.
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// The service connection policy created for the auto connection.
@@ -15619,6 +15687,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectio
 	ServiceConnectionPolicyCreationResult pulumi.StringInput `pulumi:"serviceConnectionPolicyCreationResult"`
 	// The connection status of the consumer endpoint.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The status of the automated DNS provisioning for the write endpoint.
+	WriteEndpointAutoDnsStatus pulumi.StringInput `pulumi:"writeEndpointAutoDnsStatus"`
 }
 
 func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
@@ -15693,6 +15763,13 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnec
 	}).(pulumi.StringOutput)
 }
 
+// The status of the automated DNS provisioning for the instance.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) InstanceAutoDnsStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.InstanceAutoDnsStatus
+	}).(pulumi.StringOutput)
+}
+
 // The IP address of the consumer endpoint.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
@@ -15718,6 +15795,13 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnec
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
 		return v.Status
+	}).(pulumi.StringOutput)
+}
+
+// The status of the automated DNS provisioning for the write endpoint.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) WriteEndpointAutoDnsStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.WriteEndpointAutoDnsStatus
 	}).(pulumi.StringOutput)
 }
 

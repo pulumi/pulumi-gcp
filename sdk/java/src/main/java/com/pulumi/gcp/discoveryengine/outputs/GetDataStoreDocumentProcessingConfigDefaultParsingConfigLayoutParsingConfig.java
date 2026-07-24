@@ -13,10 +13,20 @@ import java.util.Objects;
 @CustomType
 public final class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
     /**
+     * @return If true, the processed document will be made available for the GetProcessedDocument API.
+     * 
+     */
+    private Boolean enableGetProcessedDocument;
+    /**
      * @return If true, the LLM based annotation is added to the image during parsing.
      * 
      */
     private Boolean enableImageAnnotation;
+    /**
+     * @return If true, the pdf layout will be refined using an LLM.
+     * 
+     */
+    private Boolean enableLlmLayoutParsing;
     /**
      * @return If true, the LLM based annotation is added to the table during parsing.
      * 
@@ -45,11 +55,25 @@ public final class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayou
 
     private GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig() {}
     /**
+     * @return If true, the processed document will be made available for the GetProcessedDocument API.
+     * 
+     */
+    public Boolean enableGetProcessedDocument() {
+        return this.enableGetProcessedDocument;
+    }
+    /**
      * @return If true, the LLM based annotation is added to the image during parsing.
      * 
      */
     public Boolean enableImageAnnotation() {
         return this.enableImageAnnotation;
+    }
+    /**
+     * @return If true, the pdf layout will be refined using an LLM.
+     * 
+     */
+    public Boolean enableLlmLayoutParsing() {
+        return this.enableLlmLayoutParsing;
     }
     /**
      * @return If true, the LLM based annotation is added to the table during parsing.
@@ -96,7 +120,9 @@ public final class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayou
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean enableGetProcessedDocument;
         private Boolean enableImageAnnotation;
+        private Boolean enableLlmLayoutParsing;
         private Boolean enableTableAnnotation;
         private List<String> excludeHtmlClasses;
         private List<String> excludeHtmlElements;
@@ -105,7 +131,9 @@ public final class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayou
         public Builder() {}
         public Builder(GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableGetProcessedDocument = defaults.enableGetProcessedDocument;
     	      this.enableImageAnnotation = defaults.enableImageAnnotation;
+    	      this.enableLlmLayoutParsing = defaults.enableLlmLayoutParsing;
     	      this.enableTableAnnotation = defaults.enableTableAnnotation;
     	      this.excludeHtmlClasses = defaults.excludeHtmlClasses;
     	      this.excludeHtmlElements = defaults.excludeHtmlElements;
@@ -114,11 +142,27 @@ public final class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayou
         }
 
         @CustomType.Setter
+        public Builder enableGetProcessedDocument(Boolean enableGetProcessedDocument) {
+            if (enableGetProcessedDocument == null) {
+              throw new MissingRequiredPropertyException("GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig", "enableGetProcessedDocument");
+            }
+            this.enableGetProcessedDocument = enableGetProcessedDocument;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableImageAnnotation(Boolean enableImageAnnotation) {
             if (enableImageAnnotation == null) {
               throw new MissingRequiredPropertyException("GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig", "enableImageAnnotation");
             }
             this.enableImageAnnotation = enableImageAnnotation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableLlmLayoutParsing(Boolean enableLlmLayoutParsing) {
+            if (enableLlmLayoutParsing == null) {
+              throw new MissingRequiredPropertyException("GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig", "enableLlmLayoutParsing");
+            }
+            this.enableLlmLayoutParsing = enableLlmLayoutParsing;
             return this;
         }
         @CustomType.Setter
@@ -175,7 +219,9 @@ public final class GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayou
         }
         public GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig build() {
             final var _resultValue = new GetDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig();
+            _resultValue.enableGetProcessedDocument = enableGetProcessedDocument;
             _resultValue.enableImageAnnotation = enableImageAnnotation;
+            _resultValue.enableLlmLayoutParsing = enableLlmLayoutParsing;
             _resultValue.enableTableAnnotation = enableTableAnnotation;
             _resultValue.excludeHtmlClasses = excludeHtmlClasses;
             _resultValue.excludeHtmlElements = excludeHtmlElements;

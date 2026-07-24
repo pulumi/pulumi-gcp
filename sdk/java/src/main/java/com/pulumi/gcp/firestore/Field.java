@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *         var basic = new Field("basic", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__24243")
+ *             .collection("chatrooms__35762")
  *             .field("basic")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -339,7 +339,7 @@ import javax.annotation.Nullable;
  *         var matchOverride = new Field("matchOverride", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__7495")
+ *             .collection("chatrooms__24469")
  *             .field("field_with_same_configuration_as_ancestor")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -399,7 +399,7 @@ import javax.annotation.Nullable;
  *         var wildcard = new Field("wildcard", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__21912")
+ *             .collection("chatrooms__79580")
  *             .field("*")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -457,7 +457,7 @@ import javax.annotation.Nullable;
  *         var skipWait = new Field("skipWait", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__46731")
+ *             .collection("chatrooms__98863")
  *             .field("skip_wait")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                

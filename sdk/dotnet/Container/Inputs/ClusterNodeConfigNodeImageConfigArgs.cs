@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodeConfigNodeImageConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the image to use for this node.
+        /// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         /// </summary>
         [Input("image")]
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// The project containing the image to use for this node.
+        /// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         /// </summary>
         [Input("imageProject")]
         public Input<string>? ImageProject { get; set; }

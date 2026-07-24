@@ -245,13 +245,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.SubnetworkArgs;
  * import com.pulumi.gcp.compute.Address;
  * import com.pulumi.gcp.compute.AddressArgs;
- * import com.pulumi.gcp.serviceaccount.IAMBinding;
- * import com.pulumi.gcp.serviceaccount.IAMBindingArgs;
+ * import com.pulumi.gcp.serviceaccount.IAMMember;
+ * import com.pulumi.gcp.serviceaccount.IAMMemberArgs;
  * import com.pulumi.gcp.compute.Reservation;
  * import com.pulumi.gcp.compute.ReservationArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
  * import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs;
+ * import com.pulumi.gcp.compute.ResourcePolicy;
+ * import com.pulumi.gcp.compute.ResourcePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
+ * import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs;
  * import com.pulumi.gcp.workbench.Instance;
  * import com.pulumi.gcp.workbench.InstanceArgs;
  * import com.pulumi.gcp.workbench.inputs.InstanceGceSetupArgs;
@@ -293,10 +298,10 @@ import javax.annotation.Nullable;
  *             .name("wbi-test-default")
  *             .build());
  * 
- *         var actAsPermission = new IAMBinding("actAsPermission", IAMBindingArgs.builder()
+ *         var actAsPermission = new IAMMember("actAsPermission", IAMMemberArgs.builder()
  *             .serviceAccountId("projects/my-project-name/serviceAccounts/my}{@literal @}{@code service-account.com")
  *             .role("roles/iam.serviceAccountUser")
- *             .members("user:example}{@literal @}{@code example.com")
+ *             .member("user:example}{@literal @}{@code example.com")
  *             .build());
  * 
  *         var gpuReservation = new Reservation("gpuReservation", ReservationArgs.builder()
@@ -306,6 +311,7 @@ import javax.annotation.Nullable;
  *                 .count(1)
  *                 .instanceProperties(ReservationSpecificReservationInstancePropertiesArgs.builder()
  *                     .machineType("n1-standard-4")
+ *                     .minCpuPlatform("Intel Broadwell")
  *                     .guestAccelerators(ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs.builder()
  *                         .acceleratorType("nvidia-tesla-t4")
  *                         .acceleratorCount(1)
@@ -315,11 +321,26 @@ import javax.annotation.Nullable;
  *             .specificReservationRequired(true)
  *             .build());
  * 
+ *         var myPolicy = new ResourcePolicy("myPolicy", ResourcePolicyArgs.builder()
+ *             .name("wbi-policy")
+ *             .region("us-central1")
+ *             .snapshotSchedulePolicy(ResourcePolicySnapshotSchedulePolicyArgs.builder()
+ *                 .schedule(ResourcePolicySnapshotSchedulePolicyScheduleArgs.builder()
+ *                     .dailySchedule(ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs.builder()
+ *                         .daysInCycle(1)
+ *                         .startTime("04:00")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .name("workbench-instance")
  *             .location("us-central1-a")
+ *             .enableDeletionProtection(false)
  *             .gceSetup(InstanceGceSetupArgs.builder()
  *                 .machineType("n1-standard-4")
+ *                 .minCpuPlatform("Intel Broadwell")
  *                 .acceleratorConfigs(InstanceGceSetupAcceleratorConfigArgs.builder()
  *                     .type("NVIDIA_TESLA_T4")
  *                     .coreCount("1")
@@ -344,6 +365,7 @@ import javax.annotation.Nullable;
  *                     .diskType("PD_SSD")
  *                     .diskEncryption("CMEK")
  *                     .kmsKey("my-crypto-key")
+ *                     .resourcePolicies(myPolicy.id())
  *                     .build())
  *                 .networkInterfaces(InstanceGceSetupNetworkInterfaceArgs.builder()
  *                     .network(myNetwork.id())
@@ -379,7 +401,8 @@ import javax.annotation.Nullable;
  *                     mySubnetwork,
  *                     static_,
  *                     actAsPermission,
- *                     gpuReservation)
+ *                     gpuReservation,
+ *                     myPolicy)
  *                 .build());
  * 
  *     }}{@code
@@ -600,6 +623,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     * 
+     */
+    @Export(name="enableDeletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> enableDeletionProtection;
+
+    /**
+     * @return Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     * 
+     */
+    public Output<Boolean> enableDeletionProtection() {
+        return this.enableDeletionProtection;
     }
     /**
      * Flag to enable managed end user credentials for the instance.

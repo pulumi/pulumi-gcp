@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *     description: "This is a simple packet mirroring rule description",
  *     direction: "INGRESS",
  *     disabled: false,
- *     firewallPolicy: basicNetworkFirewallPolicy.name,
+ *     firewallPolicy: basicNetworkFirewallPolicy.id,
  *     priority: 1000,
  *     ruleName: "test-rule",
  *     match: {

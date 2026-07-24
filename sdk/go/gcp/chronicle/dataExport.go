@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_91042"),
+//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_56730"),
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("us"),
 //				ForceDestroy: pulumi.Bool(true),
@@ -97,7 +97,7 @@ import (
 //				return err
 //			}
 //			testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_72490"),
+//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_95154"),
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("us"),
 //				ForceDestroy: pulumi.Bool(true),

@@ -394,6 +394,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Job Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Job("default", {
+ *     name: "cloudrun-job",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     tags: {
+ *         "tagKeys/1234": "tagValues/5678",
+ *     },
+ *     template: {
+ *         template: {
+ *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/job",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -589,6 +611,12 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly startExecutionToken: pulumi.Output<string | undefined>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The template used to create executions for this Job.
      * Structure is documented below.
      */
@@ -648,6 +676,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["runExecutionToken"] = state?.runExecutionToken;
             resourceInputs["startExecutionToken"] = state?.startExecutionToken;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["template"] = state?.template;
             resourceInputs["terminalConditions"] = state?.terminalConditions;
             resourceInputs["uid"] = state?.uid;
@@ -673,6 +702,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["runExecutionToken"] = args?.runExecutionToken;
             resourceInputs["startExecutionToken"] = args?.startExecutionToken;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["template"] = args?.template;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -854,6 +884,12 @@ export interface JobState {
      */
     startExecutionToken?: pulumi.Input<string | undefined>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The template used to create executions for this Job.
      * Structure is documented below.
      */
@@ -958,6 +994,12 @@ export interface JobArgs {
      * The sum of job name and token length must be fewer than 63 characters.
      */
     startExecutionToken?: pulumi.Input<string | undefined>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The template used to create executions for this Job.
      * Structure is documented below.

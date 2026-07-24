@@ -532,7 +532,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_49082")
+ *             .name("tf-test-bucket-name-_3684")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -601,15 +601,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_60365")
+ *             .name("tf-test-bucket-name-_10719")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var tfTestConnection = new Connection("tfTestConnection", ConnectionArgs.builder()
- *             .connectionId("tf-test-connection-_80215")
+ *             .connectionId("tf-test-connection-_1443")
  *             .location("us-central1")
- *             .friendlyName("tf-test-connection-_59033")
+ *             .friendlyName("tf-test-connection-_26032")
  *             .description("a bigquery connection for tf test")
  *             .cloudResource(ConnectionCloudResourceArgs.builder()
  *                 .build())
@@ -706,7 +706,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestBucket = new Bucket("tfTestBucket", BucketArgs.builder()
- *             .name("tf-test-bucket-name-_32081")
+ *             .name("tf-test-bucket-name-_8647")
  *             .location("us-west1")
  *             .uniformBucketLevelAccess(true)
  *             .build());
@@ -771,13 +771,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__10393")
+ *             .datasetId("tf_dataplex_test_dataset_id__50610")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__33052")
+ *             .tableId("tf_dataplex_test_table_id__77124")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -892,13 +892,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfDataplexTestDataset = new Dataset("tfDataplexTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_dataplex_test_dataset_id__3684")
+ *             .datasetId("tf_dataplex_test_dataset_id__15335")
  *             .defaultTableExpirationMs(3600000)
  *             .build());
  * 
  *         var tfDataplexTestTable = new Table("tfDataplexTestTable", TableArgs.builder()
  *             .datasetId(tfDataplexTestDataset.datasetId())
- *             .tableId("tf_dataplex_test_table_id__10719")
+ *             .tableId("tf_dataplex_test_table_id__20665")
  *             .deletionProtection(false)
  *             .schema("""
  *     [
@@ -1016,7 +1016,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_ds__1443")
+ *             .datasetId("tf_test_ds__85160")
  *             .defaultTableExpirationMs(3600000)
  *             .deleteContentsOnDestroy(true)
  *             .project("my-project-name")
@@ -1024,7 +1024,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_tbl__26032")
+ *             .tableId("tf_test_tbl__92130")
  *             .deletionProtection(false)
  *             .project("my-project-name")
  *             .schema("""
@@ -1121,7 +1121,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_8647")
+ *             .accountId("tf-test-sa-_16199")
  *             .displayName("DataScan Service Account")
  *             .project("my-project-name")
  *             .build());
@@ -1151,7 +1151,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_ds__50610")
+ *             .datasetId("tf_test_ds__21563")
  *             .defaultTableExpirationMs(3600000)
  *             .deleteContentsOnDestroy(true)
  *             .project("my-project-name")
@@ -1164,7 +1164,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_tbl__77124")
+ *             .tableId("tf_test_tbl__25141")
  *             .deletionProtection(false)
  *             .project("my-project-name")
  *             .schema("""
@@ -1271,7 +1271,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_15335")
+ *             .accountId("tf-test-sa-_30827")
  *             .displayName("DataScan Service Account")
  *             .project("my-project-name")
  *             .build());
@@ -1295,7 +1295,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_dataset_id__20665")
+ *             .datasetId("tf_test_dataset_id__6529")
  *             .defaultTableExpirationMs(3600000)
  *             .deleteContentsOnDestroy(true)
  *             .project("my-project-name")
@@ -1309,7 +1309,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_table_id__85160")
+ *             .tableId("tf_test_table_id__16178")
  *             .deletionProtection(false)
  *             .project("my-project-name")
  *             .schema("""
@@ -1325,14 +1325,14 @@ import javax.annotation.Nullable;
  * 
  *         var testGroup = new EntryGroup("testGroup", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("test-group-_92130")
+ *             .entryGroupId("test-group-_26317")
  *             .project("my-project-name")
  *             .build());
  * 
  *         var testEntry = new Entry("testEntry", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(testGroup.entryGroupId())
- *             .entryId("test-entry-_16199")
+ *             .entryId("test-entry-_4866")
  *             .entryType("projects/655216118709/locations/global/entryTypes/data-quality-rule-template")
  *             .project(project.number())
  *             .aspects(EntryAspectArgs.builder()
@@ -1382,13 +1382,10 @@ import javax.annotation.Nullable;
  *             .aspects(EntryAspectArgs.builder()
  *                 .aspectKey("655216118709.global.data-rules}{@literal @}{@code Schema.name")
  *                 .aspect(EntryAspectAspectArgs.builder()
- *                     .data(Output.tuple(testEntry.name(), tfTestDataset.datasetId(), tfTestTable.tableId(), testEntry.name(), tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
- *                         var testEntryName = values.t1;
- *                         var tfTestDatasetDatasetId = values.t2;
- *                         var tfTestTableTableId = values.t3;
- *                         var testEntryName1 = values.t4;
- *                         var tfTestDatasetDatasetId1 = values.t5;
- *                         var tfTestTableTableId1 = values.t6;
+ *                     .data(Output.tuple(testEntry.name(), tfTestDataset.datasetId(), tfTestTable.tableId()).applyValue(values -> }{{@code
+ *                         var name = values.t1;
+ *                         var datasetId = values.t2;
+ *                         var tableId = values.t3;
  *                         return serializeJson(
  *                             jsonObject(
  *                                 jsonProperty("rules", jsonArray(
@@ -1397,10 +1394,10 @@ import javax.annotation.Nullable;
  *                                         jsonProperty("dimension", "VALIDITY"),
  *                                         jsonProperty("type", "TEMPLATE_REFERENCE"),
  *                                         jsonProperty("templateReference", jsonObject(
- *                                             jsonProperty("name", testEntryName),
+ *                                             jsonProperty("name", name),
  *                                             jsonProperty("values", jsonObject(
  *                                                 jsonProperty("table_name", jsonObject(
- *                                                     jsonProperty("value", String.format("`%s.%s.%s`", project.projectId(),tfTestDatasetDatasetId,tfTestTableTableId))
+ *                                                     jsonProperty("value", String.format("`%s.%s.%s`", project.projectId(),datasetId,tableId))
  *                                                 )),
  *                                                 jsonProperty("column_name", jsonObject(
  *                                                     jsonProperty("value", "name")
@@ -1416,10 +1413,10 @@ import javax.annotation.Nullable;
  *                                         jsonProperty("dimension", "VALIDITY"),
  *                                         jsonProperty("type", "TEMPLATE_REFERENCE"),
  *                                         jsonProperty("templateReference", jsonObject(
- *                                             jsonProperty("name", testEntryName1),
+ *                                             jsonProperty("name", name),
  *                                             jsonProperty("values", jsonObject(
  *                                                 jsonProperty("table_name", jsonObject(
- *                                                     jsonProperty("value", String.format("`%s.%s.%s`", project.projectId(),tfTestDatasetDatasetId1,tfTestTableTableId1))
+ *                                                     jsonProperty("value", String.format("`%s.%s.%s`", project.projectId(),datasetId,tableId))
  *                                                 )),
  *                                                 jsonProperty("column_name", jsonObject(
  *                                                     jsonProperty("value", "name")
@@ -1540,7 +1537,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tf-test-sa-_21563")
+ *             .accountId("tf-test-sa-_12618")
  *             .displayName("DataScan Service Account")
  *             .project(project.projectId())
  *             .build());
@@ -1571,14 +1568,14 @@ import javax.annotation.Nullable;
  * 
  *         var testGroup = new EntryGroup("testGroup", EntryGroupArgs.builder()
  *             .location("us-central1")
- *             .entryGroupId("test-group-_25141")
+ *             .entryGroupId("test-group-_32270")
  *             .project(project.projectId())
  *             .build());
  * 
  *         var testEntry = new Entry("testEntry", EntryArgs.builder()
  *             .location("us-central1")
  *             .entryGroupId(testGroup.entryGroupId())
- *             .entryId("test-entry-_30827")
+ *             .entryId("test-entry-_44703")
  *             .entryType("projects/655216118709/locations/global/entryTypes/data-quality-rule-template")
  *             .project(project.number())
  *             .aspects(EntryAspectArgs.builder()
@@ -1596,7 +1593,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tfTestDataset = new Dataset("tfTestDataset", DatasetArgs.builder()
- *             .datasetId("tf_test_dataset_id__6529")
+ *             .datasetId("tf_test_dataset_id__9329")
  *             .defaultTableExpirationMs(3600000)
  *             .location("us-central1")
  *             .project(project.projectId())
@@ -1609,7 +1606,7 @@ import javax.annotation.Nullable;
  * 
  *         var tfTestTable = new Table("tfTestTable", TableArgs.builder()
  *             .datasetId(tfTestDataset.datasetId())
- *             .tableId("tf_test_table_id__16178")
+ *             .tableId("tf_test_table_id__37135")
  *             .deletionProtection(false)
  *             .project(project.projectId())
  *             .schema("""

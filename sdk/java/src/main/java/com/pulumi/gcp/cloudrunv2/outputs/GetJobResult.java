@@ -54,6 +54,7 @@ public final class GetJobResult {
     private Boolean reconciling;
     private String runExecutionToken;
     private String startExecutionToken;
+    private Map<String,String> tags;
     private List<GetJobTemplate> templates;
     private List<GetJobTerminalCondition> terminalConditions;
     private String uid;
@@ -151,6 +152,9 @@ public final class GetJobResult {
     public String startExecutionToken() {
         return this.startExecutionToken;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public List<GetJobTemplate> templates() {
         return this.templates;
     }
@@ -202,6 +206,7 @@ public final class GetJobResult {
         private Boolean reconciling;
         private String runExecutionToken;
         private String startExecutionToken;
+        private Map<String,String> tags;
         private List<GetJobTemplate> templates;
         private List<GetJobTerminalCondition> terminalConditions;
         private String uid;
@@ -238,6 +243,7 @@ public final class GetJobResult {
     	      this.reconciling = defaults.reconciling;
     	      this.runExecutionToken = defaults.runExecutionToken;
     	      this.startExecutionToken = defaults.startExecutionToken;
+    	      this.tags = defaults.tags;
     	      this.templates = defaults.templates;
     	      this.terminalConditions = defaults.terminalConditions;
     	      this.uid = defaults.uid;
@@ -482,6 +488,14 @@ public final class GetJobResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder templates(List<GetJobTemplate> templates) {
             if (templates == null) {
               throw new MissingRequiredPropertyException("GetJobResult", "templates");
@@ -550,6 +564,7 @@ public final class GetJobResult {
             _resultValue.reconciling = reconciling;
             _resultValue.runExecutionToken = runExecutionToken;
             _resultValue.startExecutionToken = startExecutionToken;
+            _resultValue.tags = tags;
             _resultValue.templates = templates;
             _resultValue.terminalConditions = terminalConditions;
             _resultValue.uid = uid;

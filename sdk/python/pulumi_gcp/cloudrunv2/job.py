@@ -34,7 +34,8 @@ class JobArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
-                 start_execution_token: pulumi.Input[Optional[_builtins.str]] = None):
+                 start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Job resource.
 
@@ -82,6 +83,9 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
                A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "template", template)
@@ -109,6 +113,8 @@ class JobArgs:
             pulumi.set(__self__, "run_execution_token", run_execution_token)
         if start_execution_token is not None:
             pulumi.set(__self__, "start_execution_token", start_execution_token)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -308,6 +314,20 @@ class JobArgs:
     def start_execution_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_execution_token", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _JobState:
@@ -340,6 +360,7 @@ class _JobState:
                  reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
                  run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional['JobTemplateArgs']] = None,
                  terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -412,6 +433,9 @@ class _JobState:
         :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
                A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input['JobTemplateArgs'] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
@@ -475,6 +499,8 @@ class _JobState:
             pulumi.set(__self__, "run_execution_token", run_execution_token)
         if start_execution_token is not None:
             pulumi.set(__self__, "start_execution_token", start_execution_token)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template is not None:
             pulumi.set(__self__, "template", template)
         if terminal_conditions is not None:
@@ -859,6 +885,20 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def template(self) -> pulumi.Input[Optional['JobTemplateArgs']]:
         """
         The template used to create executions for this Job.
@@ -927,6 +967,7 @@ class Job(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
                  __props__=None):
         """
@@ -1293,6 +1334,27 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            tags={
+                "tagKeys/1234": "tagValues/5678",
+            },
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1355,6 +1417,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
                A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']] template: The template used to create executions for this Job.
                Structure is documented below.
         """
@@ -1728,6 +1793,27 @@ class Job(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Job Tags
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            name="cloudrun-job",
+            location="us-central1",
+            deletion_protection=False,
+            tags={
+                "tagKeys/1234": "tagValues/5678",
+            },
+            template={
+                "template": {
+                    "containers": [{
+                        "image": "us-docker.pkg.dev/cloudrun/container/job",
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1774,6 +1860,7 @@ class Job(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
                  start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1799,6 +1886,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["run_execution_token"] = run_execution_token
             __props__.__dict__["start_execution_token"] = start_execution_token
+            __props__.__dict__["tags"] = tags
             if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
@@ -1860,6 +1948,7 @@ class Job(pulumi.CustomResource):
             reconciling: pulumi.Input[Optional[_builtins.bool]] = None,
             run_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
             start_execution_token: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             template: pulumi.Input[Optional[Union['JobTemplateArgs', 'JobTemplateArgsDict']]] = None,
             terminal_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict']]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1936,6 +2025,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
                A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
         :param pulumi.Input[Union['JobTemplateArgs', 'JobTemplateArgsDict']] template: The template used to create executions for this Job.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['JobTerminalConditionArgs', 'JobTerminalConditionArgsDict']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
@@ -1975,6 +2067,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["reconciling"] = reconciling
         __props__.__dict__["run_execution_token"] = run_execution_token
         __props__.__dict__["start_execution_token"] = start_execution_token
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
         __props__.__dict__["uid"] = uid
@@ -2241,6 +2334,16 @@ class Job(pulumi.CustomResource):
         The sum of job name and token length must be fewer than 63 characters.
         """
         return pulumi.get(self, "start_execution_token")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter

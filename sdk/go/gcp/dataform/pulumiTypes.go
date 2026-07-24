@@ -18,6 +18,8 @@ type RepositoryGitRemoteSettings struct {
 	AuthenticationTokenSecretVersion *string `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch string `pulumi:"defaultBranch"`
+	// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+	GitRepositoryLink *string `pulumi:"gitRepositoryLink"`
 	// Authentication fields for remote uris using SSH protocol.
 	// Structure is documented below.
 	SshAuthenticationConfig *RepositoryGitRemoteSettingsSshAuthenticationConfig `pulumi:"sshAuthenticationConfig"`
@@ -44,6 +46,8 @@ type RepositoryGitRemoteSettingsArgs struct {
 	AuthenticationTokenSecretVersion pulumi.StringPtrInput `pulumi:"authenticationTokenSecretVersion"`
 	// The Git remote's default branch name.
 	DefaultBranch pulumi.StringInput `pulumi:"defaultBranch"`
+	// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+	GitRepositoryLink pulumi.StringPtrInput `pulumi:"gitRepositoryLink"`
 	// Authentication fields for remote uris using SSH protocol.
 	// Structure is documented below.
 	SshAuthenticationConfig RepositoryGitRemoteSettingsSshAuthenticationConfigPtrInput `pulumi:"sshAuthenticationConfig"`
@@ -141,6 +145,11 @@ func (o RepositoryGitRemoteSettingsOutput) DefaultBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryGitRemoteSettings) string { return v.DefaultBranch }).(pulumi.StringOutput)
 }
 
+// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+func (o RepositoryGitRemoteSettingsOutput) GitRepositoryLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryGitRemoteSettings) *string { return v.GitRepositoryLink }).(pulumi.StringPtrOutput)
+}
+
 // Authentication fields for remote uris using SSH protocol.
 // Structure is documented below.
 func (o RepositoryGitRemoteSettingsOutput) SshAuthenticationConfig() RepositoryGitRemoteSettingsSshAuthenticationConfigPtrOutput {
@@ -201,6 +210,16 @@ func (o RepositoryGitRemoteSettingsPtrOutput) DefaultBranch() pulumi.StringPtrOu
 			return nil
 		}
 		return &v.DefaultBranch
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+func (o RepositoryGitRemoteSettingsPtrOutput) GitRepositoryLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryGitRemoteSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GitRepositoryLink
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -14,10 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
     /**
+     * @return If true, the processed document will be made available for the GetProcessedDocument API.
+     * 
+     */
+    private @Nullable Boolean enableGetProcessedDocument;
+    /**
      * @return If true, the LLM based annotation is added to the image during parsing.
      * 
      */
     private @Nullable Boolean enableImageAnnotation;
+    /**
+     * @return If true, the pdf layout will be refined using an LLM.
+     * 
+     */
+    private @Nullable Boolean enableLlmLayoutParsing;
     /**
      * @return If true, the LLM based annotation is added to the table during parsing.
      * 
@@ -46,11 +56,25 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutPa
 
     private DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig() {}
     /**
+     * @return If true, the processed document will be made available for the GetProcessedDocument API.
+     * 
+     */
+    public Optional<Boolean> enableGetProcessedDocument() {
+        return Optional.ofNullable(this.enableGetProcessedDocument);
+    }
+    /**
      * @return If true, the LLM based annotation is added to the image during parsing.
      * 
      */
     public Optional<Boolean> enableImageAnnotation() {
         return Optional.ofNullable(this.enableImageAnnotation);
+    }
+    /**
+     * @return If true, the pdf layout will be refined using an LLM.
+     * 
+     */
+    public Optional<Boolean> enableLlmLayoutParsing() {
+        return Optional.ofNullable(this.enableLlmLayoutParsing);
     }
     /**
      * @return If true, the LLM based annotation is added to the table during parsing.
@@ -97,7 +121,9 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutPa
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean enableGetProcessedDocument;
         private @Nullable Boolean enableImageAnnotation;
+        private @Nullable Boolean enableLlmLayoutParsing;
         private @Nullable Boolean enableTableAnnotation;
         private @Nullable List<String> excludeHtmlClasses;
         private @Nullable List<String> excludeHtmlElements;
@@ -106,7 +132,9 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutPa
         public Builder() {}
         public Builder(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.enableGetProcessedDocument = defaults.enableGetProcessedDocument;
     	      this.enableImageAnnotation = defaults.enableImageAnnotation;
+    	      this.enableLlmLayoutParsing = defaults.enableLlmLayoutParsing;
     	      this.enableTableAnnotation = defaults.enableTableAnnotation;
     	      this.excludeHtmlClasses = defaults.excludeHtmlClasses;
     	      this.excludeHtmlElements = defaults.excludeHtmlElements;
@@ -115,9 +143,21 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutPa
         }
 
         @CustomType.Setter
+        public Builder enableGetProcessedDocument(@Nullable Boolean enableGetProcessedDocument) {
+
+            this.enableGetProcessedDocument = enableGetProcessedDocument;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enableImageAnnotation(@Nullable Boolean enableImageAnnotation) {
 
             this.enableImageAnnotation = enableImageAnnotation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableLlmLayoutParsing(@Nullable Boolean enableLlmLayoutParsing) {
+
+            this.enableLlmLayoutParsing = enableLlmLayoutParsing;
             return this;
         }
         @CustomType.Setter
@@ -164,7 +204,9 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutPa
         }
         public DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig build() {
             final var _resultValue = new DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig();
+            _resultValue.enableGetProcessedDocument = enableGetProcessedDocument;
             _resultValue.enableImageAnnotation = enableImageAnnotation;
+            _resultValue.enableLlmLayoutParsing = enableLlmLayoutParsing;
             _resultValue.enableTableAnnotation = enableTableAnnotation;
             _resultValue.excludeHtmlClasses = excludeHtmlClasses;
             _resultValue.excludeHtmlElements = excludeHtmlElements;

@@ -118,10 +118,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.InstanceTemplateSchedulingPreemptionNoticeDurationArgs>? PreemptionNoticeDuration { get; set; }
 
         /// <summary>
-        /// Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+        /// Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
         /// `Preemptible` should be `True` and `AutomaticRestart` should be
         /// `False`. For more info about
-        /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+        /// `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot).
+        /// If this is set to `FLEX_START`, `AutomaticRestart` should be `False` and `InstanceTerminationAction` should be set to `DELETE`. A `MaxRunDuration` must also be specified. For more info about
+        /// `FLEX_START`, read [here](https://cloud.google.com/compute/docs/instances/flex-start-vms).
+        /// If this is set to `RESERVATION_BOUND`, the instance is bound to a specific reservation and will only consume capacity from that reservation. A `ReservationAffinity` block with `Type` set to `SPECIFIC_RESERVATION` should also be configured.
         /// </summary>
         [Input("provisioningModel")]
         public Input<string>? ProvisioningModel { get; set; }

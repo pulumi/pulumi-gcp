@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateSchedulingPreemptionNoticeDurationResult> PreemptionNoticeDurations;
         /// <summary>
-        /// Describe the type of preemptible VM.
+        /// Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
         /// </summary>
         public readonly string ProvisioningModel;
         /// <summary>

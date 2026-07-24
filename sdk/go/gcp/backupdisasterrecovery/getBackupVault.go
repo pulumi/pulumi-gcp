@@ -82,6 +82,7 @@ type LookupBackupVaultResult struct {
 	Etag                                   string                           `pulumi:"etag"`
 	ForceDelete                            bool                             `pulumi:"forceDelete"`
 	ForceUpdate                            bool                             `pulumi:"forceUpdate"`
+	ForceUpdateAccessRestriction           bool                             `pulumi:"forceUpdateAccessRestriction"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                         string            `pulumi:"id"`
 	IgnoreBackupPlanReferences bool              `pulumi:"ignoreBackupPlanReferences"`
@@ -209,6 +210,10 @@ func (o LookupBackupVaultResultOutput) ForceDelete() pulumi.BoolOutput {
 
 func (o LookupBackupVaultResultOutput) ForceUpdate() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupVaultResult) bool { return v.ForceUpdate }).(pulumi.BoolOutput)
+}
+
+func (o LookupBackupVaultResultOutput) ForceUpdateAccessRestriction() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupBackupVaultResult) bool { return v.ForceUpdateAccessRestriction }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

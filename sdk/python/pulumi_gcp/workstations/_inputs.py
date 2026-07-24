@@ -807,6 +807,10 @@ class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
     Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
     See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
     """
+    instance_metadata: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+    """
     machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of a Compute Engine machine type.
@@ -851,6 +855,7 @@ class WorkstationConfigHostGceInstanceArgs:
                  disable_public_ip_addresses: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_ssh: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_nested_virtualization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  pool_size: pulumi.Input[Optional[_builtins.int]] = None,
                  service_account: pulumi.Input[Optional[_builtins.str]] = None,
@@ -870,6 +875,7 @@ class WorkstationConfigHostGceInstanceArgs:
         :param pulumi.Input[_builtins.bool] disable_ssh: Whether to disable SSH access to the VM.
         :param pulumi.Input[_builtins.bool] enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
                See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] instance_metadata: Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
         :param pulumi.Input[_builtins.str] machine_type: The name of a Compute Engine machine type.
         :param pulumi.Input[_builtins.int] pool_size: Number of instances to pool for faster workstation startup.
         :param pulumi.Input[_builtins.str] service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -897,6 +903,8 @@ class WorkstationConfigHostGceInstanceArgs:
             pulumi.set(__self__, "disable_ssh", disable_ssh)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if instance_metadata is not None:
+            pulumi.set(__self__, "instance_metadata", instance_metadata)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
@@ -999,6 +1007,18 @@ class WorkstationConfigHostGceInstanceArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadata")
+    def instance_metadata(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+        """
+        return pulumi.get(self, "instance_metadata")
+
+    @instance_metadata.setter
+    def instance_metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "instance_metadata", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")

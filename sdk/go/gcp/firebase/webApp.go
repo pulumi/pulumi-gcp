@@ -63,7 +63,7 @@ import (
 //			_, err = storage.NewBucketObject(ctx, "default", &storage.BucketObjectArgs{
 //				Bucket: _default.Name,
 //				Name:   pulumi.String("firebase-config.json"),
-//				Content: pulumi.All(basicWebApp.AppId, basic, basic, std.LookupOutput(ctx, std.LookupOutputArgs{
+//				Content: pulumi.All(basicWebApp.AppId, basic, std.LookupOutput(ctx, std.LookupOutputArgs{
 //					Map:     basic,
 //					Key:     pulumi.String("database_url"),
 //					Default: pulumi.Any(""),
@@ -82,16 +82,15 @@ import (
 //				}, nil)).ApplyT(func(_args []interface{}) (string, error) {
 //					appId := _args[0].(string)
 //					basic := _args[1].(firebase.GetWebAppConfigResult)
-//					basic1 := _args[2].(firebase.GetWebAppConfigResult)
-//					invoke := _args[3].(std.LookupResult)
-//					invoke1 := _args[4].(std.LookupResult)
-//					invoke2 := _args[5].(std.LookupResult)
-//					invoke3 := _args[6].(std.LookupResult)
+//					invoke := _args[2].(std.LookupResult)
+//					invoke1 := _args[3].(std.LookupResult)
+//					invoke2 := _args[4].(std.LookupResult)
+//					invoke3 := _args[5].(std.LookupResult)
 //					var _zero string
 //					tmpJSON0, err := json.Marshal(map[string]interface{}{
 //						"appId":             appId,
 //						"apiKey":            basic.ApiKey,
-//						"authDomain":        basic1.AuthDomain,
+//						"authDomain":        basic.AuthDomain,
 //						"databaseURL":       invoke.Result,
 //						"storageBucket":     invoke1.Result,
 //						"messagingSenderId": invoke2.Result,

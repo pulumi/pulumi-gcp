@@ -95,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GlobalNetworkEndpoint{}
 	case "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup":
 		r = &GlobalNetworkEndpointGroup{}
+	case "gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy":
+		r = &GlobalVmExtensionPolicy{}
 	case "gcp:compute/haVpnGateway:HaVpnGateway":
 		r = &HaVpnGateway{}
 	case "gcp:compute/healthCheck:HealthCheck":
@@ -607,6 +609,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/globalNetworkEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/globalVmExtensionPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

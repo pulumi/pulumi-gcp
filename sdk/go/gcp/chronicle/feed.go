@@ -86,7 +86,7 @@ import (
 //			}
 //			// 1. Create the Pub/Sub Topic
 //			testTopic, err := pubsub.NewTopic(ctx, "test_topic", &pubsub.TopicArgs{
-//				Name:    pulumi.String("chronicle-test-topic-my-project-name-_89605"),
+//				Name:    pulumi.String("chronicle-test-topic-my-project-name-_64336"),
 //				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //			}
 //			// 3. Create the Pub/Sub Subscription
 //			testSubscription, err := pubsub.NewSubscription(ctx, "test_subscription", &pubsub.SubscriptionArgs{
-//				Name:                     pulumi.String("chronicle-test-sub-my-project-name-_56730"),
+//				Name:                     pulumi.String("chronicle-test-sub-my-project-name-_34962"),
 //				Project:                  pulumi.String("my-project-name"),
 //				Topic:                    testTopic.Name,
 //				MessageRetentionDuration: pulumi.String("1200s"),
@@ -114,7 +114,7 @@ import (
 //			}
 //			// 4. Define the GCS Bucket
 //			testBucket, err := storage.NewBucket(ctx, "test_bucket", &storage.BucketArgs{
-//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_95154"),
+//				Name:         pulumi.String("chronicle-test-bucket-my-project-name-_74000"),
 //				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("US"),
 //				ForceDestroy: pulumi.Bool(true),

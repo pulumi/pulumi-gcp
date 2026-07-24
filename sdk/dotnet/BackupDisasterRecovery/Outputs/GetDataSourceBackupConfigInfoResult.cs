@@ -18,7 +18,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult> BackupApplianceBackupConfigs;
         /// <summary>
-        /// Configuration for a Google Cloud resource.
+        /// Details about the GCP backup configuration. Structure is documented below.
+        /// The `GcpBackupConfig` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataSourceBackupConfigInfoGcpBackupConfigResult> GcpBackupConfigs;
         /// <summary>
@@ -26,11 +27,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> LastBackupError;
         /// <summary>
-        /// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        /// The state of the last backup attempt.
         /// </summary>
         public readonly string LastBackupState;
         /// <summary>
-        /// If the last backup were successful, this field has the consistency date.
+        /// The consistency time of the last successful backup.
         /// </summary>
         public readonly string LastSuccessfulBackupConsistencyTime;
 

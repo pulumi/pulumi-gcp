@@ -34,6 +34,7 @@ class BackupVaultArgs:
                  encryption_config: pulumi.Input[Optional['BackupVaultEncryptionConfigArgs']] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -74,6 +75,7 @@ class BackupVaultArgs:
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[_builtins.bool] force_update_access_restriction: If set to true, we will force update access restriction even if some non compliant data sources are present.
         :param pulumi.Input[_builtins.bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance that is being referenced by an active backup plan.
         :param pulumi.Input[_builtins.bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -110,6 +112,8 @@ class BackupVaultArgs:
             pulumi.set(__self__, "force_delete", force_delete)
         if force_update is not None:
             pulumi.set(__self__, "force_update", force_update)
+        if force_update_access_restriction is not None:
+            pulumi.set(__self__, "force_update_access_restriction", force_update_access_restriction)
         if ignore_backup_plan_references is not None:
             pulumi.set(__self__, "ignore_backup_plan_references", ignore_backup_plan_references)
         if ignore_inactive_datasources is not None:
@@ -297,6 +301,18 @@ class BackupVaultArgs:
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
+    @pulumi.getter(name="forceUpdateAccessRestriction")
+    def force_update_access_restriction(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, we will force update access restriction even if some non compliant data sources are present.
+        """
+        return pulumi.get(self, "force_update_access_restriction")
+
+    @force_update_access_restriction.setter
+    def force_update_access_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_update_access_restriction", value)
+
+    @_builtins.property
     @pulumi.getter(name="ignoreBackupPlanReferences")
     def ignore_backup_plan_references(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -371,6 +387,7 @@ class _BackupVaultState:
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -424,6 +441,7 @@ class _BackupVaultState:
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[_builtins.bool] force_update_access_restriction: If set to true, we will force update access restriction even if some non compliant data sources are present.
         :param pulumi.Input[_builtins.bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance that is being referenced by an active backup plan.
         :param pulumi.Input[_builtins.bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -445,6 +463,7 @@ class _BackupVaultState:
                ACTIVE
                DELETING
                ERROR
+               UPDATING
         :param pulumi.Input[_builtins.str] total_stored_bytes: Output only. Total size of the storage used by all backup resources.
         :param pulumi.Input[_builtins.str] uid: Output only. Output only Immutable after resource creation until resource deletion.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the instance was updated.
@@ -488,6 +507,8 @@ class _BackupVaultState:
             pulumi.set(__self__, "force_delete", force_delete)
         if force_update is not None:
             pulumi.set(__self__, "force_update", force_update)
+        if force_update_access_restriction is not None:
+            pulumi.set(__self__, "force_update_access_restriction", force_update_access_restriction)
         if ignore_backup_plan_references is not None:
             pulumi.set(__self__, "ignore_backup_plan_references", ignore_backup_plan_references)
         if ignore_inactive_datasources is not None:
@@ -751,6 +772,18 @@ class _BackupVaultState:
         pulumi.set(self, "force_update", value)
 
     @_builtins.property
+    @pulumi.getter(name="forceUpdateAccessRestriction")
+    def force_update_access_restriction(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, we will force update access restriction even if some non compliant data sources are present.
+        """
+        return pulumi.get(self, "force_update_access_restriction")
+
+    @force_update_access_restriction.setter
+    def force_update_access_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "force_update_access_restriction", value)
+
+    @_builtins.property
     @pulumi.getter(name="ignoreBackupPlanReferences")
     def ignore_backup_plan_references(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -863,6 +896,7 @@ class _BackupVaultState:
         ACTIVE
         DELETING
         ERROR
+        UPDATING
         """
         return pulumi.get(self, "state")
 
@@ -925,6 +959,7 @@ class BackupVault(pulumi.CustomResource):
                  encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1044,6 +1079,7 @@ class BackupVault(pulumi.CustomResource):
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[_builtins.bool] force_update_access_restriction: If set to true, we will force update access restriction even if some non compliant data sources are present.
         :param pulumi.Input[_builtins.bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance that is being referenced by an active backup plan.
         :param pulumi.Input[_builtins.bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -1167,6 +1203,7 @@ class BackupVault(pulumi.CustomResource):
                  encryption_config: pulumi.Input[Optional[Union['BackupVaultEncryptionConfigArgs', 'BackupVaultEncryptionConfigArgsDict']]] = None,
                  force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
                  ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1197,6 +1234,7 @@ class BackupVault(pulumi.CustomResource):
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["force_update"] = force_update
+            __props__.__dict__["force_update_access_restriction"] = force_update_access_restriction
             __props__.__dict__["ignore_backup_plan_references"] = ignore_backup_plan_references
             __props__.__dict__["ignore_inactive_datasources"] = ignore_inactive_datasources
             __props__.__dict__["labels"] = labels
@@ -1247,6 +1285,7 @@ class BackupVault(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             force_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_update_access_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
             ignore_backup_plan_references: pulumi.Input[Optional[_builtins.bool]] = None,
             ignore_inactive_datasources: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1304,6 +1343,7 @@ class BackupVault(pulumi.CustomResource):
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[_builtins.bool] force_update_access_restriction: If set to true, we will force update access restriction even if some non compliant data sources are present.
         :param pulumi.Input[_builtins.bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance that is being referenced by an active backup plan.
         :param pulumi.Input[_builtins.bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -1325,6 +1365,7 @@ class BackupVault(pulumi.CustomResource):
                ACTIVE
                DELETING
                ERROR
+               UPDATING
         :param pulumi.Input[_builtins.str] total_stored_bytes: Output only. Total size of the storage used by all backup resources.
         :param pulumi.Input[_builtins.str] uid: Output only. Output only Immutable after resource creation until resource deletion.
         :param pulumi.Input[_builtins.str] update_time: Output only. The time when the instance was updated.
@@ -1351,6 +1392,7 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["force_update"] = force_update
+        __props__.__dict__["force_update_access_restriction"] = force_update_access_restriction
         __props__.__dict__["ignore_backup_plan_references"] = ignore_backup_plan_references
         __props__.__dict__["ignore_inactive_datasources"] = ignore_inactive_datasources
         __props__.__dict__["labels"] = labels
@@ -1531,6 +1573,14 @@ class BackupVault(pulumi.CustomResource):
         return pulumi.get(self, "force_update")
 
     @_builtins.property
+    @pulumi.getter(name="forceUpdateAccessRestriction")
+    def force_update_access_restriction(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If set to true, we will force update access restriction even if some non compliant data sources are present.
+        """
+        return pulumi.get(self, "force_update_access_restriction")
+
+    @_builtins.property
     @pulumi.getter(name="ignoreBackupPlanReferences")
     def ignore_backup_plan_references(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1611,6 +1661,7 @@ class BackupVault(pulumi.CustomResource):
         ACTIVE
         DELETING
         ERROR
+        UPDATING
         """
         return pulumi.get(self, "state")
 

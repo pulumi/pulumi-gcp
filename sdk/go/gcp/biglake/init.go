@@ -41,6 +41,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HiveDatabaseIamMember{}
 	case "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy":
 		r = &HiveDatabaseIamPolicy{}
+	case "gcp:biglake/hiveTable:HiveTable":
+		r = &HiveTable{}
+	case "gcp:biglake/hiveTableIamBinding:HiveTableIamBinding":
+		r = &HiveTableIamBinding{}
+	case "gcp:biglake/hiveTableIamMember:HiveTableIamMember":
+		r = &HiveTableIamMember{}
+	case "gcp:biglake/hiveTableIamPolicy:HiveTableIamPolicy":
+		r = &HiveTableIamPolicy{}
 	case "gcp:biglake/icebergCatalog:IcebergCatalog":
 		r = &IcebergCatalog{}
 	case "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding":
@@ -128,6 +136,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"biglake/hiveDatabaseIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveTable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveTableIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveTableIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"biglake/hiveTableIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

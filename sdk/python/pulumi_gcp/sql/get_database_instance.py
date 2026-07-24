@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, backupdr_backup=None, clones=None, connection_name=None, database_version=None, deletion_policy=None, deletion_protection=None, dns_name=None, dns_names=None, encryption_key_name=None, enforce_new_sql_network_architecture=None, final_backup_description=None, first_ip_address=None, id=None, include_replicas_for_major_version_upgrade=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, node_count=None, point_in_time_restore_contexts=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, root_password_wo=None, root_password_wo_version=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None, switch_transaction_logs_to_cloud_storage_enabled=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -70,6 +70,9 @@ class GetDatabaseInstanceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if include_replicas_for_major_version_upgrade and not isinstance(include_replicas_for_major_version_upgrade, bool):
+            raise TypeError("Expected argument 'include_replicas_for_major_version_upgrade' to be a bool")
+        pulumi.set(__self__, "include_replicas_for_major_version_upgrade", include_replicas_for_major_version_upgrade)
         if instance_type and not isinstance(instance_type, str):
             raise TypeError("Expected argument 'instance_type' to be a str")
         pulumi.set(__self__, "instance_type", instance_type)
@@ -139,6 +142,9 @@ class GetDatabaseInstanceResult:
         if settings and not isinstance(settings, list):
             raise TypeError("Expected argument 'settings' to be a list")
         pulumi.set(__self__, "settings", settings)
+        if switch_transaction_logs_to_cloud_storage_enabled and not isinstance(switch_transaction_logs_to_cloud_storage_enabled, bool):
+            raise TypeError("Expected argument 'switch_transaction_logs_to_cloud_storage_enabled' to be a bool")
+        pulumi.set(__self__, "switch_transaction_logs_to_cloud_storage_enabled", switch_transaction_logs_to_cloud_storage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="availableMaintenanceVersions")
@@ -212,6 +218,11 @@ class GetDatabaseInstanceResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="includeReplicasForMajorVersionUpgrade")
+    def include_replicas_for_major_version_upgrade(self) -> _builtins.bool:
+        return pulumi.get(self, "include_replicas_for_major_version_upgrade")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
@@ -328,6 +339,11 @@ class GetDatabaseInstanceResult:
     def settings(self) -> Sequence['outputs.GetDatabaseInstanceSettingResult']:
         return pulumi.get(self, "settings")
 
+    @_builtins.property
+    @pulumi.getter(name="switchTransactionLogsToCloudStorageEnabled")
+    def switch_transaction_logs_to_cloud_storage_enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "switch_transaction_logs_to_cloud_storage_enabled")
+
 
 class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
     # pylint: disable=using-constant-test
@@ -349,6 +365,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             final_backup_description=self.final_backup_description,
             first_ip_address=self.first_ip_address,
             id=self.id,
+            include_replicas_for_major_version_upgrade=self.include_replicas_for_major_version_upgrade,
             instance_type=self.instance_type,
             ip_addresses=self.ip_addresses,
             maintenance_version=self.maintenance_version,
@@ -371,7 +388,8 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             self_link=self.self_link,
             server_ca_certs=self.server_ca_certs,
             service_account_email_address=self.service_account_email_address,
-            settings=self.settings)
+            settings=self.settings,
+            switch_transaction_logs_to_cloud_storage_enabled=self.switch_transaction_logs_to_cloud_storage_enabled)
 
 
 def get_database_instance(name: Optional[_builtins.str] = None,
@@ -414,6 +432,7 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         final_backup_description=pulumi.get(__ret__, 'final_backup_description'),
         first_ip_address=pulumi.get(__ret__, 'first_ip_address'),
         id=pulumi.get(__ret__, 'id'),
+        include_replicas_for_major_version_upgrade=pulumi.get(__ret__, 'include_replicas_for_major_version_upgrade'),
         instance_type=pulumi.get(__ret__, 'instance_type'),
         ip_addresses=pulumi.get(__ret__, 'ip_addresses'),
         maintenance_version=pulumi.get(__ret__, 'maintenance_version'),
@@ -436,7 +455,8 @@ def get_database_instance(name: Optional[_builtins.str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
         service_account_email_address=pulumi.get(__ret__, 'service_account_email_address'),
-        settings=pulumi.get(__ret__, 'settings'))
+        settings=pulumi.get(__ret__, 'settings'),
+        switch_transaction_logs_to_cloud_storage_enabled=pulumi.get(__ret__, 'switch_transaction_logs_to_cloud_storage_enabled'))
 def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                  project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
@@ -476,6 +496,7 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         final_backup_description=pulumi.get(__response__, 'final_backup_description'),
         first_ip_address=pulumi.get(__response__, 'first_ip_address'),
         id=pulumi.get(__response__, 'id'),
+        include_replicas_for_major_version_upgrade=pulumi.get(__response__, 'include_replicas_for_major_version_upgrade'),
         instance_type=pulumi.get(__response__, 'instance_type'),
         ip_addresses=pulumi.get(__response__, 'ip_addresses'),
         maintenance_version=pulumi.get(__response__, 'maintenance_version'),
@@ -498,4 +519,5 @@ def get_database_instance_output(name: pulumi.Input[Optional[_builtins.str]] = N
         self_link=pulumi.get(__response__, 'self_link'),
         server_ca_certs=pulumi.get(__response__, 'server_ca_certs'),
         service_account_email_address=pulumi.get(__response__, 'service_account_email_address'),
-        settings=pulumi.get(__response__, 'settings')))
+        settings=pulumi.get(__response__, 'settings'),
+        switch_transaction_logs_to_cloud_storage_enabled=pulumi.get(__response__, 'switch_transaction_logs_to_cloud_storage_enabled')))

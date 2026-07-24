@@ -647,6 +647,45 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Job Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
+//				Name:               pulumi.String("cloudrun-job"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Tags: pulumi.StringMap{
+//					"tagKeys/1234": pulumi.String("tagValues/5678"),
+//				},
+//				Template: &cloudrunv2.JobTemplateArgs{
+//					Template: &cloudrunv2.JobTemplateTemplateArgs{
+//						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
+//							&cloudrunv2.JobTemplateTemplateContainerArgs{
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/job"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -759,6 +798,10 @@ type Job struct {
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrOutput `pulumi:"startExecutionToken"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplateOutput `pulumi:"template"`
@@ -905,6 +948,10 @@ type jobState struct {
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken *string `pulumi:"startExecutionToken"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template *JobTemplate `pulumi:"template"`
@@ -1011,6 +1058,10 @@ type JobState struct {
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplatePtrInput
@@ -1083,6 +1134,10 @@ type jobArgs struct {
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken *string `pulumi:"startExecutionToken"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplate `pulumi:"template"`
@@ -1145,6 +1200,10 @@ type JobArgs struct {
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The template used to create executions for this Job.
 	// Structure is documented below.
 	Template JobTemplateInput
@@ -1413,6 +1472,13 @@ func (o JobOutput) RunExecutionToken() pulumi.StringPtrOutput {
 // The sum of job name and token length must be fewer than 63 characters.
 func (o JobOutput) StartExecutionToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.StartExecutionToken }).(pulumi.StringPtrOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o JobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The template used to create executions for this Job.

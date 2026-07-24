@@ -34,6 +34,23 @@ import * as utilities from "../utilities";
  *     description: "a new posture",
  *     policySets: [
  *         {
+ *             policySetId: "list_constraint_policy_set",
+ *             description: "set of org policies with a list constraint",
+ *             policies: [{
+ *                 policyId: "resource_locations_policy",
+ *                 constraint: {
+ *                     orgPolicyConstraint: {
+ *                         cannedConstraintId: "gcp.resourceLocations",
+ *                         policyRules: [{
+ *                             values: {
+ *                                 allowedValues: ["in:us-locations"],
+ *                             },
+ *                         }],
+ *                     },
+ *                 },
+ *             }],
+ *         },
+ *         {
  *             policySetId: "org_policy_set",
  *             description: "set of org policies",
  *             policies: [

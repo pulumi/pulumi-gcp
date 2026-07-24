@@ -450,7 +450,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var globalAssoc = new Gcp.Compute.NetworkFirewallPolicyAssociation("global_assoc", new()
     ///     {
-    ///         Name = "global-policy-assoc-_34962",
+    ///         Name = "global-policy-assoc-_8493",
     ///         FirewallPolicy = fwPolicy.Id,
     ///         AttachmentTarget = net.Id,
     ///     });

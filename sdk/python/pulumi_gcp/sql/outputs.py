@@ -2604,12 +2604,16 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
             suggest = "consumer_network_status"
         elif key == "consumerServiceProjectId":
             suggest = "consumer_service_project_id"
+        elif key == "instanceAutoDnsStatus":
+            suggest = "instance_auto_dns_status"
         elif key == "ipAddress":
             suggest = "ip_address"
         elif key == "serviceConnectionPolicy":
             suggest = "service_connection_policy"
         elif key == "serviceConnectionPolicyCreationResult":
             suggest = "service_connection_policy_creation_result"
+        elif key == "writeEndpointAutoDnsStatus":
+            suggest = "write_endpoint_auto_dns_status"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection. Access the value via the '{suggest}' property getter instead.")
@@ -2626,24 +2630,30 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
                  consumer_network: _builtins.str,
                  consumer_network_status: Optional[_builtins.str] = None,
                  consumer_service_project_id: Optional[_builtins.str] = None,
+                 instance_auto_dns_status: Optional[_builtins.str] = None,
                  ip_address: Optional[_builtins.str] = None,
                  service_connection_policy: Optional[_builtins.str] = None,
                  service_connection_policy_creation_result: Optional[_builtins.str] = None,
-                 status: Optional[_builtins.str] = None):
+                 status: Optional[_builtins.str] = None,
+                 write_endpoint_auto_dns_status: Optional[_builtins.str] = None):
         """
         :param _builtins.str consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
         :param _builtins.str consumer_network_status: (Output) The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param _builtins.str instance_auto_dns_status: (Output) The status of the automated DNS provisioning for the instance.
         :param _builtins.str ip_address: (Output) The IP address of the consumer endpoint.
         :param _builtins.str service_connection_policy: (Output) The service connection policy created for the auto connection.
         :param _builtins.str service_connection_policy_creation_result: (Output) The result of the service connection policy creation.
         :param _builtins.str status: (Output) The connection status of the consumer endpoint.
+        :param _builtins.str write_endpoint_auto_dns_status: (Output) The status of the automated DNS provisioning for the write endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
         if consumer_network_status is not None:
             pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         if consumer_service_project_id is not None:
             pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        if instance_auto_dns_status is not None:
+            pulumi.set(__self__, "instance_auto_dns_status", instance_auto_dns_status)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if service_connection_policy is not None:
@@ -2652,6 +2662,8 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
             pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if write_endpoint_auto_dns_status is not None:
+            pulumi.set(__self__, "write_endpoint_auto_dns_status", write_endpoint_auto_dns_status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -2676,6 +2688,14 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceAutoDnsStatus")
+    def instance_auto_dns_status(self) -> Optional[_builtins.str]:
+        """
+        (Output) The status of the automated DNS provisioning for the instance.
+        """
+        return pulumi.get(self, "instance_auto_dns_status")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
@@ -2708,6 +2728,14 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection(dict):
         (Output) The connection status of the consumer endpoint.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="writeEndpointAutoDnsStatus")
+    def write_endpoint_auto_dns_status(self) -> Optional[_builtins.str]:
+        """
+        (Output) The status of the automated DNS provisioning for the write endpoint.
+        """
+        return pulumi.get(self, "write_endpoint_auto_dns_status")
 
 
 @pulumi.output_type
@@ -5166,26 +5194,32 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
                  consumer_network: _builtins.str,
                  consumer_network_status: _builtins.str,
                  consumer_service_project_id: _builtins.str,
+                 instance_auto_dns_status: _builtins.str,
                  ip_address: _builtins.str,
                  service_connection_policy: _builtins.str,
                  service_connection_policy_creation_result: _builtins.str,
-                 status: _builtins.str):
+                 status: _builtins.str,
+                 write_endpoint_auto_dns_status: _builtins.str):
         """
         :param _builtins.str consumer_network: The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
         :param _builtins.str consumer_network_status: The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param _builtins.str instance_auto_dns_status: The status of the automated DNS provisioning for the instance.
         :param _builtins.str ip_address: The IP address of the consumer endpoint.
         :param _builtins.str service_connection_policy: The service connection policy created for the auto connection.
         :param _builtins.str service_connection_policy_creation_result: The result of the service connection policy creation.
         :param _builtins.str status: The connection status of the consumer endpoint.
+        :param _builtins.str write_endpoint_auto_dns_status: The status of the automated DNS provisioning for the write endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
         pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        pulumi.set(__self__, "instance_auto_dns_status", instance_auto_dns_status)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "service_connection_policy", service_connection_policy)
         pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "write_endpoint_auto_dns_status", write_endpoint_auto_dns_status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -5210,6 +5244,14 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceAutoDnsStatus")
+    def instance_auto_dns_status(self) -> _builtins.str:
+        """
+        The status of the automated DNS provisioning for the instance.
+        """
+        return pulumi.get(self, "instance_auto_dns_status")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
@@ -5242,6 +5284,14 @@ class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult(
         The connection status of the consumer endpoint.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="writeEndpointAutoDnsStatus")
+    def write_endpoint_auto_dns_status(self) -> _builtins.str:
+        """
+        The status of the automated DNS provisioning for the write endpoint.
+        """
+        return pulumi.get(self, "write_endpoint_auto_dns_status")
 
 
 @pulumi.output_type
@@ -5639,6 +5689,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  enforce_new_sql_network_architecture: _builtins.bool,
                  final_backup_description: _builtins.str,
                  first_ip_address: _builtins.str,
+                 include_replicas_for_major_version_upgrade: _builtins.bool,
                  instance_type: _builtins.str,
                  ip_addresses: Sequence['outputs.GetDatabaseInstancesInstanceIpAddressResult'],
                  maintenance_version: _builtins.str,
@@ -5661,7 +5712,8 @@ class GetDatabaseInstancesInstanceResult(dict):
                  self_link: _builtins.str,
                  server_ca_certs: Sequence['outputs.GetDatabaseInstancesInstanceServerCaCertResult'],
                  service_account_email_address: _builtins.str,
-                 settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult']):
+                 settings: Sequence['outputs.GetDatabaseInstancesInstanceSettingResult'],
+                 switch_transaction_logs_to_cloud_storage_enabled: _builtins.bool):
         """
         :param Sequence[_builtins.str] available_maintenance_versions: Available Maintenance versions.
         :param _builtins.str backupdr_backup: The name of the BackupDR backup to restore from.
@@ -5680,6 +5732,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.bool enforce_new_sql_network_architecture: Whether to enforce the new SQL network architecture.
         :param _builtins.str final_backup_description: The description of final backup if instance enable create final backup during instance deletion.
         :param _builtins.str first_ip_address: The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
+        :param _builtins.bool include_replicas_for_major_version_upgrade: When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when 'database_version' is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
         :param _builtins.str instance_type: The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         :param _builtins.str maintenance_version: Maintenance version.
         :param _builtins.str master_instance_name: The name of the instance that will act as the master in the replication setup. Note, this requires the master to have binary_log_enabled set, as well as existing backups.
@@ -5701,6 +5754,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param _builtins.str self_link: The URI of the created resource.
         :param _builtins.str service_account_email_address: The service account email address assigned to the instance.
         :param Sequence['GetDatabaseInstancesInstanceSettingArgs'] settings: The settings to use for the database. The configuration is detailed below.
+        :param _builtins.bool switch_transaction_logs_to_cloud_storage_enabled: When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         pulumi.set(__self__, "backupdr_backup", backupdr_backup)
@@ -5715,6 +5769,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         pulumi.set(__self__, "final_backup_description", final_backup_description)
         pulumi.set(__self__, "first_ip_address", first_ip_address)
+        pulumi.set(__self__, "include_replicas_for_major_version_upgrade", include_replicas_for_major_version_upgrade)
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "ip_addresses", ip_addresses)
         pulumi.set(__self__, "maintenance_version", maintenance_version)
@@ -5738,6 +5793,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "server_ca_certs", server_ca_certs)
         pulumi.set(__self__, "service_account_email_address", service_account_email_address)
         pulumi.set(__self__, "settings", settings)
+        pulumi.set(__self__, "switch_transaction_logs_to_cloud_storage_enabled", switch_transaction_logs_to_cloud_storage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="availableMaintenanceVersions")
@@ -5844,6 +5900,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         The first IPv4 address of any type assigned. This is to support accessing the first address in the list in a terraform output when the resource is configured with a count.
         """
         return pulumi.get(self, "first_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="includeReplicasForMajorVersionUpgrade")
+    def include_replicas_for_major_version_upgrade(self) -> _builtins.bool:
+        """
+        When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when 'database_version' is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        """
+        return pulumi.get(self, "include_replicas_for_major_version_upgrade")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
@@ -6020,6 +6084,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         The settings to use for the database. The configuration is detailed below.
         """
         return pulumi.get(self, "settings")
+
+    @_builtins.property
+    @pulumi.getter(name="switchTransactionLogsToCloudStorageEnabled")
+    def switch_transaction_logs_to_cloud_storage_enabled(self) -> _builtins.bool:
+        """
+        When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        """
+        return pulumi.get(self, "switch_transaction_logs_to_cloud_storage_enabled")
 
 
 @pulumi.output_type
@@ -7657,26 +7729,32 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
                  consumer_network: _builtins.str,
                  consumer_network_status: _builtins.str,
                  consumer_service_project_id: _builtins.str,
+                 instance_auto_dns_status: _builtins.str,
                  ip_address: _builtins.str,
                  service_connection_policy: _builtins.str,
                  service_connection_policy_creation_result: _builtins.str,
-                 status: _builtins.str):
+                 status: _builtins.str,
+                 write_endpoint_auto_dns_status: _builtins.str):
         """
         :param _builtins.str consumer_network: The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
         :param _builtins.str consumer_network_status: The connection policy status of the consumer network.
         :param _builtins.str consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        :param _builtins.str instance_auto_dns_status: The status of the automated DNS provisioning for the instance.
         :param _builtins.str ip_address: The IP address of the consumer endpoint.
         :param _builtins.str service_connection_policy: The service connection policy created for the auto connection.
         :param _builtins.str service_connection_policy_creation_result: The result of the service connection policy creation.
         :param _builtins.str status: The connection status of the consumer endpoint.
+        :param _builtins.str write_endpoint_auto_dns_status: The status of the automated DNS provisioning for the write endpoint.
         """
         pulumi.set(__self__, "consumer_network", consumer_network)
         pulumi.set(__self__, "consumer_network_status", consumer_network_status)
         pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+        pulumi.set(__self__, "instance_auto_dns_status", instance_auto_dns_status)
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "service_connection_policy", service_connection_policy)
         pulumi.set(__self__, "service_connection_policy_creation_result", service_connection_policy_creation_result)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "write_endpoint_auto_dns_status", write_endpoint_auto_dns_status)
 
     @_builtins.property
     @pulumi.getter(name="consumerNetwork")
@@ -7701,6 +7779,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
         The project ID of consumer service project of this consumer endpoint.
         """
         return pulumi.get(self, "consumer_service_project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceAutoDnsStatus")
+    def instance_auto_dns_status(self) -> _builtins.str:
+        """
+        The status of the automated DNS provisioning for the instance.
+        """
+        return pulumi.get(self, "instance_auto_dns_status")
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
@@ -7733,6 +7819,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnecti
         The connection status of the consumer endpoint.
         """
         return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="writeEndpointAutoDnsStatus")
+    def write_endpoint_auto_dns_status(self) -> _builtins.str:
+        """
+        The status of the automated DNS provisioning for the write endpoint.
+        """
+        return pulumi.get(self, "write_endpoint_auto_dns_status")
 
 
 @pulumi.output_type

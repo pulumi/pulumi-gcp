@@ -102,7 +102,7 @@ public final class GetRegionInstanceTemplateScheduling {
      */
     private List<GetRegionInstanceTemplateSchedulingPreemptionNoticeDuration> preemptionNoticeDurations;
     /**
-     * @return Describe the type of preemptible VM.
+     * @return Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
      * 
      */
     private String provisioningModel;
@@ -231,7 +231,7 @@ public final class GetRegionInstanceTemplateScheduling {
         return this.preemptionNoticeDurations;
     }
     /**
-     * @return Describe the type of preemptible VM.
+     * @return Describe the type of provisioning model for the instance. Can be `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`.
      * 
      */
     public String provisioningModel() {

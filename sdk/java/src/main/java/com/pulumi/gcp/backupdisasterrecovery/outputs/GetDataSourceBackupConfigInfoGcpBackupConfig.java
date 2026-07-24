@@ -27,7 +27,7 @@ public final class GetDataSourceBackupConfigInfoGcpBackupConfig {
      */
     private String backupPlanDescription;
     /**
-     * @return The names of the backup plan rules which point to this backupvault
+     * @return The rules of the backup plan.
      * 
      */
     private List<String> backupPlanRules;
@@ -55,7 +55,7 @@ public final class GetDataSourceBackupConfigInfoGcpBackupConfig {
         return this.backupPlanDescription;
     }
     /**
-     * @return The names of the backup plan rules which point to this backupvault
+     * @return The rules of the backup plan.
      * 
      */
     public List<String> backupPlanRules() {

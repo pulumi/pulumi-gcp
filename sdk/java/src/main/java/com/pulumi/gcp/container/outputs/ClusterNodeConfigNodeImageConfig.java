@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeConfigNodeImageConfig {
     /**
-     * @return The name of the image to use for this node.
+     * @return The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     private @Nullable String image;
     /**
-     * @return The project containing the image to use for this node.
+     * @return The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     private @Nullable String imageProject;
 
     private ClusterNodeConfigNodeImageConfig() {}
     /**
-     * @return The name of the image to use for this node.
+     * @return The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     public Optional<String> image() {
         return Optional.ofNullable(this.image);
     }
     /**
-     * @return The project containing the image to use for this node.
+     * @return The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
      * 
      */
     public Optional<String> imageProject() {

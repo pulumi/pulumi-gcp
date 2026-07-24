@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSpark = new Gcp.Dataproc.Batch("example_batch_spark", new()
     ///     {
-    ///         BatchId = "tf-test-batch_37426",
+    ///         BatchId = "tf-test-batch_79411",
     ///         Location = "us-central1",
     ///         Labels = 
     ///         {
@@ -233,7 +233,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSparsql = new Gcp.Dataproc.Batch("example_batch_sparsql", new()
     ///     {
-    ///         BatchId = "tf-test-batch_67903",
+    ///         BatchId = "tf-test-batch_2234",
     ///         Location = "us-central1",
     ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
     ///         {
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchPyspark = new Gcp.Dataproc.Batch("example_batch_pyspark", new()
     ///     {
-    ///         BatchId = "tf-test-batch_40816",
+    ///         BatchId = "tf-test-batch_29225",
     ///         Location = "us-central1",
     ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
     ///         {
@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchSparkr = new Gcp.Dataproc.Batch("example_batch_sparkr", new()
     ///     {
-    ///         BatchId = "tf-test-batch_94690",
+    ///         BatchId = "tf-test-batch_40798",
     ///         Location = "us-central1",
     ///         Labels = 
     ///         {
@@ -387,7 +387,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var exampleBatchAutotuning = new Gcp.Dataproc.Batch("example_batch_autotuning", new()
     ///     {
-    ///         BatchId = "tf-test-batch_29947",
+    ///         BatchId = "tf-test-batch_82591",
     ///         Location = "us-central1",
     ///         Labels = 
     ///         {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -13,6 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
+    /**
+     * @return Specifies which Google services are allowed to be accessed from
+     * VPC networks in the service perimeter.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern> allowedServicePatterns;
     /**
      * @return The list of APIs usable within the Service Perimeter.
      * Must be empty unless `enableRestriction` is True.
@@ -25,8 +33,23 @@ public final class ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
      * 
      */
     private @Nullable Boolean enableRestriction;
+    /**
+     * @return Defines the enforcement scopes of service patterns.
+     * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+     * 
+     */
+    private @Nullable List<String> servicePatternsEnforcementScopes;
 
     private ServicePerimetersServicePerimeterSpecVpcAccessibleServices() {}
+    /**
+     * @return Specifies which Google services are allowed to be accessed from
+     * VPC networks in the service perimeter.
+     * Structure is documented below.
+     * 
+     */
+    public List<ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern> allowedServicePatterns() {
+        return this.allowedServicePatterns == null ? List.of() : this.allowedServicePatterns;
+    }
     /**
      * @return The list of APIs usable within the Service Perimeter.
      * Must be empty unless `enableRestriction` is True.
@@ -43,6 +66,14 @@ public final class ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
     public Optional<Boolean> enableRestriction() {
         return Optional.ofNullable(this.enableRestriction);
     }
+    /**
+     * @return Defines the enforcement scopes of service patterns.
+     * Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+     * 
+     */
+    public List<String> servicePatternsEnforcementScopes() {
+        return this.servicePatternsEnforcementScopes == null ? List.of() : this.servicePatternsEnforcementScopes;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -53,15 +84,28 @@ public final class ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern> allowedServicePatterns;
         private @Nullable List<String> allowedServices;
         private @Nullable Boolean enableRestriction;
+        private @Nullable List<String> servicePatternsEnforcementScopes;
         public Builder() {}
         public Builder(ServicePerimetersServicePerimeterSpecVpcAccessibleServices defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedServicePatterns = defaults.allowedServicePatterns;
     	      this.allowedServices = defaults.allowedServices;
     	      this.enableRestriction = defaults.enableRestriction;
+    	      this.servicePatternsEnforcementScopes = defaults.servicePatternsEnforcementScopes;
         }
 
+        @CustomType.Setter
+        public Builder allowedServicePatterns(@Nullable List<ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern> allowedServicePatterns) {
+
+            this.allowedServicePatterns = allowedServicePatterns;
+            return this;
+        }
+        public Builder allowedServicePatterns(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePattern... allowedServicePatterns) {
+            return allowedServicePatterns(List.of(allowedServicePatterns));
+        }
         @CustomType.Setter
         public Builder allowedServices(@Nullable List<String> allowedServices) {
 
@@ -77,10 +121,21 @@ public final class ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
             this.enableRestriction = enableRestriction;
             return this;
         }
+        @CustomType.Setter
+        public Builder servicePatternsEnforcementScopes(@Nullable List<String> servicePatternsEnforcementScopes) {
+
+            this.servicePatternsEnforcementScopes = servicePatternsEnforcementScopes;
+            return this;
+        }
+        public Builder servicePatternsEnforcementScopes(String... servicePatternsEnforcementScopes) {
+            return servicePatternsEnforcementScopes(List.of(servicePatternsEnforcementScopes));
+        }
         public ServicePerimetersServicePerimeterSpecVpcAccessibleServices build() {
             final var _resultValue = new ServicePerimetersServicePerimeterSpecVpcAccessibleServices();
+            _resultValue.allowedServicePatterns = allowedServicePatterns;
             _resultValue.allowedServices = allowedServices;
             _resultValue.enableRestriction = enableRestriction;
+            _resultValue.servicePatternsEnforcementScopes = servicePatternsEnforcementScopes;
             return _resultValue;
         }
     }

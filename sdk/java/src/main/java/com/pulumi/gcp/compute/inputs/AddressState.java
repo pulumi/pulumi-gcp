@@ -144,8 +144,9 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-     * The PDP must support enhanced IPv4 allocations.
+     * Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+     * If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+     * If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
      * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -158,8 +159,9 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> ipCollection;
 
     /**
-     * @return Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-     * The PDP must support enhanced IPv4 allocations.
+     * @return Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+     * If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+     * If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
      * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
      * Full resource URL, as in:
      * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -683,8 +685,9 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipCollection Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-         * The PDP must support enhanced IPv4 allocations.
+         * @param ipCollection Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+         * If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+         * If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
          * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
          * Full resource URL, as in:
          * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -701,8 +704,9 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipCollection Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-         * The PDP must support enhanced IPv4 allocations.
+         * @param ipCollection Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+         * If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+         * If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
          * Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
          * Full resource URL, as in:
          * * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`

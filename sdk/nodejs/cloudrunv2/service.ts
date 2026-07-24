@@ -562,7 +562,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const sourcebucket = new gcp.storage.Bucket("sourcebucket", {
- *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_64336`),
+ *     name: project.then(project => `${project.projectId}-tf-test-gcf-source_75125`),
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
@@ -618,6 +618,26 @@ import * as utilities from "../utilities";
  *                 medium: "DISK",
  *                 sizeLimit: "10Gi",
  *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Tags
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     tags: {
+ *         "tagKeys/1234": "tagValues/5678",
+ *     },
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
  *         }],
  *     },
  * });
@@ -843,6 +863,12 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly scaling: pulumi.Output<outputs.cloudrunv2.ServiceScaling>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
      */
@@ -928,6 +954,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["reconciling"] = state?.reconciling;
             resourceInputs["scaling"] = state?.scaling;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["template"] = state?.template;
             resourceInputs["terminalConditions"] = state?.terminalConditions;
             resourceInputs["trafficStatuses"] = state?.trafficStatuses;
@@ -964,6 +991,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["scaling"] = args?.scaling;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["template"] = args?.template;
             resourceInputs["traffics"] = args?.traffics;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -1175,6 +1203,12 @@ export interface ServiceState {
      */
     scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling | undefined>;
     /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The template used to create revisions for this Service.
      * Structure is documented below.
      */
@@ -1327,6 +1361,12 @@ export interface ServiceArgs {
      * Structure is documented below.
      */
     scaling?: pulumi.Input<inputs.cloudrunv2.ServiceScaling | undefined>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The template used to create revisions for this Service.
      * Structure is documented below.

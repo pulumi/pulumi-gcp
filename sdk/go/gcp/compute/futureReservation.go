@@ -50,6 +50,7 @@ import (
 //			_, err := compute.NewFutureReservation(ctx, "gce_future_reservation", &compute.FutureReservationArgs{
 //				Name:                              pulumi.String("gce-future-reservation"),
 //				Project:                           pulumi.String("my-project-name"),
+//				Zone:                              pulumi.String("us-central1-a"),
 //				AutoDeleteAutoCreatedReservations: pulumi.Bool(true),
 //				PlanningStatus:                    pulumi.String("DRAFT"),
 //				NamePrefix:                        pulumi.String("fr-basic"),
@@ -89,6 +90,7 @@ import (
 //			_, err := compute.NewFutureReservation(ctx, "gce_future_reservation", &compute.FutureReservationArgs{
 //				Name:                              pulumi.String("gce-future-reservation-aggregate-reservation"),
 //				Project:                           pulumi.String("my-project-name"),
+//				Zone:                              pulumi.String("us-central1-a"),
 //				AutoDeleteAutoCreatedReservations: pulumi.Bool(true),
 //				PlanningStatus:                    pulumi.String("DRAFT"),
 //				NamePrefix:                        pulumi.String("fr-basic"),
@@ -176,7 +178,7 @@ type FutureReservation struct {
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
 	// the regular expression `a-z?` which means the
 	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the las
+	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
@@ -216,7 +218,7 @@ type FutureReservation struct {
 	// Time window for this Future Reservation.
 	// Structure is documented below.
 	TimeWindow FutureReservationTimeWindowOutput `pulumi:"timeWindow"`
-	// URL of the Zone where this future reservation resides.
+	// The zone where the future reservation is located.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -285,7 +287,7 @@ type futureReservationState struct {
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
 	// the regular expression `a-z?` which means the
 	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the las
+	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
@@ -325,7 +327,7 @@ type futureReservationState struct {
 	// Time window for this Future Reservation.
 	// Structure is documented below.
 	TimeWindow *FutureReservationTimeWindow `pulumi:"timeWindow"`
-	// URL of the Zone where this future reservation resides.
+	// The zone where the future reservation is located.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -362,7 +364,7 @@ type FutureReservationState struct {
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
 	// the regular expression `a-z?` which means the
 	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the las
+	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
@@ -402,7 +404,7 @@ type FutureReservationState struct {
 	// Time window for this Future Reservation.
 	// Structure is documented below.
 	TimeWindow FutureReservationTimeWindowPtrInput
-	// URL of the Zone where this future reservation resides.
+	// The zone where the future reservation is located.
 	Zone pulumi.StringPtrInput
 }
 
@@ -441,7 +443,7 @@ type futureReservationArgs struct {
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
 	// the regular expression `a-z?` which means the
 	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the las
+	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
@@ -474,6 +476,8 @@ type futureReservationArgs struct {
 	// Time window for this Future Reservation.
 	// Structure is documented below.
 	TimeWindow FutureReservationTimeWindow `pulumi:"timeWindow"`
+	// The zone where the future reservation is located.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a FutureReservation resource.
@@ -508,7 +512,7 @@ type FutureReservationArgs struct {
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
 	// the regular expression `a-z?` which means the
 	// first character must be a lowercase letter, and all following
-	// characters must be a dash, lowercase letter, or digit, except the las
+	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
@@ -541,6 +545,8 @@ type FutureReservationArgs struct {
 	// Time window for this Future Reservation.
 	// Structure is documented below.
 	TimeWindow FutureReservationTimeWindowInput
+	// The zone where the future reservation is located.
+	Zone pulumi.StringPtrInput
 }
 
 func (FutureReservationArgs) ElementType() reflect.Type {
@@ -693,7 +699,7 @@ func (o FutureReservationOutput) Description() pulumi.StringPtrOutput {
 // RFC1035. Specifically, the name must be 1-63 characters long and match
 // the regular expression `a-z?` which means the
 // first character must be a lowercase letter, and all following
-// characters must be a dash, lowercase letter, or digit, except the las
+// characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
 func (o FutureReservationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -780,7 +786,7 @@ func (o FutureReservationOutput) TimeWindow() FutureReservationTimeWindowOutput 
 	return o.ApplyT(func(v *FutureReservation) FutureReservationTimeWindowOutput { return v.TimeWindow }).(FutureReservationTimeWindowOutput)
 }
 
-// URL of the Zone where this future reservation resides.
+// The zone where the future reservation is located.
 func (o FutureReservationOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

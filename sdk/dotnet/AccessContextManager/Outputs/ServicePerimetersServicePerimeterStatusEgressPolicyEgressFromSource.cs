@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
+        /// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        /// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint? PscEndpoint;
+        /// <summary>
         /// A Google Cloud resource that is allowed to egress the perimeter.
         /// Requests from these resources are allowed to access data outside the perimeter.
         /// Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -31,9 +37,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         private ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource(
             string? accessLevel,
 
+            Outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpoint? pscEndpoint,
+
             string? resource)
         {
             AccessLevel = accessLevel;
+            PscEndpoint = pscEndpoint;
             Resource = resource;
         }
     }

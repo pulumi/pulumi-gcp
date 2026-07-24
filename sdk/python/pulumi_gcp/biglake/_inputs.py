@@ -27,6 +27,26 @@ __all__ = [
     'HiveDatabaseIamBindingConditionArgsDict',
     'HiveDatabaseIamMemberConditionArgs',
     'HiveDatabaseIamMemberConditionArgsDict',
+    'HiveTableIamBindingConditionArgs',
+    'HiveTableIamBindingConditionArgsDict',
+    'HiveTableIamMemberConditionArgs',
+    'HiveTableIamMemberConditionArgsDict',
+    'HiveTablePartitionKeyArgs',
+    'HiveTablePartitionKeyArgsDict',
+    'HiveTableStorageDescriptorArgs',
+    'HiveTableStorageDescriptorArgsDict',
+    'HiveTableStorageDescriptorColumnArgs',
+    'HiveTableStorageDescriptorColumnArgsDict',
+    'HiveTableStorageDescriptorSerdeInfoArgs',
+    'HiveTableStorageDescriptorSerdeInfoArgsDict',
+    'HiveTableStorageDescriptorSkewedInfoArgs',
+    'HiveTableStorageDescriptorSkewedInfoArgsDict',
+    'HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs',
+    'HiveTableStorageDescriptorSkewedInfoSkewedColValueArgsDict',
+    'HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs',
+    'HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgsDict',
+    'HiveTableStorageDescriptorSortColArgs',
+    'HiveTableStorageDescriptorSortColArgsDict',
     'IcebergCatalogFederatedCatalogOptionsArgs',
     'IcebergCatalogFederatedCatalogOptionsArgsDict',
     'IcebergCatalogFederatedCatalogOptionsGlueCatalogInfoArgs',
@@ -361,6 +381,832 @@ class HiveDatabaseIamMemberConditionArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+
+class HiveTableIamBindingConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class HiveTableIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class HiveTableIamMemberConditionArgsDict(TypedDict):
+    expression: pulumi.Input[_builtins.str]
+    title: pulumi.Input[_builtins.str]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class HiveTableIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[_builtins.str],
+                 title: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[_builtins.str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+class HiveTablePartitionKeyArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the field.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the field.
+    """
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comment of the field.
+    """
+
+@pulumi.input_type
+class HiveTablePartitionKeyArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 comment: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the field.
+        :param pulumi.Input[_builtins.str] type: Type of the field.
+        :param pulumi.Input[_builtins.str] comment: Comment of the field.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comment of the field.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+
+class HiveTableStorageDescriptorArgsDict(TypedDict):
+    columns: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorColumnArgsDict']]]
+    """
+    Specifies the columns of the table (the schema).
+    Structure is documented below.
+    """
+    bucket_cols: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Reducer grouping columns, clustering columns, and bucketing columns.
+    """
+    compressed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the table data is compressed.
+    """
+    input_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully qualified Java class name of the input format.
+    """
+    location_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The Cloud Storage URI where the table data is located.
+    """
+    num_buckets: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of buckets in the table.
+    """
+    output_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully qualified Java class name of the output format.
+    """
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Key-value pairs for the storage descriptor.
+    """
+    serde_info: NotRequired[pulumi.Input[Optional['HiveTableStorageDescriptorSerdeInfoArgsDict']]]
+    """
+    Serialization and deserialization information.
+    Structure is documented below.
+    """
+    skewed_info: NotRequired[pulumi.Input[Optional['HiveTableStorageDescriptorSkewedInfoArgsDict']]]
+    """
+    Table data skew information.
+    Structure is documented below.
+    """
+    sort_cols: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HiveTableStorageDescriptorSortColArgsDict']]]]]
+    """
+    Sort order of the data in each bucket.
+    Structure is documented below.
+    """
+    stored_as_sub_dirs: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the table is stored as sub directories.
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorArgs:
+    def __init__(__self__, *,
+                 columns: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorColumnArgs']]],
+                 bucket_cols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 compressed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 input_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 location_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+                 output_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 serde_info: pulumi.Input[Optional['HiveTableStorageDescriptorSerdeInfoArgs']] = None,
+                 skewed_info: pulumi.Input[Optional['HiveTableStorageDescriptorSkewedInfoArgs']] = None,
+                 sort_cols: pulumi.Input[Optional[Sequence[pulumi.Input['HiveTableStorageDescriptorSortColArgs']]]] = None,
+                 stored_as_sub_dirs: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorColumnArgs']]] columns: Specifies the columns of the table (the schema).
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] bucket_cols: Reducer grouping columns, clustering columns, and bucketing columns.
+        :param pulumi.Input[_builtins.bool] compressed: Whether the table data is compressed.
+        :param pulumi.Input[_builtins.str] input_format: The fully qualified Java class name of the input format.
+        :param pulumi.Input[_builtins.str] location_uri: The Cloud Storage URI where the table data is located.
+        :param pulumi.Input[_builtins.int] num_buckets: The number of buckets in the table.
+        :param pulumi.Input[_builtins.str] output_format: The fully qualified Java class name of the output format.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Key-value pairs for the storage descriptor.
+        :param pulumi.Input['HiveTableStorageDescriptorSerdeInfoArgs'] serde_info: Serialization and deserialization information.
+               Structure is documented below.
+        :param pulumi.Input['HiveTableStorageDescriptorSkewedInfoArgs'] skewed_info: Table data skew information.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSortColArgs']]] sort_cols: Sort order of the data in each bucket.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.bool] stored_as_sub_dirs: Whether the table is stored as sub directories.
+        """
+        pulumi.set(__self__, "columns", columns)
+        if bucket_cols is not None:
+            pulumi.set(__self__, "bucket_cols", bucket_cols)
+        if compressed is not None:
+            pulumi.set(__self__, "compressed", compressed)
+        if input_format is not None:
+            pulumi.set(__self__, "input_format", input_format)
+        if location_uri is not None:
+            pulumi.set(__self__, "location_uri", location_uri)
+        if num_buckets is not None:
+            pulumi.set(__self__, "num_buckets", num_buckets)
+        if output_format is not None:
+            pulumi.set(__self__, "output_format", output_format)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if serde_info is not None:
+            pulumi.set(__self__, "serde_info", serde_info)
+        if skewed_info is not None:
+            pulumi.set(__self__, "skewed_info", skewed_info)
+        if sort_cols is not None:
+            pulumi.set(__self__, "sort_cols", sort_cols)
+        if stored_as_sub_dirs is not None:
+            pulumi.set(__self__, "stored_as_sub_dirs", stored_as_sub_dirs)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorColumnArgs']]]:
+        """
+        Specifies the columns of the table (the schema).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorColumnArgs']]]):
+        pulumi.set(self, "columns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketCols")
+    def bucket_cols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Reducer grouping columns, clustering columns, and bucketing columns.
+        """
+        return pulumi.get(self, "bucket_cols")
+
+    @bucket_cols.setter
+    def bucket_cols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "bucket_cols", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def compressed(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the table data is compressed.
+        """
+        return pulumi.get(self, "compressed")
+
+    @compressed.setter
+    def compressed(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "compressed", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inputFormat")
+    def input_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully qualified Java class name of the input format.
+        """
+        return pulumi.get(self, "input_format")
+
+    @input_format.setter
+    def input_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "input_format", value)
+
+    @_builtins.property
+    @pulumi.getter(name="locationUri")
+    def location_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Cloud Storage URI where the table data is located.
+        """
+        return pulumi.get(self, "location_uri")
+
+    @location_uri.setter
+    def location_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "location_uri", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numBuckets")
+    def num_buckets(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of buckets in the table.
+        """
+        return pulumi.get(self, "num_buckets")
+
+    @num_buckets.setter
+    def num_buckets(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_buckets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputFormat")
+    def output_format(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully qualified Java class name of the output format.
+        """
+        return pulumi.get(self, "output_format")
+
+    @output_format.setter
+    def output_format(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "output_format", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Key-value pairs for the storage descriptor.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serdeInfo")
+    def serde_info(self) -> pulumi.Input[Optional['HiveTableStorageDescriptorSerdeInfoArgs']]:
+        """
+        Serialization and deserialization information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "serde_info")
+
+    @serde_info.setter
+    def serde_info(self, value: pulumi.Input[Optional['HiveTableStorageDescriptorSerdeInfoArgs']]):
+        pulumi.set(self, "serde_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skewedInfo")
+    def skewed_info(self) -> pulumi.Input[Optional['HiveTableStorageDescriptorSkewedInfoArgs']]:
+        """
+        Table data skew information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "skewed_info")
+
+    @skewed_info.setter
+    def skewed_info(self, value: pulumi.Input[Optional['HiveTableStorageDescriptorSkewedInfoArgs']]):
+        pulumi.set(self, "skewed_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sortCols")
+    def sort_cols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HiveTableStorageDescriptorSortColArgs']]]]:
+        """
+        Sort order of the data in each bucket.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sort_cols")
+
+    @sort_cols.setter
+    def sort_cols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HiveTableStorageDescriptorSortColArgs']]]]):
+        pulumi.set(self, "sort_cols", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storedAsSubDirs")
+    def stored_as_sub_dirs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the table is stored as sub directories.
+        """
+        return pulumi.get(self, "stored_as_sub_dirs")
+
+    @stored_as_sub_dirs.setter
+    def stored_as_sub_dirs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "stored_as_sub_dirs", value)
+
+
+class HiveTableStorageDescriptorColumnArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the field.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Type of the field.
+    """
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comment of the field.
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorColumnArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 comment: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the field.
+        :param pulumi.Input[_builtins.str] type: Type of the field.
+        :param pulumi.Input[_builtins.str] comment: Comment of the field.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of the field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comment of the field.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
+
+
+class HiveTableStorageDescriptorSerdeInfoArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the SerDe, table name by default.
+    """
+    serialization_lib: pulumi.Input[_builtins.str]
+    """
+    The fully qualified Java class name of the serialization library.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Description of the SerDe.
+    """
+    deserializer_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully qualified Java class name of the deserializer.
+    """
+    parameters: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Parameters of the SerDe.
+    """
+    serde_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The SerDe type.
+    Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+    """
+    serializer_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The fully qualified Java class name of the serializer.
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorSerdeInfoArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 serialization_lib: pulumi.Input[_builtins.str],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 deserializer_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 serde_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 serializer_class: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the SerDe, table name by default.
+        :param pulumi.Input[_builtins.str] serialization_lib: The fully qualified Java class name of the serialization library.
+        :param pulumi.Input[_builtins.str] description: Description of the SerDe.
+        :param pulumi.Input[_builtins.str] deserializer_class: The fully qualified Java class name of the deserializer.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Parameters of the SerDe.
+        :param pulumi.Input[_builtins.str] serde_type: The SerDe type.
+               Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+        :param pulumi.Input[_builtins.str] serializer_class: The fully qualified Java class name of the serializer.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "serialization_lib", serialization_lib)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if deserializer_class is not None:
+            pulumi.set(__self__, "deserializer_class", deserializer_class)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if serde_type is not None:
+            pulumi.set(__self__, "serde_type", serde_type)
+        if serializer_class is not None:
+            pulumi.set(__self__, "serializer_class", serializer_class)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the SerDe, table name by default.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serializationLib")
+    def serialization_lib(self) -> pulumi.Input[_builtins.str]:
+        """
+        The fully qualified Java class name of the serialization library.
+        """
+        return pulumi.get(self, "serialization_lib")
+
+    @serialization_lib.setter
+    def serialization_lib(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "serialization_lib", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the SerDe.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deserializerClass")
+    def deserializer_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully qualified Java class name of the deserializer.
+        """
+        return pulumi.get(self, "deserializer_class")
+
+    @deserializer_class.setter
+    def deserializer_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deserializer_class", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Parameters of the SerDe.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serdeType")
+    def serde_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The SerDe type.
+        Possible values are: `SERDE_TYPE_UNSPECIFIED`, `HIVE`, `SCHEMA_REGISTRY`.
+        """
+        return pulumi.get(self, "serde_type")
+
+    @serde_type.setter
+    def serde_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serde_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serializerClass")
+    def serializer_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The fully qualified Java class name of the serializer.
+        """
+        return pulumi.get(self, "serializer_class")
+
+    @serializer_class.setter
+    def serializer_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "serializer_class", value)
+
+
+class HiveTableStorageDescriptorSkewedInfoArgsDict(TypedDict):
+    skewed_col_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    The column names that are skewed.
+    """
+    skewed_col_values: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedColValueArgsDict']]]
+    """
+    The skewed column values.
+    Structure is documented below.
+    """
+    skewed_key_values_locations: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgsDict']]]
+    """
+    The skewed key values locations.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorSkewedInfoArgs:
+    def __init__(__self__, *,
+                 skewed_col_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 skewed_col_values: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs']]],
+                 skewed_key_values_locations: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] skewed_col_names: The column names that are skewed.
+        :param pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs']]] skewed_col_values: The skewed column values.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs']]] skewed_key_values_locations: The skewed key values locations.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "skewed_col_names", skewed_col_names)
+        pulumi.set(__self__, "skewed_col_values", skewed_col_values)
+        pulumi.set(__self__, "skewed_key_values_locations", skewed_key_values_locations)
+
+    @_builtins.property
+    @pulumi.getter(name="skewedColNames")
+    def skewed_col_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        The column names that are skewed.
+        """
+        return pulumi.get(self, "skewed_col_names")
+
+    @skewed_col_names.setter
+    def skewed_col_names(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "skewed_col_names", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skewedColValues")
+    def skewed_col_values(self) -> pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs']]]:
+        """
+        The skewed column values.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "skewed_col_values")
+
+    @skewed_col_values.setter
+    def skewed_col_values(self, value: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs']]]):
+        pulumi.set(self, "skewed_col_values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skewedKeyValuesLocations")
+    def skewed_key_values_locations(self) -> pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs']]]:
+        """
+        The skewed key values locations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "skewed_key_values_locations")
+
+    @skewed_key_values_locations.setter
+    def skewed_key_values_locations(self, value: pulumi.Input[Sequence[pulumi.Input['HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs']]]):
+        pulumi.set(self, "skewed_key_values_locations", value)
+
+
+class HiveTableStorageDescriptorSkewedInfoSkewedColValueArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    (Required)
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorSkewedInfoSkewedColValueArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: (Required)
+        """
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        (Required)
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "values", value)
+
+
+class HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgsDict(TypedDict):
+    location: pulumi.Input[_builtins.str]
+    """
+    (Required)
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    (Required)
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorSkewedInfoSkewedKeyValuesLocationArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[_builtins.str],
+                 values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[_builtins.str] location: (Required)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: (Required)
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[_builtins.str]:
+        """
+        (Required)
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        (Required)
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "values", value)
+
+
+class HiveTableStorageDescriptorSortColArgsDict(TypedDict):
+    col: pulumi.Input[_builtins.str]
+    """
+    The column name.
+    """
+    order: pulumi.Input[_builtins.int]
+    """
+    Sort order: 1 for Ascending, 0 for Descending.
+    """
+
+@pulumi.input_type
+class HiveTableStorageDescriptorSortColArgs:
+    def __init__(__self__, *,
+                 col: pulumi.Input[_builtins.str],
+                 order: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] col: The column name.
+        :param pulumi.Input[_builtins.int] order: Sort order: 1 for Ascending, 0 for Descending.
+        """
+        pulumi.set(__self__, "col", col)
+        pulumi.set(__self__, "order", order)
+
+    @_builtins.property
+    @pulumi.getter
+    def col(self) -> pulumi.Input[_builtins.str]:
+        """
+        The column name.
+        """
+        return pulumi.get(self, "col")
+
+    @col.setter
+    def col(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "col", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> pulumi.Input[_builtins.int]:
+        """
+        Sort order: 1 for Ascending, 0 for Descending.
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "order", value)
 
 
 class IcebergCatalogFederatedCatalogOptionsArgsDict(TypedDict):

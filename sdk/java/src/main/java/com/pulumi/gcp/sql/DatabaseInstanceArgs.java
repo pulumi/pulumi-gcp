@@ -208,6 +208,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     * 
+     */
+    @Import(name="includeReplicasForMajorVersionUpgrade")
+    private @Nullable Output<Boolean> includeReplicasForMajorVersionUpgrade;
+
+    /**
+     * @return When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     * 
+     */
+    public Optional<Output<Boolean>> includeReplicasForMajorVersionUpgrade() {
+        return Optional.ofNullable(this.includeReplicasForMajorVersionUpgrade);
+    }
+
+    /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      * 
      */
@@ -487,6 +502,21 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.settings);
     }
 
+    /**
+     * When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     * 
+     */
+    @Import(name="switchTransactionLogsToCloudStorageEnabled")
+    private @Nullable Output<Boolean> switchTransactionLogsToCloudStorageEnabled;
+
+    /**
+     * @return When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     * 
+     */
+    public Optional<Output<Boolean>> switchTransactionLogsToCloudStorageEnabled() {
+        return Optional.ofNullable(this.switchTransactionLogsToCloudStorageEnabled);
+    }
+
     private DatabaseInstanceArgs() {}
 
     private DatabaseInstanceArgs(DatabaseInstanceArgs $) {
@@ -498,6 +528,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.encryptionKeyName = $.encryptionKeyName;
         this.enforceNewSqlNetworkArchitecture = $.enforceNewSqlNetworkArchitecture;
         this.finalBackupDescription = $.finalBackupDescription;
+        this.includeReplicasForMajorVersionUpgrade = $.includeReplicasForMajorVersionUpgrade;
         this.instanceType = $.instanceType;
         this.maintenanceVersion = $.maintenanceVersion;
         this.masterInstanceName = $.masterInstanceName;
@@ -514,6 +545,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.rootPasswordWo = $.rootPasswordWo;
         this.rootPasswordWoVersion = $.rootPasswordWoVersion;
         this.settings = $.settings;
+        this.switchTransactionLogsToCloudStorageEnabled = $.switchTransactionLogsToCloudStorageEnabled;
     }
 
     public static Builder builder() {
@@ -762,6 +794,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder finalBackupDescription(String finalBackupDescription) {
             return finalBackupDescription(Output.of(finalBackupDescription));
+        }
+
+        /**
+         * @param includeReplicasForMajorVersionUpgrade When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeReplicasForMajorVersionUpgrade(@Nullable Output<Boolean> includeReplicasForMajorVersionUpgrade) {
+            $.includeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
+            return this;
+        }
+
+        /**
+         * @param includeReplicasForMajorVersionUpgrade When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeReplicasForMajorVersionUpgrade(Boolean includeReplicasForMajorVersionUpgrade) {
+            return includeReplicasForMajorVersionUpgrade(Output.of(includeReplicasForMajorVersionUpgrade));
         }
 
         /**
@@ -1148,6 +1201,27 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder settings(DatabaseInstanceSettingsArgs settings) {
             return settings(Output.of(settings));
+        }
+
+        /**
+         * @param switchTransactionLogsToCloudStorageEnabled When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchTransactionLogsToCloudStorageEnabled(@Nullable Output<Boolean> switchTransactionLogsToCloudStorageEnabled) {
+            $.switchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
+            return this;
+        }
+
+        /**
+         * @param switchTransactionLogsToCloudStorageEnabled When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder switchTransactionLogsToCloudStorageEnabled(Boolean switchTransactionLogsToCloudStorageEnabled) {
+            return switchTransactionLogsToCloudStorageEnabled(Output.of(switchTransactionLogsToCloudStorageEnabled));
         }
 
         public DatabaseInstanceArgs build() {
