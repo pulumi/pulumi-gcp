@@ -89,6 +89,110 @@ import (
 //	}
 //
 // ```
+// ### Network Peering Routes Config Gke Peered Vpc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			gkeNetwork, err := compute.NewNetwork(ctx, "gke_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("gke-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			workloadNetwork, err := compute.NewNetwork(ctx, "workload_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workload-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			peeringGkeToWorkload, err := compute.NewNetworkPeering(ctx, "peering_gke_to_workload", &compute.NetworkPeeringArgs{
+//				Name:               pulumi.String("peering-gke-to-workload"),
+//				Network:            gkeNetwork.ID(),
+//				PeerNetwork:        workloadNetwork.ID(),
+//				ImportCustomRoutes: pulumi.Bool(true),
+//				ExportCustomRoutes: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peering_gke_routes", &compute.NetworkPeeringRoutesConfigArgs{
+//				Peering:            peeringGkeToWorkload.Name,
+//				Network:            gkeNetwork.Name,
+//				ImportCustomRoutes: pulumi.Bool(true),
+//				ExportCustomRoutes: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkPeering(ctx, "peering_workload_to_gke", &compute.NetworkPeeringArgs{
+//				Name:        pulumi.String("peering-workload-to-gke"),
+//				Network:     workloadNetwork.ID(),
+//				PeerNetwork: gkeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gkeSubnetwork, err := compute.NewSubnetwork(ctx, "gke_subnetwork", &compute.SubnetworkArgs{
+//				Name:                  pulumi.String("gke-subnetwork"),
+//				Region:                pulumi.String("us-central1"),
+//				Network:               gkeNetwork.Name,
+//				IpCidrRange:           pulumi.String("10.0.36.0/24"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("pod"),
+//						IpCidrRange: pulumi.String("10.0.0.0/19"),
+//					},
+//					&compute.SubnetworkSecondaryIpRangeArgs{
+//						RangeName:   pulumi.String("svc"),
+//						IpCidrRange: pulumi.String("10.0.32.0/22"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = container.NewCluster(ctx, "gke_cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("gke-cluster"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//				Network:          gkeNetwork.Name,
+//				Subnetwork:       gkeSubnetwork.Name,
+//				PrivateClusterConfig: &container.ClusterPrivateClusterConfigArgs{
+//					EnablePrivateNodes:  pulumi.Bool(true),
+//					MasterIpv4CidrBlock: pulumi.String("10.42.0.0/28"),
+//				},
+//				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
+//					ClusterSecondaryRangeName: gkeSubnetwork.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
+//						return secondaryIpRanges[0].RangeName, nil
+//					}).(pulumi.StringPtrOutput),
+//					ServicesSecondaryRangeName: gkeSubnetwork.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
+//						return secondaryIpRanges[1].RangeName, nil
+//					}).(pulumi.StringPtrOutput),
+//				},
+//				DeletionProtection: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

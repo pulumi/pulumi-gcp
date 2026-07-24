@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Disk configuration to apply to the instances in this instance selection.
+        /// </summary>
+        [Input("diskConfig")]
+        public Input<Inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs>? DiskConfig { get; set; }
+
         [Input("machineTypes")]
         private InputList<string>? _machineTypes;
 

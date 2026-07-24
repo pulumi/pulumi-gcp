@@ -86,6 +86,12 @@ namespace Pulumi.Gcp.Workbench.Inputs
             set => _metadata = value;
         }
 
+        /// <summary>
+        /// Optional. The minimum CPU platform to use for this instance.
+        /// </summary>
+        [Input("minCpuPlatform")]
+        public Input<string>? MinCpuPlatform { get; set; }
+
         [Input("networkInterfaces")]
         private InputList<Inputs.InstanceGceSetupNetworkInterfaceArgs>? _networkInterfaces;
 

@@ -244,6 +244,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<bool?> ForceUpdate { get; private set; } = null!;
 
         /// <summary>
+        /// If set to true, we will force update access restriction even if some non compliant data sources are present.
+        /// </summary>
+        [Output("forceUpdateAccessRestriction")]
+        public Output<bool?> ForceUpdateAccessRestriction { get; private set; } = null!;
+
+        /// <summary>
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
         /// </summary>
@@ -305,6 +311,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// ACTIVE
         /// DELETING
         /// ERROR
+        /// UPDATING
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -475,6 +482,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
+        /// If set to true, we will force update access restriction even if some non compliant data sources are present.
+        /// </summary>
+        [Input("forceUpdateAccessRestriction")]
+        public Input<bool>? ForceUpdateAccessRestriction { get; set; }
 
         /// <summary>
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
@@ -676,6 +689,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<bool>? ForceUpdate { get; set; }
 
         /// <summary>
+        /// If set to true, we will force update access restriction even if some non compliant data sources are present.
+        /// </summary>
+        [Input("forceUpdateAccessRestriction")]
+        public Input<bool>? ForceUpdateAccessRestriction { get; set; }
+
+        /// <summary>
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
         /// </summary>
@@ -753,6 +772,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// ACTIVE
         /// DELETING
         /// ERROR
+        /// UPDATING
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

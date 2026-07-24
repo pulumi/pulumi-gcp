@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig
     {
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled.
+        /// Defines the confidential compute type of the instance. Valid values are `"CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"`, `"SEV"`, `"SEV_SNP"`, `"TDX"`.
+        /// </summary>
+        public readonly string? ConfidentialInstanceType;
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. `EnableConfidentialCompute` is deprecated and will be removed in a future major release. Use `ConfidentialInstanceType` instead.
         /// </summary>
         public readonly bool? EnableConfidentialCompute;
 
         [OutputConstructor]
-        private ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(bool? enableConfidentialCompute)
+        private ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(
+            string? confidentialInstanceType,
+
+            bool? enableConfidentialCompute)
         {
+            ConfidentialInstanceType = confidentialInstanceType;
             EnableConfidentialCompute = enableConfidentialCompute;
         }
     }

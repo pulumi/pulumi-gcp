@@ -65,14 +65,14 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var securityPolicyTarget = new Gcp.Organizations.Folder("security_policy_target", new()
     ///     {
-    ///         DisplayName = "tf-test-secpol-_74000",
+    ///         DisplayName = "tf-test-secpol-_9106",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_75125",
+    ///         ShortName = "tf-test_27169",
     ///         Parent = securityPolicyTarget.Name,
     ///         Type = "CLOUD_ARMOR",
     ///     });

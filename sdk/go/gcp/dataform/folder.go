@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewFolder(ctx, "dataform_folder_basic", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic Folder-_37118"),
+//				DisplayName: pulumi.String("Basic Folder-_8270"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,14 +64,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataformFolderRoot, err := dataform.NewFolder(ctx, "dataform_folder_root", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Root Folder-_80332"),
+//				DisplayName: pulumi.String("Root Folder-_41150"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataform.NewFolder(ctx, "dataform_folder_full", &dataform.FolderArgs{
 //				Region:           pulumi.String("us-central1"),
-//				DisplayName:      pulumi.String("Nested Folder-_13293"),
+//				DisplayName:      pulumi.String("Nested Folder-_89313"),
 //				ContainingFolder: dataformFolderRoot.ID(),
 //			})
 //			if err != nil {

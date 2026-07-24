@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodeConfigNodeImageConfig
     {
         /// <summary>
-        /// The name of the image to use for this node.
+        /// The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         /// </summary>
         public readonly string? Image;
         /// <summary>
-        /// The project containing the image to use for this node.
+        /// The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         /// </summary>
         public readonly string? ImageProject;
 

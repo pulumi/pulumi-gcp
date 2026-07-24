@@ -26,6 +26,11 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
      */
     private String consumerServiceProjectId;
     /**
+     * @return The status of the automated DNS provisioning for the instance.
+     * 
+     */
+    private String instanceAutoDnsStatus;
+    /**
      * @return The IP address of the consumer endpoint.
      * 
      */
@@ -45,6 +50,11 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
      * 
      */
     private String status;
+    /**
+     * @return The status of the automated DNS provisioning for the write endpoint.
+     * 
+     */
+    private String writeEndpointAutoDnsStatus;
 
     private GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection() {}
     /**
@@ -67,6 +77,13 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
      */
     public String consumerServiceProjectId() {
         return this.consumerServiceProjectId;
+    }
+    /**
+     * @return The status of the automated DNS provisioning for the instance.
+     * 
+     */
+    public String instanceAutoDnsStatus() {
+        return this.instanceAutoDnsStatus;
     }
     /**
      * @return The IP address of the consumer endpoint.
@@ -96,6 +113,13 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
     public String status() {
         return this.status;
     }
+    /**
+     * @return The status of the automated DNS provisioning for the write endpoint.
+     * 
+     */
+    public String writeEndpointAutoDnsStatus() {
+        return this.writeEndpointAutoDnsStatus;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -109,20 +133,24 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
         private String consumerNetwork;
         private String consumerNetworkStatus;
         private String consumerServiceProjectId;
+        private String instanceAutoDnsStatus;
         private String ipAddress;
         private String serviceConnectionPolicy;
         private String serviceConnectionPolicyCreationResult;
         private String status;
+        private String writeEndpointAutoDnsStatus;
         public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerNetwork = defaults.consumerNetwork;
     	      this.consumerNetworkStatus = defaults.consumerNetworkStatus;
     	      this.consumerServiceProjectId = defaults.consumerServiceProjectId;
+    	      this.instanceAutoDnsStatus = defaults.instanceAutoDnsStatus;
     	      this.ipAddress = defaults.ipAddress;
     	      this.serviceConnectionPolicy = defaults.serviceConnectionPolicy;
     	      this.serviceConnectionPolicyCreationResult = defaults.serviceConnectionPolicyCreationResult;
     	      this.status = defaults.status;
+    	      this.writeEndpointAutoDnsStatus = defaults.writeEndpointAutoDnsStatus;
         }
 
         @CustomType.Setter
@@ -147,6 +175,14 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "consumerServiceProjectId");
             }
             this.consumerServiceProjectId = consumerServiceProjectId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceAutoDnsStatus(String instanceAutoDnsStatus) {
+            if (instanceAutoDnsStatus == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "instanceAutoDnsStatus");
+            }
+            this.instanceAutoDnsStatus = instanceAutoDnsStatus;
             return this;
         }
         @CustomType.Setter
@@ -181,15 +217,25 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConn
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder writeEndpointAutoDnsStatus(String writeEndpointAutoDnsStatus) {
+            if (writeEndpointAutoDnsStatus == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection", "writeEndpointAutoDnsStatus");
+            }
+            this.writeEndpointAutoDnsStatus = writeEndpointAutoDnsStatus;
+            return this;
+        }
         public GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection build() {
             final var _resultValue = new GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection();
             _resultValue.consumerNetwork = consumerNetwork;
             _resultValue.consumerNetworkStatus = consumerNetworkStatus;
             _resultValue.consumerServiceProjectId = consumerServiceProjectId;
+            _resultValue.instanceAutoDnsStatus = instanceAutoDnsStatus;
             _resultValue.ipAddress = ipAddress;
             _resultValue.serviceConnectionPolicy = serviceConnectionPolicy;
             _resultValue.serviceConnectionPolicyCreationResult = serviceConnectionPolicyCreationResult;
             _resultValue.status = status;
+            _resultValue.writeEndpointAutoDnsStatus = writeEndpointAutoDnsStatus;
             return _resultValue;
         }
     }

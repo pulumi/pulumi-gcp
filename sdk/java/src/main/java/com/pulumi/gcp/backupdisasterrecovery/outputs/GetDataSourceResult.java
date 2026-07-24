@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceBackupConfigInfo;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceDataSourceBackupApplianceApplication;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceDataSourceGcpResource;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDataSourceResult {
+    private Boolean backupBlockedByVaultAccessRestriction;
     private List<GetDataSourceBackupConfigInfo> backupConfigInfos;
     private String backupCount;
     private String backupVaultId;
@@ -38,6 +40,9 @@ public final class GetDataSourceResult {
     private String updateTime;
 
     private GetDataSourceResult() {}
+    public Boolean backupBlockedByVaultAccessRestriction() {
+        return this.backupBlockedByVaultAccessRestriction;
+    }
     public List<GetDataSourceBackupConfigInfo> backupConfigInfos() {
         return this.backupConfigInfos;
     }
@@ -103,6 +108,7 @@ public final class GetDataSourceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean backupBlockedByVaultAccessRestriction;
         private List<GetDataSourceBackupConfigInfo> backupConfigInfos;
         private String backupCount;
         private String backupVaultId;
@@ -123,6 +129,7 @@ public final class GetDataSourceResult {
         public Builder() {}
         public Builder(GetDataSourceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.backupBlockedByVaultAccessRestriction = defaults.backupBlockedByVaultAccessRestriction;
     	      this.backupConfigInfos = defaults.backupConfigInfos;
     	      this.backupCount = defaults.backupCount;
     	      this.backupVaultId = defaults.backupVaultId;
@@ -142,6 +149,14 @@ public final class GetDataSourceResult {
     	      this.updateTime = defaults.updateTime;
         }
 
+        @CustomType.Setter
+        public Builder backupBlockedByVaultAccessRestriction(Boolean backupBlockedByVaultAccessRestriction) {
+            if (backupBlockedByVaultAccessRestriction == null) {
+              throw new MissingRequiredPropertyException("GetDataSourceResult", "backupBlockedByVaultAccessRestriction");
+            }
+            this.backupBlockedByVaultAccessRestriction = backupBlockedByVaultAccessRestriction;
+            return this;
+        }
         @CustomType.Setter
         public Builder backupConfigInfos(List<GetDataSourceBackupConfigInfo> backupConfigInfos) {
             if (backupConfigInfos == null) {
@@ -289,6 +304,7 @@ public final class GetDataSourceResult {
         }
         public GetDataSourceResult build() {
             final var _resultValue = new GetDataSourceResult();
+            _resultValue.backupBlockedByVaultAccessRestriction = backupBlockedByVaultAccessRestriction;
             _resultValue.backupConfigInfos = backupConfigInfos;
             _resultValue.backupCount = backupCount;
             _resultValue.backupVaultId = backupVaultId;

@@ -425,6 +425,23 @@ class Posture(pulumi.CustomResource):
             description="a new posture",
             policy_sets=[
                 {
+                    "policy_set_id": "list_constraint_policy_set",
+                    "description": "set of org policies with a list constraint",
+                    "policies": [{
+                        "policy_id": "resource_locations_policy",
+                        "constraint": {
+                            "org_policy_constraint": {
+                                "canned_constraint_id": "gcp.resourceLocations",
+                                "policy_rules": [{
+                                    "values": {
+                                        "allowed_values": ["in:us-locations"],
+                                    },
+                                }],
+                            },
+                        },
+                    }],
+                },
+                {
                     "policy_set_id": "org_policy_set",
                     "description": "set of org policies",
                     "policies": [
@@ -584,6 +601,23 @@ class Posture(pulumi.CustomResource):
             state="ACTIVE",
             description="a new posture",
             policy_sets=[
+                {
+                    "policy_set_id": "list_constraint_policy_set",
+                    "description": "set of org policies with a list constraint",
+                    "policies": [{
+                        "policy_id": "resource_locations_policy",
+                        "constraint": {
+                            "org_policy_constraint": {
+                                "canned_constraint_id": "gcp.resourceLocations",
+                                "policy_rules": [{
+                                    "values": {
+                                        "allowed_values": ["in:us-locations"],
+                                    },
+                                }],
+                            },
+                        },
+                    }],
+                },
                 {
                     "policy_set_id": "org_policy_set",
                     "description": "set of org policies",

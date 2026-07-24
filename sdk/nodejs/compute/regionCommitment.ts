@@ -159,7 +159,9 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly endTimestamp: pulumi.Output<string>;
     /**
-     * Specifies the already existing reservations to attach to the Commitment.
+     * Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      */
     declare public readonly existingReservations: pulumi.Output<string | undefined>;
     /**
@@ -325,7 +327,9 @@ export interface RegionCommitmentState {
      */
     endTimestamp?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the already existing reservations to attach to the Commitment.
+     * Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      */
     existingReservations?: pulumi.Input<string | undefined>;
     /**
@@ -418,7 +422,9 @@ export interface RegionCommitmentArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * Specifies the already existing reservations to attach to the Commitment.
+     * Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      */
     existingReservations?: pulumi.Input<string | undefined>;
     /**

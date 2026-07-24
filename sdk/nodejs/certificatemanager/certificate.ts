@@ -428,6 +428,9 @@ export class Certificate extends pulumi.CustomResource {
      * Certificate data for a SelfManaged Certificate.
      * SelfManaged Certificates are uploaded by the user. Updating such
      * certificates before they expire remains the user's responsibility.
+     * The certificate data can be updated in place; changes to `pemCertificate`
+     * and `pemPrivateKey` are applied via the API's PATCH method instead of
+     * forcing recreation of the certificate.
      * Structure is documented below.
      */
     declare public readonly selfManaged: pulumi.Output<outputs.certificatemanager.CertificateSelfManaged | undefined>;
@@ -553,6 +556,9 @@ export interface CertificateState {
      * Certificate data for a SelfManaged Certificate.
      * SelfManaged Certificates are uploaded by the user. Updating such
      * certificates before they expire remains the user's responsibility.
+     * The certificate data can be updated in place; changes to `pemCertificate`
+     * and `pemPrivateKey` are applied via the API's PATCH method instead of
+     * forcing recreation of the certificate.
      * Structure is documented below.
      */
     selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged | undefined>;
@@ -619,6 +625,9 @@ export interface CertificateArgs {
      * Certificate data for a SelfManaged Certificate.
      * SelfManaged Certificates are uploaded by the user. Updating such
      * certificates before they expire remains the user's responsibility.
+     * The certificate data can be updated in place; changes to `pemCertificate`
+     * and `pemPrivateKey` are applied via the API's PATCH method instead of
+     * forcing recreation of the certificate.
      * Structure is documented below.
      */
     selfManaged?: pulumi.Input<inputs.certificatemanager.CertificateSelfManaged | undefined>;

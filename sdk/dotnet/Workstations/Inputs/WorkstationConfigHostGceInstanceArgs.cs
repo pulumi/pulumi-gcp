@@ -70,6 +70,18 @@ namespace Pulumi.Gcp.Workstations.Inputs
         [Input("enableNestedVirtualization")]
         public Input<bool>? EnableNestedVirtualization { get; set; }
 
+        [Input("instanceMetadata")]
+        private InputMap<string>? _instanceMetadata;
+
+        /// <summary>
+        /// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+        /// </summary>
+        public InputMap<string> InstanceMetadata
+        {
+            get => _instanceMetadata ?? (_instanceMetadata = new InputMap<string>());
+            set => _instanceMetadata = value;
+        }
+
         /// <summary>
         /// The name of a Compute Engine machine type.
         /// </summary>

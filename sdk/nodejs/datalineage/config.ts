@@ -28,8 +28,8 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "tf-test_56529",
- *     name: "tf-test_75413",
+ *     projectId: "tf-test_13293",
+ *     name: "tf-test_40289",
  *     orgId: "123456789",
  *     deletionPolicy: "DELETE",
  * });

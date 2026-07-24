@@ -125,7 +125,7 @@ import (
 //				Description:    pulumi.String("This is a simple packet mirroring rule description"),
 //				Direction:      pulumi.String("INGRESS"),
 //				Disabled:       pulumi.Bool(false),
-//				FirewallPolicy: basicNetworkFirewallPolicy.Name,
+//				FirewallPolicy: basicNetworkFirewallPolicy.ID(),
 //				Priority:       pulumi.Int(1000),
 //				RuleName:       pulumi.String("test-rule"),
 //				Match: &compute.NetworkFirewallPolicyPacketMirroringRuleMatchArgs{

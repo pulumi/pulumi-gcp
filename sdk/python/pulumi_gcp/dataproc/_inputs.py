@@ -103,6 +103,8 @@ __all__ = [
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
+    'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs',
+    'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'ClusterClusterConfigMetastoreConfigArgs',
@@ -115,6 +117,8 @@ __all__ = [
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs',
@@ -137,6 +141,8 @@ __all__ = [
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
+    'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs',
+    'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
     'ClusterIAMBindingConditionArgs',
@@ -3913,26 +3919,50 @@ class ClusterClusterConfigGceClusterConfigArgs:
 
 
 class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict(TypedDict):
+    confidential_instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Defines the confidential compute type of the instance. Valid values are `"CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"`, `"SEV"`, `"SEV_SNP"`, `"TDX"`.
+    """
     enable_confidential_compute: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Defines whether the instance should have confidential compute enabled.
+    Defines whether the instance should have confidential compute enabled. `enable_confidential_compute` is deprecated and will be removed in a future major release. Use `confidential_instance_type` instead.
     """
 
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
+                 confidential_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None):
         """
-        :param pulumi.Input[_builtins.bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        :param pulumi.Input[_builtins.str] confidential_instance_type: Defines the confidential compute type of the instance. Valid values are `"CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"`, `"SEV"`, `"SEV_SNP"`, `"TDX"`.
+        :param pulumi.Input[_builtins.bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `enable_confidential_compute` is deprecated and will be removed in a future major release. Use `confidential_instance_type` instead.
         """
+        if confidential_instance_type is not None:
+            pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
+        if enable_confidential_compute is not None:
+            warnings.warn("""enable_confidential_compute is deprecated and will be removed in a future major release. Use confidential_instance_type instead.""", DeprecationWarning)
+            pulumi.log.warn("""enable_confidential_compute is deprecated: enable_confidential_compute is deprecated and will be removed in a future major release. Use confidential_instance_type instead.""")
         if enable_confidential_compute is not None:
             pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @_builtins.property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Defines the confidential compute type of the instance. Valid values are `"CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"`, `"SEV"`, `"SEV_SNP"`, `"TDX"`.
+        """
+        return pulumi.get(self, "confidential_instance_type")
+
+    @confidential_instance_type.setter
+    def confidential_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "confidential_instance_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableConfidentialCompute")
+    @_utilities.deprecated("""enable_confidential_compute is deprecated and will be removed in a future major release. Use confidential_instance_type instead.""")
     def enable_confidential_compute(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Defines whether the instance should have confidential compute enabled.
+        Defines whether the instance should have confidential compute enabled. `enable_confidential_compute` is deprecated and will be removed in a future major release. Use `confidential_instance_type` instead.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -4776,6 +4806,10 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs:
 
 
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict']]]
+    """
+    Disk configuration to apply to the instances in this instance selection.
+    """
     machine_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Full machine-type names, e.g. `"n1-standard-16"`.
@@ -4788,16 +4822,32 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
 @pulumi.input_type
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
     def __init__(__self__, *,
+                 disk_config: pulumi.Input[Optional['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']] = None,
                  machine_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rank: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs'] disk_config: Disk configuration to apply to the instances in this instance selection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
         :param pulumi.Input[_builtins.int] rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
         """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
         if machine_types is not None:
             pulumi.set(__self__, "machine_types", machine_types)
         if rank is not None:
             pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> pulumi.Input[Optional['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]:
+        """
+        Disk configuration to apply to the instances in this instance selection.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @disk_config.setter
+    def disk_config(self, value: pulumi.Input[Optional['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]):
+        pulumi.set(self, "disk_config", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypes")
@@ -4822,6 +4872,135 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
     @rank.setter
     def rank(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rank", value)
+
+
+class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict(TypedDict):
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (no Local SSDs or NVMe).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        :param pulumi.Input[_builtins.str] boot_disk_type: The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (no Local SSDs or NVMe).
+        :param pulumi.Input[_builtins.int] num_local_ssds: The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+        """
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @boot_disk_type.setter
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "boot_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (no Local SSDs or NVMe).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+    @num_local_ssds.setter
+    def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_local_ssds", value)
 
 
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -5254,6 +5433,10 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
 
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict']]]
+    """
+    Optional. Disk configuration to apply to the instances in this instance selection.
+    """
     machine_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Full machine-type names, e.g. `"n1-standard-16"`.
@@ -5266,16 +5449,32 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
 @pulumi.input_type
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
     def __init__(__self__, *,
+                 disk_config: pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']] = None,
                  machine_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rank: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs'] disk_config: Optional. Disk configuration to apply to the instances in this instance selection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
         :param pulumi.Input[_builtins.int] rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
         """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
         if machine_types is not None:
             pulumi.set(__self__, "machine_types", machine_types)
         if rank is not None:
             pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]:
+        """
+        Optional. Disk configuration to apply to the instances in this instance selection.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @disk_config.setter
+    def disk_config(self, value: pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]):
+        pulumi.set(self, "disk_config", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypes")
@@ -5300,6 +5499,135 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @rank.setter
     def rank(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rank", value)
+
+
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict(TypedDict):
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        :param pulumi.Input[_builtins.str] boot_disk_type: The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        :param pulumi.Input[_builtins.int] num_local_ssds: The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+        """
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @boot_disk_type.setter
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "boot_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+    @num_local_ssds.setter
+    def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_local_ssds", value)
 
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):
@@ -6456,6 +6784,10 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs:
 
 
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict(TypedDict):
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict']]]
+    """
+    Disk configuration to apply to the instances in this instance selection.
+    """
     machine_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Full machine-type names, e.g. `"n1-standard-16"`.
@@ -6468,16 +6800,32 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
 @pulumi.input_type
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs:
     def __init__(__self__, *,
+                 disk_config: pulumi.Input[Optional['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']] = None,
                  machine_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  rank: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs'] disk_config: Disk configuration to apply to the instances in this instance selection.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] machine_types: Full machine-type names, e.g. `"n1-standard-16"`.
         :param pulumi.Input[_builtins.int] rank: Preference of this instance selection. A lower number means higher preference. Dataproc will first try to create a VM based on the machine-type with priority rank and fallback to next rank based on availability. Machine types and instance selections with the same priority have the same preference.
         """
+        if disk_config is not None:
+            pulumi.set(__self__, "disk_config", disk_config)
         if machine_types is not None:
             pulumi.set(__self__, "machine_types", machine_types)
         if rank is not None:
             pulumi.set(__self__, "rank", rank)
+
+    @_builtins.property
+    @pulumi.getter(name="diskConfig")
+    def disk_config(self) -> pulumi.Input[Optional['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]:
+        """
+        Disk configuration to apply to the instances in this instance selection.
+        """
+        return pulumi.get(self, "disk_config")
+
+    @disk_config.setter
+    def disk_config(self, value: pulumi.Input[Optional['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs']]):
+        pulumi.set(self, "disk_config", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypes")
@@ -6502,6 +6850,135 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
     @rank.setter
     def rank(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rank", value)
+
+
+class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgsDict(TypedDict):
+    boot_disk_provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how many IOPS to provision for the disk.
+    """
+    boot_disk_provisioned_throughput: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Indicates how much throughput to provision for the disk.
+    """
+    boot_disk_size_gb: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+    """
+    boot_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+    """
+    local_ssd_interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Interface type of local SSDs (no Local SSDs or NVMe).
+    """
+    num_local_ssds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+    """
+
+@pulumi.input_type
+class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs:
+    def __init__(__self__, *,
+                 boot_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_provisioned_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
+                 boot_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_ssd_interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 num_local_ssds: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk.
+        :param pulumi.Input[_builtins.int] boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk.
+        :param pulumi.Input[_builtins.int] boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        :param pulumi.Input[_builtins.str] boot_disk_type: The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+        :param pulumi.Input[_builtins.str] local_ssd_interface: Interface type of local SSDs (no Local SSDs or NVMe).
+        :param pulumi.Input[_builtins.int] num_local_ssds: The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+        """
+        if boot_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
+        if boot_disk_provisioned_throughput is not None:
+            pulumi.set(__self__, "boot_disk_provisioned_throughput", boot_disk_provisioned_throughput)
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if local_ssd_interface is not None:
+            pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
+        if num_local_ssds is not None:
+            pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedIops")
+    def boot_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_iops")
+
+    @boot_disk_provisioned_iops.setter
+    def boot_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_iops", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskProvisionedThroughput")
+    def boot_disk_provisioned_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Indicates how much throughput to provision for the disk.
+        """
+        return pulumi.get(self, "boot_disk_provisioned_throughput")
+
+    @boot_disk_provisioned_throughput.setter
+    def boot_disk_provisioned_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_provisioned_throughput", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @boot_disk_size_gb.setter
+    def boot_disk_size_gb(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "boot_disk_size_gb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The disk type of the primary disk attached to each node. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+    @boot_disk_type.setter
+    def boot_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "boot_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localSsdInterface")
+    def local_ssd_interface(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Interface type of local SSDs (no Local SSDs or NVMe).
+        """
+        return pulumi.get(self, "local_ssd_interface")
+
+    @local_ssd_interface.setter
+    def local_ssd_interface(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "local_ssd_interface", value)
+
+    @_builtins.property
+    @pulumi.getter(name="numLocalSsds")
+    def num_local_ssds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
+        """
+        return pulumi.get(self, "num_local_ssds")
+
+    @num_local_ssds.setter
+    def num_local_ssds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "num_local_ssds", value)
 
 
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict(TypedDict):

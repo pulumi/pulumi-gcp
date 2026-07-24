@@ -133,10 +133,10 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "10.0.1.0/24",
  * });
  * const static = new gcp.compute.Address("static", {name: "wbi-test-default"});
- * const actAsPermission = new gcp.serviceaccount.IAMBinding("act_as_permission", {
+ * const actAsPermission = new gcp.serviceaccount.IAMMember("act_as_permission", {
  *     serviceAccountId: "projects/my-project-name/serviceAccounts/my@service-account.com",
  *     role: "roles/iam.serviceAccountUser",
- *     members: ["user:example@example.com"],
+ *     member: "user:example@example.com",
  * });
  * const gpuReservation = new gcp.compute.Reservation("gpu_reservation", {
  *     name: "wbi-reservation",
@@ -145,6 +145,7 @@ import * as utilities from "../utilities";
  *         count: 1,
  *         instanceProperties: {
  *             machineType: "n1-standard-4",
+ *             minCpuPlatform: "Intel Broadwell",
  *             guestAccelerators: [{
  *                 acceleratorType: "nvidia-tesla-t4",
  *                 acceleratorCount: 1,
@@ -153,11 +154,25 @@ import * as utilities from "../utilities";
  *     },
  *     specificReservationRequired: true,
  * });
+ * const myPolicy = new gcp.compute.ResourcePolicy("my_policy", {
+ *     name: "wbi-policy",
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         schedule: {
+ *             dailySchedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
  * const instance = new gcp.workbench.Instance("instance", {
  *     name: "workbench-instance",
  *     location: "us-central1-a",
+ *     enableDeletionProtection: false,
  *     gceSetup: {
  *         machineType: "n1-standard-4",
+ *         minCpuPlatform: "Intel Broadwell",
  *         acceleratorConfigs: [{
  *             type: "NVIDIA_TESLA_T4",
  *             coreCount: "1",
@@ -182,6 +197,7 @@ import * as utilities from "../utilities";
  *             diskType: "PD_SSD",
  *             diskEncryption: "CMEK",
  *             kmsKey: "my-crypto-key",
+ *             resourcePolicies: [myPolicy.id],
  *         },
  *         networkInterfaces: [{
  *             network: myNetwork.id,
@@ -221,6 +237,7 @@ import * as utilities from "../utilities";
  *         static,
  *         actAsPermission,
  *         gpuReservation,
+ *         myPolicy,
  *     ],
  * });
  * ```
@@ -351,6 +368,10 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     */
+    declare public readonly enableDeletionProtection: pulumi.Output<boolean>;
+    /**
      * Flag to enable managed end user credentials for the instance.
      */
     declare public readonly enableManagedEuc: pulumi.Output<boolean | undefined>;
@@ -451,6 +472,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["disableProxyAccess"] = state?.disableProxyAccess;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["enableDeletionProtection"] = state?.enableDeletionProtection;
             resourceInputs["enableManagedEuc"] = state?.enableManagedEuc;
             resourceInputs["enableThirdPartyIdentity"] = state?.enableThirdPartyIdentity;
             resourceInputs["gceSetup"] = state?.gceSetup;
@@ -475,6 +497,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["disableProxyAccess"] = args?.disableProxyAccess;
+            resourceInputs["enableDeletionProtection"] = args?.enableDeletionProtection;
             resourceInputs["enableManagedEuc"] = args?.enableManagedEuc;
             resourceInputs["enableThirdPartyIdentity"] = args?.enableThirdPartyIdentity;
             resourceInputs["gceSetup"] = args?.gceSetup;
@@ -536,6 +559,10 @@ export interface InstanceState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     */
+    enableDeletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to enable managed end user credentials for the instance.
      */
@@ -640,6 +667,10 @@ export interface InstanceArgs {
      * Optional. If true, the workbench instance will not register with the proxy.
      */
     disableProxyAccess?: pulumi.Input<boolean | undefined>;
+    /**
+     * Optional. If true, deletion protection will be enabled for this Workbench Instance.
+     */
+    enableDeletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to enable managed end user credentials for the instance.
      */

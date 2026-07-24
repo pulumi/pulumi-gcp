@@ -54,6 +54,10 @@ class RepositoryGitRemoteSettingsArgsDict(TypedDict):
     """
     The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
     """
+    git_repository_link: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+    """
     ssh_authentication_config: NotRequired[pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict']]]
     """
     Authentication fields for remote uris using SSH protocol.
@@ -71,12 +75,14 @@ class RepositoryGitRemoteSettingsArgs:
                  default_branch: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
                  authentication_token_secret_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 git_repository_link: pulumi.Input[Optional[_builtins.str]] = None,
                  ssh_authentication_config: pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']] = None,
                  token_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] default_branch: The Git remote's default branch name.
         :param pulumi.Input[_builtins.str] url: The Git remote's URL.
         :param pulumi.Input[_builtins.str] authentication_token_secret_version: The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
+        :param pulumi.Input[_builtins.str] git_repository_link: The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
         :param pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs'] ssh_authentication_config: Authentication fields for remote uris using SSH protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] token_status: (Output)
@@ -86,6 +92,8 @@ class RepositoryGitRemoteSettingsArgs:
         pulumi.set(__self__, "url", url)
         if authentication_token_secret_version is not None:
             pulumi.set(__self__, "authentication_token_secret_version", authentication_token_secret_version)
+        if git_repository_link is not None:
+            pulumi.set(__self__, "git_repository_link", git_repository_link)
         if ssh_authentication_config is not None:
             pulumi.set(__self__, "ssh_authentication_config", ssh_authentication_config)
         if token_status is not None:
@@ -126,6 +134,18 @@ class RepositoryGitRemoteSettingsArgs:
     @authentication_token_secret_version.setter
     def authentication_token_secret_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_token_secret_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gitRepositoryLink")
+    def git_repository_link(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*/locations/*/connections/*/gitRepositoryLinks/*.
+        """
+        return pulumi.get(self, "git_repository_link")
+
+    @git_repository_link.setter
+    def git_repository_link(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "git_repository_link", value)
 
     @_builtins.property
     @pulumi.getter(name="sshAuthenticationConfig")

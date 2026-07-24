@@ -27,7 +27,7 @@ class GetBackupVaultResult:
     """
     A collection of values returned by getBackupVault.
     """
-    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, deletion_policy=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, encryption_configs=None, etag=None, force_delete=None, force_update=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
+    def __init__(__self__, access_restriction=None, allow_missing=None, annotations=None, backup_count=None, backup_minimum_enforced_retention_duration=None, backup_retention_inheritance=None, backup_vault_id=None, create_time=None, deletable=None, deletion_policy=None, description=None, effective_annotations=None, effective_labels=None, effective_time=None, encryption_configs=None, etag=None, force_delete=None, force_update=None, force_update_access_restriction=None, id=None, ignore_backup_plan_references=None, ignore_inactive_datasources=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_account=None, state=None, total_stored_bytes=None, uid=None, update_time=None):
         if access_restriction and not isinstance(access_restriction, str):
             raise TypeError("Expected argument 'access_restriction' to be a str")
         pulumi.set(__self__, "access_restriction", access_restriction)
@@ -82,6 +82,9 @@ class GetBackupVaultResult:
         if force_update and not isinstance(force_update, bool):
             raise TypeError("Expected argument 'force_update' to be a bool")
         pulumi.set(__self__, "force_update", force_update)
+        if force_update_access_restriction and not isinstance(force_update_access_restriction, bool):
+            raise TypeError("Expected argument 'force_update_access_restriction' to be a bool")
+        pulumi.set(__self__, "force_update_access_restriction", force_update_access_restriction)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -213,6 +216,11 @@ class GetBackupVaultResult:
         return pulumi.get(self, "force_update")
 
     @_builtins.property
+    @pulumi.getter(name="forceUpdateAccessRestriction")
+    def force_update_access_restriction(self) -> _builtins.bool:
+        return pulumi.get(self, "force_update_access_restriction")
+
+    @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
@@ -305,6 +313,7 @@ class AwaitableGetBackupVaultResult(GetBackupVaultResult):
             etag=self.etag,
             force_delete=self.force_delete,
             force_update=self.force_update,
+            force_update_access_restriction=self.force_update_access_restriction,
             id=self.id,
             ignore_backup_plan_references=self.ignore_backup_plan_references,
             ignore_inactive_datasources=self.ignore_inactive_datasources,
@@ -371,6 +380,7 @@ def get_backup_vault(backup_vault_id: Optional[_builtins.str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         force_delete=pulumi.get(__ret__, 'force_delete'),
         force_update=pulumi.get(__ret__, 'force_update'),
+        force_update_access_restriction=pulumi.get(__ret__, 'force_update_access_restriction'),
         id=pulumi.get(__ret__, 'id'),
         ignore_backup_plan_references=pulumi.get(__ret__, 'ignore_backup_plan_references'),
         ignore_inactive_datasources=pulumi.get(__ret__, 'ignore_inactive_datasources'),
@@ -434,6 +444,7 @@ def get_backup_vault_output(backup_vault_id: pulumi.Input[Optional[_builtins.str
         etag=pulumi.get(__response__, 'etag'),
         force_delete=pulumi.get(__response__, 'force_delete'),
         force_update=pulumi.get(__response__, 'force_update'),
+        force_update_access_restriction=pulumi.get(__response__, 'force_update_access_restriction'),
         id=pulumi.get(__response__, 'id'),
         ignore_backup_plan_references=pulumi.get(__response__, 'ignore_backup_plan_references'),
         ignore_inactive_datasources=pulumi.get(__response__, 'ignore_inactive_datasources'),

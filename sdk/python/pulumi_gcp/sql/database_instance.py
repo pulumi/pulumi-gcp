@@ -29,6 +29,7 @@ class DatabaseInstanceArgs:
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
                  master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,7 +45,8 @@ class DatabaseInstanceArgs:
                  root_password: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional['DatabaseInstanceSettingsArgs']] = None):
+                 settings: pulumi.Input[Optional['DatabaseInstanceSettingsArgs']] = None,
+                 switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DatabaseInstance resource.
 
@@ -87,6 +89,7 @@ class DatabaseInstanceArgs:
                This follows the gcloud pattern where the flag is an irreversible opt-in.
                See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        :param pulumi.Input[_builtins.bool] include_replicas_for_major_version_upgrade: When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
@@ -123,6 +126,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
+        :param pulumi.Input[_builtins.bool] switch_transaction_logs_to_cloud_storage_enabled: When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
         pulumi.set(__self__, "database_version", database_version)
         if backupdr_backup is not None:
@@ -139,6 +143,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "enforce_new_sql_network_architecture", enforce_new_sql_network_architecture)
         if final_backup_description is not None:
             pulumi.set(__self__, "final_backup_description", final_backup_description)
+        if include_replicas_for_major_version_upgrade is not None:
+            pulumi.set(__self__, "include_replicas_for_major_version_upgrade", include_replicas_for_major_version_upgrade)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if maintenance_version is not None:
@@ -171,6 +177,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "root_password_wo_version", root_password_wo_version)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if switch_transaction_logs_to_cloud_storage_enabled is not None:
+            pulumi.set(__self__, "switch_transaction_logs_to_cloud_storage_enabled", switch_transaction_logs_to_cloud_storage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="databaseVersion")
@@ -298,6 +306,18 @@ class DatabaseInstanceArgs:
     @final_backup_description.setter
     def final_backup_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "final_backup_description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeReplicasForMajorVersionUpgrade")
+    def include_replicas_for_major_version_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        """
+        return pulumi.get(self, "include_replicas_for_major_version_upgrade")
+
+    @include_replicas_for_major_version_upgrade.setter
+    def include_replicas_for_major_version_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_replicas_for_major_version_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
@@ -511,6 +531,18 @@ class DatabaseInstanceArgs:
     def settings(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
+    @_builtins.property
+    @pulumi.getter(name="switchTransactionLogsToCloudStorageEnabled")
+    def switch_transaction_logs_to_cloud_storage_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        """
+        return pulumi.get(self, "switch_transaction_logs_to_cloud_storage_enabled")
+
+    @switch_transaction_logs_to_cloud_storage_enabled.setter
+    def switch_transaction_logs_to_cloud_storage_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "switch_transaction_logs_to_cloud_storage_enabled", value)
+
 
 @pulumi.input_type
 class _DatabaseInstanceState:
@@ -528,6 +560,7 @@ class _DatabaseInstanceState:
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
                  first_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceIpAddressArgs']]]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -550,7 +583,8 @@ class _DatabaseInstanceState:
                  self_link: pulumi.Input[Optional[_builtins.str]] = None,
                  server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceServerCaCertArgs']]]] = None,
                  service_account_email_address: pulumi.Input[Optional[_builtins.str]] = None,
-                 settings: pulumi.Input[Optional['DatabaseInstanceSettingsArgs']] = None):
+                 settings: pulumi.Input[Optional['DatabaseInstanceSettingsArgs']] = None,
+                 switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DatabaseInstance resources.
 
@@ -599,6 +633,7 @@ class _DatabaseInstanceState:
                See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[_builtins.bool] include_replicas_for_major_version_upgrade: When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
@@ -641,6 +676,7 @@ class _DatabaseInstanceState:
                instance.
         :param pulumi.Input['DatabaseInstanceSettingsArgs'] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
+        :param pulumi.Input[_builtins.bool] switch_transaction_logs_to_cloud_storage_enabled: When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
         if available_maintenance_versions is not None:
             pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -668,6 +704,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "final_backup_description", final_backup_description)
         if first_ip_address is not None:
             pulumi.set(__self__, "first_ip_address", first_ip_address)
+        if include_replicas_for_major_version_upgrade is not None:
+            pulumi.set(__self__, "include_replicas_for_major_version_upgrade", include_replicas_for_major_version_upgrade)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
         if ip_addresses is not None:
@@ -714,6 +752,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "service_account_email_address", service_account_email_address)
         if settings is not None:
             pulumi.set(__self__, "settings", settings)
+        if switch_transaction_logs_to_cloud_storage_enabled is not None:
+            pulumi.set(__self__, "switch_transaction_logs_to_cloud_storage_enabled", switch_transaction_logs_to_cloud_storage_enabled)
 
     @_builtins.property
     @pulumi.getter(name="availableMaintenanceVersions")
@@ -902,6 +942,18 @@ class _DatabaseInstanceState:
     @first_ip_address.setter
     def first_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "first_ip_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="includeReplicasForMajorVersionUpgrade")
+    def include_replicas_for_major_version_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        """
+        return pulumi.get(self, "include_replicas_for_major_version_upgrade")
+
+    @include_replicas_for_major_version_upgrade.setter
+    def include_replicas_for_major_version_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "include_replicas_for_major_version_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
@@ -1194,6 +1246,18 @@ class _DatabaseInstanceState:
     def settings(self, value: pulumi.Input[Optional['DatabaseInstanceSettingsArgs']]):
         pulumi.set(self, "settings", value)
 
+    @_builtins.property
+    @pulumi.getter(name="switchTransactionLogsToCloudStorageEnabled")
+    def switch_transaction_logs_to_cloud_storage_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        """
+        return pulumi.get(self, "switch_transaction_logs_to_cloud_storage_enabled")
+
+    @switch_transaction_logs_to_cloud_storage_enabled.setter
+    def switch_transaction_logs_to_cloud_storage_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "switch_transaction_logs_to_cloud_storage_enabled", value)
+
 
 @pulumi.type_token("gcp:sql/databaseInstance:DatabaseInstance")
 class DatabaseInstance(pulumi.CustomResource):
@@ -1209,6 +1273,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
                  master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1225,6 +1290,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
+                 switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/docs/mysql/create-instance),
@@ -1585,6 +1651,7 @@ class DatabaseInstance(pulumi.CustomResource):
                This follows the gcloud pattern where the flag is an irreversible opt-in.
                See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
+        :param pulumi.Input[_builtins.bool] include_replicas_for_major_version_upgrade: When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
@@ -1621,6 +1688,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] root_password_wo_version: Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
+        :param pulumi.Input[_builtins.bool] switch_transaction_logs_to_cloud_storage_enabled: When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
         ...
     @overload
@@ -1969,6 +2037,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
                  final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
                  master_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1985,6 +2054,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  root_password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  root_password_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
+                 switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2004,6 +2074,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["encryption_key_name"] = encryption_key_name
             __props__.__dict__["enforce_new_sql_network_architecture"] = enforce_new_sql_network_architecture
             __props__.__dict__["final_backup_description"] = final_backup_description
+            __props__.__dict__["include_replicas_for_major_version_upgrade"] = include_replicas_for_major_version_upgrade
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["maintenance_version"] = maintenance_version
             __props__.__dict__["master_instance_name"] = master_instance_name
@@ -2020,6 +2091,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["root_password_wo"] = None if root_password_wo is None else pulumi.Output.secret(root_password_wo)
             __props__.__dict__["root_password_wo_version"] = root_password_wo_version
             __props__.__dict__["settings"] = settings
+            __props__.__dict__["switch_transaction_logs_to_cloud_storage_enabled"] = switch_transaction_logs_to_cloud_storage_enabled
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
             __props__.__dict__["dns_name"] = None
@@ -2057,6 +2129,7 @@ class DatabaseInstance(pulumi.CustomResource):
             enforce_new_sql_network_architecture: pulumi.Input[Optional[_builtins.bool]] = None,
             final_backup_description: pulumi.Input[Optional[_builtins.str]] = None,
             first_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            include_replicas_for_major_version_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
             instance_type: pulumi.Input[Optional[_builtins.str]] = None,
             ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceIpAddressArgs', 'DatabaseInstanceIpAddressArgsDict']]]]] = None,
             maintenance_version: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2079,7 +2152,8 @@ class DatabaseInstance(pulumi.CustomResource):
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             server_ca_certs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseInstanceServerCaCertArgs', 'DatabaseInstanceServerCaCertArgsDict']]]]] = None,
             service_account_email_address: pulumi.Input[Optional[_builtins.str]] = None,
-            settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None) -> 'DatabaseInstance':
+            settings: pulumi.Input[Optional[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
+            switch_transaction_logs_to_cloud_storage_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'DatabaseInstance':
         """
         Get an existing DatabaseInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2132,6 +2206,7 @@ class DatabaseInstance(pulumi.CustomResource):
                See [official documentation](https://docs.cloud.google.com/sql/docs/mysql/upgrade-cloud-sql-instance-new-network-architecture#new-arch) for more details.
         :param pulumi.Input[_builtins.str] final_backup_description: The description of final backup. Only set this field when `final_backup_config.enabled` is true.
         :param pulumi.Input[_builtins.str] first_ip_address: The first IPv4 address of any type assigned.
+        :param pulumi.Input[_builtins.bool] include_replicas_for_major_version_upgrade: When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
         :param pulumi.Input[_builtins.str] instance_type: The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
         :param pulumi.Input[_builtins.str] maintenance_version: The current software version on the instance. This attribute can not be set during creation. Refer to `available_maintenance_versions` attribute to see what `maintenance_version` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenance_version` value that is older than the current one on the instance will be ignored.
         :param pulumi.Input[_builtins.str] master_instance_name: The name of the existing instance that will
@@ -2174,6 +2249,7 @@ class DatabaseInstance(pulumi.CustomResource):
                instance.
         :param pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']] settings: The settings to use for the database. The
                configuration is detailed below. Required if `clone` is not set.
+        :param pulumi.Input[_builtins.bool] switch_transaction_logs_to_cloud_storage_enabled: When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2192,6 +2268,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["enforce_new_sql_network_architecture"] = enforce_new_sql_network_architecture
         __props__.__dict__["final_backup_description"] = final_backup_description
         __props__.__dict__["first_ip_address"] = first_ip_address
+        __props__.__dict__["include_replicas_for_major_version_upgrade"] = include_replicas_for_major_version_upgrade
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ip_addresses"] = ip_addresses
         __props__.__dict__["maintenance_version"] = maintenance_version
@@ -2215,6 +2292,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["server_ca_certs"] = server_ca_certs
         __props__.__dict__["service_account_email_address"] = service_account_email_address
         __props__.__dict__["settings"] = settings
+        __props__.__dict__["switch_transaction_logs_to_cloud_storage_enabled"] = switch_transaction_logs_to_cloud_storage_enabled
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -2352,6 +2430,14 @@ class DatabaseInstance(pulumi.CustomResource):
         The first IPv4 address of any type assigned.
         """
         return pulumi.get(self, "first_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="includeReplicasForMajorVersionUpgrade")
+    def include_replicas_for_major_version_upgrade(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `database_version` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        """
+        return pulumi.get(self, "include_replicas_for_major_version_upgrade")
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
@@ -2551,4 +2637,12 @@ class DatabaseInstance(pulumi.CustomResource):
         configuration is detailed below. Required if `clone` is not set.
         """
         return pulumi.get(self, "settings")
+
+    @_builtins.property
+    @pulumi.getter(name="switchTransactionLogsToCloudStorageEnabled")
+    def switch_transaction_logs_to_cloud_storage_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        """
+        return pulumi.get(self, "switch_transaction_logs_to_cloud_storage_enabled")
 

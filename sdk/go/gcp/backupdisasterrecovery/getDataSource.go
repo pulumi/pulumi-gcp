@@ -65,6 +65,7 @@ type GetDataSourceArgs struct {
 
 // A collection of values returned by getDataSource.
 type GetDataSourceResult struct {
+	BackupBlockedByVaultAccessRestriction bool                                                `pulumi:"backupBlockedByVaultAccessRestriction"`
 	BackupConfigInfos                     []GetDataSourceBackupConfigInfo                     `pulumi:"backupConfigInfos"`
 	BackupCount                           string                                              `pulumi:"backupCount"`
 	BackupVaultId                         string                                              `pulumi:"backupVaultId"`
@@ -123,6 +124,10 @@ func (o GetDataSourceResultOutput) ToGetDataSourceResultOutput() GetDataSourceRe
 
 func (o GetDataSourceResultOutput) ToGetDataSourceResultOutputWithContext(ctx context.Context) GetDataSourceResultOutput {
 	return o
+}
+
+func (o GetDataSourceResultOutput) BackupBlockedByVaultAccessRestriction() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataSourceResult) bool { return v.BackupBlockedByVaultAccessRestriction }).(pulumi.BoolOutput)
 }
 
 func (o GetDataSourceResultOutput) BackupConfigInfos() GetDataSourceBackupConfigInfoArrayOutput {

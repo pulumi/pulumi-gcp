@@ -184,7 +184,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
      */
@@ -197,7 +197,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
      */
@@ -434,14 +434,14 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * URL of the Zone where this future reservation resides.
+     * The zone where the future reservation is located.
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return URL of the Zone where this future reservation resides.
+     * @return The zone where the future reservation is located.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -709,7 +709,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
          * RFC1035. Specifically, the name must be 1-63 characters long and match
          * the regular expression `a-z?` which means the
          * first character must be a lowercase letter, and all following
-         * characters must be a dash, lowercase letter, or digit, except the las
+         * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
          * @return builder
@@ -726,7 +726,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
          * RFC1035. Specifically, the name must be 1-63 characters long and match
          * the regular expression `a-z?` which means the
          * first character must be a lowercase letter, and all following
-         * characters must be a dash, lowercase letter, or digit, except the las
+         * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
          * @return builder
@@ -1060,7 +1060,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zone URL of the Zone where this future reservation resides.
+         * @param zone The zone where the future reservation is located.
          * 
          * @return builder
          * 
@@ -1071,7 +1071,7 @@ public final class FutureReservationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zone URL of the Zone where this future reservation resides.
+         * @param zone The zone where the future reservation is located.
          * 
          * @return builder
          * 

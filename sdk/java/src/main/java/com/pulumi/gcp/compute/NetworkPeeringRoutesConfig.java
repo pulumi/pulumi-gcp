@@ -95,6 +95,110 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Peering Routes Config Gke Peered Vpc
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkPeering;
+ * import com.pulumi.gcp.compute.NetworkPeeringArgs;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfig;
+ * import com.pulumi.gcp.compute.NetworkPeeringRoutesConfigArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterPrivateClusterConfigArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gkeNetwork = new Network("gkeNetwork", NetworkArgs.builder()
+ *             .name("gke-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var workloadNetwork = new Network("workloadNetwork", NetworkArgs.builder()
+ *             .name("workload-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var peeringGkeToWorkload = new NetworkPeering("peeringGkeToWorkload", NetworkPeeringArgs.builder()
+ *             .name("peering-gke-to-workload")
+ *             .network(gkeNetwork.id())
+ *             .peerNetwork(workloadNetwork.id())
+ *             .importCustomRoutes(true)
+ *             .exportCustomRoutes(true)
+ *             .build());
+ * 
+ *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig("peeringGkeRoutes", NetworkPeeringRoutesConfigArgs.builder()
+ *             .peering(peeringGkeToWorkload.name())
+ *             .network(gkeNetwork.name())
+ *             .importCustomRoutes(true)
+ *             .exportCustomRoutes(true)
+ *             .build());
+ * 
+ *         var peeringWorkloadToGke = new NetworkPeering("peeringWorkloadToGke", NetworkPeeringArgs.builder()
+ *             .name("peering-workload-to-gke")
+ *             .network(workloadNetwork.id())
+ *             .peerNetwork(gkeNetwork.id())
+ *             .build());
+ * 
+ *         var gkeSubnetwork = new Subnetwork("gkeSubnetwork", SubnetworkArgs.builder()
+ *             .name("gke-subnetwork")
+ *             .region("us-central1")
+ *             .network(gkeNetwork.name())
+ *             .ipCidrRange("10.0.36.0/24")
+ *             .privateIpGoogleAccess(true)
+ *             .secondaryIpRanges(            
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName("pod")
+ *                     .ipCidrRange("10.0.0.0/19")
+ *                     .build(),
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName("svc")
+ *                     .ipCidrRange("10.0.32.0/22")
+ *                     .build())
+ *             .build());
+ * 
+ *         var gkeCluster = new Cluster("gkeCluster", ClusterArgs.builder()
+ *             .name("gke-cluster")
+ *             .location("us-central1-a")
+ *             .initialNodeCount(1)
+ *             .network(gkeNetwork.name())
+ *             .subnetwork(gkeSubnetwork.name())
+ *             .privateClusterConfig(ClusterPrivateClusterConfigArgs.builder()
+ *                 .enablePrivateNodes(true)
+ *                 .masterIpv4CidrBlock("10.42.0.0/28")
+ *                 .build())
+ *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
+ *                 .clusterSecondaryRangeName(gkeSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[0].rangeName()))
+ *                 .servicesSecondaryRangeName(gkeSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[1].rangeName()))
+ *                 .build())
+ *             .deletionProtection(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

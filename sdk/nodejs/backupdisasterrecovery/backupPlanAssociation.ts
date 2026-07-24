@@ -187,6 +187,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+     * - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
      */
     declare public readonly backupPlan: pulumi.Output<string>;
     /**
@@ -312,6 +313,7 @@ export interface BackupPlanAssociationState {
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+     * - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
      */
     backupPlan?: pulumi.Input<string | undefined>;
     /**
@@ -378,6 +380,7 @@ export interface BackupPlanAssociationArgs {
      * - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
      * - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
      * - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+     * - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
      */
     backupPlan: pulumi.Input<string>;
     /**

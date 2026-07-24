@@ -33,13 +33,13 @@ namespace Pulumi.Gcp.DataPlex
     ///     var entry_group_basic = new Gcp.DataPlex.EntryGroup("entry-group-basic", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "tf-test-entry-group_26317",
+    ///         EntryGroupId = "tf-test-entry-group_42503",
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var entry_type_basic = new Gcp.DataPlex.EntryType("entry-type-basic", new()
     ///     {
-    ///         EntryTypeId = "tf-test-entry-type_12618",
+    ///         EntryTypeId = "tf-test-entry-type_12125",
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryId = "tf-test-source-entry_4866",
+    ///         EntryId = "tf-test-source-entry_9991",
     ///         EntryType = entry_type_basic.Name,
     ///         Project = "1111111111111",
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryId = "tf-test-target-entry_32270",
+    ///         EntryId = "tf-test-target-entry_82749",
     ///         EntryType = entry_type_basic.Name,
     ///         Project = "1111111111111",
     ///     });
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Project = "1111111111111",
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_basic.EntryGroupId,
-    ///         EntryLinkId = "tf-test-entry-link_44703",
+    ///         EntryLinkId = "tf-test-entry-link_15022",
     ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/related",
     ///         EntryReferences = new[]
     ///         {
@@ -98,13 +98,13 @@ namespace Pulumi.Gcp.DataPlex
     ///     var entry_group_full = new Gcp.DataPlex.EntryGroup("entry-group-full", new()
     ///     {
     ///         Location = "us-central1",
-    ///         EntryGroupId = "tf-test-entry-group_9329",
+    ///         EntryGroupId = "tf-test-entry-group_89648",
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var entry_type_full = new Gcp.DataPlex.EntryType("entry-type-full", new()
     ///     {
-    ///         EntryTypeId = "tf-test-entry-type_42503",
+    ///         EntryTypeId = "tf-test-entry-type_34242",
     ///         Location = "us-central1",
     ///         Project = "1111111111111",
     ///     });
@@ -113,14 +113,14 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_full.EntryGroupId,
-    ///         EntryId = "tf-test-source-entry_37135",
+    ///         EntryId = "tf-test-source-entry_64612",
     ///         EntryType = entry_type_full.Name,
     ///         Project = "1111111111111",
     ///     });
     /// 
     ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
     ///     {
-    ///         GlossaryId = "tf-test-glossary_9991",
+    ///         GlossaryId = "tf-test-glossary_9723",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -134,7 +134,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         }),
     ///         GlossaryId = termTestIdFull.GlossaryId,
     ///         Location = "us-central1",
-    ///         TermId = "tf-test-term-full_12125",
+    ///         TermId = "tf-test-term-full_22061",
     ///         Labels = 
     ///         {
     ///             { "tag", "test-tf" },
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         Project = "1111111111111",
     ///         Location = "us-central1",
     ///         EntryGroupId = entry_group_full.EntryGroupId,
-    ///         EntryLinkId = "tf-test-entry-link_82749",
+    ///         EntryLinkId = "tf-test-entry-link_60461",
     ///         EntryLinkType = "projects/655216118709/locations/global/entryLinkTypes/definition",
     ///         EntryReferences = new[]
     ///         {
@@ -172,13 +172,12 @@ namespace Pulumi.Gcp.DataPlex
     ///             },
     ///             new Gcp.DataPlex.Inputs.EntryLinkEntryReferenceArgs
     ///             {
-    ///                 Name = Output.Tuple(entry_group_full.Project, entry_group_full.Project, termTestIdFull.GlossaryId, termTestIdFullGlossaryTerm.TermId).Apply(values =&gt;
+    ///                 Name = Output.Tuple(entry_group_full.Project, termTestIdFull.GlossaryId, termTestIdFullGlossaryTerm.TermId).Apply(values =&gt;
     ///                 {
-    ///                     var entry-group-fullProject = values.Item1;
-    ///                     var entry-group-fullProject1 = values.Item2;
-    ///                     var glossaryId = values.Item3;
-    ///                     var termId = values.Item4;
-    ///                     return $"projects/{entry_group_fullProject}/locations/us-central1/entryGroups/@dataplex/entries/projects/{entry_group_fullProject1}/locations/us-central1/glossaries/{glossaryId}/terms/{termId}";
+    ///                     var project = values.Item1;
+    ///                     var glossaryId = values.Item2;
+    ///                     var termId = values.Item3;
+    ///                     return $"projects/{project}/locations/us-central1/entryGroups/@dataplex/entries/projects/{project}/locations/us-central1/glossaries/{glossaryId}/terms/{termId}";
     ///                 }),
     ///                 Type = "TARGET",
     ///             },

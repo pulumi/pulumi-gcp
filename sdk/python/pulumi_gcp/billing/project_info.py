@@ -189,8 +189,8 @@ class ProjectInfo(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_52865",
-            name="tf-test_85840",
+            project_id="tf-test_22811",
+            name="tf-test_91042",
             org_id="123456789",
             deletion_policy="DELETE")
         default = gcp.billing.ProjectInfo("default",
@@ -251,8 +251,8 @@ class ProjectInfo(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_52865",
-            name="tf-test_85840",
+            project_id="tf-test_22811",
+            name="tf-test_91042",
             org_id="123456789",
             deletion_policy="DELETE")
         default = gcp.billing.ProjectInfo("default",

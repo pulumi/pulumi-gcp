@@ -59,6 +59,11 @@ public final class WorkstationConfigHostGceInstance {
      */
     private @Nullable Boolean enableNestedVirtualization;
     /**
+     * @return Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+     * 
+     */
+    private @Nullable Map<String,String> instanceMetadata;
+    /**
      * @return The name of a Compute Engine machine type.
      * 
      */
@@ -154,6 +159,13 @@ public final class WorkstationConfigHostGceInstance {
         return Optional.ofNullable(this.enableNestedVirtualization);
     }
     /**
+     * @return Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+     * 
+     */
+    public Map<String,String> instanceMetadata() {
+        return this.instanceMetadata == null ? Map.of() : this.instanceMetadata;
+    }
+    /**
      * @return The name of a Compute Engine machine type.
      * 
      */
@@ -224,6 +236,7 @@ public final class WorkstationConfigHostGceInstance {
         private @Nullable Boolean disablePublicIpAddresses;
         private @Nullable Boolean disableSsh;
         private @Nullable Boolean enableNestedVirtualization;
+        private @Nullable Map<String,String> instanceMetadata;
         private @Nullable String machineType;
         private @Nullable Integer poolSize;
         private @Nullable String serviceAccount;
@@ -241,6 +254,7 @@ public final class WorkstationConfigHostGceInstance {
     	      this.disablePublicIpAddresses = defaults.disablePublicIpAddresses;
     	      this.disableSsh = defaults.disableSsh;
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
+    	      this.instanceMetadata = defaults.instanceMetadata;
     	      this.machineType = defaults.machineType;
     	      this.poolSize = defaults.poolSize;
     	      this.serviceAccount = defaults.serviceAccount;
@@ -296,6 +310,12 @@ public final class WorkstationConfigHostGceInstance {
         public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
 
             this.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceMetadata(@Nullable Map<String,String> instanceMetadata) {
+
+            this.instanceMetadata = instanceMetadata;
             return this;
         }
         @CustomType.Setter
@@ -355,6 +375,7 @@ public final class WorkstationConfigHostGceInstance {
             _resultValue.disablePublicIpAddresses = disablePublicIpAddresses;
             _resultValue.disableSsh = disableSsh;
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.instanceMetadata = instanceMetadata;
             _resultValue.machineType = machineType;
             _resultValue.poolSize = poolSize;
             _resultValue.serviceAccount = serviceAccount;

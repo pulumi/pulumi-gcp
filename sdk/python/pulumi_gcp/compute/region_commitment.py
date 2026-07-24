@@ -49,7 +49,9 @@ class RegionCommitmentArgs:
                Note that only MACHINE commitments should have a Type specified.
                Possible values are: `LICENSE`, `MACHINE`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
+        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field will suppress
+               diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+               change another field at the same time.
         :param pulumi.Input['RegionCommitmentLicenseResourceArgs'] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -156,7 +158,9 @@ class RegionCommitmentArgs:
     @pulumi.getter(name="existingReservations")
     def existing_reservations(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the already existing reservations to attach to the Commitment.
+        Specifies the already existing reservations to attach to the Commitment. This field will suppress
+        diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+        change another field at the same time.
         """
         return pulumi.get(self, "existing_reservations")
 
@@ -300,7 +304,9 @@ class _RegionCommitmentState:
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] end_timestamp: Commitment end time in RFC3339 text format.
-        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
+        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field will suppress
+               diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+               change another field at the same time.
         :param pulumi.Input['RegionCommitmentLicenseResourceArgs'] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -452,7 +458,9 @@ class _RegionCommitmentState:
     @pulumi.getter(name="existingReservations")
     def existing_reservations(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies the already existing reservations to attach to the Commitment.
+        Specifies the already existing reservations to attach to the Commitment. This field will suppress
+        diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+        change another field at the same time.
         """
         return pulumi.get(self, "existing_reservations")
 
@@ -746,7 +754,9 @@ class RegionCommitment(pulumi.CustomResource):
                Note that only MACHINE commitments should have a Type specified.
                Possible values are: `LICENSE`, `MACHINE`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
-        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
+        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field will suppress
+               diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+               change another field at the same time.
         :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -977,7 +987,9 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] end_timestamp: Commitment end time in RFC3339 text format.
-        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
+        :param pulumi.Input[_builtins.str] existing_reservations: Specifies the already existing reservations to attach to the Commitment. This field will suppress
+               diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+               change another field at the same time.
         :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -1091,7 +1103,9 @@ class RegionCommitment(pulumi.CustomResource):
     @pulumi.getter(name="existingReservations")
     def existing_reservations(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the already existing reservations to attach to the Commitment.
+        Specifies the already existing reservations to attach to the Commitment. This field will suppress
+        diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+        change another field at the same time.
         """
         return pulumi.get(self, "existing_reservations")
 

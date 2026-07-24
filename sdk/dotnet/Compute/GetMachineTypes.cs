@@ -87,11 +87,11 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
-        ///         }), example, Std.Startswith.Invoke(new()
+        ///         }), Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c2-",
-        ///         }), example, Std.Startswith.Invoke(new()
+        ///         }), Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "n2-",
@@ -99,10 +99,8 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var example = values.Item1;
         ///             var invoke = values.Item2;
-        ///             var example1 = values.Item3;
-        ///             var invoke1 = values.Item4;
-        ///             var example2 = values.Item5;
-        ///             var invoke2 = values.Item6;
+        ///             var invoke1 = values.Item3;
+        ///             var invoke2 = values.Item4;
         ///             return Std.Coalescelist.Invoke(new()
         ///             {
         ///                 Input = new[]
@@ -215,11 +213,11 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
-        ///         }), example, Std.Startswith.Invoke(new()
+        ///         }), Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c2-",
-        ///         }), example, Std.Startswith.Invoke(new()
+        ///         }), Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "n2-",
@@ -227,10 +225,8 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var example = values.Item1;
         ///             var invoke = values.Item2;
-        ///             var example1 = values.Item3;
-        ///             var invoke1 = values.Item4;
-        ///             var example2 = values.Item5;
-        ///             var invoke2 = values.Item6;
+        ///             var invoke1 = values.Item3;
+        ///             var invoke2 = values.Item4;
         ///             return Std.Coalescelist.Invoke(new()
         ///             {
         ///                 Input = new[]
@@ -343,11 +339,11 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
-        ///         }), example, Std.Startswith.Invoke(new()
+        ///         }), Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c2-",
-        ///         }), example, Std.Startswith.Invoke(new()
+        ///         }), Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "n2-",
@@ -355,10 +351,8 @@ namespace Pulumi.Gcp.Compute
         ///         {
         ///             var example = values.Item1;
         ///             var invoke = values.Item2;
-        ///             var example1 = values.Item3;
-        ///             var invoke1 = values.Item4;
-        ///             var example2 = values.Item5;
-        ///             var invoke2 = values.Item6;
+        ///             var invoke1 = values.Item3;
+        ///             var invoke2 = values.Item4;
         ///             return Std.Coalescelist.Invoke(new()
         ///             {
         ///                 Input = new[]

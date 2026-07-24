@@ -75,6 +75,96 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Network Peering Routes Config Gke Peered Vpc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gkeNetwork = new Gcp.Compute.Network("gke_network", new()
+    ///     {
+    ///         Name = "gke-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var workloadNetwork = new Gcp.Compute.Network("workload_network", new()
+    ///     {
+    ///         Name = "workload-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var peeringGkeToWorkload = new Gcp.Compute.NetworkPeering("peering_gke_to_workload", new()
+    ///     {
+    ///         Name = "peering-gke-to-workload",
+    ///         Network = gkeNetwork.Id,
+    ///         PeerNetwork = workloadNetwork.Id,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    ///     var peeringGkeRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peering_gke_routes", new()
+    ///     {
+    ///         Peering = peeringGkeToWorkload.Name,
+    ///         Network = gkeNetwork.Name,
+    ///         ImportCustomRoutes = true,
+    ///         ExportCustomRoutes = true,
+    ///     });
+    /// 
+    ///     var peeringWorkloadToGke = new Gcp.Compute.NetworkPeering("peering_workload_to_gke", new()
+    ///     {
+    ///         Name = "peering-workload-to-gke",
+    ///         Network = workloadNetwork.Id,
+    ///         PeerNetwork = gkeNetwork.Id,
+    ///     });
+    /// 
+    ///     var gkeSubnetwork = new Gcp.Compute.Subnetwork("gke_subnetwork", new()
+    ///     {
+    ///         Name = "gke-subnetwork",
+    ///         Region = "us-central1",
+    ///         Network = gkeNetwork.Name,
+    ///         IpCidrRange = "10.0.36.0/24",
+    ///         PrivateIpGoogleAccess = true,
+    ///         SecondaryIpRanges = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "pod",
+    ///                 IpCidrRange = "10.0.0.0/19",
+    ///             },
+    ///             new Gcp.Compute.Inputs.SubnetworkSecondaryIpRangeArgs
+    ///             {
+    ///                 RangeName = "svc",
+    ///                 IpCidrRange = "10.0.32.0/22",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var gkeCluster = new Gcp.Container.Cluster("gke_cluster", new()
+    ///     {
+    ///         Name = "gke-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         Network = gkeNetwork.Name,
+    ///         Subnetwork = gkeSubnetwork.Name,
+    ///         PrivateClusterConfig = new Gcp.Container.Inputs.ClusterPrivateClusterConfigArgs
+    ///         {
+    ///             EnablePrivateNodes = true,
+    ///             MasterIpv4CidrBlock = "10.42.0.0/28",
+    ///         },
+    ///         IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///         {
+    ///             ClusterSecondaryRangeName = gkeSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
+    ///             ServicesSecondaryRangeName = gkeSubnetwork.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
+    ///         },
+    ///         DeletionProtection = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

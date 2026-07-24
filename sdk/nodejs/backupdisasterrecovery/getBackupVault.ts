@@ -73,6 +73,7 @@ export interface GetBackupVaultResult {
     readonly etag: string;
     readonly forceDelete: boolean;
     readonly forceUpdate: boolean;
+    readonly forceUpdateAccessRestriction: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

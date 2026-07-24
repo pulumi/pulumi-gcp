@@ -64,6 +64,7 @@ public final class GetServiceResult {
     private Map<String,String> pulumiLabels;
     private Boolean reconciling;
     private List<GetServiceScaling> scalings;
+    private Map<String,String> tags;
     private List<GetServiceTemplate> templates;
     private List<GetServiceTerminalCondition> terminalConditions;
     private List<GetServiceTrafficStatus> trafficStatuses;
@@ -186,6 +187,9 @@ public final class GetServiceResult {
     public List<GetServiceScaling> scalings() {
         return this.scalings;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public List<GetServiceTemplate> templates() {
         return this.templates;
     }
@@ -256,6 +260,7 @@ public final class GetServiceResult {
         private Map<String,String> pulumiLabels;
         private Boolean reconciling;
         private List<GetServiceScaling> scalings;
+        private Map<String,String> tags;
         private List<GetServiceTemplate> templates;
         private List<GetServiceTerminalCondition> terminalConditions;
         private List<GetServiceTrafficStatus> trafficStatuses;
@@ -303,6 +308,7 @@ public final class GetServiceResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.reconciling = defaults.reconciling;
     	      this.scalings = defaults.scalings;
+    	      this.tags = defaults.tags;
     	      this.templates = defaults.templates;
     	      this.terminalConditions = defaults.terminalConditions;
     	      this.trafficStatuses = defaults.trafficStatuses;
@@ -616,6 +622,14 @@ public final class GetServiceResult {
             return scalings(List.of(scalings));
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder templates(List<GetServiceTemplate> templates) {
             if (templates == null) {
               throw new MissingRequiredPropertyException("GetServiceResult", "templates");
@@ -732,6 +746,7 @@ public final class GetServiceResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.reconciling = reconciling;
             _resultValue.scalings = scalings;
+            _resultValue.tags = tags;
             _resultValue.templates = templates;
             _resultValue.terminalConditions = terminalConditions;
             _resultValue.trafficStatuses = trafficStatuses;

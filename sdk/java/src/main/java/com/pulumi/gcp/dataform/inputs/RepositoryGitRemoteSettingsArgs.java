@@ -48,6 +48,21 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
     }
 
     /**
+     * The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*.
+     * 
+     */
+    @Import(name="gitRepositoryLink")
+    private @Nullable Output<String> gitRepositoryLink;
+
+    /**
+     * @return The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*.
+     * 
+     */
+    public Optional<Output<String>> gitRepositoryLink() {
+        return Optional.ofNullable(this.gitRepositoryLink);
+    }
+
+    /**
      * Authentication fields for remote uris using SSH protocol.
      * Structure is documented below.
      * 
@@ -101,6 +116,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
     private RepositoryGitRemoteSettingsArgs(RepositoryGitRemoteSettingsArgs $) {
         this.authenticationTokenSecretVersion = $.authenticationTokenSecretVersion;
         this.defaultBranch = $.defaultBranch;
+        this.gitRepositoryLink = $.gitRepositoryLink;
         this.sshAuthenticationConfig = $.sshAuthenticationConfig;
         this.tokenStatus = $.tokenStatus;
         this.url = $.url;
@@ -164,6 +180,27 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
          */
         public Builder defaultBranch(String defaultBranch) {
             return defaultBranch(Output.of(defaultBranch));
+        }
+
+        /**
+         * @param gitRepositoryLink The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRepositoryLink(@Nullable Output<String> gitRepositoryLink) {
+            $.gitRepositoryLink = gitRepositoryLink;
+            return this;
+        }
+
+        /**
+         * @param gitRepositoryLink The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitRepositoryLink(String gitRepositoryLink) {
+            return gitRepositoryLink(Output.of(gitRepositoryLink));
         }
 
         /**

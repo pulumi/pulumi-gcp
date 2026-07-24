@@ -418,7 +418,7 @@ import (
 //			user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
 //				Name:     pulumi.String("user"),
 //				Instance: instance.Name,
-//				Password: pulumi.String("tf-test-my-password_85794"),
+//				Password: pulumi.String("tf-test-my-password_85840"),
 //			})
 //			if err != nil {
 //				return err

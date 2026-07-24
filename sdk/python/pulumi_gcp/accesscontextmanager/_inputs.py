@@ -81,6 +81,8 @@ __all__ = [
     'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict',
     'ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs',
     'ServicePerimeterDryRunEgressPolicyEgressFromSourceArgsDict',
+    'ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs',
+    'ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgsDict',
     'ServicePerimeterDryRunEgressPolicyEgressToArgs',
     'ServicePerimeterDryRunEgressPolicyEgressToArgsDict',
     'ServicePerimeterDryRunEgressPolicyEgressToOperationArgs',
@@ -91,6 +93,8 @@ __all__ = [
     'ServicePerimeterDryRunIngressPolicyIngressFromArgsDict',
     'ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs',
     'ServicePerimeterDryRunIngressPolicyIngressFromSourceArgsDict',
+    'ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs',
+    'ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgsDict',
     'ServicePerimeterDryRunIngressPolicyIngressToArgs',
     'ServicePerimeterDryRunIngressPolicyIngressToArgsDict',
     'ServicePerimeterDryRunIngressPolicyIngressToOperationArgs',
@@ -101,6 +105,8 @@ __all__ = [
     'ServicePerimeterEgressPolicyEgressFromArgsDict',
     'ServicePerimeterEgressPolicyEgressFromSourceArgs',
     'ServicePerimeterEgressPolicyEgressFromSourceArgsDict',
+    'ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs',
+    'ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgsDict',
     'ServicePerimeterEgressPolicyEgressToArgs',
     'ServicePerimeterEgressPolicyEgressToArgsDict',
     'ServicePerimeterEgressPolicyEgressToOperationArgs',
@@ -111,6 +117,8 @@ __all__ = [
     'ServicePerimeterIngressPolicyIngressFromArgsDict',
     'ServicePerimeterIngressPolicyIngressFromSourceArgs',
     'ServicePerimeterIngressPolicyIngressFromSourceArgsDict',
+    'ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs',
+    'ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgsDict',
     'ServicePerimeterIngressPolicyIngressToArgs',
     'ServicePerimeterIngressPolicyIngressToArgsDict',
     'ServicePerimeterIngressPolicyIngressToOperationArgs',
@@ -125,6 +133,8 @@ __all__ = [
     'ServicePerimeterSpecEgressPolicyEgressFromArgsDict',
     'ServicePerimeterSpecEgressPolicyEgressFromSourceArgs',
     'ServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict',
+    'ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs',
+    'ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgsDict',
     'ServicePerimeterSpecEgressPolicyEgressToArgs',
     'ServicePerimeterSpecEgressPolicyEgressToArgsDict',
     'ServicePerimeterSpecEgressPolicyEgressToOperationArgs',
@@ -137,6 +147,8 @@ __all__ = [
     'ServicePerimeterSpecIngressPolicyIngressFromArgsDict',
     'ServicePerimeterSpecIngressPolicyIngressFromSourceArgs',
     'ServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict',
+    'ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs',
+    'ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgsDict',
     'ServicePerimeterSpecIngressPolicyIngressToArgs',
     'ServicePerimeterSpecIngressPolicyIngressToArgsDict',
     'ServicePerimeterSpecIngressPolicyIngressToOperationArgs',
@@ -145,6 +157,12 @@ __all__ = [
     'ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgsDict',
     'ServicePerimeterSpecVpcAccessibleServicesArgs',
     'ServicePerimeterSpecVpcAccessibleServicesArgsDict',
+    'ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs',
+    'ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgsDict',
+    'ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs',
+    'ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgsDict',
+    'ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs',
+    'ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict',
     'ServicePerimeterStatusArgs',
     'ServicePerimeterStatusArgsDict',
     'ServicePerimeterStatusEgressPolicyArgs',
@@ -153,6 +171,8 @@ __all__ = [
     'ServicePerimeterStatusEgressPolicyEgressFromArgsDict',
     'ServicePerimeterStatusEgressPolicyEgressFromSourceArgs',
     'ServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict',
+    'ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs',
+    'ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgsDict',
     'ServicePerimeterStatusEgressPolicyEgressToArgs',
     'ServicePerimeterStatusEgressPolicyEgressToArgsDict',
     'ServicePerimeterStatusEgressPolicyEgressToOperationArgs',
@@ -165,6 +185,8 @@ __all__ = [
     'ServicePerimeterStatusIngressPolicyIngressFromArgsDict',
     'ServicePerimeterStatusIngressPolicyIngressFromSourceArgs',
     'ServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict',
+    'ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs',
+    'ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgsDict',
     'ServicePerimeterStatusIngressPolicyIngressToArgs',
     'ServicePerimeterStatusIngressPolicyIngressToArgsDict',
     'ServicePerimeterStatusIngressPolicyIngressToOperationArgs',
@@ -173,6 +195,12 @@ __all__ = [
     'ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgsDict',
     'ServicePerimeterStatusVpcAccessibleServicesArgs',
     'ServicePerimeterStatusVpcAccessibleServicesArgsDict',
+    'ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs',
+    'ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgsDict',
+    'ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs',
+    'ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgsDict',
+    'ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs',
+    'ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict',
     'ServicePerimetersServicePerimeterArgs',
     'ServicePerimetersServicePerimeterArgsDict',
     'ServicePerimetersServicePerimeterSpecArgs',
@@ -183,6 +211,8 @@ __all__ = [
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgsDict',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs',
+    'ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgsDict',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgsDict',
     'ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs',
@@ -195,6 +225,8 @@ __all__ = [
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgsDict',
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs',
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs',
+    'ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgsDict',
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs',
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgsDict',
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs',
@@ -203,6 +235,12 @@ __all__ = [
     'ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgsDict',
     'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs',
     'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgsDict',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgsDict',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgsDict',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs',
+    'ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict',
     'ServicePerimetersServicePerimeterStatusArgs',
     'ServicePerimetersServicePerimeterStatusArgsDict',
     'ServicePerimetersServicePerimeterStatusEgressPolicyArgs',
@@ -211,6 +249,8 @@ __all__ = [
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgsDict',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs',
+    'ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgsDict',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgsDict',
     'ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs',
@@ -223,6 +263,8 @@ __all__ = [
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgsDict',
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs',
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs',
+    'ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgsDict',
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs',
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgsDict',
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs',
@@ -231,6 +273,12 @@ __all__ = [
     'ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgsDict',
     'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs',
     'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgsDict',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgsDict',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgsDict',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs',
+    'ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict',
 ]
 
 class AccessLevelBasicArgsDict(TypedDict):
@@ -2789,6 +2837,12 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -2803,9 +2857,13 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgsDict(TypedDict):
 class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -2815,6 +2873,8 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -2829,6 +2889,20 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2846,6 +2920,38 @@ class ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterDryRunEgressPolicyEgressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterDryRunEgressPolicyEgressToArgsDict(TypedDict):
@@ -3197,6 +3303,12 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgsDict(TypedDict):
     Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
     If * is specified, then all IngressSources will be allowed.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to ingress the perimeter.
@@ -3211,6 +3323,7 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgsDict(TypedDict):
 class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An `AccessLevel` resource name that allow resources within the
@@ -3221,6 +3334,9 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
                with request origins within the perimeter.
                Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
                If * is specified, then all IngressSources will be allowed.
+        :param pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
                Currently only projects are allowed. Format `projects/{project_number}`
@@ -3230,6 +3346,8 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -3253,6 +3371,20 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter
     def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -3268,6 +3400,38 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterDryRunIngressPolicyIngressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterDryRunIngressPolicyIngressToArgsDict(TypedDict):
@@ -3618,6 +3782,12 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -3632,9 +3802,13 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgsDict(TypedDict):
 class ServicePerimeterEgressPolicyEgressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -3644,6 +3818,8 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -3658,6 +3834,20 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3675,6 +3865,38 @@ class ServicePerimeterEgressPolicyEgressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterEgressPolicyEgressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterEgressPolicyEgressToArgsDict(TypedDict):
@@ -4026,6 +4248,12 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgsDict(TypedDict):
     Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
     If * is specified, then all IngressSources will be allowed.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to ingress the perimeter.
@@ -4043,6 +4271,7 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgsDict(TypedDict):
 class ServicePerimeterIngressPolicyIngressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An `AccessLevel` resource name that allow resources within the
@@ -4053,6 +4282,9 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
                with request origins within the perimeter.
                Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
                If * is specified, then all IngressSources will be allowed.
+        :param pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to ingress the perimeter.
                Requests from these resources will be allowed to access perimeter data.
                Currently only projects and VPCs are allowed.
@@ -4065,6 +4297,8 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -4088,6 +4322,20 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter
     def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -4106,6 +4354,38 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterIngressPolicyIngressToArgsDict(TypedDict):
@@ -4729,6 +5009,12 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -4743,9 +5029,13 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict(TypedDict):
 class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -4755,6 +5045,8 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -4769,6 +5061,20 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -4786,6 +5092,38 @@ class ServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterSpecEgressPolicyEgressToArgsDict(TypedDict):
@@ -5205,6 +5543,12 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict(TypedDict):
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -5219,9 +5563,13 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict(TypedDict):
 class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -5231,6 +5579,8 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -5245,6 +5595,20 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5262,6 +5626,38 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterSpecIngressPolicyIngressToArgsDict(TypedDict):
@@ -5492,6 +5888,12 @@ class ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs:
 
 
 class ServicePerimeterSpecVpcAccessibleServicesArgsDict(TypedDict):
+    allowed_service_patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgsDict']]]]]
+    """
+    Specifies which Google services are allowed to be accessed from
+    VPC networks in the service perimeter.
+    Structure is documented below.
+    """
     allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of APIs usable within the Service Perimeter.
@@ -5502,22 +5904,52 @@ class ServicePerimeterSpecVpcAccessibleServicesArgsDict(TypedDict):
     Whether to restrict API calls within the Service Perimeter to the
     list of APIs specified in 'allowedServices'.
     """
+    service_patterns_enforcement_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Defines the enforcement scopes of service patterns.
+    Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+    """
 
 @pulumi.input_type
 class ServicePerimeterSpecVpcAccessibleServicesArgs:
     def __init__(__self__, *,
+                 allowed_service_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]]] = None,
                  allowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None):
+                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_patterns_enforcement_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]] allowed_service_patterns: Specifies which Google services are allowed to be accessed from
+               VPC networks in the service perimeter.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param pulumi.Input[_builtins.bool] enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_patterns_enforcement_scopes: Defines the enforcement scopes of service patterns.
+               Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
         """
+        if allowed_service_patterns is not None:
+            pulumi.set(__self__, "allowed_service_patterns", allowed_service_patterns)
         if allowed_services is not None:
             pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
             pulumi.set(__self__, "enable_restriction", enable_restriction)
+        if service_patterns_enforcement_scopes is not None:
+            pulumi.set(__self__, "service_patterns_enforcement_scopes", service_patterns_enforcement_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedServicePatterns")
+    def allowed_service_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]]]:
+        """
+        Specifies which Google services are allowed to be accessed from
+        VPC networks in the service perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_service_patterns")
+
+    @allowed_service_patterns.setter
+    def allowed_service_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]]]):
+        pulumi.set(self, "allowed_service_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedServices")
@@ -5544,6 +5976,170 @@ class ServicePerimeterSpecVpcAccessibleServicesArgs:
     @enable_restriction.setter
     def enable_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_restriction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicePatternsEnforcementScopes")
+    def service_patterns_enforcement_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Defines the enforcement scopes of service patterns.
+        Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+        """
+        return pulumi.get(self, "service_patterns_enforcement_scopes")
+
+    @service_patterns_enforcement_scopes.setter
+    def service_patterns_enforcement_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "service_patterns_enforcement_scopes", value)
+
+
+class ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgsDict(TypedDict):
+    modifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgsDict']]]]]
+    """
+    Modifiers to apply to the requests that match the URL pattern.
+    Structure is documented below.
+    """
+    pattern: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    URL pattern to allow.
+    """
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Supported service to allow.
+    """
+
+@pulumi.input_type
+class ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs:
+    def __init__(__self__, *,
+                 modifiers: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]] modifiers: Modifiers to apply to the requests that match the URL pattern.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] pattern: URL pattern to allow.
+        :param pulumi.Input[_builtins.str] service: Supported service to allow.
+        """
+        if modifiers is not None:
+            pulumi.set(__self__, "modifiers", modifiers)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def modifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]:
+        """
+        Modifiers to apply to the requests that match the URL pattern.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "modifiers")
+
+    @modifiers.setter
+    def modifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]):
+        pulumi.set(self, "modifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL pattern to allow.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Supported service to allow.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+class ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgsDict(TypedDict):
+    add_request_header: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict']]]
+    """
+    Adds additional HTTP request headers.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs:
+    def __init__(__self__, *,
+                 add_request_header: pulumi.Input[Optional['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']] = None):
+        """
+        :param pulumi.Input['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs'] add_request_header: Adds additional HTTP request headers.
+               Structure is documented below.
+        """
+        if add_request_header is not None:
+            pulumi.set(__self__, "add_request_header", add_request_header)
+
+    @_builtins.property
+    @pulumi.getter(name="addRequestHeader")
+    def add_request_header(self) -> pulumi.Input[Optional['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]:
+        """
+        Adds additional HTTP request headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "add_request_header")
+
+    @add_request_header.setter
+    def add_request_header(self, value: pulumi.Input[Optional['ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]):
+        pulumi.set(self, "add_request_header", value)
+
+
+class ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    HTTP header key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    HTTP header value.
+    """
+
+@pulumi.input_type
+class ServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: HTTP header key.
+        :param pulumi.Input[_builtins.str] value: HTTP header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 class ServicePerimeterStatusArgsDict(TypedDict):
@@ -5940,6 +6536,12 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict(TypedDict):
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -5954,9 +6556,13 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict(TypedDict):
 class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -5966,6 +6572,8 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -5980,6 +6588,20 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5997,6 +6619,38 @@ class ServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterStatusEgressPolicyEgressToArgsDict(TypedDict):
@@ -6416,6 +7070,12 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict(TypedDict):
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -6430,9 +7090,13 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict(TypedDict):
 class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -6442,6 +7106,8 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -6456,6 +7122,20 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -6473,6 +7153,38 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimeterStatusIngressPolicyIngressToArgsDict(TypedDict):
@@ -6703,6 +7415,12 @@ class ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs:
 
 
 class ServicePerimeterStatusVpcAccessibleServicesArgsDict(TypedDict):
+    allowed_service_patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgsDict']]]]]
+    """
+    Specifies which Google services are allowed to be accessed from
+    VPC networks in the service perimeter.
+    Structure is documented below.
+    """
     allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of APIs usable within the Service Perimeter.
@@ -6713,22 +7431,52 @@ class ServicePerimeterStatusVpcAccessibleServicesArgsDict(TypedDict):
     Whether to restrict API calls within the Service Perimeter to the
     list of APIs specified in 'allowedServices'.
     """
+    service_patterns_enforcement_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Defines the enforcement scopes of service patterns.
+    Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+    """
 
 @pulumi.input_type
 class ServicePerimeterStatusVpcAccessibleServicesArgs:
     def __init__(__self__, *,
+                 allowed_service_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]]] = None,
                  allowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None):
+                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_patterns_enforcement_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]] allowed_service_patterns: Specifies which Google services are allowed to be accessed from
+               VPC networks in the service perimeter.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param pulumi.Input[_builtins.bool] enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_patterns_enforcement_scopes: Defines the enforcement scopes of service patterns.
+               Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
         """
+        if allowed_service_patterns is not None:
+            pulumi.set(__self__, "allowed_service_patterns", allowed_service_patterns)
         if allowed_services is not None:
             pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
             pulumi.set(__self__, "enable_restriction", enable_restriction)
+        if service_patterns_enforcement_scopes is not None:
+            pulumi.set(__self__, "service_patterns_enforcement_scopes", service_patterns_enforcement_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedServicePatterns")
+    def allowed_service_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]]]:
+        """
+        Specifies which Google services are allowed to be accessed from
+        VPC networks in the service perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_service_patterns")
+
+    @allowed_service_patterns.setter
+    def allowed_service_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]]]):
+        pulumi.set(self, "allowed_service_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedServices")
@@ -6755,6 +7503,170 @@ class ServicePerimeterStatusVpcAccessibleServicesArgs:
     @enable_restriction.setter
     def enable_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_restriction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicePatternsEnforcementScopes")
+    def service_patterns_enforcement_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Defines the enforcement scopes of service patterns.
+        Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+        """
+        return pulumi.get(self, "service_patterns_enforcement_scopes")
+
+    @service_patterns_enforcement_scopes.setter
+    def service_patterns_enforcement_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "service_patterns_enforcement_scopes", value)
+
+
+class ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgsDict(TypedDict):
+    modifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgsDict']]]]]
+    """
+    Modifiers to apply to the requests that match the URL pattern.
+    Structure is documented below.
+    """
+    pattern: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    URL pattern to allow.
+    """
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Supported service to allow.
+    """
+
+@pulumi.input_type
+class ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs:
+    def __init__(__self__, *,
+                 modifiers: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]] modifiers: Modifiers to apply to the requests that match the URL pattern.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] pattern: URL pattern to allow.
+        :param pulumi.Input[_builtins.str] service: Supported service to allow.
+        """
+        if modifiers is not None:
+            pulumi.set(__self__, "modifiers", modifiers)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def modifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]:
+        """
+        Modifiers to apply to the requests that match the URL pattern.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "modifiers")
+
+    @modifiers.setter
+    def modifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]):
+        pulumi.set(self, "modifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL pattern to allow.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Supported service to allow.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+class ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgsDict(TypedDict):
+    add_request_header: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict']]]
+    """
+    Adds additional HTTP request headers.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs:
+    def __init__(__self__, *,
+                 add_request_header: pulumi.Input[Optional['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']] = None):
+        """
+        :param pulumi.Input['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs'] add_request_header: Adds additional HTTP request headers.
+               Structure is documented below.
+        """
+        if add_request_header is not None:
+            pulumi.set(__self__, "add_request_header", add_request_header)
+
+    @_builtins.property
+    @pulumi.getter(name="addRequestHeader")
+    def add_request_header(self) -> pulumi.Input[Optional['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]:
+        """
+        Adds additional HTTP request headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "add_request_header")
+
+    @add_request_header.setter
+    def add_request_header(self, value: pulumi.Input[Optional['ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]):
+        pulumi.set(self, "add_request_header", value)
+
+
+class ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    HTTP header key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    HTTP header value.
+    """
+
+@pulumi.input_type
+class ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: HTTP header key.
+        :param pulumi.Input[_builtins.str] value: HTTP header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 class ServicePerimetersServicePerimeterArgsDict(TypedDict):
@@ -7449,6 +8361,12 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict(
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -7463,9 +8381,13 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict(
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -7475,6 +8397,8 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -7489,6 +8413,20 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7506,6 +8444,38 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgsDict(TypedDict):
@@ -7925,6 +8895,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgsDic
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -7939,9 +8915,13 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgsDic
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -7951,6 +8931,8 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -7965,6 +8947,20 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7982,6 +8978,38 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgsDict(TypedDict):
@@ -8212,6 +9240,12 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethod
 
 
 class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgsDict(TypedDict):
+    allowed_service_patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgsDict']]]]]
+    """
+    Specifies which Google services are allowed to be accessed from
+    VPC networks in the service perimeter.
+    Structure is documented below.
+    """
     allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of APIs usable within the Service Perimeter.
@@ -8222,22 +9256,52 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgsDict(TypedDi
     Whether to restrict API calls within the Service Perimeter to the
     list of APIs specified in 'allowedServices'.
     """
+    service_patterns_enforcement_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Defines the enforcement scopes of service patterns.
+    Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+    """
 
 @pulumi.input_type
 class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs:
     def __init__(__self__, *,
+                 allowed_service_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]]] = None,
                  allowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None):
+                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_patterns_enforcement_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]] allowed_service_patterns: Specifies which Google services are allowed to be accessed from
+               VPC networks in the service perimeter.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param pulumi.Input[_builtins.bool] enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_patterns_enforcement_scopes: Defines the enforcement scopes of service patterns.
+               Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
         """
+        if allowed_service_patterns is not None:
+            pulumi.set(__self__, "allowed_service_patterns", allowed_service_patterns)
         if allowed_services is not None:
             pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
             pulumi.set(__self__, "enable_restriction", enable_restriction)
+        if service_patterns_enforcement_scopes is not None:
+            pulumi.set(__self__, "service_patterns_enforcement_scopes", service_patterns_enforcement_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedServicePatterns")
+    def allowed_service_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]]]:
+        """
+        Specifies which Google services are allowed to be accessed from
+        VPC networks in the service perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_service_patterns")
+
+    @allowed_service_patterns.setter
+    def allowed_service_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs']]]]):
+        pulumi.set(self, "allowed_service_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedServices")
@@ -8264,6 +9328,170 @@ class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs:
     @enable_restriction.setter
     def enable_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_restriction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicePatternsEnforcementScopes")
+    def service_patterns_enforcement_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Defines the enforcement scopes of service patterns.
+        Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+        """
+        return pulumi.get(self, "service_patterns_enforcement_scopes")
+
+    @service_patterns_enforcement_scopes.setter
+    def service_patterns_enforcement_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "service_patterns_enforcement_scopes", value)
+
+
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgsDict(TypedDict):
+    modifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgsDict']]]]]
+    """
+    Modifiers to apply to the requests that match the URL pattern.
+    Structure is documented below.
+    """
+    pattern: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    URL pattern to allow.
+    """
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Supported service to allow.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternArgs:
+    def __init__(__self__, *,
+                 modifiers: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]] modifiers: Modifiers to apply to the requests that match the URL pattern.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] pattern: URL pattern to allow.
+        :param pulumi.Input[_builtins.str] service: Supported service to allow.
+        """
+        if modifiers is not None:
+            pulumi.set(__self__, "modifiers", modifiers)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def modifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]:
+        """
+        Modifiers to apply to the requests that match the URL pattern.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "modifiers")
+
+    @modifiers.setter
+    def modifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]):
+        pulumi.set(self, "modifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL pattern to allow.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Supported service to allow.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgsDict(TypedDict):
+    add_request_header: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict']]]
+    """
+    Adds additional HTTP request headers.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierArgs:
+    def __init__(__self__, *,
+                 add_request_header: pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']] = None):
+        """
+        :param pulumi.Input['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs'] add_request_header: Adds additional HTTP request headers.
+               Structure is documented below.
+        """
+        if add_request_header is not None:
+            pulumi.set(__self__, "add_request_header", add_request_header)
+
+    @_builtins.property
+    @pulumi.getter(name="addRequestHeader")
+    def add_request_header(self) -> pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]:
+        """
+        Adds additional HTTP request headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "add_request_header")
+
+    @add_request_header.setter
+    def add_request_header(self, value: pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]):
+        pulumi.set(self, "add_request_header", value)
+
+
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    HTTP header key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    HTTP header value.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterSpecVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: HTTP header key.
+        :param pulumi.Input[_builtins.str] value: HTTP header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 
 class ServicePerimetersServicePerimeterStatusArgsDict(TypedDict):
@@ -8666,6 +9894,12 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgsDic
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -8680,9 +9914,13 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgsDic
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -8692,6 +9930,8 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -8706,6 +9946,20 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -8723,6 +9977,38 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgsDict(TypedDict):
@@ -9142,6 +10428,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgsD
     """
     An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
     """
+    psc_endpoint: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgsDict']]]
+    """
+    A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+    The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+    Structure is documented below.
+    """
     resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A Google Cloud resource that is allowed to egress the perimeter.
@@ -9156,9 +10448,13 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgsD
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_endpoint: pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs']] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_level: An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs'] psc_endpoint: A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+               The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] resource: A Google Cloud resource that is allowed to egress the perimeter.
                Requests from these resources are allowed to access data outside the perimeter.
                Currently only projects are allowed. Project format: `projects/{project_number}`.
@@ -9168,6 +10464,8 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if psc_endpoint is not None:
+            pulumi.set(__self__, "psc_endpoint", psc_endpoint)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
 
@@ -9182,6 +10480,20 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pscEndpoint")
+    def psc_endpoint(self) -> pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs']]:
+        """
+        A Private Service Connect endpoint that is allowed to access data outside the perimeter.
+        The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_endpoint")
+
+    @psc_endpoint.setter
+    def psc_endpoint(self, value: pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs']]):
+        pulumi.set(self, "psc_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
@@ -9199,6 +10511,38 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
     @resource.setter
     def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
+
+
+class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgsDict(TypedDict):
+    forwarding_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+    Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpointArgs:
+    def __init__(__self__, *,
+                 forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] forwarding_rule: The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+               Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
+        Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "forwarding_rule", value)
 
 
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgsDict(TypedDict):
@@ -9429,6 +10773,12 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMeth
 
 
 class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgsDict(TypedDict):
+    allowed_service_patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgsDict']]]]]
+    """
+    Specifies which Google services are allowed to be accessed from
+    VPC networks in the service perimeter.
+    Structure is documented below.
+    """
     allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of APIs usable within the Service Perimeter.
@@ -9439,22 +10789,52 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgsDict(Typed
     Whether to restrict API calls within the Service Perimeter to the
     list of APIs specified in 'allowedServices'.
     """
+    service_patterns_enforcement_scopes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Defines the enforcement scopes of service patterns.
+    Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+    """
 
 @pulumi.input_type
 class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs:
     def __init__(__self__, *,
+                 allowed_service_patterns: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]]] = None,
                  allowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None):
+                 enable_restriction: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_patterns_enforcement_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]] allowed_service_patterns: Specifies which Google services are allowed to be accessed from
+               VPC networks in the service perimeter.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_services: The list of APIs usable within the Service Perimeter.
                Must be empty unless `enableRestriction` is True.
         :param pulumi.Input[_builtins.bool] enable_restriction: Whether to restrict API calls within the Service Perimeter to the
                list of APIs specified in 'allowedServices'.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] service_patterns_enforcement_scopes: Defines the enforcement scopes of service patterns.
+               Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
         """
+        if allowed_service_patterns is not None:
+            pulumi.set(__self__, "allowed_service_patterns", allowed_service_patterns)
         if allowed_services is not None:
             pulumi.set(__self__, "allowed_services", allowed_services)
         if enable_restriction is not None:
             pulumi.set(__self__, "enable_restriction", enable_restriction)
+        if service_patterns_enforcement_scopes is not None:
+            pulumi.set(__self__, "service_patterns_enforcement_scopes", service_patterns_enforcement_scopes)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedServicePatterns")
+    def allowed_service_patterns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]]]:
+        """
+        Specifies which Google services are allowed to be accessed from
+        VPC networks in the service perimeter.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_service_patterns")
+
+    @allowed_service_patterns.setter
+    def allowed_service_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs']]]]):
+        pulumi.set(self, "allowed_service_patterns", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedServices")
@@ -9481,5 +10861,169 @@ class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs:
     @enable_restriction.setter
     def enable_restriction(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_restriction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicePatternsEnforcementScopes")
+    def service_patterns_enforcement_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Defines the enforcement scopes of service patterns.
+        Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+        """
+        return pulumi.get(self, "service_patterns_enforcement_scopes")
+
+    @service_patterns_enforcement_scopes.setter
+    def service_patterns_enforcement_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "service_patterns_enforcement_scopes", value)
+
+
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgsDict(TypedDict):
+    modifiers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgsDict']]]]]
+    """
+    Modifiers to apply to the requests that match the URL pattern.
+    Structure is documented below.
+    """
+    pattern: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    URL pattern to allow.
+    """
+    service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Supported service to allow.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternArgs:
+    def __init__(__self__, *,
+                 modifiers: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]]] = None,
+                 pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 service: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]] modifiers: Modifiers to apply to the requests that match the URL pattern.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] pattern: URL pattern to allow.
+        :param pulumi.Input[_builtins.str] service: Supported service to allow.
+        """
+        if modifiers is not None:
+            pulumi.set(__self__, "modifiers", modifiers)
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def modifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]:
+        """
+        Modifiers to apply to the requests that match the URL pattern.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "modifiers")
+
+    @modifiers.setter
+    def modifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs']]]]):
+        pulumi.set(self, "modifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL pattern to allow.
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pattern", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Supported service to allow.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service", value)
+
+
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgsDict(TypedDict):
+    add_request_header: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict']]]
+    """
+    Adds additional HTTP request headers.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierArgs:
+    def __init__(__self__, *,
+                 add_request_header: pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']] = None):
+        """
+        :param pulumi.Input['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs'] add_request_header: Adds additional HTTP request headers.
+               Structure is documented below.
+        """
+        if add_request_header is not None:
+            pulumi.set(__self__, "add_request_header", add_request_header)
+
+    @_builtins.property
+    @pulumi.getter(name="addRequestHeader")
+    def add_request_header(self) -> pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]:
+        """
+        Adds additional HTTP request headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "add_request_header")
+
+    @add_request_header.setter
+    def add_request_header(self, value: pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs']]):
+        pulumi.set(self, "add_request_header", value)
+
+
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgsDict(TypedDict):
+    key: pulumi.Input[_builtins.str]
+    """
+    HTTP header key.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    HTTP header value.
+    """
+
+@pulumi.input_type
+class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key: HTTP header key.
+        :param pulumi.Input[_builtins.str] value: HTTP header value.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        HTTP header value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
 
 

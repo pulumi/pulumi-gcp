@@ -180,6 +180,21 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Optional. The minimum CPU platform to use for this instance.
+     * 
+     */
+    @Import(name="minCpuPlatform")
+    private @Nullable Output<String> minCpuPlatform;
+
+    /**
+     * @return Optional. The minimum CPU platform to use for this instance.
+     * 
+     */
+    public Optional<Output<String>> minCpuPlatform() {
+        return Optional.ofNullable(this.minCpuPlatform);
+    }
+
+    /**
      * The network interfaces for the VM. Supports only one interface.
      * Structure is documented below.
      * 
@@ -299,6 +314,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
         this.enableIpForwarding = $.enableIpForwarding;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
+        this.minCpuPlatform = $.minCpuPlatform;
         this.networkInterfaces = $.networkInterfaces;
         this.reservationAffinity = $.reservationAffinity;
         this.serviceAccounts = $.serviceAccounts;
@@ -541,6 +557,27 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder metadata(Map<String,String> metadata) {
             return metadata(Output.of(metadata));
+        }
+
+        /**
+         * @param minCpuPlatform Optional. The minimum CPU platform to use for this instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minCpuPlatform(@Nullable Output<String> minCpuPlatform) {
+            $.minCpuPlatform = minCpuPlatform;
+            return this;
+        }
+
+        /**
+         * @param minCpuPlatform Optional. The minimum CPU platform to use for this instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minCpuPlatform(String minCpuPlatform) {
+            return minCpuPlatform(Output.of(minCpuPlatform));
         }
 
         /**

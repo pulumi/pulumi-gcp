@@ -62,6 +62,21 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
     }
 
     /**
+     * (Output) The status of the automated DNS provisioning for the instance.
+     * 
+     */
+    @Import(name="instanceAutoDnsStatus")
+    private @Nullable Output<String> instanceAutoDnsStatus;
+
+    /**
+     * @return (Output) The status of the automated DNS provisioning for the instance.
+     * 
+     */
+    public Optional<Output<String>> instanceAutoDnsStatus() {
+        return Optional.ofNullable(this.instanceAutoDnsStatus);
+    }
+
+    /**
      * (Output) The IP address of the consumer endpoint.
      * 
      */
@@ -121,16 +136,33 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * (Output) The status of the automated DNS provisioning for the write endpoint.
+     * 
+     */
+    @Import(name="writeEndpointAutoDnsStatus")
+    private @Nullable Output<String> writeEndpointAutoDnsStatus;
+
+    /**
+     * @return (Output) The status of the automated DNS provisioning for the write endpoint.
+     * 
+     */
+    public Optional<Output<String>> writeEndpointAutoDnsStatus() {
+        return Optional.ofNullable(this.writeEndpointAutoDnsStatus);
+    }
+
     private DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs() {}
 
     private DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs $) {
         this.consumerNetwork = $.consumerNetwork;
         this.consumerNetworkStatus = $.consumerNetworkStatus;
         this.consumerServiceProjectId = $.consumerServiceProjectId;
+        this.instanceAutoDnsStatus = $.instanceAutoDnsStatus;
         this.ipAddress = $.ipAddress;
         this.serviceConnectionPolicy = $.serviceConnectionPolicy;
         this.serviceConnectionPolicyCreationResult = $.serviceConnectionPolicyCreationResult;
         this.status = $.status;
+        this.writeEndpointAutoDnsStatus = $.writeEndpointAutoDnsStatus;
     }
 
     public static Builder builder() {
@@ -215,6 +247,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
         }
 
         /**
+         * @param instanceAutoDnsStatus (Output) The status of the automated DNS provisioning for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceAutoDnsStatus(@Nullable Output<String> instanceAutoDnsStatus) {
+            $.instanceAutoDnsStatus = instanceAutoDnsStatus;
+            return this;
+        }
+
+        /**
+         * @param instanceAutoDnsStatus (Output) The status of the automated DNS provisioning for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceAutoDnsStatus(String instanceAutoDnsStatus) {
+            return instanceAutoDnsStatus(Output.of(instanceAutoDnsStatus));
+        }
+
+        /**
          * @param ipAddress (Output) The IP address of the consumer endpoint.
          * 
          * @return builder
@@ -296,6 +349,27 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnec
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param writeEndpointAutoDnsStatus (Output) The status of the automated DNS provisioning for the write endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writeEndpointAutoDnsStatus(@Nullable Output<String> writeEndpointAutoDnsStatus) {
+            $.writeEndpointAutoDnsStatus = writeEndpointAutoDnsStatus;
+            return this;
+        }
+
+        /**
+         * @param writeEndpointAutoDnsStatus (Output) The status of the automated DNS provisioning for the write endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writeEndpointAutoDnsStatus(String writeEndpointAutoDnsStatus) {
+            return writeEndpointAutoDnsStatus(Output.of(writeEndpointAutoDnsStatus));
         }
 
         public DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs build() {

@@ -81,14 +81,18 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the already existing reservations to attach to the Commitment.
+     * Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      * 
      */
     @Import(name="existingReservations")
     private @Nullable Output<String> existingReservations;
 
     /**
-     * @return Specifies the already existing reservations to attach to the Commitment.
+     * @return Specifies the already existing reservations to attach to the Commitment. This field will suppress
+     * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+     * change another field at the same time.
      * 
      */
     public Optional<Output<String>> existingReservations() {
@@ -358,7 +362,9 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param existingReservations Specifies the already existing reservations to attach to the Commitment.
+         * @param existingReservations Specifies the already existing reservations to attach to the Commitment. This field will suppress
+         * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+         * change another field at the same time.
          * 
          * @return builder
          * 
@@ -369,7 +375,9 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param existingReservations Specifies the already existing reservations to attach to the Commitment.
+         * @param existingReservations Specifies the already existing reservations to attach to the Commitment. This field will suppress
+         * diffs that change the value from empty to non-empty. To force changing this field from empty to non-empty,
+         * change another field at the same time.
          * 
          * @return builder
          * 

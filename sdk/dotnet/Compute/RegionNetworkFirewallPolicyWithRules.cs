@@ -28,13 +28,13 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var targetForwardingRule = new Gcp.Compute.Network("target_forwarding_rule", new()
     ///     {
-    ///         Name = "tf-test-network-_9106",
+    ///         Name = "tf-test-network-_22375",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var targetForwardingRuleProxySubnetwork = new Gcp.Compute.Subnetwork("target_forwarding_rule_proxy_subnetwork", new()
     ///     {
-    ///         Name = "tf-test-proxy-subnetwork-_27169",
+    ///         Name = "tf-test-proxy-subnetwork-_29439",
     ///         Region = "us-west2",
     ///         Network = targetForwardingRule.Id,
     ///         IpCidrRange = "10.20.0.0/24",
@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var targetForwardingRuleDefaultSubnetwork = new Gcp.Compute.Subnetwork("target_forwarding_rule_default_subnetwork", new()
     ///     {
-    ///         Name = "tf-test-default-subnetwork-_75223",
+    ///         Name = "tf-test-default-subnetwork-_87786",
     ///         Region = "us-west2",
     ///         Network = targetForwardingRule.Id,
     ///         IpCidrRange = "10.10.0.0/24",
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var targetForwardingRuleRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("target_forwarding_rule", new()
     ///     {
-    ///         Name = "tf-test-health-check-_41819",
+    ///         Name = "tf-test-health-check-_2067",
     ///         Region = "us-west2",
     ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
     ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var targetForwardingRuleRegionBackendService = new Gcp.Compute.RegionBackendService("target_forwarding_rule", new()
     ///     {
-    ///         Name = "tf-test-backend-service-_75092",
+    ///         Name = "tf-test-backend-service-_40785",
     ///         Region = "us-west2",
     ///         Protocol = "HTTP",
     ///         LoadBalancingScheme = "INTERNAL_MANAGED",
@@ -71,21 +71,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var targetForwardingRuleRegionUrlMap = new Gcp.Compute.RegionUrlMap("target_forwarding_rule", new()
     ///     {
-    ///         Name = "tf-test-url-map-_2605",
+    ///         Name = "tf-test-url-map-_79169",
     ///         Region = "us-west2",
     ///         DefaultService = targetForwardingRuleRegionBackendService.Id,
     ///     });
     /// 
     ///     var targetForwardingRuleRegionTargetHttpProxy = new Gcp.Compute.RegionTargetHttpProxy("target_forwarding_rule", new()
     ///     {
-    ///         Name = "tf-test-target-http-proxy-_34535",
+    ///         Name = "tf-test-target-http-proxy-_56529",
     ///         Region = "us-west2",
     ///         UrlMap = targetForwardingRuleRegionUrlMap.Id,
     ///     });
     /// 
     ///     var targetForwardingRuleForwardingRule = new Gcp.Compute.ForwardingRule("target_forwarding_rule", new()
     ///     {
-    ///         Name = "tf-test-forwarding-rule-_22375",
+    ///         Name = "tf-test-forwarding-rule-_75413",
     ///         Region = "us-west2",
     ///         Network = targetForwardingRule.Id,
     ///         Subnetwork = targetForwardingRuleDefaultSubnetwork.Id,

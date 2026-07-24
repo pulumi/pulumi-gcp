@@ -168,7 +168,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
      */
@@ -181,7 +181,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
      */
@@ -370,6 +370,21 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         return this.timeWindow;
     }
 
+    /**
+     * The zone where the future reservation is located.
+     * 
+     */
+    @Import(name="zone")
+    private @Nullable Output<String> zone;
+
+    /**
+     * @return The zone where the future reservation is located.
+     * 
+     */
+    public Optional<Output<String>> zone() {
+        return Optional.ofNullable(this.zone);
+    }
+
     private FutureReservationArgs() {}
 
     private FutureReservationArgs(FutureReservationArgs $) {
@@ -393,6 +408,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
         this.specificReservationRequired = $.specificReservationRequired;
         this.specificSkuProperties = $.specificSkuProperties;
         this.timeWindow = $.timeWindow;
+        this.zone = $.zone;
     }
 
     public static Builder builder() {
@@ -605,7 +621,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
          * RFC1035. Specifically, the name must be 1-63 characters long and match
          * the regular expression `a-z?` which means the
          * first character must be a lowercase letter, and all following
-         * characters must be a dash, lowercase letter, or digit, except the las
+         * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
          * @return builder
@@ -622,7 +638,7 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
          * RFC1035. Specifically, the name must be 1-63 characters long and match
          * the regular expression `a-z?` which means the
          * first character must be a lowercase letter, and all following
-         * characters must be a dash, lowercase letter, or digit, except the las
+         * characters must be a dash, lowercase letter, or digit, except the last
          * character, which cannot be a dash.
          * 
          * @return builder
@@ -877,6 +893,27 @@ public final class FutureReservationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder timeWindow(FutureReservationTimeWindowArgs timeWindow) {
             return timeWindow(Output.of(timeWindow));
+        }
+
+        /**
+         * @param zone The zone where the future reservation is located.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(@Nullable Output<String> zone) {
+            $.zone = zone;
+            return this;
+        }
+
+        /**
+         * @param zone The zone where the future reservation is located.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zone(String zone) {
+            return zone(Output.of(zone));
         }
 
         public FutureReservationArgs build() {

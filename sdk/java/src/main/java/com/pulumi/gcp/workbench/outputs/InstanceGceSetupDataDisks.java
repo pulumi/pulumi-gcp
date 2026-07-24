@@ -5,6 +5,7 @@ package com.pulumi.gcp.workbench.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +39,11 @@ public final class InstanceGceSetupDataDisks {
      * 
      */
     private @Nullable String kmsKey;
+    /**
+     * @return Optional. Resource policies applied to this disk.
+     * 
+     */
+    private @Nullable List<String> resourcePolicies;
 
     private InstanceGceSetupDataDisks() {}
     /**
@@ -75,6 +81,13 @@ public final class InstanceGceSetupDataDisks {
     public Optional<String> kmsKey() {
         return Optional.ofNullable(this.kmsKey);
     }
+    /**
+     * @return Optional. Resource policies applied to this disk.
+     * 
+     */
+    public List<String> resourcePolicies() {
+        return this.resourcePolicies == null ? List.of() : this.resourcePolicies;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -89,6 +102,7 @@ public final class InstanceGceSetupDataDisks {
         private @Nullable String diskSizeGb;
         private @Nullable String diskType;
         private @Nullable String kmsKey;
+        private @Nullable List<String> resourcePolicies;
         public Builder() {}
         public Builder(InstanceGceSetupDataDisks defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,6 +110,7 @@ public final class InstanceGceSetupDataDisks {
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.kmsKey = defaults.kmsKey;
+    	      this.resourcePolicies = defaults.resourcePolicies;
         }
 
         @CustomType.Setter
@@ -122,12 +137,22 @@ public final class InstanceGceSetupDataDisks {
             this.kmsKey = kmsKey;
             return this;
         }
+        @CustomType.Setter
+        public Builder resourcePolicies(@Nullable List<String> resourcePolicies) {
+
+            this.resourcePolicies = resourcePolicies;
+            return this;
+        }
+        public Builder resourcePolicies(String... resourcePolicies) {
+            return resourcePolicies(List.of(resourcePolicies));
+        }
         public InstanceGceSetupDataDisks build() {
             final var _resultValue = new InstanceGceSetupDataDisks();
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.diskType = diskType;
             _resultValue.kmsKey = kmsKey;
+            _resultValue.resourcePolicies = resourcePolicies;
             return _resultValue;
         }
     }

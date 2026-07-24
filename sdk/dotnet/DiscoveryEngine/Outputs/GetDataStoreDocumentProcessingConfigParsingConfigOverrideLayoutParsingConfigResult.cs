@@ -14,9 +14,17 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
     public sealed class GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult
     {
         /// <summary>
+        /// If true, the processed document will be made available for the GetProcessedDocument API.
+        /// </summary>
+        public readonly bool EnableGetProcessedDocument;
+        /// <summary>
         /// If true, the LLM based annotation is added to the image during parsing.
         /// </summary>
         public readonly bool EnableImageAnnotation;
+        /// <summary>
+        /// If true, the pdf layout will be refined using an LLM.
+        /// </summary>
+        public readonly bool EnableLlmLayoutParsing;
         /// <summary>
         /// If true, the LLM based annotation is added to the table during parsing.
         /// </summary>
@@ -40,7 +48,11 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
 
         [OutputConstructor]
         private GetDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigResult(
+            bool enableGetProcessedDocument,
+
             bool enableImageAnnotation,
+
+            bool enableLlmLayoutParsing,
 
             bool enableTableAnnotation,
 
@@ -52,7 +64,9 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
 
             ImmutableArray<string> structuredContentTypes)
         {
+            EnableGetProcessedDocument = enableGetProcessedDocument;
             EnableImageAnnotation = enableImageAnnotation;
+            EnableLlmLayoutParsing = enableLlmLayoutParsing;
             EnableTableAnnotation = enableTableAnnotation;
             ExcludeHtmlClasses = excludeHtmlClasses;
             ExcludeHtmlElements = excludeHtmlElements;

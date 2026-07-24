@@ -266,8 +266,9 @@ type Address struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-	// The PDP must support enhanced IPv4 allocations.
+	// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+	// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
 	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -402,8 +403,9 @@ type addressState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-	// The PDP must support enhanced IPv4 allocations.
+	// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+	// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
 	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -504,8 +506,9 @@ type AddressState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-	// The PDP must support enhanced IPv4 allocations.
+	// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+	// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
 	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -604,8 +607,9 @@ type addressArgs struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-	// The PDP must support enhanced IPv4 allocations.
+	// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+	// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
 	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -691,8 +695,9 @@ type AddressArgs struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-	// The PDP must support enhanced IPv4 allocations.
+	// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+	// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+	// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
 	// Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
 	// Full resource URL, as in:
 	// * `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`
@@ -890,8 +895,9 @@ func (o AddressOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
-// The PDP must support enhanced IPv4 allocations.
+// Reference to the source of external IPv4/IPv6 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
+// If an IPv4 PDP is used, the PDP must support enhanced IPv4 allocations.
+// If an IPv6 PDP is used, the PDP must be in EXTERNAL_IPV6_FORWARDING_RULE_CREATION mode.
 // Use one of the following formats to specify a PDP when reserving an external IPv4 address using BYOIP.
 // Full resource URL, as in:
 //   - `https://www.googleapis.com/compute/v1/projects/{{projectId}}/regions/{{region}}/publicDelegatedPrefixes/{{pdp-name}}`

@@ -18,6 +18,21 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutP
     public static final DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs Empty = new DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs();
 
     /**
+     * If true, the processed document will be made available for the GetProcessedDocument API.
+     * 
+     */
+    @Import(name="enableGetProcessedDocument")
+    private @Nullable Output<Boolean> enableGetProcessedDocument;
+
+    /**
+     * @return If true, the processed document will be made available for the GetProcessedDocument API.
+     * 
+     */
+    public Optional<Output<Boolean>> enableGetProcessedDocument() {
+        return Optional.ofNullable(this.enableGetProcessedDocument);
+    }
+
+    /**
      * If true, the LLM based annotation is added to the image during parsing.
      * 
      */
@@ -30,6 +45,21 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutP
      */
     public Optional<Output<Boolean>> enableImageAnnotation() {
         return Optional.ofNullable(this.enableImageAnnotation);
+    }
+
+    /**
+     * If true, the pdf layout will be refined using an LLM.
+     * 
+     */
+    @Import(name="enableLlmLayoutParsing")
+    private @Nullable Output<Boolean> enableLlmLayoutParsing;
+
+    /**
+     * @return If true, the pdf layout will be refined using an LLM.
+     * 
+     */
+    public Optional<Output<Boolean>> enableLlmLayoutParsing() {
+        return Optional.ofNullable(this.enableLlmLayoutParsing);
     }
 
     /**
@@ -110,7 +140,9 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutP
     private DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs() {}
 
     private DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs $) {
+        this.enableGetProcessedDocument = $.enableGetProcessedDocument;
         this.enableImageAnnotation = $.enableImageAnnotation;
+        this.enableLlmLayoutParsing = $.enableLlmLayoutParsing;
         this.enableTableAnnotation = $.enableTableAnnotation;
         this.excludeHtmlClasses = $.excludeHtmlClasses;
         this.excludeHtmlElements = $.excludeHtmlElements;
@@ -137,6 +169,27 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutP
         }
 
         /**
+         * @param enableGetProcessedDocument If true, the processed document will be made available for the GetProcessedDocument API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGetProcessedDocument(@Nullable Output<Boolean> enableGetProcessedDocument) {
+            $.enableGetProcessedDocument = enableGetProcessedDocument;
+            return this;
+        }
+
+        /**
+         * @param enableGetProcessedDocument If true, the processed document will be made available for the GetProcessedDocument API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableGetProcessedDocument(Boolean enableGetProcessedDocument) {
+            return enableGetProcessedDocument(Output.of(enableGetProcessedDocument));
+        }
+
+        /**
          * @param enableImageAnnotation If true, the LLM based annotation is added to the image during parsing.
          * 
          * @return builder
@@ -155,6 +208,27 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutP
          */
         public Builder enableImageAnnotation(Boolean enableImageAnnotation) {
             return enableImageAnnotation(Output.of(enableImageAnnotation));
+        }
+
+        /**
+         * @param enableLlmLayoutParsing If true, the pdf layout will be refined using an LLM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLlmLayoutParsing(@Nullable Output<Boolean> enableLlmLayoutParsing) {
+            $.enableLlmLayoutParsing = enableLlmLayoutParsing;
+            return this;
+        }
+
+        /**
+         * @param enableLlmLayoutParsing If true, the pdf layout will be refined using an LLM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableLlmLayoutParsing(Boolean enableLlmLayoutParsing) {
+            return enableLlmLayoutParsing(Output.of(enableLlmLayoutParsing));
         }
 
         /**

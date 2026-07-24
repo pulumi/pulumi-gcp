@@ -34,13 +34,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary_network = new Gcp.Compute.Network("primary-network", new()
     ///     {
-    ///         Name = "tf-test-my-vpc-network_50206",
+    ///         Name = "tf-test-my-vpc-network_86474",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Transport("primary", new()
     ///     {
-    ///         Name = "tf-test-basic-transport_9873",
+    ///         Name = "tf-test-basic-transport_95761",
     ///         Region = "us-east4",
     ///         Description = "A sample transport",
     ///         RemoteProfile = $"https://networkconnectivity.googleapis.com/v1/{project.Apply(getProjectResult =&gt; getProjectResult.Id)}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",

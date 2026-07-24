@@ -935,7 +935,7 @@ import (
 //				return err
 //			}
 //			sourcebucket, err := storage.NewBucket(ctx, "sourcebucket", &storage.BucketArgs{
-//				Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_64336", project.ProjectId),
+//				Name:                     pulumi.Sprintf("%v-tf-test-gcf-source_75125", project.ProjectId),
 //				Location:                 pulumi.String("US"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -1023,6 +1023,43 @@ import (
 //								Medium:    pulumi.String("DISK"),
 //								SizeLimit: pulumi.String("10Gi"),
 //							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Service Tags
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Tags: pulumi.StringMap{
+//					"tagKeys/1234": pulumi.String("tagValues/5678"),
+//				},
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 //						},
 //					},
 //				},
@@ -1159,6 +1196,10 @@ type Service struct {
 	// Scaling settings that apply to the whole service
 	// Structure is documented below.
 	Scaling ServiceScalingOutput `pulumi:"scaling"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateOutput `pulumi:"template"`
@@ -1328,6 +1369,10 @@ type serviceState struct {
 	// Scaling settings that apply to the whole service
 	// Structure is documented below.
 	Scaling *ServiceScaling `pulumi:"scaling"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template *ServiceTemplate `pulumi:"template"`
@@ -1457,6 +1502,10 @@ type ServiceState struct {
 	// Scaling settings that apply to the whole service
 	// Structure is documented below.
 	Scaling ServiceScalingPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplatePtrInput
@@ -1555,6 +1604,10 @@ type serviceArgs struct {
 	// Scaling settings that apply to the whole service
 	// Structure is documented below.
 	Scaling *ServiceScaling `pulumi:"scaling"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags map[string]string `pulumi:"tags"`
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplate `pulumi:"template"`
@@ -1635,6 +1688,10 @@ type ServiceArgs struct {
 	// Scaling settings that apply to the whole service
 	// Structure is documented below.
 	Scaling ServiceScalingPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	Tags pulumi.StringMapInput
 	// The template used to create revisions for this Service.
 	// Structure is documented below.
 	Template ServiceTemplateInput
@@ -1939,6 +1996,13 @@ func (o ServiceOutput) Reconciling() pulumi.BoolOutput {
 // Structure is documented below.
 func (o ServiceOutput) Scaling() ServiceScalingOutput {
 	return o.ApplyT(func(v *Service) ServiceScalingOutput { return v.Scaling }).(ServiceScalingOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+func (o ServiceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The template used to create revisions for this Service.

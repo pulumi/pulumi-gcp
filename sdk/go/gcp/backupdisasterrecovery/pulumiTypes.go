@@ -10076,13 +10076,14 @@ func (o GetBackupVaultEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetB
 type GetDataSourceBackupConfigInfo struct {
 	// Configuration for an application backed up by a Backup Appliance.
 	BackupApplianceBackupConfigs []GetDataSourceBackupConfigInfoBackupApplianceBackupConfig `pulumi:"backupApplianceBackupConfigs"`
-	// Configuration for a Google Cloud resource.
+	// Details about the GCP backup configuration. Structure is documented below.
+	// The `gcpBackupConfig` block contains:
 	GcpBackupConfigs []GetDataSourceBackupConfigInfoGcpBackupConfig `pulumi:"gcpBackupConfigs"`
 	// If the last backup failed, this field has the error message.
 	LastBackupError map[string]string `pulumi:"lastBackupError"`
-	// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+	// The state of the last backup attempt.
 	LastBackupState string `pulumi:"lastBackupState"`
-	// If the last backup were successful, this field has the consistency date.
+	// The consistency time of the last successful backup.
 	LastSuccessfulBackupConsistencyTime string `pulumi:"lastSuccessfulBackupConsistencyTime"`
 }
 
@@ -10100,13 +10101,14 @@ type GetDataSourceBackupConfigInfoInput interface {
 type GetDataSourceBackupConfigInfoArgs struct {
 	// Configuration for an application backed up by a Backup Appliance.
 	BackupApplianceBackupConfigs GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayInput `pulumi:"backupApplianceBackupConfigs"`
-	// Configuration for a Google Cloud resource.
+	// Details about the GCP backup configuration. Structure is documented below.
+	// The `gcpBackupConfig` block contains:
 	GcpBackupConfigs GetDataSourceBackupConfigInfoGcpBackupConfigArrayInput `pulumi:"gcpBackupConfigs"`
 	// If the last backup failed, this field has the error message.
 	LastBackupError pulumi.StringMapInput `pulumi:"lastBackupError"`
-	// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+	// The state of the last backup attempt.
 	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
-	// If the last backup were successful, this field has the consistency date.
+	// The consistency time of the last successful backup.
 	LastSuccessfulBackupConsistencyTime pulumi.StringInput `pulumi:"lastSuccessfulBackupConsistencyTime"`
 }
 
@@ -10168,7 +10170,8 @@ func (o GetDataSourceBackupConfigInfoOutput) BackupApplianceBackupConfigs() GetD
 	}).(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput)
 }
 
-// Configuration for a Google Cloud resource.
+// Details about the GCP backup configuration. Structure is documented below.
+// The `gcpBackupConfig` block contains:
 func (o GetDataSourceBackupConfigInfoOutput) GcpBackupConfigs() GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput {
 	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) []GetDataSourceBackupConfigInfoGcpBackupConfig {
 		return v.GcpBackupConfigs
@@ -10180,12 +10183,12 @@ func (o GetDataSourceBackupConfigInfoOutput) LastBackupError() pulumi.StringMapO
 	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) map[string]string { return v.LastBackupError }).(pulumi.StringMapOutput)
 }
 
-// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+// The state of the last backup attempt.
 func (o GetDataSourceBackupConfigInfoOutput) LastBackupState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) string { return v.LastBackupState }).(pulumi.StringOutput)
 }
 
-// If the last backup were successful, this field has the consistency date.
+// The consistency time of the last successful backup.
 func (o GetDataSourceBackupConfigInfoOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) string { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringOutput)
 }
@@ -10368,7 +10371,7 @@ type GetDataSourceBackupConfigInfoGcpBackupConfig struct {
 	BackupPlanAssociation string `pulumi:"backupPlanAssociation"`
 	// The description of the backup plan.
 	BackupPlanDescription string `pulumi:"backupPlanDescription"`
-	// The names of the backup plan rules which point to this backupvault
+	// The rules of the backup plan.
 	BackupPlanRules []string `pulumi:"backupPlanRules"`
 }
 
@@ -10390,7 +10393,7 @@ type GetDataSourceBackupConfigInfoGcpBackupConfigArgs struct {
 	BackupPlanAssociation pulumi.StringInput `pulumi:"backupPlanAssociation"`
 	// The description of the backup plan.
 	BackupPlanDescription pulumi.StringInput `pulumi:"backupPlanDescription"`
-	// The names of the backup plan rules which point to this backupvault
+	// The rules of the backup plan.
 	BackupPlanRules pulumi.StringArrayInput `pulumi:"backupPlanRules"`
 }
 
@@ -10460,7 +10463,7 @@ func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) BackupPlanDescriptio
 	return o.ApplyT(func(v GetDataSourceBackupConfigInfoGcpBackupConfig) string { return v.BackupPlanDescription }).(pulumi.StringOutput)
 }
 
-// The names of the backup plan rules which point to this backupvault
+// The rules of the backup plan.
 func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) BackupPlanRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDataSourceBackupConfigInfoGcpBackupConfig) []string { return v.BackupPlanRules }).(pulumi.StringArrayOutput)
 }
@@ -11065,6 +11068,8 @@ func (o GetDataSourceReferencesDataSourceReferenceArrayOutput) Index(i pulumi.In
 }
 
 type GetDataSourcesDataSource struct {
+	// This field is set to true if the backup is blocked by vault access restriction.
+	BackupBlockedByVaultAccessRestriction bool `pulumi:"backupBlockedByVaultAccessRestriction"`
 	// An object containing information about the backup configuration.
 	BackupConfigInfos []GetDataSourcesDataSourceBackupConfigInfo `pulumi:"backupConfigInfos"`
 	// Number of backups in the data source.
@@ -11103,6 +11108,8 @@ type GetDataSourcesDataSourceInput interface {
 }
 
 type GetDataSourcesDataSourceArgs struct {
+	// This field is set to true if the backup is blocked by vault access restriction.
+	BackupBlockedByVaultAccessRestriction pulumi.BoolInput `pulumi:"backupBlockedByVaultAccessRestriction"`
 	// An object containing information about the backup configuration.
 	BackupConfigInfos GetDataSourcesDataSourceBackupConfigInfoArrayInput `pulumi:"backupConfigInfos"`
 	// Number of backups in the data source.
@@ -11178,6 +11185,11 @@ func (o GetDataSourcesDataSourceOutput) ToGetDataSourcesDataSourceOutput() GetDa
 
 func (o GetDataSourcesDataSourceOutput) ToGetDataSourcesDataSourceOutputWithContext(ctx context.Context) GetDataSourcesDataSourceOutput {
 	return o
+}
+
+// This field is set to true if the backup is blocked by vault access restriction.
+func (o GetDataSourcesDataSourceOutput) BackupBlockedByVaultAccessRestriction() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDataSourcesDataSource) bool { return v.BackupBlockedByVaultAccessRestriction }).(pulumi.BoolOutput)
 }
 
 // An object containing information about the backup configuration.

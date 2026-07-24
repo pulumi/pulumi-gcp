@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
 
     public sealed class ServicePerimeterStatusVpcAccessibleServicesGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedServicePatterns")]
+        private InputList<Inputs.ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternGetArgs>? _allowedServicePatterns;
+
+        /// <summary>
+        /// Specifies which Google services are allowed to be accessed from
+        /// VPC networks in the service perimeter.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternGetArgs> AllowedServicePatterns
+        {
+            get => _allowedServicePatterns ?? (_allowedServicePatterns = new InputList<Inputs.ServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternGetArgs>());
+            set => _allowedServicePatterns = value;
+        }
+
         [Input("allowedServices")]
         private InputList<string>? _allowedServices;
 
@@ -31,6 +45,19 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         /// </summary>
         [Input("enableRestriction")]
         public Input<bool>? EnableRestriction { get; set; }
+
+        [Input("servicePatternsEnforcementScopes")]
+        private InputList<string>? _servicePatternsEnforcementScopes;
+
+        /// <summary>
+        /// Defines the enforcement scopes of service patterns.
+        /// Each value may be one of: `GOOGLE_APIS_VIA_PRIVATE_PATH`.
+        /// </summary>
+        public InputList<string> ServicePatternsEnforcementScopes
+        {
+            get => _servicePatternsEnforcementScopes ?? (_servicePatternsEnforcementScopes = new InputList<string>());
+            set => _servicePatternsEnforcementScopes = value;
+        }
 
         public ServicePerimeterStatusVpcAccessibleServicesGetArgs()
         {

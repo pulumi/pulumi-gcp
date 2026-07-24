@@ -423,7 +423,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_49082"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_3684"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -475,7 +475,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_60365"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_10719"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -483,9 +483,9 @@ import (
 //				return err
 //			}
 //			tfTestConnection, err := bigquery.NewConnection(ctx, "tf_test_connection", &bigquery.ConnectionArgs{
-//				ConnectionId:  pulumi.String("tf-test-connection-_80215"),
+//				ConnectionId:  pulumi.String("tf-test-connection-_1443"),
 //				Location:      pulumi.String("us-central1"),
-//				FriendlyName:  pulumi.String("tf-test-connection-_59033"),
+//				FriendlyName:  pulumi.String("tf-test-connection-_26032"),
 //				Description:   pulumi.String("a bigquery connection for tf test"),
 //				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
 //			})
@@ -578,7 +578,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_32081"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_8647"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -631,7 +631,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__10393"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__50610"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -639,7 +639,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__33052"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__77124"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -743,7 +743,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__3684"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__15335"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -751,7 +751,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__10719"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__20665"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -855,7 +855,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_ds__1443"),
+//				DatasetId:                pulumi.String("tf_test_ds__85160"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DeleteContentsOnDestroy:  pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -865,7 +865,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_tbl__26032"),
+//				TableId:            pulumi.String("tf_test_tbl__92130"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String("my-project-name"),
 //				Schema: pulumi.String(`    [
@@ -946,7 +946,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_8647"),
+//				AccountId:   pulumi.String("tf-test-sa-_16199"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
 //				Project:     pulumi.String("my-project-name"),
 //			})
@@ -990,7 +990,7 @@ import (
 //				return err
 //			}
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_ds__50610"),
+//				DatasetId:                pulumi.String("tf_test_ds__21563"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DeleteContentsOnDestroy:  pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -1004,7 +1004,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_tbl__77124"),
+//				TableId:            pulumi.String("tf_test_tbl__25141"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String("my-project-name"),
 //				Schema: pulumi.String(`    [
@@ -1089,7 +1089,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_15335"),
+//				AccountId:   pulumi.String("tf-test-sa-_30827"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
 //				Project:     pulumi.String("my-project-name"),
 //			})
@@ -1125,7 +1125,7 @@ import (
 //				return err
 //			}
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_dataset_id__20665"),
+//				DatasetId:                pulumi.String("tf_test_dataset_id__6529"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DeleteContentsOnDestroy:  pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -1140,7 +1140,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_table_id__85160"),
+//				TableId:            pulumi.String("tf_test_table_id__16178"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String("my-project-name"),
 //				Schema: pulumi.String(`    [
@@ -1159,7 +1159,7 @@ import (
 //			}
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("test-group-_92130"),
+//				EntryGroupId: pulumi.String("test-group-_26317"),
 //				Project:      pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -1188,7 +1188,7 @@ import (
 //			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: testGroup.EntryGroupId,
-//				EntryId:      pulumi.String("test-entry-_16199"),
+//				EntryId:      pulumi.String("test-entry-_4866"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
 //				Project:      pulumi.String(project.Number),
 //				Aspects: dataplex.EntryAspectArray{
@@ -1233,13 +1233,10 @@ import (
 //					&dataplex.EntryAspectArgs{
 //						AspectKey: pulumi.String("655216118709.global.data-rules@Schema.name"),
 //						Aspect: &dataplex.EntryAspectAspectArgs{
-//							Data: pulumi.All(testEntry.Name, tfTestDataset.DatasetId, tfTestTable.TableId, testEntry.Name, tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
-//								testEntryName := _args[0].(string)
-//								tfTestDatasetDatasetId := _args[1].(string)
-//								tfTestTableTableId := _args[2].(string)
-//								testEntryName1 := _args[3].(string)
-//								tfTestDatasetDatasetId1 := _args[4].(string)
-//								tfTestTableTableId1 := _args[5].(string)
+//							Data: pulumi.All(testEntry.Name, tfTestDataset.DatasetId, tfTestTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
+//								name := _args[0].(string)
+//								datasetId := _args[1].(string)
+//								tableId := _args[2].(string)
 //								var _zero string
 //								tmpJSON1, err := json.Marshal(map[string]interface{}{
 //									"rules": []map[string]interface{}{
@@ -1248,10 +1245,10 @@ import (
 //											"dimension": "VALIDITY",
 //											"type":      "TEMPLATE_REFERENCE",
 //											"templateReference": map[string]interface{}{
-//												"name": testEntryName,
+//												"name": name,
 //												"values": map[string]interface{}{
 //													"table_name": map[string]interface{}{
-//														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, tfTestDatasetDatasetId, tfTestTableTableId),
+//														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, datasetId, tableId),
 //													},
 //													"column_name": map[string]interface{}{
 //														"value": "name",
@@ -1267,10 +1264,10 @@ import (
 //											"dimension": "VALIDITY",
 //											"type":      "TEMPLATE_REFERENCE",
 //											"templateReference": map[string]interface{}{
-//												"name": testEntryName1,
+//												"name": name,
 //												"values": map[string]interface{}{
 //													"table_name": map[string]interface{}{
-//														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, tfTestDatasetDatasetId1, tfTestTableTableId1),
+//														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, datasetId, tableId),
 //													},
 //													"column_name": map[string]interface{}{
 //														"value": "name",
@@ -1374,7 +1371,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_21563"),
+//				AccountId:   pulumi.String("tf-test-sa-_12618"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
 //				Project:     pulumi.String(project.ProjectId),
 //			})
@@ -1419,7 +1416,7 @@ import (
 //			}
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("test-group-_25141"),
+//				EntryGroupId: pulumi.String("test-group-_32270"),
 //				Project:      pulumi.String(project.ProjectId),
 //			})
 //			if err != nil {
@@ -1440,7 +1437,7 @@ import (
 //			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: testGroup.EntryGroupId,
-//				EntryId:      pulumi.String("test-entry-_30827"),
+//				EntryId:      pulumi.String("test-entry-_44703"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
 //				Project:      pulumi.String(project.Number),
 //				Aspects: dataplex.EntryAspectArray{
@@ -1456,7 +1453,7 @@ import (
 //				return err
 //			}
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_dataset_id__6529"),
+//				DatasetId:                pulumi.String("tf_test_dataset_id__9329"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				Location:                 pulumi.String("us-central1"),
 //				Project:                  pulumi.String(project.ProjectId),
@@ -1470,7 +1467,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_table_id__16178"),
+//				TableId:            pulumi.String("tf_test_table_id__37135"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String(project.ProjectId),
 //				Schema: pulumi.String(`    [

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled.
+        /// Defines the confidential compute type of the instance. Valid values are `"CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"`, `"SEV"`, `"SEV_SNP"`, `"TDX"`.
+        /// </summary>
+        [Input("confidentialInstanceType")]
+        public Input<string>? ConfidentialInstanceType { get; set; }
+
+        /// <summary>
+        /// Defines whether the instance should have confidential compute enabled. `EnableConfidentialCompute` is deprecated and will be removed in a future major release. Use `ConfidentialInstanceType` instead.
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }

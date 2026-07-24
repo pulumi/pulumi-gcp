@@ -918,7 +918,7 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     ///     var sourcebucket = new Gcp.Storage.Bucket("sourcebucket", new()
     ///     {
-    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-tf-test-gcf-source_64336",
+    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-tf-test-gcf-source_75125",
     ///         Location = "US",
     ///         UniformBucketLevelAccess = true,
     ///     });
@@ -1011,6 +1011,39 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                         Medium = "DISK",
     ///                         SizeLimit = "10Gi",
     ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Service Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Tags = 
+    ///         {
+    ///             { "tagKeys/1234", "tagValues/5678" },
+    ///         },
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                 },
     ///             },
     ///         },
@@ -1284,6 +1317,14 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<Outputs.ServiceScaling> Scaling { get; private set; } = null!;
 
         /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The template used to create revisions for this Service.
         /// Structure is documented below.
         /// </summary>
@@ -1554,6 +1595,20 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("scaling")]
         public Input<Inputs.ServiceScalingArgs>? Scaling { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The template used to create revisions for this Service.
@@ -1877,6 +1932,20 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("scaling")]
         public Input<Inputs.ServiceScalingGetArgs>? Scaling { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The template used to create revisions for this Service.

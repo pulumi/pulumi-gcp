@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_89313@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_32706@example.com",
     ///                 },
     ///             },
     ///         },
@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var testSa = new Gcp.ServiceAccount.Account("test_sa", new()
     ///     {
-    ///         AccountId = "tf-test-sa-_60646",
+    ///         AccountId = "tf-test-sa-_49082",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 Description = "In-place update verified",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_9394@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_60365@example.com",
     ///                 },
     ///             },
     ///             new Gcp.DataPlex.Inputs.DataProductAccessGroupArgs

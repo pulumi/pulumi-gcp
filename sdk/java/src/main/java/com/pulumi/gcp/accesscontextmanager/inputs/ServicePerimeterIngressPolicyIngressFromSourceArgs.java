@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -45,6 +46,25 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
     }
 
     /**
+     * A Private Service Connect endpoint that is allowed to access the perimeter.
+     * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscEndpoint")
+    private @Nullable Output<ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs> pscEndpoint;
+
+    /**
+     * @return A Private Service Connect endpoint that is allowed to access the perimeter.
+     * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs>> pscEndpoint() {
+        return Optional.ofNullable(this.pscEndpoint);
+    }
+
+    /**
      * A Google Cloud resource that is allowed to ingress the perimeter.
      * Requests from these resources will be allowed to access perimeter data.
      * Currently only projects and VPCs are allowed.
@@ -79,6 +99,7 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
 
     private ServicePerimeterIngressPolicyIngressFromSourceArgs(ServicePerimeterIngressPolicyIngressFromSourceArgs $) {
         this.accessLevel = $.accessLevel;
+        this.pscEndpoint = $.pscEndpoint;
         this.resource = $.resource;
     }
 
@@ -133,6 +154,31 @@ public final class ServicePerimeterIngressPolicyIngressFromSourceArgs extends co
          */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
+        }
+
+        /**
+         * @param pscEndpoint A Private Service Connect endpoint that is allowed to access the perimeter.
+         * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscEndpoint(@Nullable Output<ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs> pscEndpoint) {
+            $.pscEndpoint = pscEndpoint;
+            return this;
+        }
+
+        /**
+         * @param pscEndpoint A Private Service Connect endpoint that is allowed to access the perimeter.
+         * The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscEndpoint(ServicePerimeterIngressPolicyIngressFromSourcePscEndpointArgs pscEndpoint) {
+            return pscEndpoint(Output.of(pscEndpoint));
         }
 
         /**

@@ -27,7 +27,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_policy=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, multi_region_settings=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_policy=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, multi_region_settings=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, tags=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -136,6 +136,9 @@ class GetServiceResult:
         if scalings and not isinstance(scalings, list):
             raise TypeError("Expected argument 'scalings' to be a list")
         pulumi.set(__self__, "scalings", scalings)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if templates and not isinstance(templates, list):
             raise TypeError("Expected argument 'templates' to be a list")
         pulumi.set(__self__, "templates", templates)
@@ -346,6 +349,11 @@ class GetServiceResult:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def templates(self) -> Sequence['outputs.GetServiceTemplateResult']:
         return pulumi.get(self, "templates")
 
@@ -427,6 +435,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             pulumi_labels=self.pulumi_labels,
             reconciling=self.reconciling,
             scalings=self.scalings,
+            tags=self.tags,
             templates=self.templates,
             terminal_conditions=self.terminal_conditions,
             traffic_statuses=self.traffic_statuses,
@@ -508,6 +517,7 @@ def get_service(location: Optional[_builtins.str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         reconciling=pulumi.get(__ret__, 'reconciling'),
         scalings=pulumi.get(__ret__, 'scalings'),
+        tags=pulumi.get(__ret__, 'tags'),
         templates=pulumi.get(__ret__, 'templates'),
         terminal_conditions=pulumi.get(__ret__, 'terminal_conditions'),
         traffic_statuses=pulumi.get(__ret__, 'traffic_statuses'),
@@ -586,6 +596,7 @@ def get_service_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
         reconciling=pulumi.get(__response__, 'reconciling'),
         scalings=pulumi.get(__response__, 'scalings'),
+        tags=pulumi.get(__response__, 'tags'),
         templates=pulumi.get(__response__, 'templates'),
         terminal_conditions=pulumi.get(__response__, 'terminal_conditions'),
         traffic_statuses=pulumi.get(__response__, 'traffic_statuses'),

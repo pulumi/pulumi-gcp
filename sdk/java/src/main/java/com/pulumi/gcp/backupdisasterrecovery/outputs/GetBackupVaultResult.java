@@ -34,6 +34,7 @@ public final class GetBackupVaultResult {
     private String etag;
     private Boolean forceDelete;
     private Boolean forceUpdate;
+    private Boolean forceUpdateAccessRestriction;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -107,6 +108,9 @@ public final class GetBackupVaultResult {
     public Boolean forceUpdate() {
         return this.forceUpdate;
     }
+    public Boolean forceUpdateAccessRestriction() {
+        return this.forceUpdateAccessRestriction;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -178,6 +182,7 @@ public final class GetBackupVaultResult {
         private String etag;
         private Boolean forceDelete;
         private Boolean forceUpdate;
+        private Boolean forceUpdateAccessRestriction;
         private String id;
         private Boolean ignoreBackupPlanReferences;
         private Boolean ignoreInactiveDatasources;
@@ -212,6 +217,7 @@ public final class GetBackupVaultResult {
     	      this.etag = defaults.etag;
     	      this.forceDelete = defaults.forceDelete;
     	      this.forceUpdate = defaults.forceUpdate;
+    	      this.forceUpdateAccessRestriction = defaults.forceUpdateAccessRestriction;
     	      this.id = defaults.id;
     	      this.ignoreBackupPlanReferences = defaults.ignoreBackupPlanReferences;
     	      this.ignoreInactiveDatasources = defaults.ignoreInactiveDatasources;
@@ -375,6 +381,14 @@ public final class GetBackupVaultResult {
             return this;
         }
         @CustomType.Setter
+        public Builder forceUpdateAccessRestriction(Boolean forceUpdateAccessRestriction) {
+            if (forceUpdateAccessRestriction == null) {
+              throw new MissingRequiredPropertyException("GetBackupVaultResult", "forceUpdateAccessRestriction");
+            }
+            this.forceUpdateAccessRestriction = forceUpdateAccessRestriction;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetBackupVaultResult", "id");
@@ -496,6 +510,7 @@ public final class GetBackupVaultResult {
             _resultValue.etag = etag;
             _resultValue.forceDelete = forceDelete;
             _resultValue.forceUpdate = forceUpdate;
+            _resultValue.forceUpdateAccessRestriction = forceUpdateAccessRestriction;
             _resultValue.id = id;
             _resultValue.ignoreBackupPlanReferences = ignoreBackupPlanReferences;
             _resultValue.ignoreInactiveDatasources = ignoreInactiveDatasources;

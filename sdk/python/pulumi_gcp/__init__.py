@@ -1549,6 +1549,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "biglake/hiveTable",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveTable:HiveTable": "HiveTable"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveTableIamBinding",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveTableIamBinding:HiveTableIamBinding": "HiveTableIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveTableIamMember",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveTableIamMember:HiveTableIamMember": "HiveTableIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "biglake/hiveTableIamPolicy",
+  "fqn": "pulumi_gcp.biglake",
+  "classes": {
+   "gcp:biglake/hiveTableIamPolicy:HiveTableIamPolicy": "HiveTableIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "biglake/icebergCatalog",
   "fqn": "pulumi_gcp.biglake",
   "classes": {
@@ -3505,6 +3537,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup": "GlobalNetworkEndpointGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/globalVmExtensionPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy": "GlobalVmExtensionPolicy"
   }
  },
  {

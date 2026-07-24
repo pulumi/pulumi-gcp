@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,16 +13,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
     /**
-     * @return Defines whether the instance should have confidential compute enabled.
+     * @return Defines the confidential compute type of the instance. Valid values are `&#34;CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED&#34;`, `&#34;SEV&#34;`, `&#34;SEV_SNP&#34;`, `&#34;TDX&#34;`.
      * 
      */
+    private @Nullable String confidentialInstanceType;
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
+     * 
+     * @deprecated
+     * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+     * 
+     */
+    @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
     private @Nullable Boolean enableConfidentialCompute;
 
     private ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig() {}
     /**
-     * @return Defines whether the instance should have confidential compute enabled.
+     * @return Defines the confidential compute type of the instance. Valid values are `&#34;CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED&#34;`, `&#34;SEV&#34;`, `&#34;SEV_SNP&#34;`, `&#34;TDX&#34;`.
      * 
      */
+    public Optional<String> confidentialInstanceType() {
+        return Optional.ofNullable(this.confidentialInstanceType);
+    }
+    /**
+     * @return Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
+     * 
+     * @deprecated
+     * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+     * 
+     */
+    @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
     public Optional<Boolean> enableConfidentialCompute() {
         return Optional.ofNullable(this.enableConfidentialCompute);
     }
@@ -35,13 +56,21 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String confidentialInstanceType;
         private @Nullable Boolean enableConfidentialCompute;
         public Builder() {}
         public Builder(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.confidentialInstanceType = defaults.confidentialInstanceType;
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
         }
 
+        @CustomType.Setter
+        public Builder confidentialInstanceType(@Nullable String confidentialInstanceType) {
+
+            this.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
         @CustomType.Setter
         public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
 
@@ -50,6 +79,7 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
         }
         public ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig build() {
             final var _resultValue = new ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig();
+            _resultValue.confidentialInstanceType = confidentialInstanceType;
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             return _resultValue;
         }

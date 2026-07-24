@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
- *     batchId: "tf-test-batch_37426",
+ *     batchId: "tf-test-batch_79411",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -155,7 +155,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparsql = new gcp.dataproc.Batch("example_batch_sparsql", {
- *     batchId: "tf-test-batch_67903",
+ *     batchId: "tf-test-batch_2234",
  *     location: "us-central1",
  *     runtimeConfig: {
  *         properties: {
@@ -184,7 +184,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchPyspark = new gcp.dataproc.Batch("example_batch_pyspark", {
- *     batchId: "tf-test-batch_40816",
+ *     batchId: "tf-test-batch_29225",
  *     location: "us-central1",
  *     runtimeConfig: {
  *         properties: {
@@ -218,7 +218,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparkr = new gcp.dataproc.Batch("example_batch_sparkr", {
- *     batchId: "tf-test-batch_94690",
+ *     batchId: "tf-test-batch_40798",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchAutotuning = new gcp.dataproc.Batch("example_batch_autotuning", {
- *     batchId: "tf-test-batch_29947",
+ *     batchId: "tf-test-batch_82591",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",

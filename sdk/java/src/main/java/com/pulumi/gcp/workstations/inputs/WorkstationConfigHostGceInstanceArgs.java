@@ -137,6 +137,21 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     }
 
     /**
+     * Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+     * 
+     */
+    @Import(name="instanceMetadata")
+    private @Nullable Output<Map<String,String>> instanceMetadata;
+
+    /**
+     * @return Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> instanceMetadata() {
+        return Optional.ofNullable(this.instanceMetadata);
+    }
+
+    /**
      * The name of a Compute Engine machine type.
      * 
      */
@@ -261,6 +276,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         this.disablePublicIpAddresses = $.disablePublicIpAddresses;
         this.disableSsh = $.disableSsh;
         this.enableNestedVirtualization = $.enableNestedVirtualization;
+        this.instanceMetadata = $.instanceMetadata;
         this.machineType = $.machineType;
         this.poolSize = $.poolSize;
         this.serviceAccount = $.serviceAccount;
@@ -463,6 +479,27 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
             return enableNestedVirtualization(Output.of(enableNestedVirtualization));
+        }
+
+        /**
+         * @param instanceMetadata Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadata(@Nullable Output<Map<String,String>> instanceMetadata) {
+            $.instanceMetadata = instanceMetadata;
+            return this;
+        }
+
+        /**
+         * @param instanceMetadata Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceMetadata(Map<String,String> instanceMetadata) {
+            return instanceMetadata(Output.of(instanceMetadata));
         }
 
         /**

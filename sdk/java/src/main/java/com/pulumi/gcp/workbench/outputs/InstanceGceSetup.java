@@ -78,6 +78,11 @@ public final class InstanceGceSetup {
      */
     private @Nullable Map<String,String> metadata;
     /**
+     * @return Optional. The minimum CPU platform to use for this instance.
+     * 
+     */
+    private @Nullable String minCpuPlatform;
+    /**
      * @return The network interfaces for the VM. Supports only one interface.
      * Structure is documented below.
      * 
@@ -190,6 +195,13 @@ public final class InstanceGceSetup {
         return this.metadata == null ? Map.of() : this.metadata;
     }
     /**
+     * @return Optional. The minimum CPU platform to use for this instance.
+     * 
+     */
+    public Optional<String> minCpuPlatform() {
+        return Optional.ofNullable(this.minCpuPlatform);
+    }
+    /**
      * @return The network interfaces for the VM. Supports only one interface.
      * Structure is documented below.
      * 
@@ -259,6 +271,7 @@ public final class InstanceGceSetup {
         private @Nullable Boolean enableIpForwarding;
         private @Nullable String machineType;
         private @Nullable Map<String,String> metadata;
+        private @Nullable String minCpuPlatform;
         private @Nullable List<InstanceGceSetupNetworkInterface> networkInterfaces;
         private @Nullable InstanceGceSetupReservationAffinity reservationAffinity;
         private @Nullable List<InstanceGceSetupServiceAccount> serviceAccounts;
@@ -277,6 +290,7 @@ public final class InstanceGceSetup {
     	      this.enableIpForwarding = defaults.enableIpForwarding;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
+    	      this.minCpuPlatform = defaults.minCpuPlatform;
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.reservationAffinity = defaults.reservationAffinity;
     	      this.serviceAccounts = defaults.serviceAccounts;
@@ -343,6 +357,12 @@ public final class InstanceGceSetup {
             return this;
         }
         @CustomType.Setter
+        public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
+            this.minCpuPlatform = minCpuPlatform;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkInterfaces(@Nullable List<InstanceGceSetupNetworkInterface> networkInterfaces) {
 
             this.networkInterfaces = networkInterfaces;
@@ -398,6 +418,7 @@ public final class InstanceGceSetup {
             _resultValue.enableIpForwarding = enableIpForwarding;
             _resultValue.machineType = machineType;
             _resultValue.metadata = metadata;
+            _resultValue.minCpuPlatform = minCpuPlatform;
             _resultValue.networkInterfaces = networkInterfaces;
             _resultValue.reservationAffinity = reservationAffinity;
             _resultValue.serviceAccounts = serviceAccounts;

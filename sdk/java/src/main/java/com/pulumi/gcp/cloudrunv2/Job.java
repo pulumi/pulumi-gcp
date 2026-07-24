@@ -751,6 +751,51 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Job Tags
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Job;
+ * import com.pulumi.gcp.cloudrunv2.JobArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Job("default", JobArgs.builder()
+ *             .name("cloudrun-job")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .tags(Map.of("tagKeys/1234", "tagValues/5678"))
+ *             .template(JobTemplateArgs.builder()
+ *                 .template(JobTemplateTemplateArgs.builder()
+ *                     .containers(JobTemplateTemplateContainerArgs.builder()
+ *                         .image("us-docker.pkg.dev/cloudrun/container/job")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1236,6 +1281,24 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> startExecutionToken() {
         return Codegen.optional(this.startExecutionToken);
+    }
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
     /**
      * The template used to create executions for this Job.

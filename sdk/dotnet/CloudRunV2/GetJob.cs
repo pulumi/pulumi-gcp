@@ -188,6 +188,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly bool Reconciling;
         public readonly string RunExecutionToken;
         public readonly string StartExecutionToken;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly ImmutableArray<Outputs.GetJobTemplateResult> Templates;
         public readonly ImmutableArray<Outputs.GetJobTerminalConditionResult> TerminalConditions;
         public readonly string Uid;
@@ -253,6 +254,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             string startExecutionToken,
 
+            ImmutableDictionary<string, string> tags,
+
             ImmutableArray<Outputs.GetJobTemplateResult> templates,
 
             ImmutableArray<Outputs.GetJobTerminalConditionResult> terminalConditions,
@@ -290,6 +293,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Reconciling = reconciling;
             RunExecutionToken = runExecutionToken;
             StartExecutionToken = startExecutionToken;
+            Tags = tags;
             Templates = templates;
             TerminalConditions = terminalConditions;
             Uid = uid;

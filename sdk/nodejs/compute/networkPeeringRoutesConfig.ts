@@ -55,6 +55,72 @@ import * as utilities from "../utilities";
  *     peerNetwork: networkPrimary.id,
  * });
  * ```
+ * ### Network Peering Routes Config Gke Peered Vpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gkeNetwork = new gcp.compute.Network("gke_network", {
+ *     name: "gke-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const workloadNetwork = new gcp.compute.Network("workload_network", {
+ *     name: "workload-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const peeringGkeToWorkload = new gcp.compute.NetworkPeering("peering_gke_to_workload", {
+ *     name: "peering-gke-to-workload",
+ *     network: gkeNetwork.id,
+ *     peerNetwork: workloadNetwork.id,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * const peeringGkeRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes", {
+ *     peering: peeringGkeToWorkload.name,
+ *     network: gkeNetwork.name,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * const peeringWorkloadToGke = new gcp.compute.NetworkPeering("peering_workload_to_gke", {
+ *     name: "peering-workload-to-gke",
+ *     network: workloadNetwork.id,
+ *     peerNetwork: gkeNetwork.id,
+ * });
+ * const gkeSubnetwork = new gcp.compute.Subnetwork("gke_subnetwork", {
+ *     name: "gke-subnetwork",
+ *     region: "us-central1",
+ *     network: gkeNetwork.name,
+ *     ipCidrRange: "10.0.36.0/24",
+ *     privateIpGoogleAccess: true,
+ *     secondaryIpRanges: [
+ *         {
+ *             rangeName: "pod",
+ *             ipCidrRange: "10.0.0.0/19",
+ *         },
+ *         {
+ *             rangeName: "svc",
+ *             ipCidrRange: "10.0.32.0/22",
+ *         },
+ *     ],
+ * });
+ * const gkeCluster = new gcp.container.Cluster("gke_cluster", {
+ *     name: "gke-cluster",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     network: gkeNetwork.name,
+ *     subnetwork: gkeSubnetwork.name,
+ *     privateClusterConfig: {
+ *         enablePrivateNodes: true,
+ *         masterIpv4CidrBlock: "10.42.0.0/28",
+ *     },
+ *     ipAllocationPolicy: {
+ *         clusterSecondaryRangeName: gkeSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
+ *         servicesSecondaryRangeName: gkeSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+ *     },
+ *     deletionProtection: true,
+ * });
+ * ```
  *
  * ## Import
  *

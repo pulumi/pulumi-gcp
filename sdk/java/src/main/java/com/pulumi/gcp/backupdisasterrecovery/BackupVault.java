@@ -448,6 +448,20 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceUpdate);
     }
     /**
+     * If set to true, we will force update access restriction even if some non compliant data sources are present.
+     * 
+     */
+    @Export(name="forceUpdateAccessRestriction", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceUpdateAccessRestriction;
+
+    /**
+     * @return If set to true, we will force update access restriction even if some non compliant data sources are present.
+     * 
+     */
+    public Output<Optional<Boolean>> forceUpdateAccessRestriction() {
+        return Codegen.optional(this.forceUpdateAccessRestriction);
+    }
+    /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
@@ -579,6 +593,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * ACTIVE
      * DELETING
      * ERROR
+     * UPDATING
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -592,6 +607,7 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      * ACTIVE
      * DELETING
      * ERROR
+     * UPDATING
      * 
      */
     public Output<String> state() {

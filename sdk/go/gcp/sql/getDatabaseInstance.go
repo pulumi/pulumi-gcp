@@ -72,30 +72,32 @@ type LookupDatabaseInstanceResult struct {
 	FinalBackupDescription           string                       `pulumi:"finalBackupDescription"`
 	FirstIpAddress                   string                       `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                         string                                         `pulumi:"id"`
-	InstanceType               string                                         `pulumi:"instanceType"`
-	IpAddresses                []GetDatabaseInstanceIpAddress                 `pulumi:"ipAddresses"`
-	MaintenanceVersion         string                                         `pulumi:"maintenanceVersion"`
-	MasterInstanceName         string                                         `pulumi:"masterInstanceName"`
-	Name                       string                                         `pulumi:"name"`
-	NodeCount                  int                                            `pulumi:"nodeCount"`
-	PointInTimeRestoreContexts []GetDatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContexts"`
-	PrivateIpAddress           string                                         `pulumi:"privateIpAddress"`
-	Project                    *string                                        `pulumi:"project"`
-	PscServiceAttachmentLink   string                                         `pulumi:"pscServiceAttachmentLink"`
-	PublicIpAddress            string                                         `pulumi:"publicIpAddress"`
-	Region                     string                                         `pulumi:"region"`
-	ReplicaConfigurations      []GetDatabaseInstanceReplicaConfiguration      `pulumi:"replicaConfigurations"`
-	ReplicaNames               []string                                       `pulumi:"replicaNames"`
-	ReplicationClusters        []GetDatabaseInstanceReplicationCluster        `pulumi:"replicationClusters"`
-	RestoreBackupContexts      []GetDatabaseInstanceRestoreBackupContext      `pulumi:"restoreBackupContexts"`
-	RootPassword               string                                         `pulumi:"rootPassword"`
-	RootPasswordWo             string                                         `pulumi:"rootPasswordWo"`
-	RootPasswordWoVersion      string                                         `pulumi:"rootPasswordWoVersion"`
-	SelfLink                   string                                         `pulumi:"selfLink"`
-	ServerCaCerts              []GetDatabaseInstanceServerCaCert              `pulumi:"serverCaCerts"`
-	ServiceAccountEmailAddress string                                         `pulumi:"serviceAccountEmailAddress"`
-	Settings                   []GetDatabaseInstanceSetting                   `pulumi:"settings"`
+	Id                                         string                                         `pulumi:"id"`
+	IncludeReplicasForMajorVersionUpgrade      bool                                           `pulumi:"includeReplicasForMajorVersionUpgrade"`
+	InstanceType                               string                                         `pulumi:"instanceType"`
+	IpAddresses                                []GetDatabaseInstanceIpAddress                 `pulumi:"ipAddresses"`
+	MaintenanceVersion                         string                                         `pulumi:"maintenanceVersion"`
+	MasterInstanceName                         string                                         `pulumi:"masterInstanceName"`
+	Name                                       string                                         `pulumi:"name"`
+	NodeCount                                  int                                            `pulumi:"nodeCount"`
+	PointInTimeRestoreContexts                 []GetDatabaseInstancePointInTimeRestoreContext `pulumi:"pointInTimeRestoreContexts"`
+	PrivateIpAddress                           string                                         `pulumi:"privateIpAddress"`
+	Project                                    *string                                        `pulumi:"project"`
+	PscServiceAttachmentLink                   string                                         `pulumi:"pscServiceAttachmentLink"`
+	PublicIpAddress                            string                                         `pulumi:"publicIpAddress"`
+	Region                                     string                                         `pulumi:"region"`
+	ReplicaConfigurations                      []GetDatabaseInstanceReplicaConfiguration      `pulumi:"replicaConfigurations"`
+	ReplicaNames                               []string                                       `pulumi:"replicaNames"`
+	ReplicationClusters                        []GetDatabaseInstanceReplicationCluster        `pulumi:"replicationClusters"`
+	RestoreBackupContexts                      []GetDatabaseInstanceRestoreBackupContext      `pulumi:"restoreBackupContexts"`
+	RootPassword                               string                                         `pulumi:"rootPassword"`
+	RootPasswordWo                             string                                         `pulumi:"rootPasswordWo"`
+	RootPasswordWoVersion                      string                                         `pulumi:"rootPasswordWoVersion"`
+	SelfLink                                   string                                         `pulumi:"selfLink"`
+	ServerCaCerts                              []GetDatabaseInstanceServerCaCert              `pulumi:"serverCaCerts"`
+	ServiceAccountEmailAddress                 string                                         `pulumi:"serviceAccountEmailAddress"`
+	Settings                                   []GetDatabaseInstanceSetting                   `pulumi:"settings"`
+	SwitchTransactionLogsToCloudStorageEnabled bool                                           `pulumi:"switchTransactionLogsToCloudStorageEnabled"`
 }
 
 func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseInstanceResultOutput {
@@ -189,6 +191,10 @@ func (o LookupDatabaseInstanceResultOutput) FirstIpAddress() pulumi.StringOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupDatabaseInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) IncludeReplicasForMajorVersionUpgrade() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.IncludeReplicasForMajorVersionUpgrade }).(pulumi.BoolOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) InstanceType() pulumi.StringOutput {
@@ -289,6 +295,10 @@ func (o LookupDatabaseInstanceResultOutput) ServiceAccountEmailAddress() pulumi.
 
 func (o LookupDatabaseInstanceResultOutput) Settings() GetDatabaseInstanceSettingArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceSetting { return v.Settings }).(GetDatabaseInstanceSettingArrayOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) SwitchTransactionLogsToCloudStorageEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.SwitchTransactionLogsToCloudStorageEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {

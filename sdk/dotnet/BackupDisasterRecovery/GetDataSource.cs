@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [OutputType]
     public sealed class GetDataSourceResult
     {
+        public readonly bool BackupBlockedByVaultAccessRestriction;
         public readonly ImmutableArray<Outputs.GetDataSourceBackupConfigInfoResult> BackupConfigInfos;
         public readonly string BackupCount;
         public readonly string BackupVaultId;
@@ -185,6 +186,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         [OutputConstructor]
         private GetDataSourceResult(
+            bool backupBlockedByVaultAccessRestriction,
+
             ImmutableArray<Outputs.GetDataSourceBackupConfigInfoResult> backupConfigInfos,
 
             string backupCount,
@@ -219,6 +222,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string updateTime)
         {
+            BackupBlockedByVaultAccessRestriction = backupBlockedByVaultAccessRestriction;
             BackupConfigInfos = backupConfigInfos;
             BackupCount = backupCount;
             BackupVaultId = backupVaultId;

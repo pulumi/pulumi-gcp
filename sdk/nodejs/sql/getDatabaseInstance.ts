@@ -63,6 +63,7 @@ export interface GetDatabaseInstanceResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly includeReplicasForMajorVersionUpgrade: boolean;
     readonly instanceType: string;
     readonly ipAddresses: outputs.sql.GetDatabaseInstanceIpAddress[];
     readonly maintenanceVersion: string;
@@ -86,6 +87,7 @@ export interface GetDatabaseInstanceResult {
     readonly serverCaCerts: outputs.sql.GetDatabaseInstanceServerCaCert[];
     readonly serviceAccountEmailAddress: string;
     readonly settings: outputs.sql.GetDatabaseInstanceSetting[];
+    readonly switchTransactionLogsToCloudStorageEnabled: boolean;
 }
 /**
  * Use this data source to get information about a Cloud SQL instance.

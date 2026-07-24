@@ -574,6 +574,9 @@ type Certificate struct {
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
 	// certificates before they expire remains the user's responsibility.
+	// The certificate data can be updated in place; changes to `pemCertificate`
+	// and `pemPrivateKey` are applied via the API's PATCH method instead of
+	// forcing recreation of the certificate.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrOutput `pulumi:"selfManaged"`
 }
@@ -660,6 +663,9 @@ type certificateState struct {
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
 	// certificates before they expire remains the user's responsibility.
+	// The certificate data can be updated in place; changes to `pemCertificate`
+	// and `pemPrivateKey` are applied via the API's PATCH method instead of
+	// forcing recreation of the certificate.
 	// Structure is documented below.
 	SelfManaged *CertificateSelfManaged `pulumi:"selfManaged"`
 }
@@ -712,6 +718,9 @@ type CertificateState struct {
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
 	// certificates before they expire remains the user's responsibility.
+	// The certificate data can be updated in place; changes to `pemCertificate`
+	// and `pemPrivateKey` are applied via the API's PATCH method instead of
+	// forcing recreation of the certificate.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrInput
 }
@@ -761,6 +770,9 @@ type certificateArgs struct {
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
 	// certificates before they expire remains the user's responsibility.
+	// The certificate data can be updated in place; changes to `pemCertificate`
+	// and `pemPrivateKey` are applied via the API's PATCH method instead of
+	// forcing recreation of the certificate.
 	// Structure is documented below.
 	SelfManaged *CertificateSelfManaged `pulumi:"selfManaged"`
 }
@@ -807,6 +819,9 @@ type CertificateArgs struct {
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
 	// certificates before they expire remains the user's responsibility.
+	// The certificate data can be updated in place; changes to `pemCertificate`
+	// and `pemPrivateKey` are applied via the API's PATCH method instead of
+	// forcing recreation of the certificate.
 	// Structure is documented below.
 	SelfManaged CertificateSelfManagedPtrInput
 }
@@ -979,6 +994,9 @@ func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 // Certificate data for a SelfManaged Certificate.
 // SelfManaged Certificates are uploaded by the user. Updating such
 // certificates before they expire remains the user's responsibility.
+// The certificate data can be updated in place; changes to `pemCertificate`
+// and `pemPrivateKey` are applied via the API's PATCH method instead of
+// forcing recreation of the certificate.
 // Structure is documented below.
 func (o CertificateOutput) SelfManaged() CertificateSelfManagedPtrOutput {
 	return o.ApplyT(func(v *Certificate) CertificateSelfManagedPtrOutput { return v.SelfManaged }).(CertificateSelfManagedPtrOutput)

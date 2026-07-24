@@ -363,12 +363,9 @@ class RouterNamedSet(pulumi.CustomResource):
         A Named Set is a collection of IP addresses or ranges (for PREFIX type) or
         BGP communities (for COMMUNITY type) that can be used in route policies.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about RouterNamedSet, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/routers)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
@@ -530,12 +527,9 @@ class RouterNamedSet(pulumi.CustomResource):
         A Named Set is a collection of IP addresses or ranges (for PREFIX type) or
         BGP communities (for COMMUNITY type) that can be used in route policies.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about RouterNamedSet, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/routers)
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
         * How-to Guides
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 

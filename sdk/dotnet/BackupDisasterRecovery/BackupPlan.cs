@@ -141,6 +141,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupPlanId = "backup-plan-csql-test",
     ///         ResourceType = "sqladmin.googleapis.com/Instance",
     ///         BackupVault = myBackupVault.Id,
+    ///         MaxCustomOnDemandRetentionDays = 30,
     ///         BackupRules = new[]
     ///         {
     ///             new Gcp.BackupDisasterRecovery.Inputs.BackupPlanBackupRuleArgs

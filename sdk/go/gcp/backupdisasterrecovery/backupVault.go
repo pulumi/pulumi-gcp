@@ -187,6 +187,8 @@ type BackupVault struct {
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
+	// If set to true, we will force update access restriction even if some non compliant data sources are present.
+	ForceUpdateAccessRestriction pulumi.BoolPtrOutput `pulumi:"forceUpdateAccessRestriction"`
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
 	IgnoreBackupPlanReferences pulumi.BoolPtrOutput `pulumi:"ignoreBackupPlanReferences"`
@@ -216,6 +218,7 @@ type BackupVault struct {
 	// ACTIVE
 	// DELETING
 	// ERROR
+	// UPDATING
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. Total size of the storage used by all backup resources.
 	TotalStoredBytes pulumi.StringOutput `pulumi:"totalStoredBytes"`
@@ -327,6 +330,8 @@ type backupVaultState struct {
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// If set to true, we will force update access restriction even if some non compliant data sources are present.
+	ForceUpdateAccessRestriction *bool `pulumi:"forceUpdateAccessRestriction"`
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
 	IgnoreBackupPlanReferences *bool `pulumi:"ignoreBackupPlanReferences"`
@@ -356,6 +361,7 @@ type backupVaultState struct {
 	// ACTIVE
 	// DELETING
 	// ERROR
+	// UPDATING
 	State *string `pulumi:"state"`
 	// Output only. Total size of the storage used by all backup resources.
 	TotalStoredBytes *string `pulumi:"totalStoredBytes"`
@@ -424,6 +430,8 @@ type BackupVaultState struct {
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate pulumi.BoolPtrInput
+	// If set to true, we will force update access restriction even if some non compliant data sources are present.
+	ForceUpdateAccessRestriction pulumi.BoolPtrInput
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
 	IgnoreBackupPlanReferences pulumi.BoolPtrInput
@@ -453,6 +461,7 @@ type BackupVaultState struct {
 	// ACTIVE
 	// DELETING
 	// ERROR
+	// UPDATING
 	State pulumi.StringPtrInput
 	// Output only. Total size of the storage used by all backup resources.
 	TotalStoredBytes pulumi.StringPtrInput
@@ -513,6 +522,8 @@ type backupVaultArgs struct {
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// If set to true, we will force update access restriction even if some non compliant data sources are present.
+	ForceUpdateAccessRestriction *bool `pulumi:"forceUpdateAccessRestriction"`
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
 	IgnoreBackupPlanReferences *bool `pulumi:"ignoreBackupPlanReferences"`
@@ -578,6 +589,8 @@ type BackupVaultArgs struct {
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate pulumi.BoolPtrInput
+	// If set to true, we will force update access restriction even if some non compliant data sources are present.
+	ForceUpdateAccessRestriction pulumi.BoolPtrInput
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
 	IgnoreBackupPlanReferences pulumi.BoolPtrInput
@@ -794,6 +807,11 @@ func (o BackupVaultOutput) ForceUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
 }
 
+// If set to true, we will force update access restriction even if some non compliant data sources are present.
+func (o BackupVaultOutput) ForceUpdateAccessRestriction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.BoolPtrOutput { return v.ForceUpdateAccessRestriction }).(pulumi.BoolPtrOutput)
+}
+
 // If set, the following restrictions against deletion of the backup vault instance can be overridden:
 // * deletion of a backup vault instance that is being referenced by an active backup plan.
 func (o BackupVaultOutput) IgnoreBackupPlanReferences() pulumi.BoolPtrOutput {
@@ -848,6 +866,7 @@ func (o BackupVaultOutput) ServiceAccount() pulumi.StringOutput {
 // ACTIVE
 // DELETING
 // ERROR
+// UPDATING
 func (o BackupVaultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? ConsumerServiceProjectId { get; set; }
 
         /// <summary>
+        /// (Output) The status of the automated DNS provisioning for the instance.
+        /// </summary>
+        [Input("instanceAutoDnsStatus")]
+        public Input<string>? InstanceAutoDnsStatus { get; set; }
+
+        /// <summary>
         /// (Output) The IP address of the consumer endpoint.
         /// </summary>
         [Input("ipAddress")]
@@ -53,6 +59,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// (Output) The status of the automated DNS provisioning for the write endpoint.
+        /// </summary>
+        [Input("writeEndpointAutoDnsStatus")]
+        public Input<string>? WriteEndpointAutoDnsStatus { get; set; }
 
         public DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionGetArgs()
         {

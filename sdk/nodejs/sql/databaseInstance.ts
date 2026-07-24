@@ -494,6 +494,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly firstIpAddress: pulumi.Output<string>;
     /**
+     * When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     */
+    declare public readonly includeReplicasForMajorVersionUpgrade: pulumi.Output<boolean | undefined>;
+    /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
     declare public readonly instanceType: pulumi.Output<string>;
@@ -600,6 +604,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * configuration is detailed below. Required if `clone` is not set.
      */
     declare public readonly settings: pulumi.Output<outputs.sql.DatabaseInstanceSettings>;
+    /**
+     * When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     */
+    declare public readonly switchTransactionLogsToCloudStorageEnabled: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DatabaseInstance resource with the given unique name, arguments, and options.
@@ -627,6 +635,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["enforceNewSqlNetworkArchitecture"] = state?.enforceNewSqlNetworkArchitecture;
             resourceInputs["finalBackupDescription"] = state?.finalBackupDescription;
             resourceInputs["firstIpAddress"] = state?.firstIpAddress;
+            resourceInputs["includeReplicasForMajorVersionUpgrade"] = state?.includeReplicasForMajorVersionUpgrade;
             resourceInputs["instanceType"] = state?.instanceType;
             resourceInputs["ipAddresses"] = state?.ipAddresses;
             resourceInputs["maintenanceVersion"] = state?.maintenanceVersion;
@@ -650,6 +659,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["serverCaCerts"] = state?.serverCaCerts;
             resourceInputs["serviceAccountEmailAddress"] = state?.serviceAccountEmailAddress;
             resourceInputs["settings"] = state?.settings;
+            resourceInputs["switchTransactionLogsToCloudStorageEnabled"] = state?.switchTransactionLogsToCloudStorageEnabled;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
             if (args?.databaseVersion === undefined && !opts.urn) {
@@ -663,6 +673,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
             resourceInputs["enforceNewSqlNetworkArchitecture"] = args?.enforceNewSqlNetworkArchitecture;
             resourceInputs["finalBackupDescription"] = args?.finalBackupDescription;
+            resourceInputs["includeReplicasForMajorVersionUpgrade"] = args?.includeReplicasForMajorVersionUpgrade;
             resourceInputs["instanceType"] = args?.instanceType;
             resourceInputs["maintenanceVersion"] = args?.maintenanceVersion;
             resourceInputs["masterInstanceName"] = args?.masterInstanceName;
@@ -679,6 +690,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["rootPasswordWo"] = args?.rootPasswordWo ? pulumi.secret(args.rootPasswordWo) : undefined;
             resourceInputs["rootPasswordWoVersion"] = args?.rootPasswordWoVersion;
             resourceInputs["settings"] = args?.settings;
+            resourceInputs["switchTransactionLogsToCloudStorageEnabled"] = args?.switchTransactionLogsToCloudStorageEnabled;
             resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
             resourceInputs["dnsName"] = undefined /*out*/;
@@ -788,6 +800,10 @@ export interface DatabaseInstanceState {
      */
     firstIpAddress?: pulumi.Input<string | undefined>;
     /**
+     * When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     */
+    includeReplicasForMajorVersionUpgrade?: pulumi.Input<boolean | undefined>;
+    /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
     instanceType?: pulumi.Input<string | undefined>;
@@ -894,6 +910,10 @@ export interface DatabaseInstanceState {
      * configuration is detailed below. Required if `clone` is not set.
      */
     settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings | undefined>;
+    /**
+     * When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     */
+    switchTransactionLogsToCloudStorageEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -963,6 +983,10 @@ export interface DatabaseInstanceArgs {
      * The description of final backup. Only set this field when `final_backup_config.enabled` is true.
      */
     finalBackupDescription?: pulumi.Input<string | undefined>;
+    /**
+     * When this parameter is set to `true`, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when `databaseVersion` is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     */
+    includeReplicasForMajorVersionUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
      */
@@ -1047,4 +1071,8 @@ export interface DatabaseInstanceArgs {
      * configuration is detailed below. Required if `clone` is not set.
      */
     settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings | undefined>;
+    /**
+     * When set to `true`, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     */
+    switchTransactionLogsToCloudStorageEnabled?: pulumi.Input<boolean | undefined>;
 }

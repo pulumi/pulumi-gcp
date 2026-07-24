@@ -58,6 +58,10 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
+        /// Optional. The minimum CPU platform to use for this instance.
+        /// </summary>
+        public readonly string? MinCpuPlatform;
+        /// <summary>
         /// The network interfaces for the VM. Supports only one interface.
         /// Structure is documented below.
         /// </summary>
@@ -111,6 +115,8 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             ImmutableDictionary<string, string>? metadata,
 
+            string? minCpuPlatform,
+
             ImmutableArray<Outputs.InstanceGceSetupNetworkInterface> networkInterfaces,
 
             Outputs.InstanceGceSetupReservationAffinity? reservationAffinity,
@@ -132,6 +138,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
             EnableIpForwarding = enableIpForwarding;
             MachineType = machineType;
             Metadata = metadata;
+            MinCpuPlatform = minCpuPlatform;
             NetworkInterfaces = networkInterfaces;
             ReservationAffinity = reservationAffinity;
             ServiceAccounts = serviceAccounts;

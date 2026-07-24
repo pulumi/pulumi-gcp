@@ -235,6 +235,7 @@ type BackupPlanAssociation struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringOutput `pulumi:"backupPlanAssociationId"`
@@ -318,6 +319,7 @@ type backupPlanAssociationState struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
 	BackupPlan *string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId *string `pulumi:"backupPlanAssociationId"`
@@ -357,6 +359,7 @@ type BackupPlanAssociationState struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
 	BackupPlan pulumi.StringPtrInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringPtrInput
@@ -400,6 +403,7 @@ type backupPlanAssociationArgs struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
 	BackupPlan string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
@@ -429,6 +433,7 @@ type BackupPlanAssociationArgs struct {
 	// - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 	// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 	// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+	// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
 	BackupPlan pulumi.StringInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringInput
@@ -543,6 +548,7 @@ func (o BackupPlanAssociationOutput) ToBackupPlanAssociationOutputWithContext(ct
 // - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
 // - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
 // - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
 func (o BackupPlanAssociationOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.BackupPlan }).(pulumi.StringOutput)
 }

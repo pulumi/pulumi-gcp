@@ -334,6 +334,65 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             network=network_secondary.id,
             peer_network=network_primary.id)
         ```
+        ### Network Peering Routes Config Gke Peered Vpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gke_network = gcp.compute.Network("gke_network",
+            name="gke-network",
+            auto_create_subnetworks=False)
+        workload_network = gcp.compute.Network("workload_network",
+            name="workload-network",
+            auto_create_subnetworks=False)
+        peering_gke_to_workload = gcp.compute.NetworkPeering("peering_gke_to_workload",
+            name="peering-gke-to-workload",
+            network=gke_network.id,
+            peer_network=workload_network.id,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes",
+            peering=peering_gke_to_workload.name,
+            network=gke_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_workload_to_gke = gcp.compute.NetworkPeering("peering_workload_to_gke",
+            name="peering-workload-to-gke",
+            network=workload_network.id,
+            peer_network=gke_network.id)
+        gke_subnetwork = gcp.compute.Subnetwork("gke_subnetwork",
+            name="gke-subnetwork",
+            region="us-central1",
+            network=gke_network.name,
+            ip_cidr_range="10.0.36.0/24",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                {
+                    "range_name": "pod",
+                    "ip_cidr_range": "10.0.0.0/19",
+                },
+                {
+                    "range_name": "svc",
+                    "ip_cidr_range": "10.0.32.0/22",
+                },
+            ])
+        gke_cluster = gcp.container.Cluster("gke_cluster",
+            name="gke-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            network=gke_network.name,
+            subnetwork=gke_subnetwork.name,
+            private_cluster_config={
+                "enable_private_nodes": True,
+                "master_ipv4_cidr_block": "10.42.0.0/28",
+            },
+            ip_allocation_policy={
+                "cluster_secondary_range_name": gke_subnetwork.secondary_ip_ranges[0].range_name,
+                "services_secondary_range_name": gke_subnetwork.secondary_ip_ranges[1].range_name,
+            },
+            deletion_protection=True)
+        ```
 
         ## Import
 
@@ -418,6 +477,65 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             name="secondary-peering",
             network=network_secondary.id,
             peer_network=network_primary.id)
+        ```
+        ### Network Peering Routes Config Gke Peered Vpc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gke_network = gcp.compute.Network("gke_network",
+            name="gke-network",
+            auto_create_subnetworks=False)
+        workload_network = gcp.compute.Network("workload_network",
+            name="workload-network",
+            auto_create_subnetworks=False)
+        peering_gke_to_workload = gcp.compute.NetworkPeering("peering_gke_to_workload",
+            name="peering-gke-to-workload",
+            network=gke_network.id,
+            peer_network=workload_network.id,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_gke_routes = gcp.compute.NetworkPeeringRoutesConfig("peering_gke_routes",
+            peering=peering_gke_to_workload.name,
+            network=gke_network.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_workload_to_gke = gcp.compute.NetworkPeering("peering_workload_to_gke",
+            name="peering-workload-to-gke",
+            network=workload_network.id,
+            peer_network=gke_network.id)
+        gke_subnetwork = gcp.compute.Subnetwork("gke_subnetwork",
+            name="gke-subnetwork",
+            region="us-central1",
+            network=gke_network.name,
+            ip_cidr_range="10.0.36.0/24",
+            private_ip_google_access=True,
+            secondary_ip_ranges=[
+                {
+                    "range_name": "pod",
+                    "ip_cidr_range": "10.0.0.0/19",
+                },
+                {
+                    "range_name": "svc",
+                    "ip_cidr_range": "10.0.32.0/22",
+                },
+            ])
+        gke_cluster = gcp.container.Cluster("gke_cluster",
+            name="gke-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            network=gke_network.name,
+            subnetwork=gke_subnetwork.name,
+            private_cluster_config={
+                "enable_private_nodes": True,
+                "master_ipv4_cidr_block": "10.42.0.0/28",
+            },
+            ip_allocation_policy={
+                "cluster_secondary_range_name": gke_subnetwork.secondary_ip_ranges[0].range_name,
+                "services_secondary_range_name": gke_subnetwork.secondary_ip_ranges[1].range_name,
+            },
+            deletion_protection=True)
         ```
 
         ## Import

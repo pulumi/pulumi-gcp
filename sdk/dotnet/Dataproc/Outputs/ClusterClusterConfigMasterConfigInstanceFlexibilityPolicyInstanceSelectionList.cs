@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList
     {
         /// <summary>
+        /// Disk configuration to apply to the instances in this instance selection.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig? DiskConfig;
+        /// <summary>
         /// Full machine-type names, e.g. `"n1-standard-16"`.
         /// </summary>
         public readonly ImmutableArray<string> MachineTypes;
@@ -24,10 +28,13 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList(
+            Outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig? diskConfig,
+
             ImmutableArray<string> machineTypes,
 
             int? rank)
         {
+            DiskConfig = diskConfig;
             MachineTypes = machineTypes;
             Rank = rank;
         }

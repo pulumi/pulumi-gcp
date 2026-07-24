@@ -101,10 +101,13 @@ public final class InstanceScheduling {
      */
     private @Nullable InstanceSchedulingPreemptionNoticeDuration preemptionNoticeDuration;
     /**
-     * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+     * @return Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
-     * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+     * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot).
+     * If this is set to `FLEX_START`, `automaticRestart` should be `false` and `instanceTerminationAction` should be set to `DELETE`. A `maxRunDuration` must also be specified. For more info about
+     * `FLEX_START`, read [here](https://cloud.google.com/compute/docs/instances/flex-start-vms).
+     * If this is set to `RESERVATION_BOUND`, the instance is bound to a specific reservation and will only consume capacity from that reservation. A `reservationAffinity` block with `type` set to `SPECIFIC_RESERVATION` should also be configured.
      * 
      */
     private @Nullable String provisioningModel;
@@ -229,10 +232,13 @@ public final class InstanceScheduling {
         return Optional.ofNullable(this.preemptionNoticeDuration);
     }
     /**
-     * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
+     * @return Describe the type of provisioning model for the instance. This field accepts the value `STANDARD`, `SPOT`, `FLEX_START`, or `RESERVATION_BOUND`. If the value is `STANDARD`, there will be no discount. If this is set to `SPOT`,
      * `preemptible` should be `true` and `automaticRestart` should be
      * `false`. For more info about
-     * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
+     * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot).
+     * If this is set to `FLEX_START`, `automaticRestart` should be `false` and `instanceTerminationAction` should be set to `DELETE`. A `maxRunDuration` must also be specified. For more info about
+     * `FLEX_START`, read [here](https://cloud.google.com/compute/docs/instances/flex-start-vms).
+     * If this is set to `RESERVATION_BOUND`, the instance is bound to a specific reservation and will only consume capacity from that reservation. A `reservationAffinity` block with `type` set to `SPECIFIC_RESERVATION` should also be configured.
      * 
      */
     public Optional<String> provisioningModel() {

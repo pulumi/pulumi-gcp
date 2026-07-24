@@ -36,6 +36,7 @@ class BackupPlanAssociationArgs:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+               - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] location: The location for the backupplan association
         :param pulumi.Input[_builtins.str] resource: The resource for which BPA needs to be created
@@ -69,6 +70,7 @@ class BackupPlanAssociationArgs:
         - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+        - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -179,6 +181,7 @@ class _BackupPlanAssociationState:
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+               - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
@@ -233,6 +236,7 @@ class _BackupPlanAssociationState:
         - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+        - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -541,6 +545,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+               - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -787,6 +792,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
                - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
                - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
                - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+               - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         :param pulumi.Input[_builtins.str] backup_plan_association_id: The id of backupplan association
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created
         :param pulumi.Input[_builtins.str] data_source: Resource name of data source which will be used as storage location for backups taken
@@ -834,6 +840,7 @@ class BackupPlanAssociation(pulumi.CustomResource):
         - A Backup Plan configured for 'compute.googleapis.com/Instance', can only protect instance type resources.
         - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
         - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
+        - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
         """
         return pulumi.get(self, "backup_plan")
 

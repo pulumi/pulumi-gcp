@@ -413,7 +413,7 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ops_agent_policy = gcp.compute.ZoneVmExtensionPolicy("ops_agent_policy",
-            name="zonal-ops-agent-vme-policy-_79169",
+            name="zonal-ops-agent-vme-policy-_80332",
             zone="us-central1-a",
             extension_policies=[{
                 "extension_name": "ops-agent",
@@ -477,7 +477,7 @@ class ZoneVmExtensionPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ops_agent_policy = gcp.compute.ZoneVmExtensionPolicy("ops_agent_policy",
-            name="zonal-ops-agent-vme-policy-_79169",
+            name="zonal-ops-agent-vme-policy-_80332",
             zone="us-central1-a",
             extension_policies=[{
                 "extension_name": "ops-agent",

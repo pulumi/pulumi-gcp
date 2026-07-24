@@ -644,6 +644,7 @@ class BackupPlan(pulumi.CustomResource):
             backup_plan_id="backup-plan-csql-test",
             resource_type="sqladmin.googleapis.com/Instance",
             backup_vault=my_backup_vault.id,
+            max_custom_on_demand_retention_days=30,
             backup_rules=[{
                 "rule_id": "rule-1",
                 "backup_retention_days": 5,
@@ -826,6 +827,7 @@ class BackupPlan(pulumi.CustomResource):
             backup_plan_id="backup-plan-csql-test",
             resource_type="sqladmin.googleapis.com/Instance",
             backup_vault=my_backup_vault.id,
+            max_custom_on_demand_retention_days=30,
             backup_rules=[{
                 "rule_id": "rule-1",
                 "backup_retention_days": 5,

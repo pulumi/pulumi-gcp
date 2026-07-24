@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_9305",
+ *     displayName: "tf-test-_14939",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_48542",
+ *     displayName: "tf-test-_59865",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

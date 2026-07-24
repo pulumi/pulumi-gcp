@@ -211,6 +211,10 @@ export class BackupVault extends pulumi.CustomResource {
      */
     declare public readonly forceUpdate: pulumi.Output<boolean | undefined>;
     /**
+     * If set to true, we will force update access restriction even if some non compliant data sources are present.
+     */
+    declare public readonly forceUpdateAccessRestriction: pulumi.Output<boolean | undefined>;
+    /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      */
@@ -256,6 +260,7 @@ export class BackupVault extends pulumi.CustomResource {
      * ACTIVE
      * DELETING
      * ERROR
+     * UPDATING
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -302,6 +307,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["forceDelete"] = state?.forceDelete;
             resourceInputs["forceUpdate"] = state?.forceUpdate;
+            resourceInputs["forceUpdateAccessRestriction"] = state?.forceUpdateAccessRestriction;
             resourceInputs["ignoreBackupPlanReferences"] = state?.ignoreBackupPlanReferences;
             resourceInputs["ignoreInactiveDatasources"] = state?.ignoreInactiveDatasources;
             resourceInputs["labels"] = state?.labels;
@@ -337,6 +343,7 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
             resourceInputs["forceDelete"] = args?.forceDelete;
             resourceInputs["forceUpdate"] = args?.forceUpdate;
+            resourceInputs["forceUpdateAccessRestriction"] = args?.forceUpdateAccessRestriction;
             resourceInputs["ignoreBackupPlanReferences"] = args?.ignoreBackupPlanReferences;
             resourceInputs["ignoreInactiveDatasources"] = args?.ignoreInactiveDatasources;
             resourceInputs["labels"] = args?.labels;
@@ -462,6 +469,10 @@ export interface BackupVaultState {
      */
     forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
+     * If set to true, we will force update access restriction even if some non compliant data sources are present.
+     */
+    forceUpdateAccessRestriction?: pulumi.Input<boolean | undefined>;
+    /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      */
@@ -507,6 +518,7 @@ export interface BackupVaultState {
      * ACTIVE
      * DELETING
      * ERROR
+     * UPDATING
      */
     state?: pulumi.Input<string | undefined>;
     /**
@@ -597,6 +609,10 @@ export interface BackupVaultArgs {
      * retention set by the backup vault.
      */
     forceUpdate?: pulumi.Input<boolean | undefined>;
+    /**
+     * If set to true, we will force update access restriction even if some non compliant data sources are present.
+     */
+    forceUpdateAccessRestriction?: pulumi.Input<boolean | undefined>;
     /**
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance that is being referenced by an active backup plan.

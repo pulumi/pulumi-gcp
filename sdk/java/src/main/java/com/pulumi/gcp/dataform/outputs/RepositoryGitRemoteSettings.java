@@ -24,6 +24,11 @@ public final class RepositoryGitRemoteSettings {
      */
     private String defaultBranch;
     /**
+     * @return The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*.
+     * 
+     */
+    private @Nullable String gitRepositoryLink;
+    /**
      * @return Authentication fields for remote uris using SSH protocol.
      * Structure is documented below.
      * 
@@ -55,6 +60,13 @@ public final class RepositoryGitRemoteSettings {
      */
     public String defaultBranch() {
         return this.defaultBranch;
+    }
+    /**
+     * @return The name of the Developer Connect GitRepositoryLink to use for machine credentials. Must be in the format projects/*&#47;locations/*&#47;connections/*&#47;gitRepositoryLinks/*.
+     * 
+     */
+    public Optional<String> gitRepositoryLink() {
+        return Optional.ofNullable(this.gitRepositoryLink);
     }
     /**
      * @return Authentication fields for remote uris using SSH protocol.
@@ -91,6 +103,7 @@ public final class RepositoryGitRemoteSettings {
     public static final class Builder {
         private @Nullable String authenticationTokenSecretVersion;
         private String defaultBranch;
+        private @Nullable String gitRepositoryLink;
         private @Nullable RepositoryGitRemoteSettingsSshAuthenticationConfig sshAuthenticationConfig;
         private @Nullable String tokenStatus;
         private String url;
@@ -99,6 +112,7 @@ public final class RepositoryGitRemoteSettings {
     	      Objects.requireNonNull(defaults);
     	      this.authenticationTokenSecretVersion = defaults.authenticationTokenSecretVersion;
     	      this.defaultBranch = defaults.defaultBranch;
+    	      this.gitRepositoryLink = defaults.gitRepositoryLink;
     	      this.sshAuthenticationConfig = defaults.sshAuthenticationConfig;
     	      this.tokenStatus = defaults.tokenStatus;
     	      this.url = defaults.url;
@@ -116,6 +130,12 @@ public final class RepositoryGitRemoteSettings {
               throw new MissingRequiredPropertyException("RepositoryGitRemoteSettings", "defaultBranch");
             }
             this.defaultBranch = defaultBranch;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gitRepositoryLink(@Nullable String gitRepositoryLink) {
+
+            this.gitRepositoryLink = gitRepositoryLink;
             return this;
         }
         @CustomType.Setter
@@ -142,6 +162,7 @@ public final class RepositoryGitRemoteSettings {
             final var _resultValue = new RepositoryGitRemoteSettings();
             _resultValue.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
             _resultValue.defaultBranch = defaultBranch;
+            _resultValue.gitRepositoryLink = gitRepositoryLink;
             _resultValue.sshAuthenticationConfig = sshAuthenticationConfig;
             _resultValue.tokenStatus = tokenStatus;
             _resultValue.url = url;

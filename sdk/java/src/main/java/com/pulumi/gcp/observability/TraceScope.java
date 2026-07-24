@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project_2 = new Project("project-2", ProjectArgs.builder()
- *             .projectId("tf-test_91207")
- *             .name("tf-test_14939")
+ *             .projectId("tf-test_45598")
+ *             .name("tf-test_64623")
  *             .orgId("123456789")
  *             .deletionPolicy("DELETE")
  *             .build());

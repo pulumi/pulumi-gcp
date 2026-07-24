@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  * const gceFutureReservation = new gcp.compute.FutureReservation("gce_future_reservation", {
  *     name: "gce-future-reservation",
  *     project: "my-project-name",
+ *     zone: "us-central1-a",
  *     autoDeleteAutoCreatedReservations: true,
  *     planningStatus: "DRAFT",
  *     namePrefix: "fr-basic",
@@ -61,6 +62,7 @@ import * as utilities from "../utilities";
  * const gceFutureReservation = new gcp.compute.FutureReservation("gce_future_reservation", {
  *     name: "gce-future-reservation-aggregate-reservation",
  *     project: "my-project-name",
+ *     zone: "us-central1-a",
  *     autoDeleteAutoCreatedReservations: true,
  *     planningStatus: "DRAFT",
  *     namePrefix: "fr-basic",
@@ -186,7 +188,7 @@ export class FutureReservation extends pulumi.CustomResource {
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -256,9 +258,9 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     declare public readonly timeWindow: pulumi.Output<outputs.compute.FutureReservationTimeWindow>;
     /**
-     * URL of the Zone where this future reservation resides.
+     * The zone where the future reservation is located.
      */
-    declare public /*out*/ readonly zone: pulumi.Output<string>;
+    declare public readonly zone: pulumi.Output<string>;
 
     /**
      * Create a FutureReservation resource with the given unique name, arguments, and options.
@@ -323,11 +325,11 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["specificReservationRequired"] = args?.specificReservationRequired;
             resourceInputs["specificSkuProperties"] = args?.specificSkuProperties;
             resourceInputs["timeWindow"] = args?.timeWindow;
+            resourceInputs["zone"] = args?.zone;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
-            resourceInputs["zone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FutureReservation.__pulumiType, name, resourceInputs, opts);
@@ -389,7 +391,7 @@ export interface FutureReservationState {
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
@@ -459,7 +461,7 @@ export interface FutureReservationState {
      */
     timeWindow?: pulumi.Input<inputs.compute.FutureReservationTimeWindow | undefined>;
     /**
-     * URL of the Zone where this future reservation resides.
+     * The zone where the future reservation is located.
      */
     zone?: pulumi.Input<string | undefined>;
 }
@@ -515,7 +517,7 @@ export interface FutureReservationArgs {
      * RFC1035. Specifically, the name must be 1-63 characters long and match
      * the regular expression `a-z?` which means the
      * first character must be a lowercase letter, and all following
-     * characters must be a dash, lowercase letter, or digit, except the las
+     * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      */
     name?: pulumi.Input<string | undefined>;
@@ -571,4 +573,8 @@ export interface FutureReservationArgs {
      * Structure is documented below.
      */
     timeWindow: pulumi.Input<inputs.compute.FutureReservationTimeWindow>;
+    /**
+     * The zone where the future reservation is located.
+     */
+    zone?: pulumi.Input<string | undefined>;
 }

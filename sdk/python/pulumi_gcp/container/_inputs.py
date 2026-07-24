@@ -13960,11 +13960,11 @@ class ClusterNodeConfigLocalNvmeSsdBlockConfigArgs:
 class ClusterNodeConfigNodeImageConfigArgsDict(TypedDict):
     image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The name of the image to use for this node.
+    The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
     """
     image_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The project containing the image to use for this node.
+    The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
     """
 
 @pulumi.input_type
@@ -13973,8 +13973,8 @@ class ClusterNodeConfigNodeImageConfigArgs:
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  image_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] image: The name of the image to use for this node.
-        :param pulumi.Input[_builtins.str] image_project: The project containing the image to use for this node.
+        :param pulumi.Input[_builtins.str] image: The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
+        :param pulumi.Input[_builtins.str] image_project: The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         if image is not None:
             pulumi.set(__self__, "image", image)
@@ -13985,7 +13985,7 @@ class ClusterNodeConfigNodeImageConfigArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the image to use for this node.
+        The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         return pulumi.get(self, "image")
 
@@ -13997,7 +13997,7 @@ class ClusterNodeConfigNodeImageConfigArgs:
     @pulumi.getter(name="imageProject")
     def image_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project containing the image to use for this node.
+        The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         return pulumi.get(self, "image_project")
 
@@ -20869,11 +20869,11 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
 class ClusterNodePoolNodeConfigNodeImageConfigArgsDict(TypedDict):
     image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The name of the image to use for this node.
+    The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
     """
     image_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The project containing the image to use for this node.
+    The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
     """
 
 @pulumi.input_type
@@ -20882,8 +20882,8 @@ class ClusterNodePoolNodeConfigNodeImageConfigArgs:
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  image_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] image: The name of the image to use for this node.
-        :param pulumi.Input[_builtins.str] image_project: The project containing the image to use for this node.
+        :param pulumi.Input[_builtins.str] image: The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
+        :param pulumi.Input[_builtins.str] image_project: The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         if image is not None:
             pulumi.set(__self__, "image", image)
@@ -20894,7 +20894,7 @@ class ClusterNodePoolNodeConfigNodeImageConfigArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the image to use for this node.
+        The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         return pulumi.get(self, "image")
 
@@ -20906,7 +20906,7 @@ class ClusterNodePoolNodeConfigNodeImageConfigArgs:
     @pulumi.getter(name="imageProject")
     def image_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project containing the image to use for this node.
+        The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         return pulumi.get(self, "image_project")
 
@@ -27805,11 +27805,11 @@ class NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs:
 class NodePoolNodeConfigNodeImageConfigArgsDict(TypedDict):
     image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The name of the image to use for this node.
+    The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
     """
     image_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The project containing the image to use for this node.
+    The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
     """
 
 @pulumi.input_type
@@ -27818,8 +27818,8 @@ class NodePoolNodeConfigNodeImageConfigArgs:
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  image_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] image: The name of the image to use for this node.
-        :param pulumi.Input[_builtins.str] image_project: The project containing the image to use for this node.
+        :param pulumi.Input[_builtins.str] image: The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
+        :param pulumi.Input[_builtins.str] image_project: The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         if image is not None:
             pulumi.set(__self__, "image", image)
@@ -27830,7 +27830,7 @@ class NodePoolNodeConfigNodeImageConfigArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the image to use for this node.
+        The Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         return pulumi.get(self, "image")
 
@@ -27842,7 +27842,7 @@ class NodePoolNodeConfigNodeImageConfigArgs:
     @pulumi.getter(name="imageProject")
     def image_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The project containing the image to use for this node.
+        The GCP project storing the Operating System image for the node pool. This is a private feature, please contact your Google account team for allowlisting this feature.
         """
         return pulumi.get(self, "image_project")
 

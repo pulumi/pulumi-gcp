@@ -327,8 +327,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_84735")
- *             .name("tf-test_78545")
+ *             .projectId("tf-test_70324")
+ *             .name("tf-test_13786")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

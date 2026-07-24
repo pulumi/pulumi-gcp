@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Observability
     /// {
     ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
     ///     {
-    ///         DisplayName = "tf-test-_9305",
+    ///         DisplayName = "tf-test-_14939",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Observability
     /// {
     ///     var testFolder = new Gcp.Organizations.Folder("test_folder", new()
     ///     {
-    ///         DisplayName = "tf-test-_48542",
+    ///         DisplayName = "tf-test-_59865",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });

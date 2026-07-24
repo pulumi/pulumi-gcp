@@ -89,6 +89,11 @@ public final class GetDatabaseInstancesInstance {
      */
     private String firstIpAddress;
     /**
+     * @return When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when &#39;database_version&#39; is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     * 
+     */
+    private Boolean includeReplicasForMajorVersionUpgrade;
+    /**
      * @return The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
      * 
      */
@@ -192,6 +197,11 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private List<GetDatabaseInstancesInstanceSetting> settings;
+    /**
+     * @return When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     * 
+     */
+    private Boolean switchTransactionLogsToCloudStorageEnabled;
 
     private GetDatabaseInstancesInstance() {}
     /**
@@ -285,6 +295,13 @@ public final class GetDatabaseInstancesInstance {
      */
     public String firstIpAddress() {
         return this.firstIpAddress;
+    }
+    /**
+     * @return When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when &#39;database_version&#39; is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+     * 
+     */
+    public Boolean includeReplicasForMajorVersionUpgrade() {
+        return this.includeReplicasForMajorVersionUpgrade;
     }
     /**
      * @return The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
@@ -436,6 +453,13 @@ public final class GetDatabaseInstancesInstance {
     public List<GetDatabaseInstancesInstanceSetting> settings() {
         return this.settings;
     }
+    /**
+     * @return When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+     * 
+     */
+    public Boolean switchTransactionLogsToCloudStorageEnabled() {
+        return this.switchTransactionLogsToCloudStorageEnabled;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -459,6 +483,7 @@ public final class GetDatabaseInstancesInstance {
         private Boolean enforceNewSqlNetworkArchitecture;
         private String finalBackupDescription;
         private String firstIpAddress;
+        private Boolean includeReplicasForMajorVersionUpgrade;
         private String instanceType;
         private List<GetDatabaseInstancesInstanceIpAddress> ipAddresses;
         private String maintenanceVersion;
@@ -482,6 +507,7 @@ public final class GetDatabaseInstancesInstance {
         private List<GetDatabaseInstancesInstanceServerCaCert> serverCaCerts;
         private String serviceAccountEmailAddress;
         private List<GetDatabaseInstancesInstanceSetting> settings;
+        private Boolean switchTransactionLogsToCloudStorageEnabled;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
@@ -498,6 +524,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.enforceNewSqlNetworkArchitecture = defaults.enforceNewSqlNetworkArchitecture;
     	      this.finalBackupDescription = defaults.finalBackupDescription;
     	      this.firstIpAddress = defaults.firstIpAddress;
+    	      this.includeReplicasForMajorVersionUpgrade = defaults.includeReplicasForMajorVersionUpgrade;
     	      this.instanceType = defaults.instanceType;
     	      this.ipAddresses = defaults.ipAddresses;
     	      this.maintenanceVersion = defaults.maintenanceVersion;
@@ -521,6 +548,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.serverCaCerts = defaults.serverCaCerts;
     	      this.serviceAccountEmailAddress = defaults.serviceAccountEmailAddress;
     	      this.settings = defaults.settings;
+    	      this.switchTransactionLogsToCloudStorageEnabled = defaults.switchTransactionLogsToCloudStorageEnabled;
         }
 
         @CustomType.Setter
@@ -634,6 +662,14 @@ public final class GetDatabaseInstancesInstance {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "firstIpAddress");
             }
             this.firstIpAddress = firstIpAddress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder includeReplicasForMajorVersionUpgrade(Boolean includeReplicasForMajorVersionUpgrade) {
+            if (includeReplicasForMajorVersionUpgrade == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "includeReplicasForMajorVersionUpgrade");
+            }
+            this.includeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
             return this;
         }
         @CustomType.Setter
@@ -844,6 +880,14 @@ public final class GetDatabaseInstancesInstance {
         public Builder settings(GetDatabaseInstancesInstanceSetting... settings) {
             return settings(List.of(settings));
         }
+        @CustomType.Setter
+        public Builder switchTransactionLogsToCloudStorageEnabled(Boolean switchTransactionLogsToCloudStorageEnabled) {
+            if (switchTransactionLogsToCloudStorageEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "switchTransactionLogsToCloudStorageEnabled");
+            }
+            this.switchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
+            return this;
+        }
         public GetDatabaseInstancesInstance build() {
             final var _resultValue = new GetDatabaseInstancesInstance();
             _resultValue.availableMaintenanceVersions = availableMaintenanceVersions;
@@ -859,6 +903,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.enforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             _resultValue.finalBackupDescription = finalBackupDescription;
             _resultValue.firstIpAddress = firstIpAddress;
+            _resultValue.includeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
             _resultValue.instanceType = instanceType;
             _resultValue.ipAddresses = ipAddresses;
             _resultValue.maintenanceVersion = maintenanceVersion;
@@ -882,6 +927,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.serverCaCerts = serverCaCerts;
             _resultValue.serviceAccountEmailAddress = serviceAccountEmailAddress;
             _resultValue.settings = settings;
+            _resultValue.switchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
             return _resultValue;
         }
     }

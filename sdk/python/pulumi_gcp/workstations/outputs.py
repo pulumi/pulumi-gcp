@@ -623,6 +623,8 @@ class WorkstationConfigHostGceInstance(dict):
             suggest = "disable_ssh"
         elif key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "instanceMetadata":
+            suggest = "instance_metadata"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "poolSize":
@@ -655,6 +657,7 @@ class WorkstationConfigHostGceInstance(dict):
                  disable_public_ip_addresses: Optional[_builtins.bool] = None,
                  disable_ssh: Optional[_builtins.bool] = None,
                  enable_nested_virtualization: Optional[_builtins.bool] = None,
+                 instance_metadata: Optional[Mapping[str, _builtins.str]] = None,
                  machine_type: Optional[_builtins.str] = None,
                  pool_size: Optional[_builtins.int] = None,
                  service_account: Optional[_builtins.str] = None,
@@ -674,6 +677,7 @@ class WorkstationConfigHostGceInstance(dict):
         :param _builtins.bool disable_ssh: Whether to disable SSH access to the VM.
         :param _builtins.bool enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
                See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        :param Mapping[str, _builtins.str] instance_metadata: Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
         :param _builtins.str machine_type: The name of a Compute Engine machine type.
         :param _builtins.int pool_size: Number of instances to pool for faster workstation startup.
         :param _builtins.str service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -701,6 +705,8 @@ class WorkstationConfigHostGceInstance(dict):
             pulumi.set(__self__, "disable_ssh", disable_ssh)
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if instance_metadata is not None:
+            pulumi.set(__self__, "instance_metadata", instance_metadata)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
@@ -775,6 +781,14 @@ class WorkstationConfigHostGceInstance(dict):
         See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceMetadata")
+    def instance_metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+        """
+        return pulumi.get(self, "instance_metadata")
 
     @_builtins.property
     @pulumi.getter(name="machineType")

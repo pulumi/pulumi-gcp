@@ -25,6 +25,11 @@ export const getHiveDatabaseIamPolicy: typeof import("./getHiveDatabaseIamPolicy
 export const getHiveDatabaseIamPolicyOutput: typeof import("./getHiveDatabaseIamPolicy").getHiveDatabaseIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getHiveDatabaseIamPolicy","getHiveDatabaseIamPolicyOutput"], () => require("./getHiveDatabaseIamPolicy"));
 
+export { GetHiveTableIamPolicyArgs, GetHiveTableIamPolicyResult, GetHiveTableIamPolicyOutputArgs } from "./getHiveTableIamPolicy";
+export const getHiveTableIamPolicy: typeof import("./getHiveTableIamPolicy").getHiveTableIamPolicy = null as any;
+export const getHiveTableIamPolicyOutput: typeof import("./getHiveTableIamPolicy").getHiveTableIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getHiveTableIamPolicy","getHiveTableIamPolicyOutput"], () => require("./getHiveTableIamPolicy"));
+
 export { GetIcebergCatalogIamPolicyArgs, GetIcebergCatalogIamPolicyResult, GetIcebergCatalogIamPolicyOutputArgs } from "./getIcebergCatalogIamPolicy";
 export const getIcebergCatalogIamPolicy: typeof import("./getIcebergCatalogIamPolicy").getIcebergCatalogIamPolicy = null as any;
 export const getIcebergCatalogIamPolicyOutput: typeof import("./getIcebergCatalogIamPolicy").getIcebergCatalogIamPolicyOutput = null as any;
@@ -79,6 +84,26 @@ export { HiveDatabaseIamPolicyArgs, HiveDatabaseIamPolicyState } from "./hiveDat
 export type HiveDatabaseIamPolicy = import("./hiveDatabaseIamPolicy").HiveDatabaseIamPolicy;
 export const HiveDatabaseIamPolicy: typeof import("./hiveDatabaseIamPolicy").HiveDatabaseIamPolicy = null as any;
 utilities.lazyLoad(exports, ["HiveDatabaseIamPolicy"], () => require("./hiveDatabaseIamPolicy"));
+
+export { HiveTableArgs, HiveTableState } from "./hiveTable";
+export type HiveTable = import("./hiveTable").HiveTable;
+export const HiveTable: typeof import("./hiveTable").HiveTable = null as any;
+utilities.lazyLoad(exports, ["HiveTable"], () => require("./hiveTable"));
+
+export { HiveTableIamBindingArgs, HiveTableIamBindingState } from "./hiveTableIamBinding";
+export type HiveTableIamBinding = import("./hiveTableIamBinding").HiveTableIamBinding;
+export const HiveTableIamBinding: typeof import("./hiveTableIamBinding").HiveTableIamBinding = null as any;
+utilities.lazyLoad(exports, ["HiveTableIamBinding"], () => require("./hiveTableIamBinding"));
+
+export { HiveTableIamMemberArgs, HiveTableIamMemberState } from "./hiveTableIamMember";
+export type HiveTableIamMember = import("./hiveTableIamMember").HiveTableIamMember;
+export const HiveTableIamMember: typeof import("./hiveTableIamMember").HiveTableIamMember = null as any;
+utilities.lazyLoad(exports, ["HiveTableIamMember"], () => require("./hiveTableIamMember"));
+
+export { HiveTableIamPolicyArgs, HiveTableIamPolicyState } from "./hiveTableIamPolicy";
+export type HiveTableIamPolicy = import("./hiveTableIamPolicy").HiveTableIamPolicy;
+export const HiveTableIamPolicy: typeof import("./hiveTableIamPolicy").HiveTableIamPolicy = null as any;
+utilities.lazyLoad(exports, ["HiveTableIamPolicy"], () => require("./hiveTableIamPolicy"));
 
 export { IcebergCatalogArgs, IcebergCatalogState } from "./icebergCatalog";
 export type IcebergCatalog = import("./icebergCatalog").IcebergCatalog;
@@ -170,6 +195,14 @@ const _module = {
                 return new HiveDatabaseIamMember(name, <any>undefined, { urn })
             case "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy":
                 return new HiveDatabaseIamPolicy(name, <any>undefined, { urn })
+            case "gcp:biglake/hiveTable:HiveTable":
+                return new HiveTable(name, <any>undefined, { urn })
+            case "gcp:biglake/hiveTableIamBinding:HiveTableIamBinding":
+                return new HiveTableIamBinding(name, <any>undefined, { urn })
+            case "gcp:biglake/hiveTableIamMember:HiveTableIamMember":
+                return new HiveTableIamMember(name, <any>undefined, { urn })
+            case "gcp:biglake/hiveTableIamPolicy:HiveTableIamPolicy":
+                return new HiveTableIamPolicy(name, <any>undefined, { urn })
             case "gcp:biglake/icebergCatalog:IcebergCatalog":
                 return new IcebergCatalog(name, <any>undefined, { urn })
             case "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding":
@@ -211,6 +244,10 @@ pulumi.runtime.registerResourceModule("gcp", "biglake/hiveDatabase", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/hiveDatabaseIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/hiveDatabaseIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/hiveDatabaseIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/hiveTable", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/hiveTableIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/hiveTableIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "biglake/hiveTableIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalog", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "biglake/icebergCatalogIamMember", _module)

@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
+        /// A Private Service Connect endpoint that is allowed to access the perimeter.
+        /// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint? PscEndpoint;
+        /// <summary>
         /// A Google Cloud resource that is allowed to ingress the perimeter.
         /// Requests from these resources will be allowed to access perimeter data.
         /// Currently only projects and VPCs are allowed.
@@ -41,9 +47,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         private ServicePerimeterIngressPolicyIngressFromSource(
             string? accessLevel,
 
+            Outputs.ServicePerimeterIngressPolicyIngressFromSourcePscEndpoint? pscEndpoint,
+
             string? resource)
         {
             AccessLevel = accessLevel;
+            PscEndpoint = pscEndpoint;
             Resource = resource;
         }
     }

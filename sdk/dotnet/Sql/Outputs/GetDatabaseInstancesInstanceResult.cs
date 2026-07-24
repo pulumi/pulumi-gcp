@@ -68,6 +68,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string FirstIpAddress;
         /// <summary>
+        /// When this parameter is set to true, Cloud SQL instances can perform in-place major version upgrades of read replicas along with the primary instance when 'database_version' is updated. This is an input-only field that is not persisted in the API and only takes effect during a major version upgrade.
+        /// </summary>
+        public readonly bool IncludeReplicasForMajorVersionUpgrade;
+        /// <summary>
         /// The type of the instance. See https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType for supported values.
         /// </summary>
         public readonly string InstanceType;
@@ -151,6 +155,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The settings to use for the database. The configuration is detailed below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingResult> Settings;
+        /// <summary>
+        /// When set to true, Cloud SQL instances can switch storing point-in-time recovery transaction logs from a data disk to Cloud Storage, freeing up data disk space and enabling longer retention windows. This is an input-only field that is not persisted in the API.
+        /// </summary>
+        public readonly bool SwitchTransactionLogsToCloudStorageEnabled;
 
         [OutputConstructor]
         private GetDatabaseInstancesInstanceResult(
@@ -179,6 +187,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             string finalBackupDescription,
 
             string firstIpAddress,
+
+            bool includeReplicasForMajorVersionUpgrade,
 
             string instanceType,
 
@@ -224,7 +234,9 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string serviceAccountEmailAddress,
 
-            ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingResult> settings)
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingResult> settings,
+
+            bool switchTransactionLogsToCloudStorageEnabled)
         {
             AvailableMaintenanceVersions = availableMaintenanceVersions;
             BackupdrBackup = backupdrBackup;
@@ -239,6 +251,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             EnforceNewSqlNetworkArchitecture = enforceNewSqlNetworkArchitecture;
             FinalBackupDescription = finalBackupDescription;
             FirstIpAddress = firstIpAddress;
+            IncludeReplicasForMajorVersionUpgrade = includeReplicasForMajorVersionUpgrade;
             InstanceType = instanceType;
             IpAddresses = ipAddresses;
             MaintenanceVersion = maintenanceVersion;
@@ -262,6 +275,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             ServerCaCerts = serverCaCerts;
             ServiceAccountEmailAddress = serviceAccountEmailAddress;
             Settings = settings;
+            SwitchTransactionLogsToCloudStorageEnabled = switchTransactionLogsToCloudStorageEnabled;
         }
     }
 }

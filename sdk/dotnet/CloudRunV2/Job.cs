@@ -633,6 +633,42 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Job Tags
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Job("default", new()
+    ///     {
+    ///         Name = "cloudrun-job",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Tags = 
+    ///         {
+    ///             { "tagKeys/1234", "tagValues/5678" },
+    ///         },
+    ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
+    ///         {
+    ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.JobTemplateTemplateContainerArgs
+    ///                     {
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/job",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -859,6 +895,14 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string?> StartExecutionToken { get; private set; } = null!;
 
         /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The template used to create executions for this Job.
         /// Structure is documented below.
         /// </summary>
@@ -1053,6 +1097,20 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("startExecutionToken")]
         public Input<string>? StartExecutionToken { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The template used to create executions for this Job.
@@ -1323,6 +1381,20 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("startExecutionToken")]
         public Input<string>? StartExecutionToken { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The template used to create executions for this Job.

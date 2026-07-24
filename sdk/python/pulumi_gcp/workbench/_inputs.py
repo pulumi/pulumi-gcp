@@ -94,6 +94,10 @@ class InstanceGceSetupArgsDict(TypedDict):
     """
     Optional. Custom metadata to apply to this instance.
     """
+    min_cpu_platform: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. The minimum CPU platform to use for this instance.
+    """
     network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgsDict']]]]]
     """
     The network interfaces for the VM. Supports only one interface.
@@ -140,6 +144,7 @@ class InstanceGceSetupArgs:
                  enable_ip_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
                  machine_type: pulumi.Input[Optional[_builtins.str]] = None,
                  metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_cpu_platform: pulumi.Input[Optional[_builtins.str]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]]] = None,
                  reservation_affinity: pulumi.Input[Optional['InstanceGceSetupReservationAffinityArgs']] = None,
                  service_accounts: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]]] = None,
@@ -164,6 +169,7 @@ class InstanceGceSetupArgs:
                https://cloud.google.com/vpc/docs/using-routes#canipforward
         :param pulumi.Input[_builtins.str] machine_type: Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Optional. Custom metadata to apply to this instance.
+        :param pulumi.Input[_builtins.str] min_cpu_platform: Optional. The minimum CPU platform to use for this instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]] network_interfaces: The network interfaces for the VM. Supports only one interface.
                Structure is documented below.
         :param pulumi.Input['InstanceGceSetupReservationAffinityArgs'] reservation_affinity: Reservations that this instance can consume from.
@@ -198,6 +204,8 @@ class InstanceGceSetupArgs:
             pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if reservation_affinity is not None:
@@ -326,6 +334,18 @@ class InstanceGceSetupArgs:
     @metadata.setter
     def metadata(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The minimum CPU platform to use for this instance.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "min_cpu_platform", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
@@ -678,6 +698,10 @@ class InstanceGceSetupDataDisksArgsDict(TypedDict):
     only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
     Learn more about using your own encryption keys.'
     """
+    resource_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Optional. Resource policies applied to this disk.
+    """
 
 @pulumi.input_type
 class InstanceGceSetupDataDisksArgs:
@@ -685,7 +709,8 @@ class InstanceGceSetupDataDisksArgs:
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_size_gb: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 kms_key: pulumi.Input[Optional[_builtins.str]] = None):
+                 kms_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] disk_encryption: Optional. Input only. Disk encryption method used on the boot
                and data disks, defaults to GMEK.
@@ -698,6 +723,7 @@ class InstanceGceSetupDataDisksArgs:
         :param pulumi.Input[_builtins.str] kms_key: 'Optional. The KMS key used to encrypt the disks,
                only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
                Learn more about using your own encryption keys.'
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_policies: Optional. Resource policies applied to this disk.
         """
         if disk_encryption is not None:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
@@ -707,6 +733,8 @@ class InstanceGceSetupDataDisksArgs:
             pulumi.set(__self__, "disk_type", disk_type)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
@@ -762,6 +790,18 @@ class InstanceGceSetupDataDisksArgs:
     @kms_key.setter
     def kms_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Optional. Resource policies applied to this disk.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "resource_policies", value)
 
 
 class InstanceGceSetupNetworkInterfaceArgsDict(TypedDict):

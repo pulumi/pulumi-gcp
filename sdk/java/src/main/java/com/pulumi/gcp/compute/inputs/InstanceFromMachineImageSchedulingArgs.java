@@ -233,14 +233,14 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     }
 
     /**
-     * Whether the instance is spot. If this is set as SPOT.
+     * Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
      * 
      */
     @Import(name="provisioningModel")
     private @Nullable Output<String> provisioningModel;
 
     /**
-     * @return Whether the instance is spot. If this is set as SPOT.
+     * @return Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
      * 
      */
     public Optional<Output<String>> provisioningModel() {
@@ -620,7 +620,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
         }
 
         /**
-         * @param provisioningModel Whether the instance is spot. If this is set as SPOT.
+         * @param provisioningModel Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
          * 
          * @return builder
          * 
@@ -631,7 +631,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
         }
 
         /**
-         * @param provisioningModel Whether the instance is spot. If this is set as SPOT.
+         * @param provisioningModel Describes the desired provisioning model for the instance. Possible values are STANDARD, SPOT, FLEX_START, and RESERVATION_BOUND. For STANDARD, resources are provisioned immediately. For SPOT, resources are offered at a discount compared to standard pricing but may be preempted. For FLEX_START, resources are offered at a discount with flexible start times. For RESERVATION_BOUND, the instance is bound to a specific reservation and will only consume capacity from that reservation.
          * 
          * @return builder
          * 

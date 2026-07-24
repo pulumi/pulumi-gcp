@@ -168,6 +168,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public readonly string Etag;
         public readonly bool ForceDelete;
         public readonly bool ForceUpdate;
+        public readonly bool ForceUpdateAccessRestriction;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -223,6 +224,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             bool forceUpdate,
 
+            bool forceUpdateAccessRestriction,
+
             string id,
 
             bool ignoreBackupPlanReferences,
@@ -267,6 +270,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
             Etag = etag;
             ForceDelete = forceDelete;
             ForceUpdate = forceUpdate;
+            ForceUpdateAccessRestriction = forceUpdateAccessRestriction;
             Id = id;
             IgnoreBackupPlanReferences = ignoreBackupPlanReferences;
             IgnoreInactiveDatasources = ignoreInactiveDatasources;

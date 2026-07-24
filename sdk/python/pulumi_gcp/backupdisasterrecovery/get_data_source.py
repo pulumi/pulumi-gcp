@@ -27,7 +27,10 @@ class GetDataSourceResult:
     """
     A collection of values returned by getDataSource.
     """
-    def __init__(__self__, backup_config_infos=None, backup_count=None, backup_vault_id=None, config_state=None, create_time=None, data_source_backup_appliance_applications=None, data_source_gcp_resources=None, data_source_id=None, etag=None, id=None, labels=None, location=None, name=None, project=None, state=None, total_stored_bytes=None, update_time=None):
+    def __init__(__self__, backup_blocked_by_vault_access_restriction=None, backup_config_infos=None, backup_count=None, backup_vault_id=None, config_state=None, create_time=None, data_source_backup_appliance_applications=None, data_source_gcp_resources=None, data_source_id=None, etag=None, id=None, labels=None, location=None, name=None, project=None, state=None, total_stored_bytes=None, update_time=None):
+        if backup_blocked_by_vault_access_restriction and not isinstance(backup_blocked_by_vault_access_restriction, bool):
+            raise TypeError("Expected argument 'backup_blocked_by_vault_access_restriction' to be a bool")
+        pulumi.set(__self__, "backup_blocked_by_vault_access_restriction", backup_blocked_by_vault_access_restriction)
         if backup_config_infos and not isinstance(backup_config_infos, list):
             raise TypeError("Expected argument 'backup_config_infos' to be a list")
         pulumi.set(__self__, "backup_config_infos", backup_config_infos)
@@ -79,6 +82,11 @@ class GetDataSourceResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="backupBlockedByVaultAccessRestriction")
+    def backup_blocked_by_vault_access_restriction(self) -> _builtins.bool:
+        return pulumi.get(self, "backup_blocked_by_vault_access_restriction")
 
     @_builtins.property
     @pulumi.getter(name="backupConfigInfos")
@@ -175,6 +183,7 @@ class AwaitableGetDataSourceResult(GetDataSourceResult):
         if False:
             yield self
         return GetDataSourceResult(
+            backup_blocked_by_vault_access_restriction=self.backup_blocked_by_vault_access_restriction,
             backup_config_infos=self.backup_config_infos,
             backup_count=self.backup_count,
             backup_vault_id=self.backup_vault_id,
@@ -229,6 +238,7 @@ def get_data_source(backup_vault_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:backupdisasterrecovery/getDataSource:getDataSource', __args__, opts=opts, typ=GetDataSourceResult).value
 
     return AwaitableGetDataSourceResult(
+        backup_blocked_by_vault_access_restriction=pulumi.get(__ret__, 'backup_blocked_by_vault_access_restriction'),
         backup_config_infos=pulumi.get(__ret__, 'backup_config_infos'),
         backup_count=pulumi.get(__ret__, 'backup_count'),
         backup_vault_id=pulumi.get(__ret__, 'backup_vault_id'),
@@ -280,6 +290,7 @@ def get_data_source_output(backup_vault_id: pulumi.Input[Optional[_builtins.str]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getDataSource:getDataSource', __args__, opts=opts, typ=GetDataSourceResult)
     return __ret__.apply(lambda __response__: GetDataSourceResult(
+        backup_blocked_by_vault_access_restriction=pulumi.get(__response__, 'backup_blocked_by_vault_access_restriction'),
         backup_config_infos=pulumi.get(__response__, 'backup_config_infos'),
         backup_count=pulumi.get(__response__, 'backup_count'),
         backup_vault_id=pulumi.get(__response__, 'backup_vault_id'),

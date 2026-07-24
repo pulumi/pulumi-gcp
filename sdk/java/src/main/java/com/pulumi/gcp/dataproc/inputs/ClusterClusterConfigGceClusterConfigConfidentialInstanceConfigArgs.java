@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,16 +17,39 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
     public static final ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs Empty = new ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs();
 
     /**
-     * Defines whether the instance should have confidential compute enabled.
+     * Defines the confidential compute type of the instance. Valid values are `&#34;CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED&#34;`, `&#34;SEV&#34;`, `&#34;SEV_SNP&#34;`, `&#34;TDX&#34;`.
      * 
      */
+    @Import(name="confidentialInstanceType")
+    private @Nullable Output<String> confidentialInstanceType;
+
+    /**
+     * @return Defines the confidential compute type of the instance. Valid values are `&#34;CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED&#34;`, `&#34;SEV&#34;`, `&#34;SEV_SNP&#34;`, `&#34;TDX&#34;`.
+     * 
+     */
+    public Optional<Output<String>> confidentialInstanceType() {
+        return Optional.ofNullable(this.confidentialInstanceType);
+    }
+
+    /**
+     * Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
+     * 
+     * @deprecated
+     * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+     * 
+     */
+    @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
     @Import(name="enableConfidentialCompute")
     private @Nullable Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Defines whether the instance should have confidential compute enabled.
+     * @return Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
+     * 
+     * @deprecated
+     * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
      * 
      */
+    @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
         return Optional.ofNullable(this.enableConfidentialCompute);
     }
@@ -33,6 +57,7 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
     private ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs() {}
 
     private ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs $) {
+        this.confidentialInstanceType = $.confidentialInstanceType;
         this.enableConfidentialCompute = $.enableConfidentialCompute;
     }
 
@@ -55,22 +80,51 @@ public final class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfi
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled.
+         * @param confidentialInstanceType Defines the confidential compute type of the instance. Valid values are `&#34;CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED&#34;`, `&#34;SEV&#34;`, `&#34;SEV_SNP&#34;`, `&#34;TDX&#34;`.
          * 
          * @return builder
          * 
          */
+        public Builder confidentialInstanceType(@Nullable Output<String> confidentialInstanceType) {
+            $.confidentialInstanceType = confidentialInstanceType;
+            return this;
+        }
+
+        /**
+         * @param confidentialInstanceType Defines the confidential compute type of the instance. Valid values are `&#34;CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED&#34;`, `&#34;SEV&#34;`, `&#34;SEV_SNP&#34;`, `&#34;TDX&#34;`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceType(String confidentialInstanceType) {
+            return confidentialInstanceType(Output.of(confidentialInstanceType));
+        }
+
+        /**
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+         * 
+         */
+        @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
         public Builder enableConfidentialCompute(@Nullable Output<Boolean> enableConfidentialCompute) {
             $.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled.
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. `enableConfidentialCompute` is deprecated and will be removed in a future major release. Use `confidentialInstanceType` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead.
+         * 
          */
+        @Deprecated /* enable_confidential_compute is deprecated and will be removed in a future major release. Use confidentialInstanceType instead. */
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
             return enableConfidentialCompute(Output.of(enableConfidentialCompute));
         }

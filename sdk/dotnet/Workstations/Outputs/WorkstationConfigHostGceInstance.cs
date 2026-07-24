@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// </summary>
         public readonly bool? EnableNestedVirtualization;
         /// <summary>
+        /// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? InstanceMetadata;
+        /// <summary>
         /// The name of a Compute Engine machine type.
         /// </summary>
         public readonly string? MachineType;
@@ -95,6 +99,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             bool? enableNestedVirtualization,
 
+            ImmutableDictionary<string, string>? instanceMetadata,
+
             string? machineType,
 
             int? poolSize,
@@ -116,6 +122,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
             DisablePublicIpAddresses = disablePublicIpAddresses;
             DisableSsh = disableSsh;
             EnableNestedVirtualization = enableNestedVirtualization;
+            InstanceMetadata = instanceMetadata;
             MachineType = machineType;
             PoolSize = poolSize;
             ServiceAccount = serviceAccount;

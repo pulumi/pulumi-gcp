@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs Empty = new ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs();
+
+    /**
+     * Disk configuration to apply to the instances in this instance selection.
+     * 
+     */
+    @Import(name="diskConfig")
+    private @Nullable Output<ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs> diskConfig;
+
+    /**
+     * @return Disk configuration to apply to the instances in this instance selection.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs>> diskConfig() {
+        return Optional.ofNullable(this.diskConfig);
+    }
 
     /**
      * Full machine-type names, e.g. `&#34;n1-standard-16&#34;`.
@@ -50,6 +66,7 @@ public final class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInst
     private ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs() {}
 
     private ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs $) {
+        this.diskConfig = $.diskConfig;
         this.machineTypes = $.machineTypes;
         this.rank = $.rank;
     }
@@ -70,6 +87,27 @@ public final class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInst
 
         public Builder(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs defaults) {
             $ = new ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param diskConfig Disk configuration to apply to the instances in this instance selection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskConfig(@Nullable Output<ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs> diskConfig) {
+            $.diskConfig = diskConfig;
+            return this;
+        }
+
+        /**
+         * @param diskConfig Disk configuration to apply to the instances in this instance selection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskConfig(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs diskConfig) {
+            return diskConfig(Output.of(diskConfig));
         }
 
         /**

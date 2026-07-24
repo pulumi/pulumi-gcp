@@ -617,7 +617,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_89313@example.com",
+                    "google_group": "tf-test-analysts-_32706@example.com",
                 },
             }])
         ```
@@ -628,7 +628,7 @@ class DataProduct(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_sa = gcp.serviceaccount.Account("test_sa",
-            account_id="tf-test-sa-_60646",
+            account_id="tf-test-sa-_49082",
             display_name="Test Service Account")
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
@@ -650,7 +650,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_9394@example.com",
+                        "google_group": "tf-test-analysts-_60365@example.com",
                     },
                 },
                 {
@@ -744,7 +744,7 @@ class DataProduct(pulumi.CustomResource):
                 "group_id": "analyst",
                 "display_name": "Data Analyst",
                 "principal": {
-                    "google_group": "tf-test-analysts-_89313@example.com",
+                    "google_group": "tf-test-analysts-_32706@example.com",
                 },
             }])
         ```
@@ -755,7 +755,7 @@ class DataProduct(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_sa = gcp.serviceaccount.Account("test_sa",
-            account_id="tf-test-sa-_60646",
+            account_id="tf-test-sa-_49082",
             display_name="Test Service Account")
         example = gcp.dataplex.DataProduct("example",
             project="my-project-name",
@@ -777,7 +777,7 @@ class DataProduct(pulumi.CustomResource):
                     "display_name": "Data Analyst - Updated",
                     "description": "In-place update verified",
                     "principal": {
-                        "google_group": "tf-test-analysts-_9394@example.com",
+                        "google_group": "tf-test-analysts-_60365@example.com",
                     },
                 },
                 {

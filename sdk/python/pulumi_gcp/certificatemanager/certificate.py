@@ -65,6 +65,9 @@ class CertificateArgs:
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
+               The certificate data can be updated in place; changes to `pem_certificate`
+               and `pem_private_key` are applied via the API's PATCH method instead of
+               forcing recreation of the certificate.
                Structure is documented below.
         """
         if deletion_policy is not None:
@@ -210,6 +213,9 @@ class CertificateArgs:
         Certificate data for a SelfManaged Certificate.
         SelfManaged Certificates are uploaded by the user. Updating such
         certificates before they expire remains the user's responsibility.
+        The certificate data can be updated in place; changes to `pem_certificate`
+        and `pem_private_key` are applied via the API's PATCH method instead of
+        forcing recreation of the certificate.
         Structure is documented below.
         """
         return pulumi.get(self, "self_managed")
@@ -273,6 +279,9 @@ class _CertificateState:
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
+               The certificate data can be updated in place; changes to `pem_certificate`
+               and `pem_private_key` are applied via the API's PATCH method instead of
+               forcing recreation of the certificate.
                Structure is documented below.
         """
         if deletion_policy is not None:
@@ -461,6 +470,9 @@ class _CertificateState:
         Certificate data for a SelfManaged Certificate.
         SelfManaged Certificates are uploaded by the user. Updating such
         certificates before they expire remains the user's responsibility.
+        The certificate data can be updated in place; changes to `pem_certificate`
+        and `pem_private_key` are applied via the API's PATCH method instead of
+        forcing recreation of the certificate.
         Structure is documented below.
         """
         return pulumi.get(self, "self_managed")
@@ -812,6 +824,9 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
+               The certificate data can be updated in place; changes to `pem_certificate`
+               and `pem_private_key` are applied via the API's PATCH method instead of
+               forcing recreation of the certificate.
                Structure is documented below.
         """
         ...
@@ -1224,6 +1239,9 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
+               The certificate data can be updated in place; changes to `pem_certificate`
+               and `pem_private_key` are applied via the API's PATCH method instead of
+               forcing recreation of the certificate.
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1361,6 +1379,9 @@ class Certificate(pulumi.CustomResource):
         Certificate data for a SelfManaged Certificate.
         SelfManaged Certificates are uploaded by the user. Updating such
         certificates before they expire remains the user's responsibility.
+        The certificate data can be updated in place; changes to `pem_certificate`
+        and `pem_private_key` are applied via the API's PATCH method instead of
+        forcing recreation of the certificate.
         Structure is documented below.
         """
         return pulumi.get(self, "self_managed")
