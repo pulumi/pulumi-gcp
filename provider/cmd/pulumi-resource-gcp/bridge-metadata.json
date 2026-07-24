@@ -342,7 +342,14 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "sources": {
-                                                            "maxItemsOne": false
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "psc_endpoint": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -388,7 +395,14 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "sources": {
-                                                            "maxItemsOne": false
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "psc_endpoint": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -429,7 +443,27 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "allowed_service_patterns": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "modifiers": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "add_request_header": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "allowed_services": {
+                                                "maxItemsOne": false
+                                            },
+                                            "service_patterns_enforcement_scopes": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -457,7 +491,14 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "sources": {
-                                                            "maxItemsOne": false
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "psc_endpoint": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -503,7 +544,14 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "sources": {
-                                                            "maxItemsOne": false
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "psc_endpoint": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -544,7 +592,27 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "allowed_service_patterns": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "modifiers": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "add_request_header": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "allowed_services": {
+                                                "maxItemsOne": false
+                                            },
+                                            "service_patterns_enforcement_scopes": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -567,7 +635,14 @@
                                     "maxItemsOne": false
                                 },
                                 "sources": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "psc_endpoint": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -612,7 +687,14 @@
                                     "maxItemsOne": false
                                 },
                                 "sources": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "psc_endpoint": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -658,7 +740,14 @@
                                     "maxItemsOne": false
                                 },
                                 "sources": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "psc_endpoint": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -703,7 +792,14 @@
                                     "maxItemsOne": false
                                 },
                                 "sources": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "psc_endpoint": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -764,7 +860,14 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "sources": {
-                                                                        "maxItemsOne": false
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "psc_endpoint": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -810,7 +913,14 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "sources": {
-                                                                        "maxItemsOne": false
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "psc_endpoint": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -851,7 +961,27 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "allowed_service_patterns": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "modifiers": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "add_request_header": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "allowed_services": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "service_patterns_enforcement_scopes": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -879,7 +1009,14 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "sources": {
-                                                                        "maxItemsOne": false
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "psc_endpoint": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -925,7 +1062,14 @@
                                                                         "maxItemsOne": false
                                                                     },
                                                                     "sources": {
-                                                                        "maxItemsOne": false
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "psc_endpoint": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     }
                                                                 }
                                                             }
@@ -966,7 +1110,27 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "allowed_service_patterns": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "modifiers": {
+                                                                        "maxItemsOne": false,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "add_request_header": {
+                                                                                    "maxItemsOne": true
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "allowed_services": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "service_patterns_enforcement_scopes": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -3438,6 +3602,89 @@
             },
             "google_biglake_hive_database_iam_policy": {
                 "current": "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy",
+                "majorVersion": 9
+            },
+            "google_biglake_hive_table": {
+                "current": "gcp:biglake/hiveTable:HiveTable",
+                "majorVersion": 9,
+                "fields": {
+                    "partition_keys": {
+                        "maxItemsOne": false
+                    },
+                    "storage_descriptor": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "bucket_cols": {
+                                    "maxItemsOne": false
+                                },
+                                "columns": {
+                                    "maxItemsOne": false
+                                },
+                                "serde_info": {
+                                    "maxItemsOne": true
+                                },
+                                "skewed_info": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "skewed_col_names": {
+                                                "maxItemsOne": false
+                                            },
+                                            "skewed_col_values": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "skewed_key_values_locations": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "sort_cols": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_biglake_hive_table_iam_binding": {
+                "current": "gcp:biglake/hiveTableIamBinding:HiveTableIamBinding",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_biglake_hive_table_iam_member": {
+                "current": "gcp:biglake/hiveTableIamMember:HiveTableIamMember",
+                "majorVersion": 9,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_biglake_hive_table_iam_policy": {
+                "current": "gcp:biglake/hiveTableIamPolicy:HiveTableIamPolicy",
                 "majorVersion": 9
             },
             "google_biglake_iceberg_catalog": {
@@ -12683,6 +12930,62 @@
             "google_compute_global_network_endpoint_group": {
                 "current": "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup",
                 "majorVersion": 9
+            },
+            "google_compute_global_vm_extension_policy": {
+                "current": "gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy",
+                "majorVersion": 9,
+                "fields": {
+                    "extension_policies": {
+                        "maxItemsOne": false
+                    },
+                    "instance_selectors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "label_selector": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "rollout_operation": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rollout_input": {
+                                    "maxItemsOne": true
+                                },
+                                "rollout_status": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "current_rollouts": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "location_rollout_status": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "previous_rollout": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "location_rollout_status": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_compute_ha_vpn_gateway": {
                 "current": "gcp:compute/haVpnGateway:HaVpnGateway",
@@ -24633,6 +24936,9 @@
                                                             "maxItemsOne": false,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "disk_config": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "machine_types": {
                                                                         "maxItemsOne": false
                                                                     }
@@ -24669,6 +24975,9 @@
                                                             "maxItemsOne": false,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "disk_config": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "machine_types": {
                                                                         "maxItemsOne": false
                                                                     }
@@ -24731,6 +25040,9 @@
                                                             "maxItemsOne": false,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "disk_config": {
+                                                                        "maxItemsOne": true
+                                                                    },
                                                                     "machine_types": {
                                                                         "maxItemsOne": false
                                                                     }
@@ -46930,7 +47242,14 @@
                                     "maxItemsOne": true
                                 },
                                 "data_disks": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "resource_policies": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "network_interfaces": {
                                     "maxItemsOne": false,
@@ -48272,6 +48591,10 @@
             },
             "google_biglake_hive_database_iam_policy": {
                 "current": "gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy",
+                "majorVersion": 9
+            },
+            "google_biglake_hive_table_iam_policy": {
+                "current": "gcp:biglake/getHiveTableIamPolicy:getHiveTableIamPolicy",
                 "majorVersion": 9
             },
             "google_biglake_iceberg_catalog_iam_policy": {
@@ -60782,6 +61105,10 @@
             "gcp:biglake/hiveDatabaseIamBinding:HiveDatabaseIamBinding": 0,
             "gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember": 0,
             "gcp:biglake/hiveDatabaseIamPolicy:HiveDatabaseIamPolicy": 0,
+            "gcp:biglake/hiveTable:HiveTable": 0,
+            "gcp:biglake/hiveTableIamBinding:HiveTableIamBinding": 0,
+            "gcp:biglake/hiveTableIamMember:HiveTableIamMember": 0,
+            "gcp:biglake/hiveTableIamPolicy:HiveTableIamPolicy": 0,
             "gcp:biglake/icebergCatalog:IcebergCatalog": 0,
             "gcp:biglake/icebergCatalogIamBinding:IcebergCatalogIamBinding": 0,
             "gcp:biglake/icebergCatalogIamMember:IcebergCatalogIamMember": 0,
@@ -61027,6 +61354,7 @@
             "gcp:compute/globalForwardingRule:GlobalForwardingRule": 0,
             "gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint": 0,
             "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup": 0,
+            "gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy": 0,
             "gcp:compute/haVpnGateway:HaVpnGateway": 0,
             "gcp:compute/healthCheck:HealthCheck": 0,
             "gcp:compute/httpHealthCheck:HttpHealthCheck": 0,
@@ -62166,6 +62494,7 @@
             "gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy": 0,
             "gcp:biglake/getHiveCatalogIamPolicy:getHiveCatalogIamPolicy": 0,
             "gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy": 0,
+            "gcp:biglake/getHiveTableIamPolicy:getHiveTableIamPolicy": 0,
             "gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy": 0,
             "gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy": 0,
             "gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy": 0,
@@ -62616,6 +62945,8 @@
             "gcp:cloudrun/service:Service": 1,
             "gcp:cloudscheduler/job:Job": 1,
             "gcp:compute/address:Address": 1,
+            "gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey": 1,
+            "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey": 1,
             "gcp:compute/crossSiteNetwork:CrossSiteNetwork": 1,
             "gcp:compute/disk:Disk": 1,
             "gcp:compute/externalVpnGateway:ExternalVpnGateway": 1,
@@ -62629,16 +62960,23 @@
             "gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup": 1,
             "gcp:compute/interconnectGroup:InterconnectGroup": 1,
             "gcp:compute/machineImage:MachineImage": 1,
+            "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy": 1,
+            "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation": 1,
+            "gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule": 1,
             "gcp:compute/nodeTemplate:NodeTemplate": 1,
             "gcp:compute/packetMirroring:PacketMirroring": 1,
+            "gcp:compute/previewFeature:PreviewFeature": 1,
+            "gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix": 1,
             "gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix": 1,
             "gcp:compute/regionAutoscaler:RegionAutoscaler": 1,
+            "gcp:compute/regionBackendBucket:RegionBackendBucket": 1,
             "gcp:compute/regionCommitment:RegionCommitment": 1,
             "gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck": 1,
             "gcp:compute/regionHealthAggregationPolicy:RegionHealthAggregationPolicy": 1,
             "gcp:compute/regionHealthSource:RegionHealthSource": 1,
             "gcp:compute/regionInstantSnapshot:RegionInstantSnapshot": 1,
             "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup": 1,
+            "gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy": 1,
             "gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy": 1,
             "gcp:compute/regionTargetTcpProxy:RegionTargetTcpProxy": 1,
             "gcp:compute/regionUrlMap:RegionUrlMap": 1,
