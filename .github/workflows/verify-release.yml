@@ -64,7 +64,7 @@ jobs:
       - name: Configure Git to checkout files with long names
         run: git config --global core.longpaths true
       - name: Checkout Repo
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false      
       - env:
@@ -104,7 +104,7 @@ jobs:
         with:
           install_components: gke-gcloud-auth-plugin
       - name: Verify nodejs release
-        uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
+        uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
         with:
           runtime: nodejs
           directory: examples/bucket
@@ -113,7 +113,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify python release
-        uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
+        uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
         with:
           runtime: python
           directory: examples/bucket-py
@@ -123,7 +123,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify dotnet release
-        uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
+        uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
         with:
           runtime: dotnet
           directory: examples/serverless-cs
@@ -132,7 +132,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Verify go release
-        uses: pulumi/verify-provider-release@52165c3d89dbd49691b82c056f377f37e6c21012 # v1.3.2
+        uses: pulumi/verify-provider-release@679d5e6838ac4f68696bfa1bf9e2c5da94509dd6 # v1.3.1
         if: inputs.skipGoSdk == false
         with:
           runtime: go
