@@ -1,6 +1,0 @@
-name: regress-1036
-runtime:
-  name: python
-  options:
-    virtualenv: venv
-description: Repro https://github.com/pulumi/pulumi-gcp/issues/1036
