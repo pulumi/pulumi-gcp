@@ -41,7 +41,7 @@ import (
 //			_, err = migrationcenter.NewImportJob(ctx, "default", &migrationcenter.ImportJobArgs{
 //				Location:    pulumi.String("us-central1"),
 //				ImportJobId: pulumi.String("import-job-test"),
-//				AssetSource: _default.ID(),
+//				AssetSource: _default.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Terraform integration test display"),
 //				Labels: pulumi.StringMap{
 //					"my_key":     pulumi.String("value"),

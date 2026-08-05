@@ -51,7 +51,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.50.0/24"),
-//					VmwareEngineNetwork: subnet_nw.ID(),
+//					VmwareEngineNetwork: subnet_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -68,7 +68,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewSubnet(ctx, "vmw-engine-subnet", &vmwareengine.SubnetArgs{
 //				Name:        pulumi.String("service-1"),
-//				Parent:      subnet_pc.ID(),
+//				Parent:      subnet_pc.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("192.168.100.0/26"),
 //			})
 //			if err != nil {

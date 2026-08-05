@@ -56,13 +56,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(21),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -80,7 +80,7 @@ import (
 //			}
 //			apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("apigee-key"),
-//				KeyRing: apigeeKeyring.ID(),
+//				KeyRing: apigeeKeyring.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //				return err
 //			}
 //			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: apigeeKey.ID(),
+//				CryptoKeyId: apigeeKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      apigeeSa.Member,
 //			})
@@ -105,8 +105,8 @@ import (
 //				DisplayName:                      pulumi.String("apigee-org"),
 //				Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
 //				ProjectId:                        pulumi.String(current.Project),
-//				AuthorizedNetwork:                apigeeNetwork.ID(),
-//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//				AuthorizedNetwork:                apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //				apigeeSaKeyuser,
@@ -119,15 +119,15 @@ import (
 //				Location:              pulumi.String("us-central1"),
 //				Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
 //				DisplayName:           pulumi.String("apigee-instance"),
-//				OrgId:                 apigeeOrg.ID(),
-//				DiskEncryptionKeyName: apigeeKey.ID(),
+//				OrgId:                 apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				DiskEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = apigee.NewNatAddress(ctx, "apigee-nat", &apigee.NatAddressArgs{
 //				Name:       pulumi.String("my-nat-address"),
-//				InstanceId: apigeeInstance.ID(),
+//				InstanceId: apigeeInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -171,13 +171,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(21),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -195,7 +195,7 @@ import (
 //			}
 //			apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("apigee-key"),
-//				KeyRing: apigeeKeyring.ID(),
+//				KeyRing: apigeeKeyring.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -208,7 +208,7 @@ import (
 //				return err
 //			}
 //			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: apigeeKey.ID(),
+//				CryptoKeyId: apigeeKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      apigeeSa.Member,
 //			})
@@ -220,8 +220,8 @@ import (
 //				DisplayName:                      pulumi.String("apigee-org"),
 //				Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
 //				ProjectId:                        pulumi.String(current.Project),
-//				AuthorizedNetwork:                apigeeNetwork.ID(),
-//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//				AuthorizedNetwork:                apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //				apigeeSaKeyuser,
@@ -234,8 +234,8 @@ import (
 //				Location:              pulumi.String("us-central1"),
 //				Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
 //				DisplayName:           pulumi.String("apigee-instance"),
-//				OrgId:                 apigeeOrg.ID(),
-//				DiskEncryptionKeyName: apigeeKey.ID(),
+//				OrgId:                 apigeeOrg.ID().ToIDOutput().ToStringOutput(),
+//				DiskEncryptionKeyName: apigeeKey.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -243,7 +243,7 @@ import (
 //			_, err = apigee.NewNatAddress(ctx, "apigee-nat", &apigee.NatAddressArgs{
 //				Name:       pulumi.String("my-nat-address"),
 //				Activate:   pulumi.Bool(true),
-//				InstanceId: apigeeInstance.ID(),
+//				InstanceId: apigeeInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

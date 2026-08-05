@@ -32,14 +32,14 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
     }
 
     /**
-     * The resource name of the Dataform Repository.
+     * The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
      * 
      */
     @Import(name="dataformRepositoryResourceName", required=true)
     private Output<String> dataformRepositoryResourceName;
 
     /**
-     * @return The resource name of the Dataform Repository.
+     * @return The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
      * 
      */
     public Output<String> dataformRepositoryResourceName() {
@@ -93,7 +93,7 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
         }
 
         /**
-         * @param dataformRepositoryResourceName The resource name of the Dataform Repository.
+         * @param dataformRepositoryResourceName The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
         }
 
         /**
-         * @param dataformRepositoryResourceName The resource name of the Dataform Repository.
+         * @param dataformRepositoryResourceName The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
          * 
          * @return builder
          * 

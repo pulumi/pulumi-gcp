@@ -289,7 +289,7 @@ import (
 //				Name:        pulumi.String("composer-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     testNetwork.ID(),
+//				Network:     testNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -330,8 +330,8 @@ import (
 //					},
 //					EnvironmentSize: pulumi.String("ENVIRONMENT_SIZE_SMALL"),
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
-//						Network:        testNetwork.ID(),
-//						Subnetwork:     testSubnetwork.ID(),
+//						Network:        testNetwork.ID().ToIDOutput().ToStringOutput(),
+//						Subnetwork:     testSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //						ServiceAccount: testAccount.Name,
 //					},
 //				},
@@ -385,7 +385,7 @@ import (
 //				Name:        pulumi.String("composer-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     testNetwork.ID(),
+//				Network:     testNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -408,8 +408,8 @@ import (
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
 //						Zone:           pulumi.String("us-central1-a"),
 //						MachineType:    pulumi.String("n1-standard-1"),
-//						Network:        testNetwork.ID(),
-//						Subnetwork:     testSubnetwork.ID(),
+//						Network:        testNetwork.ID().ToIDOutput().ToStringOutput(),
+//						Subnetwork:     testSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //						ServiceAccount: testAccount.Name,
 //					},
 //					DatabaseConfig: &composer.EnvironmentConfigDatabaseConfigArgs{
@@ -574,7 +574,7 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Config: &composer.EnvironmentConfigArgs{
 //					NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
-//						ComposerNetworkAttachment: example.ID(),
+//						ComposerNetworkAttachment: example.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

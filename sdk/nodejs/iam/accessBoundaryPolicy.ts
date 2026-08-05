@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: project.orgId.apply(orgId => `organizations/${orgId}`),
+ *     parent: pulumi.interpolate`organizations/${project.orgId}`,
  *     title: "my policy",
  * });
  * const test_access = new gcp.accesscontextmanager.AccessLevel("test-access", {
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.iam.AccessBoundaryPolicy("example", {
  *     parent: std.urlencodeOutput({
  *         input: pulumi.interpolate`cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     name: "my-ab-policy",
  *     displayName: "My AB policy",
  *     rules: [{
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *             availablePermissions: ["*"],
  *             availabilityCondition: {
  *                 title: "Access level expr",
- *                 expression: pulumi.all([project.orgId, test_access.name]).apply(([orgId, name]) => `request.matchAccessLevels('${orgId}', ['${name}'])`),
+ *                 expression: pulumi.interpolate`request.matchAccessLevels('${project.orgId}', ['${test_access.name}'])`,
  *             },
  *         },
  *     }],

@@ -47,13 +47,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID(),
+//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateServiceConnection, err := servicenetworking.NewConnection(ctx, "private_service_connection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID(),
+//				Network: _default.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					serviceRange.Name,
@@ -65,7 +65,7 @@ import (
 //			_, err = cloudids.NewEndpoint(ctx, "example-endpoint", &cloudids.EndpointArgs{
 //				Name:     pulumi.String("test"),
 //				Location: pulumi.String("us-central1-f"),
-//				Network:  _default.ID(),
+//				Network:  _default.ID().ToIDOutput().ToStringOutput(),
 //				Severity: pulumi.String("INFORMATIONAL"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				privateServiceConnection,

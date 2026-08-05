@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigLustreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNodeReadinessConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
@@ -100,6 +101,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+    /**
+     * @return The status of the Node Readiness Controller addon.
+     * 
+     */
+    private List<GetClusterAddonsConfigNodeReadinessConfig> nodeReadinessConfigs;
     /**
      * @return The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
      * 
@@ -231,6 +237,13 @@ public final class GetClusterAddonsConfig {
         return this.networkPolicyConfigs;
     }
     /**
+     * @return The status of the Node Readiness Controller addon.
+     * 
+     */
+    public List<GetClusterAddonsConfigNodeReadinessConfig> nodeReadinessConfigs() {
+        return this.nodeReadinessConfigs;
+    }
+    /**
      * @return The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
      * 
      */
@@ -296,6 +309,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
         private List<GetClusterAddonsConfigLustreCsiDriverConfig> lustreCsiDriverConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+        private List<GetClusterAddonsConfigNodeReadinessConfig> nodeReadinessConfigs;
         private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
         private List<GetClusterAddonsConfigPodSnapshotConfig> podSnapshotConfigs;
         private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
@@ -319,6 +333,7 @@ public final class GetClusterAddonsConfig {
     	      this.kalmConfigs = defaults.kalmConfigs;
     	      this.lustreCsiDriverConfigs = defaults.lustreCsiDriverConfigs;
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
+    	      this.nodeReadinessConfigs = defaults.nodeReadinessConfigs;
     	      this.parallelstoreCsiDriverConfigs = defaults.parallelstoreCsiDriverConfigs;
     	      this.podSnapshotConfigs = defaults.podSnapshotConfigs;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
@@ -482,6 +497,17 @@ public final class GetClusterAddonsConfig {
             return networkPolicyConfigs(List.of(networkPolicyConfigs));
         }
         @CustomType.Setter
+        public Builder nodeReadinessConfigs(List<GetClusterAddonsConfigNodeReadinessConfig> nodeReadinessConfigs) {
+            if (nodeReadinessConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "nodeReadinessConfigs");
+            }
+            this.nodeReadinessConfigs = nodeReadinessConfigs;
+            return this;
+        }
+        public Builder nodeReadinessConfigs(GetClusterAddonsConfigNodeReadinessConfig... nodeReadinessConfigs) {
+            return nodeReadinessConfigs(List.of(nodeReadinessConfigs));
+        }
+        @CustomType.Setter
         public Builder parallelstoreCsiDriverConfigs(List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs) {
             if (parallelstoreCsiDriverConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "parallelstoreCsiDriverConfigs");
@@ -563,6 +589,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.kalmConfigs = kalmConfigs;
             _resultValue.lustreCsiDriverConfigs = lustreCsiDriverConfigs;
             _resultValue.networkPolicyConfigs = networkPolicyConfigs;
+            _resultValue.nodeReadinessConfigs = nodeReadinessConfigs;
             _resultValue.parallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
             _resultValue.podSnapshotConfigs = podSnapshotConfigs;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;

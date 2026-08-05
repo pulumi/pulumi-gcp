@@ -57,7 +57,7 @@ import (
 //					pulumi.String("us-central1-a"),
 //					pulumi.String("us-central1-f"),
 //				},
-//				Snapshot: snapdisk.ID(),
+//				Snapshot: snapdisk.ID().ToIDOutput().ToStringOutput(),
 //				Size:     pulumi.Int(50),
 //				Type:     pulumi.String("pd-ssd"),
 //				Region:   pulumi.String("us-central1"),

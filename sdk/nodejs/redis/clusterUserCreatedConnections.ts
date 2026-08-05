@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip1Network1.id,
  *     loadBalancingScheme: "",
  *     network: network1.id,
- *     target: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[0].serviceAttachment),
+ *     target: cluster_user_connCluster.pscServiceAttachments[0].serviceAttachment,
  * });
  * const ip2Network1 = new gcp.compute.Address("ip2_network1", {
  *     name: "ip2-net1",
@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip2Network1.id,
  *     loadBalancingScheme: "",
  *     network: network1.id,
- *     target: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[1].serviceAttachment),
+ *     target: cluster_user_connCluster.pscServiceAttachments[1].serviceAttachment,
  * });
  * const network2 = new gcp.compute.Network("network2", {
  *     name: "network2",
@@ -98,7 +98,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip1Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[0].serviceAttachment),
+ *     target: cluster_user_connCluster.pscServiceAttachments[0].serviceAttachment,
  * });
  * const ip2Network2 = new gcp.compute.Address("ip2_network2", {
  *     name: "ip2-net2",
@@ -113,7 +113,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip2Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[1].serviceAttachment),
+ *     target: cluster_user_connCluster.pscServiceAttachments[1].serviceAttachment,
  * });
  * const project = gcp.organizations.getProject({});
  * const cluster_user_conn = new gcp.redis.ClusterUserCreatedConnections("cluster-user-conn", {
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  *                         forwardingRule: forwardingRule1Network1.id,
  *                         network: network1.id,
  *                         projectId: project.then(project => project.projectId),
- *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[0].serviceAttachment),
+ *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments[0].serviceAttachment,
  *                     },
  *                 },
  *                 {
@@ -138,7 +138,7 @@ import * as utilities from "../utilities";
  *                         address: ip2Network1.address,
  *                         forwardingRule: forwardingRule2Network1.id,
  *                         network: network1.id,
- *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[1].serviceAttachment),
+ *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments[1].serviceAttachment,
  *                     },
  *                 },
  *             ],
@@ -151,7 +151,7 @@ import * as utilities from "../utilities";
  *                         address: ip1Network2.address,
  *                         forwardingRule: forwardingRule1Network2.id,
  *                         network: network2.id,
- *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[0].serviceAttachment),
+ *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments[0].serviceAttachment,
  *                     },
  *                 },
  *                 {
@@ -160,7 +160,7 @@ import * as utilities from "../utilities";
  *                         address: ip2Network2.address,
  *                         forwardingRule: forwardingRule2Network2.id,
  *                         network: network2.id,
- *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[1].serviceAttachment),
+ *                         serviceAttachment: cluster_user_connCluster.pscServiceAttachments[1].serviceAttachment,
  *                     },
  *                 },
  *             ],
@@ -230,7 +230,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip1Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: cluster_user_auto_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[0].serviceAttachment),
+ *     target: cluster_user_auto_connCluster.pscServiceAttachments[0].serviceAttachment,
  * });
  * const ip2Network2 = new gcp.compute.Address("ip2_network2", {
  *     name: "ip2-net2",
@@ -245,7 +245,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip2Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: cluster_user_auto_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[1].serviceAttachment),
+ *     target: cluster_user_auto_connCluster.pscServiceAttachments[1].serviceAttachment,
  * });
  * const cluster_user_auto_conn = new gcp.redis.ClusterUserCreatedConnections("cluster-user-auto-conn", {
  *     name: "cluster-user-auto-conn",
@@ -258,7 +258,7 @@ import * as utilities from "../utilities";
  *                     address: ip1Network2.address,
  *                     forwardingRule: forwardingRule1Network2.id,
  *                     network: network2.id,
- *                     serviceAttachment: cluster_user_auto_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[0].serviceAttachment),
+ *                     serviceAttachment: cluster_user_auto_connCluster.pscServiceAttachments[0].serviceAttachment,
  *                 },
  *             },
  *             {
@@ -267,7 +267,7 @@ import * as utilities from "../utilities";
  *                     address: ip2Network2.address,
  *                     forwardingRule: forwardingRule2Network2.id,
  *                     network: network2.id,
- *                     serviceAttachment: cluster_user_auto_connCluster.pscServiceAttachments.apply(pscServiceAttachments => pscServiceAttachments[1].serviceAttachment),
+ *                     serviceAttachment: cluster_user_auto_connCluster.pscServiceAttachments[1].serviceAttachment,
  *                 },
  *             },
  *         ],

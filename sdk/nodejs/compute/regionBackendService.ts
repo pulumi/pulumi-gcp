@@ -476,7 +476,7 @@ import * as utilities from "../utilities";
  * const endpoint = new gcp.compute.NetworkEndpoint("endpoint", {
  *     networkEndpointGroup: neg.name,
  *     instance: endpoint_instance.name,
- *     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
  * });
  * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
  *     region: "us-central1",

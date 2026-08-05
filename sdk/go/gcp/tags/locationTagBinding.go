@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent:      key.ID(),
+//				Parent:      key.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})
@@ -65,7 +65,7 @@ import (
 //			}
 //			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
 //				Parent:   pulumi.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name),
-//				TagValue: value.ID(),
+//				TagValue: value.ID().ToIDOutput().ToStringOutput(),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -111,7 +111,7 @@ import (
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent:      key.ID(),
+//				Parent:      key.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})
@@ -122,7 +122,7 @@ import (
 //				Parent: project.Number.ApplyT(func(number string) (string, error) {
 //					return fmt.Sprintf("//compute.googleapis.com/projects/%v/zones/us-central1-a/instances/%v", number, instance.InstanceId), nil
 //				}).(pulumi.StringOutput),
-//				TagValue: value.ID(),
+//				TagValue: value.ID().ToIDOutput().ToStringOutput(),
 //				Location: pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {

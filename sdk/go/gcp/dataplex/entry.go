@@ -334,18 +334,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON0, err := json.Marshal([]map[string]string{
+//				{
 //					"name": "event_time",
 //					"type": "TIMESTAMP",
 //					"mode": "REQUIRED",
 //				},
-//				map[string]interface{}{
+//				{
 //					"name": "user_id",
 //					"type": "STRING",
 //					"mode": "NULLABLE",
 //				},
-//				map[string]interface{}{
+//				{
 //					"name": "event_type",
 //					"type": "STRING",
 //					"mode": "NULLABLE",

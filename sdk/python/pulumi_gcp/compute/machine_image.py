@@ -485,7 +485,7 @@ class MachineImage(pulumi.CustomResource):
                     tagKey1Id=tag_key1.id,
                     tagValue1Id=tag_value1.id
         ).apply(lambda resolved_outputs: {
-                    resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                    str(resolved_outputs['tagKey1Id']): resolved_outputs['tagValue1Id'],
                 })
         ,
             })
@@ -636,7 +636,7 @@ class MachineImage(pulumi.CustomResource):
                     tagKey1Id=tag_key1.id,
                     tagValue1Id=tag_value1.id
         ).apply(lambda resolved_outputs: {
-                    resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                    str(resolved_outputs['tagKey1Id']): resolved_outputs['tagValue1Id'],
                 })
         ,
             })

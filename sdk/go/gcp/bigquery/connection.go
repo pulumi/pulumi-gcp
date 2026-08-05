@@ -369,7 +369,7 @@ import (
 //				Description:  pulumi.String("a riveting description"),
 //				Spark: &bigquery.ConnectionSparkArgs{
 //					SparkHistoryServerConfig: &bigquery.ConnectionSparkSparkHistoryServerConfigArgs{
-//						DataprocCluster: basic.ID(),
+//						DataprocCluster: basic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -476,7 +476,7 @@ import (
 //				ClusterId: pulumi.Sprintf("alloydb-cluster-%v", nameSuffix),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: defaultNetwork.ID(),
+//					Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster-password"),
@@ -491,13 +491,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      defaultNetwork.ID(),
+//				Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: defaultNetwork.ID(),
+//				Network: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -528,7 +528,7 @@ import (
 //					ConnectorId: pulumi.String("google-alloydb"),
 //					Asset: &bigquery.ConnectionConfigurationAssetArgs{
 //						Database: pulumi.String("postgres"),
-//						GoogleCloudResource: defaultInstance.ID().ApplyT(func(id string) (string, error) {
+//						GoogleCloudResource: defaultInstance.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("//alloydb.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},

@@ -130,7 +130,7 @@ import (
 //			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("my-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID(),
+//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -138,7 +138,7 @@ import (
 //			defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 //				MirroringEndpointGroupId: pulumi.String("my-eg"),
 //				Location:                 pulumi.String("global"),
-//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
+//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -149,7 +149,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_MIRRORING"),
 //				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -185,7 +185,7 @@ import (
 //			defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 //				InterceptDeploymentGroupId: pulumi.String("my-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID(),
+//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -193,7 +193,7 @@ import (
 //			defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 //				InterceptEndpointGroupId: pulumi.String("my-eg"),
 //				Location:                 pulumi.String("global"),
-//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
+//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -204,7 +204,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_INTERCEPT"),
 //				CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
-//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
+//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -291,7 +291,7 @@ import (
 //			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("my-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID(),
+//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -301,7 +301,7 @@ import (
 //				Location:                 pulumi.String("global"),
 //				Type:                     pulumi.String("BROKER"),
 //				MirroringDeploymentGroups: pulumi.StringArray{
-//					defaultMirroringDeploymentGroup.ID(),
+//					defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -313,9 +313,9 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_MIRRORING"),
 //				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //					MirroringDeploymentGroups: pulumi.StringArray{
-//						defaultMirroringDeploymentGroup.ID(),
+//						defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

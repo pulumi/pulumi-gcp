@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
+import com.pulumi.gcp.gkehub.inputs.RolloutSequenceOperationalStateArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
 import java.lang.String;
 import java.util.List;
@@ -178,6 +179,60 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    @Import(name="minControlPlaneVersion")
+    private @Nullable Output<String> minControlPlaneVersion;
+
+    /**
+     * @return Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    public Optional<Output<String>> minControlPlaneVersion() {
+        return Optional.ofNullable(this.minControlPlaneVersion);
+    }
+
+    /**
+     * Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    @Import(name="minNodeVersion")
+    private @Nullable Output<String> minNodeVersion;
+
+    /**
+     * @return Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    public Optional<Output<String>> minNodeVersion() {
+        return Optional.ofNullable(this.minNodeVersion);
+    }
+
+    /**
      * The full resource name of the RolloutSequence.
      * 
      */
@@ -190,6 +245,23 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The operational state of the rollout sequence.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="operationalStates")
+    private @Nullable Output<List<RolloutSequenceOperationalStateArgs>> operationalStates;
+
+    /**
+     * @return The operational state of the rollout sequence.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RolloutSequenceOperationalStateArgs>>> operationalStates() {
+        return Optional.ofNullable(this.operationalStates);
     }
 
     /**
@@ -259,6 +331,36 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The current target control plane version.
+     * 
+     */
+    @Import(name="targetControlPlaneVersion")
+    private @Nullable Output<String> targetControlPlaneVersion;
+
+    /**
+     * @return The current target control plane version.
+     * 
+     */
+    public Optional<Output<String>> targetControlPlaneVersion() {
+        return Optional.ofNullable(this.targetControlPlaneVersion);
+    }
+
+    /**
+     * The current target node version.
+     * 
+     */
+    @Import(name="targetNodeVersion")
+    private @Nullable Output<String> targetNodeVersion;
+
+    /**
+     * @return The current target node version.
+     * 
+     */
+    public Optional<Output<String>> targetNodeVersion() {
+        return Optional.ofNullable(this.targetNodeVersion);
+    }
+
+    /**
      * Google-generated UUID for this resource.
      * 
      */
@@ -300,11 +402,16 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
         this.etag = $.etag;
         this.ignoredClustersSelector = $.ignoredClustersSelector;
         this.labels = $.labels;
+        this.minControlPlaneVersion = $.minControlPlaneVersion;
+        this.minNodeVersion = $.minNodeVersion;
         this.name = $.name;
+        this.operationalStates = $.operationalStates;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.rolloutSequenceId = $.rolloutSequenceId;
         this.stages = $.stages;
+        this.targetControlPlaneVersion = $.targetControlPlaneVersion;
+        this.targetNodeVersion = $.targetNodeVersion;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
     }
@@ -539,6 +646,72 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param minControlPlaneVersion Minimum control plane version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minControlPlaneVersion(@Nullable Output<String> minControlPlaneVersion) {
+            $.minControlPlaneVersion = minControlPlaneVersion;
+            return this;
+        }
+
+        /**
+         * @param minControlPlaneVersion Minimum control plane version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minControlPlaneVersion(String minControlPlaneVersion) {
+            return minControlPlaneVersion(Output.of(minControlPlaneVersion));
+        }
+
+        /**
+         * @param minNodeVersion Minimum node version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeVersion(@Nullable Output<String> minNodeVersion) {
+            $.minNodeVersion = minNodeVersion;
+            return this;
+        }
+
+        /**
+         * @param minNodeVersion Minimum node version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeVersion(String minNodeVersion) {
+            return minNodeVersion(Output.of(minNodeVersion));
+        }
+
+        /**
          * @param name The full resource name of the RolloutSequence.
          * 
          * @return builder
@@ -557,6 +730,40 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param operationalStates The operational state of the rollout sequence.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalStates(@Nullable Output<List<RolloutSequenceOperationalStateArgs>> operationalStates) {
+            $.operationalStates = operationalStates;
+            return this;
+        }
+
+        /**
+         * @param operationalStates The operational state of the rollout sequence.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalStates(List<RolloutSequenceOperationalStateArgs> operationalStates) {
+            return operationalStates(Output.of(operationalStates));
+        }
+
+        /**
+         * @param operationalStates The operational state of the rollout sequence.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder operationalStates(RolloutSequenceOperationalStateArgs... operationalStates) {
+            return operationalStates(List.of(operationalStates));
         }
 
         /**
@@ -658,6 +865,48 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
          */
         public Builder stages(RolloutSequenceStageArgs... stages) {
             return stages(List.of(stages));
+        }
+
+        /**
+         * @param targetControlPlaneVersion The current target control plane version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetControlPlaneVersion(@Nullable Output<String> targetControlPlaneVersion) {
+            $.targetControlPlaneVersion = targetControlPlaneVersion;
+            return this;
+        }
+
+        /**
+         * @param targetControlPlaneVersion The current target control plane version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetControlPlaneVersion(String targetControlPlaneVersion) {
+            return targetControlPlaneVersion(Output.of(targetControlPlaneVersion));
+        }
+
+        /**
+         * @param targetNodeVersion The current target node version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetNodeVersion(@Nullable Output<String> targetNodeVersion) {
+            $.targetNodeVersion = targetNodeVersion;
+            return this;
+        }
+
+        /**
+         * @param targetNodeVersion The current target node version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetNodeVersion(String targetNodeVersion) {
+            return targetNodeVersion(Output.of(targetNodeVersion));
         }
 
         /**

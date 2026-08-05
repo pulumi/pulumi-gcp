@@ -4,6 +4,7 @@
 package com.pulumi.gcp.modelarmor.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.modelarmor.outputs.TemplateTemplateMetadataFilterVersionSelector;
 import com.pulumi.gcp.modelarmor.outputs.TemplateTemplateMetadataMultiLanguageDetection;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -45,6 +46,13 @@ public final class TemplateTemplateMetadata {
      * 
      */
     private @Nullable String enforcementType;
+    /**
+     * @return Selects the filter version to use for this template. Set exactly one of
+     * &#39;alias&#39; or &#39;version&#39;.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TemplateTemplateMetadataFilterVersionSelector filterVersionSelector;
     /**
      * @return If true, partial detector failures should be ignored.
      * 
@@ -110,6 +118,15 @@ public final class TemplateTemplateMetadata {
         return Optional.ofNullable(this.enforcementType);
     }
     /**
+     * @return Selects the filter version to use for this template. Set exactly one of
+     * &#39;alias&#39; or &#39;version&#39;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TemplateTemplateMetadataFilterVersionSelector> filterVersionSelector() {
+        return Optional.ofNullable(this.filterVersionSelector);
+    }
+    /**
      * @return If true, partial detector failures should be ignored.
      * 
      */
@@ -153,6 +170,7 @@ public final class TemplateTemplateMetadata {
         private @Nullable Integer customPromptSafetyErrorCode;
         private @Nullable String customPromptSafetyErrorMessage;
         private @Nullable String enforcementType;
+        private @Nullable TemplateTemplateMetadataFilterVersionSelector filterVersionSelector;
         private @Nullable Boolean ignorePartialInvocationFailures;
         private @Nullable Boolean logSanitizeOperations;
         private @Nullable Boolean logTemplateOperations;
@@ -165,6 +183,7 @@ public final class TemplateTemplateMetadata {
     	      this.customPromptSafetyErrorCode = defaults.customPromptSafetyErrorCode;
     	      this.customPromptSafetyErrorMessage = defaults.customPromptSafetyErrorMessage;
     	      this.enforcementType = defaults.enforcementType;
+    	      this.filterVersionSelector = defaults.filterVersionSelector;
     	      this.ignorePartialInvocationFailures = defaults.ignorePartialInvocationFailures;
     	      this.logSanitizeOperations = defaults.logSanitizeOperations;
     	      this.logTemplateOperations = defaults.logTemplateOperations;
@@ -202,6 +221,12 @@ public final class TemplateTemplateMetadata {
             return this;
         }
         @CustomType.Setter
+        public Builder filterVersionSelector(@Nullable TemplateTemplateMetadataFilterVersionSelector filterVersionSelector) {
+
+            this.filterVersionSelector = filterVersionSelector;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ignorePartialInvocationFailures(@Nullable Boolean ignorePartialInvocationFailures) {
 
             this.ignorePartialInvocationFailures = ignorePartialInvocationFailures;
@@ -232,6 +257,7 @@ public final class TemplateTemplateMetadata {
             _resultValue.customPromptSafetyErrorCode = customPromptSafetyErrorCode;
             _resultValue.customPromptSafetyErrorMessage = customPromptSafetyErrorMessage;
             _resultValue.enforcementType = enforcementType;
+            _resultValue.filterVersionSelector = filterVersionSelector;
             _resultValue.ignorePartialInvocationFailures = ignorePartialInvocationFailures;
             _resultValue.logSanitizeOperations = logSanitizeOperations;
             _resultValue.logTemplateOperations = logTemplateOperations;

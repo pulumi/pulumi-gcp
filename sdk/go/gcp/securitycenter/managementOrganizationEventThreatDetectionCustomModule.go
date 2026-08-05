@@ -41,7 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"metadata": map[string]interface{}{
+//				"metadata": map[string]string{
 //					"severity":       "LOW",
 //					"description":    "Flagged by Forcepoint as malicious",
 //					"recommendation": "Contact the owner of the relevant project.",

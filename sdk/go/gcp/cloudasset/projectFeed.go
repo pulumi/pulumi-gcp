@@ -57,7 +57,7 @@ import (
 //				},
 //				FeedOutputConfig: &cloudasset.ProjectFeedFeedOutputConfigArgs{
 //					PubsubDestination: &cloudasset.ProjectFeedFeedOutputConfigPubsubDestinationArgs{
-//						Topic: feedOutput.ID(),
+//						Topic: feedOutput.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Condition: &cloudasset.ProjectFeedConditionArgs{

@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigRequestHeaderArgs;
+import com.pulumi.gcp.compute.inputs.BackendServiceLogConfigResponseHeaderArgs;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -74,6 +76,40 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="requestHeaders")
+    private @Nullable Output<List<BackendServiceLogConfigRequestHeaderArgs>> requestHeaders;
+
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackendServiceLogConfigRequestHeaderArgs>>> requestHeaders() {
+        return Optional.ofNullable(this.requestHeaders);
+    }
+
+    /**
+     * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="responseHeaders")
+    private @Nullable Output<List<BackendServiceLogConfigResponseHeaderArgs>> responseHeaders;
+
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<BackendServiceLogConfigResponseHeaderArgs>>> responseHeaders() {
+        return Optional.ofNullable(this.responseHeaders);
+    }
+
+    /**
      * This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
      * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -100,6 +136,8 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
         this.enable = $.enable;
         this.optionalFields = $.optionalFields;
         this.optionalMode = $.optionalMode;
+        this.requestHeaders = $.requestHeaders;
+        this.responseHeaders = $.responseHeaders;
         this.sampleRate = $.sampleRate;
     }
 
@@ -205,6 +243,74 @@ public final class BackendServiceLogConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder optionalMode(String optionalMode) {
             return optionalMode(Output.of(optionalMode));
+        }
+
+        /**
+         * @param requestHeaders This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestHeaders(@Nullable Output<List<BackendServiceLogConfigRequestHeaderArgs>> requestHeaders) {
+            $.requestHeaders = requestHeaders;
+            return this;
+        }
+
+        /**
+         * @param requestHeaders This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestHeaders(List<BackendServiceLogConfigRequestHeaderArgs> requestHeaders) {
+            return requestHeaders(Output.of(requestHeaders));
+        }
+
+        /**
+         * @param requestHeaders This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder requestHeaders(BackendServiceLogConfigRequestHeaderArgs... requestHeaders) {
+            return requestHeaders(List.of(requestHeaders));
+        }
+
+        /**
+         * @param responseHeaders This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseHeaders(@Nullable Output<List<BackendServiceLogConfigResponseHeaderArgs>> responseHeaders) {
+            $.responseHeaders = responseHeaders;
+            return this;
+        }
+
+        /**
+         * @param responseHeaders This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseHeaders(List<BackendServiceLogConfigResponseHeaderArgs> responseHeaders) {
+            return responseHeaders(Output.of(responseHeaders));
+        }
+
+        /**
+         * @param responseHeaders This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder responseHeaders(BackendServiceLogConfigResponseHeaderArgs... responseHeaders) {
+            return responseHeaders(List.of(responseHeaders));
         }
 
         /**

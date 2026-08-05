@@ -54,7 +54,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Featurestore: featurestore.ID(),
+//				Featurestore: featurestore.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -64,7 +64,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Entitytype: entity.ID(),
+//				Entitytype: entity.ID().ToIDOutput().ToStringOutput(),
 //				ValueType:  pulumi.String("INT64_ARRAY"),
 //			})
 //			if err != nil {
@@ -107,7 +107,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Featurestore: featurestore.ID(),
+//				Featurestore: featurestore.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
 //					SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
 //						Disabled:           pulumi.Bool(false),
@@ -129,7 +129,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Entitytype: entity.ID(),
+//				Entitytype: entity.ID().ToIDOutput().ToStringOutput(),
 //				ValueType:  pulumi.String("INT64_ARRAY"),
 //			})
 //			if err != nil {

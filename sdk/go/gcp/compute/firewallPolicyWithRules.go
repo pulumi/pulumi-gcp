@@ -67,7 +67,7 @@ import (
 //				Name:                    pulumi.String("spg"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
-//				ThreatPreventionProfile: securityProfile1.ID(),
+//				ThreatPreventionProfile: securityProfile1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //			}
 //			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
-//				Parent:      basicKey.ID(),
+//				Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -130,7 +130,7 @@ import (
 //								pulumi.String("iplist-tor-exit-nodes"),
 //							},
 //							DestAddressGroups: pulumi.StringArray{
-//								addressGroup1.ID(),
+//								addressGroup1.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -167,7 +167,7 @@ import (
 //								pulumi.String("iplist-public-clouds"),
 //							},
 //							SrcAddressGroups: pulumi.StringArray{
-//								addressGroup1.ID(),
+//								addressGroup1.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -186,7 +186,7 @@ import (
 //						TargetServiceAccounts: pulumi.StringArray{
 //							pulumi.String("test@google.com"),
 //						},
-//						SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id string) (string, error) {
+//						SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //						TlsInspect: pulumi.Bool(true),
@@ -210,7 +210,7 @@ import (
 //						Direction:     pulumi.String("INGRESS"),
 //						TargetSecureTags: compute.FirewallPolicyWithRulesRuleTargetSecureTagArray{
 //							&compute.FirewallPolicyWithRulesRuleTargetSecureTagArgs{
-//								Name: basicValue.ID(),
+//								Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
@@ -219,7 +219,7 @@ import (
 //							},
 //							SrcSecureTags: compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
 //								&compute.FirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
-//									Name: basicValue.ID(),
+//									Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{

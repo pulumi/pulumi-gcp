@@ -53,6 +53,8 @@ __all__ = [
     'BackendServiceLocalityLbPolicyCustomPolicy',
     'BackendServiceLocalityLbPolicyPolicy',
     'BackendServiceLogConfig',
+    'BackendServiceLogConfigRequestHeader',
+    'BackendServiceLogConfigResponseHeader',
     'BackendServiceMaxStreamDuration',
     'BackendServiceNetworkPassThroughLbTrafficPolicy',
     'BackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity',
@@ -444,6 +446,8 @@ __all__ = [
     'RegionBackendServiceIamMemberCondition',
     'RegionBackendServiceIap',
     'RegionBackendServiceLogConfig',
+    'RegionBackendServiceLogConfigRequestHeader',
+    'RegionBackendServiceLogConfigResponseHeader',
     'RegionBackendServiceNetworkPassThroughLbTrafficPolicy',
     'RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity',
     'RegionBackendServiceOutlierDetection',
@@ -996,6 +1000,8 @@ __all__ = [
     'GetBackendServiceLocalityLbPolicyCustomPolicyResult',
     'GetBackendServiceLocalityLbPolicyPolicyResult',
     'GetBackendServiceLogConfigResult',
+    'GetBackendServiceLogConfigRequestHeaderResult',
+    'GetBackendServiceLogConfigResponseHeaderResult',
     'GetBackendServiceMaxStreamDurationResult',
     'GetBackendServiceNetworkPassThroughLbTrafficPolicyResult',
     'GetBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityResult',
@@ -1140,6 +1146,8 @@ __all__ = [
     'GetRegionBackendServiceHaPolicyLeaderNetworkEndpointResult',
     'GetRegionBackendServiceIapResult',
     'GetRegionBackendServiceLogConfigResult',
+    'GetRegionBackendServiceLogConfigRequestHeaderResult',
+    'GetRegionBackendServiceLogConfigResponseHeaderResult',
     'GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyResult',
     'GetRegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityResult',
     'GetRegionBackendServiceOutlierDetectionResult',
@@ -4268,6 +4276,10 @@ class BackendServiceLogConfig(dict):
             suggest = "optional_fields"
         elif key == "optionalMode":
             suggest = "optional_mode"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+        elif key == "responseHeaders":
+            suggest = "response_headers"
         elif key == "sampleRate":
             suggest = "sample_rate"
 
@@ -4286,6 +4298,8 @@ class BackendServiceLogConfig(dict):
                  enable: Optional[_builtins.bool] = None,
                  optional_fields: Optional[Sequence[_builtins.str]] = None,
                  optional_mode: Optional[_builtins.str] = None,
+                 request_headers: Optional[Sequence['outputs.BackendServiceLogConfigRequestHeader']] = None,
+                 response_headers: Optional[Sequence['outputs.BackendServiceLogConfigResponseHeader']] = None,
                  sample_rate: Optional[_builtins.float] = None):
         """
         :param _builtins.bool enable: Whether to enable logging for the load balancer traffic served by this backend service.
@@ -4296,6 +4310,10 @@ class BackendServiceLogConfig(dict):
         :param _builtins.str optional_mode: Specifies the optional logging mode for the load balancer traffic.
                Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
                Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        :param Sequence['BackendServiceLogConfigRequestHeaderArgs'] request_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+               Structure is documented below.
+        :param Sequence['BackendServiceLogConfigResponseHeaderArgs'] response_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+               Structure is documented below.
         :param _builtins.float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
                the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
                where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -4307,6 +4325,10 @@ class BackendServiceLogConfig(dict):
             pulumi.set(__self__, "optional_fields", optional_fields)
         if optional_mode is not None:
             pulumi.set(__self__, "optional_mode", optional_mode)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if response_headers is not None:
+            pulumi.set(__self__, "response_headers", response_headers)
         if sample_rate is not None:
             pulumi.set(__self__, "sample_rate", sample_rate)
 
@@ -4340,6 +4362,24 @@ class BackendServiceLogConfig(dict):
         return pulumi.get(self, "optional_mode")
 
     @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[Sequence['outputs.BackendServiceLogConfigRequestHeader']]:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Optional[Sequence['outputs.BackendServiceLogConfigResponseHeader']]:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @_builtins.property
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> Optional[_builtins.float]:
         """
@@ -4349,6 +4389,76 @@ class BackendServiceLogConfig(dict):
         The default value is 1.0.
         """
         return pulumi.get(self, "sample_rate")
+
+
+@pulumi.output_type
+class BackendServiceLogConfigRequestHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceLogConfigRequestHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceLogConfigRequestHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceLogConfigRequestHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class BackendServiceLogConfigResponseHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceLogConfigResponseHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceLogConfigResponseHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceLogConfigResponseHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
 
 
 @pulumi.output_type
@@ -32771,6 +32881,10 @@ class RegionBackendServiceLogConfig(dict):
             suggest = "optional_fields"
         elif key == "optionalMode":
             suggest = "optional_mode"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+        elif key == "responseHeaders":
+            suggest = "response_headers"
         elif key == "sampleRate":
             suggest = "sample_rate"
 
@@ -32789,6 +32903,8 @@ class RegionBackendServiceLogConfig(dict):
                  enable: Optional[_builtins.bool] = None,
                  optional_fields: Optional[Sequence[_builtins.str]] = None,
                  optional_mode: Optional[_builtins.str] = None,
+                 request_headers: Optional[Sequence['outputs.RegionBackendServiceLogConfigRequestHeader']] = None,
+                 response_headers: Optional[Sequence['outputs.RegionBackendServiceLogConfigResponseHeader']] = None,
                  sample_rate: Optional[_builtins.float] = None):
         """
         :param _builtins.bool enable: Whether to enable logging for the load balancer traffic served by this backend service.
@@ -32796,6 +32912,10 @@ class RegionBackendServiceLogConfig(dict):
         :param _builtins.str optional_mode: Specifies the optional logging mode for the load balancer traffic.
                Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
                Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
+        :param Sequence['RegionBackendServiceLogConfigRequestHeaderArgs'] request_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+               Structure is documented below.
+        :param Sequence['RegionBackendServiceLogConfigResponseHeaderArgs'] response_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+               Structure is documented below.
         :param _builtins.float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
                the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
                where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -32807,6 +32927,10 @@ class RegionBackendServiceLogConfig(dict):
             pulumi.set(__self__, "optional_fields", optional_fields)
         if optional_mode is not None:
             pulumi.set(__self__, "optional_mode", optional_mode)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if response_headers is not None:
+            pulumi.set(__self__, "response_headers", response_headers)
         if sample_rate is not None:
             pulumi.set(__self__, "sample_rate", sample_rate)
 
@@ -32837,6 +32961,24 @@ class RegionBackendServiceLogConfig(dict):
         return pulumi.get(self, "optional_mode")
 
     @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[Sequence['outputs.RegionBackendServiceLogConfigRequestHeader']]:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Optional[Sequence['outputs.RegionBackendServiceLogConfigResponseHeader']]:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @_builtins.property
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> Optional[_builtins.float]:
         """
@@ -32846,6 +32988,76 @@ class RegionBackendServiceLogConfig(dict):
         The default value is 1.0.
         """
         return pulumi.get(self, "sample_rate")
+
+
+@pulumi.output_type
+class RegionBackendServiceLogConfigRequestHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceLogConfigRequestHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceLogConfigRequestHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceLogConfigRequestHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class RegionBackendServiceLogConfigResponseHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionBackendServiceLogConfigResponseHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionBackendServiceLogConfigResponseHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionBackendServiceLogConfigResponseHeader.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
 
 
 @pulumi.output_type
@@ -73084,6 +73296,8 @@ class GetBackendServiceLogConfigResult(dict):
                  enable: _builtins.bool,
                  optional_fields: Sequence[_builtins.str],
                  optional_mode: _builtins.str,
+                 request_headers: Sequence['outputs.GetBackendServiceLogConfigRequestHeaderResult'],
+                 response_headers: Sequence['outputs.GetBackendServiceLogConfigResponseHeaderResult'],
                  sample_rate: _builtins.float):
         """
         :param _builtins.bool enable: Whether to enable logging for the load balancer traffic served by this backend service.
@@ -73093,6 +73307,8 @@ class GetBackendServiceLogConfigResult(dict):
                For example: orca_load_report, tls.protocol
         :param _builtins.str optional_mode: Specifies the optional logging mode for the load balancer traffic.
                Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+        :param Sequence['GetBackendServiceLogConfigRequestHeaderArgs'] request_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        :param Sequence['GetBackendServiceLogConfigResponseHeaderArgs'] response_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
         :param _builtins.float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
                the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
                where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -73101,6 +73317,8 @@ class GetBackendServiceLogConfigResult(dict):
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "optional_fields", optional_fields)
         pulumi.set(__self__, "optional_mode", optional_mode)
+        pulumi.set(__self__, "request_headers", request_headers)
+        pulumi.set(__self__, "response_headers", response_headers)
         pulumi.set(__self__, "sample_rate", sample_rate)
 
     @_builtins.property
@@ -73132,6 +73350,22 @@ class GetBackendServiceLogConfigResult(dict):
         return pulumi.get(self, "optional_mode")
 
     @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Sequence['outputs.GetBackendServiceLogConfigRequestHeaderResult']:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Sequence['outputs.GetBackendServiceLogConfigResponseHeaderResult']:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @_builtins.property
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> _builtins.float:
         """
@@ -73141,6 +73375,42 @@ class GetBackendServiceLogConfigResult(dict):
         The default value is 1.0.
         """
         return pulumi.get(self, "sample_rate")
+
+
+@pulumi.output_type
+class GetBackendServiceLogConfigRequestHeaderResult(dict):
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class GetBackendServiceLogConfigResponseHeaderResult(dict):
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
 
 
 @pulumi.output_type
@@ -82403,12 +82673,16 @@ class GetRegionBackendServiceLogConfigResult(dict):
                  enable: _builtins.bool,
                  optional_fields: Sequence[_builtins.str],
                  optional_mode: _builtins.str,
+                 request_headers: Sequence['outputs.GetRegionBackendServiceLogConfigRequestHeaderResult'],
+                 response_headers: Sequence['outputs.GetRegionBackendServiceLogConfigResponseHeaderResult'],
                  sample_rate: _builtins.float):
         """
         :param _builtins.bool enable: Whether to enable logging for the load balancer traffic served by this backend service.
         :param Sequence[_builtins.str] optional_fields: Specifies the fields to include in logging. This field can only be specified if logging is enabled for this backend service.
         :param _builtins.str optional_mode: Specifies the optional logging mode for the load balancer traffic.
                Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
+        :param Sequence['GetRegionBackendServiceLogConfigRequestHeaderArgs'] request_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        :param Sequence['GetRegionBackendServiceLogConfigResponseHeaderArgs'] response_headers: This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
         :param _builtins.float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of
                the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
                where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -82417,6 +82691,8 @@ class GetRegionBackendServiceLogConfigResult(dict):
         pulumi.set(__self__, "enable", enable)
         pulumi.set(__self__, "optional_fields", optional_fields)
         pulumi.set(__self__, "optional_mode", optional_mode)
+        pulumi.set(__self__, "request_headers", request_headers)
+        pulumi.set(__self__, "response_headers", response_headers)
         pulumi.set(__self__, "sample_rate", sample_rate)
 
     @_builtins.property
@@ -82445,6 +82721,22 @@ class GetRegionBackendServiceLogConfigResult(dict):
         return pulumi.get(self, "optional_mode")
 
     @_builtins.property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Sequence['outputs.GetRegionBackendServiceLogConfigRequestHeaderResult']:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="responseHeaders")
+    def response_headers(self) -> Sequence['outputs.GetRegionBackendServiceLogConfigResponseHeaderResult']:
+        """
+        This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+        """
+        return pulumi.get(self, "response_headers")
+
+    @_builtins.property
     @pulumi.getter(name="sampleRate")
     def sample_rate(self) -> _builtins.float:
         """
@@ -82454,6 +82746,42 @@ class GetRegionBackendServiceLogConfigResult(dict):
         The default value is 1.0.
         """
         return pulumi.get(self, "sample_rate")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceLogConfigRequestHeaderResult(dict):
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
+
+
+@pulumi.output_type
+class GetRegionBackendServiceLogConfigResponseHeaderResult(dict):
+    def __init__(__self__, *,
+                 header_name: _builtins.str):
+        """
+        :param _builtins.str header_name: The header name to match on for logging.
+        """
+        pulumi.set(__self__, "header_name", header_name)
+
+    @_builtins.property
+    @pulumi.getter(name="headerName")
+    def header_name(self) -> _builtins.str:
+        """
+        The header name to match on for logging.
+        """
+        return pulumi.get(self, "header_name")
 
 
 @pulumi.output_type

@@ -93,7 +93,7 @@ import (
 //				},
 //				Transport: &eventarc.TriggerTransportArgs{
 //					Pubsub: &eventarc.TriggerTransportPubsubArgs{
-//						Topic: foo.ID(),
+//						Topic: foo.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				RetryPolicy: &eventarc.TriggerRetryPolicyArgs{

@@ -73,7 +73,7 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      peeringNetwork.ID(),
+//				Network:      peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +81,7 @@ import (
 //			// Create a Private Service Access connection
 //			// When using shared-VPCs, this resource needs to be created in host project
 //			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: peeringNetwork.ID(),
+//				Network: peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("netapp.servicenetworking.goog"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -108,7 +108,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceLevel: pulumi.String("PREMIUM"),
 //				CapacityGib:  pulumi.String("2048"),
-//				Network:      peeringNetwork.ID(),
+//				Network:      peeringNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

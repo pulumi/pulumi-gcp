@@ -83,7 +83,7 @@ import (
 //			}
 //			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
-//				Parent:      basicKey.ID(),
+//				Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -104,7 +104,7 @@ import (
 //				},
 //				Match: &compute.RegionNetworkFirewallPolicyRuleMatchArgs{
 //					SrcAddressGroups: pulumi.StringArray{
-//						basicRegionalNetworksecurityAddressGroup.ID(),
+//						basicRegionalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					SrcIpRanges: pulumi.StringArray{
 //						pulumi.String("10.100.0.1/32"),
@@ -125,7 +125,7 @@ import (
 //					},
 //					SrcSecureTags: compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 //						&compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
-//							Name: basicValue.ID(),
+//							Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -236,7 +236,7 @@ import (
 //					},
 //					SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 //					SrcNetworks: pulumi.StringArray{
-//						network.ID(),
+//						network.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					Layer4Configs: compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -390,7 +390,7 @@ import (
 //			_, err = compute.NewRegionNetworkFirewallPolicyAssociation(ctx, "assoc", &compute.RegionNetworkFirewallPolicyAssociationArgs{
 //				Name:             pulumi.String("fw-policy-assoc"),
 //				Region:           pulumi.String("us-central1"),
-//				FirewallPolicy:   fwPolicy.ID(),
+//				FirewallPolicy:   fwPolicy.ID().ToIDOutput().ToStringOutput(),
 //				AttachmentTarget: net.SelfLink,
 //			})
 //			if err != nil {

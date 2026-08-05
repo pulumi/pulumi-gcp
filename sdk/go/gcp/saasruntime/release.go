@@ -48,7 +48,7 @@ import (
 //			exampleUnitkind, err := saasruntime.NewUnitKind(ctx, "example_unitkind", &saasruntime.UnitKindArgs{
 //				Location:   pulumi.String("global"),
 //				UnitKindId: pulumi.String("example-unitkind"),
-//				Saas:       exampleSaas.ID(),
+//				Saas:       exampleSaas.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ import (
 //			_, err = saasruntime.NewRelease(ctx, "example_previous", &saasruntime.ReleaseArgs{
 //				Location:  pulumi.String("global"),
 //				ReleaseId: pulumi.String("previous-release"),
-//				UnitKind:  exampleUnitkind.ID(),
+//				UnitKind:  exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
 //				Blueprint: &saasruntime.ReleaseBlueprintArgs{
 //					Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 //				},
@@ -67,7 +67,7 @@ import (
 //			_, err = saasruntime.NewRelease(ctx, "example", &saasruntime.ReleaseArgs{
 //				Location:  pulumi.String("global"),
 //				ReleaseId: pulumi.String("example-release"),
-//				UnitKind:  exampleUnitkind.ID(),
+//				UnitKind:  exampleUnitkind.ID().ToIDOutput().ToStringOutput(),
 //				Blueprint: &saasruntime.ReleaseBlueprintArgs{
 //					Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-beta-image@sha256:7bba0fa85b2956df7768f7b32e715b6fe11f4f4193e2a70a35bf3f286a6cdf9e"),
 //				},

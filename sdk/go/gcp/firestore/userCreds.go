@@ -108,7 +108,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "my-fs-user-creds-secret-version", &secretmanager.SecretVersionArgs{
-//				Secret:     my_fs_user_creds_secret.ID(),
+//				Secret:     my_fs_user_creds_secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: my_user_creds.SecurePassword,
 //			})
 //			if err != nil {

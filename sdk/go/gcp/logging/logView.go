@@ -47,7 +47,7 @@ import (
 //			}
 //			_, err = logging.NewLogView(ctx, "logging_log_view", &logging.LogViewArgs{
 //				Name:        pulumi.String("my-view"),
-//				Bucket:      loggingLogView.ID(),
+//				Bucket:      loggingLogView.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("A logging view configured with Terraform"),
 //				Filter:      pulumi.String("SOURCE(\"projects/myproject\") AND resource.type = \"gce_instance\" AND LOG_ID(\"stdout\")"),
 //			})

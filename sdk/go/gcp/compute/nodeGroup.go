@@ -54,7 +54,7 @@ import (
 //				Zone:         pulumi.String("us-central1-c"),
 //				Description:  pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:  pulumi.Int(1),
-//				NodeTemplate: soletenant_tmpl.ID(),
+//				NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +96,7 @@ import (
 //				Zone:                pulumi.String("us-central1-c"),
 //				Description:         pulumi.String("example google_compute_node_group for Terraform Google Provider"),
 //				InitialSize:         pulumi.Int(1),
-//				NodeTemplate:        soletenant_tmpl.ID(),
+//				NodeTemplate:        soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 //				MaintenanceInterval: pulumi.String("RECURRENT"),
 //			})
 //			if err != nil {
@@ -143,7 +143,7 @@ import (
 //					StartTime: pulumi.String("08:00"),
 //				},
 //				InitialSize:  pulumi.Int(1),
-//				NodeTemplate: soletenant_tmpl.ID(),
+//				NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 //				AutoscalingPolicy: &compute.NodeGroupAutoscalingPolicyArgs{
 //					Mode:     pulumi.String("ONLY_SCALE_OUT"),
 //					MinNodes: pulumi.Int(1),
@@ -195,7 +195,7 @@ import (
 //				Zone:         pulumi.String("us-central1-a"),
 //				Description:  pulumi.String("example google_compute_node_group for Google Provider"),
 //				InitialSize:  pulumi.Int(1),
-//				NodeTemplate: soletenant_tmpl.ID(),
+//				NodeTemplate: soletenant_tmpl.ID().ToIDOutput().ToStringOutput(),
 //				ShareSettings: &compute.NodeGroupShareSettingsArgs{
 //					ShareType: pulumi.String("SPECIFIC_PROJECTS"),
 //					ProjectMaps: compute.NodeGroupShareSettingsProjectMapArray{

@@ -103,7 +103,7 @@ import (
 //				Name:        pulumi.String("compute-subnet"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -122,7 +122,7 @@ import (
 //			backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 //				Name:         pulumi.String("compute-backend"),
 //				Region:       pulumi.String("us-central1"),
-//				HealthChecks: hc.ID(),
+//				HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +131,7 @@ import (
 //				Name:                pulumi.String("compute-forwarding-rule"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				BackendService:      backend.ID(),
+//				BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 //				AllPorts:            pulumi.Bool(true),
 //				Network:             _default.Name,
 //				Subnetwork:          defaultSubnetwork.Name,
@@ -143,7 +143,7 @@ import (
 //				Name:       pulumi.String("route-ilb"),
 //				DestRange:  pulumi.String("0.0.0.0/0"),
 //				Network:    _default.Name,
-//				NextHopIlb: defaultForwardingRule.ID(),
+//				NextHopIlb: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
 //				Priority:   pulumi.Int(2000),
 //			})
 //			if err != nil {
@@ -179,7 +179,7 @@ import (
 //				Name:        pulumi.String("producer-subnet"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     producer.ID(),
+//				Network:     producer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -195,23 +195,23 @@ import (
 //				Name:        pulumi.String("consumer-subnet"),
 //				IpCidrRange: pulumi.String("10.0.2.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumer.ID(),
+//				Network:     consumer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			peering1, err := compute.NewNetworkPeering(ctx, "peering1", &compute.NetworkPeeringArgs{
 //				Name:        pulumi.String("peering-producer-to-consumer"),
-//				Network:     consumer.ID(),
-//				PeerNetwork: producer.ID(),
+//				Network:     consumer.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork: producer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			peering2, err := compute.NewNetworkPeering(ctx, "peering2", &compute.NetworkPeeringArgs{
 //				Name:        pulumi.String("peering-consumer-to-producer"),
-//				Network:     producer.ID(),
-//				PeerNetwork: consumer.ID(),
+//				Network:     producer.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork: consumer.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -230,7 +230,7 @@ import (
 //			backend, err := compute.NewRegionBackendService(ctx, "backend", &compute.RegionBackendServiceArgs{
 //				Name:         pulumi.String("compute-backend"),
 //				Region:       pulumi.String("us-central1"),
-//				HealthChecks: hc.ID(),
+//				HealthChecks: hc.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -239,7 +239,7 @@ import (
 //				Name:                pulumi.String("compute-forwarding-rule"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				BackendService:      backend.ID(),
+//				BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
 //				AllPorts:            pulumi.Bool(true),
 //				Network:             producer.Name,
 //				Subnetwork:          producerSubnetwork.Name,

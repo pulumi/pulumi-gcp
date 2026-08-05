@@ -48,7 +48,7 @@ import (
 //			_, err = saasruntime.NewTenant(ctx, "example", &saasruntime.TenantArgs{
 //				Location:         pulumi.String("global"),
 //				TenantId:         pulumi.String("example-tenant"),
-//				Saas:             exampleSaas.ID(),
+//				Saas:             exampleSaas.ID().ToIDOutput().ToStringOutput(),
 //				ConsumerResource: pulumi.String("//compute.googleapis.com/projects/example-project/zones/us-central1-a/instances/example-instance"),
 //			})
 //			if err != nil {

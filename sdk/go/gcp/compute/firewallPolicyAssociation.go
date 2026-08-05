@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFirewallPolicyAssociation(ctx, "default", &compute.FirewallPolicyAssociationArgs{
-//				FirewallPolicy:   policy.ID(),
+//				FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
 //				AttachmentTarget: folder.Name,
 //				Name:             pulumi.String("my-association"),
 //			})

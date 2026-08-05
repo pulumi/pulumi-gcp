@@ -47,7 +47,7 @@ import (
 //			}
 //			_, err = logging.NewLinkedDataset(ctx, "logging_linked_dataset", &logging.LinkedDatasetArgs{
 //				LinkId:      pulumi.String("mylink"),
-//				Bucket:      loggingLinkedDataset.ID(),
+//				Bucket:      loggingLinkedDataset.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("Linked dataset test"),
 //			})
 //			if err != nil {

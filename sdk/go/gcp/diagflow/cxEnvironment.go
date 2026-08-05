@@ -68,12 +68,12 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxEnvironment(ctx, "development", &diagflow.CxEnvironmentArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Development"),
 //				Description: pulumi.String("Development Environment"),
 //				VersionConfigs: diagflow.CxEnvironmentVersionConfigArray{
 //					&diagflow.CxEnvironmentVersionConfigArgs{
-//						Version: version1.ID(),
+//						Version: version1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

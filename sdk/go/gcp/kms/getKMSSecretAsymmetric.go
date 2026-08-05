@@ -48,7 +48,7 @@ import (
 //			}
 //			myCryptoKeyCryptoKey, err := kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("my-crypto-key"),
-//				KeyRing: myKeyRing.ID(),
+//				KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
 //				Purpose: pulumi.String("ASYMMETRIC_DECRYPT"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("RSA_DECRYPT_OAEP_4096_SHA256"),
@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_ = kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: myCryptoKeyCryptoKey.ID(),
+//				CryptoKey: myCryptoKeyCryptoKey.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			return nil
 //		})

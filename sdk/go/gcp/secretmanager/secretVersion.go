@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-//				Secret:     secret_basic.ID(),
+//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -96,7 +96,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic-write-only", &secretmanager.SecretVersionArgs{
-//				Secret:              secret_basic_write_only.ID(),
+//				Secret:              secret_basic_write_only.ID().ToIDOutput().ToStringOutput(),
 //				SecretDataWoVersion: pulumi.Int(1),
 //				SecretDataWo:        pulumi.String("secret-data-write-only"),
 //			})
@@ -138,7 +138,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-deletion-policy", &secretmanager.SecretVersionArgs{
-//				Secret:         secret_basic.ID(),
+//				Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				SecretData:     pulumi.String("secret-data"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
 //			})
@@ -180,7 +180,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-deletion-policy", &secretmanager.SecretVersionArgs{
-//				Secret:         secret_basic.ID(),
+//				Secret:         secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				SecretData:     pulumi.String("secret-data"),
 //				DeletionPolicy: pulumi.String("DISABLE"),
 //			})
@@ -229,7 +229,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64", &secretmanager.SecretVersionArgs{
-//				Secret:             secret_basic.ID(),
+//				Secret:             secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				IsSecretDataBase64: pulumi.Bool(true),
 //				SecretData:         pulumi.String(invokeFilebase64.Result),
 //			})
@@ -278,7 +278,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64-write-only", &secretmanager.SecretVersionArgs{
-//				Secret:              secret_basic.ID(),
+//				Secret:              secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				IsSecretDataBase64:  pulumi.Bool(true),
 //				SecretDataWoVersion: pulumi.Int(1),
 //				SecretDataWo:        pulumi.String(invokeFilebase64.Result),

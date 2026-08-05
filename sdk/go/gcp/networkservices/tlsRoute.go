@@ -47,7 +47,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -70,7 +70,7 @@ import (
 //						Action: &networkservices.TlsRouteRuleActionArgs{
 //							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 //								&networkservices.TlsRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID(),
+//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},
@@ -118,7 +118,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("europe-west4"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -181,7 +181,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -200,7 +200,7 @@ import (
 //				Name:        pulumi.String("my-tls-route"),
 //				Description: pulumi.String("my description"),
 //				Meshes: pulumi.StringArray{
-//					defaultMesh.ID(),
+//					defaultMesh.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Rules: networkservices.TlsRouteRuleArray{
 //					&networkservices.TlsRouteRuleArgs{
@@ -217,7 +217,7 @@ import (
 //						Action: &networkservices.TlsRouteRuleActionArgs{
 //							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 //								&networkservices.TlsRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID(),
+//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},
@@ -260,7 +260,7 @@ import (
 //			_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -284,7 +284,7 @@ import (
 //				Name:        pulumi.String("my-tls-route"),
 //				Description: pulumi.String("my description"),
 //				Gateways: pulumi.StringArray{
-//					defaultGateway.ID(),
+//					defaultGateway.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Rules: networkservices.TlsRouteRuleArray{
 //					&networkservices.TlsRouteRuleArgs{
@@ -301,7 +301,7 @@ import (
 //						Action: &networkservices.TlsRouteRuleActionArgs{
 //							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 //								&networkservices.TlsRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID(),
+//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 //									Weight:      pulumi.Int(1),
 //								},
 //							},
@@ -345,7 +345,7 @@ import (
 //				Name:                pulumi.String("my-backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("TCP"),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -360,7 +360,7 @@ import (
 //			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
 //				Name: pulumi.String("my-tls-route"),
 //				TargetProxies: pulumi.StringArray{
-//					defaultTargetTCPProxy.ID(),
+//					defaultTargetTCPProxy.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Rules: networkservices.TlsRouteRuleArray{
 //					&networkservices.TlsRouteRuleArgs{
@@ -374,7 +374,7 @@ import (
 //						Action: &networkservices.TlsRouteRuleActionArgs{
 //							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 //								&networkservices.TlsRouteRuleActionDestinationArgs{
-//									ServiceName: _default.ID(),
+//									ServiceName: _default.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //						},
@@ -421,7 +421,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("europe-west4"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {

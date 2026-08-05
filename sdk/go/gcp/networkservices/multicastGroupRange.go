@@ -48,7 +48,7 @@ import (
 //			multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-mgr-domain"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
@@ -71,8 +71,8 @@ import (
 //			_, err = networkservices.NewMulticastGroupRange(ctx, "mgr_test", &networkservices.MulticastGroupRangeArgs{
 //				MulticastGroupRangeId: pulumi.String("test-mgr-group-range"),
 //				Location:              pulumi.String("global"),
-//				ReservedInternalRange: internalRange.ID(),
-//				MulticastDomain:       multicastDomain.ID(),
+//				ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //				DistributionScope:     pulumi.String("INTRA_ZONE"),
 //			})
 //			if err != nil {

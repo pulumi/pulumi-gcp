@@ -19,6 +19,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigIstioConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigKalmConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigLustreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNodeReadinessConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigPodSnapshotConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
@@ -314,6 +315,27 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+     * Structure is documented below.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    @Import(name="nodeReadinessConfig")
+    private @Nullable Output<ClusterAddonsConfigNodeReadinessConfigArgs> nodeReadinessConfig;
+
+    /**
+     * @return The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+     * Structure is documented below.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigNodeReadinessConfigArgs>> nodeReadinessConfig() {
+        return Optional.ofNullable(this.nodeReadinessConfig);
+    }
+
+    /**
      * The status of the Parallelstore CSI driver addon,
      * which allows the usage of a Parallelstore instances as volumes.
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -413,8 +435,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
      * It can not be enabled for Autopilot clusters.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     @Import(name="slurmOperatorConfig")
     private @Nullable Output<ClusterAddonsConfigSlurmOperatorConfigArgs> slurmOperatorConfig;
@@ -424,8 +444,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * which creates slurm related CRDs and KCP pods to manage them.
      * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
      * It can not be enabled for Autopilot clusters.
-     * 
-     * This example `addonsConfig` disables two addons:
      * 
      */
     public Optional<Output<ClusterAddonsConfigSlurmOperatorConfigArgs>> slurmOperatorConfig() {
@@ -468,6 +486,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.kalmConfig = $.kalmConfig;
         this.lustreCsiDriverConfig = $.lustreCsiDriverConfig;
         this.networkPolicyConfig = $.networkPolicyConfig;
+        this.nodeReadinessConfig = $.nodeReadinessConfig;
         this.parallelstoreCsiDriverConfig = $.parallelstoreCsiDriverConfig;
         this.podSnapshotConfig = $.podSnapshotConfig;
         this.rayOperatorConfigs = $.rayOperatorConfigs;
@@ -857,6 +876,33 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param nodeReadinessConfig The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+         * Structure is documented below.
+         * 
+         * This example `addonsConfig` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeReadinessConfig(@Nullable Output<ClusterAddonsConfigNodeReadinessConfigArgs> nodeReadinessConfig) {
+            $.nodeReadinessConfig = nodeReadinessConfig;
+            return this;
+        }
+
+        /**
+         * @param nodeReadinessConfig The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+         * Structure is documented below.
+         * 
+         * This example `addonsConfig` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeReadinessConfig(ClusterAddonsConfigNodeReadinessConfigArgs nodeReadinessConfig) {
+            return nodeReadinessConfig(Output.of(nodeReadinessConfig));
+        }
+
+        /**
          * @param parallelstoreCsiDriverConfig The status of the Parallelstore CSI driver addon,
          * which allows the usage of a Parallelstore instances as volumes.
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -1001,8 +1047,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
          * It can not be enabled for Autopilot clusters.
          * 
-         * This example `addonsConfig` disables two addons:
-         * 
          * @return builder
          * 
          */
@@ -1016,8 +1060,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * which creates slurm related CRDs and KCP pods to manage them.
          * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
          * It can not be enabled for Autopilot clusters.
-         * 
-         * This example `addonsConfig` disables two addons:
          * 
          * @return builder
          * 

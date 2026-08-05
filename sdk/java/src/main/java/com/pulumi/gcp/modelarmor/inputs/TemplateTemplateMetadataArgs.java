@@ -5,6 +5,7 @@ package com.pulumi.gcp.modelarmor.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataFilterVersionSelectorArgs;
 import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -106,6 +107,25 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Selects the filter version to use for this template. Set exactly one of
+     * &#39;alias&#39; or &#39;version&#39;.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="filterVersionSelector")
+    private @Nullable Output<TemplateTemplateMetadataFilterVersionSelectorArgs> filterVersionSelector;
+
+    /**
+     * @return Selects the filter version to use for this template. Set exactly one of
+     * &#39;alias&#39; or &#39;version&#39;.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TemplateTemplateMetadataFilterVersionSelectorArgs>> filterVersionSelector() {
+        return Optional.ofNullable(this.filterVersionSelector);
+    }
+
+    /**
      * If true, partial detector failures should be ignored.
      * 
      */
@@ -175,6 +195,7 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
         this.customPromptSafetyErrorCode = $.customPromptSafetyErrorCode;
         this.customPromptSafetyErrorMessage = $.customPromptSafetyErrorMessage;
         this.enforcementType = $.enforcementType;
+        this.filterVersionSelector = $.filterVersionSelector;
         this.ignorePartialInvocationFailures = $.ignorePartialInvocationFailures;
         this.logSanitizeOperations = $.logSanitizeOperations;
         this.logTemplateOperations = $.logTemplateOperations;
@@ -314,6 +335,31 @@ public final class TemplateTemplateMetadataArgs extends com.pulumi.resources.Res
          */
         public Builder enforcementType(String enforcementType) {
             return enforcementType(Output.of(enforcementType));
+        }
+
+        /**
+         * @param filterVersionSelector Selects the filter version to use for this template. Set exactly one of
+         * &#39;alias&#39; or &#39;version&#39;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterVersionSelector(@Nullable Output<TemplateTemplateMetadataFilterVersionSelectorArgs> filterVersionSelector) {
+            $.filterVersionSelector = filterVersionSelector;
+            return this;
+        }
+
+        /**
+         * @param filterVersionSelector Selects the filter version to use for this template. Set exactly one of
+         * &#39;alias&#39; or &#39;version&#39;.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs filterVersionSelector) {
+            return filterVersionSelector(Output.of(filterVersionSelector));
         }
 
         /**

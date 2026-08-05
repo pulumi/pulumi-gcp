@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `vertex.AiSchedule` is deprecated and will be removed in a future major release. Use `colab.Schedule` instead.
+//
 // An online schedule that triggers running pipeline jobs or notebook execution jobs.
 //
 // ## Example Usage
@@ -49,11 +51,11 @@ import (
 //				return err
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"pipelineInfo": map[string]interface{}{
+//				"pipelineInfo": map[string]string{
 //					"name": "hello-world",
 //				},
-//				"root": map[string]interface{}{
-//					"dag": map[string]interface{}{
+//				"root": map[string]map[string]map[string]interface{}{
+//					"dag": map[string]map[string]interface{}{
 //						"tasks": map[string]interface{}{},
 //					},
 //				},

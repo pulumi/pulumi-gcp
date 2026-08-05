@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Colab.Inputs
         public Input<string>? CommitSha { get; set; }
 
         /// <summary>
-        /// The resource name of the Dataform Repository.
+        /// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
         /// </summary>
         [Input("dataformRepositoryResourceName", required: true)]
         public Input<string> DataformRepositoryResourceName { get; set; } = null!;

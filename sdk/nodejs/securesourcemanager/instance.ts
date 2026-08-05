@@ -349,21 +349,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const ssmInstanceHtmlRecord = new gcp.dns.RecordSet("ssm_instance_html_record", {
- *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].html}.`),
+ *     name: pulumi.interpolate`${_default.hostConfigs[0].html}.`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: privateZone.name,
  *     rrdatas: [fwRuleTargetProxy.ipAddress],
  * });
  * const ssmInstanceApiRecord = new gcp.dns.RecordSet("ssm_instance_api_record", {
- *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].api}.`),
+ *     name: pulumi.interpolate`${_default.hostConfigs[0].api}.`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: privateZone.name,
  *     rrdatas: [fwRuleTargetProxy.ipAddress],
  * });
  * const ssmInstanceGitRecord = new gcp.dns.RecordSet("ssm_instance_git_record", {
- *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].gitHttp}.`),
+ *     name: pulumi.interpolate`${_default.hostConfigs[0].gitHttp}.`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: privateZone.name,
@@ -482,21 +482,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const ssmInstanceHtmlRecord = new gcp.dns.RecordSet("ssm_instance_html_record", {
- *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].html}.`),
+ *     name: pulumi.interpolate`${_default.hostConfigs[0].html}.`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: privateZone.name,
  *     rrdatas: [fwRuleServiceAttachment.ipAddress],
  * });
  * const ssmInstanceApiRecord = new gcp.dns.RecordSet("ssm_instance_api_record", {
- *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].api}.`),
+ *     name: pulumi.interpolate`${_default.hostConfigs[0].api}.`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: privateZone.name,
  *     rrdatas: [fwRuleServiceAttachment.ipAddress],
  * });
  * const ssmInstanceGitRecord = new gcp.dns.RecordSet("ssm_instance_git_record", {
- *     name: _default.hostConfigs.apply(hostConfigs => `${hostConfigs[0].gitHttp}.`),
+ *     name: pulumi.interpolate`${_default.hostConfigs[0].gitHttp}.`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: privateZone.name,

@@ -3370,6 +3370,10 @@ type TemplateTemplateMetadata struct {
 	// INSPECT_ONLY
 	// INSPECT_AND_BLOCK
 	EnforcementType *string `pulumi:"enforcementType"`
+	// Selects the filter version to use for this template. Set exactly one of
+	// 'alias' or 'version'.
+	// Structure is documented below.
+	FilterVersionSelector *TemplateTemplateMetadataFilterVersionSelector `pulumi:"filterVersionSelector"`
 	// If true, partial detector failures should be ignored.
 	IgnorePartialInvocationFailures *bool `pulumi:"ignorePartialInvocationFailures"`
 	// If true, log sanitize operations.
@@ -3409,6 +3413,10 @@ type TemplateTemplateMetadataArgs struct {
 	// INSPECT_ONLY
 	// INSPECT_AND_BLOCK
 	EnforcementType pulumi.StringPtrInput `pulumi:"enforcementType"`
+	// Selects the filter version to use for this template. Set exactly one of
+	// 'alias' or 'version'.
+	// Structure is documented below.
+	FilterVersionSelector TemplateTemplateMetadataFilterVersionSelectorPtrInput `pulumi:"filterVersionSelector"`
 	// If true, partial detector failures should be ignored.
 	IgnorePartialInvocationFailures pulumi.BoolPtrInput `pulumi:"ignorePartialInvocationFailures"`
 	// If true, log sanitize operations.
@@ -3528,6 +3536,15 @@ func (o TemplateTemplateMetadataOutput) EnforcementType() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TemplateTemplateMetadata) *string { return v.EnforcementType }).(pulumi.StringPtrOutput)
 }
 
+// Selects the filter version to use for this template. Set exactly one of
+// 'alias' or 'version'.
+// Structure is documented below.
+func (o TemplateTemplateMetadataOutput) FilterVersionSelector() TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return o.ApplyT(func(v TemplateTemplateMetadata) *TemplateTemplateMetadataFilterVersionSelector {
+		return v.FilterVersionSelector
+	}).(TemplateTemplateMetadataFilterVersionSelectorPtrOutput)
+}
+
 // If true, partial detector failures should be ignored.
 func (o TemplateTemplateMetadataOutput) IgnorePartialInvocationFailures() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TemplateTemplateMetadata) *bool { return v.IgnorePartialInvocationFailures }).(pulumi.BoolPtrOutput)
@@ -3631,6 +3648,18 @@ func (o TemplateTemplateMetadataPtrOutput) EnforcementType() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Selects the filter version to use for this template. Set exactly one of
+// 'alias' or 'version'.
+// Structure is documented below.
+func (o TemplateTemplateMetadataPtrOutput) FilterVersionSelector() TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return o.ApplyT(func(v *TemplateTemplateMetadata) *TemplateTemplateMetadataFilterVersionSelector {
+		if v == nil {
+			return nil
+		}
+		return v.FilterVersionSelector
+	}).(TemplateTemplateMetadataFilterVersionSelectorPtrOutput)
+}
+
 // If true, partial detector failures should be ignored.
 func (o TemplateTemplateMetadataPtrOutput) IgnorePartialInvocationFailures() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TemplateTemplateMetadata) *bool {
@@ -3670,6 +3699,182 @@ func (o TemplateTemplateMetadataPtrOutput) MultiLanguageDetection() TemplateTemp
 		}
 		return v.MultiLanguageDetection
 	}).(TemplateTemplateMetadataMultiLanguageDetectionPtrOutput)
+}
+
+type TemplateTemplateMetadataFilterVersionSelector struct {
+	// A predefined filter version alias. The template automatically follows the
+	// version this alias points to.
+	// Possible values:
+	// FILTER_VERSION_ALIAS_STABLE
+	// FILTER_VERSION_ALIAS_LATEST
+	Alias *string `pulumi:"alias"`
+	// Pins the template to a specific, immutable filter version. Expected
+	// format is a case-sensitive string such as 'v1' or 'v2'.
+	Version *string `pulumi:"version"`
+}
+
+// TemplateTemplateMetadataFilterVersionSelectorInput is an input type that accepts TemplateTemplateMetadataFilterVersionSelectorArgs and TemplateTemplateMetadataFilterVersionSelectorOutput values.
+// You can construct a concrete instance of `TemplateTemplateMetadataFilterVersionSelectorInput` via:
+//
+//	TemplateTemplateMetadataFilterVersionSelectorArgs{...}
+type TemplateTemplateMetadataFilterVersionSelectorInput interface {
+	pulumi.Input
+
+	ToTemplateTemplateMetadataFilterVersionSelectorOutput() TemplateTemplateMetadataFilterVersionSelectorOutput
+	ToTemplateTemplateMetadataFilterVersionSelectorOutputWithContext(context.Context) TemplateTemplateMetadataFilterVersionSelectorOutput
+}
+
+type TemplateTemplateMetadataFilterVersionSelectorArgs struct {
+	// A predefined filter version alias. The template automatically follows the
+	// version this alias points to.
+	// Possible values:
+	// FILTER_VERSION_ALIAS_STABLE
+	// FILTER_VERSION_ALIAS_LATEST
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// Pins the template to a specific, immutable filter version. Expected
+	// format is a case-sensitive string such as 'v1' or 'v2'.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (TemplateTemplateMetadataFilterVersionSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateTemplateMetadataFilterVersionSelector)(nil)).Elem()
+}
+
+func (i TemplateTemplateMetadataFilterVersionSelectorArgs) ToTemplateTemplateMetadataFilterVersionSelectorOutput() TemplateTemplateMetadataFilterVersionSelectorOutput {
+	return i.ToTemplateTemplateMetadataFilterVersionSelectorOutputWithContext(context.Background())
+}
+
+func (i TemplateTemplateMetadataFilterVersionSelectorArgs) ToTemplateTemplateMetadataFilterVersionSelectorOutputWithContext(ctx context.Context) TemplateTemplateMetadataFilterVersionSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateTemplateMetadataFilterVersionSelectorOutput)
+}
+
+func (i TemplateTemplateMetadataFilterVersionSelectorArgs) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutput() TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return i.ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i TemplateTemplateMetadataFilterVersionSelectorArgs) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(ctx context.Context) TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateTemplateMetadataFilterVersionSelectorOutput).ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(ctx)
+}
+
+// TemplateTemplateMetadataFilterVersionSelectorPtrInput is an input type that accepts TemplateTemplateMetadataFilterVersionSelectorArgs, TemplateTemplateMetadataFilterVersionSelectorPtr and TemplateTemplateMetadataFilterVersionSelectorPtrOutput values.
+// You can construct a concrete instance of `TemplateTemplateMetadataFilterVersionSelectorPtrInput` via:
+//
+//	        TemplateTemplateMetadataFilterVersionSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type TemplateTemplateMetadataFilterVersionSelectorPtrInput interface {
+	pulumi.Input
+
+	ToTemplateTemplateMetadataFilterVersionSelectorPtrOutput() TemplateTemplateMetadataFilterVersionSelectorPtrOutput
+	ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(context.Context) TemplateTemplateMetadataFilterVersionSelectorPtrOutput
+}
+
+type templateTemplateMetadataFilterVersionSelectorPtrType TemplateTemplateMetadataFilterVersionSelectorArgs
+
+func TemplateTemplateMetadataFilterVersionSelectorPtr(v *TemplateTemplateMetadataFilterVersionSelectorArgs) TemplateTemplateMetadataFilterVersionSelectorPtrInput {
+	return (*templateTemplateMetadataFilterVersionSelectorPtrType)(v)
+}
+
+func (*templateTemplateMetadataFilterVersionSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateTemplateMetadataFilterVersionSelector)(nil)).Elem()
+}
+
+func (i *templateTemplateMetadataFilterVersionSelectorPtrType) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutput() TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return i.ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *templateTemplateMetadataFilterVersionSelectorPtrType) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(ctx context.Context) TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TemplateTemplateMetadataFilterVersionSelectorPtrOutput)
+}
+
+type TemplateTemplateMetadataFilterVersionSelectorOutput struct{ *pulumi.OutputState }
+
+func (TemplateTemplateMetadataFilterVersionSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TemplateTemplateMetadataFilterVersionSelector)(nil)).Elem()
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorOutput) ToTemplateTemplateMetadataFilterVersionSelectorOutput() TemplateTemplateMetadataFilterVersionSelectorOutput {
+	return o
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorOutput) ToTemplateTemplateMetadataFilterVersionSelectorOutputWithContext(ctx context.Context) TemplateTemplateMetadataFilterVersionSelectorOutput {
+	return o
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorOutput) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutput() TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return o.ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorOutput) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(ctx context.Context) TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TemplateTemplateMetadataFilterVersionSelector) *TemplateTemplateMetadataFilterVersionSelector {
+		return &v
+	}).(TemplateTemplateMetadataFilterVersionSelectorPtrOutput)
+}
+
+// A predefined filter version alias. The template automatically follows the
+// version this alias points to.
+// Possible values:
+// FILTER_VERSION_ALIAS_STABLE
+// FILTER_VERSION_ALIAS_LATEST
+func (o TemplateTemplateMetadataFilterVersionSelectorOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateTemplateMetadataFilterVersionSelector) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// Pins the template to a specific, immutable filter version. Expected
+// format is a case-sensitive string such as 'v1' or 'v2'.
+func (o TemplateTemplateMetadataFilterVersionSelectorOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TemplateTemplateMetadataFilterVersionSelector) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type TemplateTemplateMetadataFilterVersionSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (TemplateTemplateMetadataFilterVersionSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TemplateTemplateMetadataFilterVersionSelector)(nil)).Elem()
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorPtrOutput) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutput() TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return o
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorPtrOutput) ToTemplateTemplateMetadataFilterVersionSelectorPtrOutputWithContext(ctx context.Context) TemplateTemplateMetadataFilterVersionSelectorPtrOutput {
+	return o
+}
+
+func (o TemplateTemplateMetadataFilterVersionSelectorPtrOutput) Elem() TemplateTemplateMetadataFilterVersionSelectorOutput {
+	return o.ApplyT(func(v *TemplateTemplateMetadataFilterVersionSelector) TemplateTemplateMetadataFilterVersionSelector {
+		if v != nil {
+			return *v
+		}
+		var ret TemplateTemplateMetadataFilterVersionSelector
+		return ret
+	}).(TemplateTemplateMetadataFilterVersionSelectorOutput)
+}
+
+// A predefined filter version alias. The template automatically follows the
+// version this alias points to.
+// Possible values:
+// FILTER_VERSION_ALIAS_STABLE
+// FILTER_VERSION_ALIAS_LATEST
+func (o TemplateTemplateMetadataFilterVersionSelectorPtrOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateTemplateMetadataFilterVersionSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Alias
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pins the template to a specific, immutable filter version. Expected
+// format is a case-sensitive string such as 'v1' or 'v2'.
+func (o TemplateTemplateMetadataFilterVersionSelectorPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TemplateTemplateMetadataFilterVersionSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type TemplateTemplateMetadataMultiLanguageDetection struct {
@@ -3852,6 +4057,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateFilterConfigSdpSettingsBasicConfigPtrInput)(nil)).Elem(), TemplateFilterConfigSdpSettingsBasicConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataInput)(nil)).Elem(), TemplateTemplateMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataPtrInput)(nil)).Elem(), TemplateTemplateMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataFilterVersionSelectorInput)(nil)).Elem(), TemplateTemplateMetadataFilterVersionSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataFilterVersionSelectorPtrInput)(nil)).Elem(), TemplateTemplateMetadataFilterVersionSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataMultiLanguageDetectionInput)(nil)).Elem(), TemplateTemplateMetadataMultiLanguageDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateTemplateMetadataMultiLanguageDetectionPtrInput)(nil)).Elem(), TemplateTemplateMetadataMultiLanguageDetectionArgs{})
 	pulumi.RegisterOutputType(FloorsettingAiPlatformFloorSettingOutput{})
@@ -3896,6 +4103,8 @@ func init() {
 	pulumi.RegisterOutputType(TemplateFilterConfigSdpSettingsBasicConfigPtrOutput{})
 	pulumi.RegisterOutputType(TemplateTemplateMetadataOutput{})
 	pulumi.RegisterOutputType(TemplateTemplateMetadataPtrOutput{})
+	pulumi.RegisterOutputType(TemplateTemplateMetadataFilterVersionSelectorOutput{})
+	pulumi.RegisterOutputType(TemplateTemplateMetadataFilterVersionSelectorPtrOutput{})
 	pulumi.RegisterOutputType(TemplateTemplateMetadataMultiLanguageDetectionOutput{})
 	pulumi.RegisterOutputType(TemplateTemplateMetadataMultiLanguageDetectionPtrOutput{})
 }

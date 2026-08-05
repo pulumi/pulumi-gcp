@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ScheduleCreateNotebookExecutionJobRequestArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,10 +34,44 @@ public final class ScheduleCreateNotebookExecutionJobRequestArgs extends com.pul
         return this.notebookExecutionJob;
     }
 
+    /**
+     * (Output)
+     * User specified ID for the NotebookExecutionJob.
+     * 
+     */
+    @Import(name="notebookExecutionJobId")
+    private @Nullable Output<String> notebookExecutionJobId;
+
+    /**
+     * @return (Output)
+     * User specified ID for the NotebookExecutionJob.
+     * 
+     */
+    public Optional<Output<String>> notebookExecutionJobId() {
+        return Optional.ofNullable(this.notebookExecutionJobId);
+    }
+
+    /**
+     * The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+     * 
+     */
+    @Import(name="parent")
+    private @Nullable Output<String> parent;
+
+    /**
+     * @return The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+     * 
+     */
+    public Optional<Output<String>> parent() {
+        return Optional.ofNullable(this.parent);
+    }
+
     private ScheduleCreateNotebookExecutionJobRequestArgs() {}
 
     private ScheduleCreateNotebookExecutionJobRequestArgs(ScheduleCreateNotebookExecutionJobRequestArgs $) {
         this.notebookExecutionJob = $.notebookExecutionJob;
+        this.notebookExecutionJobId = $.notebookExecutionJobId;
+        this.parent = $.parent;
     }
 
     public static Builder builder() {
@@ -76,6 +113,50 @@ public final class ScheduleCreateNotebookExecutionJobRequestArgs extends com.pul
          */
         public Builder notebookExecutionJob(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs notebookExecutionJob) {
             return notebookExecutionJob(Output.of(notebookExecutionJob));
+        }
+
+        /**
+         * @param notebookExecutionJobId (Output)
+         * User specified ID for the NotebookExecutionJob.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notebookExecutionJobId(@Nullable Output<String> notebookExecutionJobId) {
+            $.notebookExecutionJobId = notebookExecutionJobId;
+            return this;
+        }
+
+        /**
+         * @param notebookExecutionJobId (Output)
+         * User specified ID for the NotebookExecutionJob.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notebookExecutionJobId(String notebookExecutionJobId) {
+            return notebookExecutionJobId(Output.of(notebookExecutionJobId));
+        }
+
+        /**
+         * @param parent The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(@Nullable Output<String> parent) {
+            $.parent = parent;
+            return this;
+        }
+
+        /**
+         * @param parent The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parent(String parent) {
+            return parent(Output.of(parent));
         }
 
         public ScheduleCreateNotebookExecutionJobRequestArgs build() {

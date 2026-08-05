@@ -43,7 +43,7 @@ import (
 //			_, err = networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 //				InterceptDeploymentGroupId: pulumi.String("example-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    network.ID(),
+//				Network:                    network.ID().ToIDOutput().ToStringOutput(),
 //				Description:                pulumi.String("some description"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

@@ -27,11 +27,52 @@ namespace Pulumi.Gcp.GkeHub
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "rs-project",
+    ///         Name = "rs-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var gkehub = new Gcp.Projects.Service("gkehub", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "gkehub.googleapis.com",
+    ///     });
+    /// 
+    ///     // wait for API enablement
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gkehub,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.GkeHub.Fleet("default", new()
+    ///     {
+    ///         DisplayName = "rs-fleet",
+    ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
     ///     var rolloutSequence = new Gcp.GkeHub.RolloutSequence("rollout_sequence", new()
     ///     {
+    ///         Project = project.ProjectId,
     ///         RolloutSequenceId = "rs-basic",
     ///         DisplayName = "Basic Rollout Sequence",
     ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
@@ -44,7 +85,7 @@ namespace Pulumi.Gcp.GkeHub
     ///             {
     ///                 FleetProjects = new[]
     ///                 {
-    ///                     "projects/my-project-name",
+    ///                     project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
     ///                 },
     ///                 SoakDuration = "1h",
     ///             },
@@ -62,6 +103,12 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
     ///     });
     /// 
     /// });
@@ -73,11 +120,52 @@ namespace Pulumi.Gcp.GkeHub
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "rs-project",
+    ///         Name = "rs-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var gkehub = new Gcp.Projects.Service("gkehub", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "gkehub.googleapis.com",
+    ///     });
+    /// 
+    ///     // wait for API enablement
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gkehub,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.GkeHub.Fleet("default", new()
+    ///     {
+    ///         DisplayName = "rs-fleet",
+    ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
     ///     var rolloutSequence = new Gcp.GkeHub.RolloutSequence("rollout_sequence", new()
     ///     {
+    ///         Project = project.ProjectId,
     ///         RolloutSequenceId = "rs-basic",
     ///         DisplayName = "Modified Rollout Sequence",
     ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
@@ -90,7 +178,7 @@ namespace Pulumi.Gcp.GkeHub
     ///             {
     ///                 FleetProjects = new[]
     ///                 {
-    ///                     "projects/my-project-name",
+    ///                     project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
     ///                 },
     ///                 ClusterSelector = new Gcp.GkeHub.Inputs.RolloutSequenceStageClusterSelectorArgs
     ///                 {
@@ -102,7 +190,7 @@ namespace Pulumi.Gcp.GkeHub
     ///             {
     ///                 FleetProjects = new[]
     ///                 {
-    ///                     "projects/my-project-name",
+    ///                     project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
     ///                 },
     ///                 SoakDuration = "1d",
     ///             },
@@ -121,6 +209,160 @@ namespace Pulumi.Gcp.GkeHub
     ///         Labels = 
     ///         {
     ///             { "some_key", "some_value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gke Hub Rollout Sequence User Triggered Create
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "rs-project",
+    ///         Name = "rs-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     // Enable APIs in a deterministic order to avoid inconsistent VCR recordings
+    ///     var gkehub = new Gcp.Projects.Service("gkehub", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "gkehub.googleapis.com",
+    ///     });
+    /// 
+    ///     var container = new Gcp.Projects.Service("container", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "container.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             gkehub,
+    ///         },
+    ///     });
+    /// 
+    ///     var compute = new Gcp.Projects.Service("compute", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "compute.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             container,
+    ///         },
+    ///     });
+    /// 
+    ///     // wait for API enablement
+    ///     var wait120Seconds = new Time.Sleep("wait_120_seconds", new()
+    ///     {
+    ///         CreateDuration = "120s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             compute,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.GkeHub.Fleet("default", new()
+    ///     {
+    ///         DisplayName = "rs-fleet",
+    ///         Project = project.ProjectId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             wait120Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var versions = Gcp.Container.GetEngineVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         Project = project.ProjectId,
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Name = "rs-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///         MinMasterVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.REGULAR),
+    ///         NodeVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.REGULAR),
+    ///         DeletionProtection = false,
+    ///         ReleaseChannel = new Gcp.Container.Inputs.ClusterReleaseChannelArgs
+    ///         {
+    ///             Channel = "REGULAR",
+    ///         },
+    ///         ResourceLabels = 
+    ///         {
+    ///             { "rs_test_cluster", "tf-test-_25601" },
+    ///         },
+    ///         Fleet = new Gcp.Container.Inputs.ClusterFleetArgs
+    ///         {
+    ///             Project = project.Number,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    ///     var rolloutSequence = new Gcp.GkeHub.RolloutSequence("rollout_sequence", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         RolloutSequenceId = "rs-user-triggered",
+    ///         DisplayName = "User Triggered Rollout Sequence",
+    ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.REGULAR),
+    ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
+    ///         {
+    ///             LabelSelector = "!(has(resource.labels.rs_test_cluster) &amp;&amp; resource.labels.rs_test_cluster == 'tf-test-_17228')",
+    ///         },
+    ///         Stages = new[]
+    ///         {
+    ///             new Gcp.GkeHub.Inputs.RolloutSequenceStageArgs
+    ///             {
+    ///                 FleetProjects = new[]
+    ///                 {
+    ///                     project.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
+    ///                 },
+    ///                 SoakDuration = "30s",
+    ///             },
+    ///         },
+    ///         AutoUpgradeConfig = new Gcp.GkeHub.Inputs.RolloutSequenceAutoUpgradeConfigArgs
+    ///         {
+    ///             RolloutCreationScope = new Gcp.GkeHub.Inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs
+    ///             {
+    ///                 UpgradeTypes = new() { },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primary,
     ///         },
     ///     });
     /// 
@@ -212,10 +454,41 @@ namespace Pulumi.Gcp.GkeHub
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Minimum control plane version that the clusters in the sequence should be upgraded to.
+        /// Setting this field will cause the creation of a rollout to the specified version.
+        /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        /// Should be a valid [semantic version](https://semver.org/).
+        /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        /// Note that the `Latest` and `-` aliases are not supported for this field.
+        /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        /// </summary>
+        [Output("minControlPlaneVersion")]
+        public Output<string?> MinControlPlaneVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum node version that the clusters in the sequence should be upgraded to.
+        /// Setting this field will cause the creation of a rollout to the specified version.
+        /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        /// Should be a valid [semantic version](https://semver.org/).
+        /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        /// Note that the `Latest` and `-` aliases are not supported for this field.
+        /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        /// </summary>
+        [Output("minNodeVersion")]
+        public Output<string?> MinNodeVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The full resource name of the RolloutSequence.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The operational state of the rollout sequence.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("operationalStates")]
+        public Output<ImmutableArray<Outputs.RolloutSequenceOperationalState>> OperationalStates { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -243,6 +516,18 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("stages")]
         public Output<ImmutableArray<Outputs.RolloutSequenceStage>> Stages { get; private set; } = null!;
+
+        /// <summary>
+        /// The current target control plane version.
+        /// </summary>
+        [Output("targetControlPlaneVersion")]
+        public Output<string> TargetControlPlaneVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The current target node version.
+        /// </summary>
+        [Output("targetNodeVersion")]
+        public Output<string> TargetNodeVersion { get; private set; } = null!;
 
         /// <summary>
         /// Google-generated UUID for this resource.
@@ -353,6 +638,30 @@ namespace Pulumi.Gcp.GkeHub
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Minimum control plane version that the clusters in the sequence should be upgraded to.
+        /// Setting this field will cause the creation of a rollout to the specified version.
+        /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        /// Should be a valid [semantic version](https://semver.org/).
+        /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        /// Note that the `Latest` and `-` aliases are not supported for this field.
+        /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        /// </summary>
+        [Input("minControlPlaneVersion")]
+        public Input<string>? MinControlPlaneVersion { get; set; }
+
+        /// <summary>
+        /// Minimum node version that the clusters in the sequence should be upgraded to.
+        /// Setting this field will cause the creation of a rollout to the specified version.
+        /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        /// Should be a valid [semantic version](https://semver.org/).
+        /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        /// Note that the `Latest` and `-` aliases are not supported for this field.
+        /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        /// </summary>
+        [Input("minNodeVersion")]
+        public Input<string>? MinNodeVersion { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -470,10 +779,47 @@ namespace Pulumi.Gcp.GkeHub
         }
 
         /// <summary>
+        /// Minimum control plane version that the clusters in the sequence should be upgraded to.
+        /// Setting this field will cause the creation of a rollout to the specified version.
+        /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        /// Should be a valid [semantic version](https://semver.org/).
+        /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        /// Note that the `Latest` and `-` aliases are not supported for this field.
+        /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        /// </summary>
+        [Input("minControlPlaneVersion")]
+        public Input<string>? MinControlPlaneVersion { get; set; }
+
+        /// <summary>
+        /// Minimum node version that the clusters in the sequence should be upgraded to.
+        /// Setting this field will cause the creation of a rollout to the specified version.
+        /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        /// Should be a valid [semantic version](https://semver.org/).
+        /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        /// Note that the `Latest` and `-` aliases are not supported for this field.
+        /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        /// </summary>
+        [Input("minNodeVersion")]
+        public Input<string>? MinNodeVersion { get; set; }
+
+        /// <summary>
         /// The full resource name of the RolloutSequence.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("operationalStates")]
+        private InputList<Inputs.RolloutSequenceOperationalStateGetArgs>? _operationalStates;
+
+        /// <summary>
+        /// The operational state of the rollout sequence.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RolloutSequenceOperationalStateGetArgs> OperationalStates
+        {
+            get => _operationalStates ?? (_operationalStates = new InputList<Inputs.RolloutSequenceOperationalStateGetArgs>());
+            set => _operationalStates = value;
+        }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -517,6 +863,18 @@ namespace Pulumi.Gcp.GkeHub
             get => _stages ?? (_stages = new InputList<Inputs.RolloutSequenceStageGetArgs>());
             set => _stages = value;
         }
+
+        /// <summary>
+        /// The current target control plane version.
+        /// </summary>
+        [Input("targetControlPlaneVersion")]
+        public Input<string>? TargetControlPlaneVersion { get; set; }
+
+        /// <summary>
+        /// The current target node version.
+        /// </summary>
+        [Input("targetNodeVersion")]
+        public Input<string>? TargetNodeVersion { get; set; }
 
         /// <summary>
         /// Google-generated UUID for this resource.

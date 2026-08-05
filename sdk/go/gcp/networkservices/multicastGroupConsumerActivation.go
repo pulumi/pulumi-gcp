@@ -48,7 +48,7 @@ import (
 //			multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-domain-mgca"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
@@ -61,7 +61,7 @@ import (
 //			multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
 //				MulticastDomainActivationId: pulumi.String("test-domain-activation-mgca"),
 //				Location:                    pulumi.String("us-central1-b"),
-//				MulticastDomain:             multicastDomain.ID(),
+//				MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -69,8 +69,8 @@ import (
 //			consumerAssociation, err := networkservices.NewMulticastConsumerAssociation(ctx, "consumer_association", &networkservices.MulticastConsumerAssociationArgs{
 //				MulticastConsumerAssociationId: pulumi.String("test-consumer-association-mgca"),
 //				Location:                       pulumi.String("us-central1-b"),
-//				Network:                        network.ID(),
-//				MulticastDomainActivation:      multicastDomainActivation.ID(),
+//				Network:                        network.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomainActivation:      multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				network,
 //			}))
@@ -90,8 +90,8 @@ import (
 //			groupRange, err := networkservices.NewMulticastGroupRange(ctx, "group_range", &networkservices.MulticastGroupRangeArgs{
 //				MulticastGroupRangeId: pulumi.String("test-group-range-mgca"),
 //				Location:              pulumi.String("global"),
-//				ReservedInternalRange: internalRange.ID(),
-//				MulticastDomain:       multicastDomain.ID(),
+//				ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -99,8 +99,8 @@ import (
 //			groupRangeActivation, err := networkservices.NewMulticastGroupRangeActivation(ctx, "group_range_activation", &networkservices.MulticastGroupRangeActivationArgs{
 //				MulticastGroupRangeActivationId: pulumi.String("test-mgra-mgca"),
 //				Location:                        pulumi.String("us-central1-b"),
-//				MulticastGroupRange:             groupRange.ID(),
-//				MulticastDomainActivation:       multicastDomainActivation.ID(),
+//				MulticastGroupRange:             groupRange.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomainActivation:       multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -108,8 +108,8 @@ import (
 //			_, err = networkservices.NewMulticastGroupConsumerActivation(ctx, "mgca_test", &networkservices.MulticastGroupConsumerActivationArgs{
 //				MulticastGroupConsumerActivationId: pulumi.String("test-mgca-mgca"),
 //				Location:                           pulumi.String("us-central1-b"),
-//				MulticastGroupRangeActivation:      groupRangeActivation.ID(),
-//				MulticastConsumerAssociation:       consumerAssociation.ID(),
+//				MulticastGroupRangeActivation:      groupRangeActivation.ID().ToIDOutput().ToStringOutput(),
+//				MulticastConsumerAssociation:       consumerAssociation.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

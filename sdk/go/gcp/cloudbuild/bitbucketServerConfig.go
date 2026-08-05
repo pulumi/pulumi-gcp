@@ -142,13 +142,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      vpcNetwork.ID(),
+//				Network:      vpcNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_default, err := servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
-//				Network: vpcNetwork.ID(),
+//				Network: vpcNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,
@@ -170,14 +170,11 @@ import (
 //				},
 //				Username: pulumi.String("test"),
 //				ApiKey:   pulumi.String("<api-key>"),
-//				PeeredNetwork: pulumi.String(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
-//					Text:    vpcNetwork.ID(),
+//				PeeredNetwork: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+//					Text:    vpcNetwork.ID().ToIDOutput().ToStringOutput(),
 //					Search:  pulumi.String(project.Name),
 //					Replace: pulumi.String(project.Number),
-//				}, nil).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				SslCa: pulumi.String("-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\n-----END CERTIFICATE-----\n"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,

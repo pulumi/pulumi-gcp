@@ -15,6 +15,16 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BigQueryExportEntityGraphSettingsArgs',
+    'BigQueryExportEntityGraphSettingsArgsDict',
+    'BigQueryExportIocMatchesSettingsArgs',
+    'BigQueryExportIocMatchesSettingsArgsDict',
+    'BigQueryExportRuleDetectionsSettingsArgs',
+    'BigQueryExportRuleDetectionsSettingsArgsDict',
+    'BigQueryExportUdmEventsAggregatesSettingsArgs',
+    'BigQueryExportUdmEventsAggregatesSettingsArgsDict',
+    'BigQueryExportUdmEventsSettingsArgs',
+    'BigQueryExportUdmEventsSettingsArgsDict',
     'DashboardChartChartLayoutArgs',
     'DashboardChartChartLayoutArgsDict',
     'DashboardChartDashboardChartArgs',
@@ -588,6 +598,601 @@ __all__ = [
     'WatchlistWatchlistUserPreferencesArgs',
     'WatchlistWatchlistUserPreferencesArgsDict',
 ]
+
+class BigQueryExportEntityGraphSettingsArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the data source is enabled for export.
+    """
+    retention_days: pulumi.Input[_builtins.int]
+    """
+    The retention period for the data source in days.
+    """
+    data_freshness_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The data freshness of the given export which represents the time bucket at
+    which the latest event was exported.
+    """
+    data_volume: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The stored data volume of all the exports.
+    """
+    latest_export_job_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The latest export job state.
+    """
+
+@pulumi.input_type
+class BigQueryExportEntityGraphSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 retention_days: pulumi.Input[_builtins.int],
+                 data_freshness_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_export_job_state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the data source is enabled for export.
+        :param pulumi.Input[_builtins.int] retention_days: The retention period for the data source in days.
+        :param pulumi.Input[_builtins.str] data_freshness_time: (Output)
+               The data freshness of the given export which represents the time bucket at
+               which the latest event was exported.
+        :param pulumi.Input[_builtins.str] data_volume: (Output)
+               The stored data volume of all the exports.
+        :param pulumi.Input[_builtins.str] latest_export_job_state: (Output)
+               The latest export job state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+        if data_freshness_time is not None:
+            pulumi.set(__self__, "data_freshness_time", data_freshness_time)
+        if data_volume is not None:
+            pulumi.set(__self__, "data_volume", data_volume)
+        if latest_export_job_state is not None:
+            pulumi.set(__self__, "latest_export_job_state", latest_export_job_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the data source is enabled for export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        The retention period for the data source in days.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataFreshnessTime")
+    def data_freshness_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The data freshness of the given export which represents the time bucket at
+        which the latest event was exported.
+        """
+        return pulumi.get(self, "data_freshness_time")
+
+    @data_freshness_time.setter
+    def data_freshness_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_freshness_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataVolume")
+    def data_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The stored data volume of all the exports.
+        """
+        return pulumi.get(self, "data_volume")
+
+    @data_volume.setter
+    def data_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_volume", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestExportJobState")
+    def latest_export_job_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The latest export job state.
+        """
+        return pulumi.get(self, "latest_export_job_state")
+
+    @latest_export_job_state.setter
+    def latest_export_job_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_export_job_state", value)
+
+
+class BigQueryExportIocMatchesSettingsArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the data source is enabled for export.
+    """
+    retention_days: pulumi.Input[_builtins.int]
+    """
+    The retention period for the data source in days.
+    """
+    data_freshness_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The data freshness of the given export which represents the time bucket at
+    which the latest event was exported.
+    """
+    data_volume: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The stored data volume of all the exports.
+    """
+    latest_export_job_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The latest export job state.
+    """
+
+@pulumi.input_type
+class BigQueryExportIocMatchesSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 retention_days: pulumi.Input[_builtins.int],
+                 data_freshness_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_export_job_state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the data source is enabled for export.
+        :param pulumi.Input[_builtins.int] retention_days: The retention period for the data source in days.
+        :param pulumi.Input[_builtins.str] data_freshness_time: (Output)
+               The data freshness of the given export which represents the time bucket at
+               which the latest event was exported.
+        :param pulumi.Input[_builtins.str] data_volume: (Output)
+               The stored data volume of all the exports.
+        :param pulumi.Input[_builtins.str] latest_export_job_state: (Output)
+               The latest export job state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+        if data_freshness_time is not None:
+            pulumi.set(__self__, "data_freshness_time", data_freshness_time)
+        if data_volume is not None:
+            pulumi.set(__self__, "data_volume", data_volume)
+        if latest_export_job_state is not None:
+            pulumi.set(__self__, "latest_export_job_state", latest_export_job_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the data source is enabled for export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        The retention period for the data source in days.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataFreshnessTime")
+    def data_freshness_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The data freshness of the given export which represents the time bucket at
+        which the latest event was exported.
+        """
+        return pulumi.get(self, "data_freshness_time")
+
+    @data_freshness_time.setter
+    def data_freshness_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_freshness_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataVolume")
+    def data_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The stored data volume of all the exports.
+        """
+        return pulumi.get(self, "data_volume")
+
+    @data_volume.setter
+    def data_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_volume", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestExportJobState")
+    def latest_export_job_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The latest export job state.
+        """
+        return pulumi.get(self, "latest_export_job_state")
+
+    @latest_export_job_state.setter
+    def latest_export_job_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_export_job_state", value)
+
+
+class BigQueryExportRuleDetectionsSettingsArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the data source is enabled for export.
+    """
+    retention_days: pulumi.Input[_builtins.int]
+    """
+    The retention period for the data source in days.
+    """
+    data_freshness_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The data freshness of the given export which represents the time bucket at
+    which the latest event was exported.
+    """
+    data_volume: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The stored data volume of all the exports.
+    """
+    latest_export_job_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The latest export job state.
+    """
+
+@pulumi.input_type
+class BigQueryExportRuleDetectionsSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 retention_days: pulumi.Input[_builtins.int],
+                 data_freshness_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_export_job_state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the data source is enabled for export.
+        :param pulumi.Input[_builtins.int] retention_days: The retention period for the data source in days.
+        :param pulumi.Input[_builtins.str] data_freshness_time: (Output)
+               The data freshness of the given export which represents the time bucket at
+               which the latest event was exported.
+        :param pulumi.Input[_builtins.str] data_volume: (Output)
+               The stored data volume of all the exports.
+        :param pulumi.Input[_builtins.str] latest_export_job_state: (Output)
+               The latest export job state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+        if data_freshness_time is not None:
+            pulumi.set(__self__, "data_freshness_time", data_freshness_time)
+        if data_volume is not None:
+            pulumi.set(__self__, "data_volume", data_volume)
+        if latest_export_job_state is not None:
+            pulumi.set(__self__, "latest_export_job_state", latest_export_job_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the data source is enabled for export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        The retention period for the data source in days.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataFreshnessTime")
+    def data_freshness_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The data freshness of the given export which represents the time bucket at
+        which the latest event was exported.
+        """
+        return pulumi.get(self, "data_freshness_time")
+
+    @data_freshness_time.setter
+    def data_freshness_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_freshness_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataVolume")
+    def data_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The stored data volume of all the exports.
+        """
+        return pulumi.get(self, "data_volume")
+
+    @data_volume.setter
+    def data_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_volume", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestExportJobState")
+    def latest_export_job_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The latest export job state.
+        """
+        return pulumi.get(self, "latest_export_job_state")
+
+    @latest_export_job_state.setter
+    def latest_export_job_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_export_job_state", value)
+
+
+class BigQueryExportUdmEventsAggregatesSettingsArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the data source is enabled for export.
+    """
+    retention_days: pulumi.Input[_builtins.int]
+    """
+    The retention period for the data source in days.
+    """
+    data_freshness_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The data freshness of the given export which represents the time bucket at
+    which the latest event was exported.
+    """
+    data_volume: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The stored data volume of all the exports.
+    """
+    latest_export_job_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The latest export job state.
+    """
+
+@pulumi.input_type
+class BigQueryExportUdmEventsAggregatesSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 retention_days: pulumi.Input[_builtins.int],
+                 data_freshness_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_export_job_state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the data source is enabled for export.
+        :param pulumi.Input[_builtins.int] retention_days: The retention period for the data source in days.
+        :param pulumi.Input[_builtins.str] data_freshness_time: (Output)
+               The data freshness of the given export which represents the time bucket at
+               which the latest event was exported.
+        :param pulumi.Input[_builtins.str] data_volume: (Output)
+               The stored data volume of all the exports.
+        :param pulumi.Input[_builtins.str] latest_export_job_state: (Output)
+               The latest export job state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+        if data_freshness_time is not None:
+            pulumi.set(__self__, "data_freshness_time", data_freshness_time)
+        if data_volume is not None:
+            pulumi.set(__self__, "data_volume", data_volume)
+        if latest_export_job_state is not None:
+            pulumi.set(__self__, "latest_export_job_state", latest_export_job_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the data source is enabled for export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        The retention period for the data source in days.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataFreshnessTime")
+    def data_freshness_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The data freshness of the given export which represents the time bucket at
+        which the latest event was exported.
+        """
+        return pulumi.get(self, "data_freshness_time")
+
+    @data_freshness_time.setter
+    def data_freshness_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_freshness_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataVolume")
+    def data_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The stored data volume of all the exports.
+        """
+        return pulumi.get(self, "data_volume")
+
+    @data_volume.setter
+    def data_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_volume", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestExportJobState")
+    def latest_export_job_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The latest export job state.
+        """
+        return pulumi.get(self, "latest_export_job_state")
+
+    @latest_export_job_state.setter
+    def latest_export_job_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_export_job_state", value)
+
+
+class BigQueryExportUdmEventsSettingsArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the data source is enabled for export.
+    """
+    retention_days: pulumi.Input[_builtins.int]
+    """
+    The retention period for the data source in days.
+    """
+    data_freshness_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The data freshness of the given export which represents the time bucket at
+    which the latest event was exported.
+    """
+    data_volume: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The stored data volume of all the exports.
+    """
+    latest_export_job_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The latest export job state.
+    """
+
+@pulumi.input_type
+class BigQueryExportUdmEventsSettingsArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 retention_days: pulumi.Input[_builtins.int],
+                 data_freshness_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_volume: pulumi.Input[Optional[_builtins.str]] = None,
+                 latest_export_job_state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the data source is enabled for export.
+        :param pulumi.Input[_builtins.int] retention_days: The retention period for the data source in days.
+        :param pulumi.Input[_builtins.str] data_freshness_time: (Output)
+               The data freshness of the given export which represents the time bucket at
+               which the latest event was exported.
+        :param pulumi.Input[_builtins.str] data_volume: (Output)
+               The stored data volume of all the exports.
+        :param pulumi.Input[_builtins.str] latest_export_job_state: (Output)
+               The latest export job state.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "retention_days", retention_days)
+        if data_freshness_time is not None:
+            pulumi.set(__self__, "data_freshness_time", data_freshness_time)
+        if data_volume is not None:
+            pulumi.set(__self__, "data_volume", data_volume)
+        if latest_export_job_state is not None:
+            pulumi.set(__self__, "latest_export_job_state", latest_export_job_state)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the data source is enabled for export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        The retention period for the data source in days.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataFreshnessTime")
+    def data_freshness_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The data freshness of the given export which represents the time bucket at
+        which the latest event was exported.
+        """
+        return pulumi.get(self, "data_freshness_time")
+
+    @data_freshness_time.setter
+    def data_freshness_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_freshness_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataVolume")
+    def data_volume(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The stored data volume of all the exports.
+        """
+        return pulumi.get(self, "data_volume")
+
+    @data_volume.setter
+    def data_volume(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "data_volume", value)
+
+    @_builtins.property
+    @pulumi.getter(name="latestExportJobState")
+    def latest_export_job_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The latest export job state.
+        """
+        return pulumi.get(self, "latest_export_job_state")
+
+    @latest_export_job_state.setter
+    def latest_export_job_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "latest_export_job_state", value)
+
 
 class DashboardChartChartLayoutArgsDict(TypedDict):
     span_x: pulumi.Input[_builtins.int]

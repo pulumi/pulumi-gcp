@@ -89,6 +89,34 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ * ### Bigquery Routine Table Type
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.bigquery.Dataset("test", {datasetId: "dataset_id"});
+ * const sproc = new gcp.bigquery.Routine("sproc", {
+ *     datasetId: test.datasetId,
+ *     routineId: "routine_id",
+ *     routineType: "TABLE_VALUED_FUNCTION",
+ *     language: "SQL",
+ *     description: "Gets every row from a table.",
+ *     definitionBody: "SELECT * FROM t1",
+ *     arguments: [{
+ *         name: "t1",
+ *         argumentKind: "FIXED_TABLE",
+ *         tableType: {
+ *             columns: [{
+ *                 name: "year",
+ *                 type: JSON.stringify({
+ *                     typeKind: "INT64",
+ *                 }),
+ *             }],
+ *         },
+ *     }],
+ * });
+ * ```
  * ### Bigquery Routine Pyspark
  *
  * ```typescript

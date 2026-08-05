@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = servicedirectory.NewService(ctx, "example", &servicedirectory.ServiceArgs{
 //				ServiceId: pulumi.String("example-service"),
-//				Namespace: example.ID(),
+//				Namespace: example.ID().ToIDOutput().ToStringOutput(),
 //				Metadata: pulumi.StringMap{
 //					"stage":  pulumi.String("prod"),
 //					"region": pulumi.String("us-central1"),

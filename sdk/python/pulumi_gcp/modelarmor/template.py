@@ -483,6 +483,32 @@ class Template(pulumi.CustomResource):
                 "custom_prompt_safety_error_message": "This is a custom error message for prompt",
                 "custom_llm_response_safety_error_code": 401,
                 "enforcement_type": "INSPECT_ONLY",
+                "filter_version_selector": {
+                    "alias": "FILTER_VERSION_ALIAS_LATEST",
+                },
+            })
+        ```
+        ### Modelarmor Template Filter Version Selector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_filter_version_selector = gcp.modelarmor.Template("template-filter-version-selector",
+            location="us-central1",
+            template_id="modelarmor5",
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "HATE_SPEECH",
+                        "confidence_level": "HIGH",
+                    }],
+                },
+            },
+            template_metadata={
+                "filter_version_selector": {
+                    "version": "v1",
+                },
             })
         ```
         ### Modelarmor Template Label
@@ -645,6 +671,32 @@ class Template(pulumi.CustomResource):
                 "custom_prompt_safety_error_message": "This is a custom error message for prompt",
                 "custom_llm_response_safety_error_code": 401,
                 "enforcement_type": "INSPECT_ONLY",
+                "filter_version_selector": {
+                    "alias": "FILTER_VERSION_ALIAS_LATEST",
+                },
+            })
+        ```
+        ### Modelarmor Template Filter Version Selector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        template_filter_version_selector = gcp.modelarmor.Template("template-filter-version-selector",
+            location="us-central1",
+            template_id="modelarmor5",
+            filter_config={
+                "rai_settings": {
+                    "rai_filters": [{
+                        "filter_type": "HATE_SPEECH",
+                        "confidence_level": "HIGH",
+                    }],
+                },
+            },
+            template_metadata={
+                "filter_version_selector": {
+                    "version": "v1",
+                },
             })
         ```
         ### Modelarmor Template Label

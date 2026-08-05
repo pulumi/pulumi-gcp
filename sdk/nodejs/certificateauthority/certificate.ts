@@ -116,7 +116,7 @@ import * as utilities from "../utilities";
  *             format: "PEM",
  *             key: std.base64encodeOutput({
  *                 input: certKey.publicKeyPem,
- *             }).apply(invoke => invoke.result),
+ *             }).result,
  *         },
  *     },
  * });

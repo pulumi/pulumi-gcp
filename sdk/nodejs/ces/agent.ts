@@ -156,7 +156,7 @@ import * as utilities from "../utilities";
  *         toolset: cesToolsetForAgent.id,
  *         toolIds: ["testtoolid"],
  *     }],
- *     childAgents: [pulumi.all([cesAppForAgent.project, cesAppForAgent.appId, cesChildAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`)],
+ *     childAgents: [pulumi.interpolate`projects/${cesAppForAgent.project}/locations/us/apps/${cesAppForAgent.appId}/agents/${cesChildAgent.agentId}`],
  *     llmAgent: {},
  * });
  * ```

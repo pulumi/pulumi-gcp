@@ -27,6 +27,7 @@ __all__ = [
     'EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock',
     'EnvironmentConfigNodeConfig',
     'EnvironmentConfigNodeConfigIpAllocationPolicy',
+    'EnvironmentConfigNodeConfigTrafficRoutingConfig',
     'EnvironmentConfigPrivateEnvironmentConfig',
     'EnvironmentConfigRecoveryConfig',
     'EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig',
@@ -53,6 +54,7 @@ __all__ = [
     'GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult',
     'GetEnvironmentConfigNodeConfigResult',
     'GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
+    'GetEnvironmentConfigNodeConfigTrafficRoutingConfigResult',
     'GetEnvironmentConfigPrivateEnvironmentConfigResult',
     'GetEnvironmentConfigRecoveryConfigResult',
     'GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfigResult',
@@ -780,6 +782,8 @@ class EnvironmentConfigNodeConfig(dict):
             suggest = "oauth_scopes"
         elif key == "serviceAccount":
             suggest = "service_account"
+        elif key == "trafficRoutingConfig":
+            suggest = "traffic_routing_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -805,6 +809,7 @@ class EnvironmentConfigNodeConfig(dict):
                  service_account: Optional[_builtins.str] = None,
                  subnetwork: Optional[_builtins.str] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
+                 traffic_routing_config: Optional['outputs.EnvironmentConfigNodeConfigTrafficRoutingConfig'] = None,
                  zone: Optional[_builtins.str] = None):
         """
         :param _builtins.str composer_internal_ipv4_cidr_block: IPv4 cidr range that will be used by Composer internal components.
@@ -819,6 +824,7 @@ class EnvironmentConfigNodeConfig(dict):
         :param _builtins.str service_account: The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
         :param _builtins.str subnetwork: The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+        :param 'EnvironmentConfigNodeConfigTrafficRoutingConfigArgs' traffic_routing_config: Traffic routing configuration for Cloud Composer environment.
         :param _builtins.str zone: The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         if composer_internal_ipv4_cidr_block is not None:
@@ -845,6 +851,8 @@ class EnvironmentConfigNodeConfig(dict):
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if traffic_routing_config is not None:
+            pulumi.set(__self__, "traffic_routing_config", traffic_routing_config)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -945,6 +953,14 @@ class EnvironmentConfigNodeConfig(dict):
         return pulumi.get(self, "tags")
 
     @_builtins.property
+    @pulumi.getter(name="trafficRoutingConfig")
+    def traffic_routing_config(self) -> Optional['outputs.EnvironmentConfigNodeConfigTrafficRoutingConfig']:
+        """
+        Traffic routing configuration for Cloud Composer environment.
+        """
+        return pulumi.get(self, "traffic_routing_config")
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> Optional[_builtins.str]:
         """
@@ -1043,6 +1059,42 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
         Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
         """
         return pulumi.get(self, "use_ip_aliases")
+
+
+@pulumi.output_type
+class EnvironmentConfigNodeConfigTrafficRoutingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRunFunctionsRouting":
+            suggest = "cloud_run_functions_routing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigNodeConfigTrafficRoutingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigNodeConfigTrafficRoutingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigNodeConfigTrafficRoutingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_run_functions_routing: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cloud_run_functions_routing: Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+        """
+        if cloud_run_functions_routing is not None:
+            pulumi.set(__self__, "cloud_run_functions_routing", cloud_run_functions_routing)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudRunFunctionsRouting")
+    def cloud_run_functions_routing(self) -> Optional[_builtins.str]:
+        """
+        Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+        """
+        return pulumi.get(self, "cloud_run_functions_routing")
 
 
 @pulumi.output_type
@@ -2469,6 +2521,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
                  service_account: _builtins.str,
                  subnetwork: _builtins.str,
                  tags: Sequence[_builtins.str],
+                 traffic_routing_configs: Sequence['outputs.GetEnvironmentConfigNodeConfigTrafficRoutingConfigResult'],
                  zone: _builtins.str):
         """
         :param _builtins.str composer_internal_ipv4_cidr_block: IPv4 cidr range that will be used by Composer internal components.
@@ -2483,6 +2536,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
         :param _builtins.str service_account: The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated. If given, note that the service account must have roles/composer.worker for any GCP resources created under the Cloud Composer Environment.
         :param _builtins.str subnetwork: The Compute Engine subnetwork to be used for machine communications, specified as a self-link, relative resource name (e.g. "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided, network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
         :param Sequence[_builtins.str] tags: The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
+        :param Sequence['GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs'] traffic_routing_configs: Traffic routing configuration for Cloud Composer environment.
         :param _builtins.str zone: The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         pulumi.set(__self__, "composer_internal_ipv4_cidr_block", composer_internal_ipv4_cidr_block)
@@ -2497,6 +2551,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "traffic_routing_configs", traffic_routing_configs)
         pulumi.set(__self__, "zone", zone)
 
     @_builtins.property
@@ -2596,6 +2651,14 @@ class GetEnvironmentConfigNodeConfigResult(dict):
         return pulumi.get(self, "tags")
 
     @_builtins.property
+    @pulumi.getter(name="trafficRoutingConfigs")
+    def traffic_routing_configs(self) -> Sequence['outputs.GetEnvironmentConfigNodeConfigTrafficRoutingConfigResult']:
+        """
+        Traffic routing configuration for Cloud Composer environment.
+        """
+        return pulumi.get(self, "traffic_routing_configs")
+
+    @_builtins.property
     @pulumi.getter
     def zone(self) -> _builtins.str:
         """
@@ -2664,6 +2727,24 @@ class GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(dict):
         Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ip_allocation_policy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
         """
         return pulumi.get(self, "use_ip_aliases")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigNodeConfigTrafficRoutingConfigResult(dict):
+    def __init__(__self__, *,
+                 cloud_run_functions_routing: _builtins.str):
+        """
+        :param _builtins.str cloud_run_functions_routing: Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+        """
+        pulumi.set(__self__, "cloud_run_functions_routing", cloud_run_functions_routing)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudRunFunctionsRouting")
+    def cloud_run_functions_routing(self) -> _builtins.str:
+        """
+        Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+        """
+        return pulumi.get(self, "cloud_run_functions_routing")
 
 
 @pulumi.output_type

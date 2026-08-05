@@ -58,7 +58,7 @@ import (
 //			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 //				Name:                pulumi.String("test-composite-health-check-bs"),
 //				Region:              pulumi.String("us-central1"),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //			})
 //			if err != nil {
@@ -68,8 +68,8 @@ import (
 //				Name:                    pulumi.String("test-composite-health-check-hs"),
 //				Region:                  pulumi.String("us-central1"),
 //				SourceType:              pulumi.String("BACKEND_SERVICE"),
-//				Sources:                 defaultRegionBackendService.ID(),
-//				HealthAggregationPolicy: hap.ID(),
+//				Sources:                 defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				HealthAggregationPolicy: hap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -85,7 +85,7 @@ import (
 //				Name:        pulumi.String("test-composite-health-check-sub"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -94,9 +94,9 @@ import (
 //				Name:                pulumi.String("test-composite-health-check-fr"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				BackendService:      defaultRegionBackendService.ID(),
-//				Network:             defaultNetwork.ID(),
-//				Subnetwork:          defaultSubnetwork.ID(),
+//				BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
+//				Network:             defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				IpProtocol:          pulumi.String("TCP"),
 //				AllPorts:            pulumi.Bool(true),
 //			})
@@ -108,9 +108,9 @@ import (
 //				Description: pulumi.String("test regional composite health check resource"),
 //				Region:      pulumi.String("us-central1"),
 //				HealthSources: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				HealthDestination: defaultForwardingRule.ID(),
+//				HealthDestination: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxEntityType(ctx, "basic_entity_type", &diagflow.CxEntityTypeArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyEntity"),
 //				Kind:        pulumi.String("KIND_MAP"),
 //				Entities: diagflow.CxEntityTypeEntityArray{

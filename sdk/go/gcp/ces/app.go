@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			fakeSecretVersion, err := secretmanager.NewSecretVersion(ctx, "fake_secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     fakePrivateKeySecret.ID(),
+//				Secret:     fakePrivateKeySecret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
@@ -74,8 +74,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"SimpleString": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"SimpleString": map[string]string{
 //					"type":        "STRING",
 //					"description": "A simple string definition",
 //				},
@@ -84,8 +84,8 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON1, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "STRING",
 //					"description": "any_of option 1: string",
 //				},
@@ -99,8 +99,8 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON3, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "ARRAY",
 //					"description": "prefix item 1",
 //				},
@@ -109,15 +109,15 @@ import (
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"type": "BOOLEAN",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
-//				"name": map[string]interface{}{
+//			tmpJSON5, err := json.Marshal(map[string]map[string]string{
+//				"name": map[string]string{
 //					"type":        "STRING",
 //					"description": "A name",
 //				},
@@ -126,7 +126,7 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//			tmpJSON6, err := json.Marshal(map[string]string{
 //				"type":        "ARRAY",
 //				"description": "An array",
 //			})
@@ -293,8 +293,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"SimpleString": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]string{
+//				"SimpleString": map[string]string{
 //					"type":        "STRING",
 //					"description": "A simple string definition",
 //				},
@@ -303,8 +303,8 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON1, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "STRING",
 //					"description": "any_of option 1: string",
 //				},
@@ -318,8 +318,8 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON3, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "ARRAY",
 //					"description": "prefix item 1",
 //				},
@@ -328,15 +328,15 @@ import (
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"type": "BOOLEAN",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal(map[string]interface{}{
-//				"name": map[string]interface{}{
+//			tmpJSON5, err := json.Marshal(map[string]map[string]string{
+//				"name": map[string]string{
 //					"type":        "STRING",
 //					"description": "A name",
 //				},
@@ -345,7 +345,7 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
+//			tmpJSON6, err := json.Marshal(map[string]string{
 //				"type":        "ARRAY",
 //				"description": "An array",
 //			})

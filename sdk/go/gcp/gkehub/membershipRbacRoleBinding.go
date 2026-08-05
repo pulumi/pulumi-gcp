@@ -58,7 +58,7 @@ import (
 //				MembershipId: pulumi.String("tf-test-membership_90221"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-//						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
+//						ResourceLink: primary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:vectorsearch/collection:Collection":
 		r = &Collection{}
+	case "gcp:vectorsearch/dataObject:DataObject":
+		r = &DataObject{}
 	case "gcp:vectorsearch/index:Index":
 		r = &Index{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vectorsearch/collection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vectorsearch/dataObject",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

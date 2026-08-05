@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  *     description: "The default dns",
  *     domain: "subdomain.hashicorptest.com",
  * });
- * export const recordNameToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].name);
- * export const recordTypeToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].type);
- * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
+ * export const recordNameToInsert = _default.dnsResourceRecords[0].name;
+ * export const recordTypeToInsert = _default.dnsResourceRecords[0].type;
+ * export const recordDataToInsert = _default.dnsResourceRecords[0].data;
  * ```
  * ### Certificate Manager Dns Authorization Regional
  *

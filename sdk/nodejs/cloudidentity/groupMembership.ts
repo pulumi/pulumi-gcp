@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloud_identity_group_membership_basic", {
  *     group: group.id,
  *     preferredMemberKey: {
- *         id: child_group.groupKey.apply(groupKey => groupKey.id),
+ *         id: child_group.groupKey.id,
  *     },
  *     roles: [{
  *         name: "MEMBER",

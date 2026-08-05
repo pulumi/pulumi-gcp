@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * });
  * const projectAccessApproval = new gcp.projects.AccessApprovalSettings("project_access_approval", {
  *     projectId: "my-project-name",
- *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+ *     activeKeyVersion: cryptoKeyVersion.name,
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],

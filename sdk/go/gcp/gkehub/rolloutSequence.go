@@ -29,14 +29,55 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("rs-project"),
+//				Name:           pulumi.String("rs-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gkehub2, err := projects.NewService(ctx, "gkehub", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("gkehub.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// wait for API enablement
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gkehub2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := gkehub.NewFleet(ctx, "default", &gkehub.FleetArgs{
+//				DisplayName: pulumi.String("rs-fleet"),
+//				Project:     project.ProjectId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//				Project:           project.ProjectId,
 //				RolloutSequenceId: pulumi.String("rs-basic"),
 //				DisplayName:       pulumi.String("Basic Rollout Sequence"),
 //				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
@@ -45,7 +86,9 @@ import (
 //				Stages: gkehub.RolloutSequenceStageArray{
 //					&gkehub.RolloutSequenceStageArgs{
 //						FleetProjects: pulumi.StringArray{
-//							pulumi.String("projects/my-project-name"),
+//							project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//								return fmt.Sprintf("projects/%v", projectId), nil
+//							}).(pulumi.StringOutput),
 //						},
 //						SoakDuration: pulumi.String("1h"),
 //					},
@@ -60,7 +103,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -76,14 +121,55 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("rs-project"),
+//				Name:           pulumi.String("rs-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			gkehub2, err := projects.NewService(ctx, "gkehub", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("gkehub.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// wait for API enablement
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gkehub2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := gkehub.NewFleet(ctx, "default", &gkehub.FleetArgs{
+//				DisplayName: pulumi.String("rs-fleet"),
+//				Project:     project.ProjectId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//				Project:           project.ProjectId,
 //				RolloutSequenceId: pulumi.String("rs-basic"),
 //				DisplayName:       pulumi.String("Modified Rollout Sequence"),
 //				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
@@ -92,7 +178,9 @@ import (
 //				Stages: gkehub.RolloutSequenceStageArray{
 //					&gkehub.RolloutSequenceStageArgs{
 //						FleetProjects: pulumi.StringArray{
-//							pulumi.String("projects/my-project-name"),
+//							project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//								return fmt.Sprintf("projects/%v", projectId), nil
+//							}).(pulumi.StringOutput),
 //						},
 //						ClusterSelector: &gkehub.RolloutSequenceStageClusterSelectorArgs{
 //							LabelSelector: pulumi.String("resource.labels.canary=='true'"),
@@ -101,7 +189,9 @@ import (
 //					},
 //					&gkehub.RolloutSequenceStageArgs{
 //						FleetProjects: pulumi.StringArray{
-//							pulumi.String("projects/my-project-name"),
+//							project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//								return fmt.Sprintf("projects/%v", projectId), nil
+//							}).(pulumi.StringOutput),
 //						},
 //						SoakDuration: pulumi.String("1d"),
 //					},
@@ -117,7 +207,150 @@ import (
 //				Labels: pulumi.StringMap{
 //					"some_key": pulumi.String("some_value"),
 //				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gke Hub Rollout Sequence User Triggered Create
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("rs-project"),
+//				Name:           pulumi.String("rs-project"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//				DeletionPolicy: pulumi.String("DELETE"),
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			// Enable APIs in a deterministic order to avoid inconsistent VCR recordings
+//			gkehub2, err := projects.NewService(ctx, "gkehub", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("gkehub.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			container2, err := projects.NewService(ctx, "container", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("container.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				gkehub2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			compute, err := projects.NewService(ctx, "compute", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("compute.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				container2,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// wait for API enablement
+//			wait120Seconds, err := time.NewSleep(ctx, "wait_120_seconds", &time.SleepArgs{
+//				CreateDuration: pulumi.String("120s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				compute,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := gkehub.NewFleet(ctx, "default", &gkehub.FleetArgs{
+//				DisplayName: pulumi.String("rs-fleet"),
+//				Project:     project.ProjectId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait120Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			versions := container.GetEngineVersionsOutput(ctx, container.GetEngineVersionsOutputArgs{
+//				Location: pulumi.String("us-central1-a"),
+//				Project:  project.ProjectId,
+//			}, nil)
+//			primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Project:          project.ProjectId,
+//				Name:             pulumi.String("rs-cluster"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//				MinMasterVersion: versions.ApplyT(func(versions container.GetEngineVersionsResult) (*string, error) {
+//					return &versions.ReleaseChannelDefaultVersion.REGULAR, nil
+//				}).(pulumi.StringPtrOutput),
+//				NodeVersion: versions.ApplyT(func(versions container.GetEngineVersionsResult) (*string, error) {
+//					return &versions.ReleaseChannelDefaultVersion.REGULAR, nil
+//				}).(pulumi.StringPtrOutput),
+//				DeletionProtection: pulumi.Bool(false),
+//				ReleaseChannel: &container.ClusterReleaseChannelArgs{
+//					Channel: pulumi.String("REGULAR"),
+//				},
+//				ResourceLabels: pulumi.StringMap{
+//					"rs_test_cluster": pulumi.String("tf-test-_25601"),
+//				},
+//				Fleet: &container.ClusterFleetArgs{
+//					Project: project.Number,
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewRolloutSequence(ctx, "rollout_sequence", &gkehub.RolloutSequenceArgs{
+//				Project:           project.ProjectId,
+//				RolloutSequenceId: pulumi.String("rs-user-triggered"),
+//				DisplayName:       pulumi.String("User Triggered Rollout Sequence"),
+//				MinControlPlaneVersion: versions.ApplyT(func(versions container.GetEngineVersionsResult) (*string, error) {
+//					return &versions.ReleaseChannelLatestVersion.REGULAR, nil
+//				}).(pulumi.StringPtrOutput),
+//				IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
+//					LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')"),
+//				},
+//				Stages: gkehub.RolloutSequenceStageArray{
+//					&gkehub.RolloutSequenceStageArgs{
+//						FleetProjects: pulumi.StringArray{
+//							project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//								return fmt.Sprintf("projects/%v", projectId), nil
+//							}).(pulumi.StringOutput),
+//						},
+//						SoakDuration: pulumi.String("30s"),
+//					},
+//				},
+//				AutoUpgradeConfig: &gkehub.RolloutSequenceAutoUpgradeConfigArgs{
+//					RolloutCreationScope: &gkehub.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{
+//						UpgradeTypes: pulumi.StringArray{},
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primary,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -174,8 +407,27 @@ type RolloutSequence struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Minimum control plane version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinControlPlaneVersion pulumi.StringPtrOutput `pulumi:"minControlPlaneVersion"`
+	// Minimum node version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinNodeVersion pulumi.StringPtrOutput `pulumi:"minNodeVersion"`
 	// The full resource name of the RolloutSequence.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The operational state of the rollout sequence.
+	// Structure is documented below.
+	OperationalStates RolloutSequenceOperationalStateArrayOutput `pulumi:"operationalStates"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -187,6 +439,10 @@ type RolloutSequence struct {
 	// Ordered list of stages that constitute this Rollout Sequence.
 	// Structure is documented below.
 	Stages RolloutSequenceStageArrayOutput `pulumi:"stages"`
+	// The current target control plane version.
+	TargetControlPlaneVersion pulumi.StringOutput `pulumi:"targetControlPlaneVersion"`
+	// The current target node version.
+	TargetNodeVersion pulumi.StringOutput `pulumi:"targetNodeVersion"`
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The timestamp at which the Rollout Sequence was last updated.
@@ -263,8 +519,27 @@ type rolloutSequenceState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Minimum control plane version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinControlPlaneVersion *string `pulumi:"minControlPlaneVersion"`
+	// Minimum node version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinNodeVersion *string `pulumi:"minNodeVersion"`
 	// The full resource name of the RolloutSequence.
 	Name *string `pulumi:"name"`
+	// The operational state of the rollout sequence.
+	// Structure is documented below.
+	OperationalStates []RolloutSequenceOperationalState `pulumi:"operationalStates"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -276,6 +551,10 @@ type rolloutSequenceState struct {
 	// Ordered list of stages that constitute this Rollout Sequence.
 	// Structure is documented below.
 	Stages []RolloutSequenceStage `pulumi:"stages"`
+	// The current target control plane version.
+	TargetControlPlaneVersion *string `pulumi:"targetControlPlaneVersion"`
+	// The current target node version.
+	TargetNodeVersion *string `pulumi:"targetNodeVersion"`
 	// Google-generated UUID for this resource.
 	Uid *string `pulumi:"uid"`
 	// The timestamp at which the Rollout Sequence was last updated.
@@ -312,8 +591,27 @@ type RolloutSequenceState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Minimum control plane version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinControlPlaneVersion pulumi.StringPtrInput
+	// Minimum node version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinNodeVersion pulumi.StringPtrInput
 	// The full resource name of the RolloutSequence.
 	Name pulumi.StringPtrInput
+	// The operational state of the rollout sequence.
+	// Structure is documented below.
+	OperationalStates RolloutSequenceOperationalStateArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -325,6 +623,10 @@ type RolloutSequenceState struct {
 	// Ordered list of stages that constitute this Rollout Sequence.
 	// Structure is documented below.
 	Stages RolloutSequenceStageArrayInput
+	// The current target control plane version.
+	TargetControlPlaneVersion pulumi.StringPtrInput
+	// The current target node version.
+	TargetNodeVersion pulumi.StringPtrInput
 	// Google-generated UUID for this resource.
 	Uid pulumi.StringPtrInput
 	// The timestamp at which the Rollout Sequence was last updated.
@@ -357,6 +659,22 @@ type rolloutSequenceArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Minimum control plane version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinControlPlaneVersion *string `pulumi:"minControlPlaneVersion"`
+	// Minimum node version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinNodeVersion *string `pulumi:"minNodeVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -390,6 +708,22 @@ type RolloutSequenceArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Minimum control plane version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinControlPlaneVersion pulumi.StringPtrInput
+	// Minimum node version that the clusters in the sequence should be upgraded to.
+	// Setting this field will cause the creation of a rollout to the specified version.
+	// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+	// Should be a valid [semantic version](https://semver.org/).
+	// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+	// Note that the `latest` and `-` aliases are not supported for this field.
+	// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+	MinNodeVersion pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -545,9 +879,37 @@ func (o RolloutSequenceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Minimum control plane version that the clusters in the sequence should be upgraded to.
+// Setting this field will cause the creation of a rollout to the specified version.
+// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+// Should be a valid [semantic version](https://semver.org/).
+// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+// Note that the `latest` and `-` aliases are not supported for this field.
+// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+func (o RolloutSequenceOutput) MinControlPlaneVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSequence) pulumi.StringPtrOutput { return v.MinControlPlaneVersion }).(pulumi.StringPtrOutput)
+}
+
+// Minimum node version that the clusters in the sequence should be upgraded to.
+// Setting this field will cause the creation of a rollout to the specified version.
+// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+// Should be a valid [semantic version](https://semver.org/).
+// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+// Note that the `latest` and `-` aliases are not supported for this field.
+// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+func (o RolloutSequenceOutput) MinNodeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RolloutSequence) pulumi.StringPtrOutput { return v.MinNodeVersion }).(pulumi.StringPtrOutput)
+}
+
 // The full resource name of the RolloutSequence.
 func (o RolloutSequenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The operational state of the rollout sequence.
+// Structure is documented below.
+func (o RolloutSequenceOutput) OperationalStates() RolloutSequenceOperationalStateArrayOutput {
+	return o.ApplyT(func(v *RolloutSequence) RolloutSequenceOperationalStateArrayOutput { return v.OperationalStates }).(RolloutSequenceOperationalStateArrayOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -572,6 +934,16 @@ func (o RolloutSequenceOutput) RolloutSequenceId() pulumi.StringOutput {
 // Structure is documented below.
 func (o RolloutSequenceOutput) Stages() RolloutSequenceStageArrayOutput {
 	return o.ApplyT(func(v *RolloutSequence) RolloutSequenceStageArrayOutput { return v.Stages }).(RolloutSequenceStageArrayOutput)
+}
+
+// The current target control plane version.
+func (o RolloutSequenceOutput) TargetControlPlaneVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.TargetControlPlaneVersion }).(pulumi.StringOutput)
+}
+
+// The current target node version.
+func (o RolloutSequenceOutput) TargetNodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.TargetNodeVersion }).(pulumi.StringOutput)
 }
 
 // Google-generated UUID for this resource.

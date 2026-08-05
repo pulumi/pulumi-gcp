@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     networkEndpointGroup: neg.name,
  *     instance: endpoint_instance.name,
  *     port: Number(neg.defaultPort),
- *     ipAddress: endpoint_instance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *     ipAddress: endpoint_instance.networkInterfaces[0].networkIp,
  * });
  * const group = new gcp.compute.NetworkEndpointGroup("group", {
  *     name: "my-lb-neg",

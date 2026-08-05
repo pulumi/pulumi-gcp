@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     mysql: {
- *         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: sourceCsql.ipAddresses[0].ipAddress,
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,
@@ -154,7 +154,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     postgresql: {
- *         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: sourceCsql.ipAddresses[0].ipAddress,
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,
@@ -241,7 +241,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     postgresql: {
- *         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: sourceCsql.ipAddresses[0].ipAddress,
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,
@@ -349,7 +349,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     postgresql: {
- *         host: sourceCsql.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: sourceCsql.ipAddresses[0].ipAddress,
  *         port: 3306,
  *         username: sourceSqldbUser.name,
  *         password: sourceSqldbUser.password,

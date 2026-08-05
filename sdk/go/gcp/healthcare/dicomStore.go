@@ -53,9 +53,9 @@ import (
 //			}
 //			_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 //				Name:    pulumi.String("example-dicom-store"),
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-//					PubsubTopic: topic.ID(),
+//					PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Labels: pulumi.StringMap{
 //					"label1": pulumi.String("labelvalue1"),
@@ -120,9 +120,9 @@ import (
 //			}
 //			_, err = healthcare.NewDicomStore(ctx, "default", &healthcare.DicomStoreArgs{
 //				Name:    pulumi.String("example-dicom-store"),
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
-//					PubsubTopic:       topic.ID(),
+//					PubsubTopic:       topic.ID().ToIDOutput().ToStringOutput(),
 //					SendForBulkImport: pulumi.Bool(true),
 //				},
 //				Labels: pulumi.StringMap{

@@ -77,14 +77,14 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
+//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
 //				Name:       pulumi.String("example-topic"),
-//				KmsKeyName: cryptoKey.ID(),
+//				KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -480,7 +480,7 @@ import (
 //				return err
 //			}
 //			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-//				Parent:    tagKey.ID(),
+//				Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
 //				ShortName: pulumi.String("tag_value"),
 //			})
 //			if err != nil {
@@ -490,7 +490,7 @@ import (
 //				Parent: example.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("//pubsub.googleapis.com/projects/%v/topics/%v", project.Number, name), nil
 //				}).(pulumi.StringOutput),
-//				TagValue: tagValue.ID(),
+//				TagValue: tagValue.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

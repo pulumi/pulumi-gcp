@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     instance: defaultInstance.selfLink,
  *     port: 80,
- *     ipAddress: defaultInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *     ipAddress: defaultInstance.networkInterfaces[0].networkIp,
  *     clientDestinationPort: 8080,
  * });
  * ```

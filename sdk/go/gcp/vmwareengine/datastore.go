@@ -171,7 +171,7 @@ import (
 //				Description: pulumi.String("example google_file_service.netapp datastore."),
 //				NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 //					GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-//						NetappVolume: testVolume.ID(),
+//						NetappVolume: testVolume.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *     zone: windows.zone,
  *     port: 4,
  * });
- * export const serialOut = serial.apply(serial => serial.contents);
+ * export const serialOut = serial.contents;
  * ```
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {
@@ -180,7 +180,7 @@ export interface GetInstanceSerialPortResult {
  *     zone: windows.zone,
  *     port: 4,
  * });
- * export const serialOut = serial.apply(serial => serial.contents);
+ * export const serialOut = serial.contents;
  * ```
  */
 export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceSerialPortResult> {

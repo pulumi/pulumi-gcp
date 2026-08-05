@@ -159,6 +159,10 @@ __all__ = [
     'ReservationReplicationStatusErrorArgsDict',
     'RoutineArgumentArgs',
     'RoutineArgumentArgsDict',
+    'RoutineArgumentTableTypeArgs',
+    'RoutineArgumentTableTypeArgsDict',
+    'RoutineArgumentTableTypeColumnArgs',
+    'RoutineArgumentTableTypeColumnArgsDict',
     'RoutineExternalRuntimeOptionsArgs',
     'RoutineExternalRuntimeOptionsArgsDict',
     'RoutineIamBindingConditionArgs',
@@ -5992,7 +5996,7 @@ class RoutineArgumentArgsDict(TypedDict):
     """
     Defaults to FIXED_TYPE.
     Default value is `FIXED_TYPE`.
-    Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+    Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
     """
     data_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -6013,6 +6017,11 @@ class RoutineArgumentArgsDict(TypedDict):
     """
     The name of this argument. Can be absent for function return argument.
     """
+    table_type: NotRequired[pulumi.Input[Optional['RoutineArgumentTableTypeArgsDict']]]
+    """
+    If argumentKind is FIXED_TABLE, a schema for the table type.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class RoutineArgumentArgs:
@@ -6020,11 +6029,12 @@ class RoutineArgumentArgs:
                  argument_kind: pulumi.Input[Optional[_builtins.str]] = None,
                  data_type: pulumi.Input[Optional[_builtins.str]] = None,
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_type: pulumi.Input[Optional['RoutineArgumentTableTypeArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] argument_kind: Defaults to FIXED_TYPE.
                Default value is `FIXED_TYPE`.
-               Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+               Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
         :param pulumi.Input[_builtins.str] data_type: A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
                ~>**NOTE**: Because this field expects a JSON string, any changes to the string
                will create a diff, even if the JSON itself hasn't changed. If the API returns
@@ -6035,6 +6045,8 @@ class RoutineArgumentArgs:
         :param pulumi.Input[_builtins.str] mode: Specifies whether the argument is input or output. Can be set for procedures only.
                Possible values are: `IN`, `OUT`, `INOUT`.
         :param pulumi.Input[_builtins.str] name: The name of this argument. Can be absent for function return argument.
+        :param pulumi.Input['RoutineArgumentTableTypeArgs'] table_type: If argumentKind is FIXED_TABLE, a schema for the table type.
+               Structure is documented below.
         """
         if argument_kind is not None:
             pulumi.set(__self__, "argument_kind", argument_kind)
@@ -6044,6 +6056,8 @@ class RoutineArgumentArgs:
             pulumi.set(__self__, "mode", mode)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if table_type is not None:
+            pulumi.set(__self__, "table_type", table_type)
 
     @_builtins.property
     @pulumi.getter(name="argumentKind")
@@ -6051,7 +6065,7 @@ class RoutineArgumentArgs:
         """
         Defaults to FIXED_TYPE.
         Default value is `FIXED_TYPE`.
-        Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+        Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
         """
         return pulumi.get(self, "argument_kind")
 
@@ -6101,6 +6115,118 @@ class RoutineArgumentArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tableType")
+    def table_type(self) -> pulumi.Input[Optional['RoutineArgumentTableTypeArgs']]:
+        """
+        If argumentKind is FIXED_TABLE, a schema for the table type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_type")
+
+    @table_type.setter
+    def table_type(self, value: pulumi.Input[Optional['RoutineArgumentTableTypeArgs']]):
+        pulumi.set(self, "table_type", value)
+
+
+class RoutineArgumentTableTypeArgsDict(TypedDict):
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RoutineArgumentTableTypeColumnArgsDict']]]]]
+    """
+    The columns in the table type.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class RoutineArgumentTableTypeArgs:
+    def __init__(__self__, *,
+                 columns: pulumi.Input[Optional[Sequence[pulumi.Input['RoutineArgumentTableTypeColumnArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentTableTypeColumnArgs']]] columns: The columns in the table type.
+               Structure is documented below.
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+
+    @_builtins.property
+    @pulumi.getter
+    def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RoutineArgumentTableTypeColumnArgs']]]]:
+        """
+        The columns in the table type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RoutineArgumentTableTypeColumnArgs']]]]):
+        pulumi.set(self, "columns", value)
+
+
+class RoutineArgumentTableTypeColumnArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the column.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+    ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+    will create a diff, even if the JSON itself hasn't changed. If the API returns
+    a different value for the same schema, e.g. it switched the order of values
+    or replaced STRUCT field type with RECORD field type, we currently cannot
+    suppress the recurring diff this causes. As a workaround, we recommend using
+    the schema as returned by the API.
+    """
+
+@pulumi.input_type
+class RoutineArgumentTableTypeColumnArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the column.
+        :param pulumi.Input[_builtins.str] type: A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+               ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+               will create a diff, even if the JSON itself hasn't changed. If the API returns
+               a different value for the same schema, e.g. it switched the order of values
+               or replaced STRUCT field type with RECORD field type, we currently cannot
+               suppress the recurring diff this causes. As a workaround, we recommend using
+               the schema as returned by the API.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the column.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+        ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+        will create a diff, even if the JSON itself hasn't changed. If the API returns
+        a different value for the same schema, e.g. it switched the order of values
+        or replaced STRUCT field type with RECORD field type, we currently cannot
+        suppress the recurring diff this causes. As a workaround, we recommend using
+        the schema as returned by the API.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
 
 
 class RoutineExternalRuntimeOptionsArgsDict(TypedDict):

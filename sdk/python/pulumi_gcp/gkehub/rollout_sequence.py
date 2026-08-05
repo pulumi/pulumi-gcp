@@ -28,6 +28,8 @@ class RolloutSequenceArgs:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional['RolloutSequenceIgnoredClustersSelectorArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RolloutSequence resource.
@@ -51,6 +53,20 @@ class RolloutSequenceArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.str] min_control_plane_version: Minimum control plane version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        :param pulumi.Input[_builtins.str] min_node_version: Minimum node version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -66,6 +82,10 @@ class RolloutSequenceArgs:
             pulumi.set(__self__, "ignored_clusters_selector", ignored_clusters_selector)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if min_control_plane_version is not None:
+            pulumi.set(__self__, "min_control_plane_version", min_control_plane_version)
+        if min_node_version is not None:
+            pulumi.set(__self__, "min_node_version", min_node_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -166,6 +186,42 @@ class RolloutSequenceArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="minControlPlaneVersion")
+    def min_control_plane_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Minimum control plane version that the clusters in the sequence should be upgraded to.
+        Setting this field will cause the creation of a rollout to the specified version.
+        Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        Should be a valid [semantic version](https://semver.org/).
+        Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        Note that the `latest` and `-` aliases are not supported for this field.
+        Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        """
+        return pulumi.get(self, "min_control_plane_version")
+
+    @min_control_plane_version.setter
+    def min_control_plane_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "min_control_plane_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeVersion")
+    def min_node_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Minimum node version that the clusters in the sequence should be upgraded to.
+        Setting this field will cause the creation of a rollout to the specified version.
+        Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        Should be a valid [semantic version](https://semver.org/).
+        Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        Note that the `latest` and `-` aliases are not supported for this field.
+        Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        """
+        return pulumi.get(self, "min_node_version")
+
+    @min_node_version.setter
+    def min_node_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "min_node_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -191,11 +247,16 @@ class _RolloutSequenceState:
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional['RolloutSequenceIgnoredClustersSelectorArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operational_states: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSequenceOperationalStateArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stages: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSequenceStageArgs']]]] = None,
+                 target_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -221,7 +282,23 @@ class _RolloutSequenceState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.str] min_control_plane_version: Minimum control plane version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        :param pulumi.Input[_builtins.str] min_node_version: Minimum node version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
         :param pulumi.Input[_builtins.str] name: The full resource name of the RolloutSequence.
+        :param pulumi.Input[Sequence[pulumi.Input['RolloutSequenceOperationalStateArgs']]] operational_states: The operational state of the rollout sequence.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -229,6 +306,8 @@ class _RolloutSequenceState:
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
         :param pulumi.Input[Sequence[pulumi.Input['RolloutSequenceStageArgs']]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] target_control_plane_version: The current target control plane version.
+        :param pulumi.Input[_builtins.str] target_node_version: The current target node version.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: The timestamp at which the Rollout Sequence was last updated.
         """
@@ -250,8 +329,14 @@ class _RolloutSequenceState:
             pulumi.set(__self__, "ignored_clusters_selector", ignored_clusters_selector)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if min_control_plane_version is not None:
+            pulumi.set(__self__, "min_control_plane_version", min_control_plane_version)
+        if min_node_version is not None:
+            pulumi.set(__self__, "min_node_version", min_node_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if operational_states is not None:
+            pulumi.set(__self__, "operational_states", operational_states)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
@@ -260,6 +345,10 @@ class _RolloutSequenceState:
             pulumi.set(__self__, "rollout_sequence_id", rollout_sequence_id)
         if stages is not None:
             pulumi.set(__self__, "stages", stages)
+        if target_control_plane_version is not None:
+            pulumi.set(__self__, "target_control_plane_version", target_control_plane_version)
+        if target_node_version is not None:
+            pulumi.set(__self__, "target_node_version", target_node_version)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -385,6 +474,42 @@ class _RolloutSequenceState:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="minControlPlaneVersion")
+    def min_control_plane_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Minimum control plane version that the clusters in the sequence should be upgraded to.
+        Setting this field will cause the creation of a rollout to the specified version.
+        Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        Should be a valid [semantic version](https://semver.org/).
+        Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        Note that the `latest` and `-` aliases are not supported for this field.
+        Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        """
+        return pulumi.get(self, "min_control_plane_version")
+
+    @min_control_plane_version.setter
+    def min_control_plane_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "min_control_plane_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeVersion")
+    def min_node_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Minimum node version that the clusters in the sequence should be upgraded to.
+        Setting this field will cause the creation of a rollout to the specified version.
+        Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        Should be a valid [semantic version](https://semver.org/).
+        Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        Note that the `latest` and `-` aliases are not supported for this field.
+        Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        """
+        return pulumi.get(self, "min_node_version")
+
+    @min_node_version.setter
+    def min_node_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "min_node_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -395,6 +520,19 @@ class _RolloutSequenceState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operationalStates")
+    def operational_states(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSequenceOperationalStateArgs']]]]:
+        """
+        The operational state of the rollout sequence.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operational_states")
+
+    @operational_states.setter
+    def operational_states(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RolloutSequenceOperationalStateArgs']]]]):
+        pulumi.set(self, "operational_states", value)
 
     @_builtins.property
     @pulumi.getter
@@ -448,6 +586,30 @@ class _RolloutSequenceState:
         pulumi.set(self, "stages", value)
 
     @_builtins.property
+    @pulumi.getter(name="targetControlPlaneVersion")
+    def target_control_plane_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current target control plane version.
+        """
+        return pulumi.get(self, "target_control_plane_version")
+
+    @target_control_plane_version.setter
+    def target_control_plane_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_control_plane_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetNodeVersion")
+    def target_node_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current target node version.
+        """
+        return pulumi.get(self, "target_node_version")
+
+    @target_node_version.setter
+    def target_node_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "target_node_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -483,6 +645,8 @@ class RolloutSequence(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
@@ -503,15 +667,33 @@ class RolloutSequence(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
+        project = gcp.organizations.Project("project",
+            project_id="rs-project",
+            name="rs-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        gkehub = gcp.projects.Service("gkehub",
+            project=project.project_id,
+            service="gkehub.googleapis.com")
+        # wait for API enablement
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gkehub]))
+        default = gcp.gkehub.Fleet("default",
+            display_name="rs-fleet",
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            project=project.project_id,
             rollout_sequence_id="rs-basic",
             display_name="Basic Rollout Sequence",
             ignored_clusters_selector={
                 "label_selector": "resource.labels.ignored == 'true'",
             },
             stages=[{
-                "fleet_projects": ["projects/my-project-name"],
+                "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
                 "soak_duration": "1h",
             }],
             auto_upgrade_config={
@@ -523,15 +705,34 @@ class RolloutSequence(pulumi.CustomResource):
                         "NODE_PATCH",
                     ],
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Gke Hub Rollout Sequence Update
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
+        project = gcp.organizations.Project("project",
+            project_id="rs-project",
+            name="rs-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        gkehub = gcp.projects.Service("gkehub",
+            project=project.project_id,
+            service="gkehub.googleapis.com")
+        # wait for API enablement
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gkehub]))
+        default = gcp.gkehub.Fleet("default",
+            display_name="rs-fleet",
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            project=project.project_id,
             rollout_sequence_id="rs-basic",
             display_name="Modified Rollout Sequence",
             ignored_clusters_selector={
@@ -539,14 +740,14 @@ class RolloutSequence(pulumi.CustomResource):
             },
             stages=[
                 {
-                    "fleet_projects": ["projects/my-project-name"],
+                    "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
                     "cluster_selector": {
                         "label_selector": "resource.labels.canary=='true'",
                     },
                     "soak_duration": "2h",
                 },
                 {
-                    "fleet_projects": ["projects/my-project-name"],
+                    "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
                     "soak_duration": "1d",
                 },
             ],
@@ -560,7 +761,79 @@ class RolloutSequence(pulumi.CustomResource):
             },
             labels={
                 "some_key": "some_value",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Gke Hub Rollout Sequence User Triggered Create
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="rs-project",
+            name="rs-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        # Enable APIs in a deterministic order to avoid inconsistent VCR recordings
+        gkehub = gcp.projects.Service("gkehub",
+            project=project.project_id,
+            service="gkehub.googleapis.com")
+        container = gcp.projects.Service("container",
+            project=project.project_id,
+            service="container.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[gkehub]))
+        compute = gcp.projects.Service("compute",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[container]))
+        # wait for API enablement
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[compute]))
+        default = gcp.gkehub.Fleet("default",
+            display_name="rs-fleet",
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+        versions = gcp.container.get_engine_versions_output(location="us-central1-a",
+            project=project.project_id)
+        primary = gcp.container.Cluster("primary",
+            project=project.project_id,
+            name="rs-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            min_master_version=versions.release_channel_default_version["REGULAR"],
+            node_version=versions.release_channel_default_version["REGULAR"],
+            deletion_protection=False,
+            release_channel={
+                "channel": "REGULAR",
+            },
+            resource_labels={
+                "rs_test_cluster": "tf-test-_25601",
+            },
+            fleet={
+                "project": project.number,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            project=project.project_id,
+            rollout_sequence_id="rs-user-triggered",
+            display_name="User Triggered Rollout Sequence",
+            min_control_plane_version=versions.release_channel_latest_version["REGULAR"],
+            ignored_clusters_selector={
+                "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
+            },
+            stages=[{
+                "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
+                "soak_duration": "30s",
+            }],
+            auto_upgrade_config={
+                "rollout_creation_scope": {
+                    "upgrade_types": [],
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[primary]))
         ```
 
         ## Import
@@ -598,6 +871,20 @@ class RolloutSequence(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.str] min_control_plane_version: Minimum control plane version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        :param pulumi.Input[_builtins.str] min_node_version: Minimum node version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
@@ -626,15 +913,33 @@ class RolloutSequence(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
+        project = gcp.organizations.Project("project",
+            project_id="rs-project",
+            name="rs-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        gkehub = gcp.projects.Service("gkehub",
+            project=project.project_id,
+            service="gkehub.googleapis.com")
+        # wait for API enablement
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gkehub]))
+        default = gcp.gkehub.Fleet("default",
+            display_name="rs-fleet",
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            project=project.project_id,
             rollout_sequence_id="rs-basic",
             display_name="Basic Rollout Sequence",
             ignored_clusters_selector={
                 "label_selector": "resource.labels.ignored == 'true'",
             },
             stages=[{
-                "fleet_projects": ["projects/my-project-name"],
+                "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
                 "soak_duration": "1h",
             }],
             auto_upgrade_config={
@@ -646,15 +951,34 @@ class RolloutSequence(pulumi.CustomResource):
                         "NODE_PATCH",
                     ],
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
         ### Gke Hub Rollout Sequence Update
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumiverse_time as time
 
+        project = gcp.organizations.Project("project",
+            project_id="rs-project",
+            name="rs-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        gkehub = gcp.projects.Service("gkehub",
+            project=project.project_id,
+            service="gkehub.googleapis.com")
+        # wait for API enablement
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[gkehub]))
+        default = gcp.gkehub.Fleet("default",
+            display_name="rs-fleet",
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
         rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            project=project.project_id,
             rollout_sequence_id="rs-basic",
             display_name="Modified Rollout Sequence",
             ignored_clusters_selector={
@@ -662,14 +986,14 @@ class RolloutSequence(pulumi.CustomResource):
             },
             stages=[
                 {
-                    "fleet_projects": ["projects/my-project-name"],
+                    "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
                     "cluster_selector": {
                         "label_selector": "resource.labels.canary=='true'",
                     },
                     "soak_duration": "2h",
                 },
                 {
-                    "fleet_projects": ["projects/my-project-name"],
+                    "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
                     "soak_duration": "1d",
                 },
             ],
@@ -683,7 +1007,79 @@ class RolloutSequence(pulumi.CustomResource):
             },
             labels={
                 "some_key": "some_value",
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Gke Hub Rollout Sequence User Triggered Create
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumiverse_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="rs-project",
+            name="rs-project",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000",
+            deletion_policy="DELETE")
+        # Enable APIs in a deterministic order to avoid inconsistent VCR recordings
+        gkehub = gcp.projects.Service("gkehub",
+            project=project.project_id,
+            service="gkehub.googleapis.com")
+        container = gcp.projects.Service("container",
+            project=project.project_id,
+            service="container.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[gkehub]))
+        compute = gcp.projects.Service("compute",
+            project=project.project_id,
+            service="compute.googleapis.com",
+            opts = pulumi.ResourceOptions(depends_on=[container]))
+        # wait for API enablement
+        wait120_seconds = time.Sleep("wait_120_seconds", create_duration="120s",
+        opts = pulumi.ResourceOptions(depends_on=[compute]))
+        default = gcp.gkehub.Fleet("default",
+            display_name="rs-fleet",
+            project=project.project_id,
+            opts = pulumi.ResourceOptions(depends_on=[wait120_seconds]))
+        versions = gcp.container.get_engine_versions_output(location="us-central1-a",
+            project=project.project_id)
+        primary = gcp.container.Cluster("primary",
+            project=project.project_id,
+            name="rs-cluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            min_master_version=versions.release_channel_default_version["REGULAR"],
+            node_version=versions.release_channel_default_version["REGULAR"],
+            deletion_protection=False,
+            release_channel={
+                "channel": "REGULAR",
+            },
+            resource_labels={
+                "rs_test_cluster": "tf-test-_25601",
+            },
+            fleet={
+                "project": project.number,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        rollout_sequence = gcp.gkehub.RolloutSequence("rollout_sequence",
+            project=project.project_id,
+            rollout_sequence_id="rs-user-triggered",
+            display_name="User Triggered Rollout Sequence",
+            min_control_plane_version=versions.release_channel_latest_version["REGULAR"],
+            ignored_clusters_selector={
+                "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
+            },
+            stages=[{
+                "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
+                "soak_duration": "30s",
+            }],
+            auto_upgrade_config={
+                "rollout_creation_scope": {
+                    "upgrade_types": [],
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[primary]))
         ```
 
         ## Import
@@ -723,6 +1119,8 @@ class RolloutSequence(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
                  stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
@@ -740,6 +1138,8 @@ class RolloutSequence(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["ignored_clusters_selector"] = ignored_clusters_selector
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["min_control_plane_version"] = min_control_plane_version
+            __props__.__dict__["min_node_version"] = min_node_version
             __props__.__dict__["project"] = project
             if rollout_sequence_id is None and not opts.urn:
                 raise TypeError("Missing required property 'rollout_sequence_id'")
@@ -752,7 +1152,10 @@ class RolloutSequence(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["operational_states"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["target_control_plane_version"] = None
+            __props__.__dict__["target_node_version"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -776,11 +1179,16 @@ class RolloutSequence(pulumi.CustomResource):
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             ignored_clusters_selector: pulumi.Input[Optional[Union['RolloutSequenceIgnoredClustersSelectorArgs', 'RolloutSequenceIgnoredClustersSelectorArgsDict']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            min_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+            min_node_version: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            operational_states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceOperationalStateArgs', 'RolloutSequenceOperationalStateArgsDict']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rollout_sequence_id: pulumi.Input[Optional[_builtins.str]] = None,
             stages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]]] = None,
+            target_control_plane_version: pulumi.Input[Optional[_builtins.str]] = None,
+            target_node_version: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'RolloutSequence':
         """
@@ -810,7 +1218,23 @@ class RolloutSequence(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[_builtins.str] min_control_plane_version: Minimum control plane version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        :param pulumi.Input[_builtins.str] min_node_version: Minimum node version that the clusters in the sequence should be upgraded to.
+               Setting this field will cause the creation of a rollout to the specified version.
+               Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+               Should be a valid [semantic version](https://semver.org/).
+               Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+               Note that the `latest` and `-` aliases are not supported for this field.
+               Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
         :param pulumi.Input[_builtins.str] name: The full resource name of the RolloutSequence.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceOperationalStateArgs', 'RolloutSequenceOperationalStateArgsDict']]]] operational_states: The operational state of the rollout sequence.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
@@ -818,6 +1242,8 @@ class RolloutSequence(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rollout_sequence_id: The user-provided identifier of the RolloutSequence.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RolloutSequenceStageArgs', 'RolloutSequenceStageArgsDict']]]] stages: Ordered list of stages that constitute this Rollout Sequence.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] target_control_plane_version: The current target control plane version.
+        :param pulumi.Input[_builtins.str] target_node_version: The current target node version.
         :param pulumi.Input[_builtins.str] uid: Google-generated UUID for this resource.
         :param pulumi.Input[_builtins.str] update_time: The timestamp at which the Rollout Sequence was last updated.
         """
@@ -834,11 +1260,16 @@ class RolloutSequence(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["ignored_clusters_selector"] = ignored_clusters_selector
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["min_control_plane_version"] = min_control_plane_version
+        __props__.__dict__["min_node_version"] = min_node_version
         __props__.__dict__["name"] = name
+        __props__.__dict__["operational_states"] = operational_states
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["rollout_sequence_id"] = rollout_sequence_id
         __props__.__dict__["stages"] = stages
+        __props__.__dict__["target_control_plane_version"] = target_control_plane_version
+        __props__.__dict__["target_node_version"] = target_node_version
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return RolloutSequence(resource_name, opts=opts, __props__=__props__)
@@ -927,12 +1358,49 @@ class RolloutSequence(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @_builtins.property
+    @pulumi.getter(name="minControlPlaneVersion")
+    def min_control_plane_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Minimum control plane version that the clusters in the sequence should be upgraded to.
+        Setting this field will cause the creation of a rollout to the specified version.
+        Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        Should be a valid [semantic version](https://semver.org/).
+        Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        Note that the `latest` and `-` aliases are not supported for this field.
+        Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        """
+        return pulumi.get(self, "min_control_plane_version")
+
+    @_builtins.property
+    @pulumi.getter(name="minNodeVersion")
+    def min_node_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Minimum node version that the clusters in the sequence should be upgraded to.
+        Setting this field will cause the creation of a rollout to the specified version.
+        Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+        Should be a valid [semantic version](https://semver.org/).
+        Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+        Note that the `latest` and `-` aliases are not supported for this field.
+        Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+        """
+        return pulumi.get(self, "min_node_version")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         The full resource name of the RolloutSequence.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operationalStates")
+    def operational_states(self) -> pulumi.Output[Sequence['outputs.RolloutSequenceOperationalState']]:
+        """
+        The operational state of the rollout sequence.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operational_states")
 
     @_builtins.property
     @pulumi.getter
@@ -968,6 +1436,22 @@ class RolloutSequence(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "stages")
+
+    @_builtins.property
+    @pulumi.getter(name="targetControlPlaneVersion")
+    def target_control_plane_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The current target control plane version.
+        """
+        return pulumi.get(self, "target_control_plane_version")
+
+    @_builtins.property
+    @pulumi.getter(name="targetNodeVersion")
+    def target_node_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The current target node version.
+        """
+        return pulumi.get(self, "target_node_version")
 
     @_builtins.property
     @pulumi.getter

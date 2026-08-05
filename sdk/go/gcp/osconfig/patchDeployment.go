@@ -184,7 +184,7 @@ import (
 //				PatchDeploymentId: pulumi.String("patch-deploy"),
 //				InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
 //					Instances: pulumi.StringArray{
-//						foobar.ID(),
+//						foobar.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				PatchConfig: &osconfig.PatchDeploymentPatchConfigArgs{

@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *     name: "pubsub_subscription",
  *     topic: topic.name,
  *     pushConfig: {
- *         pushEndpoint: _default.statuses.apply(statuses => statuses[0].url),
+ *         pushEndpoint: _default.statuses[0].url,
  *         oidcToken: {
  *             serviceAccountEmail: sa.email,
  *         },

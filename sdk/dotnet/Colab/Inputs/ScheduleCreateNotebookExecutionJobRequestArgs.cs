@@ -19,6 +19,19 @@ namespace Pulumi.Gcp.Colab.Inputs
         [Input("notebookExecutionJob", required: true)]
         public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs> NotebookExecutionJob { get; set; } = null!;
 
+        /// <summary>
+        /// (Output)
+        /// User specified ID for the NotebookExecutionJob.
+        /// </summary>
+        [Input("notebookExecutionJobId")]
+        public Input<string>? NotebookExecutionJobId { get; set; }
+
+        /// <summary>
+        /// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+        /// </summary>
+        [Input("parent")]
+        public Input<string>? Parent { get; set; }
+
         public ScheduleCreateNotebookExecutionJobRequestArgs()
         {
         }

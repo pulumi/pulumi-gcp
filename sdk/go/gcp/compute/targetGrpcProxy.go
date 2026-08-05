@@ -56,7 +56,7 @@ import (
 //				PortName:            pulumi.String("grpc"),
 //				Protocol:            pulumi.String("GRPC"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 //			})
 //			if err != nil {
@@ -65,7 +65,7 @@ import (
 //			urlmap, err := compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
 //				Name:           pulumi.String("urlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -77,7 +77,7 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						RouteRules: compute.URLMapPathMatcherRouteRuleArray{
 //							&compute.URLMapPathMatcherRouteRuleArgs{
 //								Priority: pulumi.Int(1),
@@ -146,7 +146,7 @@ import (
 //				},
 //				Tests: compute.URLMapTestArray{
 //					&compute.URLMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -157,7 +157,7 @@ import (
 //			}
 //			_, err = compute.NewTargetGrpcProxy(ctx, "default", &compute.TargetGrpcProxyArgs{
 //				Name:                 pulumi.String("proxy"),
-//				UrlMap:               urlmap.ID(),
+//				UrlMap:               urlmap.ID().ToIDOutput().ToStringOutput(),
 //				ValidateForProxyless: pulumi.Bool(true),
 //			})
 //			if err != nil {

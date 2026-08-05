@@ -97,7 +97,7 @@ import (
 //				Project:     serviceProject.ProjectId,
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     ilbNetwork.ID(),
+//				Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -122,7 +122,7 @@ import (
 //				Name:         pulumi.String("l7-ilb-backend-subnet"),
 //				Project:      serviceProject.ProjectId,
 //				Region:       pulumi.String("us-central1"),
-//				HealthChecks: _default.ID(),
+//				HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -135,9 +135,9 @@ import (
 //				IpVersion:           pulumi.String("IPV4"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				AllPorts:            pulumi.Bool(true),
-//				BackendService:      backend.ID(),
-//				Network:             ilbNetwork.ID(),
-//				Subnetwork:          ilbSubnet.ID(),
+//				BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
+//				Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -145,7 +145,7 @@ import (
 //			// discovered service block
 //			catalog_service := apphub.GetDiscoveredServiceOutput(ctx, apphub.GetDiscoveredServiceOutputArgs{
 //				Location: pulumi.String("us-central1"),
-//				ServiceUri: forwardingRule.ID().ApplyT(func(id string) (string, error) {
+//				ServiceUri: forwardingRule.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("//compute.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //			}, nil)
@@ -158,12 +158,10 @@ import (
 //				return err
 //			}
 //			_, err = apphub.NewService(ctx, "example", &apphub.ServiceArgs{
-//				Location:      pulumi.String("us-central1"),
-//				ApplicationId: application.ApplicationId,
-//				ServiceId:     forwardingRule.Name,
-//				DiscoveredService: pulumi.String(catalog_service.ApplyT(func(catalog_service apphub.GetDiscoveredServiceResult) (*string, error) {
-//					return catalog_service.Name, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Location:          pulumi.String("us-central1"),
+//				ApplicationId:     application.ApplicationId,
+//				ServiceId:         forwardingRule.Name,
+//				DiscoveredService: catalog_service.Name(),
 //			})
 //			if err != nil {
 //				return err
@@ -254,7 +252,7 @@ import (
 //				Project:     serviceProject.ProjectId,
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     ilbNetwork.ID(),
+//				Network:     ilbNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -279,7 +277,7 @@ import (
 //				Name:         pulumi.String("l7-ilb-backend-subnet"),
 //				Project:      serviceProject.ProjectId,
 //				Region:       pulumi.String("us-central1"),
-//				HealthChecks: _default.ID(),
+//				HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -292,9 +290,9 @@ import (
 //				IpVersion:           pulumi.String("IPV4"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				AllPorts:            pulumi.Bool(true),
-//				BackendService:      backend.ID(),
-//				Network:             ilbNetwork.ID(),
-//				Subnetwork:          ilbSubnet.ID(),
+//				BackendService:      backend.ID().ToIDOutput().ToStringOutput(),
+//				Network:             ilbNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          ilbSubnet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -302,7 +300,7 @@ import (
 //			// discovered service block
 //			catalog_service := apphub.GetDiscoveredServiceOutput(ctx, apphub.GetDiscoveredServiceOutputArgs{
 //				Location: pulumi.String("us-central1"),
-//				ServiceUri: forwardingRule.ID().ApplyT(func(id string) (string, error) {
+//				ServiceUri: forwardingRule.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("//compute.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //			}, nil)
@@ -315,14 +313,12 @@ import (
 //				return err
 //			}
 //			_, err = apphub.NewService(ctx, "example", &apphub.ServiceArgs{
-//				Location:      pulumi.String("us-central1"),
-//				ApplicationId: application.ApplicationId,
-//				ServiceId:     forwardingRule.Name,
-//				DiscoveredService: pulumi.String(catalog_service.ApplyT(func(catalog_service apphub.GetDiscoveredServiceResult) (*string, error) {
-//					return catalog_service.Name, nil
-//				}).(pulumi.StringPtrOutput)),
-//				DisplayName: pulumi.String("Example Service Full"),
-//				Description: pulumi.String("Register service for testing"),
+//				Location:          pulumi.String("us-central1"),
+//				ApplicationId:     application.ApplicationId,
+//				ServiceId:         forwardingRule.Name,
+//				DiscoveredService: catalog_service.Name(),
+//				DisplayName:       pulumi.String("Example Service Full"),
+//				Description:       pulumi.String("Register service for testing"),
 //				Attributes: &apphub.ServiceAttributesArgs{
 //					Environment: &apphub.ServiceAttributesEnvironmentArgs{
 //						Type: pulumi.String("STAGING"),

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.bigquery.outputs.RoutineArgumentTableType;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,7 +15,7 @@ public final class RoutineArgument {
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
      * 
      */
     private @Nullable String argumentKind;
@@ -40,12 +41,18 @@ public final class RoutineArgument {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return If argumentKind is FIXED_TABLE, a schema for the table type.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RoutineArgumentTableType tableType;
 
     private RoutineArgument() {}
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
      * 
      */
     public Optional<String> argumentKind() {
@@ -79,6 +86,14 @@ public final class RoutineArgument {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return If argumentKind is FIXED_TABLE, a schema for the table type.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RoutineArgumentTableType> tableType() {
+        return Optional.ofNullable(this.tableType);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -93,6 +108,7 @@ public final class RoutineArgument {
         private @Nullable String dataType;
         private @Nullable String mode;
         private @Nullable String name;
+        private @Nullable RoutineArgumentTableType tableType;
         public Builder() {}
         public Builder(RoutineArgument defaults) {
     	      Objects.requireNonNull(defaults);
@@ -100,6 +116,7 @@ public final class RoutineArgument {
     	      this.dataType = defaults.dataType;
     	      this.mode = defaults.mode;
     	      this.name = defaults.name;
+    	      this.tableType = defaults.tableType;
         }
 
         @CustomType.Setter
@@ -126,12 +143,19 @@ public final class RoutineArgument {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder tableType(@Nullable RoutineArgumentTableType tableType) {
+
+            this.tableType = tableType;
+            return this;
+        }
         public RoutineArgument build() {
             final var _resultValue = new RoutineArgument();
             _resultValue.argumentKind = argumentKind;
             _resultValue.dataType = dataType;
             _resultValue.mode = mode;
             _resultValue.name = name;
+            _resultValue.tableType = tableType;
             return _resultValue;
         }
     }

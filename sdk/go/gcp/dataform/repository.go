@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
+//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -65,13 +65,13 @@ import (
 //			}
 //			exampleKey, err := kms.NewCryptoKey(ctx, "example_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-crypto-key-name"),
-//				KeyRing: keyring.ID(),
+//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: exampleKey.ID(),
+//				CryptoKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-dataform.iam.gserviceaccount.com", project.Number),
@@ -83,8 +83,8 @@ import (
 //			_, err = dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 //				Name:                                   pulumi.String("dataform_repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
-//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
-//				KmsKeyName:                             exampleKey.ID(),
+//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
+//				KmsKeyName:                             exampleKey.ID().ToIDOutput().ToStringOutput(),
 //				DeletionPolicy:                         pulumi.String("FORCE"),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
@@ -92,7 +92,7 @@ import (
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 //					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
+//					AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 //					DefaultDatabase: pulumi.String("database"),

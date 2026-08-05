@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * });
  * const organizationAccessApproval = new gcp.organizations.AccessApprovalSettings("organization_access_approval", {
  *     organizationId: "123456789",
- *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+ *     activeKeyVersion: cryptoKeyVersion.name,
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],

@@ -53,7 +53,7 @@ import (
 //				ConfigId:     pulumi.String("my-config"),
 //				Organization: pulumi.String("123456789"),
 //				Description:  pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-//				PubsubTopic:  sccNotification.ID(),
+//				PubsubTopic:  sccNotification.ID().ToIDOutput().ToStringOutput(),
 //				StreamingConfig: &securitycenter.NotificationConfigStreamingConfigArgs{
 //					Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 //				},

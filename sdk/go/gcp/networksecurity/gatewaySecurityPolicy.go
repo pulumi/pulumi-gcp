@@ -131,7 +131,7 @@ import (
 //				return err
 //			}
 //			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
-//				CaPool: _default.ID(),
+//				CaPool: _default.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 //			})
@@ -141,7 +141,7 @@ import (
 //			defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 //				Name:     pulumi.String("my-tls-inspection-policy"),
 //				Location: pulumi.String("us-central1"),
-//				CaPool:   _default.ID(),
+//				CaPool:   _default.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //				defaultAuthority,
@@ -154,7 +154,7 @@ import (
 //				Name:                pulumi.String("my-gateway-security-policy"),
 //				Location:            pulumi.String("us-central1"),
 //				Description:         pulumi.String("my description"),
-//				TlsInspectionPolicy: defaultTlsInspectionPolicy.ID(),
+//				TlsInspectionPolicy: defaultTlsInspectionPolicy.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				defaultTlsInspectionPolicy,
 //			}))

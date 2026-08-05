@@ -123,7 +123,7 @@ import (
 //				DataPolicyId:   pulumi.String("routine_data_policy"),
 //				DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
 //				DataMaskingPolicy: &bigquery.Datapolicyv2DataPolicyDataMaskingPolicyArgs{
-//					Routine: customMaskingRoutine.ID(),
+//					Routine: customMaskingRoutine.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

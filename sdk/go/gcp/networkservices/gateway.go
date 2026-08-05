@@ -141,7 +141,7 @@ import (
 //				Purpose:     pulumi.String("PRIVATE"),
 //				IpCidrRange: pulumi.String("10.128.0.0/20"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
@@ -152,7 +152,7 @@ import (
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				IpCidrRange: pulumi.String("192.168.0.0/23"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
@@ -189,11 +189,11 @@ import (
 //				},
 //				Scope: pulumi.String("my-default-scope1"),
 //				CertificateUrls: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
-//				Network:                         defaultNetwork.ID(),
-//				Subnetwork:                      defaultSubnetwork.ID(),
+//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+//				Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxyonlysubnet,
@@ -260,7 +260,7 @@ import (
 //				Purpose:     pulumi.String("PRIVATE"),
 //				IpCidrRange: pulumi.String("10.128.0.0/20"),
 //				Region:      pulumi.String("us-south1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
@@ -271,7 +271,7 @@ import (
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				IpCidrRange: pulumi.String("192.168.0.0/23"),
 //				Region:      pulumi.String("us-south1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("ACTIVE"),
 //			})
 //			if err != nil {
@@ -308,11 +308,11 @@ import (
 //				},
 //				Scope: pulumi.String("my-default-scope1"),
 //				CertificateUrls: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
-//				Network:                         defaultNetwork.ID(),
-//				Subnetwork:                      defaultSubnetwork.ID(),
+//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+//				Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxyonlysubnet,
@@ -332,11 +332,11 @@ import (
 //				},
 //				Scope: pulumi.String("my-default-scope2"),
 //				CertificateUrls: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
-//				Network:                         defaultNetwork.ID(),
-//				Subnetwork:                      defaultSubnetwork.ID(),
+//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID().ToIDOutput().ToStringOutput(),
+//				Network:                         defaultNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:                      defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxyonlysubnet,

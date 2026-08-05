@@ -6,6 +6,7 @@ package com.pulumi.gcp.composer.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicy;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigNodeConfigTrafficRoutingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -74,6 +75,11 @@ public final class GetEnvironmentConfigNodeConfig {
      * 
      */
     private List<String> tags;
+    /**
+     * @return Traffic routing configuration for Cloud Composer environment.
+     * 
+     */
+    private List<GetEnvironmentConfigNodeConfigTrafficRoutingConfig> trafficRoutingConfigs;
     /**
      * @return The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
@@ -166,6 +172,13 @@ public final class GetEnvironmentConfigNodeConfig {
         return this.tags;
     }
     /**
+     * @return Traffic routing configuration for Cloud Composer environment.
+     * 
+     */
+    public List<GetEnvironmentConfigNodeConfigTrafficRoutingConfig> trafficRoutingConfigs() {
+        return this.trafficRoutingConfigs;
+    }
+    /**
      * @return The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
@@ -194,6 +207,7 @@ public final class GetEnvironmentConfigNodeConfig {
         private String serviceAccount;
         private String subnetwork;
         private List<String> tags;
+        private List<GetEnvironmentConfigNodeConfigTrafficRoutingConfig> trafficRoutingConfigs;
         private String zone;
         public Builder() {}
         public Builder(GetEnvironmentConfigNodeConfig defaults) {
@@ -210,6 +224,7 @@ public final class GetEnvironmentConfigNodeConfig {
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.subnetwork = defaults.subnetwork;
     	      this.tags = defaults.tags;
+    	      this.trafficRoutingConfigs = defaults.trafficRoutingConfigs;
     	      this.zone = defaults.zone;
         }
 
@@ -319,6 +334,17 @@ public final class GetEnvironmentConfigNodeConfig {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder trafficRoutingConfigs(List<GetEnvironmentConfigNodeConfigTrafficRoutingConfig> trafficRoutingConfigs) {
+            if (trafficRoutingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "trafficRoutingConfigs");
+            }
+            this.trafficRoutingConfigs = trafficRoutingConfigs;
+            return this;
+        }
+        public Builder trafficRoutingConfigs(GetEnvironmentConfigNodeConfigTrafficRoutingConfig... trafficRoutingConfigs) {
+            return trafficRoutingConfigs(List.of(trafficRoutingConfigs));
+        }
+        @CustomType.Setter
         public Builder zone(String zone) {
             if (zone == null) {
               throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "zone");
@@ -340,6 +366,7 @@ public final class GetEnvironmentConfigNodeConfig {
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.subnetwork = subnetwork;
             _resultValue.tags = tags;
+            _resultValue.trafficRoutingConfigs = trafficRoutingConfigs;
             _resultValue.zone = zone;
             return _resultValue;
         }

@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  *             path: "",
  *         },
  *         {
- *             name: pulumi.all([entry_group_full.project, termTestIdFull.glossaryId, termTestIdFullGlossaryTerm.termId]).apply(([project, glossaryId, termId]) => `projects/${project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${project}/locations/us-central1/glossaries/${glossaryId}/terms/${termId}`),
+ *             name: pulumi.interpolate`projects/${entry_group_full.project}/locations/us-central1/entryGroups/@dataplex/entries/projects/${entry_group_full.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}/terms/${termTestIdFullGlossaryTerm.termId}`,
  *             type: "TARGET",
  *         },
  *     ],

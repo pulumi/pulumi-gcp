@@ -60,7 +60,7 @@ import (
 //			deploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "deployment_group", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("example-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    producerNetwork.ID(),
+//				Network:                    producerNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -68,7 +68,7 @@ import (
 //			endpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "endpoint_group", &networksecurity.MirroringEndpointGroupArgs{
 //				MirroringEndpointGroupId: pulumi.String("example-eg"),
 //				Location:                 pulumi.String("global"),
-//				MirroringDeploymentGroup: deploymentGroup.ID(),
+//				MirroringDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -76,8 +76,8 @@ import (
 //			_, err = networksecurity.NewMirroringEndpointGroupAssociation(ctx, "default", &networksecurity.MirroringEndpointGroupAssociationArgs{
 //				MirroringEndpointGroupAssociationId: pulumi.String("example-ega"),
 //				Location:                            pulumi.String("global"),
-//				Network:                             consumerNetwork.ID(),
-//				MirroringEndpointGroup:              endpointGroup.ID(),
+//				Network:                             consumerNetwork.ID().ToIDOutput().ToStringOutput(),
+//				MirroringEndpointGroup:              endpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

@@ -11779,6 +11779,106 @@ func (o RolloutSequenceIgnoredClustersSelectorPtrOutput) LabelSelector() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type RolloutSequenceOperationalState struct {
+	// (Output)
+	// The state of the rollout sequence.
+	State *string `pulumi:"state"`
+}
+
+// RolloutSequenceOperationalStateInput is an input type that accepts RolloutSequenceOperationalStateArgs and RolloutSequenceOperationalStateOutput values.
+// You can construct a concrete instance of `RolloutSequenceOperationalStateInput` via:
+//
+//	RolloutSequenceOperationalStateArgs{...}
+type RolloutSequenceOperationalStateInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceOperationalStateOutput() RolloutSequenceOperationalStateOutput
+	ToRolloutSequenceOperationalStateOutputWithContext(context.Context) RolloutSequenceOperationalStateOutput
+}
+
+type RolloutSequenceOperationalStateArgs struct {
+	// (Output)
+	// The state of the rollout sequence.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (RolloutSequenceOperationalStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceOperationalState)(nil)).Elem()
+}
+
+func (i RolloutSequenceOperationalStateArgs) ToRolloutSequenceOperationalStateOutput() RolloutSequenceOperationalStateOutput {
+	return i.ToRolloutSequenceOperationalStateOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceOperationalStateArgs) ToRolloutSequenceOperationalStateOutputWithContext(ctx context.Context) RolloutSequenceOperationalStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceOperationalStateOutput)
+}
+
+// RolloutSequenceOperationalStateArrayInput is an input type that accepts RolloutSequenceOperationalStateArray and RolloutSequenceOperationalStateArrayOutput values.
+// You can construct a concrete instance of `RolloutSequenceOperationalStateArrayInput` via:
+//
+//	RolloutSequenceOperationalStateArray{ RolloutSequenceOperationalStateArgs{...} }
+type RolloutSequenceOperationalStateArrayInput interface {
+	pulumi.Input
+
+	ToRolloutSequenceOperationalStateArrayOutput() RolloutSequenceOperationalStateArrayOutput
+	ToRolloutSequenceOperationalStateArrayOutputWithContext(context.Context) RolloutSequenceOperationalStateArrayOutput
+}
+
+type RolloutSequenceOperationalStateArray []RolloutSequenceOperationalStateInput
+
+func (RolloutSequenceOperationalStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSequenceOperationalState)(nil)).Elem()
+}
+
+func (i RolloutSequenceOperationalStateArray) ToRolloutSequenceOperationalStateArrayOutput() RolloutSequenceOperationalStateArrayOutput {
+	return i.ToRolloutSequenceOperationalStateArrayOutputWithContext(context.Background())
+}
+
+func (i RolloutSequenceOperationalStateArray) ToRolloutSequenceOperationalStateArrayOutputWithContext(ctx context.Context) RolloutSequenceOperationalStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RolloutSequenceOperationalStateArrayOutput)
+}
+
+type RolloutSequenceOperationalStateOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceOperationalStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolloutSequenceOperationalState)(nil)).Elem()
+}
+
+func (o RolloutSequenceOperationalStateOutput) ToRolloutSequenceOperationalStateOutput() RolloutSequenceOperationalStateOutput {
+	return o
+}
+
+func (o RolloutSequenceOperationalStateOutput) ToRolloutSequenceOperationalStateOutputWithContext(ctx context.Context) RolloutSequenceOperationalStateOutput {
+	return o
+}
+
+// (Output)
+// The state of the rollout sequence.
+func (o RolloutSequenceOperationalStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RolloutSequenceOperationalState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type RolloutSequenceOperationalStateArrayOutput struct{ *pulumi.OutputState }
+
+func (RolloutSequenceOperationalStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RolloutSequenceOperationalState)(nil)).Elem()
+}
+
+func (o RolloutSequenceOperationalStateArrayOutput) ToRolloutSequenceOperationalStateArrayOutput() RolloutSequenceOperationalStateArrayOutput {
+	return o
+}
+
+func (o RolloutSequenceOperationalStateArrayOutput) ToRolloutSequenceOperationalStateArrayOutputWithContext(ctx context.Context) RolloutSequenceOperationalStateArrayOutput {
+	return o
+}
+
+func (o RolloutSequenceOperationalStateArrayOutput) Index(i pulumi.IntInput) RolloutSequenceOperationalStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RolloutSequenceOperationalState {
+		return vs[0].([]RolloutSequenceOperationalState)[vs[1].(int)]
+	}).(RolloutSequenceOperationalStateOutput)
+}
+
 type RolloutSequenceStage struct {
 	// Filter to select a subset of clusters from the specified Fleet projects.
 	// If not specified, all clusters in the fleet projects are selected.
@@ -17065,6 +17165,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrInput)(nil)).Elem(), RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceIgnoredClustersSelectorInput)(nil)).Elem(), RolloutSequenceIgnoredClustersSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceIgnoredClustersSelectorPtrInput)(nil)).Elem(), RolloutSequenceIgnoredClustersSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceOperationalStateInput)(nil)).Elem(), RolloutSequenceOperationalStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceOperationalStateArrayInput)(nil)).Elem(), RolloutSequenceOperationalStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageInput)(nil)).Elem(), RolloutSequenceStageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageArrayInput)(nil)).Elem(), RolloutSequenceStageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutSequenceStageClusterSelectorInput)(nil)).Elem(), RolloutSequenceStageClusterSelectorArgs{})
@@ -17297,6 +17399,8 @@ func init() {
 	pulumi.RegisterOutputType(RolloutSequenceAutoUpgradeConfigRolloutCreationScopePtrOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceIgnoredClustersSelectorOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceIgnoredClustersSelectorPtrOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceOperationalStateOutput{})
+	pulumi.RegisterOutputType(RolloutSequenceOperationalStateArrayOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageArrayOutput{})
 	pulumi.RegisterOutputType(RolloutSequenceStageClusterSelectorOutput{})

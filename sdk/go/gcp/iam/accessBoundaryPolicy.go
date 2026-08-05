@@ -88,14 +88,11 @@ import (
 //				return err
 //			}
 //			_, err = iam.NewAccessBoundaryPolicy(ctx, "example", &iam.AccessBoundaryPolicyArgs{
-//				Parent: pulumi.String(std.UrlencodeOutput(ctx, std.UrlencodeOutputArgs{
+//				Parent: std.UrlencodeOutput(ctx, std.UrlencodeOutputArgs{
 //					Input: project.ProjectId.ApplyT(func(projectId string) (string, error) {
 //						return fmt.Sprintf("cloudresourcemanager.googleapis.com/projects/%v", projectId), nil
 //					}).(pulumi.StringOutput),
-//				}, nil).ApplyT(func(invoke std.UrlencodeResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				Name:        pulumi.String("my-ab-policy"),
 //				DisplayName: pulumi.String("My AB policy"),
 //				Rules: iam.AccessBoundaryPolicyRuleArray{

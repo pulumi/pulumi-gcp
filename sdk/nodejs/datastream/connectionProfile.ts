@@ -139,7 +139,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     connectionProfileId: "my-profile",
  *     postgresqlProfile: {
- *         hostname: natVm.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *         hostname: natVm.networkInterfaces[0].networkIp,
  *         username: user.name,
  *         password: user.password,
  *         database: db.name,

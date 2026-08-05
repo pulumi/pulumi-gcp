@@ -90,6 +90,33 @@ import * as utilities from "../utilities";
  *         customPromptSafetyErrorMessage: "This is a custom error message for prompt",
  *         customLlmResponseSafetyErrorCode: 401,
  *         enforcementType: "INSPECT_ONLY",
+ *         filterVersionSelector: {
+ *             alias: "FILTER_VERSION_ALIAS_LATEST",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Modelarmor Template Filter Version Selector
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const template_filter_version_selector = new gcp.modelarmor.Template("template-filter-version-selector", {
+ *     location: "us-central1",
+ *     templateId: "modelarmor5",
+ *     filterConfig: {
+ *         raiSettings: {
+ *             raiFilters: [{
+ *                 filterType: "HATE_SPEECH",
+ *                 confidenceLevel: "HIGH",
+ *             }],
+ *         },
+ *     },
+ *     templateMetadata: {
+ *         filterVersionSelector: {
+ *             version: "v1",
+ *         },
  *     },
  * });
  * ```

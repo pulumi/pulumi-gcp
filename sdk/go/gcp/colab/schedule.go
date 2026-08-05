@@ -323,7 +323,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
+//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -332,7 +332,7 @@ import (
 //			dataformRepository, err := dataform.NewRepository(ctx, "dataform_repository", &dataform.RepositoryArgs{
 //				Name:                                   pulumi.String("dataform-repository"),
 //				DisplayName:                            pulumi.String("dataform_repository"),
-//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
+//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 //				KmsKeyName:                             pulumi.String("my-key"),
 //				Labels: pulumi.StringMap{
 //					"label_foo1": pulumi.String("label-bar1"),
@@ -340,7 +340,7 @@ import (
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              pulumi.String("https://github.com/OWNER/REPOSITORY.git"),
 //					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
+//					AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 //					DefaultDatabase: pulumi.String("database"),
@@ -397,6 +397,270 @@ import (
 //	}
 //
 // ```
+// ### Colab Schedule Notebook Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
+//				Location:                 pulumi.String("us-central1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				ForceDestroy:             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			notebook, err := storage.NewBucketObject(ctx, "notebook", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("hello_world.ipynb"),
+//				Bucket: bucket.Name,
+//				Content: pulumi.String(`    {
+//	      \"cells\": [
+//	        {
+//	          \"cell_type\": \"code\",
+//	          \"execution_count\": null,
+//	          \"metadata\": {},
+//	          \"outputs\": [],
+//	          \"source\": [
+//	            \"print(\\\"Hello, World!\\\")\"
+//	          ]
+//	        }
+//	      ],
+//	      \"metadata\": {
+//	        \"kernelspec\": {
+//	          \"display_name\": \"Python 3\",
+//	          \"language\": \"python\",
+//	          \"name\": \"python3\"
+//	        },
+//	        \"language_info\": {
+//	          \"codemirror_mode\": {
+//	            \"name\": \"ipython\",
+//	            \"version\": 3
+//	          },
+//	          \"file_extension\": \".py\",
+//	          \"mimetype\": \"text/x-python\",
+//	          \"name\": \"python\",
+//	          \"nbconvert_exporter\": \"python\",
+//	          \"pygments_lexer\": \"ipython3\",
+//	          \"version\": \"3.8.5\"
+//	        }
+//	      },
+//	      \"nbformat\": 4,
+//	      \"nbformat_minor\": 4
+//	    }
+//
+// `),
+//
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myNetwork, err := compute.NewNetwork(ctx, "my_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("colab-test-default"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mySubnetwork, err := compute.NewSubnetwork(ctx, "my_subnetwork", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("colab-test-default"),
+//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Region:      pulumi.String("us-central1"),
+//				IpCidrRange: pulumi.String("10.0.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewSchedule(ctx, "schedule", &colab.ScheduleArgs{
+//				DisplayName:           pulumi.String("full-notebook-schedule"),
+//				Location:              pulumi.String("us-central1"),
+//				MaxConcurrentRunCount: pulumi.String("2"),
+//				Cron:                  pulumi.String("*/5 * * * *"),
+//				StartTime:             pulumi.String("2030-01-01T00:00:00Z"),
+//				CreateNotebookExecutionJobRequest: &colab.ScheduleCreateNotebookExecutionJobRequestArgs{
+//					Parent: pulumi.Sprintf("projects/%v/locations/us-central1", project.ProjectId),
+//					NotebookExecutionJob: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs{
+//						DisplayName: pulumi.String("test-notebook-execution-job"),
+//						GcsOutputUri: bucket.Name.ApplyT(func(name string) (string, error) {
+//							return fmt.Sprintf("gs://%v", name), nil
+//						}).(pulumi.StringOutput),
+//						ServiceAccount: pulumi.String("my@service-account.com"),
+//						KernelName:     pulumi.String("python3"),
+//						GcsNotebookSource: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs{
+//							Uri: pulumi.All(notebook.Bucket, notebook.Name).ApplyT(func(_args []interface{}) (string, error) {
+//								bucket := _args[0].(string)
+//								name := _args[1].(string)
+//								return fmt.Sprintf("gs://%v/%v", bucket, name), nil
+//							}).(pulumi.StringOutput),
+//							Generation: notebook.Generation,
+//						},
+//						CustomEnvironmentSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs{
+//							MachineSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs{
+//								MachineType:      pulumi.String("n1-standard-4"),
+//								AcceleratorType:  pulumi.String("NVIDIA_TESLA_T4"),
+//								AcceleratorCount: pulumi.Int(1),
+//								GpuPartitionSize: pulumi.String("1g.10gb"),
+//								TpuTopology:      pulumi.String("2x2"),
+//							},
+//							PersistentDiskSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs{
+//								DiskSizeGb: pulumi.String("100"),
+//								DiskType:   pulumi.String("pd-standard"),
+//							},
+//							NetworkSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs{
+//								EnableInternetAccess: pulumi.Bool(true),
+//								Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
+//								Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
+//							},
+//						},
+//						EncryptionSpec: &colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs{
+//							KmsKeyName: pulumi.String("my-key"),
+//						},
+//						Labels: pulumi.StringMap{
+//							"test": pulumi.String("value"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Colab Schedule Pipeline
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("pipeline-job"),
+//				Location:                 pulumi.String("us-central1"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//				ForceDestroy:             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myNetwork, err := compute.NewNetwork(ctx, "my_network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("colab-test-default"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"pipelineInfo": map[string]string{
+//					"name": "hello-world",
+//				},
+//				"root": map[string]map[string]map[string]interface{}{
+//					"dag": map[string]map[string]interface{}{
+//						"tasks": map[string]interface{}{},
+//					},
+//				},
+//				"schemaVersion": "2.1.0",
+//				"sdkVersion":    "kfp-2.0.0",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = colab.NewSchedule(ctx, "schedule", &colab.ScheduleArgs{
+//				DisplayName:                 pulumi.String("test-schedule"),
+//				Location:                    pulumi.String("us-central1"),
+//				MaxConcurrentRunCount:       pulumi.String("2"),
+//				Cron:                        pulumi.String("*/5 * * * *"),
+//				AllowQueueing:               pulumi.Bool(true),
+//				MaxConcurrentActiveRunCount: pulumi.String("2"),
+//				MaxRunCount:                 pulumi.String("10"),
+//				StartTime:                   pulumi.String("2030-01-01T00:00:00Z"),
+//				EndTime:                     pulumi.String("2030-01-02T00:00:00Z"),
+//				CreatePipelineJobRequest: &colab.ScheduleCreatePipelineJobRequestArgs{
+//					Parent: pulumi.Sprintf("projects/%v/locations/us-central1", project.ProjectId),
+//					PipelineJob: &colab.ScheduleCreatePipelineJobRequestPipelineJobArgs{
+//						DisplayName:          pulumi.String("test-pipeline-job"),
+//						PreflightValidations: pulumi.Bool(true),
+//						Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
+//						ServiceAccount:       pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
+//						TemplateUri:          pulumi.String("https://us-kfp.pkg.dev/proj/repo/template/v1"),
+//						ReservedIpRanges: pulumi.StringArray{
+//							pulumi.String("vertex-ai-ip-range"),
+//						},
+//						Labels: pulumi.StringMap{
+//							"key": pulumi.String("value-one"),
+//						},
+//						EncryptionSpec: &colab.ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs{
+//							KmsKeyName: pulumi.String("my-key"),
+//						},
+//						PscInterfaceConfig: &colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs{
+//							NetworkAttachment: pulumi.Sprintf("projects/%v/regions/us-central1/networkAttachments/my-attachment", project.ProjectId),
+//							DnsPeeringConfigs: colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArray{
+//								&colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs{
+//									Domain:        pulumi.String("my-internal-domain.corp."),
+//									TargetNetwork: myNetwork.ID().ToIDOutput().ToStringOutput(),
+//									TargetProject: pulumi.String(project.ProjectId),
+//								},
+//							},
+//						},
+//						PipelineSpec: pulumi.String(json0),
+//						RuntimeConfig: &colab.ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs{
+//							GcsOutputDirectory: bucket.Name.ApplyT(func(name string) (string, error) {
+//								return fmt.Sprintf("gs://%v/pipeline_root", name), nil
+//							}).(pulumi.StringOutput),
+//							FailurePolicy: pulumi.String("PIPELINE_FAILURE_POLICY_FAIL_FAST"),
+//							ParameterValues: pulumi.StringMap{
+//								"param1": pulumi.String("val1"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -418,9 +682,16 @@ type Schedule struct {
 
 	// Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
 	AllowQueueing pulumi.BoolPtrOutput `pulumi:"allowQueueing"`
+	// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+	CatchUp pulumi.BoolOutput `pulumi:"catchUp"`
 	// Request for google_colab_notebook_execution.
 	// Structure is documented below.
-	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestOutput `pulumi:"createNotebookExecutionJobRequest"`
+	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestPtrOutput `pulumi:"createNotebookExecutionJobRequest"`
+	// Request message for PipelineService.CreatePipelineJob.
+	// Structure is documented below.
+	CreatePipelineJobRequest ScheduleCreatePipelineJobRequestPtrOutput `pulumi:"createPipelineJobRequest"`
+	// Timestamp when this Schedule was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron pulumi.StringOutput `pulumi:"cron"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -436,21 +707,36 @@ type Schedule struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
 	EndTime pulumi.StringPtrOutput `pulumi:"endTime"`
+	// Timestamp when this Schedule was last paused. Unset if never paused.
+	LastPauseTime pulumi.StringOutput `pulumi:"lastPauseTime"`
+	// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+	LastResumeTime pulumi.StringOutput `pulumi:"lastResumeTime"`
+	// Status of a scheduled run.
+	// Structure is documented below.
+	LastScheduledRunResponses ScheduleLastScheduledRunResponseArrayOutput `pulumi:"lastScheduledRunResponses"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+	MaxConcurrentActiveRunCount pulumi.StringPtrOutput `pulumi:"maxConcurrentActiveRunCount"`
 	// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
 	MaxConcurrentRunCount pulumi.StringOutput `pulumi:"maxConcurrentRunCount"`
 	// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
 	MaxRunCount pulumi.StringPtrOutput `pulumi:"maxRunCount"`
 	// The resource name of the Schedule
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+	NextRunTime pulumi.StringOutput `pulumi:"nextRunTime"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
+	// The number of runs started by this schedule.
+	StartedRunCount pulumi.StringOutput `pulumi:"startedRunCount"`
 	// Output only. The state of the schedule.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Timestamp when this Schedule was updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewSchedule registers a new resource with the given unique name, arguments, and options.
@@ -460,9 +746,6 @@ func NewSchedule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CreateNotebookExecutionJobRequest == nil {
-		return nil, errors.New("invalid value for required argument 'CreateNotebookExecutionJobRequest'")
-	}
 	if args.Cron == nil {
 		return nil, errors.New("invalid value for required argument 'Cron'")
 	}
@@ -500,9 +783,16 @@ func GetSchedule(ctx *pulumi.Context,
 type scheduleState struct {
 	// Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
 	AllowQueueing *bool `pulumi:"allowQueueing"`
+	// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+	CatchUp *bool `pulumi:"catchUp"`
 	// Request for google_colab_notebook_execution.
 	// Structure is documented below.
 	CreateNotebookExecutionJobRequest *ScheduleCreateNotebookExecutionJobRequest `pulumi:"createNotebookExecutionJobRequest"`
+	// Request message for PipelineService.CreatePipelineJob.
+	// Structure is documented below.
+	CreatePipelineJobRequest *ScheduleCreatePipelineJobRequest `pulumi:"createPipelineJobRequest"`
+	// Timestamp when this Schedule was created.
+	CreateTime *string `pulumi:"createTime"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron *string `pulumi:"cron"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -518,29 +808,51 @@ type scheduleState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
 	EndTime *string `pulumi:"endTime"`
+	// Timestamp when this Schedule was last paused. Unset if never paused.
+	LastPauseTime *string `pulumi:"lastPauseTime"`
+	// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+	LastResumeTime *string `pulumi:"lastResumeTime"`
+	// Status of a scheduled run.
+	// Structure is documented below.
+	LastScheduledRunResponses []ScheduleLastScheduledRunResponse `pulumi:"lastScheduledRunResponses"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location *string `pulumi:"location"`
+	// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+	MaxConcurrentActiveRunCount *string `pulumi:"maxConcurrentActiveRunCount"`
 	// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
 	MaxConcurrentRunCount *string `pulumi:"maxConcurrentRunCount"`
 	// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
 	MaxRunCount *string `pulumi:"maxRunCount"`
 	// The resource name of the Schedule
 	Name *string `pulumi:"name"`
+	// Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+	NextRunTime *string `pulumi:"nextRunTime"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
 	StartTime *string `pulumi:"startTime"`
+	// The number of runs started by this schedule.
+	StartedRunCount *string `pulumi:"startedRunCount"`
 	// Output only. The state of the schedule.
 	State *string `pulumi:"state"`
+	// Timestamp when this Schedule was updated.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ScheduleState struct {
 	// Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
 	AllowQueueing pulumi.BoolPtrInput
+	// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+	CatchUp pulumi.BoolPtrInput
 	// Request for google_colab_notebook_execution.
 	// Structure is documented below.
 	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestPtrInput
+	// Request message for PipelineService.CreatePipelineJob.
+	// Structure is documented below.
+	CreatePipelineJobRequest ScheduleCreatePipelineJobRequestPtrInput
+	// Timestamp when this Schedule was created.
+	CreateTime pulumi.StringPtrInput
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -556,21 +868,36 @@ type ScheduleState struct {
 	DisplayName pulumi.StringPtrInput
 	// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
 	EndTime pulumi.StringPtrInput
+	// Timestamp when this Schedule was last paused. Unset if never paused.
+	LastPauseTime pulumi.StringPtrInput
+	// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+	LastResumeTime pulumi.StringPtrInput
+	// Status of a scheduled run.
+	// Structure is documented below.
+	LastScheduledRunResponses ScheduleLastScheduledRunResponseArrayInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location pulumi.StringPtrInput
+	// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+	MaxConcurrentActiveRunCount pulumi.StringPtrInput
 	// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
 	MaxConcurrentRunCount pulumi.StringPtrInput
 	// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
 	MaxRunCount pulumi.StringPtrInput
 	// The resource name of the Schedule
 	Name pulumi.StringPtrInput
+	// Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+	NextRunTime pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
 	StartTime pulumi.StringPtrInput
+	// The number of runs started by this schedule.
+	StartedRunCount pulumi.StringPtrInput
 	// Output only. The state of the schedule.
 	State pulumi.StringPtrInput
+	// Timestamp when this Schedule was updated.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (ScheduleState) ElementType() reflect.Type {
@@ -582,7 +909,10 @@ type scheduleArgs struct {
 	AllowQueueing *bool `pulumi:"allowQueueing"`
 	// Request for google_colab_notebook_execution.
 	// Structure is documented below.
-	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequest `pulumi:"createNotebookExecutionJobRequest"`
+	CreateNotebookExecutionJobRequest *ScheduleCreateNotebookExecutionJobRequest `pulumi:"createNotebookExecutionJobRequest"`
+	// Request message for PipelineService.CreatePipelineJob.
+	// Structure is documented below.
+	CreatePipelineJobRequest *ScheduleCreatePipelineJobRequest `pulumi:"createPipelineJobRequest"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron string `pulumi:"cron"`
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -600,6 +930,8 @@ type scheduleArgs struct {
 	EndTime *string `pulumi:"endTime"`
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location string `pulumi:"location"`
+	// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+	MaxConcurrentActiveRunCount *string `pulumi:"maxConcurrentActiveRunCount"`
 	// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
 	MaxConcurrentRunCount string `pulumi:"maxConcurrentRunCount"`
 	// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
@@ -617,7 +949,10 @@ type ScheduleArgs struct {
 	AllowQueueing pulumi.BoolPtrInput
 	// Request for google_colab_notebook_execution.
 	// Structure is documented below.
-	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestInput
+	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestPtrInput
+	// Request message for PipelineService.CreatePipelineJob.
+	// Structure is documented below.
+	CreatePipelineJobRequest ScheduleCreatePipelineJobRequestPtrInput
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron pulumi.StringInput
 	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -635,6 +970,8 @@ type ScheduleArgs struct {
 	EndTime pulumi.StringPtrInput
 	// The location for the resource: https://cloud.google.com/colab/docs/locations
 	Location pulumi.StringInput
+	// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+	MaxConcurrentActiveRunCount pulumi.StringPtrInput
 	// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
 	MaxConcurrentRunCount pulumi.StringInput
 	// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
@@ -738,12 +1075,28 @@ func (o ScheduleOutput) AllowQueueing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.BoolPtrOutput { return v.AllowQueueing }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+func (o ScheduleOutput) CatchUp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.BoolOutput { return v.CatchUp }).(pulumi.BoolOutput)
+}
+
 // Request for google_colab_notebook_execution.
 // Structure is documented below.
-func (o ScheduleOutput) CreateNotebookExecutionJobRequest() ScheduleCreateNotebookExecutionJobRequestOutput {
-	return o.ApplyT(func(v *Schedule) ScheduleCreateNotebookExecutionJobRequestOutput {
+func (o ScheduleOutput) CreateNotebookExecutionJobRequest() ScheduleCreateNotebookExecutionJobRequestPtrOutput {
+	return o.ApplyT(func(v *Schedule) ScheduleCreateNotebookExecutionJobRequestPtrOutput {
 		return v.CreateNotebookExecutionJobRequest
-	}).(ScheduleCreateNotebookExecutionJobRequestOutput)
+	}).(ScheduleCreateNotebookExecutionJobRequestPtrOutput)
+}
+
+// Request message for PipelineService.CreatePipelineJob.
+// Structure is documented below.
+func (o ScheduleOutput) CreatePipelineJobRequest() ScheduleCreatePipelineJobRequestPtrOutput {
+	return o.ApplyT(func(v *Schedule) ScheduleCreatePipelineJobRequestPtrOutput { return v.CreatePipelineJobRequest }).(ScheduleCreatePipelineJobRequestPtrOutput)
+}
+
+// Timestamp when this Schedule was created.
+func (o ScheduleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -776,9 +1129,30 @@ func (o ScheduleOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
+// Timestamp when this Schedule was last paused. Unset if never paused.
+func (o ScheduleOutput) LastPauseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.LastPauseTime }).(pulumi.StringOutput)
+}
+
+// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+func (o ScheduleOutput) LastResumeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.LastResumeTime }).(pulumi.StringOutput)
+}
+
+// Status of a scheduled run.
+// Structure is documented below.
+func (o ScheduleOutput) LastScheduledRunResponses() ScheduleLastScheduledRunResponseArrayOutput {
+	return o.ApplyT(func(v *Schedule) ScheduleLastScheduledRunResponseArrayOutput { return v.LastScheduledRunResponses }).(ScheduleLastScheduledRunResponseArrayOutput)
+}
+
 // The location for the resource: https://cloud.google.com/colab/docs/locations
 func (o ScheduleOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+func (o ScheduleOutput) MaxConcurrentActiveRunCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringPtrOutput { return v.MaxConcurrentActiveRunCount }).(pulumi.StringPtrOutput)
 }
 
 // Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
@@ -796,6 +1170,11 @@ func (o ScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+func (o ScheduleOutput) NextRunTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.NextRunTime }).(pulumi.StringOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o ScheduleOutput) Project() pulumi.StringOutput {
@@ -807,9 +1186,19 @@ func (o ScheduleOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// The number of runs started by this schedule.
+func (o ScheduleOutput) StartedRunCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.StartedRunCount }).(pulumi.StringOutput)
+}
+
 // Output only. The state of the schedule.
 func (o ScheduleOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Timestamp when this Schedule was updated.
+func (o ScheduleOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type ScheduleArrayOutput struct{ *pulumi.OutputState }

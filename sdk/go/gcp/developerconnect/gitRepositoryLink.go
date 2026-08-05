@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-//				Secret:     github_token_secret.ID(),
+//				Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //					GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 //					AppInstallationId: pulumi.String("123123"),
 //					AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-//						OauthTokenSecretVersion: github_token_secret_version.ID(),
+//						OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

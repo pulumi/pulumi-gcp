@@ -49,7 +49,7 @@ import (
 //				Name:                    pulumi.String("sec-profile-group"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
-//				ThreatPreventionProfile: securityProfile.ID(),
+//				ThreatPreventionProfile: securityProfile.ID().ToIDOutput().ToStringOutput(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -87,7 +87,7 @@ import (
 //			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
 //				MirroringDeploymentGroupId: pulumi.String("deployment-group"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID(),
+//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,7 +95,7 @@ import (
 //			defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
 //				MirroringEndpointGroupId: pulumi.String("endpoint-group"),
 //				Location:                 pulumi.String("global"),
-//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
+//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -106,7 +106,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_MIRRORING"),
 //				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
-//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -116,7 +116,7 @@ import (
 //				Name:                   pulumi.String("sec-profile-group"),
 //				Parent:                 pulumi.String("organizations/123456789"),
 //				Description:            pulumi.String("my description"),
-//				CustomMirroringProfile: defaultSecurityProfile.ID(),
+//				CustomMirroringProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -151,7 +151,7 @@ import (
 //			defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
 //				InterceptDeploymentGroupId: pulumi.String("deployment-group"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    _default.ID(),
+//				Network:                    _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -159,7 +159,7 @@ import (
 //			defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
 //				InterceptEndpointGroupId: pulumi.String("endpoint-group"),
 //				Location:                 pulumi.String("global"),
-//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
+//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -170,7 +170,7 @@ import (
 //				Description: pulumi.String("my description"),
 //				Type:        pulumi.String("CUSTOM_INTERCEPT"),
 //				CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
-//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
+//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -180,7 +180,7 @@ import (
 //				Name:                   pulumi.String("sec-profile-group"),
 //				Parent:                 pulumi.String("organizations/123456789"),
 //				Description:            pulumi.String("my description"),
-//				CustomInterceptProfile: defaultSecurityProfile.ID(),
+//				CustomInterceptProfile: defaultSecurityProfile.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -230,7 +230,7 @@ import (
 //				Name:                pulumi.String("sec-profile-group"),
 //				Parent:              pulumi.String("organizations/123456789"),
 //				Description:         pulumi.String("my description"),
-//				UrlFilteringProfile: securityProfile.ID(),
+//				UrlFilteringProfile: securityProfile.ID().ToIDOutput().ToStringOutput(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

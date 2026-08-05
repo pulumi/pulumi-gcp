@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
  *     cryptoKeyId: "kms-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: settings.apply(settings => `serviceAccount:${settings.kmsServiceAccountId}`),
+ *     member: pulumi.interpolate`serviceAccount:${settings.kmsServiceAccountId}`,
  * });
  * const example = new gcp.logging.FolderSettings("example", {
  *     disableDefaultSink: true,

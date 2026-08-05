@@ -392,7 +392,7 @@ import (
 //				return err
 //			}
 //			secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-//				Secret:     secret_basic.ID(),
+//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -409,7 +409,7 @@ import (
 //				},
 //				ValidationSharedKeys: networkservices.EdgeCacheKeysetValidationSharedKeyArray{
 //					&networkservices.EdgeCacheKeysetValidationSharedKeyArgs{
-//						SecretVersion: secret_version_basic.ID(),
+//						SecretVersion: secret_version_basic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -453,14 +453,14 @@ import (
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-//											SignedRequestKeyset: keyset.ID(),
+//											SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
 //											SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 //												TokenQueryParameter: pulumi.String("edge-cache-token"),
 //											},
 //											SignedRequestMaximumExpirationTtl: pulumi.String("600s"),
 //											AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
 //												Actions: pulumi.String("GENERATE_COOKIE"),
-//												Keyset:  keyset.ID(),
+//												Keyset:  keyset.ID().ToIDOutput().ToStringOutput(),
 //												CopiedParameters: pulumi.StringArray{
 //													pulumi.String("PathGlobs"),
 //													pulumi.String("SessionID"),
@@ -481,7 +481,7 @@ import (
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-//											SignedRequestKeyset: keyset.ID(),
+//											SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
 //											SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 //												TokenQueryParameter: pulumi.String("hdnts"),
 //												AllowedSignatureAlgorithms: pulumi.StringArray{
@@ -492,7 +492,7 @@ import (
 //											},
 //											AddSignatures: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs{
 //												Actions:             pulumi.String("GENERATE_TOKEN_HLS_COOKIELESS"),
-//												Keyset:              keyset.ID(),
+//												Keyset:              keyset.ID().ToIDOutput().ToStringOutput(),
 //												TokenTtl:            pulumi.String("1200s"),
 //												TokenQueryParameter: pulumi.String("hdntl"),
 //												CopiedParameters: pulumi.StringArray{
@@ -514,7 +514,7 @@ import (
 //									RouteAction: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs{
 //										CdnPolicy: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs{
 //											SignedRequestMode:   pulumi.String("REQUIRE_TOKENS"),
-//											SignedRequestKeyset: keyset.ID(),
+//											SignedRequestKeyset: keyset.ID().ToIDOutput().ToStringOutput(),
 //											SignedTokenOptions: &networkservices.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs{
 //												TokenQueryParameter: pulumi.String("hdntl"),
 //											},

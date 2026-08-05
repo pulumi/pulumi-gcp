@@ -59,7 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"email":    "example.user@example.com",
 //				"expireOn": "2020-04-14T01:37:19Z",
 //				"exponent": "AQAB",
@@ -107,9 +107,7 @@ import (
 //				Zone:     windows.Zone,
 //				Port:     pulumi.Int(4),
 //			}, nil)
-//			ctx.Export("serialOut", serial.ApplyT(func(serial compute.GetInstanceSerialPortResult) (*string, error) {
-//				return serial.Contents, nil
-//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("serialOut", serial.Contents())
 //			return nil
 //		})
 //	}

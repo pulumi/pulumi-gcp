@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
  *     secretId: github_token_secret.secretId,
- *     policyData: p4sa_secretAccessor.apply(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
+ *     policyData: p4sa_secretAccessor.policyData,
  * });
  * const my_connection = new gcp.developerconnect.Connection("my-connection", {
  *     location: "us-central1",

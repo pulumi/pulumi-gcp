@@ -125,9 +125,11 @@ type LookupClusterResult struct {
 	DeletionPolicy                       string                                    `pulumi:"deletionPolicy"`
 	DeletionProtection                   bool                                      `pulumi:"deletionProtection"`
 	Description                          string                                    `pulumi:"description"`
+	DesiredEmulatedVersion               string                                    `pulumi:"desiredEmulatedVersion"`
 	DisableL4LbFirewallReconciliation    bool                                      `pulumi:"disableL4LbFirewallReconciliation"`
 	DnsConfigs                           []GetClusterDnsConfig                     `pulumi:"dnsConfigs"`
 	EffectiveLabels                      map[string]string                         `pulumi:"effectiveLabels"`
+	EmulatedVersion                      string                                    `pulumi:"emulatedVersion"`
 	EnableAutopilot                      bool                                      `pulumi:"enableAutopilot"`
 	EnableCiliumClusterwideNetworkPolicy bool                                      `pulumi:"enableCiliumClusterwideNetworkPolicy"`
 	EnableFqdnNetworkPolicy              bool                                      `pulumi:"enableFqdnNetworkPolicy"`
@@ -191,6 +193,7 @@ type LookupClusterResult struct {
 	RemoveDefaultNodePool                    bool                                                `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                           map[string]string                                   `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs               []GetClusterResourceUsageExportConfig               `pulumi:"resourceUsageExportConfigs"`
+	RollbackSafeUpgrades                     []GetClusterRollbackSafeUpgrade                     `pulumi:"rollbackSafeUpgrades"`
 	SecretManagerConfigs                     []GetClusterSecretManagerConfig                     `pulumi:"secretManagerConfigs"`
 	SecretSyncConfigs                        []GetClusterSecretSyncConfig                        `pulumi:"secretSyncConfigs"`
 	SecurityPostureConfigs                   []GetClusterSecurityPostureConfig                   `pulumi:"securityPostureConfigs"`
@@ -338,6 +341,10 @@ func (o LookupClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+func (o LookupClusterResultOutput) DesiredEmulatedVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DesiredEmulatedVersion }).(pulumi.StringOutput)
+}
+
 func (o LookupClusterResultOutput) DisableL4LbFirewallReconciliation() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.DisableL4LbFirewallReconciliation }).(pulumi.BoolOutput)
 }
@@ -348,6 +355,10 @@ func (o LookupClusterResultOutput) DnsConfigs() GetClusterDnsConfigArrayOutput {
 
 func (o LookupClusterResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupClusterResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupClusterResultOutput) EmulatedVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.EmulatedVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {
@@ -603,6 +614,10 @@ func (o LookupClusterResultOutput) ResourceLabels() pulumi.StringMapOutput {
 
 func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResourceUsageExportConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterResourceUsageExportConfig { return v.ResourceUsageExportConfigs }).(GetClusterResourceUsageExportConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) RollbackSafeUpgrades() GetClusterRollbackSafeUpgradeArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterRollbackSafeUpgrade { return v.RollbackSafeUpgrades }).(GetClusterRollbackSafeUpgradeArrayOutput)
 }
 
 func (o LookupClusterResultOutput) SecretManagerConfigs() GetClusterSecretManagerConfigArrayOutput {

@@ -49,7 +49,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -60,7 +60,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -69,7 +69,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -81,26 +81,26 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/home"),
 //								},
-//								Service: home.ID(),
+//								Service: home.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/login"),
 //								},
-//								Service: login.ID(),
+//								Service: login.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -147,7 +147,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -158,7 +158,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -180,11 +180,11 @@ import (
 //						},
 //					},
 //					RequestMirrorPolicy: &compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs{
-//						BackendService: home.ID(),
+//						BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					WeightedBackendServices: compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceArray{
 //						&compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs{
-//							BackendService: login.ID(),
+//							BackendService: login.ID().ToIDOutput().ToStringOutput(),
 //							Weight:         pulumi.Int(200),
 //							HeaderAction: &compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 //								RequestHeadersToAdds: compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
@@ -210,7 +210,7 @@ import (
 //							},
 //						},
 //						&compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs{
-//							BackendService: home.ID(),
+//							BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //							Weight:         pulumi.Int(100),
 //							HeaderAction: &compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 //								RequestHeadersToAdds: compute.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
@@ -297,26 +297,26 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/home"),
 //								},
-//								Service: home.ID(),
+//								Service: home.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/login"),
 //								},
-//								Service: login.ID(),
+//								Service: login.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -357,7 +357,7 @@ import (
 //				Name:                pulumi.String("home"),
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -366,7 +366,7 @@ import (
 //			_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -378,7 +378,7 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
@@ -416,7 +416,7 @@ import (
 //										},
 //									},
 //									RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{
-//										BackendService: home.ID(),
+//										BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //									},
 //									RetryPolicy: &compute.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs{
 //										NumRetries: pulumi.Int(4),
@@ -438,7 +438,7 @@ import (
 //									},
 //									WeightedBackendServices: compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{
 //										&compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{
-//											BackendService: home.ID(),
+//											BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //											Weight:         pulumi.Int(400),
 //											HeaderAction: &compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{
 //												RequestHeadersToRemoves: pulumi.StringArray{
@@ -471,7 +471,7 @@ import (
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -512,7 +512,7 @@ import (
 //				Name:                pulumi.String("home"),
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -521,7 +521,7 @@ import (
 //			_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -533,7 +533,7 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
@@ -560,7 +560,7 @@ import (
 //									},
 //									WeightedBackendServices: compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArray{
 //										&compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs{
-//											BackendService: home.ID(),
+//											BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //											Weight:         pulumi.Int(400),
 //											HeaderAction: &compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs{
 //												ResponseHeadersToAdds: compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{
@@ -580,7 +580,7 @@ import (
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -621,7 +621,7 @@ import (
 //				Name:                pulumi.String("home"),
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -630,7 +630,7 @@ import (
 //			_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -642,7 +642,7 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
 //							&compute.RegionUrlMapPathMatcherRouteRuleArgs{
 //								Priority: pulumi.Int(1),
@@ -711,7 +711,7 @@ import (
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -752,7 +752,7 @@ import (
 //				Name:                pulumi.String("home"),
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -761,7 +761,7 @@ import (
 //			_, err = compute.NewRegionUrlMap(ctx, "regionurlmap", &compute.RegionUrlMapArgs{
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -773,11 +773,11 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
 //							&compute.RegionUrlMapPathMatcherRouteRuleArgs{
 //								Priority: pulumi.Int(1),
-//								Service:  home.ID(),
+//								Service:  home.ID().ToIDOutput().ToStringOutput(),
 //								HeaderAction: &compute.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs{
 //									RequestHeadersToRemoves: pulumi.StringArray{
 //										pulumi.String("RemoveMe2"),
@@ -807,7 +807,7 @@ import (
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -855,7 +855,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -867,7 +867,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -879,7 +879,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -888,7 +888,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("urlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home_backend.ID(),
+//				DefaultService: home_backend.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -900,7 +900,7 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("mysite"),
-//						DefaultService: home_backend.ID(),
+//						DefaultService: home_backend.ID().ToIDOutput().ToStringOutput(),
 //						RouteRules: compute.RegionUrlMapPathMatcherRouteRuleArray{
 //							&compute.RegionUrlMapPathMatcherRouteRuleArgs{
 //								MatchRules: compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArray{
@@ -908,7 +908,7 @@ import (
 //										PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}"),
 //									},
 //								},
-//								Service:  cart_backend.ID(),
+//								Service:  cart_backend.ID().ToIDOutput().ToStringOutput(),
 //								Priority: pulumi.Int(1),
 //								RouteAction: &compute.RegionUrlMapPathMatcherRouteRuleRouteActionArgs{
 //									UrlRewrite: &compute.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{
@@ -922,7 +922,7 @@ import (
 //										PathTemplateMatch: pulumi.String("/xyzwebservices/v2/xyz/users/*/accountinfo/*"),
 //									},
 //								},
-//								Service:  user_backend.ID(),
+//								Service:  user_backend.ID().ToIDOutput().ToStringOutput(),
 //								Priority: pulumi.Int(2),
 //							},
 //						},
@@ -970,7 +970,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -981,7 +981,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -990,7 +990,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -1035,7 +1035,7 @@ import (
 //								},
 //							},
 //							RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{
-//								BackendService: home.ID(),
+//								BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							RetryPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyArgs{
 //								NumRetries: pulumi.Int(3),
@@ -1058,7 +1058,7 @@ import (
 //							},
 //							WeightedBackendServices: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArray{
 //								&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs{
-//									BackendService: home.ID(),
+//									BackendService: home.ID().ToIDOutput().ToStringOutput(),
 //									HeaderAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 //										RequestHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
 //											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
@@ -1094,7 +1094,7 @@ import (
 //									Weight: pulumi.Int(100),
 //								},
 //								&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs{
-//									BackendService: login.ID(),
+//									BackendService: login.ID().ToIDOutput().ToStringOutput(),
 //									HeaderAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs{
 //										RequestHeadersToAdds: compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{
 //											&compute.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{
@@ -1136,20 +1136,20 @@ import (
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/home"),
 //								},
-//								Service: home.ID(),
+//								Service: home.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/login"),
 //								},
-//								Service: login.ID(),
+//								Service: login.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
 //				},
 //				Tests: compute.RegionUrlMapTestArray{
 //					&compute.RegionUrlMapTestArgs{
-//						Service: home.ID(),
+//						Service: home.ID().ToIDOutput().ToStringOutput(),
 //						Host:    pulumi.String("hi.com"),
 //						Path:    pulumi.String("/home"),
 //					},
@@ -1194,7 +1194,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1206,7 +1206,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1215,10 +1215,10 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("Test for default route action mirror percent"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				DefaultRouteAction: &compute.RegionUrlMapDefaultRouteActionArgs{
 //					RequestMirrorPolicy: &compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs{
-//						BackendService: mirror.ID(),
+//						BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 //						MirrorPercent:  pulumi.Float64(50),
 //					},
 //				},
@@ -1233,7 +1233,7 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -1276,7 +1276,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1288,7 +1288,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1297,10 +1297,10 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("Test for default route action mirror percent"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				DefaultRouteAction: &compute.RegionUrlMapDefaultRouteActionArgs{
 //					RequestMirrorPolicy: &compute.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs{
-//						BackendService: mirror.ID(),
+//						BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 //						MirrorPercent:  pulumi.Float64(50),
 //					},
 //				},
@@ -1315,7 +1315,7 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -1358,7 +1358,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1370,7 +1370,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1379,7 +1379,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("Test for path matcher default route action mirror percent"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -1391,10 +1391,10 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						DefaultRouteAction: &compute.RegionUrlMapPathMatcherDefaultRouteActionArgs{
 //							RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs{
-//								BackendService: mirror.ID(),
+//								BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 //								MirrorPercent:  pulumi.Float64(75),
 //							},
 //						},
@@ -1440,7 +1440,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1452,7 +1452,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        _default.ID(),
+//				HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -1461,7 +1461,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("regionurlmap"),
 //				Description:    pulumi.String("Test for path rule route action mirror percent"),
-//				DefaultService: home.ID(),
+//				DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -1473,16 +1473,16 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: home.ID(),
+//						DefaultService: home.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/home"),
 //								},
-//								Service: home.ID(),
+//								Service: home.ID().ToIDOutput().ToStringOutput(),
 //								RouteAction: &compute.RegionUrlMapPathMatcherPathRuleRouteActionArgs{
 //									RequestMirrorPolicy: &compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs{
-//										BackendService: mirror.ID(),
+//										BackendService: mirror.ID().ToIDOutput().ToStringOutput(),
 //										MirrorPercent:  pulumi.Float64(25),
 //									},
 //								},

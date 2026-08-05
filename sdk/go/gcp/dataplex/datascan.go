@@ -1167,16 +1167,16 @@ import (
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"dimension": "VALIDITY",
-//				"sqlCollection": []map[string]interface{}{
-//					map[string]interface{}{
+//				"sqlCollection": []map[string]string{
+//					{
 //						"query": "SELECT * FROM ${param(table_name)} WHERE ${param(column_name)} IS NULL",
 //					},
 //				},
-//				"inputParameters": map[string]interface{}{
-//					"table_name": map[string]interface{}{
+//				"inputParameters": map[string]map[string]string{
+//					"table_name": map[string]string{
 //						"description": "Table Name",
 //					},
-//					"column_name": map[string]interface{}{
+//					"column_name": map[string]string{
 //						"description": "Column Name",
 //					},
 //				},
@@ -1238,7 +1238,7 @@ import (
 //								datasetId := _args[1].(string)
 //								tableId := _args[2].(string)
 //								var _zero string
-//								tmpJSON1, err := json.Marshal(map[string]interface{}{
+//								tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 //									"rules": []map[string]interface{}{
 //										map[string]interface{}{
 //											"name":      "rule-to-filter-out",
@@ -1246,16 +1246,16 @@ import (
 //											"type":      "TEMPLATE_REFERENCE",
 //											"templateReference": map[string]interface{}{
 //												"name": name,
-//												"values": map[string]interface{}{
-//													"table_name": map[string]interface{}{
+//												"values": map[string]map[string]string{
+//													"table_name": map[string]string{
 //														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, datasetId, tableId),
 //													},
-//													"column_name": map[string]interface{}{
+//													"column_name": map[string]string{
 //														"value": "name",
 //													},
 //												},
 //											},
-//											"attributes": map[string]interface{}{
+//											"attributes": map[string]string{
 //												"priority": "low",
 //											},
 //										},
@@ -1265,16 +1265,16 @@ import (
 //											"type":      "TEMPLATE_REFERENCE",
 //											"templateReference": map[string]interface{}{
 //												"name": name,
-//												"values": map[string]interface{}{
-//													"table_name": map[string]interface{}{
+//												"values": map[string]map[string]string{
+//													"table_name": map[string]string{
 //														"value": fmt.Sprintf("`%v.%v.%v`", project.ProjectId, datasetId, tableId),
 //													},
-//													"column_name": map[string]interface{}{
+//													"column_name": map[string]string{
 //														"value": "name",
 //													},
 //												},
 //											},
-//											"attributes": map[string]interface{}{
+//											"attributes": map[string]string{
 //												"priority": "high",
 //											},
 //										},
@@ -1424,8 +1424,8 @@ import (
 //			}
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"dimension": "VALIDITY",
-//				"sqlCollection": []map[string]interface{}{
-//					map[string]interface{}{
+//				"sqlCollection": []map[string]string{
+//					{
 //						"query": "SELECT * FROM ${data()} WHERE ${column()} IS NOT NULL",
 //					},
 //				},

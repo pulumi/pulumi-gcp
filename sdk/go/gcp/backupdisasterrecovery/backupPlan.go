@@ -48,7 +48,7 @@ import (
 //				Location:                       pulumi.String("us-central1"),
 //				BackupPlanId:                   pulumi.String("backup-plan-simple-test"),
 //				ResourceType:                   pulumi.String("compute.googleapis.com/Instance"),
-//				BackupVault:                    myBackupVault.ID(),
+//				BackupVault:                    myBackupVault.ID().ToIDOutput().ToStringOutput(),
 //				MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
@@ -100,7 +100,7 @@ import (
 //				Location:                       pulumi.String("us-central1"),
 //				BackupPlanId:                   pulumi.String("backup-plan-disk-test"),
 //				ResourceType:                   pulumi.String("compute.googleapis.com/Disk"),
-//				BackupVault:                    myBackupVault.ID(),
+//				BackupVault:                    myBackupVault.ID().ToIDOutput().ToStringOutput(),
 //				MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
@@ -155,7 +155,7 @@ import (
 //				Location:                       pulumi.String("us-central1"),
 //				BackupPlanId:                   pulumi.String("backup-plan-csql-test"),
 //				ResourceType:                   pulumi.String("sqladmin.googleapis.com/Instance"),
-//				BackupVault:                    myBackupVault.ID(),
+//				BackupVault:                    myBackupVault.ID().ToIDOutput().ToStringOutput(),
 //				MaxCustomOnDemandRetentionDays: pulumi.Int(30),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
@@ -208,7 +208,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				BackupPlanId: pulumi.String("backup-plan-filestore-test"),
 //				ResourceType: pulumi.String("file.googleapis.com/Instance"),
-//				BackupVault:  myBackupVault.ID(),
+//				BackupVault:  myBackupVault.ID().ToIDOutput().ToStringOutput(),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 //						RuleId:              pulumi.String("rule-1"),

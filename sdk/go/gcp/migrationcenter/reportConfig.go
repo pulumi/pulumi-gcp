@@ -51,8 +51,8 @@ import (
 //				DisplayName:    pulumi.String("Terraform integration test display"),
 //				GroupPreferencesetAssignments: migrationcenter.ReportConfigGroupPreferencesetAssignmentArray{
 //					&migrationcenter.ReportConfigGroupPreferencesetAssignmentArgs{
-//						Group:         _default.ID(),
-//						PreferenceSet: defaultPreferenceSet.ID(),
+//						Group:         _default.ID().ToIDOutput().ToStringOutput(),
+//						PreferenceSet: defaultPreferenceSet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

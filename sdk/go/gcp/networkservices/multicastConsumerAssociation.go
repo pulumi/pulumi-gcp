@@ -47,7 +47,7 @@ import (
 //			multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-domain-mca"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
@@ -60,7 +60,7 @@ import (
 //			multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
 //				MulticastDomainActivationId: pulumi.String("test-domain-activation-mca"),
 //				Location:                    pulumi.String("us-central1-b"),
-//				MulticastDomain:             multicastDomain.ID(),
+//				MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -68,8 +68,8 @@ import (
 //			_, err = networkservices.NewMulticastConsumerAssociation(ctx, "mca_test", &networkservices.MulticastConsumerAssociationArgs{
 //				MulticastConsumerAssociationId: pulumi.String("test-consumer-association-mca"),
 //				Location:                       pulumi.String("us-central1-b"),
-//				Network:                        network.ID(),
-//				MulticastDomainActivation:      multicastDomainActivation.ID(),
+//				Network:                        network.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomainActivation:      multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				network,
 //			}))

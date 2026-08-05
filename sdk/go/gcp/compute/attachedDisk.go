@@ -60,7 +60,7 @@ import (
 //			}
 //			_, err = compute.NewAttachedDisk(ctx, "default", &compute.AttachedDiskArgs{
 //				Disk:     pulumi.Any(defaultGoogleComputeDisk.Id),
-//				Instance: defaultInstance.ID(),
+//				Instance: defaultInstance.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

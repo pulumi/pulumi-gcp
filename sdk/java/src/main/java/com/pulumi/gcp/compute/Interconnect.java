@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .customerName("example_customer")
  *             .interconnectType("DEDICATED")
  *             .linkType("LINK_TYPE_ETHERNET_10G_LR")
- *             .location(String.format("https://www.googleapis.com/compute/v1/%s/global/interconnectLocations/iad-zone1-1", project.id()))
+ *             .location(String.format("https://www.googleapis.com/compute/v1/projects/%s/global/interconnectLocations/iad-zone1-1", project.projectId()))
  *             .requestedLinkCount(1)
  *             .build());
  * 
@@ -276,6 +276,22 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks.
+     * 
+     */
+    @Export(name="effectiveLocation", refs={String.class}, tree="[0]")
+    private Output<String> effectiveLocation;
+
+    /**
+     * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks.
+     * 
+     */
+    public Output<String> effectiveLocation() {
+        return this.effectiveLocation;
+    }
+    /**
      * A list of outages expected for this Interconnect.
      * Structure is documented below.
      * 
@@ -444,7 +460,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return this.linkType;
     }
     /**
-     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google&#39;s Networks.
      * 
      */
@@ -452,7 +468,7 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     private Output<String> location;
 
     /**
-     * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * @return URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google&#39;s Networks.
      * 
      */

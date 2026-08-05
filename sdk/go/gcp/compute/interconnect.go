@@ -47,7 +47,7 @@ import (
 //				CustomerName:       pulumi.String("example_customer"),
 //				InterconnectType:   pulumi.String("DEDICATED"),
 //				LinkType:           pulumi.String("LINK_TYPE_ETHERNET_10G_LR"),
-//				Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/%v/global/interconnectLocations/iad-zone1-1", project.Id),
+//				Location:           pulumi.Sprintf("https://www.googleapis.com/compute/v1/projects/%v/global/interconnectLocations/iad-zone1-1", project.ProjectId),
 //				RequestedLinkCount: pulumi.Int(1),
 //			})
 //			if err != nil {
@@ -116,6 +116,9 @@ type Interconnect struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// Specifies the location inside Google's Networks.
+	EffectiveLocation pulumi.StringOutput `pulumi:"effectiveLocation"`
 	// A list of outages expected for this Interconnect.
 	// Structure is documented below.
 	ExpectedOutages InterconnectExpectedOutageArrayOutput `pulumi:"expectedOutages"`
@@ -155,7 +158,7 @@ type Interconnect struct {
 	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringOutput `pulumi:"linkType"`
-	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
 	// Specifies the location inside Google's Networks.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -314,6 +317,9 @@ type interconnectState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// Specifies the location inside Google's Networks.
+	EffectiveLocation *string `pulumi:"effectiveLocation"`
 	// A list of outages expected for this Interconnect.
 	// Structure is documented below.
 	ExpectedOutages []InterconnectExpectedOutage `pulumi:"expectedOutages"`
@@ -353,7 +359,7 @@ type interconnectState struct {
 	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType *string `pulumi:"linkType"`
-	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
 	// Specifies the location inside Google's Networks.
 	Location *string `pulumi:"location"`
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -466,6 +472,9 @@ type InterconnectState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// Specifies the location inside Google's Networks.
+	EffectiveLocation pulumi.StringPtrInput
 	// A list of outages expected for this Interconnect.
 	// Structure is documented below.
 	ExpectedOutages InterconnectExpectedOutageArrayInput
@@ -505,7 +514,7 @@ type InterconnectState struct {
 	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringPtrInput
-	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
 	// Specifies the location inside Google's Networks.
 	Location pulumi.StringPtrInput
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -627,7 +636,7 @@ type interconnectArgs struct {
 	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType string `pulumi:"linkType"`
-	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
 	// Specifies the location inside Google's Networks.
 	Location string `pulumi:"location"`
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -716,7 +725,7 @@ type InterconnectArgs struct {
 	// - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
 	//   Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
 	LinkType pulumi.StringInput
-	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+	// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
 	// Specifies the location inside Google's Networks.
 	Location pulumi.StringInput
 	// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -917,6 +926,12 @@ func (o InterconnectOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+// Specifies the location inside Google's Networks.
+func (o InterconnectOutput) EffectiveLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.EffectiveLocation }).(pulumi.StringOutput)
+}
+
 // A list of outages expected for this Interconnect.
 // Structure is documented below.
 func (o InterconnectOutput) ExpectedOutages() InterconnectExpectedOutageArrayOutput {
@@ -983,7 +998,7 @@ func (o InterconnectOutput) LinkType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.LinkType }).(pulumi.StringOutput)
 }
 
-// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
 // Specifies the location inside Google's Networks.
 func (o InterconnectOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)

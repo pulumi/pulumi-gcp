@@ -48,7 +48,7 @@ import (
 //			multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-domain-mgra"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
@@ -71,8 +71,8 @@ import (
 //			groupRange, err := networkservices.NewMulticastGroupRange(ctx, "group_range", &networkservices.MulticastGroupRangeArgs{
 //				MulticastGroupRangeId: pulumi.String("test-group-range-mgra"),
 //				Location:              pulumi.String("global"),
-//				ReservedInternalRange: internalRange.ID(),
-//				MulticastDomain:       multicastDomain.ID(),
+//				ReservedInternalRange: internalRange.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomain:       multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +80,7 @@ import (
 //			multicastDomainActivation, err := networkservices.NewMulticastDomainActivation(ctx, "multicast_domain_activation", &networkservices.MulticastDomainActivationArgs{
 //				MulticastDomainActivationId: pulumi.String("test-domain-activation-mgra"),
 //				Location:                    pulumi.String("us-central1-b"),
-//				MulticastDomain:             multicastDomain.ID(),
+//				MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -92,8 +92,8 @@ import (
 //				Labels: pulumi.StringMap{
 //					"test-label": pulumi.String("test-value"),
 //				},
-//				MulticastGroupRange:       groupRange.ID(),
-//				MulticastDomainActivation: multicastDomainActivation.ID(),
+//				MulticastGroupRange:       groupRange.ID().ToIDOutput().ToStringOutput(),
+//				MulticastDomainActivation: multicastDomainActivation.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

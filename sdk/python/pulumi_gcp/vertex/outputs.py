@@ -118,6 +118,17 @@ __all__ = [
     'AiIndexMetadataConfigAlgorithmConfigTreeAhConfig',
     'AiMetadataStoreEncryptionSpec',
     'AiMetadataStoreState',
+    'AiPersistentResourceEncryptionSpec',
+    'AiPersistentResourceError',
+    'AiPersistentResourcePscInterfaceConfig',
+    'AiPersistentResourcePscInterfaceConfigDnsPeeringConfig',
+    'AiPersistentResourceResourcePool',
+    'AiPersistentResourceResourcePoolAutoscalingSpec',
+    'AiPersistentResourceResourcePoolDiskSpec',
+    'AiPersistentResourceResourcePoolMachineSpec',
+    'AiPersistentResourceResourceRuntime',
+    'AiPersistentResourceResourceRuntimeSpec',
+    'AiPersistentResourceResourceRuntimeSpecServiceAccountSpec',
     'AiRagEngineConfigRagManagedDbConfig',
     'AiRagEngineConfigRagManagedDbConfigBasic',
     'AiRagEngineConfigRagManagedDbConfigScaled',
@@ -6635,6 +6646,701 @@ class AiMetadataStoreState(dict):
         The disk utilization of the MetadataStore in bytes.
         """
         return pulumi.get(self, "disk_utilization_bytes")
+
+
+@pulumi.output_type
+class AiPersistentResourceEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: _builtins.str):
+        """
+        :param _builtins.str kms_key_name: Resource name of the Cloud KMS key used to protect the resource.
+               The Cloud KMS key must be in the same region as the resource. It must have
+               the format
+               `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> _builtins.str:
+        """
+        Resource name of the Cloud KMS key used to protect the resource.
+        The Cloud KMS key must be in the same region as the resource. It must have
+        the format
+        `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class AiPersistentResourceError(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.int] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param _builtins.str message: (Output)
+               A developer-facing error message, which should be in English. Any
+               user-facing error message should be localized and sent in the
+               google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any
+        user-facing error message should be localized and sent in the
+        google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class AiPersistentResourcePscInterfaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dnsPeeringConfigs":
+            suggest = "dns_peering_configs"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourcePscInterfaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourcePscInterfaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourcePscInterfaceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dns_peering_configs: Optional[Sequence['outputs.AiPersistentResourcePscInterfaceConfigDnsPeeringConfig']] = None,
+                 network_attachment: Optional[_builtins.str] = None):
+        """
+        :param Sequence['AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs'] dns_peering_configs: DNS peering configurations. When specified, Vertex AI will
+               attempt to configure DNS peering zones in the tenant project VPC
+               to resolve the specified domains using the target network's Cloud DNS.
+               The user must grant the dns.peer role to the Vertex AI Service Agent
+               on the target project.
+               Structure is documented below.
+        :param _builtins.str network_attachment: The name of the Compute Engine
+               [network
+               attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+               attach to the resource within the region and user project.
+               To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+               This field is only used for resources using PSC-I.
+        """
+        if dns_peering_configs is not None:
+            pulumi.set(__self__, "dns_peering_configs", dns_peering_configs)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsPeeringConfigs")
+    def dns_peering_configs(self) -> Optional[Sequence['outputs.AiPersistentResourcePscInterfaceConfigDnsPeeringConfig']]:
+        """
+        DNS peering configurations. When specified, Vertex AI will
+        attempt to configure DNS peering zones in the tenant project VPC
+        to resolve the specified domains using the target network's Cloud DNS.
+        The user must grant the dns.peer role to the Vertex AI Service Agent
+        on the target project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dns_peering_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[_builtins.str]:
+        """
+        The name of the Compute Engine
+        [network
+        attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+        attach to the resource within the region and user project.
+        To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+        This field is only used for resources using PSC-I.
+        """
+        return pulumi.get(self, "network_attachment")
+
+
+@pulumi.output_type
+class AiPersistentResourcePscInterfaceConfigDnsPeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNetwork":
+            suggest = "target_network"
+        elif key == "targetProject":
+            suggest = "target_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourcePscInterfaceConfigDnsPeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourcePscInterfaceConfigDnsPeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourcePscInterfaceConfigDnsPeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 target_network: _builtins.str,
+                 target_project: _builtins.str):
+        """
+        :param _builtins.str domain: The DNS name suffix of the zone being peered to, e.g.,
+               "my-internal-domain.corp.". Must end with a dot.
+        :param _builtins.str target_network: The VPC network name
+               in the target_project where the DNS zone specified by 'domain' is
+               visible.
+        :param _builtins.str target_project: The project ID hosting the Cloud DNS managed zone that
+               contains the 'domain'. The Vertex AI Service Agent requires the
+               dns.peer role on this project.
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "target_network", target_network)
+        pulumi.set(__self__, "target_project", target_project)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The DNS name suffix of the zone being peered to, e.g.,
+        "my-internal-domain.corp.". Must end with a dot.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> _builtins.str:
+        """
+        The VPC network name
+        in the target_project where the DNS zone specified by 'domain' is
+        visible.
+        """
+        return pulumi.get(self, "target_network")
+
+    @_builtins.property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> _builtins.str:
+        """
+        The project ID hosting the Cloud DNS managed zone that
+        contains the 'domain'. The Vertex AI Service Agent requires the
+        dns.peer role on this project.
+        """
+        return pulumi.get(self, "target_project")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourcePool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineSpec":
+            suggest = "machine_spec"
+        elif key == "autoscalingSpec":
+            suggest = "autoscaling_spec"
+        elif key == "diskSpec":
+            suggest = "disk_spec"
+        elif key == "replicaCount":
+            suggest = "replica_count"
+        elif key == "usedReplicaCount":
+            suggest = "used_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourcePool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourcePool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourcePool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 machine_spec: 'outputs.AiPersistentResourceResourcePoolMachineSpec',
+                 autoscaling_spec: Optional['outputs.AiPersistentResourceResourcePoolAutoscalingSpec'] = None,
+                 disk_spec: Optional['outputs.AiPersistentResourceResourcePoolDiskSpec'] = None,
+                 id: Optional[_builtins.str] = None,
+                 replica_count: Optional[_builtins.str] = None,
+                 used_replica_count: Optional[_builtins.str] = None):
+        """
+        :param 'AiPersistentResourceResourcePoolMachineSpecArgs' machine_spec: Specification of a single machine.
+               Structure is documented below.
+        :param 'AiPersistentResourceResourcePoolAutoscalingSpecArgs' autoscaling_spec: The min/max number of replicas allowed if enabling autoscaling
+               Structure is documented below.
+        :param 'AiPersistentResourceResourcePoolDiskSpecArgs' disk_spec: Represents the spec of disk options.
+               Structure is documented below.
+        :param _builtins.str id: The unique ID in a PersistentResource for referring to this resource pool.
+               User can specify it if necessary. Otherwise, it's generated
+               automatically.
+        :param _builtins.str replica_count: The total number of machines to use for this resource pool.
+        :param _builtins.str used_replica_count: (Output)
+               The number of machines currently in use by training jobs for this resource
+               pool. Will replace idle_replica_count.
+        """
+        pulumi.set(__self__, "machine_spec", machine_spec)
+        if autoscaling_spec is not None:
+            pulumi.set(__self__, "autoscaling_spec", autoscaling_spec)
+        if disk_spec is not None:
+            pulumi.set(__self__, "disk_spec", disk_spec)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
+        if used_replica_count is not None:
+            pulumi.set(__self__, "used_replica_count", used_replica_count)
+
+    @_builtins.property
+    @pulumi.getter(name="machineSpec")
+    def machine_spec(self) -> 'outputs.AiPersistentResourceResourcePoolMachineSpec':
+        """
+        Specification of a single machine.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "machine_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="autoscalingSpec")
+    def autoscaling_spec(self) -> Optional['outputs.AiPersistentResourceResourcePoolAutoscalingSpec']:
+        """
+        The min/max number of replicas allowed if enabling autoscaling
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="diskSpec")
+    def disk_spec(self) -> Optional['outputs.AiPersistentResourceResourcePoolDiskSpec']:
+        """
+        Represents the spec of disk options.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disk_spec")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        The unique ID in a PersistentResource for referring to this resource pool.
+        User can specify it if necessary. Otherwise, it's generated
+        automatically.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[_builtins.str]:
+        """
+        The total number of machines to use for this resource pool.
+        """
+        return pulumi.get(self, "replica_count")
+
+    @_builtins.property
+    @pulumi.getter(name="usedReplicaCount")
+    def used_replica_count(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The number of machines currently in use by training jobs for this resource
+        pool. Will replace idle_replica_count.
+        """
+        return pulumi.get(self, "used_replica_count")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourcePoolAutoscalingSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxReplicaCount":
+            suggest = "max_replica_count"
+        elif key == "minReplicaCount":
+            suggest = "min_replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourcePoolAutoscalingSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourcePoolAutoscalingSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourcePoolAutoscalingSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_replica_count: Optional[_builtins.str] = None,
+                 min_replica_count: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str max_replica_count: max replicas in the node pool,
+               must be ≥ replica_count and > min_replica_count or will throw error
+        :param _builtins.str min_replica_count: min replicas in the node pool,
+               must be ≤ replica_count and < max_replica_count or will throw error.
+               For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a
+               resource_pool to be 0 to match the OSS Ray
+               behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+               As for Persistent Resource, the min_replica_count must be > 0, we added
+               a corresponding validation inside
+               CreatePersistentResourceRequestValidator.java.
+        """
+        if max_replica_count is not None:
+            pulumi.set(__self__, "max_replica_count", max_replica_count)
+        if min_replica_count is not None:
+            pulumi.set(__self__, "min_replica_count", min_replica_count)
+
+    @_builtins.property
+    @pulumi.getter(name="maxReplicaCount")
+    def max_replica_count(self) -> Optional[_builtins.str]:
+        """
+        max replicas in the node pool,
+        must be ≥ replica_count and > min_replica_count or will throw error
+        """
+        return pulumi.get(self, "max_replica_count")
+
+    @_builtins.property
+    @pulumi.getter(name="minReplicaCount")
+    def min_replica_count(self) -> Optional[_builtins.str]:
+        """
+        min replicas in the node pool,
+        must be ≤ replica_count and < max_replica_count or will throw error.
+        For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a
+        resource_pool to be 0 to match the OSS Ray
+        behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+        As for Persistent Resource, the min_replica_count must be > 0, we added
+        a corresponding validation inside
+        CreatePersistentResourceRequestValidator.java.
+        """
+        return pulumi.get(self, "min_replica_count")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourcePoolDiskSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourcePoolDiskSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourcePoolDiskSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourcePoolDiskSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_disk_size_gb: Optional[_builtins.int] = None,
+                 boot_disk_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int boot_disk_size_gb: Size in GB of the boot disk (default is 100GB).
+        :param _builtins.str boot_disk_type: Type of the boot disk. For non-A3U machines, the default value is
+               "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+               Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+               "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+        """
+        if boot_disk_size_gb is not None:
+            pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
+        if boot_disk_type is not None:
+            pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskSizeGb")
+    def boot_disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size in GB of the boot disk (default is 100GB).
+        """
+        return pulumi.get(self, "boot_disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="bootDiskType")
+    def boot_disk_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the boot disk. For non-A3U machines, the default value is
+        "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+        Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+        "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+        """
+        return pulumi.get(self, "boot_disk_type")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourcePoolMachineSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourcePoolMachineSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourcePoolMachineSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourcePoolMachineSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_count: Optional[_builtins.int] = None,
+                 accelerator_type: Optional[_builtins.str] = None,
+                 machine_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int accelerator_count: The number of accelerators to attach to the machine.
+        :param _builtins.str accelerator_type: The type of accelerator(s) that may be attached to the machine.
+               Possible values:
+               NVIDIA_TESLA_K80
+               NVIDIA_TESLA_P100
+               NVIDIA_TESLA_V100
+               NVIDIA_TESLA_P4
+               NVIDIA_TESLA_T4
+               NVIDIA_TESLA_A100
+               NVIDIA_A100_80GB
+               NVIDIA_L4
+               NVIDIA_H100_80GB
+               NVIDIA_H100_MEGA_80GB
+               NVIDIA_H200_141GB
+               NVIDIA_B200
+               NVIDIA_GB200
+               NVIDIA_RTX_PRO_6000
+               TPU_V2
+               TPU_V3
+               TPU_V4_POD
+               TPU_V5_LITEPOD
+        :param _builtins.str machine_type: The type of the machine.
+               See the [list of machine types supported for
+               prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+               See the [list of machine types supported for custom
+               training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[_builtins.int]:
+        """
+        The number of accelerators to attach to the machine.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[_builtins.str]:
+        """
+        The type of accelerator(s) that may be attached to the machine.
+        Possible values:
+        NVIDIA_TESLA_K80
+        NVIDIA_TESLA_P100
+        NVIDIA_TESLA_V100
+        NVIDIA_TESLA_P4
+        NVIDIA_TESLA_T4
+        NVIDIA_TESLA_A100
+        NVIDIA_A100_80GB
+        NVIDIA_L4
+        NVIDIA_H100_80GB
+        NVIDIA_H100_MEGA_80GB
+        NVIDIA_H200_141GB
+        NVIDIA_B200
+        NVIDIA_GB200
+        NVIDIA_RTX_PRO_6000
+        TPU_V2
+        TPU_V3
+        TPU_V4_POD
+        TPU_V5_LITEPOD
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @_builtins.property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[_builtins.str]:
+        """
+        The type of the machine.
+        See the [list of machine types supported for
+        prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+        See the [list of machine types supported for custom
+        training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+        """
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourceRuntime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessUris":
+            suggest = "access_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourceRuntime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourceRuntime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourceRuntime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_uris: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param Mapping[str, _builtins.str] access_uris: (Output)
+               URIs for user to connect to the Cluster.
+               Example:
+               {
+               "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+               "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+               }
+        """
+        if access_uris is not None:
+            pulumi.set(__self__, "access_uris", access_uris)
+
+    @_builtins.property
+    @pulumi.getter(name="accessUris")
+    def access_uris(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        (Output)
+        URIs for user to connect to the Cluster.
+        Example:
+        {
+        "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+        "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+        }
+        """
+        return pulumi.get(self, "access_uris")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourceRuntimeSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountSpec":
+            suggest = "service_account_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourceRuntimeSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourceRuntimeSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourceRuntimeSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_spec: Optional['outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec'] = None):
+        """
+        :param 'AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs' service_account_spec: Configuration for the use of custom service account to run the workloads.
+               Structure is documented below.
+        """
+        if service_account_spec is not None:
+            pulumi.set(__self__, "service_account_spec", service_account_spec)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountSpec")
+    def service_account_spec(self) -> Optional['outputs.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec']:
+        """
+        Configuration for the use of custom service account to run the workloads.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_account_spec")
+
+
+@pulumi.output_type
+class AiPersistentResourceResourceRuntimeSpecServiceAccountSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCustomServiceAccount":
+            suggest = "enable_custom_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiPersistentResourceResourceRuntimeSpecServiceAccountSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiPersistentResourceResourceRuntimeSpecServiceAccountSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiPersistentResourceResourceRuntimeSpecServiceAccountSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_custom_service_account: _builtins.bool):
+        """
+        :param _builtins.bool enable_custom_service_account: If true, custom user-managed service account is enforced to run any
+               workloads (for example, Vertex Jobs) on the resource.
+               Otherwise, uses the [Vertex AI Custom Code Service
+               Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        """
+        pulumi.set(__self__, "enable_custom_service_account", enable_custom_service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="enableCustomServiceAccount")
+    def enable_custom_service_account(self) -> _builtins.bool:
+        """
+        If true, custom user-managed service account is enforced to run any
+        workloads (for example, Vertex Jobs) on the resource.
+        Otherwise, uses the [Vertex AI Custom Code Service
+        Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        """
+        return pulumi.get(self, "enable_custom_service_account")
 
 
 @pulumi.output_type

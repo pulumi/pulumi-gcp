@@ -116,13 +116,13 @@ import (
 //				Location:           pulumi.String("global"),
 //				RedactionStrategy:  pulumi.String("REDACT_WITH_SERVICE"),
 //				RedactionScope:     pulumi.String("REDACT_DISK_STORAGE"),
-//				InspectTemplate:    inspect.ID(),
-//				DeidentifyTemplate: deidentify.ID(),
+//				InspectTemplate:    inspect.ID().ToIDOutput().ToStringOutput(),
+//				DeidentifyTemplate: deidentify.ID().ToIDOutput().ToStringOutput(),
 //				PurgeDataTypes: pulumi.StringArray{
 //					pulumi.String("DIALOGFLOW_HISTORY"),
 //				},
 //				AudioExportSettings: &diagflow.CxSecuritySettingsAudioExportSettingsArgs{
-//					GcsBucket:            bucket.ID(),
+//					GcsBucket:            bucket.ID().ToIDOutput().ToStringOutput(),
 //					AudioExportPattern:   pulumi.String("export"),
 //					EnableAudioRedaction: pulumi.Bool(true),
 //					AudioFormat:          pulumi.String("OGG"),

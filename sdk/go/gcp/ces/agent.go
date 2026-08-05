@@ -204,14 +204,14 @@ import (
 //					},
 //				},
 //				Tools: pulumi.StringArray{
-//					cesToolForAgent.ID(),
+//					cesToolForAgent.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Guardrails: pulumi.StringArray{
-//					cesGuardrailForAgent.ID(),
+//					cesGuardrailForAgent.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Toolsets: ces.AgentToolsetArray{
 //					&ces.AgentToolsetArgs{
-//						Toolset: cesToolsetForAgent.ID(),
+//						Toolset: cesToolsetForAgent.ID().ToIDOutput().ToStringOutput(),
 //						ToolIds: pulumi.StringArray{
 //							pulumi.String("testtoolid"),
 //						},

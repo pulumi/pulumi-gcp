@@ -10,6 +10,11 @@ export type Collection = import("./collection").Collection;
 export const Collection: typeof import("./collection").Collection = null as any;
 utilities.lazyLoad(exports, ["Collection"], () => require("./collection"));
 
+export { DataObjectArgs, DataObjectState } from "./dataObject";
+export type DataObject = import("./dataObject").DataObject;
+export const DataObject: typeof import("./dataObject").DataObject = null as any;
+utilities.lazyLoad(exports, ["DataObject"], () => require("./dataObject"));
+
 export { IndexArgs, IndexState } from "./index_";
 export type Index = import("./index_").Index;
 export const Index: typeof import("./index_").Index = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "gcp:vectorsearch/collection:Collection":
                 return new Collection(name, <any>undefined, { urn })
+            case "gcp:vectorsearch/dataObject:DataObject":
+                return new DataObject(name, <any>undefined, { urn })
             case "gcp:vectorsearch/index:Index":
                 return new Index(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "vectorsearch/collection", _module)
+pulumi.runtime.registerResourceModule("gcp", "vectorsearch/dataObject", _module)
 pulumi.runtime.registerResourceModule("gcp", "vectorsearch/index", _module)

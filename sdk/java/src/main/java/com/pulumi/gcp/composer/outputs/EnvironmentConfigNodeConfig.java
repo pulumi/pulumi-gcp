@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigNodeConfigIpAllocationPolicy;
+import com.pulumi.gcp.composer.outputs.EnvironmentConfigNodeConfigTrafficRoutingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -75,6 +76,11 @@ public final class EnvironmentConfigNodeConfig {
      * 
      */
     private @Nullable List<String> tags;
+    /**
+     * @return Traffic routing configuration for Cloud Composer environment.
+     * 
+     */
+    private @Nullable EnvironmentConfigNodeConfigTrafficRoutingConfig trafficRoutingConfig;
     /**
      * @return The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
@@ -167,6 +173,13 @@ public final class EnvironmentConfigNodeConfig {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
+     * @return Traffic routing configuration for Cloud Composer environment.
+     * 
+     */
+    public Optional<EnvironmentConfigNodeConfigTrafficRoutingConfig> trafficRoutingConfig() {
+        return Optional.ofNullable(this.trafficRoutingConfig);
+    }
+    /**
      * @return The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
@@ -195,6 +208,7 @@ public final class EnvironmentConfigNodeConfig {
         private @Nullable String serviceAccount;
         private @Nullable String subnetwork;
         private @Nullable List<String> tags;
+        private @Nullable EnvironmentConfigNodeConfigTrafficRoutingConfig trafficRoutingConfig;
         private @Nullable String zone;
         public Builder() {}
         public Builder(EnvironmentConfigNodeConfig defaults) {
@@ -211,6 +225,7 @@ public final class EnvironmentConfigNodeConfig {
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.subnetwork = defaults.subnetwork;
     	      this.tags = defaults.tags;
+    	      this.trafficRoutingConfig = defaults.trafficRoutingConfig;
     	      this.zone = defaults.zone;
         }
 
@@ -293,6 +308,12 @@ public final class EnvironmentConfigNodeConfig {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder trafficRoutingConfig(@Nullable EnvironmentConfigNodeConfigTrafficRoutingConfig trafficRoutingConfig) {
+
+            this.trafficRoutingConfig = trafficRoutingConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder zone(@Nullable String zone) {
 
             this.zone = zone;
@@ -312,6 +333,7 @@ public final class EnvironmentConfigNodeConfig {
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.subnetwork = subnetwork;
             _resultValue.tags = tags;
+            _resultValue.trafficRoutingConfig = trafficRoutingConfig;
             _resultValue.zone = zone;
             return _resultValue;
         }

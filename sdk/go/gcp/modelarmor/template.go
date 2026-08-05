@@ -137,6 +137,50 @@ import (
 //					CustomPromptSafetyErrorMessage:   pulumi.String("This is a custom error message for prompt"),
 //					CustomLlmResponseSafetyErrorCode: pulumi.Int(401),
 //					EnforcementType:                  pulumi.String("INSPECT_ONLY"),
+//					FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
+//						Alias: pulumi.String("FILTER_VERSION_ALIAS_LATEST"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Modelarmor Template Filter Version Selector
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := modelarmor.NewTemplate(ctx, "template-filter-version-selector", &modelarmor.TemplateArgs{
+//				Location:   pulumi.String("us-central1"),
+//				TemplateId: pulumi.String("modelarmor5"),
+//				FilterConfig: &modelarmor.TemplateFilterConfigArgs{
+//					RaiSettings: &modelarmor.TemplateFilterConfigRaiSettingsArgs{
+//						RaiFilters: modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArray{
+//							&modelarmor.TemplateFilterConfigRaiSettingsRaiFilterArgs{
+//								FilterType:      pulumi.String("HATE_SPEECH"),
+//								ConfidenceLevel: pulumi.String("HIGH"),
+//							},
+//						},
+//					},
+//				},
+//				TemplateMetadata: &modelarmor.TemplateTemplateMetadataArgs{
+//					FilterVersionSelector: &modelarmor.TemplateTemplateMetadataFilterVersionSelectorArgs{
+//						Version: pulumi.String("v1"),
+//					},
 //				},
 //			})
 //			if err != nil {

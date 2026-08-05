@@ -51,7 +51,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				AdminNetwork: network.ID(),
+//				AdminNetwork: network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //					NccHub:         pulumi.String(""),

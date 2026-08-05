@@ -424,9 +424,6 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
         """
         A Global VM Extension Policy.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         ## Example Usage
 
         ### Compute Global Vm Extension Policy Basic
@@ -581,9 +578,6 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Global VM Extension Policy.
-
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
 
         ## Example Usage
 

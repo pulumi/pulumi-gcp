@@ -51,7 +51,7 @@ import (
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),
 //				Description: pulumi.String("Example subnet."),
-//				Network:     exampleNetwork.ID(),
+//				Network:     exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Ipv4Cidrs: pulumi.StringArray{
 //					pulumi.String("4.4.4.1/24"),
 //				},
@@ -96,7 +96,7 @@ import (
 //				Location:    pulumi.String("us-west1"),
 //				Zone:        pulumi.String(""),
 //				Description: pulumi.String("Example subnet with VLAN ID."),
-//				Network:     exampleNetwork.ID(),
+//				Network:     exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Ipv6Cidrs: pulumi.StringArray{
 //					pulumi.String("4444:4444:4444:4444::1/64"),
 //				},

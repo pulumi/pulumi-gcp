@@ -91,7 +91,7 @@ import (
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 //					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
+//						CaPool: pool.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Lifetime:                 pulumi.String("1814400s"),

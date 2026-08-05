@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
+//				EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:             pulumi.String("my_entry"),
 //				UserSpecifiedType:   pulumi.String("my_custom_type"),
 //				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -84,7 +84,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
-//				EntryGroup: entryGroup.ID(),
+//				EntryGroup: entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:    pulumi.String("my_entry"),
 //				Type:       pulumi.String("FILESET"),
 //				GcsFilesetSpec: &datacatalog.EntryGcsFilesetSpecArgs{
@@ -122,7 +122,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewEntry(ctx, "basic_entry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
+//				EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:             pulumi.String("my_entry"),
 //				UserSpecifiedType:   pulumi.String("my_user_specified_type"),
 //				UserSpecifiedSystem: pulumi.String("Something_custom"),

@@ -185,7 +185,7 @@ import (
 //			}
 //			filestoreKey, err := kms.NewCryptoKey(ctx, "filestore_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("filestore-key"),
-//				KeyRing: filestoreKeyring.ID(),
+//				KeyRing: filestoreKeyring.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -206,7 +206,7 @@ import (
 //						},
 //					},
 //				},
-//				KmsKeyName: filestoreKey.ID(),
+//				KmsKeyName: filestoreKey.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

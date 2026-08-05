@@ -80,12 +80,12 @@ import * as utilities from "../utilities";
  *         {
  *             instance: endpoint_instance1.name,
  *             port: Number(neg.defaultPort),
- *             ipAddress: endpoint_instance1.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *             ipAddress: endpoint_instance1.networkInterfaces[0].networkIp,
  *         },
  *         {
  *             instance: endpoint_instance2.name,
  *             port: Number(neg.defaultPort),
- *             ipAddress: endpoint_instance2.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].networkIp),
+ *             ipAddress: endpoint_instance2.networkInterfaces[0].networkIp,
  *         },
  *     ],
  * });

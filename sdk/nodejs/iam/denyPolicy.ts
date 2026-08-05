@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * const example = new gcp.iam.DenyPolicy("example", {
  *     parent: std.urlencodeOutput({
  *         input: pulumi.interpolate`cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     name: "my-deny-policy",
  *     displayName: "A deny rule",
  *     rules: [

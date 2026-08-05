@@ -21,6 +21,9 @@ __all__ = [
     'CollectionVectorSchemaDenseVector',
     'CollectionVectorSchemaDenseVectorVertexEmbeddingConfig',
     'CollectionVectorSchemaSparseVector',
+    'DataObjectVector',
+    'DataObjectVectorDense',
+    'DataObjectVectorSparse',
     'IndexDedicatedInfrastructure',
     'IndexDedicatedInfrastructureAutoscalingSpec',
     'IndexDenseScann',
@@ -273,6 +276,118 @@ class CollectionVectorSchemaDenseVectorVertexEmbeddingConfig(dict):
 class CollectionVectorSchemaSparseVector(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class DataObjectVector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataObjectVector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataObjectVector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataObjectVector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 field_name: _builtins.str,
+                 dense: Optional['outputs.DataObjectVectorDense'] = None,
+                 sparse: Optional['outputs.DataObjectVectorSparse'] = None):
+        """
+        :param _builtins.str field_name: The identifier for this object. Format specified above.
+        :param 'DataObjectVectorDenseArgs' dense: A dense vector.
+               Structure is documented below.
+        :param 'DataObjectVectorSparseArgs' sparse: A sparse vector.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field_name", field_name)
+        if dense is not None:
+            pulumi.set(__self__, "dense", dense)
+        if sparse is not None:
+            pulumi.set(__self__, "sparse", sparse)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> _builtins.str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "field_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def dense(self) -> Optional['outputs.DataObjectVectorDense']:
+        """
+        A dense vector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dense")
+
+    @_builtins.property
+    @pulumi.getter
+    def sparse(self) -> Optional['outputs.DataObjectVectorSparse']:
+        """
+        A sparse vector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sparse")
+
+
+@pulumi.output_type
+class DataObjectVectorDense(dict):
+    def __init__(__self__, *,
+                 values: Sequence[_builtins.float]):
+        """
+        :param Sequence[_builtins.float] values: The float values of the dense vector.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.float]:
+        """
+        The float values of the dense vector.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class DataObjectVectorSparse(dict):
+    def __init__(__self__, *,
+                 indices: Sequence[_builtins.int],
+                 values: Sequence[_builtins.float]):
+        """
+        :param Sequence[_builtins.int] indices: The indices corresponding to the entries in `values`. Must
+               have the same length as `values`.
+        :param Sequence[_builtins.float] values: The non-zero float values of the sparse vector.
+        """
+        pulumi.set(__self__, "indices", indices)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def indices(self) -> Sequence[_builtins.int]:
+        """
+        The indices corresponding to the entries in `values`. Must
+        have the same length as `values`.
+        """
+        return pulumi.get(self, "indices")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.float]:
+        """
+        The non-zero float values of the sparse vector.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

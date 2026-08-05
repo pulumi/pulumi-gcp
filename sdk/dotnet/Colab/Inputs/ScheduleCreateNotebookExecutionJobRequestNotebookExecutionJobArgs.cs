@@ -13,6 +13,20 @@ namespace Pulumi.Gcp.Colab.Inputs
     public sealed class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Output)
+        /// Timestamp when this NotebookExecutionJob was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Compute configuration to use for an execution job.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customEnvironmentSpec")]
+        public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs>? CustomEnvironmentSpec { get; set; }
+
+        /// <summary>
         /// The Dataform Repository containing the input notebook.
         /// Structure is documented below.
         /// </summary>
@@ -24,6 +38,13 @@ namespace Pulumi.Gcp.Colab.Inputs
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("encryptionSpec")]
+        public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs>? EncryptionSpec { get; set; }
 
         /// <summary>
         /// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
@@ -51,16 +72,68 @@ namespace Pulumi.Gcp.Colab.Inputs
         public Input<string> GcsOutputUri { get; set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+        /// </summary>
+        [Input("jobState")]
+        public Input<string>? JobState { get; set; }
+
+        /// <summary>
+        /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        /// </summary>
+        [Input("kernelName")]
+        public Input<string>? KernelName { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// The labels with user-defined metadata to organize NotebookExecutionJobs.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
+        /// <summary>
+        /// (Output)
+        /// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The NotebookRuntimeTemplate to source compute configuration from.
         /// </summary>
-        [Input("notebookRuntimeTemplateResourceName", required: true)]
-        public Input<string> NotebookRuntimeTemplateResourceName { get; set; } = null!;
+        [Input("notebookRuntimeTemplateResourceName")]
+        public Input<string>? NotebookRuntimeTemplateResourceName { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        /// </summary>
+        [Input("scheduleResourceName")]
+        public Input<string>? ScheduleResourceName { get; set; }
 
         /// <summary>
         /// The service account to run the execution as.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// Timestamp when this NotebookExecutionJob was most recently updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Configuration for a Workbench Instances-based environment.
+        /// </summary>
+        [Input("workbenchRuntime")]
+        public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs>? WorkbenchRuntime { get; set; }
 
         public ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs()
         {

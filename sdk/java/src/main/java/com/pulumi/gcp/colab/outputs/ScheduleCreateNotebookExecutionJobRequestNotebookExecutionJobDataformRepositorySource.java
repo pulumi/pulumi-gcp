@@ -18,7 +18,7 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
      */
     private @Nullable String commitSha;
     /**
-     * @return The resource name of the Dataform Repository.
+     * @return The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
      * 
      */
     private String dataformRepositoryResourceName;
@@ -32,7 +32,7 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
         return Optional.ofNullable(this.commitSha);
     }
     /**
-     * @return The resource name of the Dataform Repository.
+     * @return The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
      * 
      */
     public String dataformRepositoryResourceName() {

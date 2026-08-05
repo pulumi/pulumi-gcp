@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Compute
     ///         CustomerName = "example_customer",
     ///         InterconnectType = "DEDICATED",
     ///         LinkType = "LINK_TYPE_ETHERNET_10G_LR",
-    ///         Location = $"https://www.googleapis.com/compute/v1/{project.Apply(getProjectResult =&gt; getProjectResult.Id)}/global/interconnectLocations/iad-zone1-1",
+    ///         Location = $"https://www.googleapis.com/compute/v1/projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/global/interconnectLocations/iad-zone1-1",
     ///         RequestedLinkCount = 1,
     ///     });
     /// 
@@ -145,6 +145,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// Specifies the location inside Google's Networks.
+        /// </summary>
+        [Output("effectiveLocation")]
+        public Output<string> EffectiveLocation { get; private set; } = null!;
+
+        /// <summary>
         /// A list of outages expected for this Interconnect.
         /// Structure is documented below.
         /// </summary>
@@ -220,7 +227,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LinkType { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
         /// Specifies the location inside Google's Networks.
         /// </summary>
         [Output("location")]
@@ -496,7 +503,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> LinkType { get; set; } = null!;
 
         /// <summary>
-        /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
         /// Specifies the location inside Google's Networks.
         /// </summary>
         [Input("location", required: true)]
@@ -691,6 +698,13 @@ namespace Pulumi.Gcp.Compute
             }
         }
 
+        /// <summary>
+        /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// Specifies the location inside Google's Networks.
+        /// </summary>
+        [Input("effectiveLocation")]
+        public Input<string>? EffectiveLocation { get; set; }
+
         [Input("expectedOutages")]
         private InputList<Inputs.InterconnectExpectedOutageGetArgs>? _expectedOutages;
 
@@ -791,7 +805,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? LinkType { get; set; }
 
         /// <summary>
-        /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
         /// Specifies the location inside Google's Networks.
         /// </summary>
         [Input("location")]

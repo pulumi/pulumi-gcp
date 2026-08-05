@@ -54,13 +54,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -72,7 +72,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -83,7 +83,7 @@ import (
 //				Name:        pulumi.String("my-environment"),
 //				Description: pulumi.String("Apigee Environment"),
 //				DisplayName: pulumi.String("environment-1"),
-//				OrgId:       apigeeOrg.ID(),
+//				OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -101,7 +101,7 @@ import (
 //			}
 //			_, err = apigee.NewSecurityMonitoringCondition(ctx, "security_monitoring_condition", &apigee.SecurityMonitoringConditionArgs{
 //				ConditionId:         pulumi.String("my-condition"),
-//				OrgId:               apigeeOrg.ID(),
+//				OrgId:               apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				Profile:             pulumi.String("google-default"),
 //				Scope:               pulumi.String("my-environment"),
 //				IncludeAllResources: &apigee.SecurityMonitoringConditionIncludeAllResourcesArgs{},

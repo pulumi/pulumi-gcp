@@ -49,7 +49,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.50.0/24"),
-//					VmwareEngineNetwork: external_address_nw.ID(),
+//					VmwareEngineNetwork: external_address_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -68,14 +68,14 @@ import (
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-//				VmwareEngineNetwork: external_address_nw.ID(),
+//				VmwareEngineNetwork: external_address_nw.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vmwareengine.NewExternalAddress(ctx, "vmw-engine-external-address", &vmwareengine.ExternalAddressArgs{
 //				Name:        pulumi.String("sample-external-address"),
-//				Parent:      external_address_pc.ID(),
+//				Parent:      external_address_pc.ID().ToIDOutput().ToStringOutput(),
 //				InternalIp:  pulumi.String("192.168.0.66"),
 //				Description: pulumi.String("Sample description."),
 //			}, pulumi.DependsOn([]pulumi.Resource{

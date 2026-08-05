@@ -30,6 +30,11 @@ export type PluginInstance = import("./pluginInstance").PluginInstance;
 export const PluginInstance: typeof import("./pluginInstance").PluginInstance = null as any;
 utilities.lazyLoad(exports, ["PluginInstance"], () => require("./pluginInstance"));
 
+export { RuntimeProjectAttachmentArgs, RuntimeProjectAttachmentState } from "./runtimeProjectAttachment";
+export type RuntimeProjectAttachment = import("./runtimeProjectAttachment").RuntimeProjectAttachment;
+export const RuntimeProjectAttachment: typeof import("./runtimeProjectAttachment").RuntimeProjectAttachment = null as any;
+utilities.lazyLoad(exports, ["RuntimeProjectAttachment"], () => require("./runtimeProjectAttachment"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -45,6 +50,8 @@ const _module = {
                 return new Plugin(name, <any>undefined, { urn })
             case "gcp:apihub/pluginInstance:PluginInstance":
                 return new PluginInstance(name, <any>undefined, { urn })
+            case "gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment":
+                return new RuntimeProjectAttachment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -55,3 +62,4 @@ pulumi.runtime.registerResourceModule("gcp", "apihub/curation", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/hostProjectRegistration", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/plugin", _module)
 pulumi.runtime.registerResourceModule("gcp", "apihub/pluginInstance", _module)
+pulumi.runtime.registerResourceModule("gcp", "apihub/runtimeProjectAttachment", _module)

@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.RoutineArgumentTableTypeArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,7 +19,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
      * 
      */
     @Import(name="argumentKind")
@@ -27,7 +28,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Defaults to FIXED_TYPE.
      * Default value is `FIXED_TYPE`.
-     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+     * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
      * 
      */
     public Optional<Output<String>> argumentKind() {
@@ -93,6 +94,23 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * If argumentKind is FIXED_TABLE, a schema for the table type.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tableType")
+    private @Nullable Output<RoutineArgumentTableTypeArgs> tableType;
+
+    /**
+     * @return If argumentKind is FIXED_TABLE, a schema for the table type.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RoutineArgumentTableTypeArgs>> tableType() {
+        return Optional.ofNullable(this.tableType);
+    }
+
     private RoutineArgumentArgs() {}
 
     private RoutineArgumentArgs(RoutineArgumentArgs $) {
@@ -100,6 +118,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         this.dataType = $.dataType;
         this.mode = $.mode;
         this.name = $.name;
+        this.tableType = $.tableType;
     }
 
     public static Builder builder() {
@@ -123,7 +142,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param argumentKind Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
          * 
          * @return builder
          * 
@@ -136,7 +155,7 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param argumentKind Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
          * 
          * @return builder
          * 
@@ -220,6 +239,29 @@ public final class RoutineArgumentArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param tableType If argumentKind is FIXED_TABLE, a schema for the table type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableType(@Nullable Output<RoutineArgumentTableTypeArgs> tableType) {
+            $.tableType = tableType;
+            return this;
+        }
+
+        /**
+         * @param tableType If argumentKind is FIXED_TABLE, a schema for the table type.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableType(RoutineArgumentTableTypeArgs tableType) {
+            return tableType(Output.of(tableType));
         }
 
         public RoutineArgumentArgs build() {

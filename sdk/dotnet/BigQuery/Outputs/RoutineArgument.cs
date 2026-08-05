@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// <summary>
         /// Defaults to FIXED_TYPE.
         /// Default value is `FIXED_TYPE`.
-        /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+        /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
         /// </summary>
         public readonly string? ArgumentKind;
         /// <summary>
@@ -38,6 +38,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// The name of this argument. Can be absent for function return argument.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// If argumentKind is FIXED_TABLE, a schema for the table type.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RoutineArgumentTableType? TableType;
 
         [OutputConstructor]
         private RoutineArgument(
@@ -47,12 +52,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             string? mode,
 
-            string? name)
+            string? name,
+
+            Outputs.RoutineArgumentTableType? tableType)
         {
             ArgumentKind = argumentKind;
             DataType = dataType;
             Mode = mode;
             Name = name;
+            TableType = tableType;
         }
     }
 }

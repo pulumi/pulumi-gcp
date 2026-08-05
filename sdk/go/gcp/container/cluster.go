@@ -134,6 +134,75 @@ import (
 //
 // ```
 //
+// ### Rollback-Safe (Two-Step) Upgrades
+//
+// To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `rollbackSafeUpgrade` block when changing the `minMasterVersion`. This upgrades the master but keeps the control plane emulating the older version.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("my-gke-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				MinMasterVersion: pulumi.String("1.32.4-gke.200"),
+//				RollbackSafeUpgrade: &container.ClusterRollbackSafeUpgradeArgs{
+//					ControlPlaneSoakDuration: pulumi.String("604800s"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// After the soak period concludes, you can declaratively complete the upgrade by specifying the target `desiredEmulatedVersion`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+//				Name:             pulumi.String("my-gke-cluster"),
+//				Location:         pulumi.String("us-central1"),
+//				InitialNodeCount: pulumi.Int(1),
+//				MinMasterVersion: pulumi.String("1.32.4-gke.200"),
+//				RollbackSafeUpgrade: &container.ClusterRollbackSafeUpgradeArgs{
+//					ControlPlaneSoakDuration: pulumi.String("604800s"),
+//				},
+//				DesiredEmulatedVersion: pulumi.String("1.32"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
+//
 // ### Autopilot
 //
 // ```go
@@ -276,12 +345,16 @@ type Cluster struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+	DesiredEmulatedVersion pulumi.StringPtrOutput `pulumi:"desiredEmulatedVersion"`
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
 	DisableL4LbFirewallReconciliation pulumi.BoolPtrOutput `pulumi:"disableL4LbFirewallReconciliation"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrOutput `pulumi:"dnsConfig"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The current emulated Kubernetes version running on the GKE cluster control plane.
+	EmulatedVersion pulumi.StringOutput `pulumi:"emulatedVersion"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -519,6 +592,8 @@ type Cluster struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
+	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrOutput `pulumi:"rollbackSafeUpgrade"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -676,12 +751,16 @@ type clusterState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+	DesiredEmulatedVersion *string `pulumi:"desiredEmulatedVersion"`
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
 	DisableL4LbFirewallReconciliation *bool `pulumi:"disableL4LbFirewallReconciliation"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig *ClusterDnsConfig `pulumi:"dnsConfig"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The current emulated Kubernetes version running on the GKE cluster control plane.
+	EmulatedVersion *string `pulumi:"emulatedVersion"`
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -919,6 +998,8 @@ type clusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+	RollbackSafeUpgrade *ClusterRollbackSafeUpgrade `pulumi:"rollbackSafeUpgrade"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1042,12 +1123,16 @@ type ClusterState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+	DesiredEmulatedVersion pulumi.StringPtrInput
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
 	DisableL4LbFirewallReconciliation pulumi.BoolPtrInput
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
 	DnsConfig ClusterDnsConfigPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The current emulated Kubernetes version running on the GKE cluster control plane.
+	EmulatedVersion pulumi.StringPtrInput
 	// Enable Autopilot for this cluster. Defaults to `false`.
 	// Note that when this option is enabled, certain features of Standard GKE are not available.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -1285,6 +1370,8 @@ type ClusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrInput
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1412,6 +1499,8 @@ type clusterArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+	DesiredEmulatedVersion *string `pulumi:"desiredEmulatedVersion"`
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
 	DisableL4LbFirewallReconciliation *bool `pulumi:"disableL4LbFirewallReconciliation"`
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
@@ -1642,6 +1731,8 @@ type clusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+	RollbackSafeUpgrade *ClusterRollbackSafeUpgrade `pulumi:"rollbackSafeUpgrade"`
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -1755,6 +1846,8 @@ type ClusterArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+	DesiredEmulatedVersion pulumi.StringPtrInput
 	// Disable L4 load balancer VPC firewalls to enable firewall policies.
 	DisableL4LbFirewallReconciliation pulumi.BoolPtrInput
 	// Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
@@ -1985,6 +2078,8 @@ type ClusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+	RollbackSafeUpgrade ClusterRollbackSafeUpgradePtrInput
 	// Configuration for the
 	// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
 	// Structure is documented below.
@@ -2246,6 +2341,11 @@ func (o ClusterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+func (o ClusterOutput) DesiredEmulatedVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DesiredEmulatedVersion }).(pulumi.StringPtrOutput)
+}
+
 // Disable L4 load balancer VPC firewalls to enable firewall policies.
 func (o ClusterOutput) DisableL4LbFirewallReconciliation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DisableL4LbFirewallReconciliation }).(pulumi.BoolPtrOutput)
@@ -2259,6 +2359,11 @@ func (o ClusterOutput) DnsConfig() ClusterDnsConfigPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The current emulated Kubernetes version running on the GKE cluster control plane.
+func (o ClusterOutput) EmulatedVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EmulatedVersion }).(pulumi.StringOutput)
 }
 
 // Enable Autopilot for this cluster. Defaults to `false`.
@@ -2681,6 +2786,11 @@ func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterResourceUsageExportConfigPtrOutput { return v.ResourceUsageExportConfig }).(ClusterResourceUsageExportConfigPtrOutput)
+}
+
+// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+func (o ClusterOutput) RollbackSafeUpgrade() ClusterRollbackSafeUpgradePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRollbackSafeUpgradePtrOutput { return v.RollbackSafeUpgrade }).(ClusterRollbackSafeUpgradePtrOutput)
 }
 
 // Configuration for the

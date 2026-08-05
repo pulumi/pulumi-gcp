@@ -93,7 +93,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("crypto-key"),
-//				KeyRing: keyRing.ID(),
+//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),
@@ -109,7 +109,7 @@ import (
 //				return err
 //			}
 //			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
+//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member:      pulumi.Sprintf("serviceAccount:%v", serviceAccount.AccountEmail),
 //			})
@@ -117,13 +117,11 @@ import (
 //				return err
 //			}
 //			cryptoKeyVersion := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: cryptoKey.ID(),
+//				CryptoKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			_, err = organizations.NewAccessApprovalSettings(ctx, "organization_access_approval", &organizations.AccessApprovalSettingsArgs{
-//				OrganizationId: pulumi.String("123456789"),
-//				ActiveKeyVersion: pulumi.String(cryptoKeyVersion.ApplyT(func(cryptoKeyVersion kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-//					return cryptoKeyVersion.Name, nil
-//				}).(pulumi.StringPtrOutput)),
+//				OrganizationId:   pulumi.String("123456789"),
+//				ActiveKeyVersion: cryptoKeyVersion.Name(),
 //				EnrolledServices: organizations.AccessApprovalSettingsEnrolledServiceArray{
 //					&organizations.AccessApprovalSettingsEnrolledServiceArgs{
 //						CloudProduct: pulumi.String("all"),

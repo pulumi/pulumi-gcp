@@ -69,11 +69,9 @@ import (
 //				return err
 //			}
 //			_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
-//				Group: group.ID(),
+//				Group: group.ID().ToIDOutput().ToStringOutput(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
-//					Id: child_group.GroupKey.ApplyT(func(groupKey cloudidentity.GroupGroupKey) (*string, error) {
-//						return groupKey.Id, nil
-//					}).(pulumi.StringPtrOutput),
+//					Id: child_group.GroupKey.Id(),
 //				},
 //				Roles: cloudidentity.GroupMembershipRoleArray{
 //					&cloudidentity.GroupMembershipRoleArgs{
@@ -117,7 +115,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudidentity.NewGroupMembership(ctx, "cloud_identity_group_membership_basic", &cloudidentity.GroupMembershipArgs{
-//				Group: group.ID(),
+//				Group: group.ID().ToIDOutput().ToStringOutput(),
 //				PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 //					Id: pulumi.String("cloud_identity_user@example.com"),
 //				},

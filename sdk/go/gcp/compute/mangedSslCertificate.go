@@ -78,7 +78,7 @@ import (
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
 //				TimeoutSec:   pulumi.Int(10),
-//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,7 @@ import (
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 //				Name:           pulumi.String("url-map"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
+//				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -98,13 +98,13 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
+//						DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultBackendService.ID(),
+//								Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -115,9 +115,9 @@ import (
 //			}
 //			defaultTargetHttpsProxy, err := compute.NewTargetHttpsProxy(ctx, "default", &compute.TargetHttpsProxyArgs{
 //				Name:   pulumi.String("test-proxy"),
-//				UrlMap: defaultURLMap.ID(),
+//				UrlMap: defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 //				SslCertificates: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -125,7 +125,7 @@ import (
 //			}
 //			_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 //				Name:      pulumi.String("forwarding-rule"),
-//				Target:    defaultTargetHttpsProxy.ID(),
+//				Target:    defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
 //				PortRange: pulumi.String("443"),
 //			})
 //			if err != nil {

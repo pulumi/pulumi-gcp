@@ -100,6 +100,7 @@ __all__ = [
     'ClusterAddonsConfigKalmConfig',
     'ClusterAddonsConfigLustreCsiDriverConfig',
     'ClusterAddonsConfigNetworkPolicyConfig',
+    'ClusterAddonsConfigNodeReadinessConfig',
     'ClusterAddonsConfigParallelstoreCsiDriverConfig',
     'ClusterAddonsConfigPodSnapshotConfig',
     'ClusterAddonsConfigRayOperatorConfig',
@@ -328,6 +329,7 @@ __all__ = [
     'ClusterReleaseChannel',
     'ClusterResourceUsageExportConfig',
     'ClusterResourceUsageExportConfigBigqueryDestination',
+    'ClusterRollbackSafeUpgrade',
     'ClusterSecretManagerConfig',
     'ClusterSecretManagerConfigRotationConfig',
     'ClusterSecretSyncConfig',
@@ -426,6 +428,7 @@ __all__ = [
     'GetClusterAddonsConfigKalmConfigResult',
     'GetClusterAddonsConfigLustreCsiDriverConfigResult',
     'GetClusterAddonsConfigNetworkPolicyConfigResult',
+    'GetClusterAddonsConfigNodeReadinessConfigResult',
     'GetClusterAddonsConfigParallelstoreCsiDriverConfigResult',
     'GetClusterAddonsConfigPodSnapshotConfigResult',
     'GetClusterAddonsConfigRayOperatorConfigResult',
@@ -654,6 +657,7 @@ __all__ = [
     'GetClusterReleaseChannelResult',
     'GetClusterResourceUsageExportConfigResult',
     'GetClusterResourceUsageExportConfigBigqueryDestinationResult',
+    'GetClusterRollbackSafeUpgradeResult',
     'GetClusterSecretManagerConfigResult',
     'GetClusterSecretManagerConfigRotationConfigResult',
     'GetClusterSecretSyncConfigResult',
@@ -4123,6 +4127,8 @@ class ClusterAddonsConfig(dict):
             suggest = "lustre_csi_driver_config"
         elif key == "networkPolicyConfig":
             suggest = "network_policy_config"
+        elif key == "nodeReadinessConfig":
+            suggest = "node_readiness_config"
         elif key == "parallelstoreCsiDriverConfig":
             suggest = "parallelstore_csi_driver_config"
         elif key == "podSnapshotConfig":
@@ -4162,6 +4168,7 @@ class ClusterAddonsConfig(dict):
                  kalm_config: Optional['outputs.ClusterAddonsConfigKalmConfig'] = None,
                  lustre_csi_driver_config: Optional['outputs.ClusterAddonsConfigLustreCsiDriverConfig'] = None,
                  network_policy_config: Optional['outputs.ClusterAddonsConfigNetworkPolicyConfig'] = None,
+                 node_readiness_config: Optional['outputs.ClusterAddonsConfigNodeReadinessConfig'] = None,
                  parallelstore_csi_driver_config: Optional['outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig'] = None,
                  pod_snapshot_config: Optional['outputs.ClusterAddonsConfigPodSnapshotConfig'] = None,
                  ray_operator_configs: Optional[Sequence['outputs.ClusterAddonsConfigRayOperatorConfig']] = None,
@@ -4217,6 +4224,10 @@ class ClusterAddonsConfig(dict):
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param 'ClusterAddonsConfigNodeReadinessConfigArgs' node_readiness_config: The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+               Structure is documented below.
+               
+               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigParallelstoreCsiDriverConfigArgs' parallelstore_csi_driver_config: The status of the Parallelstore CSI driver addon,
                which allows the usage of a Parallelstore instances as volumes.
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -4242,8 +4253,6 @@ class ClusterAddonsConfig(dict):
                which creates slurm related CRDs and KCP pods to manage them.
                Defaults to disabled for Standard clusters; set `enabled = true` to enable.
                It can not be enabled for Autopilot clusters.
-               
-               This example `addons_config` disables two addons:
         :param 'ClusterAddonsConfigStatefulHaConfigArgs' stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4276,6 +4285,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "lustre_csi_driver_config", lustre_csi_driver_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if node_readiness_config is not None:
+            pulumi.set(__self__, "node_readiness_config", node_readiness_config)
         if parallelstore_csi_driver_config is not None:
             pulumi.set(__self__, "parallelstore_csi_driver_config", parallelstore_csi_driver_config)
         if pod_snapshot_config is not None:
@@ -4436,6 +4447,17 @@ class ClusterAddonsConfig(dict):
         return pulumi.get(self, "network_policy_config")
 
     @_builtins.property
+    @pulumi.getter(name="nodeReadinessConfig")
+    def node_readiness_config(self) -> Optional['outputs.ClusterAddonsConfigNodeReadinessConfig']:
+        """
+        The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+        Structure is documented below.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "node_readiness_config")
+
+    @_builtins.property
     @pulumi.getter(name="parallelstoreCsiDriverConfig")
     def parallelstore_csi_driver_config(self) -> Optional['outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig']:
         """
@@ -4492,8 +4514,6 @@ class ClusterAddonsConfig(dict):
         which creates slurm related CRDs and KCP pods to manage them.
         Defaults to disabled for Standard clusters; set `enabled = true` to enable.
         It can not be enabled for Autopilot clusters.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "slurm_operator_config")
 
@@ -4821,6 +4841,18 @@ class ClusterAddonsConfigNetworkPolicyConfig(dict):
 
 
 @pulumi.output_type
+class ClusterAddonsConfigNodeReadinessConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ClusterAddonsConfigParallelstoreCsiDriverConfig(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
@@ -5121,8 +5153,9 @@ class ClusterBinaryAuthorization(dict):
                  enabled: Optional[_builtins.bool] = None,
                  evaluation_mode: Optional[_builtins.str] = None):
         """
-        :param _builtins.bool enabled: Enable Binary Authorization for this cluster.
-        :param _builtins.str evaluation_mode: Mode of operation for Binary Authorization policy evaluation.
+        :param _builtins.bool enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        :param _builtins.str evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+               and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -5134,7 +5167,7 @@ class ClusterBinaryAuthorization(dict):
     @_utilities.deprecated("""Deprecated in favor of evaluation_mode.""")
     def enabled(self) -> Optional[_builtins.bool]:
         """
-        Enable Binary Authorization for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         """
         return pulumi.get(self, "enabled")
 
@@ -5142,7 +5175,8 @@ class ClusterBinaryAuthorization(dict):
     @pulumi.getter(name="evaluationMode")
     def evaluation_mode(self) -> Optional[_builtins.str]:
         """
-        Mode of operation for Binary Authorization policy evaluation.
+        Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+        and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -18821,6 +18855,42 @@ class ClusterResourceUsageExportConfigBigqueryDestination(dict):
 
 
 @pulumi.output_type
+class ClusterRollbackSafeUpgrade(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneSoakDuration":
+            suggest = "control_plane_soak_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRollbackSafeUpgrade. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRollbackSafeUpgrade.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRollbackSafeUpgrade.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_soak_duration: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str control_plane_soak_duration: A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+        """
+        if control_plane_soak_duration is not None:
+            pulumi.set(__self__, "control_plane_soak_duration", control_plane_soak_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneSoakDuration")
+    def control_plane_soak_duration(self) -> Optional[_builtins.str]:
+        """
+        A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+        """
+        return pulumi.get(self, "control_plane_soak_duration")
+
+
+@pulumi.output_type
 class ClusterSecretManagerConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -24004,6 +24074,7 @@ class GetClusterAddonsConfigResult(dict):
                  kalm_configs: Sequence['outputs.GetClusterAddonsConfigKalmConfigResult'],
                  lustre_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigLustreCsiDriverConfigResult'],
                  network_policy_configs: Sequence['outputs.GetClusterAddonsConfigNetworkPolicyConfigResult'],
+                 node_readiness_configs: Sequence['outputs.GetClusterAddonsConfigNodeReadinessConfigResult'],
                  parallelstore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult'],
                  pod_snapshot_configs: Sequence['outputs.GetClusterAddonsConfigPodSnapshotConfigResult'],
                  ray_operator_configs: Sequence['outputs.GetClusterAddonsConfigRayOperatorConfigResult'],
@@ -24025,6 +24096,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigKalmConfigArgs'] kalm_configs: Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigLustreCsiDriverConfigArgs'] lustre_csi_driver_configs: Configuration for the Lustre CSI driver. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigNetworkPolicyConfigArgs'] network_policy_configs: Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
+        :param Sequence['GetClusterAddonsConfigNodeReadinessConfigArgs'] node_readiness_configs: The status of the Node Readiness Controller addon.
         :param Sequence['GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs'] parallelstore_csi_driver_configs: The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigPodSnapshotConfigArgs'] pod_snapshot_configs: Configuration for the Pod Snapshot feature.
         :param Sequence['GetClusterAddonsConfigRayOperatorConfigArgs'] ray_operator_configs: The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
@@ -24046,6 +24118,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "kalm_configs", kalm_configs)
         pulumi.set(__self__, "lustre_csi_driver_configs", lustre_csi_driver_configs)
         pulumi.set(__self__, "network_policy_configs", network_policy_configs)
+        pulumi.set(__self__, "node_readiness_configs", node_readiness_configs)
         pulumi.set(__self__, "parallelstore_csi_driver_configs", parallelstore_csi_driver_configs)
         pulumi.set(__self__, "pod_snapshot_configs", pod_snapshot_configs)
         pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
@@ -24164,6 +24237,14 @@ class GetClusterAddonsConfigResult(dict):
         Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a network_policy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
         """
         return pulumi.get(self, "network_policy_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeReadinessConfigs")
+    def node_readiness_configs(self) -> Sequence['outputs.GetClusterAddonsConfigNodeReadinessConfigResult']:
+        """
+        The status of the Node Readiness Controller addon.
+        """
+        return pulumi.get(self, "node_readiness_configs")
 
     @_builtins.property
     @pulumi.getter(name="parallelstoreCsiDriverConfigs")
@@ -24442,6 +24523,18 @@ class GetClusterAddonsConfigNetworkPolicyConfigResult(dict):
     @pulumi.getter
     def disabled(self) -> _builtins.bool:
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigNodeReadinessConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -33417,6 +33510,24 @@ class GetClusterResourceUsageExportConfigBigqueryDestinationResult(dict):
         The ID of a BigQuery Dataset.
         """
         return pulumi.get(self, "dataset_id")
+
+
+@pulumi.output_type
+class GetClusterRollbackSafeUpgradeResult(dict):
+    def __init__(__self__, *,
+                 control_plane_soak_duration: _builtins.str):
+        """
+        :param _builtins.str control_plane_soak_duration: A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+        """
+        pulumi.set(__self__, "control_plane_soak_duration", control_plane_soak_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneSoakDuration")
+    def control_plane_soak_duration(self) -> _builtins.str:
+        """
+        A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+        """
+        return pulumi.get(self, "control_plane_soak_duration")
 
 
 @pulumi.output_type

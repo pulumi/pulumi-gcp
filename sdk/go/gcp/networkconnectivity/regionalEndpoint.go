@@ -48,7 +48,7 @@ import (
 //				Name:        pulumi.String("my-subnetwork"),
 //				IpCidrRange: pulumi.String("192.168.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     myNetwork.ID(),
+//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,8 +59,8 @@ import (
 //				TargetGoogleApi: pulumi.String("storage.us-central1.rep.googleapis.com"),
 //				AccessType:      pulumi.String("REGIONAL"),
 //				Address:         pulumi.String("192.168.0.5"),
-//				Network:         myNetwork.ID(),
-//				Subnetwork:      mySubnetwork.ID(),
+//				Network:         myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:      mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Description:     pulumi.String("My RegionalEndpoint targeting Google API storage.us-central1.rep.googleapis.com"),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("default"),
@@ -100,7 +100,7 @@ import (
 //				Name:        pulumi.String("my-subnetwork"),
 //				IpCidrRange: pulumi.String("192.168.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     myNetwork.ID(),
+//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -111,8 +111,8 @@ import (
 //				TargetGoogleApi: pulumi.String("storage.us-central1.rep.googleapis.com"),
 //				AccessType:      pulumi.String("GLOBAL"),
 //				Address:         pulumi.String("192.168.0.4"),
-//				Network:         myNetwork.ID(),
-//				Subnetwork:      mySubnetwork.ID(),
+//				Network:         myNetwork.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:      mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

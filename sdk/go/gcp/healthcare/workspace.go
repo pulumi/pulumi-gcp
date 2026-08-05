@@ -45,7 +45,7 @@ import (
 //			}
 //			_, err = healthcare.NewWorkspace(ctx, "default", &healthcare.WorkspaceArgs{
 //				Name:    pulumi.String("example-dm-workspace"),
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				Settings: &healthcare.WorkspaceSettingsArgs{
 //					DataProjectIds: pulumi.StringArray{
 //						pulumi.String("example-data-source-project-id"),

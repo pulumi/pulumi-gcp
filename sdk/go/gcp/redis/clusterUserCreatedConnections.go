@@ -53,7 +53,7 @@ import (
 //				Name:        pulumi.String("subnet-net1"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network1.ID(),
+//				Network:     network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //			ip1Network1, err := compute.NewAddress(ctx, "ip1_network1", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net1"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork1.ID(),
+//				Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -82,12 +82,12 @@ import (
 //			forwardingRule1Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network1", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net1"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip1Network1.ID(),
+//				IpAddress:           ip1Network1.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network1.ID(),
-//				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
+//				Network:             network1.ID().ToIDOutput().ToStringOutput(),
+//				Target: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //					return pscServiceAttachments[0].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -95,7 +95,7 @@ import (
 //			ip2Network1, err := compute.NewAddress(ctx, "ip2_network1", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net1"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork1.ID(),
+//				Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -105,12 +105,12 @@ import (
 //			forwardingRule2Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network1", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net1"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip2Network1.ID(),
+//				IpAddress:           ip2Network1.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network1.ID(),
-//				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
+//				Network:             network1.ID().ToIDOutput().ToStringOutput(),
+//				Target: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //					return pscServiceAttachments[1].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -126,7 +126,7 @@ import (
 //				Name:        pulumi.String("subnet-net2"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network2.ID(),
+//				Network:     network2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -134,7 +134,7 @@ import (
 //			ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -144,12 +144,12 @@ import (
 //			forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip1Network2.ID(),
+//				IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //					return pscServiceAttachments[0].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -157,7 +157,7 @@ import (
 //			ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -167,12 +167,12 @@ import (
 //			forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip2Network2.ID(),
+//				IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //					return pscServiceAttachments[1].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -191,8 +191,8 @@ import (
 //								PscConnection: &redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule1Network1.PscConnectionId,
 //									Address:         ip1Network1.Address,
-//									ForwardingRule:  forwardingRule1Network1.ID(),
-//									Network:         network1.ID(),
+//									ForwardingRule:  forwardingRule1Network1.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network1.ID().ToIDOutput().ToStringOutput(),
 //									ProjectId:       pulumi.String(project.ProjectId),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //										return pscServiceAttachments[0].ServiceAttachment, nil
@@ -203,8 +203,8 @@ import (
 //								PscConnection: &redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule2Network1.PscConnectionId,
 //									Address:         ip2Network1.Address,
-//									ForwardingRule:  forwardingRule2Network1.ID(),
-//									Network:         network1.ID(),
+//									ForwardingRule:  forwardingRule2Network1.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network1.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //										return pscServiceAttachments[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -218,8 +218,8 @@ import (
 //								PscConnection: &redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule1Network2.PscConnectionId,
 //									Address:         ip1Network2.Address,
-//									ForwardingRule:  forwardingRule1Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule1Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //										return pscServiceAttachments[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -229,8 +229,8 @@ import (
 //								PscConnection: &redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule2Network2.PscConnectionId,
 //									Address:         ip2Network2.Address,
-//									ForwardingRule:  forwardingRule2Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule2Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: cluster_user_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //										return pscServiceAttachments[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -275,7 +275,7 @@ import (
 //				Name:        pulumi.String("subnet-net2"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network2.ID(),
+//				Network:     network2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -283,7 +283,7 @@ import (
 //			ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -301,7 +301,7 @@ import (
 //				Name:        pulumi.String("subnet-net1"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network1.ID(),
+//				Network:     network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -311,10 +311,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      network1.ID(),
+//				Network:      network1.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						subnetNetwork1.ID(),
+//						subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -330,7 +330,7 @@ import (
 //				DeletionProtectionEnabled: pulumi.Bool(false),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: network1.ID(),
+//						Network: network1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -342,12 +342,12 @@ import (
 //			forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip1Network2.ID(),
+//				IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //					return pscServiceAttachments[0].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -355,7 +355,7 @@ import (
 //			ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -365,12 +365,12 @@ import (
 //			forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip2Network2.ID(),
+//				IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //					return pscServiceAttachments[1].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -385,8 +385,8 @@ import (
 //								PscConnection: &redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule1Network2.PscConnectionId,
 //									Address:         ip1Network2.Address,
-//									ForwardingRule:  forwardingRule1Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule1Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //										return pscServiceAttachments[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -396,8 +396,8 @@ import (
 //								PscConnection: &redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule2Network2.PscConnectionId,
 //									Address:         ip2Network2.Address,
-//									ForwardingRule:  forwardingRule2Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule2Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: cluster_user_auto_connCluster.PscServiceAttachments.ApplyT(func(pscServiceAttachments []redis.ClusterPscServiceAttachment) (*string, error) {
 //										return pscServiceAttachments[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),

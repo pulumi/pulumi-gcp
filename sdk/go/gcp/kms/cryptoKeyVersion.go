@@ -47,14 +47,14 @@ import (
 //			}
 //			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
 //				Name:           pulumi.String("crypto-key-example"),
-//				KeyRing:        keyring.ID(),
+//				KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = kms.NewCryptoKeyVersion(ctx, "example-key", &kms.CryptoKeyVersionArgs{
-//				CryptoKey: cryptokey.ID(),
+//				CryptoKey: cryptokey.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

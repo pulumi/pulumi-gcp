@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// <summary>
         /// Defaults to FIXED_TYPE.
         /// Default value is `FIXED_TYPE`.
-        /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+        /// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
         /// </summary>
         [Input("argumentKind")]
         public Input<string>? ArgumentKind { get; set; }
@@ -44,6 +44,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// If argumentKind is FIXED_TABLE, a schema for the table type.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tableType")]
+        public Input<Inputs.RoutineArgumentTableTypeGetArgs>? TableType { get; set; }
 
         public RoutineArgumentGetArgs()
         {

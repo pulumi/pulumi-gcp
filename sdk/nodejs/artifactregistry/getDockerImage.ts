@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * });
  * const _default = new gcp.cloudrunv2.Service("default", {template: {
  *     containers: [{
- *         image: myImage.apply(myImage => myImage.selfLink),
+ *         image: myImage.selfLink,
  *     }],
  * }});
  * ```
@@ -140,7 +140,7 @@ export interface GetDockerImageResult {
  * });
  * const _default = new gcp.cloudrunv2.Service("default", {template: {
  *     containers: [{
- *         image: myImage.apply(myImage => myImage.selfLink),
+ *         image: myImage.selfLink,
  *     }],
  * }});
  * ```

@@ -53,11 +53,11 @@ import (
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 //				Name:                   pulumi.String("example-hl7-v2-store"),
-//				Dataset:                dataset.ID(),
+//				Dataset:                dataset.ID().ToIDOutput().ToStringOutput(),
 //				RejectDuplicateMessage: pulumi.Bool(true),
 //				NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
 //					&healthcare.Hl7StoreNotificationConfigsArgs{
-//						PubsubTopic: topic.ID(),
+//						PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Labels: pulumi.StringMap{
@@ -95,7 +95,7 @@ import (
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 //				Name:    pulumi.String("example-hl7-v2-store"),
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 //					AllowNullHeader:   pulumi.Bool(false),
 //					SegmentTerminator: pulumi.String("Jw=="),
@@ -213,7 +213,7 @@ import (
 //			}
 //			_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
 //				Name:    pulumi.String("example-hl7-v2-store"),
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 //					AllowNullHeader:   pulumi.Bool(false),
 //					SegmentTerminator: pulumi.String("Jw=="),

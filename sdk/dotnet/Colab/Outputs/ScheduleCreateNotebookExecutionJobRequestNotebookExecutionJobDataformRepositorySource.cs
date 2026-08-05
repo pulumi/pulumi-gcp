@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// </summary>
         public readonly string? CommitSha;
         /// <summary>
-        /// The resource name of the Dataform Repository.
+        /// The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
         /// </summary>
         public readonly string DataformRepositoryResourceName;
 

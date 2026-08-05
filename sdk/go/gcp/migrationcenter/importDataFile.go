@@ -41,7 +41,7 @@ import (
 //			defaultImportJob, err := migrationcenter.NewImportJob(ctx, "default", &migrationcenter.ImportJobArgs{
 //				Location:    pulumi.String("us-central1"),
 //				ImportJobId: pulumi.String("import-job-test"),
-//				AssetSource: _default.ID(),
+//				AssetSource: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

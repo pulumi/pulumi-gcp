@@ -128,7 +128,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"arg1": "val1",
 //				"arg2": "val2",
 //			})
@@ -136,7 +136,7 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"arg1": "val1",
 //				"arg2": "val2",
 //			})
@@ -144,21 +144,21 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]string{
 //				"output": "example-output",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]string{
 //				"output": "example-output",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"var1": "val1",
 //				"var2": "val2",
 //			})

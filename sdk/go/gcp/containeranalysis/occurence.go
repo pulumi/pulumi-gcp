@@ -103,7 +103,7 @@ import (
 //			}
 //			_, err = containeranalysis.NewOccurence(ctx, "occurrence", &containeranalysis.OccurenceArgs{
 //				ResourceUri: pulumi.String("gcr.io/my-project/my-image"),
-//				NoteName:    note.ID(),
+//				NoteName:    note.ID().ToIDOutput().ToStringOutput(),
 //				Attestation: &containeranalysis.OccurenceAttestationArgs{
 //					SerializedPayload: pulumi.String(invokeFilebase64.Result),
 //					Signatures: containeranalysis.OccurenceAttestationSignatureArray{

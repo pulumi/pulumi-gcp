@@ -57,8 +57,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * export const sparkStatus = spark.statuses.apply(statuses => statuses[0].state);
- * export const pysparkStatus = pyspark.statuses.apply(statuses => statuses[0].state);
+ * export const sparkStatus = spark.statuses[0].state;
+ * export const pysparkStatus = pyspark.statuses[0].state;
  * ```
  *
  * ## Import

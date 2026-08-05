@@ -46,7 +46,7 @@ import (
 //				return err
 //			}
 //			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-//				Parent:    tagKey1.ID(),
+//				Parent:    tagKey1.ID().ToIDOutput().ToStringOutput(),
 //				ShortName: pulumi.String("valuename"),
 //			})
 //			if err != nil {
@@ -70,8 +70,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -106,13 +106,15 @@ import (
 //						BootDiskSizeGb:           pulumi.Int(35),
 //						DisablePublicIpAddresses: pulumi.Bool(true),
 //						DisableSsh:               pulumi.Bool(false),
-//						VmTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-//							tagKey1Id := _args[0].(string)
-//							tagValue1Id := _args[1].(string)
-//							return map[string]string{
-//								tagKey1Id: tagValue1Id,
-//							}, nil
-//						}).(pulumi.StringMapOutput),
+//						VmTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
+//							tagKey1Id := _args[0].(pulumi.ID)
+//							tagValue1Id := _args[1].(pulumi.ID)
+//							return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+//								return map[string]pulumi.ID{
+//									__convert: tagValue1Id,
+//								}, nil
+//							}).(pulumi.IDMapOutput)), nil
+//						}).(pulumi.IDMapOutput)),
 //					},
 //				},
 //			})
@@ -157,8 +159,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -231,8 +233,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -290,7 +292,7 @@ import (
 //				return err
 //			}
 //			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-//				Parent:    tagKey1.ID(),
+//				Parent:    tagKey1.ID().ToIDOutput().ToStringOutput(),
 //				ShortName: pulumi.String("valuename"),
 //			})
 //			if err != nil {
@@ -331,8 +333,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -347,20 +349,22 @@ import (
 //						MachineType:              pulumi.String("c3-standard-22"),
 //						BootDiskSizeGb:           pulumi.Int(35),
 //						DisablePublicIpAddresses: pulumi.Bool(true),
-//						VmTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-//							tagKey1Id := _args[0].(string)
-//							tagValue1Id := _args[1].(string)
-//							return map[string]string{
-//								tagKey1Id: tagValue1Id,
-//							}, nil
-//						}).(pulumi.StringMapOutput),
+//						VmTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
+//							tagKey1Id := _args[0].(pulumi.ID)
+//							tagValue1Id := _args[1].(pulumi.ID)
+//							return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+//								return map[string]pulumi.ID{
+//									__convert: tagValue1Id,
+//								}, nil
+//							}).(pulumi.IDMapOutput)), nil
+//						}).(pulumi.IDMapOutput)),
 //					},
 //				},
 //				PersistentDirectories: workstations.WorkstationConfigPersistentDirectoryArray{
 //					&workstations.WorkstationConfigPersistentDirectoryArgs{
 //						MountPath: pulumi.String("/home"),
 //						GceHd: &workstations.WorkstationConfigPersistentDirectoryGceHdArgs{
-//							SourceSnapshot: mySourceSnapshot.ID(),
+//							SourceSnapshot: mySourceSnapshot.ID().ToIDOutput().ToStringOutput(),
 //							ReclaimPolicy:  pulumi.String("DELETE"),
 //							ArchiveTimeout: pulumi.String("3600s"),
 //						},
@@ -408,8 +412,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -506,8 +510,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -521,7 +525,7 @@ import (
 //					&workstations.WorkstationConfigPersistentDirectoryArgs{
 //						MountPath: pulumi.String("/home"),
 //						GcePd: &workstations.WorkstationConfigPersistentDirectoryGcePdArgs{
-//							SourceSnapshot: mySourceSnapshot.ID(),
+//							SourceSnapshot: mySourceSnapshot.ID().ToIDOutput().ToStringOutput(),
 //							ReclaimPolicy:  pulumi.String("DELETE"),
 //						},
 //					},
@@ -568,8 +572,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -638,8 +642,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -710,8 +714,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -797,8 +801,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),
@@ -819,7 +823,7 @@ import (
 //			}
 //			defaultCryptoKey, err := kms.NewCryptoKey(ctx, "default", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("workstation-cluster"),
-//				KeyRing: defaultKeyRing.ID(),
+//				KeyRing: defaultKeyRing.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -847,7 +851,7 @@ import (
 //					},
 //				},
 //				EncryptionKey: &workstations.WorkstationConfigEncryptionKeyArgs{
-//					KmsKey:               defaultCryptoKey.ID(),
+//					KmsKey:               defaultCryptoKey.ID().ToIDOutput().ToStringOutput(),
 //					KmsKeyServiceAccount: defaultAccount.Email,
 //				},
 //			})
@@ -892,8 +896,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),

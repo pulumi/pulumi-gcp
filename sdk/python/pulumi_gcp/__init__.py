@@ -23,6 +23,8 @@ if typing.TYPE_CHECKING:
     accesscontextmanager = __accesscontextmanager
     import pulumi_gcp.activedirectory as __activedirectory
     activedirectory = __activedirectory
+    import pulumi_gcp.agentidentity as __agentidentity
+    agentidentity = __agentidentity
     import pulumi_gcp.agentregistry as __agentregistry
     agentregistry = __agentregistry
     import pulumi_gcp.alloydb as __alloydb
@@ -307,6 +309,7 @@ else:
     accessapproval = _utilities.lazy_import('pulumi_gcp.accessapproval')
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
     activedirectory = _utilities.lazy_import('pulumi_gcp.activedirectory')
+    agentidentity = _utilities.lazy_import('pulumi_gcp.agentidentity')
     agentregistry = _utilities.lazy_import('pulumi_gcp.agentregistry')
     alloydb = _utilities.lazy_import('pulumi_gcp.alloydb')
     apigateway = _utilities.lazy_import('pulumi_gcp.apigateway')
@@ -625,6 +628,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.activedirectory",
   "classes": {
    "gcp:activedirectory/peering:Peering": "Peering"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "agentidentity/authProvider",
+  "fqn": "pulumi_gcp.agentidentity",
+  "classes": {
+   "gcp:agentidentity/authProvider:AuthProvider": "AuthProvider"
   }
  },
  {
@@ -1145,6 +1156,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apihub",
   "classes": {
    "gcp:apihub/pluginInstance:PluginInstance": "PluginInstance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apihub/runtimeProjectAttachment",
+  "fqn": "pulumi_gcp.apihub",
+  "classes": {
+   "gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment": "RuntimeProjectAttachment"
   }
  },
  {
@@ -2465,6 +2484,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.ces",
   "classes": {
    "gcp:ces/toolset:Toolset": "Toolset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/bigQueryExport",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/bigQueryExport:BigQueryExport": "BigQueryExport"
   }
  },
  {
@@ -11605,6 +11632,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vectorsearch/dataObject",
+  "fqn": "pulumi_gcp.vectorsearch",
+  "classes": {
+   "gcp:vectorsearch/dataObject:DataObject": "DataObject"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vectorsearch/index",
   "fqn": "pulumi_gcp.vectorsearch",
   "classes": {
@@ -11889,6 +11924,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiModelGardenEnableModel:AiModelGardenEnableModel": "AiModelGardenEnableModel"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiPersistentResource",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiPersistentResource:AiPersistentResource": "AiPersistentResource"
   }
  },
  {

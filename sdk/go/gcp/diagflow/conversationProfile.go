@@ -50,7 +50,7 @@ import (
 //				DisplayName: pulumi.String("dialogflow-profile"),
 //				Location:    pulumi.String("global"),
 //				AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
-//					Agent: basicAgent.ID().ApplyT(func(id string) (string, error) {
+//					Agent: basicAgent.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //						return fmt.Sprintf("projects/%v/locations/global/agent/environments/draft", id), nil
 //					}).(pulumi.StringOutput),
 //				},
@@ -94,7 +94,7 @@ import (
 //				DisplayName: pulumi.String("dialogflow-profile"),
 //				Location:    pulumi.String("global"),
 //				NewRecognitionResultNotificationConfig: &diagflow.ConversationProfileNewRecognitionResultNotificationConfigArgs{
-//					Topic:         recognitionResultNotificationProfileTopic.ID(),
+//					Topic:         recognitionResultNotificationProfileTopic.ID().ToIDOutput().ToStringOutput(),
 //					MessageFormat: pulumi.String("JSON"),
 //				},
 //			})
@@ -138,7 +138,7 @@ import (
 //				LanguageCode:     pulumi.String("en-US"),
 //				UseBidiStreaming: pulumi.Bool(true),
 //				AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
-//					Agent: cesAppForAgent.ID(),
+//					Agent: cesAppForAgent.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				SipConfig: &diagflow.ConversationProfileSipConfigArgs{
 //					AllowVirtualAgentInteraction: pulumi.Bool(true),

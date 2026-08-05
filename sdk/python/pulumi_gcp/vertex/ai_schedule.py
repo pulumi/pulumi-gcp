@@ -664,6 +664,8 @@ class AiSchedule(pulumi.CustomResource):
                  start_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
+        > **Warning:** `vertex.AiSchedule` is deprecated and will be removed in a future major release. Use `colab.Schedule` instead.
+
         An online schedule that triggers running pipeline jobs or notebook execution jobs.
 
         ## Example Usage
@@ -825,6 +827,8 @@ class AiSchedule(pulumi.CustomResource):
                  args: AiScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `vertex.AiSchedule` is deprecated and will be removed in a future major release. Use `colab.Schedule` instead.
+
         An online schedule that triggers running pipeline jobs or notebook execution jobs.
 
         ## Example Usage

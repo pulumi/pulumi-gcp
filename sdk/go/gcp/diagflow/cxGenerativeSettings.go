@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxGenerativeSettings(ctx, "full_generative_settings", &diagflow.CxGenerativeSettingsArgs{
-//				Parent: agent.ID(),
+//				Parent: agent.ID().ToIDOutput().ToStringOutput(),
 //				FallbackSettings: &diagflow.CxGenerativeSettingsFallbackSettingsArgs{
 //					SelectedPrompt: pulumi.String("example prompt"),
 //					PromptTemplates: diagflow.CxGenerativeSettingsFallbackSettingsPromptTemplateArray{

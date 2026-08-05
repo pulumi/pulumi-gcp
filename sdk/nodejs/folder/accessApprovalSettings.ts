@@ -73,14 +73,14 @@ import * as utilities from "../utilities";
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.signerVerifier",
- *     member: serviceAccount.apply(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
+ *     member: pulumi.interpolate`serviceAccount:${serviceAccount.accountEmail}`,
  * });
  * const cryptoKeyVersion = gcp.kms.getKMSCryptoKeyVersionOutput({
  *     cryptoKey: cryptoKey.id,
  * });
  * const folderAccessApproval = new gcp.folder.AccessApprovalSettings("folder_access_approval", {
  *     folderId: myFolder.folderId,
- *     activeKeyVersion: cryptoKeyVersion.apply(cryptoKeyVersion => cryptoKeyVersion.name),
+ *     activeKeyVersion: cryptoKeyVersion.name,
  *     enrolledServices: [{
  *         cloudProduct: "all",
  *     }],

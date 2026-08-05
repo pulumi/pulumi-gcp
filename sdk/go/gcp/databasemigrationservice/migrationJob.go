@@ -147,7 +147,7 @@ import (
 //					DumpParallelLevel: pulumi.String("MAX"),
 //				},
 //				VpcPeeringConnectivity: &databasemigrationservice.MigrationJobVpcPeeringConnectivityArgs{
-//					Vpc: _default.ID(),
+//					Vpc: _default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DumpType: pulumi.String("LOGICAL"),
 //				DumpFlags: &databasemigrationservice.MigrationJobDumpFlagsArgs{
@@ -537,7 +537,7 @@ import (
 //				ClusterId: pulumi.String("destination-alloydb"),
 //				Location:  pulumi.String("us-central1"),
 //				NetworkConfig: &alloydb.ClusterNetworkConfigArgs{
-//					Network: _default.ID(),
+//					Network: _default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
@@ -554,13 +554,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      _default.ID(),
+//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: _default.ID(),
+//				Network: _default.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,

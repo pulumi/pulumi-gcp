@@ -101,14 +101,14 @@ import (
 //				return err
 //			}
 //			secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
-//				Secret:     secret_basic.ID(),
+//				Secret:     secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("dummypassword"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret_iam", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret_basic.ID(),
+//				SecretId: secret_basic.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.admin"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", testProject.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{

@@ -46,7 +46,7 @@ import (
 //			}
 //			_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
 //				Name:    pulumi.String("my-pbr"),
-//				Network: myNetwork.ID(),
+//				Network: myNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 //					ProtocolVersion: pulumi.String("IPV4"),
 //				},
@@ -94,7 +94,7 @@ import (
 //			_, err = networkconnectivity.NewPolicyBasedRoute(ctx, "default", &networkconnectivity.PolicyBasedRouteArgs{
 //				Name:        pulumi.String("my-pbr"),
 //				Description: pulumi.String("My routing policy"),
-//				Network:     myNetwork.ID(),
+//				Network:     myNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Priority:    pulumi.Int(2302),
 //				Filter: &networkconnectivity.PolicyBasedRouteFilterArgs{
 //					ProtocolVersion: pulumi.String("IPV4"),

@@ -56,7 +56,7 @@ import (
 //				Folder:      folder.FolderId,
 //				Location:    pulumi.String("global"),
 //				Description: pulumi.String("My custom Cloud Security Command Center Finding Notification Configuration"),
-//				PubsubTopic: sccV2FolderNotificationConfig.ID(),
+//				PubsubTopic: sccV2FolderNotificationConfig.ID().ToIDOutput().ToStringOutput(),
 //				StreamingConfig: &securitycenter.V2FolderNotificationConfigStreamingConfigArgs{
 //					Filter: pulumi.String("category = \"OPEN_FIREWALL\" AND state = \"ACTIVE\""),
 //				},

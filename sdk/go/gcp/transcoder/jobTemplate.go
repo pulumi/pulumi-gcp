@@ -609,7 +609,7 @@ import (
 //						},
 //					},
 //					PubsubDestination: &transcoder.JobTemplateConfigPubsubDestinationArgs{
-//						Topic: transcoderNotifications.ID(),
+//						Topic: transcoderNotifications.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Labels: pulumi.StringMap{

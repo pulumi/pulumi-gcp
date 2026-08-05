@@ -54,7 +54,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("us-central1"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -63,7 +63,7 @@ import (
 //			_, err = compute.NewRegionTargetTcpProxy(ctx, "default", &compute.RegionTargetTcpProxyArgs{
 //				Name:           pulumi.String("test-proxy"),
 //				Region:         pulumi.String("us-central1"),
-//				BackendService: defaultRegionBackendService.ID(),
+//				BackendService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -104,7 +104,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("europe-west4"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {
@@ -114,7 +114,7 @@ import (
 //				Name:                pulumi.String("test-proxy"),
 //				Region:              pulumi.String("europe-west4"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				BackendService:      defaultRegionBackendService.ID(),
+//				BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -191,7 +191,7 @@ import (
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				Region:              pulumi.String("europe-west4"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //			})
 //			if err != nil {

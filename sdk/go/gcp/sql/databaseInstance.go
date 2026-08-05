@@ -88,13 +88,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      privateNetwork.ID(),
+//				Network:      privateNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			privateVpcConnection, err := servicenetworking.NewConnection(ctx, "private_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: privateNetwork.ID(),
+//				Network: privateNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAddress.Name,

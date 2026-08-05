@@ -77,11 +77,9 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] name: Name of the Job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] run_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+        :param pulumi.Input[_builtins.str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
                The sum of job name and token length must be fewer than 63 characters.
-        :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+        :param pulumi.Input[_builtins.str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
@@ -290,7 +288,6 @@ class JobArgs:
     @pulumi.getter(name="runExecutionToken")
     def run_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
         The sum of job name and token length must be fewer than 63 characters.
         """
@@ -304,7 +301,6 @@ class JobArgs:
     @pulumi.getter(name="startExecutionToken")
     def start_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
         The sum of job name and token length must be fewer than 63 characters.
         """
@@ -427,11 +423,9 @@ class _JobState:
                When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
                If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
-        :param pulumi.Input[_builtins.str] run_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+        :param pulumi.Input[_builtins.str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
                The sum of job name and token length must be fewer than 63 characters.
-        :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+        :param pulumi.Input[_builtins.str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
@@ -859,7 +853,6 @@ class _JobState:
     @pulumi.getter(name="runExecutionToken")
     def run_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
         The sum of job name and token length must be fewer than 63 characters.
         """
@@ -873,7 +866,6 @@ class _JobState:
     @pulumi.getter(name="startExecutionToken")
     def start_execution_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
         The sum of job name and token length must be fewer than 63 characters.
         """
@@ -1411,11 +1403,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the Job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[_builtins.str] run_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+        :param pulumi.Input[_builtins.str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
                The sum of job name and token length must be fewer than 63 characters.
-        :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+        :param pulumi.Input[_builtins.str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
@@ -2019,11 +2009,9 @@ class Job(pulumi.CustomResource):
                When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, observedGeneration and latest_succeeded_execution, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in terminalCondition.state.
                If reconciliation succeeded, the following fields will match: observedGeneration and generation, latest_succeeded_execution and latestCreatedExecution.
                If reconciliation failed, observedGeneration and latest_succeeded_execution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
-        :param pulumi.Input[_builtins.str] run_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+        :param pulumi.Input[_builtins.str] run_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
                The sum of job name and token length must be fewer than 63 characters.
-        :param pulumi.Input[_builtins.str] start_execution_token: (Optional, Beta)
-               A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+        :param pulumi.Input[_builtins.str] start_execution_token: A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
                The sum of job name and token length must be fewer than 63 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
@@ -2319,7 +2307,6 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="runExecutionToken")
     def run_execution_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
         The sum of job name and token length must be fewer than 63 characters.
         """
@@ -2329,7 +2316,6 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="startExecutionToken")
     def start_execution_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        (Optional, Beta)
         A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
         The sum of job name and token length must be fewer than 63 characters.
         """

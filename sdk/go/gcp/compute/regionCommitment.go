@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-//				Parent:    tagKey.ID(),
+//				Parent:    tagKey.ID().ToIDOutput().ToStringOutput(),
 //				ShortName: pulumi.String("tagvalue"),
 //			})
 //			if err != nil {
@@ -109,13 +109,15 @@ import (
 //					},
 //				},
 //				Params: &compute.RegionCommitmentParamsArgs{
-//					ResourceManagerTags: pulumi.All(tagKey.ID(), tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-//						tagKeyId := _args[0].(string)
-//						tagValueId := _args[1].(string)
-//						return map[string]string{
-//							tagKeyId: tagValueId,
-//						}, nil
-//					}).(pulumi.StringMapOutput),
+//					ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey.ID(), tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
+//						tagKeyId := _args[0].(pulumi.ID)
+//						tagValueId := _args[1].(pulumi.ID)
+//						return map[string]pulumi.ID(pulumi.String(tagKeyId).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+//							return map[string]pulumi.ID{
+//								__convert: tagValueId,
+//							}, nil
+//						}).(pulumi.IDMapOutput)), nil
+//					}).(pulumi.IDMapOutput)),
 //				},
 //			})
 //			if err != nil {

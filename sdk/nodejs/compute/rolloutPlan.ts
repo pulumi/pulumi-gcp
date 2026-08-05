@@ -12,12 +12,9 @@ import * as utilities from "../utilities";
  * portion of the overall affected area and defines criteria that must be met
  * before progressing to the subsequent wave.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about RolloutPlan, see:
  *
- * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/rolloutPlans)
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/rolloutPlans)
  *
  * ## Example Usage
  *

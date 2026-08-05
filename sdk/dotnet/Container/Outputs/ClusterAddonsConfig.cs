@@ -104,6 +104,13 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigNetworkPolicyConfig? NetworkPolicyConfig;
         /// <summary>
+        /// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+        /// Structure is documented below.
+        /// 
+        /// This example `AddonsConfig` disables two addons:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigNodeReadinessConfig? NodeReadinessConfig;
+        /// <summary>
         /// The status of the Parallelstore CSI driver addon,
         /// which allows the usage of a Parallelstore instances as volumes.
         /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -141,8 +148,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// which creates slurm related CRDs and KCP pods to manage them.
         /// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
         /// It can not be enabled for Autopilot clusters.
-        /// 
-        /// This example `AddonsConfig` disables two addons:
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigSlurmOperatorConfig? SlurmOperatorConfig;
         /// <summary>
@@ -182,6 +187,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig,
 
+            Outputs.ClusterAddonsConfigNodeReadinessConfig? nodeReadinessConfig,
+
             Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig,
 
             Outputs.ClusterAddonsConfigPodSnapshotConfig? podSnapshotConfig,
@@ -208,6 +215,7 @@ namespace Pulumi.Gcp.Container.Outputs
             KalmConfig = kalmConfig;
             LustreCsiDriverConfig = lustreCsiDriverConfig;
             NetworkPolicyConfig = networkPolicyConfig;
+            NodeReadinessConfig = nodeReadinessConfig;
             ParallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             PodSnapshotConfig = podSnapshotConfig;
             RayOperatorConfigs = rayOperatorConfigs;

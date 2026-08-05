@@ -47,12 +47,9 @@ import (
 //			experiment, err := vertex.NewAiTensorboardExperiment(ctx, "experiment", &vertex.AiTensorboardExperimentArgs{
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("sample experiment"),
-//				Tensorboard: pulumi.String(std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//					Input: tensorboard.ID(),
-//				}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
+//					Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+//				}, nil).Result(),
 //				TensorboardExperimentId: pulumi.String("experiment"),
 //			})
 //			if err != nil {
@@ -61,12 +58,9 @@ import (
 //			_, err = vertex.NewAiTensorboardRun(ctx, "tensorboard_run", &vertex.AiTensorboardRunArgs{
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("sample run"),
-//				Tensorboard: pulumi.String(std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//					Input: tensorboard.ID(),
-//				}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
+//					Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+//				}, nil).Result(),
 //				Experiment:       experiment.TensorboardExperimentId,
 //				TensorboardRunId: pulumi.String("run"),
 //				Labels: pulumi.StringMap{

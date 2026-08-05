@@ -49,8 +49,8 @@ import (
 //				ReportConfigId: pulumi.String("report-config-test"),
 //				GroupPreferencesetAssignments: migrationcenter.ReportConfigGroupPreferencesetAssignmentArray{
 //					&migrationcenter.ReportConfigGroupPreferencesetAssignmentArgs{
-//						Group:         _default.ID(),
-//						PreferenceSet: defaultPreferenceSet.ID(),
+//						Group:         _default.ID().ToIDOutput().ToStringOutput(),
+//						PreferenceSet: defaultPreferenceSet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

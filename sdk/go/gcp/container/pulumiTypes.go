@@ -10828,6 +10828,11 @@ type ClusterAddonsConfig struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig *ClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfig"`
+	// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+	// Structure is documented below.
+	//
+	// This example `addonsConfig` disables two addons:
+	NodeReadinessConfig *ClusterAddonsConfigNodeReadinessConfig `pulumi:"nodeReadinessConfig"`
 	// The status of the Parallelstore CSI driver addon,
 	// which allows the usage of a Parallelstore instances as volumes.
 	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -10857,8 +10862,6 @@ type ClusterAddonsConfig struct {
 	// which creates slurm related CRDs and KCP pods to manage them.
 	// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
 	// It can not be enabled for Autopilot clusters.
-	//
-	// This example `addonsConfig` disables two addons:
 	SlurmOperatorConfig *ClusterAddonsConfigSlurmOperatorConfig `pulumi:"slurmOperatorConfig"`
 	// .
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -10940,6 +10943,11 @@ type ClusterAddonsConfigArgs struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig ClusterAddonsConfigNetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
+	// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+	// Structure is documented below.
+	//
+	// This example `addonsConfig` disables two addons:
+	NodeReadinessConfig ClusterAddonsConfigNodeReadinessConfigPtrInput `pulumi:"nodeReadinessConfig"`
 	// The status of the Parallelstore CSI driver addon,
 	// which allows the usage of a Parallelstore instances as volumes.
 	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -10969,8 +10977,6 @@ type ClusterAddonsConfigArgs struct {
 	// which creates slurm related CRDs and KCP pods to manage them.
 	// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
 	// It can not be enabled for Autopilot clusters.
-	//
-	// This example `addonsConfig` disables two addons:
 	SlurmOperatorConfig ClusterAddonsConfigSlurmOperatorConfigPtrInput `pulumi:"slurmOperatorConfig"`
 	// .
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -11167,6 +11173,14 @@ func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetw
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+// Structure is documented below.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigOutput) NodeReadinessConfig() ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNodeReadinessConfig { return v.NodeReadinessConfig }).(ClusterAddonsConfigNodeReadinessConfigPtrOutput)
+}
+
 // The status of the Parallelstore CSI driver addon,
 // which allows the usage of a Parallelstore instances as volumes.
 // It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -11210,8 +11224,6 @@ func (o ClusterAddonsConfigOutput) SliceControllerConfig() ClusterAddonsConfigSl
 // which creates slurm related CRDs and KCP pods to manage them.
 // Defaults to disabled for Standard clusters; set `enabled = true` to enable.
 // It can not be enabled for Autopilot clusters.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigOutput) SlurmOperatorConfig() ClusterAddonsConfigSlurmOperatorConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigSlurmOperatorConfig { return v.SlurmOperatorConfig }).(ClusterAddonsConfigSlurmOperatorConfigPtrOutput)
 }
@@ -11421,6 +11433,19 @@ func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigN
 	}).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+// Structure is documented below.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigPtrOutput) NodeReadinessConfig() ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigNodeReadinessConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodeReadinessConfig
+	}).(ClusterAddonsConfigNodeReadinessConfigPtrOutput)
+}
+
 // The status of the Parallelstore CSI driver addon,
 // which allows the usage of a Parallelstore instances as volumes.
 // It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -11482,8 +11507,6 @@ func (o ClusterAddonsConfigPtrOutput) SliceControllerConfig() ClusterAddonsConfi
 // which creates slurm related CRDs and KCP pods to manage them.
 // Defaults to disabled for Standard clusters; set `enabled = true` to enable.
 // It can not be enabled for Autopilot clusters.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigPtrOutput) SlurmOperatorConfig() ClusterAddonsConfigSlurmOperatorConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigSlurmOperatorConfig {
 		if v == nil {
@@ -13507,6 +13530,139 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClusterAddonsConfigNodeReadinessConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigNodeReadinessConfigInput is an input type that accepts ClusterAddonsConfigNodeReadinessConfigArgs and ClusterAddonsConfigNodeReadinessConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigNodeReadinessConfigInput` via:
+//
+//	ClusterAddonsConfigNodeReadinessConfigArgs{...}
+type ClusterAddonsConfigNodeReadinessConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigNodeReadinessConfigOutput() ClusterAddonsConfigNodeReadinessConfigOutput
+	ToClusterAddonsConfigNodeReadinessConfigOutputWithContext(context.Context) ClusterAddonsConfigNodeReadinessConfigOutput
+}
+
+type ClusterAddonsConfigNodeReadinessConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigNodeReadinessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigNodeReadinessConfigArgs) ToClusterAddonsConfigNodeReadinessConfigOutput() ClusterAddonsConfigNodeReadinessConfigOutput {
+	return i.ToClusterAddonsConfigNodeReadinessConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigNodeReadinessConfigArgs) ToClusterAddonsConfigNodeReadinessConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigNodeReadinessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigNodeReadinessConfigOutput)
+}
+
+func (i ClusterAddonsConfigNodeReadinessConfigArgs) ToClusterAddonsConfigNodeReadinessConfigPtrOutput() ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return i.ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigNodeReadinessConfigArgs) ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigNodeReadinessConfigOutput).ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigNodeReadinessConfigPtrInput is an input type that accepts ClusterAddonsConfigNodeReadinessConfigArgs, ClusterAddonsConfigNodeReadinessConfigPtr and ClusterAddonsConfigNodeReadinessConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigNodeReadinessConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigNodeReadinessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigNodeReadinessConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigNodeReadinessConfigPtrOutput() ClusterAddonsConfigNodeReadinessConfigPtrOutput
+	ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigNodeReadinessConfigPtrOutput
+}
+
+type clusterAddonsConfigNodeReadinessConfigPtrType ClusterAddonsConfigNodeReadinessConfigArgs
+
+func ClusterAddonsConfigNodeReadinessConfigPtr(v *ClusterAddonsConfigNodeReadinessConfigArgs) ClusterAddonsConfigNodeReadinessConfigPtrInput {
+	return (*clusterAddonsConfigNodeReadinessConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigNodeReadinessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigNodeReadinessConfigPtrType) ToClusterAddonsConfigNodeReadinessConfigPtrOutput() ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return i.ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigNodeReadinessConfigPtrType) ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigNodeReadinessConfigPtrOutput)
+}
+
+type ClusterAddonsConfigNodeReadinessConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigNodeReadinessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigOutput) ToClusterAddonsConfigNodeReadinessConfigOutput() ClusterAddonsConfigNodeReadinessConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigOutput) ToClusterAddonsConfigNodeReadinessConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigNodeReadinessConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigOutput) ToClusterAddonsConfigNodeReadinessConfigPtrOutput() ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return o.ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigOutput) ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigNodeReadinessConfig) *ClusterAddonsConfigNodeReadinessConfig {
+		return &v
+	}).(ClusterAddonsConfigNodeReadinessConfigPtrOutput)
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigNodeReadinessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigNodeReadinessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigNodeReadinessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigPtrOutput) ToClusterAddonsConfigNodeReadinessConfigPtrOutput() ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigPtrOutput) ToClusterAddonsConfigNodeReadinessConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigNodeReadinessConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigPtrOutput) Elem() ClusterAddonsConfigNodeReadinessConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigNodeReadinessConfig) ClusterAddonsConfigNodeReadinessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigNodeReadinessConfig
+		return ret
+	}).(ClusterAddonsConfigNodeReadinessConfigOutput)
+}
+
+func (o ClusterAddonsConfigNodeReadinessConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigNodeReadinessConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterAddonsConfigParallelstoreCsiDriverConfig struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -15027,11 +15183,12 @@ func (o ClusterAutopilotClusterPolicyConfigPtrOutput) NoUnsafeWebhooks() pulumi.
 }
 
 type ClusterBinaryAuthorization struct {
-	// Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled *bool `pulumi:"enabled"`
-	// Mode of operation for Binary Authorization policy evaluation.
+	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+	// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 	EvaluationMode *string `pulumi:"evaluationMode"`
 }
 
@@ -15047,11 +15204,12 @@ type ClusterBinaryAuthorizationInput interface {
 }
 
 type ClusterBinaryAuthorizationArgs struct {
-	// Enable Binary Authorization for this cluster.
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Mode of operation for Binary Authorization policy evaluation.
+	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+	// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 	EvaluationMode pulumi.StringPtrInput `pulumi:"evaluationMode"`
 }
 
@@ -15132,14 +15290,15 @@ func (o ClusterBinaryAuthorizationOutput) ToClusterBinaryAuthorizationPtrOutputW
 	}).(ClusterBinaryAuthorizationPtrOutput)
 }
 
-// Enable Binary Authorization for this cluster.
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
 // Deprecated: Deprecated in favor of evaluation_mode.
 func (o ClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Mode of operation for Binary Authorization policy evaluation.
+// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 func (o ClusterBinaryAuthorizationOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *string { return v.EvaluationMode }).(pulumi.StringPtrOutput)
 }
@@ -15168,7 +15327,7 @@ func (o ClusterBinaryAuthorizationPtrOutput) Elem() ClusterBinaryAuthorizationOu
 	}).(ClusterBinaryAuthorizationOutput)
 }
 
-// Enable Binary Authorization for this cluster.
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
 // Deprecated: Deprecated in favor of evaluation_mode.
 func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -15180,7 +15339,8 @@ func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Mode of operation for Binary Authorization policy evaluation.
+// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+// and `PROJECT_SINGLETON_POLICY_ENFORCE`.
 func (o ClusterBinaryAuthorizationPtrOutput) EvaluationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterBinaryAuthorization) *string {
 		if v == nil {
@@ -52226,6 +52386,143 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput) DatasetId(
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterRollbackSafeUpgrade struct {
+	// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+	ControlPlaneSoakDuration *string `pulumi:"controlPlaneSoakDuration"`
+}
+
+// ClusterRollbackSafeUpgradeInput is an input type that accepts ClusterRollbackSafeUpgradeArgs and ClusterRollbackSafeUpgradeOutput values.
+// You can construct a concrete instance of `ClusterRollbackSafeUpgradeInput` via:
+//
+//	ClusterRollbackSafeUpgradeArgs{...}
+type ClusterRollbackSafeUpgradeInput interface {
+	pulumi.Input
+
+	ToClusterRollbackSafeUpgradeOutput() ClusterRollbackSafeUpgradeOutput
+	ToClusterRollbackSafeUpgradeOutputWithContext(context.Context) ClusterRollbackSafeUpgradeOutput
+}
+
+type ClusterRollbackSafeUpgradeArgs struct {
+	// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+	ControlPlaneSoakDuration pulumi.StringPtrInput `pulumi:"controlPlaneSoakDuration"`
+}
+
+func (ClusterRollbackSafeUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (i ClusterRollbackSafeUpgradeArgs) ToClusterRollbackSafeUpgradeOutput() ClusterRollbackSafeUpgradeOutput {
+	return i.ToClusterRollbackSafeUpgradeOutputWithContext(context.Background())
+}
+
+func (i ClusterRollbackSafeUpgradeArgs) ToClusterRollbackSafeUpgradeOutputWithContext(ctx context.Context) ClusterRollbackSafeUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRollbackSafeUpgradeOutput)
+}
+
+func (i ClusterRollbackSafeUpgradeArgs) ToClusterRollbackSafeUpgradePtrOutput() ClusterRollbackSafeUpgradePtrOutput {
+	return i.ToClusterRollbackSafeUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRollbackSafeUpgradeArgs) ToClusterRollbackSafeUpgradePtrOutputWithContext(ctx context.Context) ClusterRollbackSafeUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRollbackSafeUpgradeOutput).ToClusterRollbackSafeUpgradePtrOutputWithContext(ctx)
+}
+
+// ClusterRollbackSafeUpgradePtrInput is an input type that accepts ClusterRollbackSafeUpgradeArgs, ClusterRollbackSafeUpgradePtr and ClusterRollbackSafeUpgradePtrOutput values.
+// You can construct a concrete instance of `ClusterRollbackSafeUpgradePtrInput` via:
+//
+//	        ClusterRollbackSafeUpgradeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterRollbackSafeUpgradePtrInput interface {
+	pulumi.Input
+
+	ToClusterRollbackSafeUpgradePtrOutput() ClusterRollbackSafeUpgradePtrOutput
+	ToClusterRollbackSafeUpgradePtrOutputWithContext(context.Context) ClusterRollbackSafeUpgradePtrOutput
+}
+
+type clusterRollbackSafeUpgradePtrType ClusterRollbackSafeUpgradeArgs
+
+func ClusterRollbackSafeUpgradePtr(v *ClusterRollbackSafeUpgradeArgs) ClusterRollbackSafeUpgradePtrInput {
+	return (*clusterRollbackSafeUpgradePtrType)(v)
+}
+
+func (*clusterRollbackSafeUpgradePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (i *clusterRollbackSafeUpgradePtrType) ToClusterRollbackSafeUpgradePtrOutput() ClusterRollbackSafeUpgradePtrOutput {
+	return i.ToClusterRollbackSafeUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRollbackSafeUpgradePtrType) ToClusterRollbackSafeUpgradePtrOutputWithContext(ctx context.Context) ClusterRollbackSafeUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRollbackSafeUpgradePtrOutput)
+}
+
+type ClusterRollbackSafeUpgradeOutput struct{ *pulumi.OutputState }
+
+func (ClusterRollbackSafeUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (o ClusterRollbackSafeUpgradeOutput) ToClusterRollbackSafeUpgradeOutput() ClusterRollbackSafeUpgradeOutput {
+	return o
+}
+
+func (o ClusterRollbackSafeUpgradeOutput) ToClusterRollbackSafeUpgradeOutputWithContext(ctx context.Context) ClusterRollbackSafeUpgradeOutput {
+	return o
+}
+
+func (o ClusterRollbackSafeUpgradeOutput) ToClusterRollbackSafeUpgradePtrOutput() ClusterRollbackSafeUpgradePtrOutput {
+	return o.ToClusterRollbackSafeUpgradePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRollbackSafeUpgradeOutput) ToClusterRollbackSafeUpgradePtrOutputWithContext(ctx context.Context) ClusterRollbackSafeUpgradePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterRollbackSafeUpgrade) *ClusterRollbackSafeUpgrade {
+		return &v
+	}).(ClusterRollbackSafeUpgradePtrOutput)
+}
+
+// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+func (o ClusterRollbackSafeUpgradeOutput) ControlPlaneSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterRollbackSafeUpgrade) *string { return v.ControlPlaneSoakDuration }).(pulumi.StringPtrOutput)
+}
+
+type ClusterRollbackSafeUpgradePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRollbackSafeUpgradePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (o ClusterRollbackSafeUpgradePtrOutput) ToClusterRollbackSafeUpgradePtrOutput() ClusterRollbackSafeUpgradePtrOutput {
+	return o
+}
+
+func (o ClusterRollbackSafeUpgradePtrOutput) ToClusterRollbackSafeUpgradePtrOutputWithContext(ctx context.Context) ClusterRollbackSafeUpgradePtrOutput {
+	return o
+}
+
+func (o ClusterRollbackSafeUpgradePtrOutput) Elem() ClusterRollbackSafeUpgradeOutput {
+	return o.ApplyT(func(v *ClusterRollbackSafeUpgrade) ClusterRollbackSafeUpgrade {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterRollbackSafeUpgrade
+		return ret
+	}).(ClusterRollbackSafeUpgradeOutput)
+}
+
+// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+func (o ClusterRollbackSafeUpgradePtrOutput) ControlPlaneSoakDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRollbackSafeUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneSoakDuration
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterSecretManagerConfig struct {
 	// Enable the Secret Manager add-on for this cluster.
 	Enabled bool `pulumi:"enabled"`
@@ -66270,6 +66567,8 @@ type GetClusterAddonsConfig struct {
 	LustreCsiDriverConfigs []GetClusterAddonsConfigLustreCsiDriverConfig `pulumi:"lustreCsiDriverConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs []GetClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfigs"`
+	// The status of the Node Readiness Controller addon.
+	NodeReadinessConfigs []GetClusterAddonsConfigNodeReadinessConfig `pulumi:"nodeReadinessConfigs"`
 	// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
 	ParallelstoreCsiDriverConfigs []GetClusterAddonsConfigParallelstoreCsiDriverConfig `pulumi:"parallelstoreCsiDriverConfigs"`
 	// Configuration for the Pod Snapshot feature.
@@ -66324,6 +66623,8 @@ type GetClusterAddonsConfigArgs struct {
 	LustreCsiDriverConfigs GetClusterAddonsConfigLustreCsiDriverConfigArrayInput `pulumi:"lustreCsiDriverConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs GetClusterAddonsConfigNetworkPolicyConfigArrayInput `pulumi:"networkPolicyConfigs"`
+	// The status of the Node Readiness Controller addon.
+	NodeReadinessConfigs GetClusterAddonsConfigNodeReadinessConfigArrayInput `pulumi:"nodeReadinessConfigs"`
 	// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
 	ParallelstoreCsiDriverConfigs GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput `pulumi:"parallelstoreCsiDriverConfigs"`
 	// Configuration for the Pod Snapshot feature.
@@ -66475,6 +66776,13 @@ func (o GetClusterAddonsConfigOutput) NetworkPolicyConfigs() GetClusterAddonsCon
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigNetworkPolicyConfig {
 		return v.NetworkPolicyConfigs
 	}).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
+}
+
+// The status of the Node Readiness Controller addon.
+func (o GetClusterAddonsConfigOutput) NodeReadinessConfigs() GetClusterAddonsConfigNodeReadinessConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigNodeReadinessConfig {
+		return v.NodeReadinessConfigs
+	}).(GetClusterAddonsConfigNodeReadinessConfigArrayOutput)
 }
 
 // The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
@@ -67897,6 +68205,100 @@ func (o GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigNetworkPolicyConfig {
 		return vs[0].([]GetClusterAddonsConfigNetworkPolicyConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigNetworkPolicyConfigOutput)
+}
+
+type GetClusterAddonsConfigNodeReadinessConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigNodeReadinessConfigInput is an input type that accepts GetClusterAddonsConfigNodeReadinessConfigArgs and GetClusterAddonsConfigNodeReadinessConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigNodeReadinessConfigInput` via:
+//
+//	GetClusterAddonsConfigNodeReadinessConfigArgs{...}
+type GetClusterAddonsConfigNodeReadinessConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigNodeReadinessConfigOutput() GetClusterAddonsConfigNodeReadinessConfigOutput
+	ToGetClusterAddonsConfigNodeReadinessConfigOutputWithContext(context.Context) GetClusterAddonsConfigNodeReadinessConfigOutput
+}
+
+type GetClusterAddonsConfigNodeReadinessConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigNodeReadinessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigNodeReadinessConfigArgs) ToGetClusterAddonsConfigNodeReadinessConfigOutput() GetClusterAddonsConfigNodeReadinessConfigOutput {
+	return i.ToGetClusterAddonsConfigNodeReadinessConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigNodeReadinessConfigArgs) ToGetClusterAddonsConfigNodeReadinessConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigNodeReadinessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigNodeReadinessConfigOutput)
+}
+
+// GetClusterAddonsConfigNodeReadinessConfigArrayInput is an input type that accepts GetClusterAddonsConfigNodeReadinessConfigArray and GetClusterAddonsConfigNodeReadinessConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigNodeReadinessConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigNodeReadinessConfigArray{ GetClusterAddonsConfigNodeReadinessConfigArgs{...} }
+type GetClusterAddonsConfigNodeReadinessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigNodeReadinessConfigArrayOutput() GetClusterAddonsConfigNodeReadinessConfigArrayOutput
+	ToGetClusterAddonsConfigNodeReadinessConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigNodeReadinessConfigArrayOutput
+}
+
+type GetClusterAddonsConfigNodeReadinessConfigArray []GetClusterAddonsConfigNodeReadinessConfigInput
+
+func (GetClusterAddonsConfigNodeReadinessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigNodeReadinessConfigArray) ToGetClusterAddonsConfigNodeReadinessConfigArrayOutput() GetClusterAddonsConfigNodeReadinessConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigNodeReadinessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigNodeReadinessConfigArray) ToGetClusterAddonsConfigNodeReadinessConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigNodeReadinessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigNodeReadinessConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigNodeReadinessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigNodeReadinessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigNodeReadinessConfigOutput) ToGetClusterAddonsConfigNodeReadinessConfigOutput() GetClusterAddonsConfigNodeReadinessConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigNodeReadinessConfigOutput) ToGetClusterAddonsConfigNodeReadinessConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigNodeReadinessConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigNodeReadinessConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigNodeReadinessConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigNodeReadinessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigNodeReadinessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigNodeReadinessConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigNodeReadinessConfigArrayOutput) ToGetClusterAddonsConfigNodeReadinessConfigArrayOutput() GetClusterAddonsConfigNodeReadinessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigNodeReadinessConfigArrayOutput) ToGetClusterAddonsConfigNodeReadinessConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigNodeReadinessConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigNodeReadinessConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigNodeReadinessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigNodeReadinessConfig {
+		return vs[0].([]GetClusterAddonsConfigNodeReadinessConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigNodeReadinessConfigOutput)
 }
 
 type GetClusterAddonsConfigParallelstoreCsiDriverConfig struct {
@@ -77881,308 +78283,6 @@ func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput
 	}).(GetClusterNodeConfigGuestAcceleratorOutput)
 }
 
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
-	// Mode for how the GPU driver is installed.
-	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
-}
-
-// GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
-//
-//	GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
-	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
-	// Mode for how the GPU driver is installed.
-	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
-}
-
-func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
-	return i.ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
-}
-
-// GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray and GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput` via:
-//
-//	GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{ GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...} }
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
-	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput
-
-func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
-	return i.ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
-	return o
-}
-
-// Mode for how the GPU driver is installed.
-func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string {
-		return v.GpuDriverVersion
-	}).(pulumi.StringOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
-		return vs[0].([]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)[vs[1].(int)]
-	}).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
-	// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
-	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
-	// The maximum number of containers that can share a GPU.
-	MaxSharedClientsPerGpu int `pulumi:"maxSharedClientsPerGpu"`
-}
-
-// GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs and GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
-//
-//	GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
-	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
-	// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
-	GpuSharingStrategy pulumi.StringInput `pulumi:"gpuSharingStrategy"`
-	// The maximum number of containers that can share a GPU.
-	MaxSharedClientsPerGpu pulumi.IntInput `pulumi:"maxSharedClientsPerGpu"`
-}
-
-func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
-	return i.ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
-}
-
-// GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray and GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput` via:
-//
-//	GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{ GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...} }
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
-	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray []GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput
-
-func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
-	return i.ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
-	return o
-}
-
-// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
-}
-
-// The maximum number of containers that can share a GPU.
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuSharingConfig) int { return v.MaxSharedClientsPerGpu }).(pulumi.IntOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
-		return vs[0].([]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)[vs[1].(int)]
-	}).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
-}
-
-type GetClusterNodeConfigGvnic struct {
-	// Whether or not gvnic is enabled
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetClusterNodeConfigGvnicInput is an input type that accepts GetClusterNodeConfigGvnicArgs and GetClusterNodeConfigGvnicOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGvnicInput` via:
-//
-//	GetClusterNodeConfigGvnicArgs{...}
-type GetClusterNodeConfigGvnicInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput
-	ToGetClusterNodeConfigGvnicOutputWithContext(context.Context) GetClusterNodeConfigGvnicOutput
-}
-
-type GetClusterNodeConfigGvnicArgs struct {
-	// Whether or not gvnic is enabled
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetClusterNodeConfigGvnicArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGvnic)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGvnicArgs) ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput {
-	return i.ToGetClusterNodeConfigGvnicOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGvnicArgs) ToGetClusterNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGvnicOutput)
-}
-
-// GetClusterNodeConfigGvnicArrayInput is an input type that accepts GetClusterNodeConfigGvnicArray and GetClusterNodeConfigGvnicArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGvnicArrayInput` via:
-//
-//	GetClusterNodeConfigGvnicArray{ GetClusterNodeConfigGvnicArgs{...} }
-type GetClusterNodeConfigGvnicArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput
-	ToGetClusterNodeConfigGvnicArrayOutputWithContext(context.Context) GetClusterNodeConfigGvnicArrayOutput
-}
-
-type GetClusterNodeConfigGvnicArray []GetClusterNodeConfigGvnicInput
-
-func (GetClusterNodeConfigGvnicArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGvnic)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGvnicArray) ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput {
-	return i.ToGetClusterNodeConfigGvnicArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGvnicArray) ToGetClusterNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGvnicArrayOutput)
-}
-
-type GetClusterNodeConfigGvnicOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGvnicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGvnic)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGvnicOutput) ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGvnicOutput) ToGetClusterNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicOutput {
-	return o
-}
-
-// Whether or not gvnic is enabled
-func (o GetClusterNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetClusterNodeConfigGvnicArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGvnicArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGvnic)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGvnicArrayOutput) ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGvnicArrayOutput) ToGetClusterNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGvnicOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGvnic {
-		return vs[0].([]GetClusterNodeConfigGvnic)[vs[1].(int)]
-	}).(GetClusterNodeConfigGvnicOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
@@ -78352,6 +78452,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigLustreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigLustreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNodeReadinessConfigInput)(nil)).Elem(), ClusterAddonsConfigNodeReadinessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNodeReadinessConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNodeReadinessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigPodSnapshotConfigInput)(nil)).Elem(), ClusterAddonsConfigPodSnapshotConfigArgs{})
@@ -78802,6 +78904,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRollbackSafeUpgradeInput)(nil)).Elem(), ClusterRollbackSafeUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRollbackSafeUpgradePtrInput)(nil)).Elem(), ClusterRollbackSafeUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigPtrInput)(nil)).Elem(), ClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), ClusterSecretManagerConfigRotationConfigArgs{})
@@ -78996,6 +79100,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigLustreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigLustreCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNodeReadinessConfigInput)(nil)).Elem(), GetClusterAddonsConfigNodeReadinessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNodeReadinessConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNodeReadinessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigParallelstoreCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigPodSnapshotConfigInput)(nil)).Elem(), GetClusterAddonsConfigPodSnapshotConfigArgs{})
@@ -79170,12 +79276,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodeConfigGvnicArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodeConfigGvnicArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationOutput{})
@@ -79344,6 +79444,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigLustreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigNodeReadinessConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigNodeReadinessConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigParallelstoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigPodSnapshotConfigOutput{})
@@ -79794,6 +79896,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterRollbackSafeUpgradeOutput{})
+	pulumi.RegisterOutputType(ClusterRollbackSafeUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecretManagerConfigRotationConfigOutput{})
@@ -79988,6 +80092,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigLustreCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigNodeReadinessConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigNodeReadinessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigPodSnapshotConfigOutput{})
@@ -80162,10 +80268,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicArrayOutput{})
 }

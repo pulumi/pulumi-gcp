@@ -40,6 +40,12 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
         /// </summary>
         public readonly string? EnforcementType;
         /// <summary>
+        /// Selects the filter version to use for this template. Set exactly one of
+        /// 'alias' or 'version'.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TemplateTemplateMetadataFilterVersionSelector? FilterVersionSelector;
+        /// <summary>
         /// If true, partial detector failures should be ignored.
         /// </summary>
         public readonly bool? IgnorePartialInvocationFailures;
@@ -69,6 +75,8 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
 
             string? enforcementType,
 
+            Outputs.TemplateTemplateMetadataFilterVersionSelector? filterVersionSelector,
+
             bool? ignorePartialInvocationFailures,
 
             bool? logSanitizeOperations,
@@ -82,6 +90,7 @@ namespace Pulumi.Gcp.ModelArmor.Outputs
             CustomPromptSafetyErrorCode = customPromptSafetyErrorCode;
             CustomPromptSafetyErrorMessage = customPromptSafetyErrorMessage;
             EnforcementType = enforcementType;
+            FilterVersionSelector = filterVersionSelector;
             IgnorePartialInvocationFailures = ignorePartialInvocationFailures;
             LogSanitizeOperations = logSanitizeOperations;
             LogTemplateOperations = logTemplateOperations;

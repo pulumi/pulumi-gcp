@@ -164,10 +164,7 @@ import (
 //						Format: pulumi.String("PEM"),
 //						Key: std.Base64encodeOutput(ctx, std.Base64encodeOutputArgs{
 //							Input: certKey.PublicKeyPem,
-//						}, nil).ApplyT(func(invoke std.Base64encodeResult) (*string, error) {
-//							val := invoke.Result
-//							return &val, nil
-//						}).(pulumi.StringPtrOutput),
+//						}, nil).Result(),
 //					},
 //				},
 //			})
@@ -345,7 +342,7 @@ import (
 //				Name:                 pulumi.String("my-certificate"),
 //				Lifetime:             pulumi.String("860s"),
 //				PemCsr:               pulumi.String(invokeFile.Result),
-//				CertificateTemplate:  defaultCertificateTemplate.ID(),
+//				CertificateTemplate:  defaultCertificateTemplate.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

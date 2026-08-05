@@ -162,7 +162,7 @@ import (
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 //					TriggerRegion: pulumi.String("us-central1"),
 //					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:   topic.ID(),
+//					PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
 //					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 //				},
 //			})
@@ -273,9 +273,7 @@ import (
 //				Project:     function.Project,
 //				Region:      function.Location,
 //				HttpTarget: &cloudscheduler.JobHttpTargetArgs{
-//					Uri: function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (*string, error) {
-//						return serviceConfig.Uri, nil
-//					}).(pulumi.StringPtrOutput),
+//					Uri:        function.ServiceConfig.Uri(),
 //					HttpMethod: pulumi.String("POST"),
 //					OidcToken: &cloudscheduler.JobHttpTargetOidcTokenArgs{
 //						Audience: function.ServiceConfig.ApplyT(func(serviceConfig cloudfunctionsv2.FunctionServiceConfig) (string, error) {
@@ -700,7 +698,7 @@ import (
 //							Object: object.Name,
 //						},
 //					},
-//					ServiceAccount: account.ID(),
+//					ServiceAccount: account.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 //					MaxInstanceCount: pulumi.Int(1),
@@ -963,7 +961,7 @@ import (
 //							Object: object.Name,
 //						},
 //					},
-//					WorkerPool: pool.ID(),
+//					WorkerPool: pool.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 //					MaxInstanceCount: pulumi.Int(1),
@@ -1080,7 +1078,7 @@ import (
 //				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
 //					Runtime:          pulumi.String("nodejs20"),
 //					EntryPoint:       pulumi.String("helloHttp"),
-//					DockerRepository: encoded_ar_repo.ID(),
+//					DockerRepository: encoded_ar_repo.ID().ToIDOutput().ToStringOutput(),
 //					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
 //						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
 //							Bucket: bucket.Name,
@@ -1186,7 +1184,7 @@ import (
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 //					TriggerRegion: pulumi.String("us-central1"),
 //					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:   topic.ID(),
+//					PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
 //					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 //				},
 //			})
@@ -1280,7 +1278,7 @@ import (
 //				EventTrigger: &cloudfunctionsv2.FunctionEventTriggerArgs{
 //					TriggerRegion: pulumi.String("us-central1"),
 //					EventType:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
-//					PubsubTopic:   topic.ID(),
+//					PubsubTopic:   topic.ID().ToIDOutput().ToStringOutput(),
 //					RetryPolicy:   pulumi.String("RETRY_POLICY_RETRY"),
 //				},
 //			})

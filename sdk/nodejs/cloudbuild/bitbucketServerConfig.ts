@@ -106,7 +106,7 @@ import * as utilities from "../utilities";
  *         text: vpcNetwork.id,
  *         search: project.then(project => project.name),
  *         replace: project.then(project => project.number),
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     sslCa: `-----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
  * -----BEGIN CERTIFICATE-----

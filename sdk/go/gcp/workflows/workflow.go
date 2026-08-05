@@ -47,7 +47,7 @@ import (
 //				Name:           pulumi.String("workflow"),
 //				Region:         pulumi.String("us-central1"),
 //				Description:    pulumi.String("Magic"),
-//				ServiceAccount: testAccount.ID(),
+//				ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
 //				CallLogLevel:   pulumi.String("LOG_ERRORS_ONLY"),
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("test"),
@@ -145,7 +145,7 @@ import (
 // Name: pulumi.String("workflow"),
 // Region: pulumi.String("us-central1"),
 // Description: pulumi.String("Magic"),
-// ServiceAccount: testAccount.ID(),
+// ServiceAccount: testAccount.ID().ToIDOutput().ToStringOutput(),
 // DeletionProtection: pulumi.Bool(false),
 // Tags: pulumi.All(tagKey.ShortName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
 // tagKeyShortName := _args[0].(string)

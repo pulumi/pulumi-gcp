@@ -67,6 +67,13 @@ namespace Pulumi.Gcp
             set => _addPulumiAttributionLabel.Set(value);
         }
 
+        private static readonly __Value<string?> _agentIdentityCustomEndpoint = new __Value<string?>(() => __config.Get("agentIdentityCustomEndpoint"));
+        public static string? AgentIdentityCustomEndpoint
+        {
+            get => _agentIdentityCustomEndpoint.Get();
+            set => _agentIdentityCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _agentRegistryCustomEndpoint = new __Value<string?>(() => __config.Get("agentRegistryCustomEndpoint"));
         public static string? AgentRegistryCustomEndpoint
         {

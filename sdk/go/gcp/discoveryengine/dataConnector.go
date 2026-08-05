@@ -41,8 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"inclusion_filters": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string][]string{
+//				"inclusion_filters": map[string][]string{
 //					"knowledgeBaseSysId": []string{
 //						"123",
 //					},
@@ -52,8 +52,8 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"inclusion_filters": map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]map[string][]string{
+//				"inclusion_filters": map[string][]string{
 //					"knowledgeBaseSysId": []string{
 //						"123",
 //					},
@@ -63,8 +63,8 @@ import (
 //				return err
 //			}
 //			json1 := string(tmpJSON1)
-//			tmpJSON2, err := json.Marshal(map[string]interface{}{
-//				"inclusion_filters": map[string]interface{}{
+//			tmpJSON2, err := json.Marshal(map[string]map[string][]string{
+//				"inclusion_filters": map[string][]string{
 //					"knowledgeBaseSysId": []string{
 //						"123",
 //					},
@@ -134,7 +134,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"destination_type": "private",
 //			})
 //			if err != nil {

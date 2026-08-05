@@ -131,6 +131,15 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigNetworkPolicyConfigGetArgs>? NetworkPolicyConfig { get; set; }
 
         /// <summary>
+        /// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+        /// Structure is documented below.
+        /// 
+        /// This example `AddonsConfig` disables two addons:
+        /// </summary>
+        [Input("nodeReadinessConfig")]
+        public Input<Inputs.ClusterAddonsConfigNodeReadinessConfigGetArgs>? NodeReadinessConfig { get; set; }
+
+        /// <summary>
         /// The status of the Parallelstore CSI driver addon,
         /// which allows the usage of a Parallelstore instances as volumes.
         /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -182,8 +191,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// which creates slurm related CRDs and KCP pods to manage them.
         /// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
         /// It can not be enabled for Autopilot clusters.
-        /// 
-        /// This example `AddonsConfig` disables two addons:
         /// </summary>
         [Input("slurmOperatorConfig")]
         public Input<Inputs.ClusterAddonsConfigSlurmOperatorConfigGetArgs>? SlurmOperatorConfig { get; set; }

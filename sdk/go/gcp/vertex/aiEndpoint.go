@@ -55,13 +55,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(24),
-//				Network:      vertexNetwork.ID(),
+//				Network:      vertexNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vertexVpcConnection, err := servicenetworking.NewConnection(ctx, "vertex_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: vertexNetwork.ID(),
+//				Network: vertexNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					vertexRange.Name,
@@ -84,7 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]int{
 //				"12345": 100,
 //			})
 //			if err != nil {
@@ -152,7 +152,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-//				Name: pulumi.String("psc-network-_75303"),
+//				Name: pulumi.String("psc-network-_7864"),
 //			})
 //			if err != nil {
 //				return err
@@ -162,7 +162,7 @@ import (
 //				return err
 //			}
 //			_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_72437"),
+//				Name:        pulumi.String("endpoint-name_70324"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),
@@ -178,7 +178,7 @@ import (
 //					PscAutomationConfigs: vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArray{
 //						&vertex.AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs{
 //							ProjectId: pulumi.String(project.ProjectId),
-//							Network:   _default.ID(),
+//							Network:   _default.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -207,7 +207,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-//				Name:        pulumi.String("endpoint-name_7864"),
+//				Name:        pulumi.String("endpoint-name_13786"),
 //				DisplayName: pulumi.String("sample-endpoint"),
 //				Description: pulumi.String("A sample vertex endpoint"),
 //				Location:    pulumi.String("us-central1"),

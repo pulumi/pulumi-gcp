@@ -58,8 +58,8 @@ import * as utilities from "../utilities";
  *     verificationMethod: "FILE",
  * });
  * const object = new gcp.storage.BucketObject("object", {
- *     name: token.apply(token => token.token),
- *     content: token.apply(token => `google-site-verification: ${token.token}`),
+ *     name: token.token,
+ *     content: pulumi.interpolate`google-site-verification: ${token.token}`,
  *     bucket: bucket.name,
  * });
  * const publicRule = new gcp.storage.ObjectAccessControl("public_rule", {
@@ -70,10 +70,10 @@ import * as utilities from "../utilities";
  * });
  * const example = new gcp.siteverification.WebResource("example", {
  *     site: {
- *         type: token.apply(token => token.type),
- *         identifier: token.apply(token => token.identifier),
+ *         type: token.type,
+ *         identifier: token.identifier,
  *     },
- *     verificationMethod: token.apply(token => token.verificationMethod),
+ *     verificationMethod: token.verificationMethod,
  * });
  * const exampleOwner = new gcp.siteverification.Owner("example", {
  *     webResourceId: example.id,

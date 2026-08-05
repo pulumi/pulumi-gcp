@@ -717,7 +717,7 @@ class RegionCommitment(pulumi.CustomResource):
                     tagKeyId=tag_key.id,
                     tagValueId=tag_value.id
         ).apply(lambda resolved_outputs: {
-                    resolved_outputs['tagKeyId']: resolved_outputs['tagValueId'],
+                    str(resolved_outputs['tagKeyId']): resolved_outputs['tagValueId'],
                 })
         ,
             })
@@ -856,7 +856,7 @@ class RegionCommitment(pulumi.CustomResource):
                     tagKeyId=tag_key.id,
                     tagValueId=tag_value.id
         ).apply(lambda resolved_outputs: {
-                    resolved_outputs['tagKeyId']: resolved_outputs['tagValueId'],
+                    str(resolved_outputs['tagKeyId']): resolved_outputs['tagValueId'],
                 })
         ,
             })

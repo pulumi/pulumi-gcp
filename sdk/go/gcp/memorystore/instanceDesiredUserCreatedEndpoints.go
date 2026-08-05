@@ -53,7 +53,7 @@ import (
 //				Name:        pulumi.String("subnet-net1"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network1.ID(),
+//				Network:     network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //			ip1Network1, err := compute.NewAddress(ctx, "ip1_network1", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net1"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork1.ID(),
+//				Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -81,12 +81,12 @@ import (
 //			forwardingRule1Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network1", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net1"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip1Network1.ID(),
+//				IpAddress:           ip1Network1.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network1.ID(),
-//				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+//				Network:             network1.ID().ToIDOutput().ToStringOutput(),
+//				Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //					return pscAttachmentDetails[0].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -94,7 +94,7 @@ import (
 //			ip2Network1, err := compute.NewAddress(ctx, "ip2_network1", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net1"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork1.ID(),
+//				Subnetwork:  subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -104,12 +104,12 @@ import (
 //			forwardingRule2Network1, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network1", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net1"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip2Network1.ID(),
+//				IpAddress:           ip2Network1.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network1.ID(),
-//				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+//				Network:             network1.ID().ToIDOutput().ToStringOutput(),
+//				Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //					return pscAttachmentDetails[1].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -125,7 +125,7 @@ import (
 //				Name:        pulumi.String("subnet-net2"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network2.ID(),
+//				Network:     network2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -133,7 +133,7 @@ import (
 //			ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -143,12 +143,12 @@ import (
 //			forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip1Network2.ID(),
+//				IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //					return pscAttachmentDetails[0].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -156,7 +156,7 @@ import (
 //			ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -166,12 +166,12 @@ import (
 //			forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip2Network2.ID(),
+//				IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //					return pscAttachmentDetails[1].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -186,8 +186,8 @@ import (
 //								PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule1Network1.PscConnectionId,
 //									IpAddress:       ip1Network1.Address,
-//									ForwardingRule:  forwardingRule1Network1.ID(),
-//									Network:         network1.ID(),
+//									ForwardingRule:  forwardingRule1Network1.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network1.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //										return pscAttachmentDetails[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -197,8 +197,8 @@ import (
 //								PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule2Network1.PscConnectionId,
 //									IpAddress:       ip2Network1.Address,
-//									ForwardingRule:  forwardingRule2Network1.ID(),
-//									Network:         network1.ID(),
+//									ForwardingRule:  forwardingRule2Network1.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network1.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //										return pscAttachmentDetails[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -212,8 +212,8 @@ import (
 //								PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule1Network2.PscConnectionId,
 //									IpAddress:       ip1Network2.Address,
-//									ForwardingRule:  forwardingRule1Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule1Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //										return pscAttachmentDetails[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -223,8 +223,8 @@ import (
 //								PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule2Network2.PscConnectionId,
 //									IpAddress:       ip2Network2.Address,
-//									ForwardingRule:  forwardingRule2Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule2Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: instance_user_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //										return pscAttachmentDetails[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -274,7 +274,7 @@ import (
 //				Name:        pulumi.String("subnet-net2"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network2.ID(),
+//				Network:     network2.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -282,7 +282,7 @@ import (
 //			ip1Network2, err := compute.NewAddress(ctx, "ip1_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip1-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -300,7 +300,7 @@ import (
 //				Name:        pulumi.String("subnet-net1"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network1.ID(),
+//				Network:     network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -310,10 +310,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      network1.ID(),
+//				Network:      network1.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						subnetNetwork1.ID(),
+//						subnetNetwork1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -330,7 +330,7 @@ import (
 //				ShardCount: pulumi.Int(1),
 //				DesiredAutoCreatedEndpoints: memorystore.InstanceDesiredAutoCreatedEndpointArray{
 //					&memorystore.InstanceDesiredAutoCreatedEndpointArgs{
-//						Network:   network1.ID(),
+//						Network:   network1.ID().ToIDOutput().ToStringOutput(),
 //						ProjectId: pulumi.String(project.ProjectId),
 //					},
 //				},
@@ -345,12 +345,12 @@ import (
 //			forwardingRule1Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule1_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd1-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip1Network2.ID(),
+//				IpAddress:           ip1Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //					return pscAttachmentDetails[0].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -358,7 +358,7 @@ import (
 //			ip2Network2, err := compute.NewAddress(ctx, "ip2_network2", &compute.AddressArgs{
 //				Name:        pulumi.String("ip2-net2"),
 //				Region:      pulumi.String("us-central1"),
-//				Subnetwork:  subnetNetwork2.ID(),
+//				Subnetwork:  subnetNetwork2.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("GCE_ENDPOINT"),
 //			})
@@ -368,12 +368,12 @@ import (
 //			forwardingRule2Network2, err := compute.NewForwardingRule(ctx, "forwarding_rule2_network2", &compute.ForwardingRuleArgs{
 //				Name:                pulumi.String("fwd2-net2"),
 //				Region:              pulumi.String("us-central1"),
-//				IpAddress:           ip2Network2.ID(),
+//				IpAddress:           ip2Network2.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
-//				Network:             network2.ID(),
-//				Target: pulumi.String(instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
+//				Network:             network2.ID().ToIDOutput().ToStringOutput(),
+//				Target: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //					return pscAttachmentDetails[1].ServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}).(pulumi.StringPtrOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -388,8 +388,8 @@ import (
 //								PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule1Network2.PscConnectionId,
 //									IpAddress:       ip1Network2.Address,
-//									ForwardingRule:  forwardingRule1Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule1Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //										return pscAttachmentDetails[0].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),
@@ -399,8 +399,8 @@ import (
 //								PscConnection: &memorystore.InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs{
 //									PscConnectionId: forwardingRule2Network2.PscConnectionId,
 //									IpAddress:       ip2Network2.Address,
-//									ForwardingRule:  forwardingRule2Network2.ID(),
-//									Network:         network2.ID(),
+//									ForwardingRule:  forwardingRule2Network2.ID().ToIDOutput().ToStringOutput(),
+//									Network:         network2.ID().ToIDOutput().ToStringOutput(),
 //									ServiceAttachment: instance_user_auto_connInstance.PscAttachmentDetails.ApplyT(func(pscAttachmentDetails []memorystore.InstancePscAttachmentDetail) (*string, error) {
 //										return pscAttachmentDetails[1].ServiceAttachment, nil
 //									}).(pulumi.StringPtrOutput),

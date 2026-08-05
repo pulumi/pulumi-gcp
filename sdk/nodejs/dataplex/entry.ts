@@ -328,7 +328,7 @@ import * as utilities from "../utilities";
  *     entryGroupId: "@dataplex",
  *     project: "1111111111111",
  *     location: "us-central1",
- *     entryId: pulumi.all([example_glossary.glossaryId, example_glossary_term.termId]).apply(([glossaryId, termId]) => `projects/1111111111111/locations/us-central1/glossaries/${glossaryId}/terms/${termId}`),
+ *     entryId: pulumi.interpolate`projects/1111111111111/locations/us-central1/glossaries/${example_glossary.glossaryId}/terms/${example_glossary_term.termId}`,
  *     entryType: "projects/655216118709/locations/global/entryTypes/glossary-term",
  *     parentEntry: pulumi.interpolate`projects/1111111111111/locations/us-central1/entryGroups/@dataplex/entries/projects/1111111111111/locations/us-central1/glossaries/${example_glossary.glossaryId}`,
  *     aspects: [{

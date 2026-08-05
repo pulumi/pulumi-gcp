@@ -166,7 +166,7 @@ import (
 //				return err
 //			}
 //			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: caPool.ID(),
+//				CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateRequester"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -189,7 +189,7 @@ import (
 //				Location:   pulumi.String("us-central1"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 //					IsPrivate: pulumi.Bool(true),
-//					CaPool:    caPool.ID(),
+//					CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -274,7 +274,7 @@ import (
 //				return err
 //			}
 //			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: caPool.ID(),
+//				CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateRequester"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -297,7 +297,7 @@ import (
 //				Location:   pulumi.String("us-central1"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 //					IsPrivate: pulumi.Bool(true),
-//					CaPool:    caPool.ID(),
+//					CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 //					CustomHostConfig: &securesourcemanager.InstancePrivateConfigCustomHostConfigArgs{
 //						Api:     pulumi.String("api.example.com"),
 //						GitHttp: pulumi.String("git-http.example.com"),
@@ -392,7 +392,7 @@ import (
 //				return err
 //			}
 //			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: caPool.ID(),
+//				CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateRequester"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -416,7 +416,7 @@ import (
 //				Location:   pulumi.String("us-central1"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 //					IsPrivate: pulumi.Bool(true),
-//					CaPool:    caPool.ID(),
+//					CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -437,7 +437,7 @@ import (
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("my-subnet"),
 //				Region:                pulumi.String("us-central1"),
-//				Network:               network.ID(),
+//				Network:               network.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange:           pulumi.String("10.0.1.0/24"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
@@ -448,11 +448,9 @@ import (
 //				Name:                pulumi.String("my-neg"),
 //				Region:              pulumi.String("us-central1"),
 //				NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
-//				PscTargetService: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
-//					return privateConfig.HttpServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
-//				Network:    network.ID(),
-//				Subnetwork: subnet.ID(),
+//				PscTargetService:    _default.PrivateConfig.HttpServiceAttachment(),
+//				Network:             network.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          subnet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -464,7 +462,7 @@ import (
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				Backends: compute.RegionBackendServiceBackendArray{
 //					&compute.RegionBackendServiceBackendArgs{
-//						Group:          pscNeg.ID(),
+//						Group:          pscNeg.ID().ToIDOutput().ToStringOutput(),
 //						BalancingMode:  pulumi.String("UTILIZATION"),
 //						CapacityScaler: pulumi.Float64(1),
 //					},
@@ -476,7 +474,7 @@ import (
 //			proxySubnet, err := compute.NewSubnetwork(ctx, "proxy_subnet", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-proxy-subnet"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.2.0/24"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				Role:        pulumi.String("ACTIVE"),
@@ -487,7 +485,7 @@ import (
 //			targetProxy, err := compute.NewRegionTargetTcpProxy(ctx, "target_proxy", &compute.RegionTargetTcpProxyArgs{
 //				Name:           pulumi.String("my-target-proxy"),
 //				Region:         pulumi.String("us-central1"),
-//				BackendService: backendService.ID(),
+//				BackendService: backendService.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -498,9 +496,9 @@ import (
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				IpProtocol:          pulumi.String("TCP"),
 //				PortRange:           pulumi.String("443"),
-//				Target:              targetProxy.ID(),
-//				Network:             network.ID(),
-//				Subnetwork:          subnet.ID(),
+//				Target:              targetProxy.ID().ToIDOutput().ToStringOutput(),
+//				Network:             network.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          subnet.ID().ToIDOutput().ToStringOutput(),
 //				NetworkTier:         pulumi.String("PREMIUM"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxySubnet,
@@ -515,7 +513,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network.ID(),
+//							NetworkUrl: network.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -644,7 +642,7 @@ import (
 //				return err
 //			}
 //			caPoolBinding, err := certificateauthority.NewCaPoolIamBinding(ctx, "ca_pool_binding", &certificateauthority.CaPoolIamBindingArgs{
-//				CaPool: caPool.ID(),
+//				CaPool: caPool.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateRequester"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
@@ -668,7 +666,7 @@ import (
 //				Location:   pulumi.String("us-central1"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
 //					IsPrivate: pulumi.Bool(true),
-//					CaPool:    caPool.ID(),
+//					CaPool:    caPool.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				DeletionPolicy: pulumi.String("PREVENT"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -689,7 +687,7 @@ import (
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("my-subnet"),
 //				Region:                pulumi.String("us-central1"),
-//				Network:               network.ID(),
+//				Network:               network.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange:           pulumi.String("10.0.60.0/24"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
@@ -701,7 +699,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Address:     pulumi.String("10.0.60.100"),
 //				AddressType: pulumi.String("INTERNAL"),
-//				Subnetwork:  subnet.ID(),
+//				Subnetwork:  subnet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -710,11 +708,9 @@ import (
 //				Name:                pulumi.String("fw-rule-service-attachment"),
 //				Region:              pulumi.String("us-central1"),
 //				LoadBalancingScheme: pulumi.String(""),
-//				IpAddress:           address.ID(),
-//				Network:             network.ID(),
-//				Target: pulumi.String(_default.PrivateConfig.ApplyT(func(privateConfig securesourcemanager.InstancePrivateConfig) (*string, error) {
-//					return privateConfig.HttpServiceAttachment, nil
-//				}).(pulumi.StringPtrOutput)),
+//				IpAddress:           address.ID().ToIDOutput().ToStringOutput(),
+//				Network:             network.ID().ToIDOutput().ToStringOutput(),
+//				Target:              _default.PrivateConfig.HttpServiceAttachment(),
 //			})
 //			if err != nil {
 //				return err
@@ -726,7 +722,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network.ID(),
+//							NetworkUrl: network.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},

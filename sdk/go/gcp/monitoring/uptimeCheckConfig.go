@@ -360,7 +360,7 @@ import (
 //				Timeout:     pulumi.String("60s"),
 //				SyntheticMonitor: &monitoring.UptimeCheckConfigSyntheticMonitorArgs{
 //					CloudFunctionV2: &monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{
-//						Name: function.ID(),
+//						Name: function.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

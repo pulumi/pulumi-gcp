@@ -146,6 +146,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
  * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataMultiLanguageDetectionArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataFilterVersionSelectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -182,6 +183,60 @@ import javax.annotation.Nullable;
  *                 .customPromptSafetyErrorMessage("This is a custom error message for prompt")
  *                 .customLlmResponseSafetyErrorCode(401)
  *                 .enforcementType("INSPECT_ONLY")
+ *                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
+ *                     .alias("FILTER_VERSION_ALIAS_LATEST")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Modelarmor Template Filter Version Selector
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.modelarmor.Template;
+ * import com.pulumi.gcp.modelarmor.TemplateArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataArgs;
+ * import com.pulumi.gcp.modelarmor.inputs.TemplateTemplateMetadataFilterVersionSelectorArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var template_filter_version_selector = new Template("template-filter-version-selector", TemplateArgs.builder()
+ *             .location("us-central1")
+ *             .templateId("modelarmor5")
+ *             .filterConfig(TemplateFilterConfigArgs.builder()
+ *                 .raiSettings(TemplateFilterConfigRaiSettingsArgs.builder()
+ *                     .raiFilters(TemplateFilterConfigRaiSettingsRaiFilterArgs.builder()
+ *                         .filterType("HATE_SPEECH")
+ *                         .confidenceLevel("HIGH")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .templateMetadata(TemplateTemplateMetadataArgs.builder()
+ *                 .filterVersionSelector(TemplateTemplateMetadataFilterVersionSelectorArgs.builder()
+ *                     .version("v1")
+ *                     .build())
  *                 .build())
  *             .build());
  * 

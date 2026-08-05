@@ -122,7 +122,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
+//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 //			})
 //			if err != nil {
@@ -132,7 +132,7 @@ import (
 //				ServiceId: pulumi.String("example-service"),
 //				Location:  pulumi.String("us-central1"),
 //				EncryptionConfig: &dataproc.MetastoreServiceEncryptionConfigArgs{
-//					KmsKey: cryptoKey.ID(),
+//					KmsKey: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 //					Version: pulumi.String("3.1.2"),
@@ -171,7 +171,7 @@ import (
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("my-subnetwork"),
 //				Region:                pulumi.String("us-central1"),
-//				Network:               net.ID(),
+//				Network:               net.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange:           pulumi.String("10.0.0.0/22"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
@@ -188,7 +188,7 @@ import (
 //				NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 //					Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 //						&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-//							Subnetwork: subnet.ID(),
+//							Subnetwork: subnet.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -226,7 +226,7 @@ import (
 //			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("my-subnetwork"),
 //				Region:                pulumi.String("us-central1"),
-//				Network:               net.ID(),
+//				Network:               net.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange:           pulumi.String("10.0.0.0/22"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
@@ -242,7 +242,7 @@ import (
 //				NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
 //					Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
 //						&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
-//							Subnetwork: subnet.ID(),
+//							Subnetwork: subnet.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //					CustomRoutesEnabled: pulumi.Bool(true),

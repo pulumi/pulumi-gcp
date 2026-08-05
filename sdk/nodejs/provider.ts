@@ -31,6 +31,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly accessContextManagerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly accessToken: pulumi.Output<string | undefined>;
     declare public readonly activeDirectoryCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly agentIdentityCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly agentRegistryCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly alloydbCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly apiGatewayCustomEndpoint: pulumi.Output<string | undefined>;
@@ -249,6 +250,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["accessToken"] = args?.accessToken ? pulumi.secret(args.accessToken) : undefined;
             resourceInputs["activeDirectoryCustomEndpoint"] = args?.activeDirectoryCustomEndpoint;
             resourceInputs["addPulumiAttributionLabel"] = pulumi.output(args?.addPulumiAttributionLabel).apply(JSON.stringify);
+            resourceInputs["agentIdentityCustomEndpoint"] = args?.agentIdentityCustomEndpoint;
             resourceInputs["agentRegistryCustomEndpoint"] = args?.agentRegistryCustomEndpoint;
             resourceInputs["alloydbCustomEndpoint"] = args?.alloydbCustomEndpoint;
             resourceInputs["apiGatewayCustomEndpoint"] = args?.apiGatewayCustomEndpoint;
@@ -485,6 +487,7 @@ export interface ProviderArgs {
     accessToken?: pulumi.Input<string | undefined>;
     activeDirectoryCustomEndpoint?: pulumi.Input<string | undefined>;
     addPulumiAttributionLabel?: pulumi.Input<boolean | undefined>;
+    agentIdentityCustomEndpoint?: pulumi.Input<string | undefined>;
     agentRegistryCustomEndpoint?: pulumi.Input<string | undefined>;
     alloydbCustomEndpoint?: pulumi.Input<string | undefined>;
     apiGatewayCustomEndpoint?: pulumi.Input<string | undefined>;

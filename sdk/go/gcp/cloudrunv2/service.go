@@ -210,7 +210,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -251,7 +251,7 @@ import (
 //				Name:        pulumi.String("run-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     customTestNetwork.ID(),
+//				Network:     customTestNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -280,7 +280,7 @@ import (
 //						},
 //					},
 //					VpcAccess: &cloudrunv2.ServiceTemplateVpcAccessArgs{
-//						Connector: connector.ID(),
+//						Connector: connector.ID().ToIDOutput().ToStringOutput(),
 //						Egress:    pulumi.String("ALL_TRAFFIC"),
 //					},
 //				},
@@ -558,7 +558,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -827,7 +827,7 @@ import (
 //						},
 //					},
 //					ServiceMesh: &cloudrunv2.ServiceTemplateServiceMeshArgs{
-//						Mesh: mesh.ID(),
+//						Mesh: mesh.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

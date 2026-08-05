@@ -52,14 +52,14 @@ import (
 //				Name:         pulumi.String("backend-service"),
 //				Protocol:     pulumi.String("TCP"),
 //				TimeoutSec:   pulumi.Int(10),
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewTargetTCPProxy(ctx, "default", &compute.TargetTCPProxyArgs{
 //				Name:           pulumi.String("test-proxy"),
-//				BackendService: defaultBackendService.ID(),
+//				BackendService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -99,7 +99,7 @@ import (
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("TCP"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -107,7 +107,7 @@ import (
 //			_, err = compute.NewTargetTCPProxy(ctx, "default", &compute.TargetTCPProxyArgs{
 //				Name:                pulumi.String("test-proxy"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				BackendService:      defaultBackendService.ID(),
+//				BackendService:      defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -178,7 +178,7 @@ import (
 //				Name:                pulumi.String("backend-service"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				Protocol:            pulumi.String("TCP"),
-//				HealthChecks:        defaultHealthCheck.ID(),
+//				HealthChecks:        defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -186,7 +186,7 @@ import (
 //			_, err = networkservices.NewTlsRoute(ctx, "default", &networkservices.TlsRouteArgs{
 //				Name: pulumi.String("tls-route-check"),
 //				TargetProxies: pulumi.StringArray{
-//					_default.ID(),
+//					_default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Rules: networkservices.TlsRouteRuleArray{
 //					&networkservices.TlsRouteRuleArgs{
@@ -200,7 +200,7 @@ import (
 //						Action: &networkservices.TlsRouteRuleActionArgs{
 //							Destinations: networkservices.TlsRouteRuleActionDestinationArray{
 //								&networkservices.TlsRouteRuleActionDestinationArgs{
-//									ServiceName: defaultBackendService.ID(),
+//									ServiceName: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //						},

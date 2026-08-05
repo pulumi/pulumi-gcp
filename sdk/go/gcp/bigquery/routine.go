@@ -126,18 +126,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"typeKind": "INT64",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 //				"columns": []map[string]interface{}{
 //					map[string]interface{}{
 //						"name": "value",
-//						"type": map[string]interface{}{
+//						"type": map[string]string{
 //							"typeKind": "INT64",
 //						},
 //					},
@@ -161,6 +161,65 @@ import (
 //					},
 //				},
 //				ReturnTableType: pulumi.String(json1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Bigquery Routine Table Type
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("dataset_id"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]string{
+//				"typeKind": "INT64",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = bigquery.NewRoutine(ctx, "sproc", &bigquery.RoutineArgs{
+//				DatasetId:      test.DatasetId,
+//				RoutineId:      pulumi.String("routine_id"),
+//				RoutineType:    pulumi.String("TABLE_VALUED_FUNCTION"),
+//				Language:       pulumi.String("SQL"),
+//				Description:    pulumi.String("Gets every row from a table."),
+//				DefinitionBody: pulumi.String("SELECT * FROM t1"),
+//				Arguments: bigquery.RoutineArgumentArray{
+//					&bigquery.RoutineArgumentArgs{
+//						Name:         pulumi.String("t1"),
+//						ArgumentKind: pulumi.String("FIXED_TABLE"),
+//						TableType: &bigquery.RoutineArgumentTableTypeArgs{
+//							Columns: bigquery.RoutineArgumentTableTypeColumnArray{
+//								&bigquery.RoutineArgumentTableTypeColumnArgs{
+//									Name: pulumi.String("year"),
+//									Type: pulumi.String(json0),
+//								},
+//							},
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

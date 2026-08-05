@@ -12,6 +12,7 @@ import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceState;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceAutoUpgradeConfig;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceIgnoredClustersSelector;
+import com.pulumi.gcp.gkehub.outputs.RolloutSequenceOperationalState;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceStage;
 import java.lang.String;
 import java.util.List;
@@ -39,12 +40,21 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.gkehub.Fleet;
+ * import com.pulumi.gcp.gkehub.FleetArgs;
  * import com.pulumi.gcp.gkehub.RolloutSequence;
  * import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -58,14 +68,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("rs-project")
+ *             .name("rs-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var gkehub = new Service("gkehub", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("gkehub.googleapis.com")
+ *             .build());
+ * 
+ *         // wait for API enablement
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gkehub)
+ *                 .build());
+ * 
+ *         var default_ = new Fleet("default", FleetArgs.builder()
+ *             .displayName("rs-fleet")
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120Seconds)
+ *                 .build());
+ * 
  *         var rolloutSequence = new RolloutSequence("rolloutSequence", RolloutSequenceArgs.builder()
+ *             .project(project.projectId())
  *             .rolloutSequenceId("rs-basic")
  *             .displayName("Basic Rollout Sequence")
  *             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
  *                 .labelSelector("resource.labels.ignored == 'true'")
  *                 .build())
  *             .stages(RolloutSequenceStageArgs.builder()
- *                 .fleetProjects("projects/my-project-name")
+ *                 .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *                 .soakDuration("1h")
  *                 .build())
  *             .autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs.builder()
@@ -77,7 +115,9 @@ import javax.annotation.Nullable;
  *                         "NODE_PATCH")
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
  * 
  *     }
  * }
@@ -92,6 +132,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.gkehub.Fleet;
+ * import com.pulumi.gcp.gkehub.FleetArgs;
  * import com.pulumi.gcp.gkehub.RolloutSequence;
  * import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
@@ -99,6 +147,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageClusterSelectorArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
  * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -112,7 +161,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("rs-project")
+ *             .name("rs-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var gkehub = new Service("gkehub", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("gkehub.googleapis.com")
+ *             .build());
+ * 
+ *         // wait for API enablement
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gkehub)
+ *                 .build());
+ * 
+ *         var default_ = new Fleet("default", FleetArgs.builder()
+ *             .displayName("rs-fleet")
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120Seconds)
+ *                 .build());
+ * 
  *         var rolloutSequence = new RolloutSequence("rolloutSequence", RolloutSequenceArgs.builder()
+ *             .project(project.projectId())
  *             .rolloutSequenceId("rs-basic")
  *             .displayName("Modified Rollout Sequence")
  *             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
@@ -120,14 +197,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .stages(            
  *                 RolloutSequenceStageArgs.builder()
- *                     .fleetProjects("projects/my-project-name")
+ *                     .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *                     .clusterSelector(RolloutSequenceStageClusterSelectorArgs.builder()
  *                         .labelSelector("resource.labels.canary=='true'")
  *                         .build())
  *                     .soakDuration("2h")
  *                     .build(),
  *                 RolloutSequenceStageArgs.builder()
- *                     .fleetProjects("projects/my-project-name")
+ *                     .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *                     .soakDuration("1d")
  *                     .build())
  *             .autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs.builder()
@@ -138,7 +215,143 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .labels(Map.of("some_key", "some_value"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Gke Hub Rollout Sequence User Triggered Create
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.gkehub.Fleet;
+ * import com.pulumi.gcp.gkehub.FleetArgs;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetEngineVersionsArgs;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterFleetArgs;
+ * import com.pulumi.gcp.gkehub.RolloutSequence;
+ * import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("rs-project")
+ *             .name("rs-project")
+ *             .orgId("123456789")
+ *             .billingAccount("000000-0000000-0000000-000000")
+ *             .deletionPolicy("DELETE")
  *             .build());
+ * 
+ *         // Enable APIs in a deterministic order to avoid inconsistent VCR recordings
+ *         var gkehub = new Service("gkehub", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("gkehub.googleapis.com")
+ *             .build());
+ * 
+ *         var container = new Service("container", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("container.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(gkehub)
+ *                 .build());
+ * 
+ *         var compute = new Service("compute", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("compute.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(container)
+ *                 .build());
+ * 
+ *         // wait for API enablement
+ *         var wait120Seconds = new Sleep("wait120Seconds", SleepArgs.builder()
+ *             .createDuration("120s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(compute)
+ *                 .build());
+ * 
+ *         var default_ = new Fleet("default", FleetArgs.builder()
+ *             .displayName("rs-fleet")
+ *             .project(project.projectId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait120Seconds)
+ *                 .build());
+ * 
+ *         final var versions = ContainerFunctions.getEngineVersions(GetEngineVersionsArgs.builder()
+ *             .location("us-central1-a")
+ *             .project(project.projectId())
+ *             .build());
+ * 
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .project(project.projectId())
+ *             .name("rs-cluster")
+ *             .location("us-central1-a")
+ *             .initialNodeCount(1)
+ *             .minMasterVersion(versions.applyValue(_versions -> _versions.releaseChannelDefaultVersion().REGULAR()))
+ *             .nodeVersion(versions.applyValue(_versions -> _versions.releaseChannelDefaultVersion().REGULAR()))
+ *             .deletionProtection(false)
+ *             .releaseChannel(ClusterReleaseChannelArgs.builder()
+ *                 .channel("REGULAR")
+ *                 .build())
+ *             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_25601"))
+ *             .fleet(ClusterFleetArgs.builder()
+ *                 .project(project.number())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *         var rolloutSequence = new RolloutSequence("rolloutSequence", RolloutSequenceArgs.builder()
+ *             .project(project.projectId())
+ *             .rolloutSequenceId("rs-user-triggered")
+ *             .displayName("User Triggered Rollout Sequence")
+ *             .minControlPlaneVersion(versions.applyValue(_versions -> _versions.releaseChannelLatestVersion().REGULAR()))
+ *             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
+ *                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')")
+ *                 .build())
+ *             .stages(RolloutSequenceStageArgs.builder()
+ *                 .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
+ *                 .soakDuration("30s")
+ *                 .build())
+ *             .autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs.builder()
+ *                 .rolloutCreationScope(RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs.builder()
+ *                     .upgradeTypes()
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primary)
+ *                 .build());
  * 
  *     }
  * }
@@ -313,6 +526,58 @@ public class RolloutSequence extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
+     * Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    @Export(name="minControlPlaneVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> minControlPlaneVersion;
+
+    /**
+     * @return Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    public Output<Optional<String>> minControlPlaneVersion() {
+        return Codegen.optional(this.minControlPlaneVersion);
+    }
+    /**
+     * Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    @Export(name="minNodeVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> minNodeVersion;
+
+    /**
+     * @return Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    public Output<Optional<String>> minNodeVersion() {
+        return Codegen.optional(this.minNodeVersion);
+    }
+    /**
      * The full resource name of the RolloutSequence.
      * 
      */
@@ -325,6 +590,22 @@ public class RolloutSequence extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The operational state of the rollout sequence.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="operationalStates", refs={List.class,RolloutSequenceOperationalState.class}, tree="[0,1]")
+    private Output<List<RolloutSequenceOperationalState>> operationalStates;
+
+    /**
+     * @return The operational state of the rollout sequence.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<RolloutSequenceOperationalState>> operationalStates() {
+        return this.operationalStates;
     }
     /**
      * The ID of the project in which the resource belongs.
@@ -387,6 +668,34 @@ public class RolloutSequence extends com.pulumi.resources.CustomResource {
      */
     public Output<List<RolloutSequenceStage>> stages() {
         return this.stages;
+    }
+    /**
+     * The current target control plane version.
+     * 
+     */
+    @Export(name="targetControlPlaneVersion", refs={String.class}, tree="[0]")
+    private Output<String> targetControlPlaneVersion;
+
+    /**
+     * @return The current target control plane version.
+     * 
+     */
+    public Output<String> targetControlPlaneVersion() {
+        return this.targetControlPlaneVersion;
+    }
+    /**
+     * The current target node version.
+     * 
+     */
+    @Export(name="targetNodeVersion", refs={String.class}, tree="[0]")
+    private Output<String> targetNodeVersion;
+
+    /**
+     * @return The current target node version.
+     * 
+     */
+    public Output<String> targetNodeVersion() {
+        return this.targetNodeVersion;
     }
     /**
      * Google-generated UUID for this resource.

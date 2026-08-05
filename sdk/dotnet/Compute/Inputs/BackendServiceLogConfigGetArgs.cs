@@ -41,6 +41,32 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("optionalMode")]
         public Input<string>? OptionalMode { get; set; }
 
+        [Input("requestHeaders")]
+        private InputList<Inputs.BackendServiceLogConfigRequestHeaderGetArgs>? _requestHeaders;
+
+        /// <summary>
+        /// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendServiceLogConfigRequestHeaderGetArgs> RequestHeaders
+        {
+            get => _requestHeaders ?? (_requestHeaders = new InputList<Inputs.BackendServiceLogConfigRequestHeaderGetArgs>());
+            set => _requestHeaders = value;
+        }
+
+        [Input("responseHeaders")]
+        private InputList<Inputs.BackendServiceLogConfigResponseHeaderGetArgs>? _responseHeaders;
+
+        /// <summary>
+        /// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.BackendServiceLogConfigResponseHeaderGetArgs> ResponseHeaders
+        {
+            get => _responseHeaders ?? (_responseHeaders = new InputList<Inputs.BackendServiceLogConfigResponseHeaderGetArgs>());
+            set => _responseHeaders = value;
+        }
+
         /// <summary>
         /// This field can only be specified if logging is enabled for this backend service. The value of
         /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer

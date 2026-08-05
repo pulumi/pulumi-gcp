@@ -103,15 +103,15 @@ import (
 //				ResponsePolicyName: pulumi.String("example-response-policy"),
 //				Networks: dns.ResponsePolicyNetworkArray{
 //					&dns.ResponsePolicyNetworkArgs{
-//						NetworkUrl: network_1.ID(),
+//						NetworkUrl: network_1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&dns.ResponsePolicyNetworkArgs{
-//						NetworkUrl: network_2.ID(),
+//						NetworkUrl: network_2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				GkeClusters: dns.ResponsePolicyGkeClusterArray{
 //					&dns.ResponsePolicyGkeClusterArgs{
-//						GkeClusterName: cluster_1.ID(),
+//						GkeClusterName: cluster_1.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

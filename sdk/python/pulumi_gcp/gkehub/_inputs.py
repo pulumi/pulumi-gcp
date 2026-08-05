@@ -161,6 +161,8 @@ __all__ = [
     'RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgsDict',
     'RolloutSequenceIgnoredClustersSelectorArgs',
     'RolloutSequenceIgnoredClustersSelectorArgsDict',
+    'RolloutSequenceOperationalStateArgs',
+    'RolloutSequenceOperationalStateArgsDict',
     'RolloutSequenceStageArgs',
     'RolloutSequenceStageArgsDict',
     'RolloutSequenceStageClusterSelectorArgs',
@@ -4964,6 +4966,38 @@ class RolloutSequenceIgnoredClustersSelectorArgs:
     @label_selector.setter
     def label_selector(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "label_selector", value)
+
+
+class RolloutSequenceOperationalStateArgsDict(TypedDict):
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The state of the rollout sequence.
+    """
+
+@pulumi.input_type
+class RolloutSequenceOperationalStateArgs:
+    def __init__(__self__, *,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the rollout sequence.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The state of the rollout sequence.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 class RolloutSequenceStageArgsDict(TypedDict):

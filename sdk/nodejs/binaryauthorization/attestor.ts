@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  *     attestationAuthorityNote: {
  *         noteReference: note.name,
  *         publicKeys: [{
- *             id: version.apply(version => version.id),
+ *             id: version.id,
  *             pkixPublicKey: {
  *                 publicKeyPem: version.apply(version => version.publicKeys?.[0]?.pem),
  *                 signatureAlgorithm: version.apply(version => version.publicKeys?.[0]?.algorithm),
