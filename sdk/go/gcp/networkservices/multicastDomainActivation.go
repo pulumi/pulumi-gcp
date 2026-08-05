@@ -47,7 +47,7 @@ import (
 //			multicastDomain, err := networkservices.NewMulticastDomain(ctx, "multicast_domain", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-domain-mda"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
@@ -60,7 +60,7 @@ import (
 //			_, err = networkservices.NewMulticastDomainActivation(ctx, "mda_test", &networkservices.MulticastDomainActivationArgs{
 //				MulticastDomainActivationId: pulumi.String("test-domain-activation-mda"),
 //				Location:                    pulumi.String("us-central1-b"),
-//				MulticastDomain:             multicastDomain.ID(),
+//				MulticastDomain:             multicastDomain.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

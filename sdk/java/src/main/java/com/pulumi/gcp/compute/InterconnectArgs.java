@@ -211,7 +211,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google&#39;s Networks.
      * 
      */
@@ -219,7 +219,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> location;
 
     /**
-     * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * @return URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google&#39;s Networks.
      * 
      */
@@ -686,7 +686,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * @param location URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
          * Specifies the location inside Google&#39;s Networks.
          * 
          * @return builder
@@ -698,7 +698,7 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * @param location URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
          * Specifies the location inside Google&#39;s Networks.
          * 
          * @return builder

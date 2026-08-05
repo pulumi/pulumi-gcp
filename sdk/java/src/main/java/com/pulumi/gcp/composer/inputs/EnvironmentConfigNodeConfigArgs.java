@@ -6,6 +6,7 @@ package com.pulumi.gcp.composer.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigIpAllocationPolicyArgs;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigNodeConfigTrafficRoutingConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -200,6 +201,21 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
     }
 
     /**
+     * Traffic routing configuration for Cloud Composer environment.
+     * 
+     */
+    @Import(name="trafficRoutingConfig")
+    private @Nullable Output<EnvironmentConfigNodeConfigTrafficRoutingConfigArgs> trafficRoutingConfig;
+
+    /**
+     * @return Traffic routing configuration for Cloud Composer environment.
+     * 
+     */
+    public Optional<Output<EnvironmentConfigNodeConfigTrafficRoutingConfigArgs>> trafficRoutingConfig() {
+        return Optional.ofNullable(this.trafficRoutingConfig);
+    }
+
+    /**
      * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. &#34;projects/{project}/zones/{zone}&#34;). Must belong to the enclosing environment&#39;s project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
      * 
      */
@@ -229,6 +245,7 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
         this.serviceAccount = $.serviceAccount;
         this.subnetwork = $.subnetwork;
         this.tags = $.tags;
+        this.trafficRoutingConfig = $.trafficRoutingConfig;
         this.zone = $.zone;
     }
 
@@ -520,6 +537,27 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
          */
         public Builder tags(String... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param trafficRoutingConfig Traffic routing configuration for Cloud Composer environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficRoutingConfig(@Nullable Output<EnvironmentConfigNodeConfigTrafficRoutingConfigArgs> trafficRoutingConfig) {
+            $.trafficRoutingConfig = trafficRoutingConfig;
+            return this;
+        }
+
+        /**
+         * @param trafficRoutingConfig Traffic routing configuration for Cloud Composer environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficRoutingConfig(EnvironmentConfigNodeConfigTrafficRoutingConfigArgs trafficRoutingConfig) {
+            return trafficRoutingConfig(Output.of(trafficRoutingConfig));
         }
 
         /**

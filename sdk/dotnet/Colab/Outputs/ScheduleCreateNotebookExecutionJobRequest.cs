@@ -18,11 +18,27 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob NotebookExecutionJob;
+        /// <summary>
+        /// (Output)
+        /// User specified ID for the NotebookExecutionJob.
+        /// </summary>
+        public readonly string? NotebookExecutionJobId;
+        /// <summary>
+        /// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+        /// </summary>
+        public readonly string? Parent;
 
         [OutputConstructor]
-        private ScheduleCreateNotebookExecutionJobRequest(Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob)
+        private ScheduleCreateNotebookExecutionJobRequest(
+            Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob,
+
+            string? notebookExecutionJobId,
+
+            string? parent)
         {
             NotebookExecutionJob = notebookExecutionJob;
+            NotebookExecutionJobId = notebookExecutionJobId;
+            Parent = parent;
         }
     }
 }

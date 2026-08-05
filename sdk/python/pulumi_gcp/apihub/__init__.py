@@ -11,5 +11,6 @@ from .curation import *
 from .host_project_registration import *
 from .plugin import *
 from .plugin_instance import *
+from .runtime_project_attachment import *
 from ._inputs import *
 from . import outputs

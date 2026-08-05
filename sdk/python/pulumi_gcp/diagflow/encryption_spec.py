@@ -204,7 +204,7 @@ class EncryptionSpec(pulumi.CustomResource):
             crypto_key_id=key.id,
             member=std.replace_output(text=gcp_sa.member,
                 search="@gcp-sa-dialogflow.iam",
-                replace="@gcp-sa-ccai-cmek.iam").apply(lambda invoke: invoke.result),
+                replace="@gcp-sa-ccai-cmek.iam").result,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             opts = pulumi.ResourceOptions(depends_on=[wait_create_sa]))
         my_encryption_spec = gcp.diagflow.EncryptionSpec("my-encryption-spec",
@@ -291,7 +291,7 @@ class EncryptionSpec(pulumi.CustomResource):
             crypto_key_id=key.id,
             member=std.replace_output(text=gcp_sa.member,
                 search="@gcp-sa-dialogflow.iam",
-                replace="@gcp-sa-ccai-cmek.iam").apply(lambda invoke: invoke.result),
+                replace="@gcp-sa-ccai-cmek.iam").result,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             opts = pulumi.ResourceOptions(depends_on=[wait_create_sa]))
         my_encryption_spec = gcp.diagflow.EncryptionSpec("my-encryption-spec",

@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
+//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -70,7 +70,7 @@ import (
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              gitRepository.Url,
 //					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
+//					AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 //					DefaultDatabase: pulumi.String("database"),
@@ -117,7 +117,7 @@ import (
 //				Region:        repository.Region,
 //				Repository:    repository.Name,
 //				Name:          pulumi.String("my_workflow"),
-//				ReleaseConfig: releaseConfig.ID(),
+//				ReleaseConfig: releaseConfig.ID().ToIDOutput().ToStringOutput(),
 //				InvocationConfig: &dataform.RepositoryWorkflowConfigInvocationConfigArgs{
 //					IncludedTargets: dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArray{
 //						&dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{
@@ -183,7 +183,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
+//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secret-data"),
 //			})
 //			if err != nil {
@@ -195,7 +195,7 @@ import (
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              gitRepository.Url,
 //					DefaultBranch:                    pulumi.String("main"),
-//					AuthenticationTokenSecretVersion: secretVersion.ID(),
+//					AuthenticationTokenSecretVersion: secretVersion.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
 //					DefaultDatabase: pulumi.String("database"),
@@ -242,7 +242,7 @@ import (
 //				Region:        repository.Region,
 //				Repository:    repository.Name,
 //				Name:          pulumi.String("my_workflow"),
-//				ReleaseConfig: releaseConfig.ID(),
+//				ReleaseConfig: releaseConfig.ID().ToIDOutput().ToStringOutput(),
 //				InvocationConfig: &dataform.RepositoryWorkflowConfigInvocationConfigArgs{
 //					IncludedTargets: dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArray{
 //						&dataform.RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{

@@ -746,7 +746,7 @@ class Certificate(pulumi.CustomResource):
                 },
                 "public_key": {
                     "format": "PEM",
-                    "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
+                    "key": std.base64encode_output(input=cert_key.public_key_pem).result,
                 },
             })
         ```
@@ -1271,7 +1271,7 @@ class Certificate(pulumi.CustomResource):
                 },
                 "public_key": {
                     "format": "PEM",
-                    "key": std.base64encode_output(input=cert_key.public_key_pem).apply(lambda invoke: invoke.result),
+                    "key": std.base64encode_output(input=cert_key.public_key_pem).result,
                 },
             })
         ```

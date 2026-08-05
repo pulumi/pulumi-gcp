@@ -115,8 +115,8 @@ import * as utilities from "../utilities";
  *         masterIpv4CidrBlock: "10.42.0.0/28",
  *     },
  *     ipAllocationPolicy: {
- *         clusterSecondaryRangeName: gkeSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
- *         servicesSecondaryRangeName: gkeSubnetwork.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+ *         clusterSecondaryRangeName: gkeSubnetwork.secondaryIpRanges[0].rangeName,
+ *         servicesSecondaryRangeName: gkeSubnetwork.secondaryIpRanges[1].rangeName,
  *     },
  *     deletionProtection: true,
  * });

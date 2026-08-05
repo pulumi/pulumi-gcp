@@ -130,7 +130,7 @@ import (
 //				return err
 //			}
 //			example_autokeyconfig, err := kms.NewAutokeyConfig(ctx, "example-autokeyconfig", &kms.AutokeyConfigArgs{
-//				Folder: autokmsFolder.ID(),
+//				Folder: autokmsFolder.ID().ToIDOutput().ToStringOutput(),
 //				KeyProject: keyProject.ProjectId.ApplyT(func(projectId string) (string, error) {
 //					return fmt.Sprintf("projects/%v", projectId), nil
 //				}).(pulumi.StringOutput),

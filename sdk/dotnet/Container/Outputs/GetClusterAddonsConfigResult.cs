@@ -70,6 +70,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> NetworkPolicyConfigs;
         /// <summary>
+        /// The status of the Node Readiness Controller addon.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigNodeReadinessConfigResult> NodeReadinessConfigs;
+        /// <summary>
         /// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult> ParallelstoreCsiDriverConfigs;
@@ -124,6 +128,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigNetworkPolicyConfigResult> networkPolicyConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigNodeReadinessConfigResult> nodeReadinessConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfigResult> parallelstoreCsiDriverConfigs,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigPodSnapshotConfigResult> podSnapshotConfigs,
@@ -150,6 +156,7 @@ namespace Pulumi.Gcp.Container.Outputs
             KalmConfigs = kalmConfigs;
             LustreCsiDriverConfigs = lustreCsiDriverConfigs;
             NetworkPolicyConfigs = networkPolicyConfigs;
+            NodeReadinessConfigs = nodeReadinessConfigs;
             ParallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
             PodSnapshotConfigs = podSnapshotConfigs;
             RayOperatorConfigs = rayOperatorConfigs;

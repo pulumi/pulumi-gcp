@@ -51,7 +51,7 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-//					Vpc:    defaultNetwork.ID(),
+//					Vpc:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //					Subnet: pulumi.String("10.0.0.0/29"),
 //				},
 //			})
@@ -93,7 +93,7 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-//					Vpc:    defaultNetwork.ID(),
+//					Vpc:    defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //					Subnet: pulumi.String("10.0.0.0/29"),
 //				},
 //			})
@@ -130,7 +130,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
 //				Region:      pulumi.String("us-west1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
@@ -156,7 +156,7 @@ import (
 //					"key": pulumi.String("value"),
 //				},
 //				PscInterfaceConfig: &datastream.PrivateConnectionPscInterfaceConfigArgs{
-//					NetworkAttachment: defaultNetworkAttachment.ID(),
+//					NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

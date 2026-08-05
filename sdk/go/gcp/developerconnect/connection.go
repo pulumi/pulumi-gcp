@@ -137,7 +137,7 @@ import (
 //				return err
 //			}
 //			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-//				Secret:     github_token_secret.ID(),
+//				Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
@@ -160,10 +160,8 @@ import (
 //				},
 //			}, nil)
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
-//				SecretId: github_token_secret.SecretId,
-//				PolicyData: pulumi.String(p4sa_secretAccessor.ApplyT(func(p4sa_secretAccessor organizations.GetIAMPolicyResult) (*string, error) {
-//					return p4sa_secretAccessor.PolicyData, nil
-//				}).(pulumi.StringPtrOutput)),
+//				SecretId:   github_token_secret.SecretId,
+//				PolicyData: p4sa_secretAccessor.PolicyData(),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +173,7 @@ import (
 //					GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 //					AppInstallationId: pulumi.String("123123"),
 //					AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-//						OauthTokenSecretVersion: github_token_secret_version.ID(),
+//						OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -252,7 +250,7 @@ import (
 //				return err
 //			}
 //			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
-//				Secret:     github_token_secret.ID(),
+//				Secret:     github_token_secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
@@ -285,7 +283,7 @@ import (
 //					GithubApp:         pulumi.String("DEVELOPER_CONNECT"),
 //					AppInstallationId: pulumi.String("123123"),
 //					AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-//						OauthTokenSecretVersion: github_token_secret_version.ID(),
+//						OauthTokenSecretVersion: github_token_secret_version.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -363,7 +361,7 @@ import (
 //				return err
 //			}
 //			private_key_secret_version, err := secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
-//				Secret:     private_key_secret.ID(),
+//				Secret:     private_key_secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
@@ -379,7 +377,7 @@ import (
 //				return err
 //			}
 //			webhook_secret_secret_version, err := secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
-//				Secret:     webhook_secret_secret.ID(),
+//				Secret:     webhook_secret_secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("<webhook-secret-data>"),
 //			})
 //			if err != nil {
@@ -417,8 +415,8 @@ import (
 //				ConnectionId: pulumi.String("my-connection"),
 //				GithubEnterpriseConfig: &developerconnect.ConnectionGithubEnterpriseConfigArgs{
 //					HostUri:                    pulumi.String("https://ghe.com"),
-//					PrivateKeySecretVersion:    private_key_secret_version.ID(),
-//					WebhookSecretSecretVersion: webhook_secret_secret_version.ID(),
+//					PrivateKeySecretVersion:    private_key_secret_version.ID().ToIDOutput().ToStringOutput(),
+//					WebhookSecretSecretVersion: webhook_secret_secret_version.ID().ToIDOutput().ToStringOutput(),
 //					AppId:                      pulumi.String("100"),
 //					AppInstallationId:          pulumi.String("123123"),
 //				},

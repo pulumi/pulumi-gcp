@@ -141,7 +141,7 @@ import (
 //					CompanyName: pulumi.String("test-company"),
 //				},
 //				ChatEngineConfig: &discoveryengine.ChatEngineChatEngineConfigArgs{
-//					DialogflowAgentToLink: agent.ID(),
+//					DialogflowAgentToLink: agent.ID().ToIDOutput().ToStringOutput(),
 //					AllowCrossRegion:      pulumi.Bool(true),
 //				},
 //			})

@@ -49,7 +49,7 @@ import (
 //			_, err = migrationcenter.NewSettings(ctx, "default", &migrationcenter.SettingsArgs{
 //				Location:            pulumi.String("us-central1"),
 //				DisableCloudLogging: pulumi.Bool(true),
-//				PreferenceSet:       defaultPreferenceSet.ID(),
+//				PreferenceSet:       defaultPreferenceSet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

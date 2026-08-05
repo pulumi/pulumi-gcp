@@ -47,6 +47,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> activeDirectoryCustomEndpoint() {
         return Codegen.optional(this.activeDirectoryCustomEndpoint);
     }
+    @Export(name="agentIdentityCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> agentIdentityCustomEndpoint;
+
+    public Output<Optional<String>> agentIdentityCustomEndpoint() {
+        return Codegen.optional(this.agentIdentityCustomEndpoint);
+    }
     @Export(name="agentRegistryCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> agentRegistryCustomEndpoint;
 

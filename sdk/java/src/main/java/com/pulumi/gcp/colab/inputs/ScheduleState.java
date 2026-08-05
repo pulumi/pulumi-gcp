@@ -6,8 +6,11 @@ package com.pulumi.gcp.colab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestArgs;
+import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestArgs;
+import com.pulumi.gcp.colab.inputs.ScheduleLastScheduledRunResponseArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +36,21 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+     * 
+     */
+    @Import(name="catchUp")
+    private @Nullable Output<Boolean> catchUp;
+
+    /**
+     * @return Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+     * 
+     */
+    public Optional<Output<Boolean>> catchUp() {
+        return Optional.ofNullable(this.catchUp);
+    }
+
+    /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      * 
@@ -47,6 +65,38 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ScheduleCreateNotebookExecutionJobRequestArgs>> createNotebookExecutionJobRequest() {
         return Optional.ofNullable(this.createNotebookExecutionJobRequest);
+    }
+
+    /**
+     * Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="createPipelineJobRequest")
+    private @Nullable Output<ScheduleCreatePipelineJobRequestArgs> createPipelineJobRequest;
+
+    /**
+     * @return Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ScheduleCreatePipelineJobRequestArgs>> createPipelineJobRequest() {
+        return Optional.ofNullable(this.createPipelineJobRequest);
+    }
+
+    /**
+     * Timestamp when this Schedule was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Timestamp when this Schedule was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -135,6 +185,53 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Timestamp when this Schedule was last paused. Unset if never paused.
+     * 
+     */
+    @Import(name="lastPauseTime")
+    private @Nullable Output<String> lastPauseTime;
+
+    /**
+     * @return Timestamp when this Schedule was last paused. Unset if never paused.
+     * 
+     */
+    public Optional<Output<String>> lastPauseTime() {
+        return Optional.ofNullable(this.lastPauseTime);
+    }
+
+    /**
+     * Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+     * 
+     */
+    @Import(name="lastResumeTime")
+    private @Nullable Output<String> lastResumeTime;
+
+    /**
+     * @return Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+     * 
+     */
+    public Optional<Output<String>> lastResumeTime() {
+        return Optional.ofNullable(this.lastResumeTime);
+    }
+
+    /**
+     * Status of a scheduled run.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="lastScheduledRunResponses")
+    private @Nullable Output<List<ScheduleLastScheduledRunResponseArgs>> lastScheduledRunResponses;
+
+    /**
+     * @return Status of a scheduled run.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ScheduleLastScheduledRunResponseArgs>>> lastScheduledRunResponses() {
+        return Optional.ofNullable(this.lastScheduledRunResponses);
+    }
+
+    /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
      */
@@ -147,6 +244,21 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     * 
+     */
+    @Import(name="maxConcurrentActiveRunCount")
+    private @Nullable Output<String> maxConcurrentActiveRunCount;
+
+    /**
+     * @return Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     * 
+     */
+    public Optional<Output<String>> maxConcurrentActiveRunCount() {
+        return Optional.ofNullable(this.maxConcurrentActiveRunCount);
     }
 
     /**
@@ -195,6 +307,21 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+     * 
+     */
+    @Import(name="nextRunTime")
+    private @Nullable Output<String> nextRunTime;
+
+    /**
+     * @return Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+     * 
+     */
+    public Optional<Output<String>> nextRunTime() {
+        return Optional.ofNullable(this.nextRunTime);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -227,6 +354,21 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The number of runs started by this schedule.
+     * 
+     */
+    @Import(name="startedRunCount")
+    private @Nullable Output<String> startedRunCount;
+
+    /**
+     * @return The number of runs started by this schedule.
+     * 
+     */
+    public Optional<Output<String>> startedRunCount() {
+        return Optional.ofNullable(this.startedRunCount);
+    }
+
+    /**
      * Output only. The state of the schedule.
      * 
      */
@@ -241,23 +383,48 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Timestamp when this Schedule was updated.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return Timestamp when this Schedule was updated.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     private ScheduleState() {}
 
     private ScheduleState(ScheduleState $) {
         this.allowQueueing = $.allowQueueing;
+        this.catchUp = $.catchUp;
         this.createNotebookExecutionJobRequest = $.createNotebookExecutionJobRequest;
+        this.createPipelineJobRequest = $.createPipelineJobRequest;
+        this.createTime = $.createTime;
         this.cron = $.cron;
         this.deletionPolicy = $.deletionPolicy;
         this.desiredState = $.desiredState;
         this.displayName = $.displayName;
         this.endTime = $.endTime;
+        this.lastPauseTime = $.lastPauseTime;
+        this.lastResumeTime = $.lastResumeTime;
+        this.lastScheduledRunResponses = $.lastScheduledRunResponses;
         this.location = $.location;
+        this.maxConcurrentActiveRunCount = $.maxConcurrentActiveRunCount;
         this.maxConcurrentRunCount = $.maxConcurrentRunCount;
         this.maxRunCount = $.maxRunCount;
         this.name = $.name;
+        this.nextRunTime = $.nextRunTime;
         this.project = $.project;
         this.startTime = $.startTime;
+        this.startedRunCount = $.startedRunCount;
         this.state = $.state;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -300,6 +467,27 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param catchUp Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catchUp(@Nullable Output<Boolean> catchUp) {
+            $.catchUp = catchUp;
+            return this;
+        }
+
+        /**
+         * @param catchUp Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder catchUp(Boolean catchUp) {
+            return catchUp(Output.of(catchUp));
+        }
+
+        /**
          * @param createNotebookExecutionJobRequest Request for google_colab_notebook_execution.
          * Structure is documented below.
          * 
@@ -320,6 +508,50 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createNotebookExecutionJobRequest(ScheduleCreateNotebookExecutionJobRequestArgs createNotebookExecutionJobRequest) {
             return createNotebookExecutionJobRequest(Output.of(createNotebookExecutionJobRequest));
+        }
+
+        /**
+         * @param createPipelineJobRequest Request message for PipelineService.CreatePipelineJob.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createPipelineJobRequest(@Nullable Output<ScheduleCreatePipelineJobRequestArgs> createPipelineJobRequest) {
+            $.createPipelineJobRequest = createPipelineJobRequest;
+            return this;
+        }
+
+        /**
+         * @param createPipelineJobRequest Request message for PipelineService.CreatePipelineJob.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createPipelineJobRequest(ScheduleCreatePipelineJobRequestArgs createPipelineJobRequest) {
+            return createPipelineJobRequest(Output.of(createPipelineJobRequest));
+        }
+
+        /**
+         * @param createTime Timestamp when this Schedule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Timestamp when this Schedule was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -438,6 +670,82 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param lastPauseTime Timestamp when this Schedule was last paused. Unset if never paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastPauseTime(@Nullable Output<String> lastPauseTime) {
+            $.lastPauseTime = lastPauseTime;
+            return this;
+        }
+
+        /**
+         * @param lastPauseTime Timestamp when this Schedule was last paused. Unset if never paused.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastPauseTime(String lastPauseTime) {
+            return lastPauseTime(Output.of(lastPauseTime));
+        }
+
+        /**
+         * @param lastResumeTime Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastResumeTime(@Nullable Output<String> lastResumeTime) {
+            $.lastResumeTime = lastResumeTime;
+            return this;
+        }
+
+        /**
+         * @param lastResumeTime Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastResumeTime(String lastResumeTime) {
+            return lastResumeTime(Output.of(lastResumeTime));
+        }
+
+        /**
+         * @param lastScheduledRunResponses Status of a scheduled run.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastScheduledRunResponses(@Nullable Output<List<ScheduleLastScheduledRunResponseArgs>> lastScheduledRunResponses) {
+            $.lastScheduledRunResponses = lastScheduledRunResponses;
+            return this;
+        }
+
+        /**
+         * @param lastScheduledRunResponses Status of a scheduled run.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastScheduledRunResponses(List<ScheduleLastScheduledRunResponseArgs> lastScheduledRunResponses) {
+            return lastScheduledRunResponses(Output.of(lastScheduledRunResponses));
+        }
+
+        /**
+         * @param lastScheduledRunResponses Status of a scheduled run.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastScheduledRunResponses(ScheduleLastScheduledRunResponseArgs... lastScheduledRunResponses) {
+            return lastScheduledRunResponses(List.of(lastScheduledRunResponses));
+        }
+
+        /**
          * @param location The location for the resource: https://cloud.google.com/colab/docs/locations
          * 
          * @return builder
@@ -456,6 +764,27 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maxConcurrentActiveRunCount Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConcurrentActiveRunCount(@Nullable Output<String> maxConcurrentActiveRunCount) {
+            $.maxConcurrentActiveRunCount = maxConcurrentActiveRunCount;
+            return this;
+        }
+
+        /**
+         * @param maxConcurrentActiveRunCount Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConcurrentActiveRunCount(String maxConcurrentActiveRunCount) {
+            return maxConcurrentActiveRunCount(Output.of(maxConcurrentActiveRunCount));
         }
 
         /**
@@ -522,6 +851,27 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nextRunTime Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextRunTime(@Nullable Output<String> nextRunTime) {
+            $.nextRunTime = nextRunTime;
+            return this;
+        }
+
+        /**
+         * @param nextRunTime Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextRunTime(String nextRunTime) {
+            return nextRunTime(Output.of(nextRunTime));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -566,6 +916,27 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param startedRunCount The number of runs started by this schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startedRunCount(@Nullable Output<String> startedRunCount) {
+            $.startedRunCount = startedRunCount;
+            return this;
+        }
+
+        /**
+         * @param startedRunCount The number of runs started by this schedule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startedRunCount(String startedRunCount) {
+            return startedRunCount(Output.of(startedRunCount));
+        }
+
+        /**
          * @param state Output only. The state of the schedule.
          * 
          * @return builder
@@ -584,6 +955,27 @@ public final class ScheduleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param updateTime Timestamp when this Schedule was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime Timestamp when this Schedule was updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public ScheduleState build() {

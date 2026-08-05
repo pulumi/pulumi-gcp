@@ -13,6 +13,599 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 *string `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength *string `pulumi:"externalIpv6PrefixLength"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name *string `pulumi:"name"`
+	// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+	NetworkTier string `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
+}
+
+// RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs and RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{...}
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput
+	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs struct {
+	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
+	// The prefix length of the external IPv6 range.
+	ExternalIpv6PrefixLength pulumi.StringPtrInput `pulumi:"externalIpv6PrefixLength"`
+	// The name of the instance template. If you leave
+	// this blank, Terraform will auto-generate a unique name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
+	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
+}
+
+func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+// RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray and RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput` via:
+//
+//	RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{ RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{...} }
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput
+	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput
+}
+
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray []RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput
+
+func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return i.ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return o
+}
+
+// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string { return v.ExternalIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// The prefix length of the external IPv6 range.
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string {
+		return v.ExternalIpv6PrefixLength
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the instance template. If you leave
+// this blank, Terraform will auto-generate a unique name.
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
+		return vs[0].([]RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)[vs[1].(int)]
+	}).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput)
+}
+
+type RegionInstanceTemplateNetworkPerformanceConfig struct {
+	// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// RegionInstanceTemplateNetworkPerformanceConfigInput is an input type that accepts RegionInstanceTemplateNetworkPerformanceConfigArgs and RegionInstanceTemplateNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkPerformanceConfigInput` via:
+//
+//	RegionInstanceTemplateNetworkPerformanceConfigArgs{...}
+type RegionInstanceTemplateNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkPerformanceConfigOutput() RegionInstanceTemplateNetworkPerformanceConfigOutput
+	ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Context) RegionInstanceTemplateNetworkPerformanceConfigOutput
+}
+
+type RegionInstanceTemplateNetworkPerformanceConfigArgs struct {
+	// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (RegionInstanceTemplateNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigOutput() RegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return i.ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return i.ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkPerformanceConfigOutput).ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// RegionInstanceTemplateNetworkPerformanceConfigPtrInput is an input type that accepts RegionInstanceTemplateNetworkPerformanceConfigArgs, RegionInstanceTemplateNetworkPerformanceConfigPtr and RegionInstanceTemplateNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateNetworkPerformanceConfigPtrInput` via:
+//
+//	        RegionInstanceTemplateNetworkPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionInstanceTemplateNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput
+	ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput
+}
+
+type regionInstanceTemplateNetworkPerformanceConfigPtrType RegionInstanceTemplateNetworkPerformanceConfigArgs
+
+func RegionInstanceTemplateNetworkPerformanceConfigPtr(v *RegionInstanceTemplateNetworkPerformanceConfigArgs) RegionInstanceTemplateNetworkPerformanceConfigPtrInput {
+	return (*regionInstanceTemplateNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*regionInstanceTemplateNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *regionInstanceTemplateNetworkPerformanceConfigPtrType) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return i.ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *regionInstanceTemplateNetworkPerformanceConfigPtrType) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+type RegionInstanceTemplateNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigOutput() RegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o.ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateNetworkPerformanceConfig) *RegionInstanceTemplateNetworkPerformanceConfig {
+		return &v
+	}).(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput)
+}
+
+// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type RegionInstanceTemplateNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) Elem() RegionInstanceTemplateNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateNetworkPerformanceConfig) RegionInstanceTemplateNetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RegionInstanceTemplateNetworkPerformanceConfig
+		return ret
+	}).(RegionInstanceTemplateNetworkPerformanceConfigOutput)
+}
+
+// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
+func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateReservationAffinity struct {
+	// Specifies the label selector for the reservation to use..
+	// Structure is documented below.
+	SpecificReservation *RegionInstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservation"`
+	// The type of reservation from which this instance can consume resources.
+	Type string `pulumi:"type"`
+}
+
+// RegionInstanceTemplateReservationAffinityInput is an input type that accepts RegionInstanceTemplateReservationAffinityArgs and RegionInstanceTemplateReservationAffinityOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinityInput` via:
+//
+//	RegionInstanceTemplateReservationAffinityArgs{...}
+type RegionInstanceTemplateReservationAffinityInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateReservationAffinityOutput() RegionInstanceTemplateReservationAffinityOutput
+	ToRegionInstanceTemplateReservationAffinityOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinityOutput
+}
+
+type RegionInstanceTemplateReservationAffinityArgs struct {
+	// Specifies the label selector for the reservation to use..
+	// Structure is documented below.
+	SpecificReservation RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput `pulumi:"specificReservation"`
+	// The type of reservation from which this instance can consume resources.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (RegionInstanceTemplateReservationAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityOutput() RegionInstanceTemplateReservationAffinityOutput {
+	return i.ToRegionInstanceTemplateReservationAffinityOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinityOutput)
+}
+
+func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
+	return i.ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinityOutput).ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx)
+}
+
+// RegionInstanceTemplateReservationAffinityPtrInput is an input type that accepts RegionInstanceTemplateReservationAffinityArgs, RegionInstanceTemplateReservationAffinityPtr and RegionInstanceTemplateReservationAffinityPtrOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinityPtrInput` via:
+//
+//	        RegionInstanceTemplateReservationAffinityArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionInstanceTemplateReservationAffinityPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput
+	ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinityPtrOutput
+}
+
+type regionInstanceTemplateReservationAffinityPtrType RegionInstanceTemplateReservationAffinityArgs
+
+func RegionInstanceTemplateReservationAffinityPtr(v *RegionInstanceTemplateReservationAffinityArgs) RegionInstanceTemplateReservationAffinityPtrInput {
+	return (*regionInstanceTemplateReservationAffinityPtrType)(v)
+}
+
+func (*regionInstanceTemplateReservationAffinityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (i *regionInstanceTemplateReservationAffinityPtrType) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
+	return i.ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (i *regionInstanceTemplateReservationAffinityPtrType) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinityPtrOutput)
+}
+
+type RegionInstanceTemplateReservationAffinityOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateReservationAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityOutput() RegionInstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
+	return o.ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateReservationAffinity) *RegionInstanceTemplateReservationAffinity {
+		return &v
+	}).(RegionInstanceTemplateReservationAffinityPtrOutput)
+}
+
+// Specifies the label selector for the reservation to use..
+// Structure is documented below.
+func (o RegionInstanceTemplateReservationAffinityOutput) SpecificReservation() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinity) *RegionInstanceTemplateReservationAffinitySpecificReservation {
+		return v.SpecificReservation
+	}).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The type of reservation from which this instance can consume resources.
+func (o RegionInstanceTemplateReservationAffinityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RegionInstanceTemplateReservationAffinityPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateReservationAffinityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinity)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateReservationAffinityPtrOutput) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinityPtrOutput) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinityPtrOutput) Elem() RegionInstanceTemplateReservationAffinityOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinity) RegionInstanceTemplateReservationAffinity {
+		if v != nil {
+			return *v
+		}
+		var ret RegionInstanceTemplateReservationAffinity
+		return ret
+	}).(RegionInstanceTemplateReservationAffinityOutput)
+}
+
+// Specifies the label selector for the reservation to use..
+// Structure is documented below.
+func (o RegionInstanceTemplateReservationAffinityPtrOutput) SpecificReservation() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinity) *RegionInstanceTemplateReservationAffinitySpecificReservation {
+		if v == nil {
+			return nil
+		}
+		return v.SpecificReservation
+	}).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+// The type of reservation from which this instance can consume resources.
+func (o RegionInstanceTemplateReservationAffinityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionInstanceTemplateReservationAffinitySpecificReservation struct {
+	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+	Key string `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
+	Values []string `pulumi:"values"`
+}
+
+// RegionInstanceTemplateReservationAffinitySpecificReservationInput is an input type that accepts RegionInstanceTemplateReservationAffinitySpecificReservationArgs and RegionInstanceTemplateReservationAffinitySpecificReservationOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinitySpecificReservationInput` via:
+//
+//	RegionInstanceTemplateReservationAffinitySpecificReservationArgs{...}
+type RegionInstanceTemplateReservationAffinitySpecificReservationInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateReservationAffinitySpecificReservationOutput() RegionInstanceTemplateReservationAffinitySpecificReservationOutput
+	ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationOutput
+}
+
+type RegionInstanceTemplateReservationAffinitySpecificReservationArgs struct {
+	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Corresponds to the label values of a reservation resource.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutput() RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return i.ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return i.ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinitySpecificReservationOutput).ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx)
+}
+
+// RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput is an input type that accepts RegionInstanceTemplateReservationAffinitySpecificReservationArgs, RegionInstanceTemplateReservationAffinitySpecificReservationPtr and RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput values.
+// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput` via:
+//
+//	        RegionInstanceTemplateReservationAffinitySpecificReservationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput
+	ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput
+}
+
+type regionInstanceTemplateReservationAffinitySpecificReservationPtrType RegionInstanceTemplateReservationAffinitySpecificReservationArgs
+
+func RegionInstanceTemplateReservationAffinitySpecificReservationPtr(v *RegionInstanceTemplateReservationAffinitySpecificReservationArgs) RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput {
+	return (*regionInstanceTemplateReservationAffinitySpecificReservationPtrType)(v)
+}
+
+func (*regionInstanceTemplateReservationAffinitySpecificReservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (i *regionInstanceTemplateReservationAffinitySpecificReservationPtrType) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return i.ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *regionInstanceTemplateReservationAffinitySpecificReservationPtrType) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+type RegionInstanceTemplateReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutput() RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateReservationAffinitySpecificReservation) *RegionInstanceTemplateReservationAffinitySpecificReservation {
+		return &v
+	}).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Corresponds to the label values of a reservation resource.
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
+	return o
+}
+
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) Elem() RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinitySpecificReservation) RegionInstanceTemplateReservationAffinitySpecificReservation {
+		if v != nil {
+			return *v
+		}
+		var ret RegionInstanceTemplateReservationAffinitySpecificReservation
+		return ret
+	}).(RegionInstanceTemplateReservationAffinitySpecificReservationOutput)
+}
+
+// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinitySpecificReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Corresponds to the label values of a reservation resource.
+func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinitySpecificReservation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
 type RegionInstanceTemplateScheduling struct {
 	// Specifies whether the instance should be
 	// automatically restarted if it is terminated by Compute Engine (not
@@ -84418,6 +85011,10 @@ type GetBackendServiceLogConfig struct {
 	// Specifies the optional logging mode for the load balancer traffic.
 	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
 	OptionalMode string `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	RequestHeaders []GetBackendServiceLogConfigRequestHeader `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	ResponseHeaders []GetBackendServiceLogConfigResponseHeader `pulumi:"responseHeaders"`
 	// This field can only be specified if logging is enabled for this backend service. The value of
 	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -84447,6 +85044,10 @@ type GetBackendServiceLogConfigArgs struct {
 	// Specifies the optional logging mode for the load balancer traffic.
 	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM. Possible values: ["INCLUDE_ALL_OPTIONAL", "EXCLUDE_ALL_OPTIONAL", "CUSTOM"]
 	OptionalMode pulumi.StringInput `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	RequestHeaders GetBackendServiceLogConfigRequestHeaderArrayInput `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	ResponseHeaders GetBackendServiceLogConfigResponseHeaderArrayInput `pulumi:"responseHeaders"`
 	// This field can only be specified if logging is enabled for this backend service. The value of
 	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -84524,6 +85125,18 @@ func (o GetBackendServiceLogConfigOutput) OptionalMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLogConfig) string { return v.OptionalMode }).(pulumi.StringOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+func (o GetBackendServiceLogConfigOutput) RequestHeaders() GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) []GetBackendServiceLogConfigRequestHeader { return v.RequestHeaders }).(GetBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+func (o GetBackendServiceLogConfigOutput) ResponseHeaders() GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfig) []GetBackendServiceLogConfigResponseHeader {
+		return v.ResponseHeaders
+	}).(GetBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of
 // the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 // where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -84550,6 +85163,200 @@ func (o GetBackendServiceLogConfigArrayOutput) Index(i pulumi.IntInput) GetBacke
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfig {
 		return vs[0].([]GetBackendServiceLogConfig)[vs[1].(int)]
 	}).(GetBackendServiceLogConfigOutput)
+}
+
+type GetBackendServiceLogConfigRequestHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// GetBackendServiceLogConfigRequestHeaderInput is an input type that accepts GetBackendServiceLogConfigRequestHeaderArgs and GetBackendServiceLogConfigRequestHeaderOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigRequestHeaderInput` via:
+//
+//	GetBackendServiceLogConfigRequestHeaderArgs{...}
+type GetBackendServiceLogConfigRequestHeaderInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput
+	ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(context.Context) GetBackendServiceLogConfigRequestHeaderOutput
+}
+
+type GetBackendServiceLogConfigRequestHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (GetBackendServiceLogConfigRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArgs) ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput {
+	return i.ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArgs) ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigRequestHeaderOutput)
+}
+
+// GetBackendServiceLogConfigRequestHeaderArrayInput is an input type that accepts GetBackendServiceLogConfigRequestHeaderArray and GetBackendServiceLogConfigRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigRequestHeaderArrayInput` via:
+//
+//	GetBackendServiceLogConfigRequestHeaderArray{ GetBackendServiceLogConfigRequestHeaderArgs{...} }
+type GetBackendServiceLogConfigRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput
+	ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput
+}
+
+type GetBackendServiceLogConfigRequestHeaderArray []GetBackendServiceLogConfigRequestHeaderInput
+
+func (GetBackendServiceLogConfigRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArray) ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return i.ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigRequestHeaderArray) ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+type GetBackendServiceLogConfigRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderOutput) ToGetBackendServiceLogConfigRequestHeaderOutput() GetBackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderOutput) ToGetBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o GetBackendServiceLogConfigRequestHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfigRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceLogConfigRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) ToGetBackendServiceLogConfigRequestHeaderArrayOutput() GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) ToGetBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigRequestHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfigRequestHeader {
+		return vs[0].([]GetBackendServiceLogConfigRequestHeader)[vs[1].(int)]
+	}).(GetBackendServiceLogConfigRequestHeaderOutput)
+}
+
+type GetBackendServiceLogConfigResponseHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// GetBackendServiceLogConfigResponseHeaderInput is an input type that accepts GetBackendServiceLogConfigResponseHeaderArgs and GetBackendServiceLogConfigResponseHeaderOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigResponseHeaderInput` via:
+//
+//	GetBackendServiceLogConfigResponseHeaderArgs{...}
+type GetBackendServiceLogConfigResponseHeaderInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput
+	ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(context.Context) GetBackendServiceLogConfigResponseHeaderOutput
+}
+
+type GetBackendServiceLogConfigResponseHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (GetBackendServiceLogConfigResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArgs) ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput {
+	return i.ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArgs) ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigResponseHeaderOutput)
+}
+
+// GetBackendServiceLogConfigResponseHeaderArrayInput is an input type that accepts GetBackendServiceLogConfigResponseHeaderArray and GetBackendServiceLogConfigResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceLogConfigResponseHeaderArrayInput` via:
+//
+//	GetBackendServiceLogConfigResponseHeaderArray{ GetBackendServiceLogConfigResponseHeaderArgs{...} }
+type GetBackendServiceLogConfigResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput
+	ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput
+}
+
+type GetBackendServiceLogConfigResponseHeaderArray []GetBackendServiceLogConfigResponseHeaderInput
+
+func (GetBackendServiceLogConfigResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArray) ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return i.ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceLogConfigResponseHeaderArray) ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
+type GetBackendServiceLogConfigResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderOutput) ToGetBackendServiceLogConfigResponseHeaderOutput() GetBackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderOutput) ToGetBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o GetBackendServiceLogConfigResponseHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceLogConfigResponseHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceLogConfigResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceLogConfigResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) ToGetBackendServiceLogConfigResponseHeaderArrayOutput() GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) ToGetBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) GetBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceLogConfigResponseHeaderArrayOutput) Index(i pulumi.IntInput) GetBackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceLogConfigResponseHeader {
+		return vs[0].([]GetBackendServiceLogConfigResponseHeader)[vs[1].(int)]
+	}).(GetBackendServiceLogConfigResponseHeaderOutput)
 }
 
 type GetBackendServiceMaxStreamDuration struct {
@@ -86335,766 +87142,15 @@ func (o GetDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetDiskAsyn
 	}).(GetDiskAsyncPrimaryDiskOutput)
 }
 
-type GetDiskDiskEncryptionKey struct {
-	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-	// in the cloud console. Your project's Compute Engine System service account
-	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
-	// The service account used for the encryption request for the given KMS key.
-	// If absent, the Compute Engine Service Agent service account is used.
-	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
-	RawKey string `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
-	// customer-supplied encryption key to either encrypt or decrypt
-	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
-	RsaEncryptedKey string `pulumi:"rsaEncryptedKey"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-	// encryption key that protects this resource.
-	Sha256 string `pulumi:"sha256"`
-}
-
-// GetDiskDiskEncryptionKeyInput is an input type that accepts GetDiskDiskEncryptionKeyArgs and GetDiskDiskEncryptionKeyOutput values.
-// You can construct a concrete instance of `GetDiskDiskEncryptionKeyInput` via:
-//
-//	GetDiskDiskEncryptionKeyArgs{...}
-type GetDiskDiskEncryptionKeyInput interface {
-	pulumi.Input
-
-	ToGetDiskDiskEncryptionKeyOutput() GetDiskDiskEncryptionKeyOutput
-	ToGetDiskDiskEncryptionKeyOutputWithContext(context.Context) GetDiskDiskEncryptionKeyOutput
-}
-
-type GetDiskDiskEncryptionKeyArgs struct {
-	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-	// in the cloud console. Your project's Compute Engine System service account
-	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
-	// The service account used for the encryption request for the given KMS key.
-	// If absent, the Compute Engine Service Agent service account is used.
-	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
-	RawKey pulumi.StringInput `pulumi:"rawKey"`
-	// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
-	// customer-supplied encryption key to either encrypt or decrypt
-	// this resource. You can provide either the rawKey or the rsaEncryptedKey.
-	RsaEncryptedKey pulumi.StringInput `pulumi:"rsaEncryptedKey"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-	// encryption key that protects this resource.
-	Sha256 pulumi.StringInput `pulumi:"sha256"`
-}
-
-func (GetDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskDiskEncryptionKey)(nil)).Elem()
-}
-
-func (i GetDiskDiskEncryptionKeyArgs) ToGetDiskDiskEncryptionKeyOutput() GetDiskDiskEncryptionKeyOutput {
-	return i.ToGetDiskDiskEncryptionKeyOutputWithContext(context.Background())
-}
-
-func (i GetDiskDiskEncryptionKeyArgs) ToGetDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskDiskEncryptionKeyOutput)
-}
-
-// GetDiskDiskEncryptionKeyArrayInput is an input type that accepts GetDiskDiskEncryptionKeyArray and GetDiskDiskEncryptionKeyArrayOutput values.
-// You can construct a concrete instance of `GetDiskDiskEncryptionKeyArrayInput` via:
-//
-//	GetDiskDiskEncryptionKeyArray{ GetDiskDiskEncryptionKeyArgs{...} }
-type GetDiskDiskEncryptionKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetDiskDiskEncryptionKeyArrayOutput() GetDiskDiskEncryptionKeyArrayOutput
-	ToGetDiskDiskEncryptionKeyArrayOutputWithContext(context.Context) GetDiskDiskEncryptionKeyArrayOutput
-}
-
-type GetDiskDiskEncryptionKeyArray []GetDiskDiskEncryptionKeyInput
-
-func (GetDiskDiskEncryptionKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskDiskEncryptionKey)(nil)).Elem()
-}
-
-func (i GetDiskDiskEncryptionKeyArray) ToGetDiskDiskEncryptionKeyArrayOutput() GetDiskDiskEncryptionKeyArrayOutput {
-	return i.ToGetDiskDiskEncryptionKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetDiskDiskEncryptionKeyArray) ToGetDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskDiskEncryptionKeyArrayOutput)
-}
-
-type GetDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
-
-func (GetDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskDiskEncryptionKey)(nil)).Elem()
-}
-
-func (o GetDiskDiskEncryptionKeyOutput) ToGetDiskDiskEncryptionKeyOutput() GetDiskDiskEncryptionKeyOutput {
-	return o
-}
-
-func (o GetDiskDiskEncryptionKeyOutput) ToGetDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyOutput {
-	return o
-}
-
-// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-// in the cloud console. Your project's Compute Engine System service account
-// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-func (o GetDiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
-}
-
-// The service account used for the encryption request for the given KMS key.
-// If absent, the Compute Engine Service Agent service account is used.
-func (o GetDiskDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
-}
-
-// Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
-func (o GetDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
-}
-
-// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
-// customer-supplied encryption key to either encrypt or decrypt
-// this resource. You can provide either the rawKey or the rsaEncryptedKey.
-func (o GetDiskDiskEncryptionKeyOutput) RsaEncryptedKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.RsaEncryptedKey }).(pulumi.StringOutput)
-}
-
-// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-// encryption key that protects this resource.
-func (o GetDiskDiskEncryptionKeyOutput) Sha256() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskDiskEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
-}
-
-type GetDiskDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDiskDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskDiskEncryptionKey)(nil)).Elem()
-}
-
-func (o GetDiskDiskEncryptionKeyArrayOutput) ToGetDiskDiskEncryptionKeyArrayOutput() GetDiskDiskEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetDiskDiskEncryptionKeyArrayOutput) ToGetDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskDiskEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskDiskEncryptionKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskDiskEncryptionKey {
-		return vs[0].([]GetDiskDiskEncryptionKey)[vs[1].(int)]
-	}).(GetDiskDiskEncryptionKeyOutput)
-}
-
-type GetDiskGuestOsFeature struct {
-	// URL of the disk type resource describing which disk type to use to
-	// create the disk.
-	Type string `pulumi:"type"`
-}
-
-// GetDiskGuestOsFeatureInput is an input type that accepts GetDiskGuestOsFeatureArgs and GetDiskGuestOsFeatureOutput values.
-// You can construct a concrete instance of `GetDiskGuestOsFeatureInput` via:
-//
-//	GetDiskGuestOsFeatureArgs{...}
-type GetDiskGuestOsFeatureInput interface {
-	pulumi.Input
-
-	ToGetDiskGuestOsFeatureOutput() GetDiskGuestOsFeatureOutput
-	ToGetDiskGuestOsFeatureOutputWithContext(context.Context) GetDiskGuestOsFeatureOutput
-}
-
-type GetDiskGuestOsFeatureArgs struct {
-	// URL of the disk type resource describing which disk type to use to
-	// create the disk.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetDiskGuestOsFeatureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskGuestOsFeature)(nil)).Elem()
-}
-
-func (i GetDiskGuestOsFeatureArgs) ToGetDiskGuestOsFeatureOutput() GetDiskGuestOsFeatureOutput {
-	return i.ToGetDiskGuestOsFeatureOutputWithContext(context.Background())
-}
-
-func (i GetDiskGuestOsFeatureArgs) ToGetDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskGuestOsFeatureOutput)
-}
-
-// GetDiskGuestOsFeatureArrayInput is an input type that accepts GetDiskGuestOsFeatureArray and GetDiskGuestOsFeatureArrayOutput values.
-// You can construct a concrete instance of `GetDiskGuestOsFeatureArrayInput` via:
-//
-//	GetDiskGuestOsFeatureArray{ GetDiskGuestOsFeatureArgs{...} }
-type GetDiskGuestOsFeatureArrayInput interface {
-	pulumi.Input
-
-	ToGetDiskGuestOsFeatureArrayOutput() GetDiskGuestOsFeatureArrayOutput
-	ToGetDiskGuestOsFeatureArrayOutputWithContext(context.Context) GetDiskGuestOsFeatureArrayOutput
-}
-
-type GetDiskGuestOsFeatureArray []GetDiskGuestOsFeatureInput
-
-func (GetDiskGuestOsFeatureArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskGuestOsFeature)(nil)).Elem()
-}
-
-func (i GetDiskGuestOsFeatureArray) ToGetDiskGuestOsFeatureArrayOutput() GetDiskGuestOsFeatureArrayOutput {
-	return i.ToGetDiskGuestOsFeatureArrayOutputWithContext(context.Background())
-}
-
-func (i GetDiskGuestOsFeatureArray) ToGetDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskGuestOsFeatureArrayOutput)
-}
-
-type GetDiskGuestOsFeatureOutput struct{ *pulumi.OutputState }
-
-func (GetDiskGuestOsFeatureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskGuestOsFeature)(nil)).Elem()
-}
-
-func (o GetDiskGuestOsFeatureOutput) ToGetDiskGuestOsFeatureOutput() GetDiskGuestOsFeatureOutput {
-	return o
-}
-
-func (o GetDiskGuestOsFeatureOutput) ToGetDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureOutput {
-	return o
-}
-
-// URL of the disk type resource describing which disk type to use to
-// create the disk.
-func (o GetDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetDiskGuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDiskGuestOsFeatureArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskGuestOsFeature)(nil)).Elem()
-}
-
-func (o GetDiskGuestOsFeatureArrayOutput) ToGetDiskGuestOsFeatureArrayOutput() GetDiskGuestOsFeatureArrayOutput {
-	return o
-}
-
-func (o GetDiskGuestOsFeatureArrayOutput) ToGetDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureArrayOutput {
-	return o
-}
-
-func (o GetDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetDiskGuestOsFeatureOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskGuestOsFeature {
-		return vs[0].([]GetDiskGuestOsFeature)[vs[1].(int)]
-	}).(GetDiskGuestOsFeatureOutput)
-}
-
-type GetDiskParam struct {
-	// Resource manager tags to be bound to the disk. Tag keys and values have the
-	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
-	// and values are in the format tagValues/456.
-	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
-}
-
-// GetDiskParamInput is an input type that accepts GetDiskParamArgs and GetDiskParamOutput values.
-// You can construct a concrete instance of `GetDiskParamInput` via:
-//
-//	GetDiskParamArgs{...}
-type GetDiskParamInput interface {
-	pulumi.Input
-
-	ToGetDiskParamOutput() GetDiskParamOutput
-	ToGetDiskParamOutputWithContext(context.Context) GetDiskParamOutput
-}
-
-type GetDiskParamArgs struct {
-	// Resource manager tags to be bound to the disk. Tag keys and values have the
-	// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
-	// and values are in the format tagValues/456.
-	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
-}
-
-func (GetDiskParamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskParam)(nil)).Elem()
-}
-
-func (i GetDiskParamArgs) ToGetDiskParamOutput() GetDiskParamOutput {
-	return i.ToGetDiskParamOutputWithContext(context.Background())
-}
-
-func (i GetDiskParamArgs) ToGetDiskParamOutputWithContext(ctx context.Context) GetDiskParamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskParamOutput)
-}
-
-// GetDiskParamArrayInput is an input type that accepts GetDiskParamArray and GetDiskParamArrayOutput values.
-// You can construct a concrete instance of `GetDiskParamArrayInput` via:
-//
-//	GetDiskParamArray{ GetDiskParamArgs{...} }
-type GetDiskParamArrayInput interface {
-	pulumi.Input
-
-	ToGetDiskParamArrayOutput() GetDiskParamArrayOutput
-	ToGetDiskParamArrayOutputWithContext(context.Context) GetDiskParamArrayOutput
-}
-
-type GetDiskParamArray []GetDiskParamInput
-
-func (GetDiskParamArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskParam)(nil)).Elem()
-}
-
-func (i GetDiskParamArray) ToGetDiskParamArrayOutput() GetDiskParamArrayOutput {
-	return i.ToGetDiskParamArrayOutputWithContext(context.Background())
-}
-
-func (i GetDiskParamArray) ToGetDiskParamArrayOutputWithContext(ctx context.Context) GetDiskParamArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskParamArrayOutput)
-}
-
-type GetDiskParamOutput struct{ *pulumi.OutputState }
-
-func (GetDiskParamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskParam)(nil)).Elem()
-}
-
-func (o GetDiskParamOutput) ToGetDiskParamOutput() GetDiskParamOutput {
-	return o
-}
-
-func (o GetDiskParamOutput) ToGetDiskParamOutputWithContext(ctx context.Context) GetDiskParamOutput {
-	return o
-}
-
-// Resource manager tags to be bound to the disk. Tag keys and values have the
-// same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id},
-// and values are in the format tagValues/456.
-func (o GetDiskParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetDiskParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
-}
-
-type GetDiskParamArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDiskParamArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskParam)(nil)).Elem()
-}
-
-func (o GetDiskParamArrayOutput) ToGetDiskParamArrayOutput() GetDiskParamArrayOutput {
-	return o
-}
-
-func (o GetDiskParamArrayOutput) ToGetDiskParamArrayOutputWithContext(ctx context.Context) GetDiskParamArrayOutput {
-	return o
-}
-
-func (o GetDiskParamArrayOutput) Index(i pulumi.IntInput) GetDiskParamOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskParam {
-		return vs[0].([]GetDiskParam)[vs[1].(int)]
-	}).(GetDiskParamOutput)
-}
-
-type GetDiskSourceImageEncryptionKey struct {
-	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-	// in the cloud console. Your project's Compute Engine System service account
-	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
-	// The service account used for the encryption request for the given KMS key.
-	// If absent, the Compute Engine Service Agent service account is used.
-	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
-	RawKey string `pulumi:"rawKey"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-	// encryption key that protects this resource.
-	Sha256 string `pulumi:"sha256"`
-}
-
-// GetDiskSourceImageEncryptionKeyInput is an input type that accepts GetDiskSourceImageEncryptionKeyArgs and GetDiskSourceImageEncryptionKeyOutput values.
-// You can construct a concrete instance of `GetDiskSourceImageEncryptionKeyInput` via:
-//
-//	GetDiskSourceImageEncryptionKeyArgs{...}
-type GetDiskSourceImageEncryptionKeyInput interface {
-	pulumi.Input
-
-	ToGetDiskSourceImageEncryptionKeyOutput() GetDiskSourceImageEncryptionKeyOutput
-	ToGetDiskSourceImageEncryptionKeyOutputWithContext(context.Context) GetDiskSourceImageEncryptionKeyOutput
-}
-
-type GetDiskSourceImageEncryptionKeyArgs struct {
-	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-	// in the cloud console. Your project's Compute Engine System service account
-	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
-	// The service account used for the encryption request for the given KMS key.
-	// If absent, the Compute Engine Service Agent service account is used.
-	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
-	RawKey pulumi.StringInput `pulumi:"rawKey"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-	// encryption key that protects this resource.
-	Sha256 pulumi.StringInput `pulumi:"sha256"`
-}
-
-func (GetDiskSourceImageEncryptionKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskSourceImageEncryptionKey)(nil)).Elem()
-}
-
-func (i GetDiskSourceImageEncryptionKeyArgs) ToGetDiskSourceImageEncryptionKeyOutput() GetDiskSourceImageEncryptionKeyOutput {
-	return i.ToGetDiskSourceImageEncryptionKeyOutputWithContext(context.Background())
-}
-
-func (i GetDiskSourceImageEncryptionKeyArgs) ToGetDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceImageEncryptionKeyOutput)
-}
-
-// GetDiskSourceImageEncryptionKeyArrayInput is an input type that accepts GetDiskSourceImageEncryptionKeyArray and GetDiskSourceImageEncryptionKeyArrayOutput values.
-// You can construct a concrete instance of `GetDiskSourceImageEncryptionKeyArrayInput` via:
-//
-//	GetDiskSourceImageEncryptionKeyArray{ GetDiskSourceImageEncryptionKeyArgs{...} }
-type GetDiskSourceImageEncryptionKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetDiskSourceImageEncryptionKeyArrayOutput() GetDiskSourceImageEncryptionKeyArrayOutput
-	ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Context) GetDiskSourceImageEncryptionKeyArrayOutput
-}
-
-type GetDiskSourceImageEncryptionKeyArray []GetDiskSourceImageEncryptionKeyInput
-
-func (GetDiskSourceImageEncryptionKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskSourceImageEncryptionKey)(nil)).Elem()
-}
-
-func (i GetDiskSourceImageEncryptionKeyArray) ToGetDiskSourceImageEncryptionKeyArrayOutput() GetDiskSourceImageEncryptionKeyArrayOutput {
-	return i.ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetDiskSourceImageEncryptionKeyArray) ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceImageEncryptionKeyArrayOutput)
-}
-
-type GetDiskSourceImageEncryptionKeyOutput struct{ *pulumi.OutputState }
-
-func (GetDiskSourceImageEncryptionKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskSourceImageEncryptionKey)(nil)).Elem()
-}
-
-func (o GetDiskSourceImageEncryptionKeyOutput) ToGetDiskSourceImageEncryptionKeyOutput() GetDiskSourceImageEncryptionKeyOutput {
-	return o
-}
-
-func (o GetDiskSourceImageEncryptionKeyOutput) ToGetDiskSourceImageEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyOutput {
-	return o
-}
-
-// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-// in the cloud console. Your project's Compute Engine System service account
-// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-func (o GetDiskSourceImageEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
-}
-
-// The service account used for the encryption request for the given KMS key.
-// If absent, the Compute Engine Service Agent service account is used.
-func (o GetDiskSourceImageEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
-}
-
-// Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
-func (o GetDiskSourceImageEncryptionKeyOutput) RawKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
-}
-
-// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-// encryption key that protects this resource.
-func (o GetDiskSourceImageEncryptionKeyOutput) Sha256() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceImageEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
-}
-
-type GetDiskSourceImageEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDiskSourceImageEncryptionKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskSourceImageEncryptionKey)(nil)).Elem()
-}
-
-func (o GetDiskSourceImageEncryptionKeyArrayOutput) ToGetDiskSourceImageEncryptionKeyArrayOutput() GetDiskSourceImageEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetDiskSourceImageEncryptionKeyArrayOutput) ToGetDiskSourceImageEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceImageEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetDiskSourceImageEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskSourceImageEncryptionKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskSourceImageEncryptionKey {
-		return vs[0].([]GetDiskSourceImageEncryptionKey)[vs[1].(int)]
-	}).(GetDiskSourceImageEncryptionKeyOutput)
-}
-
-type GetDiskSourceSnapshotEncryptionKey struct {
-	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-	// in the cloud console. Your project's Compute Engine System service account
-	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
-	// The service account used for the encryption request for the given KMS key.
-	// If absent, the Compute Engine Service Agent service account is used.
-	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
-	RawKey string `pulumi:"rawKey"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-	// encryption key that protects this resource.
-	Sha256 string `pulumi:"sha256"`
-}
-
-// GetDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetDiskSourceSnapshotEncryptionKeyArgs and GetDiskSourceSnapshotEncryptionKeyOutput values.
-// You can construct a concrete instance of `GetDiskSourceSnapshotEncryptionKeyInput` via:
-//
-//	GetDiskSourceSnapshotEncryptionKeyArgs{...}
-type GetDiskSourceSnapshotEncryptionKeyInput interface {
-	pulumi.Input
-
-	ToGetDiskSourceSnapshotEncryptionKeyOutput() GetDiskSourceSnapshotEncryptionKeyOutput
-	ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetDiskSourceSnapshotEncryptionKeyOutput
-}
-
-type GetDiskSourceSnapshotEncryptionKeyArgs struct {
-	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-	// in the cloud console. Your project's Compute Engine System service account
-	// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-	// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-	// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
-	// The service account used for the encryption request for the given KMS key.
-	// If absent, the Compute Engine Service Agent service account is used.
-	KmsKeyServiceAccount pulumi.StringInput `pulumi:"kmsKeyServiceAccount"`
-	// Specifies a 256-bit customer-supplied encryption key, encoded in
-	// RFC 4648 base64 to either encrypt or decrypt this resource.
-	RawKey pulumi.StringInput `pulumi:"rawKey"`
-	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-	// encryption key that protects this resource.
-	Sha256 pulumi.StringInput `pulumi:"sha256"`
-}
-
-func (GetDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (i GetDiskSourceSnapshotEncryptionKeyArgs) ToGetDiskSourceSnapshotEncryptionKeyOutput() GetDiskSourceSnapshotEncryptionKeyOutput {
-	return i.ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
-}
-
-func (i GetDiskSourceSnapshotEncryptionKeyArgs) ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceSnapshotEncryptionKeyOutput)
-}
-
-// GetDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetDiskSourceSnapshotEncryptionKeyArray and GetDiskSourceSnapshotEncryptionKeyArrayOutput values.
-// You can construct a concrete instance of `GetDiskSourceSnapshotEncryptionKeyArrayInput` via:
-//
-//	GetDiskSourceSnapshotEncryptionKeyArray{ GetDiskSourceSnapshotEncryptionKeyArgs{...} }
-type GetDiskSourceSnapshotEncryptionKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetDiskSourceSnapshotEncryptionKeyArrayOutput() GetDiskSourceSnapshotEncryptionKeyArrayOutput
-	ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetDiskSourceSnapshotEncryptionKeyArrayOutput
-}
-
-type GetDiskSourceSnapshotEncryptionKeyArray []GetDiskSourceSnapshotEncryptionKeyInput
-
-func (GetDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (i GetDiskSourceSnapshotEncryptionKeyArray) ToGetDiskSourceSnapshotEncryptionKeyArrayOutput() GetDiskSourceSnapshotEncryptionKeyArrayOutput {
-	return i.ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetDiskSourceSnapshotEncryptionKeyArray) ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskSourceSnapshotEncryptionKeyArrayOutput)
-}
-
-type GetDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
-
-func (GetDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (o GetDiskSourceSnapshotEncryptionKeyOutput) ToGetDiskSourceSnapshotEncryptionKeyOutput() GetDiskSourceSnapshotEncryptionKeyOutput {
-	return o
-}
-
-func (o GetDiskSourceSnapshotEncryptionKeyOutput) ToGetDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyOutput {
-	return o
-}
-
-// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
-// in the cloud console. Your project's Compute Engine System service account
-// ('service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com') must have
-// 'roles/cloudkms.cryptoKeyEncrypterDecrypter' to use this feature.
-// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-func (o GetDiskSourceSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
-}
-
-// The service account used for the encryption request for the given KMS key.
-// If absent, the Compute Engine Service Agent service account is used.
-func (o GetDiskSourceSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
-}
-
-// Specifies a 256-bit customer-supplied encryption key, encoded in
-// RFC 4648 base64 to either encrypt or decrypt this resource.
-func (o GetDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
-}
-
-// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-// encryption key that protects this resource.
-func (o GetDiskSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
-}
-
-type GetDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskSourceSnapshotEncryptionKey)(nil)).Elem()
-}
-
-func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetDiskSourceSnapshotEncryptionKeyArrayOutput() GetDiskSourceSnapshotEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetDiskSourceSnapshotEncryptionKeyArrayOutput {
-	return o
-}
-
-func (o GetDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskSourceSnapshotEncryptionKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskSourceSnapshotEncryptionKey {
-		return vs[0].([]GetDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
-	}).(GetDiskSourceSnapshotEncryptionKeyOutput)
-}
-
-type GetForwardingRuleServiceDirectoryRegistration struct {
-	// Service Directory namespace to register the forwarding rule under.
-	Namespace string `pulumi:"namespace"`
-	// Service Directory service to register the forwarding rule under.
-	Service string `pulumi:"service"`
-}
-
-// GetForwardingRuleServiceDirectoryRegistrationInput is an input type that accepts GetForwardingRuleServiceDirectoryRegistrationArgs and GetForwardingRuleServiceDirectoryRegistrationOutput values.
-// You can construct a concrete instance of `GetForwardingRuleServiceDirectoryRegistrationInput` via:
-//
-//	GetForwardingRuleServiceDirectoryRegistrationArgs{...}
-type GetForwardingRuleServiceDirectoryRegistrationInput interface {
-	pulumi.Input
-
-	ToGetForwardingRuleServiceDirectoryRegistrationOutput() GetForwardingRuleServiceDirectoryRegistrationOutput
-	ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Context) GetForwardingRuleServiceDirectoryRegistrationOutput
-}
-
-type GetForwardingRuleServiceDirectoryRegistrationArgs struct {
-	// Service Directory namespace to register the forwarding rule under.
-	Namespace pulumi.StringInput `pulumi:"namespace"`
-	// Service Directory service to register the forwarding rule under.
-	Service pulumi.StringInput `pulumi:"service"`
-}
-
-func (GetForwardingRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
-}
-
-func (i GetForwardingRuleServiceDirectoryRegistrationArgs) ToGetForwardingRuleServiceDirectoryRegistrationOutput() GetForwardingRuleServiceDirectoryRegistrationOutput {
-	return i.ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
-}
-
-func (i GetForwardingRuleServiceDirectoryRegistrationArgs) ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRuleServiceDirectoryRegistrationOutput)
-}
-
-// GetForwardingRuleServiceDirectoryRegistrationArrayInput is an input type that accepts GetForwardingRuleServiceDirectoryRegistrationArray and GetForwardingRuleServiceDirectoryRegistrationArrayOutput values.
-// You can construct a concrete instance of `GetForwardingRuleServiceDirectoryRegistrationArrayInput` via:
-//
-//	GetForwardingRuleServiceDirectoryRegistrationArray{ GetForwardingRuleServiceDirectoryRegistrationArgs{...} }
-type GetForwardingRuleServiceDirectoryRegistrationArrayInput interface {
-	pulumi.Input
-
-	ToGetForwardingRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRuleServiceDirectoryRegistrationArrayOutput
-	ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) GetForwardingRuleServiceDirectoryRegistrationArrayOutput
-}
-
-type GetForwardingRuleServiceDirectoryRegistrationArray []GetForwardingRuleServiceDirectoryRegistrationInput
-
-func (GetForwardingRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
-}
-
-func (i GetForwardingRuleServiceDirectoryRegistrationArray) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
-	return i.ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
-}
-
-func (i GetForwardingRuleServiceDirectoryRegistrationArray) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetForwardingRuleServiceDirectoryRegistrationArrayOutput)
-}
-
-type GetForwardingRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
-
-func (GetForwardingRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
-}
-
-func (o GetForwardingRuleServiceDirectoryRegistrationOutput) ToGetForwardingRuleServiceDirectoryRegistrationOutput() GetForwardingRuleServiceDirectoryRegistrationOutput {
-	return o
-}
-
-func (o GetForwardingRuleServiceDirectoryRegistrationOutput) ToGetForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationOutput {
-	return o
-}
-
-// Service Directory namespace to register the forwarding rule under.
-func (o GetForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
-	return o.ApplyT(func(v GetForwardingRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-// Service Directory service to register the forwarding rule under.
-func (o GetForwardingRuleServiceDirectoryRegistrationOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GetForwardingRuleServiceDirectoryRegistration) string { return v.Service }).(pulumi.StringOutput)
-}
-
-type GetForwardingRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetForwardingRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
-}
-
-func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutput() GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
-	return o
-}
-
-func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetForwardingRuleServiceDirectoryRegistrationArrayOutput {
-	return o
-}
-
-func (o GetForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) GetForwardingRuleServiceDirectoryRegistrationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetForwardingRuleServiceDirectoryRegistration {
-		return vs[0].([]GetForwardingRuleServiceDirectoryRegistration)[vs[1].(int)]
-	}).(GetForwardingRuleServiceDirectoryRegistrationOutput)
-}
-
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfigPtrInput)(nil)).Elem(), RegionInstanceTemplateNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinityInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinityPtrInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservationInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinitySpecificReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinitySpecificReservationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateSchedulingInput)(nil)).Elem(), RegionInstanceTemplateSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateSchedulingPtrInput)(nil)).Elem(), RegionInstanceTemplateSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateSchedulingGracefulShutdownInput)(nil)).Elem(), RegionInstanceTemplateSchedulingGracefulShutdownArgs{})
@@ -88052,6 +88108,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLocalityLbPolicyPolicyArrayInput)(nil)).Elem(), GetBackendServiceLocalityLbPolicyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigInput)(nil)).Elem(), GetBackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigArrayInput)(nil)).Elem(), GetBackendServiceLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigRequestHeaderInput)(nil)).Elem(), GetBackendServiceLogConfigRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigRequestHeaderArrayInput)(nil)).Elem(), GetBackendServiceLogConfigRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigResponseHeaderInput)(nil)).Elem(), GetBackendServiceLogConfigResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceLogConfigResponseHeaderArrayInput)(nil)).Elem(), GetBackendServiceLogConfigResponseHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceMaxStreamDurationInput)(nil)).Elem(), GetBackendServiceMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceMaxStreamDurationArrayInput)(nil)).Elem(), GetBackendServiceMaxStreamDurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceNetworkPassThroughLbTrafficPolicyInput)(nil)).Elem(), GetBackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
@@ -88080,18 +88140,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltNameArrayInput)(nil)).Elem(), GetBackendServiceTlsSettingSubjectAltNameArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureInput)(nil)).Elem(), GetDiskGuestOsFeatureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureArrayInput)(nil)).Elem(), GetDiskGuestOsFeatureArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskParamInput)(nil)).Elem(), GetDiskParamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskParamArrayInput)(nil)).Elem(), GetDiskParamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetForwardingRuleServiceDirectoryRegistrationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetForwardingRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetForwardingRuleServiceDirectoryRegistrationArray{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinityOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinityPtrOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinitySpecificReservationOutput{})
+	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateSchedulingOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateSchedulingGracefulShutdownOutput{})
@@ -89049,6 +89105,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceLocalityLbPolicyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigRequestHeaderOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigResponseHeaderOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceLogConfigResponseHeaderArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceMaxStreamDurationOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceMaxStreamDurationArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceNetworkPassThroughLbTrafficPolicyOutput{})
@@ -89077,16 +89137,4 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceTlsSettingSubjectAltNameArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskOutput{})
 	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskArrayOutput{})
-	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyOutput{})
-	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetDiskGuestOsFeatureOutput{})
-	pulumi.RegisterOutputType(GetDiskGuestOsFeatureArrayOutput{})
-	pulumi.RegisterOutputType(GetDiskParamOutput{})
-	pulumi.RegisterOutputType(GetDiskParamArrayOutput{})
-	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyOutput{})
-	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyOutput{})
-	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetForwardingRuleServiceDirectoryRegistrationOutput{})
-	pulumi.RegisterOutputType(GetForwardingRuleServiceDirectoryRegistrationArrayOutput{})
 }

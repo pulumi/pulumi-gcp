@@ -46,7 +46,7 @@ import (
 //			}
 //			targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 //				Name:    pulumi.String("vpn-1"),
-//				Network: network1.ID(),
+//				Network: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +61,7 @@ import (
 //				Name:       pulumi.String("fr-esp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -71,7 +71,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +81,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -90,7 +90,7 @@ import (
 //				Name:             pulumi.String("tunnel1"),
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
+//				TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				frEsp,
 //				frUdp500,
@@ -104,7 +104,7 @@ import (
 //				Network:          network1.Name,
 //				DestRange:        pulumi.String("15.0.0.0/24"),
 //				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel1.ID(),
+//				NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -142,7 +142,7 @@ import (
 //				return err
 //			}
 //			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-//				Parent:    tagKey1.ID(),
+//				Parent:    tagKey1.ID().ToIDOutput().ToStringOutput(),
 //				ShortName: pulumi.String("tagvalue"),
 //			})
 //			if err != nil {
@@ -156,15 +156,17 @@ import (
 //			}
 //			targetGatewayTags, err := compute.NewVPNGateway(ctx, "target_gateway_tags", &compute.VPNGatewayArgs{
 //				Name:    pulumi.String("vpn-1"),
-//				Network: network1.ID(),
+//				Network: network1.ID().ToIDOutput().ToStringOutput(),
 //				Params: &compute.VPNGatewayParamsArgs{
-//					ResourceManagerTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-//						tagKey1Id := _args[0].(string)
-//						tagValue1Id := _args[1].(string)
-//						return map[string]string{
-//							tagKey1Id: tagValue1Id,
-//						}, nil
-//					}).(pulumi.StringMapOutput),
+//					ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
+//						tagKey1Id := _args[0].(pulumi.ID)
+//						tagValue1Id := _args[1].(pulumi.ID)
+//						return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+//							return map[string]pulumi.ID{
+//								__convert: tagValue1Id,
+//							}, nil
+//						}).(pulumi.IDMapOutput)), nil
+//					}).(pulumi.IDMapOutput)),
 //				},
 //			})
 //			if err != nil {
@@ -180,7 +182,7 @@ import (
 //				Name:       pulumi.String("fr-esp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGatewayTags.ID(),
+//				Target:     targetGatewayTags.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -190,7 +192,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGatewayTags.ID(),
+//				Target:     targetGatewayTags.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -200,7 +202,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGatewayTags.ID(),
+//				Target:     targetGatewayTags.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -209,7 +211,7 @@ import (
 //				Name:             pulumi.String("tunnel1"),
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGatewayTags.ID(),
+//				TargetVpnGateway: targetGatewayTags.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				frEsp,
 //				frUdp500,
@@ -223,7 +225,7 @@ import (
 //				Network:          network1.Name,
 //				DestRange:        pulumi.String("15.0.0.0/24"),
 //				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel1.ID(),
+//				NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

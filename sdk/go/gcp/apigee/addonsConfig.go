@@ -112,14 +112,14 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Project:      pulumi.String(current.Project),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -131,7 +131,7 @@ import (
 //			org, err := apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				BillingType:       pulumi.String("EVALUATION"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,

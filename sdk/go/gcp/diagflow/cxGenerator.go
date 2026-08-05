@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxGenerator(ctx, "generator", &diagflow.CxGeneratorArgs{
-//				Parent:       agent.ID(),
+//				Parent:       agent.ID().ToIDOutput().ToStringOutput(),
 //				LanguageCode: pulumi.String("fr"),
 //				DisplayName:  pulumi.String("TF Prompt generator"),
 //				LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{

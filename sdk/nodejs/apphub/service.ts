@@ -102,7 +102,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     applicationId: application.applicationId,
  *     serviceId: forwardingRule.name,
- *     discoveredService: catalog_service.apply(catalog_service => catalog_service.name),
+ *     discoveredService: catalog_service.name,
  * });
  * ```
  * ### Apphub Service Full
@@ -196,7 +196,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     applicationId: application.applicationId,
  *     serviceId: forwardingRule.name,
- *     discoveredService: catalog_service.apply(catalog_service => catalog_service.name),
+ *     discoveredService: catalog_service.name,
  *     displayName: "Example Service Full",
  *     description: "Register service for testing",
  *     attributes: {

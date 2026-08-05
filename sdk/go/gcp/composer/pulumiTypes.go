@@ -1661,6 +1661,8 @@ type EnvironmentConfigNodeConfig struct {
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags []string `pulumi:"tags"`
+	// Traffic routing configuration for Cloud Composer environment.
+	TrafficRoutingConfig *EnvironmentConfigNodeConfigTrafficRoutingConfig `pulumi:"trafficRoutingConfig"`
 	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Zone *string `pulumi:"zone"`
 }
@@ -1701,6 +1703,8 @@ type EnvironmentConfigNodeConfigArgs struct {
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Traffic routing configuration for Cloud Composer environment.
+	TrafficRoutingConfig EnvironmentConfigNodeConfigTrafficRoutingConfigPtrInput `pulumi:"trafficRoutingConfig"`
 	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -1842,6 +1846,13 @@ func (o EnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 // The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 func (o EnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Traffic routing configuration for Cloud Composer environment.
+func (o EnvironmentConfigNodeConfigOutput) TrafficRoutingConfig() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigTrafficRoutingConfig {
+		return v.TrafficRoutingConfig
+	}).(EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput)
 }
 
 // The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1991,6 +2002,16 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringArrayOutput)
+}
+
+// Traffic routing configuration for Cloud Composer environment.
+func (o EnvironmentConfigNodeConfigPtrOutput) TrafficRoutingConfig() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *EnvironmentConfigNodeConfigTrafficRoutingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TrafficRoutingConfig
+	}).(EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput)
 }
 
 // The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -2214,6 +2235,143 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() p
 		}
 		return v.UseIpAliases
 	}).(pulumi.BoolPtrOutput)
+}
+
+type EnvironmentConfigNodeConfigTrafficRoutingConfig struct {
+	// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+	CloudRunFunctionsRouting *string `pulumi:"cloudRunFunctionsRouting"`
+}
+
+// EnvironmentConfigNodeConfigTrafficRoutingConfigInput is an input type that accepts EnvironmentConfigNodeConfigTrafficRoutingConfigArgs and EnvironmentConfigNodeConfigTrafficRoutingConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigNodeConfigTrafficRoutingConfigInput` via:
+//
+//	EnvironmentConfigNodeConfigTrafficRoutingConfigArgs{...}
+type EnvironmentConfigNodeConfigTrafficRoutingConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigOutput
+	ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigOutput
+}
+
+type EnvironmentConfigNodeConfigTrafficRoutingConfigArgs struct {
+	// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+	CloudRunFunctionsRouting pulumi.StringPtrInput `pulumi:"cloudRunFunctionsRouting"`
+}
+
+func (EnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return i.ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigTrafficRoutingConfigOutput)
+}
+
+func (i EnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return i.ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigTrafficRoutingConfigOutput).ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigNodeConfigTrafficRoutingConfigPtrInput is an input type that accepts EnvironmentConfigNodeConfigTrafficRoutingConfigArgs, EnvironmentConfigNodeConfigTrafficRoutingConfigPtr and EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigNodeConfigTrafficRoutingConfigPtrInput` via:
+//
+//	        EnvironmentConfigNodeConfigTrafficRoutingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigNodeConfigTrafficRoutingConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput
+	ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput
+}
+
+type environmentConfigNodeConfigTrafficRoutingConfigPtrType EnvironmentConfigNodeConfigTrafficRoutingConfigArgs
+
+func EnvironmentConfigNodeConfigTrafficRoutingConfigPtr(v *EnvironmentConfigNodeConfigTrafficRoutingConfigArgs) EnvironmentConfigNodeConfigTrafficRoutingConfigPtrInput {
+	return (*environmentConfigNodeConfigTrafficRoutingConfigPtrType)(v)
+}
+
+func (*environmentConfigNodeConfigTrafficRoutingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigNodeConfigTrafficRoutingConfigPtrType) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return i.ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigNodeConfigTrafficRoutingConfigPtrType) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput)
+}
+
+type EnvironmentConfigNodeConfigTrafficRoutingConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ToEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return o.ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigNodeConfigTrafficRoutingConfig) *EnvironmentConfigNodeConfigTrafficRoutingConfig {
+		return &v
+	}).(EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput)
+}
+
+// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigOutput) CloudRunFunctionsRouting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigNodeConfigTrafficRoutingConfig) *string { return v.CloudRunFunctionsRouting }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput() EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput) ToEnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput) Elem() EnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigTrafficRoutingConfig) EnvironmentConfigNodeConfigTrafficRoutingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigNodeConfigTrafficRoutingConfig
+		return ret
+	}).(EnvironmentConfigNodeConfigTrafficRoutingConfigOutput)
+}
+
+// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+func (o EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput) CloudRunFunctionsRouting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfigTrafficRoutingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRunFunctionsRouting
+	}).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigPrivateEnvironmentConfig struct {
@@ -6072,6 +6230,8 @@ type GetEnvironmentConfigNodeConfig struct {
 	Subnetwork string `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags []string `pulumi:"tags"`
+	// Traffic routing configuration for Cloud Composer environment.
+	TrafficRoutingConfigs []GetEnvironmentConfigNodeConfigTrafficRoutingConfig `pulumi:"trafficRoutingConfigs"`
 	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Zone string `pulumi:"zone"`
 }
@@ -6112,6 +6272,8 @@ type GetEnvironmentConfigNodeConfigArgs struct {
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 	// The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Traffic routing configuration for Cloud Composer environment.
+	TrafficRoutingConfigs GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayInput `pulumi:"trafficRoutingConfigs"`
 	// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -6227,6 +6389,13 @@ func (o GetEnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringOutput {
 // The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with RFC1035. Cannot be updated.
 func (o GetEnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Traffic routing configuration for Cloud Composer environment.
+func (o GetEnvironmentConfigNodeConfigOutput) TrafficRoutingConfigs() GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []GetEnvironmentConfigNodeConfigTrafficRoutingConfig {
+		return v.TrafficRoutingConfigs
+	}).(GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput)
 }
 
 // The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -6385,6 +6554,103 @@ func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigNodeConfigIpAllocationPolicy {
 		return vs[0].([]GetEnvironmentConfigNodeConfigIpAllocationPolicy)[vs[1].(int)]
 	}).(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput)
+}
+
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfig struct {
+	// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+	CloudRunFunctionsRouting string `pulumi:"cloudRunFunctionsRouting"`
+}
+
+// GetEnvironmentConfigNodeConfigTrafficRoutingConfigInput is an input type that accepts GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs and GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigNodeConfigTrafficRoutingConfigInput` via:
+//
+//	GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs{...}
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput() GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput
+	ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(context.Context) GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput
+}
+
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs struct {
+	// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+	CloudRunFunctionsRouting pulumi.StringInput `pulumi:"cloudRunFunctionsRouting"`
+}
+
+func (GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput() GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return i.ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput)
+}
+
+// GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayInput is an input type that accepts GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray and GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayInput` via:
+//
+//	GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray{ GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs{...} }
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput() GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput
+	ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput
+}
+
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray []GetEnvironmentConfigNodeConfigTrafficRoutingConfigInput
+
+func (GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput() GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput {
+	return i.ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput)
+}
+
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput() GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return o
+}
+
+// Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+func (o GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput) CloudRunFunctionsRouting() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigTrafficRoutingConfig) string { return v.CloudRunFunctionsRouting }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigNodeConfigTrafficRoutingConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput() GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput) ToGetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigNodeConfigTrafficRoutingConfig {
+		return vs[0].([]GetEnvironmentConfigNodeConfigTrafficRoutingConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput)
 }
 
 type GetEnvironmentConfigPrivateEnvironmentConfig struct {
@@ -8317,6 +8583,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigPtrInput)(nil)).Elem(), EnvironmentConfigNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigIpAllocationPolicyInput)(nil)).Elem(), EnvironmentConfigNodeConfigIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput)(nil)).Elem(), EnvironmentConfigNodeConfigIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigTrafficRoutingConfigInput)(nil)).Elem(), EnvironmentConfigNodeConfigTrafficRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigNodeConfigTrafficRoutingConfigPtrInput)(nil)).Elem(), EnvironmentConfigNodeConfigTrafficRoutingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPrivateEnvironmentConfigInput)(nil)).Elem(), EnvironmentConfigPrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigPrivateEnvironmentConfigPtrInput)(nil)).Elem(), EnvironmentConfigPrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigRecoveryConfigInput)(nil)).Elem(), EnvironmentConfigRecoveryConfigArgs{})
@@ -8369,6 +8637,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigIpAllocationPolicyInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigTrafficRoutingConfigInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigTrafficRoutingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigNodeConfigTrafficRoutingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigPrivateEnvironmentConfigInput)(nil)).Elem(), GetEnvironmentConfigPrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigPrivateEnvironmentConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigPrivateEnvironmentConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigRecoveryConfigInput)(nil)).Elem(), GetEnvironmentConfigRecoveryConfigArgs{})
@@ -8423,6 +8693,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigTrafficRoutingConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigTrafficRoutingConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigPrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigRecoveryConfigOutput{})
@@ -8475,6 +8747,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigTrafficRoutingConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigTrafficRoutingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigPrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigPrivateEnvironmentConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigRecoveryConfigOutput{})

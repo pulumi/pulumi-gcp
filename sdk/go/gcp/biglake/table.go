@@ -72,7 +72,7 @@ import (
 //			}
 //			database, err := biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
 //				Name:    pulumi.String("my_database"),
-//				Catalog: catalog.ID(),
+//				Catalog: catalog.ID().ToIDOutput().ToStringOutput(),
 //				Type:    pulumi.String("HIVE"),
 //				HiveOptions: &biglake.DatabaseHiveOptionsArgs{
 //					LocationUri: pulumi.All(bucket.Name, metadataFolder.Name).ApplyT(func(_args []interface{}) (string, error) {
@@ -90,7 +90,7 @@ import (
 //			}
 //			_, err = biglake.NewTable(ctx, "table", &biglake.TableArgs{
 //				Name:     pulumi.String("my_table"),
-//				Database: database.ID(),
+//				Database: database.ID().ToIDOutput().ToStringOutput(),
 //				Type:     pulumi.String("HIVE"),
 //				HiveOptions: &biglake.TableHiveOptionsArgs{
 //					TableType: pulumi.String("MANAGED_TABLE"),

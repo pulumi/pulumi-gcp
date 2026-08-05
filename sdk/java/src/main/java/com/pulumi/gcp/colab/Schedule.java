@@ -11,8 +11,11 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.colab.ScheduleArgs;
 import com.pulumi.gcp.colab.inputs.ScheduleState;
 import com.pulumi.gcp.colab.outputs.ScheduleCreateNotebookExecutionJobRequest;
+import com.pulumi.gcp.colab.outputs.ScheduleCreatePipelineJobRequest;
+import com.pulumi.gcp.colab.outputs.ScheduleLastScheduledRunResponse;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -426,6 +429,273 @@ import javax.annotation.Nullable;
  * }}{@code
  * }
  * </pre>
+ * ### Colab Schedule Notebook Full
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.colab.Schedule;
+ * import com.pulumi.gcp.colab.ScheduleArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("my_bucket")
+ *             .location("us-central1")
+ *             .uniformBucketLevelAccess(true)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var notebook = new BucketObject("notebook", BucketObjectArgs.builder()
+ *             .name("hello_world.ipynb")
+ *             .bucket(bucket.name())
+ *             .content("""
+ *     }{{@code
+ *       \"cells\": [
+ *         }{{@code
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
+ *           ]
+ *         }}{@code
+ *       ],
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
+ *         }}{@code ,
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
+ *           }}{@code ,
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
+ *         }}{@code
+ *       }}{@code ,
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
+ *     }}{@code
+ *             """)
+ *             .build());
+ * 
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
+ *             .name("colab-test-default")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var mySubnetwork = new Subnetwork("mySubnetwork", SubnetworkArgs.builder()
+ *             .name("colab-test-default")
+ *             .network(myNetwork.id())
+ *             .region("us-central1")
+ *             .ipCidrRange("10.0.1.0/24")
+ *             .build());
+ * 
+ *         var schedule = new Schedule("schedule", ScheduleArgs.builder()
+ *             .displayName("full-notebook-schedule")
+ *             .location("us-central1")
+ *             .maxConcurrentRunCount("2")
+ *             .cron("*}&#47;{@code 5 * * * *")
+ *             .startTime("2030-01-01T00:00:00Z")
+ *             .createNotebookExecutionJobRequest(ScheduleCreateNotebookExecutionJobRequestArgs.builder()
+ *                 .parent(String.format("projects/%s/locations/us-central1", project.projectId()))
+ *                 .notebookExecutionJob(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs.builder()
+ *                     .displayName("test-notebook-execution-job")
+ *                     .gcsOutputUri(bucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *                     .serviceAccount("my}{@literal @}{@code service-account.com")
+ *                     .kernelName("python3")
+ *                     .gcsNotebookSource(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs.builder()
+ *                         .uri(Output.tuple(notebook.bucket(), notebook.name()).applyValue(values -> }{{@code
+ *                             var bucket = values.t1;
+ *                             var name = values.t2;
+ *                             return String.format("gs://%s/%s", bucket,name);
+ *                         }}{@code ))
+ *                         .generation(notebook.generation())
+ *                         .build())
+ *                     .customEnvironmentSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs.builder()
+ *                         .machineSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs.builder()
+ *                             .machineType("n1-standard-4")
+ *                             .acceleratorType("NVIDIA_TESLA_T4")
+ *                             .acceleratorCount(1)
+ *                             .gpuPartitionSize("1g.10gb")
+ *                             .tpuTopology("2x2")
+ *                             .build())
+ *                         .persistentDiskSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+ *                             .diskSizeGb("100")
+ *                             .diskType("pd-standard")
+ *                             .build())
+ *                         .networkSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs.builder()
+ *                             .enableInternetAccess(true)
+ *                             .network(myNetwork.id())
+ *                             .subnetwork(mySubnetwork.id())
+ *                             .build())
+ *                         .build())
+ *                     .encryptionSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs.builder()
+ *                         .kmsKeyName("my-key")
+ *                         .build())
+ *                     .labels(Map.of("test", "value"))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Colab Schedule Pipeline
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.colab.Schedule;
+ * import com.pulumi.gcp.colab.ScheduleArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestPipelineJobArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs;
+ * import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("pipeline-job")
+ *             .location("us-central1")
+ *             .uniformBucketLevelAccess(true)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var myNetwork = new Network("myNetwork", NetworkArgs.builder()
+ *             .name("colab-test-default")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var schedule = new Schedule("schedule", ScheduleArgs.builder()
+ *             .displayName("test-schedule")
+ *             .location("us-central1")
+ *             .maxConcurrentRunCount("2")
+ *             .cron("*}&#47;{@code 5 * * * *")
+ *             .allowQueueing(true)
+ *             .maxConcurrentActiveRunCount("2")
+ *             .maxRunCount("10")
+ *             .startTime("2030-01-01T00:00:00Z")
+ *             .endTime("2030-01-02T00:00:00Z")
+ *             .createPipelineJobRequest(ScheduleCreatePipelineJobRequestArgs.builder()
+ *                 .parent(String.format("projects/%s/locations/us-central1", project.projectId()))
+ *                 .pipelineJob(ScheduleCreatePipelineJobRequestPipelineJobArgs.builder()
+ *                     .displayName("test-pipeline-job")
+ *                     .preflightValidations(true)
+ *                     .network(myNetwork.id())
+ *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.number()))
+ *                     .templateUri("https://us-kfp.pkg.dev/proj/repo/template/v1")
+ *                     .reservedIpRanges("vertex-ai-ip-range")
+ *                     .labels(Map.of("key", "value-one"))
+ *                     .encryptionSpec(ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs.builder()
+ *                         .kmsKeyName("my-key")
+ *                         .build())
+ *                     .pscInterfaceConfig(ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs.builder()
+ *                         .networkAttachment(String.format("projects/%s/regions/us-central1/networkAttachments/my-attachment", project.projectId()))
+ *                         .dnsPeeringConfigs(ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs.builder()
+ *                             .domain("my-internal-domain.corp.")
+ *                             .targetNetwork(myNetwork.id())
+ *                             .targetProject(project.projectId())
+ *                             .build())
+ *                         .build())
+ *                     .pipelineSpec(serializeJson(
+ *                         jsonObject(
+ *                             jsonProperty("pipelineInfo", jsonObject(
+ *                                 jsonProperty("name", "hello-world")
+ *                             )),
+ *                             jsonProperty("root", jsonObject(
+ *                                 jsonProperty("dag", jsonObject(
+ *                                     jsonProperty("tasks", jsonObject(
+ * 
+ *                                     ))
+ *                                 ))
+ *                             )),
+ *                             jsonProperty("schemaVersion", "2.1.0"),
+ *                             jsonProperty("sdkVersion", "kfp-2.0.0")
+ *                         )))
+ *                     .runtimeConfig(ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs.builder()
+ *                         .gcsOutputDirectory(bucket.name().applyValue(_name -> String.format("gs://%s/pipeline_root", _name)))
+ *                         .failurePolicy("PIPELINE_FAILURE_POLICY_FAIL_FAST")
+ *                         .parameterValues(Map.of("param1", "val1"))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -461,20 +731,64 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowQueueing);
     }
     /**
+     * Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+     * 
+     */
+    @Export(name="catchUp", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> catchUp;
+
+    /**
+     * @return Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+     * 
+     */
+    public Output<Boolean> catchUp() {
+        return this.catchUp;
+    }
+    /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      * 
      */
     @Export(name="createNotebookExecutionJobRequest", refs={ScheduleCreateNotebookExecutionJobRequest.class}, tree="[0]")
-    private Output<ScheduleCreateNotebookExecutionJobRequest> createNotebookExecutionJobRequest;
+    private Output</* @Nullable */ ScheduleCreateNotebookExecutionJobRequest> createNotebookExecutionJobRequest;
 
     /**
      * @return Request for google_colab_notebook_execution.
      * Structure is documented below.
      * 
      */
-    public Output<ScheduleCreateNotebookExecutionJobRequest> createNotebookExecutionJobRequest() {
-        return this.createNotebookExecutionJobRequest;
+    public Output<Optional<ScheduleCreateNotebookExecutionJobRequest>> createNotebookExecutionJobRequest() {
+        return Codegen.optional(this.createNotebookExecutionJobRequest);
+    }
+    /**
+     * Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="createPipelineJobRequest", refs={ScheduleCreatePipelineJobRequest.class}, tree="[0]")
+    private Output</* @Nullable */ ScheduleCreatePipelineJobRequest> createPipelineJobRequest;
+
+    /**
+     * @return Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ScheduleCreatePipelineJobRequest>> createPipelineJobRequest() {
+        return Codegen.optional(this.createPipelineJobRequest);
+    }
+    /**
+     * Timestamp when this Schedule was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Timestamp when this Schedule was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -557,6 +871,50 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.endTime);
     }
     /**
+     * Timestamp when this Schedule was last paused. Unset if never paused.
+     * 
+     */
+    @Export(name="lastPauseTime", refs={String.class}, tree="[0]")
+    private Output<String> lastPauseTime;
+
+    /**
+     * @return Timestamp when this Schedule was last paused. Unset if never paused.
+     * 
+     */
+    public Output<String> lastPauseTime() {
+        return this.lastPauseTime;
+    }
+    /**
+     * Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+     * 
+     */
+    @Export(name="lastResumeTime", refs={String.class}, tree="[0]")
+    private Output<String> lastResumeTime;
+
+    /**
+     * @return Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+     * 
+     */
+    public Output<String> lastResumeTime() {
+        return this.lastResumeTime;
+    }
+    /**
+     * Status of a scheduled run.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="lastScheduledRunResponses", refs={List.class,ScheduleLastScheduledRunResponse.class}, tree="[0,1]")
+    private Output<List<ScheduleLastScheduledRunResponse>> lastScheduledRunResponses;
+
+    /**
+     * @return Status of a scheduled run.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ScheduleLastScheduledRunResponse>> lastScheduledRunResponses() {
+        return this.lastScheduledRunResponses;
+    }
+    /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      * 
      */
@@ -569,6 +927,20 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     * 
+     */
+    @Export(name="maxConcurrentActiveRunCount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> maxConcurrentActiveRunCount;
+
+    /**
+     * @return Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     * 
+     */
+    public Output<Optional<String>> maxConcurrentActiveRunCount() {
+        return Codegen.optional(this.maxConcurrentActiveRunCount);
     }
     /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
@@ -613,6 +985,20 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+     * 
+     */
+    @Export(name="nextRunTime", refs={String.class}, tree="[0]")
+    private Output<String> nextRunTime;
+
+    /**
+     * @return Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+     * 
+     */
+    public Output<String> nextRunTime() {
+        return this.nextRunTime;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -643,6 +1029,20 @@ public class Schedule extends com.pulumi.resources.CustomResource {
         return this.startTime;
     }
     /**
+     * The number of runs started by this schedule.
+     * 
+     */
+    @Export(name="startedRunCount", refs={String.class}, tree="[0]")
+    private Output<String> startedRunCount;
+
+    /**
+     * @return The number of runs started by this schedule.
+     * 
+     */
+    public Output<String> startedRunCount() {
+        return this.startedRunCount;
+    }
+    /**
      * Output only. The state of the schedule.
      * 
      */
@@ -655,6 +1055,20 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * Timestamp when this Schedule was updated.
+     * 
+     */
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
+    private Output<String> updateTime;
+
+    /**
+     * @return Timestamp when this Schedule was updated.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
 
     /**

@@ -42,6 +42,7 @@ class ClusterArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_config: pulumi.Input[Optional['ClusterDnsConfigArgs']] = None,
                  enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -100,6 +101,7 @@ class ClusterArgs:
                  remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
+                 rollback_safe_upgrade: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']] = None,
                  secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
@@ -171,6 +173,7 @@ class ClusterArgs:
                `pulumi up` will only succeed if this field is `false` in the Terraform
                state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
+        :param pulumi.Input[_builtins.str] desired_emulated_version: The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -341,6 +344,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterRollbackSafeUpgradeArgs'] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -404,6 +408,8 @@ class ClusterArgs:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if desired_emulated_version is not None:
+            pulumi.set(__self__, "desired_emulated_version", desired_emulated_version)
         if disable_l4_lb_firewall_reconciliation is not None:
             pulumi.set(__self__, "disable_l4_lb_firewall_reconciliation", disable_l4_lb_firewall_reconciliation)
         if dns_config is not None:
@@ -523,6 +529,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if rollback_safe_upgrade is not None:
+            pulumi.set(__self__, "rollback_safe_upgrade", rollback_safe_upgrade)
         if secret_manager_config is not None:
             pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if secret_sync_config is not None:
@@ -833,6 +841,18 @@ class ClusterArgs:
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="desiredEmulatedVersion")
+    def desired_emulated_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+        """
+        return pulumi.get(self, "desired_emulated_version")
+
+    @desired_emulated_version.setter
+    def desired_emulated_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desired_emulated_version", value)
 
     @_builtins.property
     @pulumi.getter(name="disableL4LbFirewallReconciliation")
@@ -1644,6 +1664,18 @@ class ClusterArgs:
         pulumi.set(self, "resource_usage_export_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="rollbackSafeUpgrade")
+    def rollback_safe_upgrade(self) -> pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']]:
+        """
+        Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        """
+        return pulumi.get(self, "rollback_safe_upgrade")
+
+    @rollback_safe_upgrade.setter
+    def rollback_safe_upgrade(self, value: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']]):
+        pulumi.set(self, "rollback_safe_upgrade", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
     def secret_manager_config(self) -> pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]:
         """
@@ -1809,9 +1841,11 @@ class _ClusterState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_config: pulumi.Input[Optional['ClusterDnsConfigArgs']] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1873,6 +1907,7 @@ class _ClusterState:
                  remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional['ClusterResourceUsageExportConfigArgs']] = None,
+                 rollback_safe_upgrade: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']] = None,
                  secret_manager_config: pulumi.Input[Optional['ClusterSecretManagerConfigArgs']] = None,
                  secret_sync_config: pulumi.Input[Optional['ClusterSecretSyncConfigArgs']] = None,
                  security_posture_config: pulumi.Input[Optional['ClusterSecurityPostureConfigArgs']] = None,
@@ -1947,9 +1982,11 @@ class _ClusterState:
                `pulumi up` will only succeed if this field is `false` in the Terraform
                state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
+        :param pulumi.Input[_builtins.str] desired_emulated_version: The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input['ClusterDnsConfigArgs'] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] emulated_version: The current emulated Kubernetes version running on the GKE cluster control plane.
         :param pulumi.Input[_builtins.bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -2124,6 +2161,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterRollbackSafeUpgradeArgs'] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -2195,12 +2233,16 @@ class _ClusterState:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if desired_emulated_version is not None:
+            pulumi.set(__self__, "desired_emulated_version", desired_emulated_version)
         if disable_l4_lb_firewall_reconciliation is not None:
             pulumi.set(__self__, "disable_l4_lb_firewall_reconciliation", disable_l4_lb_firewall_reconciliation)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if emulated_version is not None:
+            pulumi.set(__self__, "emulated_version", emulated_version)
         if enable_autopilot is not None:
             pulumi.set(__self__, "enable_autopilot", enable_autopilot)
         if enable_cilium_clusterwide_network_policy is not None:
@@ -2326,6 +2368,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if rollback_safe_upgrade is not None:
+            pulumi.set(__self__, "rollback_safe_upgrade", rollback_safe_upgrade)
         if secret_manager_config is not None:
             pulumi.set(__self__, "secret_manager_config", secret_manager_config)
         if secret_sync_config is not None:
@@ -2644,6 +2688,18 @@ class _ClusterState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="desiredEmulatedVersion")
+    def desired_emulated_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+        """
+        return pulumi.get(self, "desired_emulated_version")
+
+    @desired_emulated_version.setter
+    def desired_emulated_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "desired_emulated_version", value)
+
+    @_builtins.property
     @pulumi.getter(name="disableL4LbFirewallReconciliation")
     def disable_l4_lb_firewall_reconciliation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -2678,6 +2734,18 @@ class _ClusterState:
     @effective_labels.setter
     def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="emulatedVersion")
+    def emulated_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current emulated Kubernetes version running on the GKE cluster control plane.
+        """
+        return pulumi.get(self, "emulated_version")
+
+    @emulated_version.setter
+    def emulated_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "emulated_version", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutopilot")
@@ -3524,6 +3592,18 @@ class _ClusterState:
         pulumi.set(self, "resource_usage_export_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="rollbackSafeUpgrade")
+    def rollback_safe_upgrade(self) -> pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']]:
+        """
+        Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        """
+        return pulumi.get(self, "rollback_safe_upgrade")
+
+    @rollback_safe_upgrade.setter
+    def rollback_safe_upgrade(self, value: pulumi.Input[Optional['ClusterRollbackSafeUpgradeArgs']]):
+        pulumi.set(self, "rollback_safe_upgrade", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretManagerConfig")
     def secret_manager_config(self) -> pulumi.Input[Optional['ClusterSecretManagerConfigArgs']]:
         """
@@ -3733,6 +3813,7 @@ class Cluster(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
                  enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3791,6 +3872,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
+                 rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']]] = None,
                  secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
@@ -3876,6 +3958,43 @@ class Cluster(pulumi.CustomResource):
                 ],
             })
         ```
+
+        ### Rollback-Safe (Two-Step) Upgrades
+
+        To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `rollback_safe_upgrade` block when changing the `min_master_version`. This upgrades the master but keeps the control plane emulating the older version.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            min_master_version="1.32.4-gke.200",
+            rollback_safe_upgrade={
+                "control_plane_soak_duration": "604800s",
+            })
+        ```
+
+        After the soak period concludes, you can declaratively complete the upgrade by specifying the target `desired_emulated_version`.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            min_master_version="1.32.4-gke.200",
+            rollback_safe_upgrade={
+                "control_plane_soak_duration": "604800s",
+            },
+            desired_emulated_version="1.32")
+        ```
+
+        > **Note:** If you omit the `control_plane_soak_duration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
 
         ### Autopilot
 
@@ -3978,6 +4097,7 @@ class Cluster(pulumi.CustomResource):
                `pulumi up` will only succeed if this field is `false` in the Terraform
                state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
+        :param pulumi.Input[_builtins.str] desired_emulated_version: The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[_builtins.bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
@@ -4148,6 +4268,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -4249,6 +4370,43 @@ class Cluster(pulumi.CustomResource):
             })
         ```
 
+        ### Rollback-Safe (Two-Step) Upgrades
+
+        To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `rollback_safe_upgrade` block when changing the `min_master_version`. This upgrades the master but keeps the control plane emulating the older version.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            min_master_version="1.32.4-gke.200",
+            rollback_safe_upgrade={
+                "control_plane_soak_duration": "604800s",
+            })
+        ```
+
+        After the soak period concludes, you can declaratively complete the upgrade by specifying the target `desired_emulated_version`.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            name="my-gke-cluster",
+            location="us-central1",
+            initial_node_count=1,
+            min_master_version="1.32.4-gke.200",
+            rollback_safe_upgrade={
+                "control_plane_soak_duration": "604800s",
+            },
+            desired_emulated_version="1.32")
+        ```
+
+        > **Note:** If you omit the `control_plane_soak_duration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
+
         ### Autopilot
 
         ```python
@@ -4327,6 +4485,7 @@ class Cluster(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
                  dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
                  enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4385,6 +4544,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
+                 rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']]] = None,
                  secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
                  secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
                  security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
@@ -4426,6 +4586,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
+            __props__.__dict__["desired_emulated_version"] = desired_emulated_version
             __props__.__dict__["disable_l4_lb_firewall_reconciliation"] = disable_l4_lb_firewall_reconciliation
             __props__.__dict__["dns_config"] = dns_config
             __props__.__dict__["enable_autopilot"] = enable_autopilot
@@ -4484,6 +4645,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            __props__.__dict__["rollback_safe_upgrade"] = rollback_safe_upgrade
             __props__.__dict__["secret_manager_config"] = secret_manager_config
             __props__.__dict__["secret_sync_config"] = secret_sync_config
             __props__.__dict__["security_posture_config"] = security_posture_config
@@ -4496,6 +4658,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["workload_alts_config"] = workload_alts_config
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["emulated_version"] = None
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["master_version"] = None
@@ -4537,9 +4700,11 @@ class Cluster(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
             disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
             dns_config: pulumi.Input[Optional[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            emulated_version: pulumi.Input[Optional[_builtins.str]] = None,
             enable_autopilot: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_cilium_clusterwide_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_fqdn_network_policy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4601,6 +4766,7 @@ class Cluster(pulumi.CustomResource):
             remove_default_node_pool: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             resource_usage_export_config: pulumi.Input[Optional[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']]] = None,
+            rollback_safe_upgrade: pulumi.Input[Optional[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']]] = None,
             secret_manager_config: pulumi.Input[Optional[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']]] = None,
             secret_sync_config: pulumi.Input[Optional[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']]] = None,
             security_posture_config: pulumi.Input[Optional[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']]] = None,
@@ -4679,9 +4845,11 @@ class Cluster(pulumi.CustomResource):
                `pulumi up` will only succeed if this field is `false` in the Terraform
                state.
         :param pulumi.Input[_builtins.str] description: Description of the cluster.
+        :param pulumi.Input[_builtins.str] desired_emulated_version: The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
         :param pulumi.Input[_builtins.bool] disable_l4_lb_firewall_reconciliation: Disable L4 load balancer VPC firewalls to enable firewall policies.
         :param pulumi.Input[Union['ClusterDnsConfigArgs', 'ClusterDnsConfigArgsDict']] dns_config: Configuration for [Using Cloud DNS for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/cloud-dns). Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] emulated_version: The current emulated Kubernetes version running on the GKE cluster control plane.
         :param pulumi.Input[_builtins.bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
                Note that when this option is enabled, certain features of Standard GKE are not available.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
@@ -4856,6 +5024,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterResourceUsageExportConfigArgs', 'ClusterResourceUsageExportConfigArgsDict']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[Union['ClusterRollbackSafeUpgradeArgs', 'ClusterRollbackSafeUpgradeArgsDict']] rollback_safe_upgrade: Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
@@ -4910,9 +5079,11 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
+        __props__.__dict__["desired_emulated_version"] = desired_emulated_version
         __props__.__dict__["disable_l4_lb_firewall_reconciliation"] = disable_l4_lb_firewall_reconciliation
         __props__.__dict__["dns_config"] = dns_config
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["emulated_version"] = emulated_version
         __props__.__dict__["enable_autopilot"] = enable_autopilot
         __props__.__dict__["enable_cilium_clusterwide_network_policy"] = enable_cilium_clusterwide_network_policy
         __props__.__dict__["enable_fqdn_network_policy"] = enable_fqdn_network_policy
@@ -4974,6 +5145,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
         __props__.__dict__["resource_labels"] = resource_labels
         __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+        __props__.__dict__["rollback_safe_upgrade"] = rollback_safe_upgrade
         __props__.__dict__["secret_manager_config"] = secret_manager_config
         __props__.__dict__["secret_sync_config"] = secret_sync_config
         __props__.__dict__["security_posture_config"] = security_posture_config
@@ -5195,6 +5367,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @_builtins.property
+    @pulumi.getter(name="desiredEmulatedVersion")
+    def desired_emulated_version(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+        """
+        return pulumi.get(self, "desired_emulated_version")
+
+    @_builtins.property
     @pulumi.getter(name="disableL4LbFirewallReconciliation")
     def disable_l4_lb_firewall_reconciliation(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -5217,6 +5397,14 @@ class Cluster(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
+    @pulumi.getter(name="emulatedVersion")
+    def emulated_version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The current emulated Kubernetes version running on the GKE cluster control plane.
+        """
+        return pulumi.get(self, "emulated_version")
 
     @_builtins.property
     @pulumi.getter(name="enableAutopilot")
@@ -5817,6 +6005,14 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @_builtins.property
+    @pulumi.getter(name="rollbackSafeUpgrade")
+    def rollback_safe_upgrade(self) -> pulumi.Output[Optional['outputs.ClusterRollbackSafeUpgrade']]:
+        """
+        Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        """
+        return pulumi.get(self, "rollback_safe_upgrade")
 
     @_builtins.property
     @pulumi.getter(name="secretManagerConfig")

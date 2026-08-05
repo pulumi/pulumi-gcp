@@ -67,7 +67,7 @@ import (
 //			}
 //			secureTagValue1, err := tags.NewTagValue(ctx, "secure_tag_value_1", &tags.TagValueArgs{
 //				Description: pulumi.String("Tag value"),
-//				Parent:      secureTagKey1.ID(),
+//				Parent:      secureTagKey1.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ import (
 //				Name:                    pulumi.String("spg"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
-//				ThreatPreventionProfile: securityProfile1.ID(),
+//				ThreatPreventionProfile: securityProfile1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -118,7 +118,7 @@ import (
 //								pulumi.String("iplist-tor-exit-nodes"),
 //							},
 //							DestAddressGroups: pulumi.StringArray{
-//								addressGroup1.ID(),
+//								addressGroup1.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							Layer4Configs: compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
 //								&compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
@@ -132,7 +132,7 @@ import (
 //						},
 //						TargetSecureTags: compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTagArray{
 //							&compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs{
-//								Name: secureTagValue1.ID(),
+//								Name: secureTagValue1.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -160,11 +160,11 @@ import (
 //								pulumi.String("iplist-public-clouds"),
 //							},
 //							SrcAddressGroups: pulumi.StringArray{
-//								addressGroup1.ID(),
+//								addressGroup1.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							SrcSecureTags: compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
 //								&compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
-//									Name: secureTagValue1.ID(),
+//									Name: secureTagValue1.ID().ToIDOutput().ToStringOutput(),
 //								},
 //							},
 //							Layer4Configs: compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
@@ -184,7 +184,7 @@ import (
 //						TargetServiceAccounts: pulumi.StringArray{
 //							pulumi.String("test@google.com"),
 //						},
-//						SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id string) (string, error) {
+//						SecurityProfileGroup: securityProfileGroup1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //						TlsInspect: pulumi.Bool(true),

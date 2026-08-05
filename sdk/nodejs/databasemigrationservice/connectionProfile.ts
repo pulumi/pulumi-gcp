@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     mysql: {
- *         host: cloudsqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: cloudsqldb.ipAddresses[0].ipAddress,
  *         port: 3306,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,
@@ -137,7 +137,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     postgresql: {
- *         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: postgresqldb.ipAddresses[0].ipAddress,
  *         port: 5432,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,
@@ -188,7 +188,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     postgresql: {
- *         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: postgresqldb.ipAddresses[0].ipAddress,
  *         port: 5432,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,
@@ -236,7 +236,7 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     postgresql: {
- *         host: postgresqldb.ipAddresses.apply(ipAddresses => ipAddresses[0].ipAddress),
+ *         host: postgresqldb.ipAddresses[0].ipAddress,
  *         port: 5432,
  *         username: sqldbUser.name,
  *         password: sqldbUser.password,

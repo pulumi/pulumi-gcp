@@ -129,7 +129,7 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -139,10 +139,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -158,7 +158,7 @@ import (
 //				},
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -224,7 +224,7 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -234,10 +234,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -249,7 +249,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -315,7 +315,7 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -325,10 +325,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -340,7 +340,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Region: pulumi.String("us-central1"),
@@ -400,7 +400,7 @@ import (
 //				Name:        pulumi.String("mysubnet-primary-cluster"),
 //				IpCidrRange: pulumi.String("10.0.1.0/29"),
 //				Region:      pulumi.String("us-east1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -410,10 +410,10 @@ import (
 //				Location:     pulumi.String("us-east1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("Primary cluster service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						primaryClusterConsumerSubnet.ID(),
+//						primaryClusterConsumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -426,7 +426,7 @@ import (
 //				Region: pulumi.String("us-east1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
@@ -471,7 +471,7 @@ import (
 //				Name:        pulumi.String("mysubnet-secondary-cluster"),
 //				IpCidrRange: pulumi.String("10.0.2.0/29"),
 //				Region:      pulumi.String("europe-west1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -481,10 +481,10 @@ import (
 //				Location:     pulumi.String("europe-west1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("Secondary cluster service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						secondaryClusterConsumerSubnet.ID(),
+//						secondaryClusterConsumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -497,7 +497,7 @@ import (
 //				Region: pulumi.String("europe-west1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
@@ -535,7 +535,7 @@ import (
 //				CrossClusterReplicationConfig: &redis.ClusterCrossClusterReplicationConfigArgs{
 //					ClusterRole: pulumi.String("SECONDARY"),
 //					PrimaryCluster: &redis.ClusterCrossClusterReplicationConfigPrimaryClusterArgs{
-//						Cluster: primaryCluster.ID(),
+//						Cluster: primaryCluster.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -576,7 +576,7 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -586,10 +586,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -601,7 +601,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -674,7 +674,7 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -684,10 +684,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -699,7 +699,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Region:                pulumi.String("us-central1"),
@@ -772,7 +772,7 @@ import (
 //				Name:        pulumi.String("my-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -782,10 +782,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -797,7 +797,7 @@ import (
 //				ShardCount: pulumi.Int(3),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				KmsKey:                    pulumi.String("my-key"),
@@ -890,7 +890,7 @@ import (
 //				Name:        pulumi.String("ca-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.248/29"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     consumerNet.ID(),
+//				Network:     consumerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -899,10 +899,10 @@ import (
 //				Name:         pulumi.String("ca-policy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
-//				Network:      consumerNet.ID(),
+//				Network:      consumerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						consumerSubnet.ID(),
+//						consumerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -915,12 +915,12 @@ import (
 //				Region:     pulumi.String("us-central1"),
 //				PscConfigs: redis.ClusterPscConfigArray{
 //					&redis.ClusterPscConfigArgs{
-//						Network: consumerNet.ID(),
+//						Network: consumerNet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				TransitEncryptionMode:     pulumi.String("TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"),
 //				ServerCaMode:              pulumi.String("SERVER_CA_MODE_CUSTOMER_MANAGED_CAS_CA"),
-//				ServerCaPool:              _default.ID(),
+//				ServerCaPool:              _default.ID().ToIDOutput().ToStringOutput(),
 //				DeletionProtectionEnabled: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				defaultServiceConnectionPolicy,

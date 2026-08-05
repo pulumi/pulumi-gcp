@@ -89,7 +89,7 @@ import (
 //				Description:         pulumi.String("my description"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 //				Protocol:            pulumi.String("HTTP"),
-//				ServiceLbPolicy: _default.ID().ApplyT(func(id string) (string, error) {
+//				ServiceLbPolicy: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //			})
@@ -145,7 +145,7 @@ import (
 //				Description:         pulumi.String("my description"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 //				Protocol:            pulumi.String("HTTP"),
-//				ServiceLbPolicy: _default.ID().ApplyT(func(id string) (string, error) {
+//				ServiceLbPolicy: _default.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("//networkservices.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //			})

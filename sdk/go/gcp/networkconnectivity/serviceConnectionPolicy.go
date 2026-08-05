@@ -49,7 +49,7 @@ import (
 //				Name:        pulumi.String("producer-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     producerNet.ID(),
+//				Network:     producerNet.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,10 +59,10 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("my-basic-service-class"),
 //				Description:  pulumi.String("my basic service connection policy"),
-//				Network:      producerNet.ID(),
+//				Network:      producerNet.ID().ToIDOutput().ToStringOutput(),
 //				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
 //					Subnetworks: pulumi.StringArray{
-//						producerSubnet.ID(),
+//						producerSubnet.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					Limit: pulumi.String("2"),
 //				},

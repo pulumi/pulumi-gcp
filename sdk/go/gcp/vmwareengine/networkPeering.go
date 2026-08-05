@@ -53,8 +53,8 @@ import (
 //			_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
 //				Name:                           pulumi.String("sample-network-peering"),
 //				Description:                    pulumi.String("Sample description"),
-//				VmwareEngineNetwork:            network_peering_nw.ID(),
-//				PeerNetwork:                    network_peering_peer_nw.ID(),
+//				VmwareEngineNetwork:            network_peering_nw.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork:                    network_peering_peer_nw.ID().ToIDOutput().ToStringOutput(),
 //				PeerNetworkType:                pulumi.String("VMWARE_ENGINE_NETWORK"),
 //				ExportCustomRoutes:             pulumi.Bool(false),
 //				ImportCustomRoutes:             pulumi.Bool(false),
@@ -101,9 +101,9 @@ import (
 //			_, err = vmwareengine.NewNetworkPeering(ctx, "vmw-engine-network-peering", &vmwareengine.NetworkPeeringArgs{
 //				Name:                pulumi.String("sample-network-peering"),
 //				Description:         pulumi.String("Sample description"),
-//				PeerNetwork:         network_peering_vpc.ID(),
+//				PeerNetwork:         network_peering_vpc.ID().ToIDOutput().ToStringOutput(),
 //				PeerNetworkType:     pulumi.String("STANDARD"),
-//				VmwareEngineNetwork: network_peering_standard_nw.ID(),
+//				VmwareEngineNetwork: network_peering_standard_nw.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

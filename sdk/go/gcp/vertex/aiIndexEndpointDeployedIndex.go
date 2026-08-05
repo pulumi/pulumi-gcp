@@ -109,8 +109,8 @@ import (
 //				DeployedIndexId:     pulumi.String("deployed_index_id"),
 //				DisplayName:         pulumi.String("vertex-deployed-index"),
 //				Region:              pulumi.String("us-central1"),
-//				Index:               index.ID(),
-//				IndexEndpoint:       vertexIndexEndpointDeployed.ID(),
+//				Index:               index.ID().ToIDOutput().ToStringOutput(),
+//				IndexEndpoint:       vertexIndexEndpointDeployed.ID().ToIDOutput().ToStringOutput(),
 //				EnableAccessLogging: pulumi.Bool(false),
 //				ReservedIpRanges: pulumi.StringArray{
 //					pulumi.String("vertex-ai-range"),
@@ -233,8 +233,8 @@ import (
 //				DeployedIndexId: pulumi.String("deployed_index_id"),
 //				DisplayName:     pulumi.String("vertex-deployed-index"),
 //				Region:          pulumi.String("us-central1"),
-//				Index:           index.ID(),
-//				IndexEndpoint:   vertexIndexEndpointDeployed.ID(),
+//				Index:           index.ID().ToIDOutput().ToStringOutput(),
+//				IndexEndpoint:   vertexIndexEndpointDeployed.ID().ToIDOutput().ToStringOutput(),
 //				ReservedIpRanges: pulumi.StringArray{
 //					pulumi.String("vertex-ai-range"),
 //				},

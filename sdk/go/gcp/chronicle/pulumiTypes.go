@@ -13,6 +13,1151 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BigQueryExportEntityGraphSettings struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime *string `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume *string `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled bool `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState *string `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// BigQueryExportEntityGraphSettingsInput is an input type that accepts BigQueryExportEntityGraphSettingsArgs and BigQueryExportEntityGraphSettingsOutput values.
+// You can construct a concrete instance of `BigQueryExportEntityGraphSettingsInput` via:
+//
+//	BigQueryExportEntityGraphSettingsArgs{...}
+type BigQueryExportEntityGraphSettingsInput interface {
+	pulumi.Input
+
+	ToBigQueryExportEntityGraphSettingsOutput() BigQueryExportEntityGraphSettingsOutput
+	ToBigQueryExportEntityGraphSettingsOutputWithContext(context.Context) BigQueryExportEntityGraphSettingsOutput
+}
+
+type BigQueryExportEntityGraphSettingsArgs struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime pulumi.StringPtrInput `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume pulumi.StringPtrInput `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState pulumi.StringPtrInput `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (BigQueryExportEntityGraphSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportEntityGraphSettings)(nil)).Elem()
+}
+
+func (i BigQueryExportEntityGraphSettingsArgs) ToBigQueryExportEntityGraphSettingsOutput() BigQueryExportEntityGraphSettingsOutput {
+	return i.ToBigQueryExportEntityGraphSettingsOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportEntityGraphSettingsArgs) ToBigQueryExportEntityGraphSettingsOutputWithContext(ctx context.Context) BigQueryExportEntityGraphSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportEntityGraphSettingsOutput)
+}
+
+func (i BigQueryExportEntityGraphSettingsArgs) ToBigQueryExportEntityGraphSettingsPtrOutput() BigQueryExportEntityGraphSettingsPtrOutput {
+	return i.ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportEntityGraphSettingsArgs) ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportEntityGraphSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportEntityGraphSettingsOutput).ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(ctx)
+}
+
+// BigQueryExportEntityGraphSettingsPtrInput is an input type that accepts BigQueryExportEntityGraphSettingsArgs, BigQueryExportEntityGraphSettingsPtr and BigQueryExportEntityGraphSettingsPtrOutput values.
+// You can construct a concrete instance of `BigQueryExportEntityGraphSettingsPtrInput` via:
+//
+//	        BigQueryExportEntityGraphSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryExportEntityGraphSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryExportEntityGraphSettingsPtrOutput() BigQueryExportEntityGraphSettingsPtrOutput
+	ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(context.Context) BigQueryExportEntityGraphSettingsPtrOutput
+}
+
+type bigQueryExportEntityGraphSettingsPtrType BigQueryExportEntityGraphSettingsArgs
+
+func BigQueryExportEntityGraphSettingsPtr(v *BigQueryExportEntityGraphSettingsArgs) BigQueryExportEntityGraphSettingsPtrInput {
+	return (*bigQueryExportEntityGraphSettingsPtrType)(v)
+}
+
+func (*bigQueryExportEntityGraphSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportEntityGraphSettings)(nil)).Elem()
+}
+
+func (i *bigQueryExportEntityGraphSettingsPtrType) ToBigQueryExportEntityGraphSettingsPtrOutput() BigQueryExportEntityGraphSettingsPtrOutput {
+	return i.ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryExportEntityGraphSettingsPtrType) ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportEntityGraphSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportEntityGraphSettingsPtrOutput)
+}
+
+type BigQueryExportEntityGraphSettingsOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportEntityGraphSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportEntityGraphSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportEntityGraphSettingsOutput) ToBigQueryExportEntityGraphSettingsOutput() BigQueryExportEntityGraphSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportEntityGraphSettingsOutput) ToBigQueryExportEntityGraphSettingsOutputWithContext(ctx context.Context) BigQueryExportEntityGraphSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportEntityGraphSettingsOutput) ToBigQueryExportEntityGraphSettingsPtrOutput() BigQueryExportEntityGraphSettingsPtrOutput {
+	return o.ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryExportEntityGraphSettingsOutput) ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportEntityGraphSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryExportEntityGraphSettings) *BigQueryExportEntityGraphSettings {
+		return &v
+	}).(BigQueryExportEntityGraphSettingsPtrOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportEntityGraphSettingsOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportEntityGraphSettings) *string { return v.DataFreshnessTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportEntityGraphSettingsOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportEntityGraphSettings) *string { return v.DataVolume }).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportEntityGraphSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryExportEntityGraphSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportEntityGraphSettingsOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportEntityGraphSettings) *string { return v.LatestExportJobState }).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportEntityGraphSettingsOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BigQueryExportEntityGraphSettings) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type BigQueryExportEntityGraphSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportEntityGraphSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportEntityGraphSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportEntityGraphSettingsPtrOutput) ToBigQueryExportEntityGraphSettingsPtrOutput() BigQueryExportEntityGraphSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportEntityGraphSettingsPtrOutput) ToBigQueryExportEntityGraphSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportEntityGraphSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportEntityGraphSettingsPtrOutput) Elem() BigQueryExportEntityGraphSettingsOutput {
+	return o.ApplyT(func(v *BigQueryExportEntityGraphSettings) BigQueryExportEntityGraphSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryExportEntityGraphSettings
+		return ret
+	}).(BigQueryExportEntityGraphSettingsOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportEntityGraphSettingsPtrOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportEntityGraphSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshnessTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportEntityGraphSettingsPtrOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportEntityGraphSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportEntityGraphSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportEntityGraphSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportEntityGraphSettingsPtrOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportEntityGraphSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestExportJobState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportEntityGraphSettingsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportEntityGraphSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type BigQueryExportIocMatchesSettings struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime *string `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume *string `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled bool `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState *string `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// BigQueryExportIocMatchesSettingsInput is an input type that accepts BigQueryExportIocMatchesSettingsArgs and BigQueryExportIocMatchesSettingsOutput values.
+// You can construct a concrete instance of `BigQueryExportIocMatchesSettingsInput` via:
+//
+//	BigQueryExportIocMatchesSettingsArgs{...}
+type BigQueryExportIocMatchesSettingsInput interface {
+	pulumi.Input
+
+	ToBigQueryExportIocMatchesSettingsOutput() BigQueryExportIocMatchesSettingsOutput
+	ToBigQueryExportIocMatchesSettingsOutputWithContext(context.Context) BigQueryExportIocMatchesSettingsOutput
+}
+
+type BigQueryExportIocMatchesSettingsArgs struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime pulumi.StringPtrInput `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume pulumi.StringPtrInput `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState pulumi.StringPtrInput `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (BigQueryExportIocMatchesSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportIocMatchesSettings)(nil)).Elem()
+}
+
+func (i BigQueryExportIocMatchesSettingsArgs) ToBigQueryExportIocMatchesSettingsOutput() BigQueryExportIocMatchesSettingsOutput {
+	return i.ToBigQueryExportIocMatchesSettingsOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportIocMatchesSettingsArgs) ToBigQueryExportIocMatchesSettingsOutputWithContext(ctx context.Context) BigQueryExportIocMatchesSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportIocMatchesSettingsOutput)
+}
+
+func (i BigQueryExportIocMatchesSettingsArgs) ToBigQueryExportIocMatchesSettingsPtrOutput() BigQueryExportIocMatchesSettingsPtrOutput {
+	return i.ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportIocMatchesSettingsArgs) ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportIocMatchesSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportIocMatchesSettingsOutput).ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(ctx)
+}
+
+// BigQueryExportIocMatchesSettingsPtrInput is an input type that accepts BigQueryExportIocMatchesSettingsArgs, BigQueryExportIocMatchesSettingsPtr and BigQueryExportIocMatchesSettingsPtrOutput values.
+// You can construct a concrete instance of `BigQueryExportIocMatchesSettingsPtrInput` via:
+//
+//	        BigQueryExportIocMatchesSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryExportIocMatchesSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryExportIocMatchesSettingsPtrOutput() BigQueryExportIocMatchesSettingsPtrOutput
+	ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(context.Context) BigQueryExportIocMatchesSettingsPtrOutput
+}
+
+type bigQueryExportIocMatchesSettingsPtrType BigQueryExportIocMatchesSettingsArgs
+
+func BigQueryExportIocMatchesSettingsPtr(v *BigQueryExportIocMatchesSettingsArgs) BigQueryExportIocMatchesSettingsPtrInput {
+	return (*bigQueryExportIocMatchesSettingsPtrType)(v)
+}
+
+func (*bigQueryExportIocMatchesSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportIocMatchesSettings)(nil)).Elem()
+}
+
+func (i *bigQueryExportIocMatchesSettingsPtrType) ToBigQueryExportIocMatchesSettingsPtrOutput() BigQueryExportIocMatchesSettingsPtrOutput {
+	return i.ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryExportIocMatchesSettingsPtrType) ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportIocMatchesSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportIocMatchesSettingsPtrOutput)
+}
+
+type BigQueryExportIocMatchesSettingsOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportIocMatchesSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportIocMatchesSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportIocMatchesSettingsOutput) ToBigQueryExportIocMatchesSettingsOutput() BigQueryExportIocMatchesSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportIocMatchesSettingsOutput) ToBigQueryExportIocMatchesSettingsOutputWithContext(ctx context.Context) BigQueryExportIocMatchesSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportIocMatchesSettingsOutput) ToBigQueryExportIocMatchesSettingsPtrOutput() BigQueryExportIocMatchesSettingsPtrOutput {
+	return o.ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryExportIocMatchesSettingsOutput) ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportIocMatchesSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryExportIocMatchesSettings) *BigQueryExportIocMatchesSettings {
+		return &v
+	}).(BigQueryExportIocMatchesSettingsPtrOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportIocMatchesSettingsOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportIocMatchesSettings) *string { return v.DataFreshnessTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportIocMatchesSettingsOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportIocMatchesSettings) *string { return v.DataVolume }).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportIocMatchesSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryExportIocMatchesSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportIocMatchesSettingsOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportIocMatchesSettings) *string { return v.LatestExportJobState }).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportIocMatchesSettingsOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BigQueryExportIocMatchesSettings) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type BigQueryExportIocMatchesSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportIocMatchesSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportIocMatchesSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportIocMatchesSettingsPtrOutput) ToBigQueryExportIocMatchesSettingsPtrOutput() BigQueryExportIocMatchesSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportIocMatchesSettingsPtrOutput) ToBigQueryExportIocMatchesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportIocMatchesSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportIocMatchesSettingsPtrOutput) Elem() BigQueryExportIocMatchesSettingsOutput {
+	return o.ApplyT(func(v *BigQueryExportIocMatchesSettings) BigQueryExportIocMatchesSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryExportIocMatchesSettings
+		return ret
+	}).(BigQueryExportIocMatchesSettingsOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportIocMatchesSettingsPtrOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportIocMatchesSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshnessTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportIocMatchesSettingsPtrOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportIocMatchesSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportIocMatchesSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportIocMatchesSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportIocMatchesSettingsPtrOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportIocMatchesSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestExportJobState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportIocMatchesSettingsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportIocMatchesSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type BigQueryExportRuleDetectionsSettings struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime *string `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume *string `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled bool `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState *string `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// BigQueryExportRuleDetectionsSettingsInput is an input type that accepts BigQueryExportRuleDetectionsSettingsArgs and BigQueryExportRuleDetectionsSettingsOutput values.
+// You can construct a concrete instance of `BigQueryExportRuleDetectionsSettingsInput` via:
+//
+//	BigQueryExportRuleDetectionsSettingsArgs{...}
+type BigQueryExportRuleDetectionsSettingsInput interface {
+	pulumi.Input
+
+	ToBigQueryExportRuleDetectionsSettingsOutput() BigQueryExportRuleDetectionsSettingsOutput
+	ToBigQueryExportRuleDetectionsSettingsOutputWithContext(context.Context) BigQueryExportRuleDetectionsSettingsOutput
+}
+
+type BigQueryExportRuleDetectionsSettingsArgs struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime pulumi.StringPtrInput `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume pulumi.StringPtrInput `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState pulumi.StringPtrInput `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (BigQueryExportRuleDetectionsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportRuleDetectionsSettings)(nil)).Elem()
+}
+
+func (i BigQueryExportRuleDetectionsSettingsArgs) ToBigQueryExportRuleDetectionsSettingsOutput() BigQueryExportRuleDetectionsSettingsOutput {
+	return i.ToBigQueryExportRuleDetectionsSettingsOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportRuleDetectionsSettingsArgs) ToBigQueryExportRuleDetectionsSettingsOutputWithContext(ctx context.Context) BigQueryExportRuleDetectionsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportRuleDetectionsSettingsOutput)
+}
+
+func (i BigQueryExportRuleDetectionsSettingsArgs) ToBigQueryExportRuleDetectionsSettingsPtrOutput() BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return i.ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportRuleDetectionsSettingsArgs) ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportRuleDetectionsSettingsOutput).ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(ctx)
+}
+
+// BigQueryExportRuleDetectionsSettingsPtrInput is an input type that accepts BigQueryExportRuleDetectionsSettingsArgs, BigQueryExportRuleDetectionsSettingsPtr and BigQueryExportRuleDetectionsSettingsPtrOutput values.
+// You can construct a concrete instance of `BigQueryExportRuleDetectionsSettingsPtrInput` via:
+//
+//	        BigQueryExportRuleDetectionsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryExportRuleDetectionsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryExportRuleDetectionsSettingsPtrOutput() BigQueryExportRuleDetectionsSettingsPtrOutput
+	ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(context.Context) BigQueryExportRuleDetectionsSettingsPtrOutput
+}
+
+type bigQueryExportRuleDetectionsSettingsPtrType BigQueryExportRuleDetectionsSettingsArgs
+
+func BigQueryExportRuleDetectionsSettingsPtr(v *BigQueryExportRuleDetectionsSettingsArgs) BigQueryExportRuleDetectionsSettingsPtrInput {
+	return (*bigQueryExportRuleDetectionsSettingsPtrType)(v)
+}
+
+func (*bigQueryExportRuleDetectionsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportRuleDetectionsSettings)(nil)).Elem()
+}
+
+func (i *bigQueryExportRuleDetectionsSettingsPtrType) ToBigQueryExportRuleDetectionsSettingsPtrOutput() BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return i.ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryExportRuleDetectionsSettingsPtrType) ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportRuleDetectionsSettingsPtrOutput)
+}
+
+type BigQueryExportRuleDetectionsSettingsOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportRuleDetectionsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportRuleDetectionsSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportRuleDetectionsSettingsOutput) ToBigQueryExportRuleDetectionsSettingsOutput() BigQueryExportRuleDetectionsSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportRuleDetectionsSettingsOutput) ToBigQueryExportRuleDetectionsSettingsOutputWithContext(ctx context.Context) BigQueryExportRuleDetectionsSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportRuleDetectionsSettingsOutput) ToBigQueryExportRuleDetectionsSettingsPtrOutput() BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return o.ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryExportRuleDetectionsSettingsOutput) ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryExportRuleDetectionsSettings) *BigQueryExportRuleDetectionsSettings {
+		return &v
+	}).(BigQueryExportRuleDetectionsSettingsPtrOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportRuleDetectionsSettingsOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportRuleDetectionsSettings) *string { return v.DataFreshnessTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportRuleDetectionsSettingsOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportRuleDetectionsSettings) *string { return v.DataVolume }).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportRuleDetectionsSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryExportRuleDetectionsSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportRuleDetectionsSettingsOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportRuleDetectionsSettings) *string { return v.LatestExportJobState }).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportRuleDetectionsSettingsOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BigQueryExportRuleDetectionsSettings) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type BigQueryExportRuleDetectionsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportRuleDetectionsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportRuleDetectionsSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) ToBigQueryExportRuleDetectionsSettingsPtrOutput() BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) ToBigQueryExportRuleDetectionsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportRuleDetectionsSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) Elem() BigQueryExportRuleDetectionsSettingsOutput {
+	return o.ApplyT(func(v *BigQueryExportRuleDetectionsSettings) BigQueryExportRuleDetectionsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryExportRuleDetectionsSettings
+		return ret
+	}).(BigQueryExportRuleDetectionsSettingsOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportRuleDetectionsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshnessTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportRuleDetectionsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportRuleDetectionsSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportRuleDetectionsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestExportJobState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportRuleDetectionsSettingsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportRuleDetectionsSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type BigQueryExportUdmEventsAggregatesSettings struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime *string `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume *string `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled bool `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState *string `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// BigQueryExportUdmEventsAggregatesSettingsInput is an input type that accepts BigQueryExportUdmEventsAggregatesSettingsArgs and BigQueryExportUdmEventsAggregatesSettingsOutput values.
+// You can construct a concrete instance of `BigQueryExportUdmEventsAggregatesSettingsInput` via:
+//
+//	BigQueryExportUdmEventsAggregatesSettingsArgs{...}
+type BigQueryExportUdmEventsAggregatesSettingsInput interface {
+	pulumi.Input
+
+	ToBigQueryExportUdmEventsAggregatesSettingsOutput() BigQueryExportUdmEventsAggregatesSettingsOutput
+	ToBigQueryExportUdmEventsAggregatesSettingsOutputWithContext(context.Context) BigQueryExportUdmEventsAggregatesSettingsOutput
+}
+
+type BigQueryExportUdmEventsAggregatesSettingsArgs struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime pulumi.StringPtrInput `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume pulumi.StringPtrInput `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState pulumi.StringPtrInput `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (BigQueryExportUdmEventsAggregatesSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportUdmEventsAggregatesSettings)(nil)).Elem()
+}
+
+func (i BigQueryExportUdmEventsAggregatesSettingsArgs) ToBigQueryExportUdmEventsAggregatesSettingsOutput() BigQueryExportUdmEventsAggregatesSettingsOutput {
+	return i.ToBigQueryExportUdmEventsAggregatesSettingsOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportUdmEventsAggregatesSettingsArgs) ToBigQueryExportUdmEventsAggregatesSettingsOutputWithContext(ctx context.Context) BigQueryExportUdmEventsAggregatesSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportUdmEventsAggregatesSettingsOutput)
+}
+
+func (i BigQueryExportUdmEventsAggregatesSettingsArgs) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutput() BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return i.ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportUdmEventsAggregatesSettingsArgs) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportUdmEventsAggregatesSettingsOutput).ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(ctx)
+}
+
+// BigQueryExportUdmEventsAggregatesSettingsPtrInput is an input type that accepts BigQueryExportUdmEventsAggregatesSettingsArgs, BigQueryExportUdmEventsAggregatesSettingsPtr and BigQueryExportUdmEventsAggregatesSettingsPtrOutput values.
+// You can construct a concrete instance of `BigQueryExportUdmEventsAggregatesSettingsPtrInput` via:
+//
+//	        BigQueryExportUdmEventsAggregatesSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryExportUdmEventsAggregatesSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryExportUdmEventsAggregatesSettingsPtrOutput() BigQueryExportUdmEventsAggregatesSettingsPtrOutput
+	ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(context.Context) BigQueryExportUdmEventsAggregatesSettingsPtrOutput
+}
+
+type bigQueryExportUdmEventsAggregatesSettingsPtrType BigQueryExportUdmEventsAggregatesSettingsArgs
+
+func BigQueryExportUdmEventsAggregatesSettingsPtr(v *BigQueryExportUdmEventsAggregatesSettingsArgs) BigQueryExportUdmEventsAggregatesSettingsPtrInput {
+	return (*bigQueryExportUdmEventsAggregatesSettingsPtrType)(v)
+}
+
+func (*bigQueryExportUdmEventsAggregatesSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportUdmEventsAggregatesSettings)(nil)).Elem()
+}
+
+func (i *bigQueryExportUdmEventsAggregatesSettingsPtrType) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutput() BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return i.ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryExportUdmEventsAggregatesSettingsPtrType) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportUdmEventsAggregatesSettingsPtrOutput)
+}
+
+type BigQueryExportUdmEventsAggregatesSettingsOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportUdmEventsAggregatesSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportUdmEventsAggregatesSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) ToBigQueryExportUdmEventsAggregatesSettingsOutput() BigQueryExportUdmEventsAggregatesSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) ToBigQueryExportUdmEventsAggregatesSettingsOutputWithContext(ctx context.Context) BigQueryExportUdmEventsAggregatesSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutput() BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return o.ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryExportUdmEventsAggregatesSettings) *BigQueryExportUdmEventsAggregatesSettings {
+		return &v
+	}).(BigQueryExportUdmEventsAggregatesSettingsPtrOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsAggregatesSettings) *string { return v.DataFreshnessTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsAggregatesSettings) *string { return v.DataVolume }).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsAggregatesSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsAggregatesSettings) *string { return v.LatestExportJobState }).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportUdmEventsAggregatesSettingsOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsAggregatesSettings) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type BigQueryExportUdmEventsAggregatesSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportUdmEventsAggregatesSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportUdmEventsAggregatesSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutput() BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) ToBigQueryExportUdmEventsAggregatesSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsAggregatesSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) Elem() BigQueryExportUdmEventsAggregatesSettingsOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsAggregatesSettings) BigQueryExportUdmEventsAggregatesSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryExportUdmEventsAggregatesSettings
+		return ret
+	}).(BigQueryExportUdmEventsAggregatesSettingsOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsAggregatesSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshnessTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsAggregatesSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsAggregatesSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsAggregatesSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestExportJobState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportUdmEventsAggregatesSettingsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsAggregatesSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type BigQueryExportUdmEventsSettings struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime *string `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume *string `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled bool `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState *string `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// BigQueryExportUdmEventsSettingsInput is an input type that accepts BigQueryExportUdmEventsSettingsArgs and BigQueryExportUdmEventsSettingsOutput values.
+// You can construct a concrete instance of `BigQueryExportUdmEventsSettingsInput` via:
+//
+//	BigQueryExportUdmEventsSettingsArgs{...}
+type BigQueryExportUdmEventsSettingsInput interface {
+	pulumi.Input
+
+	ToBigQueryExportUdmEventsSettingsOutput() BigQueryExportUdmEventsSettingsOutput
+	ToBigQueryExportUdmEventsSettingsOutputWithContext(context.Context) BigQueryExportUdmEventsSettingsOutput
+}
+
+type BigQueryExportUdmEventsSettingsArgs struct {
+	// (Output)
+	// The data freshness of the given export which represents the time bucket at
+	// which the latest event was exported.
+	DataFreshnessTime pulumi.StringPtrInput `pulumi:"dataFreshnessTime"`
+	// (Output)
+	// The stored data volume of all the exports.
+	DataVolume pulumi.StringPtrInput `pulumi:"dataVolume"`
+	// Whether the data source is enabled for export.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// (Output)
+	// The latest export job state.
+	LatestExportJobState pulumi.StringPtrInput `pulumi:"latestExportJobState"`
+	// The retention period for the data source in days.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (BigQueryExportUdmEventsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportUdmEventsSettings)(nil)).Elem()
+}
+
+func (i BigQueryExportUdmEventsSettingsArgs) ToBigQueryExportUdmEventsSettingsOutput() BigQueryExportUdmEventsSettingsOutput {
+	return i.ToBigQueryExportUdmEventsSettingsOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportUdmEventsSettingsArgs) ToBigQueryExportUdmEventsSettingsOutputWithContext(ctx context.Context) BigQueryExportUdmEventsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportUdmEventsSettingsOutput)
+}
+
+func (i BigQueryExportUdmEventsSettingsArgs) ToBigQueryExportUdmEventsSettingsPtrOutput() BigQueryExportUdmEventsSettingsPtrOutput {
+	return i.ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryExportUdmEventsSettingsArgs) ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportUdmEventsSettingsOutput).ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(ctx)
+}
+
+// BigQueryExportUdmEventsSettingsPtrInput is an input type that accepts BigQueryExportUdmEventsSettingsArgs, BigQueryExportUdmEventsSettingsPtr and BigQueryExportUdmEventsSettingsPtrOutput values.
+// You can construct a concrete instance of `BigQueryExportUdmEventsSettingsPtrInput` via:
+//
+//	        BigQueryExportUdmEventsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryExportUdmEventsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryExportUdmEventsSettingsPtrOutput() BigQueryExportUdmEventsSettingsPtrOutput
+	ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(context.Context) BigQueryExportUdmEventsSettingsPtrOutput
+}
+
+type bigQueryExportUdmEventsSettingsPtrType BigQueryExportUdmEventsSettingsArgs
+
+func BigQueryExportUdmEventsSettingsPtr(v *BigQueryExportUdmEventsSettingsArgs) BigQueryExportUdmEventsSettingsPtrInput {
+	return (*bigQueryExportUdmEventsSettingsPtrType)(v)
+}
+
+func (*bigQueryExportUdmEventsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportUdmEventsSettings)(nil)).Elem()
+}
+
+func (i *bigQueryExportUdmEventsSettingsPtrType) ToBigQueryExportUdmEventsSettingsPtrOutput() BigQueryExportUdmEventsSettingsPtrOutput {
+	return i.ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryExportUdmEventsSettingsPtrType) ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryExportUdmEventsSettingsPtrOutput)
+}
+
+type BigQueryExportUdmEventsSettingsOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportUdmEventsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryExportUdmEventsSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportUdmEventsSettingsOutput) ToBigQueryExportUdmEventsSettingsOutput() BigQueryExportUdmEventsSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsSettingsOutput) ToBigQueryExportUdmEventsSettingsOutputWithContext(ctx context.Context) BigQueryExportUdmEventsSettingsOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsSettingsOutput) ToBigQueryExportUdmEventsSettingsPtrOutput() BigQueryExportUdmEventsSettingsPtrOutput {
+	return o.ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryExportUdmEventsSettingsOutput) ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryExportUdmEventsSettings) *BigQueryExportUdmEventsSettings {
+		return &v
+	}).(BigQueryExportUdmEventsSettingsPtrOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportUdmEventsSettingsOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsSettings) *string { return v.DataFreshnessTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportUdmEventsSettingsOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsSettings) *string { return v.DataVolume }).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportUdmEventsSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportUdmEventsSettingsOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsSettings) *string { return v.LatestExportJobState }).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportUdmEventsSettingsOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BigQueryExportUdmEventsSettings) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type BigQueryExportUdmEventsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryExportUdmEventsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryExportUdmEventsSettings)(nil)).Elem()
+}
+
+func (o BigQueryExportUdmEventsSettingsPtrOutput) ToBigQueryExportUdmEventsSettingsPtrOutput() BigQueryExportUdmEventsSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsSettingsPtrOutput) ToBigQueryExportUdmEventsSettingsPtrOutputWithContext(ctx context.Context) BigQueryExportUdmEventsSettingsPtrOutput {
+	return o
+}
+
+func (o BigQueryExportUdmEventsSettingsPtrOutput) Elem() BigQueryExportUdmEventsSettingsOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsSettings) BigQueryExportUdmEventsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryExportUdmEventsSettings
+		return ret
+	}).(BigQueryExportUdmEventsSettingsOutput)
+}
+
+// (Output)
+// The data freshness of the given export which represents the time bucket at
+// which the latest event was exported.
+func (o BigQueryExportUdmEventsSettingsPtrOutput) DataFreshnessTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshnessTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The stored data volume of all the exports.
+func (o BigQueryExportUdmEventsSettingsPtrOutput) DataVolume() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataVolume
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the data source is enabled for export.
+func (o BigQueryExportUdmEventsSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The latest export job state.
+func (o BigQueryExportUdmEventsSettingsPtrOutput) LatestExportJobState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatestExportJobState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period for the data source in days.
+func (o BigQueryExportUdmEventsSettingsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BigQueryExportUdmEventsSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
 type DashboardChartChartLayout struct {
 	// (Required)
 	SpanX int `pulumi:"spanX"`
@@ -50081,6 +51226,16 @@ func (o WatchlistWatchlistUserPreferencesPtrOutput) Pinned() pulumi.BoolPtrOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportEntityGraphSettingsInput)(nil)).Elem(), BigQueryExportEntityGraphSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportEntityGraphSettingsPtrInput)(nil)).Elem(), BigQueryExportEntityGraphSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportIocMatchesSettingsInput)(nil)).Elem(), BigQueryExportIocMatchesSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportIocMatchesSettingsPtrInput)(nil)).Elem(), BigQueryExportIocMatchesSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportRuleDetectionsSettingsInput)(nil)).Elem(), BigQueryExportRuleDetectionsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportRuleDetectionsSettingsPtrInput)(nil)).Elem(), BigQueryExportRuleDetectionsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportUdmEventsAggregatesSettingsInput)(nil)).Elem(), BigQueryExportUdmEventsAggregatesSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportUdmEventsAggregatesSettingsPtrInput)(nil)).Elem(), BigQueryExportUdmEventsAggregatesSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportUdmEventsSettingsInput)(nil)).Elem(), BigQueryExportUdmEventsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryExportUdmEventsSettingsPtrInput)(nil)).Elem(), BigQueryExportUdmEventsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartLayoutInput)(nil)).Elem(), DashboardChartChartLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartChartLayoutPtrInput)(nil)).Elem(), DashboardChartChartLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardChartDashboardChartInput)(nil)).Elem(), DashboardChartDashboardChartArgs{})
@@ -50653,6 +51808,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityPopulationMechanismManualPtrInput)(nil)).Elem(), WatchlistEntityPopulationMechanismManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistWatchlistUserPreferencesInput)(nil)).Elem(), WatchlistWatchlistUserPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistWatchlistUserPreferencesPtrInput)(nil)).Elem(), WatchlistWatchlistUserPreferencesArgs{})
+	pulumi.RegisterOutputType(BigQueryExportEntityGraphSettingsOutput{})
+	pulumi.RegisterOutputType(BigQueryExportEntityGraphSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryExportIocMatchesSettingsOutput{})
+	pulumi.RegisterOutputType(BigQueryExportIocMatchesSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryExportRuleDetectionsSettingsOutput{})
+	pulumi.RegisterOutputType(BigQueryExportRuleDetectionsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryExportUdmEventsAggregatesSettingsOutput{})
+	pulumi.RegisterOutputType(BigQueryExportUdmEventsAggregatesSettingsPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryExportUdmEventsSettingsOutput{})
+	pulumi.RegisterOutputType(BigQueryExportUdmEventsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DashboardChartChartLayoutOutput{})
 	pulumi.RegisterOutputType(DashboardChartChartLayoutPtrOutput{})
 	pulumi.RegisterOutputType(DashboardChartDashboardChartOutput{})

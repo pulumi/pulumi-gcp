@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.vertex.AiSchedule` is deprecated and will be removed in a future major release. Use `gcp.colab.Schedule` instead.
+ *
  * An online schedule that triggers running pipeline jobs or notebook execution jobs.
  *
  * ## Example Usage

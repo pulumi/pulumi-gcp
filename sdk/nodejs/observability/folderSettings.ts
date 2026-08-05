@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_14939",
+ *     displayName: "tf-test-_34995",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
  *     cryptoKeyId: "example-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     member: settingsData.apply(settingsData => `serviceAccount:${settingsData.serviceAccountId}`),
+ *     member: pulumi.interpolate`serviceAccount:${settingsData.serviceAccountId}`,
  * }, {
  *     dependsOn: [waitForSaPropagation],
  * });
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const testFolder = new gcp.organizations.Folder("test_folder", {
- *     displayName: "tf-test-_59865",
+ *     displayName: "tf-test-_10996",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });

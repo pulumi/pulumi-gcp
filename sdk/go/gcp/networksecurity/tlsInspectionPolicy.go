@@ -107,7 +107,7 @@ import (
 //				return err
 //			}
 //			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tls_inspection_permission", &certificateauthority.CaPoolIamMemberArgs{
-//				CaPool: _default.ID(),
+//				CaPool: _default.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-networksecurity.iam.gserviceaccount.com", project.Number),
 //			})
@@ -117,7 +117,7 @@ import (
 //			_, err = networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 //				Name:               pulumi.String("my-tls-inspection-policy"),
 //				Location:           pulumi.String("us-central1"),
-//				CaPool:             _default.ID(),
+//				CaPool:             _default.ID().ToIDOutput().ToStringOutput(),
 //				ExcludePublicCaSet: pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
@@ -221,7 +221,7 @@ import (
 //				return err
 //			}
 //			defaultCaPoolIamMember, err := certificateauthority.NewCaPoolIamMember(ctx, "default", &certificateauthority.CaPoolIamMemberArgs{
-//				CaPool: _default.ID(),
+//				CaPool: _default.ID().ToIDOutput().ToStringOutput(),
 //				Role:   pulumi.String("roles/privateca.certificateManager"),
 //				Member: nsSa.Member,
 //			})
@@ -265,10 +265,10 @@ import (
 //			_, err = networksecurity.NewTlsInspectionPolicy(ctx, "default", &networksecurity.TlsInspectionPolicyArgs{
 //				Name:               pulumi.String("my-tls-inspection-policy"),
 //				Location:           pulumi.String("us-central1"),
-//				CaPool:             _default.ID(),
+//				CaPool:             _default.ID().ToIDOutput().ToStringOutput(),
 //				ExcludePublicCaSet: pulumi.Bool(false),
 //				MinTlsVersion:      pulumi.String("TLS_1_0"),
-//				TrustConfig:        defaultTrustConfig.ID(),
+//				TrustConfig:        defaultTrustConfig.ID().ToIDOutput().ToStringOutput(),
 //				TlsFeatureProfile:  pulumi.String("PROFILE_CUSTOM"),
 //				CustomTlsFeatures: pulumi.StringArray{
 //					pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA"),

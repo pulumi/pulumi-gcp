@@ -48,7 +48,7 @@ import (
 //				PipelineId: pulumi.String("some-pipeline"),
 //				Destinations: eventarc.PipelineDestinationArray{
 //					&eventarc.PipelineDestinationArgs{
-//						Topic: topic.ID(),
+//						Topic: topic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Labels: pulumi.StringMap{
@@ -160,7 +160,7 @@ import (
 //				PipelineId: pulumi.String("some-pipeline"),
 //				Destinations: eventarc.PipelineDestinationArray{
 //					&eventarc.PipelineDestinationArgs{
-//						Workflow: workflow.ID(),
+//						Workflow: workflow.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

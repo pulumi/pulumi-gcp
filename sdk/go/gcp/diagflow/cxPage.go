@@ -70,7 +70,7 @@ import (
 //				return err
 //			}
 //			myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -99,24 +99,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -130,11 +130,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -164,24 +164,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -195,11 +195,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -234,24 +234,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -265,11 +265,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -299,24 +299,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -330,11 +330,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -364,24 +364,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -395,11 +395,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -416,10 +416,10 @@ import (
 //			tmpJSON16, err := json.Marshal([]interface{}{
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"First case",
 //									},
@@ -428,11 +428,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -659,7 +659,7 @@ import (
 //										Event: pulumi.String("sys.no-match-1"),
 //										TriggerFulfillment: &diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs{
 //											ReturnPartialResponses: pulumi.Bool(true),
-//											Webhook:                myWebhook.ID(),
+//											Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
 //											Tag:                    pulumi.String("some-tag"),
 //											Messages: diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray{
 //												&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs{
@@ -731,7 +731,7 @@ import (
 //									},
 //									&diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs{
 //										Event:      pulumi.String("sys.no-match-3"),
-//										TargetPage: myPage2.ID(),
+//										TargetPage: myPage2.ID().ToIDOutput().ToStringOutput(),
 //									},
 //								},
 //							},
@@ -814,7 +814,7 @@ import (
 //								},
 //							},
 //						},
-//						TargetPage: myPage2.ID(),
+//						TargetPage: myPage2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				AdvancedSettings: &diagflow.CxPageAdvancedSettingsArgs{
@@ -874,7 +874,7 @@ import (
 //								},
 //							},
 //						},
-//						Webhook:                myWebhook.ID(),
+//						Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
 //						ReturnPartialResponses: pulumi.Bool(true),
 //						Tag:                    pulumi.String("some-tag"),
 //						SetParameterActions: diagflow.CxPageKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{
@@ -923,7 +923,7 @@ import (
 //							DocumentProcessingMode: pulumi.String("CHUNKS"),
 //						},
 //					},
-//					TargetPage: myPage2.ID(),
+//					TargetPage: myPage2.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

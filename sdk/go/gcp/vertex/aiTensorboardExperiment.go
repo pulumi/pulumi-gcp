@@ -47,12 +47,9 @@ import (
 //			_, err = vertex.NewAiTensorboardExperiment(ctx, "tensorboard_experiment", &vertex.AiTensorboardExperimentArgs{
 //				Location:    pulumi.String("us-central1"),
 //				DisplayName: pulumi.String("sample experiment"),
-//				Tensorboard: pulumi.String(std.BasenameOutput(ctx, std.BasenameOutputArgs{
-//					Input: tensorboard.ID(),
-//				}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Tensorboard: std.BasenameOutput(ctx, std.BasenameOutputArgs{
+//					Input: tensorboard.ID().ToIDOutput().ToStringOutput(),
+//				}, nil).Result(),
 //				TensorboardExperimentId: pulumi.String("experiment"),
 //				Source:                  pulumi.String("a custom training job"),
 //				Labels: pulumi.StringMap{

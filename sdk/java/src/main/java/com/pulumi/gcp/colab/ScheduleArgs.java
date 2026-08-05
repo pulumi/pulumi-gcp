@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestArgs;
+import com.pulumi.gcp.colab.inputs.ScheduleCreatePipelineJobRequestArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -38,16 +39,33 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="createNotebookExecutionJobRequest", required=true)
-    private Output<ScheduleCreateNotebookExecutionJobRequestArgs> createNotebookExecutionJobRequest;
+    @Import(name="createNotebookExecutionJobRequest")
+    private @Nullable Output<ScheduleCreateNotebookExecutionJobRequestArgs> createNotebookExecutionJobRequest;
 
     /**
      * @return Request for google_colab_notebook_execution.
      * Structure is documented below.
      * 
      */
-    public Output<ScheduleCreateNotebookExecutionJobRequestArgs> createNotebookExecutionJobRequest() {
-        return this.createNotebookExecutionJobRequest;
+    public Optional<Output<ScheduleCreateNotebookExecutionJobRequestArgs>> createNotebookExecutionJobRequest() {
+        return Optional.ofNullable(this.createNotebookExecutionJobRequest);
+    }
+
+    /**
+     * Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="createPipelineJobRequest")
+    private @Nullable Output<ScheduleCreatePipelineJobRequestArgs> createPipelineJobRequest;
+
+    /**
+     * @return Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ScheduleCreatePipelineJobRequestArgs>> createPipelineJobRequest() {
+        return Optional.ofNullable(this.createPipelineJobRequest);
     }
 
     /**
@@ -151,6 +169,21 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     * 
+     */
+    @Import(name="maxConcurrentActiveRunCount")
+    private @Nullable Output<String> maxConcurrentActiveRunCount;
+
+    /**
+     * @return Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     * 
+     */
+    public Optional<Output<String>> maxConcurrentActiveRunCount() {
+        return Optional.ofNullable(this.maxConcurrentActiveRunCount);
+    }
+
+    /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
      * 
      */
@@ -217,12 +250,14 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
     private ScheduleArgs(ScheduleArgs $) {
         this.allowQueueing = $.allowQueueing;
         this.createNotebookExecutionJobRequest = $.createNotebookExecutionJobRequest;
+        this.createPipelineJobRequest = $.createPipelineJobRequest;
         this.cron = $.cron;
         this.deletionPolicy = $.deletionPolicy;
         this.desiredState = $.desiredState;
         this.displayName = $.displayName;
         this.endTime = $.endTime;
         this.location = $.location;
+        this.maxConcurrentActiveRunCount = $.maxConcurrentActiveRunCount;
         this.maxConcurrentRunCount = $.maxConcurrentRunCount;
         this.maxRunCount = $.maxRunCount;
         this.project = $.project;
@@ -275,7 +310,7 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder createNotebookExecutionJobRequest(Output<ScheduleCreateNotebookExecutionJobRequestArgs> createNotebookExecutionJobRequest) {
+        public Builder createNotebookExecutionJobRequest(@Nullable Output<ScheduleCreateNotebookExecutionJobRequestArgs> createNotebookExecutionJobRequest) {
             $.createNotebookExecutionJobRequest = createNotebookExecutionJobRequest;
             return this;
         }
@@ -289,6 +324,29 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createNotebookExecutionJobRequest(ScheduleCreateNotebookExecutionJobRequestArgs createNotebookExecutionJobRequest) {
             return createNotebookExecutionJobRequest(Output.of(createNotebookExecutionJobRequest));
+        }
+
+        /**
+         * @param createPipelineJobRequest Request message for PipelineService.CreatePipelineJob.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createPipelineJobRequest(@Nullable Output<ScheduleCreatePipelineJobRequestArgs> createPipelineJobRequest) {
+            $.createPipelineJobRequest = createPipelineJobRequest;
+            return this;
+        }
+
+        /**
+         * @param createPipelineJobRequest Request message for PipelineService.CreatePipelineJob.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createPipelineJobRequest(ScheduleCreatePipelineJobRequestArgs createPipelineJobRequest) {
+            return createPipelineJobRequest(Output.of(createPipelineJobRequest));
         }
 
         /**
@@ -428,6 +486,27 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maxConcurrentActiveRunCount Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConcurrentActiveRunCount(@Nullable Output<String> maxConcurrentActiveRunCount) {
+            $.maxConcurrentActiveRunCount = maxConcurrentActiveRunCount;
+            return this;
+        }
+
+        /**
+         * @param maxConcurrentActiveRunCount Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConcurrentActiveRunCount(String maxConcurrentActiveRunCount) {
+            return maxConcurrentActiveRunCount(Output.of(maxConcurrentActiveRunCount));
+        }
+
+        /**
          * @param maxConcurrentRunCount Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
          * 
          * @return builder
@@ -514,9 +593,6 @@ public final class ScheduleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ScheduleArgs build() {
-            if ($.createNotebookExecutionJobRequest == null) {
-                throw new MissingRequiredPropertyException("ScheduleArgs", "createNotebookExecutionJobRequest");
-            }
             if ($.cron == null) {
                 throw new MissingRequiredPropertyException("ScheduleArgs", "cron");
             }

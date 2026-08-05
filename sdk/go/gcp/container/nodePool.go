@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = container.NewNodePool(ctx, "primary_preemptible_nodes", &container.NodePoolArgs{
 //				Name:      pulumi.String("my-node-pool"),
-//				Cluster:   primary.ID(),
+//				Cluster:   primary.ID().ToIDOutput().ToStringOutput(),
 //				NodeCount: pulumi.Int(1),
 //				NodeConfig: &container.NodePoolNodeConfigArgs{
 //					Preemptible:    pulumi.Bool(true),
@@ -118,7 +118,7 @@ import (
 //			}
 //			_, err = container.NewNodePool(ctx, "np", &container.NodePoolArgs{
 //				Name:    pulumi.String("my-node-pool"),
-//				Cluster: primary.ID(),
+//				Cluster: primary.ID().ToIDOutput().ToStringOutput(),
 //				NodeConfig: &container.NodePoolNodeConfigArgs{
 //					MachineType:    pulumi.String("e2-medium"),
 //					ServiceAccount: _default.Email,

@@ -52,8 +52,8 @@ import (
 //			_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "default", &compute.NetworkFirewallPolicyAssociationArgs{
 //				Name:             pulumi.String("my-association"),
 //				Project:          pulumi.String("my-project-name"),
-//				AttachmentTarget: network.ID(),
-//				FirewallPolicy:   policy.ID(),
+//				AttachmentTarget: network.ID().ToIDOutput().ToStringOutput(),
+//				FirewallPolicy:   policy.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

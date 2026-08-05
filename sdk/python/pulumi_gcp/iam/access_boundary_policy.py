@@ -289,7 +289,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                 }],
             })
         example = gcp.iam.AccessBoundaryPolicy("example",
-            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).result,
             name="my-ab-policy",
             display_name="My AB policy",
             rules=[{
@@ -385,7 +385,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
                 }],
             })
         example = gcp.iam.AccessBoundaryPolicy("example",
-            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).result,
             name="my-ab-policy",
             display_name="My AB policy",
             rules=[{

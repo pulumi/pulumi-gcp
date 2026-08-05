@@ -51,7 +51,7 @@ import (
 //				MembershipId: pulumi.String("my-membership"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//						ResourceLink: cluster.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},
@@ -65,7 +65,7 @@ import (
 //				Location: pulumi.String("global"),
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
-//						ConfigMembership: membership.ID(),
+//						ConfigMembership: membership.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

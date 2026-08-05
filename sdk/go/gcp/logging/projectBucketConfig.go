@@ -145,14 +145,14 @@ import (
 //			}
 //			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 //				Name:           pulumi.String("crypto-key-example"),
-//				KeyRing:        keyring.ID(),
+//				KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "crypto_key_binding", &kms.CryptoKeyIAMBindingArgs{
-//				CryptoKeyId: key.ID(),
+//				CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:%v", cmekSettings.ServiceAccountId),
@@ -167,7 +167,7 @@ import (
 //				RetentionDays: pulumi.Int(30),
 //				BucketId:      pulumi.String("custom-bucket"),
 //				CmekSettings: &logging.ProjectBucketConfigCmekSettingsArgs{
-//					KmsKeyName: key.ID(),
+//					KmsKeyName: key.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyBinding,

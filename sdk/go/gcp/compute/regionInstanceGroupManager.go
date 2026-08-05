@@ -86,7 +86,7 @@ import (
 //					},
 //				},
 //				AutoHealingPolicies: &compute.RegionInstanceGroupManagerAutoHealingPoliciesArgs{
-//					HealthCheck:     autohealing.ID(),
+//					HealthCheck:     autohealing.ID().ToIDOutput().ToStringOutput(),
 //					InitialDelaySec: pulumi.Int(300),
 //				},
 //			})

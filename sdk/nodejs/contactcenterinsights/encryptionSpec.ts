@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  *         text: gcpSa.member,
  *         search: "@gcp-sa-contactcenterinsights.iam",
  *         replace: "@gcp-sa-ccai-cmek.iam",
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  * }, {
  *     dependsOn: [waitCreateSa],

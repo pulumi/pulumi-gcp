@@ -58,7 +58,7 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Description:  pulumi.String("test description"),
-//				Featurestore: featurestore.ID(),
+//				Featurestore: featurestore.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
 //					SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
 //						Disabled:               pulumi.Bool(false),
@@ -120,7 +120,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Featurestore: featurestore.ID(),
+//				Featurestore: featurestore.ID().ToIDOutput().ToStringOutput(),
 //				MonitoringConfig: &vertex.AiFeatureStoreEntityTypeMonitoringConfigArgs{
 //					SnapshotAnalysis: &vertex.AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs{
 //						Disabled:           pulumi.Bool(false),

@@ -55,8 +55,8 @@ import (
 //			}
 //			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
 //				WorkstationClusterId: pulumi.String("workstation-cluster"),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:             pulumi.String("us-central1"),
 //				Labels: pulumi.StringMap{
 //					"label": pulumi.String("key"),

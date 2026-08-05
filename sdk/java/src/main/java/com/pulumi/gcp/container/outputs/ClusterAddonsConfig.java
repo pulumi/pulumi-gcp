@@ -18,6 +18,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigLustreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigNodeReadinessConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigPodSnapshotConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigRayOperatorConfig;
@@ -136,6 +137,14 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
     /**
+     * @return The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+     * Structure is documented below.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    private @Nullable ClusterAddonsConfigNodeReadinessConfig nodeReadinessConfig;
+    /**
      * @return The status of the Parallelstore CSI driver addon,
      * which allows the usage of a Parallelstore instances as volumes.
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -177,8 +186,6 @@ public final class ClusterAddonsConfig {
      * which creates slurm related CRDs and KCP pods to manage them.
      * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
      * It can not be enabled for Autopilot clusters.
-     * 
-     * This example `addonsConfig` disables two addons:
      * 
      */
     private @Nullable ClusterAddonsConfigSlurmOperatorConfig slurmOperatorConfig;
@@ -324,6 +331,16 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.networkPolicyConfig);
     }
     /**
+     * @return The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+     * Structure is documented below.
+     * 
+     * This example `addonsConfig` disables two addons:
+     * 
+     */
+    public Optional<ClusterAddonsConfigNodeReadinessConfig> nodeReadinessConfig() {
+        return Optional.ofNullable(this.nodeReadinessConfig);
+    }
+    /**
      * @return The status of the Parallelstore CSI driver addon,
      * which allows the usage of a Parallelstore instances as volumes.
      * It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -374,8 +391,6 @@ public final class ClusterAddonsConfig {
      * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
      * It can not be enabled for Autopilot clusters.
      * 
-     * This example `addonsConfig` disables two addons:
-     * 
      */
     public Optional<ClusterAddonsConfigSlurmOperatorConfig> slurmOperatorConfig() {
         return Optional.ofNullable(this.slurmOperatorConfig);
@@ -413,6 +428,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigKalmConfig kalmConfig;
         private @Nullable ClusterAddonsConfigLustreCsiDriverConfig lustreCsiDriverConfig;
         private @Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig;
+        private @Nullable ClusterAddonsConfigNodeReadinessConfig nodeReadinessConfig;
         private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
         private @Nullable ClusterAddonsConfigPodSnapshotConfig podSnapshotConfig;
         private @Nullable List<ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
@@ -436,6 +452,7 @@ public final class ClusterAddonsConfig {
     	      this.kalmConfig = defaults.kalmConfig;
     	      this.lustreCsiDriverConfig = defaults.lustreCsiDriverConfig;
     	      this.networkPolicyConfig = defaults.networkPolicyConfig;
+    	      this.nodeReadinessConfig = defaults.nodeReadinessConfig;
     	      this.parallelstoreCsiDriverConfig = defaults.parallelstoreCsiDriverConfig;
     	      this.podSnapshotConfig = defaults.podSnapshotConfig;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
@@ -529,6 +546,12 @@ public final class ClusterAddonsConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder nodeReadinessConfig(@Nullable ClusterAddonsConfigNodeReadinessConfig nodeReadinessConfig) {
+
+            this.nodeReadinessConfig = nodeReadinessConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder parallelstoreCsiDriverConfig(@Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig) {
 
             this.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
@@ -583,6 +606,7 @@ public final class ClusterAddonsConfig {
             _resultValue.kalmConfig = kalmConfig;
             _resultValue.lustreCsiDriverConfig = lustreCsiDriverConfig;
             _resultValue.networkPolicyConfig = networkPolicyConfig;
+            _resultValue.nodeReadinessConfig = nodeReadinessConfig;
             _resultValue.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             _resultValue.podSnapshotConfig = podSnapshotConfig;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;

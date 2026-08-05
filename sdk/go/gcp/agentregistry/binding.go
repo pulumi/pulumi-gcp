@@ -41,8 +41,8 @@ import (
 //			defaultIamConnectorsConnector, err := google.NewIamConnectorsConnector(ctx, "default", &google.IamConnectorsConnectorArgs{
 //				Location:    "us-central1",
 //				ConnectorId: "ar-binding",
-//				ConnectorTypeParams: []map[string]interface{}{
-//					map[string]interface{}{
+//				ConnectorTypeParams: []map[string]string{
+//					{
 //						"connectorVersion": "projects/my-project-name/locations/global/providers/gcp/connectors/pubsub/versions/1",
 //					},
 //				},

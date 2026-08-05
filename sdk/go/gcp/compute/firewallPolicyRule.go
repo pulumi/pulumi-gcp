@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Parent:      folder.ID(),
+//				Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Resource created for Terraform acceptance testing"),
 //			})
@@ -91,7 +91,7 @@ import (
 //					},
 //					SrcAddressGroups: pulumi.StringArray{},
 //					DestAddressGroups: pulumi.StringArray{
-//						basicGlobalNetworksecurityAddressGroup.ID(),
+//						basicGlobalNetworksecurityAddressGroup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -126,7 +126,7 @@ import (
 //			}
 //			_, err = tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
-//				Parent:      basicKey.ID(),
+//				Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -161,7 +161,7 @@ import (
 //				return err
 //			}
 //			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Parent:      folder.ID(),
+//				Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Firewall policy"),
 //			})
@@ -188,7 +188,7 @@ import (
 //					},
 //					SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
 //					SrcNetworks: pulumi.StringArray{
-//						network.ID(),
+//						network.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{
 //						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
@@ -238,7 +238,7 @@ import (
 //				return err
 //			}
 //			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Parent:      folder.ID(),
+//				Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Firewall policy"),
 //			})
@@ -350,7 +350,7 @@ import (
 //				return err
 //			}
 //			_default, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Parent:      folder.ID(),
+//				Parent:      folder.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Resource created for Terraform acceptance testing"),
 //			})
@@ -371,7 +371,7 @@ import (
 //			}
 //			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
-//				Parent:      basicKey.ID(),
+//				Parent:      basicKey.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("tag-value"),
 //			})
 //			if err != nil {
@@ -387,7 +387,7 @@ import (
 //				Disabled:       pulumi.Bool(false),
 //				TargetSecureTags: compute.FirewallPolicyRuleTargetSecureTagArray{
 //					&compute.FirewallPolicyRuleTargetSecureTagArgs{
-//						Name: basicValue.ID(),
+//						Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Match: &compute.FirewallPolicyRuleMatchArgs{
@@ -396,7 +396,7 @@ import (
 //					},
 //					SrcSecureTags: compute.FirewallPolicyRuleMatchSrcSecureTagArray{
 //						&compute.FirewallPolicyRuleMatchSrcSecureTagArgs{
-//							Name: basicValue.ID(),
+//							Name: basicValue.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //					Layer4Configs: compute.FirewallPolicyRuleMatchLayer4ConfigArray{

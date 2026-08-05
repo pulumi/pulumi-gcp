@@ -75,7 +75,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
 //				TimeoutSec:          pulumi.Int(10),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -84,7 +84,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("url-map"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultRegionBackendService.ID(),
+//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -96,13 +96,13 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultRegionBackendService.ID(),
+//						DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultRegionBackendService.ID(),
+//								Service: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -114,9 +114,9 @@ import (
 //			_, err = compute.NewRegionTargetHttpsProxy(ctx, "default", &compute.RegionTargetHttpsProxyArgs{
 //				Region: pulumi.String("us-central1"),
 //				Name:   pulumi.String("test-proxy"),
-//				UrlMap: defaultRegionUrlMap.ID(),
+//				UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 //				SslCertificates: pulumi.StringArray{
-//					defaultRegionSslCertificate.ID(),
+//					defaultRegionSslCertificate.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -180,7 +180,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("url-map"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultRegionBackendService.ID(),
+//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -201,13 +201,13 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultRegionBackendService.ID(),
+//						DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultRegionBackendService.ID(),
+//								Service: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -220,9 +220,9 @@ import (
 //				Region:                  pulumi.String("us-central1"),
 //				Name:                    pulumi.String("test-http-keep-alive-timeout-proxy"),
 //				HttpKeepAliveTimeoutSec: pulumi.Int(600),
-//				UrlMap:                  defaultRegionUrlMap.ID(),
+//				UrlMap:                  defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 //				SslCertificates: pulumi.StringArray{
-//					defaultRegionSslCertificate.ID(),
+//					defaultRegionSslCertificate.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -349,7 +349,7 @@ import (
 //				Protocol:            pulumi.String("HTTP"),
 //				TimeoutSec:          pulumi.Int(10),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
-//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//				HealthChecks:        defaultRegionHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -358,7 +358,7 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Name:           pulumi.String("url-map"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultRegionBackendService.ID(),
+//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.RegionUrlMapHostRuleArray{
 //					&compute.RegionUrlMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -370,13 +370,13 @@ import (
 //				PathMatchers: compute.RegionUrlMapPathMatcherArray{
 //					&compute.RegionUrlMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultRegionBackendService.ID(),
+//						DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
 //							&compute.RegionUrlMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultRegionBackendService.ID(),
+//								Service: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -388,11 +388,11 @@ import (
 //			_, err = compute.NewRegionTargetHttpsProxy(ctx, "default", &compute.RegionTargetHttpsProxyArgs{
 //				Region: pulumi.String("us-central1"),
 //				Name:   pulumi.String("test-mtls-proxy"),
-//				UrlMap: defaultRegionUrlMap.ID(),
+//				UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 //				SslCertificates: pulumi.StringArray{
-//					defaultRegionSslCertificate.ID(),
+//					defaultRegionSslCertificate.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				ServerTlsPolicy: defaultServerTlsPolicy.ID(),
+//				ServerTlsPolicy: defaultServerTlsPolicy.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -455,7 +455,7 @@ import (
 //			}
 //			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
 //				Name:           pulumi.String("url-map"),
-//				DefaultService: defaultRegionBackendService.ID(),
+//				DefaultService: defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //				Region:         pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -463,9 +463,9 @@ import (
 //			}
 //			_, err = compute.NewRegionTargetHttpsProxy(ctx, "default", &compute.RegionTargetHttpsProxyArgs{
 //				Name:   pulumi.String("target-http-proxy"),
-//				UrlMap: defaultRegionUrlMap.ID(),
+//				UrlMap: defaultRegionUrlMap.ID().ToIDOutput().ToStringOutput(),
 //				CertificateManagerCertificates: pulumi.StringArray{
-//					defaultCertificate.ID().ApplyT(func(id string) (string, error) {
+//					defaultCertificate.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //						return fmt.Sprintf("//certificatemanager.googleapis.com/%v", id), nil
 //					}).(pulumi.StringOutput),
 //				},

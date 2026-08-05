@@ -196,18 +196,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"typeKind": "INT64",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 //				"columns": []map[string]interface{}{
 //					map[string]interface{}{
 //						"name": "value",
-//						"type": map[string]interface{}{
+//						"type": map[string]string{
 //							"typeKind": "INT64",
 //						},
 //					},

@@ -2648,6 +2648,125 @@ export namespace accesscontextmanager {
 
 }
 
+export namespace agentidentity {
+    export interface AuthProviderAuthProviderTypeParams {
+        /**
+         * Message describing ApiKeyParams object.
+         * Structure is documented below.
+         */
+        apiKey?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsApiKey;
+        /**
+         * (Output)
+         * Message describing GeminiEnterpriseAuthProviderParams object.
+         * Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
+         */
+        geAuthProviders: outputs.agentidentity.AuthProviderAuthProviderTypeParamsGeAuthProvider[];
+        /**
+         * Message describing ThreeLeggedOAuth object.
+         * Structure is documented below.
+         */
+        threeLeggedOauth?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsThreeLeggedOauth;
+        /**
+         * Message describing TwoLeggedOAuth object.
+         * Structure is documented below.
+         */
+        twoLeggedOauth?: outputs.agentidentity.AuthProviderAuthProviderTypeParamsTwoLeggedOauth;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsApiKey {
+        /**
+         * Input only. The API key for this auth_provider.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        apiKey?: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsGeAuthProvider {
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsThreeLeggedOauth {
+        /**
+         * The authorization endpoint to send users to for consenting to delegate
+         * to the agent.
+         * eg. "https://auth.atlassian.com/authorize"
+         */
+        authorizationUrl?: string;
+        /**
+         * The client ID of the OAuth client.
+         */
+        clientId?: string;
+        /**
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `clientSecret` or `clientSecretWo` can only be set.
+         */
+        clientSecretWo?: string;
+        /**
+         * Triggers update of `clientSecretWo` write-only. Increment this value when an update to `clientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        clientSecretWoVersion?: string;
+        /**
+         * The default continue URI for 3LO flow and it will be used when no continue
+         * URI is provided in the RetrieveCredentials request.
+         */
+        defaultContinueUri?: string;
+        /**
+         * Enables Proof Key for Code Exchange (PKCE) for the OAuth flow to prevent
+         * authorization code interception attacks.
+         */
+        enablePkce?: boolean;
+        /**
+         * (Output)
+         * The redirect URL this authProvider uses for the OAuth exchange.
+         * This is deterministic based on the name of the auth_provider.
+         */
+        redirectUrl: string;
+        /**
+         * The token endpoint for requesting tokens on behalf of an end user.
+         * eg. "https://auth.atlassian.com/oauth/token"
+         */
+        tokenUrl?: string;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsTwoLeggedOauth {
+        /**
+         * The client ID of the OAuth client.
+         */
+        clientId?: string;
+        /**
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: string;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `clientSecret` or `clientSecretWo` can only be set.
+         */
+        clientSecretWo?: string;
+        /**
+         * Triggers update of `clientSecretWo` write-only. Increment this value when an update to `clientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        clientSecretWoVersion?: string;
+        /**
+         * The token endpoint of the OAuth client.
+         */
+        tokenUrl?: string;
+    }
+
+}
+
 export namespace agentregistry {
     export interface BindingAuthProviderBinding {
         /**
@@ -13126,7 +13245,7 @@ export namespace bigquery {
         /**
          * Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
          */
         argumentKind?: string;
         /**
@@ -13148,6 +13267,36 @@ export namespace bigquery {
          * The name of this argument. Can be absent for function return argument.
          */
         name?: string;
+        /**
+         * If argumentKind is FIXED_TABLE, a schema for the table type.
+         * Structure is documented below.
+         */
+        tableType?: outputs.bigquery.RoutineArgumentTableType;
+    }
+
+    export interface RoutineArgumentTableType {
+        /**
+         * The columns in the table type.
+         * Structure is documented below.
+         */
+        columns?: outputs.bigquery.RoutineArgumentTableTypeColumn[];
+    }
+
+    export interface RoutineArgumentTableTypeColumn {
+        /**
+         * The name of the column.
+         */
+        name?: string;
+        /**
+         * A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+         * ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+         * will create a diff, even if the JSON itself hasn't changed. If the API returns
+         * a different value for the same schema, e.g. it switched the order of values
+         * or replaced STRUCT field type with RECORD field type, we currently cannot
+         * suppress the recurring diff this causes. As a workaround, we recommend using
+         * the schema as returned by the API.
+         */
+        type?: string;
     }
 
     export interface RoutineExternalRuntimeOptions {
@@ -24971,6 +25120,141 @@ export namespace ces {
 }
 
 export namespace chronicle {
+    export interface BigQueryExportEntityGraphSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime: string;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume: string;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: boolean;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState: string;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: number;
+    }
+
+    export interface BigQueryExportIocMatchesSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime: string;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume: string;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: boolean;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState: string;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: number;
+    }
+
+    export interface BigQueryExportRuleDetectionsSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime: string;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume: string;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: boolean;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState: string;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: number;
+    }
+
+    export interface BigQueryExportUdmEventsAggregatesSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime: string;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume: string;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: boolean;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState: string;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: number;
+    }
+
+    export interface BigQueryExportUdmEventsSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime: string;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume: string;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: boolean;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState: string;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: number;
+    }
+
     export interface DashboardChartChartLayout {
         /**
          * (Required)
@@ -43434,9 +43718,28 @@ export namespace colab {
          * Structure is documented below.
          */
         notebookExecutionJob: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob;
+        /**
+         * (Output)
+         * User specified ID for the NotebookExecutionJob.
+         */
+        notebookExecutionJobId: string;
+        /**
+         * The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+         */
+        parent: string;
     }
 
     export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+        /**
+         * (Output)
+         * Timestamp when this NotebookExecutionJob was created.
+         */
+        createTime: string;
+        /**
+         * Compute configuration to use for an execution job.
+         * Structure is documented below.
+         */
+        customEnvironmentSpec?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec;
         /**
          * The Dataform Repository containing the input notebook.
          * Structure is documented below.
@@ -43446,6 +43749,11 @@ export namespace colab {
          * Required. The display name of the Notebook Execution.
          */
         displayName: string;
+        /**
+         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+         * Structure is documented below.
+         */
+        encryptionSpec?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec;
         /**
          * Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
          */
@@ -43464,13 +43772,136 @@ export namespace colab {
          */
         gcsOutputUri: string;
         /**
+         * (Output)
+         * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+         */
+        jobState: string;
+        /**
+         * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         */
+        kernelName?: string;
+        /**
+         * The labels with user-defined metadata to organize NotebookExecutionJobs.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * (Output)
+         * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+         */
+        name: string;
+        /**
          * The NotebookRuntimeTemplate to source compute configuration from.
          */
-        notebookRuntimeTemplateResourceName: string;
+        notebookRuntimeTemplateResourceName?: string;
+        /**
+         * (Output)
+         * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+         */
+        scheduleResourceName: string;
         /**
          * The service account to run the execution as.
          */
         serviceAccount?: string;
+        /**
+         * (Output)
+         * Timestamp when this NotebookExecutionJob was most recently updated.
+         */
+        updateTime: string;
+        /**
+         * Configuration for a Workbench Instances-based environment.
+         */
+        workbenchRuntime?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec;
+        /**
+         * Network spec.
+         * Structure is documented below.
+         */
+        networkSpec?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec;
+        /**
+         * Represents the spec of persistent disk options.
+         * Structure is documented below.
+         */
+        persistentDiskSpec?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
+         */
+        acceleratorCount?: number;
+        /**
+         * Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+         */
+        acceleratorType?: string;
+        /**
+         * The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
+         */
+        gpuPartitionSize?: string;
+        /**
+         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+         */
+        machineType?: string;
+        /**
+         * A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+         * Structure is documented below.
+         */
+        reservationAffinity?: outputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity;
+        /**
+         * The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+         */
+        tpuTopology?: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+         */
+        key?: string;
+        /**
+         * Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+         */
+        reservationAffinityType: string;
+        /**
+         * When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+         */
+        useReservationPool?: boolean;
+        /**
+         * Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+         */
+        values?: string[];
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
+        /**
+         * Whether to enable public internet access. Default false.
+         */
+        enableInternetAccess?: boolean;
+        /**
+         * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+         */
+        network?: string;
+        /**
+         * The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+         */
+        subnetwork?: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
+        /**
+         * Size in GB of the disk (default is 100GB).
+         */
+        diskSizeGb?: string;
+        /**
+         * Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+         */
+        diskType?: string;
     }
 
     export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
@@ -43479,9 +43910,16 @@ export namespace colab {
          */
         commitSha?: string;
         /**
-         * The resource name of the Dataform Repository.
+         * The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
          */
         dataformRepositoryResourceName: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: string;
     }
 
     export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
@@ -43493,6 +43931,188 @@ export namespace colab {
          * The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
          */
         uri: string;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
+    }
+
+    export interface ScheduleCreatePipelineJobRequest {
+        /**
+         * The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+         */
+        parent: string;
+        /**
+         * An instance of a machine learning PipelineJob.
+         * Structure is documented below.
+         */
+        pipelineJob: outputs.colab.ScheduleCreatePipelineJobRequestPipelineJob;
+        /**
+         * (Output)
+         * The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+         */
+        pipelineJobId: string;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJob {
+        /**
+         * (Output)
+         * Pipeline creation time.
+         */
+        createTime: string;
+        /**
+         * The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+         */
+        displayName?: string;
+        /**
+         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+         * Structure is documented below.
+         */
+        encryptionSpec?: outputs.colab.ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec;
+        /**
+         * (Output)
+         * Pipeline end time.
+         */
+        endTime: string;
+        /**
+         * The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+         */
+        labels: {[key: string]: string};
+        /**
+         * (Output)
+         * The resource name of the PipelineJob.
+         */
+        name: string;
+        /**
+         * The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+         */
+        network?: string;
+        /**
+         * A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+         */
+        pipelineSpec?: string;
+        /**
+         * Whether to do component level validations before job creation.
+         */
+        preflightValidations?: boolean;
+        /**
+         * Configuration for PSC-I.
+         * Structure is documented below.
+         */
+        pscInterfaceConfig?: outputs.colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig;
+        /**
+         * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+         */
+        reservedIpRanges: string[];
+        /**
+         * The runtime config of a PipelineJob.
+         * Structure is documented below.
+         */
+        runtimeConfig?: outputs.colab.ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig;
+        /**
+         * (Output)
+         * The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+         */
+        scheduleName: string;
+        /**
+         * The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+         */
+        serviceAccount?: string;
+        /**
+         * (Output)
+         * Pipeline start time.
+         */
+        startTime: string;
+        /**
+         * (Output)
+         * Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+         */
+        state: string;
+        /**
+         * (Output)
+         * Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+         * Structure is documented below.
+         */
+        templateMetadatas: outputs.colab.ScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata[];
+        /**
+         * A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+         */
+        templateUri?: string;
+        /**
+         * (Output)
+         * Timestamp when this PipelineJob was most recently updated.
+         */
+        updateTime: string;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
+        /**
+         * DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+         * Structure is documented below.
+         */
+        dnsPeeringConfigs?: outputs.colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig[];
+        /**
+         * The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+         */
+        networkAttachment?: string;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
+        /**
+         * The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+         */
+        domain: string;
+        /**
+         * The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+         */
+        targetNetwork: string;
+        /**
+         * The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+         */
+        targetProject: string;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
+        /**
+         * Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+         */
+        failurePolicy?: string;
+        /**
+         * A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+         */
+        gcsOutputDirectory: string;
+        /**
+         * The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+         *
+         * <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
+         */
+        parameterValues: {[key: string]: string};
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
+        /**
+         * The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+         */
+        version: string;
+    }
+
+    export interface ScheduleLastScheduledRunResponse {
+        /**
+         * (Output)
+         * The response of the scheduled run.
+         */
+        runResponse: string;
+        /**
+         * (Output)
+         * The scheduled run time based on the user-specified schedule.
+         */
+        scheduledRunTime: string;
     }
 
 }
@@ -43720,6 +44340,10 @@ export namespace composer {
          */
         tags?: string[];
         /**
+         * Traffic routing configuration for Cloud Composer environment.
+         */
+        trafficRoutingConfig: outputs.composer.EnvironmentConfigNodeConfigTrafficRoutingConfig;
+        /**
          * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         zone: string;
@@ -43746,6 +44370,13 @@ export namespace composer {
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
          */
         useIpAliases?: boolean;
+    }
+
+    export interface EnvironmentConfigNodeConfigTrafficRoutingConfig {
+        /**
+         * Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+         */
+        cloudRunFunctionsRouting: string;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
@@ -44215,6 +44846,10 @@ export namespace composer {
          */
         tags: string[];
         /**
+         * Traffic routing configuration for Cloud Composer environment.
+         */
+        trafficRoutingConfigs: outputs.composer.GetEnvironmentConfigNodeConfigTrafficRoutingConfig[];
+        /**
          * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         zone: string;
@@ -44241,6 +44876,13 @@ export namespace composer {
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
          */
         useIpAliases: boolean;
+    }
+
+    export interface GetEnvironmentConfigNodeConfigTrafficRoutingConfig {
+        /**
+         * Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+         */
+        cloudRunFunctionsRouting: string;
     }
 
     export interface GetEnvironmentConfigPrivateEnvironmentConfig {
@@ -45470,12 +46112,36 @@ export namespace compute {
          */
         optionalMode: string;
         /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         */
+        requestHeaders?: outputs.compute.BackendServiceLogConfigRequestHeader[];
+        /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         */
+        responseHeaders?: outputs.compute.BackendServiceLogConfigResponseHeader[];
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate?: number;
+    }
+
+    export interface BackendServiceLogConfigRequestHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
+    }
+
+    export interface BackendServiceLogConfigResponseHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
     }
 
     export interface BackendServiceMaxStreamDuration {
@@ -47638,12 +48304,34 @@ export namespace compute {
          */
         optionalMode: string;
         /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         */
+        requestHeaders: outputs.compute.GetBackendServiceLogConfigRequestHeader[];
+        /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         */
+        responseHeaders: outputs.compute.GetBackendServiceLogConfigResponseHeader[];
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate: number;
+    }
+
+    export interface GetBackendServiceLogConfigRequestHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
+    }
+
+    export interface GetBackendServiceLogConfigResponseHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
     }
 
     export interface GetBackendServiceMaxStreamDuration {
@@ -51304,12 +51992,34 @@ export namespace compute {
          */
         optionalMode: string;
         /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         */
+        requestHeaders: outputs.compute.GetRegionBackendServiceLogConfigRequestHeader[];
+        /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         */
+        responseHeaders: outputs.compute.GetRegionBackendServiceLogConfigResponseHeader[];
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate: number;
+    }
+
+    export interface GetRegionBackendServiceLogConfigRequestHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
+    }
+
+    export interface GetRegionBackendServiceLogConfigResponseHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
     }
 
     export interface GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy {
@@ -62188,12 +62898,36 @@ export namespace compute {
          */
         optionalMode: string;
         /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         */
+        requestHeaders?: outputs.compute.RegionBackendServiceLogConfigRequestHeader[];
+        /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         */
+        responseHeaders?: outputs.compute.RegionBackendServiceLogConfigResponseHeader[];
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate?: number;
+    }
+
+    export interface RegionBackendServiceLogConfigRequestHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
+    }
+
+    export interface RegionBackendServiceLogConfigResponseHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: string;
     }
 
     export interface RegionBackendServiceNetworkPassThroughLbTrafficPolicy {
@@ -75475,6 +76209,13 @@ export namespace container {
          */
         networkPolicyConfig: outputs.container.ClusterAddonsConfigNetworkPolicyConfig;
         /**
+         * The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+         * Structure is documented below.
+         *
+         * This example `addonsConfig` disables two addons:
+         */
+        nodeReadinessConfig: outputs.container.ClusterAddonsConfigNodeReadinessConfig;
+        /**
          * The status of the Parallelstore CSI driver addon,
          * which allows the usage of a Parallelstore instances as volumes.
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -75512,8 +76253,6 @@ export namespace container {
          * which creates slurm related CRDs and KCP pods to manage them.
          * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
          * It can not be enabled for Autopilot clusters.
-         *
-         * This example `addonsConfig` disables two addons:
          */
         slurmOperatorConfig: outputs.container.ClusterAddonsConfigSlurmOperatorConfig;
         /**
@@ -75626,6 +76365,10 @@ export namespace container {
         disabled: boolean;
     }
 
+    export interface ClusterAddonsConfigNodeReadinessConfig {
+        enabled: boolean;
+    }
+
     export interface ClusterAddonsConfigParallelstoreCsiDriverConfig {
         enabled: boolean;
     }
@@ -75704,13 +76447,14 @@ export namespace container {
 
     export interface ClusterBinaryAuthorization {
         /**
-         * Enable Binary Authorization for this cluster.
+         * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          *
          * @deprecated Deprecated in favor of evaluation_mode.
          */
         enabled?: boolean;
         /**
-         * Mode of operation for Binary Authorization policy evaluation.
+         * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          */
         evaluationMode: string;
     }
@@ -79535,6 +80279,13 @@ export namespace container {
         datasetId: string;
     }
 
+    export interface ClusterRollbackSafeUpgrade {
+        /**
+         * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+         */
+        controlPlaneSoakDuration?: string;
+    }
+
     export interface ClusterSecretManagerConfig {
         /**
          * Enable the Secret Manager add-on for this cluster.
@@ -79730,6 +80481,10 @@ export namespace container {
          */
         networkPolicyConfigs: outputs.container.GetClusterAddonsConfigNetworkPolicyConfig[];
         /**
+         * The status of the Node Readiness Controller addon.
+         */
+        nodeReadinessConfigs: outputs.container.GetClusterAddonsConfigNodeReadinessConfig[];
+        /**
          * The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
          */
         parallelstoreCsiDriverConfigs: outputs.container.GetClusterAddonsConfigParallelstoreCsiDriverConfig[];
@@ -79833,6 +80588,10 @@ export namespace container {
 
     export interface GetClusterAddonsConfigNetworkPolicyConfig {
         disabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigNodeReadinessConfig {
+        enabled: boolean;
     }
 
     export interface GetClusterAddonsConfigParallelstoreCsiDriverConfig {
@@ -83168,6 +83927,13 @@ export namespace container {
          * The ID of a BigQuery Dataset.
          */
         datasetId: string;
+    }
+
+    export interface GetClusterRollbackSafeUpgrade {
+        /**
+         * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+         */
+        controlPlaneSoakDuration: string;
     }
 
     export interface GetClusterSecretManagerConfig {
@@ -113594,6 +114360,14 @@ export namespace gkehub {
         labelSelector: string;
     }
 
+    export interface RolloutSequenceOperationalState {
+        /**
+         * (Output)
+         * The state of the rollout sequence.
+         */
+        state: string;
+    }
+
     export interface RolloutSequenceStage {
         /**
          * Filter to select a subset of clusters from the specified Fleet projects.
@@ -126575,6 +127349,12 @@ export namespace modelarmor {
          */
         enforcementType?: string;
         /**
+         * Selects the filter version to use for this template. Set exactly one of
+         * 'alias' or 'version'.
+         * Structure is documented below.
+         */
+        filterVersionSelector?: outputs.modelarmor.TemplateTemplateMetadataFilterVersionSelector;
+        /**
          * If true, partial detector failures should be ignored.
          */
         ignorePartialInvocationFailures?: boolean;
@@ -126591,6 +127371,22 @@ export namespace modelarmor {
          * Structure is documented below.
          */
         multiLanguageDetection?: outputs.modelarmor.TemplateTemplateMetadataMultiLanguageDetection;
+    }
+
+    export interface TemplateTemplateMetadataFilterVersionSelector {
+        /**
+         * A predefined filter version alias. The template automatically follows the
+         * version this alias points to.
+         * Possible values:
+         * FILTER_VERSION_ALIAS_STABLE
+         * FILTER_VERSION_ALIAS_LATEST
+         */
+        alias?: string;
+        /**
+         * Pins the template to a specific, immutable filter version. Expected
+         * format is a case-sensitive string such as 'v1' or 'v2'.
+         */
+        version?: string;
     }
 
     export interface TemplateTemplateMetadataMultiLanguageDetection {
@@ -161925,6 +162721,42 @@ export namespace vectorsearch {
     export interface CollectionVectorSchemaSparseVector {
     }
 
+    export interface DataObjectVector {
+        /**
+         * A dense vector.
+         * Structure is documented below.
+         */
+        dense?: outputs.vectorsearch.DataObjectVectorDense;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        fieldName: string;
+        /**
+         * A sparse vector.
+         * Structure is documented below.
+         */
+        sparse?: outputs.vectorsearch.DataObjectVectorSparse;
+    }
+
+    export interface DataObjectVectorDense {
+        /**
+         * The float values of the dense vector.
+         */
+        values: number[];
+    }
+
+    export interface DataObjectVectorSparse {
+        /**
+         * The indices corresponding to the entries in `values`. Must
+         * have the same length as `values`.
+         */
+        indices: number[];
+        /**
+         * The non-zero float values of the sparse vector.
+         */
+        values: number[];
+    }
+
     export interface IndexDedicatedInfrastructure {
         /**
          * Autoscaling specification.
@@ -163835,6 +164667,208 @@ export namespace vertex {
          * The disk utilization of the MetadataStore in bytes.
          */
         diskUtilizationBytes: string;
+    }
+
+    export interface AiPersistentResourceEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource.
+         * The Cloud KMS key must be in the same region as the resource. It must have
+         * the format
+         * `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface AiPersistentResourceError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message: string;
+    }
+
+    export interface AiPersistentResourcePscInterfaceConfig {
+        /**
+         * DNS peering configurations. When specified, Vertex AI will
+         * attempt to configure DNS peering zones in the tenant project VPC
+         * to resolve the specified domains using the target network's Cloud DNS.
+         * The user must grant the dns.peer role to the Vertex AI Service Agent
+         * on the target project.
+         * Structure is documented below.
+         */
+        dnsPeeringConfigs?: outputs.vertex.AiPersistentResourcePscInterfaceConfigDnsPeeringConfig[];
+        /**
+         * The name of the Compute Engine
+         * [network
+         * attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+         * attach to the resource within the region and user project.
+         * To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+         * This field is only used for resources using PSC-I.
+         */
+        networkAttachment?: string;
+    }
+
+    export interface AiPersistentResourcePscInterfaceConfigDnsPeeringConfig {
+        /**
+         * The DNS name suffix of the zone being peered to, e.g.,
+         * "my-internal-domain.corp.". Must end with a dot.
+         */
+        domain: string;
+        /**
+         * The VPC network name
+         * in the targetProject where the DNS zone specified by 'domain' is
+         * visible.
+         */
+        targetNetwork: string;
+        /**
+         * The project ID hosting the Cloud DNS managed zone that
+         * contains the 'domain'. The Vertex AI Service Agent requires the
+         * dns.peer role on this project.
+         */
+        targetProject: string;
+    }
+
+    export interface AiPersistentResourceResourcePool {
+        /**
+         * The min/max number of replicas allowed if enabling autoscaling
+         * Structure is documented below.
+         */
+        autoscalingSpec?: outputs.vertex.AiPersistentResourceResourcePoolAutoscalingSpec;
+        /**
+         * Represents the spec of disk options.
+         * Structure is documented below.
+         */
+        diskSpec: outputs.vertex.AiPersistentResourceResourcePoolDiskSpec;
+        /**
+         * The unique ID in a PersistentResource for referring to this resource pool.
+         * User can specify it if necessary. Otherwise, it's generated
+         * automatically.
+         */
+        id: string;
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec: outputs.vertex.AiPersistentResourceResourcePoolMachineSpec;
+        /**
+         * The total number of machines to use for this resource pool.
+         */
+        replicaCount?: string;
+        /**
+         * (Output)
+         * The number of machines currently in use by training jobs for this resource
+         * pool. Will replace idle_replica_count.
+         */
+        usedReplicaCount: string;
+    }
+
+    export interface AiPersistentResourceResourcePoolAutoscalingSpec {
+        /**
+         * max replicas in the node pool,
+         * must be ≥ replicaCount and > minReplicaCount or will throw error
+         */
+        maxReplicaCount?: string;
+        /**
+         * min replicas in the node pool,
+         * must be ≤ replicaCount and < maxReplicaCount or will throw error.
+         * For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
+         * resourcePool to be 0 to match the OSS Ray
+         * behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+         * As for Persistent Resource, the minReplicaCount must be > 0, we added
+         * a corresponding validation inside
+         * CreatePersistentResourceRequestValidator.java.
+         */
+        minReplicaCount?: string;
+    }
+
+    export interface AiPersistentResourceResourcePoolDiskSpec {
+        /**
+         * Size in GB of the boot disk (default is 100GB).
+         */
+        bootDiskSizeGb: number;
+        /**
+         * Type of the boot disk. For non-A3U machines, the default value is
+         * "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+         * Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+         * "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+         */
+        bootDiskType: string;
+    }
+
+    export interface AiPersistentResourceResourcePoolMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine.
+         */
+        acceleratorCount?: number;
+        /**
+         * The type of accelerator(s) that may be attached to the machine.
+         * Possible values:
+         * NVIDIA_TESLA_K80
+         * NVIDIA_TESLA_P100
+         * NVIDIA_TESLA_V100
+         * NVIDIA_TESLA_P4
+         * NVIDIA_TESLA_T4
+         * NVIDIA_TESLA_A100
+         * NVIDIA_A100_80GB
+         * NVIDIA_L4
+         * NVIDIA_H100_80GB
+         * NVIDIA_H100_MEGA_80GB
+         * NVIDIA_H200_141GB
+         * NVIDIA_B200
+         * NVIDIA_GB200
+         * NVIDIA_RTX_PRO_6000
+         * TPU_V2
+         * TPU_V3
+         * TPU_V4_POD
+         * TPU_V5_LITEPOD
+         */
+        acceleratorType?: string;
+        /**
+         * The type of the machine.
+         * See the [list of machine types supported for
+         * prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+         * See the [list of machine types supported for custom
+         * training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+         */
+        machineType?: string;
+    }
+
+    export interface AiPersistentResourceResourceRuntime {
+        /**
+         * (Output)
+         * URIs for user to connect to the Cluster.
+         * Example:
+         * {
+         * "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+         * "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+         * }
+         */
+        accessUris: {[key: string]: string};
+    }
+
+    export interface AiPersistentResourceResourceRuntimeSpec {
+        /**
+         * Configuration for the use of custom service account to run the workloads.
+         * Structure is documented below.
+         */
+        serviceAccountSpec?: outputs.vertex.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec;
+    }
+
+    export interface AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
+        /**
+         * If true, custom user-managed service account is enforced to run any
+         * workloads (for example, Vertex Jobs) on the resource.
+         * Otherwise, uses the [Vertex AI Custom Code Service
+         * Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+         */
+        enableCustomServiceAccount: boolean;
     }
 
     export interface AiRagEngineConfigRagManagedDbConfig {

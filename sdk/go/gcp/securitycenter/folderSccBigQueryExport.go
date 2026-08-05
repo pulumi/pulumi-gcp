@@ -69,7 +69,7 @@ import (
 //			_, err = securitycenter.NewFolderSccBigQueryExport(ctx, "custom_big_query_export_config", &securitycenter.FolderSccBigQueryExportArgs{
 //				BigQueryExportId: pulumi.String("my-export"),
 //				Folder:           folder.FolderId,
-//				Dataset:          _default.ID(),
+//				Dataset:          _default.ID().ToIDOutput().ToStringOutput(),
 //				Description:      pulumi.String("Cloud Security Command Center Findings Big Query Export Config"),
 //				Filter:           pulumi.String("state=\"ACTIVE\" AND NOT mute=\"MUTED\""),
 //			})

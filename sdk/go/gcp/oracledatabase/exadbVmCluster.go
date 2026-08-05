@@ -69,7 +69,7 @@ import (
 //					VmFileSystemStorage: &oracledatabase.ExadbVmClusterPropertiesVmFileSystemStorageArgs{
 //						SizeInGbsPerNode: pulumi.Int(220),
 //					},
-//					ExascaleDbStorageVault: exascaleDbStorageVaults.ID(),
+//					ExascaleDbStorageVault: exascaleDbStorageVaults.ID().ToIDOutput().ToStringOutput(),
 //					HostnamePrefix:         pulumi.String("hostname6"),
 //					ShapeAttribute:         pulumi.String("SMART_STORAGE"),
 //				},
@@ -136,7 +136,7 @@ import (
 //					VmFileSystemStorage: &oracledatabase.ExadbVmClusterPropertiesVmFileSystemStorageArgs{
 //						SizeInGbsPerNode: pulumi.Int(220),
 //					},
-//					ExascaleDbStorageVault: exascaleDbStorageVaults.ID(),
+//					ExascaleDbStorageVault: exascaleDbStorageVaults.ID().ToIDOutput().ToStringOutput(),
 //					HostnamePrefix:         pulumi.String("hostname8"),
 //					ShapeAttribute:         pulumi.String("SMART_STORAGE"),
 //					DataCollectionOptions: &oracledatabase.ExadbVmClusterPropertiesDataCollectionOptionsArgs{

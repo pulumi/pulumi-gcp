@@ -251,7 +251,7 @@ import (
 //				},
 //				AllUpdatesRule: &billing.BudgetAllUpdatesRuleArgs{
 //					MonitoringNotificationChannels: pulumi.StringArray{
-//						notificationChannel.ID(),
+//						notificationChannel.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					DisableDefaultIamRecipients: pulumi.Bool(true),
 //				},

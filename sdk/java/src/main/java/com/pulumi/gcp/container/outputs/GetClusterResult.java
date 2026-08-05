@@ -48,6 +48,7 @@ import com.pulumi.gcp.container.outputs.GetClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.GetClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.GetClusterRollbackSafeUpgrade;
 import com.pulumi.gcp.container.outputs.GetClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecurityPostureConfig;
@@ -89,9 +90,11 @@ public final class GetClusterResult {
     private String deletionPolicy;
     private Boolean deletionProtection;
     private String description;
+    private String desiredEmulatedVersion;
     private Boolean disableL4LbFirewallReconciliation;
     private List<GetClusterDnsConfig> dnsConfigs;
     private Map<String,String> effectiveLabels;
+    private String emulatedVersion;
     private Boolean enableAutopilot;
     private Boolean enableCiliumClusterwideNetworkPolicy;
     private Boolean enableFqdnNetworkPolicy;
@@ -158,6 +161,7 @@ public final class GetClusterResult {
     private Boolean removeDefaultNodePool;
     private Map<String,String> resourceLabels;
     private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
+    private List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades;
     private List<GetClusterSecretManagerConfig> secretManagerConfigs;
     private List<GetClusterSecretSyncConfig> secretSyncConfigs;
     private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
@@ -237,6 +241,9 @@ public final class GetClusterResult {
     public String description() {
         return this.description;
     }
+    public String desiredEmulatedVersion() {
+        return this.desiredEmulatedVersion;
+    }
     public Boolean disableL4LbFirewallReconciliation() {
         return this.disableL4LbFirewallReconciliation;
     }
@@ -245,6 +252,9 @@ public final class GetClusterResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public String emulatedVersion() {
+        return this.emulatedVersion;
     }
     public Boolean enableAutopilot() {
         return this.enableAutopilot;
@@ -436,6 +446,9 @@ public final class GetClusterResult {
     public List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs() {
         return this.resourceUsageExportConfigs;
     }
+    public List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades() {
+        return this.rollbackSafeUpgrades;
+    }
     public List<GetClusterSecretManagerConfig> secretManagerConfigs() {
         return this.secretManagerConfigs;
     }
@@ -509,9 +522,11 @@ public final class GetClusterResult {
         private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
+        private String desiredEmulatedVersion;
         private Boolean disableL4LbFirewallReconciliation;
         private List<GetClusterDnsConfig> dnsConfigs;
         private Map<String,String> effectiveLabels;
+        private String emulatedVersion;
         private Boolean enableAutopilot;
         private Boolean enableCiliumClusterwideNetworkPolicy;
         private Boolean enableFqdnNetworkPolicy;
@@ -574,6 +589,7 @@ public final class GetClusterResult {
         private Boolean removeDefaultNodePool;
         private Map<String,String> resourceLabels;
         private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
+        private List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades;
         private List<GetClusterSecretManagerConfig> secretManagerConfigs;
         private List<GetClusterSecretSyncConfig> secretSyncConfigs;
         private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
@@ -612,9 +628,11 @@ public final class GetClusterResult {
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
+    	      this.desiredEmulatedVersion = defaults.desiredEmulatedVersion;
     	      this.disableL4LbFirewallReconciliation = defaults.disableL4LbFirewallReconciliation;
     	      this.dnsConfigs = defaults.dnsConfigs;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.emulatedVersion = defaults.emulatedVersion;
     	      this.enableAutopilot = defaults.enableAutopilot;
     	      this.enableCiliumClusterwideNetworkPolicy = defaults.enableCiliumClusterwideNetworkPolicy;
     	      this.enableFqdnNetworkPolicy = defaults.enableFqdnNetworkPolicy;
@@ -677,6 +695,7 @@ public final class GetClusterResult {
     	      this.removeDefaultNodePool = defaults.removeDefaultNodePool;
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceUsageExportConfigs = defaults.resourceUsageExportConfigs;
+    	      this.rollbackSafeUpgrades = defaults.rollbackSafeUpgrades;
     	      this.secretManagerConfigs = defaults.secretManagerConfigs;
     	      this.secretSyncConfigs = defaults.secretSyncConfigs;
     	      this.securityPostureConfigs = defaults.securityPostureConfigs;
@@ -901,6 +920,14 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder desiredEmulatedVersion(String desiredEmulatedVersion) {
+            if (desiredEmulatedVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "desiredEmulatedVersion");
+            }
+            this.desiredEmulatedVersion = desiredEmulatedVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disableL4LbFirewallReconciliation(Boolean disableL4LbFirewallReconciliation) {
             if (disableL4LbFirewallReconciliation == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "disableL4LbFirewallReconciliation");
@@ -925,6 +952,14 @@ public final class GetClusterResult {
               throw new MissingRequiredPropertyException("GetClusterResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emulatedVersion(String emulatedVersion) {
+            if (emulatedVersion == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "emulatedVersion");
+            }
+            this.emulatedVersion = emulatedVersion;
             return this;
         }
         @CustomType.Setter
@@ -1513,6 +1548,17 @@ public final class GetClusterResult {
             return resourceUsageExportConfigs(List.of(resourceUsageExportConfigs));
         }
         @CustomType.Setter
+        public Builder rollbackSafeUpgrades(List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades) {
+            if (rollbackSafeUpgrades == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "rollbackSafeUpgrades");
+            }
+            this.rollbackSafeUpgrades = rollbackSafeUpgrades;
+            return this;
+        }
+        public Builder rollbackSafeUpgrades(GetClusterRollbackSafeUpgrade... rollbackSafeUpgrades) {
+            return rollbackSafeUpgrades(List.of(rollbackSafeUpgrades));
+        }
+        @CustomType.Setter
         public Builder secretManagerConfigs(List<GetClusterSecretManagerConfig> secretManagerConfigs) {
             if (secretManagerConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "secretManagerConfigs");
@@ -1674,9 +1720,11 @@ public final class GetClusterResult {
             _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
+            _resultValue.desiredEmulatedVersion = desiredEmulatedVersion;
             _resultValue.disableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;
             _resultValue.dnsConfigs = dnsConfigs;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.emulatedVersion = emulatedVersion;
             _resultValue.enableAutopilot = enableAutopilot;
             _resultValue.enableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             _resultValue.enableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
@@ -1739,6 +1787,7 @@ public final class GetClusterResult {
             _resultValue.removeDefaultNodePool = removeDefaultNodePool;
             _resultValue.resourceLabels = resourceLabels;
             _resultValue.resourceUsageExportConfigs = resourceUsageExportConfigs;
+            _resultValue.rollbackSafeUpgrades = rollbackSafeUpgrades;
             _resultValue.secretManagerConfigs = secretManagerConfigs;
             _resultValue.secretSyncConfigs = secretSyncConfigs;
             _resultValue.securityPostureConfigs = securityPostureConfigs;

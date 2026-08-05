@@ -51,15 +51,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"type": "BOOLEAN",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON1, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "STRING",
 //					"description": "any_of option 1: string",
 //				},
@@ -73,8 +73,8 @@ import (
 //				return err
 //			}
 //			json2 := string(tmpJSON2)
-//			tmpJSON3, err := json.Marshal(map[string]interface{}{
-//				"SimpleString": map[string]interface{}{
+//			tmpJSON3, err := json.Marshal(map[string]map[string]string{
+//				"SimpleString": map[string]string{
 //					"type":        "STRING",
 //					"description": "A simple string definition",
 //				},
@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			json3 := string(tmpJSON3)
-//			tmpJSON4, err := json.Marshal(map[string]interface{}{
+//			tmpJSON4, err := json.Marshal(map[string]string{
 //				"type":        "ARRAY",
 //				"description": "An array",
 //			})
@@ -91,8 +91,8 @@ import (
 //				return err
 //			}
 //			json4 := string(tmpJSON4)
-//			tmpJSON5, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON5, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "ARRAY",
 //					"description": "prefix item 1",
 //				},
@@ -101,8 +101,8 @@ import (
 //				return err
 //			}
 //			json5 := string(tmpJSON5)
-//			tmpJSON6, err := json.Marshal(map[string]interface{}{
-//				"name": map[string]interface{}{
+//			tmpJSON6, err := json.Marshal(map[string]map[string]string{
+//				"name": map[string]string{
 //					"type":        "STRING",
 //					"description": "A name",
 //				},
@@ -111,15 +111,15 @@ import (
 //				return err
 //			}
 //			json6 := string(tmpJSON6)
-//			tmpJSON7, err := json.Marshal(map[string]interface{}{
+//			tmpJSON7, err := json.Marshal(map[string]string{
 //				"type": "BOOLEAN",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json7 := string(tmpJSON7)
-//			tmpJSON8, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON8, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "STRING",
 //					"description": "any_of option 1: string",
 //				},
@@ -133,8 +133,8 @@ import (
 //				return err
 //			}
 //			json9 := string(tmpJSON9)
-//			tmpJSON10, err := json.Marshal(map[string]interface{}{
-//				"SimpleString": map[string]interface{}{
+//			tmpJSON10, err := json.Marshal(map[string]map[string]string{
+//				"SimpleString": map[string]string{
 //					"type":        "STRING",
 //					"description": "A simple string definition",
 //				},
@@ -143,7 +143,7 @@ import (
 //				return err
 //			}
 //			json10 := string(tmpJSON10)
-//			tmpJSON11, err := json.Marshal(map[string]interface{}{
+//			tmpJSON11, err := json.Marshal(map[string]string{
 //				"type":        "ARRAY",
 //				"description": "An array",
 //			})
@@ -151,8 +151,8 @@ import (
 //				return err
 //			}
 //			json11 := string(tmpJSON11)
-//			tmpJSON12, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON12, err := json.Marshal([]map[string]string{
+//				{
 //					"type":        "ARRAY",
 //					"description": "prefix item 1",
 //				},
@@ -161,8 +161,8 @@ import (
 //				return err
 //			}
 //			json12 := string(tmpJSON12)
-//			tmpJSON13, err := json.Marshal(map[string]interface{}{
-//				"name": map[string]interface{}{
+//			tmpJSON13, err := json.Marshal(map[string]map[string]string{
+//				"name": map[string]string{
 //					"type":        "STRING",
 //					"description": "A name",
 //				},
@@ -613,8 +613,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"displaySettings": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]bool{
+//				"displaySettings": map[string]bool{
 //					"showHeader": true,
 //				},
 //			})
@@ -622,8 +622,8 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
-//				"param1": map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]map[string]string{
+//				"param1": map[string]string{
 //					"type": "STRING",
 //				},
 //			})

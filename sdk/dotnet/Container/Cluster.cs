@@ -118,6 +118,61 @@ namespace Pulumi.Gcp.Container
     /// });
     /// ```
     /// 
+    /// ### Rollback-Safe (Two-Step) Upgrades
+    /// 
+    /// To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `RollbackSafeUpgrade` block when changing the `MinMasterVersion`. This upgrades the master but keeps the control plane emulating the older version.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "my-gke-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         MinMasterVersion = "1.32.4-gke.200",
+    ///         RollbackSafeUpgrade = new Gcp.Container.Inputs.ClusterRollbackSafeUpgradeArgs
+    ///         {
+    ///             ControlPlaneSoakDuration = "604800s",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// After the soak period concludes, you can declaratively complete the upgrade by specifying the target `DesiredEmulatedVersion`.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Container.Cluster("primary", new()
+    ///     {
+    ///         Name = "my-gke-cluster",
+    ///         Location = "us-central1",
+    ///         InitialNodeCount = 1,
+    ///         MinMasterVersion = "1.32.4-gke.200",
+    ///         RollbackSafeUpgrade = new Gcp.Container.Inputs.ClusterRollbackSafeUpgradeArgs
+    ///         {
+    ///             ControlPlaneSoakDuration = "604800s",
+    ///         },
+    ///         DesiredEmulatedVersion = "1.32",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **Note:** If you omit the `ControlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
+    /// 
     /// ### Autopilot
     /// 
     /// ```csharp
@@ -336,6 +391,12 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+        /// </summary>
+        [Output("desiredEmulatedVersion")]
+        public Output<string?> DesiredEmulatedVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Disable L4 load balancer VPC firewalls to enable firewall policies.
         /// </summary>
         [Output("disableL4LbFirewallReconciliation")]
@@ -352,6 +413,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The current emulated Kubernetes version running on the GKE cluster control plane.
+        /// </summary>
+        [Output("emulatedVersion")]
+        public Output<string> EmulatedVersion { get; private set; } = null!;
 
         /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `False`.
@@ -831,6 +898,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterResourceUsageExportConfig?> ResourceUsageExportConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        /// </summary>
+        [Output("rollbackSafeUpgrade")]
+        public Output<Outputs.ClusterRollbackSafeUpgrade?> RollbackSafeUpgrade { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the
         /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
         /// Structure is documented below.
@@ -1146,6 +1219,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+        /// </summary>
+        [Input("desiredEmulatedVersion")]
+        public Input<string>? DesiredEmulatedVersion { get; set; }
 
         /// <summary>
         /// Disable L4 load balancer VPC firewalls to enable firewall policies.
@@ -1626,6 +1705,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
 
         /// <summary>
+        /// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        /// </summary>
+        [Input("rollbackSafeUpgrade")]
+        public Input<Inputs.ClusterRollbackSafeUpgradeArgs>? RollbackSafeUpgrade { get; set; }
+
+        /// <summary>
         /// Configuration for the
         /// [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
         /// Structure is documented below.
@@ -1877,6 +1962,12 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+        /// </summary>
+        [Input("desiredEmulatedVersion")]
+        public Input<string>? DesiredEmulatedVersion { get; set; }
+
+        /// <summary>
         /// Disable L4 load balancer VPC firewalls to enable firewall policies.
         /// </summary>
         [Input("disableL4LbFirewallReconciliation")]
@@ -1903,6 +1994,12 @@ namespace Pulumi.Gcp.Container
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The current emulated Kubernetes version running on the GKE cluster control plane.
+        /// </summary>
+        [Input("emulatedVersion")]
+        public Input<string>? EmulatedVersion { get; set; }
 
         /// <summary>
         /// Enable Autopilot for this cluster. Defaults to `False`.
@@ -2408,6 +2505,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ClusterResourceUsageExportConfigGetArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+        /// </summary>
+        [Input("rollbackSafeUpgrade")]
+        public Input<Inputs.ClusterRollbackSafeUpgradeGetArgs>? RollbackSafeUpgrade { get; set; }
 
         /// <summary>
         /// Configuration for the

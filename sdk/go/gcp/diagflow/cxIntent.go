@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxIntent(ctx, "basic_intent", &diagflow.CxIntentArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example"),
 //				Priority:    pulumi.Int(1),
 //				Description: pulumi.String("Intent example"),

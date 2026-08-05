@@ -13033,7 +13033,7 @@ func (o ReservationReplicationStatusErrorArrayOutput) Index(i pulumi.IntInput) R
 type RoutineArgument struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
-	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
 	ArgumentKind *string `pulumi:"argumentKind"`
 	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
 	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -13048,6 +13048,9 @@ type RoutineArgument struct {
 	Mode *string `pulumi:"mode"`
 	// The name of this argument. Can be absent for function return argument.
 	Name *string `pulumi:"name"`
+	// If argumentKind is FIXED_TABLE, a schema for the table type.
+	// Structure is documented below.
+	TableType *RoutineArgumentTableType `pulumi:"tableType"`
 }
 
 // RoutineArgumentInput is an input type that accepts RoutineArgumentArgs and RoutineArgumentOutput values.
@@ -13064,7 +13067,7 @@ type RoutineArgumentInput interface {
 type RoutineArgumentArgs struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
-	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+	// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
 	ArgumentKind pulumi.StringPtrInput `pulumi:"argumentKind"`
 	// A JSON schema for the data type. Required unless argumentKind = ANY_TYPE.
 	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
@@ -13079,6 +13082,9 @@ type RoutineArgumentArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The name of this argument. Can be absent for function return argument.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If argumentKind is FIXED_TABLE, a schema for the table type.
+	// Structure is documented below.
+	TableType RoutineArgumentTableTypePtrInput `pulumi:"tableType"`
 }
 
 func (RoutineArgumentArgs) ElementType() reflect.Type {
@@ -13134,7 +13140,7 @@ func (o RoutineArgumentOutput) ToRoutineArgumentOutputWithContext(ctx context.Co
 
 // Defaults to FIXED_TYPE.
 // Default value is `FIXED_TYPE`.
-// Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+// Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
 func (o RoutineArgumentOutput) ArgumentKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutineArgument) *string { return v.ArgumentKind }).(pulumi.StringPtrOutput)
 }
@@ -13161,6 +13167,12 @@ func (o RoutineArgumentOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoutineArgument) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// If argumentKind is FIXED_TABLE, a schema for the table type.
+// Structure is documented below.
+func (o RoutineArgumentOutput) TableType() RoutineArgumentTableTypePtrOutput {
+	return o.ApplyT(func(v RoutineArgument) *RoutineArgumentTableType { return v.TableType }).(RoutineArgumentTableTypePtrOutput)
+}
+
 type RoutineArgumentArrayOutput struct{ *pulumi.OutputState }
 
 func (RoutineArgumentArrayOutput) ElementType() reflect.Type {
@@ -13179,6 +13191,271 @@ func (o RoutineArgumentArrayOutput) Index(i pulumi.IntInput) RoutineArgumentOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineArgument {
 		return vs[0].([]RoutineArgument)[vs[1].(int)]
 	}).(RoutineArgumentOutput)
+}
+
+type RoutineArgumentTableType struct {
+	// The columns in the table type.
+	// Structure is documented below.
+	Columns []RoutineArgumentTableTypeColumn `pulumi:"columns"`
+}
+
+// RoutineArgumentTableTypeInput is an input type that accepts RoutineArgumentTableTypeArgs and RoutineArgumentTableTypeOutput values.
+// You can construct a concrete instance of `RoutineArgumentTableTypeInput` via:
+//
+//	RoutineArgumentTableTypeArgs{...}
+type RoutineArgumentTableTypeInput interface {
+	pulumi.Input
+
+	ToRoutineArgumentTableTypeOutput() RoutineArgumentTableTypeOutput
+	ToRoutineArgumentTableTypeOutputWithContext(context.Context) RoutineArgumentTableTypeOutput
+}
+
+type RoutineArgumentTableTypeArgs struct {
+	// The columns in the table type.
+	// Structure is documented below.
+	Columns RoutineArgumentTableTypeColumnArrayInput `pulumi:"columns"`
+}
+
+func (RoutineArgumentTableTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineArgumentTableType)(nil)).Elem()
+}
+
+func (i RoutineArgumentTableTypeArgs) ToRoutineArgumentTableTypeOutput() RoutineArgumentTableTypeOutput {
+	return i.ToRoutineArgumentTableTypeOutputWithContext(context.Background())
+}
+
+func (i RoutineArgumentTableTypeArgs) ToRoutineArgumentTableTypeOutputWithContext(ctx context.Context) RoutineArgumentTableTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentTableTypeOutput)
+}
+
+func (i RoutineArgumentTableTypeArgs) ToRoutineArgumentTableTypePtrOutput() RoutineArgumentTableTypePtrOutput {
+	return i.ToRoutineArgumentTableTypePtrOutputWithContext(context.Background())
+}
+
+func (i RoutineArgumentTableTypeArgs) ToRoutineArgumentTableTypePtrOutputWithContext(ctx context.Context) RoutineArgumentTableTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentTableTypeOutput).ToRoutineArgumentTableTypePtrOutputWithContext(ctx)
+}
+
+// RoutineArgumentTableTypePtrInput is an input type that accepts RoutineArgumentTableTypeArgs, RoutineArgumentTableTypePtr and RoutineArgumentTableTypePtrOutput values.
+// You can construct a concrete instance of `RoutineArgumentTableTypePtrInput` via:
+//
+//	        RoutineArgumentTableTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutineArgumentTableTypePtrInput interface {
+	pulumi.Input
+
+	ToRoutineArgumentTableTypePtrOutput() RoutineArgumentTableTypePtrOutput
+	ToRoutineArgumentTableTypePtrOutputWithContext(context.Context) RoutineArgumentTableTypePtrOutput
+}
+
+type routineArgumentTableTypePtrType RoutineArgumentTableTypeArgs
+
+func RoutineArgumentTableTypePtr(v *RoutineArgumentTableTypeArgs) RoutineArgumentTableTypePtrInput {
+	return (*routineArgumentTableTypePtrType)(v)
+}
+
+func (*routineArgumentTableTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineArgumentTableType)(nil)).Elem()
+}
+
+func (i *routineArgumentTableTypePtrType) ToRoutineArgumentTableTypePtrOutput() RoutineArgumentTableTypePtrOutput {
+	return i.ToRoutineArgumentTableTypePtrOutputWithContext(context.Background())
+}
+
+func (i *routineArgumentTableTypePtrType) ToRoutineArgumentTableTypePtrOutputWithContext(ctx context.Context) RoutineArgumentTableTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentTableTypePtrOutput)
+}
+
+type RoutineArgumentTableTypeOutput struct{ *pulumi.OutputState }
+
+func (RoutineArgumentTableTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineArgumentTableType)(nil)).Elem()
+}
+
+func (o RoutineArgumentTableTypeOutput) ToRoutineArgumentTableTypeOutput() RoutineArgumentTableTypeOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypeOutput) ToRoutineArgumentTableTypeOutputWithContext(ctx context.Context) RoutineArgumentTableTypeOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypeOutput) ToRoutineArgumentTableTypePtrOutput() RoutineArgumentTableTypePtrOutput {
+	return o.ToRoutineArgumentTableTypePtrOutputWithContext(context.Background())
+}
+
+func (o RoutineArgumentTableTypeOutput) ToRoutineArgumentTableTypePtrOutputWithContext(ctx context.Context) RoutineArgumentTableTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineArgumentTableType) *RoutineArgumentTableType {
+		return &v
+	}).(RoutineArgumentTableTypePtrOutput)
+}
+
+// The columns in the table type.
+// Structure is documented below.
+func (o RoutineArgumentTableTypeOutput) Columns() RoutineArgumentTableTypeColumnArrayOutput {
+	return o.ApplyT(func(v RoutineArgumentTableType) []RoutineArgumentTableTypeColumn { return v.Columns }).(RoutineArgumentTableTypeColumnArrayOutput)
+}
+
+type RoutineArgumentTableTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RoutineArgumentTableTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineArgumentTableType)(nil)).Elem()
+}
+
+func (o RoutineArgumentTableTypePtrOutput) ToRoutineArgumentTableTypePtrOutput() RoutineArgumentTableTypePtrOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypePtrOutput) ToRoutineArgumentTableTypePtrOutputWithContext(ctx context.Context) RoutineArgumentTableTypePtrOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypePtrOutput) Elem() RoutineArgumentTableTypeOutput {
+	return o.ApplyT(func(v *RoutineArgumentTableType) RoutineArgumentTableType {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineArgumentTableType
+		return ret
+	}).(RoutineArgumentTableTypeOutput)
+}
+
+// The columns in the table type.
+// Structure is documented below.
+func (o RoutineArgumentTableTypePtrOutput) Columns() RoutineArgumentTableTypeColumnArrayOutput {
+	return o.ApplyT(func(v *RoutineArgumentTableType) []RoutineArgumentTableTypeColumn {
+		if v == nil {
+			return nil
+		}
+		return v.Columns
+	}).(RoutineArgumentTableTypeColumnArrayOutput)
+}
+
+type RoutineArgumentTableTypeColumn struct {
+	// The name of the column.
+	Name *string `pulumi:"name"`
+	// A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+	// will create a diff, even if the JSON itself hasn't changed. If the API returns
+	// a different value for the same schema, e.g. it switched the order of values
+	// or replaced STRUCT field type with RECORD field type, we currently cannot
+	// suppress the recurring diff this causes. As a workaround, we recommend using
+	// the schema as returned by the API.
+	Type *string `pulumi:"type"`
+}
+
+// RoutineArgumentTableTypeColumnInput is an input type that accepts RoutineArgumentTableTypeColumnArgs and RoutineArgumentTableTypeColumnOutput values.
+// You can construct a concrete instance of `RoutineArgumentTableTypeColumnInput` via:
+//
+//	RoutineArgumentTableTypeColumnArgs{...}
+type RoutineArgumentTableTypeColumnInput interface {
+	pulumi.Input
+
+	ToRoutineArgumentTableTypeColumnOutput() RoutineArgumentTableTypeColumnOutput
+	ToRoutineArgumentTableTypeColumnOutputWithContext(context.Context) RoutineArgumentTableTypeColumnOutput
+}
+
+type RoutineArgumentTableTypeColumnArgs struct {
+	// The name of the column.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+	// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+	// will create a diff, even if the JSON itself hasn't changed. If the API returns
+	// a different value for the same schema, e.g. it switched the order of values
+	// or replaced STRUCT field type with RECORD field type, we currently cannot
+	// suppress the recurring diff this causes. As a workaround, we recommend using
+	// the schema as returned by the API.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RoutineArgumentTableTypeColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineArgumentTableTypeColumn)(nil)).Elem()
+}
+
+func (i RoutineArgumentTableTypeColumnArgs) ToRoutineArgumentTableTypeColumnOutput() RoutineArgumentTableTypeColumnOutput {
+	return i.ToRoutineArgumentTableTypeColumnOutputWithContext(context.Background())
+}
+
+func (i RoutineArgumentTableTypeColumnArgs) ToRoutineArgumentTableTypeColumnOutputWithContext(ctx context.Context) RoutineArgumentTableTypeColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentTableTypeColumnOutput)
+}
+
+// RoutineArgumentTableTypeColumnArrayInput is an input type that accepts RoutineArgumentTableTypeColumnArray and RoutineArgumentTableTypeColumnArrayOutput values.
+// You can construct a concrete instance of `RoutineArgumentTableTypeColumnArrayInput` via:
+//
+//	RoutineArgumentTableTypeColumnArray{ RoutineArgumentTableTypeColumnArgs{...} }
+type RoutineArgumentTableTypeColumnArrayInput interface {
+	pulumi.Input
+
+	ToRoutineArgumentTableTypeColumnArrayOutput() RoutineArgumentTableTypeColumnArrayOutput
+	ToRoutineArgumentTableTypeColumnArrayOutputWithContext(context.Context) RoutineArgumentTableTypeColumnArrayOutput
+}
+
+type RoutineArgumentTableTypeColumnArray []RoutineArgumentTableTypeColumnInput
+
+func (RoutineArgumentTableTypeColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineArgumentTableTypeColumn)(nil)).Elem()
+}
+
+func (i RoutineArgumentTableTypeColumnArray) ToRoutineArgumentTableTypeColumnArrayOutput() RoutineArgumentTableTypeColumnArrayOutput {
+	return i.ToRoutineArgumentTableTypeColumnArrayOutputWithContext(context.Background())
+}
+
+func (i RoutineArgumentTableTypeColumnArray) ToRoutineArgumentTableTypeColumnArrayOutputWithContext(ctx context.Context) RoutineArgumentTableTypeColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineArgumentTableTypeColumnArrayOutput)
+}
+
+type RoutineArgumentTableTypeColumnOutput struct{ *pulumi.OutputState }
+
+func (RoutineArgumentTableTypeColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineArgumentTableTypeColumn)(nil)).Elem()
+}
+
+func (o RoutineArgumentTableTypeColumnOutput) ToRoutineArgumentTableTypeColumnOutput() RoutineArgumentTableTypeColumnOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypeColumnOutput) ToRoutineArgumentTableTypeColumnOutputWithContext(ctx context.Context) RoutineArgumentTableTypeColumnOutput {
+	return o
+}
+
+// The name of the column.
+func (o RoutineArgumentTableTypeColumnOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineArgumentTableTypeColumn) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+// ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+// will create a diff, even if the JSON itself hasn't changed. If the API returns
+// a different value for the same schema, e.g. it switched the order of values
+// or replaced STRUCT field type with RECORD field type, we currently cannot
+// suppress the recurring diff this causes. As a workaround, we recommend using
+// the schema as returned by the API.
+func (o RoutineArgumentTableTypeColumnOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineArgumentTableTypeColumn) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RoutineArgumentTableTypeColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (RoutineArgumentTableTypeColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RoutineArgumentTableTypeColumn)(nil)).Elem()
+}
+
+func (o RoutineArgumentTableTypeColumnArrayOutput) ToRoutineArgumentTableTypeColumnArrayOutput() RoutineArgumentTableTypeColumnArrayOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypeColumnArrayOutput) ToRoutineArgumentTableTypeColumnArrayOutputWithContext(ctx context.Context) RoutineArgumentTableTypeColumnArrayOutput {
+	return o
+}
+
+func (o RoutineArgumentTableTypeColumnArrayOutput) Index(i pulumi.IntInput) RoutineArgumentTableTypeColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutineArgumentTableTypeColumn {
+		return vs[0].([]RoutineArgumentTableTypeColumn)[vs[1].(int)]
+	}).(RoutineArgumentTableTypeColumnOutput)
 }
 
 type RoutineExternalRuntimeOptions struct {
@@ -24632,6 +24909,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationReplicationStatusErrorArrayInput)(nil)).Elem(), ReservationReplicationStatusErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentTableTypeInput)(nil)).Elem(), RoutineArgumentTableTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentTableTypePtrInput)(nil)).Elem(), RoutineArgumentTableTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentTableTypeColumnInput)(nil)).Elem(), RoutineArgumentTableTypeColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentTableTypeColumnArrayInput)(nil)).Elem(), RoutineArgumentTableTypeColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsInput)(nil)).Elem(), RoutineExternalRuntimeOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineExternalRuntimeOptionsPtrInput)(nil)).Elem(), RoutineExternalRuntimeOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineIamBindingConditionInput)(nil)).Elem(), RoutineIamBindingConditionArgs{})
@@ -24916,6 +25197,10 @@ func init() {
 	pulumi.RegisterOutputType(ReservationReplicationStatusErrorArrayOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
+	pulumi.RegisterOutputType(RoutineArgumentTableTypeOutput{})
+	pulumi.RegisterOutputType(RoutineArgumentTableTypePtrOutput{})
+	pulumi.RegisterOutputType(RoutineArgumentTableTypeColumnOutput{})
+	pulumi.RegisterOutputType(RoutineArgumentTableTypeColumnArrayOutput{})
 	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsOutput{})
 	pulumi.RegisterOutputType(RoutineExternalRuntimeOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RoutineIamBindingConditionOutput{})

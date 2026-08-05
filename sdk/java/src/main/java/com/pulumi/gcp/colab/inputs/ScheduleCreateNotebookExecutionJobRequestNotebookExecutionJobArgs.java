@@ -6,9 +6,13 @@ package com.pulumi.gcp.colab.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs;
 import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs;
+import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs;
 import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs;
+import com.pulumi.gcp.colab.inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +21,40 @@ import javax.annotation.Nullable;
 public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs Empty = new ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs();
+
+    /**
+     * (Output)
+     * Timestamp when this NotebookExecutionJob was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Output)
+     * Timestamp when this NotebookExecutionJob was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Compute configuration to use for an execution job.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customEnvironmentSpec")
+    private @Nullable Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs> customEnvironmentSpec;
+
+    /**
+     * @return Compute configuration to use for an execution job.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs>> customEnvironmentSpec() {
+        return Optional.ofNullable(this.customEnvironmentSpec);
+    }
 
     /**
      * The Dataform Repository containing the input notebook.
@@ -48,6 +86,23 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+
+    /**
+     * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="encryptionSpec")
+    private @Nullable Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs> encryptionSpec;
+
+    /**
+     * @return Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs>> encryptionSpec() {
+        return Optional.ofNullable(this.encryptionSpec);
     }
 
     /**
@@ -113,18 +168,99 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
     }
 
     /**
+     * (Output)
+     * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+     * 
+     */
+    @Import(name="jobState")
+    private @Nullable Output<String> jobState;
+
+    /**
+     * @return (Output)
+     * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+     * 
+     */
+    public Optional<Output<String>> jobState() {
+        return Optional.ofNullable(this.jobState);
+    }
+
+    /**
+     * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     * 
+     */
+    @Import(name="kernelName")
+    private @Nullable Output<String> kernelName;
+
+    /**
+     * @return The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+     * 
+     */
+    public Optional<Output<String>> kernelName() {
+        return Optional.ofNullable(this.kernelName);
+    }
+
+    /**
+     * The labels with user-defined metadata to organize NotebookExecutionJobs.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return The labels with user-defined metadata to organize NotebookExecutionJobs.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * (Output)
+     * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return (Output)
+     * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The NotebookRuntimeTemplate to source compute configuration from.
      * 
      */
-    @Import(name="notebookRuntimeTemplateResourceName", required=true)
-    private Output<String> notebookRuntimeTemplateResourceName;
+    @Import(name="notebookRuntimeTemplateResourceName")
+    private @Nullable Output<String> notebookRuntimeTemplateResourceName;
 
     /**
      * @return The NotebookRuntimeTemplate to source compute configuration from.
      * 
      */
-    public Output<String> notebookRuntimeTemplateResourceName() {
-        return this.notebookRuntimeTemplateResourceName;
+    public Optional<Output<String>> notebookRuntimeTemplateResourceName() {
+        return Optional.ofNullable(this.notebookRuntimeTemplateResourceName);
+    }
+
+    /**
+     * (Output)
+     * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+     * 
+     */
+    @Import(name="scheduleResourceName")
+    private @Nullable Output<String> scheduleResourceName;
+
+    /**
+     * @return (Output)
+     * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+     * 
+     */
+    public Optional<Output<String>> scheduleResourceName() {
+        return Optional.ofNullable(this.scheduleResourceName);
     }
 
     /**
@@ -142,17 +278,59 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
         return Optional.ofNullable(this.serviceAccount);
     }
 
+    /**
+     * (Output)
+     * Timestamp when this NotebookExecutionJob was most recently updated.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return (Output)
+     * Timestamp when this NotebookExecutionJob was most recently updated.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
+     * Configuration for a Workbench Instances-based environment.
+     * 
+     */
+    @Import(name="workbenchRuntime")
+    private @Nullable Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs> workbenchRuntime;
+
+    /**
+     * @return Configuration for a Workbench Instances-based environment.
+     * 
+     */
+    public Optional<Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs>> workbenchRuntime() {
+        return Optional.ofNullable(this.workbenchRuntime);
+    }
+
     private ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs() {}
 
     private ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs $) {
+        this.createTime = $.createTime;
+        this.customEnvironmentSpec = $.customEnvironmentSpec;
         this.dataformRepositorySource = $.dataformRepositorySource;
         this.displayName = $.displayName;
+        this.encryptionSpec = $.encryptionSpec;
         this.executionTimeout = $.executionTimeout;
         this.executionUser = $.executionUser;
         this.gcsNotebookSource = $.gcsNotebookSource;
         this.gcsOutputUri = $.gcsOutputUri;
+        this.jobState = $.jobState;
+        this.kernelName = $.kernelName;
+        this.labels = $.labels;
+        this.name = $.name;
         this.notebookRuntimeTemplateResourceName = $.notebookRuntimeTemplateResourceName;
+        this.scheduleResourceName = $.scheduleResourceName;
         this.serviceAccount = $.serviceAccount;
+        this.updateTime = $.updateTime;
+        this.workbenchRuntime = $.workbenchRuntime;
     }
 
     public static Builder builder() {
@@ -171,6 +349,52 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
 
         public Builder(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs defaults) {
             $ = new ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime (Output)
+         * Timestamp when this NotebookExecutionJob was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Output)
+         * Timestamp when this NotebookExecutionJob was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param customEnvironmentSpec Compute configuration to use for an execution job.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customEnvironmentSpec(@Nullable Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs> customEnvironmentSpec) {
+            $.customEnvironmentSpec = customEnvironmentSpec;
+            return this;
+        }
+
+        /**
+         * @param customEnvironmentSpec Compute configuration to use for an execution job.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customEnvironmentSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs customEnvironmentSpec) {
+            return customEnvironmentSpec(Output.of(customEnvironmentSpec));
         }
 
         /**
@@ -215,6 +439,29 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param encryptionSpec Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(@Nullable Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs> encryptionSpec) {
+            $.encryptionSpec = encryptionSpec;
+            return this;
+        }
+
+        /**
+         * @param encryptionSpec Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionSpec(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs encryptionSpec) {
+            return encryptionSpec(Output.of(encryptionSpec));
         }
 
         /**
@@ -304,12 +551,100 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
         }
 
         /**
+         * @param jobState (Output)
+         * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobState(@Nullable Output<String> jobState) {
+            $.jobState = jobState;
+            return this;
+        }
+
+        /**
+         * @param jobState (Output)
+         * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jobState(String jobState) {
+            return jobState(Output.of(jobState));
+        }
+
+        /**
+         * @param kernelName The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernelName(@Nullable Output<String> kernelName) {
+            $.kernelName = kernelName;
+            return this;
+        }
+
+        /**
+         * @param kernelName The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernelName(String kernelName) {
+            return kernelName(Output.of(kernelName));
+        }
+
+        /**
+         * @param labels The labels with user-defined metadata to organize NotebookExecutionJobs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels The labels with user-defined metadata to organize NotebookExecutionJobs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
+         * @param name (Output)
+         * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name (Output)
+         * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
          * @param notebookRuntimeTemplateResourceName The NotebookRuntimeTemplate to source compute configuration from.
          * 
          * @return builder
          * 
          */
-        public Builder notebookRuntimeTemplateResourceName(Output<String> notebookRuntimeTemplateResourceName) {
+        public Builder notebookRuntimeTemplateResourceName(@Nullable Output<String> notebookRuntimeTemplateResourceName) {
             $.notebookRuntimeTemplateResourceName = notebookRuntimeTemplateResourceName;
             return this;
         }
@@ -322,6 +657,29 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
          */
         public Builder notebookRuntimeTemplateResourceName(String notebookRuntimeTemplateResourceName) {
             return notebookRuntimeTemplateResourceName(Output.of(notebookRuntimeTemplateResourceName));
+        }
+
+        /**
+         * @param scheduleResourceName (Output)
+         * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleResourceName(@Nullable Output<String> scheduleResourceName) {
+            $.scheduleResourceName = scheduleResourceName;
+            return this;
+        }
+
+        /**
+         * @param scheduleResourceName (Output)
+         * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleResourceName(String scheduleResourceName) {
+            return scheduleResourceName(Output.of(scheduleResourceName));
         }
 
         /**
@@ -345,15 +703,56 @@ public final class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
             return serviceAccount(Output.of(serviceAccount));
         }
 
+        /**
+         * @param updateTime (Output)
+         * Timestamp when this NotebookExecutionJob was most recently updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime (Output)
+         * Timestamp when this NotebookExecutionJob was most recently updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param workbenchRuntime Configuration for a Workbench Instances-based environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workbenchRuntime(@Nullable Output<ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs> workbenchRuntime) {
+            $.workbenchRuntime = workbenchRuntime;
+            return this;
+        }
+
+        /**
+         * @param workbenchRuntime Configuration for a Workbench Instances-based environment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workbenchRuntime(ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntimeArgs workbenchRuntime) {
+            return workbenchRuntime(Output.of(workbenchRuntime));
+        }
+
         public ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs build() {
             if ($.displayName == null) {
                 throw new MissingRequiredPropertyException("ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs", "displayName");
             }
             if ($.gcsOutputUri == null) {
                 throw new MissingRequiredPropertyException("ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs", "gcsOutputUri");
-            }
-            if ($.notebookRuntimeTemplateResourceName == null) {
-                throw new MissingRequiredPropertyException("ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs", "notebookRuntimeTemplateResourceName");
             }
             return $;
         }

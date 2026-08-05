@@ -63,8 +63,8 @@ import * as utilities from "../utilities";
  *     },
  *     masterAuthorizedNetworksConfig: {},
  *     ipAllocationPolicy: {
- *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
- *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
+ *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges[0].rangeName,
+ *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges[1].rangeName,
  *     },
  *     deletionProtection: true,
  * });

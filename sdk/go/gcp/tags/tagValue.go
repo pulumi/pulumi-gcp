@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent:      key.ID(),
+//				Parent:      key.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})

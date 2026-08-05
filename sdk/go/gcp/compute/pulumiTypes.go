@@ -7234,6 +7234,12 @@ type BackendServiceLogConfig struct {
 	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
 	// Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
 	OptionalMode *string `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	// Structure is documented below.
+	RequestHeaders []BackendServiceLogConfigRequestHeader `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	// Structure is documented below.
+	ResponseHeaders []BackendServiceLogConfigResponseHeader `pulumi:"responseHeaders"`
 	// This field can only be specified if logging is enabled for this backend service. The value of
 	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -7264,6 +7270,12 @@ type BackendServiceLogConfigArgs struct {
 	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
 	// Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
 	OptionalMode pulumi.StringPtrInput `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	// Structure is documented below.
+	RequestHeaders BackendServiceLogConfigRequestHeaderArrayInput `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	// Structure is documented below.
+	ResponseHeaders BackendServiceLogConfigResponseHeaderArrayInput `pulumi:"responseHeaders"`
 	// This field can only be specified if logging is enabled for this backend service. The value of
 	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -7368,6 +7380,18 @@ func (o BackendServiceLogConfigOutput) OptionalMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *string { return v.OptionalMode }).(pulumi.StringPtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+// Structure is documented below.
+func (o BackendServiceLogConfigOutput) RequestHeaders() BackendServiceLogConfigRequestHeaderArrayOutput {
+	return o.ApplyT(func(v BackendServiceLogConfig) []BackendServiceLogConfigRequestHeader { return v.RequestHeaders }).(BackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+// Structure is documented below.
+func (o BackendServiceLogConfigOutput) ResponseHeaders() BackendServiceLogConfigResponseHeaderArrayOutput {
+	return o.ApplyT(func(v BackendServiceLogConfig) []BackendServiceLogConfigResponseHeader { return v.ResponseHeaders }).(BackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of
 // the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 // where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -7435,6 +7459,28 @@ func (o BackendServiceLogConfigPtrOutput) OptionalMode() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+// Structure is documented below.
+func (o BackendServiceLogConfigPtrOutput) RequestHeaders() BackendServiceLogConfigRequestHeaderArrayOutput {
+	return o.ApplyT(func(v *BackendServiceLogConfig) []BackendServiceLogConfigRequestHeader {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(BackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+// Structure is documented below.
+func (o BackendServiceLogConfigPtrOutput) ResponseHeaders() BackendServiceLogConfigResponseHeaderArrayOutput {
+	return o.ApplyT(func(v *BackendServiceLogConfig) []BackendServiceLogConfigResponseHeader {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeaders
+	}).(BackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of
 // the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 // where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -7446,6 +7492,200 @@ func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 		}
 		return v.SampleRate
 	}).(pulumi.Float64PtrOutput)
+}
+
+type BackendServiceLogConfigRequestHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// BackendServiceLogConfigRequestHeaderInput is an input type that accepts BackendServiceLogConfigRequestHeaderArgs and BackendServiceLogConfigRequestHeaderOutput values.
+// You can construct a concrete instance of `BackendServiceLogConfigRequestHeaderInput` via:
+//
+//	BackendServiceLogConfigRequestHeaderArgs{...}
+type BackendServiceLogConfigRequestHeaderInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigRequestHeaderOutput() BackendServiceLogConfigRequestHeaderOutput
+	ToBackendServiceLogConfigRequestHeaderOutputWithContext(context.Context) BackendServiceLogConfigRequestHeaderOutput
+}
+
+type BackendServiceLogConfigRequestHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (BackendServiceLogConfigRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i BackendServiceLogConfigRequestHeaderArgs) ToBackendServiceLogConfigRequestHeaderOutput() BackendServiceLogConfigRequestHeaderOutput {
+	return i.ToBackendServiceLogConfigRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLogConfigRequestHeaderArgs) ToBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) BackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLogConfigRequestHeaderOutput)
+}
+
+// BackendServiceLogConfigRequestHeaderArrayInput is an input type that accepts BackendServiceLogConfigRequestHeaderArray and BackendServiceLogConfigRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `BackendServiceLogConfigRequestHeaderArrayInput` via:
+//
+//	BackendServiceLogConfigRequestHeaderArray{ BackendServiceLogConfigRequestHeaderArgs{...} }
+type BackendServiceLogConfigRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigRequestHeaderArrayOutput() BackendServiceLogConfigRequestHeaderArrayOutput
+	ToBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Context) BackendServiceLogConfigRequestHeaderArrayOutput
+}
+
+type BackendServiceLogConfigRequestHeaderArray []BackendServiceLogConfigRequestHeaderInput
+
+func (BackendServiceLogConfigRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i BackendServiceLogConfigRequestHeaderArray) ToBackendServiceLogConfigRequestHeaderArrayOutput() BackendServiceLogConfigRequestHeaderArrayOutput {
+	return i.ToBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLogConfigRequestHeaderArray) ToBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) BackendServiceLogConfigRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+type BackendServiceLogConfigRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigRequestHeaderOutput) ToBackendServiceLogConfigRequestHeaderOutput() BackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigRequestHeaderOutput) ToBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) BackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o BackendServiceLogConfigRequestHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLogConfigRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type BackendServiceLogConfigRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigRequestHeaderArrayOutput) ToBackendServiceLogConfigRequestHeaderArrayOutput() BackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigRequestHeaderArrayOutput) ToBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) BackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigRequestHeaderArrayOutput) Index(i pulumi.IntInput) BackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceLogConfigRequestHeader {
+		return vs[0].([]BackendServiceLogConfigRequestHeader)[vs[1].(int)]
+	}).(BackendServiceLogConfigRequestHeaderOutput)
+}
+
+type BackendServiceLogConfigResponseHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// BackendServiceLogConfigResponseHeaderInput is an input type that accepts BackendServiceLogConfigResponseHeaderArgs and BackendServiceLogConfigResponseHeaderOutput values.
+// You can construct a concrete instance of `BackendServiceLogConfigResponseHeaderInput` via:
+//
+//	BackendServiceLogConfigResponseHeaderArgs{...}
+type BackendServiceLogConfigResponseHeaderInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigResponseHeaderOutput() BackendServiceLogConfigResponseHeaderOutput
+	ToBackendServiceLogConfigResponseHeaderOutputWithContext(context.Context) BackendServiceLogConfigResponseHeaderOutput
+}
+
+type BackendServiceLogConfigResponseHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (BackendServiceLogConfigResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i BackendServiceLogConfigResponseHeaderArgs) ToBackendServiceLogConfigResponseHeaderOutput() BackendServiceLogConfigResponseHeaderOutput {
+	return i.ToBackendServiceLogConfigResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLogConfigResponseHeaderArgs) ToBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) BackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLogConfigResponseHeaderOutput)
+}
+
+// BackendServiceLogConfigResponseHeaderArrayInput is an input type that accepts BackendServiceLogConfigResponseHeaderArray and BackendServiceLogConfigResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `BackendServiceLogConfigResponseHeaderArrayInput` via:
+//
+//	BackendServiceLogConfigResponseHeaderArray{ BackendServiceLogConfigResponseHeaderArgs{...} }
+type BackendServiceLogConfigResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigResponseHeaderArrayOutput() BackendServiceLogConfigResponseHeaderArrayOutput
+	ToBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Context) BackendServiceLogConfigResponseHeaderArrayOutput
+}
+
+type BackendServiceLogConfigResponseHeaderArray []BackendServiceLogConfigResponseHeaderInput
+
+func (BackendServiceLogConfigResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i BackendServiceLogConfigResponseHeaderArray) ToBackendServiceLogConfigResponseHeaderArrayOutput() BackendServiceLogConfigResponseHeaderArrayOutput {
+	return i.ToBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLogConfigResponseHeaderArray) ToBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) BackendServiceLogConfigResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
+type BackendServiceLogConfigResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigResponseHeaderOutput) ToBackendServiceLogConfigResponseHeaderOutput() BackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigResponseHeaderOutput) ToBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) BackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o BackendServiceLogConfigResponseHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLogConfigResponseHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type BackendServiceLogConfigResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigResponseHeaderArrayOutput) ToBackendServiceLogConfigResponseHeaderArrayOutput() BackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigResponseHeaderArrayOutput) ToBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) BackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigResponseHeaderArrayOutput) Index(i pulumi.IntInput) BackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceLogConfigResponseHeader {
+		return vs[0].([]BackendServiceLogConfigResponseHeader)[vs[1].(int)]
+	}).(BackendServiceLogConfigResponseHeaderOutput)
 }
 
 type BackendServiceMaxStreamDuration struct {
@@ -75824,6 +76064,12 @@ type RegionBackendServiceLogConfig struct {
 	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
 	// Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
 	OptionalMode *string `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	// Structure is documented below.
+	RequestHeaders []RegionBackendServiceLogConfigRequestHeader `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	// Structure is documented below.
+	ResponseHeaders []RegionBackendServiceLogConfigResponseHeader `pulumi:"responseHeaders"`
 	// This field can only be specified if logging is enabled for this backend service. The value of
 	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -75851,6 +76097,12 @@ type RegionBackendServiceLogConfigArgs struct {
 	// Supported values: INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM.
 	// Possible values are: `INCLUDE_ALL_OPTIONAL`, `EXCLUDE_ALL_OPTIONAL`, `CUSTOM`.
 	OptionalMode pulumi.StringPtrInput `pulumi:"optionalMode"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+	// Structure is documented below.
+	RequestHeaders RegionBackendServiceLogConfigRequestHeaderArrayInput `pulumi:"requestHeaders"`
+	// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+	// Structure is documented below.
+	ResponseHeaders RegionBackendServiceLogConfigResponseHeaderArrayInput `pulumi:"responseHeaders"`
 	// This field can only be specified if logging is enabled for this backend service. The value of
 	// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 	// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -75952,6 +76204,22 @@ func (o RegionBackendServiceLogConfigOutput) OptionalMode() pulumi.StringPtrOutp
 	return o.ApplyT(func(v RegionBackendServiceLogConfig) *string { return v.OptionalMode }).(pulumi.StringPtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+// Structure is documented below.
+func (o RegionBackendServiceLogConfigOutput) RequestHeaders() RegionBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o.ApplyT(func(v RegionBackendServiceLogConfig) []RegionBackendServiceLogConfigRequestHeader {
+		return v.RequestHeaders
+	}).(RegionBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+// Structure is documented below.
+func (o RegionBackendServiceLogConfigOutput) ResponseHeaders() RegionBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o.ApplyT(func(v RegionBackendServiceLogConfig) []RegionBackendServiceLogConfigResponseHeader {
+		return v.ResponseHeaders
+	}).(RegionBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of
 // the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 // where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -76016,6 +76284,28 @@ func (o RegionBackendServiceLogConfigPtrOutput) OptionalMode() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+// Structure is documented below.
+func (o RegionBackendServiceLogConfigPtrOutput) RequestHeaders() RegionBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o.ApplyT(func(v *RegionBackendServiceLogConfig) []RegionBackendServiceLogConfigRequestHeader {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(RegionBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+// Structure is documented below.
+func (o RegionBackendServiceLogConfigPtrOutput) ResponseHeaders() RegionBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o.ApplyT(func(v *RegionBackendServiceLogConfig) []RegionBackendServiceLogConfigResponseHeader {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeaders
+	}).(RegionBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of
 // the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
 // where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -76027,6 +76317,200 @@ func (o RegionBackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOu
 		}
 		return v.SampleRate
 	}).(pulumi.Float64PtrOutput)
+}
+
+type RegionBackendServiceLogConfigRequestHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// RegionBackendServiceLogConfigRequestHeaderInput is an input type that accepts RegionBackendServiceLogConfigRequestHeaderArgs and RegionBackendServiceLogConfigRequestHeaderOutput values.
+// You can construct a concrete instance of `RegionBackendServiceLogConfigRequestHeaderInput` via:
+//
+//	RegionBackendServiceLogConfigRequestHeaderArgs{...}
+type RegionBackendServiceLogConfigRequestHeaderInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceLogConfigRequestHeaderOutput() RegionBackendServiceLogConfigRequestHeaderOutput
+	ToRegionBackendServiceLogConfigRequestHeaderOutputWithContext(context.Context) RegionBackendServiceLogConfigRequestHeaderOutput
+}
+
+type RegionBackendServiceLogConfigRequestHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (RegionBackendServiceLogConfigRequestHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i RegionBackendServiceLogConfigRequestHeaderArgs) ToRegionBackendServiceLogConfigRequestHeaderOutput() RegionBackendServiceLogConfigRequestHeaderOutput {
+	return i.ToRegionBackendServiceLogConfigRequestHeaderOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceLogConfigRequestHeaderArgs) ToRegionBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceLogConfigRequestHeaderOutput)
+}
+
+// RegionBackendServiceLogConfigRequestHeaderArrayInput is an input type that accepts RegionBackendServiceLogConfigRequestHeaderArray and RegionBackendServiceLogConfigRequestHeaderArrayOutput values.
+// You can construct a concrete instance of `RegionBackendServiceLogConfigRequestHeaderArrayInput` via:
+//
+//	RegionBackendServiceLogConfigRequestHeaderArray{ RegionBackendServiceLogConfigRequestHeaderArgs{...} }
+type RegionBackendServiceLogConfigRequestHeaderArrayInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceLogConfigRequestHeaderArrayOutput() RegionBackendServiceLogConfigRequestHeaderArrayOutput
+	ToRegionBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Context) RegionBackendServiceLogConfigRequestHeaderArrayOutput
+}
+
+type RegionBackendServiceLogConfigRequestHeaderArray []RegionBackendServiceLogConfigRequestHeaderInput
+
+func (RegionBackendServiceLogConfigRequestHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (i RegionBackendServiceLogConfigRequestHeaderArray) ToRegionBackendServiceLogConfigRequestHeaderArrayOutput() RegionBackendServiceLogConfigRequestHeaderArrayOutput {
+	return i.ToRegionBackendServiceLogConfigRequestHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceLogConfigRequestHeaderArray) ToRegionBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigRequestHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceLogConfigRequestHeaderArrayOutput)
+}
+
+type RegionBackendServiceLogConfigRequestHeaderOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceLogConfigRequestHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o RegionBackendServiceLogConfigRequestHeaderOutput) ToRegionBackendServiceLogConfigRequestHeaderOutput() RegionBackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+func (o RegionBackendServiceLogConfigRequestHeaderOutput) ToRegionBackendServiceLogConfigRequestHeaderOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigRequestHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o RegionBackendServiceLogConfigRequestHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionBackendServiceLogConfigRequestHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type RegionBackendServiceLogConfigRequestHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceLogConfigRequestHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendServiceLogConfigRequestHeader)(nil)).Elem()
+}
+
+func (o RegionBackendServiceLogConfigRequestHeaderArrayOutput) ToRegionBackendServiceLogConfigRequestHeaderArrayOutput() RegionBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceLogConfigRequestHeaderArrayOutput) ToRegionBackendServiceLogConfigRequestHeaderArrayOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigRequestHeaderArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceLogConfigRequestHeaderArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceLogConfigRequestHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionBackendServiceLogConfigRequestHeader {
+		return vs[0].([]RegionBackendServiceLogConfigRequestHeader)[vs[1].(int)]
+	}).(RegionBackendServiceLogConfigRequestHeaderOutput)
+}
+
+type RegionBackendServiceLogConfigResponseHeader struct {
+	// The header name to match on for logging.
+	HeaderName string `pulumi:"headerName"`
+}
+
+// RegionBackendServiceLogConfigResponseHeaderInput is an input type that accepts RegionBackendServiceLogConfigResponseHeaderArgs and RegionBackendServiceLogConfigResponseHeaderOutput values.
+// You can construct a concrete instance of `RegionBackendServiceLogConfigResponseHeaderInput` via:
+//
+//	RegionBackendServiceLogConfigResponseHeaderArgs{...}
+type RegionBackendServiceLogConfigResponseHeaderInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceLogConfigResponseHeaderOutput() RegionBackendServiceLogConfigResponseHeaderOutput
+	ToRegionBackendServiceLogConfigResponseHeaderOutputWithContext(context.Context) RegionBackendServiceLogConfigResponseHeaderOutput
+}
+
+type RegionBackendServiceLogConfigResponseHeaderArgs struct {
+	// The header name to match on for logging.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+}
+
+func (RegionBackendServiceLogConfigResponseHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i RegionBackendServiceLogConfigResponseHeaderArgs) ToRegionBackendServiceLogConfigResponseHeaderOutput() RegionBackendServiceLogConfigResponseHeaderOutput {
+	return i.ToRegionBackendServiceLogConfigResponseHeaderOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceLogConfigResponseHeaderArgs) ToRegionBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceLogConfigResponseHeaderOutput)
+}
+
+// RegionBackendServiceLogConfigResponseHeaderArrayInput is an input type that accepts RegionBackendServiceLogConfigResponseHeaderArray and RegionBackendServiceLogConfigResponseHeaderArrayOutput values.
+// You can construct a concrete instance of `RegionBackendServiceLogConfigResponseHeaderArrayInput` via:
+//
+//	RegionBackendServiceLogConfigResponseHeaderArray{ RegionBackendServiceLogConfigResponseHeaderArgs{...} }
+type RegionBackendServiceLogConfigResponseHeaderArrayInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceLogConfigResponseHeaderArrayOutput() RegionBackendServiceLogConfigResponseHeaderArrayOutput
+	ToRegionBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Context) RegionBackendServiceLogConfigResponseHeaderArrayOutput
+}
+
+type RegionBackendServiceLogConfigResponseHeaderArray []RegionBackendServiceLogConfigResponseHeaderInput
+
+func (RegionBackendServiceLogConfigResponseHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (i RegionBackendServiceLogConfigResponseHeaderArray) ToRegionBackendServiceLogConfigResponseHeaderArrayOutput() RegionBackendServiceLogConfigResponseHeaderArrayOutput {
+	return i.ToRegionBackendServiceLogConfigResponseHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceLogConfigResponseHeaderArray) ToRegionBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigResponseHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceLogConfigResponseHeaderArrayOutput)
+}
+
+type RegionBackendServiceLogConfigResponseHeaderOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceLogConfigResponseHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o RegionBackendServiceLogConfigResponseHeaderOutput) ToRegionBackendServiceLogConfigResponseHeaderOutput() RegionBackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+func (o RegionBackendServiceLogConfigResponseHeaderOutput) ToRegionBackendServiceLogConfigResponseHeaderOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigResponseHeaderOutput {
+	return o
+}
+
+// The header name to match on for logging.
+func (o RegionBackendServiceLogConfigResponseHeaderOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionBackendServiceLogConfigResponseHeader) string { return v.HeaderName }).(pulumi.StringOutput)
+}
+
+type RegionBackendServiceLogConfigResponseHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceLogConfigResponseHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendServiceLogConfigResponseHeader)(nil)).Elem()
+}
+
+func (o RegionBackendServiceLogConfigResponseHeaderArrayOutput) ToRegionBackendServiceLogConfigResponseHeaderArrayOutput() RegionBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceLogConfigResponseHeaderArrayOutput) ToRegionBackendServiceLogConfigResponseHeaderArrayOutputWithContext(ctx context.Context) RegionBackendServiceLogConfigResponseHeaderArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceLogConfigResponseHeaderArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceLogConfigResponseHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionBackendServiceLogConfigResponseHeader {
+		return vs[0].([]RegionBackendServiceLogConfigResponseHeader)[vs[1].(int)]
+	}).(RegionBackendServiceLogConfigResponseHeaderOutput)
 }
 
 type RegionBackendServiceNetworkPassThroughLbTrafficPolicy struct {
@@ -88524,599 +89008,6 @@ func (o RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput) Index(i
 	}).(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput)
 }
 
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-	ExternalIpv6 *string `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
-	ExternalIpv6PrefixLength *string `pulumi:"externalIpv6PrefixLength"`
-	// The name of the instance template. If you leave
-	// this blank, Terraform will auto-generate a unique name.
-	Name *string `pulumi:"name"`
-	// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
-	NetworkTier string `pulumi:"networkTier"`
-	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
-}
-
-// RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs and RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{...}
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput
-	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
-	ExternalIpv6PrefixLength pulumi.StringPtrInput `pulumi:"externalIpv6PrefixLength"`
-	// The name of the instance template. If you leave
-	// this blank, Terraform will auto-generate a unique name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
-	NetworkTier pulumi.StringInput `pulumi:"networkTier"`
-	// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
-}
-
-func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput)
-}
-
-// RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput is an input type that accepts RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray and RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput` via:
-//
-//	RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{ RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{...} }
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput
-	ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput
-}
-
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray []RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput
-
-func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
-	return i.ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
-	return o
-}
-
-// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string { return v.ExternalIpv6 }).(pulumi.StringPtrOutput)
-}
-
-// The prefix length of the external IPv6 range.
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string {
-		return v.ExternalIpv6PrefixLength
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the instance template. If you leave
-// this blank, Terraform will auto-generate a unique name.
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) NetworkTier() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
-}
-
-// The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput) PublicPtrDomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig) *string { return v.PublicPtrDomainName }).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput() RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) ToRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput) Index(i pulumi.IntInput) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
-		return vs[0].([]RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig)[vs[1].(int)]
-	}).(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput)
-}
-
-type RegionInstanceTemplateNetworkPerformanceConfig struct {
-	// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
-	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
-}
-
-// RegionInstanceTemplateNetworkPerformanceConfigInput is an input type that accepts RegionInstanceTemplateNetworkPerformanceConfigArgs and RegionInstanceTemplateNetworkPerformanceConfigOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkPerformanceConfigInput` via:
-//
-//	RegionInstanceTemplateNetworkPerformanceConfigArgs{...}
-type RegionInstanceTemplateNetworkPerformanceConfigInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkPerformanceConfigOutput() RegionInstanceTemplateNetworkPerformanceConfigOutput
-	ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Context) RegionInstanceTemplateNetworkPerformanceConfigOutput
-}
-
-type RegionInstanceTemplateNetworkPerformanceConfigArgs struct {
-	// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
-	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
-}
-
-func (RegionInstanceTemplateNetworkPerformanceConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigOutput() RegionInstanceTemplateNetworkPerformanceConfigOutput {
-	return i.ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkPerformanceConfigOutput)
-}
-
-func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return i.ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateNetworkPerformanceConfigArgs) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkPerformanceConfigOutput).ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx)
-}
-
-// RegionInstanceTemplateNetworkPerformanceConfigPtrInput is an input type that accepts RegionInstanceTemplateNetworkPerformanceConfigArgs, RegionInstanceTemplateNetworkPerformanceConfigPtr and RegionInstanceTemplateNetworkPerformanceConfigPtrOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateNetworkPerformanceConfigPtrInput` via:
-//
-//	        RegionInstanceTemplateNetworkPerformanceConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegionInstanceTemplateNetworkPerformanceConfigPtrInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput
-	ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput
-}
-
-type regionInstanceTemplateNetworkPerformanceConfigPtrType RegionInstanceTemplateNetworkPerformanceConfigArgs
-
-func RegionInstanceTemplateNetworkPerformanceConfigPtr(v *RegionInstanceTemplateNetworkPerformanceConfigArgs) RegionInstanceTemplateNetworkPerformanceConfigPtrInput {
-	return (*regionInstanceTemplateNetworkPerformanceConfigPtrType)(v)
-}
-
-func (*regionInstanceTemplateNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
-}
-
-func (i *regionInstanceTemplateNetworkPerformanceConfigPtrType) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return i.ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *regionInstanceTemplateNetworkPerformanceConfigPtrType) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput)
-}
-
-type RegionInstanceTemplateNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkPerformanceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigOutput() RegionInstanceTemplateNetworkPerformanceConfigOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return o.ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(context.Background())
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateNetworkPerformanceConfig) *RegionInstanceTemplateNetworkPerformanceConfig {
-		return &v
-	}).(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput)
-}
-
-// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
-func (o RegionInstanceTemplateNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
-}
-
-type RegionInstanceTemplateNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateNetworkPerformanceConfig)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutput() RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) ToRegionInstanceTemplateNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateNetworkPerformanceConfigPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) Elem() RegionInstanceTemplateNetworkPerformanceConfigOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateNetworkPerformanceConfig) RegionInstanceTemplateNetworkPerformanceConfig {
-		if v != nil {
-			return *v
-		}
-		var ret RegionInstanceTemplateNetworkPerformanceConfig
-		return ret
-	}).(RegionInstanceTemplateNetworkPerformanceConfigOutput)
-}
-
-// The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
-func (o RegionInstanceTemplateNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateNetworkPerformanceConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TotalEgressBandwidthTier
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateReservationAffinity struct {
-	// Specifies the label selector for the reservation to use..
-	// Structure is documented below.
-	SpecificReservation *RegionInstanceTemplateReservationAffinitySpecificReservation `pulumi:"specificReservation"`
-	// The type of reservation from which this instance can consume resources.
-	Type string `pulumi:"type"`
-}
-
-// RegionInstanceTemplateReservationAffinityInput is an input type that accepts RegionInstanceTemplateReservationAffinityArgs and RegionInstanceTemplateReservationAffinityOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinityInput` via:
-//
-//	RegionInstanceTemplateReservationAffinityArgs{...}
-type RegionInstanceTemplateReservationAffinityInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateReservationAffinityOutput() RegionInstanceTemplateReservationAffinityOutput
-	ToRegionInstanceTemplateReservationAffinityOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinityOutput
-}
-
-type RegionInstanceTemplateReservationAffinityArgs struct {
-	// Specifies the label selector for the reservation to use..
-	// Structure is documented below.
-	SpecificReservation RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput `pulumi:"specificReservation"`
-	// The type of reservation from which this instance can consume resources.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (RegionInstanceTemplateReservationAffinityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinity)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityOutput() RegionInstanceTemplateReservationAffinityOutput {
-	return i.ToRegionInstanceTemplateReservationAffinityOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinityOutput)
-}
-
-func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
-	return i.ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateReservationAffinityArgs) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinityOutput).ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx)
-}
-
-// RegionInstanceTemplateReservationAffinityPtrInput is an input type that accepts RegionInstanceTemplateReservationAffinityArgs, RegionInstanceTemplateReservationAffinityPtr and RegionInstanceTemplateReservationAffinityPtrOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinityPtrInput` via:
-//
-//	        RegionInstanceTemplateReservationAffinityArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegionInstanceTemplateReservationAffinityPtrInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput
-	ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinityPtrOutput
-}
-
-type regionInstanceTemplateReservationAffinityPtrType RegionInstanceTemplateReservationAffinityArgs
-
-func RegionInstanceTemplateReservationAffinityPtr(v *RegionInstanceTemplateReservationAffinityArgs) RegionInstanceTemplateReservationAffinityPtrInput {
-	return (*regionInstanceTemplateReservationAffinityPtrType)(v)
-}
-
-func (*regionInstanceTemplateReservationAffinityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinity)(nil)).Elem()
-}
-
-func (i *regionInstanceTemplateReservationAffinityPtrType) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
-	return i.ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
-}
-
-func (i *regionInstanceTemplateReservationAffinityPtrType) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinityPtrOutput)
-}
-
-type RegionInstanceTemplateReservationAffinityOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateReservationAffinityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinity)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityOutput() RegionInstanceTemplateReservationAffinityOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
-	return o.ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(context.Background())
-}
-
-func (o RegionInstanceTemplateReservationAffinityOutput) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateReservationAffinity) *RegionInstanceTemplateReservationAffinity {
-		return &v
-	}).(RegionInstanceTemplateReservationAffinityPtrOutput)
-}
-
-// Specifies the label selector for the reservation to use..
-// Structure is documented below.
-func (o RegionInstanceTemplateReservationAffinityOutput) SpecificReservation() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinity) *RegionInstanceTemplateReservationAffinitySpecificReservation {
-		return v.SpecificReservation
-	}).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
-}
-
-// The type of reservation from which this instance can consume resources.
-func (o RegionInstanceTemplateReservationAffinityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type RegionInstanceTemplateReservationAffinityPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateReservationAffinityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinity)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateReservationAffinityPtrOutput) ToRegionInstanceTemplateReservationAffinityPtrOutput() RegionInstanceTemplateReservationAffinityPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinityPtrOutput) ToRegionInstanceTemplateReservationAffinityPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinityPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinityPtrOutput) Elem() RegionInstanceTemplateReservationAffinityOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinity) RegionInstanceTemplateReservationAffinity {
-		if v != nil {
-			return *v
-		}
-		var ret RegionInstanceTemplateReservationAffinity
-		return ret
-	}).(RegionInstanceTemplateReservationAffinityOutput)
-}
-
-// Specifies the label selector for the reservation to use..
-// Structure is documented below.
-func (o RegionInstanceTemplateReservationAffinityPtrOutput) SpecificReservation() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinity) *RegionInstanceTemplateReservationAffinitySpecificReservation {
-		if v == nil {
-			return nil
-		}
-		return v.SpecificReservation
-	}).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
-}
-
-// The type of reservation from which this instance can consume resources.
-func (o RegionInstanceTemplateReservationAffinityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegionInstanceTemplateReservationAffinitySpecificReservation struct {
-	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
-	Key string `pulumi:"key"`
-	// Corresponds to the label values of a reservation resource.
-	Values []string `pulumi:"values"`
-}
-
-// RegionInstanceTemplateReservationAffinitySpecificReservationInput is an input type that accepts RegionInstanceTemplateReservationAffinitySpecificReservationArgs and RegionInstanceTemplateReservationAffinitySpecificReservationOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinitySpecificReservationInput` via:
-//
-//	RegionInstanceTemplateReservationAffinitySpecificReservationArgs{...}
-type RegionInstanceTemplateReservationAffinitySpecificReservationInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateReservationAffinitySpecificReservationOutput() RegionInstanceTemplateReservationAffinitySpecificReservationOutput
-	ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationOutput
-}
-
-type RegionInstanceTemplateReservationAffinitySpecificReservationArgs struct {
-	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
-	Key pulumi.StringInput `pulumi:"key"`
-	// Corresponds to the label values of a reservation resource.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
-}
-
-func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutput() RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
-	return i.ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinitySpecificReservationOutput)
-}
-
-func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return i.ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
-}
-
-func (i RegionInstanceTemplateReservationAffinitySpecificReservationArgs) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinitySpecificReservationOutput).ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx)
-}
-
-// RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput is an input type that accepts RegionInstanceTemplateReservationAffinitySpecificReservationArgs, RegionInstanceTemplateReservationAffinitySpecificReservationPtr and RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput values.
-// You can construct a concrete instance of `RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput` via:
-//
-//	        RegionInstanceTemplateReservationAffinitySpecificReservationArgs{...}
-//
-//	or:
-//
-//	        nil
-type RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput interface {
-	pulumi.Input
-
-	ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput
-	ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput
-}
-
-type regionInstanceTemplateReservationAffinitySpecificReservationPtrType RegionInstanceTemplateReservationAffinitySpecificReservationArgs
-
-func RegionInstanceTemplateReservationAffinitySpecificReservationPtr(v *RegionInstanceTemplateReservationAffinitySpecificReservationArgs) RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput {
-	return (*regionInstanceTemplateReservationAffinitySpecificReservationPtrType)(v)
-}
-
-func (*regionInstanceTemplateReservationAffinitySpecificReservationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
-}
-
-func (i *regionInstanceTemplateReservationAffinitySpecificReservationPtrType) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return i.ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
-}
-
-func (i *regionInstanceTemplateReservationAffinitySpecificReservationPtrType) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
-}
-
-type RegionInstanceTemplateReservationAffinitySpecificReservationOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutput() RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return o.ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(context.Background())
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionInstanceTemplateReservationAffinitySpecificReservation) *RegionInstanceTemplateReservationAffinitySpecificReservation {
-		return &v
-	}).(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput)
-}
-
-// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinitySpecificReservation) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Corresponds to the label values of a reservation resource.
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RegionInstanceTemplateReservationAffinitySpecificReservation) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionInstanceTemplateReservationAffinitySpecificReservation)(nil)).Elem()
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput() RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) ToRegionInstanceTemplateReservationAffinitySpecificReservationPtrOutputWithContext(ctx context.Context) RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput {
-	return o
-}
-
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) Elem() RegionInstanceTemplateReservationAffinitySpecificReservationOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinitySpecificReservation) RegionInstanceTemplateReservationAffinitySpecificReservation {
-		if v != nil {
-			return *v
-		}
-		var ret RegionInstanceTemplateReservationAffinitySpecificReservation
-		return ret
-	}).(RegionInstanceTemplateReservationAffinitySpecificReservationOutput)
-}
-
-// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify compute.googleapis.com/reservation-name as the key and specify the name of your reservation as the only value.
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinitySpecificReservation) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Corresponds to the label values of a reservation resource.
-func (o RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *RegionInstanceTemplateReservationAffinitySpecificReservation) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Values
-	}).(pulumi.StringArrayOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerAutoscalingPolicyInput)(nil)).Elem(), AutoscalerAutoscalingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerAutoscalingPolicyPtrInput)(nil)).Elem(), AutoscalerAutoscalingPolicyArgs{})
@@ -89192,6 +89083,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLbPolicyPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLbPolicyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigPtrInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigRequestHeaderInput)(nil)).Elem(), BackendServiceLogConfigRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigRequestHeaderArrayInput)(nil)).Elem(), BackendServiceLogConfigRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigResponseHeaderInput)(nil)).Elem(), BackendServiceLogConfigResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigResponseHeaderArrayInput)(nil)).Elem(), BackendServiceLogConfigResponseHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceMaxStreamDurationInput)(nil)).Elem(), BackendServiceMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceMaxStreamDurationPtrInput)(nil)).Elem(), BackendServiceMaxStreamDurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceNetworkPassThroughLbTrafficPolicyInput)(nil)).Elem(), BackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
@@ -89972,6 +89867,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceIapPtrInput)(nil)).Elem(), RegionBackendServiceIapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLogConfigInput)(nil)).Elem(), RegionBackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLogConfigPtrInput)(nil)).Elem(), RegionBackendServiceLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLogConfigRequestHeaderInput)(nil)).Elem(), RegionBackendServiceLogConfigRequestHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLogConfigRequestHeaderArrayInput)(nil)).Elem(), RegionBackendServiceLogConfigRequestHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLogConfigResponseHeaderInput)(nil)).Elem(), RegionBackendServiceLogConfigResponseHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLogConfigResponseHeaderArrayInput)(nil)).Elem(), RegionBackendServiceLogConfigResponseHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceNetworkPassThroughLbTrafficPolicyInput)(nil)).Elem(), RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrInput)(nil)).Elem(), RegionBackendServiceNetworkPassThroughLbTrafficPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityInput)(nil)).Elem(), RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityArgs{})
@@ -90108,14 +90007,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkPerformanceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkPerformanceConfigPtrInput)(nil)).Elem(), RegionInstanceTemplateNetworkPerformanceConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinityInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinityPtrInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservationInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinitySpecificReservationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateReservationAffinitySpecificReservationPtrInput)(nil)).Elem(), RegionInstanceTemplateReservationAffinitySpecificReservationArgs{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyCpuUtilizationOutput{})
@@ -90190,6 +90081,10 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceLocalityLbPolicyPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigRequestHeaderOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigResponseHeaderOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigResponseHeaderArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceMaxStreamDurationOutput{})
 	pulumi.RegisterOutputType(BackendServiceMaxStreamDurationPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceNetworkPassThroughLbTrafficPolicyOutput{})
@@ -90970,6 +90865,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionBackendServiceIapPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceLogConfigRequestHeaderOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceLogConfigRequestHeaderArrayOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceLogConfigResponseHeaderOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceLogConfigResponseHeaderArrayOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceNetworkPassThroughLbTrafficPolicyOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceNetworkPassThroughLbTrafficPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinityOutput{})
@@ -91106,12 +91005,4 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceAliasIpv6RangeArrayOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigPtrOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinityOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinityPtrOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinitySpecificReservationOutput{})
-	pulumi.RegisterOutputType(RegionInstanceTemplateReservationAffinitySpecificReservationPtrOutput{})
 }

@@ -49,6 +49,14 @@ namespace Pulumi.Gcp.ModelArmor.Inputs
         public Input<string>? EnforcementType { get; set; }
 
         /// <summary>
+        /// Selects the filter version to use for this template. Set exactly one of
+        /// 'alias' or 'version'.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("filterVersionSelector")]
+        public Input<Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs>? FilterVersionSelector { get; set; }
+
+        /// <summary>
         /// If true, partial detector failures should be ignored.
         /// </summary>
         [Input("ignorePartialInvocationFailures")]

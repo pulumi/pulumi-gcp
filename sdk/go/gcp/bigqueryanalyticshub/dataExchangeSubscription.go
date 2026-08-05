@@ -101,10 +101,10 @@ import (
 //					Enabled: pulumi.Bool(true),
 //				},
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: subscriptionDataset.ID(),
+//					Dataset: subscriptionDataset.ID().ToIDOutput().ToStringOutput(),
 //					SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
 //						&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
-//							Table: subscriptionTable.ID(),
+//							Table: subscriptionTable.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},

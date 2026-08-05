@@ -224,9 +224,7 @@ import (
 //				Project: pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member: std.JsondecodeOutput(ctx, std.JsondecodeOutputArgs{
-//					Input: tenantMds.ApplyT(func(tenantMds vertex.GetAiReasoningEngineQueryResult) (*string, error) {
-//						return tenantMds.Output, nil
-//					}).(pulumi.StringPtrOutput),
+//					Input: tenantMds.Output(),
 //				}, nil).ApplyT(func(invoke std.JsondecodeResult) (string, error) {
 //					return fmt.Sprintf("serviceAccount:%v", invoke.Result.Output), nil
 //				}).(pulumi.StringOutput),
@@ -286,7 +284,7 @@ import (
 //			}
 //			bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("requirements.txt"),
-//				Bucket: bucket.ID(),
+//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
 //			})
 //			if err != nil {
@@ -294,7 +292,7 @@ import (
 //			}
 //			bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("code.pkl"),
-//				Bucket: bucket.ID(),
+//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
 //			})
 //			if err != nil {
@@ -302,7 +300,7 @@ import (
 //			}
 //			bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("dependencies.tar.gz"),
-//				Bucket: bucket.ID(),
+//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
 //			})
 //			if err != nil {
@@ -319,7 +317,7 @@ import (
 //				Name:        pulumi.String("subnetwork"),
 //				Region:      pulumi.String("us-central1"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -329,7 +327,7 @@ import (
 //				Region:               pulumi.String("us-central1"),
 //				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 //				Subnetworks: pulumi.StringArray{
-//					subnetwork.ID(),
+//					subnetwork.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -378,7 +376,7 @@ import (
 //					},
 //					DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 //						PscInterfaceConfig: &vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs{
-//							NetworkAttachment: networkAttachment.ID(),
+//							NetworkAttachment: networkAttachment.ID().ToIDOutput().ToStringOutput(),
 //							DnsPeeringConfigs: vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArray{
 //								&vertex.AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs{
 //									Domain:        pulumi.String("example.com."),
@@ -445,7 +443,7 @@ import (
 //				return err
 //			}
 //			secretVersion, err := secretmanager.NewSecretVersion(ctx, "secret_version", &secretmanager.SecretVersionArgs{
-//				Secret:     secret.ID(),
+//				Secret:     secret.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("test"),
 //			})
 //			if err != nil {
@@ -458,7 +456,7 @@ import (
 //				return err
 //			}
 //			secretAccess, err := secretmanager.NewSecretIamMember(ctx, "secret_access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   serviceAccount.Member,
 //			})
@@ -517,7 +515,7 @@ import (
 //			}
 //			bucketObjRequirementsTxt, err := storage.NewBucketObject(ctx, "bucket_obj_requirements_txt", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("requirements.txt"),
-//				Bucket: bucket.ID(),
+//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/requirements_adk.txt"),
 //			})
 //			if err != nil {
@@ -525,7 +523,7 @@ import (
 //			}
 //			bucketObjPickle, err := storage.NewBucketObject(ctx, "bucket_obj_pickle", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("code.pkl"),
-//				Bucket: bucket.ID(),
+//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/pickle_adk.pkl"),
 //			})
 //			if err != nil {
@@ -533,7 +531,7 @@ import (
 //			}
 //			bucketObjDependenciesTarGz, err := storage.NewBucketObject(ctx, "bucket_obj_dependencies_tar_gz", &storage.BucketObjectArgs{
 //				Name:   pulumi.String("dependencies.tar.gz"),
-//				Bucket: bucket.ID(),
+//				Bucket: bucket.ID().ToIDOutput().ToStringOutput(),
 //				Source: pulumi.NewFileAsset("./test-fixtures/dependencies_adk.tar.gz"),
 //			})
 //			if err != nil {
@@ -644,19 +642,19 @@ import (
 //			tmpJSON0, err := json.Marshal(map[string]interface{}{
 //				"type": "OBJECT",
 //				"properties": map[string]interface{}{
-//					"name": map[string]interface{}{
+//					"name": map[string]string{
 //						"type":        "STRING",
 //						"description": "Name of the user.",
 //					},
-//					"technical_stack": map[string]interface{}{
+//					"technical_stack": map[string]string{
 //						"type":        "STRING",
 //						"description": "Comma-separated list tools or languages used by the user.",
 //					},
-//					"primary_goal": map[string]interface{}{
+//					"primary_goal": map[string]string{
 //						"type":        "STRING",
 //						"description": "The main objective the user is pursuing.",
 //					},
-//					"expertise_level": map[string]interface{}{
+//					"expertise_level": map[string]string{
 //						"type":        "STRING",
 //						"description": "Current skill level (e.g., Junior, Senior).",
 //					},
@@ -679,7 +677,7 @@ import (
 //			tmpJSON1, err := json.Marshal(map[string]interface{}{
 //				"type": "OBJECT",
 //				"properties": map[string]interface{}{
-//					"main_topic": map[string]interface{}{
+//					"main_topic": map[string]string{
 //						"type":        "STRING",
 //						"description": "The primary topic of this specific chat session.",
 //					},

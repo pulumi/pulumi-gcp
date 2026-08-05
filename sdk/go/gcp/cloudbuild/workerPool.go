@@ -83,13 +83,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      network.ID(),
+//				Network:      network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			workerPoolConn, err := servicenetworking.NewConnection(ctx, "worker_pool_conn", &servicenetworking.ConnectionArgs{
-//				Network: network.ID(),
+//				Network: network.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					workerRange.Name,
@@ -109,7 +109,7 @@ import (
 //					NoExternalIp: pulumi.Bool(false),
 //				},
 //				NetworkConfig: &cloudbuild.WorkerPoolNetworkConfigArgs{
-//					PeeredNetwork:        network.ID(),
+//					PeeredNetwork:        network.ID().ToIDOutput().ToStringOutput(),
 //					PeeredNetworkIpRange: pulumi.String("/29"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

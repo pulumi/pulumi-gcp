@@ -85,6 +85,45 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Rollback-Safe (Two-Step) Upgrades
+ *
+ * To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `rollbackSafeUpgrade` block when changing the `minMasterVersion`. This upgrades the master but keeps the control plane emulating the older version.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "my-gke-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     minMasterVersion: "1.32.4-gke.200",
+ *     rollbackSafeUpgrade: {
+ *         controlPlaneSoakDuration: "604800s",
+ *     },
+ * });
+ * ```
+ *
+ * After the soak period concludes, you can declaratively complete the upgrade by specifying the target `desiredEmulatedVersion`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     name: "my-gke-cluster",
+ *     location: "us-central1",
+ *     initialNodeCount: 1,
+ *     minMasterVersion: "1.32.4-gke.200",
+ *     rollbackSafeUpgrade: {
+ *         controlPlaneSoakDuration: "604800s",
+ *     },
+ *     desiredEmulatedVersion: "1.32",
+ * });
+ * ```
+ *
+ * > **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
+ *
  * ### Autopilot
  *
  * ```typescript
@@ -277,6 +316,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
+     * The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     */
+    declare public readonly desiredEmulatedVersion: pulumi.Output<string | undefined>;
+    /**
      * Disable L4 load balancer VPC firewalls to enable firewall policies.
      */
     declare public readonly disableL4LbFirewallReconciliation: pulumi.Output<boolean | undefined>;
@@ -288,6 +331,10 @@ export class Cluster extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The current emulated Kubernetes version running on the GKE cluster control plane.
+     */
+    declare public /*out*/ readonly emulatedVersion: pulumi.Output<string>;
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -646,6 +693,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly resourceUsageExportConfig: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
+     * Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     */
+    declare public readonly rollbackSafeUpgrade: pulumi.Output<outputs.container.ClusterRollbackSafeUpgrade | undefined>;
+    /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
      * Structure is documented below.
@@ -750,9 +801,11 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
+            resourceInputs["desiredEmulatedVersion"] = state?.desiredEmulatedVersion;
             resourceInputs["disableL4LbFirewallReconciliation"] = state?.disableL4LbFirewallReconciliation;
             resourceInputs["dnsConfig"] = state?.dnsConfig;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["emulatedVersion"] = state?.emulatedVersion;
             resourceInputs["enableAutopilot"] = state?.enableAutopilot;
             resourceInputs["enableCiliumClusterwideNetworkPolicy"] = state?.enableCiliumClusterwideNetworkPolicy;
             resourceInputs["enableFqdnNetworkPolicy"] = state?.enableFqdnNetworkPolicy;
@@ -814,6 +867,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = state?.removeDefaultNodePool;
             resourceInputs["resourceLabels"] = state?.resourceLabels;
             resourceInputs["resourceUsageExportConfig"] = state?.resourceUsageExportConfig;
+            resourceInputs["rollbackSafeUpgrade"] = state?.rollbackSafeUpgrade;
             resourceInputs["secretManagerConfig"] = state?.secretManagerConfig;
             resourceInputs["secretSyncConfig"] = state?.secretSyncConfig;
             resourceInputs["securityPostureConfig"] = state?.securityPostureConfig;
@@ -851,6 +905,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
+            resourceInputs["desiredEmulatedVersion"] = args?.desiredEmulatedVersion;
             resourceInputs["disableL4LbFirewallReconciliation"] = args?.disableL4LbFirewallReconciliation;
             resourceInputs["dnsConfig"] = args?.dnsConfig;
             resourceInputs["enableAutopilot"] = args?.enableAutopilot;
@@ -909,6 +964,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = args?.removeDefaultNodePool;
             resourceInputs["resourceLabels"] = args?.resourceLabels;
             resourceInputs["resourceUsageExportConfig"] = args?.resourceUsageExportConfig;
+            resourceInputs["rollbackSafeUpgrade"] = args?.rollbackSafeUpgrade;
             resourceInputs["secretManagerConfig"] = args?.secretManagerConfig;
             resourceInputs["secretSyncConfig"] = args?.secretSyncConfig;
             resourceInputs["securityPostureConfig"] = args?.securityPostureConfig;
@@ -921,6 +977,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["workloadAltsConfig"] = args?.workloadAltsConfig;
             resourceInputs["workloadIdentityConfig"] = args?.workloadIdentityConfig;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["emulatedVersion"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["masterVersion"] = undefined /*out*/;
@@ -1062,6 +1119,10 @@ export interface ClusterState {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     */
+    desiredEmulatedVersion?: pulumi.Input<string | undefined>;
+    /**
      * Disable L4 load balancer VPC firewalls to enable firewall policies.
      */
     disableL4LbFirewallReconciliation?: pulumi.Input<boolean | undefined>;
@@ -1073,6 +1134,10 @@ export interface ClusterState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * The current emulated Kubernetes version running on the GKE cluster control plane.
+     */
+    emulatedVersion?: pulumi.Input<string | undefined>;
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
      * Note that when this option is enabled, certain features of Standard GKE are not available.
@@ -1431,6 +1496,10 @@ export interface ClusterState {
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig | undefined>;
     /**
+     * Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     */
+    rollbackSafeUpgrade?: pulumi.Input<inputs.container.ClusterRollbackSafeUpgrade | undefined>;
+    /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
      * Structure is documented below.
@@ -1626,6 +1695,10 @@ export interface ClusterArgs {
      * Description of the cluster.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., "1.31"). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     */
+    desiredEmulatedVersion?: pulumi.Input<string | undefined>;
     /**
      * Disable L4 load balancer VPC firewalls to enable firewall policies.
      */
@@ -1972,6 +2045,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig | undefined>;
+    /**
+     * Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     */
+    rollbackSafeUpgrade?: pulumi.Input<inputs.container.ClusterRollbackSafeUpgrade | undefined>;
     /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.

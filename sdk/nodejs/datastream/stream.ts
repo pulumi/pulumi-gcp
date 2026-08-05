@@ -1165,7 +1165,7 @@ import * as utilities from "../utilities";
  *             },
  *             blmtConfig: {
  *                 bucket: blmtBucket.name,
- *                 connectionName: pulumi.all([blmtConnection.project, blmtConnection.location, blmtConnection.connectionId]).apply(([project, location, connectionId]) => `${project}.${location}.${connectionId}`),
+ *                 connectionName: pulumi.interpolate`${blmtConnection.project}.${blmtConnection.location}.${blmtConnection.connectionId}`,
  *                 fileFormat: "PARQUET",
  *                 tableFormat: "ICEBERG",
  *                 rootPath: "/",

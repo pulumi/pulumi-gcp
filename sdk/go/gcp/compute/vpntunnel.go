@@ -47,7 +47,7 @@ import (
 //			}
 //			targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 //				Name:    pulumi.String("vpn-1"),
-//				Network: network1.ID(),
+//				Network: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +62,7 @@ import (
 //				Name:       pulumi.String("fr-esp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -72,7 +72,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +82,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,7 +91,7 @@ import (
 //				Name:             pulumi.String("tunnel-1"),
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
+//				TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -108,7 +108,7 @@ import (
 //				Network:          network1.Name,
 //				DestRange:        pulumi.String("15.0.0.0/24"),
 //				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel1.ID(),
+//				NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -140,7 +140,7 @@ import (
 //			}
 //			targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 //				Name:    pulumi.String("vpn-1"),
-//				Network: network1.ID(),
+//				Network: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -155,7 +155,7 @@ import (
 //				Name:       pulumi.String("fr-esp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -165,7 +165,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +175,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -184,7 +184,7 @@ import (
 //				Name:             pulumi.String("tunnel-cipher"),
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
+//				TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 //				CipherSuite: &compute.VPNTunnelCipherSuiteArgs{
 //					Phase1: &compute.VPNTunnelCipherSuitePhase1Args{
 //						Encryptions: pulumi.StringArray{
@@ -228,7 +228,7 @@ import (
 //				Network:          network1.Name,
 //				DestRange:        pulumi.String("15.0.0.0/24"),
 //				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel1.ID(),
+//				NextHopVpnTunnel: tunnel1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

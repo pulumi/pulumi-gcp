@@ -373,6 +373,249 @@ namespace Pulumi.Gcp.Colab
     /// 
     /// });
     /// ```
+    /// ### Colab Schedule Notebook Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "my_bucket",
+    ///         Location = "us-central1",
+    ///         UniformBucketLevelAccess = true,
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var notebook = new Gcp.Storage.BucketObject("notebook", new()
+    ///     {
+    ///         Name = "hello_world.ipynb",
+    ///         Bucket = bucket.Name,
+    ///         Content = @"    {
+    ///       \""cells\"": [
+    ///         {
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
+    ///           ]
+    ///         }
+    ///       ],
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
+    ///         },
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
+    ///           },
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
+    ///         }
+    ///       },
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
+    ///     }
+    /// ",
+    ///     });
+    /// 
+    ///     var myNetwork = new Gcp.Compute.Network("my_network", new()
+    ///     {
+    ///         Name = "colab-test-default",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var mySubnetwork = new Gcp.Compute.Subnetwork("my_subnetwork", new()
+    ///     {
+    ///         Name = "colab-test-default",
+    ///         Network = myNetwork.Id,
+    ///         Region = "us-central1",
+    ///         IpCidrRange = "10.0.1.0/24",
+    ///     });
+    /// 
+    ///     var schedule = new Gcp.Colab.Schedule("schedule", new()
+    ///     {
+    ///         DisplayName = "full-notebook-schedule",
+    ///         Location = "us-central1",
+    ///         MaxConcurrentRunCount = "2",
+    ///         Cron = "*/5 * * * *",
+    ///         StartTime = "2030-01-01T00:00:00Z",
+    ///         CreateNotebookExecutionJobRequest = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestArgs
+    ///         {
+    ///             Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1",
+    ///             NotebookExecutionJob = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgs
+    ///             {
+    ///                 DisplayName = "test-notebook-execution-job",
+    ///                 GcsOutputUri = bucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///                 ServiceAccount = "my@service-account.com",
+    ///                 KernelName = "python3",
+    ///                 GcsNotebookSource = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs
+    ///                 {
+    ///                     Uri = Output.Tuple(notebook.Bucket, notebook.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucket = values.Item1;
+    ///                         var name = values.Item2;
+    ///                         return $"gs://{bucket}/{name}";
+    ///                     }),
+    ///                     Generation = notebook.Generation,
+    ///                 },
+    ///                 CustomEnvironmentSpec = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs
+    ///                 {
+    ///                     MachineSpec = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecArgs
+    ///                     {
+    ///                         MachineType = "n1-standard-4",
+    ///                         AcceleratorType = "NVIDIA_TESLA_T4",
+    ///                         AcceleratorCount = 1,
+    ///                         GpuPartitionSize = "1g.10gb",
+    ///                         TpuTopology = "2x2",
+    ///                     },
+    ///                     PersistentDiskSpec = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpecArgs
+    ///                     {
+    ///                         DiskSizeGb = "100",
+    ///                         DiskType = "pd-standard",
+    ///                     },
+    ///                     NetworkSpec = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpecArgs
+    ///                     {
+    ///                         EnableInternetAccess = true,
+    ///                         Network = myNetwork.Id,
+    ///                         Subnetwork = mySubnetwork.Id,
+    ///                     },
+    ///                 },
+    ///                 EncryptionSpec = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpecArgs
+    ///                 {
+    ///                     KmsKeyName = "my-key",
+    ///                 },
+    ///                 Labels = 
+    ///                 {
+    ///                     { "test", "value" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Colab Schedule Pipeline
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = "pipeline-job",
+    ///         Location = "us-central1",
+    ///         UniformBucketLevelAccess = true,
+    ///         ForceDestroy = true,
+    ///     });
+    /// 
+    ///     var myNetwork = new Gcp.Compute.Network("my_network", new()
+    ///     {
+    ///         Name = "colab-test-default",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var schedule = new Gcp.Colab.Schedule("schedule", new()
+    ///     {
+    ///         DisplayName = "test-schedule",
+    ///         Location = "us-central1",
+    ///         MaxConcurrentRunCount = "2",
+    ///         Cron = "*/5 * * * *",
+    ///         AllowQueueing = true,
+    ///         MaxConcurrentActiveRunCount = "2",
+    ///         MaxRunCount = "10",
+    ///         StartTime = "2030-01-01T00:00:00Z",
+    ///         EndTime = "2030-01-02T00:00:00Z",
+    ///         CreatePipelineJobRequest = new Gcp.Colab.Inputs.ScheduleCreatePipelineJobRequestArgs
+    ///         {
+    ///             Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1",
+    ///             PipelineJob = new Gcp.Colab.Inputs.ScheduleCreatePipelineJobRequestPipelineJobArgs
+    ///             {
+    ///                 DisplayName = "test-pipeline-job",
+    ///                 PreflightValidations = true,
+    ///                 Network = myNetwork.Id,
+    ///                 ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///                 TemplateUri = "https://us-kfp.pkg.dev/proj/repo/template/v1",
+    ///                 ReservedIpRanges = new[]
+    ///                 {
+    ///                     "vertex-ai-ip-range",
+    ///                 },
+    ///                 Labels = 
+    ///                 {
+    ///                     { "key", "value-one" },
+    ///                 },
+    ///                 EncryptionSpec = new Gcp.Colab.Inputs.ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpecArgs
+    ///                 {
+    ///                     KmsKeyName = "my-key",
+    ///                 },
+    ///                 PscInterfaceConfig = new Gcp.Colab.Inputs.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigArgs
+    ///                 {
+    ///                     NetworkAttachment = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/regions/us-central1/networkAttachments/my-attachment",
+    ///                     DnsPeeringConfigs = new[]
+    ///                     {
+    ///                         new Gcp.Colab.Inputs.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfigArgs
+    ///                         {
+    ///                             Domain = "my-internal-domain.corp.",
+    ///                             TargetNetwork = myNetwork.Id,
+    ///                             TargetProject = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 PipelineSpec = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["pipelineInfo"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["name"] = "hello-world",
+    ///                     },
+    ///                     ["root"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["dag"] = new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["tasks"] = new Dictionary&lt;string, object?&gt;
+    ///                             {
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     ["schemaVersion"] = "2.1.0",
+    ///                     ["sdkVersion"] = "kfp-2.0.0",
+    ///                 }),
+    ///                 RuntimeConfig = new Gcp.Colab.Inputs.ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfigArgs
+    ///                 {
+    ///                     GcsOutputDirectory = bucket.Name.Apply(name =&gt; $"gs://{name}/pipeline_root"),
+    ///                     FailurePolicy = "PIPELINE_FAILURE_POLICY_FAIL_FAST",
+    ///                     ParameterValues = 
+    ///                     {
+    ///                         { "param1", "val1" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -400,11 +643,30 @@ namespace Pulumi.Gcp.Colab
         public Output<bool?> AllowQueueing { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+        /// </summary>
+        [Output("catchUp")]
+        public Output<bool> CatchUp { get; private set; } = null!;
+
+        /// <summary>
         /// Request for google_colab_notebook_execution.
         /// Structure is documented below.
         /// </summary>
         [Output("createNotebookExecutionJobRequest")]
-        public Output<Outputs.ScheduleCreateNotebookExecutionJobRequest> CreateNotebookExecutionJobRequest { get; private set; } = null!;
+        public Output<Outputs.ScheduleCreateNotebookExecutionJobRequest?> CreateNotebookExecutionJobRequest { get; private set; } = null!;
+
+        /// <summary>
+        /// Request message for PipelineService.CreatePipelineJob.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("createPipelineJobRequest")]
+        public Output<Outputs.ScheduleCreatePipelineJobRequest?> CreatePipelineJobRequest { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp when this Schedule was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -442,10 +704,35 @@ namespace Pulumi.Gcp.Colab
         public Output<string?> EndTime { get; private set; } = null!;
 
         /// <summary>
+        /// Timestamp when this Schedule was last paused. Unset if never paused.
+        /// </summary>
+        [Output("lastPauseTime")]
+        public Output<string> LastPauseTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+        /// </summary>
+        [Output("lastResumeTime")]
+        public Output<string> LastResumeTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Status of a scheduled run.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("lastScheduledRunResponses")]
+        public Output<ImmutableArray<Outputs.ScheduleLastScheduledRunResponse>> LastScheduledRunResponses { get; private set; } = null!;
+
+        /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+        /// </summary>
+        [Output("maxConcurrentActiveRunCount")]
+        public Output<string?> MaxConcurrentActiveRunCount { get; private set; } = null!;
 
         /// <summary>
         /// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
@@ -466,6 +753,12 @@ namespace Pulumi.Gcp.Colab
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Timestamp when this Schedule should schedule the next run. Having a NextRunTime in the past means the runs are being started behind schedule.
+        /// </summary>
+        [Output("nextRunTime")]
+        public Output<string> NextRunTime { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -479,10 +772,22 @@ namespace Pulumi.Gcp.Colab
         public Output<string> StartTime { get; private set; } = null!;
 
         /// <summary>
+        /// The number of runs started by this schedule.
+        /// </summary>
+        [Output("startedRunCount")]
+        public Output<string> StartedRunCount { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The state of the schedule.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Timestamp when this Schedule was updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -540,8 +845,15 @@ namespace Pulumi.Gcp.Colab
         /// Request for google_colab_notebook_execution.
         /// Structure is documented below.
         /// </summary>
-        [Input("createNotebookExecutionJobRequest", required: true)]
-        public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestArgs> CreateNotebookExecutionJobRequest { get; set; } = null!;
+        [Input("createNotebookExecutionJobRequest")]
+        public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestArgs>? CreateNotebookExecutionJobRequest { get; set; }
+
+        /// <summary>
+        /// Request message for PipelineService.CreatePipelineJob.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("createPipelineJobRequest")]
+        public Input<Inputs.ScheduleCreatePipelineJobRequestArgs>? CreatePipelineJobRequest { get; set; }
 
         /// <summary>
         /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -585,6 +897,12 @@ namespace Pulumi.Gcp.Colab
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+        /// </summary>
+        [Input("maxConcurrentActiveRunCount")]
+        public Input<string>? MaxConcurrentActiveRunCount { get; set; }
+
+        /// <summary>
         /// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
         /// </summary>
         [Input("maxConcurrentRunCount", required: true)]
@@ -624,11 +942,30 @@ namespace Pulumi.Gcp.Colab
         public Input<bool>? AllowQueueing { get; set; }
 
         /// <summary>
+        /// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+        /// </summary>
+        [Input("catchUp")]
+        public Input<bool>? CatchUp { get; set; }
+
+        /// <summary>
         /// Request for google_colab_notebook_execution.
         /// Structure is documented below.
         /// </summary>
         [Input("createNotebookExecutionJobRequest")]
         public Input<Inputs.ScheduleCreateNotebookExecutionJobRequestGetArgs>? CreateNotebookExecutionJobRequest { get; set; }
+
+        /// <summary>
+        /// Request message for PipelineService.CreatePipelineJob.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("createPipelineJobRequest")]
+        public Input<Inputs.ScheduleCreatePipelineJobRequestGetArgs>? CreatePipelineJobRequest { get; set; }
+
+        /// <summary>
+        /// Timestamp when this Schedule was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
@@ -666,10 +1003,41 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
+        /// Timestamp when this Schedule was last paused. Unset if never paused.
+        /// </summary>
+        [Input("lastPauseTime")]
+        public Input<string>? LastPauseTime { get; set; }
+
+        /// <summary>
+        /// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+        /// </summary>
+        [Input("lastResumeTime")]
+        public Input<string>? LastResumeTime { get; set; }
+
+        [Input("lastScheduledRunResponses")]
+        private InputList<Inputs.ScheduleLastScheduledRunResponseGetArgs>? _lastScheduledRunResponses;
+
+        /// <summary>
+        /// Status of a scheduled run.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ScheduleLastScheduledRunResponseGetArgs> LastScheduledRunResponses
+        {
+            get => _lastScheduledRunResponses ?? (_lastScheduledRunResponses = new InputList<Inputs.ScheduleLastScheduledRunResponseGetArgs>());
+            set => _lastScheduledRunResponses = value;
+        }
+
+        /// <summary>
         /// The location for the resource: https://cloud.google.com/colab/docs/locations
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+        /// </summary>
+        [Input("maxConcurrentActiveRunCount")]
+        public Input<string>? MaxConcurrentActiveRunCount { get; set; }
 
         /// <summary>
         /// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
@@ -690,6 +1058,12 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Timestamp when this Schedule should schedule the next run. Having a NextRunTime in the past means the runs are being started behind schedule.
+        /// </summary>
+        [Input("nextRunTime")]
+        public Input<string>? NextRunTime { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -703,10 +1077,22 @@ namespace Pulumi.Gcp.Colab
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
+        /// The number of runs started by this schedule.
+        /// </summary>
+        [Input("startedRunCount")]
+        public Input<string>? StartedRunCount { get; set; }
+
+        /// <summary>
         /// Output only. The state of the schedule.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Timestamp when this Schedule was updated.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public ScheduleState()
         {

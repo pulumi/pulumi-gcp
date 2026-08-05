@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxTool(ctx, "open_api_tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Open API Tool"),
 //				Description: pulumi.String("Example Description"),
 //				OpenApiSpec: &diagflow.CxToolOpenApiSpecArgs{
@@ -184,7 +184,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxTool(ctx, "data_store_tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Data Store Tool"),
 //				Description: pulumi.String("Example Description"),
 //				DataStoreSpec: &diagflow.CxToolDataStoreSpecArgs{
@@ -236,7 +236,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxTool(ctx, "function_tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Function Tool"),
 //				Description: pulumi.String("Example Description"),
 //				FunctionSpec: &diagflow.CxToolFunctionSpecArgs{
@@ -372,7 +372,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxTool(ctx, "connector_tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Connector Tool"),
 //				Description: pulumi.String("Example Description"),
 //				ConnectorSpec: &diagflow.CxToolConnectorSpecArgs{

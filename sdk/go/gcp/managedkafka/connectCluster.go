@@ -84,7 +84,7 @@ import (
 //							&managedkafka.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs{
 //								PrimarySubnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
 //								AdditionalSubnets: pulumi.StringArray{
-//									mkcSecondarySubnet.ID(),
+//									mkcSecondarySubnet.ID().ToIDOutput().ToStringOutput(),
 //								},
 //								DnsDomainNames: pulumi.StringArray{
 //									cluster.ClusterId.ApplyT(func(clusterId string) (string, error) {

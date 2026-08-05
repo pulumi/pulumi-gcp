@@ -96,12 +96,12 @@ import * as utilities from "../utilities";
  *     app: my_app.name,
  *     exampleId: "example-id",
  *     description: "example description",
- *     entryAgent: pulumi.all([my_app.project, my_app.appId, cesBaseAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+ *     entryAgent: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/agents/${cesBaseAgent.agentId}`,
  *     messages: [{
  *         chunks: [
  *             {
  *                 agentTransfer: {
- *                     targetAgent: pulumi.all([my_app.project, my_app.appId, cesChildAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+ *                     targetAgent: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/agents/${cesChildAgent.agentId}`,
  *                 },
  *             },
  *             {

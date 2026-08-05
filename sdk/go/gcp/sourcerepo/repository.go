@@ -79,7 +79,7 @@ import (
 //				Name: pulumi.String("my-repository"),
 //				PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
 //					&sourcerepo.RepositoryPubsubConfigArgs{
-//						Topic:               topic.ID(),
+//						Topic:               topic.ID().ToIDOutput().ToStringOutput(),
 //						MessageFormat:       pulumi.String("JSON"),
 //						ServiceAccountEmail: testAccount.Email,
 //					},

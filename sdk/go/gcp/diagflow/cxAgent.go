@@ -48,14 +48,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"en": map[string]interface{}{
-//					"voice": map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]map[string]map[string]string{
+//				"en": map[string]map[string]string{
+//					"voice": map[string]string{
 //						"name": "en-US-Neural2-A",
 //					},
 //				},
-//				"fr": map[string]interface{}{
-//					"voice": map[string]interface{}{
+//				"fr": map[string]map[string]string{
+//					"voice": map[string]string{
 //						"name": "fr-CA-Neural2-A",
 //					},
 //				},

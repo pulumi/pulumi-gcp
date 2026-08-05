@@ -119,6 +119,60 @@ public final class RolloutSequenceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    @Import(name="minControlPlaneVersion")
+    private @Nullable Output<String> minControlPlaneVersion;
+
+    /**
+     * @return Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    public Optional<Output<String>> minControlPlaneVersion() {
+        return Optional.ofNullable(this.minControlPlaneVersion);
+    }
+
+    /**
+     * Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    @Import(name="minNodeVersion")
+    private @Nullable Output<String> minNodeVersion;
+
+    /**
+     * @return Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     * 
+     */
+    public Optional<Output<String>> minNodeVersion() {
+        return Optional.ofNullable(this.minNodeVersion);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -175,6 +229,8 @@ public final class RolloutSequenceArgs extends com.pulumi.resources.ResourceArgs
         this.displayName = $.displayName;
         this.ignoredClustersSelector = $.ignoredClustersSelector;
         this.labels = $.labels;
+        this.minControlPlaneVersion = $.minControlPlaneVersion;
+        this.minNodeVersion = $.minNodeVersion;
         this.project = $.project;
         this.rolloutSequenceId = $.rolloutSequenceId;
         this.stages = $.stages;
@@ -323,6 +379,72 @@ public final class RolloutSequenceArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param minControlPlaneVersion Minimum control plane version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minControlPlaneVersion(@Nullable Output<String> minControlPlaneVersion) {
+            $.minControlPlaneVersion = minControlPlaneVersion;
+            return this;
+        }
+
+        /**
+         * @param minControlPlaneVersion Minimum control plane version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minControlPlaneVersion(String minControlPlaneVersion) {
+            return minControlPlaneVersion(Output.of(minControlPlaneVersion));
+        }
+
+        /**
+         * @param minNodeVersion Minimum node version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeVersion(@Nullable Output<String> minNodeVersion) {
+            $.minNodeVersion = minNodeVersion;
+            return this;
+        }
+
+        /**
+         * @param minNodeVersion Minimum node version that the clusters in the sequence should be upgraded to.
+         * Setting this field will cause the creation of a rollout to the specified version.
+         * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+         * Should be a valid [semantic version](https://semver.org/).
+         * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+         * Note that the `latest` and `-` aliases are not supported for this field.
+         * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodeVersion(String minNodeVersion) {
+            return minNodeVersion(Output.of(minNodeVersion));
         }
 
         /**

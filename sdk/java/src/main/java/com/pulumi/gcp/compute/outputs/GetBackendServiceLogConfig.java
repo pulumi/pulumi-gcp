@@ -5,6 +5,8 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfigRequestHeader;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfigResponseHeader;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -32,6 +34,16 @@ public final class GetBackendServiceLogConfig {
      * 
      */
     private String optionalMode;
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+     * 
+     */
+    private List<GetBackendServiceLogConfigRequestHeader> requestHeaders;
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+     * 
+     */
+    private List<GetBackendServiceLogConfigResponseHeader> responseHeaders;
     /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
@@ -68,6 +80,20 @@ public final class GetBackendServiceLogConfig {
         return this.optionalMode;
     }
     /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+     * 
+     */
+    public List<GetBackendServiceLogConfigRequestHeader> requestHeaders() {
+        return this.requestHeaders;
+    }
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+     * 
+     */
+    public List<GetBackendServiceLogConfigResponseHeader> responseHeaders() {
+        return this.responseHeaders;
+    }
+    /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
      * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -90,6 +116,8 @@ public final class GetBackendServiceLogConfig {
         private Boolean enable;
         private List<String> optionalFields;
         private String optionalMode;
+        private List<GetBackendServiceLogConfigRequestHeader> requestHeaders;
+        private List<GetBackendServiceLogConfigResponseHeader> responseHeaders;
         private Double sampleRate;
         public Builder() {}
         public Builder(GetBackendServiceLogConfig defaults) {
@@ -97,6 +125,8 @@ public final class GetBackendServiceLogConfig {
     	      this.enable = defaults.enable;
     	      this.optionalFields = defaults.optionalFields;
     	      this.optionalMode = defaults.optionalMode;
+    	      this.requestHeaders = defaults.requestHeaders;
+    	      this.responseHeaders = defaults.responseHeaders;
     	      this.sampleRate = defaults.sampleRate;
         }
 
@@ -128,6 +158,28 @@ public final class GetBackendServiceLogConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder requestHeaders(List<GetBackendServiceLogConfigRequestHeader> requestHeaders) {
+            if (requestHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "requestHeaders");
+            }
+            this.requestHeaders = requestHeaders;
+            return this;
+        }
+        public Builder requestHeaders(GetBackendServiceLogConfigRequestHeader... requestHeaders) {
+            return requestHeaders(List.of(requestHeaders));
+        }
+        @CustomType.Setter
+        public Builder responseHeaders(List<GetBackendServiceLogConfigResponseHeader> responseHeaders) {
+            if (responseHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "responseHeaders");
+            }
+            this.responseHeaders = responseHeaders;
+            return this;
+        }
+        public Builder responseHeaders(GetBackendServiceLogConfigResponseHeader... responseHeaders) {
+            return responseHeaders(List.of(responseHeaders));
+        }
+        @CustomType.Setter
         public Builder sampleRate(Double sampleRate) {
             if (sampleRate == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "sampleRate");
@@ -140,6 +192,8 @@ public final class GetBackendServiceLogConfig {
             _resultValue.enable = enable;
             _resultValue.optionalFields = optionalFields;
             _resultValue.optionalMode = optionalMode;
+            _resultValue.requestHeaders = requestHeaders;
+            _resultValue.responseHeaders = responseHeaders;
             _resultValue.sampleRate = sampleRate;
             return _resultValue;
         }

@@ -104,22 +104,19 @@ import (
 //			}
 //			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("my-key"),
-//				KeyRing: keyring.ID(),
+//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 //				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: key.ID(),
-//				Member: pulumi.String(std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
+//				CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
+//				Member: std.ReplaceOutput(ctx, std.ReplaceOutputArgs{
 //					Text:    gcpSa.Member,
 //					Search:  pulumi.String("@gcp-sa-dialogflow.iam"),
 //					Replace: pulumi.String("@gcp-sa-ccai-cmek.iam"),
-//				}, nil).ApplyT(func(invoke std.ReplaceResult) (*string, error) {
-//					val := invoke.Result
-//					return &val, nil
-//				}).(pulumi.StringPtrOutput)),
+//				}, nil).Result(),
 //				Role: pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				waitCreateSa,
@@ -131,7 +128,7 @@ import (
 //				Project:  project.ProjectId,
 //				Location: pulumi.String("us-central1"),
 //				EncryptionSpec: &diagflow.EncryptionSpecEncryptionSpecArgs{
-//					KmsKey: key.ID(),
+//					KmsKey: key.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKey,

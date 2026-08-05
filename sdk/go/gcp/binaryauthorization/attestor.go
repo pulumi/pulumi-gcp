@@ -109,7 +109,7 @@ import (
 //			}
 //			crypto_key, err := kms.NewCryptoKey(ctx, "crypto-key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("test-attestor-key"),
-//				KeyRing: keyring.ID(),
+//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("RSA_SIGN_PKCS1_4096_SHA512"),
@@ -119,7 +119,7 @@ import (
 //				return err
 //			}
 //			version := kms.GetKMSCryptoKeyVersionOutput(ctx, kms.GetKMSCryptoKeyVersionOutputArgs{
-//				CryptoKey: crypto_key.ID(),
+//				CryptoKey: crypto_key.ID().ToIDOutput().ToStringOutput(),
 //			}, nil)
 //			note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
 //				Name: pulumi.String("test-attestor-note"),
@@ -138,9 +138,7 @@ import (
 //					NoteReference: note.Name,
 //					PublicKeys: binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArray{
 //						&binaryauthorization.AttestorAttestationAuthorityNotePublicKeyArgs{
-//							Id: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (*string, error) {
-//								return version.Id, nil
-//							}).(pulumi.StringPtrOutput),
+//							Id: version.Id(),
 //							PkixPublicKey: &binaryauthorization.AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs{
 //								PublicKeyPem: version.ApplyT(func(version kms.GetKMSCryptoKeyVersionResult) (*string, error) {
 //									return version.PublicKeys[0].Pem, nil

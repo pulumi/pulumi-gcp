@@ -183,6 +183,8 @@ __all__ = [
     'ClusterAddonsConfigLustreCsiDriverConfigArgsDict',
     'ClusterAddonsConfigNetworkPolicyConfigArgs',
     'ClusterAddonsConfigNetworkPolicyConfigArgsDict',
+    'ClusterAddonsConfigNodeReadinessConfigArgs',
+    'ClusterAddonsConfigNodeReadinessConfigArgsDict',
     'ClusterAddonsConfigParallelstoreCsiDriverConfigArgs',
     'ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict',
     'ClusterAddonsConfigPodSnapshotConfigArgs',
@@ -639,6 +641,8 @@ __all__ = [
     'ClusterResourceUsageExportConfigArgsDict',
     'ClusterResourceUsageExportConfigBigqueryDestinationArgs',
     'ClusterResourceUsageExportConfigBigqueryDestinationArgsDict',
+    'ClusterRollbackSafeUpgradeArgs',
+    'ClusterRollbackSafeUpgradeArgsDict',
     'ClusterSecretManagerConfigArgs',
     'ClusterSecretManagerConfigArgsDict',
     'ClusterSecretManagerConfigRotationConfigArgs',
@@ -4676,6 +4680,13 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     It can only be disabled if the nodes already do not have network policies enabled.
     Defaults to disabled; set `disabled = false` to enable.
     """
+    node_readiness_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigNodeReadinessConfigArgsDict']]]
+    """
+    The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+    Structure is documented below.
+
+    This example `addons_config` disables two addons:
+    """
     parallelstore_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict']]]
     """
     The status of the Parallelstore CSI driver addon,
@@ -4715,8 +4726,6 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     which creates slurm related CRDs and KCP pods to manage them.
     Defaults to disabled for Standard clusters; set `enabled = true` to enable.
     It can not be enabled for Autopilot clusters.
-
-    This example `addons_config` disables two addons:
     """
     stateful_ha_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgsDict']]]
     """
@@ -4742,6 +4751,7 @@ class ClusterAddonsConfigArgs:
                  kalm_config: pulumi.Input[Optional['ClusterAddonsConfigKalmConfigArgs']] = None,
                  lustre_csi_driver_config: pulumi.Input[Optional['ClusterAddonsConfigLustreCsiDriverConfigArgs']] = None,
                  network_policy_config: pulumi.Input[Optional['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None,
+                 node_readiness_config: pulumi.Input[Optional['ClusterAddonsConfigNodeReadinessConfigArgs']] = None,
                  parallelstore_csi_driver_config: pulumi.Input[Optional['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs']] = None,
                  pod_snapshot_config: pulumi.Input[Optional['ClusterAddonsConfigPodSnapshotConfigArgs']] = None,
                  ray_operator_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]] = None,
@@ -4797,6 +4807,10 @@ class ClusterAddonsConfigArgs:
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param pulumi.Input['ClusterAddonsConfigNodeReadinessConfigArgs'] node_readiness_config: The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+               Structure is documented below.
+               
+               This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs'] parallelstore_csi_driver_config: The status of the Parallelstore CSI driver addon,
                which allows the usage of a Parallelstore instances as volumes.
                It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -4822,8 +4836,6 @@ class ClusterAddonsConfigArgs:
                which creates slurm related CRDs and KCP pods to manage them.
                Defaults to disabled for Standard clusters; set `enabled = true` to enable.
                It can not be enabled for Autopilot clusters.
-               
-               This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4856,6 +4868,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "lustre_csi_driver_config", lustre_csi_driver_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if node_readiness_config is not None:
+            pulumi.set(__self__, "node_readiness_config", node_readiness_config)
         if parallelstore_csi_driver_config is not None:
             pulumi.set(__self__, "parallelstore_csi_driver_config", parallelstore_csi_driver_config)
         if pod_snapshot_config is not None:
@@ -5072,6 +5086,21 @@ class ClusterAddonsConfigArgs:
         pulumi.set(self, "network_policy_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="nodeReadinessConfig")
+    def node_readiness_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigNodeReadinessConfigArgs']]:
+        """
+        The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+        Structure is documented below.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "node_readiness_config")
+
+    @node_readiness_config.setter
+    def node_readiness_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigNodeReadinessConfigArgs']]):
+        pulumi.set(self, "node_readiness_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="parallelstoreCsiDriverConfig")
     def parallelstore_csi_driver_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs']]:
         """
@@ -5144,8 +5173,6 @@ class ClusterAddonsConfigArgs:
         which creates slurm related CRDs and KCP pods to manage them.
         Defaults to disabled for Standard clusters; set `enabled = true` to enable.
         It can not be enabled for Autopilot clusters.
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "slurm_operator_config")
 
@@ -5604,6 +5631,25 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
         pulumi.set(self, "disabled", value)
 
 
+class ClusterAddonsConfigNodeReadinessConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+
+@pulumi.input_type
+class ClusterAddonsConfigNodeReadinessConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
 class ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
 
@@ -5955,11 +6001,12 @@ class ClusterAutopilotClusterPolicyConfigArgs:
 class ClusterBinaryAuthorizationArgsDict(TypedDict):
     enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Enable Binary Authorization for this cluster.
+    Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
     """
     evaluation_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Mode of operation for Binary Authorization policy evaluation.
+    Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+    and `PROJECT_SINGLETON_POLICY_ENFORCE`.
     """
 
 @pulumi.input_type
@@ -5968,8 +6015,9 @@ class ClusterBinaryAuthorizationArgs:
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  evaluation_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] enabled: Enable Binary Authorization for this cluster.
-        :param pulumi.Input[_builtins.str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation.
+        :param pulumi.Input[_builtins.bool] enabled: Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+        :param pulumi.Input[_builtins.str] evaluation_mode: Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+               and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         if enabled is not None:
             warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
@@ -5984,7 +6032,7 @@ class ClusterBinaryAuthorizationArgs:
     @_utilities.deprecated("""Deprecated in favor of evaluation_mode.""")
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable Binary Authorization for this cluster.
+        Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
         """
         return pulumi.get(self, "enabled")
 
@@ -5996,7 +6044,8 @@ class ClusterBinaryAuthorizationArgs:
     @pulumi.getter(name="evaluationMode")
     def evaluation_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Mode of operation for Binary Authorization policy evaluation.
+        Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+        and `PROJECT_SINGLETON_POLICY_ENFORCE`.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -22633,6 +22682,35 @@ class ClusterResourceUsageExportConfigBigqueryDestinationArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "dataset_id", value)
+
+
+class ClusterRollbackSafeUpgradeArgsDict(TypedDict):
+    control_plane_soak_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+    """
+
+@pulumi.input_type
+class ClusterRollbackSafeUpgradeArgs:
+    def __init__(__self__, *,
+                 control_plane_soak_duration: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] control_plane_soak_duration: A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+        """
+        if control_plane_soak_duration is not None:
+            pulumi.set(__self__, "control_plane_soak_duration", control_plane_soak_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlaneSoakDuration")
+    def control_plane_soak_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+        """
+        return pulumi.get(self, "control_plane_soak_duration")
+
+    @control_plane_soak_duration.setter
+    def control_plane_soak_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "control_plane_soak_duration", value)
 
 
 class ClusterSecretManagerConfigArgsDict(TypedDict):

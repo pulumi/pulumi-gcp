@@ -319,7 +319,7 @@ import * as utilities from "../utilities";
  *     agentTool: {
  *         name: "ces_tool_agent_basic",
  *         description: "example-description",
- *         agent: pulumi.all([my_app.project, my_app.appId, targetAgent.agentId]).apply(([project, appId, agentId]) => `projects/${project}/locations/us/apps/${appId}/agents/${agentId}`),
+ *         agent: pulumi.interpolate`projects/${my_app.project}/locations/us/apps/${my_app.appId}/agents/${targetAgent.agentId}`,
  *     },
  * });
  * ```

@@ -18337,6 +18337,1672 @@ func (o AiMetadataStoreStateTypeArrayOutput) Index(i pulumi.IntInput) AiMetadata
 	}).(AiMetadataStoreStateTypeOutput)
 }
 
+type AiPersistentResourceEncryptionSpec struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// The Cloud KMS key must be in the same region as the resource. It must have
+	// the format
+	// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// AiPersistentResourceEncryptionSpecInput is an input type that accepts AiPersistentResourceEncryptionSpecArgs and AiPersistentResourceEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceEncryptionSpecInput` via:
+//
+//	AiPersistentResourceEncryptionSpecArgs{...}
+type AiPersistentResourceEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceEncryptionSpecOutput() AiPersistentResourceEncryptionSpecOutput
+	ToAiPersistentResourceEncryptionSpecOutputWithContext(context.Context) AiPersistentResourceEncryptionSpecOutput
+}
+
+type AiPersistentResourceEncryptionSpecArgs struct {
+	// Resource name of the Cloud KMS key used to protect the resource.
+	// The Cloud KMS key must be in the same region as the resource. It must have
+	// the format
+	// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (AiPersistentResourceEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceEncryptionSpecArgs) ToAiPersistentResourceEncryptionSpecOutput() AiPersistentResourceEncryptionSpecOutput {
+	return i.ToAiPersistentResourceEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceEncryptionSpecArgs) ToAiPersistentResourceEncryptionSpecOutputWithContext(ctx context.Context) AiPersistentResourceEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceEncryptionSpecOutput)
+}
+
+func (i AiPersistentResourceEncryptionSpecArgs) ToAiPersistentResourceEncryptionSpecPtrOutput() AiPersistentResourceEncryptionSpecPtrOutput {
+	return i.ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceEncryptionSpecArgs) ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceEncryptionSpecOutput).ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceEncryptionSpecPtrInput is an input type that accepts AiPersistentResourceEncryptionSpecArgs, AiPersistentResourceEncryptionSpecPtr and AiPersistentResourceEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceEncryptionSpecPtrInput` via:
+//
+//	        AiPersistentResourceEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceEncryptionSpecPtrOutput() AiPersistentResourceEncryptionSpecPtrOutput
+	ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(context.Context) AiPersistentResourceEncryptionSpecPtrOutput
+}
+
+type aiPersistentResourceEncryptionSpecPtrType AiPersistentResourceEncryptionSpecArgs
+
+func AiPersistentResourceEncryptionSpecPtr(v *AiPersistentResourceEncryptionSpecArgs) AiPersistentResourceEncryptionSpecPtrInput {
+	return (*aiPersistentResourceEncryptionSpecPtrType)(v)
+}
+
+func (*aiPersistentResourceEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceEncryptionSpecPtrType) ToAiPersistentResourceEncryptionSpecPtrOutput() AiPersistentResourceEncryptionSpecPtrOutput {
+	return i.ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceEncryptionSpecPtrType) ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceEncryptionSpecPtrOutput)
+}
+
+type AiPersistentResourceEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceEncryptionSpecOutput) ToAiPersistentResourceEncryptionSpecOutput() AiPersistentResourceEncryptionSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceEncryptionSpecOutput) ToAiPersistentResourceEncryptionSpecOutputWithContext(ctx context.Context) AiPersistentResourceEncryptionSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceEncryptionSpecOutput) ToAiPersistentResourceEncryptionSpecPtrOutput() AiPersistentResourceEncryptionSpecPtrOutput {
+	return o.ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceEncryptionSpecOutput) ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceEncryptionSpec) *AiPersistentResourceEncryptionSpec {
+		return &v
+	}).(AiPersistentResourceEncryptionSpecPtrOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// The Cloud KMS key must be in the same region as the resource. It must have
+// the format
+// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiPersistentResourceEncryptionSpecOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPersistentResourceEncryptionSpec) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type AiPersistentResourceEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceEncryptionSpecPtrOutput) ToAiPersistentResourceEncryptionSpecPtrOutput() AiPersistentResourceEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceEncryptionSpecPtrOutput) ToAiPersistentResourceEncryptionSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceEncryptionSpecPtrOutput) Elem() AiPersistentResourceEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceEncryptionSpec) AiPersistentResourceEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceEncryptionSpec
+		return ret
+	}).(AiPersistentResourceEncryptionSpecOutput)
+}
+
+// Resource name of the Cloud KMS key used to protect the resource.
+// The Cloud KMS key must be in the same region as the resource. It must have
+// the format
+// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+func (o AiPersistentResourceEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// AiPersistentResourceErrorInput is an input type that accepts AiPersistentResourceErrorArgs and AiPersistentResourceErrorOutput values.
+// You can construct a concrete instance of `AiPersistentResourceErrorInput` via:
+//
+//	AiPersistentResourceErrorArgs{...}
+type AiPersistentResourceErrorInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceErrorOutput() AiPersistentResourceErrorOutput
+	ToAiPersistentResourceErrorOutputWithContext(context.Context) AiPersistentResourceErrorOutput
+}
+
+type AiPersistentResourceErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any
+	// user-facing error message should be localized and sent in the
+	// google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AiPersistentResourceErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceError)(nil)).Elem()
+}
+
+func (i AiPersistentResourceErrorArgs) ToAiPersistentResourceErrorOutput() AiPersistentResourceErrorOutput {
+	return i.ToAiPersistentResourceErrorOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceErrorArgs) ToAiPersistentResourceErrorOutputWithContext(ctx context.Context) AiPersistentResourceErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceErrorOutput)
+}
+
+// AiPersistentResourceErrorArrayInput is an input type that accepts AiPersistentResourceErrorArray and AiPersistentResourceErrorArrayOutput values.
+// You can construct a concrete instance of `AiPersistentResourceErrorArrayInput` via:
+//
+//	AiPersistentResourceErrorArray{ AiPersistentResourceErrorArgs{...} }
+type AiPersistentResourceErrorArrayInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceErrorArrayOutput() AiPersistentResourceErrorArrayOutput
+	ToAiPersistentResourceErrorArrayOutputWithContext(context.Context) AiPersistentResourceErrorArrayOutput
+}
+
+type AiPersistentResourceErrorArray []AiPersistentResourceErrorInput
+
+func (AiPersistentResourceErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourceError)(nil)).Elem()
+}
+
+func (i AiPersistentResourceErrorArray) ToAiPersistentResourceErrorArrayOutput() AiPersistentResourceErrorArrayOutput {
+	return i.ToAiPersistentResourceErrorArrayOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceErrorArray) ToAiPersistentResourceErrorArrayOutputWithContext(ctx context.Context) AiPersistentResourceErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceErrorArrayOutput)
+}
+
+type AiPersistentResourceErrorOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceError)(nil)).Elem()
+}
+
+func (o AiPersistentResourceErrorOutput) ToAiPersistentResourceErrorOutput() AiPersistentResourceErrorOutput {
+	return o
+}
+
+func (o AiPersistentResourceErrorOutput) ToAiPersistentResourceErrorOutputWithContext(ctx context.Context) AiPersistentResourceErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o AiPersistentResourceErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any
+// user-facing error message should be localized and sent in the
+// google.rpc.Status.details field, or localized by the client.
+func (o AiPersistentResourceErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourceError)(nil)).Elem()
+}
+
+func (o AiPersistentResourceErrorArrayOutput) ToAiPersistentResourceErrorArrayOutput() AiPersistentResourceErrorArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourceErrorArrayOutput) ToAiPersistentResourceErrorArrayOutputWithContext(ctx context.Context) AiPersistentResourceErrorArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourceErrorArrayOutput) Index(i pulumi.IntInput) AiPersistentResourceErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPersistentResourceError {
+		return vs[0].([]AiPersistentResourceError)[vs[1].(int)]
+	}).(AiPersistentResourceErrorOutput)
+}
+
+type AiPersistentResourcePscInterfaceConfig struct {
+	// DNS peering configurations. When specified, Vertex AI will
+	// attempt to configure DNS peering zones in the tenant project VPC
+	// to resolve the specified domains using the target network's Cloud DNS.
+	// The user must grant the dns.peer role to the Vertex AI Service Agent
+	// on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs []AiPersistentResourcePscInterfaceConfigDnsPeeringConfig `pulumi:"dnsPeeringConfigs"`
+	// The name of the Compute Engine
+	// [network
+	// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+	// attach to the resource within the region and user project.
+	// To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+	// This field is only used for resources using PSC-I.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
+}
+
+// AiPersistentResourcePscInterfaceConfigInput is an input type that accepts AiPersistentResourcePscInterfaceConfigArgs and AiPersistentResourcePscInterfaceConfigOutput values.
+// You can construct a concrete instance of `AiPersistentResourcePscInterfaceConfigInput` via:
+//
+//	AiPersistentResourcePscInterfaceConfigArgs{...}
+type AiPersistentResourcePscInterfaceConfigInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourcePscInterfaceConfigOutput() AiPersistentResourcePscInterfaceConfigOutput
+	ToAiPersistentResourcePscInterfaceConfigOutputWithContext(context.Context) AiPersistentResourcePscInterfaceConfigOutput
+}
+
+type AiPersistentResourcePscInterfaceConfigArgs struct {
+	// DNS peering configurations. When specified, Vertex AI will
+	// attempt to configure DNS peering zones in the tenant project VPC
+	// to resolve the specified domains using the target network's Cloud DNS.
+	// The user must grant the dns.peer role to the Vertex AI Service Agent
+	// on the target project.
+	// Structure is documented below.
+	DnsPeeringConfigs AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayInput `pulumi:"dnsPeeringConfigs"`
+	// The name of the Compute Engine
+	// [network
+	// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+	// attach to the resource within the region and user project.
+	// To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+	// This field is only used for resources using PSC-I.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
+}
+
+func (AiPersistentResourcePscInterfaceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourcePscInterfaceConfig)(nil)).Elem()
+}
+
+func (i AiPersistentResourcePscInterfaceConfigArgs) ToAiPersistentResourcePscInterfaceConfigOutput() AiPersistentResourcePscInterfaceConfigOutput {
+	return i.ToAiPersistentResourcePscInterfaceConfigOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourcePscInterfaceConfigArgs) ToAiPersistentResourcePscInterfaceConfigOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourcePscInterfaceConfigOutput)
+}
+
+func (i AiPersistentResourcePscInterfaceConfigArgs) ToAiPersistentResourcePscInterfaceConfigPtrOutput() AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return i.ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourcePscInterfaceConfigArgs) ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourcePscInterfaceConfigOutput).ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourcePscInterfaceConfigPtrInput is an input type that accepts AiPersistentResourcePscInterfaceConfigArgs, AiPersistentResourcePscInterfaceConfigPtr and AiPersistentResourcePscInterfaceConfigPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourcePscInterfaceConfigPtrInput` via:
+//
+//	        AiPersistentResourcePscInterfaceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourcePscInterfaceConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourcePscInterfaceConfigPtrOutput() AiPersistentResourcePscInterfaceConfigPtrOutput
+	ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(context.Context) AiPersistentResourcePscInterfaceConfigPtrOutput
+}
+
+type aiPersistentResourcePscInterfaceConfigPtrType AiPersistentResourcePscInterfaceConfigArgs
+
+func AiPersistentResourcePscInterfaceConfigPtr(v *AiPersistentResourcePscInterfaceConfigArgs) AiPersistentResourcePscInterfaceConfigPtrInput {
+	return (*aiPersistentResourcePscInterfaceConfigPtrType)(v)
+}
+
+func (*aiPersistentResourcePscInterfaceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourcePscInterfaceConfig)(nil)).Elem()
+}
+
+func (i *aiPersistentResourcePscInterfaceConfigPtrType) ToAiPersistentResourcePscInterfaceConfigPtrOutput() AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return i.ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourcePscInterfaceConfigPtrType) ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourcePscInterfaceConfigPtrOutput)
+}
+
+type AiPersistentResourcePscInterfaceConfigOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourcePscInterfaceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourcePscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiPersistentResourcePscInterfaceConfigOutput) ToAiPersistentResourcePscInterfaceConfigOutput() AiPersistentResourcePscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigOutput) ToAiPersistentResourcePscInterfaceConfigOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigOutput) ToAiPersistentResourcePscInterfaceConfigPtrOutput() AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return o.ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourcePscInterfaceConfigOutput) ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourcePscInterfaceConfig) *AiPersistentResourcePscInterfaceConfig {
+		return &v
+	}).(AiPersistentResourcePscInterfaceConfigPtrOutput)
+}
+
+// DNS peering configurations. When specified, Vertex AI will
+// attempt to configure DNS peering zones in the tenant project VPC
+// to resolve the specified domains using the target network's Cloud DNS.
+// The user must grant the dns.peer role to the Vertex AI Service Agent
+// on the target project.
+// Structure is documented below.
+func (o AiPersistentResourcePscInterfaceConfigOutput) DnsPeeringConfigs() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v AiPersistentResourcePscInterfaceConfig) []AiPersistentResourcePscInterfaceConfigDnsPeeringConfig {
+		return v.DnsPeeringConfigs
+	}).(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the Compute Engine
+// [network
+// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+// attach to the resource within the region and user project.
+// To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+// This field is only used for resources using PSC-I.
+func (o AiPersistentResourcePscInterfaceConfigOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourcePscInterfaceConfig) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourcePscInterfaceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourcePscInterfaceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourcePscInterfaceConfig)(nil)).Elem()
+}
+
+func (o AiPersistentResourcePscInterfaceConfigPtrOutput) ToAiPersistentResourcePscInterfaceConfigPtrOutput() AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigPtrOutput) ToAiPersistentResourcePscInterfaceConfigPtrOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigPtrOutput) Elem() AiPersistentResourcePscInterfaceConfigOutput {
+	return o.ApplyT(func(v *AiPersistentResourcePscInterfaceConfig) AiPersistentResourcePscInterfaceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourcePscInterfaceConfig
+		return ret
+	}).(AiPersistentResourcePscInterfaceConfigOutput)
+}
+
+// DNS peering configurations. When specified, Vertex AI will
+// attempt to configure DNS peering zones in the tenant project VPC
+// to resolve the specified domains using the target network's Cloud DNS.
+// The user must grant the dns.peer role to the Vertex AI Service Agent
+// on the target project.
+// Structure is documented below.
+func (o AiPersistentResourcePscInterfaceConfigPtrOutput) DnsPeeringConfigs() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o.ApplyT(func(v *AiPersistentResourcePscInterfaceConfig) []AiPersistentResourcePscInterfaceConfigDnsPeeringConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsPeeringConfigs
+	}).(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+// The name of the Compute Engine
+// [network
+// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+// attach to the resource within the region and user project.
+// To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+// This field is only used for resources using PSC-I.
+func (o AiPersistentResourcePscInterfaceConfigPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourcePscInterfaceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfig struct {
+	// The DNS name suffix of the zone being peered to, e.g.,
+	// "my-internal-domain.corp.". Must end with a dot.
+	Domain string `pulumi:"domain"`
+	// The VPC network name
+	// in the targetProject where the DNS zone specified by 'domain' is
+	// visible.
+	TargetNetwork string `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that
+	// contains the 'domain'. The Vertex AI Service Agent requires the
+	// dns.peer role on this project.
+	TargetProject string `pulumi:"targetProject"`
+}
+
+// AiPersistentResourcePscInterfaceConfigDnsPeeringConfigInput is an input type that accepts AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs and AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput values.
+// You can construct a concrete instance of `AiPersistentResourcePscInterfaceConfigDnsPeeringConfigInput` via:
+//
+//	AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs{...}
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfigInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput
+	ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Context) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput
+}
+
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs struct {
+	// The DNS name suffix of the zone being peered to, e.g.,
+	// "my-internal-domain.corp.". Must end with a dot.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The VPC network name
+	// in the targetProject where the DNS zone specified by 'domain' is
+	// visible.
+	TargetNetwork pulumi.StringInput `pulumi:"targetNetwork"`
+	// The project ID hosting the Cloud DNS managed zone that
+	// contains the 'domain'. The Vertex AI Service Agent requires the
+	// dns.peer role on this project.
+	TargetProject pulumi.StringInput `pulumi:"targetProject"`
+}
+
+func (AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourcePscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput {
+	return i.ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+// AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayInput is an input type that accepts AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray and AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput values.
+// You can construct a concrete instance of `AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayInput` via:
+//
+//	AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray{ AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs{...} }
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput
+	ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Context) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput
+}
+
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray []AiPersistentResourcePscInterfaceConfigDnsPeeringConfigInput
+
+func (AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourcePscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (i AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return i.ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput)
+}
+
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourcePscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput {
+	return o
+}
+
+// The DNS name suffix of the zone being peered to, e.g.,
+// "my-internal-domain.corp.". Must end with a dot.
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPersistentResourcePscInterfaceConfigDnsPeeringConfig) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The VPC network name
+// in the targetProject where the DNS zone specified by 'domain' is
+// visible.
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput) TargetNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPersistentResourcePscInterfaceConfigDnsPeeringConfig) string { return v.TargetNetwork }).(pulumi.StringOutput)
+}
+
+// The project ID hosting the Cloud DNS managed zone that
+// contains the 'domain'. The Vertex AI Service Agent requires the
+// dns.peer role on this project.
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v AiPersistentResourcePscInterfaceConfigDnsPeeringConfig) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+type AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourcePscInterfaceConfigDnsPeeringConfig)(nil)).Elem()
+}
+
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput() AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput) ToAiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutputWithContext(ctx context.Context) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput) Index(i pulumi.IntInput) AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPersistentResourcePscInterfaceConfigDnsPeeringConfig {
+		return vs[0].([]AiPersistentResourcePscInterfaceConfigDnsPeeringConfig)[vs[1].(int)]
+	}).(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput)
+}
+
+type AiPersistentResourceResourcePool struct {
+	// The min/max number of replicas allowed if enabling autoscaling
+	// Structure is documented below.
+	AutoscalingSpec *AiPersistentResourceResourcePoolAutoscalingSpec `pulumi:"autoscalingSpec"`
+	// Represents the spec of disk options.
+	// Structure is documented below.
+	DiskSpec *AiPersistentResourceResourcePoolDiskSpec `pulumi:"diskSpec"`
+	// The unique ID in a PersistentResource for referring to this resource pool.
+	// User can specify it if necessary. Otherwise, it's generated
+	// automatically.
+	Id *string `pulumi:"id"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiPersistentResourceResourcePoolMachineSpec `pulumi:"machineSpec"`
+	// The total number of machines to use for this resource pool.
+	ReplicaCount *string `pulumi:"replicaCount"`
+	// (Output)
+	// The number of machines currently in use by training jobs for this resource
+	// pool. Will replace idle_replica_count.
+	UsedReplicaCount *string `pulumi:"usedReplicaCount"`
+}
+
+// AiPersistentResourceResourcePoolInput is an input type that accepts AiPersistentResourceResourcePoolArgs and AiPersistentResourceResourcePoolOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolInput` via:
+//
+//	AiPersistentResourceResourcePoolArgs{...}
+type AiPersistentResourceResourcePoolInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolOutput() AiPersistentResourceResourcePoolOutput
+	ToAiPersistentResourceResourcePoolOutputWithContext(context.Context) AiPersistentResourceResourcePoolOutput
+}
+
+type AiPersistentResourceResourcePoolArgs struct {
+	// The min/max number of replicas allowed if enabling autoscaling
+	// Structure is documented below.
+	AutoscalingSpec AiPersistentResourceResourcePoolAutoscalingSpecPtrInput `pulumi:"autoscalingSpec"`
+	// Represents the spec of disk options.
+	// Structure is documented below.
+	DiskSpec AiPersistentResourceResourcePoolDiskSpecPtrInput `pulumi:"diskSpec"`
+	// The unique ID in a PersistentResource for referring to this resource pool.
+	// User can specify it if necessary. Otherwise, it's generated
+	// automatically.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Specification of a single machine.
+	// Structure is documented below.
+	MachineSpec AiPersistentResourceResourcePoolMachineSpecInput `pulumi:"machineSpec"`
+	// The total number of machines to use for this resource pool.
+	ReplicaCount pulumi.StringPtrInput `pulumi:"replicaCount"`
+	// (Output)
+	// The number of machines currently in use by training jobs for this resource
+	// pool. Will replace idle_replica_count.
+	UsedReplicaCount pulumi.StringPtrInput `pulumi:"usedReplicaCount"`
+}
+
+func (AiPersistentResourceResourcePoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePool)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourcePoolArgs) ToAiPersistentResourceResourcePoolOutput() AiPersistentResourceResourcePoolOutput {
+	return i.ToAiPersistentResourceResourcePoolOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolArgs) ToAiPersistentResourceResourcePoolOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolOutput)
+}
+
+// AiPersistentResourceResourcePoolArrayInput is an input type that accepts AiPersistentResourceResourcePoolArray and AiPersistentResourceResourcePoolArrayOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolArrayInput` via:
+//
+//	AiPersistentResourceResourcePoolArray{ AiPersistentResourceResourcePoolArgs{...} }
+type AiPersistentResourceResourcePoolArrayInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolArrayOutput() AiPersistentResourceResourcePoolArrayOutput
+	ToAiPersistentResourceResourcePoolArrayOutputWithContext(context.Context) AiPersistentResourceResourcePoolArrayOutput
+}
+
+type AiPersistentResourceResourcePoolArray []AiPersistentResourceResourcePoolInput
+
+func (AiPersistentResourceResourcePoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourceResourcePool)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourcePoolArray) ToAiPersistentResourceResourcePoolArrayOutput() AiPersistentResourceResourcePoolArrayOutput {
+	return i.ToAiPersistentResourceResourcePoolArrayOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolArray) ToAiPersistentResourceResourcePoolArrayOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolArrayOutput)
+}
+
+type AiPersistentResourceResourcePoolOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePool)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolOutput) ToAiPersistentResourceResourcePoolOutput() AiPersistentResourceResourcePoolOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolOutput) ToAiPersistentResourceResourcePoolOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolOutput {
+	return o
+}
+
+// The min/max number of replicas allowed if enabling autoscaling
+// Structure is documented below.
+func (o AiPersistentResourceResourcePoolOutput) AutoscalingSpec() AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePool) *AiPersistentResourceResourcePoolAutoscalingSpec {
+		return v.AutoscalingSpec
+	}).(AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput)
+}
+
+// Represents the spec of disk options.
+// Structure is documented below.
+func (o AiPersistentResourceResourcePoolOutput) DiskSpec() AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePool) *AiPersistentResourceResourcePoolDiskSpec { return v.DiskSpec }).(AiPersistentResourceResourcePoolDiskSpecPtrOutput)
+}
+
+// The unique ID in a PersistentResource for referring to this resource pool.
+// User can specify it if necessary. Otherwise, it's generated
+// automatically.
+func (o AiPersistentResourceResourcePoolOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePool) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Specification of a single machine.
+// Structure is documented below.
+func (o AiPersistentResourceResourcePoolOutput) MachineSpec() AiPersistentResourceResourcePoolMachineSpecOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePool) AiPersistentResourceResourcePoolMachineSpec {
+		return v.MachineSpec
+	}).(AiPersistentResourceResourcePoolMachineSpecOutput)
+}
+
+// The total number of machines to use for this resource pool.
+func (o AiPersistentResourceResourcePoolOutput) ReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePool) *string { return v.ReplicaCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of machines currently in use by training jobs for this resource
+// pool. Will replace idle_replica_count.
+func (o AiPersistentResourceResourcePoolOutput) UsedReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePool) *string { return v.UsedReplicaCount }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourceResourcePool)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolArrayOutput) ToAiPersistentResourceResourcePoolArrayOutput() AiPersistentResourceResourcePoolArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolArrayOutput) ToAiPersistentResourceResourcePoolArrayOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolArrayOutput) Index(i pulumi.IntInput) AiPersistentResourceResourcePoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPersistentResourceResourcePool {
+		return vs[0].([]AiPersistentResourceResourcePool)[vs[1].(int)]
+	}).(AiPersistentResourceResourcePoolOutput)
+}
+
+type AiPersistentResourceResourcePoolAutoscalingSpec struct {
+	// max replicas in the node pool,
+	// must be ≥ replicaCount and > minReplicaCount or will throw error
+	MaxReplicaCount *string `pulumi:"maxReplicaCount"`
+	// min replicas in the node pool,
+	// must be ≤ replicaCount and < maxReplicaCount or will throw error.
+	// For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
+	// resourcePool to be 0 to match the OSS Ray
+	// behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+	// As for Persistent Resource, the minReplicaCount must be > 0, we added
+	// a corresponding validation inside
+	// CreatePersistentResourceRequestValidator.java.
+	MinReplicaCount *string `pulumi:"minReplicaCount"`
+}
+
+// AiPersistentResourceResourcePoolAutoscalingSpecInput is an input type that accepts AiPersistentResourceResourcePoolAutoscalingSpecArgs and AiPersistentResourceResourcePoolAutoscalingSpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolAutoscalingSpecInput` via:
+//
+//	AiPersistentResourceResourcePoolAutoscalingSpecArgs{...}
+type AiPersistentResourceResourcePoolAutoscalingSpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolAutoscalingSpecOutput() AiPersistentResourceResourcePoolAutoscalingSpecOutput
+	ToAiPersistentResourceResourcePoolAutoscalingSpecOutputWithContext(context.Context) AiPersistentResourceResourcePoolAutoscalingSpecOutput
+}
+
+type AiPersistentResourceResourcePoolAutoscalingSpecArgs struct {
+	// max replicas in the node pool,
+	// must be ≥ replicaCount and > minReplicaCount or will throw error
+	MaxReplicaCount pulumi.StringPtrInput `pulumi:"maxReplicaCount"`
+	// min replicas in the node pool,
+	// must be ≤ replicaCount and < maxReplicaCount or will throw error.
+	// For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
+	// resourcePool to be 0 to match the OSS Ray
+	// behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+	// As for Persistent Resource, the minReplicaCount must be > 0, we added
+	// a corresponding validation inside
+	// CreatePersistentResourceRequestValidator.java.
+	MinReplicaCount pulumi.StringPtrInput `pulumi:"minReplicaCount"`
+}
+
+func (AiPersistentResourceResourcePoolAutoscalingSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePoolAutoscalingSpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourcePoolAutoscalingSpecArgs) ToAiPersistentResourceResourcePoolAutoscalingSpecOutput() AiPersistentResourceResourcePoolAutoscalingSpecOutput {
+	return i.ToAiPersistentResourceResourcePoolAutoscalingSpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolAutoscalingSpecArgs) ToAiPersistentResourceResourcePoolAutoscalingSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolAutoscalingSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolAutoscalingSpecOutput)
+}
+
+func (i AiPersistentResourceResourcePoolAutoscalingSpecArgs) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutput() AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return i.ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolAutoscalingSpecArgs) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolAutoscalingSpecOutput).ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceResourcePoolAutoscalingSpecPtrInput is an input type that accepts AiPersistentResourceResourcePoolAutoscalingSpecArgs, AiPersistentResourceResourcePoolAutoscalingSpecPtr and AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolAutoscalingSpecPtrInput` via:
+//
+//	        AiPersistentResourceResourcePoolAutoscalingSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceResourcePoolAutoscalingSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutput() AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput
+	ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(context.Context) AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput
+}
+
+type aiPersistentResourceResourcePoolAutoscalingSpecPtrType AiPersistentResourceResourcePoolAutoscalingSpecArgs
+
+func AiPersistentResourceResourcePoolAutoscalingSpecPtr(v *AiPersistentResourceResourcePoolAutoscalingSpecArgs) AiPersistentResourceResourcePoolAutoscalingSpecPtrInput {
+	return (*aiPersistentResourceResourcePoolAutoscalingSpecPtrType)(v)
+}
+
+func (*aiPersistentResourceResourcePoolAutoscalingSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourcePoolAutoscalingSpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceResourcePoolAutoscalingSpecPtrType) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutput() AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return i.ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceResourcePoolAutoscalingSpecPtrType) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolAutoscalingSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolAutoscalingSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePoolAutoscalingSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecOutput) ToAiPersistentResourceResourcePoolAutoscalingSpecOutput() AiPersistentResourceResourcePoolAutoscalingSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecOutput) ToAiPersistentResourceResourcePoolAutoscalingSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolAutoscalingSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecOutput) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutput() AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return o.ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecOutput) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceResourcePoolAutoscalingSpec) *AiPersistentResourceResourcePoolAutoscalingSpec {
+		return &v
+	}).(AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput)
+}
+
+// max replicas in the node pool,
+// must be ≥ replicaCount and > minReplicaCount or will throw error
+func (o AiPersistentResourceResourcePoolAutoscalingSpecOutput) MaxReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolAutoscalingSpec) *string { return v.MaxReplicaCount }).(pulumi.StringPtrOutput)
+}
+
+// min replicas in the node pool,
+// must be ≤ replicaCount and < maxReplicaCount or will throw error.
+// For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
+// resourcePool to be 0 to match the OSS Ray
+// behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+// As for Persistent Resource, the minReplicaCount must be > 0, we added
+// a corresponding validation inside
+// CreatePersistentResourceRequestValidator.java.
+func (o AiPersistentResourceResourcePoolAutoscalingSpecOutput) MinReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolAutoscalingSpec) *string { return v.MinReplicaCount }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourcePoolAutoscalingSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutput() AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput) ToAiPersistentResourceResourcePoolAutoscalingSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput) Elem() AiPersistentResourceResourcePoolAutoscalingSpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourcePoolAutoscalingSpec) AiPersistentResourceResourcePoolAutoscalingSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceResourcePoolAutoscalingSpec
+		return ret
+	}).(AiPersistentResourceResourcePoolAutoscalingSpecOutput)
+}
+
+// max replicas in the node pool,
+// must be ≥ replicaCount and > minReplicaCount or will throw error
+func (o AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput) MaxReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourcePoolAutoscalingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicaCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// min replicas in the node pool,
+// must be ≤ replicaCount and < maxReplicaCount or will throw error.
+// For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
+// resourcePool to be 0 to match the OSS Ray
+// behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+// As for Persistent Resource, the minReplicaCount must be > 0, we added
+// a corresponding validation inside
+// CreatePersistentResourceRequestValidator.java.
+func (o AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput) MinReplicaCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourcePoolAutoscalingSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicaCount
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolDiskSpec struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk. For non-A3U machines, the default value is
+	// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+	// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+	BootDiskType *string `pulumi:"bootDiskType"`
+}
+
+// AiPersistentResourceResourcePoolDiskSpecInput is an input type that accepts AiPersistentResourceResourcePoolDiskSpecArgs and AiPersistentResourceResourcePoolDiskSpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolDiskSpecInput` via:
+//
+//	AiPersistentResourceResourcePoolDiskSpecArgs{...}
+type AiPersistentResourceResourcePoolDiskSpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolDiskSpecOutput() AiPersistentResourceResourcePoolDiskSpecOutput
+	ToAiPersistentResourceResourcePoolDiskSpecOutputWithContext(context.Context) AiPersistentResourceResourcePoolDiskSpecOutput
+}
+
+type AiPersistentResourceResourcePoolDiskSpecArgs struct {
+	// Size in GB of the boot disk (default is 100GB).
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// Type of the boot disk. For non-A3U machines, the default value is
+	// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+	// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+	// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+}
+
+func (AiPersistentResourceResourcePoolDiskSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePoolDiskSpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourcePoolDiskSpecArgs) ToAiPersistentResourceResourcePoolDiskSpecOutput() AiPersistentResourceResourcePoolDiskSpecOutput {
+	return i.ToAiPersistentResourceResourcePoolDiskSpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolDiskSpecArgs) ToAiPersistentResourceResourcePoolDiskSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolDiskSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolDiskSpecOutput)
+}
+
+func (i AiPersistentResourceResourcePoolDiskSpecArgs) ToAiPersistentResourceResourcePoolDiskSpecPtrOutput() AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return i.ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolDiskSpecArgs) ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolDiskSpecOutput).ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceResourcePoolDiskSpecPtrInput is an input type that accepts AiPersistentResourceResourcePoolDiskSpecArgs, AiPersistentResourceResourcePoolDiskSpecPtr and AiPersistentResourceResourcePoolDiskSpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolDiskSpecPtrInput` via:
+//
+//	        AiPersistentResourceResourcePoolDiskSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceResourcePoolDiskSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolDiskSpecPtrOutput() AiPersistentResourceResourcePoolDiskSpecPtrOutput
+	ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(context.Context) AiPersistentResourceResourcePoolDiskSpecPtrOutput
+}
+
+type aiPersistentResourceResourcePoolDiskSpecPtrType AiPersistentResourceResourcePoolDiskSpecArgs
+
+func AiPersistentResourceResourcePoolDiskSpecPtr(v *AiPersistentResourceResourcePoolDiskSpecArgs) AiPersistentResourceResourcePoolDiskSpecPtrInput {
+	return (*aiPersistentResourceResourcePoolDiskSpecPtrType)(v)
+}
+
+func (*aiPersistentResourceResourcePoolDiskSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourcePoolDiskSpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceResourcePoolDiskSpecPtrType) ToAiPersistentResourceResourcePoolDiskSpecPtrOutput() AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return i.ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceResourcePoolDiskSpecPtrType) ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolDiskSpecPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolDiskSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolDiskSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePoolDiskSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecOutput) ToAiPersistentResourceResourcePoolDiskSpecOutput() AiPersistentResourceResourcePoolDiskSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecOutput) ToAiPersistentResourceResourcePoolDiskSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolDiskSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecOutput) ToAiPersistentResourceResourcePoolDiskSpecPtrOutput() AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return o.ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecOutput) ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceResourcePoolDiskSpec) *AiPersistentResourceResourcePoolDiskSpec {
+		return &v
+	}).(AiPersistentResourceResourcePoolDiskSpecPtrOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiPersistentResourceResourcePoolDiskSpecOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolDiskSpec) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk. For non-A3U machines, the default value is
+// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+func (o AiPersistentResourceResourcePoolDiskSpecOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolDiskSpec) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolDiskSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolDiskSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourcePoolDiskSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecPtrOutput) ToAiPersistentResourceResourcePoolDiskSpecPtrOutput() AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecPtrOutput) ToAiPersistentResourceResourcePoolDiskSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolDiskSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolDiskSpecPtrOutput) Elem() AiPersistentResourceResourcePoolDiskSpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourcePoolDiskSpec) AiPersistentResourceResourcePoolDiskSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceResourcePoolDiskSpec
+		return ret
+	}).(AiPersistentResourceResourcePoolDiskSpecOutput)
+}
+
+// Size in GB of the boot disk (default is 100GB).
+func (o AiPersistentResourceResourcePoolDiskSpecPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourcePoolDiskSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// Type of the boot disk. For non-A3U machines, the default value is
+// "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+// Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+// "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+func (o AiPersistentResourceResourcePoolDiskSpecPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourcePoolDiskSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourcePoolMachineSpec struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount *int `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine.
+	// Possible values:
+	// NVIDIA_TESLA_K80
+	// NVIDIA_TESLA_P100
+	// NVIDIA_TESLA_V100
+	// NVIDIA_TESLA_P4
+	// NVIDIA_TESLA_T4
+	// NVIDIA_TESLA_A100
+	// NVIDIA_A100_80GB
+	// NVIDIA_L4
+	// NVIDIA_H100_80GB
+	// NVIDIA_H100_MEGA_80GB
+	// NVIDIA_H200_141GB
+	// NVIDIA_B200
+	// NVIDIA_GB200
+	// NVIDIA_RTX_PRO_6000
+	// TPU_V2
+	// TPU_V3
+	// TPU_V4_POD
+	// TPU_V5_LITEPOD
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// The type of the machine.
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	MachineType *string `pulumi:"machineType"`
+}
+
+// AiPersistentResourceResourcePoolMachineSpecInput is an input type that accepts AiPersistentResourceResourcePoolMachineSpecArgs and AiPersistentResourceResourcePoolMachineSpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourcePoolMachineSpecInput` via:
+//
+//	AiPersistentResourceResourcePoolMachineSpecArgs{...}
+type AiPersistentResourceResourcePoolMachineSpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourcePoolMachineSpecOutput() AiPersistentResourceResourcePoolMachineSpecOutput
+	ToAiPersistentResourceResourcePoolMachineSpecOutputWithContext(context.Context) AiPersistentResourceResourcePoolMachineSpecOutput
+}
+
+type AiPersistentResourceResourcePoolMachineSpecArgs struct {
+	// The number of accelerators to attach to the machine.
+	AcceleratorCount pulumi.IntPtrInput `pulumi:"acceleratorCount"`
+	// The type of accelerator(s) that may be attached to the machine.
+	// Possible values:
+	// NVIDIA_TESLA_K80
+	// NVIDIA_TESLA_P100
+	// NVIDIA_TESLA_V100
+	// NVIDIA_TESLA_P4
+	// NVIDIA_TESLA_T4
+	// NVIDIA_TESLA_A100
+	// NVIDIA_A100_80GB
+	// NVIDIA_L4
+	// NVIDIA_H100_80GB
+	// NVIDIA_H100_MEGA_80GB
+	// NVIDIA_H200_141GB
+	// NVIDIA_B200
+	// NVIDIA_GB200
+	// NVIDIA_RTX_PRO_6000
+	// TPU_V2
+	// TPU_V3
+	// TPU_V4_POD
+	// TPU_V5_LITEPOD
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// The type of the machine.
+	// See the [list of machine types supported for
+	// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+	// See the [list of machine types supported for custom
+	// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+}
+
+func (AiPersistentResourceResourcePoolMachineSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePoolMachineSpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourcePoolMachineSpecArgs) ToAiPersistentResourceResourcePoolMachineSpecOutput() AiPersistentResourceResourcePoolMachineSpecOutput {
+	return i.ToAiPersistentResourceResourcePoolMachineSpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourcePoolMachineSpecArgs) ToAiPersistentResourceResourcePoolMachineSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolMachineSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourcePoolMachineSpecOutput)
+}
+
+type AiPersistentResourceResourcePoolMachineSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourcePoolMachineSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourcePoolMachineSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourcePoolMachineSpecOutput) ToAiPersistentResourceResourcePoolMachineSpecOutput() AiPersistentResourceResourcePoolMachineSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourcePoolMachineSpecOutput) ToAiPersistentResourceResourcePoolMachineSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourcePoolMachineSpecOutput {
+	return o
+}
+
+// The number of accelerators to attach to the machine.
+func (o AiPersistentResourceResourcePoolMachineSpecOutput) AcceleratorCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolMachineSpec) *int { return v.AcceleratorCount }).(pulumi.IntPtrOutput)
+}
+
+// The type of accelerator(s) that may be attached to the machine.
+// Possible values:
+// NVIDIA_TESLA_K80
+// NVIDIA_TESLA_P100
+// NVIDIA_TESLA_V100
+// NVIDIA_TESLA_P4
+// NVIDIA_TESLA_T4
+// NVIDIA_TESLA_A100
+// NVIDIA_A100_80GB
+// NVIDIA_L4
+// NVIDIA_H100_80GB
+// NVIDIA_H100_MEGA_80GB
+// NVIDIA_H200_141GB
+// NVIDIA_B200
+// NVIDIA_GB200
+// NVIDIA_RTX_PRO_6000
+// TPU_V2
+// TPU_V3
+// TPU_V4_POD
+// TPU_V5_LITEPOD
+func (o AiPersistentResourceResourcePoolMachineSpecOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolMachineSpec) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the machine.
+// See the [list of machine types supported for
+// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+// See the [list of machine types supported for custom
+// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+func (o AiPersistentResourceResourcePoolMachineSpecOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourcePoolMachineSpec) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntime struct {
+	// (Output)
+	// URIs for user to connect to the Cluster.
+	// Example:
+	// {
+	// "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+	// "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+	// }
+	AccessUris map[string]string `pulumi:"accessUris"`
+}
+
+// AiPersistentResourceResourceRuntimeInput is an input type that accepts AiPersistentResourceResourceRuntimeArgs and AiPersistentResourceResourceRuntimeOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeInput` via:
+//
+//	AiPersistentResourceResourceRuntimeArgs{...}
+type AiPersistentResourceResourceRuntimeInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeOutput() AiPersistentResourceResourceRuntimeOutput
+	ToAiPersistentResourceResourceRuntimeOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeOutput
+}
+
+type AiPersistentResourceResourceRuntimeArgs struct {
+	// (Output)
+	// URIs for user to connect to the Cluster.
+	// Example:
+	// {
+	// "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+	// "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+	// }
+	AccessUris pulumi.StringMapInput `pulumi:"accessUris"`
+}
+
+func (AiPersistentResourceResourceRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntime)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourceRuntimeArgs) ToAiPersistentResourceResourceRuntimeOutput() AiPersistentResourceResourceRuntimeOutput {
+	return i.ToAiPersistentResourceResourceRuntimeOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeArgs) ToAiPersistentResourceResourceRuntimeOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeOutput)
+}
+
+// AiPersistentResourceResourceRuntimeArrayInput is an input type that accepts AiPersistentResourceResourceRuntimeArray and AiPersistentResourceResourceRuntimeArrayOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeArrayInput` via:
+//
+//	AiPersistentResourceResourceRuntimeArray{ AiPersistentResourceResourceRuntimeArgs{...} }
+type AiPersistentResourceResourceRuntimeArrayInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeArrayOutput() AiPersistentResourceResourceRuntimeArrayOutput
+	ToAiPersistentResourceResourceRuntimeArrayOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeArrayOutput
+}
+
+type AiPersistentResourceResourceRuntimeArray []AiPersistentResourceResourceRuntimeInput
+
+func (AiPersistentResourceResourceRuntimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourceResourceRuntime)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourceRuntimeArray) ToAiPersistentResourceResourceRuntimeArrayOutput() AiPersistentResourceResourceRuntimeArrayOutput {
+	return i.ToAiPersistentResourceResourceRuntimeArrayOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeArray) ToAiPersistentResourceResourceRuntimeArrayOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeArrayOutput)
+}
+
+type AiPersistentResourceResourceRuntimeOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntime)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeOutput) ToAiPersistentResourceResourceRuntimeOutput() AiPersistentResourceResourceRuntimeOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeOutput) ToAiPersistentResourceResourceRuntimeOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeOutput {
+	return o
+}
+
+// (Output)
+// URIs for user to connect to the Cluster.
+// Example:
+// {
+// "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+// "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+// }
+func (o AiPersistentResourceResourceRuntimeOutput) AccessUris() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntime) map[string]string { return v.AccessUris }).(pulumi.StringMapOutput)
+}
+
+type AiPersistentResourceResourceRuntimeArrayOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AiPersistentResourceResourceRuntime)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeArrayOutput) ToAiPersistentResourceResourceRuntimeArrayOutput() AiPersistentResourceResourceRuntimeArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeArrayOutput) ToAiPersistentResourceResourceRuntimeArrayOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeArrayOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeArrayOutput) Index(i pulumi.IntInput) AiPersistentResourceResourceRuntimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AiPersistentResourceResourceRuntime {
+		return vs[0].([]AiPersistentResourceResourceRuntime)[vs[1].(int)]
+	}).(AiPersistentResourceResourceRuntimeOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpec struct {
+	// Configuration for the use of custom service account to run the workloads.
+	// Structure is documented below.
+	ServiceAccountSpec *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec `pulumi:"serviceAccountSpec"`
+}
+
+// AiPersistentResourceResourceRuntimeSpecInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecArgs and AiPersistentResourceResourceRuntimeSpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecInput` via:
+//
+//	AiPersistentResourceResourceRuntimeSpecArgs{...}
+type AiPersistentResourceResourceRuntimeSpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecOutput() AiPersistentResourceResourceRuntimeSpecOutput
+	ToAiPersistentResourceResourceRuntimeSpecOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecOutput
+}
+
+type AiPersistentResourceResourceRuntimeSpecArgs struct {
+	// Configuration for the use of custom service account to run the workloads.
+	// Structure is documented below.
+	ServiceAccountSpec AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput `pulumi:"serviceAccountSpec"`
+}
+
+func (AiPersistentResourceResourceRuntimeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecArgs) ToAiPersistentResourceResourceRuntimeSpecOutput() AiPersistentResourceResourceRuntimeSpecOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecArgs) ToAiPersistentResourceResourceRuntimeSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecOutput)
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecArgs) ToAiPersistentResourceResourceRuntimeSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecArgs) ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecOutput).ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceResourceRuntimeSpecPtrInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecArgs, AiPersistentResourceResourceRuntimeSpecPtr and AiPersistentResourceResourceRuntimeSpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecPtrInput` via:
+//
+//	        AiPersistentResourceResourceRuntimeSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceResourceRuntimeSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecPtrOutput
+	ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecPtrOutput
+}
+
+type aiPersistentResourceResourceRuntimeSpecPtrType AiPersistentResourceResourceRuntimeSpecArgs
+
+func AiPersistentResourceResourceRuntimeSpecPtr(v *AiPersistentResourceResourceRuntimeSpecArgs) AiPersistentResourceResourceRuntimeSpecPtrInput {
+	return (*aiPersistentResourceResourceRuntimeSpecPtrType)(v)
+}
+
+func (*aiPersistentResourceResourceRuntimeSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecPtrType) ToAiPersistentResourceResourceRuntimeSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecPtrType) ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecOutput) ToAiPersistentResourceResourceRuntimeSpecOutput() AiPersistentResourceResourceRuntimeSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecOutput) ToAiPersistentResourceResourceRuntimeSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecOutput) ToAiPersistentResourceResourceRuntimeSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return o.ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecOutput) ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpec {
+		return &v
+	}).(AiPersistentResourceResourceRuntimeSpecPtrOutput)
+}
+
+// Configuration for the use of custom service account to run the workloads.
+// Structure is documented below.
+func (o AiPersistentResourceResourceRuntimeSpecOutput) ServiceAccountSpec() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
+		return v.ServiceAccountSpec
+	}).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) Elem() AiPersistentResourceResourceRuntimeSpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpec) AiPersistentResourceResourceRuntimeSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceResourceRuntimeSpec
+		return ret
+	}).(AiPersistentResourceResourceRuntimeSpecOutput)
+}
+
+// Configuration for the use of custom service account to run the workloads.
+// Structure is documented below.
+func (o AiPersistentResourceResourceRuntimeSpecPtrOutput) ServiceAccountSpec() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpec) *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountSpec
+	}).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecServiceAccountSpec struct {
+	// If true, custom user-managed service account is enforced to run any
+	// workloads (for example, Vertex Jobs) on the resource.
+	// Otherwise, uses the [Vertex AI Custom Code Service
+	// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+	EnableCustomServiceAccount bool `pulumi:"enableCustomServiceAccount"`
+}
+
+// AiPersistentResourceResourceRuntimeSpecServiceAccountSpecInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs and AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecServiceAccountSpecInput` via:
+//
+//	AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{...}
+type AiPersistentResourceResourceRuntimeSpecServiceAccountSpecInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput
+	ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput
+}
+
+type AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs struct {
+	// If true, custom user-managed service account is enforced to run any
+	// workloads (for example, Vertex Jobs) on the resource.
+	// Otherwise, uses the [Vertex AI Custom Code Service
+	// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+	EnableCustomServiceAccount pulumi.BoolInput `pulumi:"enableCustomServiceAccount"`
+}
+
+func (AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpec)(nil)).Elem()
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput)
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput).ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(ctx)
+}
+
+// AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput is an input type that accepts AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs, AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtr and AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput values.
+// You can construct a concrete instance of `AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput` via:
+//
+//	        AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput
+	ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput
+}
+
+type aiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrType AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs
+
+func AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtr(v *AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput {
+	return (*aiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrType)(v)
+}
+
+func (*aiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpecServiceAccountSpec)(nil)).Elem()
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrType) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return i.ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrType) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return o.ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiPersistentResourceResourceRuntimeSpecServiceAccountSpec) *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
+		return &v
+	}).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput)
+}
+
+// If true, custom user-managed service account is enforced to run any
+// workloads (for example, Vertex Jobs) on the resource.
+// Otherwise, uses the [Vertex AI Custom Code Service
+// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput) EnableCustomServiceAccount() pulumi.BoolOutput {
+	return o.ApplyT(func(v AiPersistentResourceResourceRuntimeSpecServiceAccountSpec) bool {
+		return v.EnableCustomServiceAccount
+	}).(pulumi.BoolOutput)
+}
+
+type AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiPersistentResourceResourceRuntimeSpecServiceAccountSpec)(nil)).Elem()
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput) ToAiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutputWithContext(ctx context.Context) AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput {
+	return o
+}
+
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput) Elem() AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec) AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiPersistentResourceResourceRuntimeSpecServiceAccountSpec
+		return ret
+	}).(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput)
+}
+
+// If true, custom user-managed service account is enforced to run any
+// workloads (for example, Vertex Jobs) on the resource.
+// Otherwise, uses the [Vertex AI Custom Code Service
+// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+func (o AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput) EnableCustomServiceAccount() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiPersistentResourceResourceRuntimeSpecServiceAccountSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableCustomServiceAccount
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AiRagEngineConfigRagManagedDbConfig struct {
 	// Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
 	// NOTE: This is the default tier if not explicitly chosen.
@@ -31737,6 +33403,27 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreEncryptionSpecPtrInput)(nil)).Elem(), AiMetadataStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeInput)(nil)).Elem(), AiMetadataStoreStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceEncryptionSpecInput)(nil)).Elem(), AiPersistentResourceEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceEncryptionSpecPtrInput)(nil)).Elem(), AiPersistentResourceEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceErrorInput)(nil)).Elem(), AiPersistentResourceErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceErrorArrayInput)(nil)).Elem(), AiPersistentResourceErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourcePscInterfaceConfigInput)(nil)).Elem(), AiPersistentResourcePscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourcePscInterfaceConfigPtrInput)(nil)).Elem(), AiPersistentResourcePscInterfaceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourcePscInterfaceConfigDnsPeeringConfigInput)(nil)).Elem(), AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayInput)(nil)).Elem(), AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolInput)(nil)).Elem(), AiPersistentResourceResourcePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolArrayInput)(nil)).Elem(), AiPersistentResourceResourcePoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolAutoscalingSpecInput)(nil)).Elem(), AiPersistentResourceResourcePoolAutoscalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolAutoscalingSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourcePoolAutoscalingSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolDiskSpecInput)(nil)).Elem(), AiPersistentResourceResourcePoolDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolDiskSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourcePoolDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourcePoolMachineSpecInput)(nil)).Elem(), AiPersistentResourceResourcePoolMachineSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeArrayInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpecInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrInput)(nil)).Elem(), AiPersistentResourceResourceRuntimeSpecServiceAccountSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigPtrInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiRagEngineConfigRagManagedDbConfigBasicInput)(nil)).Elem(), AiRagEngineConfigRagManagedDbConfigBasicArgs{})
@@ -32098,6 +33785,27 @@ func init() {
 	pulumi.RegisterOutputType(AiMetadataStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeOutput{})
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceErrorOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceErrorArrayOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourcePscInterfaceConfigOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourcePscInterfaceConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourcePscInterfaceConfigDnsPeeringConfigArrayOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolArrayOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolAutoscalingSpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolAutoscalingSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolDiskSpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolDiskSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourcePoolMachineSpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeArrayOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecPtrOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecOutput{})
+	pulumi.RegisterOutputType(AiPersistentResourceResourceRuntimeSpecServiceAccountSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiRagEngineConfigRagManagedDbConfigBasicOutput{})

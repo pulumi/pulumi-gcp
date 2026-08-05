@@ -65,7 +65,7 @@ import (
 //					Port: pulumi.Int(8080),
 //				},
 //				Connectors: pulumi.StringArray{
-//					appConnector.ID(),
+//					appConnector.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -126,10 +126,10 @@ import (
 //					Port: pulumi.Int(8080),
 //				},
 //				Connectors: pulumi.StringArray{
-//					appConnector.ID(),
+//					appConnector.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Gateway: &beyondcorp.AppConnectionGatewayArgs{
-//					AppGateway: appGateway.ID(),
+//					AppGateway: appGateway.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

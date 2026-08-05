@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *     customerName: "example_customer",
  *     interconnectType: "DEDICATED",
  *     linkType: "LINK_TYPE_ETHERNET_10G_LR",
- *     location: project.then(project => `https://www.googleapis.com/compute/v1/${project.id}/global/interconnectLocations/iad-zone1-1`),
+ *     location: project.then(project => `https://www.googleapis.com/compute/v1/projects/${project.projectId}/global/interconnectLocations/iad-zone1-1`),
  *     requestedLinkCount: 1,
  * });
  * ```
@@ -139,6 +139,11 @@ export class Interconnect extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google's Networks.
+     */
+    declare public /*out*/ readonly effectiveLocation: pulumi.Output<string>;
+    /**
      * A list of outages expected for this Interconnect.
      * Structure is documented below.
      */
@@ -196,7 +201,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     declare public readonly linkType: pulumi.Output<string>;
     /**
-     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google's Networks.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -324,6 +329,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
+            resourceInputs["effectiveLocation"] = state?.effectiveLocation;
             resourceInputs["expectedOutages"] = state?.expectedOutages;
             resourceInputs["googleIpAddress"] = state?.googleIpAddress;
             resourceInputs["googleReferenceId"] = state?.googleReferenceId;
@@ -387,6 +393,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["circuitInfos"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["effectiveLocation"] = undefined /*out*/;
             resourceInputs["expectedOutages"] = undefined /*out*/;
             resourceInputs["googleIpAddress"] = undefined /*out*/;
             resourceInputs["googleReferenceId"] = undefined /*out*/;
@@ -472,6 +479,11 @@ export interface InterconnectState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google's Networks.
+     */
+    effectiveLocation?: pulumi.Input<string | undefined>;
+    /**
      * A list of outages expected for this Interconnect.
      * Structure is documented below.
      */
@@ -529,7 +541,7 @@ export interface InterconnectState {
      */
     linkType?: pulumi.Input<string | undefined>;
     /**
-     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google's Networks.
      */
     location?: pulumi.Input<string | undefined>;
@@ -702,7 +714,7 @@ export interface InterconnectArgs {
      */
     linkType: pulumi.Input<string>;
     /**
-     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google's Networks.
      */
     location: pulumi.Input<string>;

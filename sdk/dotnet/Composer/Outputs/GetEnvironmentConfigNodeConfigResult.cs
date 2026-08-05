@@ -62,6 +62,10 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
+        /// Traffic routing configuration for Cloud Composer environment.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigTrafficRoutingConfigResult> TrafficRoutingConfigs;
+        /// <summary>
         /// The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly string Zone;
@@ -92,6 +96,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableArray<string> tags,
 
+            ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigTrafficRoutingConfigResult> trafficRoutingConfigs,
+
             string zone)
         {
             ComposerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
@@ -106,6 +112,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             ServiceAccount = serviceAccount;
             Subnetwork = subnetwork;
             Tags = tags;
+            TrafficRoutingConfigs = trafficRoutingConfigs;
             Zone = zone;
         }
     }

@@ -64,7 +64,7 @@ import (
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("Test Description"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: subscriptionDataset.ID(),
+//					Dataset: subscriptionDataset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

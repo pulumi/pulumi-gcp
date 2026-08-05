@@ -13,6 +13,308 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
+	// Mode for how the GPU driver is installed.
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
+	// Mode for how the GPU driver is installed.
+	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
+}
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray and GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{ GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...} }
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+// Mode for how the GPU driver is installed.
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string {
+		return v.GpuDriverVersion
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return vs[0].([]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
+	// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+	GpuSharingStrategy string `pulumi:"gpuSharingStrategy"`
+	// The maximum number of containers that can share a GPU.
+	MaxSharedClientsPerGpu int `pulumi:"maxSharedClientsPerGpu"`
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs and GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...}
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs struct {
+	// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+	GpuSharingStrategy pulumi.StringInput `pulumi:"gpuSharingStrategy"`
+	// The maximum number of containers that can share a GPU.
+	MaxSharedClientsPerGpu pulumi.IntInput `pulumi:"maxSharedClientsPerGpu"`
+}
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray and GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{ GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{...} }
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray []GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return o
+}
+
+// The type of GPU sharing strategy to enable on the GPU node. Possible values are described in the API package (https://pkg.go.dev/google.golang.org/api/container/v1#GPUSharingConfig)
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) GpuSharingStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuSharingConfig) string { return v.GpuSharingStrategy }).(pulumi.StringOutput)
+}
+
+// The maximum number of containers that can share a GPU.
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput) MaxSharedClientsPerGpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuSharingConfig) int { return v.MaxSharedClientsPerGpu }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		return vs[0].([]GetClusterNodeConfigGuestAcceleratorGpuSharingConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput)
+}
+
+type GetClusterNodeConfigGvnic struct {
+	// Whether or not gvnic is enabled
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigGvnicInput is an input type that accepts GetClusterNodeConfigGvnicArgs and GetClusterNodeConfigGvnicOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGvnicInput` via:
+//
+//	GetClusterNodeConfigGvnicArgs{...}
+type GetClusterNodeConfigGvnicInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput
+	ToGetClusterNodeConfigGvnicOutputWithContext(context.Context) GetClusterNodeConfigGvnicOutput
+}
+
+type GetClusterNodeConfigGvnicArgs struct {
+	// Whether or not gvnic is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigGvnicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGvnicArgs) ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput {
+	return i.ToGetClusterNodeConfigGvnicOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGvnicArgs) ToGetClusterNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGvnicOutput)
+}
+
+// GetClusterNodeConfigGvnicArrayInput is an input type that accepts GetClusterNodeConfigGvnicArray and GetClusterNodeConfigGvnicArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGvnicArrayInput` via:
+//
+//	GetClusterNodeConfigGvnicArray{ GetClusterNodeConfigGvnicArgs{...} }
+type GetClusterNodeConfigGvnicArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput
+	ToGetClusterNodeConfigGvnicArrayOutputWithContext(context.Context) GetClusterNodeConfigGvnicArrayOutput
+}
+
+type GetClusterNodeConfigGvnicArray []GetClusterNodeConfigGvnicInput
+
+func (GetClusterNodeConfigGvnicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGvnicArray) ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput {
+	return i.ToGetClusterNodeConfigGvnicArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGvnicArray) ToGetClusterNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGvnicArrayOutput)
+}
+
+type GetClusterNodeConfigGvnicOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGvnicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGvnicOutput) ToGetClusterNodeConfigGvnicOutput() GetClusterNodeConfigGvnicOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicOutput) ToGetClusterNodeConfigGvnicOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicOutput {
+	return o
+}
+
+// Whether or not gvnic is enabled
+func (o GetClusterNodeConfigGvnicOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGvnic) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigGvnicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGvnicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGvnic)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGvnicArrayOutput) ToGetClusterNodeConfigGvnicArrayOutput() GetClusterNodeConfigGvnicArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicArrayOutput) ToGetClusterNodeConfigGvnicArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGvnicArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGvnicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGvnic {
+		return vs[0].([]GetClusterNodeConfigGvnic)[vs[1].(int)]
+	}).(GetClusterNodeConfigGvnicOutput)
+}
+
 type GetClusterNodeConfigHostMaintenancePolicy struct {
 	// .
 	MaintenanceInterval string `pulumi:"maintenanceInterval"`
@@ -16308,6 +16610,103 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index
 	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+type GetClusterRollbackSafeUpgrade struct {
+	// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+	ControlPlaneSoakDuration string `pulumi:"controlPlaneSoakDuration"`
+}
+
+// GetClusterRollbackSafeUpgradeInput is an input type that accepts GetClusterRollbackSafeUpgradeArgs and GetClusterRollbackSafeUpgradeOutput values.
+// You can construct a concrete instance of `GetClusterRollbackSafeUpgradeInput` via:
+//
+//	GetClusterRollbackSafeUpgradeArgs{...}
+type GetClusterRollbackSafeUpgradeInput interface {
+	pulumi.Input
+
+	ToGetClusterRollbackSafeUpgradeOutput() GetClusterRollbackSafeUpgradeOutput
+	ToGetClusterRollbackSafeUpgradeOutputWithContext(context.Context) GetClusterRollbackSafeUpgradeOutput
+}
+
+type GetClusterRollbackSafeUpgradeArgs struct {
+	// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+	ControlPlaneSoakDuration pulumi.StringInput `pulumi:"controlPlaneSoakDuration"`
+}
+
+func (GetClusterRollbackSafeUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (i GetClusterRollbackSafeUpgradeArgs) ToGetClusterRollbackSafeUpgradeOutput() GetClusterRollbackSafeUpgradeOutput {
+	return i.ToGetClusterRollbackSafeUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetClusterRollbackSafeUpgradeArgs) ToGetClusterRollbackSafeUpgradeOutputWithContext(ctx context.Context) GetClusterRollbackSafeUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRollbackSafeUpgradeOutput)
+}
+
+// GetClusterRollbackSafeUpgradeArrayInput is an input type that accepts GetClusterRollbackSafeUpgradeArray and GetClusterRollbackSafeUpgradeArrayOutput values.
+// You can construct a concrete instance of `GetClusterRollbackSafeUpgradeArrayInput` via:
+//
+//	GetClusterRollbackSafeUpgradeArray{ GetClusterRollbackSafeUpgradeArgs{...} }
+type GetClusterRollbackSafeUpgradeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterRollbackSafeUpgradeArrayOutput() GetClusterRollbackSafeUpgradeArrayOutput
+	ToGetClusterRollbackSafeUpgradeArrayOutputWithContext(context.Context) GetClusterRollbackSafeUpgradeArrayOutput
+}
+
+type GetClusterRollbackSafeUpgradeArray []GetClusterRollbackSafeUpgradeInput
+
+func (GetClusterRollbackSafeUpgradeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (i GetClusterRollbackSafeUpgradeArray) ToGetClusterRollbackSafeUpgradeArrayOutput() GetClusterRollbackSafeUpgradeArrayOutput {
+	return i.ToGetClusterRollbackSafeUpgradeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterRollbackSafeUpgradeArray) ToGetClusterRollbackSafeUpgradeArrayOutputWithContext(ctx context.Context) GetClusterRollbackSafeUpgradeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterRollbackSafeUpgradeArrayOutput)
+}
+
+type GetClusterRollbackSafeUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRollbackSafeUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (o GetClusterRollbackSafeUpgradeOutput) ToGetClusterRollbackSafeUpgradeOutput() GetClusterRollbackSafeUpgradeOutput {
+	return o
+}
+
+func (o GetClusterRollbackSafeUpgradeOutput) ToGetClusterRollbackSafeUpgradeOutputWithContext(ctx context.Context) GetClusterRollbackSafeUpgradeOutput {
+	return o
+}
+
+// A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+func (o GetClusterRollbackSafeUpgradeOutput) ControlPlaneSoakDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterRollbackSafeUpgrade) string { return v.ControlPlaneSoakDuration }).(pulumi.StringOutput)
+}
+
+type GetClusterRollbackSafeUpgradeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterRollbackSafeUpgradeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterRollbackSafeUpgrade)(nil)).Elem()
+}
+
+func (o GetClusterRollbackSafeUpgradeArrayOutput) ToGetClusterRollbackSafeUpgradeArrayOutput() GetClusterRollbackSafeUpgradeArrayOutput {
+	return o
+}
+
+func (o GetClusterRollbackSafeUpgradeArrayOutput) ToGetClusterRollbackSafeUpgradeArrayOutputWithContext(ctx context.Context) GetClusterRollbackSafeUpgradeArrayOutput {
+	return o
+}
+
+func (o GetClusterRollbackSafeUpgradeArrayOutput) Index(i pulumi.IntInput) GetClusterRollbackSafeUpgradeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterRollbackSafeUpgrade {
+		return vs[0].([]GetClusterRollbackSafeUpgrade)[vs[1].(int)]
+	}).(GetClusterRollbackSafeUpgradeOutput)
+}
+
 type GetClusterSecretManagerConfig struct {
 	// Enable the Secret manager csi component.
 	Enabled bool `pulumi:"enabled"`
@@ -17515,6 +17914,12 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodeConfigGvnicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), GetClusterNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicyArrayInput)(nil)).Elem(), GetClusterNodeConfigHostMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArgs{})
@@ -17791,6 +18196,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRollbackSafeUpgradeInput)(nil)).Elem(), GetClusterRollbackSafeUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterRollbackSafeUpgradeArrayInput)(nil)).Elem(), GetClusterRollbackSafeUpgradeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigArrayInput)(nil)).Elem(), GetClusterSecretManagerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecretManagerConfigRotationConfigInput)(nil)).Elem(), GetClusterSecretManagerConfigRotationConfigArgs{})
@@ -17813,6 +18220,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigHostMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigHostMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
@@ -18089,6 +18502,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterRollbackSafeUpgradeOutput{})
+	pulumi.RegisterOutputType(GetClusterRollbackSafeUpgradeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterSecretManagerConfigRotationConfigOutput{})

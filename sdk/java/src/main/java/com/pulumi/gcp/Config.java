@@ -31,6 +31,9 @@ public final class Config {
     public Optional<Boolean> addPulumiAttributionLabel() {
         return Codegen.booleanProp("addPulumiAttributionLabel").config(config).get();
     }
+    public Optional<String> agentIdentityCustomEndpoint() {
+        return Codegen.stringProp("agentIdentityCustomEndpoint").config(config).get();
+    }
     public Optional<String> agentRegistryCustomEndpoint() {
         return Codegen.stringProp("agentRegistryCustomEndpoint").config(config).get();
     }

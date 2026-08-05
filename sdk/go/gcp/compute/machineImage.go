@@ -111,7 +111,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("key"),
-//				KeyRing: keyRing.ID(),
+//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -120,7 +120,7 @@ import (
 //				Name:           pulumi.String("my-image"),
 //				SourceInstance: vm.SelfLink,
 //				MachineImageEncryptionKey: &compute.MachineImageMachineImageEncryptionKeyArgs{
-//					KmsKeyName: cryptoKey.ID(),
+//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -159,7 +159,7 @@ import (
 //				return err
 //			}
 //			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-//				Parent:    tagKey1.ID(),
+//				Parent:    tagKey1.ID().ToIDOutput().ToStringOutput(),
 //				ShortName: pulumi.String("tagvalue"),
 //			})
 //			if err != nil {
@@ -186,13 +186,15 @@ import (
 //				Name:           pulumi.String("my-image"),
 //				SourceInstance: vm.SelfLink,
 //				Params: &compute.MachineImageParamsArgs{
-//					ResourceManagerTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-//						tagKey1Id := _args[0].(string)
-//						tagValue1Id := _args[1].(string)
-//						return map[string]string{
-//							tagKey1Id: tagValue1Id,
-//						}, nil
-//					}).(pulumi.StringMapOutput),
+//					ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
+//						tagKey1Id := _args[0].(pulumi.ID)
+//						tagValue1Id := _args[1].(pulumi.ID)
+//						return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+//							return map[string]pulumi.ID{
+//								__convert: tagValue1Id,
+//							}, nil
+//						}).(pulumi.IDMapOutput)), nil
+//					}).(pulumi.IDMapOutput)),
 //				},
 //			})
 //			if err != nil {

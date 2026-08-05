@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:chronicle/bigQueryExport:BigQueryExport":
+		r = &BigQueryExport{}
 	case "gcp:chronicle/customList:CustomList":
 		r = &CustomList{}
 	case "gcp:chronicle/dashboardChart:DashboardChart":
@@ -78,6 +80,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/bigQueryExport",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/customList",

@@ -49,7 +49,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: cluster_nw.ID(),
+//					VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -66,7 +66,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-engine-ext-cluster", &vmwareengine.ClusterArgs{
 //				Name:   pulumi.String("ext-cluster"),
-//				Parent: cluster_pc.ID(),
+//				Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
 //				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 //					&vmwareengine.ClusterNodeTypeConfigArgs{
 //						NodeTypeId: pulumi.String("standard-72"),
@@ -111,7 +111,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: cluster_nw.ID(),
+//					VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -129,7 +129,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 //				Name:   pulumi.String("ext-cluster"),
-//				Parent: cluster_pc.ID(),
+//				Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
 //				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 //					&vmwareengine.ClusterNodeTypeConfigArgs{
 //						NodeTypeId:      pulumi.String("standard-72"),
@@ -240,7 +240,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: cluster_nw.ID(),
+//					VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -261,7 +261,7 @@ import (
 //			// ### ip_cidr_range configured on subnet must also be allowed in filestore instance's 'nfs_export_options'
 //			cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
 //				Name:        pulumi.String("service-1"),
-//				Parent:      cluster_pc.ID(),
+//				Parent:      cluster_pc.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
@@ -288,7 +288,7 @@ import (
 //			psaNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "psa_network_peering", &vmwareengine.NetworkPeeringArgs{
 //				Name:                pulumi.String("tf-test-psa-network-peering"),
 //				Description:         pulumi.String("test description"),
-//				VmwareEngineNetwork: cluster_nw.ID(),
+//				VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
 //				PeerNetwork:         pulumi.String(invokeTrimprefix.Result),
 //				PeerNetworkType:     pulumi.String("PRIVATE_SERVICES_ACCESS"),
 //			})
@@ -301,7 +301,7 @@ import (
 //				Description: pulumi.String("test description"),
 //				NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 //					GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-//						FilestoreInstance: testInstance.ID(),
+//						FilestoreInstance: testInstance.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -312,7 +312,7 @@ import (
 //			// This code block is required to mount the datastore on ESXi hosts
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 //				Name:   pulumi.String("ext-cluster"),
-//				Parent: cluster_pc.ID(),
+//				Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
 //				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 //					&vmwareengine.ClusterNodeTypeConfigArgs{
 //						NodeTypeId: pulumi.String("standard-72"),
@@ -321,9 +321,9 @@ import (
 //				},
 //				DatastoreMountConfigs: vmwareengine.ClusterDatastoreMountConfigArray{
 //					&vmwareengine.ClusterDatastoreMountConfigArgs{
-//						Datastore: testFsDatastore.ID(),
+//						Datastore: testFsDatastore.ID().ToIDOutput().ToStringOutput(),
 //						DatastoreNetwork: &vmwareengine.ClusterDatastoreMountConfigDatastoreNetworkArgs{
-//							Subnet:          cluster_pc_subnet.ID(),
+//							Subnet:          cluster_pc_subnet.ID().ToIDOutput().ToStringOutput(),
 //							ConnectionCount: pulumi.Int(4),
 //							Mtu:             pulumi.Int(1500),
 //						},
@@ -397,7 +397,7 @@ import (
 //			gcnvNetworkPeering, err := vmwareengine.NewNetworkPeering(ctx, "gcnv_network_peering", &vmwareengine.NetworkPeeringArgs{
 //				Name:                pulumi.String("tf-test-gcnv-network-peering"),
 //				Description:         pulumi.String("test description"),
-//				VmwareEngineNetwork: cluster_nw.ID(),
+//				VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
 //				PeerNetwork:         pulumi.String(invokeTrimprefix.Result),
 //				PeerNetworkType:     pulumi.String("GOOGLE_CLOUD_NETAPP_VOLUMES"),
 //			})
@@ -410,7 +410,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: cluster_nw.ID(),
+//					VmwareEngineNetwork: cluster_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -431,7 +431,7 @@ import (
 //			// ### ip_cidr_range configured on subnet must also be allowed in in netapp volumes's 'export_policy'
 //			cluster_pc_subnet, err := vmwareengine.NewSubnet(ctx, "cluster-pc-subnet", &vmwareengine.SubnetArgs{
 //				Name:        pulumi.String("service-1"),
-//				Parent:      cluster_pc.ID(),
+//				Parent:      cluster_pc.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
@@ -488,7 +488,7 @@ import (
 //				Description: pulumi.String("example google_file_service.netapp datastore."),
 //				NfsDatastore: &vmwareengine.DatastoreNfsDatastoreArgs{
 //					GoogleFileService: &vmwareengine.DatastoreNfsDatastoreGoogleFileServiceArgs{
-//						NetappVolume: testVolume.ID(),
+//						NetappVolume: testVolume.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -499,7 +499,7 @@ import (
 //			// This code block is required to mount the datastore on ESXi hosts
 //			_, err = vmwareengine.NewCluster(ctx, "vmw-ext-cluster", &vmwareengine.ClusterArgs{
 //				Name:   pulumi.String("ext-cluster"),
-//				Parent: cluster_pc.ID(),
+//				Parent: cluster_pc.ID().ToIDOutput().ToStringOutput(),
 //				NodeTypeConfigs: vmwareengine.ClusterNodeTypeConfigArray{
 //					&vmwareengine.ClusterNodeTypeConfigArgs{
 //						NodeTypeId: pulumi.String("standard-72"),
@@ -508,9 +508,9 @@ import (
 //				},
 //				DatastoreMountConfigs: vmwareengine.ClusterDatastoreMountConfigArray{
 //					&vmwareengine.ClusterDatastoreMountConfigArgs{
-//						Datastore: testFsDatastore.ID(),
+//						Datastore: testFsDatastore.ID().ToIDOutput().ToStringOutput(),
 //						DatastoreNetwork: &vmwareengine.ClusterDatastoreMountConfigDatastoreNetworkArgs{
-//							Subnet:          cluster_pc_subnet.ID(),
+//							Subnet:          cluster_pc_subnet.ID().ToIDOutput().ToStringOutput(),
 //							ConnectionCount: pulumi.Int(4),
 //							Mtu:             pulumi.Int(1500),
 //						},

@@ -46,7 +46,7 @@ import (
 //			haGateway, err := compute.NewHaVpnGateway(ctx, "ha_gateway", &compute.HaVpnGatewayArgs{
 //				Region:  pulumi.String("us-central1"),
 //				Name:    pulumi.String("ha-vpn"),
-//				Network: network.ID(),
+//				Network: network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -69,7 +69,7 @@ import (
 //				Name:        pulumi.String("ha-vpn-subnet-1"),
 //				IpCidrRange: pulumi.String("10.0.1.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -78,7 +78,7 @@ import (
 //				Name:        pulumi.String("ha-vpn-subnet-2"),
 //				IpCidrRange: pulumi.String("10.0.2.0/24"),
 //				Region:      pulumi.String("us-west1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -96,11 +96,11 @@ import (
 //			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
 //				Name:                         pulumi.String("ha-vpn-tunnel1"),
 //				Region:                       pulumi.String("us-central1"),
-//				VpnGateway:                   haGateway.ID(),
-//				PeerExternalGateway:          externalGateway.ID(),
+//				VpnGateway:                   haGateway.ID().ToIDOutput().ToStringOutput(),
+//				PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
 //				PeerExternalGatewayInterface: pulumi.Int(0),
 //				SharedSecret:                 pulumi.String("a secret message"),
-//				Router:                       router1.ID(),
+//				Router:                       router1.ID().ToIDOutput().ToStringOutput(),
 //				VpnGatewayInterface:          pulumi.Int(0),
 //			})
 //			if err != nil {
@@ -109,11 +109,11 @@ import (
 //			tunnel2, err := compute.NewVPNTunnel(ctx, "tunnel2", &compute.VPNTunnelArgs{
 //				Name:                         pulumi.String("ha-vpn-tunnel2"),
 //				Region:                       pulumi.String("us-central1"),
-//				VpnGateway:                   haGateway.ID(),
-//				PeerExternalGateway:          externalGateway.ID(),
+//				VpnGateway:                   haGateway.ID().ToIDOutput().ToStringOutput(),
+//				PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
 //				PeerExternalGatewayInterface: pulumi.Int(0),
 //				SharedSecret:                 pulumi.String("a secret message"),
-//				Router: router1.ID().ApplyT(func(id string) (string, error) {
+//				Router: router1.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf(" %v", id), nil
 //				}).(pulumi.StringOutput),
 //				VpnGatewayInterface: pulumi.Int(1),

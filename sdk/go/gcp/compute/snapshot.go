@@ -65,7 +65,7 @@ import (
 //			}
 //			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 //				Name:       pulumi.String("my-snapshot"),
-//				SourceDisk: persistent.ID(),
+//				SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
 //				Zone:       pulumi.String("us-central1-a"),
 //				Labels: pulumi.StringMap{
 //					"my_label": pulumi.String("value"),
@@ -115,7 +115,7 @@ import (
 //			}
 //			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 //				Name:       pulumi.String("my-snapshot"),
-//				SourceDisk: persistent.ID(),
+//				SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
 //				Zone:       pulumi.String("us-central1-a"),
 //				Labels: pulumi.StringMap{
 //					"my_label": pulumi.String("value"),
@@ -179,7 +179,7 @@ import (
 //			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 //				Name:                  pulumi.String("my-snapshot"),
 //				Zone:                  pulumi.String("us-central1-a"),
-//				SourceInstantSnapshot: instantSnapshot.ID(),
+//				SourceInstantSnapshot: instantSnapshot.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -222,7 +222,7 @@ import (
 //			}
 //			_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
 //				Name:       pulumi.String("my-snapshot"),
-//				SourceDisk: persistent.ID(),
+//				SourceDisk: persistent.ID().ToIDOutput().ToStringOutput(),
 //				Zone:       pulumi.String("us-central1-a"),
 //				ChainName:  pulumi.String("snapshot-chain"),
 //				Labels: pulumi.StringMap{

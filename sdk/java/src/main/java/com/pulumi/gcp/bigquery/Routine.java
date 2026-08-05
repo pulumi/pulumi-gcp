@@ -191,6 +191,66 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Bigquery Routine Table Type
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentTableTypeArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineArgumentTableTypeColumnArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var test = new Dataset("test", DatasetArgs.builder()
+ *             .datasetId("dataset_id")
+ *             .build());
+ * 
+ *         var sproc = new Routine("sproc", RoutineArgs.builder()
+ *             .datasetId(test.datasetId())
+ *             .routineId("routine_id")
+ *             .routineType("TABLE_VALUED_FUNCTION")
+ *             .language("SQL")
+ *             .description("Gets every row from a table.")
+ *             .definitionBody("SELECT * FROM t1")
+ *             .arguments(RoutineArgumentArgs.builder()
+ *                 .name("t1")
+ *                 .argumentKind("FIXED_TABLE")
+ *                 .tableType(RoutineArgumentTableTypeArgs.builder()
+ *                     .columns(RoutineArgumentTableTypeColumnArgs.builder()
+ *                         .name("year")
+ *                         .type(serializeJson(
+ *                             jsonObject(
+ *                                 jsonProperty("typeKind", "INT64")
+ *                             )))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Bigquery Routine Pyspark
  * 
  * <pre>

@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
+//				EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:             pulumi.String("my_entry"),
 //				UserSpecifiedType:   pulumi.String("my_custom_type"),
 //				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -101,8 +101,8 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewTag(ctx, "basic_tag", &datacatalog.TagArgs{
-//				Parent:   entry.ID(),
-//				Template: tagTemplate.ID(),
+//				Parent:   entry.ID().ToIDOutput().ToStringOutput(),
+//				Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 //				Fields: datacatalog.TagFieldArray{
 //					&datacatalog.TagFieldArgs{
 //						FieldName:   pulumi.String("source"),
@@ -139,7 +139,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewEntry(ctx, "first_entry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
+//				EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:             pulumi.String("first_entry"),
 //				UserSpecifiedType:   pulumi.String("my_custom_type"),
 //				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -148,7 +148,7 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewEntry(ctx, "second_entry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
+//				EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:             pulumi.String("second_entry"),
 //				UserSpecifiedType:   pulumi.String("another_custom_type"),
 //				UserSpecifiedSystem: pulumi.String("SomethingElseExternal"),
@@ -202,8 +202,8 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewTag(ctx, "entry_group_tag", &datacatalog.TagArgs{
-//				Parent:   entryGroup.ID(),
-//				Template: tagTemplate.ID(),
+//				Parent:   entryGroup.ID().ToIDOutput().ToStringOutput(),
+//				Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 //				Fields: datacatalog.TagFieldArray{
 //					&datacatalog.TagFieldArgs{
 //						FieldName:   pulumi.String("source"),
@@ -240,7 +240,7 @@ import (
 //				return err
 //			}
 //			entry, err := datacatalog.NewEntry(ctx, "entry", &datacatalog.EntryArgs{
-//				EntryGroup:          entryGroup.ID(),
+//				EntryGroup:          entryGroup.ID().ToIDOutput().ToStringOutput(),
 //				EntryId:             pulumi.String("my_entry"),
 //				UserSpecifiedType:   pulumi.String("my_custom_type"),
 //				UserSpecifiedSystem: pulumi.String("SomethingExternal"),
@@ -333,8 +333,8 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewTag(ctx, "basic_tag", &datacatalog.TagArgs{
-//				Parent:   entry.ID(),
-//				Template: tagTemplate.ID(),
+//				Parent:   entry.ID().ToIDOutput().ToStringOutput(),
+//				Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 //				Fields: datacatalog.TagFieldArray{
 //					&datacatalog.TagFieldArgs{
 //						FieldName:   pulumi.String("source"),
@@ -355,8 +355,8 @@ import (
 //				return err
 //			}
 //			_, err = datacatalog.NewTag(ctx, "second-tag", &datacatalog.TagArgs{
-//				Parent:   entry.ID(),
-//				Template: tagTemplate.ID(),
+//				Parent:   entry.ID().ToIDOutput().ToStringOutput(),
+//				Template: tagTemplate.ID().ToIDOutput().ToStringOutput(),
 //				Fields: datacatalog.TagFieldArray{
 //					&datacatalog.TagFieldArgs{
 //						FieldName:   pulumi.String("source"),

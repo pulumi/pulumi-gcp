@@ -81,9 +81,7 @@ import (
 //				VerificationMethod: pulumi.String("FILE"),
 //			}, nil)
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
-//				Name: pulumi.String(token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//					return token.Token, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Name: token.Token(),
 //				Content: token.ApplyT(func(token siteverification.GetTokenResult) (string, error) {
 //					return fmt.Sprintf("google-site-verification: %v", token.Token), nil
 //				}).(pulumi.StringOutput),
@@ -103,22 +101,16 @@ import (
 //			}
 //			example, err := siteverification.NewWebResource(ctx, "example", &siteverification.WebResourceArgs{
 //				Site: &siteverification.WebResourceSiteArgs{
-//					Type: token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//						return token.Type, nil
-//					}).(pulumi.StringPtrOutput),
-//					Identifier: token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//						return token.Identifier, nil
-//					}).(pulumi.StringPtrOutput),
+//					Type:       token.Type(),
+//					Identifier: token.Identifier(),
 //				},
-//				VerificationMethod: pulumi.String(token.ApplyT(func(token siteverification.GetTokenResult) (*string, error) {
-//					return token.VerificationMethod, nil
-//				}).(pulumi.StringPtrOutput)),
+//				VerificationMethod: token.VerificationMethod(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = siteverification.NewOwner(ctx, "example", &siteverification.OwnerArgs{
-//				WebResourceId: example.ID(),
+//				WebResourceId: example.ID().ToIDOutput().ToStringOutput(),
 //				Email:         pulumi.String("user@example.com"),
 //			})
 //			if err != nil {

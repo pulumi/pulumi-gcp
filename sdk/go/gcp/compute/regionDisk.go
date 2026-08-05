@@ -70,7 +70,7 @@ import (
 //			}
 //			_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
 //				Name:                   pulumi.String("my-region-disk"),
-//				Snapshot:               snapdisk.ID(),
+//				Snapshot:               snapdisk.ID().ToIDOutput().ToStringOutput(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -120,7 +120,7 @@ import (
 //				Region:                 pulumi.String("us-east1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //				AsyncPrimaryDisk: &compute.RegionDiskAsyncPrimaryDiskArgs{
-//					Disk: primary.ID(),
+//					Disk: primary.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ReplicaZones: pulumi.StringArray{
 //					pulumi.String("us-east1-b"),

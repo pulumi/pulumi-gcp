@@ -49,7 +49,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: pc_nw.ID(),
+//					VmwareEngineNetwork: pc_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -99,7 +99,7 @@ import (
 //				Type:        pulumi.String("TIME_LIMITED"),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: pc_nw.ID(),
+//					VmwareEngineNetwork: pc_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),

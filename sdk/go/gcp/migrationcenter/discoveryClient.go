@@ -56,7 +56,7 @@ import (
 //			_, err = migrationcenter.NewDiscoveryClient(ctx, "default", &migrationcenter.DiscoveryClientArgs{
 //				Location:          pulumi.String("us-central1"),
 //				DiscoveryClientId: pulumi.String("discovery-client-test"),
-//				Source:            _default.ID(),
+//				Source:            _default.ID().ToIDOutput().ToStringOutput(),
 //				ServiceAccount:    defaultAccount.Email,
 //				DisplayName:       pulumi.String("Terraform integration test display"),
 //				Description:       pulumi.String("Terraform integration test description"),

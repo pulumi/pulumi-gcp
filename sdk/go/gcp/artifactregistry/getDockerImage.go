@@ -48,9 +48,7 @@ import (
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
 //						&cloudrunv2.ServiceTemplateContainerArgs{
-//							Image: myImage.ApplyT(func(myImage artifactregistry.GetDockerImageResult) (*string, error) {
-//								return myImage.SelfLink, nil
-//							}).(pulumi.StringPtrOutput),
+//							Image: myImage.SelfLink(),
 //						},
 //					},
 //				},

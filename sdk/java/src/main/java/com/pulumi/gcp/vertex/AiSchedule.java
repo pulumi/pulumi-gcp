@@ -20,6 +20,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.vertex.AiSchedule` is deprecated and will be removed in a future major release. Use `gcp.colab.Schedule` instead.
+ * 
  * An online schedule that triggers running pipeline jobs or notebook execution jobs.
  * 
  * ## Example Usage

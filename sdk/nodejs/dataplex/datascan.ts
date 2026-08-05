@@ -361,7 +361,7 @@ import * as utilities from "../utilities";
  *     dataDiscoverySpec: {
  *         bigqueryPublishingConfig: {
  *             tableType: "BIGLAKE",
- *             connection: pulumi.all([tfTestConnection.project, tfTestConnection.location, tfTestConnection.connectionId]).apply(([project, location, connectionId]) => `projects/${project}/locations/${location}/connections/${connectionId}`),
+ *             connection: pulumi.interpolate`projects/${tfTestConnection.project}/locations/${tfTestConnection.location}/connections/${tfTestConnection.connectionId}`,
  *             location: tfTestBucket.location,
  *             project: pulumi.interpolate`projects/${tfTestBucket.project}`,
  *         },

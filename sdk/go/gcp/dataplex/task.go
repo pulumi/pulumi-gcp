@@ -158,7 +158,7 @@ import (
 //							NetworkTags: pulumi.StringArray{
 //								pulumi.String("test-network-tag"),
 //							},
-//							SubNetwork: _default.ID(),
+//							SubNetwork: _default.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //					FileUris: pulumi.StringArray{
@@ -254,7 +254,7 @@ import (
 //							NetworkTags: pulumi.StringArray{
 //								pulumi.String("test-network-tag"),
 //							},
-//							Network: _default.ID(),
+//							Network: _default.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //					FileUris: pulumi.StringArray{

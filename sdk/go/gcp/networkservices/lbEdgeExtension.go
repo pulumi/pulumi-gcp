@@ -50,7 +50,7 @@ import (
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 //				Name:           pulumi.String("elb-url-map"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
+//				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -62,13 +62,13 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
+//						DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultBackendService.ID(),
+//								Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -80,7 +80,7 @@ import (
 //			defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 //				Name:        pulumi.String("elb-target-http-proxy"),
 //				Description: pulumi.String("a description"),
-//				UrlMap:      defaultURLMap.ID(),
+//				UrlMap:      defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -88,7 +88,7 @@ import (
 //			// forwarding rule
 //			_default, err := compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 //				Name:                pulumi.String("elb-forwarding-rule"),
-//				Target:              defaultTargetHttpProxy.ID(),
+//				Target:              defaultTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
 //				PortRange:           pulumi.String("80"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				NetworkTier:         pulumi.String("PREMIUM"),
@@ -139,7 +139,7 @@ import (
 //						Extensions: networkservices.LbEdgeExtensionExtensionChainExtensionArray{
 //							&networkservices.LbEdgeExtensionExtensionChainExtensionArgs{
 //								Name:     pulumi.String("ext11"),
-//								Service:  wasm_plugin.ID(),
+//								Service:  wasm_plugin.ID().ToIDOutput().ToStringOutput(),
 //								FailOpen: pulumi.Bool(false),
 //								SupportedEvents: pulumi.StringArray{
 //									pulumi.String("REQUEST_HEADERS"),

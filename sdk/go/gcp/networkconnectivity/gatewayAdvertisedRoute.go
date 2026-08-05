@@ -48,7 +48,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_87829"),
+//				Name:        pulumi.String("tf-test-subnet_50206"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -74,7 +74,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
-//				Hub: basicHub.ID(),
+//				Hub: basicHub.ID().ToIDOutput().ToStringOutput(),
 //				Gateway: &networkconnectivity.SpokeGatewayArgs{
 //					IpRangeReservations: networkconnectivity.SpokeGatewayIpRangeReservationArray{
 //						&networkconnectivity.SpokeGatewayIpRangeReservationArgs{

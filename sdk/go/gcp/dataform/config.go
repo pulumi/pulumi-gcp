@@ -104,14 +104,14 @@ import (
 //			}
 //			exampleKey, err := kms.NewCryptoKey(ctx, "example_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-crypto-key-name"),
-//				KeyRing: keyring.ID(),
+//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Grant the Encrypter/Decrypter role to the Dataform service agent on the KMS key
 //			cryptoKeyBinding, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: exampleKey.ID(),
+//				CryptoKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      dataformSa.Member,
 //			})
@@ -121,7 +121,7 @@ import (
 //			// Config with KMS key provided
 //			_, err = dataform.NewConfig(ctx, "config", &dataform.ConfigArgs{
 //				Region:            pulumi.String("us-central1"),
-//				DefaultKmsKeyName: exampleKey.ID(),
+//				DefaultKmsKeyName: exampleKey.ID().ToIDOutput().ToStringOutput(),
 //				Project:           project.ProjectId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyBinding,

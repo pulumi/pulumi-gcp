@@ -69,7 +69,7 @@ import (
 //				Name:        pulumi.String("test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     custom_test.ID(),
+//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
 //				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
 //					&compute.SubnetworkSecondaryIpRangeArgs{
 //						RangeName:   pulumi.String("tf-test-secondary-range-update1"),
@@ -110,7 +110,7 @@ import (
 //				Name:        pulumi.String("log-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     custom_test.ID(),
+//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
 //				LogConfig: &compute.SubnetworkLogConfigArgs{
 //					AggregationInterval: pulumi.String("INTERVAL_10_MIN"),
 //					FlowSampling:        pulumi.Float64(0.5),
@@ -152,7 +152,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
 //				Role:        pulumi.String("ACTIVE"),
-//				Network:     custom_test.ID(),
+//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -189,7 +189,7 @@ import (
 //				Region:         pulumi.String("us-west2"),
 //				StackType:      pulumi.String("IPV4_IPV6"),
 //				Ipv6AccessType: pulumi.String("EXTERNAL"),
-//				Network:        custom_test.ID(),
+//				Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -227,7 +227,7 @@ import (
 //				Region:         pulumi.String("us-west2"),
 //				StackType:      pulumi.String("IPV4_IPV6"),
 //				Ipv6AccessType: pulumi.String("INTERNAL"),
-//				Network:        custom_test.ID(),
+//				Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -263,7 +263,7 @@ import (
 //				Region:      pulumi.String("us-west2"),
 //				IpCidrRange: pulumi.String("192.168.1.0/24"),
 //				Purpose:     pulumi.String("PRIVATE_NAT"),
-//				Network:     custom_test.ID(),
+//				Network:     custom_test.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -300,7 +300,7 @@ import (
 //				IpCidrRange:       pulumi.String("10.10.0.0/24"),
 //				Purpose:           pulumi.String("PRIVATE"),
 //				ResolveSubnetMask: pulumi.String("ARP_PRIMARY_RANGE"),
-//				Network:           custom_test.ID(),
+//				Network:           custom_test.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -336,7 +336,7 @@ import (
 //				Region:                       pulumi.String("us-west2"),
 //				IpCidrRange:                  pulumi.String("192.168.1.0/24"),
 //				AllowSubnetCidrRoutesOverlap: pulumi.Bool(true),
-//				Network:                      net_cidr_overlap.ID(),
+//				Network:                      net_cidr_overlap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -372,7 +372,7 @@ import (
 //			}
 //			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("reserved"),
-//				Network:      _default.ID(),
+//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),
@@ -386,8 +386,8 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-internal-range", &compute.SubnetworkArgs{
 //				Name:    pulumi.String("subnetwork-reserved-internal-range"),
 //				Region:  pulumi.String("us-central1"),
-//				Network: _default.ID(),
-//				ReservedInternalRange: reserved.ID().ApplyT(func(id string) (string, error) {
+//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				ReservedInternalRange: reserved.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //			})
@@ -425,7 +425,7 @@ import (
 //			}
 //			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("reserved-primary"),
-//				Network:      _default.ID(),
+//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),
@@ -438,7 +438,7 @@ import (
 //			}
 //			reservedSecondary, err := networkconnectivity.NewInternalRange(ctx, "reserved_secondary", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("reserved-secondary"),
-//				Network:      _default.ID(),
+//				Network:      _default.ID().ToIDOutput().ToStringOutput(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(16),
@@ -452,14 +452,14 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork-reserved-secondary-range", &compute.SubnetworkArgs{
 //				Name:    pulumi.String("subnetwork-reserved-secondary-range"),
 //				Region:  pulumi.String("us-central1"),
-//				Network: _default.ID(),
-//				ReservedInternalRange: reserved.ID().ApplyT(func(id string) (string, error) {
+//				Network: _default.ID().ToIDOutput().ToStringOutput(),
+//				ReservedInternalRange: reserved.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{
 //					&compute.SubnetworkSecondaryIpRangeArgs{
 //						RangeName: pulumi.String("secondary"),
-//						ReservedInternalRange: reservedSecondary.ID().ApplyT(func(id string) (string, error) {
+//						ReservedInternalRange: reservedSecondary.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //							return fmt.Sprintf("networkconnectivity.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //					},
@@ -510,7 +510,7 @@ import (
 //				Region:       pulumi.String("us-central1"),
 //				Description:  pulumi.String("PDP in internal subnet mode"),
 //				IpCidrRange:  pulumi.String("2001:db8::/48"),
-//				ParentPrefix: ipv6Pap.ID(),
+//				ParentPrefix: ipv6Pap.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("DELEGATION"),
 //			})
 //			if err != nil {
@@ -520,7 +520,7 @@ import (
 //				Name:         pulumi.String("sub-pdp-for-secondary-ranges"),
 //				Region:       pulumi.String("us-central1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/56"),
-//				ParentPrefix: ipv6Pdp.ID(),
+//				ParentPrefix: ipv6Pdp.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
 //			})
 //			if err != nil {
@@ -529,7 +529,7 @@ import (
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork_with_secondary_ipv6_range", &compute.SubnetworkArgs{
 //				Name:           pulumi.String("subnet-with-secondary-ranges"),
 //				Region:         pulumi.String("us-central1"),
-//				Network:        custom_test.ID(),
+//				Network:        custom_test.ID().ToIDOutput().ToStringOutput(),
 //				StackType:      pulumi.String("IPV6_ONLY"),
 //				Ipv6AccessType: pulumi.String("INTERNAL"),
 //				SecondaryIpRanges: compute.SubnetworkSecondaryIpRangeArray{

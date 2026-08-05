@@ -65,7 +65,7 @@ import (
 //			}
 //			_, err = biglake.NewDatabase(ctx, "database", &biglake.DatabaseArgs{
 //				Name:    pulumi.String("my_database"),
-//				Catalog: catalog.ID(),
+//				Catalog: catalog.ID().ToIDOutput().ToStringOutput(),
 //				Type:    pulumi.String("HIVE"),
 //				HiveOptions: &biglake.DatabaseHiveOptionsArgs{
 //					LocationUri: pulumi.All(bucket.Name, metadataFolder.Name).ApplyT(func(_args []interface{}) (string, error) {

@@ -89,6 +89,7 @@ __all__ = [
     'RolloutSequenceAutoUpgradeConfig',
     'RolloutSequenceAutoUpgradeConfigRolloutCreationScope',
     'RolloutSequenceIgnoredClustersSelector',
+    'RolloutSequenceOperationalState',
     'RolloutSequenceStage',
     'RolloutSequenceStageClusterSelector',
     'ScopeIamBindingCondition',
@@ -3962,6 +3963,27 @@ class RolloutSequenceIgnoredClustersSelector(dict):
         evaluates resource.labels.
         """
         return pulumi.get(self, "label_selector")
+
+
+@pulumi.output_type
+class RolloutSequenceOperationalState(dict):
+    def __init__(__self__, *,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str state: (Output)
+               The state of the rollout sequence.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the rollout sequence.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

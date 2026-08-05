@@ -275,7 +275,7 @@ class DenyPolicy(pulumi.CustomResource):
             display_name="Test Service Account",
             project=project.project_id)
         example = gcp.iam.DenyPolicy("example",
-            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).result,
             name="my-deny-policy",
             display_name="A deny rule",
             rules=[
@@ -367,7 +367,7 @@ class DenyPolicy(pulumi.CustomResource):
             display_name="Test Service Account",
             project=project.project_id)
         example = gcp.iam.DenyPolicy("example",
-            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).apply(lambda invoke: invoke.result),
+            parent=std.urlencode_output(input=project.project_id.apply(lambda project_id: f"cloudresourcemanager.googleapis.com/projects/{project_id}")).result,
             name="my-deny-policy",
             display_name="A deny rule",
             rules=[

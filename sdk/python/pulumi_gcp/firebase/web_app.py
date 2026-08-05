@@ -294,16 +294,16 @@ class WebApp(pulumi.CustomResource):
                 "authDomain": basic.auth_domain,
                 "databaseURL": std.lookup_output(map=basic,
                     key="database_url",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
                 "storageBucket": std.lookup_output(map=basic,
                     key="storage_bucket",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
                 "messagingSenderId": std.lookup_output(map=basic,
                     key="messaging_sender_id",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
                 "measurementId": std.lookup_output(map=basic,
                     key="measurement_id",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
             }))
         ```
         ### Firebase Web App Custom Api Key
@@ -408,16 +408,16 @@ class WebApp(pulumi.CustomResource):
                 "authDomain": basic.auth_domain,
                 "databaseURL": std.lookup_output(map=basic,
                     key="database_url",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
                 "storageBucket": std.lookup_output(map=basic,
                     key="storage_bucket",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
                 "messagingSenderId": std.lookup_output(map=basic,
                     key="messaging_sender_id",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
                 "measurementId": std.lookup_output(map=basic,
                     key="measurement_id",
-                    default="").apply(lambda invoke: invoke.result),
+                    default="").result,
             }))
         ```
         ### Firebase Web App Custom Api Key

@@ -47,7 +47,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("basic-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
@@ -120,7 +120,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("basic-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
@@ -131,7 +131,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Description: pulumi.String("my basic network attachment"),
 //				Subnetworks: pulumi.StringArray{
-//					defaultSubnetwork.ID(),
+//					defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 //			})

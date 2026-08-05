@@ -2619,6 +2619,124 @@ export namespace accesscontextmanager {
     }
 }
 
+export namespace agentidentity {
+    export interface AuthProviderAuthProviderTypeParams {
+        /**
+         * Message describing ApiKeyParams object.
+         * Structure is documented below.
+         */
+        apiKey?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsApiKey | undefined>;
+        /**
+         * (Output)
+         * Message describing GeminiEnterpriseAuthProviderParams object.
+         * Since GeminiEnterpriseAuthProviderParams currently takes no subfields, defining this empty block selects the geAuthProvider type.
+         */
+        geAuthProviders?: pulumi.Input<pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsGeAuthProvider>[] | undefined>;
+        /**
+         * Message describing ThreeLeggedOAuth object.
+         * Structure is documented below.
+         */
+        threeLeggedOauth?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsThreeLeggedOauth | undefined>;
+        /**
+         * Message describing TwoLeggedOAuth object.
+         * Structure is documented below.
+         */
+        twoLeggedOauth?: pulumi.Input<inputs.agentidentity.AuthProviderAuthProviderTypeParamsTwoLeggedOauth | undefined>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsApiKey {
+        /**
+         * Input only. The API key for this auth_provider.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        apiKey?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsGeAuthProvider {
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsThreeLeggedOauth {
+        /**
+         * The authorization endpoint to send users to for consenting to delegate
+         * to the agent.
+         * eg. "https://auth.atlassian.com/authorize"
+         */
+        authorizationUrl?: pulumi.Input<string | undefined>;
+        /**
+         * The client ID of the OAuth client.
+         */
+        clientId?: pulumi.Input<string | undefined>;
+        /**
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `clientSecret` or `clientSecretWo` can only be set.
+         */
+        clientSecretWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `clientSecretWo` write-only. Increment this value when an update to `clientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        clientSecretWoVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The default continue URI for 3LO flow and it will be used when no continue
+         * URI is provided in the RetrieveCredentials request.
+         */
+        defaultContinueUri?: pulumi.Input<string | undefined>;
+        /**
+         * Enables Proof Key for Code Exchange (PKCE) for the OAuth flow to prevent
+         * authorization code interception attacks.
+         */
+        enablePkce?: pulumi.Input<boolean | undefined>;
+        /**
+         * (Output)
+         * The redirect URL this authProvider uses for the OAuth exchange.
+         * This is deterministic based on the name of the auth_provider.
+         */
+        redirectUrl?: pulumi.Input<string | undefined>;
+        /**
+         * The token endpoint for requesting tokens on behalf of an end user.
+         * eg. "https://auth.atlassian.com/oauth/token"
+         */
+        tokenUrl?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AuthProviderAuthProviderTypeParamsTwoLeggedOauth {
+        /**
+         * The client ID of the OAuth client.
+         */
+        clientId?: pulumi.Input<string | undefined>;
+        /**
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        clientSecret?: pulumi.Input<string | undefined>;
+        /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * Input only. The client secret of the OAuth client.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `clientSecret` or `clientSecretWo` can only be set.
+         */
+        clientSecretWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `clientSecretWo` write-only. Increment this value when an update to `clientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        clientSecretWoVersion?: pulumi.Input<string | undefined>;
+        /**
+         * The token endpoint of the OAuth client.
+         */
+        tokenUrl?: pulumi.Input<string | undefined>;
+    }
+}
+
 export namespace agentregistry {
     export interface BindingAuthProviderBinding {
         /**
@@ -10187,7 +10305,7 @@ export namespace bigquery {
         /**
          * Defaults to FIXED_TYPE.
          * Default value is `FIXED_TYPE`.
-         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`.
+         * Possible values are: `FIXED_TYPE`, `ANY_TYPE`, `FIXED_TABLE`.
          */
         argumentKind?: pulumi.Input<string | undefined>;
         /**
@@ -10209,6 +10327,36 @@ export namespace bigquery {
          * The name of this argument. Can be absent for function return argument.
          */
         name?: pulumi.Input<string | undefined>;
+        /**
+         * If argumentKind is FIXED_TABLE, a schema for the table type.
+         * Structure is documented below.
+         */
+        tableType?: pulumi.Input<inputs.bigquery.RoutineArgumentTableType | undefined>;
+    }
+
+    export interface RoutineArgumentTableType {
+        /**
+         * The columns in the table type.
+         * Structure is documented below.
+         */
+        columns?: pulumi.Input<pulumi.Input<inputs.bigquery.RoutineArgumentTableTypeColumn>[] | undefined>;
+    }
+
+    export interface RoutineArgumentTableTypeColumn {
+        /**
+         * The name of the column.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * A JSON schema for the data type of the column. Required unless argumentKind = ANY_TYPE.
+         * ~>**NOTE**: Because this field expects a JSON string, any changes to the string
+         * will create a diff, even if the JSON itself hasn't changed. If the API returns
+         * a different value for the same schema, e.g. it switched the order of values
+         * or replaced STRUCT field type with RECORD field type, we currently cannot
+         * suppress the recurring diff this causes. As a workaround, we recommend using
+         * the schema as returned by the API.
+         */
+        type?: pulumi.Input<string | undefined>;
     }
 
     export interface RoutineExternalRuntimeOptions {
@@ -21461,6 +21609,141 @@ export namespace ces {
 }
 
 export namespace chronicle {
+    export interface BigQueryExportEntityGraphSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume?: pulumi.Input<string | undefined>;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState?: pulumi.Input<string | undefined>;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: pulumi.Input<number>;
+    }
+
+    export interface BigQueryExportIocMatchesSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume?: pulumi.Input<string | undefined>;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState?: pulumi.Input<string | undefined>;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: pulumi.Input<number>;
+    }
+
+    export interface BigQueryExportRuleDetectionsSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume?: pulumi.Input<string | undefined>;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState?: pulumi.Input<string | undefined>;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: pulumi.Input<number>;
+    }
+
+    export interface BigQueryExportUdmEventsAggregatesSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume?: pulumi.Input<string | undefined>;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState?: pulumi.Input<string | undefined>;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: pulumi.Input<number>;
+    }
+
+    export interface BigQueryExportUdmEventsSettings {
+        /**
+         * (Output)
+         * The data freshness of the given export which represents the time bucket at
+         * which the latest event was exported.
+         */
+        dataFreshnessTime?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The stored data volume of all the exports.
+         */
+        dataVolume?: pulumi.Input<string | undefined>;
+        /**
+         * Whether the data source is enabled for export.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The latest export job state.
+         */
+        latestExportJobState?: pulumi.Input<string | undefined>;
+        /**
+         * The retention period for the data source in days.
+         */
+        retentionDays: pulumi.Input<number>;
+    }
+
     export interface DashboardChartChartLayout {
         /**
          * (Required)
@@ -35162,9 +35445,28 @@ export namespace colab {
          * Structure is documented below.
          */
         notebookExecutionJob: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob>;
+        /**
+         * (Output)
+         * User specified ID for the NotebookExecutionJob.
+         */
+        notebookExecutionJobId?: pulumi.Input<string | undefined>;
+        /**
+         * The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+         */
+        parent?: pulumi.Input<string | undefined>;
     }
 
     export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob {
+        /**
+         * (Output)
+         * Timestamp when this NotebookExecutionJob was created.
+         */
+        createTime?: pulumi.Input<string | undefined>;
+        /**
+         * Compute configuration to use for an execution job.
+         * Structure is documented below.
+         */
+        customEnvironmentSpec?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec | undefined>;
         /**
          * The Dataform Repository containing the input notebook.
          * Structure is documented below.
@@ -35174,6 +35476,11 @@ export namespace colab {
          * Required. The display name of the Notebook Execution.
          */
         displayName: pulumi.Input<string>;
+        /**
+         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+         * Structure is documented below.
+         */
+        encryptionSpec?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec | undefined>;
         /**
          * Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
          */
@@ -35192,13 +35499,136 @@ export namespace colab {
          */
         gcsOutputUri: pulumi.Input<string>;
         /**
+         * (Output)
+         * Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+         */
+        jobState?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+         */
+        kernelName?: pulumi.Input<string | undefined>;
+        /**
+         * The labels with user-defined metadata to organize NotebookExecutionJobs.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * (Output)
+         * The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
          * The NotebookRuntimeTemplate to source compute configuration from.
          */
-        notebookRuntimeTemplateResourceName: pulumi.Input<string>;
+        notebookRuntimeTemplateResourceName?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+         */
+        scheduleResourceName?: pulumi.Input<string | undefined>;
         /**
          * The service account to run the execution as.
          */
         serviceAccount?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Timestamp when this NotebookExecutionJob was most recently updated.
+         */
+        updateTime?: pulumi.Input<string | undefined>;
+        /**
+         * Configuration for a Workbench Instances-based environment.
+         */
+        workbenchRuntime?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime | undefined>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec {
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec | undefined>;
+        /**
+         * Network spec.
+         * Structure is documented below.
+         */
+        networkSpec?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec | undefined>;
+        /**
+         * Represents the spec of persistent disk options.
+         * Structure is documented below.
+         */
+        persistentDiskSpec?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec | undefined>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the acceleratorCount from 1 to N for machine with N GPUs. If acceleratorCount is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set acceleratorCount to 1 to 8. If acceleratorCount is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihostGpuNodeCount is set, the co-scheduling will not be enabled.
+         */
+        acceleratorCount?: pulumi.Input<number | undefined>;
+        /**
+         * Possible values: NVIDIA_TESLA_K80 NVIDIA_TESLA_P100 NVIDIA_TESLA_V100 NVIDIA_TESLA_P4 NVIDIA_TESLA_T4 NVIDIA_TESLA_A100 NVIDIA_A100_80GB NVIDIA_L4 NVIDIA_H100_80GB NVIDIA_H100_MEGA_80GB NVIDIA_H200_141GB NVIDIA_B200 NVIDIA_GB200 NVIDIA_RTX_PRO_6000 TPU_V2 TPU_V3 TPU_V4_POD TPU_V5_LITEPOD
+         */
+        acceleratorType?: pulumi.Input<string | undefined>;
+        /**
+         * The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size="1g.10gb", the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the acceleratorCount should be set to 1.
+         */
+        gpuPartitionSize?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+         */
+        machineType?: pulumi.Input<string | undefined>;
+        /**
+         * A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity.
+         * Structure is documented below.
+         */
+        reservationAffinity?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity | undefined>;
+        /**
+         * The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: "2x2x1").
+         */
+        tpuTopology?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecMachineSpecReservationAffinity {
+        /**
+         * Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, use `compute.googleapis.com/reservation-name` as the key and specify the name of your reservation as its value.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * Specifies the reservation affinity type. Possible values: NO_RESERVATION ANY_RESERVATION SPECIFIC_RESERVATION SPECIFIC_THEN_ANY_RESERVATION SPECIFIC_THEN_NO_RESERVATION
+         */
+        reservationAffinityType: pulumi.Input<string>;
+        /**
+         * When set to true, resources will be drawn from go/cloud-ai-gcp-pool.
+         */
+        useReservationPool?: pulumi.Input<boolean | undefined>;
+        /**
+         * Corresponds to the label values of a reservation resource. This must be the full resource name of the reservation or reservation block.
+         */
+        values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecNetworkSpec {
+        /**
+         * Whether to enable public internet access. Default false.
+         */
+        enableInternetAccess?: pulumi.Input<boolean | undefined>;
+        /**
+         * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+         */
+        network?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the subnet that this instance is in. Format: `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+         */
+        subnetwork?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecPersistentDiskSpec {
+        /**
+         * Size in GB of the disk (default is 100GB).
+         */
+        diskSizeGb?: pulumi.Input<string | undefined>;
+        /**
+         * Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme" (Extreme Persistent Disk)
+         */
+        diskType?: pulumi.Input<string | undefined>;
     }
 
     export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource {
@@ -35207,9 +35637,16 @@ export namespace colab {
          */
         commitSha?: pulumi.Input<string | undefined>;
         /**
-         * The resource name of the Dataform Repository.
+         * The resource name of the Dataform Repository. Format: `projects/{project_id}/locations/{location}/repositories/{repository_id}`
          */
         dataformRepositoryResourceName: pulumi.Input<string>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: pulumi.Input<string>;
     }
 
     export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSource {
@@ -35221,6 +35658,188 @@ export namespace colab {
          * The Cloud Storage uri pointing to the ipynb file. Format: gs://bucket/notebook_file.ipynb
          */
         uri: pulumi.Input<string>;
+    }
+
+    export interface ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime {
+    }
+
+    export interface ScheduleCreatePipelineJobRequest {
+        /**
+         * The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
+         */
+        parent?: pulumi.Input<string | undefined>;
+        /**
+         * An instance of a machine learning PipelineJob.
+         * Structure is documented below.
+         */
+        pipelineJob: pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequestPipelineJob>;
+        /**
+         * (Output)
+         * The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
+         */
+        pipelineJobId?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJob {
+        /**
+         * (Output)
+         * Pipeline creation time.
+         */
+        createTime?: pulumi.Input<string | undefined>;
+        /**
+         * The display name of the Pipeline. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+         */
+        displayName?: pulumi.Input<string | undefined>;
+        /**
+         * Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+         * Structure is documented below.
+         */
+        encryptionSpec?: pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec | undefined>;
+        /**
+         * (Output)
+         * Pipeline end time.
+         */
+        endTime?: pulumi.Input<string | undefined>;
+        /**
+         * The labels with user-defined metadata to organize PipelineJob. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels. Note there is some reserved label key for Vertex AI Pipelines. - `vertex-ai-pipelines-run-billing-id`, user set value will get overrided.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+        /**
+         * (Output)
+         * The resource name of the PipelineJob.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The full name of the Compute Engine [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to which the Pipeline Job's workload should be peered. For example, `projects/12345/global/networks/myVPC`. [Format](https://www.terraform.io/compute/docs/reference/rest/v1/networks/insert) is of the form `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and {network} is a network name. Private services access must already be configured for the network. Pipeline job will apply the network configuration to the Google Cloud resources being launched, if applied, such as Vertex AI Training or Dataflow job. If left unspecified, the workload is not peered with any network.
+         */
+        network?: pulumi.Input<string | undefined>;
+        /**
+         * A compiled definition of a pipeline, represented as a `JSON` object. Defines the structure of the pipeline, including its components, tasks, and parameters. This specification is generated by compiling a pipeline function defined in `Python` using the `Kubeflow Pipelines SDK`.
+         */
+        pipelineSpec?: pulumi.Input<string | undefined>;
+        /**
+         * Whether to do component level validations before job creation.
+         */
+        preflightValidations?: pulumi.Input<boolean | undefined>;
+        /**
+         * Configuration for PSC-I.
+         * Structure is documented below.
+         */
+        pscInterfaceConfig?: pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig | undefined>;
+        /**
+         * A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the job will be deployed to any ip ranges under the provided VPC network. Example: ['vertex-ai-ip-range'].
+         */
+        reservedIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The runtime config of a PipelineJob.
+         * Structure is documented below.
+         */
+        runtimeConfig?: pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig | undefined>;
+        /**
+         * (Output)
+         * The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+         */
+        scheduleName?: pulumi.Input<string | undefined>;
+        /**
+         * The service account that the pipeline workload runs as. If not specified, the Compute Engine default service account in the project will be used. See https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the pipeline must have the `iam.serviceAccounts.actAs` permission on this service account.
+         */
+        serviceAccount?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Pipeline start time.
+         */
+        startTime?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Possible values: PIPELINE_STATE_QUEUED PIPELINE_STATE_PENDING PIPELINE_STATE_RUNNING PIPELINE_STATE_SUCCEEDED PIPELINE_STATE_FAILED PIPELINE_STATE_CANCELLING PIPELINE_STATE_CANCELLED PIPELINE_STATE_PAUSED
+         */
+        state?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Pipeline template metadata if PipelineJob.template_uri is from supported template registry. Currently, the only supported registry is Artifact Registry.
+         * Structure is documented below.
+         */
+        templateMetadatas?: pulumi.Input<pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata>[] | undefined>;
+        /**
+         * A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri from Vertex Template Registry & Gallery is supported. Reference to https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+         */
+        templateUri?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * Timestamp when this PipelineJob was most recently updated.
+         */
+        updateTime?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfig {
+        /**
+         * DNS peering configurations. When specified, Vertex AI will attempt to configure DNS peering zones in the tenant project VPC to resolve the specified domains using the target network's Cloud DNS. The user must grant the dns.peer role to the Vertex AI Service Agent on the target project.
+         * Structure is documented below.
+         */
+        dnsPeeringConfigs?: pulumi.Input<pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig>[] | undefined>;
+        /**
+         * The name of the Compute Engine [network attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource within the region and user project. To specify this field, you must have already [created a network attachment] (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field is only used for resources using PSC-I.
+         */
+        networkAttachment?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobPscInterfaceConfigDnsPeeringConfig {
+        /**
+         * The DNS name suffix of the zone being peered to, e.g., "my-internal-domain.corp.". Must end with a dot.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The VPC network name in the targetProject where the DNS zone specified by 'domain' is visible.
+         */
+        targetNetwork: pulumi.Input<string>;
+        /**
+         * The project ID hosting the Cloud DNS managed zone that contains the 'domain'. The Vertex AI Service Agent requires the dns.peer role on this project.
+         */
+        targetProject: pulumi.Input<string>;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobRuntimeConfig {
+        /**
+         * Possible values: PIPELINE_FAILURE_POLICY_FAIL_SLOW PIPELINE_FAILURE_POLICY_FAIL_FAST
+         */
+        failurePolicy?: pulumi.Input<string | undefined>;
+        /**
+         * A path in a Cloud Storage bucket, which will be treated as the root output directory of the pipeline. It is used by the system to generate the paths of output artifacts. The artifact paths are generated with a sub-path pattern `{job_id}/{task_id}/{output_key}` under the specified output directory. The service account specified in this pipeline must have the `storage.objects.get` and `storage.objects.create` permissions for this bucket.
+         */
+        gcsOutputDirectory: pulumi.Input<string>;
+        /**
+         * The runtime parameters of the PipelineJob. The parameters will be passed into PipelineJob.pipeline_spec to replace the placeholders at runtime. This field is used by pipelines built using `PipelineJob.pipeline_spec.schema_version` 2.1.0, such as pipelines built using Kubeflow Pipelines SDK 1.9 or higher and the v2 DSL.
+         *
+         * <a name="nestedCreatePipelineJobRequestPipelineJobTemplateMetadata"></a>The `templateMetadata` block contains:
+         */
+        parameterValues?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface ScheduleCreatePipelineJobRequestPipelineJobTemplateMetadata {
+        /**
+         * The versionName in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
+         */
+        version?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ScheduleLastScheduledRunResponse {
+        /**
+         * (Output)
+         * The response of the scheduled run.
+         */
+        runResponse?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The scheduled run time based on the user-specified schedule.
+         */
+        scheduledRunTime?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -35447,6 +36066,10 @@ export namespace composer {
          */
         tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
         /**
+         * Traffic routing configuration for Cloud Composer environment.
+         */
+        trafficRoutingConfig?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfigTrafficRoutingConfig | undefined>;
+        /**
          * The Compute Engine zone in which to deploy the VMs running the Apache Airflow software, specified as the zone name or relative resource name (e.g. "projects/{project}/zones/{zone}"). Must belong to the enclosing environment's project and region. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
          */
         zone?: pulumi.Input<string | undefined>;
@@ -35473,6 +36096,13 @@ export namespace composer {
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
          */
         useIpAliases?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface EnvironmentConfigNodeConfigTrafficRoutingConfig {
+        /**
+         * Traffic routing mode for Cloud Run functions. Possible values: ["DIRECT", "VIA_NETWORK_ATTACHMENT"]
+         */
+        cloudRunFunctionsRouting?: pulumi.Input<string | undefined>;
     }
 
     export interface EnvironmentConfigPrivateEnvironmentConfig {
@@ -36691,12 +37321,36 @@ export namespace compute {
          */
         optionalMode?: pulumi.Input<string | undefined>;
         /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         */
+        requestHeaders?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceLogConfigRequestHeader>[] | undefined>;
+        /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         */
+        responseHeaders?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceLogConfigResponseHeader>[] | undefined>;
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate?: pulumi.Input<number | undefined>;
+    }
+
+    export interface BackendServiceLogConfigRequestHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: pulumi.Input<string>;
+    }
+
+    export interface BackendServiceLogConfigResponseHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: pulumi.Input<string>;
     }
 
     export interface BackendServiceMaxStreamDuration {
@@ -45195,12 +45849,36 @@ export namespace compute {
          */
         optionalMode?: pulumi.Input<string | undefined>;
         /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+         * Structure is documented below.
+         */
+        requestHeaders?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceLogConfigRequestHeader>[] | undefined>;
+        /**
+         * This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+         * Structure is documented below.
+         */
+        responseHeaders?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceLogConfigResponseHeader>[] | undefined>;
+        /**
          * This field can only be specified if logging is enabled for this backend service. The value of
          * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
          * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
          * The default value is 1.0.
          */
         sampleRate?: pulumi.Input<number | undefined>;
+    }
+
+    export interface RegionBackendServiceLogConfigRequestHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: pulumi.Input<string>;
+    }
+
+    export interface RegionBackendServiceLogConfigResponseHeader {
+        /**
+         * The header name to match on for logging.
+         */
+        headerName: pulumi.Input<string>;
     }
 
     export interface RegionBackendServiceNetworkPassThroughLbTrafficPolicy {
@@ -58054,6 +58732,13 @@ export namespace container {
          */
         networkPolicyConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigNetworkPolicyConfig | undefined>;
         /**
+         * The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
+         * Structure is documented below.
+         *
+         * This example `addonsConfig` disables two addons:
+         */
+        nodeReadinessConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigNodeReadinessConfig | undefined>;
+        /**
          * The status of the Parallelstore CSI driver addon,
          * which allows the usage of a Parallelstore instances as volumes.
          * It is disabled by default for Standard clusters; set `enabled = true` to enable.
@@ -58091,8 +58776,6 @@ export namespace container {
          * which creates slurm related CRDs and KCP pods to manage them.
          * Defaults to disabled for Standard clusters; set `enabled = true` to enable.
          * It can not be enabled for Autopilot clusters.
-         *
-         * This example `addonsConfig` disables two addons:
          */
         slurmOperatorConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigSlurmOperatorConfig | undefined>;
         /**
@@ -58205,6 +58888,10 @@ export namespace container {
         disabled: pulumi.Input<boolean>;
     }
 
+    export interface ClusterAddonsConfigNodeReadinessConfig {
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterAddonsConfigParallelstoreCsiDriverConfig {
         enabled: pulumi.Input<boolean>;
     }
@@ -58283,13 +58970,14 @@ export namespace container {
 
     export interface ClusterBinaryAuthorization {
         /**
-         * Enable Binary Authorization for this cluster.
+         * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          *
          * @deprecated Deprecated in favor of evaluation_mode.
          */
         enabled?: pulumi.Input<boolean | undefined>;
         /**
-         * Mode of operation for Binary Authorization policy evaluation.
+         * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          */
         evaluationMode?: pulumi.Input<string | undefined>;
     }
@@ -62112,6 +62800,13 @@ export namespace container {
          * The ID of a BigQuery Dataset.
          */
         datasetId: pulumi.Input<string>;
+    }
+
+    export interface ClusterRollbackSafeUpgrade {
+        /**
+         * A user-defined period that the cluster remains in the rollbackable state. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "604800s" for 7 days. Minimum is 6 hours, maximum is 7 days. If omitted, the two-step upgrade is skipped and a standard one-step upgrade is performed.
+         */
+        controlPlaneSoakDuration?: pulumi.Input<string | undefined>;
     }
 
     export interface ClusterSecretManagerConfig {
@@ -91024,6 +91719,14 @@ export namespace gkehub {
         labelSelector: pulumi.Input<string>;
     }
 
+    export interface RolloutSequenceOperationalState {
+        /**
+         * (Output)
+         * The state of the rollout sequence.
+         */
+        state?: pulumi.Input<string | undefined>;
+    }
+
     export interface RolloutSequenceStage {
         /**
          * Filter to select a subset of clusters from the specified Fleet projects.
@@ -102633,6 +103336,12 @@ export namespace modelarmor {
          */
         enforcementType?: pulumi.Input<string | undefined>;
         /**
+         * Selects the filter version to use for this template. Set exactly one of
+         * 'alias' or 'version'.
+         * Structure is documented below.
+         */
+        filterVersionSelector?: pulumi.Input<inputs.modelarmor.TemplateTemplateMetadataFilterVersionSelector | undefined>;
+        /**
          * If true, partial detector failures should be ignored.
          */
         ignorePartialInvocationFailures?: pulumi.Input<boolean | undefined>;
@@ -102649,6 +103358,22 @@ export namespace modelarmor {
          * Structure is documented below.
          */
         multiLanguageDetection?: pulumi.Input<inputs.modelarmor.TemplateTemplateMetadataMultiLanguageDetection | undefined>;
+    }
+
+    export interface TemplateTemplateMetadataFilterVersionSelector {
+        /**
+         * A predefined filter version alias. The template automatically follows the
+         * version this alias points to.
+         * Possible values:
+         * FILTER_VERSION_ALIAS_STABLE
+         * FILTER_VERSION_ALIAS_LATEST
+         */
+        alias?: pulumi.Input<string | undefined>;
+        /**
+         * Pins the template to a specific, immutable filter version. Expected
+         * format is a case-sensitive string such as 'v1' or 'v2'.
+         */
+        version?: pulumi.Input<string | undefined>;
     }
 
     export interface TemplateTemplateMetadataMultiLanguageDetection {
@@ -127925,6 +128650,42 @@ export namespace vectorsearch {
     export interface CollectionVectorSchemaSparseVector {
     }
 
+    export interface DataObjectVector {
+        /**
+         * A dense vector.
+         * Structure is documented below.
+         */
+        dense?: pulumi.Input<inputs.vectorsearch.DataObjectVectorDense | undefined>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        fieldName: pulumi.Input<string>;
+        /**
+         * A sparse vector.
+         * Structure is documented below.
+         */
+        sparse?: pulumi.Input<inputs.vectorsearch.DataObjectVectorSparse | undefined>;
+    }
+
+    export interface DataObjectVectorDense {
+        /**
+         * The float values of the dense vector.
+         */
+        values: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface DataObjectVectorSparse {
+        /**
+         * The indices corresponding to the entries in `values`. Must
+         * have the same length as `values`.
+         */
+        indices: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * The non-zero float values of the sparse vector.
+         */
+        values: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
     export interface IndexDedicatedInfrastructure {
         /**
          * Autoscaling specification.
@@ -129834,6 +130595,208 @@ export namespace vertex {
          * The disk utilization of the MetadataStore in bytes.
          */
         diskUtilizationBytes?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourceEncryptionSpec {
+        /**
+         * Resource name of the Cloud KMS key used to protect the resource.
+         * The Cloud KMS key must be in the same region as the resource. It must have
+         * the format
+         * `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface AiPersistentResourceError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number | undefined>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any
+         * user-facing error message should be localized and sent in the
+         * google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourcePscInterfaceConfig {
+        /**
+         * DNS peering configurations. When specified, Vertex AI will
+         * attempt to configure DNS peering zones in the tenant project VPC
+         * to resolve the specified domains using the target network's Cloud DNS.
+         * The user must grant the dns.peer role to the Vertex AI Service Agent
+         * on the target project.
+         * Structure is documented below.
+         */
+        dnsPeeringConfigs?: pulumi.Input<pulumi.Input<inputs.vertex.AiPersistentResourcePscInterfaceConfigDnsPeeringConfig>[] | undefined>;
+        /**
+         * The name of the Compute Engine
+         * [network
+         * attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
+         * attach to the resource within the region and user project.
+         * To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
+         * This field is only used for resources using PSC-I.
+         */
+        networkAttachment?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourcePscInterfaceConfigDnsPeeringConfig {
+        /**
+         * The DNS name suffix of the zone being peered to, e.g.,
+         * "my-internal-domain.corp.". Must end with a dot.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The VPC network name
+         * in the targetProject where the DNS zone specified by 'domain' is
+         * visible.
+         */
+        targetNetwork: pulumi.Input<string>;
+        /**
+         * The project ID hosting the Cloud DNS managed zone that
+         * contains the 'domain'. The Vertex AI Service Agent requires the
+         * dns.peer role on this project.
+         */
+        targetProject: pulumi.Input<string>;
+    }
+
+    export interface AiPersistentResourceResourcePool {
+        /**
+         * The min/max number of replicas allowed if enabling autoscaling
+         * Structure is documented below.
+         */
+        autoscalingSpec?: pulumi.Input<inputs.vertex.AiPersistentResourceResourcePoolAutoscalingSpec | undefined>;
+        /**
+         * Represents the spec of disk options.
+         * Structure is documented below.
+         */
+        diskSpec?: pulumi.Input<inputs.vertex.AiPersistentResourceResourcePoolDiskSpec | undefined>;
+        /**
+         * The unique ID in a PersistentResource for referring to this resource pool.
+         * User can specify it if necessary. Otherwise, it's generated
+         * automatically.
+         */
+        id?: pulumi.Input<string | undefined>;
+        /**
+         * Specification of a single machine.
+         * Structure is documented below.
+         */
+        machineSpec: pulumi.Input<inputs.vertex.AiPersistentResourceResourcePoolMachineSpec>;
+        /**
+         * The total number of machines to use for this resource pool.
+         */
+        replicaCount?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * The number of machines currently in use by training jobs for this resource
+         * pool. Will replace idle_replica_count.
+         */
+        usedReplicaCount?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourceResourcePoolAutoscalingSpec {
+        /**
+         * max replicas in the node pool,
+         * must be ≥ replicaCount and > minReplicaCount or will throw error
+         */
+        maxReplicaCount?: pulumi.Input<string | undefined>;
+        /**
+         * min replicas in the node pool,
+         * must be ≤ replicaCount and < maxReplicaCount or will throw error.
+         * For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
+         * resourcePool to be 0 to match the OSS Ray
+         * behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+         * As for Persistent Resource, the minReplicaCount must be > 0, we added
+         * a corresponding validation inside
+         * CreatePersistentResourceRequestValidator.java.
+         */
+        minReplicaCount?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourceResourcePoolDiskSpec {
+        /**
+         * Size in GB of the boot disk (default is 100GB).
+         */
+        bootDiskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * Type of the boot disk. For non-A3U machines, the default value is
+         * "pd-ssd", for A3U machines, the default value is "hyperdisk-balanced".
+         * Valid values: "pd-ssd" (Persistent Disk Solid State Drive),
+         * "pd-standard" (Persistent Disk Hard Disk Drive) or "hyperdisk-balanced".
+         */
+        bootDiskType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourceResourcePoolMachineSpec {
+        /**
+         * The number of accelerators to attach to the machine.
+         */
+        acceleratorCount?: pulumi.Input<number | undefined>;
+        /**
+         * The type of accelerator(s) that may be attached to the machine.
+         * Possible values:
+         * NVIDIA_TESLA_K80
+         * NVIDIA_TESLA_P100
+         * NVIDIA_TESLA_V100
+         * NVIDIA_TESLA_P4
+         * NVIDIA_TESLA_T4
+         * NVIDIA_TESLA_A100
+         * NVIDIA_A100_80GB
+         * NVIDIA_L4
+         * NVIDIA_H100_80GB
+         * NVIDIA_H100_MEGA_80GB
+         * NVIDIA_H200_141GB
+         * NVIDIA_B200
+         * NVIDIA_GB200
+         * NVIDIA_RTX_PRO_6000
+         * TPU_V2
+         * TPU_V3
+         * TPU_V4_POD
+         * TPU_V5_LITEPOD
+         */
+        acceleratorType?: pulumi.Input<string | undefined>;
+        /**
+         * The type of the machine.
+         * See the [list of machine types supported for
+         * prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
+         * See the [list of machine types supported for custom
+         * training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
+         */
+        machineType?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AiPersistentResourceResourceRuntime {
+        /**
+         * (Output)
+         * URIs for user to connect to the Cluster.
+         * Example:
+         * {
+         * "RAY_HEAD_NODE_INTERNAL_IP": "head-node-IP:10001"
+         * "RAY_DASHBOARD_URI": "ray-dashboard-address:8888"
+         * }
+         */
+        accessUris?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface AiPersistentResourceResourceRuntimeSpec {
+        /**
+         * Configuration for the use of custom service account to run the workloads.
+         * Structure is documented below.
+         */
+        serviceAccountSpec?: pulumi.Input<inputs.vertex.AiPersistentResourceResourceRuntimeSpecServiceAccountSpec | undefined>;
+    }
+
+    export interface AiPersistentResourceResourceRuntimeSpecServiceAccountSpec {
+        /**
+         * If true, custom user-managed service account is enforced to run any
+         * workloads (for example, Vertex Jobs) on the resource.
+         * Otherwise, uses the [Vertex AI Custom Code Service
+         * Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+         */
+        enableCustomServiceAccount: pulumi.Input<boolean>;
     }
 
     export interface AiRagEngineConfigRagManagedDbConfig {

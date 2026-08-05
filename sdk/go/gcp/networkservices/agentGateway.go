@@ -59,7 +59,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-gateway-subnetwork"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
@@ -70,7 +70,7 @@ import (
 //				Region:               pulumi.String("us-central1"),
 //				ConnectionPreference: pulumi.String("ACCEPT_MANUAL"),
 //				Subnetworks: pulumi.StringArray{
-//					defaultSubnetwork.ID(),
+//					defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -84,7 +84,7 @@ import (
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
 //					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
 //						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: defaultNetwork.ID(),
+//							NetworkUrl: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -111,14 +111,14 @@ import (
 //				},
 //				NetworkConfig: &networkservices.AgentGatewayNetworkConfigArgs{
 //					Egress: &networkservices.AgentGatewayNetworkConfigEgressArgs{
-//						NetworkAttachment: defaultNetworkAttachment.ID(),
+//						NetworkAttachment: defaultNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					DnsPeeringConfig: &networkservices.AgentGatewayNetworkConfigDnsPeeringConfigArgs{
 //						Domains: pulumi.StringArray{
 //							defaultManagedZone.DnsName,
 //						},
 //						TargetProject: pulumi.String(project.ProjectId),
-//						TargetNetwork: defaultNetwork.ID(),
+//						TargetNetwork: defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

@@ -62,7 +62,7 @@ import (
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("example data exchange"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listingDataset.ID(),
+//					Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -113,7 +113,7 @@ import (
 //				DisplayName:    pulumi.String("my_listing"),
 //				Description:    pulumi.String("example data exchange"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listingDataset.ID(),
+//					Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				RestrictedExportConfig: &bigqueryanalyticshub.ListingRestrictedExportConfigArgs{
 //					Enabled:             pulumi.Bool(true),
@@ -199,10 +199,10 @@ import (
 //				DisplayName:    pulumi.String("dcr_listing"),
 //				Description:    pulumi.String("example dcr data exchange"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listingDataset.ID(),
+//					Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 //					SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
 //						&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
-//							Table: listingTable.ID(),
+//							Table: listingTable.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -259,7 +259,7 @@ import (
 //				Description:                    pulumi.String("Example for log email test"),
 //				LogLinkedDatasetQueryUserEmail: pulumi.Bool(true),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listingLogEmailDataset.ID(),
+//					Dataset: listingLogEmailDataset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -307,7 +307,7 @@ import (
 //				DisplayName:    pulumi.String("tf_test_pubsub_listing"),
 //				Description:    pulumi.String("Example for pubsub topic source"),
 //				PubsubTopic: &bigqueryanalyticshub.ListingPubsubTopicArgs{
-//					Topic: tfTestPubsubTopic.ID(),
+//					Topic: tfTestPubsubTopic.ID().ToIDOutput().ToStringOutput(),
 //					DataAffinityRegions: pulumi.StringArray{
 //						pulumi.String("us-central1"),
 //						pulumi.String("europe-west1"),
@@ -360,18 +360,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"typeKind": "INT64",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 //				"columns": []map[string]interface{}{
 //					map[string]interface{}{
 //						"name": "value",
-//						"type": map[string]interface{}{
+//						"type": map[string]string{
 //							"typeKind": "INT64",
 //						},
 //					},
@@ -407,10 +407,10 @@ import (
 //				DisplayName:    pulumi.String("tf_test_listing_routine"),
 //				Description:    pulumi.String("Example for listing with routine"),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listing.ID(),
+//					Dataset: listing.ID().ToIDOutput().ToStringOutput(),
 //					SelectedResources: bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArray{
 //						&bigqueryanalyticshub.ListingBigqueryDatasetSelectedResourceArgs{
-//							Routine: listingRoutine.ID(),
+//							Routine: listingRoutine.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -469,7 +469,7 @@ import (
 //				DiscoveryType:            pulumi.String("DISCOVERY_TYPE_PUBLIC"),
 //				AllowOnlyMetadataSharing: pulumi.Bool(false),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listingDataset.ID(),
+//					Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -521,7 +521,7 @@ import (
 //				Description:      pulumi.String("example data exchange"),
 //				DeleteCommercial: pulumi.Bool(true),
 //				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
-//					Dataset: listingDataset.ID(),
+//					Dataset: listingDataset.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

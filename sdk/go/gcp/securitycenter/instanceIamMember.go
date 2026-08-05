@@ -82,7 +82,7 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(22),
-//				Network:      network.ID(),
+//				Network:      network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -148,7 +148,7 @@ import (
 //			pscSubnetwork, err := compute.NewSubnetwork(ctx, "psc", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("datafusion-psc-subnet"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     psc.ID(),
+//				Network:     psc.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
 //			if err != nil {
@@ -173,7 +173,7 @@ import (
 //				NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
 //					ConnectionType: pulumi.String("PRIVATE_SERVICE_CONNECT_INTERFACES"),
 //					PrivateServiceConnectConfig: &datafusion.InstanceNetworkConfigPrivateServiceConnectConfigArgs{
-//						NetworkAttachment:    pscNetworkAttachment.ID(),
+//						NetworkAttachment:    pscNetworkAttachment.ID().ToIDOutput().ToStringOutput(),
 //						UnreachableCidrBlock: pulumi.String("192.168.0.0/25"),
 //					},
 //				},
@@ -211,7 +211,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("my-instance"),
-//				KeyRing: keyRing.ID(),
+//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -221,7 +221,7 @@ import (
 //				return err
 //			}
 //			cryptoKeyMemberCdfSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_cdf_sa", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
+//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number),
 //			})
@@ -229,7 +229,7 @@ import (
 //				return err
 //			}
 //			cryptoKeyMemberGcsSa, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_gcs_sa", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
+//				CryptoKeyId: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@gs-project-accounts.iam.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -243,7 +243,7 @@ import (
 //				Region: pulumi.String("us-central1"),
 //				Type:   pulumi.String("BASIC"),
 //				CryptoKeyConfig: &datafusion.InstanceCryptoKeyConfigArgs{
-//					KeyReference: cryptoKey.ID(),
+//					KeyReference: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyMemberGcsSa,
@@ -311,7 +311,7 @@ import (
 //				Type:   pulumi.String("BASIC"),
 //				EventPublishConfig: &datafusion.InstanceEventPublishConfigArgs{
 //					Enabled: pulumi.Bool(true),
-//					Topic:   eventTopic.ID(),
+//					Topic:   eventTopic.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

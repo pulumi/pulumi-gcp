@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *                 .resourceManagerTags(Output.tuple(tagKey.id(), tagValue.id()).applyValue(values -> {
  *                     var tagKeyId = values.t1;
  *                     var tagValueId = values.t2;
- *                     return Map.of(tagKeyId, tagValueId);
+ *                     return tagKeyId.applyValue(___convert -> Map.of(___convert, tagValueId));
  *                 }))
  *                 .build())
  *             .build());

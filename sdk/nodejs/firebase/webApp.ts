@@ -41,28 +41,28 @@ import * as utilities from "../utilities";
  *     name: "firebase-config.json",
  *     content: pulumi.jsonStringify({
  *         appId: basicWebApp.appId,
- *         apiKey: basic.apply(basic => basic.apiKey),
- *         authDomain: basic.apply(basic => basic.authDomain),
+ *         apiKey: basic.apiKey,
+ *         authDomain: basic.authDomain,
  *         databaseURL: std.lookupOutput({
  *             map: basic,
  *             key: "database_url",
  *             "default": "",
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *         storageBucket: std.lookupOutput({
  *             map: basic,
  *             key: "storage_bucket",
  *             "default": "",
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *         messagingSenderId: std.lookupOutput({
  *             map: basic,
  *             key: "messaging_sender_id",
  *             "default": "",
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *         measurementId: std.lookupOutput({
  *             map: basic,
  *             key: "measurement_id",
  *             "default": "",
- *         }).apply(invoke => invoke.result),
+ *         }).result,
  *     }),
  * });
  * ```

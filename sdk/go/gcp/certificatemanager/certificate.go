@@ -64,8 +64,8 @@ import (
 //						instance2.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID(),
-//						instance2.ID(),
+//						instance.ID().ToIDOutput().ToStringOutput(),
+//						instance2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -147,7 +147,7 @@ import (
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 //					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
+//						CaPool: pool.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Lifetime:                 pulumi.String("1814400s"),
@@ -167,7 +167,7 @@ import (
 //					Domains: pulumi.StringArray{
 //						pulumi.String("terraform.subdomain1.com"),
 //					},
-//					IssuanceConfig: issuanceconfig.ID(),
+//					IssuanceConfig: issuanceconfig.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -336,7 +336,7 @@ import (
 //				Description: pulumi.String("sample description for the certificate issuanceConfigs"),
 //				CertificateAuthorityConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigArgs{
 //					CertificateAuthorityServiceConfig: &certificatemanager.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{
-//						CaPool: pool.ID(),
+//						CaPool: pool.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Lifetime:                 pulumi.String("1814400s"),
@@ -356,7 +356,7 @@ import (
 //					Domains: pulumi.StringArray{
 //						pulumi.String("terraform.subdomain1.com"),
 //					},
-//					IssuanceConfig: issuanceconfig.ID(),
+//					IssuanceConfig: issuanceconfig.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -407,8 +407,8 @@ import (
 //						instance2.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID(),
-//						instance2.ID(),
+//						instance.ID().ToIDOutput().ToStringOutput(),
+//						instance2.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})
@@ -452,7 +452,7 @@ import (
 //						instance.Domain,
 //					},
 //					DnsAuthorizations: pulumi.StringArray{
-//						instance.ID(),
+//						instance.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //			})

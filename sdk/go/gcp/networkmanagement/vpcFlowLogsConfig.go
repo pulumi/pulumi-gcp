@@ -58,7 +58,7 @@ import (
 //				Name:                   pulumi.String("basic-interconnect-test-id"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID(),
+//				Router:                 router.ID().ToIDOutput().ToStringOutput(),
 //				Mtu:                    pulumi.String("1500"),
 //			})
 //			if err != nil {
@@ -109,7 +109,7 @@ import (
 //			}
 //			targetGateway, err := compute.NewVPNGateway(ctx, "target_gateway", &compute.VPNGatewayArgs{
 //				Name:    pulumi.String("basic-test-gateway"),
-//				Network: network.ID(),
+//				Network: network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -124,7 +124,7 @@ import (
 //				Name:       pulumi.String("basic-test-fresp"),
 //				IpProtocol: pulumi.String("ESP"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -134,7 +134,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -144,7 +144,7 @@ import (
 //				IpProtocol: pulumi.String("UDP"),
 //				PortRange:  pulumi.String("4500"),
 //				IpAddress:  vpnStaticIp.Address,
-//				Target:     targetGateway.ID(),
+//				Target:     targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -153,7 +153,7 @@ import (
 //				Name:             pulumi.String("basic-test-tunnel"),
 //				PeerIp:           pulumi.String("15.0.0.120"),
 //				SharedSecret:     pulumi.String("a secret message"),
-//				TargetVpnGateway: targetGateway.ID(),
+//				TargetVpnGateway: targetGateway.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				frEsp,
 //				frUdp500,
@@ -177,7 +177,7 @@ import (
 //				Network:          network.Name,
 //				DestRange:        pulumi.String("15.0.0.0/24"),
 //				Priority:         pulumi.Int(1000),
-//				NextHopVpnTunnel: tunnel.ID(),
+//				NextHopVpnTunnel: tunnel.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -263,7 +263,7 @@ import (
 //				Name:        pulumi.String("basic-subnet-test-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

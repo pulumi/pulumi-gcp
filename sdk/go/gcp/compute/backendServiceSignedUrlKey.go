@@ -66,7 +66,7 @@ import (
 //				Name: pulumi.String("my-webservers"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
-//						InstanceTemplate: webserver.ID(),
+//						InstanceTemplate: webserver.ID().ToIDOutput().ToStringOutput(),
 //						Name:             pulumi.String("primary"),
 //					},
 //				},
@@ -98,7 +98,7 @@ import (
 //						Group: webservers.InstanceGroup,
 //					},
 //				},
-//				HealthChecks: _default.ID(),
+//				HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

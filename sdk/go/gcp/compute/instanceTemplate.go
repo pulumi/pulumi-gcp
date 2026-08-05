@@ -95,7 +95,7 @@ import (
 //						SourceImage:      pulumi.String("debian-cloud/debian-11"),
 //						AutoDelete:       pulumi.Bool(true),
 //						Boot:             pulumi.Bool(true),
-//						ResourcePolicies: dailyBackup.ID(),
+//						ResourcePolicies: dailyBackup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&compute.InstanceTemplateDiskArgs{
 //						Source:     foobar.Name,

@@ -57,7 +57,7 @@ import (
 //				Name:                   pulumi.String("on-prem-attachment"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 foobar.ID(),
+//				Router:                 foobar.ID().ToIDOutput().ToStringOutput(),
 //				Mtu:                    pulumi.String("1500"),
 //				Labels: pulumi.StringMap{
 //					"mykey": pulumi.String("myvalue"),
@@ -118,7 +118,7 @@ import (
 //				Name:                   pulumi.String("test-interconnect-attachment"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID(),
+//				Router:                 router.ID().ToIDOutput().ToStringOutput(),
 //				Encryption:             pulumi.String("IPSEC"),
 //				IpsecInternalAddresses: pulumi.StringArray{
 //					address.SelfLink,
@@ -167,7 +167,7 @@ import (
 //				Name:                   pulumi.String("test-custom-ranges-interconnect-attachment"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 foobar.ID(),
+//				Router:                 foobar.ID().ToIDOutput().ToStringOutput(),
 //				Mtu:                    pulumi.String("1500"),
 //				StackType:              pulumi.String("IPV4_IPV6"),
 //				Labels: pulumi.StringMap{

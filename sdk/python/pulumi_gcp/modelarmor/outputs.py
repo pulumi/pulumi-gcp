@@ -37,6 +37,7 @@ __all__ = [
     'TemplateFilterConfigSdpSettingsAdvancedConfig',
     'TemplateFilterConfigSdpSettingsBasicConfig',
     'TemplateTemplateMetadata',
+    'TemplateTemplateMetadataFilterVersionSelector',
     'TemplateTemplateMetadataMultiLanguageDetection',
 ]
 
@@ -1196,6 +1197,8 @@ class TemplateTemplateMetadata(dict):
             suggest = "custom_prompt_safety_error_message"
         elif key == "enforcementType":
             suggest = "enforcement_type"
+        elif key == "filterVersionSelector":
+            suggest = "filter_version_selector"
         elif key == "ignorePartialInvocationFailures":
             suggest = "ignore_partial_invocation_failures"
         elif key == "logSanitizeOperations":
@@ -1222,6 +1225,7 @@ class TemplateTemplateMetadata(dict):
                  custom_prompt_safety_error_code: Optional[_builtins.int] = None,
                  custom_prompt_safety_error_message: Optional[_builtins.str] = None,
                  enforcement_type: Optional[_builtins.str] = None,
+                 filter_version_selector: Optional['outputs.TemplateTemplateMetadataFilterVersionSelector'] = None,
                  ignore_partial_invocation_failures: Optional[_builtins.bool] = None,
                  log_sanitize_operations: Optional[_builtins.bool] = None,
                  log_template_operations: Optional[_builtins.bool] = None,
@@ -1238,6 +1242,9 @@ class TemplateTemplateMetadata(dict):
         :param _builtins.str enforcement_type: Possible values:
                INSPECT_ONLY
                INSPECT_AND_BLOCK
+        :param 'TemplateTemplateMetadataFilterVersionSelectorArgs' filter_version_selector: Selects the filter version to use for this template. Set exactly one of
+               'alias' or 'version'.
+               Structure is documented below.
         :param _builtins.bool ignore_partial_invocation_failures: If true, partial detector failures should be ignored.
         :param _builtins.bool log_sanitize_operations: If true, log sanitize operations.
         :param _builtins.bool log_template_operations: If true, log template crud operations.
@@ -1254,6 +1261,8 @@ class TemplateTemplateMetadata(dict):
             pulumi.set(__self__, "custom_prompt_safety_error_message", custom_prompt_safety_error_message)
         if enforcement_type is not None:
             pulumi.set(__self__, "enforcement_type", enforcement_type)
+        if filter_version_selector is not None:
+            pulumi.set(__self__, "filter_version_selector", filter_version_selector)
         if ignore_partial_invocation_failures is not None:
             pulumi.set(__self__, "ignore_partial_invocation_failures", ignore_partial_invocation_failures)
         if log_sanitize_operations is not None:
@@ -1310,6 +1319,16 @@ class TemplateTemplateMetadata(dict):
         return pulumi.get(self, "enforcement_type")
 
     @_builtins.property
+    @pulumi.getter(name="filterVersionSelector")
+    def filter_version_selector(self) -> Optional['outputs.TemplateTemplateMetadataFilterVersionSelector']:
+        """
+        Selects the filter version to use for this template. Set exactly one of
+        'alias' or 'version'.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "filter_version_selector")
+
+    @_builtins.property
     @pulumi.getter(name="ignorePartialInvocationFailures")
     def ignore_partial_invocation_failures(self) -> Optional[_builtins.bool]:
         """
@@ -1341,6 +1360,47 @@ class TemplateTemplateMetadata(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "multi_language_detection")
+
+
+@pulumi.output_type
+class TemplateTemplateMetadataFilterVersionSelector(dict):
+    def __init__(__self__, *,
+                 alias: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str alias: A predefined filter version alias. The template automatically follows the
+               version this alias points to.
+               Possible values:
+               FILTER_VERSION_ALIAS_STABLE
+               FILTER_VERSION_ALIAS_LATEST
+        :param _builtins.str version: Pins the template to a specific, immutable filter version. Expected
+               format is a case-sensitive string such as 'v1' or 'v2'.
+        """
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        A predefined filter version alias. The template automatically follows the
+        version this alias points to.
+        Possible values:
+        FILTER_VERSION_ALIAS_STABLE
+        FILTER_VERSION_ALIAS_LATEST
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.str]:
+        """
+        Pins the template to a specific, immutable filter version. Expected
+        format is a case-sensitive string such as 'v1' or 'v2'.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

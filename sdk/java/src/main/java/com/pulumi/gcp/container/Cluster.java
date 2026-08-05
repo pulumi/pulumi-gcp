@@ -53,6 +53,7 @@ import com.pulumi.gcp.container.outputs.ClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.ClusterRbacBindingConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.ClusterRollbackSafeUpgrade;
 import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecretSyncConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
@@ -200,6 +201,91 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * 
+ * ### Rollback-Safe (Two-Step) Upgrades
+ * 
+ * To perform a rollback-safe (two-step) control plane upgrade, you first specify a soak duration in the `rollbackSafeUpgrade` block when changing the `minMasterVersion`. This upgrades the master but keeps the control plane emulating the older version.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("my-gke-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .minMasterVersion("1.32.4-gke.200")
+ *             .rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs.builder()
+ *                 .controlPlaneSoakDuration("604800s")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * After the soak period concludes, you can declaratively complete the upgrade by specifying the target `desiredEmulatedVersion`.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Cluster("primary", ClusterArgs.builder()
+ *             .name("my-gke-cluster")
+ *             .location("us-central1")
+ *             .initialNodeCount(1)
+ *             .minMasterVersion("1.32.4-gke.200")
+ *             .rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs.builder()
+ *                 .controlPlaneSoakDuration("604800s")
+ *                 .build())
+ *             .desiredEmulatedVersion("1.32")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * &gt; **Note:** If you omit the `controlPlaneSoakDuration` field completely, GKE bypasses the two-step feature and performs a standard one-step upgrade. You must specify a duration between 6 hours and 7 days.
  * 
  * ### Autopilot
  * 
@@ -639,6 +725,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     * 
+     */
+    @Export(name="desiredEmulatedVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> desiredEmulatedVersion;
+
+    /**
+     * @return The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     * 
+     */
+    public Output<Optional<String>> desiredEmulatedVersion() {
+        return Codegen.optional(this.desiredEmulatedVersion);
+    }
+    /**
      * Disable L4 load balancer VPC firewalls to enable firewall policies.
      * 
      */
@@ -679,6 +779,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * The current emulated Kubernetes version running on the GKE cluster control plane.
+     * 
+     */
+    @Export(name="emulatedVersion", refs={String.class}, tree="[0]")
+    private Output<String> emulatedVersion;
+
+    /**
+     * @return The current emulated Kubernetes version running on the GKE cluster control plane.
+     * 
+     */
+    public Output<String> emulatedVersion() {
+        return this.emulatedVersion;
     }
     /**
      * Enable Autopilot for this cluster. Defaults to `false`.
@@ -1757,6 +1871,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterResourceUsageExportConfig>> resourceUsageExportConfig() {
         return Codegen.optional(this.resourceUsageExportConfig);
+    }
+    /**
+     * Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     * 
+     */
+    @Export(name="rollbackSafeUpgrade", refs={ClusterRollbackSafeUpgrade.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterRollbackSafeUpgrade> rollbackSafeUpgrade;
+
+    /**
+     * @return Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterRollbackSafeUpgrade>> rollbackSafeUpgrade() {
+        return Codegen.optional(this.rollbackSafeUpgrade);
     }
     /**
      * Configuration for the

@@ -99,7 +99,7 @@ import (
 //				Description:        pulumi.String("Contains beautiful images"),
 //				BucketName:         imageBackendBucket.Name,
 //				EnableCdn:          pulumi.Bool(true),
-//				EdgeSecurityPolicy: policy.ID(),
+//				EdgeSecurityPolicy: policy.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

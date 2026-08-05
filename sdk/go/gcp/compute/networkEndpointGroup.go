@@ -60,15 +60,15 @@ import (
 //				Name:        pulumi.String("neg-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
 //				Name:        pulumi.String("my-lb-neg"),
-//				Network:     _default.ID(),
-//				Subnetwork:  defaultSubnetwork.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				DefaultPort: pulumi.Int(90),
 //				Zone:        pulumi.String("us-central1-a"),
 //			})
@@ -102,7 +102,7 @@ import (
 //			}
 //			neg, err := compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
 //				Name:                pulumi.String("my-lb-neg"),
-//				Network:             _default.ID(),
+//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
 //				DefaultPort:         pulumi.Int(90),
 //				Zone:                pulumi.String("us-central1-a"),
 //				NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),

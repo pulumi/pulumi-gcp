@@ -48,6 +48,7 @@ import com.pulumi.gcp.container.inputs.ClusterProtectConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterRbacBindingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretSyncConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecurityPostureConfigArgs;
@@ -456,6 +457,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     * 
+     */
+    @Import(name="desiredEmulatedVersion")
+    private @Nullable Output<String> desiredEmulatedVersion;
+
+    /**
+     * @return The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     * 
+     */
+    public Optional<Output<String>> desiredEmulatedVersion() {
+        return Optional.ofNullable(this.desiredEmulatedVersion);
     }
 
     /**
@@ -1561,6 +1577,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     * 
+     */
+    @Import(name="rollbackSafeUpgrade")
+    private @Nullable Output<ClusterRollbackSafeUpgradeArgs> rollbackSafeUpgrade;
+
+    /**
+     * @return Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterRollbackSafeUpgradeArgs>> rollbackSafeUpgrade() {
+        return Optional.ofNullable(this.rollbackSafeUpgrade);
+    }
+
+    /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
      * Structure is documented below.
@@ -1767,6 +1798,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.desiredEmulatedVersion = $.desiredEmulatedVersion;
         this.disableL4LbFirewallReconciliation = $.disableL4LbFirewallReconciliation;
         this.dnsConfig = $.dnsConfig;
         this.enableAutopilot = $.enableAutopilot;
@@ -1825,6 +1857,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.removeDefaultNodePool = $.removeDefaultNodePool;
         this.resourceLabels = $.resourceLabels;
         this.resourceUsageExportConfig = $.resourceUsageExportConfig;
+        this.rollbackSafeUpgrade = $.rollbackSafeUpgrade;
         this.secretManagerConfig = $.secretManagerConfig;
         this.secretSyncConfig = $.secretSyncConfig;
         this.securityPostureConfig = $.securityPostureConfig;
@@ -2382,6 +2415,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param desiredEmulatedVersion The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredEmulatedVersion(@Nullable Output<String> desiredEmulatedVersion) {
+            $.desiredEmulatedVersion = desiredEmulatedVersion;
+            return this;
+        }
+
+        /**
+         * @param desiredEmulatedVersion The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredEmulatedVersion(String desiredEmulatedVersion) {
+            return desiredEmulatedVersion(Output.of(desiredEmulatedVersion));
         }
 
         /**
@@ -3866,6 +3920,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceUsageExportConfig(ClusterResourceUsageExportConfigArgs resourceUsageExportConfig) {
             return resourceUsageExportConfig(Output.of(resourceUsageExportConfig));
+        }
+
+        /**
+         * @param rollbackSafeUpgrade Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rollbackSafeUpgrade(@Nullable Output<ClusterRollbackSafeUpgradeArgs> rollbackSafeUpgrade) {
+            $.rollbackSafeUpgrade = rollbackSafeUpgrade;
+            return this;
+        }
+
+        /**
+         * @param rollbackSafeUpgrade Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs rollbackSafeUpgrade) {
+            return rollbackSafeUpgrade(Output.of(rollbackSafeUpgrade));
         }
 
         /**

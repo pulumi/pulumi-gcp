@@ -50,7 +50,7 @@ import (
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Network: _default.ID(),
+//						Network: _default.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Name:        pulumi.String("my-instance"),
@@ -66,7 +66,7 @@ import (
 //			}
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange: pulumi.String("10.2.0.0/16"),
 //			})
 //			if err != nil {
@@ -85,7 +85,7 @@ import (
 //			}
 //			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 //				Name:         pulumi.String("my-service"),
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -95,10 +95,10 @@ import (
 //				IsMirroringCollector: pulumi.Bool(true),
 //				IpProtocol:           pulumi.String("TCP"),
 //				LoadBalancingScheme:  pulumi.String("INTERNAL"),
-//				BackendService:       defaultRegionBackendService.ID(),
+//				BackendService:       defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //				AllPorts:             pulumi.Bool(true),
-//				Network:              _default.ID(),
-//				Subnetwork:           defaultSubnetwork.ID(),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				NetworkTier:          pulumi.String("PREMIUM"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				defaultSubnetwork,
@@ -111,10 +111,10 @@ import (
 //				Description: pulumi.String("bar"),
 //				Enable:      pulumi.String("TRUE"),
 //				Network: &compute.PacketMirroringNetworkArgs{
-//					Url: _default.ID(),
+//					Url: _default.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				CollectorIlb: &compute.PacketMirroringCollectorIlbArgs{
-//					Url: defaultForwardingRule.ID(),
+//					Url: defaultForwardingRule.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				MirroredResources: &compute.PacketMirroringMirroredResourcesArgs{
 //					Tags: pulumi.StringArray{
@@ -122,12 +122,12 @@ import (
 //					},
 //					Instances: compute.PacketMirroringMirroredResourcesInstanceArray{
 //						&compute.PacketMirroringMirroredResourcesInstanceArgs{
-//							Url: mirror.ID(),
+//							Url: mirror.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //					Subnetworks: compute.PacketMirroringMirroredResourcesSubnetworkArray{
 //						&compute.PacketMirroringMirroredResourcesSubnetworkArgs{
-//							Url: defaultSubnetwork.ID(),
+//							Url: defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},

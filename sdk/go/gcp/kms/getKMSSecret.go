@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = kms.NewCryptoKey(ctx, "my_crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("my-crypto-key"),
-//				KeyRing: myKeyRing.ID(),
+//				KeyRing: myKeyRing.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

@@ -17,7 +17,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     public static final ClusterBinaryAuthorizationArgs Empty = new ClusterBinaryAuthorizationArgs();
 
     /**
-     * Enable Binary Authorization for this cluster.
+     * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -28,7 +28,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable Binary Authorization for this cluster.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -40,14 +40,16 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Mode of operation for Binary Authorization policy evaluation.
+     * Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
      * 
      */
     @Import(name="evaluationMode")
     private @Nullable Output<String> evaluationMode;
 
     /**
-     * @return Mode of operation for Binary Authorization policy evaluation.
+     * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
      * 
      */
     public Optional<Output<String>> evaluationMode() {
@@ -80,7 +82,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster.
+         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          * 
          * @return builder
          * 
@@ -95,7 +97,7 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable Binary Authorization for this cluster.
+         * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
          * 
          * @return builder
          * 
@@ -109,7 +111,8 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation.
+         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          * 
          * @return builder
          * 
@@ -120,7 +123,8 @@ public final class ClusterBinaryAuthorizationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation.
+         * @param evaluationMode Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+         * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
          * 
          * @return builder
          * 

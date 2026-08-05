@@ -58,11 +58,11 @@ import (
 //			_, err = networkservices.NewMulticastDomain(ctx, "multicast_domain_a", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-mdg-domain-a"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
-//				MulticastDomainGroup: mdgTest.ID(),
+//				MulticastDomainGroup: mdgTest.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				network,
 //			}))
@@ -72,11 +72,11 @@ import (
 //			_, err = networkservices.NewMulticastDomain(ctx, "multicast_domain_b", &networkservices.MulticastDomainArgs{
 //				MulticastDomainId: pulumi.String("test-mdg-domain-b"),
 //				Location:          pulumi.String("global"),
-//				AdminNetwork:      network.ID(),
+//				AdminNetwork:      network.ID().ToIDOutput().ToStringOutput(),
 //				ConnectionConfig: &networkservices.MulticastDomainConnectionConfigArgs{
 //					ConnectionType: pulumi.String("SAME_VPC"),
 //				},
-//				MulticastDomainGroup: mdgTest.ID(),
+//				MulticastDomainGroup: mdgTest.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				network,
 //			}))

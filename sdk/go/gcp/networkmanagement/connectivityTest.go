@@ -58,7 +58,7 @@ import (
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Network: vpc.ID(),
+//						Network: vpc.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Name:        pulumi.String("source-vm"),
@@ -78,7 +78,7 @@ import (
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
-//						Network: vpc.ID(),
+//						Network: vpc.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Name:        pulumi.String("dest-vm"),
@@ -95,10 +95,10 @@ import (
 //			_, err = networkmanagement.NewConnectivityTest(ctx, "instance-test", &networkmanagement.ConnectivityTestArgs{
 //				Name: pulumi.String("conn-test-instances"),
 //				Source: &networkmanagement.ConnectivityTestSourceArgs{
-//					Instance: source.ID(),
+//					Instance: source.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Destination: &networkmanagement.ConnectivityTestDestinationArgs{
-//					Instance: destination.ID(),
+//					Instance: destination.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Protocol: pulumi.String("TCP"),
 //				Labels: pulumi.StringMap{
@@ -138,14 +138,14 @@ import (
 //				Name:        pulumi.String("connectivity-vpc-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     vpc.ID(),
+//				Network:     vpc.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			source_addr, err := compute.NewAddress(ctx, "source-addr", &compute.AddressArgs{
 //				Name:        pulumi.String("src-addr"),
-//				Subnetwork:  subnet.ID(),
+//				Subnetwork:  subnet.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Address:     pulumi.String("10.0.42.42"),
 //				Region:      pulumi.String("us-central1"),
@@ -155,7 +155,7 @@ import (
 //			}
 //			dest_addr, err := compute.NewAddress(ctx, "dest-addr", &compute.AddressArgs{
 //				Name:        pulumi.String("dest-addr"),
-//				Subnetwork:  subnet.ID(),
+//				Subnetwork:  subnet.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Address:     pulumi.String("10.0.43.43"),
 //				Region:      pulumi.String("us-central1"),
@@ -168,13 +168,13 @@ import (
 //				Source: &networkmanagement.ConnectivityTestSourceArgs{
 //					IpAddress:   source_addr.Address,
 //					ProjectId:   source_addr.Project,
-//					Network:     vpc.ID(),
+//					Network:     vpc.ID().ToIDOutput().ToStringOutput(),
 //					NetworkType: pulumi.String("GCP_NETWORK"),
 //				},
 //				Destination: &networkmanagement.ConnectivityTestDestinationArgs{
 //					IpAddress: dest_addr.Address,
 //					ProjectId: dest_addr.Project,
-//					Network:   vpc.ID(),
+//					Network:   vpc.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Protocol: pulumi.String("UDP"),
 //			})

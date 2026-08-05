@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			tool, err := diagflow.NewCxTool(ctx, "tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("open-api-tool"),
 //				Description: pulumi.String("Example Description"),
 //				OpenApiSpec: &diagflow.CxToolOpenApiSpecArgs{
@@ -136,7 +136,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxToolVersion(ctx, "open_api_tool_version", &diagflow.CxToolVersionArgs{
-//				Parent:      tool.ID(),
+//				Parent:      tool.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Open API Tool Version"),
 //				Tool: &diagflow.CxToolVersionToolArgs{
 //					DisplayName: pulumi.String("open-api-tool"),
@@ -268,7 +268,7 @@ import (
 //				return err
 //			}
 //			tool, err := diagflow.NewCxTool(ctx, "tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("datastore-tool"),
 //				Description: pulumi.String("Example Description"),
 //				DataStoreSpec: &diagflow.CxToolDataStoreSpecArgs{
@@ -291,7 +291,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxToolVersion(ctx, "data_store_tool_version", &diagflow.CxToolVersionArgs{
-//				Parent:      tool.ID(),
+//				Parent:      tool.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Data Store Tool Version"),
 //				Tool: &diagflow.CxToolVersionToolArgs{
 //					DisplayName: pulumi.String("datastore-tool"),
@@ -346,7 +346,7 @@ import (
 //				return err
 //			}
 //			tool, err := diagflow.NewCxTool(ctx, "tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("function-tool"),
 //				Description: pulumi.String("Example Description"),
 //				FunctionSpec: &diagflow.CxToolFunctionSpecArgs{
@@ -383,7 +383,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxToolVersion(ctx, "function_tool_version", &diagflow.CxToolVersionArgs{
-//				Parent:      tool.ID(),
+//				Parent:      tool.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Function Tool Version"),
 //				Tool: &diagflow.CxToolVersionToolArgs{
 //					DisplayName: pulumi.String("function-tool"),
@@ -522,7 +522,7 @@ import (
 //				return err
 //			}
 //			tool, err := diagflow.NewCxTool(ctx, "tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("connector-tool"),
 //				Description: pulumi.String("Example Description"),
 //				ConnectorSpec: &diagflow.CxToolConnectorSpecArgs{
@@ -554,7 +554,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxToolVersion(ctx, "connector_tool_version", &diagflow.CxToolVersionArgs{
-//				Parent:      tool.ID(),
+//				Parent:      tool.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Connector Tool Version"),
 //				Tool: &diagflow.CxToolVersionToolArgs{
 //					DisplayName: pulumi.String("connector-tool"),

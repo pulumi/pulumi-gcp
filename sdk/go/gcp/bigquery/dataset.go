@@ -99,7 +99,7 @@ import (
 //			}
 //			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
+//				KeyRing: keyRing.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -111,7 +111,7 @@ import (
 //				Location:                 pulumi.String("US"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DefaultEncryptionConfiguration: &bigquery.DatasetDefaultEncryptionConfigurationArgs{
-//					KmsKeyName: cryptoKey.ID(),
+//					KmsKeyName: cryptoKey.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {
@@ -228,18 +228,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"typeKind": "INT64",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string][]map[string]interface{}{
 //				"columns": []map[string]interface{}{
 //					map[string]interface{}{
 //						"name": "value",
-//						"type": map[string]interface{}{
+//						"type": map[string]string{
 //							"typeKind": "INT64",
 //						},
 //					},

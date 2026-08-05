@@ -126,7 +126,7 @@ import (
 //			notification, err := storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
 //				Bucket:        testBucket.Name,
 //				PayloadFormat: pulumi.String("JSON_API_V1"),
-//				Topic:         testTopic.ID(),
+//				Topic:         testTopic.ID().ToIDOutput().ToStringOutput(),
 //				EventTypes: pulumi.StringArray{
 //					pulumi.String("OBJECT_FINALIZE"),
 //				},

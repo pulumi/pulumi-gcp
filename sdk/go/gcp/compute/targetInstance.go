@@ -68,7 +68,7 @@ import (
 //			}
 //			_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
 //				Name:     pulumi.String("target"),
-//				Instance: target_vm.ID(),
+//				Instance: target_vm.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -125,7 +125,7 @@ import (
 //			}
 //			_, err = compute.NewTargetInstance(ctx, "custom_network", &compute.TargetInstanceArgs{
 //				Name:     pulumi.String("custom-network"),
-//				Instance: target_vmInstance.ID(),
+//				Instance: target_vmInstance.ID().ToIDOutput().ToStringOutput(),
 //				Network:  pulumi.String(target_vm.SelfLink),
 //			})
 //			if err != nil {
@@ -161,7 +161,7 @@ import (
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:                    pulumi.String("custom-default-subnet"),
 //				IpCidrRange:             pulumi.String("10.1.2.0/24"),
-//				Network:                 _default.ID(),
+//				Network:                 _default.ID().ToIDOutput().ToStringOutput(),
 //				PrivateIpv6GoogleAccess: pulumi.String("DISABLE_GOOGLE_ACCESS"),
 //				Purpose:                 pulumi.String("PRIVATE"),
 //				Region:                  pulumi.String("southamerica-west1"),
@@ -233,7 +233,7 @@ import (
 //			_, err = compute.NewTargetInstance(ctx, "default", &compute.TargetInstanceArgs{
 //				Name:           pulumi.String("target-instance"),
 //				Zone:           pulumi.String("southamerica-west1-a"),
-//				Instance:       target_vm.ID(),
+//				Instance:       target_vm.ID().ToIDOutput().ToStringOutput(),
 //				SecurityPolicy: regionsecuritypolicy.SelfLink,
 //			})
 //			if err != nil {

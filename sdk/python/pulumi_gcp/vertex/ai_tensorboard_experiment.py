@@ -533,7 +533,7 @@ class AiTensorboardExperiment(pulumi.CustomResource):
         tensorboard_experiment = gcp.vertex.AiTensorboardExperiment("tensorboard_experiment",
             location="us-central1",
             display_name="sample experiment",
-            tensorboard=std.basename_output(input=tensorboard.id).apply(lambda invoke: invoke.result),
+            tensorboard=std.basename_output(input=tensorboard.id).result,
             tensorboard_experiment_id="experiment",
             source="a custom training job",
             labels={
@@ -622,7 +622,7 @@ class AiTensorboardExperiment(pulumi.CustomResource):
         tensorboard_experiment = gcp.vertex.AiTensorboardExperiment("tensorboard_experiment",
             location="us-central1",
             display_name="sample experiment",
-            tensorboard=std.basename_output(input=tensorboard.id).apply(lambda invoke: invoke.result),
+            tensorboard=std.basename_output(input=tensorboard.id).result,
             tensorboard_experiment_id="experiment",
             source="a custom training job",
             labels={

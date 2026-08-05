@@ -49,7 +49,7 @@ import (
 //			_, err = compute.NewHaVpnGateway(ctx, "ha_gateway1", &compute.HaVpnGatewayArgs{
 //				Region:  pulumi.String("us-central1"),
 //				Name:    pulumi.String("ha-vpn-1"),
-//				Network: network1.ID(),
+//				Network: network1.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //			_, err = compute.NewHaVpnGateway(ctx, "ha_gateway1", &compute.HaVpnGatewayArgs{
 //				Region:    pulumi.String("us-central1"),
 //				Name:      pulumi.String("ha-vpn-1"),
-//				Network:   network1.ID(),
+//				Network:   network1.ID().ToIDOutput().ToStringOutput(),
 //				StackType: pulumi.String("IPV4_IPV6"),
 //				Labels: pulumi.StringMap{
 //					"mykey": pulumi.String("myvalue"),
@@ -144,7 +144,7 @@ import (
 //				Name:                   pulumi.String("test-interconnect-attachment1"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID(),
+//				Router:                 router.ID().ToIDOutput().ToStringOutput(),
 //				Encryption:             pulumi.String("IPSEC"),
 //				IpsecInternalAddresses: pulumi.StringArray{
 //					address1.SelfLink,
@@ -168,7 +168,7 @@ import (
 //				Name:                   pulumi.String("test-interconnect-attachment2"),
 //				EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_2"),
 //				Type:                   pulumi.String("PARTNER"),
-//				Router:                 router.ID(),
+//				Router:                 router.ID().ToIDOutput().ToStringOutput(),
 //				Encryption:             pulumi.String("IPSEC"),
 //				IpsecInternalAddresses: pulumi.StringArray{
 //					address2.SelfLink,
@@ -179,7 +179,7 @@ import (
 //			}
 //			_, err = compute.NewHaVpnGateway(ctx, "vpn-gateway", &compute.HaVpnGatewayArgs{
 //				Name:    pulumi.String("test-ha-vpngw"),
-//				Network: network.ID(),
+//				Network: network.ID().ToIDOutput().ToStringOutput(),
 //				VpnInterfaces: compute.HaVpnGatewayVpnInterfaceArray{
 //					&compute.HaVpnGatewayVpnInterfaceArgs{
 //						Id:                     pulumi.Int(0),

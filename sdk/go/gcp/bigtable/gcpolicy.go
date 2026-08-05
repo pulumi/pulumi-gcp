@@ -161,7 +161,7 @@ import (
 //			}
 //			table, err := bigtable.NewTable(ctx, "table", &bigtable.TableArgs{
 //				Name:         pulumi.String("your-table"),
-//				InstanceName: instance.ID(),
+//				InstanceName: instance.ID().ToIDOutput().ToStringOutput(),
 //				ColumnFamilies: bigtable.TableColumnFamilyArray{
 //					&bigtable.TableColumnFamilyArgs{
 //						Family: pulumi.String("cf1"),
@@ -172,7 +172,7 @@ import (
 //				return err
 //			}
 //			_, err = bigtable.NewGCPolicy(ctx, "policy", &bigtable.GCPolicyArgs{
-//				InstanceName:   instance.ID(),
+//				InstanceName:   instance.ID().ToIDOutput().ToStringOutput(),
 //				Table:          table.Name,
 //				ColumnFamily:   pulumi.String("cf1"),
 //				DeletionPolicy: pulumi.String("ABANDON"),

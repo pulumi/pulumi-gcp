@@ -93,7 +93,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				BackupPlanId: pulumi.String("bp-bpa-test"),
 //				ResourceType: pulumi.String("compute.googleapis.com/Instance"),
-//				BackupVault:  bv1.ID(),
+//				BackupVault:  bv1.ID().ToIDOutput().ToStringOutput(),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 //						RuleId:              pulumi.String("rule-1"),
@@ -117,7 +117,7 @@ import (
 //				Location:                pulumi.String("us-central1"),
 //				ResourceType:            pulumi.String("compute.googleapis.com/Instance"),
 //				BackupPlanAssociationId: pulumi.String("my-bpa"),
-//				Resource:                myinstance.ID(),
+//				Resource:                myinstance.ID().ToIDOutput().ToStringOutput(),
 //				BackupPlan:              bp1.Name,
 //			})
 //			if err != nil {
@@ -176,7 +176,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				BackupPlanId: pulumi.String("bp-bpa-filestore"),
 //				ResourceType: pulumi.String("file.googleapis.com/Instance"),
-//				BackupVault:  myBackupVault.ID(),
+//				BackupVault:  myBackupVault.ID().ToIDOutput().ToStringOutput(),
 //				BackupRules: backupdisasterrecovery.BackupPlanBackupRuleArray{
 //					&backupdisasterrecovery.BackupPlanBackupRuleArgs{
 //						RuleId:              pulumi.String("rule-1"),
@@ -200,7 +200,7 @@ import (
 //				Location:                pulumi.String("us-central1"),
 //				ResourceType:            pulumi.String("file.googleapis.com/Instance"),
 //				BackupPlanAssociationId: pulumi.String("my-bpa-filestore"),
-//				Resource:                myFilestoreInstance.ID(),
+//				Resource:                myFilestoreInstance.ID().ToIDOutput().ToStringOutput(),
 //				BackupPlan:              myBackupPlan.Name,
 //			})
 //			if err != nil {

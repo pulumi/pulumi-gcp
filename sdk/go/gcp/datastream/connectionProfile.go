@@ -83,7 +83,7 @@ import (
 //				Name:        pulumi.String("my-subnetwork"),
 //				IpCidrRange: pulumi.String("10.1.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -93,7 +93,7 @@ import (
 //				Location:            pulumi.String("us-central1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
 //				VpcPeeringConfig: &datastream.PrivateConnectionVpcPeeringConfigArgs{
-//					Vpc:    _default.ID(),
+//					Vpc:    _default.ID().ToIDOutput().ToStringOutput(),
 //					Subnet: pulumi.String("10.0.0.0/29"),
 //				},
 //			})
@@ -159,9 +159,7 @@ import (
 //				},
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
-//						Network: privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-//							return vpcPeeringConfig.Vpc, nil
-//						}).(pulumi.StringPtrOutput),
+//						Network:    privateConnection.VpcPeeringConfig.Vpc(),
 //						Subnetwork: defaultSubnetwork.SelfLink,
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
 //							&compute.InstanceNetworkInterfaceAccessConfigArgs{
@@ -200,10 +198,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFirewall(ctx, "rules", &compute.FirewallArgs{
-//				Name: pulumi.String("ingress-rule"),
-//				Network: pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-//					return vpcPeeringConfig.Vpc, nil
-//				}).(pulumi.StringPtrOutput)),
+//				Name:        pulumi.String("ingress-rule"),
+//				Network:     privateConnection.VpcPeeringConfig.Vpc(),
 //				Description: pulumi.String("Allow traffic into NAT VM"),
 //				Direction:   pulumi.String("INGRESS"),
 //				Allows: compute.FirewallAllowArray{
@@ -215,9 +211,7 @@ import (
 //					},
 //				},
 //				SourceRanges: pulumi.StringArray{
-//					pulumi.String(privateConnection.VpcPeeringConfig.ApplyT(func(vpcPeeringConfig datastream.PrivateConnectionVpcPeeringConfig) (*string, error) {
-//						return vpcPeeringConfig.Subnet, nil
-//					}).(pulumi.StringPtrOutput)),
+//					privateConnection.VpcPeeringConfig.Subnet(),
 //				},
 //			})
 //			if err != nil {
@@ -237,7 +231,7 @@ import (
 //					Port:     pulumi.Int(5432),
 //				},
 //				PrivateConnectivity: &datastream.ConnectionProfilePrivateConnectivityArgs{
-//					PrivateConnection: privateConnection.ID(),
+//					PrivateConnection: privateConnection.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

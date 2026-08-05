@@ -55,8 +55,8 @@ import (
 //			}
 //			peeringPrimary, err := compute.NewNetworkPeering(ctx, "peering_primary", &compute.NetworkPeeringArgs{
 //				Name:                           pulumi.String("primary-peering"),
-//				Network:                        networkPrimary.ID(),
-//				PeerNetwork:                    networkSecondary.ID(),
+//				Network:                        networkPrimary.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork:                    networkSecondary.ID().ToIDOutput().ToStringOutput(),
 //				ImportCustomRoutes:             pulumi.Bool(true),
 //				ExportCustomRoutes:             pulumi.Bool(true),
 //				ImportSubnetRoutesWithPublicIp: pulumi.Bool(true),
@@ -78,8 +78,8 @@ import (
 //			}
 //			_, err = compute.NewNetworkPeering(ctx, "peering_secondary", &compute.NetworkPeeringArgs{
 //				Name:        pulumi.String("secondary-peering"),
-//				Network:     networkSecondary.ID(),
-//				PeerNetwork: networkPrimary.ID(),
+//				Network:     networkSecondary.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork: networkPrimary.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -120,8 +120,8 @@ import (
 //			}
 //			peeringGkeToWorkload, err := compute.NewNetworkPeering(ctx, "peering_gke_to_workload", &compute.NetworkPeeringArgs{
 //				Name:               pulumi.String("peering-gke-to-workload"),
-//				Network:            gkeNetwork.ID(),
-//				PeerNetwork:        workloadNetwork.ID(),
+//				Network:            gkeNetwork.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork:        workloadNetwork.ID().ToIDOutput().ToStringOutput(),
 //				ImportCustomRoutes: pulumi.Bool(true),
 //				ExportCustomRoutes: pulumi.Bool(true),
 //			})
@@ -139,8 +139,8 @@ import (
 //			}
 //			_, err = compute.NewNetworkPeering(ctx, "peering_workload_to_gke", &compute.NetworkPeeringArgs{
 //				Name:        pulumi.String("peering-workload-to-gke"),
-//				Network:     workloadNetwork.ID(),
-//				PeerNetwork: gkeNetwork.ID(),
+//				Network:     workloadNetwork.ID().ToIDOutput().ToStringOutput(),
+//				PeerNetwork: gkeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

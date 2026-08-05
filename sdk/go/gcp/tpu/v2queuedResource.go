@@ -90,7 +90,7 @@ import (
 //				Name:        pulumi.String("tpu-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -111,8 +111,8 @@ import (
 //								NetworkConfig: &tpu.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs{
 //									CanIpForward:      pulumi.Bool(true),
 //									EnableExternalIps: pulumi.Bool(true),
-//									Network:           network.ID(),
-//									Subnetwork:        subnet.ID(),
+//									Network:           network.ID().ToIDOutput().ToStringOutput(),
+//									Subnetwork:        subnet.ID().ToIDOutput().ToStringOutput(),
 //									QueueCount:        pulumi.Int(32),
 //								},
 //							},

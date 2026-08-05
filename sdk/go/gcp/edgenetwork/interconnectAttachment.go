@@ -51,7 +51,7 @@ import (
 //				Location:                 pulumi.String("us-west1"),
 //				Zone:                     pulumi.String(""),
 //				Description:              pulumi.String("Example interconnect attachment."),
-//				Network:                  exampleNetwork.ID(),
+//				Network:                  exampleNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Interconnect:             pulumi.String("11111111-2222-3333-4444-555555555555"),
 //				VlanId:                   pulumi.Int(55),
 //				Mtu:                      pulumi.Int(9000),

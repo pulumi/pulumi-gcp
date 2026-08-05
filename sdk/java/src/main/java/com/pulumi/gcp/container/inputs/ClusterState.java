@@ -48,6 +48,7 @@ import com.pulumi.gcp.container.inputs.ClusterProtectConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterRbacBindingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterReleaseChannelArgs;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterRollbackSafeUpgradeArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecretSyncConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecurityPostureConfigArgs;
@@ -459,6 +460,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     * 
+     */
+    @Import(name="desiredEmulatedVersion")
+    private @Nullable Output<String> desiredEmulatedVersion;
+
+    /**
+     * @return The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+     * 
+     */
+    public Optional<Output<String>> desiredEmulatedVersion() {
+        return Optional.ofNullable(this.desiredEmulatedVersion);
+    }
+
+    /**
      * Disable L4 load balancer VPC firewalls to enable firewall policies.
      * 
      */
@@ -501,6 +517,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * The current emulated Kubernetes version running on the GKE cluster control plane.
+     * 
+     */
+    @Import(name="emulatedVersion")
+    private @Nullable Output<String> emulatedVersion;
+
+    /**
+     * @return The current emulated Kubernetes version running on the GKE cluster control plane.
+     * 
+     */
+    public Optional<Output<String>> emulatedVersion() {
+        return Optional.ofNullable(this.emulatedVersion);
     }
 
     /**
@@ -1647,6 +1678,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     * 
+     */
+    @Import(name="rollbackSafeUpgrade")
+    private @Nullable Output<ClusterRollbackSafeUpgradeArgs> rollbackSafeUpgrade;
+
+    /**
+     * @return Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterRollbackSafeUpgradeArgs>> rollbackSafeUpgrade() {
+        return Optional.ofNullable(this.rollbackSafeUpgrade);
+    }
+
+    /**
      * Configuration for the
      * [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
      * Structure is documented below.
@@ -1908,9 +1954,11 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
+        this.desiredEmulatedVersion = $.desiredEmulatedVersion;
         this.disableL4LbFirewallReconciliation = $.disableL4LbFirewallReconciliation;
         this.dnsConfig = $.dnsConfig;
         this.effectiveLabels = $.effectiveLabels;
+        this.emulatedVersion = $.emulatedVersion;
         this.enableAutopilot = $.enableAutopilot;
         this.enableCiliumClusterwideNetworkPolicy = $.enableCiliumClusterwideNetworkPolicy;
         this.enableFqdnNetworkPolicy = $.enableFqdnNetworkPolicy;
@@ -1972,6 +2020,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.removeDefaultNodePool = $.removeDefaultNodePool;
         this.resourceLabels = $.resourceLabels;
         this.resourceUsageExportConfig = $.resourceUsageExportConfig;
+        this.rollbackSafeUpgrade = $.rollbackSafeUpgrade;
         this.secretManagerConfig = $.secretManagerConfig;
         this.secretSyncConfig = $.secretSyncConfig;
         this.securityPostureConfig = $.securityPostureConfig;
@@ -2535,6 +2584,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param desiredEmulatedVersion The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredEmulatedVersion(@Nullable Output<String> desiredEmulatedVersion) {
+            $.desiredEmulatedVersion = desiredEmulatedVersion;
+            return this;
+        }
+
+        /**
+         * @param desiredEmulatedVersion The desired emulated version for the cluster. Used to complete a rollback-safe upgrade after a soak period. Must be in major.minor format (e.g., &#34;1.31&#34;). To complete the upgrade declaratively, set this field to the target minor version. Removing this field from your configuration will not trigger completion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder desiredEmulatedVersion(String desiredEmulatedVersion) {
+            return desiredEmulatedVersion(Output.of(desiredEmulatedVersion));
+        }
+
+        /**
          * @param disableL4LbFirewallReconciliation Disable L4 load balancer VPC firewalls to enable firewall policies.
          * 
          * @return builder
@@ -2595,6 +2665,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param emulatedVersion The current emulated Kubernetes version running on the GKE cluster control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emulatedVersion(@Nullable Output<String> emulatedVersion) {
+            $.emulatedVersion = emulatedVersion;
+            return this;
+        }
+
+        /**
+         * @param emulatedVersion The current emulated Kubernetes version running on the GKE cluster control plane.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emulatedVersion(String emulatedVersion) {
+            return emulatedVersion(Output.of(emulatedVersion));
         }
 
         /**
@@ -4134,6 +4225,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder resourceUsageExportConfig(ClusterResourceUsageExportConfigArgs resourceUsageExportConfig) {
             return resourceUsageExportConfig(Output.of(resourceUsageExportConfig));
+        }
+
+        /**
+         * @param rollbackSafeUpgrade Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rollbackSafeUpgrade(@Nullable Output<ClusterRollbackSafeUpgradeArgs> rollbackSafeUpgrade) {
+            $.rollbackSafeUpgrade = rollbackSafeUpgrade;
+            return this;
+        }
+
+        /**
+         * @param rollbackSafeUpgrade Configuration for rollback-safe (two-step) upgrades. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rollbackSafeUpgrade(ClusterRollbackSafeUpgradeArgs rollbackSafeUpgrade) {
+            return rollbackSafeUpgrade(Output.of(rollbackSafeUpgrade));
         }
 
         /**

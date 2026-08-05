@@ -97,9 +97,11 @@ export interface GetClusterResult {
     readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly description: string;
+    readonly desiredEmulatedVersion: string;
     readonly disableL4LbFirewallReconciliation: boolean;
     readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
     readonly effectiveLabels: {[key: string]: string};
+    readonly emulatedVersion: string;
     readonly enableAutopilot: boolean;
     readonly enableCiliumClusterwideNetworkPolicy: boolean;
     readonly enableFqdnNetworkPolicy: boolean;
@@ -165,6 +167,7 @@ export interface GetClusterResult {
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly resourceUsageExportConfigs: outputs.container.GetClusterResourceUsageExportConfig[];
+    readonly rollbackSafeUpgrades: outputs.container.GetClusterRollbackSafeUpgrade[];
     readonly secretManagerConfigs: outputs.container.GetClusterSecretManagerConfig[];
     readonly secretSyncConfigs: outputs.container.GetClusterSecretSyncConfig[];
     readonly securityPostureConfigs: outputs.container.GetClusterSecurityPostureConfig[];

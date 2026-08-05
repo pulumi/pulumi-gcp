@@ -64,7 +64,7 @@ import (
 //				Description: pulumi.String("test"),
 //				PeeringConfig: &apigee.DnsZonePeeringConfigArgs{
 //					TargetProjectId: pulumi.String(current.Project),
-//					TargetNetworkId: apigeeNetwork.ID(),
+//					TargetNetworkId: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

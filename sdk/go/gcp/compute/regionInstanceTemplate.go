@@ -66,7 +66,7 @@ import (
 //			}
 //			foobar, err := compute.NewRegionDisk(ctx, "foobar", &compute.RegionDiskArgs{
 //				Name:                   pulumi.String("existing-disk"),
-//				Snapshot:               snapDisk.ID(),
+//				Snapshot:               snapDisk.ID().ToIDOutput().ToStringOutput(),
 //				Type:                   pulumi.String("pd-ssd"),
 //				Region:                 pulumi.String("us-central1"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
@@ -115,7 +115,7 @@ import (
 //						SourceImage:      pulumi.String("debian-cloud/debian-11"),
 //						AutoDelete:       pulumi.Bool(true),
 //						Boot:             pulumi.Bool(true),
-//						ResourcePolicies: dailyBackup.ID(),
+//						ResourcePolicies: dailyBackup.ID().ToIDOutput().ToStringOutput(),
 //					},
 //					&compute.RegionInstanceTemplateDiskArgs{
 //						Source:     foobar.SelfLink,

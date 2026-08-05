@@ -253,7 +253,7 @@ import (
 //					BranchName: pulumi.String("main"),
 //					RepoName:   pulumi.String("my-repo"),
 //				},
-//				ServiceAccount: cloudbuildServiceAccount.ID(),
+//				ServiceAccount: cloudbuildServiceAccount.ID().ToIDOutput().ToStringOutput(),
 //				Filename:       pulumi.String("cloudbuild.yaml"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				actAs,
@@ -328,7 +328,7 @@ import (
 //				Name:        pulumi.String("pubsub-trigger"),
 //				Description: pulumi.String("acceptance test example pubsub build trigger"),
 //				PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
-//					Topic: mytopic.ID(),
+//					Topic: mytopic.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
 //					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
@@ -388,7 +388,7 @@ import (
 //				return err
 //			}
 //			webhookTriggerSecretKeyData, err := secretmanager.NewSecretVersion(ctx, "webhook_trigger_secret_key_data", &secretmanager.SecretVersionArgs{
-//				Secret:     webhookTriggerSecretKey.ID(),
+//				Secret:     webhookTriggerSecretKey.ID().ToIDOutput().ToStringOutput(),
 //				SecretData: pulumi.String("secretkeygoeshere"),
 //			})
 //			if err != nil {
@@ -423,7 +423,7 @@ import (
 //				Name:        pulumi.String("webhook-trigger"),
 //				Description: pulumi.String("acceptance test example webhook build trigger"),
 //				WebhookConfig: &cloudbuild.TriggerWebhookConfigArgs{
-//					Secret: webhookTriggerSecretKeyData.ID(),
+//					Secret: webhookTriggerSecretKeyData.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
 //					Uri:      pulumi.String("https://hashicorp/terraform-provider-google-beta"),
@@ -589,7 +589,7 @@ import (
 //			}
 //			my_repository, err := cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				Name:             pulumi.String("my-repo"),
-//				ParentConnection: my_connection.ID(),
+//				ParentConnection: my_connection.ID().ToIDOutput().ToStringOutput(),
 //				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
 //			})
 //			if err != nil {
@@ -598,7 +598,7 @@ import (
 //			_, err = cloudbuild.NewTrigger(ctx, "repo-trigger", &cloudbuild.TriggerArgs{
 //				Location: pulumi.String("us-central1"),
 //				RepositoryEventConfig: &cloudbuild.TriggerRepositoryEventConfigArgs{
-//					Repository: my_repository.ID(),
+//					Repository: my_repository.ID().ToIDOutput().ToStringOutput(),
 //					Push: &cloudbuild.TriggerRepositoryEventConfigPushArgs{
 //						Branch: pulumi.String("feature-.*"),
 //					},
@@ -975,7 +975,7 @@ import (
 //			}
 //			my_repository, err := cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				Name:             pulumi.String("my-repo"),
-//				ParentConnection: my_connection.ID(),
+//				ParentConnection: my_connection.ID().ToIDOutput().ToStringOutput(),
 //				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
 //			})
 //			if err != nil {
@@ -991,16 +991,16 @@ import (
 //				Name:     pulumi.String("pubsub-with-repo-trigger"),
 //				Location: pulumi.String("us-central1"),
 //				PubsubConfig: &cloudbuild.TriggerPubsubConfigArgs{
-//					Topic: mytopic.ID(),
+//					Topic: mytopic.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
-//					Repository: my_repository.ID(),
+//					Repository: my_repository.ID().ToIDOutput().ToStringOutput(),
 //					Ref:        pulumi.String("refs/heads/main"),
 //					RepoType:   pulumi.String("GITHUB"),
 //				},
 //				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
 //					Path:       pulumi.String("cloudbuild.yaml"),
-//					Repository: my_repository.ID(),
+//					Repository: my_repository.ID().ToIDOutput().ToStringOutput(),
 //					Revision:   pulumi.String("refs/heads/main"),
 //					RepoType:   pulumi.String("GITHUB"),
 //				},

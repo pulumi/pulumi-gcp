@@ -204,7 +204,7 @@ import (
 //					PeripheralsConfig: &dataproc.SessionTemplateEnvironmentConfigPeripheralsConfigArgs{
 //						MetastoreService: ms.Name,
 //						SparkHistoryServerConfig: &dataproc.SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs{
-//							DataprocCluster: basic.ID(),
+//							DataprocCluster: basic.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},

@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				Name:    pulumi.String("my-consent-store"),
 //			})
 //			if err != nil {
@@ -77,7 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-//				Dataset:                     dataset.ID(),
+//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
 //				Name:                        pulumi.String("my-consent-store"),
 //				EnableConsentCreateOnUpdate: pulumi.Bool(true),
 //				DefaultConsentTtl:           pulumi.String("90000s"),
@@ -118,7 +118,7 @@ import (
 //				return err
 //			}
 //			my_consent, err := healthcare.NewConsentStore(ctx, "my-consent", &healthcare.ConsentStoreArgs{
-//				Dataset: dataset.ID(),
+//				Dataset: dataset.ID().ToIDOutput().ToStringOutput(),
 //				Name:    pulumi.String("my-consent-store"),
 //			})
 //			if err != nil {
@@ -132,7 +132,7 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewConsentStoreIamMember(ctx, "test-iam", &healthcare.ConsentStoreIamMemberArgs{
-//				Dataset:        dataset.ID(),
+//				Dataset:        dataset.ID().ToIDOutput().ToStringOutput(),
 //				ConsentStoreId: my_consent.Name,
 //				Role:           pulumi.String("roles/editor"),
 //				Member: test_account.Email.ApplyT(func(email string) (string, error) {

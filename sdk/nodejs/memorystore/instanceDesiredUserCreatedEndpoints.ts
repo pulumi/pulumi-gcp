@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip1Network1.id,
  *     loadBalancingScheme: "",
  *     network: network1.id,
- *     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+ *     target: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
  * });
  * const ip2Network1 = new gcp.compute.Address("ip2_network1", {
  *     name: "ip2-net1",
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip2Network1.id,
  *     loadBalancingScheme: "",
  *     network: network1.id,
- *     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+ *     target: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
  * });
  * const network2 = new gcp.compute.Network("network2", {
  *     name: "network2",
@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip1Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+ *     target: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
  * });
  * const ip2Network2 = new gcp.compute.Address("ip2_network2", {
  *     name: "ip2-net2",
@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip2Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+ *     target: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
  * });
  * const instance_user_conn = new gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-conn", {
  *     name: "instance-user-conn",
@@ -126,7 +126,7 @@ import * as utilities from "../utilities";
  *                         ipAddress: ip1Network1.address,
  *                         forwardingRule: forwardingRule1Network1.id,
  *                         network: network1.id,
- *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+ *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
  *                     },
  *                 },
  *                 {
@@ -135,7 +135,7 @@ import * as utilities from "../utilities";
  *                         ipAddress: ip2Network1.address,
  *                         forwardingRule: forwardingRule2Network1.id,
  *                         network: network1.id,
- *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+ *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
  *                     },
  *                 },
  *             ],
@@ -148,7 +148,7 @@ import * as utilities from "../utilities";
  *                         ipAddress: ip1Network2.address,
  *                         forwardingRule: forwardingRule1Network2.id,
  *                         network: network2.id,
- *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+ *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[0].serviceAttachment,
  *                     },
  *                 },
  *                 {
@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  *                         ipAddress: ip2Network2.address,
  *                         forwardingRule: forwardingRule2Network2.id,
  *                         network: network2.id,
- *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+ *                         serviceAttachment: instance_user_connInstance.pscAttachmentDetails[1].serviceAttachment,
  *                     },
  *                 },
  *             ],
@@ -229,7 +229,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip1Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+ *     target: instance_user_auto_connInstance.pscAttachmentDetails[0].serviceAttachment,
  * });
  * const ip2Network2 = new gcp.compute.Address("ip2_network2", {
  *     name: "ip2-net2",
@@ -244,7 +244,7 @@ import * as utilities from "../utilities";
  *     ipAddress: ip2Network2.id,
  *     loadBalancingScheme: "",
  *     network: network2.id,
- *     target: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+ *     target: instance_user_auto_connInstance.pscAttachmentDetails[1].serviceAttachment,
  * });
  * const instance_user_auto_conn = new gcp.memorystore.InstanceDesiredUserCreatedEndpoints("instance-user-auto-conn", {
  *     name: "instance-user-auto-conn",
@@ -257,7 +257,7 @@ import * as utilities from "../utilities";
  *                     ipAddress: ip1Network2.address,
  *                     forwardingRule: forwardingRule1Network2.id,
  *                     network: network2.id,
- *                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[0].serviceAttachment),
+ *                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails[0].serviceAttachment,
  *                 },
  *             },
  *             {
@@ -266,7 +266,7 @@ import * as utilities from "../utilities";
  *                     ipAddress: ip2Network2.address,
  *                     forwardingRule: forwardingRule2Network2.id,
  *                     network: network2.id,
- *                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails.apply(pscAttachmentDetails => pscAttachmentDetails[1].serviceAttachment),
+ *                     serviceAttachment: instance_user_auto_connInstance.pscAttachmentDetails[1].serviceAttachment,
  *                 },
  *             },
  *         ],

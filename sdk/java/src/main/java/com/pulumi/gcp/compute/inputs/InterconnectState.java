@@ -213,6 +213,23 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks.
+     * 
+     */
+    @Import(name="effectiveLocation")
+    private @Nullable Output<String> effectiveLocation;
+
+    /**
+     * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks.
+     * 
+     */
+    public Optional<Output<String>> effectiveLocation() {
+        return Optional.ofNullable(this.effectiveLocation);
+    }
+
+    /**
      * A list of outages expected for this Interconnect.
      * Structure is documented below.
      * 
@@ -390,7 +407,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google&#39;s Networks.
      * 
      */
@@ -398,7 +415,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> location;
 
     /**
-     * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * @return URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
      * Specifies the location inside Google&#39;s Networks.
      * 
      */
@@ -731,6 +748,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.effectiveLocation = $.effectiveLocation;
         this.expectedOutages = $.expectedOutages;
         this.googleIpAddress = $.googleIpAddress;
         this.googleReferenceId = $.googleReferenceId;
@@ -1052,6 +1070,29 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLocation URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * Specifies the location inside Google&#39;s Networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLocation(@Nullable Output<String> effectiveLocation) {
+            $.effectiveLocation = effectiveLocation;
+            return this;
+        }
+
+        /**
+         * @param effectiveLocation URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * Specifies the location inside Google&#39;s Networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLocation(String effectiveLocation) {
+            return effectiveLocation(Output.of(effectiveLocation));
+        }
+
+        /**
          * @param expectedOutages A list of outages expected for this Interconnect.
          * Structure is documented below.
          * 
@@ -1315,7 +1356,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * @param location URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
          * Specifies the location inside Google&#39;s Networks.
          * 
          * @return builder
@@ -1327,7 +1368,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * @param location URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
          * Specifies the location inside Google&#39;s Networks.
          * 
          * @return builder

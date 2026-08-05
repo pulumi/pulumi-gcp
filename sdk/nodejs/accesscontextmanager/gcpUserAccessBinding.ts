@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     groupKey: std.trimprefixOutput({
  *         input: group.id,
  *         prefix: "groups/",
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     accessLevels: accessLevelIdForUserAccessBinding.name,
  * });
  * ```

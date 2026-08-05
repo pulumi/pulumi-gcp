@@ -361,7 +361,7 @@ import (
 //						},
 //						PscAutomationConfigs: &vertex.AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs{
 //							ProjectId: pulumi.String(project.Id),
-//							Network:   network.ID(),
+//							Network:   network.ID().ToIDOutput().ToStringOutput(),
 //						},
 //					},
 //				},
@@ -373,7 +373,7 @@ import (
 //				Name:        pulumi.String("subnetwork"),
 //				IpCidrRange: pulumi.String("192.168.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

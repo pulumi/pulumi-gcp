@@ -52,7 +52,7 @@ import (
 //			clusterUnitKind, err := saasruntime.NewUnitKind(ctx, "cluster_unit_kind", &saasruntime.UnitKindArgs{
 //				Location:       pulumi.String(location),
 //				UnitKindId:     pulumi.String("vm-unitkind"),
-//				Saas:           exampleSaas.ID(),
+//				Saas:           exampleSaas.ID().ToIDOutput().ToStringOutput(),
 //				DefaultRelease: pulumi.Sprintf("projects/my-project-name/locations/%v/releases/example-release", location),
 //			})
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //			exampleRelease, err := saasruntime.NewRelease(ctx, "example_release", &saasruntime.ReleaseArgs{
 //				Location:  pulumi.String(location),
 //				ReleaseId: pulumi.String("example-release"),
-//				UnitKind:  clusterUnitKind.ID(),
+//				UnitKind:  clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
 //				Blueprint: &saasruntime.ReleaseBlueprintArgs{
 //					Package: pulumi.String("us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"),
 //				},
@@ -72,7 +72,7 @@ import (
 //			exampleUnit, err := saasruntime.NewUnit(ctx, "example_unit", &saasruntime.UnitArgs{
 //				Location: pulumi.String(location),
 //				UnitId:   pulumi.String("example-unit"),
-//				UnitKind: clusterUnitKind.ID(),
+//				UnitKind: clusterUnitKind.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -143,10 +143,10 @@ import (
 //			provisionUnitOperation, err := saasruntime.NewUnitOperation(ctx, "provision_unit_operation", &saasruntime.UnitOperationArgs{
 //				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("provision-unit-operation"),
-//				Unit:              exampleUnit.ID(),
+//				Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
 //				WaitForCompletion: pulumi.Bool(true),
 //				Provision: &saasruntime.UnitOperationProvisionArgs{
-//					Release: exampleRelease.ID(),
+//					Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
 //					InputVariables: saasruntime.UnitOperationProvisionInputVariableArray{
 //						&saasruntime.UnitOperationProvisionInputVariableArgs{
 //							Variable: pulumi.String("tenant_project_id"),
@@ -194,10 +194,10 @@ import (
 //			noopUpgradeUnitOperation, err := saasruntime.NewUnitOperation(ctx, "noop_upgrade_unit_operation", &saasruntime.UnitOperationArgs{
 //				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("upgrade-unit-operation"),
-//				Unit:              exampleUnit.ID(),
+//				Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
 //				WaitForCompletion: pulumi.Bool(true),
 //				Upgrade: &saasruntime.UnitOperationUpgradeArgs{
-//					Release: exampleRelease.ID(),
+//					Release: exampleRelease.ID().ToIDOutput().ToStringOutput(),
 //					InputVariables: saasruntime.UnitOperationUpgradeInputVariableArray{
 //						&saasruntime.UnitOperationUpgradeInputVariableArgs{
 //							Variable: pulumi.String("tenant_project_id"),
@@ -235,7 +235,7 @@ import (
 //			_, err = saasruntime.NewUnitOperation(ctx, "deprovision_operation", &saasruntime.UnitOperationArgs{
 //				Location:          pulumi.String(location),
 //				UnitOperationId:   pulumi.String("deprovision-unit-operation"),
-//				Unit:              exampleUnit.ID(),
+//				Unit:              exampleUnit.ID().ToIDOutput().ToStringOutput(),
 //				WaitForCompletion: pulumi.Bool(true),
 //				Deprovision:       &saasruntime.UnitOperationDeprovisionArgs{},
 //			}, pulumi.DependsOn([]pulumi.Resource{

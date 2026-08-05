@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent:      key.ID(),
+//				Parent:      key.ID().ToIDOutput().ToStringOutput(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})
@@ -68,7 +68,7 @@ import (
 //				Parent: project.Number.ApplyT(func(number string) (string, error) {
 //					return fmt.Sprintf("//cloudresourcemanager.googleapis.com/projects/%v", number), nil
 //				}).(pulumi.StringOutput),
-//				TagValue: value.ID(),
+//				TagValue: value.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

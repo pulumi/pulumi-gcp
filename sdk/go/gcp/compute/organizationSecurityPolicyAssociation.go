@@ -56,7 +56,7 @@ import (
 //			_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
 //				Name:         pulumi.String("tf-test"),
 //				AttachmentId: policy.Parent,
-//				PolicyId:     policy.ID(),
+//				PolicyId:     policy.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -100,7 +100,7 @@ import (
 //			_, err = compute.NewOrganizationSecurityPolicyAssociation(ctx, "policy", &compute.OrganizationSecurityPolicyAssociationArgs{
 //				Name:         pulumi.String("tf-test"),
 //				AttachmentId: pulumi.String("organizations/123456789"),
-//				PolicyId:     policy.ID(),
+//				PolicyId:     policy.ID().ToIDOutput().ToStringOutput(),
 //				ExcludedProjects: pulumi.StringArray{
 //					pulumi.String("projects/2000000002"),
 //					pulumi.String("projects/3000000003"),

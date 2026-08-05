@@ -132,6 +132,49 @@ namespace Pulumi.Gcp.ModelArmor
     ///             CustomPromptSafetyErrorMessage = "This is a custom error message for prompt",
     ///             CustomLlmResponseSafetyErrorCode = 401,
     ///             EnforcementType = "INSPECT_ONLY",
+    ///             FilterVersionSelector = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs
+    ///             {
+    ///                 Alias = "FILTER_VERSION_ALIAS_LATEST",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Modelarmor Template Filter Version Selector
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var template_filter_version_selector = new Gcp.ModelArmor.Template("template-filter-version-selector", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         TemplateId = "modelarmor5",
+    ///         FilterConfig = new Gcp.ModelArmor.Inputs.TemplateFilterConfigArgs
+    ///         {
+    ///             RaiSettings = new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsArgs
+    ///             {
+    ///                 RaiFilters = new[]
+    ///                 {
+    ///                     new Gcp.ModelArmor.Inputs.TemplateFilterConfigRaiSettingsRaiFilterArgs
+    ///                     {
+    ///                         FilterType = "HATE_SPEECH",
+    ///                         ConfidenceLevel = "HIGH",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         TemplateMetadata = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataArgs
+    ///         {
+    ///             FilterVersionSelector = new Gcp.ModelArmor.Inputs.TemplateTemplateMetadataFilterVersionSelectorArgs
+    ///             {
+    ///                 Version = "v1",
+    ///             },
     ///         },
     ///     });
     /// 

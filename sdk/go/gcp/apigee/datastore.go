@@ -57,13 +57,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -75,7 +75,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = apigee.NewDatastore(ctx, "apigee_datastore", &apigee.DatastoreArgs{
-//				OrgId:       apigeeOrg.ID(),
+//				OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("my_datastore"),
 //				TargetType:  pulumi.String("gcs"),
 //				DatastoreConfig: &apigee.DatastoreDatastoreConfigArgs{
@@ -140,13 +140,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -158,7 +158,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -173,7 +173,7 @@ import (
 //				return err
 //			}
 //			_, err = apigee.NewDatastore(ctx, "apigee_datastore", &apigee.DatastoreArgs{
-//				OrgId:       apigeeOrg.ID(),
+//				OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("my_bigquery_datastore"),
 //				TargetType:  pulumi.String("bigquery"),
 //				DatastoreConfig: &apigee.DatastoreDatastoreConfigArgs{

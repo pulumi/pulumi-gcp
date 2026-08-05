@@ -137,7 +137,7 @@ import * as utilities from "../utilities";
  *     project: project.then(project => project.projectId),
  *     role: "roles/artifactregistry.reader",
  *     member: std.jsondecodeOutput({
- *         input: tenantMds.apply(tenantMds => tenantMds.output),
+ *         input: tenantMds.output,
  *     }).apply(invoke => `serviceAccount:${invoke.result?.output}`),
  * });
  * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {

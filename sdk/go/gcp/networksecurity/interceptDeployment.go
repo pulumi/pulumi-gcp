@@ -63,7 +63,7 @@ import (
 //			backendService, err := compute.NewRegionBackendService(ctx, "backend_service", &compute.RegionBackendServiceArgs{
 //				Name:                pulumi.String("example-bs"),
 //				Region:              pulumi.String("us-central1"),
-//				HealthChecks:        healthCheck.ID(),
+//				HealthChecks:        healthCheck.ID().ToIDOutput().ToStringOutput(),
 //				Protocol:            pulumi.String("UDP"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //			})
@@ -75,7 +75,7 @@ import (
 //				Region:              pulumi.String("us-central1"),
 //				Network:             network.Name,
 //				Subnetwork:          subnetwork.Name,
-//				BackendService:      backendService.ID(),
+//				BackendService:      backendService.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				Ports: pulumi.StringArray{
 //					pulumi.String("6081"),
@@ -88,7 +88,7 @@ import (
 //			deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 //				InterceptDeploymentGroupId: pulumi.String("example-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    network.ID(),
+//				Network:                    network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -96,8 +96,8 @@ import (
 //			_, err = networksecurity.NewInterceptDeployment(ctx, "default", &networksecurity.InterceptDeploymentArgs{
 //				InterceptDeploymentId:    pulumi.String("example-deployment"),
 //				Location:                 pulumi.String("us-central1-a"),
-//				ForwardingRule:           forwardingRule.ID(),
-//				InterceptDeploymentGroup: deploymentGroup.ID(),
+//				ForwardingRule:           forwardingRule.ID().ToIDOutput().ToStringOutput(),
+//				InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //				Description:              pulumi.String("some description"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

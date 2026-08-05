@@ -198,7 +198,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -239,7 +239,7 @@ import (
 //				Name:        pulumi.String("run-subnetwork"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     customTestNetwork.ID(),
+//				Network:     customTestNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -269,7 +269,7 @@ import (
 //							},
 //						},
 //						VpcAccess: &cloudrunv2.JobTemplateTemplateVpcAccessArgs{
-//							Connector: connector.ID(),
+//							Connector: connector.ID().ToIDOutput().ToStringOutput(),
 //							Egress:    pulumi.String("ALL_TRAFFIC"),
 //						},
 //					},
@@ -370,7 +370,7 @@ import (
 //				return err
 //			}
 //			secret_access, err := secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -790,11 +790,9 @@ type Job struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
 	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken pulumi.StringPtrOutput `pulumi:"runExecutionToken"`
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrOutput `pulumi:"startExecutionToken"`
@@ -940,11 +938,9 @@ type jobState struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling *bool `pulumi:"reconciling"`
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
 	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken *string `pulumi:"runExecutionToken"`
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken *string `pulumi:"startExecutionToken"`
@@ -1050,11 +1046,9 @@ type JobState struct {
 	// If reconciliation succeeded, the following fields will match: observedGeneration and generation, latestSucceededExecution and latestCreatedExecution.
 	// If reconciliation failed, observedGeneration and latestSucceededExecution will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in terminalCondition and conditions
 	Reconciling pulumi.BoolPtrInput
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
 	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrInput
@@ -1126,11 +1120,9 @@ type jobArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
 	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken *string `pulumi:"runExecutionToken"`
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken *string `pulumi:"startExecutionToken"`
@@ -1192,11 +1184,9 @@ type JobArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
 	// The sum of job name and token length must be fewer than 63 characters.
 	RunExecutionToken pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 	// The sum of job name and token length must be fewer than 63 characters.
 	StartExecutionToken pulumi.StringPtrInput
@@ -1460,14 +1450,12 @@ func (o JobOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
 
-// (Optional, Beta)
 // A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
 // The sum of job name and token length must be fewer than 63 characters.
 func (o JobOutput) RunExecutionToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.RunExecutionToken }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
 // The sum of job name and token length must be fewer than 63 characters.
 func (o JobOutput) StartExecutionToken() pulumi.StringPtrOutput {

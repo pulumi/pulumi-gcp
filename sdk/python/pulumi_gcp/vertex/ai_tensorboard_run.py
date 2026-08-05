@@ -551,12 +551,12 @@ class AiTensorboardRun(pulumi.CustomResource):
         experiment = gcp.vertex.AiTensorboardExperiment("experiment",
             location="us-central1",
             display_name="sample experiment",
-            tensorboard=std.basename_output(input=tensorboard.id).apply(lambda invoke: invoke.result),
+            tensorboard=std.basename_output(input=tensorboard.id).result,
             tensorboard_experiment_id="experiment")
         tensorboard_run = gcp.vertex.AiTensorboardRun("tensorboard_run",
             location="us-central1",
             display_name="sample run",
-            tensorboard=std.basename_output(input=tensorboard.id).apply(lambda invoke: invoke.result),
+            tensorboard=std.basename_output(input=tensorboard.id).result,
             experiment=experiment.tensorboard_experiment_id,
             tensorboard_run_id="run",
             labels={
@@ -650,12 +650,12 @@ class AiTensorboardRun(pulumi.CustomResource):
         experiment = gcp.vertex.AiTensorboardExperiment("experiment",
             location="us-central1",
             display_name="sample experiment",
-            tensorboard=std.basename_output(input=tensorboard.id).apply(lambda invoke: invoke.result),
+            tensorboard=std.basename_output(input=tensorboard.id).result,
             tensorboard_experiment_id="experiment")
         tensorboard_run = gcp.vertex.AiTensorboardRun("tensorboard_run",
             location="us-central1",
             display_name="sample run",
-            tensorboard=std.basename_output(input=tensorboard.id).apply(lambda invoke: invoke.result),
+            tensorboard=std.basename_output(input=tensorboard.id).result,
             experiment=experiment.tensorboard_experiment_id,
             tensorboard_run_id="run",
             labels={

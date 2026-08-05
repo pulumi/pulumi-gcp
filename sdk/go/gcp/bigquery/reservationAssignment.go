@@ -49,7 +49,7 @@ import (
 //			_, err = bigquery.NewReservationAssignment(ctx, "assignment", &bigquery.ReservationAssignmentArgs{
 //				Assignee:    pulumi.String("projects/my-project-name"),
 //				JobType:     pulumi.String("PIPELINE"),
-//				Reservation: basic.ID(),
+//				Reservation: basic.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err

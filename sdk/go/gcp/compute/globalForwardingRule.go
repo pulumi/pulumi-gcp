@@ -49,7 +49,7 @@ import (
 //				PortName:     pulumi.String("http"),
 //				Protocol:     pulumi.String("HTTP"),
 //				TimeoutSec:   pulumi.Int(10),
-//				HealthChecks: defaultHttpHealthCheck.ID(),
+//				HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -57,7 +57,7 @@ import (
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 //				Name:           pulumi.String("url-map-target-proxy"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
+//				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -69,13 +69,13 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
+//						DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultBackendService.ID(),
+//								Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -87,14 +87,14 @@ import (
 //			defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 //				Name:        pulumi.String("target-proxy"),
 //				Description: pulumi.String("a description"),
-//				UrlMap:      defaultURLMap.ID(),
+//				UrlMap:      defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 //				Name:      pulumi.String("global-rule"),
-//				Target:    defaultTargetHttpProxy.ID(),
+//				Target:    defaultTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
 //				PortRange: pulumi.String("80"),
 //			})
 //			if err != nil {
@@ -149,7 +149,7 @@ import (
 //				Name: pulumi.String("igm-internal"),
 //				Versions: compute.InstanceGroupManagerVersionArray{
 //					&compute.InstanceGroupManagerVersionArgs{
-//						InstanceTemplate: instanceTemplate.ID(),
+//						InstanceTemplate: instanceTemplate.ID().ToIDOutput().ToStringOutput(),
 //						Name:             pulumi.String("primary"),
 //					},
 //				},
@@ -185,7 +185,7 @@ import (
 //						MaxRatePerInstance: pulumi.Float64(50),
 //					},
 //				},
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -193,7 +193,7 @@ import (
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 //				Name:           pulumi.String("url-map-target-proxy"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
+//				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -205,13 +205,13 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
+//						DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultBackendService.ID(),
+//								Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -223,14 +223,14 @@ import (
 //			defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 //				Name:        pulumi.String("target-proxy"),
 //				Description: pulumi.String("a description"),
-//				UrlMap:      defaultURLMap.ID(),
+//				UrlMap:      defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 //				Name:                pulumi.String("global-rule"),
-//				Target:              defaultTargetHttpProxy.ID(),
+//				Target:              defaultTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
 //				PortRange:           pulumi.String("80"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
 //				IpAddress:           pulumi.String("0.0.0.0"),
@@ -281,7 +281,7 @@ import (
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 //				Name:           pulumi.String("url-map-target-proxy"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
+//				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -293,13 +293,13 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
+//						DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultBackendService.ID(),
+//								Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -311,14 +311,14 @@ import (
 //			defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 //				Name:        pulumi.String("target-proxy"),
 //				Description: pulumi.String("a description"),
-//				UrlMap:      defaultURLMap.ID(),
+//				UrlMap:      defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 //				Name:                pulumi.String("global-rule"),
-//				Target:              defaultTargetHttpProxy.ID(),
+//				Target:              defaultTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
 //				PortRange:           pulumi.String("80"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
 //				NetworkTier:         pulumi.String("PREMIUM"),
@@ -366,7 +366,7 @@ import (
 //			}
 //			internalSubnetwork, err := compute.NewSubnetwork(ctx, "internal", &compute.SubnetworkArgs{
 //				Name:                  pulumi.String("my-subnetwork"),
-//				Network:               internal.ID(),
+//				Network:               internal.ID().ToIDOutput().ToStringOutput(),
 //				IpCidrRange:           pulumi.String(subnetworkCidr),
 //				Region:                pulumi.String("us-central1"),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
@@ -377,7 +377,7 @@ import (
 //			// Zonal NEG with GCE_VM_IP_PORT
 //			defaultNetworkEndpointGroup, err := compute.NewNetworkEndpointGroup(ctx, "default", &compute.NetworkEndpointGroupArgs{
 //				Name:                pulumi.String("default-neg"),
-//				Network:             _default.ID(),
+//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
 //				DefaultPort:         pulumi.Int(90),
 //				Zone:                pulumi.String("us-central1-a"),
 //				NetworkEndpointType: pulumi.String("GCE_VM_IP_PORT"),
@@ -388,8 +388,8 @@ import (
 //			// Zonal NEG with GCE_VM_IP
 //			_, err = compute.NewNetworkEndpointGroup(ctx, "internal", &compute.NetworkEndpointGroupArgs{
 //				Name:                pulumi.String("internal-neg"),
-//				Network:             internal.ID(),
-//				Subnetwork:          internalSubnetwork.ID(),
+//				Network:             internal.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          internalSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Zone:                pulumi.String("us-central1-a"),
 //				NetworkEndpointType: pulumi.String("GCE_VM_IP"),
 //			})
@@ -399,7 +399,7 @@ import (
 //			// Hybrid connectivity NEG
 //			hybrid, err := compute.NewNetworkEndpointGroup(ctx, "hybrid", &compute.NetworkEndpointGroupArgs{
 //				Name:                pulumi.String("hybrid-neg"),
-//				Network:             _default.ID(),
+//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
 //				DefaultPort:         pulumi.Int(90),
 //				Zone:                pulumi.String("us-central1-a"),
 //				NetworkEndpointType: pulumi.String("NON_GCP_PRIVATE_IP_PORT"),
@@ -434,12 +434,12 @@ import (
 //				TimeoutSec: pulumi.Int(10),
 //				Backends: compute.BackendServiceBackendArray{
 //					&compute.BackendServiceBackendArgs{
-//						Group:              defaultNetworkEndpointGroup.ID(),
+//						Group:              defaultNetworkEndpointGroup.ID().ToIDOutput().ToStringOutput(),
 //						BalancingMode:      pulumi.String("RATE"),
 //						MaxRatePerEndpoint: pulumi.Float64(10),
 //					},
 //				},
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -452,12 +452,12 @@ import (
 //				TimeoutSec: pulumi.Int(10),
 //				Backends: compute.BackendServiceBackendArray{
 //					&compute.BackendServiceBackendArgs{
-//						Group:              hybrid.ID(),
+//						Group:              hybrid.ID().ToIDOutput().ToStringOutput(),
 //						BalancingMode:      pulumi.String("RATE"),
 //						MaxRatePerEndpoint: pulumi.Float64(10),
 //					},
 //				},
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -465,7 +465,7 @@ import (
 //			defaultURLMap, err := compute.NewURLMap(ctx, "default", &compute.URLMapArgs{
 //				Name:           pulumi.String("url-map-target-proxy"),
 //				Description:    pulumi.String("a description"),
-//				DefaultService: defaultBackendService.ID(),
+//				DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				HostRules: compute.URLMapHostRuleArray{
 //					&compute.URLMapHostRuleArgs{
 //						Hosts: pulumi.StringArray{
@@ -477,19 +477,19 @@ import (
 //				PathMatchers: compute.URLMapPathMatcherArray{
 //					&compute.URLMapPathMatcherArgs{
 //						Name:           pulumi.String("allpaths"),
-//						DefaultService: defaultBackendService.ID(),
+//						DefaultService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/*"),
 //								},
-//								Service: defaultBackendService.ID(),
+//								Service: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
 //									pulumi.String("/hybrid"),
 //								},
-//								Service: hybridBackendService.ID(),
+//								Service: hybridBackendService.ID().ToIDOutput().ToStringOutput(),
 //							},
 //						},
 //					},
@@ -501,14 +501,14 @@ import (
 //			defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "default", &compute.TargetHttpProxyArgs{
 //				Name:        pulumi.String("target-proxy"),
 //				Description: pulumi.String("a description"),
-//				UrlMap:      defaultURLMap.ID(),
+//				UrlMap:      defaultURLMap.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
 //				Name:      pulumi.String("global-rule"),
-//				Target:    defaultTargetHttpProxy.ID(),
+//				Target:    defaultTargetHttpProxy.ID().ToIDOutput().ToStringOutput(),
 //				PortRange: pulumi.String("80"),
 //			})
 //			if err != nil {
@@ -546,7 +546,7 @@ import (
 //				Name:                  pulumi.String("my-subnetwork"),
 //				IpCidrRange:           pulumi.String("10.2.0.0/16"),
 //				Region:                pulumi.String("us-central1"),
-//				Network:               network.ID(),
+//				Network:               network.ID().ToIDOutput().ToStringOutput(),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -557,7 +557,7 @@ import (
 //				Name:        pulumi.String("global-psconnect-ip"),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //				Address:     pulumi.String("100.100.100.106"),
 //			})
 //			if err != nil {
@@ -567,8 +567,8 @@ import (
 //				Project:             network.Project,
 //				Name:                pulumi.String("globalrule"),
 //				Target:              pulumi.String("all-apis"),
-//				Network:             network.ID(),
-//				IpAddress:           _default.ID(),
+//				Network:             network.ID().ToIDOutput().ToStringOutput(),
+//				IpAddress:           _default.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				ServiceDirectoryRegistrations: &compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs{
 //					Namespace:              pulumi.String("sd-namespace"),
@@ -610,7 +610,7 @@ import (
 //				Name:                  pulumi.String("my-subnetwork"),
 //				IpCidrRange:           pulumi.String("10.2.0.0/16"),
 //				Region:                pulumi.String("us-central1"),
-//				Network:               network.ID(),
+//				Network:               network.ID().ToIDOutput().ToStringOutput(),
 //				PrivateIpGoogleAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -621,7 +621,7 @@ import (
 //				Name:        pulumi.String("global-psconnect-ip"),
 //				AddressType: pulumi.String("INTERNAL"),
 //				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //				Address:     pulumi.String("100.100.100.106"),
 //			})
 //			if err != nil {
@@ -631,8 +631,8 @@ import (
 //				Project:             network.Project,
 //				Name:                pulumi.String("globalrule"),
 //				Target:              pulumi.String("all-apis"),
-//				Network:             network.ID(),
-//				IpAddress:           _default.ID(),
+//				Network:             network.ID().ToIDOutput().ToStringOutput(),
+//				IpAddress:           _default.ID().ToIDOutput().ToStringOutput(),
 //				LoadBalancingScheme: pulumi.String(""),
 //				NoAutomateDnsZone:   pulumi.Bool(false),
 //			})

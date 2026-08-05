@@ -30,6 +30,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string OptionalMode;
         /// <summary>
+        /// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigRequestHeaderResult> RequestHeaders;
+        /// <summary>
+        /// This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetBackendServiceLogConfigResponseHeaderResult> ResponseHeaders;
+        /// <summary>
         /// This field can only be specified if logging is enabled for this backend service. The value of
         /// the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
         /// where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -45,11 +53,17 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string optionalMode,
 
+            ImmutableArray<Outputs.GetBackendServiceLogConfigRequestHeaderResult> requestHeaders,
+
+            ImmutableArray<Outputs.GetBackendServiceLogConfigResponseHeaderResult> responseHeaders,
+
             double sampleRate)
         {
             Enable = enable;
             OptionalFields = optionalFields;
             OptionalMode = optionalMode;
+            RequestHeaders = requestHeaders;
+            ResponseHeaders = responseHeaders;
             SampleRate = sampleRate;
         }
     }

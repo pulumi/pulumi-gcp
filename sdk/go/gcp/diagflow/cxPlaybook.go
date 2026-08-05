@@ -48,22 +48,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON0, err := json.Marshal([]map[string]string{
+//				{
 //					"text": "step 1 1",
 //				},
-//				map[string]interface{}{
+//				{
 //					"text": "step 1 2",
-//					"steps": []map[string]interface{}{
-//						map[string]interface{}{
+//					"steps": []map[string]string{
+//						{
 //							"text": "step 1 2 1",
 //						},
-//						map[string]interface{}{
+//						{
 //							"text": "step 1 2 2",
 //						},
 //					},
 //				},
-//				map[string]interface{}{
+//				{
 //					"text": "step 1 3",
 //				},
 //			})
@@ -72,7 +72,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = diagflow.NewCxPlaybook(ctx, "my-playbook", &diagflow.CxPlaybookArgs{
-//				Parent:       agent.ID(),
+//				Parent:       agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName:  pulumi.String("Example Display Name"),
 //				Goal:         pulumi.String("Example Goal"),
 //				PlaybookType: pulumi.String("ROUTINE"),
@@ -135,7 +135,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -145,7 +145,7 @@ import (
 //				return err
 //			}
 //			myTool, err := diagflow.NewCxTool(ctx, "my_tool", &diagflow.CxToolArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Example Tool"),
 //				Description: pulumi.String("Example Description"),
 //			})
@@ -153,7 +153,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxGenerator(ctx, "my_generator", &diagflow.CxGeneratorArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("TF Prompt generator"),
 //				LlmModelSettings: &diagflow.CxGeneratorLlmModelSettingsArgs{
 //					Model:      pulumi.String("gemini-2.0-flash-001"),
@@ -169,22 +169,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal([]map[string]interface{}{
-//				map[string]interface{}{
+//			tmpJSON0, err := json.Marshal([]map[string]string{
+//				{
 //					"text": "step 1 1",
 //				},
-//				map[string]interface{}{
+//				{
 //					"text": "step 1 2",
-//					"steps": []map[string]interface{}{
-//						map[string]interface{}{
+//					"steps": []map[string]string{
+//						{
 //							"text": "step 1 2 1",
 //						},
-//						map[string]interface{}{
+//						{
 //							"text": "step 1 2 2",
 //						},
 //					},
 //				},
-//				map[string]interface{}{
+//				{
 //					"text": "step 1 3",
 //				},
 //			})
@@ -193,7 +193,7 @@ import (
 //			}
 //			json0 := string(tmpJSON0)
 //			_, err = diagflow.NewCxPlaybook(ctx, "my-playbook", &diagflow.CxPlaybookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Playbook Example with Fulfillment"),
 //				Goal:        pulumi.String("Example Goal"),
 //				Instruction: &diagflow.CxPlaybookInstructionArgs{
@@ -216,7 +216,7 @@ import (
 //					PromptText: pulumi.String("Return me some great results"),
 //				},
 //				ReferencedTools: pulumi.StringArray{
-//					myTool.ID(),
+//					myTool.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

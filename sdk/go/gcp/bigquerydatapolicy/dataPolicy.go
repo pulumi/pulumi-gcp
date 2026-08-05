@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
-//				Taxonomy:    taxonomy.ID(),
+//				Taxonomy:    taxonomy.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Low security"),
 //				Description: pulumi.String("A policy tag normally associated with low security items"),
 //			})
@@ -98,7 +98,7 @@ import (
 //				return err
 //			}
 //			policyTag, err := datacatalog.NewPolicyTag(ctx, "policy_tag", &datacatalog.PolicyTagArgs{
-//				Taxonomy:    taxonomy.ID(),
+//				Taxonomy:    taxonomy.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("Low security"),
 //				Description: pulumi.String("A policy tag normally associated with low security items"),
 //			})
@@ -136,7 +136,7 @@ import (
 //				PolicyTag:      policyTag.Name,
 //				DataPolicyType: pulumi.String("DATA_MASKING_POLICY"),
 //				DataMaskingPolicy: &bigquerydatapolicy.DataPolicyDataMaskingPolicyArgs{
-//					Routine: customMaskingRoutine.ID(),
+//					Routine: customMaskingRoutine.ID().ToIDOutput().ToStringOutput(),
 //				},
 //			})
 //			if err != nil {

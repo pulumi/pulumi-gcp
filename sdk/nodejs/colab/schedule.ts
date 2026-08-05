@@ -274,6 +274,186 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Colab Schedule Notebook Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "my_bucket",
+ *     location: "us-central1",
+ *     uniformBucketLevelAccess: true,
+ *     forceDestroy: true,
+ * });
+ * const notebook = new gcp.storage.BucketObject("notebook", {
+ *     name: "hello_world.ipynb",
+ *     bucket: bucket.name,
+ *     content: `    {
+ *       \\"cells\\": [
+ *         {
+ *           \\"cell_type\\": \\"code\\",
+ *           \\"execution_count\\": null,
+ *           \\"metadata\\": {},
+ *           \\"outputs\\": [],
+ *           \\"source\\": [
+ *             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+ *           ]
+ *         }
+ *       ],
+ *       \\"metadata\\": {
+ *         \\"kernelspec\\": {
+ *           \\"display_name\\": \\"Python 3\\",
+ *           \\"language\\": \\"python\\",
+ *           \\"name\\": \\"python3\\"
+ *         },
+ *         \\"language_info\\": {
+ *           \\"codemirror_mode\\": {
+ *             \\"name\\": \\"ipython\\",
+ *             \\"version\\": 3
+ *           },
+ *           \\"file_extension\\": \\".py\\",
+ *           \\"mimetype\\": \\"text/x-python\\",
+ *           \\"name\\": \\"python\\",
+ *           \\"nbconvert_exporter\\": \\"python\\",
+ *           \\"pygments_lexer\\": \\"ipython3\\",
+ *           \\"version\\": \\"3.8.5\\"
+ *         }
+ *       },
+ *       \\"nbformat\\": 4,
+ *       \\"nbformat_minor\\": 4
+ *     }
+ * `,
+ * });
+ * const myNetwork = new gcp.compute.Network("my_network", {
+ *     name: "colab-test-default",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const mySubnetwork = new gcp.compute.Subnetwork("my_subnetwork", {
+ *     name: "colab-test-default",
+ *     network: myNetwork.id,
+ *     region: "us-central1",
+ *     ipCidrRange: "10.0.1.0/24",
+ * });
+ * const schedule = new gcp.colab.Schedule("schedule", {
+ *     displayName: "full-notebook-schedule",
+ *     location: "us-central1",
+ *     maxConcurrentRunCount: "2",
+ *     cron: "*&#47;5 * * * *",
+ *     startTime: "2030-01-01T00:00:00Z",
+ *     createNotebookExecutionJobRequest: {
+ *         parent: project.then(project => `projects/${project.projectId}/locations/us-central1`),
+ *         notebookExecutionJob: {
+ *             displayName: "test-notebook-execution-job",
+ *             gcsOutputUri: pulumi.interpolate`gs://${bucket.name}`,
+ *             serviceAccount: "my@service-account.com",
+ *             kernelName: "python3",
+ *             gcsNotebookSource: {
+ *                 uri: pulumi.interpolate`gs://${notebook.bucket}/${notebook.name}`,
+ *                 generation: notebook.generation.apply(x =>String(x)),
+ *             },
+ *             customEnvironmentSpec: {
+ *                 machineSpec: {
+ *                     machineType: "n1-standard-4",
+ *                     acceleratorType: "NVIDIA_TESLA_T4",
+ *                     acceleratorCount: 1,
+ *                     gpuPartitionSize: "1g.10gb",
+ *                     tpuTopology: "2x2",
+ *                 },
+ *                 persistentDiskSpec: {
+ *                     diskSizeGb: "100",
+ *                     diskType: "pd-standard",
+ *                 },
+ *                 networkSpec: {
+ *                     enableInternetAccess: true,
+ *                     network: myNetwork.id,
+ *                     subnetwork: mySubnetwork.id,
+ *                 },
+ *             },
+ *             encryptionSpec: {
+ *                 kmsKeyName: "my-key",
+ *             },
+ *             labels: {
+ *                 test: "value",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Colab Schedule Pipeline
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "pipeline-job",
+ *     location: "us-central1",
+ *     uniformBucketLevelAccess: true,
+ *     forceDestroy: true,
+ * });
+ * const myNetwork = new gcp.compute.Network("my_network", {
+ *     name: "colab-test-default",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const schedule = new gcp.colab.Schedule("schedule", {
+ *     displayName: "test-schedule",
+ *     location: "us-central1",
+ *     maxConcurrentRunCount: "2",
+ *     cron: "*&#47;5 * * * *",
+ *     allowQueueing: true,
+ *     maxConcurrentActiveRunCount: "2",
+ *     maxRunCount: "10",
+ *     startTime: "2030-01-01T00:00:00Z",
+ *     endTime: "2030-01-02T00:00:00Z",
+ *     createPipelineJobRequest: {
+ *         parent: project.then(project => `projects/${project.projectId}/locations/us-central1`),
+ *         pipelineJob: {
+ *             displayName: "test-pipeline-job",
+ *             preflightValidations: true,
+ *             network: myNetwork.id,
+ *             serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
+ *             templateUri: "https://us-kfp.pkg.dev/proj/repo/template/v1",
+ *             reservedIpRanges: ["vertex-ai-ip-range"],
+ *             labels: {
+ *                 key: "value-one",
+ *             },
+ *             encryptionSpec: {
+ *                 kmsKeyName: "my-key",
+ *             },
+ *             pscInterfaceConfig: {
+ *                 networkAttachment: project.then(project => `projects/${project.projectId}/regions/us-central1/networkAttachments/my-attachment`),
+ *                 dnsPeeringConfigs: [{
+ *                     domain: "my-internal-domain.corp.",
+ *                     targetNetwork: myNetwork.id,
+ *                     targetProject: project.then(project => project.projectId),
+ *                 }],
+ *             },
+ *             pipelineSpec: JSON.stringify({
+ *                 pipelineInfo: {
+ *                     name: "hello-world",
+ *                 },
+ *                 root: {
+ *                     dag: {
+ *                         tasks: {},
+ *                     },
+ *                 },
+ *                 schemaVersion: "2.1.0",
+ *                 sdkVersion: "kfp-2.0.0",
+ *             }),
+ *             runtimeConfig: {
+ *                 gcsOutputDirectory: pulumi.interpolate`gs://${bucket.name}/pipeline_root`,
+ *                 failurePolicy: "PIPELINE_FAILURE_POLICY_FAIL_FAST",
+ *                 parameterValues: {
+ *                     param1: "val1",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -324,10 +504,23 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly allowQueueing: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+     */
+    declare public /*out*/ readonly catchUp: pulumi.Output<boolean>;
+    /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      */
-    declare public readonly createNotebookExecutionJobRequest: pulumi.Output<outputs.colab.ScheduleCreateNotebookExecutionJobRequest>;
+    declare public readonly createNotebookExecutionJobRequest: pulumi.Output<outputs.colab.ScheduleCreateNotebookExecutionJobRequest | undefined>;
+    /**
+     * Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     */
+    declare public readonly createPipelineJobRequest: pulumi.Output<outputs.colab.ScheduleCreatePipelineJobRequest | undefined>;
+    /**
+     * Timestamp when this Schedule was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
@@ -354,9 +547,26 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly endTime: pulumi.Output<string | undefined>;
     /**
+     * Timestamp when this Schedule was last paused. Unset if never paused.
+     */
+    declare public /*out*/ readonly lastPauseTime: pulumi.Output<string>;
+    /**
+     * Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+     */
+    declare public /*out*/ readonly lastResumeTime: pulumi.Output<string>;
+    /**
+     * Status of a scheduled run.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly lastScheduledRunResponses: pulumi.Output<outputs.colab.ScheduleLastScheduledRunResponse[]>;
+    /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
     declare public readonly location: pulumi.Output<string>;
+    /**
+     * Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     */
+    declare public readonly maxConcurrentActiveRunCount: pulumi.Output<string | undefined>;
     /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
      */
@@ -370,6 +580,10 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+     */
+    declare public /*out*/ readonly nextRunTime: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -379,9 +593,17 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly startTime: pulumi.Output<string>;
     /**
+     * The number of runs started by this schedule.
+     */
+    declare public /*out*/ readonly startedRunCount: pulumi.Output<string>;
+    /**
      * Output only. The state of the schedule.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * Timestamp when this Schedule was updated.
+     */
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
     /**
      * Create a Schedule resource with the given unique name, arguments, and options.
@@ -397,24 +619,31 @@ export class Schedule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ScheduleState | undefined;
             resourceInputs["allowQueueing"] = state?.allowQueueing;
+            resourceInputs["catchUp"] = state?.catchUp;
             resourceInputs["createNotebookExecutionJobRequest"] = state?.createNotebookExecutionJobRequest;
+            resourceInputs["createPipelineJobRequest"] = state?.createPipelineJobRequest;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["cron"] = state?.cron;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["lastPauseTime"] = state?.lastPauseTime;
+            resourceInputs["lastResumeTime"] = state?.lastResumeTime;
+            resourceInputs["lastScheduledRunResponses"] = state?.lastScheduledRunResponses;
             resourceInputs["location"] = state?.location;
+            resourceInputs["maxConcurrentActiveRunCount"] = state?.maxConcurrentActiveRunCount;
             resourceInputs["maxConcurrentRunCount"] = state?.maxConcurrentRunCount;
             resourceInputs["maxRunCount"] = state?.maxRunCount;
             resourceInputs["name"] = state?.name;
+            resourceInputs["nextRunTime"] = state?.nextRunTime;
             resourceInputs["project"] = state?.project;
             resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["startedRunCount"] = state?.startedRunCount;
             resourceInputs["state"] = state?.state;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as ScheduleArgs | undefined;
-            if (args?.createNotebookExecutionJobRequest === undefined && !opts.urn) {
-                throw new Error("Missing required property 'createNotebookExecutionJobRequest'");
-            }
             if (args?.cron === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cron'");
             }
@@ -429,18 +658,28 @@ export class Schedule extends pulumi.CustomResource {
             }
             resourceInputs["allowQueueing"] = args?.allowQueueing;
             resourceInputs["createNotebookExecutionJobRequest"] = args?.createNotebookExecutionJobRequest;
+            resourceInputs["createPipelineJobRequest"] = args?.createPipelineJobRequest;
             resourceInputs["cron"] = args?.cron;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["endTime"] = args?.endTime;
             resourceInputs["location"] = args?.location;
+            resourceInputs["maxConcurrentActiveRunCount"] = args?.maxConcurrentActiveRunCount;
             resourceInputs["maxConcurrentRunCount"] = args?.maxConcurrentRunCount;
             resourceInputs["maxRunCount"] = args?.maxRunCount;
             resourceInputs["project"] = args?.project;
             resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["catchUp"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastPauseTime"] = undefined /*out*/;
+            resourceInputs["lastResumeTime"] = undefined /*out*/;
+            resourceInputs["lastScheduledRunResponses"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nextRunTime"] = undefined /*out*/;
+            resourceInputs["startedRunCount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Schedule.__pulumiType, name, resourceInputs, opts);
@@ -456,10 +695,23 @@ export interface ScheduleState {
      */
     allowQueueing?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
+     */
+    catchUp?: pulumi.Input<boolean | undefined>;
+    /**
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      */
     createNotebookExecutionJobRequest?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequest | undefined>;
+    /**
+     * Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     */
+    createPipelineJobRequest?: pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequest | undefined>;
+    /**
+     * Timestamp when this Schedule was created.
+     */
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
@@ -486,9 +738,26 @@ export interface ScheduleState {
      */
     endTime?: pulumi.Input<string | undefined>;
     /**
+     * Timestamp when this Schedule was last paused. Unset if never paused.
+     */
+    lastPauseTime?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
+     */
+    lastResumeTime?: pulumi.Input<string | undefined>;
+    /**
+     * Status of a scheduled run.
+     * Structure is documented below.
+     */
+    lastScheduledRunResponses?: pulumi.Input<pulumi.Input<inputs.colab.ScheduleLastScheduledRunResponse>[] | undefined>;
+    /**
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     */
+    maxConcurrentActiveRunCount?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
      */
@@ -502,6 +771,10 @@ export interface ScheduleState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
+     */
+    nextRunTime?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -511,9 +784,17 @@ export interface ScheduleState {
      */
     startTime?: pulumi.Input<string | undefined>;
     /**
+     * The number of runs started by this schedule.
+     */
+    startedRunCount?: pulumi.Input<string | undefined>;
+    /**
      * Output only. The state of the schedule.
      */
     state?: pulumi.Input<string | undefined>;
+    /**
+     * Timestamp when this Schedule was updated.
+     */
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -528,7 +809,12 @@ export interface ScheduleArgs {
      * Request for google_colab_notebook_execution.
      * Structure is documented below.
      */
-    createNotebookExecutionJobRequest: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequest>;
+    createNotebookExecutionJobRequest?: pulumi.Input<inputs.colab.ScheduleCreateNotebookExecutionJobRequest | undefined>;
+    /**
+     * Request message for PipelineService.CreatePipelineJob.
+     * Structure is documented below.
+     */
+    createPipelineJobRequest?: pulumi.Input<inputs.colab.ScheduleCreatePipelineJobRequest | undefined>;
     /**
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
@@ -558,6 +844,10 @@ export interface ScheduleArgs {
      * The location for the resource: https://cloud.google.com/colab/docs/locations
      */
     location: pulumi.Input<string>;
+    /**
+     * Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
+     */
+    maxConcurrentActiveRunCount?: pulumi.Input<string | undefined>;
     /**
      * Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
      */

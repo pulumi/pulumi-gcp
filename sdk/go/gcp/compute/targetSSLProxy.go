@@ -76,7 +76,7 @@ import (
 //			defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
 //				Name:         pulumi.String("backend-service"),
 //				Protocol:     pulumi.String("SSL"),
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -90,11 +90,11 @@ import (
 //			}
 //			_, err = compute.NewTargetSSLProxy(ctx, "default", &compute.TargetSSLProxyArgs{
 //				Name:           pulumi.String("test-proxy"),
-//				BackendService: defaultBackendService.ID(),
+//				BackendService: defaultBackendService.ID().ToIDOutput().ToStringOutput(),
 //				SslCertificates: pulumi.StringArray{
-//					defaultSSLCertificate.ID(),
+//					defaultSSLCertificate.ID().ToIDOutput().ToStringOutput(),
 //				},
-//				CertificateMap: defaultCertificateMap.ID().ApplyT(func(id string) (string, error) {
+//				CertificateMap: defaultCertificateMap.ID().ApplyT(func(id pulumi.ID) (string, error) {
 //					return fmt.Sprintf("//certificatemanager.googleapis.com/%v", id), nil
 //				}).(pulumi.StringOutput),
 //			})

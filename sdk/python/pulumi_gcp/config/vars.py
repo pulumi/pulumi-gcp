@@ -42,6 +42,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get_bool('addPulumiAttributionLabel')
 
     @_builtins.property
+    def agent_identity_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('agentIdentityCustomEndpoint')
+
+    @_builtins.property
     def agent_registry_custom_endpoint(self) -> Optional[str]:
         return __config__.get('agentRegistryCustomEndpoint')
 

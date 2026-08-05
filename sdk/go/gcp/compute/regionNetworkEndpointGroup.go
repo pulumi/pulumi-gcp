@@ -325,7 +325,7 @@ import (
 //				Name:        pulumi.String("psc-subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("europe-west4"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -335,7 +335,7 @@ import (
 //				IpCidrRange: pulumi.String("10.1.0.0/16"),
 //				Region:      pulumi.String("europe-west4"),
 //				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -354,7 +354,7 @@ import (
 //			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
 //				Name:         pulumi.String("psc-backend"),
 //				Region:       pulumi.String("europe-west4"),
-//				HealthChecks: defaultHealthCheck.ID(),
+//				HealthChecks: defaultHealthCheck.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -363,7 +363,7 @@ import (
 //				Name:                pulumi.String("psc-forwarding-rule"),
 //				Region:              pulumi.String("europe-west4"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
-//				BackendService:      defaultRegionBackendService.ID(),
+//				BackendService:      defaultRegionBackendService.ID().ToIDOutput().ToStringOutput(),
 //				Ports: pulumi.StringArray{
 //					pulumi.String("80"),
 //					pulumi.String("88"),
@@ -430,7 +430,7 @@ import (
 //			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_ip_port", &compute.RegionNetworkEndpointGroupArgs{
 //				Name:                pulumi.String("ip-port-neg"),
 //				Region:              pulumi.String("us-central1"),
-//				Network:             _default.ID(),
+//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
 //				NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
 //			})
 //			if err != nil {
@@ -464,7 +464,7 @@ import (
 //			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_internet_fqdn_port", &compute.RegionNetworkEndpointGroupArgs{
 //				Name:                pulumi.String("ip-port-neg"),
 //				Region:              pulumi.String("us-central1"),
-//				Network:             _default.ID(),
+//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
 //				NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 //			})
 //			if err != nil {
@@ -499,7 +499,7 @@ import (
 //				Name:        pulumi.String("subnetwork"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     _default.ID(),
+//				Network:     _default.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -507,8 +507,8 @@ import (
 //			_, err = compute.NewRegionNetworkEndpointGroup(ctx, "region_network_endpoint_group_portmap", &compute.RegionNetworkEndpointGroupArgs{
 //				Name:                pulumi.String("portmap-neg"),
 //				Region:              pulumi.String("us-central1"),
-//				Network:             _default.ID(),
-//				Subnetwork:          defaultSubnetwork.ID(),
+//				Network:             _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:          defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				NetworkEndpointType: pulumi.String("GCE_VM_IP_PORTMAP"),
 //			})
 //			if err != nil {

@@ -56,13 +56,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -74,7 +74,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -82,7 +82,7 @@ import (
 //				return err
 //			}
 //			_, err = apigee.NewDataCollector(ctx, "apigee_data_collector", &apigee.DataCollectorArgs{
-//				OrgId:           apigeeOrg.ID(),
+//				OrgId:           apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				DataCollectorId: pulumi.String("dc_my_data_collector"),
 //				Description:     pulumi.String("A data collector for custom analytics"),
 //				Type:            pulumi.String("INTEGER"),

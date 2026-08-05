@@ -53,7 +53,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 //				Name:                            pulumi.String("example-fhir-store"),
-//				Dataset:                         dataset.ID(),
+//				Dataset:                         dataset.ID().ToIDOutput().ToStringOutput(),
 //				Version:                         pulumi.String("R4"),
 //				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
 //				EnableUpdateCreate:              pulumi.Bool(false),
@@ -63,7 +63,7 @@ import (
 //				DefaultSearchHandlingStrict:     pulumi.Bool(false),
 //				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 //					&healthcare.FhirStoreNotificationConfigArgs{
-//						PubsubTopic: topic.ID(),
+//						PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Labels: pulumi.StringMap{
@@ -115,7 +115,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("example-fhir-store"),
-//				Dataset:                     dataset.ID(),
+//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(false),
 //				DisableReferentialIntegrity: pulumi.Bool(false),
@@ -190,7 +190,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 //				Name:                        pulumi.String("example-fhir-store"),
-//				Dataset:                     dataset.ID(),
+//				Dataset:                     dataset.ID().ToIDOutput().ToStringOutput(),
 //				Version:                     pulumi.String("R4"),
 //				EnableUpdateCreate:          pulumi.Bool(false),
 //				DisableReferentialIntegrity: pulumi.Bool(false),
@@ -201,7 +201,7 @@ import (
 //				},
 //				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 //					&healthcare.FhirStoreNotificationConfigArgs{
-//						PubsubTopic:                  topic.ID(),
+//						PubsubTopic:                  topic.ID().ToIDOutput().ToStringOutput(),
 //						SendFullResource:             pulumi.Bool(true),
 //						SendPreviousResourceOnDelete: pulumi.Bool(true),
 //					},
@@ -245,7 +245,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 //				Name:                            pulumi.String("example-fhir-store"),
-//				Dataset:                         dataset.ID(),
+//				Dataset:                         dataset.ID().ToIDOutput().ToStringOutput(),
 //				Version:                         pulumi.String("R4"),
 //				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
 //				EnableUpdateCreate:              pulumi.Bool(false),
@@ -255,7 +255,7 @@ import (
 //				DefaultSearchHandlingStrict:     pulumi.Bool(false),
 //				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 //					&healthcare.FhirStoreNotificationConfigArgs{
-//						PubsubTopic: topic.ID(),
+//						PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Labels: pulumi.StringMap{
@@ -310,7 +310,7 @@ import (
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
 //				Name:                            pulumi.String("example-fhir-store"),
-//				Dataset:                         dataset.ID(),
+//				Dataset:                         dataset.ID().ToIDOutput().ToStringOutput(),
 //				Version:                         pulumi.String("R4"),
 //				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
 //				EnableUpdateCreate:              pulumi.Bool(false),
@@ -320,7 +320,7 @@ import (
 //				DefaultSearchHandlingStrict:     pulumi.Bool(false),
 //				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 //					&healthcare.FhirStoreNotificationConfigArgs{
-//						PubsubTopic: topic.ID(),
+//						PubsubTopic: topic.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Labels: pulumi.StringMap{

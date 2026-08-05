@@ -270,9 +270,11 @@ namespace Pulumi.Gcp.Container
         public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string Description;
+        public readonly string DesiredEmulatedVersion;
         public readonly bool DisableL4LbFirewallReconciliation;
         public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly string EmulatedVersion;
         public readonly bool EnableAutopilot;
         public readonly bool EnableCiliumClusterwideNetworkPolicy;
         public readonly bool EnableFqdnNetworkPolicy;
@@ -338,6 +340,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool RemoveDefaultNodePool;
         public readonly ImmutableDictionary<string, string> ResourceLabels;
         public readonly ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> ResourceUsageExportConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterRollbackSafeUpgradeResult> RollbackSafeUpgrades;
         public readonly ImmutableArray<Outputs.GetClusterSecretManagerConfigResult> SecretManagerConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecretSyncConfigResult> SecretSyncConfigs;
         public readonly ImmutableArray<Outputs.GetClusterSecurityPostureConfigResult> SecurityPostureConfigs;
@@ -397,11 +400,15 @@ namespace Pulumi.Gcp.Container
 
             string description,
 
+            string desiredEmulatedVersion,
+
             bool disableL4LbFirewallReconciliation,
 
             ImmutableArray<Outputs.GetClusterDnsConfigResult> dnsConfigs,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            string emulatedVersion,
 
             bool enableAutopilot,
 
@@ -527,6 +534,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> resourceUsageExportConfigs,
 
+            ImmutableArray<Outputs.GetClusterRollbackSafeUpgradeResult> rollbackSafeUpgrades,
+
             ImmutableArray<Outputs.GetClusterSecretManagerConfigResult> secretManagerConfigs,
 
             ImmutableArray<Outputs.GetClusterSecretSyncConfigResult> secretSyncConfigs,
@@ -576,9 +585,11 @@ namespace Pulumi.Gcp.Container
             DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
+            DesiredEmulatedVersion = desiredEmulatedVersion;
             DisableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;
             DnsConfigs = dnsConfigs;
             EffectiveLabels = effectiveLabels;
+            EmulatedVersion = emulatedVersion;
             EnableAutopilot = enableAutopilot;
             EnableCiliumClusterwideNetworkPolicy = enableCiliumClusterwideNetworkPolicy;
             EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
@@ -641,6 +652,7 @@ namespace Pulumi.Gcp.Container
             RemoveDefaultNodePool = removeDefaultNodePool;
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfigs = resourceUsageExportConfigs;
+            RollbackSafeUpgrades = rollbackSafeUpgrades;
             SecretManagerConfigs = secretManagerConfigs;
             SecretSyncConfigs = secretSyncConfigs;
             SecurityPostureConfigs = securityPostureConfigs;

@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterBinaryAuthorization {
     /**
-     * @return Enable Binary Authorization for this cluster.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -22,14 +22,15 @@ public final class ClusterBinaryAuthorization {
     @Deprecated /* Deprecated in favor of evaluation_mode. */
     private @Nullable Boolean enabled;
     /**
-     * @return Mode of operation for Binary Authorization policy evaluation.
+     * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
      * 
      */
     private @Nullable String evaluationMode;
 
     private ClusterBinaryAuthorization() {}
     /**
-     * @return Enable Binary Authorization for this cluster.
+     * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
      * 
      * @deprecated
      * Deprecated in favor of evaluation_mode.
@@ -40,7 +41,8 @@ public final class ClusterBinaryAuthorization {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Mode of operation for Binary Authorization policy evaluation.
+     * @return Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
+     * and `PROJECT_SINGLETON_POLICY_ENFORCE`.
      * 
      */
     public Optional<String> evaluationMode() {

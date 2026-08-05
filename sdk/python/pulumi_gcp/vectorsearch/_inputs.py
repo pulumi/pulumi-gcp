@@ -25,6 +25,12 @@ __all__ = [
     'CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgsDict',
     'CollectionVectorSchemaSparseVectorArgs',
     'CollectionVectorSchemaSparseVectorArgsDict',
+    'DataObjectVectorArgs',
+    'DataObjectVectorArgsDict',
+    'DataObjectVectorDenseArgs',
+    'DataObjectVectorDenseArgsDict',
+    'DataObjectVectorSparseArgs',
+    'DataObjectVectorSparseArgsDict',
     'IndexDedicatedInfrastructureArgs',
     'IndexDedicatedInfrastructureArgsDict',
     'IndexDedicatedInfrastructureAutoscalingSpecArgs',
@@ -305,6 +311,158 @@ class CollectionVectorSchemaSparseVectorArgsDict(TypedDict):
 class CollectionVectorSchemaSparseVectorArgs:
     def __init__(__self__):
         pass
+
+
+class DataObjectVectorArgsDict(TypedDict):
+    field_name: pulumi.Input[_builtins.str]
+    """
+    The identifier for this object. Format specified above.
+    """
+    dense: NotRequired[pulumi.Input[Optional['DataObjectVectorDenseArgsDict']]]
+    """
+    A dense vector.
+    Structure is documented below.
+    """
+    sparse: NotRequired[pulumi.Input[Optional['DataObjectVectorSparseArgsDict']]]
+    """
+    A sparse vector.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class DataObjectVectorArgs:
+    def __init__(__self__, *,
+                 field_name: pulumi.Input[_builtins.str],
+                 dense: pulumi.Input[Optional['DataObjectVectorDenseArgs']] = None,
+                 sparse: pulumi.Input[Optional['DataObjectVectorSparseArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] field_name: The identifier for this object. Format specified above.
+        :param pulumi.Input['DataObjectVectorDenseArgs'] dense: A dense vector.
+               Structure is documented below.
+        :param pulumi.Input['DataObjectVectorSparseArgs'] sparse: A sparse vector.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "field_name", field_name)
+        if dense is not None:
+            pulumi.set(__self__, "dense", dense)
+        if sparse is not None:
+            pulumi.set(__self__, "sparse", sparse)
+
+    @_builtins.property
+    @pulumi.getter(name="fieldName")
+    def field_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "field_name")
+
+    @field_name.setter
+    def field_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "field_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dense(self) -> pulumi.Input[Optional['DataObjectVectorDenseArgs']]:
+        """
+        A dense vector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dense")
+
+    @dense.setter
+    def dense(self, value: pulumi.Input[Optional['DataObjectVectorDenseArgs']]):
+        pulumi.set(self, "dense", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sparse(self) -> pulumi.Input[Optional['DataObjectVectorSparseArgs']]:
+        """
+        A sparse vector.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sparse")
+
+    @sparse.setter
+    def sparse(self, value: pulumi.Input[Optional['DataObjectVectorSparseArgs']]):
+        pulumi.set(self, "sparse", value)
+
+
+class DataObjectVectorDenseArgsDict(TypedDict):
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]
+    """
+    The float values of the dense vector.
+    """
+
+@pulumi.input_type
+class DataObjectVectorDenseArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] values: The float values of the dense vector.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]:
+        """
+        The float values of the dense vector.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]):
+        pulumi.set(self, "values", value)
+
+
+class DataObjectVectorSparseArgsDict(TypedDict):
+    indices: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
+    """
+    The indices corresponding to the entries in `values`. Must
+    have the same length as `values`.
+    """
+    values: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]
+    """
+    The non-zero float values of the sparse vector.
+    """
+
+@pulumi.input_type
+class DataObjectVectorSparseArgs:
+    def __init__(__self__, *,
+                 indices: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
+                 values: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] indices: The indices corresponding to the entries in `values`. Must
+               have the same length as `values`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.float]]] values: The non-zero float values of the sparse vector.
+        """
+        pulumi.set(__self__, "indices", indices)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def indices(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
+        """
+        The indices corresponding to the entries in `values`. Must
+        have the same length as `values`.
+        """
+        return pulumi.get(self, "indices")
+
+    @indices.setter
+    def indices(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]):
+        pulumi.set(self, "indices", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]:
+        """
+        The non-zero float values of the sparse vector.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.float]]]):
+        pulumi.set(self, "values", value)
 
 
 class IndexDedicatedInfrastructureArgsDict(TypedDict):

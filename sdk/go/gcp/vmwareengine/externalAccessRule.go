@@ -47,14 +47,14 @@ import (
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-//				VmwareEngineNetwork: external_access_rule_nw.ID(),
+//				VmwareEngineNetwork: external_access_rule_nw.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = vmwareengine.NewExternalAccessRule(ctx, "vmw-engine-external-access-rule", &vmwareengine.ExternalAccessRuleArgs{
 //				Name:       pulumi.String("sample-external-access-rule"),
-//				Parent:     external_access_rule_np.ID(),
+//				Parent:     external_access_rule_np.ID().ToIDOutput().ToStringOutput(),
 //				Priority:   pulumi.Int(101),
 //				Action:     pulumi.String("DENY"),
 //				IpProtocol: pulumi.String("TCP"),
@@ -112,7 +112,7 @@ import (
 //				Description: pulumi.String("Sample test PC."),
 //				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
 //					ManagementCidr:      pulumi.String("192.168.50.0/24"),
-//					VmwareEngineNetwork: external_access_rule_nw.ID(),
+//					VmwareEngineNetwork: external_access_rule_nw.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
 //					ClusterId: pulumi.String("sample-mgmt-cluster"),
@@ -131,14 +131,14 @@ import (
 //				Location:            pulumi.String("us-west1"),
 //				Name:                pulumi.String("sample-np"),
 //				EdgeServicesCidr:    pulumi.String("192.168.30.0/26"),
-//				VmwareEngineNetwork: external_access_rule_nw.ID(),
+//				VmwareEngineNetwork: external_access_rule_nw.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			external_access_rule_ea, err := vmwareengine.NewExternalAddress(ctx, "external-access-rule-ea", &vmwareengine.ExternalAddressArgs{
 //				Name:       pulumi.String("sample-ea"),
-//				Parent:     external_access_rule_pc.ID(),
+//				Parent:     external_access_rule_pc.ID().ToIDOutput().ToStringOutput(),
 //				InternalIp: pulumi.String("192.168.0.65"),
 //			})
 //			if err != nil {
@@ -146,7 +146,7 @@ import (
 //			}
 //			_, err = vmwareengine.NewExternalAccessRule(ctx, "vmw-engine-external-access-rule", &vmwareengine.ExternalAccessRuleArgs{
 //				Name:        pulumi.String("sample-external-access-rule"),
-//				Parent:      external_access_rule_np.ID(),
+//				Parent:      external_access_rule_np.ID().ToIDOutput().ToStringOutput(),
 //				Description: pulumi.String("Sample Description"),
 //				Priority:    pulumi.Int(101),
 //				Action:      pulumi.String("ALLOW"),
@@ -161,7 +161,7 @@ import (
 //				},
 //				DestinationIpRanges: vmwareengine.ExternalAccessRuleDestinationIpRangeArray{
 //					&vmwareengine.ExternalAccessRuleDestinationIpRangeArgs{
-//						ExternalAddress: external_access_rule_ea.ID(),
+//						ExternalAddress: external_access_rule_ea.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				DestinationPorts: pulumi.StringArray{

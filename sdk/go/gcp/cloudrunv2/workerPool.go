@@ -251,7 +251,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -433,7 +433,7 @@ import (
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
-//				SecretId: secret.ID(),
+//				SecretId: secret.ID().ToIDOutput().ToStringOutput(),
 //				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
 //				Member:   pulumi.Sprintf("serviceAccount:%v-compute@developer.gserviceaccount.com", project.Number),
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -716,7 +716,7 @@ import (
 //				Name:        pulumi.String("wp-subnet"),
 //				IpCidrRange: pulumi.String("10.2.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     customTest.ID(),
+//				Network:     customTest.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -751,7 +751,7 @@ import (
 //									Path: pulumi.String("/"),
 //									Port: pulumi.Int(8080),
 //									HttpHeaders: cloudrunv2.WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs{
-//										map[string]interface{}{
+//										map[string]string{
 //											"name":  "TEST-HEADER",
 //											"value": "test-value",
 //										},
@@ -763,8 +763,8 @@ import (
 //					VpcAccess: &cloudrunv2.WorkerPoolTemplateVpcAccessArgs{
 //						NetworkInterfaces: cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterfaceArray{
 //							&cloudrunv2.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs{
-//								Network:    customTest.ID(),
-//								Subnetwork: customTestSubnetwork.ID(),
+//								Network:    customTest.ID().ToIDOutput().ToStringOutput(),
+//								Subnetwork: customTestSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //								Tags:       pulumi.StringArray{},
 //							},
 //						},

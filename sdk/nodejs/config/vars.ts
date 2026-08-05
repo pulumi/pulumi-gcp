@@ -49,6 +49,14 @@ Object.defineProperty(exports, "addPulumiAttributionLabel", {
     enumerable: true,
 });
 
+export declare const agentIdentityCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "agentIdentityCustomEndpoint", {
+    get() {
+        return __config.get("agentIdentityCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const agentRegistryCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "agentRegistryCustomEndpoint", {
     get() {

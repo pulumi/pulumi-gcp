@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BigQueryExportArgs, BigQueryExportState } from "./bigQueryExport";
+export type BigQueryExport = import("./bigQueryExport").BigQueryExport;
+export const BigQueryExport: typeof import("./bigQueryExport").BigQueryExport = null as any;
+utilities.lazyLoad(exports, ["BigQueryExport"], () => require("./bigQueryExport"));
+
 export { CustomListArgs, CustomListState } from "./customList";
 export type CustomList = import("./customList").CustomList;
 export const CustomList: typeof import("./customList").CustomList = null as any;
@@ -120,6 +125,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:chronicle/bigQueryExport:BigQueryExport":
+                return new BigQueryExport(name, <any>undefined, { urn })
             case "gcp:chronicle/customList:CustomList":
                 return new CustomList(name, <any>undefined, { urn })
             case "gcp:chronicle/dashboardChart:DashboardChart":
@@ -169,6 +176,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "chronicle/bigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/customList", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dashboardChart", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)

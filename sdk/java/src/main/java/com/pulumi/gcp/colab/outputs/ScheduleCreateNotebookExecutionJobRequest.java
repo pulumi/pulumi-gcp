@@ -6,7 +6,10 @@ package com.pulumi.gcp.colab.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.colab.outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ScheduleCreateNotebookExecutionJobRequest {
@@ -16,6 +19,17 @@ public final class ScheduleCreateNotebookExecutionJobRequest {
      * 
      */
     private ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob;
+    /**
+     * @return (Output)
+     * User specified ID for the NotebookExecutionJob.
+     * 
+     */
+    private @Nullable String notebookExecutionJobId;
+    /**
+     * @return The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+     * 
+     */
+    private @Nullable String parent;
 
     private ScheduleCreateNotebookExecutionJobRequest() {}
     /**
@@ -25,6 +39,21 @@ public final class ScheduleCreateNotebookExecutionJobRequest {
      */
     public ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob() {
         return this.notebookExecutionJob;
+    }
+    /**
+     * @return (Output)
+     * User specified ID for the NotebookExecutionJob.
+     * 
+     */
+    public Optional<String> notebookExecutionJobId() {
+        return Optional.ofNullable(this.notebookExecutionJobId);
+    }
+    /**
+     * @return The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
+     * 
+     */
+    public Optional<String> parent() {
+        return Optional.ofNullable(this.parent);
     }
 
     public static Builder builder() {
@@ -37,10 +66,14 @@ public final class ScheduleCreateNotebookExecutionJobRequest {
     @CustomType.Builder
     public static final class Builder {
         private ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob notebookExecutionJob;
+        private @Nullable String notebookExecutionJobId;
+        private @Nullable String parent;
         public Builder() {}
         public Builder(ScheduleCreateNotebookExecutionJobRequest defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.notebookExecutionJob = defaults.notebookExecutionJob;
+    	      this.notebookExecutionJobId = defaults.notebookExecutionJobId;
+    	      this.parent = defaults.parent;
         }
 
         @CustomType.Setter
@@ -51,9 +84,23 @@ public final class ScheduleCreateNotebookExecutionJobRequest {
             this.notebookExecutionJob = notebookExecutionJob;
             return this;
         }
+        @CustomType.Setter
+        public Builder notebookExecutionJobId(@Nullable String notebookExecutionJobId) {
+
+            this.notebookExecutionJobId = notebookExecutionJobId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parent(@Nullable String parent) {
+
+            this.parent = parent;
+            return this;
+        }
         public ScheduleCreateNotebookExecutionJobRequest build() {
             final var _resultValue = new ScheduleCreateNotebookExecutionJobRequest();
             _resultValue.notebookExecutionJob = notebookExecutionJob;
+            _resultValue.notebookExecutionJobId = notebookExecutionJobId;
+            _resultValue.parent = parent;
             return _resultValue;
         }
     }

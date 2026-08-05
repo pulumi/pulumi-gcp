@@ -48,7 +48,7 @@ import (
 //				Location:               pulumi.String("global"),
 //				ThreatDetectorProvider: pulumi.String("INFOBLOX"),
 //				ExcludedNetworks: pulumi.StringArray{
-//					foobar.ID(),
+//					foobar.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),

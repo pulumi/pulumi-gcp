@@ -220,7 +220,7 @@ import (
 //			addrIntf, err := compute.NewAddress(ctx, "addr_intf", &compute.AddressArgs{
 //				Name:        pulumi.String("my-router-addr-intf"),
 //				Region:      subnetwork.Region,
-//				Subnetwork:  subnetwork.ID(),
+//				Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //			})
 //			if err != nil {
@@ -229,7 +229,7 @@ import (
 //			addrIntfRedundant, err := compute.NewAddress(ctx, "addr_intf_redundant", &compute.AddressArgs{
 //				Name:        pulumi.String("my-router-addr-intf-red"),
 //				Region:      subnetwork.Region,
-//				Subnetwork:  subnetwork.ID(),
+//				Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //			})
 //			if err != nil {
@@ -238,7 +238,7 @@ import (
 //			addrPeer, err := compute.NewAddress(ctx, "addr_peer", &compute.AddressArgs{
 //				Name:        pulumi.String("my-router-addr-peer"),
 //				Region:      subnetwork.Region,
-//				Subnetwork:  subnetwork.ID(),
+//				Subnetwork:  subnetwork.ID().ToIDOutput().ToStringOutput(),
 //				AddressType: pulumi.String("INTERNAL"),
 //			})
 //			if err != nil {
@@ -273,7 +273,7 @@ import (
 //			_, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
 //				Name:     pulumi.String("my-router-spoke"),
 //				Location: subnetwork.Region,
-//				Hub:      hub.ID(),
+//				Hub:      hub.ID().ToIDOutput().ToStringOutput(),
 //				LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
 //					Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
 //						&networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
@@ -446,8 +446,8 @@ import (
 //			vpnTunnel, err := compute.NewVPNTunnel(ctx, "vpn_tunnel", &compute.VPNTunnelArgs{
 //				Name:                         pulumi.String("my-router"),
 //				Region:                       subnetwork.Region,
-//				VpnGateway:                   vpnGateway.ID(),
-//				PeerExternalGateway:          externalGateway.ID(),
+//				VpnGateway:                   vpnGateway.ID().ToIDOutput().ToStringOutput(),
+//				PeerExternalGateway:          externalGateway.ID().ToIDOutput().ToStringOutput(),
 //				PeerExternalGatewayInterface: pulumi.Int(0),
 //				SharedSecret:                 pulumi.String("unguessable"),
 //				Router:                       router.Name,

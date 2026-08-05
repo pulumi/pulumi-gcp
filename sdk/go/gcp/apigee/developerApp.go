@@ -51,13 +51,13 @@ import (
 //			apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:     pulumi.String("instance"),
 //				Location: pulumi.String("us-central1"),
-//				OrgId:    apigeeOrg.ID(),
+//				OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
-//				OrgId:        apigeeOrg.ID(),
+//				OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				Name:         pulumi.String("sample-api"),
 //				DisplayName:  pulumi.String("A sample API Product"),
 //				ApprovalType: pulumi.String("auto"),
@@ -76,7 +76,7 @@ import (
 //				FirstName: pulumi.String("John"),
 //				LastName:  pulumi.String("Doe"),
 //				UserName:  pulumi.String("john.doe"),
-//				OrgId:     apigeeOrg.ID(),
+//				OrgId:     apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeInstance,
 //			}))
@@ -85,7 +85,7 @@ import (
 //			}
 //			_, err = apigee.NewDeveloperApp(ctx, "apigee_developer_app", &apigee.DeveloperAppArgs{
 //				Name:           pulumi.String("sample-app"),
-//				OrgId:          apigeeOrg.ID(),
+//				OrgId:          apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				DeveloperId:    developer.ID(),
 //				DeveloperEmail: developer.Email,
 //				CallbackUrl:    pulumi.String("https://example-call.url"),
@@ -163,14 +163,14 @@ import (
 //			apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:     pulumi.String("instance"),
 //				Location: pulumi.String("us-central1"),
-//				OrgId:    apigeeOrg.ID(),
+//				OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apiProduct, err := apigee.NewApiProduct(ctx, "api_product", &apigee.ApiProductArgs{
 //				Name:         pulumi.String("sample-api"),
-//				OrgId:        apigeeOrg.ID(),
+//				OrgId:        apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName:  pulumi.String("A sample API Product"),
 //				ApprovalType: pulumi.String("auto"),
 //				Scopes: pulumi.StringArray{
@@ -189,7 +189,7 @@ import (
 //				FirstName: pulumi.String("John"),
 //				LastName:  pulumi.String("Doe"),
 //				UserName:  pulumi.String("john.doe"),
-//				OrgId:     apigeeOrg.ID(),
+//				OrgId:     apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeInstance,
 //			}))
@@ -200,7 +200,7 @@ import (
 //				Name:           pulumi.String("sample-app"),
 //				AppFamily:      pulumi.String("default"),
 //				DeveloperEmail: developer.Email,
-//				OrgId:          apigeeOrg.ID(),
+//				OrgId:          apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				CallbackUrl:    pulumi.String("https://example-call.url"),
 //				KeyExpiresIn:   pulumi.String("-1"),
 //				Status:         pulumi.String("approved"),

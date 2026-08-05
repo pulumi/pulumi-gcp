@@ -54,7 +54,7 @@ import (
 //			deploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "deployment_group", &networksecurity.InterceptDeploymentGroupArgs{
 //				InterceptDeploymentGroupId: pulumi.String("example-dg"),
 //				Location:                   pulumi.String("global"),
-//				Network:                    producerNetwork.ID(),
+//				Network:                    producerNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -62,7 +62,7 @@ import (
 //			endpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "endpoint_group", &networksecurity.InterceptEndpointGroupArgs{
 //				InterceptEndpointGroupId: pulumi.String("example-eg"),
 //				Location:                 pulumi.String("global"),
-//				InterceptDeploymentGroup: deploymentGroup.ID(),
+//				InterceptDeploymentGroup: deploymentGroup.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -70,8 +70,8 @@ import (
 //			_, err = networksecurity.NewInterceptEndpointGroupAssociation(ctx, "default", &networksecurity.InterceptEndpointGroupAssociationArgs{
 //				InterceptEndpointGroupAssociationId: pulumi.String("example-ega"),
 //				Location:                            pulumi.String("global"),
-//				Network:                             consumerNetwork.ID(),
-//				InterceptEndpointGroup:              endpointGroup.ID(),
+//				Network:                             consumerNetwork.ID().ToIDOutput().ToStringOutput(),
+//				InterceptEndpointGroup:              endpointGroup.ID().ToIDOutput().ToStringOutput(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},

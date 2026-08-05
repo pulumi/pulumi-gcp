@@ -95,7 +95,7 @@ import (
 //				Type: pulumi.String("pd-ssd"),
 //				Zone: pulumi.String("us-east1-c"),
 //				AsyncPrimaryDisk: &compute.DiskAsyncPrimaryDiskArgs{
-//					Disk: primary.ID(),
+//					Disk: primary.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
 //			})

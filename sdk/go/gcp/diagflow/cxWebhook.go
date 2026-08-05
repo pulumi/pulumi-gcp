@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					AllowedCaCerts: pulumi.StringArray{
@@ -135,7 +135,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -200,7 +200,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "standard_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 //					Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -280,7 +280,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "flexible_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 //					Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),
@@ -348,7 +348,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri:         pulumi.String("https://example.googleapis.com"),
@@ -402,7 +402,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxWebhook(ctx, "webhook_use_service_account", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				ServiceDirectory: &diagflow.CxWebhookServiceDirectoryArgs{
 //					Service: pulumi.String("projects/example-proj/locations/us-central1/namespaces/example-namespace/services/example-service"),

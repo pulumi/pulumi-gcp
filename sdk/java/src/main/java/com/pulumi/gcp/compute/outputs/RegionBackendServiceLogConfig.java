@@ -4,6 +4,8 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfigRequestHeader;
+import com.pulumi.gcp.compute.outputs.RegionBackendServiceLogConfigResponseHeader;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -31,6 +33,18 @@ public final class RegionBackendServiceLogConfig {
      * 
      */
     private @Nullable String optionalMode;
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<RegionBackendServiceLogConfigRequestHeader> requestHeaders;
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<RegionBackendServiceLogConfigResponseHeader> responseHeaders;
     /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
@@ -65,6 +79,22 @@ public final class RegionBackendServiceLogConfig {
         return Optional.ofNullable(this.optionalMode);
     }
     /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of request headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    public List<RegionBackendServiceLogConfigRequestHeader> requestHeaders() {
+        return this.requestHeaders == null ? List.of() : this.requestHeaders;
+    }
+    /**
+     * @return This field can only be specified if logging is enabled for this backend service and if the BackendService protocol is one of HTTP, HTTPS, HTTP2 and GRPC. Contains a list of response headers to be logged.
+     * Structure is documented below.
+     * 
+     */
+    public List<RegionBackendServiceLogConfigResponseHeader> responseHeaders() {
+        return this.responseHeaders == null ? List.of() : this.responseHeaders;
+    }
+    /**
      * @return This field can only be specified if logging is enabled for this backend service. The value of
      * the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer
      * where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported.
@@ -87,6 +117,8 @@ public final class RegionBackendServiceLogConfig {
         private @Nullable Boolean enable;
         private @Nullable List<String> optionalFields;
         private @Nullable String optionalMode;
+        private @Nullable List<RegionBackendServiceLogConfigRequestHeader> requestHeaders;
+        private @Nullable List<RegionBackendServiceLogConfigResponseHeader> responseHeaders;
         private @Nullable Double sampleRate;
         public Builder() {}
         public Builder(RegionBackendServiceLogConfig defaults) {
@@ -94,6 +126,8 @@ public final class RegionBackendServiceLogConfig {
     	      this.enable = defaults.enable;
     	      this.optionalFields = defaults.optionalFields;
     	      this.optionalMode = defaults.optionalMode;
+    	      this.requestHeaders = defaults.requestHeaders;
+    	      this.responseHeaders = defaults.responseHeaders;
     	      this.sampleRate = defaults.sampleRate;
         }
 
@@ -119,6 +153,24 @@ public final class RegionBackendServiceLogConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder requestHeaders(@Nullable List<RegionBackendServiceLogConfigRequestHeader> requestHeaders) {
+
+            this.requestHeaders = requestHeaders;
+            return this;
+        }
+        public Builder requestHeaders(RegionBackendServiceLogConfigRequestHeader... requestHeaders) {
+            return requestHeaders(List.of(requestHeaders));
+        }
+        @CustomType.Setter
+        public Builder responseHeaders(@Nullable List<RegionBackendServiceLogConfigResponseHeader> responseHeaders) {
+
+            this.responseHeaders = responseHeaders;
+            return this;
+        }
+        public Builder responseHeaders(RegionBackendServiceLogConfigResponseHeader... responseHeaders) {
+            return responseHeaders(List.of(responseHeaders));
+        }
+        @CustomType.Setter
         public Builder sampleRate(@Nullable Double sampleRate) {
 
             this.sampleRate = sampleRate;
@@ -129,6 +181,8 @@ public final class RegionBackendServiceLogConfig {
             _resultValue.enable = enable;
             _resultValue.optionalFields = optionalFields;
             _resultValue.optionalMode = optionalMode;
+            _resultValue.requestHeaders = requestHeaders;
+            _resultValue.responseHeaders = responseHeaders;
             _resultValue.sampleRate = sampleRate;
             return _resultValue;
         }

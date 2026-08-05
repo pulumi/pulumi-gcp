@@ -44,7 +44,7 @@ import (
 //			}
 //			key, err := kms.NewCryptoKey(ctx, "key", &kms.CryptoKeyArgs{
 //				Name:           pulumi.String("crypto-key-example"),
-//				KeyRing:        keyring.ID(),
+//				KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "crypto_key", &kms.CryptoKeyIAMPolicyArgs{
-//				CryptoKeyId: key.ID(),
+//				CryptoKeyId: key.ID().ToIDOutput().ToStringOutput(),
 //				PolicyData:  pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {

@@ -54,7 +54,7 @@ class InterconnectArgs:
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                  Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
-        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[_builtins.int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[_builtins.bool] aai_enabled: (Optional, Beta)
@@ -182,7 +182,7 @@ class InterconnectArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[_builtins.str]:
         """
-        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
         Specifies the location inside Google's Networks.
         """
         return pulumi.get(self, "location")
@@ -434,6 +434,7 @@ class _InterconnectState:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_location: pulumi.Input[Optional[_builtins.str]] = None,
                  expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]] = None,
                  google_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -492,6 +493,8 @@ class _InterconnectState:
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] effective_location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]] expected_outages: A list of outages expected for this Interconnect.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] google_ip_address: IP address configured on the Google side of the Interconnect link.
@@ -522,7 +525,7 @@ class _InterconnectState:
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                  Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
-        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
@@ -597,6 +600,8 @@ class _InterconnectState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if effective_location is not None:
+            pulumi.set(__self__, "effective_location", effective_location)
         if expected_outages is not None:
             pulumi.set(__self__, "expected_outages", expected_outages)
         if google_ip_address is not None:
@@ -790,6 +795,19 @@ class _InterconnectState:
         pulumi.set(self, "effective_labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLocation")
+    def effective_location(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        Specifies the location inside Google's Networks.
+        """
+        return pulumi.get(self, "effective_location")
+
+    @effective_location.setter
+    def effective_location(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "effective_location", value)
+
+    @_builtins.property
     @pulumi.getter(name="expectedOutages")
     def expected_outages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]]]:
         """
@@ -922,7 +940,7 @@ class _InterconnectState:
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
         Specifies the location inside Google's Networks.
         """
         return pulumi.get(self, "location")
@@ -1210,7 +1228,7 @@ class Interconnect(pulumi.CustomResource):
             customer_name="example_customer",
             interconnect_type="DEDICATED",
             link_type="LINK_TYPE_ETHERNET_10G_LR",
-            location=f"https://www.googleapis.com/compute/v1/{project.id}/global/interconnectLocations/iad-zone1-1",
+            location=f"https://www.googleapis.com/compute/v1/projects/{project.project_id}/global/interconnectLocations/iad-zone1-1",
             requested_link_count=1)
         ```
 
@@ -1268,7 +1286,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                  Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
-        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
@@ -1330,7 +1348,7 @@ class Interconnect(pulumi.CustomResource):
             customer_name="example_customer",
             interconnect_type="DEDICATED",
             link_type="LINK_TYPE_ETHERNET_10G_LR",
-            location=f"https://www.googleapis.com/compute/v1/{project.id}/global/interconnectLocations/iad-zone1-1",
+            location=f"https://www.googleapis.com/compute/v1/projects/{project.project_id}/global/interconnectLocations/iad-zone1-1",
             requested_link_count=1)
         ```
 
@@ -1425,6 +1443,7 @@ class Interconnect(pulumi.CustomResource):
             __props__.__dict__["circuit_infos"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["effective_location"] = None
             __props__.__dict__["expected_outages"] = None
             __props__.__dict__["google_ip_address"] = None
             __props__.__dict__["google_reference_id"] = None
@@ -1460,6 +1479,7 @@ class Interconnect(pulumi.CustomResource):
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_location: pulumi.Input[Optional[_builtins.str]] = None,
             expected_outages: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]]] = None,
             google_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             google_reference_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1522,6 +1542,8 @@ class Interconnect(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[_builtins.str] effective_location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]] expected_outages: A list of outages expected for this Interconnect.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] google_ip_address: IP address configured on the Google side of the Interconnect link.
@@ -1552,7 +1574,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_400G_LR4: A 400G Ethernet with LR4 optics
                  Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`, `LINK_TYPE_ETHERNET_400G_LR4`.
-        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        :param pulumi.Input[_builtins.str] location: URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
                Specifies the location inside Google's Networks.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
@@ -1621,6 +1643,7 @@ class Interconnect(pulumi.CustomResource):
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["effective_location"] = effective_location
         __props__.__dict__["expected_outages"] = expected_outages
         __props__.__dict__["google_ip_address"] = google_ip_address
         __props__.__dict__["google_reference_id"] = google_reference_id
@@ -1749,6 +1772,15 @@ class Interconnect(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLocation")
+    def effective_location(self) -> pulumi.Output[_builtins.str]:
+        """
+        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        Specifies the location inside Google's Networks.
+        """
+        return pulumi.get(self, "effective_location")
+
+    @_builtins.property
     @pulumi.getter(name="expectedOutages")
     def expected_outages(self) -> pulumi.Output[Sequence['outputs.InterconnectExpectedOutage']]:
         """
@@ -1845,7 +1877,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:
         """
-        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        URL of the InterconnectLocation object that represents where this connection is requested to be provisioned.
         Specifies the location inside Google's Networks.
         """
         return pulumi.get(self, "location")

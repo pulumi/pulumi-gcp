@@ -55,7 +55,7 @@ import (
 //				Description: pulumi.String("test job"),
 //				Schedule:    pulumi.String("*/2 * * * *"),
 //				PubsubTarget: &cloudscheduler.JobPubsubTargetArgs{
-//					TopicName: topic.ID(),
+//					TopicName: topic.ID().ToIDOutput().ToStringOutput(),
 //					Data:      pulumi.String(invokeBase64encode.Result),
 //				},
 //			})

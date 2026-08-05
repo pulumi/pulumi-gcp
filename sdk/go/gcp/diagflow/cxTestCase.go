@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			intent, err := diagflow.NewCxIntent(ctx, "intent", &diagflow.CxIntentArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyIntent"),
 //				Priority:    pulumi.Int(1),
 //				TrainingPhrases: diagflow.CxIntentTrainingPhraseArray{
@@ -82,7 +82,7 @@ import (
 //				DisplayName: pulumi.String("MyPage"),
 //				TransitionRoutes: diagflow.CxPageTransitionRouteArray{
 //					&diagflow.CxPageTransitionRouteArgs{
-//						Intent: intent.ID(),
+//						Intent: intent.ID().ToIDOutput().ToStringOutput(),
 //						TriggerFulfillment: &diagflow.CxPageTransitionRouteTriggerFulfillmentArgs{
 //							Messages: diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArray{
 //								&diagflow.CxPageTransitionRouteTriggerFulfillmentMessageArgs{
@@ -116,14 +116,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//			tmpJSON0, err := json.Marshal(map[string]string{
 //				"some_param": "1",
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//			tmpJSON1, err := json.Marshal(map[string]string{
 //				"some_param": "1",
 //			})
 //			if err != nil {
@@ -131,7 +131,7 @@ import (
 //			}
 //			json1 := string(tmpJSON1)
 //			_, err = diagflow.NewCxTestCase(ctx, "basic_test_case", &diagflow.CxTestCaseArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyTestCase"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("#tag1"),
@@ -141,7 +141,7 @@ import (
 //					TrackingParameters: pulumi.StringArray{
 //						pulumi.String("some_param"),
 //					},
-//					Page: page.ID(),
+//					Page: page.ID().ToIDOutput().ToStringOutput(),
 //				},
 //				TestCaseConversationTurns: diagflow.CxTestCaseTestCaseConversationTurnArray{
 //					&diagflow.CxTestCaseTestCaseConversationTurnArgs{
@@ -159,10 +159,10 @@ import (
 //						VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
 //							SessionParameters: pulumi.String(json1),
 //							TriggeredIntent: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs{
-//								Name: intent.ID(),
+//								Name: intent.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							CurrentPage: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{
-//								Name: page.ID(),
+//								Name: page.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							TextResponses: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{
 //								&diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{
@@ -183,7 +183,7 @@ import (
 //						},
 //						VirtualAgentOutput: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs{
 //							CurrentPage: &diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs{
-//								Name: page.ID(),
+//								Name: page.ID().ToIDOutput().ToStringOutput(),
 //							},
 //							TextResponses: diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArray{
 //								&diagflow.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs{

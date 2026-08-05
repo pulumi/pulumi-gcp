@@ -92,7 +92,7 @@ import (
 //				Name:        pulumi.String("tpu-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     network.ID(),
+//				Network:     network.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -136,8 +136,8 @@ import (
 //				NetworkConfig: &tpu.V2VmNetworkConfigArgs{
 //					CanIpForward:      pulumi.Bool(true),
 //					EnableExternalIps: pulumi.Bool(true),
-//					Network:           network.ID(),
-//					Subnetwork:        subnet.ID(),
+//					Network:           network.ID().ToIDOutput().ToStringOutput(),
+//					Subnetwork:        subnet.ID().ToIDOutput().ToStringOutput(),
 //					QueueCount:        pulumi.Int(32),
 //				},
 //				SchedulingConfig: &tpu.V2VmSchedulingConfigArgs{
@@ -155,7 +155,7 @@ import (
 //				},
 //				DataDisks: tpu.V2VmDataDiskArray{
 //					&tpu.V2VmDataDiskArgs{
-//						SourceDisk: disk.ID(),
+//						SourceDisk: disk.ID().ToIDOutput().ToStringOutput(),
 //						Mode:       pulumi.String("READ_ONLY"),
 //					},
 //				},

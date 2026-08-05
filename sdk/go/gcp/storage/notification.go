@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
-//				Topic: topic.ID(),
+//				Topic: topic.ID().ToIDOutput().ToStringOutput(),
 //				Role:  pulumi.String("roles/pubsub.publisher"),
 //				Members: pulumi.StringArray{
 //					pulumi.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress),
@@ -78,7 +78,7 @@ import (
 //			_, err = storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
 //				Bucket:        bucket.Name,
 //				PayloadFormat: pulumi.String("JSON_API_V1"),
-//				Topic:         topic.ID(),
+//				Topic:         topic.ID().ToIDOutput().ToStringOutput(),
 //				EventTypes: pulumi.StringArray{
 //					pulumi.String("OBJECT_FINALIZE"),
 //					pulumi.String("OBJECT_METADATA_UPDATE"),

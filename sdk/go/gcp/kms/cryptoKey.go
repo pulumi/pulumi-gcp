@@ -52,7 +52,7 @@ import (
 //			}
 //			_, err = kms.NewCryptoKey(ctx, "example-key", &kms.CryptoKeyArgs{
 //				Name:           pulumi.String("crypto-key-example"),
-//				KeyRing:        keyring.ID(),
+//				KeyRing:        keyring.ID().ToIDOutput().ToStringOutput(),
 //				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
@@ -86,7 +86,7 @@ import (
 //			}
 //			_, err = kms.NewCryptoKey(ctx, "example-asymmetric-sign-key", &kms.CryptoKeyArgs{
 //				Name:    pulumi.String("crypto-key-example"),
-//				KeyRing: keyring.ID(),
+//				KeyRing: keyring.ID().ToIDOutput().ToStringOutput(),
 //				Purpose: pulumi.String("ASYMMETRIC_SIGN"),
 //				VersionTemplate: &kms.CryptoKeyVersionTemplateArgs{
 //					Algorithm: pulumi.String("EC_SIGN_P384_SHA384"),

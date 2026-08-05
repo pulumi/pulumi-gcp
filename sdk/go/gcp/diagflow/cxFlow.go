@@ -58,7 +58,7 @@ import (
 //				return err
 //			}
 //			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				Description: pulumi.String("Test Flow"),
 //				NluSettings: &diagflow.CxFlowNluSettingsArgs{
@@ -184,7 +184,7 @@ import (
 //				return err
 //			}
 //			myWebhook, err := diagflow.NewCxWebhook(ctx, "my_webhook", &diagflow.CxWebhookArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyWebhook"),
 //				GenericWebService: &diagflow.CxWebhookGenericWebServiceArgs{
 //					Uri: pulumi.String("https://example.com"),
@@ -213,24 +213,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -244,11 +244,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -278,24 +278,24 @@ import (
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
 //					"caseContent": []interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//						map[string]map[string]map[string][]string{
+//							"message": map[string]map[string][]string{
+//								"text": map[string][]string{
 //									"text": []string{
 //										"First case",
 //									},
 //								},
 //							},
 //						},
-//						map[string]interface{}{
-//							"additionalCases": map[string]interface{}{
+//						map[string]map[string][]map[string]interface{}{
+//							"additionalCases": map[string][]map[string]interface{}{
 //								"cases": []map[string]interface{}{
 //									map[string]interface{}{
 //										"condition": "$sys.func.RAND() < 0.2",
-//										"caseContent": []map[string]interface{}{
-//											map[string]interface{}{
-//												"message": map[string]interface{}{
-//													"text": map[string]interface{}{
+//										"caseContent": []map[string]map[string]map[string][]string{
+//											{
+//												"message": {
+//													"text": {
 //														"text": []string{
 //															"Nested case",
 //														},
@@ -309,11 +309,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -330,10 +330,10 @@ import (
 //			tmpJSON6, err := json.Marshal([]interface{}{
 //				map[string]interface{}{
 //					"condition": "$sys.func.RAND() < 0.5",
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"First case",
 //									},
@@ -342,11 +342,11 @@ import (
 //						},
 //					},
 //				},
-//				map[string]interface{}{
-//					"caseContent": []map[string]interface{}{
-//						map[string]interface{}{
-//							"message": map[string]interface{}{
-//								"text": map[string]interface{}{
+//				map[string][]map[string]map[string]map[string][]string{
+//					"caseContent": []map[string]map[string]map[string][]string{
+//						{
+//							"message": {
+//								"text": {
 //									"text": []string{
 //										"Final case",
 //									},
@@ -361,7 +361,7 @@ import (
 //			}
 //			json6 := string(tmpJSON6)
 //			_, err = diagflow.NewCxFlow(ctx, "basic_flow", &diagflow.CxFlowArgs{
-//				Parent:      agent.ID(),
+//				Parent:      agent.ID().ToIDOutput().ToStringOutput(),
 //				DisplayName: pulumi.String("MyFlow"),
 //				Description: pulumi.String("Test Flow"),
 //				NluSettings: &diagflow.CxFlowNluSettingsArgs{
@@ -628,7 +628,7 @@ import (
 //								},
 //							},
 //						},
-//						Webhook:                myWebhook.ID(),
+//						Webhook:                myWebhook.ID().ToIDOutput().ToStringOutput(),
 //						ReturnPartialResponses: pulumi.Bool(true),
 //						Tag:                    pulumi.String("some-tag"),
 //						SetParameterActions: diagflow.CxFlowKnowledgeConnectorSettingsTriggerFulfillmentSetParameterActionArray{

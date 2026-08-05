@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     displayName: "sample experiment",
  *     tensorboard: std.basenameOutput({
  *         input: tensorboard.id,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     tensorboardExperimentId: "experiment",
  *     source: "a custom training job",
  *     labels: {

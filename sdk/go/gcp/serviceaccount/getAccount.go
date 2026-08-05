@@ -68,8 +68,8 @@ import (
 //				return err
 //			}
 //			_, err = kubernetes.NewSecret(ctx, "google-application-credentials", &kubernetes.SecretArgs{
-//				Metadata: []map[string]interface{}{
-//					map[string]interface{}{
+//				Metadata: []map[string]string{
+//					{
 //						"name": "google-application-credentials",
 //					},
 //				},

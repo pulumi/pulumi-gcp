@@ -87,7 +87,7 @@ import (
 //			}
 //			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("automatic-reservation"),
-//				Network:      defaultNetwork.ID(),
+//				Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),
@@ -127,7 +127,7 @@ import (
 //			}
 //			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 //				Name:        pulumi.String("external-ranges"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Usage:       pulumi.String("EXTERNAL_TO_VPC"),
 //				Peering:     pulumi.String("FOR_SELF"),
 //				IpCidrRange: pulumi.String("172.16.0.0/24"),
@@ -169,7 +169,7 @@ import (
 //				Name:        pulumi.String("overlapping-subnet"),
 //				IpCidrRange: pulumi.String("10.0.0.0/24"),
 //				Region:      pulumi.String("us-central1"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -177,7 +177,7 @@ import (
 //			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 //				Name:        pulumi.String("overlap-range"),
 //				Description: pulumi.String("Test internal range"),
-//				Network:     defaultNetwork.ID(),
+//				Network:     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Usage:       pulumi.String("FOR_VPC"),
 //				Peering:     pulumi.String("FOR_SELF"),
 //				IpCidrRange: pulumi.String("10.0.0.0/30"),
@@ -275,7 +275,7 @@ import (
 //			}
 //			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("allocation-algorithms"),
-//				Network:      defaultNetwork.ID(),
+//				Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),
@@ -318,7 +318,7 @@ import (
 //			}
 //			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
 //				Name:         pulumi.String("allocation-algorithms-random-first-n"),
-//				Network:      defaultNetwork.ID(),
+//				Network:      defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),
 //				PrefixLength: pulumi.Int(24),

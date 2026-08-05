@@ -329,7 +329,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
             organization_id="123456789",
             group_key=std.trimprefix_output(input=group.id,
-                prefix="groups/").apply(lambda invoke: invoke.result),
+                prefix="groups/").result,
             access_levels=access_level_id_for_user_access_binding.name)
         ```
 
@@ -414,7 +414,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
             organization_id="123456789",
             group_key=std.trimprefix_output(input=group.id,
-                prefix="groups/").apply(lambda invoke: invoke.result),
+                prefix="groups/").result,
             access_levels=access_level_id_for_user_access_binding.name)
         ```
 

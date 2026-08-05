@@ -57,7 +57,7 @@ import (
 //				Location:     pulumi.String("us-central1"),
 //				EnrollmentId: pulumi.String("some-enrollment"),
 //				MessageBus:   pulumi.Any(primaryGoogleEventarcMessageBus.Id),
-//				Destination:  pipeline.ID(),
+//				Destination:  pipeline.ID().ToIDOutput().ToStringOutput(),
 //				CelMatch:     pulumi.String("message.type == 'google.cloud.dataflow.job.v1beta3.statusChanged'"),
 //			})
 //			if err != nil {

@@ -22,15 +22,38 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "rs-project",
+ *     name: "rs-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const gkehub = new gcp.projects.Service("gkehub", {
+ *     project: project.projectId,
+ *     service: "gkehub.googleapis.com",
+ * });
+ * // wait for API enablement
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [gkehub],
+ * });
+ * const _default = new gcp.gkehub.Fleet("default", {
+ *     displayName: "rs-fleet",
+ *     project: project.projectId,
+ * }, {
+ *     dependsOn: [wait120Seconds],
+ * });
  * const rolloutSequence = new gcp.gkehub.RolloutSequence("rollout_sequence", {
+ *     project: project.projectId,
  *     rolloutSequenceId: "rs-basic",
  *     displayName: "Basic Rollout Sequence",
  *     ignoredClustersSelector: {
  *         labelSelector: "resource.labels.ignored == 'true'",
  *     },
  *     stages: [{
- *         fleetProjects: ["projects/my-project-name"],
+ *         fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],
  *         soakDuration: "1h",
  *     }],
  *     autoUpgradeConfig: {
@@ -43,6 +66,8 @@ import * as utilities from "../utilities";
  *             ],
  *         },
  *     },
+ * }, {
+ *     dependsOn: [_default],
  * });
  * ```
  * ### Gke Hub Rollout Sequence Update
@@ -50,8 +75,31 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
  *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "rs-project",
+ *     name: "rs-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const gkehub = new gcp.projects.Service("gkehub", {
+ *     project: project.projectId,
+ *     service: "gkehub.googleapis.com",
+ * });
+ * // wait for API enablement
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [gkehub],
+ * });
+ * const _default = new gcp.gkehub.Fleet("default", {
+ *     displayName: "rs-fleet",
+ *     project: project.projectId,
+ * }, {
+ *     dependsOn: [wait120Seconds],
+ * });
  * const rolloutSequence = new gcp.gkehub.RolloutSequence("rollout_sequence", {
+ *     project: project.projectId,
  *     rolloutSequenceId: "rs-basic",
  *     displayName: "Modified Rollout Sequence",
  *     ignoredClustersSelector: {
@@ -59,14 +107,14 @@ import * as utilities from "../utilities";
  *     },
  *     stages: [
  *         {
- *             fleetProjects: ["projects/my-project-name"],
+ *             fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],
  *             clusterSelector: {
  *                 labelSelector: "resource.labels.canary=='true'",
  *             },
  *             soakDuration: "2h",
  *         },
  *         {
- *             fleetProjects: ["projects/my-project-name"],
+ *             fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],
  *             soakDuration: "1d",
  *         },
  *     ],
@@ -81,6 +129,94 @@ import * as utilities from "../utilities";
  *     labels: {
  *         some_key: "some_value",
  *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
+ * ### Gke Hub Rollout Sequence User Triggered Create
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "rs-project",
+ *     name: "rs-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ *     deletionPolicy: "DELETE",
+ * });
+ * // Enable APIs in a deterministic order to avoid inconsistent VCR recordings
+ * const gkehub = new gcp.projects.Service("gkehub", {
+ *     project: project.projectId,
+ *     service: "gkehub.googleapis.com",
+ * });
+ * const container = new gcp.projects.Service("container", {
+ *     project: project.projectId,
+ *     service: "container.googleapis.com",
+ * }, {
+ *     dependsOn: [gkehub],
+ * });
+ * const compute = new gcp.projects.Service("compute", {
+ *     project: project.projectId,
+ *     service: "compute.googleapis.com",
+ * }, {
+ *     dependsOn: [container],
+ * });
+ * // wait for API enablement
+ * const wait120Seconds = new time.Sleep("wait_120_seconds", {createDuration: "120s"}, {
+ *     dependsOn: [compute],
+ * });
+ * const _default = new gcp.gkehub.Fleet("default", {
+ *     displayName: "rs-fleet",
+ *     project: project.projectId,
+ * }, {
+ *     dependsOn: [wait120Seconds],
+ * });
+ * const versions = gcp.container.getEngineVersionsOutput({
+ *     location: "us-central1-a",
+ *     project: project.projectId,
+ * });
+ * const primary = new gcp.container.Cluster("primary", {
+ *     project: project.projectId,
+ *     name: "rs-cluster",
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     minMasterVersion: versions.apply(versions => versions.releaseChannelDefaultVersion?.REGULAR),
+ *     nodeVersion: versions.apply(versions => versions.releaseChannelDefaultVersion?.REGULAR),
+ *     deletionProtection: false,
+ *     releaseChannel: {
+ *         channel: "REGULAR",
+ *     },
+ *     resourceLabels: {
+ *         rs_test_cluster: "tf-test-_25601",
+ *     },
+ *     fleet: {
+ *         project: project.number,
+ *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * const rolloutSequence = new gcp.gkehub.RolloutSequence("rollout_sequence", {
+ *     project: project.projectId,
+ *     rolloutSequenceId: "rs-user-triggered",
+ *     displayName: "User Triggered Rollout Sequence",
+ *     minControlPlaneVersion: versions.apply(versions => versions.releaseChannelLatestVersion?.REGULAR),
+ *     ignoredClustersSelector: {
+ *         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
+ *     },
+ *     stages: [{
+ *         fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],
+ *         soakDuration: "30s",
+ *     }],
+ *     autoUpgradeConfig: {
+ *         rolloutCreationScope: {
+ *             upgradeTypes: [],
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [primary],
  * });
  * ```
  *
@@ -176,9 +312,34 @@ export class RolloutSequence extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     */
+    declare public readonly minControlPlaneVersion: pulumi.Output<string | undefined>;
+    /**
+     * Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     */
+    declare public readonly minNodeVersion: pulumi.Output<string | undefined>;
+    /**
      * The full resource name of the RolloutSequence.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
+    /**
+     * The operational state of the rollout sequence.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly operationalStates: pulumi.Output<outputs.gkehub.RolloutSequenceOperationalState[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -198,6 +359,14 @@ export class RolloutSequence extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly stages: pulumi.Output<outputs.gkehub.RolloutSequenceStage[]>;
+    /**
+     * The current target control plane version.
+     */
+    declare public /*out*/ readonly targetControlPlaneVersion: pulumi.Output<string>;
+    /**
+     * The current target node version.
+     */
+    declare public /*out*/ readonly targetNodeVersion: pulumi.Output<string>;
     /**
      * Google-generated UUID for this resource.
      */
@@ -229,11 +398,16 @@ export class RolloutSequence extends pulumi.CustomResource {
             resourceInputs["etag"] = state?.etag;
             resourceInputs["ignoredClustersSelector"] = state?.ignoredClustersSelector;
             resourceInputs["labels"] = state?.labels;
+            resourceInputs["minControlPlaneVersion"] = state?.minControlPlaneVersion;
+            resourceInputs["minNodeVersion"] = state?.minNodeVersion;
             resourceInputs["name"] = state?.name;
+            resourceInputs["operationalStates"] = state?.operationalStates;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["rolloutSequenceId"] = state?.rolloutSequenceId;
             resourceInputs["stages"] = state?.stages;
+            resourceInputs["targetControlPlaneVersion"] = state?.targetControlPlaneVersion;
+            resourceInputs["targetNodeVersion"] = state?.targetNodeVersion;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -249,6 +423,8 @@ export class RolloutSequence extends pulumi.CustomResource {
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["ignoredClustersSelector"] = args?.ignoredClustersSelector;
             resourceInputs["labels"] = args?.labels;
+            resourceInputs["minControlPlaneVersion"] = args?.minControlPlaneVersion;
+            resourceInputs["minNodeVersion"] = args?.minNodeVersion;
             resourceInputs["project"] = args?.project;
             resourceInputs["rolloutSequenceId"] = args?.rolloutSequenceId;
             resourceInputs["stages"] = args?.stages;
@@ -257,7 +433,10 @@ export class RolloutSequence extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["operationalStates"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["targetControlPlaneVersion"] = undefined /*out*/;
+            resourceInputs["targetNodeVersion"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -320,9 +499,34 @@ export interface RolloutSequenceState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     */
+    minControlPlaneVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     */
+    minNodeVersion?: pulumi.Input<string | undefined>;
+    /**
      * The full resource name of the RolloutSequence.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The operational state of the rollout sequence.
+     * Structure is documented below.
+     */
+    operationalStates?: pulumi.Input<pulumi.Input<inputs.gkehub.RolloutSequenceOperationalState>[] | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -342,6 +546,14 @@ export interface RolloutSequenceState {
      * Structure is documented below.
      */
     stages?: pulumi.Input<pulumi.Input<inputs.gkehub.RolloutSequenceStage>[] | undefined>;
+    /**
+     * The current target control plane version.
+     */
+    targetControlPlaneVersion?: pulumi.Input<string | undefined>;
+    /**
+     * The current target node version.
+     */
+    targetNodeVersion?: pulumi.Input<string | undefined>;
     /**
      * Google-generated UUID for this resource.
      */
@@ -387,6 +599,26 @@ export interface RolloutSequenceArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Minimum control plane version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     */
+    minControlPlaneVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Minimum node version that the clusters in the sequence should be upgraded to.
+     * Setting this field will cause the creation of a rollout to the specified version.
+     * Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
+     * Should be a valid [semantic version](https://semver.org/).
+     * Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
+     * Note that the `latest` and `-` aliases are not supported for this field.
+     * Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
+     */
+    minNodeVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

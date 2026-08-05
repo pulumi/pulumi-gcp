@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     displayName: "sample experiment",
  *     tensorboard: std.basenameOutput({
  *         input: tensorboard.id,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     tensorboardExperimentId: "experiment",
  * });
  * const tensorboardRun = new gcp.vertex.AiTensorboardRun("tensorboard_run", {
@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     displayName: "sample run",
  *     tensorboard: std.basenameOutput({
  *         input: tensorboard.id,
- *     }).apply(invoke => invoke.result),
+ *     }).result,
  *     experiment: experiment.tensorboardExperimentId,
  *     tensorboardRunId: "run",
  *     labels: {

@@ -14,6 +14,16 @@ namespace Pulumi.Gcp.Colab.Outputs
     public sealed class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob
     {
         /// <summary>
+        /// (Output)
+        /// Timestamp when this NotebookExecutionJob was created.
+        /// </summary>
+        public readonly string? CreateTime;
+        /// <summary>
+        /// Compute configuration to use for an execution job.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec? CustomEnvironmentSpec;
+        /// <summary>
         /// The Dataform Repository containing the input notebook.
         /// Structure is documented below.
         /// </summary>
@@ -22,6 +32,11 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// Required. The display name of the Notebook Execution.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec? EncryptionSpec;
         /// <summary>
         /// Max running time of the execution job in seconds (default 86400s / 24 hrs). A duration in seconds with up to nine fractional digits, ending with "s". Example: "3.5s".
         /// </summary>
@@ -40,19 +55,57 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// </summary>
         public readonly string GcsOutputUri;
         /// <summary>
+        /// (Output)
+        /// Possible values: JOB_STATE_QUEUED JOB_STATE_PENDING JOB_STATE_RUNNING JOB_STATE_SUCCEEDED JOB_STATE_FAILED JOB_STATE_CANCELLING JOB_STATE_CANCELLED JOB_STATE_PAUSED JOB_STATE_EXPIRED JOB_STATE_UPDATING JOB_STATE_PARTIALLY_SUCCEEDED
+        /// </summary>
+        public readonly string? JobState;
+        /// <summary>
+        /// The name of the kernel to use during notebook execution. If unset, the default kernel is used.
+        /// </summary>
+        public readonly string? KernelName;
+        /// <summary>
+        /// The labels with user-defined metadata to organize NotebookExecutionJobs.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// (Output)
+        /// The resource name of this NotebookExecutionJob. Format: `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// The NotebookRuntimeTemplate to source compute configuration from.
         /// </summary>
-        public readonly string NotebookRuntimeTemplateResourceName;
+        public readonly string? NotebookRuntimeTemplateResourceName;
+        /// <summary>
+        /// (Output)
+        /// The Schedule resource name if this job is triggered by one. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        /// </summary>
+        public readonly string? ScheduleResourceName;
         /// <summary>
         /// The service account to run the execution as.
         /// </summary>
         public readonly string? ServiceAccount;
+        /// <summary>
+        /// (Output)
+        /// Timestamp when this NotebookExecutionJob was most recently updated.
+        /// </summary>
+        public readonly string? UpdateTime;
+        /// <summary>
+        /// Configuration for a Workbench Instances-based environment.
+        /// </summary>
+        public readonly Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime? WorkbenchRuntime;
 
         [OutputConstructor]
         private ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob(
+            string? createTime,
+
+            Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpec? customEnvironmentSpec,
+
             Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySource? dataformRepositorySource,
 
             string displayName,
+
+            Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobEncryptionSpec? encryptionSpec,
 
             string? executionTimeout,
 
@@ -62,18 +115,42 @@ namespace Pulumi.Gcp.Colab.Outputs
 
             string gcsOutputUri,
 
-            string notebookRuntimeTemplateResourceName,
+            string? jobState,
 
-            string? serviceAccount)
+            string? kernelName,
+
+            ImmutableDictionary<string, string>? labels,
+
+            string? name,
+
+            string? notebookRuntimeTemplateResourceName,
+
+            string? scheduleResourceName,
+
+            string? serviceAccount,
+
+            string? updateTime,
+
+            Outputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobWorkbenchRuntime? workbenchRuntime)
         {
+            CreateTime = createTime;
+            CustomEnvironmentSpec = customEnvironmentSpec;
             DataformRepositorySource = dataformRepositorySource;
             DisplayName = displayName;
+            EncryptionSpec = encryptionSpec;
             ExecutionTimeout = executionTimeout;
             ExecutionUser = executionUser;
             GcsNotebookSource = gcsNotebookSource;
             GcsOutputUri = gcsOutputUri;
+            JobState = jobState;
+            KernelName = kernelName;
+            Labels = labels;
+            Name = name;
             NotebookRuntimeTemplateResourceName = notebookRuntimeTemplateResourceName;
+            ScheduleResourceName = scheduleResourceName;
             ServiceAccount = serviceAccount;
+            UpdateTime = updateTime;
+            WorkbenchRuntime = workbenchRuntime;
         }
     }
 }

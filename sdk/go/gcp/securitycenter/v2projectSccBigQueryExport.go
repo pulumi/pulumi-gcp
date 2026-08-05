@@ -60,7 +60,7 @@ import (
 //				Name:             "my-export",
 //				BigQueryExportId: pulumi.String("my-export"),
 //				Project:          pulumi.String("my-project-name"),
-//				Dataset:          _default.ID(),
+//				Dataset:          _default.ID().ToIDOutput().ToStringOutput(),
 //				Location:         pulumi.String("global"),
 //				Description:      pulumi.String("Cloud Security Command Center Findings Big Query Export Config"),
 //				Filter:           pulumi.String("state=\"ACTIVE\" AND NOT mute=\"MUTED\""),

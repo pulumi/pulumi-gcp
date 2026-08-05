@@ -481,7 +481,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
@@ -490,8 +489,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> runExecutionToken;
 
     /**
-     * @return (Optional, Beta)
-     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
      */
@@ -500,7 +498,6 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
@@ -509,8 +506,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> startExecutionToken;
 
     /**
-     * @return (Optional, Beta)
-     * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+     * @return A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
      * The sum of job name and token length must be fewer than 63 characters.
      * 
      */
@@ -1292,8 +1288,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runExecutionToken (Optional, Beta)
-         * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+         * @param runExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
          * The sum of job name and token length must be fewer than 63 characters.
          * 
          * @return builder
@@ -1305,8 +1300,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param runExecutionToken (Optional, Beta)
-         * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
+         * @param runExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully completed.
          * The sum of job name and token length must be fewer than 63 characters.
          * 
          * @return builder
@@ -1317,8 +1311,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startExecutionToken (Optional, Beta)
-         * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+         * @param startExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
          * The sum of job name and token length must be fewer than 63 characters.
          * 
          * @return builder
@@ -1330,8 +1323,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param startExecutionToken (Optional, Beta)
-         * A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
+         * @param startExecutionToken A unique string used as a suffix creating a new execution upon job create or update. The Job will become ready when the execution is successfully started.
          * The sum of job name and token length must be fewer than 63 characters.
          * 
          * @return builder

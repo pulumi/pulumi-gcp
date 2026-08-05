@@ -54,13 +54,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      apigeeNetwork.ID(),
+//				Network:      apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
-//				Network: apigeeNetwork.ID(),
+//				Network: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					apigeeRange.Name,
@@ -72,7 +72,7 @@ import (
 //			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
 //				AnalyticsRegion:   pulumi.String("us-central1"),
 //				ProjectId:         pulumi.String(current.Project),
-//				AuthorizedNetwork: apigeeNetwork.ID(),
+//				AuthorizedNetwork: apigeeNetwork.ID().ToIDOutput().ToStringOutput(),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeVpcConnection,
 //			}))
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			apigeeEnvironment, err := apigee.NewEnvironment(ctx, "apigee_environment", &apigee.EnvironmentArgs{
-//				OrgId:       apigeeOrg.ID(),
+//				OrgId:       apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //				Name:        pulumi.String("tf-test-env"),
 //				Description: pulumi.String("Apigee Environment"),
 //				DisplayName: pulumi.String("Apigee Environment"),
@@ -91,20 +91,20 @@ import (
 //			apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
 //				Name:     pulumi.String("tf-test-instance"),
 //				Location: pulumi.String("us-central1"),
-//				OrgId:    apigeeOrg.ID(),
+//				OrgId:    apigeeOrg.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			apigeeInstanceAttachment, err := apigee.NewInstanceAttachment(ctx, "apigee_instance_attachment", &apigee.InstanceAttachmentArgs{
-//				InstanceId:  apigeeInstance.ID(),
+//				InstanceId:  apigeeInstance.ID().ToIDOutput().ToStringOutput(),
 //				Environment: apigeeEnvironment.Name,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = apigee.NewEnvironmentKeyvaluemaps(ctx, "apigee_environment_keyvaluemaps", &apigee.EnvironmentKeyvaluemapsArgs{
-//				EnvId: apigeeEnvironment.ID(),
+//				EnvId: apigeeEnvironment.ID().ToIDOutput().ToStringOutput(),
 //				Name:  pulumi.String("tf-test-env-kvms"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				apigeeOrg,

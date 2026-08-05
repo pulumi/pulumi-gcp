@@ -787,6 +787,424 @@ func (o CollectionVectorSchemaSparseVectorPtrOutput) Elem() CollectionVectorSche
 	}).(CollectionVectorSchemaSparseVectorOutput)
 }
 
+type DataObjectVector struct {
+	// A dense vector.
+	// Structure is documented below.
+	Dense *DataObjectVectorDense `pulumi:"dense"`
+	// The identifier for this object. Format specified above.
+	FieldName string `pulumi:"fieldName"`
+	// A sparse vector.
+	// Structure is documented below.
+	Sparse *DataObjectVectorSparse `pulumi:"sparse"`
+}
+
+// DataObjectVectorInput is an input type that accepts DataObjectVectorArgs and DataObjectVectorOutput values.
+// You can construct a concrete instance of `DataObjectVectorInput` via:
+//
+//	DataObjectVectorArgs{...}
+type DataObjectVectorInput interface {
+	pulumi.Input
+
+	ToDataObjectVectorOutput() DataObjectVectorOutput
+	ToDataObjectVectorOutputWithContext(context.Context) DataObjectVectorOutput
+}
+
+type DataObjectVectorArgs struct {
+	// A dense vector.
+	// Structure is documented below.
+	Dense DataObjectVectorDensePtrInput `pulumi:"dense"`
+	// The identifier for this object. Format specified above.
+	FieldName pulumi.StringInput `pulumi:"fieldName"`
+	// A sparse vector.
+	// Structure is documented below.
+	Sparse DataObjectVectorSparsePtrInput `pulumi:"sparse"`
+}
+
+func (DataObjectVectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataObjectVector)(nil)).Elem()
+}
+
+func (i DataObjectVectorArgs) ToDataObjectVectorOutput() DataObjectVectorOutput {
+	return i.ToDataObjectVectorOutputWithContext(context.Background())
+}
+
+func (i DataObjectVectorArgs) ToDataObjectVectorOutputWithContext(ctx context.Context) DataObjectVectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorOutput)
+}
+
+// DataObjectVectorArrayInput is an input type that accepts DataObjectVectorArray and DataObjectVectorArrayOutput values.
+// You can construct a concrete instance of `DataObjectVectorArrayInput` via:
+//
+//	DataObjectVectorArray{ DataObjectVectorArgs{...} }
+type DataObjectVectorArrayInput interface {
+	pulumi.Input
+
+	ToDataObjectVectorArrayOutput() DataObjectVectorArrayOutput
+	ToDataObjectVectorArrayOutputWithContext(context.Context) DataObjectVectorArrayOutput
+}
+
+type DataObjectVectorArray []DataObjectVectorInput
+
+func (DataObjectVectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataObjectVector)(nil)).Elem()
+}
+
+func (i DataObjectVectorArray) ToDataObjectVectorArrayOutput() DataObjectVectorArrayOutput {
+	return i.ToDataObjectVectorArrayOutputWithContext(context.Background())
+}
+
+func (i DataObjectVectorArray) ToDataObjectVectorArrayOutputWithContext(ctx context.Context) DataObjectVectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorArrayOutput)
+}
+
+type DataObjectVectorOutput struct{ *pulumi.OutputState }
+
+func (DataObjectVectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataObjectVector)(nil)).Elem()
+}
+
+func (o DataObjectVectorOutput) ToDataObjectVectorOutput() DataObjectVectorOutput {
+	return o
+}
+
+func (o DataObjectVectorOutput) ToDataObjectVectorOutputWithContext(ctx context.Context) DataObjectVectorOutput {
+	return o
+}
+
+// A dense vector.
+// Structure is documented below.
+func (o DataObjectVectorOutput) Dense() DataObjectVectorDensePtrOutput {
+	return o.ApplyT(func(v DataObjectVector) *DataObjectVectorDense { return v.Dense }).(DataObjectVectorDensePtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o DataObjectVectorOutput) FieldName() pulumi.StringOutput {
+	return o.ApplyT(func(v DataObjectVector) string { return v.FieldName }).(pulumi.StringOutput)
+}
+
+// A sparse vector.
+// Structure is documented below.
+func (o DataObjectVectorOutput) Sparse() DataObjectVectorSparsePtrOutput {
+	return o.ApplyT(func(v DataObjectVector) *DataObjectVectorSparse { return v.Sparse }).(DataObjectVectorSparsePtrOutput)
+}
+
+type DataObjectVectorArrayOutput struct{ *pulumi.OutputState }
+
+func (DataObjectVectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataObjectVector)(nil)).Elem()
+}
+
+func (o DataObjectVectorArrayOutput) ToDataObjectVectorArrayOutput() DataObjectVectorArrayOutput {
+	return o
+}
+
+func (o DataObjectVectorArrayOutput) ToDataObjectVectorArrayOutputWithContext(ctx context.Context) DataObjectVectorArrayOutput {
+	return o
+}
+
+func (o DataObjectVectorArrayOutput) Index(i pulumi.IntInput) DataObjectVectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataObjectVector {
+		return vs[0].([]DataObjectVector)[vs[1].(int)]
+	}).(DataObjectVectorOutput)
+}
+
+type DataObjectVectorDense struct {
+	// The float values of the dense vector.
+	Values []float64 `pulumi:"values"`
+}
+
+// DataObjectVectorDenseInput is an input type that accepts DataObjectVectorDenseArgs and DataObjectVectorDenseOutput values.
+// You can construct a concrete instance of `DataObjectVectorDenseInput` via:
+//
+//	DataObjectVectorDenseArgs{...}
+type DataObjectVectorDenseInput interface {
+	pulumi.Input
+
+	ToDataObjectVectorDenseOutput() DataObjectVectorDenseOutput
+	ToDataObjectVectorDenseOutputWithContext(context.Context) DataObjectVectorDenseOutput
+}
+
+type DataObjectVectorDenseArgs struct {
+	// The float values of the dense vector.
+	Values pulumi.Float64ArrayInput `pulumi:"values"`
+}
+
+func (DataObjectVectorDenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataObjectVectorDense)(nil)).Elem()
+}
+
+func (i DataObjectVectorDenseArgs) ToDataObjectVectorDenseOutput() DataObjectVectorDenseOutput {
+	return i.ToDataObjectVectorDenseOutputWithContext(context.Background())
+}
+
+func (i DataObjectVectorDenseArgs) ToDataObjectVectorDenseOutputWithContext(ctx context.Context) DataObjectVectorDenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorDenseOutput)
+}
+
+func (i DataObjectVectorDenseArgs) ToDataObjectVectorDensePtrOutput() DataObjectVectorDensePtrOutput {
+	return i.ToDataObjectVectorDensePtrOutputWithContext(context.Background())
+}
+
+func (i DataObjectVectorDenseArgs) ToDataObjectVectorDensePtrOutputWithContext(ctx context.Context) DataObjectVectorDensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorDenseOutput).ToDataObjectVectorDensePtrOutputWithContext(ctx)
+}
+
+// DataObjectVectorDensePtrInput is an input type that accepts DataObjectVectorDenseArgs, DataObjectVectorDensePtr and DataObjectVectorDensePtrOutput values.
+// You can construct a concrete instance of `DataObjectVectorDensePtrInput` via:
+//
+//	        DataObjectVectorDenseArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataObjectVectorDensePtrInput interface {
+	pulumi.Input
+
+	ToDataObjectVectorDensePtrOutput() DataObjectVectorDensePtrOutput
+	ToDataObjectVectorDensePtrOutputWithContext(context.Context) DataObjectVectorDensePtrOutput
+}
+
+type dataObjectVectorDensePtrType DataObjectVectorDenseArgs
+
+func DataObjectVectorDensePtr(v *DataObjectVectorDenseArgs) DataObjectVectorDensePtrInput {
+	return (*dataObjectVectorDensePtrType)(v)
+}
+
+func (*dataObjectVectorDensePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataObjectVectorDense)(nil)).Elem()
+}
+
+func (i *dataObjectVectorDensePtrType) ToDataObjectVectorDensePtrOutput() DataObjectVectorDensePtrOutput {
+	return i.ToDataObjectVectorDensePtrOutputWithContext(context.Background())
+}
+
+func (i *dataObjectVectorDensePtrType) ToDataObjectVectorDensePtrOutputWithContext(ctx context.Context) DataObjectVectorDensePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorDensePtrOutput)
+}
+
+type DataObjectVectorDenseOutput struct{ *pulumi.OutputState }
+
+func (DataObjectVectorDenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataObjectVectorDense)(nil)).Elem()
+}
+
+func (o DataObjectVectorDenseOutput) ToDataObjectVectorDenseOutput() DataObjectVectorDenseOutput {
+	return o
+}
+
+func (o DataObjectVectorDenseOutput) ToDataObjectVectorDenseOutputWithContext(ctx context.Context) DataObjectVectorDenseOutput {
+	return o
+}
+
+func (o DataObjectVectorDenseOutput) ToDataObjectVectorDensePtrOutput() DataObjectVectorDensePtrOutput {
+	return o.ToDataObjectVectorDensePtrOutputWithContext(context.Background())
+}
+
+func (o DataObjectVectorDenseOutput) ToDataObjectVectorDensePtrOutputWithContext(ctx context.Context) DataObjectVectorDensePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataObjectVectorDense) *DataObjectVectorDense {
+		return &v
+	}).(DataObjectVectorDensePtrOutput)
+}
+
+// The float values of the dense vector.
+func (o DataObjectVectorDenseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v DataObjectVectorDense) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
+type DataObjectVectorDensePtrOutput struct{ *pulumi.OutputState }
+
+func (DataObjectVectorDensePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataObjectVectorDense)(nil)).Elem()
+}
+
+func (o DataObjectVectorDensePtrOutput) ToDataObjectVectorDensePtrOutput() DataObjectVectorDensePtrOutput {
+	return o
+}
+
+func (o DataObjectVectorDensePtrOutput) ToDataObjectVectorDensePtrOutputWithContext(ctx context.Context) DataObjectVectorDensePtrOutput {
+	return o
+}
+
+func (o DataObjectVectorDensePtrOutput) Elem() DataObjectVectorDenseOutput {
+	return o.ApplyT(func(v *DataObjectVectorDense) DataObjectVectorDense {
+		if v != nil {
+			return *v
+		}
+		var ret DataObjectVectorDense
+		return ret
+	}).(DataObjectVectorDenseOutput)
+}
+
+// The float values of the dense vector.
+func (o DataObjectVectorDensePtrOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *DataObjectVectorDense) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.Float64ArrayOutput)
+}
+
+type DataObjectVectorSparse struct {
+	// The indices corresponding to the entries in `values`. Must
+	// have the same length as `values`.
+	Indices []int `pulumi:"indices"`
+	// The non-zero float values of the sparse vector.
+	Values []float64 `pulumi:"values"`
+}
+
+// DataObjectVectorSparseInput is an input type that accepts DataObjectVectorSparseArgs and DataObjectVectorSparseOutput values.
+// You can construct a concrete instance of `DataObjectVectorSparseInput` via:
+//
+//	DataObjectVectorSparseArgs{...}
+type DataObjectVectorSparseInput interface {
+	pulumi.Input
+
+	ToDataObjectVectorSparseOutput() DataObjectVectorSparseOutput
+	ToDataObjectVectorSparseOutputWithContext(context.Context) DataObjectVectorSparseOutput
+}
+
+type DataObjectVectorSparseArgs struct {
+	// The indices corresponding to the entries in `values`. Must
+	// have the same length as `values`.
+	Indices pulumi.IntArrayInput `pulumi:"indices"`
+	// The non-zero float values of the sparse vector.
+	Values pulumi.Float64ArrayInput `pulumi:"values"`
+}
+
+func (DataObjectVectorSparseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataObjectVectorSparse)(nil)).Elem()
+}
+
+func (i DataObjectVectorSparseArgs) ToDataObjectVectorSparseOutput() DataObjectVectorSparseOutput {
+	return i.ToDataObjectVectorSparseOutputWithContext(context.Background())
+}
+
+func (i DataObjectVectorSparseArgs) ToDataObjectVectorSparseOutputWithContext(ctx context.Context) DataObjectVectorSparseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorSparseOutput)
+}
+
+func (i DataObjectVectorSparseArgs) ToDataObjectVectorSparsePtrOutput() DataObjectVectorSparsePtrOutput {
+	return i.ToDataObjectVectorSparsePtrOutputWithContext(context.Background())
+}
+
+func (i DataObjectVectorSparseArgs) ToDataObjectVectorSparsePtrOutputWithContext(ctx context.Context) DataObjectVectorSparsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorSparseOutput).ToDataObjectVectorSparsePtrOutputWithContext(ctx)
+}
+
+// DataObjectVectorSparsePtrInput is an input type that accepts DataObjectVectorSparseArgs, DataObjectVectorSparsePtr and DataObjectVectorSparsePtrOutput values.
+// You can construct a concrete instance of `DataObjectVectorSparsePtrInput` via:
+//
+//	        DataObjectVectorSparseArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataObjectVectorSparsePtrInput interface {
+	pulumi.Input
+
+	ToDataObjectVectorSparsePtrOutput() DataObjectVectorSparsePtrOutput
+	ToDataObjectVectorSparsePtrOutputWithContext(context.Context) DataObjectVectorSparsePtrOutput
+}
+
+type dataObjectVectorSparsePtrType DataObjectVectorSparseArgs
+
+func DataObjectVectorSparsePtr(v *DataObjectVectorSparseArgs) DataObjectVectorSparsePtrInput {
+	return (*dataObjectVectorSparsePtrType)(v)
+}
+
+func (*dataObjectVectorSparsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataObjectVectorSparse)(nil)).Elem()
+}
+
+func (i *dataObjectVectorSparsePtrType) ToDataObjectVectorSparsePtrOutput() DataObjectVectorSparsePtrOutput {
+	return i.ToDataObjectVectorSparsePtrOutputWithContext(context.Background())
+}
+
+func (i *dataObjectVectorSparsePtrType) ToDataObjectVectorSparsePtrOutputWithContext(ctx context.Context) DataObjectVectorSparsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataObjectVectorSparsePtrOutput)
+}
+
+type DataObjectVectorSparseOutput struct{ *pulumi.OutputState }
+
+func (DataObjectVectorSparseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataObjectVectorSparse)(nil)).Elem()
+}
+
+func (o DataObjectVectorSparseOutput) ToDataObjectVectorSparseOutput() DataObjectVectorSparseOutput {
+	return o
+}
+
+func (o DataObjectVectorSparseOutput) ToDataObjectVectorSparseOutputWithContext(ctx context.Context) DataObjectVectorSparseOutput {
+	return o
+}
+
+func (o DataObjectVectorSparseOutput) ToDataObjectVectorSparsePtrOutput() DataObjectVectorSparsePtrOutput {
+	return o.ToDataObjectVectorSparsePtrOutputWithContext(context.Background())
+}
+
+func (o DataObjectVectorSparseOutput) ToDataObjectVectorSparsePtrOutputWithContext(ctx context.Context) DataObjectVectorSparsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataObjectVectorSparse) *DataObjectVectorSparse {
+		return &v
+	}).(DataObjectVectorSparsePtrOutput)
+}
+
+// The indices corresponding to the entries in `values`. Must
+// have the same length as `values`.
+func (o DataObjectVectorSparseOutput) Indices() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v DataObjectVectorSparse) []int { return v.Indices }).(pulumi.IntArrayOutput)
+}
+
+// The non-zero float values of the sparse vector.
+func (o DataObjectVectorSparseOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v DataObjectVectorSparse) []float64 { return v.Values }).(pulumi.Float64ArrayOutput)
+}
+
+type DataObjectVectorSparsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataObjectVectorSparsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataObjectVectorSparse)(nil)).Elem()
+}
+
+func (o DataObjectVectorSparsePtrOutput) ToDataObjectVectorSparsePtrOutput() DataObjectVectorSparsePtrOutput {
+	return o
+}
+
+func (o DataObjectVectorSparsePtrOutput) ToDataObjectVectorSparsePtrOutputWithContext(ctx context.Context) DataObjectVectorSparsePtrOutput {
+	return o
+}
+
+func (o DataObjectVectorSparsePtrOutput) Elem() DataObjectVectorSparseOutput {
+	return o.ApplyT(func(v *DataObjectVectorSparse) DataObjectVectorSparse {
+		if v != nil {
+			return *v
+		}
+		var ret DataObjectVectorSparse
+		return ret
+	}).(DataObjectVectorSparseOutput)
+}
+
+// The indices corresponding to the entries in `values`. Must
+// have the same length as `values`.
+func (o DataObjectVectorSparsePtrOutput) Indices() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *DataObjectVectorSparse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Indices
+	}).(pulumi.IntArrayOutput)
+}
+
+// The non-zero float values of the sparse vector.
+func (o DataObjectVectorSparsePtrOutput) Values() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v *DataObjectVectorSparse) []float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.Float64ArrayOutput)
+}
+
 type IndexDedicatedInfrastructure struct {
 	// Autoscaling specification.
 	// Structure is documented below.
@@ -1273,6 +1691,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaDenseVectorVertexEmbeddingConfigPtrInput)(nil)).Elem(), CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaSparseVectorInput)(nil)).Elem(), CollectionVectorSchemaSparseVectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CollectionVectorSchemaSparseVectorPtrInput)(nil)).Elem(), CollectionVectorSchemaSparseVectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataObjectVectorInput)(nil)).Elem(), DataObjectVectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataObjectVectorArrayInput)(nil)).Elem(), DataObjectVectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataObjectVectorDenseInput)(nil)).Elem(), DataObjectVectorDenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataObjectVectorDensePtrInput)(nil)).Elem(), DataObjectVectorDenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataObjectVectorSparseInput)(nil)).Elem(), DataObjectVectorSparseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataObjectVectorSparsePtrInput)(nil)).Elem(), DataObjectVectorSparseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructureInput)(nil)).Elem(), IndexDedicatedInfrastructureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructurePtrInput)(nil)).Elem(), IndexDedicatedInfrastructureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexDedicatedInfrastructureAutoscalingSpecInput)(nil)).Elem(), IndexDedicatedInfrastructureAutoscalingSpecArgs{})
@@ -1289,6 +1713,12 @@ func init() {
 	pulumi.RegisterOutputType(CollectionVectorSchemaDenseVectorVertexEmbeddingConfigPtrOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaSparseVectorOutput{})
 	pulumi.RegisterOutputType(CollectionVectorSchemaSparseVectorPtrOutput{})
+	pulumi.RegisterOutputType(DataObjectVectorOutput{})
+	pulumi.RegisterOutputType(DataObjectVectorArrayOutput{})
+	pulumi.RegisterOutputType(DataObjectVectorDenseOutput{})
+	pulumi.RegisterOutputType(DataObjectVectorDensePtrOutput{})
+	pulumi.RegisterOutputType(DataObjectVectorSparseOutput{})
+	pulumi.RegisterOutputType(DataObjectVectorSparsePtrOutput{})
 	pulumi.RegisterOutputType(IndexDedicatedInfrastructureOutput{})
 	pulumi.RegisterOutputType(IndexDedicatedInfrastructurePtrOutput{})
 	pulumi.RegisterOutputType(IndexDedicatedInfrastructureAutoscalingSpecOutput{})

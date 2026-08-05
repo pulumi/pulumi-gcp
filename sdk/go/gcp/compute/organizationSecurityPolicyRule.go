@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId: policy.ID(),
+//				PolicyId: policy.ID().ToIDOutput().ToStringOutput(),
 //				Action:   pulumi.String("allow"),
 //				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
 //					Config: &compute.OrganizationSecurityPolicyRuleMatchConfigArgs{
@@ -88,7 +88,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId: policy.ID(),
+//				PolicyId: policy.ID().ToIDOutput().ToStringOutput(),
 //				Action:   pulumi.String("allow"),
 //				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
 //					Expr: &compute.OrganizationSecurityPolicyRuleMatchExprArgs{
@@ -129,7 +129,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId: policy.ID(),
+//				PolicyId: policy.ID().ToIDOutput().ToStringOutput(),
 //				Action:   pulumi.String("allow"),
 //				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
 //					Expr: &compute.OrganizationSecurityPolicyRuleMatchExprArgs{
@@ -198,7 +198,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId: policy.ID(),
+//				PolicyId: policy.ID().ToIDOutput().ToStringOutput(),
 //				Action:   pulumi.String("allow"),
 //				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
 //					Expr: &compute.OrganizationSecurityPolicyRuleMatchExprArgs{
@@ -251,7 +251,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId: policy.ID(),
+//				PolicyId: policy.ID().ToIDOutput().ToStringOutput(),
 //				Action:   pulumi.String("redirect"),
 //				Match: &compute.OrganizationSecurityPolicyRuleMatchArgs{
 //					Config: &compute.OrganizationSecurityPolicyRuleMatchConfigArgs{
@@ -298,7 +298,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewOrganizationSecurityPolicyRule(ctx, "policy", &compute.OrganizationSecurityPolicyRuleArgs{
-//				PolicyId:      policy.ID(),
+//				PolicyId:      policy.ID().ToIDOutput().ToStringOutput(),
 //				Action:        pulumi.String("allow"),
 //				Direction:     pulumi.String("INGRESS"),
 //				EnableLogging: pulumi.Bool(true),

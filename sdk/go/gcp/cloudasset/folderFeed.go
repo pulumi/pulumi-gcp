@@ -68,7 +68,7 @@ import (
 //				},
 //				FeedOutputConfig: &cloudasset.FolderFeedFeedOutputConfigArgs{
 //					PubsubDestination: &cloudasset.FolderFeedFeedOutputConfigPubsubDestinationArgs{
-//						Topic: feedOutput.ID(),
+//						Topic: feedOutput.ID().ToIDOutput().ToStringOutput(),
 //					},
 //				},
 //				Condition: &cloudasset.FolderFeedConditionArgs{

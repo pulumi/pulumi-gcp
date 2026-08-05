@@ -50,7 +50,7 @@ import (
 //				Region:       pulumi.String("us-central1"),
 //				Description:  pulumi.String("my description"),
 //				IpCidrRange:  pulumi.String("127.127.0.0/24"),
-//				ParentPrefix: advertised.ID(),
+//				ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
@@ -89,7 +89,7 @@ import (
 //				Description:  pulumi.String("test-delegation-mode-pdp"),
 //				Region:       pulumi.String("us-west1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/40"),
-//				ParentPrefix: advertised.ID(),
+//				ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("DELEGATION"),
 //			})
 //			if err != nil {
@@ -100,7 +100,7 @@ import (
 //				Description:             pulumi.String("test-forwarding-rule-mode-pdp"),
 //				Region:                  pulumi.String("us-west1"),
 //				IpCidrRange:             pulumi.String("2001:db8::/48"),
-//				ParentPrefix:            prefix.ID(),
+//				ParentPrefix:            prefix.ID().ToIDOutput().ToStringOutput(),
 //				AllocatablePrefixLength: pulumi.Int(64),
 //				Mode:                    pulumi.String("EXTERNAL_IPV6_FORWARDING_RULE_CREATION"),
 //			})
@@ -141,7 +141,7 @@ import (
 //				Description:  pulumi.String("test-delegation-mode-pdp"),
 //				Region:       pulumi.String("us-east1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/40"),
-//				ParentPrefix: advertised.ID(),
+//				ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("DELEGATION"),
 //			})
 //			if err != nil {
@@ -152,7 +152,7 @@ import (
 //				Description:  pulumi.String("test-subnet-mode-pdp"),
 //				Region:       pulumi.String("us-east1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/48"),
-//				ParentPrefix: prefix.ID(),
+//				ParentPrefix: prefix.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("EXTERNAL_IPV6_SUBNETWORK_CREATION"),
 //			})
 //			if err != nil {
@@ -192,7 +192,7 @@ import (
 //				Description:  pulumi.String("test-delegation-mode-pdp"),
 //				Region:       pulumi.String("us-east1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/40"),
-//				ParentPrefix: advertised.ID(),
+//				ParentPrefix: advertised.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("DELEGATION"),
 //			})
 //			if err != nil {
@@ -203,7 +203,7 @@ import (
 //				Description:  pulumi.String("test-subnet-mode-pdp"),
 //				Region:       pulumi.String("us-east1"),
 //				IpCidrRange:  pulumi.String("2001:db8::/48"),
-//				ParentPrefix: prefix.ID(),
+//				ParentPrefix: prefix.ID().ToIDOutput().ToStringOutput(),
 //				Mode:         pulumi.String("INTERNAL_IPV6_SUBNETWORK_CREATION"),
 //			})
 //			if err != nil {
