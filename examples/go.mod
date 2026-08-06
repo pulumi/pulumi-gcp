@@ -4,7 +4,7 @@ go 1.25.11
 
 require (
 	github.com/pulumi/providertest v0.7.0
-	github.com/pulumi/pulumi-gcp/sdk/v9 v9.32.1
+	github.com/pulumi/pulumi-gcp/sdk/v9 v9.33.0
 	github.com/pulumi/pulumi/pkg/v3 v3.256.0
 	github.com/pulumi/pulumi/sdk/v3 v3.256.0
 	github.com/stretchr/testify v1.11.1
