@@ -6907,6 +6907,8 @@ type ServiceTemplateContainer struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources *ServiceTemplateContainerResources `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher *bool `pulumi:"sandboxLauncher"`
 	// (Optional, Beta)
 	// Location of the source.
 	// Structure is documented below.
@@ -6965,6 +6967,8 @@ type ServiceTemplateContainerArgs struct {
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	// Structure is documented below.
 	Resources ServiceTemplateContainerResourcesPtrInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolPtrInput `pulumi:"sandboxLauncher"`
 	// (Optional, Beta)
 	// Location of the source.
 	// Structure is documented below.
@@ -7096,6 +7100,11 @@ func (o ServiceTemplateContainerOutput) ReadinessProbe() ServiceTemplateContaine
 // Structure is documented below.
 func (o ServiceTemplateContainerOutput) Resources() ServiceTemplateContainerResourcesPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainer) *ServiceTemplateContainerResources { return v.Resources }).(ServiceTemplateContainerResourcesPtrOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o ServiceTemplateContainerOutput) SandboxLauncher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainer) *bool { return v.SandboxLauncher }).(pulumi.BoolPtrOutput)
 }
 
 // (Optional, Beta)
@@ -23657,6 +23666,8 @@ type GetServiceTemplateContainer struct {
 	ReadinessProbes []GetServiceTemplateContainerReadinessProbe `pulumi:"readinessProbes"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources []GetServiceTemplateContainerResource `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher bool `pulumi:"sandboxLauncher"`
 	// Location of the source.
 	SourceCodes []GetServiceTemplateContainerSourceCode `pulumi:"sourceCodes"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -23705,6 +23716,8 @@ type GetServiceTemplateContainerArgs struct {
 	ReadinessProbes GetServiceTemplateContainerReadinessProbeArrayInput `pulumi:"readinessProbes"`
 	// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 	Resources GetServiceTemplateContainerResourceArrayInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolInput `pulumi:"sandboxLauncher"`
 	// Location of the source.
 	SourceCodes GetServiceTemplateContainerSourceCodeArrayInput `pulumi:"sourceCodes"`
 	// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -23830,6 +23843,11 @@ func (o GetServiceTemplateContainerOutput) ReadinessProbes() GetServiceTemplateC
 // Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
 func (o GetServiceTemplateContainerOutput) Resources() GetServiceTemplateContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainer) []GetServiceTemplateContainerResource { return v.Resources }).(GetServiceTemplateContainerResourceArrayOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o GetServiceTemplateContainerOutput) SandboxLauncher() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainer) bool { return v.SandboxLauncher }).(pulumi.BoolOutput)
 }
 
 // Location of the source.

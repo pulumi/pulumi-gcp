@@ -13,6 +13,7 @@ import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerReadinessProb
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerResources;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerStartupProbe;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerVolumeMount;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -92,6 +93,11 @@ public final class ServiceTemplateSpecContainer {
      * 
      */
     private @Nullable ServiceTemplateSpecContainerResources resources;
+    /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    private @Nullable Boolean sandboxLauncher;
     /**
      * @return Startup probe of application within the container.
      * All other probes are disabled if a startup probe is provided, until it
@@ -215,6 +221,13 @@ public final class ServiceTemplateSpecContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    public Optional<Boolean> sandboxLauncher() {
+        return Optional.ofNullable(this.sandboxLauncher);
+    }
+    /**
      * @return Startup probe of application within the container.
      * All other probes are disabled if a startup probe is provided, until it
      * succeeds. Container will not be added to service endpoints if the probe fails.
@@ -269,6 +282,7 @@ public final class ServiceTemplateSpecContainer {
         private @Nullable List<ServiceTemplateSpecContainerPort> ports;
         private @Nullable ServiceTemplateSpecContainerReadinessProbe readinessProbe;
         private @Nullable ServiceTemplateSpecContainerResources resources;
+        private @Nullable Boolean sandboxLauncher;
         private @Nullable ServiceTemplateSpecContainerStartupProbe startupProbe;
         private @Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
@@ -285,6 +299,7 @@ public final class ServiceTemplateSpecContainer {
     	      this.ports = defaults.ports;
     	      this.readinessProbe = defaults.readinessProbe;
     	      this.resources = defaults.resources;
+    	      this.sandboxLauncher = defaults.sandboxLauncher;
     	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
@@ -368,6 +383,12 @@ public final class ServiceTemplateSpecContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxLauncher(@Nullable Boolean sandboxLauncher) {
+
+            this.sandboxLauncher = sandboxLauncher;
+            return this;
+        }
+        @CustomType.Setter
         public Builder startupProbe(@Nullable ServiceTemplateSpecContainerStartupProbe startupProbe) {
 
             this.startupProbe = startupProbe;
@@ -400,6 +421,7 @@ public final class ServiceTemplateSpecContainer {
             _resultValue.ports = ports;
             _resultValue.readinessProbe = readinessProbe;
             _resultValue.resources = resources;
+            _resultValue.sandboxLauncher = sandboxLauncher;
             _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;

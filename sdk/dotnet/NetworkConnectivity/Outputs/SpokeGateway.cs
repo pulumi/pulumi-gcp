@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SpokeGatewayIpRangeReservation> IpRangeReservations;
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// Set of Cloud Routers that are attached to this NCC-GW
         /// </summary>
         public readonly ImmutableArray<string> Routers;

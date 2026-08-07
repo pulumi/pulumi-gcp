@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const categoryTestId = new gcp.dataplex.Glossary("category_test_id", {
- *     glossaryId: "tf-test-glossary_40472",
+ *     glossaryId: "tf-test-glossary_34599",
  *     location: "us-central1",
  * });
  * const categoryTestIdGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id", {
  *     parent: pulumi.interpolate`projects/${categoryTestId.project}/locations/us-central1/glossaries/${categoryTestId.glossaryId}`,
  *     glossaryId: categoryTestId.glossaryId,
  *     location: "us-central1",
- *     categoryId: "tf-test-category-basic_44339",
+ *     categoryId: "tf-test-category-basic_79513",
  * });
  * ```
  * ### Dataplex Glossary Category Full
@@ -33,14 +33,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const categoryTestIdFull = new gcp.dataplex.Glossary("category_test_id_full", {
- *     glossaryId: "tf-test-glossary_34599",
+ *     glossaryId: "tf-test-glossary_55500",
  *     location: "us-central1",
  * });
  * const categoryTestIdFullGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id_full", {
  *     parent: pulumi.interpolate`projects/${categoryTestIdFull.project}/locations/us-central1/glossaries/${categoryTestIdFull.glossaryId}`,
  *     glossaryId: categoryTestIdFull.glossaryId,
  *     location: "us-central1",
- *     categoryId: "tf-test-category-full_79513",
+ *     categoryId: "tf-test-category-full_12223",
  *     labels: {
  *         tag: "test-tf",
  *     },

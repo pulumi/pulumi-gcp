@@ -230,6 +230,7 @@ from .region_network_firewall_policy_iam_policy import *
 from .region_network_firewall_policy_rule import *
 from .region_network_firewall_policy_with_rules import *
 from .region_network_policy import *
+from .region_network_policy_traffic_classification_rule import *
 from .region_per_instance_config import *
 from .region_resize_request import *
 from .region_security_policy import *

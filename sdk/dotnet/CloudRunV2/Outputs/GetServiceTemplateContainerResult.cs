@@ -64,6 +64,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateContainerResourceResult> Resources;
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        public readonly bool SandboxLauncher;
+        /// <summary>
         /// Location of the source.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceTemplateContainerSourceCodeResult> SourceCodes;
@@ -106,6 +110,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.GetServiceTemplateContainerResourceResult> resources,
 
+            bool sandboxLauncher,
+
             ImmutableArray<Outputs.GetServiceTemplateContainerSourceCodeResult> sourceCodes,
 
             ImmutableArray<Outputs.GetServiceTemplateContainerStartupProbeResult> startupProbes,
@@ -126,6 +132,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Ports = ports;
             ReadinessProbes = readinessProbes;
             Resources = resources;
+            SandboxLauncher = sandboxLauncher;
             SourceCodes = sourceCodes;
             StartupProbes = startupProbes;
             VolumeMounts = volumeMounts;

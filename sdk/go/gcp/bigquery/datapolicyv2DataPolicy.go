@@ -183,6 +183,9 @@ import (
 type Datapolicyv2DataPolicy struct {
 	pulumi.CustomResourceState
 
+	// Data Governance tag bound to the Data Policy.
+	// Structure is documented below.
+	DataGovernanceTag Datapolicyv2DataPolicyDataGovernanceTagPtrOutput `pulumi:"dataGovernanceTag"`
 	// The policy used to specify data masking rule.
 	// Structure is documented below.
 	DataMaskingPolicy Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput `pulumi:"dataMaskingPolicy"`
@@ -275,6 +278,9 @@ func GetDatapolicyv2DataPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Datapolicyv2DataPolicy resources.
 type datapolicyv2DataPolicyState struct {
+	// Data Governance tag bound to the Data Policy.
+	// Structure is documented below.
+	DataGovernanceTag *Datapolicyv2DataPolicyDataGovernanceTag `pulumi:"dataGovernanceTag"`
 	// The policy used to specify data masking rule.
 	// Structure is documented below.
 	DataMaskingPolicy *Datapolicyv2DataPolicyDataMaskingPolicy `pulumi:"dataMaskingPolicy"`
@@ -329,6 +335,9 @@ type datapolicyv2DataPolicyState struct {
 }
 
 type Datapolicyv2DataPolicyState struct {
+	// Data Governance tag bound to the Data Policy.
+	// Structure is documented below.
+	DataGovernanceTag Datapolicyv2DataPolicyDataGovernanceTagPtrInput
 	// The policy used to specify data masking rule.
 	// Structure is documented below.
 	DataMaskingPolicy Datapolicyv2DataPolicyDataMaskingPolicyPtrInput
@@ -387,6 +396,9 @@ func (Datapolicyv2DataPolicyState) ElementType() reflect.Type {
 }
 
 type datapolicyv2DataPolicyArgs struct {
+	// Data Governance tag bound to the Data Policy.
+	// Structure is documented below.
+	DataGovernanceTag *Datapolicyv2DataPolicyDataGovernanceTag `pulumi:"dataGovernanceTag"`
 	// The policy used to specify data masking rule.
 	// Structure is documented below.
 	DataMaskingPolicy *Datapolicyv2DataPolicyDataMaskingPolicy `pulumi:"dataMaskingPolicy"`
@@ -430,6 +442,9 @@ type datapolicyv2DataPolicyArgs struct {
 
 // The set of arguments for constructing a Datapolicyv2DataPolicy resource.
 type Datapolicyv2DataPolicyArgs struct {
+	// Data Governance tag bound to the Data Policy.
+	// Structure is documented below.
+	DataGovernanceTag Datapolicyv2DataPolicyDataGovernanceTagPtrInput
 	// The policy used to specify data masking rule.
 	// Structure is documented below.
 	DataMaskingPolicy Datapolicyv2DataPolicyDataMaskingPolicyPtrInput
@@ -556,6 +571,14 @@ func (o Datapolicyv2DataPolicyOutput) ToDatapolicyv2DataPolicyOutput() Datapolic
 
 func (o Datapolicyv2DataPolicyOutput) ToDatapolicyv2DataPolicyOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyOutput {
 	return o
+}
+
+// Data Governance tag bound to the Data Policy.
+// Structure is documented below.
+func (o Datapolicyv2DataPolicyOutput) DataGovernanceTag() Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicy) Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+		return v.DataGovernanceTag
+	}).(Datapolicyv2DataPolicyDataGovernanceTagPtrOutput)
 }
 
 // The policy used to specify data masking rule.

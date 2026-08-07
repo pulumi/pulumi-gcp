@@ -220,6 +220,21 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
+        ## pubsub.SubscriptionIAMPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+            subscription="your-subscription-name",
+            policy_data=admin.policy_data)
+        ```
+
         ## pubsub.SubscriptionIAMBinding
 
         ```python
@@ -314,6 +329,21 @@ class SubscriptionIAMPolicy(pulumi.CustomResource):
             subscription="your-subscription-name",
             role="roles/editor",
             member="user:jane@example.com")
+        ```
+
+        ## pubsub.SubscriptionIAMPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/editor",
+            "members": ["user:jane@example.com"],
+        }])
+        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+            subscription="your-subscription-name",
+            policy_data=admin.policy_data)
         ```
 
         ## pubsub.SubscriptionIAMBinding

@@ -230,6 +230,30 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:discoveryengine/dataStore:DataStore")
 public class DataStore extends com.pulumi.resources.CustomResource {
     /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can&#39;t be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     * 
+     */
+    @Export(name="aclEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> aclEnabled;
+
+    /**
+     * @return Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can&#39;t be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     * 
+     */
+    public Output<Optional<Boolean>> aclEnabled() {
+        return Codegen.optional(this.aclEnabled);
+    }
+    /**
      * Configuration data for advance site search.
      * Structure is documented below.
      * 

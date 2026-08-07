@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRolloutPlan(ctx, "default", &compute.RolloutPlanArgs{
-//				Name:          pulumi.String("tf-test-rollout-plan-_55138"),
+//				Name:          pulumi.String("tf-test-rollout-plan-_91980"),
 //				Description:   pulumi.String("A test rollout plan"),
 //				LocationScope: pulumi.String("ZONAL"),
 //				Waves: compute.RolloutPlanWaveArray{

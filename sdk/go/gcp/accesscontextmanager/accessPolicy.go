@@ -30,6 +30,9 @@ import (
 // Your account must have the `serviceusage.services.use` permission on the
 // `billingProject` you defined.
 //
+// > **Note:** When importing this resource by ID, use only the numeric access policy ID
+// (for example, `123456789`) and omit the `accessPolicies/` prefix.
+//
 // ## Example Usage
 //
 // ### Access Context Manager Access Policy Basic

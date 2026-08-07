@@ -2884,7 +2884,7 @@ type SpokeGateway struct {
 	// A list of IP ranges that are reserved for this gateway's internal infrastructure.
 	// Structure is documented below.
 	IpRangeReservations []SpokeGatewayIpRangeReservation `pulumi:"ipRangeReservations"`
-	// (Output, Beta)
+	// (Output)
 	// Set of Cloud Routers that are attached to this NCC-GW
 	Routers []string `pulumi:"routers"`
 }
@@ -2907,7 +2907,7 @@ type SpokeGatewayArgs struct {
 	// A list of IP ranges that are reserved for this gateway's internal infrastructure.
 	// Structure is documented below.
 	IpRangeReservations SpokeGatewayIpRangeReservationArrayInput `pulumi:"ipRangeReservations"`
-	// (Output, Beta)
+	// (Output)
 	// Set of Cloud Routers that are attached to this NCC-GW
 	Routers pulumi.StringArrayInput `pulumi:"routers"`
 }
@@ -3001,7 +3001,7 @@ func (o SpokeGatewayOutput) IpRangeReservations() SpokeGatewayIpRangeReservation
 	return o.ApplyT(func(v SpokeGateway) []SpokeGatewayIpRangeReservation { return v.IpRangeReservations }).(SpokeGatewayIpRangeReservationArrayOutput)
 }
 
-// (Output, Beta)
+// (Output)
 // Set of Cloud Routers that are attached to this NCC-GW
 func (o SpokeGatewayOutput) Routers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpokeGateway) []string { return v.Routers }).(pulumi.StringArrayOutput)
@@ -3053,7 +3053,7 @@ func (o SpokeGatewayPtrOutput) IpRangeReservations() SpokeGatewayIpRangeReservat
 	}).(SpokeGatewayIpRangeReservationArrayOutput)
 }
 
-// (Output, Beta)
+// (Output)
 // Set of Cloud Routers that are attached to this NCC-GW
 func (o SpokeGatewayPtrOutput) Routers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SpokeGateway) []string {

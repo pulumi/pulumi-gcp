@@ -943,6 +943,68 @@ import (
 //	}
 //
 // ```
+// ### Workstation Config Idle Action
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID().ToIDOutput().ToStringOutput(),
+//				Subnetwork:           defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
+//				Location:             pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-central1"),
+//				IdleTimeout:          pulumi.String("600s"),
+//				IdleAction:           pulumi.String("SUSPEND"),
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType:              pulumi.String("e2-standard-4"),
+//						BootDiskSizeGb:           pulumi.Int(35),
+//						DisablePublicIpAddresses: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -1011,6 +1073,12 @@ type WorkstationConfig struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostOutput `pulumi:"host"`
+	// (Optional, Beta)
+	// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+	// Defaults to STOP.
+	// Default value is `STOP`.
+	// Possible values are: `STOP`, `SUSPEND`.
+	IdleAction pulumi.StringPtrOutput `pulumi:"idleAction"`
 	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	IdleTimeout pulumi.StringPtrOutput `pulumi:"idleTimeout"`
@@ -1143,6 +1211,12 @@ type workstationConfigState struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host *WorkstationConfigHost `pulumi:"host"`
+	// (Optional, Beta)
+	// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+	// Defaults to STOP.
+	// Default value is `STOP`.
+	// Possible values are: `STOP`, `SUSPEND`.
+	IdleAction *string `pulumi:"idleAction"`
 	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	IdleTimeout *string `pulumi:"idleTimeout"`
@@ -1232,6 +1306,12 @@ type WorkstationConfigState struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostPtrInput
+	// (Optional, Beta)
+	// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+	// Defaults to STOP.
+	// Default value is `STOP`.
+	// Possible values are: `STOP`, `SUSPEND`.
+	IdleAction pulumi.StringPtrInput
 	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	IdleTimeout pulumi.StringPtrInput
@@ -1311,6 +1391,12 @@ type workstationConfigArgs struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host *WorkstationConfigHost `pulumi:"host"`
+	// (Optional, Beta)
+	// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+	// Defaults to STOP.
+	// Default value is `STOP`.
+	// Possible values are: `STOP`, `SUSPEND`.
+	IdleAction *string `pulumi:"idleAction"`
 	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	IdleTimeout *string `pulumi:"idleTimeout"`
@@ -1380,6 +1466,12 @@ type WorkstationConfigArgs struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostPtrInput
+	// (Optional, Beta)
+	// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+	// Defaults to STOP.
+	// Default value is `STOP`.
+	// Possible values are: `STOP`, `SUSPEND`.
+	IdleAction pulumi.StringPtrInput
 	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	IdleTimeout pulumi.StringPtrInput
@@ -1596,6 +1688,15 @@ func (o WorkstationConfigOutput) Etag() pulumi.StringOutput {
 // Structure is documented below.
 func (o WorkstationConfigOutput) Host() WorkstationConfigHostOutput {
 	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigHostOutput { return v.Host }).(WorkstationConfigHostOutput)
+}
+
+// (Optional, Beta)
+// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+// Defaults to STOP.
+// Default value is `STOP`.
+// Possible values are: `STOP`, `SUSPEND`.
+func (o WorkstationConfigOutput) IdleAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringPtrOutput { return v.IdleAction }).(pulumi.StringPtrOutput)
 }
 
 // How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.

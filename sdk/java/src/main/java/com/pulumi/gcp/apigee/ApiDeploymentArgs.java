@@ -101,6 +101,21 @@ public final class ApiDeploymentArgs extends com.pulumi.resources.ResourceArgs {
         return this.revision;
     }
 
+    /**
+     * The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com`.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com`.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
     private ApiDeploymentArgs() {}
 
     private ApiDeploymentArgs(ApiDeploymentArgs $) {
@@ -109,6 +124,7 @@ public final class ApiDeploymentArgs extends com.pulumi.resources.ResourceArgs {
         this.orgId = $.orgId;
         this.proxyId = $.proxyId;
         this.revision = $.revision;
+        this.serviceAccount = $.serviceAccount;
     }
 
     public static Builder builder() {
@@ -242,6 +258,27 @@ public final class ApiDeploymentArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder revision(String revision) {
             return revision(Output.of(revision));
+        }
+
+        /**
+         * @param serviceAccount The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         public ApiDeploymentArgs build() {

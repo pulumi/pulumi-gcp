@@ -1107,6 +1107,84 @@ class Certificate(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[default_authority]))
         ```
+        ### Privateca Certificate Subject Config Org Optional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificateauthority.CaPool("default",
+            location="us-central1",
+            name="my-pool",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("default",
+            location="us-central1",
+            pool=default.name,
+            certificate_authority_id="my-authority",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "my-certificate-authority",
+                    },
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            lifetime="86400s",
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        default_certificate = gcp.certificateauthority.Certificate("default",
+            location="us-central1",
+            pool=default.name,
+            name="my-certificate",
+            lifetime="860s",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "san1.example.com",
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": False,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+                "public_key": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_authority]))
+        ```
 
         ## Import
 
@@ -1611,6 +1689,84 @@ class Certificate(pulumi.CustomResource):
                 },
                 "subject_key_id": {
                     "key_id": "4cf3372289b1d411b999dbb9ebcd44744b6b2fca",
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": False,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+                "public_key": {
+                    "format": "PEM",
+                    "key": std.filebase64(input="test-fixtures/rsa_public.pem").result,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default_authority]))
+        ```
+        ### Privateca Certificate Subject Config Org Optional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificateauthority.CaPool("default",
+            location="us-central1",
+            name="my-pool",
+            tier="ENTERPRISE")
+        default_authority = gcp.certificateauthority.Authority("default",
+            location="us-central1",
+            pool=default.name,
+            certificate_authority_id="my-authority",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "my-certificate-authority",
+                    },
+                    "subject_alt_name": {
+                        "dns_names": ["hashicorp.com"],
+                    },
+                },
+                "x509_config": {
+                    "ca_options": {
+                        "is_ca": True,
+                    },
+                    "key_usage": {
+                        "base_key_usage": {
+                            "digital_signature": True,
+                            "cert_sign": True,
+                            "crl_sign": True,
+                        },
+                        "extended_key_usage": {
+                            "server_auth": True,
+                        },
+                    },
+                },
+            },
+            lifetime="86400s",
+            key_spec={
+                "algorithm": "RSA_PKCS1_4096_SHA256",
+            },
+            deletion_protection=False,
+            skip_grace_period=True,
+            ignore_active_certificates_on_deletion=True)
+        default_certificate = gcp.certificateauthority.Certificate("default",
+            location="us-central1",
+            pool=default.name,
+            name="my-certificate",
+            lifetime="860s",
+            config={
+                "subject_config": {
+                    "subject": {
+                        "common_name": "san1.example.com",
+                    },
                 },
                 "x509_config": {
                     "ca_options": {

@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.inputs.Datapolicyv2DataPolicyDataGovernanceTagArgs;
 import com.pulumi.gcp.bigquery.inputs.Datapolicyv2DataPolicyDataMaskingPolicyArgs;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final Datapolicyv2DataPolicyArgs Empty = new Datapolicyv2DataPolicyArgs();
+
+    /**
+     * Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="dataGovernanceTag")
+    private @Nullable Output<Datapolicyv2DataPolicyDataGovernanceTagArgs> dataGovernanceTag;
+
+    /**
+     * @return Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<Datapolicyv2DataPolicyDataGovernanceTagArgs>> dataGovernanceTag() {
+        return Optional.ofNullable(this.dataGovernanceTag);
+    }
 
     /**
      * The policy used to specify data masking rule.
@@ -187,6 +205,7 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
     private Datapolicyv2DataPolicyArgs() {}
 
     private Datapolicyv2DataPolicyArgs(Datapolicyv2DataPolicyArgs $) {
+        this.dataGovernanceTag = $.dataGovernanceTag;
         this.dataMaskingPolicy = $.dataMaskingPolicy;
         this.dataPolicyId = $.dataPolicyId;
         this.dataPolicyType = $.dataPolicyType;
@@ -213,6 +232,29 @@ public final class Datapolicyv2DataPolicyArgs extends com.pulumi.resources.Resou
 
         public Builder(Datapolicyv2DataPolicyArgs defaults) {
             $ = new Datapolicyv2DataPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dataGovernanceTag Data Governance tag bound to the Data Policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataGovernanceTag(@Nullable Output<Datapolicyv2DataPolicyDataGovernanceTagArgs> dataGovernanceTag) {
+            $.dataGovernanceTag = dataGovernanceTag;
+            return this;
+        }
+
+        /**
+         * @param dataGovernanceTag Data Governance tag bound to the Data Policy.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataGovernanceTag(Datapolicyv2DataPolicyDataGovernanceTagArgs dataGovernanceTag) {
+            return dataGovernanceTag(Output.of(dataGovernanceTag));
         }
 
         /**

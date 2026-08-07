@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.ApiDeploymentArgs;
 import com.pulumi.gcp.apigee.inputs.ApiDeploymentState;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -124,6 +125,20 @@ public class ApiDeployment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> revision() {
         return this.revision;
+    }
+    /**
+     * The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com`.
+     * 
+     */
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceAccount;
+
+    /**
+     * @return The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}{@literal @}{PROJECT}.iam.gserviceaccount.com`.
+     * 
+     */
+    public Output<Optional<String>> serviceAccount() {
+        return Codegen.optional(this.serviceAccount);
     }
 
     /**

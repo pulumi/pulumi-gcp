@@ -23,7 +23,8 @@ class ApiDeploymentArgs:
                  org_id: pulumi.Input[_builtins.str],
                  proxy_id: pulumi.Input[_builtins.str],
                  revision: pulumi.Input[_builtins.str],
-                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiDeployment resource.
 
@@ -37,6 +38,7 @@ class ApiDeploymentArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] service_account: The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
         """
         pulumi.set(__self__, "environment", environment)
         pulumi.set(__self__, "org_id", org_id)
@@ -44,6 +46,8 @@ class ApiDeploymentArgs:
         pulumi.set(__self__, "revision", revision)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
 
     @_builtins.property
     @pulumi.getter
@@ -110,6 +114,18 @@ class ApiDeploymentArgs:
     def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_policy", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
 
 @pulumi.input_type
 class _ApiDeploymentState:
@@ -118,7 +134,8 @@ class _ApiDeploymentState:
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 revision: pulumi.Input[Optional[_builtins.str]] = None):
+                 revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiDeployment resources.
 
@@ -132,6 +149,7 @@ class _ApiDeploymentState:
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] proxy_id: The Apigee API associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] revision: The revision of the API proxy to be deployed.
+        :param pulumi.Input[_builtins.str] service_account: The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
         """
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
@@ -143,6 +161,8 @@ class _ApiDeploymentState:
             pulumi.set(__self__, "proxy_id", proxy_id)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -209,6 +229,18 @@ class _ApiDeploymentState:
     def revision(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
 
 @pulumi.type_token("gcp:apigee/apiDeployment:ApiDeployment")
 class ApiDeployment(pulumi.CustomResource):
@@ -221,6 +253,7 @@ class ApiDeployment(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a deployment of an API proxy.
@@ -264,6 +297,7 @@ class ApiDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] proxy_id: The Apigee API associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] revision: The revision of the API proxy to be deployed.
+        :param pulumi.Input[_builtins.str] service_account: The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
         """
         ...
     @overload
@@ -321,6 +355,7 @@ class ApiDeployment(pulumi.CustomResource):
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  revision: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,6 +378,7 @@ class ApiDeployment(pulumi.CustomResource):
             if revision is None and not opts.urn:
                 raise TypeError("Missing required property 'revision'")
             __props__.__dict__["revision"] = revision
+            __props__.__dict__["service_account"] = service_account
         super(ApiDeployment, __self__).__init__(
             'gcp:apigee/apiDeployment:ApiDeployment',
             resource_name,
@@ -357,7 +393,8 @@ class ApiDeployment(pulumi.CustomResource):
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
             proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
-            revision: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiDeployment':
+            revision: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiDeployment':
         """
         Get an existing ApiDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -375,6 +412,7 @@ class ApiDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] proxy_id: The Apigee API associated with the Apigee API deployment.
         :param pulumi.Input[_builtins.str] revision: The revision of the API proxy to be deployed.
+        :param pulumi.Input[_builtins.str] service_account: The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,6 +423,7 @@ class ApiDeployment(pulumi.CustomResource):
         __props__.__dict__["org_id"] = org_id
         __props__.__dict__["proxy_id"] = proxy_id
         __props__.__dict__["revision"] = revision
+        __props__.__dict__["service_account"] = service_account
         return ApiDeployment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -431,4 +470,12 @@ class ApiDeployment(pulumi.CustomResource):
         The revision of the API proxy to be deployed.
         """
         return pulumi.get(self, "revision")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+        """
+        return pulumi.get(self, "service_account")
 

@@ -75,6 +75,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly cloudRunV2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly cloudSchedulerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly cloudSecurityComplianceCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly cloudSupportCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly cloudTasksCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly cloudbuildv2CustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly clouddeployCustomEndpoint: pulumi.Output<string | undefined>;
@@ -295,6 +296,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["cloudRunV2CustomEndpoint"] = args?.cloudRunV2CustomEndpoint;
             resourceInputs["cloudSchedulerCustomEndpoint"] = args?.cloudSchedulerCustomEndpoint;
             resourceInputs["cloudSecurityComplianceCustomEndpoint"] = args?.cloudSecurityComplianceCustomEndpoint;
+            resourceInputs["cloudSupportCustomEndpoint"] = args?.cloudSupportCustomEndpoint;
             resourceInputs["cloudTasksCustomEndpoint"] = args?.cloudTasksCustomEndpoint;
             resourceInputs["cloudbuildv2CustomEndpoint"] = args?.cloudbuildv2CustomEndpoint;
             resourceInputs["clouddeployCustomEndpoint"] = args?.clouddeployCustomEndpoint;
@@ -532,6 +534,7 @@ export interface ProviderArgs {
     cloudRunV2CustomEndpoint?: pulumi.Input<string | undefined>;
     cloudSchedulerCustomEndpoint?: pulumi.Input<string | undefined>;
     cloudSecurityComplianceCustomEndpoint?: pulumi.Input<string | undefined>;
+    cloudSupportCustomEndpoint?: pulumi.Input<string | undefined>;
     cloudTasksCustomEndpoint?: pulumi.Input<string | undefined>;
     cloudbuildv2CustomEndpoint?: pulumi.Input<string | undefined>;
     clouddeployCustomEndpoint?: pulumi.Input<string | undefined>;

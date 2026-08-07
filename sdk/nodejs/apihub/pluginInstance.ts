@@ -141,6 +141,10 @@ export class PluginInstance extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     */
+    declare public readonly sourceProjectId: pulumi.Output<string | undefined>;
+    /**
      * The current state of the plugin instance (e.g., enabled, disabled,
      * provisioning).
      * Possible values:
@@ -183,6 +187,7 @@ export class PluginInstance extends pulumi.CustomResource {
             resourceInputs["plugin"] = state?.plugin;
             resourceInputs["pluginInstanceId"] = state?.pluginInstanceId;
             resourceInputs["project"] = state?.project;
+            resourceInputs["sourceProjectId"] = state?.sourceProjectId;
             resourceInputs["state"] = state?.state;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
@@ -208,6 +213,7 @@ export class PluginInstance extends pulumi.CustomResource {
             resourceInputs["plugin"] = args?.plugin;
             resourceInputs["pluginInstanceId"] = args?.pluginInstanceId;
             resourceInputs["project"] = args?.project;
+            resourceInputs["sourceProjectId"] = args?.sourceProjectId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["errorMessage"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -291,6 +297,10 @@ export interface PluginInstanceState {
      */
     project?: pulumi.Input<string | undefined>;
     /**
+     * Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     */
+    sourceProjectId?: pulumi.Input<string | undefined>;
+    /**
      * The current state of the plugin instance (e.g., enabled, disabled,
      * provisioning).
      * Possible values:
@@ -364,4 +374,8 @@ export interface PluginInstanceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     */
+    sourceProjectId?: pulumi.Input<string | undefined>;
 }

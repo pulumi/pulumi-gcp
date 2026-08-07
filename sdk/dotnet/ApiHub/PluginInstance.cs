@@ -154,6 +154,12 @@ namespace Pulumi.Gcp.ApiHub
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+        /// </summary>
+        [Output("sourceProjectId")]
+        public Output<string?> SourceProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the plugin instance (e.g., enabled, disabled,
         /// provisioning).
         /// Possible values:
@@ -295,6 +301,12 @@ namespace Pulumi.Gcp.ApiHub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+        /// </summary>
+        [Input("sourceProjectId")]
+        public Input<string>? SourceProjectId { get; set; }
+
         public PluginInstanceArgs()
         {
         }
@@ -399,6 +411,12 @@ namespace Pulumi.Gcp.ApiHub
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+        /// </summary>
+        [Input("sourceProjectId")]
+        public Input<string>? SourceProjectId { get; set; }
 
         /// <summary>
         /// The current state of the plugin instance (e.g., enabled, disabled,

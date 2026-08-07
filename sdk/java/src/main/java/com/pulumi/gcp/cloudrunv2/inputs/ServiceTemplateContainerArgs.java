@@ -15,6 +15,7 @@ import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerResourcesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerSourceCodeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerStartupProbeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -223,6 +224,21 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    @Import(name="sandboxLauncher")
+    private @Nullable Output<Boolean> sandboxLauncher;
+
+    /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    public Optional<Output<Boolean>> sandboxLauncher() {
+        return Optional.ofNullable(this.sandboxLauncher);
+    }
+
+    /**
      * (Optional, Beta)
      * Location of the source.
      * Structure is documented below.
@@ -305,6 +321,7 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
         this.ports = $.ports;
         this.readinessProbe = $.readinessProbe;
         this.resources = $.resources;
+        this.sandboxLauncher = $.sandboxLauncher;
         this.sourceCode = $.sourceCode;
         this.startupProbe = $.startupProbe;
         this.volumeMounts = $.volumeMounts;
@@ -648,6 +665,27 @@ public final class ServiceTemplateContainerArgs extends com.pulumi.resources.Res
          */
         public Builder resources(ServiceTemplateContainerResourcesArgs resources) {
             return resources(Output.of(resources));
+        }
+
+        /**
+         * @param sandboxLauncher Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxLauncher(@Nullable Output<Boolean> sandboxLauncher) {
+            $.sandboxLauncher = sandboxLauncher;
+            return this;
+        }
+
+        /**
+         * @param sandboxLauncher Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxLauncher(Boolean sandboxLauncher) {
+            return sandboxLauncher(Output.of(sandboxLauncher));
         }
 
         /**

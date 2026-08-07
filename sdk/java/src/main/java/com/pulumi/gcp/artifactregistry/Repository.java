@@ -304,6 +304,94 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Artifact Registry Repository Connector
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNoCacheArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
+ *             .secretId("example-secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto(SecretReplicationAutoArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
+ *             .secret(example_remote_secret.id())
+ *             .secretData("remote-password")
+ *             .build());
+ * 
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
+ *             .secretId(example_remote_secret.id())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example remote docker repository with no cache (connector mode)")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description("docker hub connector repository (no cache)")
+ *                 .disableUpstreamValidation(true)
+ *                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
+ *                     .publicRepository("DOCKER_HUB")
+ *                     .build())
+ *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
+ *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
+ *                         .username("remote-username")
+ *                         .passwordSecretVersion(example_remote_secretVersion.name())
+ *                         .build())
+ *                     .build())
+ *                 .noCache(RepositoryRemoteRepositoryConfigNoCacheArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
  * ### Artifact Registry Repository Remote Apt
  * 
  * <pre>

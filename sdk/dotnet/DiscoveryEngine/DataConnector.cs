@@ -46,7 +46,6 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///             { "instance_uri", "https://gcpconnector1.service-now.com/" },
     ///             { "client_id", "SECRET_MANAGER_RESOURCE_NAME" },
     ///             { "client_secret", "SECRET_MANAGER_RESOURCE_NAME" },
-    ///             { "static_ip_enabled", "false" },
     ///             { "user_account", "connectorsuserqa@google.com" },
     ///             { "password", "SECRET_MANAGER_RESOURCE_NAME" },
     ///         },

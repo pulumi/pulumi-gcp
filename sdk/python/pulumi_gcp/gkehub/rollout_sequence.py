@@ -810,7 +810,7 @@ class RolloutSequence(pulumi.CustomResource):
                 "channel": "REGULAR",
             },
             resource_labels={
-                "rs_test_cluster": "tf-test-_25601",
+                "rs_test_cluster": "tf-test-_89239",
             },
             fleet={
                 "project": project.number,
@@ -822,7 +822,7 @@ class RolloutSequence(pulumi.CustomResource):
             display_name="User Triggered Rollout Sequence",
             min_control_plane_version=versions.release_channel_latest_version["REGULAR"],
             ignored_clusters_selector={
-                "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
+                "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
             },
             stages=[{
                 "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
@@ -1056,7 +1056,7 @@ class RolloutSequence(pulumi.CustomResource):
                 "channel": "REGULAR",
             },
             resource_labels={
-                "rs_test_cluster": "tf-test-_25601",
+                "rs_test_cluster": "tf-test-_89239",
             },
             fleet={
                 "project": project.number,
@@ -1068,7 +1068,7 @@ class RolloutSequence(pulumi.CustomResource):
             display_name="User Triggered Rollout Sequence",
             min_control_plane_version=versions.release_channel_latest_version["REGULAR"],
             ignored_clusters_selector={
-                "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
+                "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
             },
             stages=[{
                 "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],

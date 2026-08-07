@@ -34,6 +34,7 @@ class WorkstationConfigArgs:
                  encryption_key: pulumi.Input[Optional['WorkstationConfigEncryptionKeyArgs']] = None,
                  ephemeral_directories: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]] = None,
                  host: pulumi.Input[Optional['WorkstationConfigHostArgs']] = None,
+                 idle_action: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_usable_workstations: pulumi.Input[Optional[_builtins.int]] = None,
@@ -73,6 +74,11 @@ class WorkstationConfigArgs:
                Structure is documented below.
         :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_action: (Optional, Beta)
+               The action to take when the workstation has been idle for the duration specified in idle_timeout.
+               Defaults to STOP.
+               Default value is `STOP`.
+               Possible values are: `STOP`, `SUSPEND`.
         :param pulumi.Input[_builtins.str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -113,6 +119,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "ephemeral_directories", ephemeral_directories)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if idle_action is not None:
+            pulumi.set(__self__, "idle_action", idle_action)
         if idle_timeout is not None:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
@@ -302,6 +310,22 @@ class WorkstationConfigArgs:
         pulumi.set(self, "host", value)
 
     @_builtins.property
+    @pulumi.getter(name="idleAction")
+    def idle_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        Defaults to STOP.
+        Default value is `STOP`.
+        Possible values are: `STOP`, `SUSPEND`.
+        """
+        return pulumi.get(self, "idle_action")
+
+    @idle_action.setter
+    def idle_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_action", value)
+
+    @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -425,6 +449,7 @@ class _WorkstationConfigState:
                  ephemeral_directories: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigEphemeralDirectoryArgs']]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional['WorkstationConfigHostArgs']] = None,
+                 idle_action: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -475,6 +500,11 @@ class _WorkstationConfigState:
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_action: (Optional, Beta)
+               The action to take when the workstation has been idle for the duration specified in idle_timeout.
+               Defaults to STOP.
+               Default value is `STOP`.
+               Possible values are: `STOP`, `SUSPEND`.
         :param pulumi.Input[_builtins.str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -531,6 +561,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "etag", etag)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if idle_action is not None:
+            pulumi.set(__self__, "idle_action", idle_action)
         if idle_timeout is not None:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
@@ -770,6 +802,22 @@ class _WorkstationConfigState:
         pulumi.set(self, "host", value)
 
     @_builtins.property
+    @pulumi.getter(name="idleAction")
+    def idle_action(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        Defaults to STOP.
+        Default value is `STOP`.
+        Possible values are: `STOP`, `SUSPEND`.
+        """
+        return pulumi.get(self, "idle_action")
+
+    @idle_action.setter
+    def idle_action(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_action", value)
+
+    @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -963,6 +1011,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  encryption_key: pulumi.Input[Optional[Union['WorkstationConfigEncryptionKeyArgs', 'WorkstationConfigEncryptionKeyArgsDict']]] = None,
                  ephemeral_directories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigEphemeralDirectoryArgs', 'WorkstationConfigEphemeralDirectoryArgsDict']]]]] = None,
                  host: pulumi.Input[Optional[Union['WorkstationConfigHostArgs', 'WorkstationConfigHostArgsDict']]] = None,
+                 idle_action: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1524,6 +1573,39 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Workstation Config Idle Action
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            idle_timeout="600s",
+            idle_action="SUSPEND",
+            host={
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                },
+            })
+        ```
 
         ## Import
 
@@ -1569,6 +1651,11 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['WorkstationConfigHostArgs', 'WorkstationConfigHostArgsDict']] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_action: (Optional, Beta)
+               The action to take when the workstation has been idle for the duration specified in idle_timeout.
+               Defaults to STOP.
+               Default value is `STOP`.
+               Possible values are: `STOP`, `SUSPEND`.
         :param pulumi.Input[_builtins.str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -2144,6 +2231,39 @@ class WorkstationConfig(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Workstation Config Idle Action
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            idle_timeout="600s",
+            idle_action="SUSPEND",
+            host={
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                },
+            })
+        ```
 
         ## Import
 
@@ -2187,6 +2307,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  encryption_key: pulumi.Input[Optional[Union['WorkstationConfigEncryptionKeyArgs', 'WorkstationConfigEncryptionKeyArgsDict']]] = None,
                  ephemeral_directories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigEphemeralDirectoryArgs', 'WorkstationConfigEphemeralDirectoryArgsDict']]]]] = None,
                  host: pulumi.Input[Optional[Union['WorkstationConfigHostArgs', 'WorkstationConfigHostArgsDict']]] = None,
+                 idle_action: pulumi.Input[Optional[_builtins.str]] = None,
                  idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2217,6 +2338,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["ephemeral_directories"] = ephemeral_directories
             __props__.__dict__["host"] = host
+            __props__.__dict__["idle_action"] = idle_action
             __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -2271,6 +2393,7 @@ class WorkstationConfig(pulumi.CustomResource):
             ephemeral_directories: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigEphemeralDirectoryArgs', 'WorkstationConfigEphemeralDirectoryArgsDict']]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             host: pulumi.Input[Optional[Union['WorkstationConfigHostArgs', 'WorkstationConfigHostArgsDict']]] = None,
+            idle_action: pulumi.Input[Optional[_builtins.str]] = None,
             idle_timeout: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2325,6 +2448,11 @@ class WorkstationConfig(pulumi.CustomResource):
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['WorkstationConfigHostArgs', 'WorkstationConfigHostArgsDict']] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] idle_action: (Optional, Beta)
+               The action to take when the workstation has been idle for the duration specified in idle_timeout.
+               Defaults to STOP.
+               Default value is `STOP`.
+               Possible values are: `STOP`, `SUSPEND`.
         :param pulumi.Input[_builtins.str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -2369,6 +2497,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["ephemeral_directories"] = ephemeral_directories
         __props__.__dict__["etag"] = etag
         __props__.__dict__["host"] = host
+        __props__.__dict__["idle_action"] = idle_action
         __props__.__dict__["idle_timeout"] = idle_timeout
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -2529,6 +2658,18 @@ class WorkstationConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="idleAction")
+    def idle_action(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        (Optional, Beta)
+        The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        Defaults to STOP.
+        Default value is `STOP`.
+        Possible values are: `STOP`, `SUSPEND`.
+        """
+        return pulumi.get(self, "idle_action")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")

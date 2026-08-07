@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDataStoreResult {
+    private Boolean aclEnabled;
     private List<GetDataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfigs;
     private String contentConfig;
     private Boolean createAdvancedSiteSearch;
@@ -39,6 +40,9 @@ public final class GetDataStoreResult {
     private List<String> solutionTypes;
 
     private GetDataStoreResult() {}
+    public Boolean aclEnabled() {
+        return this.aclEnabled;
+    }
     public List<GetDataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfigs() {
         return this.advancedSiteSearchConfigs;
     }
@@ -104,6 +108,7 @@ public final class GetDataStoreResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean aclEnabled;
         private List<GetDataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfigs;
         private String contentConfig;
         private Boolean createAdvancedSiteSearch;
@@ -124,6 +129,7 @@ public final class GetDataStoreResult {
         public Builder() {}
         public Builder(GetDataStoreResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aclEnabled = defaults.aclEnabled;
     	      this.advancedSiteSearchConfigs = defaults.advancedSiteSearchConfigs;
     	      this.contentConfig = defaults.contentConfig;
     	      this.createAdvancedSiteSearch = defaults.createAdvancedSiteSearch;
@@ -143,6 +149,14 @@ public final class GetDataStoreResult {
     	      this.solutionTypes = defaults.solutionTypes;
         }
 
+        @CustomType.Setter
+        public Builder aclEnabled(Boolean aclEnabled) {
+            if (aclEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDataStoreResult", "aclEnabled");
+            }
+            this.aclEnabled = aclEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder advancedSiteSearchConfigs(List<GetDataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfigs) {
             if (advancedSiteSearchConfigs == null) {
@@ -282,6 +296,7 @@ public final class GetDataStoreResult {
         }
         public GetDataStoreResult build() {
             final var _resultValue = new GetDataStoreResult();
+            _resultValue.aclEnabled = aclEnabled;
             _resultValue.advancedSiteSearchConfigs = advancedSiteSearchConfigs;
             _resultValue.contentConfig = contentConfig;
             _resultValue.createAdvancedSiteSearch = createAdvancedSiteSearch;

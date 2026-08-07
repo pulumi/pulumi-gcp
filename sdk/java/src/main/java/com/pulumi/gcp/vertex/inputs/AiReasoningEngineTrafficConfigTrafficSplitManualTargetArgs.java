@@ -31,14 +31,14 @@ public final class AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs ex
     }
 
     /**
-     * Required. The Runtime Revision name to which to send this portion of traffic.
+     * Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
      * 
      */
     @Import(name="runtimeRevisionName", required=true)
     private Output<String> runtimeRevisionName;
 
     /**
-     * @return Required. The Runtime Revision name to which to send this portion of traffic.
+     * @return Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
      * 
      */
     public Output<String> runtimeRevisionName() {
@@ -92,7 +92,7 @@ public final class AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs ex
         }
 
         /**
-         * @param runtimeRevisionName Required. The Runtime Revision name to which to send this portion of traffic.
+         * @param runtimeRevisionName Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs ex
         }
 
         /**
-         * @param runtimeRevisionName Required. The Runtime Revision name to which to send this portion of traffic.
+         * @param runtimeRevisionName Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
          * 
          * @return builder
          * 

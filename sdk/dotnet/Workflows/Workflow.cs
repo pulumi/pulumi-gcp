@@ -296,6 +296,7 @@ namespace Pulumi.Gcp.Workflows
 
         /// <summary>
         /// Workflow code to be executed. The size limit is 128KB.
+        /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         /// </summary>
         [Output("sourceContents")]
         public Output<string?> SourceContents { get; private set; } = null!;
@@ -485,6 +486,7 @@ namespace Pulumi.Gcp.Workflows
 
         /// <summary>
         /// Workflow code to be executed. The size limit is 128KB.
+        /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
@@ -676,6 +678,7 @@ namespace Pulumi.Gcp.Workflows
 
         /// <summary>
         /// Workflow code to be executed. The size limit is 128KB.
+        /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         /// </summary>
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }

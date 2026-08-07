@@ -316,7 +316,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         },
     ///         ResourceLabels = 
     ///         {
-    ///             { "rs_test_cluster", "tf-test-_25601" },
+    ///             { "rs_test_cluster", "tf-test-_89239" },
     ///         },
     ///         Fleet = new Gcp.Container.Inputs.ClusterFleetArgs
     ///         {
@@ -338,7 +338,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.REGULAR),
     ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
     ///         {
-    ///             LabelSelector = "!(has(resource.labels.rs_test_cluster) &amp;&amp; resource.labels.rs_test_cluster == 'tf-test-_17228')",
+    ///             LabelSelector = "!(has(resource.labels.rs_test_cluster) &amp;&amp; resource.labels.rs_test_cluster == 'tf-test-_41898')",
     ///         },
     ///         Stages = new[]
     ///         {

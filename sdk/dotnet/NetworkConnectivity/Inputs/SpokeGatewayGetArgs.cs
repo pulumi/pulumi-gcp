@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         private InputList<string>? _routers;
 
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// Set of Cloud Routers that are attached to this NCC-GW
         /// </summary>
         public InputList<string> Routers

@@ -4,9 +4,10 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpecWorkloadidentity {
@@ -14,15 +15,15 @@ public final class FeatureSpecWorkloadidentity {
      * @return Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
      * 
      */
-    private String scopeTenancyPool;
+    private @Nullable String scopeTenancyPool;
 
     private FeatureSpecWorkloadidentity() {}
     /**
      * @return Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
      * 
      */
-    public String scopeTenancyPool() {
-        return this.scopeTenancyPool;
+    public Optional<String> scopeTenancyPool() {
+        return Optional.ofNullable(this.scopeTenancyPool);
     }
 
     public static Builder builder() {
@@ -34,7 +35,7 @@ public final class FeatureSpecWorkloadidentity {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String scopeTenancyPool;
+        private @Nullable String scopeTenancyPool;
         public Builder() {}
         public Builder(FeatureSpecWorkloadidentity defaults) {
     	      Objects.requireNonNull(defaults);
@@ -42,10 +43,8 @@ public final class FeatureSpecWorkloadidentity {
         }
 
         @CustomType.Setter
-        public Builder scopeTenancyPool(String scopeTenancyPool) {
-            if (scopeTenancyPool == null) {
-              throw new MissingRequiredPropertyException("FeatureSpecWorkloadidentity", "scopeTenancyPool");
-            }
+        public Builder scopeTenancyPool(@Nullable String scopeTenancyPool) {
+
             this.scopeTenancyPool = scopeTenancyPool;
             return this;
         }

@@ -4159,7 +4159,7 @@ class FeatureSpecRbacrolebindingactuationArgs:
 
 
 class FeatureSpecWorkloadidentityArgsDict(TypedDict):
-    scope_tenancy_pool: pulumi.Input[_builtins.str]
+    scope_tenancy_pool: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
     """
@@ -4167,22 +4167,23 @@ class FeatureSpecWorkloadidentityArgsDict(TypedDict):
 @pulumi.input_type
 class FeatureSpecWorkloadidentityArgs:
     def __init__(__self__, *,
-                 scope_tenancy_pool: pulumi.Input[_builtins.str]):
+                 scope_tenancy_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] scope_tenancy_pool: Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
         """
-        pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
+        if scope_tenancy_pool is not None:
+            pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
 
     @_builtins.property
     @pulumi.getter(name="scopeTenancyPool")
-    def scope_tenancy_pool(self) -> pulumi.Input[_builtins.str]:
+    def scope_tenancy_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
         """
         return pulumi.get(self, "scope_tenancy_pool")
 
     @scope_tenancy_pool.setter
-    def scope_tenancy_pool(self, value: pulumi.Input[_builtins.str]):
+    def scope_tenancy_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope_tenancy_pool", value)
 
 

@@ -105,6 +105,14 @@ export class ReservationAssignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
+     * Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+     * * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+     * * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+     * * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+     * * The special value `unknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+     */
+    declare public readonly principal: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -137,6 +145,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
             resourceInputs["jobType"] = state?.jobType;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
+            resourceInputs["principal"] = state?.principal;
             resourceInputs["project"] = state?.project;
             resourceInputs["reservation"] = state?.reservation;
             resourceInputs["state"] = state?.state;
@@ -155,6 +164,7 @@ export class ReservationAssignment extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["jobType"] = args?.jobType;
             resourceInputs["location"] = args?.location;
+            resourceInputs["principal"] = args?.principal;
             resourceInputs["project"] = args?.project;
             resourceInputs["reservation"] = args?.reservation;
             resourceInputs["name"] = undefined /*out*/;
@@ -194,6 +204,14 @@ export interface ReservationAssignmentState {
      * Output only. The resource name of the assignment.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+     * * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+     * * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+     * * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+     * * The special value `unknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+     */
+    principal?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -235,6 +253,14 @@ export interface ReservationAssignmentArgs {
      * The location for the resource
      */
     location?: pulumi.Input<string | undefined>;
+    /**
+     * Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+     * * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+     * * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+     * * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+     * * The special value `unknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+     */
+    principal?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -219,6 +219,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
     [OutputType]
     public sealed class GetDataStoreResult
     {
+        public readonly bool AclEnabled;
         public readonly ImmutableArray<Outputs.GetDataStoreAdvancedSiteSearchConfigResult> AdvancedSiteSearchConfigs;
         public readonly string ContentConfig;
         public readonly bool CreateAdvancedSiteSearch;
@@ -242,6 +243,8 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
         [OutputConstructor]
         private GetDataStoreResult(
+            bool aclEnabled,
+
             ImmutableArray<Outputs.GetDataStoreAdvancedSiteSearchConfigResult> advancedSiteSearchConfigs,
 
             string contentConfig,
@@ -276,6 +279,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
             ImmutableArray<string> solutionTypes)
         {
+            AclEnabled = aclEnabled;
             AdvancedSiteSearchConfigs = advancedSiteSearchConfigs;
             ContentConfig = contentConfig;
             CreateAdvancedSiteSearch = createAdvancedSiteSearch;

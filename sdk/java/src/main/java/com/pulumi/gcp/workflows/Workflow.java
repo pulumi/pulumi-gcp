@@ -489,6 +489,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
     }
     /**
      * Workflow code to be executed. The size limit is 128KB.
+     * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
     @Export(name="sourceContents", refs={String.class}, tree="[0]")
@@ -496,6 +497,7 @@ public class Workflow extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Workflow code to be executed. The size limit is 128KB.
+     * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
     public Output<Optional<String>> sourceContents() {

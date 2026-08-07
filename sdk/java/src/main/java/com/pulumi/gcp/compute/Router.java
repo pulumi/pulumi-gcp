@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_37559")
+ *             .name("tf-test-subnet_37118")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
@@ -366,7 +366,6 @@ public class Router extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      * 
      */
@@ -374,8 +373,7 @@ public class Router extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> nccGateway;
 
     /**
-     * @return (Optional, Beta)
-     * A URI of an NCC Gateway spoke
+     * @return A URI of an NCC Gateway spoke
      * 
      */
     public Output<Optional<String>> nccGateway() {

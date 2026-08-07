@@ -262,8 +262,8 @@ class Config(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_13293",
-            name="tf-test_40289",
+            project_id="tf-test_33395",
+            name="tf-test_76044",
             org_id="123456789",
             deletion_policy="DELETE")
         wait_for_project = time.Sleep("wait_for_project", create_duration="60s",
@@ -395,8 +395,8 @@ class Config(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="tf-test_13293",
-            name="tf-test_40289",
+            project_id="tf-test_33395",
+            name="tf-test_76044",
             org_id="123456789",
             deletion_policy="DELETE")
         wait_for_project = time.Sleep("wait_for_project", create_duration="60s",

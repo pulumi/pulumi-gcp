@@ -71,6 +71,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerResources? Resources;
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        public readonly bool? SandboxLauncher;
+        /// <summary>
         /// Startup probe of application within the container.
         /// All other probes are disabled if a startup probe is provided, until it
         /// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -115,6 +119,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             Outputs.ServiceTemplateSpecContainerResources? resources,
 
+            bool? sandboxLauncher,
+
             Outputs.ServiceTemplateSpecContainerStartupProbe? startupProbe,
 
             ImmutableArray<Outputs.ServiceTemplateSpecContainerVolumeMount> volumeMounts,
@@ -131,6 +137,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Ports = ports;
             ReadinessProbe = readinessProbe;
             Resources = resources;
+            SandboxLauncher = sandboxLauncher;
             StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;

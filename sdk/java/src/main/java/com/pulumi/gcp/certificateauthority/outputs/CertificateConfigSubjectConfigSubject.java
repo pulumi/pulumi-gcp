@@ -31,7 +31,7 @@ public final class CertificateConfigSubjectConfigSubject {
      * @return The organization of the subject.
      * 
      */
-    private String organization;
+    private @Nullable String organization;
     /**
      * @return The organizational unit of the subject.
      * 
@@ -79,8 +79,8 @@ public final class CertificateConfigSubjectConfigSubject {
      * @return The organization of the subject.
      * 
      */
-    public String organization() {
-        return this.organization;
+    public Optional<String> organization() {
+        return Optional.ofNullable(this.organization);
     }
     /**
      * @return The organizational unit of the subject.
@@ -123,7 +123,7 @@ public final class CertificateConfigSubjectConfigSubject {
         private String commonName;
         private @Nullable String countryCode;
         private @Nullable String locality;
-        private String organization;
+        private @Nullable String organization;
         private @Nullable String organizationalUnit;
         private @Nullable String postalCode;
         private @Nullable String province;
@@ -162,10 +162,8 @@ public final class CertificateConfigSubjectConfigSubject {
             return this;
         }
         @CustomType.Setter
-        public Builder organization(String organization) {
-            if (organization == null) {
-              throw new MissingRequiredPropertyException("CertificateConfigSubjectConfigSubject", "organization");
-            }
+        public Builder organization(@Nullable String organization) {
+
             this.organization = organization;
             return this;
         }

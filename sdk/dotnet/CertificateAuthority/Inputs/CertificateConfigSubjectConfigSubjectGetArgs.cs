@@ -33,8 +33,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         /// <summary>
         /// The organization of the subject.
         /// </summary>
-        [Input("organization", required: true)]
-        public Input<string> Organization { get; set; } = null!;
+        [Input("organization")]
+        public Input<string>? Organization { get; set; }
 
         /// <summary>
         /// The organizational unit of the subject.

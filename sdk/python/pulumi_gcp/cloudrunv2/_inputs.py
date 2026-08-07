@@ -3995,6 +3995,10 @@ class ServiceTemplateContainerArgsDict(TypedDict):
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
+    sandbox_launcher: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+    """
     source_code: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgsDict']]]
     """
     (Optional, Beta)
@@ -4031,6 +4035,7 @@ class ServiceTemplateContainerArgs:
                  ports: pulumi.Input[Optional['ServiceTemplateContainerPortsArgs']] = None,
                  readiness_probe: pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgs']] = None,
                  resources: pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']] = None,
+                 sandbox_launcher: pulumi.Input[Optional[_builtins.bool]] = None,
                  source_code: pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgs']] = None,
                  startup_probe: pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgs']] = None,
                  volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]] = None,
@@ -4056,6 +4061,7 @@ class ServiceTemplateContainerArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateContainerResourcesArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param pulumi.Input['ServiceTemplateContainerSourceCodeArgs'] source_code: (Optional, Beta)
                Location of the source.
                Structure is documented below.
@@ -4088,6 +4094,8 @@ class ServiceTemplateContainerArgs:
             pulumi.set(__self__, "readiness_probe", readiness_probe)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if source_code is not None:
             pulumi.set(__self__, "source_code", source_code)
         if startup_probe is not None:
@@ -4248,6 +4256,18 @@ class ServiceTemplateContainerArgs:
     @resources.setter
     def resources(self, value: pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']]):
         pulumi.set(self, "resources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
+
+    @sandbox_launcher.setter
+    def sandbox_launcher(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "sandbox_launcher", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCode")

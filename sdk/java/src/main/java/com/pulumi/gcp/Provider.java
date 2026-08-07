@@ -311,6 +311,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> cloudSecurityComplianceCustomEndpoint() {
         return Codegen.optional(this.cloudSecurityComplianceCustomEndpoint);
     }
+    @Export(name="cloudSupportCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> cloudSupportCustomEndpoint;
+
+    public Output<Optional<String>> cloudSupportCustomEndpoint() {
+        return Codegen.optional(this.cloudSupportCustomEndpoint);
+    }
     @Export(name="cloudTasksCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudTasksCustomEndpoint;
 

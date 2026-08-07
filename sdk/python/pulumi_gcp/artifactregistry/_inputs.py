@@ -47,6 +47,8 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs',
     'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict',
+    'RepositoryRemoteRepositoryConfigNoCacheArgs',
+    'RepositoryRemoteRepositoryConfigNoCacheArgsDict',
     'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
     'RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs',
@@ -620,6 +622,10 @@ class RepositoryRemoteRepositoryConfigArgsDict(TypedDict):
     Specific settings for a Maven remote repository.
     Structure is documented below.
     """
+    no_cache: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNoCacheArgsDict']]]
+    """
+    The repository will act as a non-caching proxy (connector mode).
+    """
     npm_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict']]]
     """
     Specific settings for an Npm remote repository.
@@ -650,6 +656,7 @@ class RepositoryRemoteRepositoryConfigArgs:
                  disable_upstream_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  docker_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
                  maven_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
+                 no_cache: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNoCacheArgs']] = None,
                  npm_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
                  python_repository: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
                  upstream_credentials: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']] = None,
@@ -666,6 +673,7 @@ class RepositoryRemoteRepositoryConfigArgs:
                Structure is documented below.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs'] maven_repository: Specific settings for a Maven remote repository.
                Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigNoCacheArgs'] no_cache: The repository will act as a non-caching proxy (connector mode).
         :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs'] npm_repository: Specific settings for an Npm remote repository.
                Structure is documented below.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repository: Specific settings for a Python remote repository.
@@ -687,6 +695,8 @@ class RepositoryRemoteRepositoryConfigArgs:
             pulumi.set(__self__, "docker_repository", docker_repository)
         if maven_repository is not None:
             pulumi.set(__self__, "maven_repository", maven_repository)
+        if no_cache is not None:
+            pulumi.set(__self__, "no_cache", no_cache)
         if npm_repository is not None:
             pulumi.set(__self__, "npm_repository", npm_repository)
         if python_repository is not None:
@@ -772,6 +782,18 @@ class RepositoryRemoteRepositoryConfigArgs:
     @maven_repository.setter
     def maven_repository(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]):
         pulumi.set(self, "maven_repository", value)
+
+    @_builtins.property
+    @pulumi.getter(name="noCache")
+    def no_cache(self) -> pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNoCacheArgs']]:
+        """
+        The repository will act as a non-caching proxy (connector mode).
+        """
+        return pulumi.get(self, "no_cache")
+
+    @no_cache.setter
+    def no_cache(self, value: pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNoCacheArgs']]):
+        pulumi.set(self, "no_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="npmRepository")
@@ -1111,6 +1133,15 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
     @uri.setter
     def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
+
+
+class RepositoryRemoteRepositoryConfigNoCacheArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigNoCacheArgs:
+    def __init__(__self__):
+        pass
 
 
 class RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict(TypedDict):

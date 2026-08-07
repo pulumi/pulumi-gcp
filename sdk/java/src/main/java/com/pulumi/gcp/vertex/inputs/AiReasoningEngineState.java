@@ -260,6 +260,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
     /**
      * (Optional, Beta)
      * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
      * Structure is documented below.
      * 
      */
@@ -269,6 +270,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
     /**
      * @return (Optional, Beta)
      * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
      * Structure is documented below.
      * 
      */
@@ -667,6 +669,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         /**
          * @param trafficConfig (Optional, Beta)
          * Optional. Traffic distribution configuration for the Reasoning Engine.
+         * &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
          * Structure is documented below.
          * 
          * @return builder
@@ -680,6 +683,7 @@ public final class AiReasoningEngineState extends com.pulumi.resources.ResourceA
         /**
          * @param trafficConfig (Optional, Beta)
          * Optional. Traffic distribution configuration for the Reasoning Engine.
+         * &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
          * Structure is documented below.
          * 
          * @return builder

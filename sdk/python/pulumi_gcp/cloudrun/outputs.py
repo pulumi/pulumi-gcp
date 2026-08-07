@@ -1571,6 +1571,8 @@ class ServiceTemplateSpecContainer(dict):
             suggest = "liveness_probe"
         elif key == "readinessProbe":
             suggest = "readiness_probe"
+        elif key == "sandboxLauncher":
+            suggest = "sandbox_launcher"
         elif key == "startupProbe":
             suggest = "startup_probe"
         elif key == "volumeMounts":
@@ -1600,6 +1602,7 @@ class ServiceTemplateSpecContainer(dict):
                  ports: Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']] = None,
                  readiness_probe: Optional['outputs.ServiceTemplateSpecContainerReadinessProbe'] = None,
                  resources: Optional['outputs.ServiceTemplateSpecContainerResources'] = None,
+                 sandbox_launcher: Optional[_builtins.bool] = None,
                  startup_probe: Optional['outputs.ServiceTemplateSpecContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.ServiceTemplateSpecContainerVolumeMount']] = None,
                  working_dir: Optional[_builtins.str] = None):
@@ -1631,6 +1634,7 @@ class ServiceTemplateSpecContainer(dict):
                Structure is documented below.
         :param 'ServiceTemplateSpecContainerResourcesArgs' resources: Compute Resources required by this container. Used to set values such as max memory
                Structure is documented below.
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param 'ServiceTemplateSpecContainerStartupProbeArgs' startup_probe: Startup probe of application within the container.
                All other probes are disabled if a startup probe is provided, until it
                succeeds. Container will not be added to service endpoints if the probe fails.
@@ -1664,6 +1668,8 @@ class ServiceTemplateSpecContainer(dict):
             pulumi.set(__self__, "readiness_probe", readiness_probe)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -1768,6 +1774,14 @@ class ServiceTemplateSpecContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> Optional[_builtins.bool]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbe")
@@ -4336,6 +4350,7 @@ class GetServiceTemplateSpecContainerResult(dict):
                  ports: Sequence['outputs.GetServiceTemplateSpecContainerPortResult'],
                  readiness_probes: Sequence['outputs.GetServiceTemplateSpecContainerReadinessProbeResult'],
                  resources: Sequence['outputs.GetServiceTemplateSpecContainerResourceResult'],
+                 sandbox_launcher: _builtins.bool,
                  startup_probes: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetServiceTemplateSpecContainerVolumeMountResult'],
                  working_dir: _builtins.str):
@@ -4360,6 +4375,7 @@ class GetServiceTemplateSpecContainerResult(dict):
         :param Sequence['GetServiceTemplateSpecContainerPortArgs'] ports: List of open ports in the container.
         :param Sequence['GetServiceTemplateSpecContainerReadinessProbeArgs'] readiness_probes: Periodic probe of container readiness.
         :param Sequence['GetServiceTemplateSpecContainerResourceArgs'] resources: Compute Resources required by this container. Used to set values such as max memory
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param Sequence['GetServiceTemplateSpecContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container.
                All other probes are disabled if a startup probe is provided, until it
                succeeds. Container will not be added to service endpoints if the probe fails.
@@ -4379,6 +4395,7 @@ class GetServiceTemplateSpecContainerResult(dict):
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "readiness_probes", readiness_probes)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
         pulumi.set(__self__, "working_dir", working_dir)
@@ -4472,6 +4489,14 @@ class GetServiceTemplateSpecContainerResult(dict):
         Compute Resources required by this container. Used to set values such as max memory
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> _builtins.bool:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="startupProbes")

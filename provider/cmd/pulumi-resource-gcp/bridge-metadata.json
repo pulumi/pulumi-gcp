@@ -2895,6 +2895,9 @@
                                         }
                                     }
                                 },
+                                "no_cache": {
+                                    "maxItemsOne": true
+                                },
                                 "npm_repository": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -4295,6 +4298,9 @@
                 "current": "gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy",
                 "majorVersion": 9,
                 "fields": {
+                    "data_governance_tag": {
+                        "maxItemsOne": true
+                    },
                     "data_masking_policy": {
                         "maxItemsOne": true
                     },
@@ -10268,6 +10274,10 @@
                     }
                 }
             },
+            "google_cloud_support_support_event_subscription": {
+                "current": "gcp:cloudsupport/supportEventSubscription:SupportEventSubscription",
+                "majorVersion": 9
+            },
             "google_cloud_tasks_queue": {
                 "current": "gcp:cloudtasks/queue:Queue",
                 "majorVersion": 9,
@@ -16026,6 +16036,44 @@
                 "majorVersion": 9,
                 "fields": {
                     "associations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_region_network_policy_traffic_classification_rule": {
+                "current": "gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule",
+                "majorVersion": 9,
+                "fields": {
+                    "action": {
+                        "maxItemsOne": true
+                    },
+                    "match": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dest_ip_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "layer4_configs": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ports": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "src_ip_ranges": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "target_secure_tags": {
+                        "maxItemsOne": false
+                    },
+                    "target_service_accounts": {
                         "maxItemsOne": false
                     }
                 }
@@ -48409,6 +48457,9 @@
                                         }
                                     }
                                 },
+                                "no_cache": {
+                                    "maxItemsOne": false
+                                },
                                 "npm_repository": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -61600,6 +61651,7 @@
             "gcp:cloudsecuritycompliance/cloudControl:CloudControl": 0,
             "gcp:cloudsecuritycompliance/framework:Framework": 0,
             "gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment": 0,
+            "gcp:cloudsupport/supportEventSubscription:SupportEventSubscription": 0,
             "gcp:cloudtasks/queue:Queue": 0,
             "gcp:cloudtasks/queueIamBinding:QueueIamBinding": 0,
             "gcp:cloudtasks/queueIamMember:QueueIamMember": 0,
@@ -61754,6 +61806,7 @@
             "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule": 0,
             "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules": 0,
             "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy": 0,
+            "gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule": 0,
             "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig": 0,
             "gcp:compute/regionResizeRequest:RegionResizeRequest": 0,
             "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": 0,
@@ -63255,6 +63308,7 @@
             "gcp:compute/haVpnGateway:HaVpnGateway": 1,
             "gcp:compute/httpsHealthCheck:HttpsHealthCheck": 1,
             "gcp:compute/image:Image": 1,
+            "gcp:compute/instance:Instance": 1,
             "gcp:compute/instantSnapshot:InstantSnapshot": 1,
             "gcp:compute/interconnectAttachmentGroup:InterconnectAttachmentGroup": 1,
             "gcp:compute/interconnectGroup:InterconnectGroup": 1,
@@ -63288,18 +63342,34 @@
             "gcp:compute/targetTCPProxy:TargetTCPProxy": 1,
             "gcp:compute/vPNGateway:VPNGateway": 1,
             "gcp:compute/wireGroup:WireGroup": 1,
+            "gcp:discoveryengine/assistant:Assistant": 1,
+            "gcp:discoveryengine/chatEngine:ChatEngine": 1,
+            "gcp:discoveryengine/cmekConfig:CmekConfig": 1,
+            "gcp:discoveryengine/control:Control": 1,
+            "gcp:discoveryengine/dataStore:DataStore": 1,
+            "gcp:discoveryengine/licenseConfig:LicenseConfig": 1,
+            "gcp:discoveryengine/recommendationEngine:RecommendationEngine": 1,
+            "gcp:discoveryengine/schema:Schema": 1,
+            "gcp:discoveryengine/searchEngine:SearchEngine": 1,
+            "gcp:discoveryengine/servingConfig:ServingConfig": 1,
+            "gcp:discoveryengine/sitemap:Sitemap": 1,
+            "gcp:discoveryengine/targetSite:TargetSite": 1,
+            "gcp:discoveryengine/userStore:UserStore": 1,
             "gcp:dns/managedZone:ManagedZone": 1,
             "gcp:dns/recordSet:RecordSet": 1,
             "gcp:folder/iAMMember:IAMMember": 1,
             "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": 1,
             "gcp:monitoring/alertPolicy:AlertPolicy": 1,
             "gcp:organizations/project:Project": 1,
+            "gcp:projects/iAMCustomRole:IAMCustomRole": 1,
             "gcp:projects/iAMMember:IAMMember": 1,
             "gcp:projects/service:Service": 1,
             "gcp:pubsub/subscription:Subscription": 1,
+            "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember": 1,
             "gcp:pubsub/topic:Topic": 1,
             "gcp:secretmanager/secret:Secret": 1,
             "gcp:serviceaccount/account:Account": 1,
+            "gcp:serviceaccount/iAMMember:IAMMember": 1,
             "gcp:serviceaccount/key:Key": 1,
             "gcp:sql/database:Database": 1,
             "gcp:storage/bucket:Bucket": 1,

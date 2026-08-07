@@ -39,6 +39,10 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult> MavenRepositories;
         /// <summary>
+        /// The repository will act as a non-caching proxy (connector mode).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNoCacheResult> NoCaches;
+        /// <summary>
         /// Specific settings for an Npm remote repository.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult> NpmRepositories;
@@ -69,6 +73,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult> mavenRepositories,
 
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNoCacheResult> noCaches,
+
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult> npmRepositories,
 
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult> pythonRepositories,
@@ -83,6 +89,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
             DisableUpstreamValidation = disableUpstreamValidation;
             DockerRepositories = dockerRepositories;
             MavenRepositories = mavenRepositories;
+            NoCaches = noCaches;
             NpmRepositories = npmRepositories;
             PythonRepositories = pythonRepositories;
             UpstreamCredentials = upstreamCredentials;

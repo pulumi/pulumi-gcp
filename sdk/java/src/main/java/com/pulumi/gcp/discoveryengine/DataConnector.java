@@ -73,7 +73,6 @@ import javax.annotation.Nullable;
  *                 Map.entry("instance_uri", "https://gcpconnector1.service-now.com/"),
  *                 Map.entry("client_id", "SECRET_MANAGER_RESOURCE_NAME"),
  *                 Map.entry("client_secret", "SECRET_MANAGER_RESOURCE_NAME"),
- *                 Map.entry("static_ip_enabled", "false"),
  *                 Map.entry("user_account", "connectorsuserqa}{@literal @}{@code google.com"),
  *                 Map.entry("password", "SECRET_MANAGER_RESOURCE_NAME")
  *             ))
