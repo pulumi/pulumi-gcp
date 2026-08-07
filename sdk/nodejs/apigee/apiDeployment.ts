@@ -86,6 +86,10 @@ export class ApiDeployment extends pulumi.CustomResource {
      * The revision of the API proxy to be deployed.
      */
     declare public readonly revision: pulumi.Output<string>;
+    /**
+     * The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+     */
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiDeployment resource with the given unique name, arguments, and options.
@@ -105,6 +109,7 @@ export class ApiDeployment extends pulumi.CustomResource {
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["proxyId"] = state?.proxyId;
             resourceInputs["revision"] = state?.revision;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
         } else {
             const args = argsOrState as ApiDeploymentArgs | undefined;
             if (args?.environment === undefined && !opts.urn) {
@@ -124,6 +129,7 @@ export class ApiDeployment extends pulumi.CustomResource {
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["proxyId"] = args?.proxyId;
             resourceInputs["revision"] = args?.revision;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApiDeployment.__pulumiType, name, resourceInputs, opts);
@@ -159,6 +165,10 @@ export interface ApiDeploymentState {
      * The revision of the API proxy to be deployed.
      */
     revision?: pulumi.Input<string | undefined>;
+    /**
+     * The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+     */
+    serviceAccount?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,4 +200,8 @@ export interface ApiDeploymentArgs {
      * The revision of the API proxy to be deployed.
      */
     revision: pulumi.Input<string>;
+    /**
+     * The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+     */
+    serviceAccount?: pulumi.Input<string | undefined>;
 }

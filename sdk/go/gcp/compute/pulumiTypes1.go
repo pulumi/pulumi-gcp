@@ -7508,6 +7508,626 @@ func (o RegionNetworkPolicyAssociationArrayOutput) Index(i pulumi.IntInput) Regi
 	}).(RegionNetworkPolicyAssociationOutput)
 }
 
+type RegionNetworkPolicyTrafficClassificationRuleAction struct {
+	// DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+	// Possible values are: `AUTO`, `CUSTOM`.
+	DscpMode *string `pulumi:"dscpMode"`
+	// Custom DSCP value from 0-63 range.
+	DscpValue *int `pulumi:"dscpValue"`
+	// The traffic class that should be applied to the matching packet.
+	// Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+	TrafficClass *string `pulumi:"trafficClass"`
+	// Always applyTrafficClassification for Traffic Classification Rules.
+	// Default value is `applyTrafficClassification`.
+	// Possible values are: `applyTrafficClassification`.
+	Type *string `pulumi:"type"`
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleActionInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleActionArgs and RegionNetworkPolicyTrafficClassificationRuleActionOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleActionInput` via:
+//
+//	RegionNetworkPolicyTrafficClassificationRuleActionArgs{...}
+type RegionNetworkPolicyTrafficClassificationRuleActionInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleActionOutput() RegionNetworkPolicyTrafficClassificationRuleActionOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleActionOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleActionOutput
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleActionArgs struct {
+	// DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+	// Possible values are: `AUTO`, `CUSTOM`.
+	DscpMode pulumi.StringPtrInput `pulumi:"dscpMode"`
+	// Custom DSCP value from 0-63 range.
+	DscpValue pulumi.IntPtrInput `pulumi:"dscpValue"`
+	// The traffic class that should be applied to the matching packet.
+	// Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+	TrafficClass pulumi.StringPtrInput `pulumi:"trafficClass"`
+	// Always applyTrafficClassification for Traffic Classification Rules.
+	// Default value is `applyTrafficClassification`.
+	// Possible values are: `applyTrafficClassification`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (RegionNetworkPolicyTrafficClassificationRuleActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleAction)(nil)).Elem()
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleActionArgs) ToRegionNetworkPolicyTrafficClassificationRuleActionOutput() RegionNetworkPolicyTrafficClassificationRuleActionOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleActionOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleActionArgs) ToRegionNetworkPolicyTrafficClassificationRuleActionOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleActionOutput)
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleActionArgs) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutput() RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleActionArgs) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleActionOutput).ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(ctx)
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleActionPtrInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleActionArgs, RegionNetworkPolicyTrafficClassificationRuleActionPtr and RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleActionPtrInput` via:
+//
+//	        RegionNetworkPolicyTrafficClassificationRuleActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionNetworkPolicyTrafficClassificationRuleActionPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutput() RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput
+}
+
+type regionNetworkPolicyTrafficClassificationRuleActionPtrType RegionNetworkPolicyTrafficClassificationRuleActionArgs
+
+func RegionNetworkPolicyTrafficClassificationRuleActionPtr(v *RegionNetworkPolicyTrafficClassificationRuleActionArgs) RegionNetworkPolicyTrafficClassificationRuleActionPtrInput {
+	return (*regionNetworkPolicyTrafficClassificationRuleActionPtrType)(v)
+}
+
+func (*regionNetworkPolicyTrafficClassificationRuleActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkPolicyTrafficClassificationRuleAction)(nil)).Elem()
+}
+
+func (i *regionNetworkPolicyTrafficClassificationRuleActionPtrType) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutput() RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkPolicyTrafficClassificationRuleActionPtrType) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleActionOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleAction)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) ToRegionNetworkPolicyTrafficClassificationRuleActionOutput() RegionNetworkPolicyTrafficClassificationRuleActionOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) ToRegionNetworkPolicyTrafficClassificationRuleActionOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleActionOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutput() RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return o.ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkPolicyTrafficClassificationRuleAction) *RegionNetworkPolicyTrafficClassificationRuleAction {
+		return &v
+	}).(RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput)
+}
+
+// DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+// Possible values are: `AUTO`, `CUSTOM`.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) DscpMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleAction) *string { return v.DscpMode }).(pulumi.StringPtrOutput)
+}
+
+// Custom DSCP value from 0-63 range.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) DscpValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleAction) *int { return v.DscpValue }).(pulumi.IntPtrOutput)
+}
+
+// The traffic class that should be applied to the matching packet.
+// Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) TrafficClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleAction) *string { return v.TrafficClass }).(pulumi.StringPtrOutput)
+}
+
+// Always applyTrafficClassification for Traffic Classification Rules.
+// Default value is `applyTrafficClassification`.
+// Possible values are: `applyTrafficClassification`.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleAction) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkPolicyTrafficClassificationRuleAction)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutput() RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) ToRegionNetworkPolicyTrafficClassificationRuleActionPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) Elem() RegionNetworkPolicyTrafficClassificationRuleActionOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleAction) RegionNetworkPolicyTrafficClassificationRuleAction {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkPolicyTrafficClassificationRuleAction
+		return ret
+	}).(RegionNetworkPolicyTrafficClassificationRuleActionOutput)
+}
+
+// DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+// Possible values are: `AUTO`, `CUSTOM`.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) DscpMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DscpMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom DSCP value from 0-63 range.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) DscpValue() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DscpValue
+	}).(pulumi.IntPtrOutput)
+}
+
+// The traffic class that should be applied to the matching packet.
+// Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) TrafficClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrafficClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// Always applyTrafficClassification for Traffic Classification Rules.
+// Default value is `applyTrafficClassification`.
+// Possible values are: `applyTrafficClassification`.
+func (o RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatch struct {
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match.
+	// Structure is documented below.
+	//
+	// <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+	Layer4Configs []RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+	SrcIpRanges []string `pulumi:"srcIpRanges"`
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleMatchInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleMatchArgs and RegionNetworkPolicyTrafficClassificationRuleMatchOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleMatchInput` via:
+//
+//	RegionNetworkPolicyTrafficClassificationRuleMatchArgs{...}
+type RegionNetworkPolicyTrafficClassificationRuleMatchInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchOutput() RegionNetworkPolicyTrafficClassificationRuleMatchOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchOutput
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchArgs struct {
+	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Pairs of IP protocols and ports that the rule should match.
+	// Structure is documented below.
+	//
+	// <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+	Layer4Configs RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayInput `pulumi:"layer4Configs"`
+	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+}
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatch)(nil)).Elem()
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchArgs) ToRegionNetworkPolicyTrafficClassificationRuleMatchOutput() RegionNetworkPolicyTrafficClassificationRuleMatchOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleMatchOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchArgs) ToRegionNetworkPolicyTrafficClassificationRuleMatchOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleMatchOutput)
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchArgs) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput() RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchArgs) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleMatchOutput).ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(ctx)
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleMatchPtrInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleMatchArgs, RegionNetworkPolicyTrafficClassificationRuleMatchPtr and RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleMatchPtrInput` via:
+//
+//	        RegionNetworkPolicyTrafficClassificationRuleMatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionNetworkPolicyTrafficClassificationRuleMatchPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput() RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput
+}
+
+type regionNetworkPolicyTrafficClassificationRuleMatchPtrType RegionNetworkPolicyTrafficClassificationRuleMatchArgs
+
+func RegionNetworkPolicyTrafficClassificationRuleMatchPtr(v *RegionNetworkPolicyTrafficClassificationRuleMatchArgs) RegionNetworkPolicyTrafficClassificationRuleMatchPtrInput {
+	return (*regionNetworkPolicyTrafficClassificationRuleMatchPtrType)(v)
+}
+
+func (*regionNetworkPolicyTrafficClassificationRuleMatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkPolicyTrafficClassificationRuleMatch)(nil)).Elem()
+}
+
+func (i *regionNetworkPolicyTrafficClassificationRuleMatchPtrType) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput() RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkPolicyTrafficClassificationRuleMatchPtrType) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatch)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchOutput() RegionNetworkPolicyTrafficClassificationRuleMatchOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput() RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return o.ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkPolicyTrafficClassificationRuleMatch) *RegionNetworkPolicyTrafficClassificationRuleMatch {
+		return &v
+	}).(RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput)
+}
+
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleMatch) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match.
+// Structure is documented below.
+//
+// <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) Layer4Configs() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleMatch) []RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config {
+		return v.Layer4Configs
+	}).(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleMatch) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkPolicyTrafficClassificationRuleMatch)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput() RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchPtrOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) Elem() RegionNetworkPolicyTrafficClassificationRuleMatchOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleMatch) RegionNetworkPolicyTrafficClassificationRuleMatch {
+		if v != nil {
+			return *v
+		}
+		var ret RegionNetworkPolicyTrafficClassificationRuleMatch
+		return ret
+	}).(RegionNetworkPolicyTrafficClassificationRuleMatchOutput)
+}
+
+// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) DestIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Pairs of IP protocols and ports that the rule should match.
+// Structure is documented below.
+//
+// <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) Layer4Configs() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleMatch) []RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config {
+		if v == nil {
+			return nil
+		}
+		return v.Layer4Configs
+	}).(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput)
+}
+
+// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput) SrcIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionNetworkPolicyTrafficClassificationRuleMatch) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+	// This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol string `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports []string `pulumi:"ports"`
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs and RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigInput` via:
+//
+//	RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs{...}
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs struct {
+	// The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+	// This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+	IpProtocol pulumi.StringInput `pulumi:"ipProtocol"`
+	// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+	// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config)(nil)).Elem()
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput)
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray and RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayInput` via:
+//
+//	RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray{ RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs{...} }
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray []RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigInput
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config)(nil)).Elem()
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput {
+	return o
+}
+
+// The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+// This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+// An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput() RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput) ToRegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput) Index(i pulumi.IntInput) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config {
+		return vs[0].([]RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config)[vs[1].(int)]
+	}).(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag struct {
+	// Name of the secure tag, created with TagManager's TagValue API.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+	State *string `pulumi:"state"`
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs and RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagInput` via:
+//
+//	RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs{...}
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput() RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs struct {
+	// Name of the secure tag, created with TagManager's TagValue API.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag)(nil)).Elem()
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput() RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput)
+}
+
+// RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayInput is an input type that accepts RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray and RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput values.
+// You can construct a concrete instance of `RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayInput` via:
+//
+//	RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray{ RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs{...} }
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayInput interface {
+	pulumi.Input
+
+	ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput() RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput
+	ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutputWithContext(context.Context) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray []RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagInput
+
+func (RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag)(nil)).Elem()
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput() RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput {
+	return i.ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput() RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput {
+	return o
+}
+
+// Name of the secure tag, created with TagManager's TagValue API.
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag)(nil)).Elem()
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput() RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput) ToRegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutputWithContext(ctx context.Context) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput {
+	return o
+}
+
+func (o RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput) Index(i pulumi.IntInput) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag {
+		return vs[0].([]RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag)[vs[1].(int)]
+	}).(RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput)
+}
+
 type RegionPerInstanceConfigPreservedState struct {
 	// Stateful disks for the instance.
 	// Structure is documented below.
@@ -86677,471 +87297,6 @@ func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) Index(i pulumi.I
 	}).(GetBackendServiceStrongSessionAffinityCookyOutput)
 }
 
-type GetBackendServiceStrongSessionAffinityCookyTtl struct {
-	// Span of time that's a fraction of a second at nanosecond
-	// resolution. Durations less than one second are represented
-	// with a 0 seconds field and a positive nanos field. Must
-	// be from 0 to 999,999,999 inclusive.
-	Nanos int `pulumi:"nanos"`
-	// Span of time at a resolution of a second.
-	// Must be from 0 to 315,576,000,000 inclusive.
-	Seconds int `pulumi:"seconds"`
-}
-
-// GetBackendServiceStrongSessionAffinityCookyTtlInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyTtlArgs and GetBackendServiceStrongSessionAffinityCookyTtlOutput values.
-// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyTtlInput` via:
-//
-//	GetBackendServiceStrongSessionAffinityCookyTtlArgs{...}
-type GetBackendServiceStrongSessionAffinityCookyTtlInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput
-	ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput
-}
-
-type GetBackendServiceStrongSessionAffinityCookyTtlArgs struct {
-	// Span of time that's a fraction of a second at nanosecond
-	// resolution. Durations less than one second are represented
-	// with a 0 seconds field and a positive nanos field. Must
-	// be from 0 to 999,999,999 inclusive.
-	Nanos pulumi.IntInput `pulumi:"nanos"`
-	// Span of time at a resolution of a second.
-	// Must be from 0 to 315,576,000,000 inclusive.
-	Seconds pulumi.IntInput `pulumi:"seconds"`
-}
-
-func (GetBackendServiceStrongSessionAffinityCookyTtlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput {
-	return i.ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyTtlOutput)
-}
-
-// GetBackendServiceStrongSessionAffinityCookyTtlArrayInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyTtlArray and GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyTtlArrayInput` via:
-//
-//	GetBackendServiceStrongSessionAffinityCookyTtlArray{ GetBackendServiceStrongSessionAffinityCookyTtlArgs{...} }
-type GetBackendServiceStrongSessionAffinityCookyTtlArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput
-	ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput
-}
-
-type GetBackendServiceStrongSessionAffinityCookyTtlArray []GetBackendServiceStrongSessionAffinityCookyTtlInput
-
-func (GetBackendServiceStrongSessionAffinityCookyTtlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyTtlArray) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
-	return i.ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceStrongSessionAffinityCookyTtlArray) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
-}
-
-type GetBackendServiceStrongSessionAffinityCookyTtlOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceStrongSessionAffinityCookyTtlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput {
-	return o
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
-	return o
-}
-
-// Span of time that's a fraction of a second at nanosecond
-// resolution. Durations less than one second are represented
-// with a 0 seconds field and a positive nanos field. Must
-// be from 0 to 999,999,999 inclusive.
-func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) Nanos() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
-}
-
-// Span of time at a resolution of a second.
-// Must be from 0 to 315,576,000,000 inclusive.
-func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) Seconds() pulumi.IntOutput {
-	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
-}
-
-type GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) Index(i pulumi.IntInput) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceStrongSessionAffinityCookyTtl {
-		return vs[0].([]GetBackendServiceStrongSessionAffinityCookyTtl)[vs[1].(int)]
-	}).(GetBackendServiceStrongSessionAffinityCookyTtlOutput)
-}
-
-type GetBackendServiceTlsSetting struct {
-	// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
-	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
-	// Can only be specified if authenticationMode is not NONE.
-	AuthenticationConfig string `pulumi:"authenticationConfig"`
-	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
-	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
-	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
-	// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
-	Sni string `pulumi:"sni"`
-	// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
-	// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
-	// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
-	// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
-	// subjectAltNames.
-	SubjectAltNames []GetBackendServiceTlsSettingSubjectAltName `pulumi:"subjectAltNames"`
-}
-
-// GetBackendServiceTlsSettingInput is an input type that accepts GetBackendServiceTlsSettingArgs and GetBackendServiceTlsSettingOutput values.
-// You can construct a concrete instance of `GetBackendServiceTlsSettingInput` via:
-//
-//	GetBackendServiceTlsSettingArgs{...}
-type GetBackendServiceTlsSettingInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceTlsSettingOutput() GetBackendServiceTlsSettingOutput
-	ToGetBackendServiceTlsSettingOutputWithContext(context.Context) GetBackendServiceTlsSettingOutput
-}
-
-type GetBackendServiceTlsSettingArgs struct {
-	// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
-	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
-	// Can only be specified if authenticationMode is not NONE.
-	AuthenticationConfig pulumi.StringInput `pulumi:"authenticationConfig"`
-	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
-	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
-	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
-	// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
-	Sni pulumi.StringInput `pulumi:"sni"`
-	// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
-	// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
-	// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
-	// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
-	// subjectAltNames.
-	SubjectAltNames GetBackendServiceTlsSettingSubjectAltNameArrayInput `pulumi:"subjectAltNames"`
-}
-
-func (GetBackendServiceTlsSettingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceTlsSetting)(nil)).Elem()
-}
-
-func (i GetBackendServiceTlsSettingArgs) ToGetBackendServiceTlsSettingOutput() GetBackendServiceTlsSettingOutput {
-	return i.ToGetBackendServiceTlsSettingOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceTlsSettingArgs) ToGetBackendServiceTlsSettingOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingOutput)
-}
-
-// GetBackendServiceTlsSettingArrayInput is an input type that accepts GetBackendServiceTlsSettingArray and GetBackendServiceTlsSettingArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceTlsSettingArrayInput` via:
-//
-//	GetBackendServiceTlsSettingArray{ GetBackendServiceTlsSettingArgs{...} }
-type GetBackendServiceTlsSettingArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceTlsSettingArrayOutput() GetBackendServiceTlsSettingArrayOutput
-	ToGetBackendServiceTlsSettingArrayOutputWithContext(context.Context) GetBackendServiceTlsSettingArrayOutput
-}
-
-type GetBackendServiceTlsSettingArray []GetBackendServiceTlsSettingInput
-
-func (GetBackendServiceTlsSettingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceTlsSetting)(nil)).Elem()
-}
-
-func (i GetBackendServiceTlsSettingArray) ToGetBackendServiceTlsSettingArrayOutput() GetBackendServiceTlsSettingArrayOutput {
-	return i.ToGetBackendServiceTlsSettingArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceTlsSettingArray) ToGetBackendServiceTlsSettingArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingArrayOutput)
-}
-
-type GetBackendServiceTlsSettingOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceTlsSettingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceTlsSetting)(nil)).Elem()
-}
-
-func (o GetBackendServiceTlsSettingOutput) ToGetBackendServiceTlsSettingOutput() GetBackendServiceTlsSettingOutput {
-	return o
-}
-
-func (o GetBackendServiceTlsSettingOutput) ToGetBackendServiceTlsSettingOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingOutput {
-	return o
-}
-
-// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
-// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
-// Can only be specified if authenticationMode is not NONE.
-func (o GetBackendServiceTlsSettingOutput) AuthenticationConfig() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceTlsSetting) string { return v.AuthenticationConfig }).(pulumi.StringOutput)
-}
-
-// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
-// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
-// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
-// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
-func (o GetBackendServiceTlsSettingOutput) Sni() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceTlsSetting) string { return v.Sni }).(pulumi.StringOutput)
-}
-
-// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
-// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
-// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
-// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
-// subjectAltNames.
-func (o GetBackendServiceTlsSettingOutput) SubjectAltNames() GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
-	return o.ApplyT(func(v GetBackendServiceTlsSetting) []GetBackendServiceTlsSettingSubjectAltName {
-		return v.SubjectAltNames
-	}).(GetBackendServiceTlsSettingSubjectAltNameArrayOutput)
-}
-
-type GetBackendServiceTlsSettingArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceTlsSettingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceTlsSetting)(nil)).Elem()
-}
-
-func (o GetBackendServiceTlsSettingArrayOutput) ToGetBackendServiceTlsSettingArrayOutput() GetBackendServiceTlsSettingArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceTlsSettingArrayOutput) ToGetBackendServiceTlsSettingArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceTlsSettingArrayOutput) Index(i pulumi.IntInput) GetBackendServiceTlsSettingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceTlsSetting {
-		return vs[0].([]GetBackendServiceTlsSetting)[vs[1].(int)]
-	}).(GetBackendServiceTlsSettingOutput)
-}
-
-type GetBackendServiceTlsSettingSubjectAltName struct {
-	// The SAN specified as a DNS Name.
-	DnsName string `pulumi:"dnsName"`
-	// The SAN specified as a URI.
-	UniformResourceIdentifier string `pulumi:"uniformResourceIdentifier"`
-}
-
-// GetBackendServiceTlsSettingSubjectAltNameInput is an input type that accepts GetBackendServiceTlsSettingSubjectAltNameArgs and GetBackendServiceTlsSettingSubjectAltNameOutput values.
-// You can construct a concrete instance of `GetBackendServiceTlsSettingSubjectAltNameInput` via:
-//
-//	GetBackendServiceTlsSettingSubjectAltNameArgs{...}
-type GetBackendServiceTlsSettingSubjectAltNameInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceTlsSettingSubjectAltNameOutput() GetBackendServiceTlsSettingSubjectAltNameOutput
-	ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(context.Context) GetBackendServiceTlsSettingSubjectAltNameOutput
-}
-
-type GetBackendServiceTlsSettingSubjectAltNameArgs struct {
-	// The SAN specified as a DNS Name.
-	DnsName pulumi.StringInput `pulumi:"dnsName"`
-	// The SAN specified as a URI.
-	UniformResourceIdentifier pulumi.StringInput `pulumi:"uniformResourceIdentifier"`
-}
-
-func (GetBackendServiceTlsSettingSubjectAltNameArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
-}
-
-func (i GetBackendServiceTlsSettingSubjectAltNameArgs) ToGetBackendServiceTlsSettingSubjectAltNameOutput() GetBackendServiceTlsSettingSubjectAltNameOutput {
-	return i.ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceTlsSettingSubjectAltNameArgs) ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingSubjectAltNameOutput)
-}
-
-// GetBackendServiceTlsSettingSubjectAltNameArrayInput is an input type that accepts GetBackendServiceTlsSettingSubjectAltNameArray and GetBackendServiceTlsSettingSubjectAltNameArrayOutput values.
-// You can construct a concrete instance of `GetBackendServiceTlsSettingSubjectAltNameArrayInput` via:
-//
-//	GetBackendServiceTlsSettingSubjectAltNameArray{ GetBackendServiceTlsSettingSubjectAltNameArgs{...} }
-type GetBackendServiceTlsSettingSubjectAltNameArrayInput interface {
-	pulumi.Input
-
-	ToGetBackendServiceTlsSettingSubjectAltNameArrayOutput() GetBackendServiceTlsSettingSubjectAltNameArrayOutput
-	ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(context.Context) GetBackendServiceTlsSettingSubjectAltNameArrayOutput
-}
-
-type GetBackendServiceTlsSettingSubjectAltNameArray []GetBackendServiceTlsSettingSubjectAltNameInput
-
-func (GetBackendServiceTlsSettingSubjectAltNameArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
-}
-
-func (i GetBackendServiceTlsSettingSubjectAltNameArray) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutput() GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
-	return i.ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(context.Background())
-}
-
-func (i GetBackendServiceTlsSettingSubjectAltNameArray) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingSubjectAltNameArrayOutput)
-}
-
-type GetBackendServiceTlsSettingSubjectAltNameOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceTlsSettingSubjectAltNameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
-}
-
-func (o GetBackendServiceTlsSettingSubjectAltNameOutput) ToGetBackendServiceTlsSettingSubjectAltNameOutput() GetBackendServiceTlsSettingSubjectAltNameOutput {
-	return o
-}
-
-func (o GetBackendServiceTlsSettingSubjectAltNameOutput) ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameOutput {
-	return o
-}
-
-// The SAN specified as a DNS Name.
-func (o GetBackendServiceTlsSettingSubjectAltNameOutput) DnsName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceTlsSettingSubjectAltName) string { return v.DnsName }).(pulumi.StringOutput)
-}
-
-// The SAN specified as a URI.
-func (o GetBackendServiceTlsSettingSubjectAltNameOutput) UniformResourceIdentifier() pulumi.StringOutput {
-	return o.ApplyT(func(v GetBackendServiceTlsSettingSubjectAltName) string { return v.UniformResourceIdentifier }).(pulumi.StringOutput)
-}
-
-type GetBackendServiceTlsSettingSubjectAltNameArrayOutput struct{ *pulumi.OutputState }
-
-func (GetBackendServiceTlsSettingSubjectAltNameArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
-}
-
-func (o GetBackendServiceTlsSettingSubjectAltNameArrayOutput) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutput() GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceTlsSettingSubjectAltNameArrayOutput) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
-	return o
-}
-
-func (o GetBackendServiceTlsSettingSubjectAltNameArrayOutput) Index(i pulumi.IntInput) GetBackendServiceTlsSettingSubjectAltNameOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceTlsSettingSubjectAltName {
-		return vs[0].([]GetBackendServiceTlsSettingSubjectAltName)[vs[1].(int)]
-	}).(GetBackendServiceTlsSettingSubjectAltNameOutput)
-}
-
-type GetDiskAsyncPrimaryDisk struct {
-	// Primary disk for asynchronous disk replication.
-	Disk string `pulumi:"disk"`
-}
-
-// GetDiskAsyncPrimaryDiskInput is an input type that accepts GetDiskAsyncPrimaryDiskArgs and GetDiskAsyncPrimaryDiskOutput values.
-// You can construct a concrete instance of `GetDiskAsyncPrimaryDiskInput` via:
-//
-//	GetDiskAsyncPrimaryDiskArgs{...}
-type GetDiskAsyncPrimaryDiskInput interface {
-	pulumi.Input
-
-	ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput
-	ToGetDiskAsyncPrimaryDiskOutputWithContext(context.Context) GetDiskAsyncPrimaryDiskOutput
-}
-
-type GetDiskAsyncPrimaryDiskArgs struct {
-	// Primary disk for asynchronous disk replication.
-	Disk pulumi.StringInput `pulumi:"disk"`
-}
-
-func (GetDiskAsyncPrimaryDiskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskAsyncPrimaryDisk)(nil)).Elem()
-}
-
-func (i GetDiskAsyncPrimaryDiskArgs) ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput {
-	return i.ToGetDiskAsyncPrimaryDiskOutputWithContext(context.Background())
-}
-
-func (i GetDiskAsyncPrimaryDiskArgs) ToGetDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskAsyncPrimaryDiskOutput)
-}
-
-// GetDiskAsyncPrimaryDiskArrayInput is an input type that accepts GetDiskAsyncPrimaryDiskArray and GetDiskAsyncPrimaryDiskArrayOutput values.
-// You can construct a concrete instance of `GetDiskAsyncPrimaryDiskArrayInput` via:
-//
-//	GetDiskAsyncPrimaryDiskArray{ GetDiskAsyncPrimaryDiskArgs{...} }
-type GetDiskAsyncPrimaryDiskArrayInput interface {
-	pulumi.Input
-
-	ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput
-	ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(context.Context) GetDiskAsyncPrimaryDiskArrayOutput
-}
-
-type GetDiskAsyncPrimaryDiskArray []GetDiskAsyncPrimaryDiskInput
-
-func (GetDiskAsyncPrimaryDiskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskAsyncPrimaryDisk)(nil)).Elem()
-}
-
-func (i GetDiskAsyncPrimaryDiskArray) ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput {
-	return i.ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(context.Background())
-}
-
-func (i GetDiskAsyncPrimaryDiskArray) ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDiskAsyncPrimaryDiskArrayOutput)
-}
-
-type GetDiskAsyncPrimaryDiskOutput struct{ *pulumi.OutputState }
-
-func (GetDiskAsyncPrimaryDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDiskAsyncPrimaryDisk)(nil)).Elem()
-}
-
-func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput {
-	return o
-}
-
-func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskOutput {
-	return o
-}
-
-// Primary disk for asynchronous disk replication.
-func (o GetDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
-}
-
-type GetDiskAsyncPrimaryDiskArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDiskAsyncPrimaryDiskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDiskAsyncPrimaryDisk)(nil)).Elem()
-}
-
-func (o GetDiskAsyncPrimaryDiskArrayOutput) ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput {
-	return o
-}
-
-func (o GetDiskAsyncPrimaryDiskArrayOutput) ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskArrayOutput {
-	return o
-}
-
-func (o GetDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetDiskAsyncPrimaryDiskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskAsyncPrimaryDisk {
-		return vs[0].([]GetDiskAsyncPrimaryDisk)[vs[1].(int)]
-	}).(GetDiskAsyncPrimaryDiskOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArray{})
@@ -87224,6 +87379,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArrayInput)(nil)).Elem(), RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyAssociationInput)(nil)).Elem(), RegionNetworkPolicyAssociationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyAssociationArrayInput)(nil)).Elem(), RegionNetworkPolicyAssociationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleActionInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleActionPtrInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatchInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatchPtrInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayInput)(nil)).Elem(), RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigPreservedStateInput)(nil)).Elem(), RegionPerInstanceConfigPreservedStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigPreservedStatePtrInput)(nil)).Elem(), RegionPerInstanceConfigPreservedStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionPerInstanceConfigPreservedStateDiskInput)(nil)).Elem(), RegionPerInstanceConfigPreservedStateDiskArgs{})
@@ -88132,14 +88295,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingInput)(nil)).Elem(), GetBackendServiceTlsSettingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingArrayInput)(nil)).Elem(), GetBackendServiceTlsSettingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltNameInput)(nil)).Elem(), GetBackendServiceTlsSettingSubjectAltNameArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltNameArrayInput)(nil)).Elem(), GetBackendServiceTlsSettingSubjectAltNameArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArray{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(RegionInstanceTemplateNetworkPerformanceConfigOutput{})
@@ -88221,6 +88376,14 @@ func init() {
 	pulumi.RegisterOutputType(RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArrayOutput{})
 	pulumi.RegisterOutputType(RegionNetworkPolicyAssociationOutput{})
 	pulumi.RegisterOutputType(RegionNetworkPolicyAssociationArrayOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleActionOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleActionPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleMatchOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleMatchPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArrayOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagOutput{})
+	pulumi.RegisterOutputType(RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArrayOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStatePtrOutput{})
 	pulumi.RegisterOutputType(RegionPerInstanceConfigPreservedStateDiskOutput{})
@@ -89129,12 +89292,4 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceTlsSettingOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceTlsSettingArrayOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceTlsSettingSubjectAltNameOutput{})
-	pulumi.RegisterOutputType(GetBackendServiceTlsSettingSubjectAltNameArrayOutput{})
-	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskOutput{})
-	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskArrayOutput{})
 }

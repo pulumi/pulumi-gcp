@@ -17,7 +17,7 @@ public final class AiReasoningEngineTrafficConfigTrafficSplitManualTarget {
      */
     private Integer percent;
     /**
-     * @return Required. The Runtime Revision name to which to send this portion of traffic.
+     * @return Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
      * 
      */
     private String runtimeRevisionName;
@@ -31,7 +31,7 @@ public final class AiReasoningEngineTrafficConfigTrafficSplitManualTarget {
         return this.percent;
     }
     /**
-     * @return Required. The Runtime Revision name to which to send this portion of traffic.
+     * @return Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
      * 
      */
     public String runtimeRevisionName() {

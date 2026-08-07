@@ -190,7 +190,7 @@ import * as utilities from "../utilities";
  *         channel: "REGULAR",
  *     },
  *     resourceLabels: {
- *         rs_test_cluster: "tf-test-_25601",
+ *         rs_test_cluster: "tf-test-_89239",
  *     },
  *     fleet: {
  *         project: project.number,
@@ -204,7 +204,7 @@ import * as utilities from "../utilities";
  *     displayName: "User Triggered Rollout Sequence",
  *     minControlPlaneVersion: versions.apply(versions => versions.releaseChannelLatestVersion?.REGULAR),
  *     ignoredClustersSelector: {
- *         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_17228')",
+ *         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
  *     },
  *     stages: [{
  *         fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],

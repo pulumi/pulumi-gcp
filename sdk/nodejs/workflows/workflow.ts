@@ -252,6 +252,7 @@ export class Workflow extends pulumi.CustomResource {
     declare public readonly serviceAccount: pulumi.Output<string>;
     /**
      * Workflow code to be executed. The size limit is 128KB.
+     * > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      */
     declare public readonly sourceContents: pulumi.Output<string | undefined>;
     /**
@@ -437,6 +438,7 @@ export interface WorkflowState {
     serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Workflow code to be executed. The size limit is 128KB.
+     * > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      */
     sourceContents?: pulumi.Input<string | undefined>;
     /**
@@ -541,6 +543,7 @@ export interface WorkflowArgs {
     serviceAccount?: pulumi.Input<string | undefined>;
     /**
      * Workflow code to be executed. The size limit is 128KB.
+     * > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      */
     sourceContents?: pulumi.Input<string | undefined>;
     /**

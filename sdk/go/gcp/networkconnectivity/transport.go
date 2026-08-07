@@ -43,14 +43,14 @@ import (
 //				return err
 //			}
 //			primary_network, err := compute.NewNetwork(ctx, "primary-network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-my-vpc-network_62744"),
+//				Name:                  pulumi.String("tf-test-my-vpc-network_14939"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewTransport(ctx, "primary", &networkconnectivity.TransportArgs{
-//				Name:            pulumi.String("tf-test-basic-transport_91207"),
+//				Name:            pulumi.String("tf-test-basic-transport_59865"),
 //				Region:          pulumi.String("us-east4"),
 //				Description:     pulumi.String("A sample transport"),
 //				RemoteProfile:   pulumi.Sprintf("https://networkconnectivity.googleapis.com/v1/%v/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.Id),

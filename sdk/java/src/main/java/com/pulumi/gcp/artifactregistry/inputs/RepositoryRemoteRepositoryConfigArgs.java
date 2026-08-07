@@ -9,6 +9,7 @@ import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAp
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigMavenRepositoryArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNoCacheArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNpmRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
@@ -125,6 +126,21 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * The repository will act as a non-caching proxy (connector mode).
+     * 
+     */
+    @Import(name="noCache")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigNoCacheArgs> noCache;
+
+    /**
+     * @return The repository will act as a non-caching proxy (connector mode).
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigNoCacheArgs>> noCache() {
+        return Optional.ofNullable(this.noCache);
+    }
+
+    /**
      * Specific settings for an Npm remote repository.
      * Structure is documented below.
      * 
@@ -201,6 +217,7 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
         this.disableUpstreamValidation = $.disableUpstreamValidation;
         this.dockerRepository = $.dockerRepository;
         this.mavenRepository = $.mavenRepository;
+        this.noCache = $.noCache;
         this.npmRepository = $.npmRepository;
         this.pythonRepository = $.pythonRepository;
         this.upstreamCredentials = $.upstreamCredentials;
@@ -359,6 +376,27 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
          */
         public Builder mavenRepository(RepositoryRemoteRepositoryConfigMavenRepositoryArgs mavenRepository) {
             return mavenRepository(Output.of(mavenRepository));
+        }
+
+        /**
+         * @param noCache The repository will act as a non-caching proxy (connector mode).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noCache(@Nullable Output<RepositoryRemoteRepositoryConfigNoCacheArgs> noCache) {
+            $.noCache = noCache;
+            return this;
+        }
+
+        /**
+         * @param noCache The repository will act as a non-caching proxy (connector mode).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noCache(RepositoryRemoteRepositoryConfigNoCacheArgs noCache) {
+            return noCache(Output.of(noCache));
         }
 
         /**

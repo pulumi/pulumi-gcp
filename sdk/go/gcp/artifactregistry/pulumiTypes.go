@@ -1364,6 +1364,8 @@ type RepositoryRemoteRepositoryConfig struct {
 	// Specific settings for a Maven remote repository.
 	// Structure is documented below.
 	MavenRepository *RepositoryRemoteRepositoryConfigMavenRepository `pulumi:"mavenRepository"`
+	// The repository will act as a non-caching proxy (connector mode).
+	NoCache *RepositoryRemoteRepositoryConfigNoCache `pulumi:"noCache"`
 	// Specific settings for an Npm remote repository.
 	// Structure is documented below.
 	NpmRepository *RepositoryRemoteRepositoryConfigNpmRepository `pulumi:"npmRepository"`
@@ -1407,6 +1409,8 @@ type RepositoryRemoteRepositoryConfigArgs struct {
 	// Specific settings for a Maven remote repository.
 	// Structure is documented below.
 	MavenRepository RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput `pulumi:"mavenRepository"`
+	// The repository will act as a non-caching proxy (connector mode).
+	NoCache RepositoryRemoteRepositoryConfigNoCachePtrInput `pulumi:"noCache"`
 	// Specific settings for an Npm remote repository.
 	// Structure is documented below.
 	NpmRepository RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput `pulumi:"npmRepository"`
@@ -1541,6 +1545,11 @@ func (o RepositoryRemoteRepositoryConfigOutput) MavenRepository() RepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
 }
 
+// The repository will act as a non-caching proxy (connector mode).
+func (o RepositoryRemoteRepositoryConfigOutput) NoCache() RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigNoCache { return v.NoCache }).(RepositoryRemoteRepositoryConfigNoCachePtrOutput)
+}
+
 // Specific settings for an Npm remote repository.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigOutput) NpmRepository() RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput {
@@ -1660,6 +1669,16 @@ func (o RepositoryRemoteRepositoryConfigPtrOutput) MavenRepository() RepositoryR
 		}
 		return v.MavenRepository
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
+}
+
+// The repository will act as a non-caching proxy (connector mode).
+func (o RepositoryRemoteRepositoryConfigPtrOutput) NoCache() RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigNoCache {
+		if v == nil {
+			return nil
+		}
+		return v.NoCache
+	}).(RepositoryRemoteRepositoryConfigNoCachePtrOutput)
 }
 
 // Specific settings for an Npm remote repository.
@@ -2762,6 +2781,124 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput
 		}
 		return v.Uri
 	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNoCache struct {
+}
+
+// RepositoryRemoteRepositoryConfigNoCacheInput is an input type that accepts RepositoryRemoteRepositoryConfigNoCacheArgs and RepositoryRemoteRepositoryConfigNoCacheOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigNoCacheInput` via:
+//
+//	RepositoryRemoteRepositoryConfigNoCacheArgs{...}
+type RepositoryRemoteRepositoryConfigNoCacheInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigNoCacheOutput() RepositoryRemoteRepositoryConfigNoCacheOutput
+	ToRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigNoCacheOutput
+}
+
+type RepositoryRemoteRepositoryConfigNoCacheArgs struct {
+}
+
+func (RepositoryRemoteRepositoryConfigNoCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigNoCacheArgs) ToRepositoryRemoteRepositoryConfigNoCacheOutput() RepositoryRemoteRepositoryConfigNoCacheOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigNoCacheArgs) ToRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNoCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNoCacheOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigNoCacheArgs) ToRepositoryRemoteRepositoryConfigNoCachePtrOutput() RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigNoCacheArgs) ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNoCacheOutput).ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigNoCachePtrInput is an input type that accepts RepositoryRemoteRepositoryConfigNoCacheArgs, RepositoryRemoteRepositoryConfigNoCachePtr and RepositoryRemoteRepositoryConfigNoCachePtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigNoCachePtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigNoCacheArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigNoCachePtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigNoCachePtrOutput() RepositoryRemoteRepositoryConfigNoCachePtrOutput
+	ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigNoCachePtrOutput
+}
+
+type repositoryRemoteRepositoryConfigNoCachePtrType RepositoryRemoteRepositoryConfigNoCacheArgs
+
+func RepositoryRemoteRepositoryConfigNoCachePtr(v *RepositoryRemoteRepositoryConfigNoCacheArgs) RepositoryRemoteRepositoryConfigNoCachePtrInput {
+	return (*repositoryRemoteRepositoryConfigNoCachePtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigNoCachePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigNoCachePtrType) ToRepositoryRemoteRepositoryConfigNoCachePtrOutput() RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigNoCachePtrType) ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigNoCachePtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNoCacheOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigNoCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCacheOutput) ToRepositoryRemoteRepositoryConfigNoCacheOutput() RepositoryRemoteRepositoryConfigNoCacheOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCacheOutput) ToRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNoCacheOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCacheOutput) ToRepositoryRemoteRepositoryConfigNoCachePtrOutput() RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCacheOutput) ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigNoCache) *RepositoryRemoteRepositoryConfigNoCache {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigNoCachePtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigNoCachePtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigNoCachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCachePtrOutput) ToRepositoryRemoteRepositoryConfigNoCachePtrOutput() RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCachePtrOutput) ToRepositoryRemoteRepositoryConfigNoCachePtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigNoCachePtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigNoCachePtrOutput) Elem() RepositoryRemoteRepositoryConfigNoCacheOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNoCache) RepositoryRemoteRepositoryConfigNoCache {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigNoCache
+		return ret
+	}).(RepositoryRemoteRepositoryConfigNoCacheOutput)
 }
 
 type RepositoryRemoteRepositoryConfigNpmRepository struct {
@@ -6102,6 +6239,8 @@ type GetRepositoryRemoteRepositoryConfig struct {
 	DockerRepositories []GetRepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepositories"`
 	// Specific settings for a Maven remote repository.
 	MavenRepositories []GetRepositoryRemoteRepositoryConfigMavenRepository `pulumi:"mavenRepositories"`
+	// The repository will act as a non-caching proxy (connector mode).
+	NoCaches []GetRepositoryRemoteRepositoryConfigNoCache `pulumi:"noCaches"`
 	// Specific settings for an Npm remote repository.
 	NpmRepositories []GetRepositoryRemoteRepositoryConfigNpmRepository `pulumi:"npmRepositories"`
 	// Specific settings for a Python remote repository.
@@ -6137,6 +6276,8 @@ type GetRepositoryRemoteRepositoryConfigArgs struct {
 	DockerRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput `pulumi:"dockerRepositories"`
 	// Specific settings for a Maven remote repository.
 	MavenRepositories GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput `pulumi:"mavenRepositories"`
+	// The repository will act as a non-caching proxy (connector mode).
+	NoCaches GetRepositoryRemoteRepositoryConfigNoCacheArrayInput `pulumi:"noCaches"`
 	// Specific settings for an Npm remote repository.
 	NpmRepositories GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput `pulumi:"npmRepositories"`
 	// Specific settings for a Python remote repository.
@@ -6235,6 +6376,13 @@ func (o GetRepositoryRemoteRepositoryConfigOutput) MavenRepositories() GetReposi
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigMavenRepository {
 		return v.MavenRepositories
 	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput)
+}
+
+// The repository will act as a non-caching proxy (connector mode).
+func (o GetRepositoryRemoteRepositoryConfigOutput) NoCaches() GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigNoCache {
+		return v.NoCaches
+	}).(GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput)
 }
 
 // Specific settings for an Npm remote repository.
@@ -7008,6 +7156,94 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayO
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
 		return vs[0].([]GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository)[vs[1].(int)]
 	}).(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNoCache struct {
+}
+
+// GetRepositoryRemoteRepositoryConfigNoCacheInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNoCacheArgs and GetRepositoryRemoteRepositoryConfigNoCacheOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNoCacheInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigNoCacheArgs{...}
+type GetRepositoryRemoteRepositoryConfigNoCacheInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigNoCacheOutput() GetRepositoryRemoteRepositoryConfigNoCacheOutput
+	ToGetRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigNoCacheOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigNoCacheArgs struct {
+}
+
+func (GetRepositoryRemoteRepositoryConfigNoCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNoCacheArgs) ToGetRepositoryRemoteRepositoryConfigNoCacheOutput() GetRepositoryRemoteRepositoryConfigNoCacheOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNoCacheArgs) ToGetRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNoCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNoCacheOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigNoCacheArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigNoCacheArray and GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigNoCacheArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigNoCacheArray{ GetRepositoryRemoteRepositoryConfigNoCacheArgs{...} }
+type GetRepositoryRemoteRepositoryConfigNoCacheArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutput() GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigNoCacheArray []GetRepositoryRemoteRepositoryConfigNoCacheInput
+
+func (GetRepositoryRemoteRepositoryConfigNoCacheArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNoCacheArray) ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutput() GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigNoCacheArray) ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigNoCacheOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigNoCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNoCacheOutput) ToGetRepositoryRemoteRepositoryConfigNoCacheOutput() GetRepositoryRemoteRepositoryConfigNoCacheOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNoCacheOutput) ToGetRepositoryRemoteRepositoryConfigNoCacheOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNoCacheOutput {
+	return o
+}
+
+type GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigNoCache)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput) ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutput() GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput) ToGetRepositoryRemoteRepositoryConfigNoCacheArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigNoCacheOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigNoCache {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigNoCache)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigNoCacheOutput)
 }
 
 type GetRepositoryRemoteRepositoryConfigNpmRepository struct {
@@ -8666,6 +8902,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNoCacheInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNoCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNoCachePtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNoCacheArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
@@ -8728,6 +8966,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNoCacheInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNoCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNoCacheArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNoCacheArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs{})
@@ -8790,6 +9030,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNoCacheOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNoCachePtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput{})
@@ -8852,6 +9094,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNoCacheOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNoCacheArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryOutput{})

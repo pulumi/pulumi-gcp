@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// {
     ///     var targetProject = new Gcp.Organizations.Project("target_project", new()
     ///     {
-    ///         ProjectId = "tf-test_97962",
-    ///         Name = "tf-test_34534",
+    ///         ProjectId = "tf-test_87829",
+    ///         Name = "tf-test_44023",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -75,8 +75,8 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     ///     var zone = new Gcp.Dns.ManagedZone("zone", new()
     ///     {
-    ///         Name = "tf-test-dns_87829",
-    ///         DnsName = "private_44023.example.com.",
+    ///         Name = "tf-test-dns_50206",
+    ///         DnsName = "private_9873.example.com.",
     ///         Visibility = "private",
     ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
     ///         {

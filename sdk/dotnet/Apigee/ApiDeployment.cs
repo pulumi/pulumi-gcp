@@ -76,6 +76,12 @@ namespace Pulumi.Gcp.Apigee
         [Output("revision")]
         public Output<string> Revision { get; private set; } = null!;
 
+        /// <summary>
+        /// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string?> ServiceAccount { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ApiDeployment resource with the given unique name, arguments, and options.
@@ -157,6 +163,12 @@ namespace Pulumi.Gcp.Apigee
         [Input("revision", required: true)]
         public Input<string> Revision { get; set; } = null!;
 
+        /// <summary>
+        /// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
         public ApiDeploymentArgs()
         {
         }
@@ -199,6 +211,12 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("revision")]
         public Input<string>? Revision { get; set; }
+
+        /// <summary>
+        /// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         public ApiDeploymentState()
         {

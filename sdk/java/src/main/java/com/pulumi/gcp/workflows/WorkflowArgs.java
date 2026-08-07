@@ -255,6 +255,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Workflow code to be executed. The size limit is 128KB.
+     * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
     @Import(name="sourceContents")
@@ -262,6 +263,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Workflow code to be executed. The size limit is 128KB.
+     * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
      * 
      */
     public Optional<Output<String>> sourceContents() {
@@ -650,6 +652,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceContents Workflow code to be executed. The size limit is 128KB.
+         * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
          * 
          * @return builder
          * 
@@ -661,6 +664,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceContents Workflow code to be executed. The size limit is 128KB.
+         * &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
          * 
          * @return builder
          * 

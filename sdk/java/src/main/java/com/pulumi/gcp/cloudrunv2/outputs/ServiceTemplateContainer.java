@@ -14,6 +14,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerResources;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerSourceCode;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerVolumeMount;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -90,6 +91,11 @@ public final class ServiceTemplateContainer {
      * 
      */
     private @Nullable ServiceTemplateContainerResources resources;
+    /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    private @Nullable Boolean sandboxLauncher;
     /**
      * @return (Optional, Beta)
      * Location of the source.
@@ -209,6 +215,13 @@ public final class ServiceTemplateContainer {
         return Optional.ofNullable(this.resources);
     }
     /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    public Optional<Boolean> sandboxLauncher() {
+        return Optional.ofNullable(this.sandboxLauncher);
+    }
+    /**
      * @return (Optional, Beta)
      * Location of the source.
      * Structure is documented below.
@@ -262,6 +275,7 @@ public final class ServiceTemplateContainer {
         private @Nullable ServiceTemplateContainerPorts ports;
         private @Nullable ServiceTemplateContainerReadinessProbe readinessProbe;
         private @Nullable ServiceTemplateContainerResources resources;
+        private @Nullable Boolean sandboxLauncher;
         private @Nullable ServiceTemplateContainerSourceCode sourceCode;
         private @Nullable ServiceTemplateContainerStartupProbe startupProbe;
         private @Nullable List<ServiceTemplateContainerVolumeMount> volumeMounts;
@@ -281,6 +295,7 @@ public final class ServiceTemplateContainer {
     	      this.ports = defaults.ports;
     	      this.readinessProbe = defaults.readinessProbe;
     	      this.resources = defaults.resources;
+    	      this.sandboxLauncher = defaults.sandboxLauncher;
     	      this.sourceCode = defaults.sourceCode;
     	      this.startupProbe = defaults.startupProbe;
     	      this.volumeMounts = defaults.volumeMounts;
@@ -377,6 +392,12 @@ public final class ServiceTemplateContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxLauncher(@Nullable Boolean sandboxLauncher) {
+
+            this.sandboxLauncher = sandboxLauncher;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceCode(@Nullable ServiceTemplateContainerSourceCode sourceCode) {
 
             this.sourceCode = sourceCode;
@@ -417,6 +438,7 @@ public final class ServiceTemplateContainer {
             _resultValue.ports = ports;
             _resultValue.readinessProbe = readinessProbe;
             _resultValue.resources = resources;
+            _resultValue.sandboxLauncher = sandboxLauncher;
             _resultValue.sourceCode = sourceCode;
             _resultValue.startupProbe = startupProbe;
             _resultValue.volumeMounts = volumeMounts;

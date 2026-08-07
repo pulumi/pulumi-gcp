@@ -6683,6 +6683,10 @@ export namespace artifactregistry {
          */
         mavenRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepository | undefined>;
         /**
+         * The repository will act as a non-caching proxy (connector mode).
+         */
+        noCache?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigNoCache | undefined>;
+        /**
          * Specific settings for an Npm remote repository.
          * Structure is documented below.
          */
@@ -6772,6 +6776,9 @@ export namespace artifactregistry {
          * Specific uri to the registry, e.g. `"https://pypi.io"`
          */
         uri?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigNoCache {
     }
 
     export interface RepositoryRemoteRepositoryConfigNpmRepository {
@@ -9348,6 +9355,17 @@ export namespace bigquery {
          * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          */
         secretAccessKeyWoVersion?: pulumi.Input<number | undefined>;
+    }
+
+    export interface Datapolicyv2DataPolicyDataGovernanceTag {
+        /**
+         * Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+         */
+        key?: pulumi.Input<string | undefined>;
+        /**
+         * Tag value is expected to be the short name.
+         */
+        value?: pulumi.Input<string | undefined>;
     }
 
     export interface Datapolicyv2DataPolicyDataMaskingPolicy {
@@ -13568,7 +13586,7 @@ export namespace certificateauthority {
         /**
          * The organization of the subject.
          */
-        organization: pulumi.Input<string>;
+        organization?: pulumi.Input<string | undefined>;
         /**
          * The organizational unit of the subject.
          */
@@ -31185,6 +31203,10 @@ export namespace cloudrun {
          */
         resources?: pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerResources | undefined>;
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: pulumi.Input<boolean | undefined>;
+        /**
          * Startup probe of application within the container.
          * All other probes are disabled if a startup probe is provided, until it
          * succeeds. Container will not be added to service endpoints if the probe fails.
@@ -32614,6 +32636,10 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         resources?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerResources | undefined>;
+        /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: pulumi.Input<boolean | undefined>;
         /**
          * (Optional, Beta)
          * Location of the source.
@@ -48480,6 +48506,72 @@ export namespace compute {
          * User-provided name of the Network policy. The name should be unique in the project in which the policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
          */
         name?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleAction {
+        /**
+         * DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+         * Possible values are: `AUTO`, `CUSTOM`.
+         */
+        dscpMode?: pulumi.Input<string | undefined>;
+        /**
+         * Custom DSCP value from 0-63 range.
+         */
+        dscpValue?: pulumi.Input<number | undefined>;
+        /**
+         * The traffic class that should be applied to the matching packet.
+         * Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+         */
+        trafficClass?: pulumi.Input<string | undefined>;
+        /**
+         * Always applyTrafficClassification for Traffic Classification Rules.
+         * Default value is `applyTrafficClassification`.
+         * Possible values are: `applyTrafficClassification`.
+         */
+        type?: pulumi.Input<string | undefined>;
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleMatch {
+        /**
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         *
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+         */
+        layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config>[]>;
+        /**
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+         */
+        state?: pulumi.Input<string | undefined>;
     }
 
     export interface RegionPerInstanceConfigPreservedState {
@@ -91530,7 +91622,7 @@ export namespace gkehub {
         /**
          * Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
          */
-        scopeTenancyPool: pulumi.Input<string>;
+        scopeTenancyPool?: pulumi.Input<string | undefined>;
     }
 
     export interface FeatureState {
@@ -105939,7 +106031,7 @@ export namespace networkconnectivity {
          */
         ipRangeReservations: pulumi.Input<pulumi.Input<inputs.networkconnectivity.SpokeGatewayIpRangeReservation>[]>;
         /**
-         * (Output, Beta)
+         * (Output)
          * Set of Cloud Routers that are attached to this NCC-GW
          */
         routers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -131511,7 +131603,7 @@ export namespace vertex {
          */
         percent: pulumi.Input<number>;
         /**
-         * Required. The Runtime Revision name to which to send this portion of traffic.
+         * Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
          */
         runtimeRevisionName: pulumi.Input<string>;
     }

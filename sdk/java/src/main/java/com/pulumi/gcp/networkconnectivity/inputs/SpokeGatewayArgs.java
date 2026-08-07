@@ -53,7 +53,7 @@ public final class SpokeGatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Output, Beta)
+     * (Output)
      * Set of Cloud Routers that are attached to this NCC-GW
      * 
      */
@@ -61,7 +61,7 @@ public final class SpokeGatewayArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> routers;
 
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * Set of Cloud Routers that are attached to this NCC-GW
      * 
      */
@@ -153,7 +153,7 @@ public final class SpokeGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routers (Output, Beta)
+         * @param routers (Output)
          * Set of Cloud Routers that are attached to this NCC-GW
          * 
          * @return builder
@@ -165,7 +165,7 @@ public final class SpokeGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routers (Output, Beta)
+         * @param routers (Output)
          * Set of Cloud Routers that are attached to this NCC-GW
          * 
          * @return builder
@@ -176,7 +176,7 @@ public final class SpokeGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routers (Output, Beta)
+         * @param routers (Output)
          * Set of Cloud Routers that are attached to this NCC-GW
          * 
          * @return builder

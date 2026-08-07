@@ -32,6 +32,7 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository',
     'RepositoryRemoteRepositoryConfigMavenRepository',
     'RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository',
+    'RepositoryRemoteRepositoryConfigNoCache',
     'RepositoryRemoteRepositoryConfigNpmRepository',
     'RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository',
     'RepositoryRemoteRepositoryConfigPythonRepository',
@@ -63,6 +64,7 @@ __all__ = [
     'GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigMavenRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigNoCacheResult',
     'GetRepositoryRemoteRepositoryConfigNpmRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigPythonRepositoryResult',
@@ -536,6 +538,8 @@ class RepositoryRemoteRepositoryConfig(dict):
             suggest = "docker_repository"
         elif key == "mavenRepository":
             suggest = "maven_repository"
+        elif key == "noCache":
+            suggest = "no_cache"
         elif key == "npmRepository":
             suggest = "npm_repository"
         elif key == "pythonRepository":
@@ -563,6 +567,7 @@ class RepositoryRemoteRepositoryConfig(dict):
                  disable_upstream_validation: Optional[_builtins.bool] = None,
                  docker_repository: Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository'] = None,
                  maven_repository: Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository'] = None,
+                 no_cache: Optional['outputs.RepositoryRemoteRepositoryConfigNoCache'] = None,
                  npm_repository: Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository'] = None,
                  python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None,
                  upstream_credentials: Optional['outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials'] = None,
@@ -579,6 +584,7 @@ class RepositoryRemoteRepositoryConfig(dict):
                Structure is documented below.
         :param 'RepositoryRemoteRepositoryConfigMavenRepositoryArgs' maven_repository: Specific settings for a Maven remote repository.
                Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigNoCacheArgs' no_cache: The repository will act as a non-caching proxy (connector mode).
         :param 'RepositoryRemoteRepositoryConfigNpmRepositoryArgs' npm_repository: Specific settings for an Npm remote repository.
                Structure is documented below.
         :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArgs' python_repository: Specific settings for a Python remote repository.
@@ -600,6 +606,8 @@ class RepositoryRemoteRepositoryConfig(dict):
             pulumi.set(__self__, "docker_repository", docker_repository)
         if maven_repository is not None:
             pulumi.set(__self__, "maven_repository", maven_repository)
+        if no_cache is not None:
+            pulumi.set(__self__, "no_cache", no_cache)
         if npm_repository is not None:
             pulumi.set(__self__, "npm_repository", npm_repository)
         if python_repository is not None:
@@ -661,6 +669,14 @@ class RepositoryRemoteRepositoryConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "maven_repository")
+
+    @_builtins.property
+    @pulumi.getter(name="noCache")
+    def no_cache(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigNoCache']:
+        """
+        The repository will act as a non-caching proxy (connector mode).
+        """
+        return pulumi.get(self, "no_cache")
 
     @_builtins.property
     @pulumi.getter(name="npmRepository")
@@ -955,6 +971,12 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository(dict):
         Specific uri to the registry, e.g. `"https://pypi.io"`
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigNoCache(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -2169,6 +2191,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
                  disable_upstream_validation: _builtins.bool,
                  docker_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult'],
                  maven_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult'],
+                 no_caches: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNoCacheResult'],
                  npm_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult'],
                  python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult'],
                  upstream_credentials: Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult'],
@@ -2181,6 +2204,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
                not be validated.
         :param Sequence['GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs'] docker_repositories: Specific settings for a Docker remote repository.
         :param Sequence['GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs'] maven_repositories: Specific settings for a Maven remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigNoCacheArgs'] no_caches: The repository will act as a non-caching proxy (connector mode).
         :param Sequence['GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs'] npm_repositories: Specific settings for an Npm remote repository.
         :param Sequence['GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repositories: Specific settings for a Python remote repository.
         :param Sequence['GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs'] upstream_credentials: The credentials used to access the remote repository.
@@ -2192,6 +2216,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
         pulumi.set(__self__, "disable_upstream_validation", disable_upstream_validation)
         pulumi.set(__self__, "docker_repositories", docker_repositories)
         pulumi.set(__self__, "maven_repositories", maven_repositories)
+        pulumi.set(__self__, "no_caches", no_caches)
         pulumi.set(__self__, "npm_repositories", npm_repositories)
         pulumi.set(__self__, "python_repositories", python_repositories)
         pulumi.set(__self__, "upstream_credentials", upstream_credentials)
@@ -2245,6 +2270,14 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
         Specific settings for a Maven remote repository.
         """
         return pulumi.get(self, "maven_repositories")
+
+    @_builtins.property
+    @pulumi.getter(name="noCaches")
+    def no_caches(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigNoCacheResult']:
+        """
+        The repository will act as a non-caching proxy (connector mode).
+        """
+        return pulumi.get(self, "no_caches")
 
     @_builtins.property
     @pulumi.getter(name="npmRepositories")
@@ -2442,6 +2475,12 @@ class GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryResult(d
         Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigNoCacheResult(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

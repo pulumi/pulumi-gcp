@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_37559",
+ *     name: "tf-test-subnet_37118",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
@@ -211,7 +211,6 @@ export class Router extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
     declare public readonly nccGateway: pulumi.Output<string | undefined>;
@@ -331,7 +330,6 @@ export interface RouterState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
     nccGateway?: pulumi.Input<string | undefined>;
@@ -401,7 +399,6 @@ export interface RouterArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * A URI of an NCC Gateway spoke
      */
     nccGateway?: pulumi.Input<string | undefined>;

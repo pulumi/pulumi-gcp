@@ -44,6 +44,7 @@ __all__ = [
     'DataTransferConfigEncryptionConfiguration',
     'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
+    'Datapolicyv2DataPolicyDataGovernanceTag',
     'Datapolicyv2DataPolicyDataMaskingPolicy',
     'Datapolicyv2DataPolicyIamBindingCondition',
     'Datapolicyv2DataPolicyIamMemberCondition',
@@ -1630,6 +1631,37 @@ class DataTransferConfigSensitiveParams(dict):
         The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         """
         return pulumi.get(self, "secret_access_key_wo_version")
+
+
+@pulumi.output_type
+class Datapolicyv2DataPolicyDataGovernanceTag(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+        :param _builtins.str value: Tag value is expected to be the short name.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Tag value is expected to be the short name.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

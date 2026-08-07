@@ -1097,6 +1097,14 @@ __all__ = [
     'RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict',
     'RegionNetworkPolicyAssociationArgs',
     'RegionNetworkPolicyAssociationArgsDict',
+    'RegionNetworkPolicyTrafficClassificationRuleActionArgs',
+    'RegionNetworkPolicyTrafficClassificationRuleActionArgsDict',
+    'RegionNetworkPolicyTrafficClassificationRuleMatchArgs',
+    'RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict',
+    'RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs',
+    'RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgsDict',
+    'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs',
+    'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict',
     'RegionPerInstanceConfigPreservedStateArgs',
     'RegionPerInstanceConfigPreservedStateArgsDict',
     'RegionPerInstanceConfigPreservedStateDiskArgs',
@@ -53798,6 +53806,290 @@ class RegionNetworkPolicyAssociationArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+
+class RegionNetworkPolicyTrafficClassificationRuleActionArgsDict(TypedDict):
+    dscp_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+    Possible values are: `AUTO`, `CUSTOM`.
+    """
+    dscp_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Custom DSCP value from 0-63 range.
+    """
+    traffic_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The traffic class that should be applied to the matching packet.
+    Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Always apply_traffic_classification for Traffic Classification Rules.
+    Default value is `apply_traffic_classification`.
+    Possible values are: `apply_traffic_classification`.
+    """
+
+@pulumi.input_type
+class RegionNetworkPolicyTrafficClassificationRuleActionArgs:
+    def __init__(__self__, *,
+                 dscp_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 dscp_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 traffic_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dscp_mode: DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+               Possible values are: `AUTO`, `CUSTOM`.
+        :param pulumi.Input[_builtins.int] dscp_value: Custom DSCP value from 0-63 range.
+        :param pulumi.Input[_builtins.str] traffic_class: The traffic class that should be applied to the matching packet.
+               Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        :param pulumi.Input[_builtins.str] type: Always apply_traffic_classification for Traffic Classification Rules.
+               Default value is `apply_traffic_classification`.
+               Possible values are: `apply_traffic_classification`.
+        """
+        if dscp_mode is not None:
+            pulumi.set(__self__, "dscp_mode", dscp_mode)
+        if dscp_value is not None:
+            pulumi.set(__self__, "dscp_value", dscp_value)
+        if traffic_class is not None:
+            pulumi.set(__self__, "traffic_class", traffic_class)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="dscpMode")
+    def dscp_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+        Possible values are: `AUTO`, `CUSTOM`.
+        """
+        return pulumi.get(self, "dscp_mode")
+
+    @dscp_mode.setter
+    def dscp_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dscp_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dscpValue")
+    def dscp_value(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Custom DSCP value from 0-63 range.
+        """
+        return pulumi.get(self, "dscp_value")
+
+    @dscp_value.setter
+    def dscp_value(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "dscp_value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="trafficClass")
+    def traffic_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The traffic class that should be applied to the matching packet.
+        Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        return pulumi.get(self, "traffic_class")
+
+    @traffic_class.setter
+    def traffic_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "traffic_class", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Always apply_traffic_classification for Traffic Classification Rules.
+        Default value is `apply_traffic_classification`.
+        Possible values are: `apply_traffic_classification`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class RegionNetworkPolicyTrafficClassificationRuleMatchArgsDict(TypedDict):
+    layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgsDict']]]
+    """
+    Pairs of IP protocols and ports that the rule should match.
+    Structure is documented below.
+
+    <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+    """
+    dest_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+    """
+    src_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+    """
+
+@pulumi.input_type
+class RegionNetworkPolicyTrafficClassificationRuleMatchArgs:
+    def __init__(__self__, *,
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs']]],
+                 dest_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 src_ip_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+               
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs']]]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @layer4_configs.setter
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs']]]):
+        pulumi.set(self, "layer4_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @dest_ip_ranges.setter
+    def dest_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dest_ip_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
+
+
+class RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgsDict(TypedDict):
+    ip_protocol: pulumi.Input[_builtins.str]
+    """
+    The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+    This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+    """
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+    Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+    """
+
+@pulumi.input_type
+class RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs:
+    def __init__(__self__, *,
+                 ip_protocol: pulumi.Input[_builtins.str],
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+class RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Name of the secure tag, created with TagManager's TagValue API.
+    """
+    state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+    """
+
+@pulumi.input_type
+class RegionNetworkPolicyTrafficClassificationRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secure tag, created with TagManager's TagValue API.
+        :param pulumi.Input[_builtins.str] state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 class RegionPerInstanceConfigPreservedStateArgsDict(TypedDict):

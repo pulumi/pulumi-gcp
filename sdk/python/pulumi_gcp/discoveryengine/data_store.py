@@ -25,6 +25,7 @@ class DataStoreArgs:
                  display_name: pulumi.Input[_builtins.str],
                  industry_vertical: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  advanced_site_search_config: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -44,6 +45,12 @@ class DataStoreArgs:
                Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
         :param pulumi.Input[_builtins.str] location: The geographic location where the data store should reside. The value can
                only be one of "global", "us" and "eu".
+        :param pulumi.Input[_builtins.bool] acl_enabled: Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+               the source data must have ACL. ACL will be ingested when data is ingested by
+               DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+               Document can't be accessed by calling DocumentService.GetDocument or
+               DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+               industry vertical with non-`PUBLIC_WEBSITE` content config.
         :param pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs'] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
@@ -81,6 +88,8 @@ class DataStoreArgs:
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "industry_vertical", industry_vertical)
         pulumi.set(__self__, "location", location)
+        if acl_enabled is not None:
+            pulumi.set(__self__, "acl_enabled", acl_enabled)
         if advanced_site_search_config is not None:
             pulumi.set(__self__, "advanced_site_search_config", advanced_site_search_config)
         if content_config is not None:
@@ -150,6 +159,23 @@ class DataStoreArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+        the source data must have ACL. ACL will be ingested when data is ingested by
+        DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        Document can't be accessed by calling DocumentService.GetDocument or
+        DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+        industry vertical with non-`PUBLIC_WEBSITE` content config.
+        """
+        return pulumi.get(self, "acl_enabled")
+
+    @acl_enabled.setter
+    def acl_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "acl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfig")
@@ -286,6 +312,7 @@ class DataStoreArgs:
 @pulumi.input_type
 class _DataStoreState:
     def __init__(__self__, *,
+                 acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  advanced_site_search_config: pulumi.Input[Optional['DataStoreAdvancedSiteSearchConfigArgs']] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -305,6 +332,12 @@ class _DataStoreState:
         """
         Input properties used for looking up and filtering DataStore resources.
 
+        :param pulumi.Input[_builtins.bool] acl_enabled: Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+               the source data must have ACL. ACL will be ingested when data is ingested by
+               DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+               Document can't be accessed by calling DocumentService.GetDocument or
+               DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+               industry vertical with non-`PUBLIC_WEBSITE` content config.
         :param pulumi.Input['DataStoreAdvancedSiteSearchConfigArgs'] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
@@ -351,6 +384,8 @@ class _DataStoreState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] solution_types: The solutions that the data store enrolls.
                Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
         """
+        if acl_enabled is not None:
+            pulumi.set(__self__, "acl_enabled", acl_enabled)
         if advanced_site_search_config is not None:
             pulumi.set(__self__, "advanced_site_search_config", advanced_site_search_config)
         if content_config is not None:
@@ -383,6 +418,23 @@ class _DataStoreState:
             pulumi.set(__self__, "skip_default_schema_creation", skip_default_schema_creation)
         if solution_types is not None:
             pulumi.set(__self__, "solution_types", solution_types)
+
+    @_builtins.property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+        the source data must have ACL. ACL will be ingested when data is ingested by
+        DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        Document can't be accessed by calling DocumentService.GetDocument or
+        DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+        industry vertical with non-`PUBLIC_WEBSITE` content config.
+        """
+        return pulumi.get(self, "acl_enabled")
+
+    @acl_enabled.setter
+    def acl_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "acl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfig")
@@ -612,6 +664,7 @@ class DataStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -738,6 +791,12 @@ class DataStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] acl_enabled: Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+               the source data must have ACL. ACL will be ingested when data is ingested by
+               DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+               Document can't be accessed by calling DocumentService.GetDocument or
+               DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+               industry vertical with non-`PUBLIC_WEBSITE` content config.
         :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
@@ -909,6 +968,7 @@ class DataStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
                  content_config: pulumi.Input[Optional[_builtins.str]] = None,
                  create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -931,6 +991,7 @@ class DataStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DataStoreArgs.__new__(DataStoreArgs)
 
+            __props__.__dict__["acl_enabled"] = acl_enabled
             __props__.__dict__["advanced_site_search_config"] = advanced_site_search_config
             __props__.__dict__["content_config"] = content_config
             __props__.__dict__["create_advanced_site_search"] = create_advanced_site_search
@@ -965,6 +1026,7 @@ class DataStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             advanced_site_search_config: pulumi.Input[Optional[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']]] = None,
             content_config: pulumi.Input[Optional[_builtins.str]] = None,
             create_advanced_site_search: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -988,6 +1050,12 @@ class DataStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] acl_enabled: Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+               the source data must have ACL. ACL will be ingested when data is ingested by
+               DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+               Document can't be accessed by calling DocumentService.GetDocument or
+               DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+               industry vertical with non-`PUBLIC_WEBSITE` content config.
         :param pulumi.Input[Union['DataStoreAdvancedSiteSearchConfigArgs', 'DataStoreAdvancedSiteSearchConfigArgsDict']] advanced_site_search_config: Configuration data for advance site search.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_config: The content config of the data store.
@@ -1038,6 +1106,7 @@ class DataStore(pulumi.CustomResource):
 
         __props__ = _DataStoreState.__new__(_DataStoreState)
 
+        __props__.__dict__["acl_enabled"] = acl_enabled
         __props__.__dict__["advanced_site_search_config"] = advanced_site_search_config
         __props__.__dict__["content_config"] = content_config
         __props__.__dict__["create_advanced_site_search"] = create_advanced_site_search
@@ -1055,6 +1124,19 @@ class DataStore(pulumi.CustomResource):
         __props__.__dict__["skip_default_schema_creation"] = skip_default_schema_creation
         __props__.__dict__["solution_types"] = solution_types
         return DataStore(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+        the source data must have ACL. ACL will be ingested when data is ingested by
+        DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        Document can't be accessed by calling DocumentService.GetDocument or
+        DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+        industry vertical with non-`PUBLIC_WEBSITE` content config.
+        """
+        return pulumi.get(self, "acl_enabled")
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfig")

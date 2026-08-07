@@ -24,6 +24,7 @@ class Datapolicyv2DataPolicyArgs:
                  data_policy_id: pulumi.Input[_builtins.str],
                  data_policy_type: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 data_governance_tag: pulumi.Input[Optional['Datapolicyv2DataPolicyDataGovernanceTagArgs']] = None,
                  data_masking_policy: pulumi.Input[Optional['Datapolicyv2DataPolicyDataMaskingPolicyArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,8 @@ class Datapolicyv2DataPolicyArgs:
                RAW_DATA_ACCESS_POLICY
                COLUMN_LEVEL_SECURITY_POLICY
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input['Datapolicyv2DataPolicyDataGovernanceTagArgs'] data_governance_tag: Data Governance tag bound to the Data Policy.
+               Structure is documented below.
         :param pulumi.Input['Datapolicyv2DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The policy used to specify data masking rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -67,6 +70,8 @@ class Datapolicyv2DataPolicyArgs:
         pulumi.set(__self__, "data_policy_id", data_policy_id)
         pulumi.set(__self__, "data_policy_type", data_policy_type)
         pulumi.set(__self__, "location", location)
+        if data_governance_tag is not None:
+            pulumi.set(__self__, "data_governance_tag", data_governance_tag)
         if data_masking_policy is not None:
             pulumi.set(__self__, "data_masking_policy", data_masking_policy)
         if deletion_policy is not None:
@@ -119,6 +124,19 @@ class Datapolicyv2DataPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataGovernanceTag")
+    def data_governance_tag(self) -> pulumi.Input[Optional['Datapolicyv2DataPolicyDataGovernanceTagArgs']]:
+        """
+        Data Governance tag bound to the Data Policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_governance_tag")
+
+    @data_governance_tag.setter
+    def data_governance_tag(self, value: pulumi.Input[Optional['Datapolicyv2DataPolicyDataGovernanceTagArgs']]):
+        pulumi.set(self, "data_governance_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="dataMaskingPolicy")
@@ -201,6 +219,7 @@ class Datapolicyv2DataPolicyArgs:
 @pulumi.input_type
 class _Datapolicyv2DataPolicyState:
     def __init__(__self__, *,
+                 data_governance_tag: pulumi.Input[Optional['Datapolicyv2DataPolicyDataGovernanceTagArgs']] = None,
                  data_masking_policy: pulumi.Input[Optional['Datapolicyv2DataPolicyDataMaskingPolicyArgs']] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -215,6 +234,8 @@ class _Datapolicyv2DataPolicyState:
         """
         Input properties used for looking up and filtering Datapolicyv2DataPolicy resources.
 
+        :param pulumi.Input['Datapolicyv2DataPolicyDataGovernanceTagArgs'] data_governance_tag: Data Governance tag bound to the Data Policy.
+               Structure is documented below.
         :param pulumi.Input['Datapolicyv2DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The policy used to specify data masking rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be
@@ -256,6 +277,8 @@ class _Datapolicyv2DataPolicyState:
                V1
                V2
         """
+        if data_governance_tag is not None:
+            pulumi.set(__self__, "data_governance_tag", data_governance_tag)
         if data_masking_policy is not None:
             pulumi.set(__self__, "data_masking_policy", data_masking_policy)
         if data_policy_id is not None:
@@ -278,6 +301,19 @@ class _Datapolicyv2DataPolicyState:
             pulumi.set(__self__, "project", project)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="dataGovernanceTag")
+    def data_governance_tag(self) -> pulumi.Input[Optional['Datapolicyv2DataPolicyDataGovernanceTagArgs']]:
+        """
+        Data Governance tag bound to the Data Policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_governance_tag")
+
+    @data_governance_tag.setter
+    def data_governance_tag(self, value: pulumi.Input[Optional['Datapolicyv2DataPolicyDataGovernanceTagArgs']]):
+        pulumi.set(self, "data_governance_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="dataMaskingPolicy")
@@ -447,6 +483,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_governance_tag: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataGovernanceTagArgs', 'Datapolicyv2DataPolicyDataGovernanceTagArgsDict']]] = None,
                  data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -553,6 +590,8 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['Datapolicyv2DataPolicyDataGovernanceTagArgs', 'Datapolicyv2DataPolicyDataGovernanceTagArgsDict']] data_governance_tag: Data Governance tag bound to the Data Policy.
+               Structure is documented below.
         :param pulumi.Input[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']] data_masking_policy: The policy used to specify data masking rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be
@@ -701,6 +740,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 data_governance_tag: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataGovernanceTagArgs', 'Datapolicyv2DataPolicyDataGovernanceTagArgsDict']]] = None,
                  data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -718,6 +758,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = Datapolicyv2DataPolicyArgs.__new__(Datapolicyv2DataPolicyArgs)
 
+            __props__.__dict__["data_governance_tag"] = data_governance_tag
             __props__.__dict__["data_masking_policy"] = data_masking_policy
             if data_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_policy_id'")
@@ -745,6 +786,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            data_governance_tag: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataGovernanceTagArgs', 'Datapolicyv2DataPolicyDataGovernanceTagArgsDict']]] = None,
             data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']]] = None,
             data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -763,6 +805,8 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['Datapolicyv2DataPolicyDataGovernanceTagArgs', 'Datapolicyv2DataPolicyDataGovernanceTagArgsDict']] data_governance_tag: Data Governance tag bound to the Data Policy.
+               Structure is documented below.
         :param pulumi.Input[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']] data_masking_policy: The policy used to specify data masking rule.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_policy_id: User-assigned (human readable) ID of the data policy that needs to be
@@ -808,6 +852,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
 
         __props__ = _Datapolicyv2DataPolicyState.__new__(_Datapolicyv2DataPolicyState)
 
+        __props__.__dict__["data_governance_tag"] = data_governance_tag
         __props__.__dict__["data_masking_policy"] = data_masking_policy
         __props__.__dict__["data_policy_id"] = data_policy_id
         __props__.__dict__["data_policy_type"] = data_policy_type
@@ -820,6 +865,15 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["version"] = version
         return Datapolicyv2DataPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="dataGovernanceTag")
+    def data_governance_tag(self) -> pulumi.Output[Optional['outputs.Datapolicyv2DataPolicyDataGovernanceTag']]:
+        """
+        Data Governance tag bound to the Data Policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "data_governance_tag")
 
     @_builtins.property
     @pulumi.getter(name="dataMaskingPolicy")

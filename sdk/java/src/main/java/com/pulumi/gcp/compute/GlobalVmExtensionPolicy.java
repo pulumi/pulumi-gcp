@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var opsAgentPolicy = new GlobalVmExtensionPolicy("opsAgentPolicy", GlobalVmExtensionPolicyArgs.builder()
- *             .name("global-ops-agent-vme-policy-_88722")
+ *             .name("global-ops-agent-vme-policy-_74391")
  *             .description("A basic global VM extension policy")
  *             .priority(10)
  *             .extensionPolicies(GlobalVmExtensionPolicyExtensionPolicyArgs.builder()
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var opsAgentPolicy = new GlobalVmExtensionPolicy("opsAgentPolicy", GlobalVmExtensionPolicyArgs.builder()
- *             .name("global-ops-agent-vme-policy-_39249")
+ *             .name("global-ops-agent-vme-policy-_16511")
  *             .description("A basic global VM extension policy")
  *             .priority(10)
  *             .extensionPolicies(GlobalVmExtensionPolicyExtensionPolicyArgs.builder()
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var customRollout = new RolloutPlan("customRollout", RolloutPlanArgs.builder()
- *             .name("custom-rollout-plan-_16511")
+ *             .name("custom-rollout-plan-_9106")
  *             .locationScope("ZONAL")
  *             .waves(RolloutPlanWaveArgs.builder()
  *                 .displayName("wave-1")
@@ -198,7 +198,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var opsAgentPolicy = new GlobalVmExtensionPolicy("opsAgentPolicy", GlobalVmExtensionPolicyArgs.builder()
- *             .name("global-ops-agent-vme-policy-_74391")
+ *             .name("global-ops-agent-vme-policy-_8493")
  *             .description("A global VM extension policy with a custom rollout plan")
  *             .priority(10)
  *             .extensionPolicies(GlobalVmExtensionPolicyExtensionPolicyArgs.builder()

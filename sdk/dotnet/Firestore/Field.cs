@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Firestore
     /// Fields are grouped by their "Collection Group", which represent all collections
     /// in the database with the same id.
     /// 
+    /// In Standard edition databases, single field indexes are managed using the `gcp.firestore.Field` resource. In Enterprise edition databases, they are managed using the `gcp.firestore.Index` resource.
+    /// 
     /// To get more information about Field, see:
     /// 
     /// * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
@@ -51,7 +53,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__35762",
+    ///         Collection = "chatrooms__79580",
     ///         FieldId = "basic",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -230,7 +232,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__24469",
+    ///         Collection = "chatrooms__98863",
     ///         FieldId = "field_with_same_configuration_as_ancestor",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -278,7 +280,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__79580",
+    ///         Collection = "chatrooms__64134",
     ///         FieldId = "*",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -323,7 +325,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__98863",
+    ///         Collection = "chatrooms__67762",
     ///         FieldId = "skip_wait",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {

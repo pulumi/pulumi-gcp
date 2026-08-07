@@ -196,6 +196,13 @@ import (
 type DataStore struct {
 	pulumi.CustomResourceState
 
+	// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+	// the source data must have ACL. ACL will be ingested when data is ingested by
+	// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+	// Document can't be accessed by calling DocumentService.GetDocument or
+	// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+	// industry vertical with non-`PUBLIC_WEBSITE` content config.
+	AclEnabled pulumi.BoolPtrOutput `pulumi:"aclEnabled"`
 	// Configuration data for advance site search.
 	// Structure is documented below.
 	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigOutput `pulumi:"advancedSiteSearchConfig"`
@@ -301,6 +308,13 @@ func GetDataStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataStore resources.
 type dataStoreState struct {
+	// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+	// the source data must have ACL. ACL will be ingested when data is ingested by
+	// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+	// Document can't be accessed by calling DocumentService.GetDocument or
+	// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+	// industry vertical with non-`PUBLIC_WEBSITE` content config.
+	AclEnabled *bool `pulumi:"aclEnabled"`
 	// Configuration data for advance site search.
 	// Structure is documented below.
 	AdvancedSiteSearchConfig *DataStoreAdvancedSiteSearchConfig `pulumi:"advancedSiteSearchConfig"`
@@ -365,6 +379,13 @@ type dataStoreState struct {
 }
 
 type DataStoreState struct {
+	// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+	// the source data must have ACL. ACL will be ingested when data is ingested by
+	// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+	// Document can't be accessed by calling DocumentService.GetDocument or
+	// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+	// industry vertical with non-`PUBLIC_WEBSITE` content config.
+	AclEnabled pulumi.BoolPtrInput
 	// Configuration data for advance site search.
 	// Structure is documented below.
 	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrInput
@@ -433,6 +454,13 @@ func (DataStoreState) ElementType() reflect.Type {
 }
 
 type dataStoreArgs struct {
+	// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+	// the source data must have ACL. ACL will be ingested when data is ingested by
+	// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+	// Document can't be accessed by calling DocumentService.GetDocument or
+	// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+	// industry vertical with non-`PUBLIC_WEBSITE` content config.
+	AclEnabled *bool `pulumi:"aclEnabled"`
 	// Configuration data for advance site search.
 	// Structure is documented below.
 	AdvancedSiteSearchConfig *DataStoreAdvancedSiteSearchConfig `pulumi:"advancedSiteSearchConfig"`
@@ -489,6 +517,13 @@ type dataStoreArgs struct {
 
 // The set of arguments for constructing a DataStore resource.
 type DataStoreArgs struct {
+	// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+	// the source data must have ACL. ACL will be ingested when data is ingested by
+	// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+	// Document can't be accessed by calling DocumentService.GetDocument or
+	// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+	// industry vertical with non-`PUBLIC_WEBSITE` content config.
+	AclEnabled pulumi.BoolPtrInput
 	// Configuration data for advance site search.
 	// Structure is documented below.
 	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrInput
@@ -628,6 +663,16 @@ func (o DataStoreOutput) ToDataStoreOutput() DataStoreOutput {
 
 func (o DataStoreOutput) ToDataStoreOutputWithContext(ctx context.Context) DataStoreOutput {
 	return o
+}
+
+// Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+// the source data must have ACL. ACL will be ingested when data is ingested by
+// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+// Document can't be accessed by calling DocumentService.GetDocument or
+// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+// industry vertical with non-`PUBLIC_WEBSITE` content config.
+func (o DataStoreOutput) AclEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStore) pulumi.BoolPtrOutput { return v.AclEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration data for advance site search.

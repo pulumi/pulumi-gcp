@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.DataPlex
     /// {
     ///     var testEntryTypeFull = new Gcp.DataPlex.AspectType("test_entry_type_full", new()
     ///     {
-    ///         AspectTypeId = "tf-test-aspect-type_11171",
+    ///         AspectTypeId = "tf-test-aspect-type_44339",
     ///         Location = "us-central1",
     ///         Project = "my-project-name",
     ///         MetadataTemplate = @"{

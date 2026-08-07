@@ -104,6 +104,16 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+        /// * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+        /// * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+        /// * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+        /// * The special value `UnknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+        /// </summary>
+        [Output("principal")]
+        public Output<string?> Principal { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -199,6 +209,16 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+        /// * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+        /// * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+        /// * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+        /// * The special value `UnknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+        /// </summary>
+        [Input("principal")]
+        public Input<string>? Principal { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -253,6 +273,16 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+        /// * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+        /// * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+        /// * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+        /// * The special value `UnknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
+        /// </summary>
+        [Input("principal")]
+        public Input<string>? Principal { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

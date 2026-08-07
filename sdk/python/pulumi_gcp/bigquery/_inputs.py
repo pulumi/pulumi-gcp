@@ -71,6 +71,8 @@ __all__ = [
     'DataTransferConfigScheduleOptionsArgsDict',
     'DataTransferConfigSensitiveParamsArgs',
     'DataTransferConfigSensitiveParamsArgsDict',
+    'Datapolicyv2DataPolicyDataGovernanceTagArgs',
+    'Datapolicyv2DataPolicyDataGovernanceTagArgsDict',
     'Datapolicyv2DataPolicyDataMaskingPolicyArgs',
     'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict',
     'Datapolicyv2DataPolicyIamBindingConditionArgs',
@@ -1890,6 +1892,55 @@ class DataTransferConfigSensitiveParamsArgs:
     @secret_access_key_wo_version.setter
     def secret_access_key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secret_access_key_wo_version", value)
+
+
+class Datapolicyv2DataPolicyDataGovernanceTagArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Tag value is expected to be the short name.
+    """
+
+@pulumi.input_type
+class Datapolicyv2DataPolicyDataGovernanceTagArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+        :param pulumi.Input[_builtins.str] value: Tag value is expected to be the short name.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Tag value is expected to be the short name.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class Datapolicyv2DataPolicyDataMaskingPolicyArgsDict(TypedDict):

@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var opsAgentPolicy = new Gcp.Compute.GlobalVmExtensionPolicy("ops_agent_policy", new()
     ///     {
-    ///         Name = "global-ops-agent-vme-policy-_88722",
+    ///         Name = "global-ops-agent-vme-policy-_74391",
     ///         Description = "A basic global VM extension policy",
     ///         Priority = 10,
     ///         ExtensionPolicies = new[]
@@ -73,7 +73,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var opsAgentPolicy = new Gcp.Compute.GlobalVmExtensionPolicy("ops_agent_policy", new()
     ///     {
-    ///         Name = "global-ops-agent-vme-policy-_39249",
+    ///         Name = "global-ops-agent-vme-policy-_16511",
     ///         Description = "A basic global VM extension policy",
     ///         Priority = 10,
     ///         ExtensionPolicies = new[]
@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var customRollout = new Gcp.Compute.RolloutPlan("custom_rollout", new()
     ///     {
-    ///         Name = "custom-rollout-plan-_16511",
+    ///         Name = "custom-rollout-plan-_9106",
     ///         LocationScope = "ZONAL",
     ///         Waves = new[]
     ///         {
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var opsAgentPolicy = new Gcp.Compute.GlobalVmExtensionPolicy("ops_agent_policy", new()
     ///     {
-    ///         Name = "global-ops-agent-vme-policy-_74391",
+    ///         Name = "global-ops-agent-vme-policy-_8493",
     ///         Description = "A global VM extension policy with a custom rollout plan",
     ///         Priority = 10,
     ///         ExtensionPolicies = new[]

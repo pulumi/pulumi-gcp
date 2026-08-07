@@ -310,11 +310,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         security_policy_target = gcp.organizations.Folder("security_policy_target",
-            display_name="tf-test-secpol-_9106",
+            display_name="tf-test-secpol-_75223",
             parent="organizations/123456789",
             deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_27169",
+            short_name="tf-test_41819",
             parent=security_policy_target.name,
             type="CLOUD_ARMOR")
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
@@ -401,11 +401,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         security_policy_target = gcp.organizations.Folder("security_policy_target",
-            display_name="tf-test-secpol-_9106",
+            display_name="tf-test-secpol-_75223",
             parent="organizations/123456789",
             deletion_protection=False)
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_27169",
+            short_name="tf-test_41819",
             parent=security_policy_target.name,
             type="CLOUD_ARMOR")
         policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",

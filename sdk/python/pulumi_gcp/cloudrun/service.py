@@ -748,6 +748,29 @@ class Service(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloud Run Service Sandbox
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                        "sandbox_launcher": True,
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1125,6 +1148,29 @@ class Service(pulumi.CustomResource):
                 "spec": {
                     "containers": [{
                         "image": "gcr.io/cloudrun/hello",
+                    }],
+                },
+            })
+        ```
+        ### Cloud Run Service Sandbox
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            },
+            template={
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                        "sandbox_launcher": True,
                     }],
                 },
             })

@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_45598")
- *             .name("tf-test_64623")
+ *             .projectId("tf-test_42057")
+ *             .name("tf-test_84735")
  *             .orgId("123456789")
  *             .deletionPolicy("DELETE")
  *             .build());

@@ -342,6 +342,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloud Run Service Sandbox
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
+ *     location: "us-central1",
+ *     metadata: {
+ *         annotations: {
+ *             "run.googleapis.com/launch-stage": "BETA",
+ *         },
+ *     },
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *                 sandboxLauncher: true,
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -481,7 +481,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "global_assoc", &compute.NetworkFirewallPolicyAssociationArgs{
-//				Name:             pulumi.String("global-policy-assoc-_8493"),
+//				Name:             pulumi.String("global-policy-assoc-_27169"),
 //				FirewallPolicy:   fwPolicy.ID().ToIDOutput().ToStringOutput(),
 //				AttachmentTarget: net.ID().ToIDOutput().ToStringOutput(),
 //			})

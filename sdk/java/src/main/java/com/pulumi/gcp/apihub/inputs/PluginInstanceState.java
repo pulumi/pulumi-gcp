@@ -238,6 +238,21 @@ public final class PluginInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     * 
+     */
+    @Import(name="sourceProjectId")
+    private @Nullable Output<String> sourceProjectId;
+
+    /**
+     * @return Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     * 
+     */
+    public Optional<Output<String>> sourceProjectId() {
+        return Optional.ofNullable(this.sourceProjectId);
+    }
+
+    /**
      * The current state of the plugin instance (e.g., enabled, disabled,
      * provisioning).
      * Possible values:
@@ -300,6 +315,7 @@ public final class PluginInstanceState extends com.pulumi.resources.ResourceArgs
         this.plugin = $.plugin;
         this.pluginInstanceId = $.pluginInstanceId;
         this.project = $.project;
+        this.sourceProjectId = $.sourceProjectId;
         this.state = $.state;
         this.updateTime = $.updateTime;
     }
@@ -621,6 +637,27 @@ public final class PluginInstanceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param sourceProjectId Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceProjectId(@Nullable Output<String> sourceProjectId) {
+            $.sourceProjectId = sourceProjectId;
+            return this;
+        }
+
+        /**
+         * @param sourceProjectId Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceProjectId(String sourceProjectId) {
+            return sourceProjectId(Output.of(sourceProjectId));
         }
 
         /**

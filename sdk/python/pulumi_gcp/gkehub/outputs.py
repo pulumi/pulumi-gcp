@@ -3273,15 +3273,16 @@ class FeatureSpecWorkloadidentity(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 scope_tenancy_pool: _builtins.str):
+                 scope_tenancy_pool: Optional[_builtins.str] = None):
         """
         :param _builtins.str scope_tenancy_pool: Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
         """
-        pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
+        if scope_tenancy_pool is not None:
+            pulumi.set(__self__, "scope_tenancy_pool", scope_tenancy_pool)
 
     @_builtins.property
     @pulumi.getter(name="scopeTenancyPool")
-    def scope_tenancy_pool(self) -> _builtins.str:
+    def scope_tenancy_pool(self) -> Optional[_builtins.str]:
         """
         Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
         """

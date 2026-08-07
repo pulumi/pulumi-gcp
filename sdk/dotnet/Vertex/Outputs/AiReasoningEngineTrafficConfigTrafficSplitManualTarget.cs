@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// </summary>
         public readonly int Percent;
         /// <summary>
-        /// Required. The Runtime Revision name to which to send this portion of traffic.
+        /// Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `TrafficConfig` is updated in Terraform.
         /// </summary>
         public readonly string RuntimeRevisionName;
 

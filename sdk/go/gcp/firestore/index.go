@@ -15,8 +15,8 @@ import (
 // Cloud Firestore indexes enable simple and complex queries against documents in a database.
 //
 //	Firestore Native, Firestore with MongoDB compatibility and Datastore Mode indexes are all supported.
-//	This resource manages composite indexes and not single field indexes.
-//	To manage single field indexes, use the `firestore.Field` resource instead.
+//	In Enterprise edition databases, this resource manages both single field and composite indexes.
+//	In Standard edition databases, single field indexes are managed using the `firestore.Field` resource instead.
 //
 // To get more information about Index, see:
 //
@@ -633,12 +633,13 @@ type Index struct {
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density pulumi.StringOutput `pulumi:"density"`
-	// The fields supported by this index. The last non-stored field entry is
-	// always for the field path `__name__`. If, on creation, `__name__` was not
-	// specified as the last field, it will be added automatically with the same
-	// direction as that of the last field defined. If the final field in a
-	// composite index is not directional, the `__name__` will be ordered
-	// `"ASCENDING"` (unless explicitly specified otherwise).
+	// The field(s) supported by this index. Indexes with the `ANY_API` `apiScope` in Standard
+	// edition databases have special behavior with respect to the `__name__` field. In these
+	// indexes, the last non-stored field entry is always for the field path `__name__`. If, on
+	// creation, `__name__` was not specified as the last field, it will be added automatically
+	// with the same direction as that of the last field defined. If the final field in an
+	// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
+	// specified otherwise).
 	// Structure is documented below.
 	Fields IndexFieldArrayOutput `pulumi:"fields"`
 	// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -713,12 +714,13 @@ type indexState struct {
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density *string `pulumi:"density"`
-	// The fields supported by this index. The last non-stored field entry is
-	// always for the field path `__name__`. If, on creation, `__name__` was not
-	// specified as the last field, it will be added automatically with the same
-	// direction as that of the last field defined. If the final field in a
-	// composite index is not directional, the `__name__` will be ordered
-	// `"ASCENDING"` (unless explicitly specified otherwise).
+	// The field(s) supported by this index. Indexes with the `ANY_API` `apiScope` in Standard
+	// edition databases have special behavior with respect to the `__name__` field. In these
+	// indexes, the last non-stored field entry is always for the field path `__name__`. If, on
+	// creation, `__name__` was not specified as the last field, it will be added automatically
+	// with the same direction as that of the last field defined. If the final field in an
+	// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
+	// specified otherwise).
 	// Structure is documented below.
 	Fields []IndexField `pulumi:"fields"`
 	// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -758,12 +760,13 @@ type IndexState struct {
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density pulumi.StringPtrInput
-	// The fields supported by this index. The last non-stored field entry is
-	// always for the field path `__name__`. If, on creation, `__name__` was not
-	// specified as the last field, it will be added automatically with the same
-	// direction as that of the last field defined. If the final field in a
-	// composite index is not directional, the `__name__` will be ordered
-	// `"ASCENDING"` (unless explicitly specified otherwise).
+	// The field(s) supported by this index. Indexes with the `ANY_API` `apiScope` in Standard
+	// edition databases have special behavior with respect to the `__name__` field. In these
+	// indexes, the last non-stored field entry is always for the field path `__name__`. If, on
+	// creation, `__name__` was not specified as the last field, it will be added automatically
+	// with the same direction as that of the last field defined. If the final field in an
+	// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
+	// specified otherwise).
 	// Structure is documented below.
 	Fields IndexFieldArrayInput
 	// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -807,12 +810,13 @@ type indexArgs struct {
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density *string `pulumi:"density"`
-	// The fields supported by this index. The last non-stored field entry is
-	// always for the field path `__name__`. If, on creation, `__name__` was not
-	// specified as the last field, it will be added automatically with the same
-	// direction as that of the last field defined. If the final field in a
-	// composite index is not directional, the `__name__` will be ordered
-	// `"ASCENDING"` (unless explicitly specified otherwise).
+	// The field(s) supported by this index. Indexes with the `ANY_API` `apiScope` in Standard
+	// edition databases have special behavior with respect to the `__name__` field. In these
+	// indexes, the last non-stored field entry is always for the field path `__name__`. If, on
+	// creation, `__name__` was not specified as the last field, it will be added automatically
+	// with the same direction as that of the last field defined. If the final field in an
+	// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
+	// specified otherwise).
 	// Structure is documented below.
 	Fields []IndexField `pulumi:"fields"`
 	// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -850,12 +854,13 @@ type IndexArgs struct {
 	// The density configuration for this index.
 	// Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
 	Density pulumi.StringPtrInput
-	// The fields supported by this index. The last non-stored field entry is
-	// always for the field path `__name__`. If, on creation, `__name__` was not
-	// specified as the last field, it will be added automatically with the same
-	// direction as that of the last field defined. If the final field in a
-	// composite index is not directional, the `__name__` will be ordered
-	// `"ASCENDING"` (unless explicitly specified otherwise).
+	// The field(s) supported by this index. Indexes with the `ANY_API` `apiScope` in Standard
+	// edition databases have special behavior with respect to the `__name__` field. In these
+	// indexes, the last non-stored field entry is always for the field path `__name__`. If, on
+	// creation, `__name__` was not specified as the last field, it will be added automatically
+	// with the same direction as that of the last field defined. If the final field in an
+	// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
+	// specified otherwise).
 	// Structure is documented below.
 	Fields IndexFieldArrayInput
 	// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -993,12 +998,13 @@ func (o IndexOutput) Density() pulumi.StringOutput {
 	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Density }).(pulumi.StringOutput)
 }
 
-// The fields supported by this index. The last non-stored field entry is
-// always for the field path `__name__`. If, on creation, `__name__` was not
-// specified as the last field, it will be added automatically with the same
-// direction as that of the last field defined. If the final field in a
-// composite index is not directional, the `__name__` will be ordered
-// `"ASCENDING"` (unless explicitly specified otherwise).
+// The field(s) supported by this index. Indexes with the `ANY_API` `apiScope` in Standard
+// edition databases have special behavior with respect to the `__name__` field. In these
+// indexes, the last non-stored field entry is always for the field path `__name__`. If, on
+// creation, `__name__` was not specified as the last field, it will be added automatically
+// with the same direction as that of the last field defined. If the final field in an
+// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
+// specified otherwise).
 // Structure is documented below.
 func (o IndexOutput) Fields() IndexFieldArrayOutput {
 	return o.ApplyT(func(v *Index) IndexFieldArrayOutput { return v.Fields }).(IndexFieldArrayOutput)

@@ -43,6 +43,10 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly Outputs.RepositoryRemoteRepositoryConfigMavenRepository? MavenRepository;
         /// <summary>
+        /// The repository will act as a non-caching proxy (connector mode).
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigNoCache? NoCache;
+        /// <summary>
         /// Specific settings for an Npm remote repository.
         /// Structure is documented below.
         /// </summary>
@@ -77,6 +81,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             Outputs.RepositoryRemoteRepositoryConfigMavenRepository? mavenRepository,
 
+            Outputs.RepositoryRemoteRepositoryConfigNoCache? noCache,
+
             Outputs.RepositoryRemoteRepositoryConfigNpmRepository? npmRepository,
 
             Outputs.RepositoryRemoteRepositoryConfigPythonRepository? pythonRepository,
@@ -91,6 +97,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
             DisableUpstreamValidation = disableUpstreamValidation;
             DockerRepository = dockerRepository;
             MavenRepository = mavenRepository;
+            NoCache = noCache;
             NpmRepository = npmRepository;
             PythonRepository = pythonRepository;
             UpstreamCredentials = upstreamCredentials;

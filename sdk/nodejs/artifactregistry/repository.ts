@@ -141,6 +141,50 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Artifact Registry Repository Connector
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+ *     secretId: "example-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
+ *     secretData: "remote-password",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: example_remote_secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example remote docker repository with no cache (connector mode)",
+ *     format: "DOCKER",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "docker hub connector repository (no cache)",
+ *         disableUpstreamValidation: true,
+ *         dockerRepository: {
+ *             publicRepository: "DOCKER_HUB",
+ *         },
+ *         upstreamCredentials: {
+ *             usernamePasswordCredentials: {
+ *                 username: "remote-username",
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
+ *             },
+ *         },
+ *         noCache: {},
+ *     },
+ * });
+ * ```
  * ### Artifact Registry Repository Remote Apt
  *
  * ```typescript

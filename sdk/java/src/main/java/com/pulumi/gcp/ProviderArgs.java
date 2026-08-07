@@ -371,6 +371,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudSecurityComplianceCustomEndpoint);
     }
 
+    @Import(name="cloudSupportCustomEndpoint")
+    private @Nullable Output<String> cloudSupportCustomEndpoint;
+
+    public Optional<Output<String>> cloudSupportCustomEndpoint() {
+        return Optional.ofNullable(this.cloudSupportCustomEndpoint);
+    }
+
     @Import(name="cloudTasksCustomEndpoint")
     private @Nullable Output<String> cloudTasksCustomEndpoint;
 
@@ -1586,6 +1593,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudRunV2CustomEndpoint = $.cloudRunV2CustomEndpoint;
         this.cloudSchedulerCustomEndpoint = $.cloudSchedulerCustomEndpoint;
         this.cloudSecurityComplianceCustomEndpoint = $.cloudSecurityComplianceCustomEndpoint;
+        this.cloudSupportCustomEndpoint = $.cloudSupportCustomEndpoint;
         this.cloudTasksCustomEndpoint = $.cloudTasksCustomEndpoint;
         this.cloudbuildv2CustomEndpoint = $.cloudbuildv2CustomEndpoint;
         this.clouddeployCustomEndpoint = $.clouddeployCustomEndpoint;
@@ -2220,6 +2228,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudSecurityComplianceCustomEndpoint(String cloudSecurityComplianceCustomEndpoint) {
             return cloudSecurityComplianceCustomEndpoint(Output.of(cloudSecurityComplianceCustomEndpoint));
+        }
+
+        public Builder cloudSupportCustomEndpoint(@Nullable Output<String> cloudSupportCustomEndpoint) {
+            $.cloudSupportCustomEndpoint = cloudSupportCustomEndpoint;
+            return this;
+        }
+
+        public Builder cloudSupportCustomEndpoint(String cloudSupportCustomEndpoint) {
+            return cloudSupportCustomEndpoint(Output.of(cloudSupportCustomEndpoint));
         }
 
         public Builder cloudTasksCustomEndpoint(@Nullable Output<String> cloudTasksCustomEndpoint) {

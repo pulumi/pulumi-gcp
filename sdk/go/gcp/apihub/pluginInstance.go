@@ -112,6 +112,8 @@ type PluginInstance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+	SourceProjectId pulumi.StringPtrOutput `pulumi:"sourceProjectId"`
 	// The current state of the plugin instance (e.g., enabled, disabled,
 	// provisioning).
 	// Possible values:
@@ -212,6 +214,8 @@ type pluginInstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+	SourceProjectId *string `pulumi:"sourceProjectId"`
 	// The current state of the plugin instance (e.g., enabled, disabled,
 	// provisioning).
 	// Possible values:
@@ -271,6 +275,8 @@ type PluginInstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+	SourceProjectId pulumi.StringPtrInput
 	// The current state of the plugin instance (e.g., enabled, disabled,
 	// provisioning).
 	// Possible values:
@@ -324,6 +330,8 @@ type pluginInstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+	SourceProjectId *string `pulumi:"sourceProjectId"`
 }
 
 // The set of arguments for constructing a PluginInstance resource.
@@ -361,6 +369,8 @@ type PluginInstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+	SourceProjectId pulumi.StringPtrInput
 }
 
 func (PluginInstanceArgs) ElementType() reflect.Type {
@@ -527,6 +537,11 @@ func (o PluginInstanceOutput) PluginInstanceId() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o PluginInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PluginInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+func (o PluginInstanceOutput) SourceProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PluginInstance) pulumi.StringPtrOutput { return v.SourceProjectId }).(pulumi.StringPtrOutput)
 }
 
 // The current state of the plugin instance (e.g., enabled, disabled,

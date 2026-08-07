@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const opsAgentPolicy = new gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy", {
- *     name: "global-ops-agent-vme-policy-_88722",
+ *     name: "global-ops-agent-vme-policy-_74391",
  *     description: "A basic global VM extension policy",
  *     priority: 10,
  *     extensionPolicies: [{
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const opsAgentPolicy = new gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy", {
- *     name: "global-ops-agent-vme-policy-_39249",
+ *     name: "global-ops-agent-vme-policy-_16511",
  *     description: "A basic global VM extension policy",
  *     priority: 10,
  *     extensionPolicies: [{
@@ -75,7 +75,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const customRollout = new gcp.compute.RolloutPlan("custom_rollout", {
- *     name: "custom-rollout-plan-_16511",
+ *     name: "custom-rollout-plan-_9106",
  *     locationScope: "ZONAL",
  *     waves: [{
  *         displayName: "wave-1",
@@ -100,7 +100,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const opsAgentPolicy = new gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy", {
- *     name: "global-ops-agent-vme-policy-_74391",
+ *     name: "global-ops-agent-vme-policy-_8493",
  *     description: "A global VM extension policy with a custom rollout plan",
  *     priority: 10,
  *     extensionPolicies: [{

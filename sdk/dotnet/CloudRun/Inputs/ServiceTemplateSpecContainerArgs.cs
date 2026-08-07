@@ -121,6 +121,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         public Input<Inputs.ServiceTemplateSpecContainerResourcesArgs>? Resources { get; set; }
 
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        [Input("sandboxLauncher")]
+        public Input<bool>? SandboxLauncher { get; set; }
+
+        /// <summary>
         /// Startup probe of application within the container.
         /// All other probes are disabled if a startup probe is provided, until it
         /// succeeds. Container will not be added to service endpoints if the probe fails.

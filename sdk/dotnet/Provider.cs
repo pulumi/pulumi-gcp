@@ -162,6 +162,9 @@ namespace Pulumi.Gcp
         [Output("cloudSecurityComplianceCustomEndpoint")]
         public Output<string?> CloudSecurityComplianceCustomEndpoint { get; private set; } = null!;
 
+        [Output("cloudSupportCustomEndpoint")]
+        public Output<string?> CloudSupportCustomEndpoint { get; private set; } = null!;
+
         [Output("cloudTasksCustomEndpoint")]
         public Output<string?> CloudTasksCustomEndpoint { get; private set; } = null!;
 
@@ -832,6 +835,9 @@ namespace Pulumi.Gcp
 
         [Input("cloudSecurityComplianceCustomEndpoint")]
         public Input<string>? CloudSecurityComplianceCustomEndpoint { get; set; }
+
+        [Input("cloudSupportCustomEndpoint")]
+        public Input<string>? CloudSupportCustomEndpoint { get; set; }
 
         [Input("cloudTasksCustomEndpoint")]
         public Input<string>? CloudTasksCustomEndpoint { get; set; }

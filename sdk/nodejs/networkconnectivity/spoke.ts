@@ -106,17 +106,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const network = new gcp.compute.Network("network", {
- *     name: "tf-test-network_9873",
+ *     name: "tf-test-network_58845",
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_48153",
+ *     name: "tf-test-subnet_9305",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
  * });
  * const instance = new gcp.compute.Instance("instance", {
- *     name: "tf-test-instance_58845",
+ *     name: "tf-test-instance_48542",
  *     machineType: "e2-medium",
  *     canIpForward: true,
  *     zone: "us-central1-a",
@@ -134,14 +134,14 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
- *     name: "tf-test-hub_9305",
+ *     name: "tf-test-hub_29506",
  *     description: "A sample hub",
  *     labels: {
  *         "label-two": "value-one",
  *     },
  * });
  * const primary = new gcp.networkconnectivity.Spoke("primary", {
- *     name: "tf-test-name_48542",
+ *     name: "tf-test-name_86474",
  *     location: "us-central1",
  *     description: "A sample spoke with a linked routher appliance instance",
  *     labels: {
@@ -401,8 +401,8 @@ import * as utilities from "../utilities";
  *     hub: starHub.id,
  *     autoAccept: {
  *         autoAcceptProjects: [
- *             "foo_29506",
- *             "bar_86474",
+ *             "foo_95761",
+ *             "bar_62744",
  *         ],
  *     },
  * });
@@ -465,7 +465,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
- *     name: "tf-test-subnet_95761",
+ *     name: "tf-test-subnet_91207",
  *     ipCidrRange: "10.0.0.0/28",
  *     region: "us-central1",
  *     network: network.selfLink,
@@ -562,7 +562,6 @@ export class Spoke extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
     /**
-     * (Optional, Beta)
      * This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      */
@@ -739,7 +738,6 @@ export interface SpokeState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * (Optional, Beta)
      * This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      */
@@ -838,7 +836,6 @@ export interface SpokeArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * (Optional, Beta)
      * This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      */

@@ -28020,7 +28020,7 @@ func (o AiReasoningEngineTrafficConfigTrafficSplitManualPtrOutput) Targets() AiR
 type AiReasoningEngineTrafficConfigTrafficSplitManualTarget struct {
 	// Required. Specifies percent of the traffic to this Runtime Revision.
 	Percent int `pulumi:"percent"`
-	// Required. The Runtime Revision name to which to send this portion of traffic.
+	// Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
 	RuntimeRevisionName string `pulumi:"runtimeRevisionName"`
 }
 
@@ -28038,7 +28038,7 @@ type AiReasoningEngineTrafficConfigTrafficSplitManualTargetInput interface {
 type AiReasoningEngineTrafficConfigTrafficSplitManualTargetArgs struct {
 	// Required. Specifies percent of the traffic to this Runtime Revision.
 	Percent pulumi.IntInput `pulumi:"percent"`
-	// Required. The Runtime Revision name to which to send this portion of traffic.
+	// Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
 	RuntimeRevisionName pulumi.StringInput `pulumi:"runtimeRevisionName"`
 }
 
@@ -28098,7 +28098,7 @@ func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) Percent() 
 	return o.ApplyT(func(v AiReasoningEngineTrafficConfigTrafficSplitManualTarget) int { return v.Percent }).(pulumi.IntOutput)
 }
 
-// Required. The Runtime Revision name to which to send this portion of traffic.
+// Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
 func (o AiReasoningEngineTrafficConfigTrafficSplitManualTargetOutput) RuntimeRevisionName() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineTrafficConfigTrafficSplitManualTarget) string { return v.RuntimeRevisionName }).(pulumi.StringOutput)
 }

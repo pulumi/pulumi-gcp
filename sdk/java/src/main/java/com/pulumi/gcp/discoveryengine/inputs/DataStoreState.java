@@ -20,6 +20,31 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
     public static final DataStoreState Empty = new DataStoreState();
 
     /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can&#39;t be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     * 
+     */
+    @Import(name="aclEnabled")
+    private @Nullable Output<Boolean> aclEnabled;
+
+    /**
+     * @return Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can&#39;t be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     * 
+     */
+    public Optional<Output<Boolean>> aclEnabled() {
+        return Optional.ofNullable(this.aclEnabled);
+    }
+
+    /**
      * Configuration data for advance site search.
      * Structure is documented below.
      * 
@@ -320,6 +345,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
     private DataStoreState() {}
 
     private DataStoreState(DataStoreState $) {
+        this.aclEnabled = $.aclEnabled;
         this.advancedSiteSearchConfig = $.advancedSiteSearchConfig;
         this.contentConfig = $.contentConfig;
         this.createAdvancedSiteSearch = $.createAdvancedSiteSearch;
@@ -354,6 +380,37 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DataStoreState defaults) {
             $ = new DataStoreState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aclEnabled Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+         * the source data must have ACL. ACL will be ingested when data is ingested by
+         * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+         * Document can&#39;t be accessed by calling DocumentService.GetDocument or
+         * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+         * industry vertical with non-`PUBLIC_WEBSITE` content config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclEnabled(@Nullable Output<Boolean> aclEnabled) {
+            $.aclEnabled = aclEnabled;
+            return this;
+        }
+
+        /**
+         * @param aclEnabled Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+         * the source data must have ACL. ACL will be ingested when data is ingested by
+         * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+         * Document can&#39;t be accessed by calling DocumentService.GetDocument or
+         * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+         * industry vertical with non-`PUBLIC_WEBSITE` content config.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aclEnabled(Boolean aclEnabled) {
+            return aclEnabled(Output.of(aclEnabled));
         }
 
         /**

@@ -70,6 +70,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly Outputs.ServiceTemplateContainerResources? Resources;
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        public readonly bool? SandboxLauncher;
+        /// <summary>
         /// (Optional, Beta)
         /// Location of the source.
         /// Structure is documented below.
@@ -116,6 +120,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.ServiceTemplateContainerResources? resources,
 
+            bool? sandboxLauncher,
+
             Outputs.ServiceTemplateContainerSourceCode? sourceCode,
 
             Outputs.ServiceTemplateContainerStartupProbe? startupProbe,
@@ -136,6 +142,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Ports = ports;
             ReadinessProbe = readinessProbe;
             Resources = resources;
+            SandboxLauncher = sandboxLauncher;
             SourceCode = sourceCode;
             StartupProbe = startupProbe;
             VolumeMounts = volumeMounts;

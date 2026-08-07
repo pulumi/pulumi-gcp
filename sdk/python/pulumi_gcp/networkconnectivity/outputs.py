@@ -1055,7 +1055,7 @@ class SpokeGateway(dict):
                Possible values are: `CAPACITY_1_GBPS`, `CAPACITY_10_GBPS`, `CAPACITY_100_GBPS`.
         :param Sequence['SpokeGatewayIpRangeReservationArgs'] ip_range_reservations: A list of IP ranges that are reserved for this gateway's internal infrastructure.
                Structure is documented below.
-        :param Sequence[_builtins.str] routers: (Output, Beta)
+        :param Sequence[_builtins.str] routers: (Output)
                Set of Cloud Routers that are attached to this NCC-GW
         """
         pulumi.set(__self__, "capacity", capacity)
@@ -1085,7 +1085,7 @@ class SpokeGateway(dict):
     @pulumi.getter
     def routers(self) -> Optional[Sequence[_builtins.str]]:
         """
-        (Output, Beta)
+        (Output)
         Set of Cloud Routers that are attached to this NCC-GW
         """
         return pulumi.get(self, "routers")

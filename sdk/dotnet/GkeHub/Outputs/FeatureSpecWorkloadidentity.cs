@@ -16,10 +16,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// <summary>
         /// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
         /// </summary>
-        public readonly string ScopeTenancyPool;
+        public readonly string? ScopeTenancyPool;
 
         [OutputConstructor]
-        private FeatureSpecWorkloadidentity(string scopeTenancyPool)
+        private FeatureSpecWorkloadidentity(string? scopeTenancyPool)
         {
             ScopeTenancyPool = scopeTenancyPool;
         }

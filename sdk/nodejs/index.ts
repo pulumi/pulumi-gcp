@@ -77,6 +77,7 @@ import * as cloudrun from "./cloudrun";
 import * as cloudrunv2 from "./cloudrunv2";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudsecuritycompliance from "./cloudsecuritycompliance";
+import * as cloudsupport from "./cloudsupport";
 import * as cloudtasks from "./cloudtasks";
 import * as colab from "./colab";
 import * as composer from "./composer";
@@ -224,6 +225,7 @@ export {
     cloudrunv2,
     cloudscheduler,
     cloudsecuritycompliance,
+    cloudsupport,
     cloudtasks,
     colab,
     composer,

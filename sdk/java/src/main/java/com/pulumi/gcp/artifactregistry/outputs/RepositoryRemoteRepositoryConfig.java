@@ -8,6 +8,7 @@ import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigA
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigCommonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigMavenRepository;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigNoCache;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigNpmRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigPythonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials;
@@ -55,6 +56,11 @@ public final class RepositoryRemoteRepositoryConfig {
      * 
      */
     private @Nullable RepositoryRemoteRepositoryConfigMavenRepository mavenRepository;
+    /**
+     * @return The repository will act as a non-caching proxy (connector mode).
+     * 
+     */
+    private @Nullable RepositoryRemoteRepositoryConfigNoCache noCache;
     /**
      * @return Specific settings for an Npm remote repository.
      * Structure is documented below.
@@ -129,6 +135,13 @@ public final class RepositoryRemoteRepositoryConfig {
         return Optional.ofNullable(this.mavenRepository);
     }
     /**
+     * @return The repository will act as a non-caching proxy (connector mode).
+     * 
+     */
+    public Optional<RepositoryRemoteRepositoryConfigNoCache> noCache() {
+        return Optional.ofNullable(this.noCache);
+    }
+    /**
      * @return Specific settings for an Npm remote repository.
      * Structure is documented below.
      * 
@@ -176,6 +189,7 @@ public final class RepositoryRemoteRepositoryConfig {
         private @Nullable Boolean disableUpstreamValidation;
         private @Nullable RepositoryRemoteRepositoryConfigDockerRepository dockerRepository;
         private @Nullable RepositoryRemoteRepositoryConfigMavenRepository mavenRepository;
+        private @Nullable RepositoryRemoteRepositoryConfigNoCache noCache;
         private @Nullable RepositoryRemoteRepositoryConfigNpmRepository npmRepository;
         private @Nullable RepositoryRemoteRepositoryConfigPythonRepository pythonRepository;
         private @Nullable RepositoryRemoteRepositoryConfigUpstreamCredentials upstreamCredentials;
@@ -189,6 +203,7 @@ public final class RepositoryRemoteRepositoryConfig {
     	      this.disableUpstreamValidation = defaults.disableUpstreamValidation;
     	      this.dockerRepository = defaults.dockerRepository;
     	      this.mavenRepository = defaults.mavenRepository;
+    	      this.noCache = defaults.noCache;
     	      this.npmRepository = defaults.npmRepository;
     	      this.pythonRepository = defaults.pythonRepository;
     	      this.upstreamCredentials = defaults.upstreamCredentials;
@@ -232,6 +247,12 @@ public final class RepositoryRemoteRepositoryConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder noCache(@Nullable RepositoryRemoteRepositoryConfigNoCache noCache) {
+
+            this.noCache = noCache;
+            return this;
+        }
+        @CustomType.Setter
         public Builder npmRepository(@Nullable RepositoryRemoteRepositoryConfigNpmRepository npmRepository) {
 
             this.npmRepository = npmRepository;
@@ -263,6 +284,7 @@ public final class RepositoryRemoteRepositoryConfig {
             _resultValue.disableUpstreamValidation = disableUpstreamValidation;
             _resultValue.dockerRepository = dockerRepository;
             _resultValue.mavenRepository = mavenRepository;
+            _resultValue.noCache = noCache;
             _resultValue.npmRepository = npmRepository;
             _resultValue.pythonRepository = pythonRepository;
             _resultValue.upstreamCredentials = upstreamCredentials;

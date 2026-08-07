@@ -250,6 +250,79 @@ import (
 //	}
 //
 // ```
+// ### Artifact Registry Repository Connector
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example_remote_secret, err := secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
+//				SecretId: pulumi.String("example-secret"),
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example_remote_secretVersion, err := secretmanager.NewSecretVersion(ctx, "example-remote-secret_version", &secretmanager.SecretVersionArgs{
+//				Secret:     example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				SecretData: pulumi.String("remote-password"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = secretmanager.NewSecretIamMember(ctx, "secret-access", &secretmanager.SecretIamMemberArgs{
+//				SecretId: example_remote_secret.ID().ToIDOutput().ToStringOutput(),
+//				Role:     pulumi.String("roles/secretmanager.secretAccessor"),
+//				Member:   pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("my-repository"),
+//				Description:  pulumi.String("example remote docker repository with no cache (connector mode)"),
+//				Format:       pulumi.String("DOCKER"),
+//				Mode:         pulumi.String("REMOTE_REPOSITORY"),
+//				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
+//					Description:               pulumi.String("docker hub connector repository (no cache)"),
+//					DisableUpstreamValidation: pulumi.Bool(true),
+//					DockerRepository: &artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs{
+//						PublicRepository: pulumi.String("DOCKER_HUB"),
+//					},
+//					UpstreamCredentials: &artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{
+//						UsernamePasswordCredentials: &artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{
+//							Username:              pulumi.String("remote-username"),
+//							PasswordSecretVersion: example_remote_secretVersion.Name,
+//						},
+//					},
+//					NoCache: &artifactregistry.RepositoryRemoteRepositoryConfigNoCacheArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Artifact Registry Repository Remote Apt
 //
 // ```go

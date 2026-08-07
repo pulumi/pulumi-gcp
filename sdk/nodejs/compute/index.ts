@@ -1125,6 +1125,11 @@ export type RegionNetworkPolicy = import("./regionNetworkPolicy").RegionNetworkP
 export const RegionNetworkPolicy: typeof import("./regionNetworkPolicy").RegionNetworkPolicy = null as any;
 utilities.lazyLoad(exports, ["RegionNetworkPolicy"], () => require("./regionNetworkPolicy"));
 
+export { RegionNetworkPolicyTrafficClassificationRuleArgs, RegionNetworkPolicyTrafficClassificationRuleState } from "./regionNetworkPolicyTrafficClassificationRule";
+export type RegionNetworkPolicyTrafficClassificationRule = import("./regionNetworkPolicyTrafficClassificationRule").RegionNetworkPolicyTrafficClassificationRule;
+export const RegionNetworkPolicyTrafficClassificationRule: typeof import("./regionNetworkPolicyTrafficClassificationRule").RegionNetworkPolicyTrafficClassificationRule = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkPolicyTrafficClassificationRule"], () => require("./regionNetworkPolicyTrafficClassificationRule"));
+
 export { RegionPerInstanceConfigArgs, RegionPerInstanceConfigState } from "./regionPerInstanceConfig";
 export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").RegionPerInstanceConfig;
 export const RegionPerInstanceConfig: typeof import("./regionPerInstanceConfig").RegionPerInstanceConfig = null as any;
@@ -1695,6 +1700,8 @@ const _module = {
                 return new RegionNetworkFirewallPolicyWithRules(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy":
                 return new RegionNetworkPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule":
+                return new RegionNetworkPolicyTrafficClassificationRule(name, <any>undefined, { urn })
             case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/regionResizeRequest:RegionResizeRequest":
@@ -1952,6 +1959,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolic
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkPolicyTrafficClassificationRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionResizeRequest", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicy", _module)

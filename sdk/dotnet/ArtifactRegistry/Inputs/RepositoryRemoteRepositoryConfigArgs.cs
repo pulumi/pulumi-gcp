@@ -54,6 +54,12 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public Input<Inputs.RepositoryRemoteRepositoryConfigMavenRepositoryArgs>? MavenRepository { get; set; }
 
         /// <summary>
+        /// The repository will act as a non-caching proxy (connector mode).
+        /// </summary>
+        [Input("noCache")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigNoCacheArgs>? NoCache { get; set; }
+
+        /// <summary>
         /// Specific settings for an Npm remote repository.
         /// Structure is documented below.
         /// </summary>

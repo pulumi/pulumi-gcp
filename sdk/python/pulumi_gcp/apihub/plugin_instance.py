@@ -29,7 +29,8 @@ class PluginInstanceArgs:
                  auth_config: pulumi.Input[Optional['PluginInstanceAuthConfigArgs']] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_project_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PluginInstance resource.
 
@@ -57,6 +58,7 @@ class PluginInstanceArgs:
         :param pulumi.Input[_builtins.bool] disable: The display name for this plugin instance. Max length is 255 characters.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] source_project_id: Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
@@ -72,6 +74,8 @@ class PluginInstanceArgs:
             pulumi.set(__self__, "disable", disable)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source_project_id is not None:
+            pulumi.set(__self__, "source_project_id", source_project_id)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -196,6 +200,18 @@ class PluginInstanceArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="sourceProjectId")
+    def source_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+        """
+        return pulumi.get(self, "source_project_id")
+
+    @source_project_id.setter
+    def source_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_project_id", value)
+
 
 @pulumi.input_type
 class _PluginInstanceState:
@@ -212,6 +228,7 @@ class _PluginInstanceState:
                  plugin: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -248,6 +265,7 @@ class _PluginInstanceState:
                  are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] source_project_id: Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
         :param pulumi.Input[_builtins.str] state: The current state of the plugin instance (e.g., enabled, disabled,
                provisioning).
                Possible values:
@@ -284,6 +302,8 @@ class _PluginInstanceState:
             pulumi.set(__self__, "plugin_instance_id", plugin_instance_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source_project_id is not None:
+            pulumi.set(__self__, "source_project_id", source_project_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if update_time is not None:
@@ -453,6 +473,18 @@ class _PluginInstanceState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="sourceProjectId")
+    def source_project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+        """
+        return pulumi.get(self, "source_project_id")
+
+    @source_project_id.setter
+    def source_project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "source_project_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -501,6 +533,7 @@ class PluginInstance(pulumi.CustomResource):
                  plugin: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Description
@@ -567,6 +600,7 @@ class PluginInstance(pulumi.CustomResource):
                  are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] source_project_id: Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
         """
         ...
     @overload
@@ -637,6 +671,7 @@ class PluginInstance(pulumi.CustomResource):
                  plugin: pulumi.Input[Optional[_builtins.str]] = None,
                  plugin_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -663,6 +698,7 @@ class PluginInstance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'plugin_instance_id'")
             __props__.__dict__["plugin_instance_id"] = plugin_instance_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["source_project_id"] = source_project_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error_message"] = None
             __props__.__dict__["name"] = None
@@ -690,6 +726,7 @@ class PluginInstance(pulumi.CustomResource):
             plugin: pulumi.Input[Optional[_builtins.str]] = None,
             plugin_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            source_project_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'PluginInstance':
         """
@@ -730,6 +767,7 @@ class PluginInstance(pulumi.CustomResource):
                  are /a-z[0-9]-_/.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[_builtins.str] source_project_id: Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
         :param pulumi.Input[_builtins.str] state: The current state of the plugin instance (e.g., enabled, disabled,
                provisioning).
                Possible values:
@@ -758,6 +796,7 @@ class PluginInstance(pulumi.CustomResource):
         __props__.__dict__["plugin"] = plugin
         __props__.__dict__["plugin_instance_id"] = plugin_instance_id
         __props__.__dict__["project"] = project
+        __props__.__dict__["source_project_id"] = source_project_id
         __props__.__dict__["state"] = state
         __props__.__dict__["update_time"] = update_time
         return PluginInstance(resource_name, opts=opts, __props__=__props__)
@@ -876,6 +915,14 @@ class PluginInstance(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceProjectId")
+    def source_project_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+        """
+        return pulumi.get(self, "source_project_id")
 
     @_builtins.property
     @pulumi.getter

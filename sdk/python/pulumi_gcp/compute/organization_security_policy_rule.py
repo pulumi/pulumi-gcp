@@ -639,7 +639,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_75223",
+            short_name="tf-test_75092",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -660,7 +660,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_41819",
+            short_name="tf-test_2605",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -681,7 +681,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_75092",
+            short_name="tf-test_34535",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -724,7 +724,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_2605",
+            short_name="tf-test_22375",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -757,7 +757,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_34535",
+            short_name="tf-test_29439",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -894,7 +894,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_75223",
+            short_name="tf-test_75092",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -915,7 +915,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_41819",
+            short_name="tf-test_2605",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -936,7 +936,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_75092",
+            short_name="tf-test_34535",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -979,7 +979,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_2605",
+            short_name="tf-test_22375",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",
@@ -1012,7 +1012,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         policy = gcp.compute.OrganizationSecurityPolicy("policy",
-            short_name="tf-test_34535",
+            short_name="tf-test_29439",
             parent="organizations/123456789",
             type="CLOUD_ARMOR")
         policy_organization_security_policy_rule = gcp.compute.OrganizationSecurityPolicyRule("policy",

@@ -433,7 +433,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-            name="global-ops-agent-vme-policy-_88722",
+            name="global-ops-agent-vme-policy-_74391",
             description="A basic global VM extension policy",
             priority=10,
             extension_policies=[{
@@ -460,7 +460,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-            name="global-ops-agent-vme-policy-_39249",
+            name="global-ops-agent-vme-policy-_16511",
             description="A basic global VM extension policy",
             priority=10,
             extension_policies=[{
@@ -488,7 +488,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         custom_rollout = gcp.compute.RolloutPlan("custom_rollout",
-            name="custom-rollout-plan-_16511",
+            name="custom-rollout-plan-_9106",
             location_scope="ZONAL",
             waves=[{
                 "display_name": "wave-1",
@@ -512,7 +512,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                 },
             }])
         ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-            name="global-ops-agent-vme-policy-_74391",
+            name="global-ops-agent-vme-policy-_8493",
             description="A global VM extension policy with a custom rollout plan",
             priority=10,
             extension_policies=[{
@@ -588,7 +588,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-            name="global-ops-agent-vme-policy-_88722",
+            name="global-ops-agent-vme-policy-_74391",
             description="A basic global VM extension policy",
             priority=10,
             extension_policies=[{
@@ -615,7 +615,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-            name="global-ops-agent-vme-policy-_39249",
+            name="global-ops-agent-vme-policy-_16511",
             description="A basic global VM extension policy",
             priority=10,
             extension_policies=[{
@@ -643,7 +643,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         custom_rollout = gcp.compute.RolloutPlan("custom_rollout",
-            name="custom-rollout-plan-_16511",
+            name="custom-rollout-plan-_9106",
             location_scope="ZONAL",
             waves=[{
                 "display_name": "wave-1",
@@ -667,7 +667,7 @@ class GlobalVmExtensionPolicy(pulumi.CustomResource):
                 },
             }])
         ops_agent_policy = gcp.compute.GlobalVmExtensionPolicy("ops_agent_policy",
-            name="global-ops-agent-vme-policy-_74391",
+            name="global-ops-agent-vme-policy-_8493",
             description="A global VM extension policy with a custom rollout plan",
             priority=10,
             extension_policies=[{

@@ -27,7 +27,10 @@ class GetDataStoreResult:
     """
     A collection of values returned by getDataStore.
     """
-    def __init__(__self__, advanced_site_search_configs=None, content_config=None, create_advanced_site_search=None, create_time=None, data_store_id=None, default_schema_id=None, deletion_policy=None, display_name=None, document_processing_configs=None, id=None, industry_vertical=None, kms_key_name=None, location=None, name=None, project=None, skip_default_schema_creation=None, solution_types=None):
+    def __init__(__self__, acl_enabled=None, advanced_site_search_configs=None, content_config=None, create_advanced_site_search=None, create_time=None, data_store_id=None, default_schema_id=None, deletion_policy=None, display_name=None, document_processing_configs=None, id=None, industry_vertical=None, kms_key_name=None, location=None, name=None, project=None, skip_default_schema_creation=None, solution_types=None):
+        if acl_enabled and not isinstance(acl_enabled, bool):
+            raise TypeError("Expected argument 'acl_enabled' to be a bool")
+        pulumi.set(__self__, "acl_enabled", acl_enabled)
         if advanced_site_search_configs and not isinstance(advanced_site_search_configs, list):
             raise TypeError("Expected argument 'advanced_site_search_configs' to be a list")
         pulumi.set(__self__, "advanced_site_search_configs", advanced_site_search_configs)
@@ -79,6 +82,11 @@ class GetDataStoreResult:
         if solution_types and not isinstance(solution_types, list):
             raise TypeError("Expected argument 'solution_types' to be a list")
         pulumi.set(__self__, "solution_types", solution_types)
+
+    @_builtins.property
+    @pulumi.getter(name="aclEnabled")
+    def acl_enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "acl_enabled")
 
     @_builtins.property
     @pulumi.getter(name="advancedSiteSearchConfigs")
@@ -175,6 +183,7 @@ class AwaitableGetDataStoreResult(GetDataStoreResult):
         if False:
             yield self
         return GetDataStoreResult(
+            acl_enabled=self.acl_enabled,
             advanced_site_search_configs=self.advanced_site_search_configs,
             content_config=self.content_config,
             create_advanced_site_search=self.create_advanced_site_search,
@@ -239,6 +248,7 @@ def get_data_store(data_store_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:discoveryengine/getDataStore:getDataStore', __args__, opts=opts, typ=GetDataStoreResult).value
 
     return AwaitableGetDataStoreResult(
+        acl_enabled=pulumi.get(__ret__, 'acl_enabled'),
         advanced_site_search_configs=pulumi.get(__ret__, 'advanced_site_search_configs'),
         content_config=pulumi.get(__ret__, 'content_config'),
         create_advanced_site_search=pulumi.get(__ret__, 'create_advanced_site_search'),
@@ -300,6 +310,7 @@ def get_data_store_output(data_store_id: pulumi.Input[Optional[Optional[_builtin
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:discoveryengine/getDataStore:getDataStore', __args__, opts=opts, typ=GetDataStoreResult)
     return __ret__.apply(lambda __response__: GetDataStoreResult(
+        acl_enabled=pulumi.get(__response__, 'acl_enabled'),
         advanced_site_search_configs=pulumi.get(__response__, 'advanced_site_search_configs'),
         content_config=pulumi.get(__response__, 'content_config'),
         create_advanced_site_search=pulumi.get(__response__, 'create_advanced_site_search'),

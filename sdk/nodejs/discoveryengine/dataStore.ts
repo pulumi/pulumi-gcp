@@ -148,6 +148,15 @@ export class DataStore extends pulumi.CustomResource {
     }
 
     /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can't be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     */
+    declare public readonly aclEnabled: pulumi.Output<boolean | undefined>;
+    /**
      * Configuration data for advance site search.
      * Structure is documented below.
      */
@@ -254,6 +263,7 @@ export class DataStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataStoreState | undefined;
+            resourceInputs["aclEnabled"] = state?.aclEnabled;
             resourceInputs["advancedSiteSearchConfig"] = state?.advancedSiteSearchConfig;
             resourceInputs["contentConfig"] = state?.contentConfig;
             resourceInputs["createAdvancedSiteSearch"] = state?.createAdvancedSiteSearch;
@@ -284,6 +294,7 @@ export class DataStore extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["aclEnabled"] = args?.aclEnabled;
             resourceInputs["advancedSiteSearchConfig"] = args?.advancedSiteSearchConfig;
             resourceInputs["contentConfig"] = args?.contentConfig;
             resourceInputs["createAdvancedSiteSearch"] = args?.createAdvancedSiteSearch;
@@ -310,6 +321,15 @@ export class DataStore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DataStore resources.
  */
 export interface DataStoreState {
+    /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can't be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     */
+    aclEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration data for advance site search.
      * Structure is documented below.
@@ -409,6 +429,15 @@ export interface DataStoreState {
  * The set of arguments for constructing a DataStore resource.
  */
 export interface DataStoreArgs {
+    /**
+     * Immutable. Whether data in the DataStore has ACL information. If set to `true`,
+     * the source data must have ACL. ACL will be ingested when data is ingested by
+     * DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+     * Document can't be accessed by calling DocumentService.GetDocument or
+     * DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+     * industry vertical with non-`PUBLIC_WEBSITE` content config.
+     */
+    aclEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Configuration data for advance site search.
      * Structure is documented below.
