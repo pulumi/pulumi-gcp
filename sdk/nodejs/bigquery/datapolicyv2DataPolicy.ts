@@ -135,6 +135,11 @@ export class Datapolicyv2DataPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     */
+    declare public readonly dataGovernanceTag: pulumi.Output<outputs.bigquery.Datapolicyv2DataPolicyDataGovernanceTag | undefined>;
+    /**
      * The policy used to specify data masking rule.
      * Structure is documented below.
      */
@@ -221,6 +226,7 @@ export class Datapolicyv2DataPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as Datapolicyv2DataPolicyState | undefined;
+            resourceInputs["dataGovernanceTag"] = state?.dataGovernanceTag;
             resourceInputs["dataMaskingPolicy"] = state?.dataMaskingPolicy;
             resourceInputs["dataPolicyId"] = state?.dataPolicyId;
             resourceInputs["dataPolicyType"] = state?.dataPolicyType;
@@ -243,6 +249,7 @@ export class Datapolicyv2DataPolicy extends pulumi.CustomResource {
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["dataGovernanceTag"] = args?.dataGovernanceTag;
             resourceInputs["dataMaskingPolicy"] = args?.dataMaskingPolicy;
             resourceInputs["dataPolicyId"] = args?.dataPolicyId;
             resourceInputs["dataPolicyType"] = args?.dataPolicyType;
@@ -264,6 +271,11 @@ export class Datapolicyv2DataPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Datapolicyv2DataPolicy resources.
  */
 export interface Datapolicyv2DataPolicyState {
+    /**
+     * Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     */
+    dataGovernanceTag?: pulumi.Input<inputs.bigquery.Datapolicyv2DataPolicyDataGovernanceTag | undefined>;
     /**
      * The policy used to specify data masking rule.
      * Structure is documented below.
@@ -343,6 +355,11 @@ export interface Datapolicyv2DataPolicyState {
  * The set of arguments for constructing a Datapolicyv2DataPolicy resource.
  */
 export interface Datapolicyv2DataPolicyArgs {
+    /**
+     * Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     */
+    dataGovernanceTag?: pulumi.Input<inputs.bigquery.Datapolicyv2DataPolicyDataGovernanceTag | undefined>;
     /**
      * The policy used to specify data masking rule.
      * Structure is documented below.

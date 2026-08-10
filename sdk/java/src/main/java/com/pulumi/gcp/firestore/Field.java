@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Fields are grouped by their &#34;Collection Group&#34;, which represent all collections
  * in the database with the same id.
  * 
+ * In Standard edition databases, single field indexes are managed using the `gcp.firestore.Field` resource. In Enterprise edition databases, they are managed using the `gcp.firestore.Index` resource.
+ * 
  * To get more information about Field, see:
  * 
  * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
@@ -75,7 +77,7 @@ import javax.annotation.Nullable;
  *         var basic = new Field("basic", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__35762")
+ *             .collection("chatrooms__79580")
  *             .field("basic")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -339,7 +341,7 @@ import javax.annotation.Nullable;
  *         var matchOverride = new Field("matchOverride", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__24469")
+ *             .collection("chatrooms__98863")
  *             .field("field_with_same_configuration_as_ancestor")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -399,7 +401,7 @@ import javax.annotation.Nullable;
  *         var wildcard = new Field("wildcard", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__79580")
+ *             .collection("chatrooms__64134")
  *             .field("*")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -457,7 +459,7 @@ import javax.annotation.Nullable;
  *         var skipWait = new Field("skipWait", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__98863")
+ *             .collection("chatrooms__67762")
  *             .field("skip_wait")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                

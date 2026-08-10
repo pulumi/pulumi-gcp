@@ -115,6 +115,8 @@ cloudSchedulerCustomEndpoint: Optional[str]
 
 cloudSecurityComplianceCustomEndpoint: Optional[str]
 
+cloudSupportCustomEndpoint: Optional[str]
+
 cloudTasksCustomEndpoint: Optional[str]
 
 cloudbuildv2CustomEndpoint: Optional[str]

@@ -807,6 +807,33 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// });
     /// ```
+    /// ### Vertex Ai Reasoning Engine Traffic Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
+    ///     {
+    ///         DisplayName = "re-traffic-cfg",
+    ///         Description = "Reasoning engine with traffic config",
+    ///         Region = "us-central1",
+    ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
+    ///         {
+    ///             AgentFramework = "langchain",
+    ///         },
+    ///         TrafficConfig = new Gcp.Vertex.Inputs.AiReasoningEngineTrafficConfigArgs
+    ///         {
+    ///             TrafficSplitAlwaysLatest = null,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -931,6 +958,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// (Optional, Beta)
         /// Optional. Traffic distribution configuration for the Reasoning Engine.
+        /// &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `TrafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
         /// Structure is documented below.
         /// </summary>
         [Output("trafficConfig")]
@@ -1082,6 +1110,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// (Optional, Beta)
         /// Optional. Traffic distribution configuration for the Reasoning Engine.
+        /// &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `TrafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
         /// Structure is documented below.
         /// </summary>
         [Input("trafficConfig")]
@@ -1223,6 +1252,7 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// (Optional, Beta)
         /// Optional. Traffic distribution configuration for the Reasoning Engine.
+        /// &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `TrafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
         /// Structure is documented below.
         /// </summary>
         [Input("trafficConfig")]

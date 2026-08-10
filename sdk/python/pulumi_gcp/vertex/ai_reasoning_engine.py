@@ -63,6 +63,7 @@ class AiReasoningEngineArgs:
                Structure is documented below.
         :param pulumi.Input['AiReasoningEngineTrafficConfigArgs'] traffic_config: (Optional, Beta)
                Optional. Traffic distribution configuration for the Reasoning Engine.
+               > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
                Structure is documented below.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -217,6 +218,7 @@ class AiReasoningEngineArgs:
         """
         (Optional, Beta)
         Optional. Traffic distribution configuration for the Reasoning Engine.
+        > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
         Structure is documented below.
         """
         return pulumi.get(self, "traffic_config")
@@ -284,6 +286,7 @@ class _AiReasoningEngineState:
                Structure is documented below.
         :param pulumi.Input['AiReasoningEngineTrafficConfigArgs'] traffic_config: (Optional, Beta)
                Optional. Traffic distribution configuration for the Reasoning Engine.
+               > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
                format, with nanosecond resolution and up to nine fractional digits.
@@ -506,6 +509,7 @@ class _AiReasoningEngineState:
         """
         (Optional, Beta)
         Optional. Traffic distribution configuration for the Reasoning Engine.
+        > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
         Structure is documented below.
         """
         return pulumi.get(self, "traffic_config")
@@ -1063,6 +1067,23 @@ class AiReasoningEngine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Vertex Ai Reasoning Engine Traffic Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="re-traffic-cfg",
+            description="Reasoning engine with traffic config",
+            region="us-central1",
+            spec={
+                "agent_framework": "langchain",
+            },
+            traffic_config={
+                "traffic_split_always_latest": {},
+            })
+        ```
 
         ## Import
 
@@ -1114,6 +1135,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']] traffic_config: (Optional, Beta)
                Optional. Traffic distribution configuration for the Reasoning Engine.
+               > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
                Structure is documented below.
         """
         ...
@@ -1627,6 +1649,23 @@ class AiReasoningEngine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Vertex Ai Reasoning Engine Traffic Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
+            display_name="re-traffic-cfg",
+            description="Reasoning engine with traffic config",
+            region="us-central1",
+            spec={
+                "agent_framework": "langchain",
+            },
+            traffic_config={
+                "traffic_split_always_latest": {},
+            })
+        ```
 
         ## Import
 
@@ -1770,6 +1809,7 @@ class AiReasoningEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['AiReasoningEngineTrafficConfigArgs', 'AiReasoningEngineTrafficConfigArgsDict']] traffic_config: (Optional, Beta)
                Optional. Traffic distribution configuration for the Reasoning Engine.
+               > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] update_time: The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
                format, with nanosecond resolution and up to nine fractional digits.
@@ -1929,6 +1969,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         """
         (Optional, Beta)
         Optional. Traffic distribution configuration for the Reasoning Engine.
+        > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `traffic_split_always_latest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
         Structure is documented below.
         """
         return pulumi.get(self, "traffic_config")

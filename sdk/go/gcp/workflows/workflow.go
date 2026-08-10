@@ -259,6 +259,7 @@ type Workflow struct {
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
+	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
 	SourceContents pulumi.StringPtrOutput `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -369,6 +370,7 @@ type workflowState struct {
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
+	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
 	SourceContents *string `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State *string `pulumi:"state"`
@@ -445,6 +447,7 @@ type WorkflowState struct {
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
+	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
 	SourceContents pulumi.StringPtrInput
 	// State of the workflow deployment.
 	State pulumi.StringPtrInput
@@ -516,6 +519,7 @@ type workflowArgs struct {
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
+	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
 	SourceContents *string `pulumi:"sourceContents"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition
 	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
@@ -580,6 +584,7 @@ type WorkflowArgs struct {
 	// Modifying this field for an existing workflow results in a new workflow revision.
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
+	// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
 	SourceContents pulumi.StringPtrInput
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition
 	// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
@@ -787,6 +792,7 @@ func (o WorkflowOutput) ServiceAccount() pulumi.StringOutput {
 }
 
 // Workflow code to be executed. The size limit is 128KB.
+// > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
 func (o WorkflowOutput) SourceContents() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.SourceContents }).(pulumi.StringPtrOutput)
 }

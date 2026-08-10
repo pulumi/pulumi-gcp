@@ -5953,10 +5953,6 @@ class CertificateConfigSubjectConfigSubjectArgsDict(TypedDict):
     """
     The common name of the distinguished name.
     """
-    organization: pulumi.Input[_builtins.str]
-    """
-    The organization of the subject.
-    """
     country_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The country code of the subject.
@@ -5964,6 +5960,10 @@ class CertificateConfigSubjectConfigSubjectArgsDict(TypedDict):
     locality: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The locality or city of the subject.
+    """
+    organization: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The organization of the subject.
     """
     organizational_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5986,29 +5986,30 @@ class CertificateConfigSubjectConfigSubjectArgsDict(TypedDict):
 class CertificateConfigSubjectConfigSubjectArgs:
     def __init__(__self__, *,
                  common_name: pulumi.Input[_builtins.str],
-                 organization: pulumi.Input[_builtins.str],
                  country_code: pulumi.Input[Optional[_builtins.str]] = None,
                  locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
                  organizational_unit: pulumi.Input[Optional[_builtins.str]] = None,
                  postal_code: pulumi.Input[Optional[_builtins.str]] = None,
                  province: pulumi.Input[Optional[_builtins.str]] = None,
                  street_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] common_name: The common name of the distinguished name.
-        :param pulumi.Input[_builtins.str] organization: The organization of the subject.
         :param pulumi.Input[_builtins.str] country_code: The country code of the subject.
         :param pulumi.Input[_builtins.str] locality: The locality or city of the subject.
+        :param pulumi.Input[_builtins.str] organization: The organization of the subject.
         :param pulumi.Input[_builtins.str] organizational_unit: The organizational unit of the subject.
         :param pulumi.Input[_builtins.str] postal_code: The postal code of the subject.
         :param pulumi.Input[_builtins.str] province: The province, territory, or regional state of the subject.
         :param pulumi.Input[_builtins.str] street_address: The street address of the subject.
         """
         pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "organization", organization)
         if country_code is not None:
             pulumi.set(__self__, "country_code", country_code)
         if locality is not None:
             pulumi.set(__self__, "locality", locality)
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
         if organizational_unit is not None:
             pulumi.set(__self__, "organizational_unit", organizational_unit)
         if postal_code is not None:
@@ -6029,18 +6030,6 @@ class CertificateConfigSubjectConfigSubjectArgs:
     @common_name.setter
     def common_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "common_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def organization(self) -> pulumi.Input[_builtins.str]:
-        """
-        The organization of the subject.
-        """
-        return pulumi.get(self, "organization")
-
-    @organization.setter
-    def organization(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
@@ -6065,6 +6054,18 @@ class CertificateConfigSubjectConfigSubjectArgs:
     @locality.setter
     def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The organization of the subject.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationalUnit")

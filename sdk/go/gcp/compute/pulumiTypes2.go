@@ -13,6 +13,471 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetBackendServiceStrongSessionAffinityCookyTtl struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetBackendServiceStrongSessionAffinityCookyTtlInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyTtlArgs and GetBackendServiceStrongSessionAffinityCookyTtlOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyTtlInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyTtlArgs{...}
+type GetBackendServiceStrongSessionAffinityCookyTtlInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput
+	ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyTtlOutput)
+}
+
+// GetBackendServiceStrongSessionAffinityCookyTtlArrayInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyTtlArray and GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyTtlArrayInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyTtlArray{ GetBackendServiceStrongSessionAffinityCookyTtlArgs{...} }
+type GetBackendServiceStrongSessionAffinityCookyTtlArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput
+	ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlArray []GetBackendServiceStrongSessionAffinityCookyTtlInput
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArray) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArray) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) Index(i pulumi.IntInput) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceStrongSessionAffinityCookyTtl {
+		return vs[0].([]GetBackendServiceStrongSessionAffinityCookyTtl)[vs[1].(int)]
+	}).(GetBackendServiceStrongSessionAffinityCookyTtlOutput)
+}
+
+type GetBackendServiceTlsSetting struct {
+	// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+	// Can only be specified if authenticationMode is not NONE.
+	AuthenticationConfig string `pulumi:"authenticationConfig"`
+	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+	// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+	Sni string `pulumi:"sni"`
+	// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+	// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+	// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+	// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+	// subjectAltNames.
+	SubjectAltNames []GetBackendServiceTlsSettingSubjectAltName `pulumi:"subjectAltNames"`
+}
+
+// GetBackendServiceTlsSettingInput is an input type that accepts GetBackendServiceTlsSettingArgs and GetBackendServiceTlsSettingOutput values.
+// You can construct a concrete instance of `GetBackendServiceTlsSettingInput` via:
+//
+//	GetBackendServiceTlsSettingArgs{...}
+type GetBackendServiceTlsSettingInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceTlsSettingOutput() GetBackendServiceTlsSettingOutput
+	ToGetBackendServiceTlsSettingOutputWithContext(context.Context) GetBackendServiceTlsSettingOutput
+}
+
+type GetBackendServiceTlsSettingArgs struct {
+	// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+	// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+	// Can only be specified if authenticationMode is not NONE.
+	AuthenticationConfig pulumi.StringInput `pulumi:"authenticationConfig"`
+	// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+	// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+	// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+	// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+	Sni pulumi.StringInput `pulumi:"sni"`
+	// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+	// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+	// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+	// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+	// subjectAltNames.
+	SubjectAltNames GetBackendServiceTlsSettingSubjectAltNameArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (GetBackendServiceTlsSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (i GetBackendServiceTlsSettingArgs) ToGetBackendServiceTlsSettingOutput() GetBackendServiceTlsSettingOutput {
+	return i.ToGetBackendServiceTlsSettingOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceTlsSettingArgs) ToGetBackendServiceTlsSettingOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingOutput)
+}
+
+// GetBackendServiceTlsSettingArrayInput is an input type that accepts GetBackendServiceTlsSettingArray and GetBackendServiceTlsSettingArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceTlsSettingArrayInput` via:
+//
+//	GetBackendServiceTlsSettingArray{ GetBackendServiceTlsSettingArgs{...} }
+type GetBackendServiceTlsSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceTlsSettingArrayOutput() GetBackendServiceTlsSettingArrayOutput
+	ToGetBackendServiceTlsSettingArrayOutputWithContext(context.Context) GetBackendServiceTlsSettingArrayOutput
+}
+
+type GetBackendServiceTlsSettingArray []GetBackendServiceTlsSettingInput
+
+func (GetBackendServiceTlsSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (i GetBackendServiceTlsSettingArray) ToGetBackendServiceTlsSettingArrayOutput() GetBackendServiceTlsSettingArrayOutput {
+	return i.ToGetBackendServiceTlsSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceTlsSettingArray) ToGetBackendServiceTlsSettingArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingArrayOutput)
+}
+
+type GetBackendServiceTlsSettingOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceTlsSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (o GetBackendServiceTlsSettingOutput) ToGetBackendServiceTlsSettingOutput() GetBackendServiceTlsSettingOutput {
+	return o
+}
+
+func (o GetBackendServiceTlsSettingOutput) ToGetBackendServiceTlsSettingOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingOutput {
+	return o
+}
+
+// Reference to the BackendAuthenticationConfig resource from the networksecurity.googleapis.com namespace.
+// Can be used in authenticating TLS connections to the backend, as specified by the authenticationMode field.
+// Can only be specified if authenticationMode is not NONE.
+func (o GetBackendServiceTlsSettingOutput) AuthenticationConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceTlsSetting) string { return v.AuthenticationConfig }).(pulumi.StringOutput)
+}
+
+// Server Name Indication - see RFC3546 section 3.1. If set, the load balancer sends this string as the SNI hostname in the
+// TLS connection to the backend, and requires that this string match a Subject Alternative Name (SAN) in the backend's
+// server certificate. With a Regional Internet NEG backend, if the SNI is specified here, the load balancer uses it
+// regardless of whether the Regional Internet NEG is specified with FQDN or IP address and port.
+func (o GetBackendServiceTlsSettingOutput) Sni() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceTlsSetting) string { return v.Sni }).(pulumi.StringOutput)
+}
+
+// A list of Subject Alternative Names (SANs) that the Load Balancer verifies during a TLS handshake with the backend.
+// When the server presents its X.509 certificate to the Load Balancer, the Load Balancer inspects the certificate's SAN field,
+// and requires that at least one SAN match one of the subjectAltNames in the list. This field is limited to 5 entries.
+// When both sni and subjectAltNames are specified, the load balancer matches the backend certificate's SAN only to
+// subjectAltNames.
+func (o GetBackendServiceTlsSettingOutput) SubjectAltNames() GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceTlsSetting) []GetBackendServiceTlsSettingSubjectAltName {
+		return v.SubjectAltNames
+	}).(GetBackendServiceTlsSettingSubjectAltNameArrayOutput)
+}
+
+type GetBackendServiceTlsSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceTlsSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceTlsSetting)(nil)).Elem()
+}
+
+func (o GetBackendServiceTlsSettingArrayOutput) ToGetBackendServiceTlsSettingArrayOutput() GetBackendServiceTlsSettingArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceTlsSettingArrayOutput) ToGetBackendServiceTlsSettingArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceTlsSettingArrayOutput) Index(i pulumi.IntInput) GetBackendServiceTlsSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceTlsSetting {
+		return vs[0].([]GetBackendServiceTlsSetting)[vs[1].(int)]
+	}).(GetBackendServiceTlsSettingOutput)
+}
+
+type GetBackendServiceTlsSettingSubjectAltName struct {
+	// The SAN specified as a DNS Name.
+	DnsName string `pulumi:"dnsName"`
+	// The SAN specified as a URI.
+	UniformResourceIdentifier string `pulumi:"uniformResourceIdentifier"`
+}
+
+// GetBackendServiceTlsSettingSubjectAltNameInput is an input type that accepts GetBackendServiceTlsSettingSubjectAltNameArgs and GetBackendServiceTlsSettingSubjectAltNameOutput values.
+// You can construct a concrete instance of `GetBackendServiceTlsSettingSubjectAltNameInput` via:
+//
+//	GetBackendServiceTlsSettingSubjectAltNameArgs{...}
+type GetBackendServiceTlsSettingSubjectAltNameInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceTlsSettingSubjectAltNameOutput() GetBackendServiceTlsSettingSubjectAltNameOutput
+	ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(context.Context) GetBackendServiceTlsSettingSubjectAltNameOutput
+}
+
+type GetBackendServiceTlsSettingSubjectAltNameArgs struct {
+	// The SAN specified as a DNS Name.
+	DnsName pulumi.StringInput `pulumi:"dnsName"`
+	// The SAN specified as a URI.
+	UniformResourceIdentifier pulumi.StringInput `pulumi:"uniformResourceIdentifier"`
+}
+
+func (GetBackendServiceTlsSettingSubjectAltNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (i GetBackendServiceTlsSettingSubjectAltNameArgs) ToGetBackendServiceTlsSettingSubjectAltNameOutput() GetBackendServiceTlsSettingSubjectAltNameOutput {
+	return i.ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceTlsSettingSubjectAltNameArgs) ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingSubjectAltNameOutput)
+}
+
+// GetBackendServiceTlsSettingSubjectAltNameArrayInput is an input type that accepts GetBackendServiceTlsSettingSubjectAltNameArray and GetBackendServiceTlsSettingSubjectAltNameArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceTlsSettingSubjectAltNameArrayInput` via:
+//
+//	GetBackendServiceTlsSettingSubjectAltNameArray{ GetBackendServiceTlsSettingSubjectAltNameArgs{...} }
+type GetBackendServiceTlsSettingSubjectAltNameArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceTlsSettingSubjectAltNameArrayOutput() GetBackendServiceTlsSettingSubjectAltNameArrayOutput
+	ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(context.Context) GetBackendServiceTlsSettingSubjectAltNameArrayOutput
+}
+
+type GetBackendServiceTlsSettingSubjectAltNameArray []GetBackendServiceTlsSettingSubjectAltNameInput
+
+func (GetBackendServiceTlsSettingSubjectAltNameArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (i GetBackendServiceTlsSettingSubjectAltNameArray) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutput() GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return i.ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceTlsSettingSubjectAltNameArray) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceTlsSettingSubjectAltNameArrayOutput)
+}
+
+type GetBackendServiceTlsSettingSubjectAltNameOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceTlsSettingSubjectAltNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (o GetBackendServiceTlsSettingSubjectAltNameOutput) ToGetBackendServiceTlsSettingSubjectAltNameOutput() GetBackendServiceTlsSettingSubjectAltNameOutput {
+	return o
+}
+
+func (o GetBackendServiceTlsSettingSubjectAltNameOutput) ToGetBackendServiceTlsSettingSubjectAltNameOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameOutput {
+	return o
+}
+
+// The SAN specified as a DNS Name.
+func (o GetBackendServiceTlsSettingSubjectAltNameOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceTlsSettingSubjectAltName) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// The SAN specified as a URI.
+func (o GetBackendServiceTlsSettingSubjectAltNameOutput) UniformResourceIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceTlsSettingSubjectAltName) string { return v.UniformResourceIdentifier }).(pulumi.StringOutput)
+}
+
+type GetBackendServiceTlsSettingSubjectAltNameArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceTlsSettingSubjectAltNameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceTlsSettingSubjectAltName)(nil)).Elem()
+}
+
+func (o GetBackendServiceTlsSettingSubjectAltNameArrayOutput) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutput() GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceTlsSettingSubjectAltNameArrayOutput) ToGetBackendServiceTlsSettingSubjectAltNameArrayOutputWithContext(ctx context.Context) GetBackendServiceTlsSettingSubjectAltNameArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceTlsSettingSubjectAltNameArrayOutput) Index(i pulumi.IntInput) GetBackendServiceTlsSettingSubjectAltNameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceTlsSettingSubjectAltName {
+		return vs[0].([]GetBackendServiceTlsSettingSubjectAltName)[vs[1].(int)]
+	}).(GetBackendServiceTlsSettingSubjectAltNameOutput)
+}
+
+type GetDiskAsyncPrimaryDisk struct {
+	// Primary disk for asynchronous disk replication.
+	Disk string `pulumi:"disk"`
+}
+
+// GetDiskAsyncPrimaryDiskInput is an input type that accepts GetDiskAsyncPrimaryDiskArgs and GetDiskAsyncPrimaryDiskOutput values.
+// You can construct a concrete instance of `GetDiskAsyncPrimaryDiskInput` via:
+//
+//	GetDiskAsyncPrimaryDiskArgs{...}
+type GetDiskAsyncPrimaryDiskInput interface {
+	pulumi.Input
+
+	ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput
+	ToGetDiskAsyncPrimaryDiskOutputWithContext(context.Context) GetDiskAsyncPrimaryDiskOutput
+}
+
+type GetDiskAsyncPrimaryDiskArgs struct {
+	// Primary disk for asynchronous disk replication.
+	Disk pulumi.StringInput `pulumi:"disk"`
+}
+
+func (GetDiskAsyncPrimaryDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetDiskAsyncPrimaryDiskArgs) ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput {
+	return i.ToGetDiskAsyncPrimaryDiskOutputWithContext(context.Background())
+}
+
+func (i GetDiskAsyncPrimaryDiskArgs) ToGetDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskAsyncPrimaryDiskOutput)
+}
+
+// GetDiskAsyncPrimaryDiskArrayInput is an input type that accepts GetDiskAsyncPrimaryDiskArray and GetDiskAsyncPrimaryDiskArrayOutput values.
+// You can construct a concrete instance of `GetDiskAsyncPrimaryDiskArrayInput` via:
+//
+//	GetDiskAsyncPrimaryDiskArray{ GetDiskAsyncPrimaryDiskArgs{...} }
+type GetDiskAsyncPrimaryDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput
+	ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(context.Context) GetDiskAsyncPrimaryDiskArrayOutput
+}
+
+type GetDiskAsyncPrimaryDiskArray []GetDiskAsyncPrimaryDiskInput
+
+func (GetDiskAsyncPrimaryDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetDiskAsyncPrimaryDiskArray) ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput {
+	return i.ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskAsyncPrimaryDiskArray) ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskAsyncPrimaryDiskArrayOutput)
+}
+
+type GetDiskAsyncPrimaryDiskOutput struct{ *pulumi.OutputState }
+
+func (GetDiskAsyncPrimaryDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutput() GetDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskOutput) ToGetDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+// Primary disk for asynchronous disk replication.
+func (o GetDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
+}
+
+type GetDiskAsyncPrimaryDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskAsyncPrimaryDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetDiskAsyncPrimaryDiskArrayOutput) ToGetDiskAsyncPrimaryDiskArrayOutput() GetDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskArrayOutput) ToGetDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetDiskAsyncPrimaryDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskAsyncPrimaryDisk {
+		return vs[0].([]GetDiskAsyncPrimaryDisk)[vs[1].(int)]
+	}).(GetDiskAsyncPrimaryDiskOutput)
+}
+
 type GetDiskDiskEncryptionKey struct {
 	// The self link of the encryption key used to encrypt the disk. Also called KmsKeyName
 	// in the cloud console. Your project's Compute Engine System service account
@@ -45009,6 +45474,14 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingInput)(nil)).Elem(), GetBackendServiceTlsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingArrayInput)(nil)).Elem(), GetBackendServiceTlsSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltNameInput)(nil)).Elem(), GetBackendServiceTlsSettingSubjectAltNameArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceTlsSettingSubjectAltNameArrayInput)(nil)).Elem(), GetBackendServiceTlsSettingSubjectAltNameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureInput)(nil)).Elem(), GetDiskGuestOsFeatureArgs{})
@@ -45669,6 +46142,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceTlsSettingOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceTlsSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceTlsSettingSubjectAltNameOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceTlsSettingSubjectAltNameArrayOutput{})
+	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskOutput{})
+	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskGuestOsFeatureOutput{})

@@ -174,6 +174,17 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public partial class DataStore : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `True`,
+        /// the source data must have ACL. ACL will be ingested when data is ingested by
+        /// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        /// Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+        /// industry vertical with non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Output("aclEnabled")]
+        public Output<bool?> AclEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration data for advance site search.
         /// Structure is documented below.
         /// </summary>
@@ -345,6 +356,17 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public sealed class DataStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `True`,
+        /// the source data must have ACL. ACL will be ingested when data is ingested by
+        /// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        /// Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+        /// industry vertical with non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Input("aclEnabled")]
+        public Input<bool>? AclEnabled { get; set; }
+
+        /// <summary>
         /// Configuration data for advance site search.
         /// Structure is documented below.
         /// </summary>
@@ -462,6 +484,17 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
     public sealed class DataStoreState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `True`,
+        /// the source data must have ACL. ACL will be ingested when data is ingested by
+        /// DocumentService.ImportDocuments methods. When ACL is enabled for the DataStore,
+        /// Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in the `GENERIC`
+        /// industry vertical with non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Input("aclEnabled")]
+        public Input<bool>? AclEnabled { get; set; }
+
         /// <summary>
         /// Configuration data for advance site search.
         /// Structure is documented below.

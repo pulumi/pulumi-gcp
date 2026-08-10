@@ -101,6 +101,8 @@ if typing.TYPE_CHECKING:
     cloudscheduler = __cloudscheduler
     import pulumi_gcp.cloudsecuritycompliance as __cloudsecuritycompliance
     cloudsecuritycompliance = __cloudsecuritycompliance
+    import pulumi_gcp.cloudsupport as __cloudsupport
+    cloudsupport = __cloudsupport
     import pulumi_gcp.cloudtasks as __cloudtasks
     cloudtasks = __cloudtasks
     import pulumi_gcp.colab as __colab
@@ -348,6 +350,7 @@ else:
     cloudrunv2 = _utilities.lazy_import('pulumi_gcp.cloudrunv2')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
     cloudsecuritycompliance = _utilities.lazy_import('pulumi_gcp.cloudsecuritycompliance')
+    cloudsupport = _utilities.lazy_import('pulumi_gcp.cloudsupport')
     cloudtasks = _utilities.lazy_import('pulumi_gcp.cloudtasks')
     colab = _utilities.lazy_import('pulumi_gcp.colab')
     composer = _utilities.lazy_import('pulumi_gcp.composer')
@@ -3160,6 +3163,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "cloudsupport/supportEventSubscription",
+  "fqn": "pulumi_gcp.cloudsupport",
+  "classes": {
+   "gcp:cloudsupport/supportEventSubscription:SupportEventSubscription": "SupportEventSubscription"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "cloudtasks/queue",
   "fqn": "pulumi_gcp.cloudtasks",
   "classes": {
@@ -4388,6 +4399,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionNetworkPolicy:RegionNetworkPolicy": "RegionNetworkPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionNetworkPolicyTrafficClassificationRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule": "RegionNetworkPolicyTrafficClassificationRule"
   }
  },
  {

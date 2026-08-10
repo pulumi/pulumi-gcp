@@ -72,6 +72,7 @@ export interface GetDataStoreArgs {
  * A collection of values returned by getDataStore.
  */
 export interface GetDataStoreResult {
+    readonly aclEnabled: boolean;
     readonly advancedSiteSearchConfigs: outputs.discoveryengine.GetDataStoreAdvancedSiteSearchConfig[];
     readonly contentConfig: string;
     readonly createAdvancedSiteSearch: boolean;

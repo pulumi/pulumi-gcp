@@ -24,6 +24,7 @@ class ReservationAssignmentArgs:
                  reservation: pulumi.Input[_builtins.str],
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservationAssignment resource.
@@ -38,6 +39,11 @@ class ReservationAssignmentArgs:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the resource
+        :param pulumi.Input[_builtins.str] principal: Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+               * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+               * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+               * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+               * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -48,6 +54,8 @@ class ReservationAssignmentArgs:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -118,6 +126,22 @@ class ReservationAssignmentArgs:
 
     @_builtins.property
     @pulumi.getter
+    def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+        * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+        * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+        * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+        * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -138,6 +162,7 @@ class _ReservationAssignmentState:
                  job_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None):
@@ -154,6 +179,11 @@ class _ReservationAssignmentState:
         :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Output only. The resource name of the assignment.
+        :param pulumi.Input[_builtins.str] principal: Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+               * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+               * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+               * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+               * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
@@ -170,6 +200,8 @@ class _ReservationAssignmentState:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation is not None:
@@ -244,6 +276,22 @@ class _ReservationAssignmentState:
 
     @_builtins.property
     @pulumi.getter
+    def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+        * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+        * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+        * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+        * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
+    @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project in which the resource belongs.
@@ -291,6 +339,7 @@ class ReservationAssignment(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  job_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -351,6 +400,11 @@ class ReservationAssignment(pulumi.CustomResource):
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] location: The location for the resource
+        :param pulumi.Input[_builtins.str] principal: Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+               * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+               * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+               * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+               * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
@@ -426,6 +480,7 @@ class ReservationAssignment(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  job_type: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -445,6 +500,7 @@ class ReservationAssignment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'job_type'")
             __props__.__dict__["job_type"] = job_type
             __props__.__dict__["location"] = location
+            __props__.__dict__["principal"] = principal
             __props__.__dict__["project"] = project
             if reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'reservation'")
@@ -466,6 +522,7 @@ class ReservationAssignment(pulumi.CustomResource):
             job_type: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reservation: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReservationAssignment':
@@ -486,6 +543,11 @@ class ReservationAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] job_type: Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[_builtins.str] name: Output only. The resource name of the assignment.
+        :param pulumi.Input[_builtins.str] principal: Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+               * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+               * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+               * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+               * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] reservation: The reservation for the resource
@@ -501,6 +563,7 @@ class ReservationAssignment(pulumi.CustomResource):
         __props__.__dict__["job_type"] = job_type
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["principal"] = principal
         __props__.__dict__["project"] = project
         __props__.__dict__["reservation"] = reservation
         __props__.__dict__["state"] = state
@@ -550,6 +613,18 @@ class ReservationAssignment(pulumi.CustomResource):
         Output only. The resource name of the assignment.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
+        * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
+        * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
+        * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
+        * The special value `unknown_or_deleted_user` represents principals which cannot be read from the user info service, for example deleted users.
+        """
+        return pulumi.get(self, "principal")
 
     @_builtins.property
     @pulumi.getter

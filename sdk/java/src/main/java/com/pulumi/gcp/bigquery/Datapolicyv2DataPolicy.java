@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.Datapolicyv2DataPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.Datapolicyv2DataPolicyState;
+import com.pulumi.gcp.bigquery.outputs.Datapolicyv2DataPolicyDataGovernanceTag;
 import com.pulumi.gcp.bigquery.outputs.Datapolicyv2DataPolicyDataMaskingPolicy;
 import java.lang.String;
 import java.util.List;
@@ -216,6 +217,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/datapolicyv2DataPolicy:Datapolicyv2DataPolicy")
 public class Datapolicyv2DataPolicy extends com.pulumi.resources.CustomResource {
+    /**
+     * Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="dataGovernanceTag", refs={Datapolicyv2DataPolicyDataGovernanceTag.class}, tree="[0]")
+    private Output</* @Nullable */ Datapolicyv2DataPolicyDataGovernanceTag> dataGovernanceTag;
+
+    /**
+     * @return Data Governance tag bound to the Data Policy.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<Datapolicyv2DataPolicyDataGovernanceTag>> dataGovernanceTag() {
+        return Codegen.optional(this.dataGovernanceTag);
+    }
     /**
      * The policy used to specify data masking rule.
      * Structure is documented below.

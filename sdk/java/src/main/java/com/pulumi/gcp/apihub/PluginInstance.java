@@ -290,6 +290,20 @@ public class PluginInstance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     * 
+     */
+    @Export(name="sourceProjectId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceProjectId;
+
+    /**
+     * @return Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
+     * 
+     */
+    public Output<Optional<String>> sourceProjectId() {
+        return Codegen.optional(this.sourceProjectId);
+    }
+    /**
      * The current state of the plugin instance (e.g., enabled, disabled,
      * provisioning).
      * Possible values:

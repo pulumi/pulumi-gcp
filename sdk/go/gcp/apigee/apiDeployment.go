@@ -57,6 +57,8 @@ type ApiDeployment struct {
 	ProxyId pulumi.StringOutput `pulumi:"proxyId"`
 	// The revision of the API proxy to be deployed.
 	Revision pulumi.StringOutput `pulumi:"revision"`
+	// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 }
 
 // NewApiDeployment registers a new resource with the given unique name, arguments, and options.
@@ -116,6 +118,8 @@ type apiDeploymentState struct {
 	ProxyId *string `pulumi:"proxyId"`
 	// The revision of the API proxy to be deployed.
 	Revision *string `pulumi:"revision"`
+	// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
 type ApiDeploymentState struct {
@@ -134,6 +138,8 @@ type ApiDeploymentState struct {
 	ProxyId pulumi.StringPtrInput
 	// The revision of the API proxy to be deployed.
 	Revision pulumi.StringPtrInput
+	// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringPtrInput
 }
 
 func (ApiDeploymentState) ElementType() reflect.Type {
@@ -156,6 +162,8 @@ type apiDeploymentArgs struct {
 	ProxyId string `pulumi:"proxyId"`
 	// The revision of the API proxy to be deployed.
 	Revision string `pulumi:"revision"`
+	// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
 // The set of arguments for constructing a ApiDeployment resource.
@@ -175,6 +183,8 @@ type ApiDeploymentArgs struct {
 	ProxyId pulumi.StringInput
 	// The revision of the API proxy to be deployed.
 	Revision pulumi.StringInput
+	// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+	ServiceAccount pulumi.StringPtrInput
 }
 
 func (ApiDeploymentArgs) ElementType() reflect.Type {
@@ -292,6 +302,11 @@ func (o ApiDeploymentOutput) ProxyId() pulumi.StringOutput {
 // The revision of the API proxy to be deployed.
 func (o ApiDeploymentOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiDeployment) pulumi.StringOutput { return v.Revision }).(pulumi.StringOutput)
+}
+
+// The Google Cloud IAM service account to use as the identity for the deployed proxy. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`.
+func (o ApiDeploymentOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiDeployment) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 type ApiDeploymentArrayOutput struct{ *pulumi.OutputState }

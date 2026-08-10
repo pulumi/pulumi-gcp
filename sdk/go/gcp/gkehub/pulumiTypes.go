@@ -9057,7 +9057,7 @@ func (o FeatureSpecRbacrolebindingactuationPtrOutput) AllowedCustomRoles() pulum
 
 type FeatureSpecWorkloadidentity struct {
 	// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
-	ScopeTenancyPool string `pulumi:"scopeTenancyPool"`
+	ScopeTenancyPool *string `pulumi:"scopeTenancyPool"`
 }
 
 // FeatureSpecWorkloadidentityInput is an input type that accepts FeatureSpecWorkloadidentityArgs and FeatureSpecWorkloadidentityOutput values.
@@ -9073,7 +9073,7 @@ type FeatureSpecWorkloadidentityInput interface {
 
 type FeatureSpecWorkloadidentityArgs struct {
 	// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
-	ScopeTenancyPool pulumi.StringInput `pulumi:"scopeTenancyPool"`
+	ScopeTenancyPool pulumi.StringPtrInput `pulumi:"scopeTenancyPool"`
 }
 
 func (FeatureSpecWorkloadidentityArgs) ElementType() reflect.Type {
@@ -9154,8 +9154,8 @@ func (o FeatureSpecWorkloadidentityOutput) ToFeatureSpecWorkloadidentityPtrOutpu
 }
 
 // Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
-func (o FeatureSpecWorkloadidentityOutput) ScopeTenancyPool() pulumi.StringOutput {
-	return o.ApplyT(func(v FeatureSpecWorkloadidentity) string { return v.ScopeTenancyPool }).(pulumi.StringOutput)
+func (o FeatureSpecWorkloadidentityOutput) ScopeTenancyPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureSpecWorkloadidentity) *string { return v.ScopeTenancyPool }).(pulumi.StringPtrOutput)
 }
 
 type FeatureSpecWorkloadidentityPtrOutput struct{ *pulumi.OutputState }
@@ -9188,7 +9188,7 @@ func (o FeatureSpecWorkloadidentityPtrOutput) ScopeTenancyPool() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return &v.ScopeTenancyPool
+		return v.ScopeTenancyPool
 	}).(pulumi.StringPtrOutput)
 }
 

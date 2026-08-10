@@ -33,7 +33,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			categoryTestId, err := dataplex.NewGlossary(ctx, "category_test_id", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_40472"),
+//				GlossaryId: pulumi.String("tf-test-glossary_34599"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -47,7 +47,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: categoryTestId.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				CategoryId: pulumi.String("tf-test-category-basic_44339"),
+//				CategoryId: pulumi.String("tf-test-category-basic_79513"),
 //			})
 //			if err != nil {
 //				return err
@@ -74,7 +74,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			categoryTestIdFull, err := dataplex.NewGlossary(ctx, "category_test_id_full", &dataplex.GlossaryArgs{
-//				GlossaryId: pulumi.String("tf-test-glossary_34599"),
+//				GlossaryId: pulumi.String("tf-test-glossary_55500"),
 //				Location:   pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //				}).(pulumi.StringOutput),
 //				GlossaryId: categoryTestIdFull.GlossaryId,
 //				Location:   pulumi.String("us-central1"),
-//				CategoryId: pulumi.String("tf-test-category-full_79513"),
+//				CategoryId: pulumi.String("tf-test-category-full_12223"),
 //				Labels: pulumi.StringMap{
 //					"tag": pulumi.String("test-tf"),
 //				},

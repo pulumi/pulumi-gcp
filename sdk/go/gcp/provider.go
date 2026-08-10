@@ -66,6 +66,7 @@ type Provider struct {
 	CloudRunV2CustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudRunV2CustomEndpoint"`
 	CloudSchedulerCustomEndpoint           pulumi.StringPtrOutput `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudSecurityComplianceCustomEndpoint  pulumi.StringPtrOutput `pulumi:"cloudSecurityComplianceCustomEndpoint"`
+	CloudSupportCustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudSupportCustomEndpoint"`
 	CloudTasksCustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudTasksCustomEndpoint"`
 	Cloudbuildv2CustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudbuildv2CustomEndpoint"`
 	ClouddeployCustomEndpoint              pulumi.StringPtrOutput `pulumi:"clouddeployCustomEndpoint"`
@@ -315,6 +316,7 @@ type providerArgs struct {
 	CloudRunV2CustomEndpoint               *string                      `pulumi:"cloudRunV2CustomEndpoint"`
 	CloudSchedulerCustomEndpoint           *string                      `pulumi:"cloudSchedulerCustomEndpoint"`
 	CloudSecurityComplianceCustomEndpoint  *string                      `pulumi:"cloudSecurityComplianceCustomEndpoint"`
+	CloudSupportCustomEndpoint             *string                      `pulumi:"cloudSupportCustomEndpoint"`
 	CloudTasksCustomEndpoint               *string                      `pulumi:"cloudTasksCustomEndpoint"`
 	Cloudbuildv2CustomEndpoint             *string                      `pulumi:"cloudbuildv2CustomEndpoint"`
 	ClouddeployCustomEndpoint              *string                      `pulumi:"clouddeployCustomEndpoint"`
@@ -535,6 +537,7 @@ type ProviderArgs struct {
 	CloudRunV2CustomEndpoint               pulumi.StringPtrInput
 	CloudSchedulerCustomEndpoint           pulumi.StringPtrInput
 	CloudSecurityComplianceCustomEndpoint  pulumi.StringPtrInput
+	CloudSupportCustomEndpoint             pulumi.StringPtrInput
 	CloudTasksCustomEndpoint               pulumi.StringPtrInput
 	Cloudbuildv2CustomEndpoint             pulumi.StringPtrInput
 	ClouddeployCustomEndpoint              pulumi.StringPtrInput
@@ -953,6 +956,10 @@ func (o ProviderOutput) CloudSchedulerCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) CloudSecurityComplianceCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudSecurityComplianceCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) CloudSupportCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CloudSupportCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) CloudTasksCustomEndpoint() pulumi.StringPtrOutput {

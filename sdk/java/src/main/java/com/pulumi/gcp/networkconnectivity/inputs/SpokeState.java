@@ -95,7 +95,6 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      * 
@@ -104,8 +103,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<SpokeGatewayArgs> gateway;
 
     /**
-     * @return (Optional, Beta)
-     * This is a gateway that can apply specialized processing to traffic going through it.
+     * @return This is a gateway that can apply specialized processing to traffic going through it.
      * Structure is documented below.
      * 
      */
@@ -512,8 +510,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateway (Optional, Beta)
-         * This is a gateway that can apply specialized processing to traffic going through it.
+         * @param gateway This is a gateway that can apply specialized processing to traffic going through it.
          * Structure is documented below.
          * 
          * @return builder
@@ -525,8 +522,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gateway (Optional, Beta)
-         * This is a gateway that can apply specialized processing to traffic going through it.
+         * @param gateway This is a gateway that can apply specialized processing to traffic going through it.
          * Structure is documented below.
          * 
          * @return builder

@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_75223",
+    ///         ShortName = "tf-test_75092",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_41819",
+    ///         ShortName = "tf-test_2605",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_75092",
+    ///         ShortName = "tf-test_34535",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -175,7 +175,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_2605",
+    ///         ShortName = "tf-test_22375",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
     ///     {
-    ///         ShortName = "tf-test_34535",
+    ///         ShortName = "tf-test_29439",
     ///         Parent = "organizations/123456789",
     ///         Type = "CLOUD_ARMOR",
     ///     });

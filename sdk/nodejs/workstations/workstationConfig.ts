@@ -602,6 +602,43 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Workstation Config Idle Action
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     idleTimeout: "600s",
+ *     idleAction: "SUSPEND",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -729,6 +766,14 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     declare public readonly host: pulumi.Output<outputs.workstations.WorkstationConfigHost>;
     /**
+     * (Optional, Beta)
+     * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+     * Defaults to STOP.
+     * Default value is `STOP`.
+     * Possible values are: `STOP`, `SUSPEND`.
+     */
+    declare public readonly idleAction: pulumi.Output<string | undefined>;
+    /**
      * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
      */
@@ -823,6 +868,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["ephemeralDirectories"] = state?.ephemeralDirectories;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["host"] = state?.host;
+            resourceInputs["idleAction"] = state?.idleAction;
             resourceInputs["idleTimeout"] = state?.idleTimeout;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
@@ -858,6 +904,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = args?.encryptionKey;
             resourceInputs["ephemeralDirectories"] = args?.ephemeralDirectories;
             resourceInputs["host"] = args?.host;
+            resourceInputs["idleAction"] = args?.idleAction;
             resourceInputs["idleTimeout"] = args?.idleTimeout;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -971,6 +1018,14 @@ export interface WorkstationConfigState {
      * Structure is documented below.
      */
     host?: pulumi.Input<inputs.workstations.WorkstationConfigHost | undefined>;
+    /**
+     * (Optional, Beta)
+     * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+     * Defaults to STOP.
+     * Default value is `STOP`.
+     * Possible values are: `STOP`, `SUSPEND`.
+     */
+    idleAction?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -1097,6 +1152,14 @@ export interface WorkstationConfigArgs {
      * Structure is documented below.
      */
     host?: pulumi.Input<inputs.workstations.WorkstationConfigHost | undefined>;
+    /**
+     * (Optional, Beta)
+     * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+     * Defaults to STOP.
+     * Default value is `STOP`.
+     * Possible values are: `STOP`, `SUSPEND`.
+     */
+    idleAction?: pulumi.Input<string | undefined>;
     /**
      * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".

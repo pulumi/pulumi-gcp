@@ -140,6 +140,50 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## gcp.pubsub.SubscriptionIAMPolicy
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
+ * import com.pulumi.gcp.pubsub.SubscriptionIAMPolicy;
+ * import com.pulumi.gcp.pubsub.SubscriptionIAMPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/editor")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var editor = new SubscriptionIAMPolicy("editor", SubscriptionIAMPolicyArgs.builder()
+ *             .subscription("your-subscription-name")
+ *             .policyData(admin.policyData())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## gcp.pubsub.SubscriptionIAMBinding
  * 
  * <pre>

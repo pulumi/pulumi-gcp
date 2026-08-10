@@ -3286,6 +3286,8 @@ type ServiceTemplateSpecContainer struct {
 	// Compute Resources required by this container. Used to set values such as max memory
 	// Structure is documented below.
 	Resources *ServiceTemplateSpecContainerResources `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher *bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -3357,6 +3359,8 @@ type ServiceTemplateSpecContainerArgs struct {
 	// Compute Resources required by this container. Used to set values such as max memory
 	// Structure is documented below.
 	Resources ServiceTemplateSpecContainerResourcesPtrInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolPtrInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -3499,6 +3503,11 @@ func (o ServiceTemplateSpecContainerOutput) ReadinessProbe() ServiceTemplateSpec
 // Structure is documented below.
 func (o ServiceTemplateSpecContainerOutput) Resources() ServiceTemplateSpecContainerResourcesPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerResources { return v.Resources }).(ServiceTemplateSpecContainerResourcesPtrOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o ServiceTemplateSpecContainerOutput) SandboxLauncher() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) *bool { return v.SandboxLauncher }).(pulumi.BoolPtrOutput)
 }
 
 // Startup probe of application within the container.
@@ -9952,6 +9961,8 @@ type GetServiceTemplateSpecContainer struct {
 	ReadinessProbes []GetServiceTemplateSpecContainerReadinessProbe `pulumi:"readinessProbes"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	Resources []GetServiceTemplateSpecContainerResource `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher bool `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -10007,6 +10018,8 @@ type GetServiceTemplateSpecContainerArgs struct {
 	ReadinessProbes GetServiceTemplateSpecContainerReadinessProbeArrayInput `pulumi:"readinessProbes"`
 	// Compute Resources required by this container. Used to set values such as max memory
 	Resources GetServiceTemplateSpecContainerResourceArrayInput `pulumi:"resources"`
+	// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+	SandboxLauncher pulumi.BoolInput `pulumi:"sandboxLauncher"`
 	// Startup probe of application within the container.
 	// All other probes are disabled if a startup probe is provided, until it
 	// succeeds. Container will not be added to service endpoints if the probe fails.
@@ -10133,6 +10146,11 @@ func (o GetServiceTemplateSpecContainerOutput) ReadinessProbes() GetServiceTempl
 // Compute Resources required by this container. Used to set values such as max memory
 func (o GetServiceTemplateSpecContainerOutput) Resources() GetServiceTemplateSpecContainerResourceArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainer) []GetServiceTemplateSpecContainerResource { return v.Resources }).(GetServiceTemplateSpecContainerResourceArrayOutput)
+}
+
+// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+func (o GetServiceTemplateSpecContainerOutput) SandboxLauncher() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainer) bool { return v.SandboxLauncher }).(pulumi.BoolOutput)
 }
 
 // Startup probe of application within the container.

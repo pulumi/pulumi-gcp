@@ -36,8 +36,8 @@ namespace Pulumi.Gcp.DataLineage
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_13293",
-    ///         Name = "tf-test_40289",
+    ///         ProjectId = "tf-test_33395",
+    ///         Name = "tf-test_76044",
     ///         OrgId = "123456789",
     ///         DeletionPolicy = "DELETE",
     ///     });

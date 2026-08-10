@@ -9,6 +9,7 @@ import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConf
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigCommonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigMavenRepository;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigNoCache;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigNpmRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigPythonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredential;
@@ -51,6 +52,11 @@ public final class GetRepositoryRemoteRepositoryConfig {
      * 
      */
     private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
+    /**
+     * @return The repository will act as a non-caching proxy (connector mode).
+     * 
+     */
+    private List<GetRepositoryRemoteRepositoryConfigNoCache> noCaches;
     /**
      * @return Specific settings for an Npm remote repository.
      * 
@@ -117,6 +123,13 @@ public final class GetRepositoryRemoteRepositoryConfig {
         return this.mavenRepositories;
     }
     /**
+     * @return The repository will act as a non-caching proxy (connector mode).
+     * 
+     */
+    public List<GetRepositoryRemoteRepositoryConfigNoCache> noCaches() {
+        return this.noCaches;
+    }
+    /**
      * @return Specific settings for an Npm remote repository.
      * 
      */
@@ -160,6 +173,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
         private Boolean disableUpstreamValidation;
         private List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
         private List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories;
+        private List<GetRepositoryRemoteRepositoryConfigNoCache> noCaches;
         private List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories;
         private List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories;
         private List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials;
@@ -173,6 +187,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
     	      this.disableUpstreamValidation = defaults.disableUpstreamValidation;
     	      this.dockerRepositories = defaults.dockerRepositories;
     	      this.mavenRepositories = defaults.mavenRepositories;
+    	      this.noCaches = defaults.noCaches;
     	      this.npmRepositories = defaults.npmRepositories;
     	      this.pythonRepositories = defaults.pythonRepositories;
     	      this.upstreamCredentials = defaults.upstreamCredentials;
@@ -240,6 +255,17 @@ public final class GetRepositoryRemoteRepositoryConfig {
             return mavenRepositories(List.of(mavenRepositories));
         }
         @CustomType.Setter
+        public Builder noCaches(List<GetRepositoryRemoteRepositoryConfigNoCache> noCaches) {
+            if (noCaches == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "noCaches");
+            }
+            this.noCaches = noCaches;
+            return this;
+        }
+        public Builder noCaches(GetRepositoryRemoteRepositoryConfigNoCache... noCaches) {
+            return noCaches(List.of(noCaches));
+        }
+        @CustomType.Setter
         public Builder npmRepositories(List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories) {
             if (npmRepositories == null) {
               throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "npmRepositories");
@@ -291,6 +317,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
             _resultValue.disableUpstreamValidation = disableUpstreamValidation;
             _resultValue.dockerRepositories = dockerRepositories;
             _resultValue.mavenRepositories = mavenRepositories;
+            _resultValue.noCaches = noCaches;
             _resultValue.npmRepositories = npmRepositories;
             _resultValue.pythonRepositories = pythonRepositories;
             _resultValue.upstreamCredentials = upstreamCredentials;

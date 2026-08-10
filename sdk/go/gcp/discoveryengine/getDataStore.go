@@ -92,6 +92,7 @@ type LookupDataStoreArgs struct {
 
 // A collection of values returned by getDataStore.
 type LookupDataStoreResult struct {
+	AclEnabled                bool                                   `pulumi:"aclEnabled"`
 	AdvancedSiteSearchConfigs []GetDataStoreAdvancedSiteSearchConfig `pulumi:"advancedSiteSearchConfigs"`
 	ContentConfig             string                                 `pulumi:"contentConfig"`
 	CreateAdvancedSiteSearch  bool                                   `pulumi:"createAdvancedSiteSearch"`
@@ -150,6 +151,10 @@ func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutput() LookupDataS
 
 func (o LookupDataStoreResultOutput) ToLookupDataStoreResultOutputWithContext(ctx context.Context) LookupDataStoreResultOutput {
 	return o
+}
+
+func (o LookupDataStoreResultOutput) AclEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDataStoreResult) bool { return v.AclEnabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupDataStoreResultOutput) AdvancedSiteSearchConfigs() GetDataStoreAdvancedSiteSearchConfigArrayOutput {

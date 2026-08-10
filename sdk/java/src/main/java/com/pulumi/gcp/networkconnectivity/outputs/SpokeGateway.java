@@ -26,7 +26,7 @@ public final class SpokeGateway {
      */
     private List<SpokeGatewayIpRangeReservation> ipRangeReservations;
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * Set of Cloud Routers that are attached to this NCC-GW
      * 
      */
@@ -50,7 +50,7 @@ public final class SpokeGateway {
         return this.ipRangeReservations;
     }
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * Set of Cloud Routers that are attached to this NCC-GW
      * 
      */

@@ -70,6 +70,7 @@ class ProviderArgs:
                  cloud_run_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_scheduler_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_security_compliance_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_support_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_tasks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloudbuildv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  clouddeploy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -339,6 +340,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloud_scheduler_custom_endpoint", cloud_scheduler_custom_endpoint)
         if cloud_security_compliance_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_security_compliance_custom_endpoint", cloud_security_compliance_custom_endpoint)
+        if cloud_support_custom_endpoint is not None:
+            pulumi.set(__self__, "cloud_support_custom_endpoint", cloud_support_custom_endpoint)
         if cloud_tasks_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_tasks_custom_endpoint", cloud_tasks_custom_endpoint)
         if cloudbuildv2_custom_endpoint is not None:
@@ -1127,6 +1130,15 @@ class ProviderArgs:
     @cloud_security_compliance_custom_endpoint.setter
     def cloud_security_compliance_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_security_compliance_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cloudSupportCustomEndpoint")
+    def cloud_support_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "cloud_support_custom_endpoint")
+
+    @cloud_support_custom_endpoint.setter
+    def cloud_support_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cloud_support_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudTasksCustomEndpoint")
@@ -2679,6 +2691,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_scheduler_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_security_compliance_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_support_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_tasks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloudbuildv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  clouddeploy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2934,6 +2947,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_run_v2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_scheduler_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_security_compliance_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_support_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_tasks_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cloudbuildv2_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  clouddeploy_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3159,6 +3173,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_run_v2_custom_endpoint"] = cloud_run_v2_custom_endpoint
             __props__.__dict__["cloud_scheduler_custom_endpoint"] = cloud_scheduler_custom_endpoint
             __props__.__dict__["cloud_security_compliance_custom_endpoint"] = cloud_security_compliance_custom_endpoint
+            __props__.__dict__["cloud_support_custom_endpoint"] = cloud_support_custom_endpoint
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
             __props__.__dict__["cloudbuildv2_custom_endpoint"] = cloudbuildv2_custom_endpoint
             __props__.__dict__["clouddeploy_custom_endpoint"] = clouddeploy_custom_endpoint
@@ -3578,6 +3593,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudSecurityComplianceCustomEndpoint")
     def cloud_security_compliance_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "cloud_security_compliance_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="cloudSupportCustomEndpoint")
+    def cloud_support_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "cloud_support_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="cloudTasksCustomEndpoint")

@@ -626,6 +626,54 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloud Run Service Sandbox
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-srv")
+ *             .location("us-central1")
+ *             .metadata(ServiceMetadataArgs.builder()
+ *                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
+ *                 .build())
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image("gcr.io/cloudrun/hello")
+ *                         .sandboxLauncher(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -123,6 +123,12 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.ServiceTemplateContainerResourcesGetArgs>? Resources { get; set; }
 
         /// <summary>
+        /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        /// </summary>
+        [Input("sandboxLauncher")]
+        public Input<bool>? SandboxLauncher { get; set; }
+
+        /// <summary>
         /// (Optional, Beta)
         /// Location of the source.
         /// Structure is documented below.

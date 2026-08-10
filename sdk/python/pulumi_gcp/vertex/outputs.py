@@ -9948,7 +9948,7 @@ class AiReasoningEngineTrafficConfigTrafficSplitManualTarget(dict):
                  runtime_revision_name: _builtins.str):
         """
         :param _builtins.int percent: Required. Specifies percent of the traffic to this Runtime Revision.
-        :param _builtins.str runtime_revision_name: Required. The Runtime Revision name to which to send this portion of traffic.
+        :param _builtins.str runtime_revision_name: Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `traffic_config` is updated in Terraform.
         """
         pulumi.set(__self__, "percent", percent)
         pulumi.set(__self__, "runtime_revision_name", runtime_revision_name)
@@ -9965,7 +9965,7 @@ class AiReasoningEngineTrafficConfigTrafficSplitManualTarget(dict):
     @pulumi.getter(name="runtimeRevisionName")
     def runtime_revision_name(self) -> _builtins.str:
         """
-        Required. The Runtime Revision name to which to send this portion of traffic.
+        Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `traffic_config` is updated in Terraform.
         """
         return pulumi.get(self, "runtime_revision_name")
 

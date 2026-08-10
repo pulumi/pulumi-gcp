@@ -5,9 +5,10 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FeatureSpecWorkloadidentityArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +19,15 @@ public final class FeatureSpecWorkloadidentityArgs extends com.pulumi.resources.
      * Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
      * 
      */
-    @Import(name="scopeTenancyPool", required=true)
-    private Output<String> scopeTenancyPool;
+    @Import(name="scopeTenancyPool")
+    private @Nullable Output<String> scopeTenancyPool;
 
     /**
      * @return Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
      * 
      */
-    public Output<String> scopeTenancyPool() {
-        return this.scopeTenancyPool;
+    public Optional<Output<String>> scopeTenancyPool() {
+        return Optional.ofNullable(this.scopeTenancyPool);
     }
 
     private FeatureSpecWorkloadidentityArgs() {}
@@ -59,7 +60,7 @@ public final class FeatureSpecWorkloadidentityArgs extends com.pulumi.resources.
          * @return builder
          * 
          */
-        public Builder scopeTenancyPool(Output<String> scopeTenancyPool) {
+        public Builder scopeTenancyPool(@Nullable Output<String> scopeTenancyPool) {
             $.scopeTenancyPool = scopeTenancyPool;
             return this;
         }
@@ -75,9 +76,6 @@ public final class FeatureSpecWorkloadidentityArgs extends com.pulumi.resources.
         }
 
         public FeatureSpecWorkloadidentityArgs build() {
-            if ($.scopeTenancyPool == null) {
-                throw new MissingRequiredPropertyException("FeatureSpecWorkloadidentityArgs", "scopeTenancyPool");
-            }
             return $;
         }
     }

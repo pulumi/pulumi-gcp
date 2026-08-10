@@ -862,6 +862,58 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Config Idle Action
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         IdleTimeout = "600s",
+    ///         IdleAction = "SUSPEND",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "e2-standard-4",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -994,6 +1046,16 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("host")]
         public Output<Outputs.WorkstationConfigHost> Host { get; private set; } = null!;
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        /// Defaults to STOP.
+        /// Default value is `STOP`.
+        /// Possible values are: `STOP`, `SUSPEND`.
+        /// </summary>
+        [Output("idleAction")]
+        public Output<string?> IdleAction { get; private set; } = null!;
 
         /// <summary>
         /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
@@ -1231,6 +1293,16 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("host")]
         public Input<Inputs.WorkstationConfigHostArgs>? Host { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        /// Defaults to STOP.
+        /// Default value is `STOP`.
+        /// Possible values are: `STOP`, `SUSPEND`.
+        /// </summary>
+        [Input("idleAction")]
+        public Input<string>? IdleAction { get; set; }
 
         /// <summary>
         /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
@@ -1490,6 +1562,16 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("host")]
         public Input<Inputs.WorkstationConfigHostGetArgs>? Host { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// The action to take when the workstation has been idle for the duration specified in idle_timeout.
+        /// Defaults to STOP.
+        /// Default value is `STOP`.
+        /// Possible values are: `STOP`, `SUSPEND`.
+        /// </summary>
+        [Input("idleAction")]
+        public Input<string>? IdleAction { get; set; }
 
         /// <summary>
         /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.

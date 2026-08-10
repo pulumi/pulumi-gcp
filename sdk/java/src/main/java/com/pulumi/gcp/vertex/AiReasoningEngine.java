@@ -889,6 +889,50 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Vertex Ai Reasoning Engine Traffic Config
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vertex.AiReasoningEngine;
+ * import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigArgs;
+ * import com.pulumi.gcp.vertex.inputs.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
+ *             .displayName("re-traffic-cfg")
+ *             .description("Reasoning engine with traffic config")
+ *             .region("us-central1")
+ *             .spec(AiReasoningEngineSpecArgs.builder()
+ *                 .agentFramework("langchain")
+ *                 .build())
+ *             .trafficConfig(AiReasoningEngineTrafficConfigArgs.builder()
+ *                 .trafficSplitAlwaysLatest(AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs.builder()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -1138,6 +1182,7 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     /**
      * (Optional, Beta)
      * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
      * Structure is documented below.
      * 
      */
@@ -1147,6 +1192,7 @@ public class AiReasoningEngine extends com.pulumi.resources.CustomResource {
     /**
      * @return (Optional, Beta)
      * Optional. Traffic distribution configuration for the Reasoning Engine.
+     * &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
      * Structure is documented below.
      * 
      */

@@ -4709,6 +4709,162 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKeyWoVersion() p
 	}).(pulumi.IntPtrOutput)
 }
 
+type Datapolicyv2DataPolicyDataGovernanceTag struct {
+	// Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+	Key *string `pulumi:"key"`
+	// Tag value is expected to be the short name.
+	Value *string `pulumi:"value"`
+}
+
+// Datapolicyv2DataPolicyDataGovernanceTagInput is an input type that accepts Datapolicyv2DataPolicyDataGovernanceTagArgs and Datapolicyv2DataPolicyDataGovernanceTagOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyDataGovernanceTagInput` via:
+//
+//	Datapolicyv2DataPolicyDataGovernanceTagArgs{...}
+type Datapolicyv2DataPolicyDataGovernanceTagInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyDataGovernanceTagOutput() Datapolicyv2DataPolicyDataGovernanceTagOutput
+	ToDatapolicyv2DataPolicyDataGovernanceTagOutputWithContext(context.Context) Datapolicyv2DataPolicyDataGovernanceTagOutput
+}
+
+type Datapolicyv2DataPolicyDataGovernanceTagArgs struct {
+	// Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Tag value is expected to be the short name.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (Datapolicyv2DataPolicyDataGovernanceTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyDataGovernanceTag)(nil)).Elem()
+}
+
+func (i Datapolicyv2DataPolicyDataGovernanceTagArgs) ToDatapolicyv2DataPolicyDataGovernanceTagOutput() Datapolicyv2DataPolicyDataGovernanceTagOutput {
+	return i.ToDatapolicyv2DataPolicyDataGovernanceTagOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyDataGovernanceTagArgs) ToDatapolicyv2DataPolicyDataGovernanceTagOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataGovernanceTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyDataGovernanceTagOutput)
+}
+
+func (i Datapolicyv2DataPolicyDataGovernanceTagArgs) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutput() Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return i.ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(context.Background())
+}
+
+func (i Datapolicyv2DataPolicyDataGovernanceTagArgs) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyDataGovernanceTagOutput).ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(ctx)
+}
+
+// Datapolicyv2DataPolicyDataGovernanceTagPtrInput is an input type that accepts Datapolicyv2DataPolicyDataGovernanceTagArgs, Datapolicyv2DataPolicyDataGovernanceTagPtr and Datapolicyv2DataPolicyDataGovernanceTagPtrOutput values.
+// You can construct a concrete instance of `Datapolicyv2DataPolicyDataGovernanceTagPtrInput` via:
+//
+//	        Datapolicyv2DataPolicyDataGovernanceTagArgs{...}
+//
+//	or:
+//
+//	        nil
+type Datapolicyv2DataPolicyDataGovernanceTagPtrInput interface {
+	pulumi.Input
+
+	ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutput() Datapolicyv2DataPolicyDataGovernanceTagPtrOutput
+	ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(context.Context) Datapolicyv2DataPolicyDataGovernanceTagPtrOutput
+}
+
+type datapolicyv2DataPolicyDataGovernanceTagPtrType Datapolicyv2DataPolicyDataGovernanceTagArgs
+
+func Datapolicyv2DataPolicyDataGovernanceTagPtr(v *Datapolicyv2DataPolicyDataGovernanceTagArgs) Datapolicyv2DataPolicyDataGovernanceTagPtrInput {
+	return (*datapolicyv2DataPolicyDataGovernanceTagPtrType)(v)
+}
+
+func (*datapolicyv2DataPolicyDataGovernanceTagPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyDataGovernanceTag)(nil)).Elem()
+}
+
+func (i *datapolicyv2DataPolicyDataGovernanceTagPtrType) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutput() Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return i.ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(context.Background())
+}
+
+func (i *datapolicyv2DataPolicyDataGovernanceTagPtrType) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Datapolicyv2DataPolicyDataGovernanceTagPtrOutput)
+}
+
+type Datapolicyv2DataPolicyDataGovernanceTagOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyDataGovernanceTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Datapolicyv2DataPolicyDataGovernanceTag)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagOutput) ToDatapolicyv2DataPolicyDataGovernanceTagOutput() Datapolicyv2DataPolicyDataGovernanceTagOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagOutput) ToDatapolicyv2DataPolicyDataGovernanceTagOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataGovernanceTagOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagOutput) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutput() Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return o.ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(context.Background())
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagOutput) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Datapolicyv2DataPolicyDataGovernanceTag) *Datapolicyv2DataPolicyDataGovernanceTag {
+		return &v
+	}).(Datapolicyv2DataPolicyDataGovernanceTagPtrOutput)
+}
+
+// Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+func (o Datapolicyv2DataPolicyDataGovernanceTagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyDataGovernanceTag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Tag value is expected to be the short name.
+func (o Datapolicyv2DataPolicyDataGovernanceTagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Datapolicyv2DataPolicyDataGovernanceTag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type Datapolicyv2DataPolicyDataGovernanceTagPtrOutput struct{ *pulumi.OutputState }
+
+func (Datapolicyv2DataPolicyDataGovernanceTagPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Datapolicyv2DataPolicyDataGovernanceTag)(nil)).Elem()
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagPtrOutput) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutput() Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagPtrOutput) ToDatapolicyv2DataPolicyDataGovernanceTagPtrOutputWithContext(ctx context.Context) Datapolicyv2DataPolicyDataGovernanceTagPtrOutput {
+	return o
+}
+
+func (o Datapolicyv2DataPolicyDataGovernanceTagPtrOutput) Elem() Datapolicyv2DataPolicyDataGovernanceTagOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyDataGovernanceTag) Datapolicyv2DataPolicyDataGovernanceTag {
+		if v != nil {
+			return *v
+		}
+		var ret Datapolicyv2DataPolicyDataGovernanceTag
+		return ret
+	}).(Datapolicyv2DataPolicyDataGovernanceTagOutput)
+}
+
+// Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+func (o Datapolicyv2DataPolicyDataGovernanceTagPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyDataGovernanceTag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tag value is expected to be the short name.
+func (o Datapolicyv2DataPolicyDataGovernanceTagPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Datapolicyv2DataPolicyDataGovernanceTag) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 type Datapolicyv2DataPolicyDataMaskingPolicy struct {
 	// A predefined masking expression.
 	// Possible values:
@@ -24821,6 +24977,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigScheduleOptionsPtrInput)(nil)).Elem(), DataTransferConfigScheduleOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataTransferConfigSensitiveParamsPtrInput)(nil)).Elem(), DataTransferConfigSensitiveParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataGovernanceTagInput)(nil)).Elem(), Datapolicyv2DataPolicyDataGovernanceTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataGovernanceTagPtrInput)(nil)).Elem(), Datapolicyv2DataPolicyDataGovernanceTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicyInput)(nil)).Elem(), Datapolicyv2DataPolicyDataMaskingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyDataMaskingPolicyPtrInput)(nil)).Elem(), Datapolicyv2DataPolicyDataMaskingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Datapolicyv2DataPolicyIamBindingConditionInput)(nil)).Elem(), Datapolicyv2DataPolicyIamBindingConditionArgs{})
@@ -25109,6 +25267,8 @@ func init() {
 	pulumi.RegisterOutputType(DataTransferConfigScheduleOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsOutput{})
 	pulumi.RegisterOutputType(DataTransferConfigSensitiveParamsPtrOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataGovernanceTagOutput{})
+	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataGovernanceTagPtrOutput{})
 	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataMaskingPolicyOutput{})
 	pulumi.RegisterOutputType(Datapolicyv2DataPolicyDataMaskingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(Datapolicyv2DataPolicyIamBindingConditionOutput{})

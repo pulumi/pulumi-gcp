@@ -1259,7 +1259,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_48234",
+                "filename_suffix": "-_75303",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1292,7 +1292,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_74065",
+                "filename_suffix": "-_72437",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1326,7 +1326,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_75303",
+                "filename_suffix": "-_7864",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1365,7 +1365,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_72437",
+                "filename_suffix": "-_70324",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1861,7 +1861,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_48234",
+                "filename_suffix": "-_75303",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1894,7 +1894,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_74065",
+                "filename_suffix": "-_72437",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1928,7 +1928,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_75303",
+                "filename_suffix": "-_7864",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1967,7 +1967,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_72437",
+                "filename_suffix": "-_70324",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",

@@ -204,6 +204,69 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Connector
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+    ///     {
+    ///         SecretId = "example-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+    ///     {
+    ///         Secret = example_remote_secret.Id,
+    ///         SecretData = "remote-password",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = example_remote_secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example remote docker repository with no cache (connector mode)",
+    ///         Format = "DOCKER",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "docker hub connector repository (no cache)",
+    ///             DisableUpstreamValidation = true,
+    ///             DockerRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs
+    ///             {
+    ///                 PublicRepository = "DOCKER_HUB",
+    ///             },
+    ///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+    ///             {
+    ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+    ///                 {
+    ///                     Username = "remote-username",
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+    ///                 },
+    ///             },
+    ///             NoCache = null,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Artifact Registry Repository Remote Apt
     /// 
     /// ```csharp

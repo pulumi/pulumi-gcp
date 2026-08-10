@@ -129,7 +129,7 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("tf-test-subnet_37559"),
+//				Name:        pulumi.String("tf-test-subnet_37118"),
 //				IpCidrRange: pulumi.String("10.0.0.0/28"),
 //				Region:      pulumi.String("us-central1"),
 //				Network:     network.SelfLink,
@@ -244,7 +244,6 @@ type Router struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional, Beta)
 	// A URI of an NCC Gateway spoke
 	NccGateway pulumi.StringPtrOutput `pulumi:"nccGateway"`
 	// A reference to the network to which this router belongs.
@@ -318,7 +317,6 @@ type routerState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// A URI of an NCC Gateway spoke
 	NccGateway *string `pulumi:"nccGateway"`
 	// A reference to the network to which this router belongs.
@@ -363,7 +361,6 @@ type RouterState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A URI of an NCC Gateway spoke
 	NccGateway pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
@@ -410,7 +407,6 @@ type routerArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// A URI of an NCC Gateway spoke
 	NccGateway *string `pulumi:"nccGateway"`
 	// A reference to the network to which this router belongs.
@@ -452,7 +448,6 @@ type RouterArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// A URI of an NCC Gateway spoke
 	NccGateway pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
@@ -602,7 +597,6 @@ func (o RouterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // A URI of an NCC Gateway spoke
 func (o RouterOutput) NccGateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringPtrOutput { return v.NccGateway }).(pulumi.StringPtrOutput)

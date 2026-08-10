@@ -302,6 +302,29 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Optional, Beta)
+     * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+     * Defaults to STOP.
+     * Default value is `STOP`.
+     * Possible values are: `STOP`, `SUSPEND`.
+     * 
+     */
+    @Import(name="idleAction")
+    private @Nullable Output<String> idleAction;
+
+    /**
+     * @return (Optional, Beta)
+     * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+     * Defaults to STOP.
+     * Default value is `STOP`.
+     * Possible values are: `STOP`, `SUSPEND`.
+     * 
+     */
+    public Optional<Output<String>> idleAction() {
+        return Optional.ofNullable(this.idleAction);
+    }
+
+    /**
      * How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
      * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
@@ -548,6 +571,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.ephemeralDirectories = $.ephemeralDirectories;
         this.etag = $.etag;
         this.host = $.host;
+        this.idleAction = $.idleAction;
         this.idleTimeout = $.idleTimeout;
         this.labels = $.labels;
         this.location = $.location;
@@ -983,6 +1007,35 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder host(WorkstationConfigHostArgs host) {
             return host(Output.of(host));
+        }
+
+        /**
+         * @param idleAction (Optional, Beta)
+         * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+         * Defaults to STOP.
+         * Default value is `STOP`.
+         * Possible values are: `STOP`, `SUSPEND`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleAction(@Nullable Output<String> idleAction) {
+            $.idleAction = idleAction;
+            return this;
+        }
+
+        /**
+         * @param idleAction (Optional, Beta)
+         * The action to take when the workstation has been idle for the duration specified in idle_timeout.
+         * Defaults to STOP.
+         * Default value is `STOP`.
+         * Possible values are: `STOP`, `SUSPEND`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleAction(String idleAction) {
+            return idleAction(Output.of(idleAction));
         }
 
         /**

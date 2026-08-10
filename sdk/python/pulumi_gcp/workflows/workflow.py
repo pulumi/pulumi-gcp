@@ -78,6 +78,7 @@ class WorkflowArgs:
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[_builtins.str] source_contents: Workflow code to be executed. The size limit is 128KB.
+               > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -291,6 +292,7 @@ class WorkflowArgs:
     def source_contents(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workflow code to be executed. The size limit is 128KB.
+        > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         """
         return pulumi.get(self, "source_contents")
 
@@ -398,6 +400,7 @@ class _WorkflowState:
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[_builtins.str] source_contents: Workflow code to be executed. The size limit is 128KB.
+               > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         :param pulumi.Input[_builtins.str] state: State of the workflow deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
@@ -674,6 +677,7 @@ class _WorkflowState:
     def source_contents(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workflow code to be executed. The size limit is 128KB.
+        > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         """
         return pulumi.get(self, "source_contents")
 
@@ -921,6 +925,7 @@ class Workflow(pulumi.CustomResource):
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[_builtins.str] source_contents: Workflow code to be executed. The size limit is 128KB.
+               > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
                the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -1202,6 +1207,7 @@ class Workflow(pulumi.CustomResource):
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[_builtins.str] source_contents: Workflow code to be executed. The size limit is 128KB.
+               > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         :param pulumi.Input[_builtins.str] state: State of the workflow deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition
                as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
@@ -1398,6 +1404,7 @@ class Workflow(pulumi.CustomResource):
     def source_contents(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Workflow code to be executed. The size limit is 128KB.
+        > **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
         """
         return pulumi.get(self, "source_contents")
 

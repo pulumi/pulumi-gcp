@@ -154,6 +154,13 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Datapolicyv2DataPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Data Governance tag bound to the Data Policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("dataGovernanceTag")]
+        public Output<Outputs.Datapolicyv2DataPolicyDataGovernanceTag?> DataGovernanceTag { get; private set; } = null!;
+
+        /// <summary>
         /// The policy used to specify data masking rule.
         /// Structure is documented below.
         /// </summary>
@@ -295,6 +302,13 @@ namespace Pulumi.Gcp.BigQuery
     public sealed class Datapolicyv2DataPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Data Governance tag bound to the Data Policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataGovernanceTag")]
+        public Input<Inputs.Datapolicyv2DataPolicyDataGovernanceTagArgs>? DataGovernanceTag { get; set; }
+
+        /// <summary>
         /// The policy used to specify data masking rule.
         /// Structure is documented below.
         /// </summary>
@@ -379,6 +393,13 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class Datapolicyv2DataPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Data Governance tag bound to the Data Policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("dataGovernanceTag")]
+        public Input<Inputs.Datapolicyv2DataPolicyDataGovernanceTagGetArgs>? DataGovernanceTag { get; set; }
+
         /// <summary>
         /// The policy used to specify data masking rule.
         /// Structure is documented below.

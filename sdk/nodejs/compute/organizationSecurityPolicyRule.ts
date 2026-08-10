@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_75223",
+ *     shortName: "tf-test_75092",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_41819",
+ *     shortName: "tf-test_2605",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_75092",
+ *     shortName: "tf-test_34535",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_2605",
+ *     shortName: "tf-test_22375",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -150,7 +150,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_34535",
+ *     shortName: "tf-test_29439",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });

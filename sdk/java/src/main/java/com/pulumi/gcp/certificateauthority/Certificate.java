@@ -757,6 +757,139 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Privateca Certificate Subject Config Org Optional
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificateauthority.CaPool;
+ * import com.pulumi.gcp.certificateauthority.CaPoolArgs;
+ * import com.pulumi.gcp.certificateauthority.Authority;
+ * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.certificateauthority.Certificate;
+ * import com.pulumi.gcp.certificateauthority.CertificateArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigCaOptionsArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
+ * import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filebase64Args;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new CaPool("default", CaPoolArgs.builder()
+ *             .location("us-central1")
+ *             .name("my-pool")
+ *             .tier("ENTERPRISE")
+ *             .build());
+ * 
+ *         var defaultAuthority = new Authority("defaultAuthority", AuthorityArgs.builder()
+ *             .location("us-central1")
+ *             .pool(default_.name())
+ *             .certificateAuthorityId("my-authority")
+ *             .config(AuthorityConfigArgs.builder()
+ *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
+ *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
+ *                         .commonName("my-certificate-authority")
+ *                         .build())
+ *                     .subjectAltName(AuthorityConfigSubjectConfigSubjectAltNameArgs.builder()
+ *                         .dnsNames("hashicorp.com")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(AuthorityConfigX509ConfigArgs.builder()
+ *                     .caOptions(AuthorityConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(true)
+ *                         .build())
+ *                     .keyUsage(AuthorityConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .digitalSignature(true)
+ *                             .certSign(true)
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .lifetime("86400s")
+ *             .keySpec(AuthorityKeySpecArgs.builder()
+ *                 .algorithm("RSA_PKCS1_4096_SHA256")
+ *                 .build())
+ *             .deletionProtection(false)
+ *             .skipGracePeriod(true)
+ *             .ignoreActiveCertificatesOnDeletion(true)
+ *             .build());
+ * 
+ *         var defaultCertificate = new Certificate("defaultCertificate", CertificateArgs.builder()
+ *             .location("us-central1")
+ *             .pool(default_.name())
+ *             .name("my-certificate")
+ *             .lifetime("860s")
+ *             .config(CertificateConfigArgs.builder()
+ *                 .subjectConfig(CertificateConfigSubjectConfigArgs.builder()
+ *                     .subject(CertificateConfigSubjectConfigSubjectArgs.builder()
+ *                         .commonName("san1.example.com")
+ *                         .build())
+ *                     .build())
+ *                 .x509Config(CertificateConfigX509ConfigArgs.builder()
+ *                     .caOptions(CertificateConfigX509ConfigCaOptionsArgs.builder()
+ *                         .isCa(false)
+ *                         .build())
+ *                     .keyUsage(CertificateConfigX509ConfigKeyUsageArgs.builder()
+ *                         .baseKeyUsage(CertificateConfigX509ConfigKeyUsageBaseKeyUsageArgs.builder()
+ *                             .crlSign(true)
+ *                             .build())
+ *                         .extendedKeyUsage(CertificateConfigX509ConfigKeyUsageExtendedKeyUsageArgs.builder()
+ *                             .serverAuth(true)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .publicKey(CertificateConfigPublicKeyArgs.builder()
+ *                     .format("PEM")
+ *                     .key(StdFunctions.filebase64(Filebase64Args.builder()
+ *                         .input("test-fixtures/rsa_public.pem")
+ *                         .build()).result())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(defaultAuthority)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

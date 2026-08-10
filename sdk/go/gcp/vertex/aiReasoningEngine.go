@@ -835,6 +835,39 @@ import (
 //	}
 //
 // ```
+// ### Vertex Ai Reasoning Engine Traffic Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
+//				DisplayName: pulumi.String("re-traffic-cfg"),
+//				Description: pulumi.String("Reasoning engine with traffic config"),
+//				Region:      pulumi.String("us-central1"),
+//				Spec: &vertex.AiReasoningEngineSpecArgs{
+//					AgentFramework: pulumi.String("langchain"),
+//				},
+//				TrafficConfig: &vertex.AiReasoningEngineTrafficConfigArgs{
+//					TrafficSplitAlwaysLatest: &vertex.AiReasoningEngineTrafficConfigTrafficSplitAlwaysLatestArgs{},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -905,6 +938,7 @@ type AiReasoningEngine struct {
 	Spec AiReasoningEngineSpecOutput `pulumi:"spec"`
 	// (Optional, Beta)
 	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
 	// Structure is documented below.
 	TrafficConfig AiReasoningEngineTrafficConfigOutput `pulumi:"trafficConfig"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
@@ -1002,6 +1036,7 @@ type aiReasoningEngineState struct {
 	Spec *AiReasoningEngineSpec `pulumi:"spec"`
 	// (Optional, Beta)
 	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
 	// Structure is documented below.
 	TrafficConfig *AiReasoningEngineTrafficConfig `pulumi:"trafficConfig"`
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
@@ -1062,6 +1097,7 @@ type AiReasoningEngineState struct {
 	Spec AiReasoningEngineSpecPtrInput
 	// (Optional, Beta)
 	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
 	// Structure is documented below.
 	TrafficConfig AiReasoningEngineTrafficConfigPtrInput
 	// The timestamp of when the Index was last updated in RFC3339 UTC "Zulu"
@@ -1115,6 +1151,7 @@ type aiReasoningEngineArgs struct {
 	Spec *AiReasoningEngineSpec `pulumi:"spec"`
 	// (Optional, Beta)
 	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
 	// Structure is documented below.
 	TrafficConfig *AiReasoningEngineTrafficConfig `pulumi:"trafficConfig"`
 }
@@ -1159,6 +1196,7 @@ type AiReasoningEngineArgs struct {
 	Spec AiReasoningEngineSpecPtrInput
 	// (Optional, Beta)
 	// Optional. Traffic distribution configuration for the Reasoning Engine.
+	// > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
 	// Structure is documented below.
 	TrafficConfig AiReasoningEngineTrafficConfigPtrInput
 }
@@ -1339,6 +1377,7 @@ func (o AiReasoningEngineOutput) Spec() AiReasoningEngineSpecOutput {
 
 // (Optional, Beta)
 // Optional. Traffic distribution configuration for the Reasoning Engine.
+// > **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
 // Structure is documented below.
 func (o AiReasoningEngineOutput) TrafficConfig() AiReasoningEngineTrafficConfigOutput {
 	return o.ApplyT(func(v *AiReasoningEngine) AiReasoningEngineTrafficConfigOutput { return v.TrafficConfig }).(AiReasoningEngineTrafficConfigOutput)

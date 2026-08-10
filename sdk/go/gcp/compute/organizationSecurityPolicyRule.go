@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_75223"),
+//				ShortName: pulumi.String("tf-test_75092"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -80,7 +80,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_41819"),
+//				ShortName: pulumi.String("tf-test_2605"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -121,7 +121,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_75092"),
+//				ShortName: pulumi.String("tf-test_34535"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -190,7 +190,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_2605"),
+//				ShortName: pulumi.String("tf-test_22375"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})
@@ -243,7 +243,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			policy, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
-//				ShortName: pulumi.String("tf-test_34535"),
+//				ShortName: pulumi.String("tf-test_29439"),
 //				Parent:    pulumi.String("organizations/123456789"),
 //				Type:      pulumi.String("CLOUD_ARMOR"),
 //			})

@@ -7746,6 +7746,10 @@ export namespace artifactregistry {
          */
         mavenRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigMavenRepository[];
         /**
+         * The repository will act as a non-caching proxy (connector mode).
+         */
+        noCaches: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigNoCache[];
+        /**
          * Specific settings for an Npm remote repository.
          */
         npmRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigNpmRepository[];
@@ -7825,6 +7829,9 @@ export namespace artifactregistry {
          * Specific uri to the registry, e.g. '"https://repo.maven.apache.org/maven2"'
          */
         uri: string;
+    }
+
+    export interface GetRepositoryRemoteRepositoryConfigNoCache {
     }
 
     export interface GetRepositoryRemoteRepositoryConfigNpmRepository {
@@ -8135,6 +8142,10 @@ export namespace artifactregistry {
          */
         mavenRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepository;
         /**
+         * The repository will act as a non-caching proxy (connector mode).
+         */
+        noCache?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigNoCache;
+        /**
          * Specific settings for an Npm remote repository.
          * Structure is documented below.
          */
@@ -8224,6 +8235,9 @@ export namespace artifactregistry {
          * Specific uri to the registry, e.g. `"https://pypi.io"`
          */
         uri?: string;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigNoCache {
     }
 
     export interface RepositoryRemoteRepositoryConfigNpmRepository {
@@ -11605,6 +11619,17 @@ export namespace bigquery {
          * The version of the sensitive params - used to trigger updates of the write-only params. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
          */
         secretAccessKeyWoVersion?: number;
+    }
+
+    export interface Datapolicyv2DataPolicyDataGovernanceTag {
+        /**
+         * Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example "parent-id/pii" where "parent-id" is the ID of the parent organization or project resource for this tag key.
+         */
+        key?: string;
+        /**
+         * Tag value is expected to be the short name.
+         */
+        value?: string;
     }
 
     export interface Datapolicyv2DataPolicyDataMaskingPolicy {
@@ -16515,7 +16540,7 @@ export namespace certificateauthority {
         /**
          * The organization of the subject.
          */
-        organization: string;
+        organization?: string;
         /**
          * The organizational unit of the subject.
          */
@@ -36521,6 +36546,10 @@ export namespace cloudrun {
          */
         resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
         /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher: boolean;
+        /**
          * Startup probe of application within the container.
          * All other probes are disabled if a startup probe is provided, until it
          * succeeds. Container will not be added to service endpoints if the probe fails.
@@ -37461,6 +37490,10 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         resources: outputs.cloudrun.ServiceTemplateSpecContainerResources;
+        /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: boolean;
         /**
          * Startup probe of application within the container.
          * All other probes are disabled if a startup probe is provided, until it
@@ -38812,6 +38845,10 @@ export namespace cloudrunv2 {
          * Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
          */
         resources: outputs.cloudrunv2.GetServiceTemplateContainerResource[];
+        /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher: boolean;
         /**
          * Location of the source.
          */
@@ -40883,6 +40920,10 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         resources: outputs.cloudrunv2.ServiceTemplateContainerResources;
+        /**
+         * Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+         */
+        sandboxLauncher?: boolean;
         /**
          * (Optional, Beta)
          * Location of the source.
@@ -65529,6 +65570,72 @@ export namespace compute {
          * User-provided name of the Network policy. The name should be unique in the project in which the policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
          */
         name?: string;
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleAction {
+        /**
+         * DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+         * Possible values are: `AUTO`, `CUSTOM`.
+         */
+        dscpMode?: string;
+        /**
+         * Custom DSCP value from 0-63 range.
+         */
+        dscpValue?: number;
+        /**
+         * The traffic class that should be applied to the matching packet.
+         * Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+         */
+        trafficClass?: string;
+        /**
+         * Always applyTrafficClassification for Traffic Classification Rules.
+         * Default value is `applyTrafficClassification`.
+         * Possible values are: `applyTrafficClassification`.
+         */
+        type?: string;
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleMatch {
+        /**
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+         */
+        destIpRanges?: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         *
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
+         */
+        layer4Configs: outputs.compute.RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config[];
+        /**
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+         */
+        srcIpRanges?: string[];
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config {
+        /**
+         * The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+         */
+        ports?: string[];
+    }
+
+    export interface RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         */
+        name?: string;
+        /**
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+         */
+        state: string;
     }
 
     export interface RegionPerInstanceConfigPreservedState {
@@ -113693,7 +113800,7 @@ export namespace gkehub {
         /**
          * Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
          */
-        scopeTenancyPool: string;
+        scopeTenancyPool?: string;
     }
 
     export interface FeatureState {
@@ -130049,7 +130156,7 @@ export namespace networkconnectivity {
          */
         ipRangeReservations: outputs.networkconnectivity.SpokeGatewayIpRangeReservation[];
         /**
-         * (Output, Beta)
+         * (Output)
          * Set of Cloud Routers that are attached to this NCC-GW
          */
         routers: string[];
@@ -165583,7 +165690,7 @@ export namespace vertex {
          */
         percent: number;
         /**
-         * Required. The Runtime Revision name to which to send this portion of traffic.
+         * Required. The Runtime Revision name to which to send this portion of traffic. Accepts revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`. Note: Keywords like `LATEST` and `PREVIOUS` resolve at apply time to the concrete underlying revision ID and remain pinned until `trafficConfig` is updated in Terraform.
          */
         runtimeRevisionName: string;
     }

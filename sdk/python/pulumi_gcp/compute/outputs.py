@@ -557,6 +557,10 @@ __all__ = [
     'RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag',
     'RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag',
     'RegionNetworkPolicyAssociation',
+    'RegionNetworkPolicyTrafficClassificationRuleAction',
+    'RegionNetworkPolicyTrafficClassificationRuleMatch',
+    'RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config',
+    'RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag',
     'RegionPerInstanceConfigPreservedState',
     'RegionPerInstanceConfigPreservedStateDisk',
     'RegionPerInstanceConfigPreservedStateExternalIp',
@@ -41703,6 +41707,243 @@ class RegionNetworkPolicyAssociation(dict):
         User-provided name of the Network policy. The name should be unique in the project in which the policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class RegionNetworkPolicyTrafficClassificationRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dscpMode":
+            suggest = "dscp_mode"
+        elif key == "dscpValue":
+            suggest = "dscp_value"
+        elif key == "trafficClass":
+            suggest = "traffic_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkPolicyTrafficClassificationRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkPolicyTrafficClassificationRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkPolicyTrafficClassificationRuleAction.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dscp_mode: Optional[_builtins.str] = None,
+                 dscp_value: Optional[_builtins.int] = None,
+                 traffic_class: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str dscp_mode: DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+               Possible values are: `AUTO`, `CUSTOM`.
+        :param _builtins.int dscp_value: Custom DSCP value from 0-63 range.
+        :param _builtins.str traffic_class: The traffic class that should be applied to the matching packet.
+               Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        :param _builtins.str type: Always apply_traffic_classification for Traffic Classification Rules.
+               Default value is `apply_traffic_classification`.
+               Possible values are: `apply_traffic_classification`.
+        """
+        if dscp_mode is not None:
+            pulumi.set(__self__, "dscp_mode", dscp_mode)
+        if dscp_value is not None:
+            pulumi.set(__self__, "dscp_value", dscp_value)
+        if traffic_class is not None:
+            pulumi.set(__self__, "traffic_class", traffic_class)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="dscpMode")
+    def dscp_mode(self) -> Optional[_builtins.str]:
+        """
+        DSCP mode. When set to AUTO, the DSCP value will be picked automatically based on selected trafficClass. Otherwise,dscpValue needs to be explicitly specified.
+        Possible values are: `AUTO`, `CUSTOM`.
+        """
+        return pulumi.get(self, "dscp_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="dscpValue")
+    def dscp_value(self) -> Optional[_builtins.int]:
+        """
+        Custom DSCP value from 0-63 range.
+        """
+        return pulumi.get(self, "dscp_value")
+
+    @_builtins.property
+    @pulumi.getter(name="trafficClass")
+    def traffic_class(self) -> Optional[_builtins.str]:
+        """
+        The traffic class that should be applied to the matching packet.
+        Possible values are: `TC1`, `TC2`, `TC3`, `TC4`, `TC5`, `TC6`.
+        """
+        return pulumi.get(self, "traffic_class")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Always apply_traffic_classification for Traffic Classification Rules.
+        Default value is `apply_traffic_classification`.
+        Possible values are: `apply_traffic_classification`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class RegionNetworkPolicyTrafficClassificationRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkPolicyTrafficClassificationRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkPolicyTrafficClassificationRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkPolicyTrafficClassificationRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layer4_configs: Sequence['outputs.RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config'],
+                 dest_ip_ranges: Optional[Sequence[_builtins.str]] = None,
+                 src_ip_ranges: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence['RegionNetworkPolicyTrafficClassificationRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+               
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        :param Sequence[_builtins.str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param Sequence[_builtins.str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @_builtins.property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Sequence['outputs.RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config']:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: _builtins.str,
+                 ports: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param Sequence[_builtins.str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @_builtins.property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> _builtins.str:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a traffic classification rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class RegionNetworkPolicyTrafficClassificationRuleTargetSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param _builtins.str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

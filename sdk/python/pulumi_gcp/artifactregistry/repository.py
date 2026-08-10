@@ -950,6 +950,46 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+        ### Artifact Registry Repository Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication={
+                "auto": {},
+            })
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example remote docker repository with no cache (connector mode)",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "docker hub connector repository (no cache)",
+                "disable_upstream_validation": True,
+                "docker_repository": {
+                    "public_repository": "DOCKER_HUB",
+                },
+                "upstream_credentials": {
+                    "username_password_credentials": {
+                        "username": "remote-username",
+                        "password_secret_version": example_remote_secret_version.name,
+                    },
+                },
+                "no_cache": {},
+            })
+        ```
         ### Artifact Registry Repository Remote Apt
 
         ```python
@@ -1576,6 +1616,46 @@ class Repository(pulumi.CustomResource):
                 "docker_repository": {
                     "public_repository": "DOCKER_HUB",
                 },
+            })
+        ```
+        ### Artifact Registry Repository Connector
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication={
+                "auto": {},
+            })
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example remote docker repository with no cache (connector mode)",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "docker hub connector repository (no cache)",
+                "disable_upstream_validation": True,
+                "docker_repository": {
+                    "public_repository": "DOCKER_HUB",
+                },
+                "upstream_credentials": {
+                    "username_password_credentials": {
+                        "username": "remote-username",
+                        "password_secret_version": example_remote_secret_version.name,
+                    },
+                },
+                "no_cache": {},
             })
         ```
         ### Artifact Registry Repository Remote Apt

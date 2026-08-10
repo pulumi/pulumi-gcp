@@ -16,9 +16,6 @@ import (
 // This resource defines a reusable SQL routine (e.g., a TVF) that can be
 // shared or executed via the Data Exchange.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about QueryTemplate, see:
 //
 // * [API documentation](https://docs.cloud.google.com/bigquery/docs/reference/analytics-hub/rest/v1/projects.locations.dataExchanges.queryTemplates)

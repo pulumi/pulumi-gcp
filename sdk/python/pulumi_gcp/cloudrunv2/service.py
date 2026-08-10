@@ -1886,6 +1886,24 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Sandbox
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "sandbox_launcher": True,
+                }],
+            })
+        ```
 
         ## Import
 
@@ -2565,6 +2583,24 @@ class Service(pulumi.CustomResource):
             template={
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Sandbox
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "sandbox_launcher": True,
                 }],
             })
         ```

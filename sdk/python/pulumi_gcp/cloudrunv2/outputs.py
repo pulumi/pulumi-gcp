@@ -3055,6 +3055,8 @@ class ServiceTemplateContainer(dict):
             suggest = "liveness_probe"
         elif key == "readinessProbe":
             suggest = "readiness_probe"
+        elif key == "sandboxLauncher":
+            suggest = "sandbox_launcher"
         elif key == "sourceCode":
             suggest = "source_code"
         elif key == "startupProbe":
@@ -3088,6 +3090,7 @@ class ServiceTemplateContainer(dict):
                  ports: Optional['outputs.ServiceTemplateContainerPorts'] = None,
                  readiness_probe: Optional['outputs.ServiceTemplateContainerReadinessProbe'] = None,
                  resources: Optional['outputs.ServiceTemplateContainerResources'] = None,
+                 sandbox_launcher: Optional[_builtins.bool] = None,
                  source_code: Optional['outputs.ServiceTemplateContainerSourceCode'] = None,
                  startup_probe: Optional['outputs.ServiceTemplateContainerStartupProbe'] = None,
                  volume_mounts: Optional[Sequence['outputs.ServiceTemplateContainerVolumeMount']] = None,
@@ -3113,6 +3116,7 @@ class ServiceTemplateContainer(dict):
                Structure is documented below.
         :param 'ServiceTemplateContainerResourcesArgs' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
                Structure is documented below.
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param 'ServiceTemplateContainerSourceCodeArgs' source_code: (Optional, Beta)
                Location of the source.
                Structure is documented below.
@@ -3145,6 +3149,8 @@ class ServiceTemplateContainer(dict):
             pulumi.set(__self__, "readiness_probe", readiness_probe)
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
+        if sandbox_launcher is not None:
+            pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         if source_code is not None:
             pulumi.set(__self__, "source_code", source_code)
         if startup_probe is not None:
@@ -3257,6 +3263,14 @@ class ServiceTemplateContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> Optional[_builtins.bool]:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="sourceCode")
@@ -9613,6 +9627,7 @@ class GetServiceTemplateContainerResult(dict):
                  ports: Sequence['outputs.GetServiceTemplateContainerPortResult'],
                  readiness_probes: Sequence['outputs.GetServiceTemplateContainerReadinessProbeResult'],
                  resources: Sequence['outputs.GetServiceTemplateContainerResourceResult'],
+                 sandbox_launcher: _builtins.bool,
                  source_codes: Sequence['outputs.GetServiceTemplateContainerSourceCodeResult'],
                  startup_probes: Sequence['outputs.GetServiceTemplateContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetServiceTemplateContainerVolumeMountResult'],
@@ -9632,6 +9647,7 @@ class GetServiceTemplateContainerResult(dict):
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
         :param Sequence['GetServiceTemplateContainerReadinessProbeArgs'] readiness_probes: Periodic probe of container readiness.
         :param Sequence['GetServiceTemplateContainerResourceArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param _builtins.bool sandbox_launcher: Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         :param Sequence['GetServiceTemplateContainerSourceCodeArgs'] source_codes: Location of the source.
         :param Sequence['GetServiceTemplateContainerStartupProbeArgs'] startup_probes: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param Sequence['GetServiceTemplateContainerVolumeMountArgs'] volume_mounts: Volume to mount into the container's filesystem.
@@ -9649,6 +9665,7 @@ class GetServiceTemplateContainerResult(dict):
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "readiness_probes", readiness_probes)
         pulumi.set(__self__, "resources", resources)
+        pulumi.set(__self__, "sandbox_launcher", sandbox_launcher)
         pulumi.set(__self__, "source_codes", source_codes)
         pulumi.set(__self__, "startup_probes", startup_probes)
         pulumi.set(__self__, "volume_mounts", volume_mounts)
@@ -9751,6 +9768,14 @@ class GetServiceTemplateContainerResult(dict):
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
+
+    @_builtins.property
+    @pulumi.getter(name="sandboxLauncher")
+    def sandbox_launcher(self) -> _builtins.bool:
+        """
+        Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+        """
+        return pulumi.get(self, "sandbox_launcher")
 
     @_builtins.property
     @pulumi.getter(name="sourceCodes")

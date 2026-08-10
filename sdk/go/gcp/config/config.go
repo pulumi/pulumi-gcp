@@ -161,6 +161,9 @@ func GetCloudSchedulerCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudSecurityComplianceCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudSecurityComplianceCustomEndpoint")
 }
+func GetCloudSupportCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:cloudSupportCustomEndpoint")
+}
 func GetCloudTasksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudTasksCustomEndpoint")
 }

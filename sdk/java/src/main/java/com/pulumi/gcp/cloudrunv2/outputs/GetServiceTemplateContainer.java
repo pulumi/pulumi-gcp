@@ -14,6 +14,7 @@ import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerResource;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerSourceCode;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerStartupProbe;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerVolumeMount;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -82,6 +83,11 @@ public final class GetServiceTemplateContainer {
      * 
      */
     private List<GetServiceTemplateContainerResource> resources;
+    /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    private Boolean sandboxLauncher;
     /**
      * @return Location of the source.
      * 
@@ -191,6 +197,13 @@ public final class GetServiceTemplateContainer {
         return this.resources;
     }
     /**
+     * @return Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+     * 
+     */
+    public Boolean sandboxLauncher() {
+        return this.sandboxLauncher;
+    }
+    /**
      * @return Location of the source.
      * 
      */
@@ -240,6 +253,7 @@ public final class GetServiceTemplateContainer {
         private List<GetServiceTemplateContainerPort> ports;
         private List<GetServiceTemplateContainerReadinessProbe> readinessProbes;
         private List<GetServiceTemplateContainerResource> resources;
+        private Boolean sandboxLauncher;
         private List<GetServiceTemplateContainerSourceCode> sourceCodes;
         private List<GetServiceTemplateContainerStartupProbe> startupProbes;
         private List<GetServiceTemplateContainerVolumeMount> volumeMounts;
@@ -259,6 +273,7 @@ public final class GetServiceTemplateContainer {
     	      this.ports = defaults.ports;
     	      this.readinessProbes = defaults.readinessProbes;
     	      this.resources = defaults.resources;
+    	      this.sandboxLauncher = defaults.sandboxLauncher;
     	      this.sourceCodes = defaults.sourceCodes;
     	      this.startupProbes = defaults.startupProbes;
     	      this.volumeMounts = defaults.volumeMounts;
@@ -389,6 +404,14 @@ public final class GetServiceTemplateContainer {
             return resources(List.of(resources));
         }
         @CustomType.Setter
+        public Builder sandboxLauncher(Boolean sandboxLauncher) {
+            if (sandboxLauncher == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "sandboxLauncher");
+            }
+            this.sandboxLauncher = sandboxLauncher;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sourceCodes(List<GetServiceTemplateContainerSourceCode> sourceCodes) {
             if (sourceCodes == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateContainer", "sourceCodes");
@@ -443,6 +466,7 @@ public final class GetServiceTemplateContainer {
             _resultValue.ports = ports;
             _resultValue.readinessProbes = readinessProbes;
             _resultValue.resources = resources;
+            _resultValue.sandboxLauncher = sandboxLauncher;
             _resultValue.sourceCodes = sourceCodes;
             _resultValue.startupProbes = startupProbes;
             _resultValue.volumeMounts = volumeMounts;
