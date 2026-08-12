@@ -292,7 +292,7 @@ type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
-	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
 	AppEngineApis pulumi.BoolPtrOutput `pulumi:"appEngineApis"`
 	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
 	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
@@ -408,7 +408,7 @@ func GetStandardAppVersion(ctx *pulumi.Context,
 // Input properties used for looking up and filtering StandardAppVersion resources.
 type standardAppVersionState struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
-	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
 	AppEngineApis *bool `pulumi:"appEngineApis"`
 	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
 	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
@@ -483,7 +483,7 @@ type standardAppVersionState struct {
 
 type StandardAppVersionState struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
-	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
 	AppEngineApis pulumi.BoolPtrInput
 	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
 	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
@@ -562,7 +562,7 @@ func (StandardAppVersionState) ElementType() reflect.Type {
 
 type standardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
-	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
 	AppEngineApis *bool `pulumi:"appEngineApis"`
 	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
 	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
@@ -636,7 +636,7 @@ type standardAppVersionArgs struct {
 // The set of arguments for constructing a StandardAppVersion resource.
 type StandardAppVersionArgs struct {
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
-	// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
 	AppEngineApis pulumi.BoolPtrInput
 	// A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
 	// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
@@ -795,7 +795,7 @@ func (o StandardAppVersionOutput) ToStandardAppVersionOutputWithContext(ctx cont
 }
 
 // Allows App Engine second generation runtimes to access the legacy bundled services.
-// Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+// Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
 func (o StandardAppVersionOutput) AppEngineApis() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StandardAppVersion) pulumi.BoolPtrOutput { return v.AppEngineApis }).(pulumi.BoolPtrOutput)
 }

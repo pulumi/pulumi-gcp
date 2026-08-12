@@ -259,6 +259,12 @@ export class Gateway extends pulumi.CustomResource {
      */
     declare public readonly allPorts: pulumi.Output<boolean | undefined>;
     /**
+     * Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     */
+    declare public readonly allowGlobalAccess: pulumi.Output<boolean | undefined>;
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
      */
@@ -395,6 +401,7 @@ export class Gateway extends pulumi.CustomResource {
             const state = argsOrState as GatewayState | undefined;
             resourceInputs["addresses"] = state?.addresses;
             resourceInputs["allPorts"] = state?.allPorts;
+            resourceInputs["allowGlobalAccess"] = state?.allowGlobalAccess;
             resourceInputs["certificateUrls"] = state?.certificateUrls;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state?.deleteSwgAutogenRouterOnDestroy;
@@ -425,6 +432,7 @@ export class Gateway extends pulumi.CustomResource {
             }
             resourceInputs["addresses"] = args?.addresses;
             resourceInputs["allPorts"] = args?.allPorts;
+            resourceInputs["allowGlobalAccess"] = args?.allowGlobalAccess;
             resourceInputs["certificateUrls"] = args?.certificateUrls;
             resourceInputs["deleteSwgAutogenRouterOnDestroy"] = args?.deleteSwgAutogenRouterOnDestroy;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
@@ -474,6 +482,12 @@ export interface GatewayState {
      * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
      */
     allPorts?: pulumi.Input<boolean | undefined>;
+    /**
+     * Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     */
+    allowGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -615,6 +629,12 @@ export interface GatewayArgs {
      * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
      */
     allPorts?: pulumi.Input<boolean | undefined>;
+    /**
+     * Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     */
+    allowGlobalAccess?: pulumi.Input<boolean | undefined>;
     /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.

@@ -26,6 +26,8 @@ __all__ = [
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryInitialConfig',
+    'RepositoryScanConfig',
+    'RepositoryScanConfigSecretScanConfig',
     'RepositoryUri',
 ]
 
@@ -538,6 +540,92 @@ class RepositoryInitialConfig(dict):
         Valid values can be viewed at https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.repositories#initialconfig.
         """
         return pulumi.get(self, "readme")
+
+
+@pulumi.output_type
+class RepositoryScanConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretScanConfig":
+            suggest = "secret_scan_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryScanConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryScanConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryScanConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 secret_scan_config: Optional['outputs.RepositoryScanConfigSecretScanConfig'] = None):
+        """
+        :param 'RepositoryScanConfigSecretScanConfigArgs' secret_scan_config: Configuration for secret scanning.
+               Structure is documented below.
+        """
+        if secret_scan_config is not None:
+            pulumi.set(__self__, "secret_scan_config", secret_scan_config)
+
+    @_builtins.property
+    @pulumi.getter(name="secretScanConfig")
+    def secret_scan_config(self) -> Optional['outputs.RepositoryScanConfigSecretScanConfig']:
+        """
+        Configuration for secret scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_scan_config")
+
+
+@pulumi.output_type
+class RepositoryScanConfigSecretScanConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inspectTemplate":
+            suggest = "inspect_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryScanConfigSecretScanConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryScanConfigSecretScanConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryScanConfigSecretScanConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 inspect_template: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Enables secret scanning for the repository.
+        :param _builtins.str inspect_template: The DLP inspect template to use for secret scanning.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if inspect_template is not None:
+            pulumi.set(__self__, "inspect_template", inspect_template)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enables secret scanning for the repository.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="inspectTemplate")
+    def inspect_template(self) -> Optional[_builtins.str]:
+        """
+        The DLP inspect template to use for secret scanning.
+        """
+        return pulumi.get(self, "inspect_template")
 
 
 @pulumi.output_type

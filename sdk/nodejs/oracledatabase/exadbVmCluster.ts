@@ -211,6 +211,12 @@ export class ExadbVmCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly gcpOracleZone: pulumi.Output<string>;
     /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly identityConnectors: pulumi.Output<outputs.oracledatabase.ExadbVmClusterIdentityConnector[]>;
+    /**
      * The labels or tags associated with the ExadbVmCluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -276,6 +282,7 @@ export class ExadbVmCluster extends pulumi.CustomResource {
             resourceInputs["entitlementId"] = state?.entitlementId;
             resourceInputs["exadbVmClusterId"] = state?.exadbVmClusterId;
             resourceInputs["gcpOracleZone"] = state?.gcpOracleZone;
+            resourceInputs["identityConnectors"] = state?.identityConnectors;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -319,6 +326,7 @@ export class ExadbVmCluster extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["entitlementId"] = undefined /*out*/;
             resourceInputs["gcpOracleZone"] = undefined /*out*/;
+            resourceInputs["identityConnectors"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
@@ -384,6 +392,12 @@ export interface ExadbVmClusterState {
      * ExascaleDbStorageVault.
      */
     gcpOracleZone?: pulumi.Input<string | undefined>;
+    /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     */
+    identityConnectors?: pulumi.Input<pulumi.Input<inputs.oracledatabase.ExadbVmClusterIdentityConnector>[] | undefined>;
     /**
      * The labels or tags associated with the ExadbVmCluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

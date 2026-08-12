@@ -10798,6 +10798,8 @@ type ClusterAddonsConfig struct {
 	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 	GkeBackupAgentConfig *ClusterAddonsConfigGkeBackupAgentConfig `pulumi:"gkeBackupAgentConfig"`
+	// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+	HighScaleCheckpointingConfig *ClusterAddonsConfigHighScaleCheckpointingConfig `pulumi:"highScaleCheckpointingConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -10913,6 +10915,8 @@ type ClusterAddonsConfigArgs struct {
 	// .
 	// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 	GkeBackupAgentConfig ClusterAddonsConfigGkeBackupAgentConfigPtrInput `pulumi:"gkeBackupAgentConfig"`
+	// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+	HighScaleCheckpointingConfig ClusterAddonsConfigHighScaleCheckpointingConfigPtrInput `pulumi:"highScaleCheckpointingConfig"`
 	// The status of the Horizontal Pod Autoscaling
 	// addon, which increases or decreases the number of replica pods a replication controller
 	// has based on the resource usage of the existing pods.
@@ -11121,6 +11125,13 @@ func (o ClusterAddonsConfigOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigG
 // The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) GkeBackupAgentConfig() ClusterAddonsConfigGkeBackupAgentConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigGkeBackupAgentConfig { return v.GkeBackupAgentConfig }).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
+}
+
+// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+func (o ClusterAddonsConfigOutput) HighScaleCheckpointingConfig() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigHighScaleCheckpointingConfig {
+		return v.HighScaleCheckpointingConfig
+	}).(ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput)
 }
 
 // The status of the Horizontal Pod Autoscaling
@@ -11353,6 +11364,16 @@ func (o ClusterAddonsConfigPtrOutput) GkeBackupAgentConfig() ClusterAddonsConfig
 		}
 		return v.GkeBackupAgentConfig
 	}).(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput)
+}
+
+// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+func (o ClusterAddonsConfigPtrOutput) HighScaleCheckpointingConfig() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigHighScaleCheckpointingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HighScaleCheckpointingConfig
+	}).(ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput)
 }
 
 // The status of the Horizontal Pod Autoscaling
@@ -12616,6 +12637,143 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Elem() ClusterAddonsCo
 
 func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGkeBackupAgentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigHighScaleCheckpointingConfig struct {
+	// Whether the High Scale Checkpointing addon is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigHighScaleCheckpointingConfigInput is an input type that accepts ClusterAddonsConfigHighScaleCheckpointingConfigArgs and ClusterAddonsConfigHighScaleCheckpointingConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigHighScaleCheckpointingConfigInput` via:
+//
+//	ClusterAddonsConfigHighScaleCheckpointingConfigArgs{...}
+type ClusterAddonsConfigHighScaleCheckpointingConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigHighScaleCheckpointingConfigOutput() ClusterAddonsConfigHighScaleCheckpointingConfigOutput
+	ToClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigOutput
+}
+
+type ClusterAddonsConfigHighScaleCheckpointingConfigArgs struct {
+	// Whether the High Scale Checkpointing addon is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigHighScaleCheckpointingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigHighScaleCheckpointingConfigArgs) ToClusterAddonsConfigHighScaleCheckpointingConfigOutput() ClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return i.ToClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigHighScaleCheckpointingConfigArgs) ToClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigHighScaleCheckpointingConfigOutput)
+}
+
+func (i ClusterAddonsConfigHighScaleCheckpointingConfigArgs) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return i.ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigHighScaleCheckpointingConfigArgs) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigHighScaleCheckpointingConfigOutput).ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigHighScaleCheckpointingConfigPtrInput is an input type that accepts ClusterAddonsConfigHighScaleCheckpointingConfigArgs, ClusterAddonsConfigHighScaleCheckpointingConfigPtr and ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigHighScaleCheckpointingConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigHighScaleCheckpointingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigHighScaleCheckpointingConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput
+	ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput
+}
+
+type clusterAddonsConfigHighScaleCheckpointingConfigPtrType ClusterAddonsConfigHighScaleCheckpointingConfigArgs
+
+func ClusterAddonsConfigHighScaleCheckpointingConfigPtr(v *ClusterAddonsConfigHighScaleCheckpointingConfigArgs) ClusterAddonsConfigHighScaleCheckpointingConfigPtrInput {
+	return (*clusterAddonsConfigHighScaleCheckpointingConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigHighScaleCheckpointingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigHighScaleCheckpointingConfigPtrType) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return i.ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigHighScaleCheckpointingConfigPtrType) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput)
+}
+
+type ClusterAddonsConfigHighScaleCheckpointingConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigHighScaleCheckpointingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigOutput) ToClusterAddonsConfigHighScaleCheckpointingConfigOutput() ClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigOutput) ToClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigOutput) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return o.ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigOutput) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigHighScaleCheckpointingConfig) *ClusterAddonsConfigHighScaleCheckpointingConfig {
+		return &v
+	}).(ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput)
+}
+
+// Whether the High Scale Checkpointing addon is enabled.
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigHighScaleCheckpointingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput() ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput) ToClusterAddonsConfigHighScaleCheckpointingConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput) Elem() ClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigHighScaleCheckpointingConfig) ClusterAddonsConfigHighScaleCheckpointingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigHighScaleCheckpointingConfig
+		return ret
+	}).(ClusterAddonsConfigHighScaleCheckpointingConfigOutput)
+}
+
+// Whether the High Scale Checkpointing addon is enabled.
+func (o ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigHighScaleCheckpointingConfig) *bool {
 		if v == nil {
 			return nil
 		}
@@ -66555,6 +66713,8 @@ type GetClusterAddonsConfig struct {
 	GcsFuseCsiDriverConfigs []GetClusterAddonsConfigGcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfigs"`
 	// The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
 	GkeBackupAgentConfigs []GetClusterAddonsConfigGkeBackupAgentConfig `pulumi:"gkeBackupAgentConfigs"`
+	// The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+	HighScaleCheckpointingConfigs []GetClusterAddonsConfigHighScaleCheckpointingConfig `pulumi:"highScaleCheckpointingConfigs"`
 	// The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
 	HorizontalPodAutoscalings []GetClusterAddonsConfigHorizontalPodAutoscaling `pulumi:"horizontalPodAutoscalings"`
 	// The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. It is enabled by default; set disabled = true to disable.
@@ -66611,6 +66771,8 @@ type GetClusterAddonsConfigArgs struct {
 	GcsFuseCsiDriverConfigs GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput `pulumi:"gcsFuseCsiDriverConfigs"`
 	// The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
 	GkeBackupAgentConfigs GetClusterAddonsConfigGkeBackupAgentConfigArrayInput `pulumi:"gkeBackupAgentConfigs"`
+	// The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+	HighScaleCheckpointingConfigs GetClusterAddonsConfigHighScaleCheckpointingConfigArrayInput `pulumi:"highScaleCheckpointingConfigs"`
 	// The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
 	HorizontalPodAutoscalings GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput `pulumi:"horizontalPodAutoscalings"`
 	// The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. It is enabled by default; set disabled = true to disable.
@@ -66740,6 +66902,13 @@ func (o GetClusterAddonsConfigOutput) GkeBackupAgentConfigs() GetClusterAddonsCo
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGkeBackupAgentConfig {
 		return v.GkeBackupAgentConfigs
 	}).(GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput)
+}
+
+// The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigOutput) HighScaleCheckpointingConfigs() GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigHighScaleCheckpointingConfig {
+		return v.HighScaleCheckpointingConfigs
+	}).(GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput)
 }
 
 // The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
@@ -67600,6 +67769,100 @@ func (o GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigGkeBackupAgentConfig {
 		return vs[0].([]GetClusterAddonsConfigGkeBackupAgentConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigGkeBackupAgentConfigOutput)
+}
+
+type GetClusterAddonsConfigHighScaleCheckpointingConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigHighScaleCheckpointingConfigInput is an input type that accepts GetClusterAddonsConfigHighScaleCheckpointingConfigArgs and GetClusterAddonsConfigHighScaleCheckpointingConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigHighScaleCheckpointingConfigInput` via:
+//
+//	GetClusterAddonsConfigHighScaleCheckpointingConfigArgs{...}
+type GetClusterAddonsConfigHighScaleCheckpointingConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutput() GetClusterAddonsConfigHighScaleCheckpointingConfigOutput
+	ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(context.Context) GetClusterAddonsConfigHighScaleCheckpointingConfigOutput
+}
+
+type GetClusterAddonsConfigHighScaleCheckpointingConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigHighScaleCheckpointingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigHighScaleCheckpointingConfigArgs) ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutput() GetClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return i.ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigHighScaleCheckpointingConfigArgs) ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigHighScaleCheckpointingConfigOutput)
+}
+
+// GetClusterAddonsConfigHighScaleCheckpointingConfigArrayInput is an input type that accepts GetClusterAddonsConfigHighScaleCheckpointingConfigArray and GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigHighScaleCheckpointingConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigHighScaleCheckpointingConfigArray{ GetClusterAddonsConfigHighScaleCheckpointingConfigArgs{...} }
+type GetClusterAddonsConfigHighScaleCheckpointingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput() GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput
+	ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput
+}
+
+type GetClusterAddonsConfigHighScaleCheckpointingConfigArray []GetClusterAddonsConfigHighScaleCheckpointingConfigInput
+
+func (GetClusterAddonsConfigHighScaleCheckpointingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigHighScaleCheckpointingConfigArray) ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput() GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigHighScaleCheckpointingConfigArray) ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigHighScaleCheckpointingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigHighScaleCheckpointingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigHighScaleCheckpointingConfigOutput) ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutput() GetClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigHighScaleCheckpointingConfigOutput) ToGetClusterAddonsConfigHighScaleCheckpointingConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigHighScaleCheckpointingConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigHighScaleCheckpointingConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigHighScaleCheckpointingConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput) ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput() GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput) ToGetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigHighScaleCheckpointingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigHighScaleCheckpointingConfig {
+		return vs[0].([]GetClusterAddonsConfigHighScaleCheckpointingConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigHighScaleCheckpointingConfigOutput)
 }
 
 type GetClusterAddonsConfigHorizontalPodAutoscaling struct {
@@ -78049,240 +78312,6 @@ func (o GetClusterNodeConfigFastSocketArrayOutput) Index(i pulumi.IntInput) GetC
 	}).(GetClusterNodeConfigFastSocketOutput)
 }
 
-type GetClusterNodeConfigGcfsConfig struct {
-	// Whether or not GCFS is enabled
-	Enabled bool `pulumi:"enabled"`
-}
-
-// GetClusterNodeConfigGcfsConfigInput is an input type that accepts GetClusterNodeConfigGcfsConfigArgs and GetClusterNodeConfigGcfsConfigOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGcfsConfigInput` via:
-//
-//	GetClusterNodeConfigGcfsConfigArgs{...}
-type GetClusterNodeConfigGcfsConfigInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput
-	ToGetClusterNodeConfigGcfsConfigOutputWithContext(context.Context) GetClusterNodeConfigGcfsConfigOutput
-}
-
-type GetClusterNodeConfigGcfsConfigArgs struct {
-	// Whether or not GCFS is enabled
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (GetClusterNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGcfsConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGcfsConfigArgs) ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput {
-	return i.ToGetClusterNodeConfigGcfsConfigOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGcfsConfigArgs) ToGetClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGcfsConfigOutput)
-}
-
-// GetClusterNodeConfigGcfsConfigArrayInput is an input type that accepts GetClusterNodeConfigGcfsConfigArray and GetClusterNodeConfigGcfsConfigArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGcfsConfigArrayInput` via:
-//
-//	GetClusterNodeConfigGcfsConfigArray{ GetClusterNodeConfigGcfsConfigArgs{...} }
-type GetClusterNodeConfigGcfsConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput
-	ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGcfsConfigArrayOutput
-}
-
-type GetClusterNodeConfigGcfsConfigArray []GetClusterNodeConfigGcfsConfigInput
-
-func (GetClusterNodeConfigGcfsConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGcfsConfig)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGcfsConfigArray) ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput {
-	return i.ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGcfsConfigArray) ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGcfsConfigArrayOutput)
-}
-
-type GetClusterNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGcfsConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGcfsConfigOutput) ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGcfsConfigOutput) ToGetClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigOutput {
-	return o
-}
-
-// Whether or not GCFS is enabled
-func (o GetClusterNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type GetClusterNodeConfigGcfsConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGcfsConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGcfsConfig)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGcfsConfigArrayOutput) ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGcfsConfigArrayOutput) ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGcfsConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGcfsConfig {
-		return vs[0].([]GetClusterNodeConfigGcfsConfig)[vs[1].(int)]
-	}).(GetClusterNodeConfigGcfsConfigOutput)
-}
-
-type GetClusterNodeConfigGuestAccelerator struct {
-	// The number of the accelerator cards exposed to an instance.
-	Count int `pulumi:"count"`
-	// Configuration for auto installation of GPU driver.
-	GpuDriverInstallationConfigs []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfigs"`
-	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
-	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
-	// Configuration for GPU sharing.
-	GpuSharingConfigs []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfigs"`
-	// The accelerator type resource name.
-	Type string `pulumi:"type"`
-}
-
-// GetClusterNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArgs and GetClusterNodeConfigGuestAcceleratorOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorInput` via:
-//
-//	GetClusterNodeConfigGuestAcceleratorArgs{...}
-type GetClusterNodeConfigGuestAcceleratorInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGuestAcceleratorOutput() GetClusterNodeConfigGuestAcceleratorOutput
-	ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorOutput
-}
-
-type GetClusterNodeConfigGuestAcceleratorArgs struct {
-	// The number of the accelerator cards exposed to an instance.
-	Count pulumi.IntInput `pulumi:"count"`
-	// Configuration for auto installation of GPU driver.
-	GpuDriverInstallationConfigs GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput `pulumi:"gpuDriverInstallationConfigs"`
-	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
-	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
-	// Configuration for GPU sharing.
-	GpuSharingConfigs GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput `pulumi:"gpuSharingConfigs"`
-	// The accelerator type resource name.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorArgs) ToGetClusterNodeConfigGuestAcceleratorOutput() GetClusterNodeConfigGuestAcceleratorOutput {
-	return i.ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorArgs) ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorOutput)
-}
-
-// GetClusterNodeConfigGuestAcceleratorArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArray and GetClusterNodeConfigGuestAcceleratorArrayOutput values.
-// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorArrayInput` via:
-//
-//	GetClusterNodeConfigGuestAcceleratorArray{ GetClusterNodeConfigGuestAcceleratorArgs{...} }
-type GetClusterNodeConfigGuestAcceleratorArrayInput interface {
-	pulumi.Input
-
-	ToGetClusterNodeConfigGuestAcceleratorArrayOutput() GetClusterNodeConfigGuestAcceleratorArrayOutput
-	ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorArrayOutput
-}
-
-type GetClusterNodeConfigGuestAcceleratorArray []GetClusterNodeConfigGuestAcceleratorInput
-
-func (GetClusterNodeConfigGuestAcceleratorArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorArray) ToGetClusterNodeConfigGuestAcceleratorArrayOutput() GetClusterNodeConfigGuestAcceleratorArrayOutput {
-	return i.ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(context.Background())
-}
-
-func (i GetClusterNodeConfigGuestAcceleratorArray) ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorArrayOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorOutput) ToGetClusterNodeConfigGuestAcceleratorOutput() GetClusterNodeConfigGuestAcceleratorOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorOutput) ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorOutput {
-	return o
-}
-
-// The number of the accelerator cards exposed to an instance.
-func (o GetClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
-}
-
-// Configuration for auto installation of GPU driver.
-func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfigs() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
-		return v.GpuDriverInstallationConfigs
-	}).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
-}
-
-// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
-func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
-}
-
-// Configuration for GPU sharing.
-func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuSharingConfigs() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
-		return v.GpuSharingConfigs
-	}).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
-}
-
-// The accelerator type resource name.
-func (o GetClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetClusterNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
-
-func (GetClusterNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) ToGetClusterNodeConfigGuestAcceleratorArrayOutput() GetClusterNodeConfigGuestAcceleratorArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorArrayOutput {
-	return o
-}
-
-func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
-		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
-	}).(GetClusterNodeConfigGuestAcceleratorOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterAuthorizationPtrInput)(nil)).Elem(), AttachedClusterAuthorizationArgs{})
@@ -78440,6 +78469,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGcsFuseCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfigInput)(nil)).Elem(), ClusterAddonsConfigGkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigGkeBackupAgentConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigGkeBackupAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHighScaleCheckpointingConfigInput)(nil)).Elem(), ClusterAddonsConfigHighScaleCheckpointingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHighScaleCheckpointingConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigHighScaleCheckpointingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHorizontalPodAutoscalingPtrInput)(nil)).Elem(), ClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigHttpLoadBalancingInput)(nil)).Elem(), ClusterAddonsConfigHttpLoadBalancingArgs{})
@@ -79088,6 +79119,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGcsFuseCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfigInput)(nil)).Elem(), GetClusterAddonsConfigGkeBackupAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigGkeBackupAgentConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigGkeBackupAgentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHighScaleCheckpointingConfigInput)(nil)).Elem(), GetClusterAddonsConfigHighScaleCheckpointingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHighScaleCheckpointingConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigHighScaleCheckpointingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHorizontalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterAddonsConfigHorizontalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigHttpLoadBalancingInput)(nil)).Elem(), GetClusterAddonsConfigHttpLoadBalancingArgs{})
@@ -79272,10 +79305,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigFastSocketInput)(nil)).Elem(), GetClusterNodeConfigFastSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigFastSocketArrayInput)(nil)).Elem(), GetClusterNodeConfigFastSocketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterBinaryAuthorizationOutput{})
@@ -79432,6 +79461,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGkeBackupAgentConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigGkeBackupAgentConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigHighScaleCheckpointingConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigHighScaleCheckpointingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -80080,6 +80111,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGkeBackupAgentConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigGkeBackupAgentConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigHighScaleCheckpointingConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigHighScaleCheckpointingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHorizontalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigHttpLoadBalancingOutput{})
@@ -80264,8 +80297,4 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigFastSocketOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigFastSocketArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
-	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
 }

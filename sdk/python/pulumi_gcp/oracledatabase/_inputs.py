@@ -73,6 +73,8 @@ __all__ = [
     'DbSystemPropertiesDbSystemOptionsArgsDict',
     'DbSystemPropertiesTimeZoneArgs',
     'DbSystemPropertiesTimeZoneArgsDict',
+    'ExadbVmClusterIdentityConnectorArgs',
+    'ExadbVmClusterIdentityConnectorArgsDict',
     'ExadbVmClusterPropertiesArgs',
     'ExadbVmClusterPropertiesArgsDict',
     'ExadbVmClusterPropertiesDataCollectionOptionsArgs',
@@ -6716,6 +6718,79 @@ class DbSystemPropertiesTimeZoneArgs:
     @id.setter
     def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
+
+
+class ExadbVmClusterIdentityConnectorArgsDict(TypedDict):
+    connection_state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    The connection state of the identity connector.
+    Possible values:
+    CONNECTION_STATE_UNSPECIFIED
+    CONNECTED
+    PARTIALLY_CONNECTED
+    DISCONNECTED
+    UNKNOWN
+    """
+    service_agent_email: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Output)
+    A google managed service account on which customers can grant roles to access resources in the customer project.
+    """
+
+@pulumi.input_type
+class ExadbVmClusterIdentityConnectorArgs:
+    def __init__(__self__, *,
+                 connection_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_agent_email: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] connection_state: (Output)
+               The connection state of the identity connector.
+               Possible values:
+               CONNECTION_STATE_UNSPECIFIED
+               CONNECTED
+               PARTIALLY_CONNECTED
+               DISCONNECTED
+               UNKNOWN
+        :param pulumi.Input[_builtins.str] service_agent_email: (Output)
+               A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
+        if service_agent_email is not None:
+            pulumi.set(__self__, "service_agent_email", service_agent_email)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        The connection state of the identity connector.
+        Possible values:
+        CONNECTION_STATE_UNSPECIFIED
+        CONNECTED
+        PARTIALLY_CONNECTED
+        DISCONNECTED
+        UNKNOWN
+        """
+        return pulumi.get(self, "connection_state")
+
+    @connection_state.setter
+    def connection_state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "connection_state", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentEmail")
+    def service_agent_email(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Output)
+        A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        return pulumi.get(self, "service_agent_email")
+
+    @service_agent_email.setter
+    def service_agent_email(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_agent_email", value)
 
 
 class ExadbVmClusterPropertiesArgsDict(TypedDict):

@@ -14,13 +14,22 @@ namespace Pulumi.Gcp.Vertex.Outputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig
     {
         /// <summary>
+        /// Optional. Configuration for triggering memory generation.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig? GenerationTriggerConfig;
+        /// <summary>
         /// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
         /// </summary>
         public readonly string Model;
 
         [OutputConstructor]
-        private AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig(string model)
+        private AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig(
+            Outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig? generationTriggerConfig,
+
+            string model)
         {
+            GenerationTriggerConfig = generationTriggerConfig;
             Model = model;
         }
     }

@@ -81,7 +81,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
 
     /**
      * (Output)
-     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
      * 
      */
     @Import(name="tokenStatus")
@@ -89,7 +89,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
 
     /**
      * @return (Output)
-     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+     * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
      * 
      */
     public Optional<Output<String>> tokenStatus() {
@@ -228,7 +228,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
 
         /**
          * @param tokenStatus (Output)
-         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
 
         /**
          * @param tokenStatus (Output)
-         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
          * 
          * @return builder
          * 

@@ -11731,6 +11731,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiEvaluationMetric",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEvaluationMetric:AiEvaluationMetric": "AiEvaluationMetric"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiFeatureGroup",
   "fqn": "pulumi_gcp.vertex",
   "classes": {

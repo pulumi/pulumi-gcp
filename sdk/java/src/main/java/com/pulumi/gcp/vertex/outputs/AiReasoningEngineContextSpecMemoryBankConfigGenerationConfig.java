@@ -5,11 +5,20 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
+    /**
+     * @return Optional. Configuration for triggering memory generation.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig generationTriggerConfig;
     /**
      * @return The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
      * 
@@ -17,6 +26,14 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig 
     private String model;
 
     private AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig() {}
+    /**
+     * @return Optional. Configuration for triggering memory generation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig> generationTriggerConfig() {
+        return Optional.ofNullable(this.generationTriggerConfig);
+    }
     /**
      * @return The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
      * 
@@ -34,13 +51,21 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig 
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig generationTriggerConfig;
         private String model;
         public Builder() {}
         public Builder(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.generationTriggerConfig = defaults.generationTriggerConfig;
     	      this.model = defaults.model;
         }
 
+        @CustomType.Setter
+        public Builder generationTriggerConfig(@Nullable AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig generationTriggerConfig) {
+
+            this.generationTriggerConfig = generationTriggerConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder model(String model) {
             if (model == null) {
@@ -51,6 +76,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig 
         }
         public AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig build() {
             final var _resultValue = new AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig();
+            _resultValue.generationTriggerConfig = generationTriggerConfig;
             _resultValue.model = model;
             return _resultValue;
         }

@@ -4,14 +4,21 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs;
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -49,6 +56,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
     private @Nullable Integer numLocalSsds;
 
     private ClusterClusterConfigPreemptibleWorkerConfigDiskConfig() {}
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    public List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs() {
+        return this.attachedDiskConfigs == null ? List.of() : this.attachedDiskConfigs;
+    }
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -106,6 +120,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs;
         private @Nullable Integer bootDiskProvisionedIops;
         private @Nullable Integer bootDiskProvisionedThroughput;
         private @Nullable Integer bootDiskSizeGb;
@@ -115,6 +130,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
         public Builder() {}
         public Builder(ClusterClusterConfigPreemptibleWorkerConfigDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachedDiskConfigs = defaults.attachedDiskConfigs;
     	      this.bootDiskProvisionedIops = defaults.bootDiskProvisionedIops;
     	      this.bootDiskProvisionedThroughput = defaults.bootDiskProvisionedThroughput;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
@@ -123,6 +139,15 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
+        @CustomType.Setter
+        public Builder attachedDiskConfigs(@Nullable List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs) {
+
+            this.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+        public Builder attachedDiskConfigs(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
+        }
         @CustomType.Setter
         public Builder bootDiskProvisionedIops(@Nullable Integer bootDiskProvisionedIops) {
 
@@ -161,6 +186,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
         }
         public ClusterClusterConfigPreemptibleWorkerConfigDiskConfig build() {
             final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigDiskConfig();
+            _resultValue.attachedDiskConfigs = attachedDiskConfigs;
             _resultValue.bootDiskProvisionedIops = bootDiskProvisionedIops;
             _resultValue.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;

@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult> GkeBackupAgentConfigs;
         /// <summary>
+        /// The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHighScaleCheckpointingConfigResult> HighScaleCheckpointingConfigs;
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult> HorizontalPodAutoscalings;
@@ -116,6 +120,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult> gkeBackupAgentConfigs,
 
+            ImmutableArray<Outputs.GetClusterAddonsConfigHighScaleCheckpointingConfigResult> highScaleCheckpointingConfigs,
+
             ImmutableArray<Outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult> horizontalPodAutoscalings,
 
             ImmutableArray<Outputs.GetClusterAddonsConfigHttpLoadBalancingResult> httpLoadBalancings,
@@ -150,6 +156,7 @@ namespace Pulumi.Gcp.Container.Outputs
             GcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
             GcsFuseCsiDriverConfigs = gcsFuseCsiDriverConfigs;
             GkeBackupAgentConfigs = gkeBackupAgentConfigs;
+            HighScaleCheckpointingConfigs = highScaleCheckpointingConfigs;
             HorizontalPodAutoscalings = horizontalPodAutoscalings;
             HttpLoadBalancings = httpLoadBalancings;
             IstioConfigs = istioConfigs;

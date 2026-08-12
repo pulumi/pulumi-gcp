@@ -18,53 +18,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
  *
- * ## Example Usage
- *
- * ### Beyondcorp App Connector Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const appConnector = new gcp.beyondcorp.AppConnector("app_connector", {
- *     name: "my-app-connector",
- *     principalInfo: {
- *         serviceAccount: {
- *             email: serviceAccount.email,
- *         },
- *     },
- * });
- * ```
- * ### Beyondcorp App Connector Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "my-account",
- *     displayName: "Test Service Account",
- * });
- * const appConnector = new gcp.beyondcorp.AppConnector("app_connector", {
- *     name: "my-app-connector",
- *     region: "us-central1",
- *     displayName: "some display name",
- *     principalInfo: {
- *         serviceAccount: {
- *             email: serviceAccount.email,
- *         },
- *     },
- *     labels: {
- *         foo: "bar",
- *         bar: "baz",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * AppConnector can be imported using any of these accepted formats:

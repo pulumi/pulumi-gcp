@@ -33015,6 +33015,16 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateScaling {
         /**
+         * (Optional, Beta)
+         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         */
+        concurrencyUtilization?: pulumi.Input<number | undefined>;
+        /**
+         * (Optional, Beta)
+         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         */
+        cpuUtilization?: pulumi.Input<number | undefined>;
+        /**
          * Combined maximum number of instances for all revisions receiving traffic.
          */
         maxInstanceCount?: pulumi.Input<number | undefined>;
@@ -41939,7 +41949,7 @@ export namespace compute {
          */
         gracefulShutdown?: pulumi.Input<inputs.compute.InstanceSchedulingGracefulShutdown | undefined>;
         /**
-         * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number | undefined>;
         /**
@@ -42668,7 +42678,7 @@ export namespace compute {
          */
         gracefulShutdown?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingGracefulShutdown | undefined>;
         /**
-         * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number | undefined>;
         /**
@@ -47539,7 +47549,7 @@ export namespace compute {
          */
         gracefulShutdown?: pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingGracefulShutdown | undefined>;
         /**
-         * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: pulumi.Input<number | undefined>;
         /**
@@ -58782,6 +58792,10 @@ export namespace container {
          */
         gkeBackupAgentConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigGkeBackupAgentConfig | undefined>;
         /**
+         * The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+         */
+        highScaleCheckpointingConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigHighScaleCheckpointingConfig | undefined>;
+        /**
          * The status of the Horizontal Pod Autoscaling
          * addon, which increases or decreases the number of replica pods a replication controller
          * has based on the resource usage of the existing pods.
@@ -58918,6 +58932,13 @@ export namespace container {
     }
 
     export interface ClusterAddonsConfigGkeBackupAgentConfig {
+        enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigHighScaleCheckpointingConfig {
+        /**
+         * Whether the High Scale Checkpointing addon is enabled.
+         */
         enabled: pulumi.Input<boolean>;
     }
 
@@ -65596,7 +65617,7 @@ export namespace dataform {
         sshAuthenticationConfig?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfig | undefined>;
         /**
          * (Output)
-         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
          */
         tokenStatus?: pulumi.Input<string | undefined>;
         /**
@@ -74350,6 +74371,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigMasterConfigDiskConfig {
         /**
+         * Optional. Attached disk configuration.
+         */
+        attachedDiskConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig>[] | undefined>;
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: pulumi.Input<number | undefined>;
@@ -74384,6 +74409,25 @@ export namespace dataproc {
         numLocalSsds?: pulumi.Input<number | undefined>;
     }
 
+    export interface ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         */
+        provisionedIops?: pulumi.Input<number | undefined>;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         */
+        provisionedThroughput?: pulumi.Input<number | undefined>;
+    }
+
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
         /**
          * List of instance selection options that the group will use when creating new VMs.
@@ -74412,6 +74456,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
         /**
+         * Attached disk configuration.
+         */
+        attachedDiskConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig>[] | undefined>;
+        /**
          * Indicates how many IOPS to provision for the disk.
          */
         bootDiskProvisionedIops?: pulumi.Input<number | undefined>;
@@ -74435,6 +74483,25 @@ export namespace dataproc {
          * The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         */
+        provisionedIops?: pulumi.Input<number | undefined>;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         */
+        provisionedThroughput?: pulumi.Input<number | undefined>;
     }
 
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -74490,6 +74557,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
         /**
+         * Optional. Attached disk configuration.
+         */
+        attachedDiskConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig>[] | undefined>;
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: pulumi.Input<number | undefined>;
@@ -74518,6 +74589,25 @@ export namespace dataproc {
          * attached to each preemptible worker node. Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         */
+        provisionedIops?: pulumi.Input<number | undefined>;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         */
+        provisionedThroughput?: pulumi.Input<number | undefined>;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
@@ -74552,6 +74642,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
         /**
+         * Optional. Attached disk configuration.
+         */
+        attachedDiskConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig>[] | undefined>;
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: pulumi.Input<number | undefined>;
@@ -74575,6 +74669,25 @@ export namespace dataproc {
          * The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         */
+        provisionedIops?: pulumi.Input<number | undefined>;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         */
+        provisionedThroughput?: pulumi.Input<number | undefined>;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -74802,6 +74915,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigWorkerConfigDiskConfig {
         /**
+         * Attached disk configuration.
+         */
+        attachedDiskConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig>[] | undefined>;
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: pulumi.Input<number | undefined>;
@@ -74832,6 +74949,25 @@ export namespace dataproc {
         numLocalSsds?: pulumi.Input<number | undefined>;
     }
 
+    export interface ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         */
+        provisionedIops?: pulumi.Input<number | undefined>;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         */
+        provisionedThroughput?: pulumi.Input<number | undefined>;
+    }
+
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
         /**
          * List of instance selection options that the group will use when creating new VMs.
@@ -74860,6 +74996,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
         /**
+         * Attached disk configuration.
+         */
+        attachedDiskConfigs?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig>[] | undefined>;
+        /**
          * Indicates how many IOPS to provision for the disk.
          */
         bootDiskProvisionedIops?: pulumi.Input<number | undefined>;
@@ -74883,6 +75023,25 @@ export namespace dataproc {
          * The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: pulumi.Input<number | undefined>;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: pulumi.Input<string | undefined>;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         */
+        provisionedIops?: pulumi.Input<number | undefined>;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         */
+        provisionedThroughput?: pulumi.Input<number | undefined>;
     }
 
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -112048,6 +112207,25 @@ export namespace oracledatabase {
         id?: pulumi.Input<string | undefined>;
     }
 
+    export interface ExadbVmClusterIdentityConnector {
+        /**
+         * (Output)
+         * The connection state of the identity connector.
+         * Possible values:
+         * CONNECTION_STATE_UNSPECIFIED
+         * CONNECTED
+         * PARTIALLY_CONNECTED
+         * DISCONNECTED
+         * UNKNOWN
+         */
+        connectionState?: pulumi.Input<string | undefined>;
+        /**
+         * (Output)
+         * A google managed service account on which customers can grant roles to access resources in the customer project.
+         */
+        serviceAgentEmail?: pulumi.Input<string | undefined>;
+    }
+
     export interface ExadbVmClusterProperties {
         /**
          * The number of additional ECPUs per node for an Exadata VM cluster on
@@ -123384,6 +123562,25 @@ export namespace securesourcemanager {
         readme?: pulumi.Input<string | undefined>;
     }
 
+    export interface RepositoryScanConfig {
+        /**
+         * Configuration for secret scanning.
+         * Structure is documented below.
+         */
+        secretScanConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryScanConfigSecretScanConfig | undefined>;
+    }
+
+    export interface RepositoryScanConfigSecretScanConfig {
+        /**
+         * Enables secret scanning for the repository.
+         */
+        enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The DLP inspect template to use for secret scanning.
+         */
+        inspectTemplate?: pulumi.Input<string | undefined>;
+    }
+
     export interface RepositoryUri {
         /**
          * (Output)
@@ -130063,6 +130260,16 @@ export namespace vertex {
         port?: pulumi.Input<number | undefined>;
     }
 
+    export interface AiEvaluationMetricEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed encryption key
+         * used to protect a resource. Has the form:
+         * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+         * The key needs to be in the same region as where the resource is created.
+         */
+        kmsKeyName?: pulumi.Input<string | undefined>;
+    }
+
     export interface AiFeatureGroupBigQuery {
         /**
          * The BigQuery source URI that points to either a BigQuery Table or View.
@@ -131039,9 +131246,45 @@ export namespace vertex {
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
         /**
+         * Optional. Configuration for triggering memory generation.
+         * Structure is documented below.
+         */
+        generationTriggerConfig?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig | undefined>;
+        /**
          * The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
          */
         model: pulumi.Input<string>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig {
+        /**
+         * Optional. The active rule that determines when to flush the buffer. If not set,
+         * then the stream will be force flushed immediately.
+         * Structure is documented below.
+         */
+        generationRule?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule | undefined>;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule {
+        /**
+         * Optional. Specifies to trigger generation when the event count reaches this limit.
+         */
+        eventCount?: pulumi.Input<number | undefined>;
+        /**
+         * Optional. Specifies to trigger generation at a fixed interval. The duration
+         * must have a minute-level granularity.
+         */
+        fixedInterval?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. Specifies to trigger generation if the stream is inactive for the
+         * specified duration after the most recent event. The duration must have a
+         * minute-level granularity.
+         */
+        idleDuration?: pulumi.Input<string | undefined>;
+        /**
+         * Optional. Re-include the last N already-processed events in the next window.
+         */
+        overlapEventCount?: pulumi.Input<number | undefined>;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {

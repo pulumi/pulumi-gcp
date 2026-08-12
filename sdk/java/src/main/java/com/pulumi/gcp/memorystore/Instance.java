@@ -667,7 +667,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      * 
      */
     @Export(name="authorizationMode", refs={String.class}, tree="[0]")
@@ -676,7 +677,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      * 
      */
     public Output<String> authorizationMode() {

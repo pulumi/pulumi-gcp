@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigWorkerConfigDiskConfig
     {
         /// <summary>
+        /// Attached disk configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig> AttachedDiskConfigs;
+        /// <summary>
         /// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         /// </summary>
         public readonly int? BootDiskProvisionedIops;
@@ -45,6 +49,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private ClusterClusterConfigWorkerConfigDiskConfig(
+            ImmutableArray<Outputs.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs,
+
             int? bootDiskProvisionedIops,
 
             int? bootDiskProvisionedThroughput,
@@ -57,6 +63,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             int? numLocalSsds)
         {
+            AttachedDiskConfigs = attachedDiskConfigs;
             BootDiskProvisionedIops = bootDiskProvisionedIops;
             BootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             BootDiskSizeGb = bootDiskSizeGb;

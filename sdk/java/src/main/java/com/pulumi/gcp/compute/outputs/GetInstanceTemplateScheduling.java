@@ -37,7 +37,7 @@ public final class GetInstanceTemplateScheduling {
      */
     private List<GetInstanceTemplateSchedulingGracefulShutdown> gracefulShutdowns;
     /**
-     * @return Beta Time in seconds for host error detection.
+     * @return Time in seconds for host error detection.
      * 
      */
     private Integer hostErrorTimeoutSeconds;
@@ -144,7 +144,7 @@ public final class GetInstanceTemplateScheduling {
         return this.gracefulShutdowns;
     }
     /**
-     * @return Beta Time in seconds for host error detection.
+     * @return Time in seconds for host error detection.
      * 
      */
     public Integer hostErrorTimeoutSeconds() {

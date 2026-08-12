@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Sql
 {
     /// <summary>
-    /// Executes a SQL script to provision in-database resources on a Cloud SQL Instance. For more information, see the [Cloud SQL official documentation](https://cloud.google.com/sql/docs/postgres/executesql-instance), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances/executeSql).
+    /// Executes a SQL script to provision in-database resources on a Cloud SQL Instance. Before executing a SQL script, you may need to configure your database user and permissions. For more information, see the [Cloud SQL official documentation](https://cloud.google.com/sql/docs/postgres/executesql-instance), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances/executeSql).
     /// 
-    /// &gt; **Warning:** The SQL script and its execution response might transit through intermediate locations between your client and the location of the target instance.
+    /// &gt; **Note:** The SQL script and its execution response might transit through intermediate locations between your client and the location of the target instance.
     /// 
-    /// &gt; **Note:** Terraform connects to the instance via [IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication) to execute the script, so the identity account used to apply your Terraform config must exist as an IAM user or IAM service account in the instance. You also need to grant roles or privileges to this IAM user or IAM service account so it has permission to execute statements in your provision scripts. See the example below.
+    /// &gt; **Note:** If you let Terraform connect to the instance via [IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication) to execute the script, the identity account used to apply your Terraform config must exist as an IAM user, IAM service account, or IAM group in the instance. You also need to grant roles or privileges to this IAM account so it has permission to execute statements in your provision scripts. See the example below.
     /// 
     /// ## Example Usage
     /// 
-    /// Example managing a Cloud SQL Postgres instance with a provision script.
+    /// Example managing a Cloud SQL Postgres instance with a provision script using IAM Database Authentication.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -45,12 +45,14 @@ namespace Pulumi.Gcp.Sql
     ///                 },
     ///             },
     ///         },
+    ///         RootPassword = "changeme",
     ///     });
     /// 
-    ///     // Create a database user for your account and grant roles so it has privilege to access the database.
-    ///     // Set the type to "CLOUD_IAM_USER" for huamn account or "CLOUD_IAM_SERVICE_ACCOUNT" for service account.
-    ///     // If a service account is used and the instance is Postgres, please trim the ".gserviceaccount.com" suffix
-    ///     // to avoid exceeding the username length limit.
+    ///     // Create a database user for your account and grant roles so it has privilege
+    ///     // to access the database. Choose an IAM type, e.g., "CLOUD_IAM_USER"
+    ///     // and "CLOUD_IAM_SERVICE_ACCOUNT". If a service account is used and the
+    ///     // instance is Postgres, please trim the ".gserviceaccount.com" suffix to
+    ///     // avoid exceeding the username length limit.
     ///     var iamUser = new Gcp.Sql.User("iam_user", new()
     ///     {
     ///         Name = "account-used-to-apply-this-config@example.com",
@@ -85,7 +87,7 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
-    /// Example managing a Cloud SQL MySQL instance with a provision script.
+    /// Example managing a Cloud SQL MySQL instance with a provision script using IAM Database Authentication.
     /// </summary>
     [GcpResourceType("gcp:sql/provisionScript:ProvisionScript")]
     public partial class ProvisionScript : global::Pulumi.CustomResource
@@ -122,6 +124,17 @@ namespace Pulumi.Gcp.Sql
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
+        /// The resource name of the Secret Manager secret storing the
+        /// password. The secret should be a regional secret and stored in the exact same region as the Cloud
+        /// SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+        /// When user and PasswordSecretVersion are provided, the script is run using this user.
+        /// Otherwise, the script is run using the identity account used to apply your Terraform config.
+        /// Changing this field forces the script to be run again.
+        /// </summary>
+        [Output("passwordSecretVersion")]
+        public Output<string?> PasswordSecretVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it is not provided,
         /// the provider project is used.
         /// </summary>
@@ -137,6 +150,16 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("script")]
         public Output<string> Script { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the built-in database user to authenticate as. For MySQL user,
+        /// omit '@' and the hostname. The user should exist as a built-in user in the database.
+        /// When `User` and `PasswordSecretVersion` are provided, the script is run using this user.
+        /// Otherwise, the script is run using the identity account used to apply your Terraform config.
+        /// Changing this forces the script to be run using the new user.
+        /// </summary>
+        [Output("user")]
+        public Output<string?> User { get; private set; } = null!;
 
 
         /// <summary>
@@ -216,6 +239,17 @@ namespace Pulumi.Gcp.Sql
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
+        /// The resource name of the Secret Manager secret storing the
+        /// password. The secret should be a regional secret and stored in the exact same region as the Cloud
+        /// SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+        /// When user and PasswordSecretVersion are provided, the script is run using this user.
+        /// Otherwise, the script is run using the identity account used to apply your Terraform config.
+        /// Changing this field forces the script to be run again.
+        /// </summary>
+        [Input("passwordSecretVersion")]
+        public Input<string>? PasswordSecretVersion { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it is not provided,
         /// the provider project is used.
         /// </summary>
@@ -231,6 +265,16 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("script", required: true)]
         public Input<string> Script { get; set; } = null!;
+
+        /// <summary>
+        /// The name of the built-in database user to authenticate as. For MySQL user,
+        /// omit '@' and the hostname. The user should exist as a built-in user in the database.
+        /// When `User` and `PasswordSecretVersion` are provided, the script is run using this user.
+        /// Otherwise, the script is run using the identity account used to apply your Terraform config.
+        /// Changing this forces the script to be run using the new user.
+        /// </summary>
+        [Input("user")]
+        public Input<string>? User { get; set; }
 
         public ProvisionScriptArgs()
         {
@@ -272,6 +316,17 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Instance { get; set; }
 
         /// <summary>
+        /// The resource name of the Secret Manager secret storing the
+        /// password. The secret should be a regional secret and stored in the exact same region as the Cloud
+        /// SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+        /// When user and PasswordSecretVersion are provided, the script is run using this user.
+        /// Otherwise, the script is run using the identity account used to apply your Terraform config.
+        /// Changing this field forces the script to be run again.
+        /// </summary>
+        [Input("passwordSecretVersion")]
+        public Input<string>? PasswordSecretVersion { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it is not provided,
         /// the provider project is used.
         /// </summary>
@@ -287,6 +342,16 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("script")]
         public Input<string>? Script { get; set; }
+
+        /// <summary>
+        /// The name of the built-in database user to authenticate as. For MySQL user,
+        /// omit '@' and the hostname. The user should exist as a built-in user in the database.
+        /// When `User` and `PasswordSecretVersion` are provided, the script is run using this user.
+        /// Otherwise, the script is run using the identity account used to apply your Terraform config.
+        /// Changing this forces the script to be run using the new user.
+        /// </summary>
+        [Input("user")]
+        public Input<string>? User { get; set; }
 
         public ProvisionScriptState()
         {

@@ -54,6 +54,44 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Scaling Controls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
+    ///             {
+    ///                 MinInstanceCount = 1,
+    ///                 MaxInstanceCount = 5,
+    ///                 CpuUtilization = 0.75,
+    ///                 ConcurrencyUtilization = 0.5,
+    ///             },
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Service Limits
     /// 
     /// ```csharp

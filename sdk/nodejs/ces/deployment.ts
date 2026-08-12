@@ -25,11 +25,18 @@ import * as utilities from "../utilities";
  *         timeZone: "America/Los_Angeles",
  *     },
  * });
+ * const my_app_version = new gcp.ces.AppVersion("my-app-version", {
+ *     location: "us",
+ *     displayName: "my-app-version",
+ *     app: my_app.name,
+ *     appVersionId: "app-version-id",
+ *     description: "example-app-version",
+ * });
  * const my_deployment = new gcp.ces.Deployment("my-deployment", {
  *     location: "us",
  *     displayName: "my-deployment",
  *     app: my_app.name,
- *     appVersion: "projects/example-project/locations/us/apps/example-app/versions/example-version",
+ *     appVersion: my_app_version.id,
  *     channelProfile: {
  *         channelType: "API",
  *         disableBargeInControl: true,
@@ -60,11 +67,18 @@ import * as utilities from "../utilities";
  *         timeZone: "America/Los_Angeles",
  *     },
  * });
+ * const my_app_version = new gcp.ces.AppVersion("my-app-version", {
+ *     location: "us",
+ *     displayName: "my-app-version",
+ *     app: my_app.name,
+ *     appVersionId: "app-version-id",
+ *     description: "example-app-version",
+ * });
  * const my_deployment = new gcp.ces.Deployment("my-deployment", {
  *     location: "us",
  *     displayName: "my-deployment",
  *     app: my_app.name,
- *     appVersion: "projects/example-project/locations/us/apps/example-app/versions/example-version",
+ *     appVersion: my_app_version.id,
  *     channelProfile: {
  *         channelType: "API",
  *         disableBargeInControl: true,

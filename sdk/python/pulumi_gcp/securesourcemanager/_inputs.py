@@ -35,6 +35,10 @@ __all__ = [
     'RepositoryIamMemberConditionArgsDict',
     'RepositoryInitialConfigArgs',
     'RepositoryInitialConfigArgsDict',
+    'RepositoryScanConfigArgs',
+    'RepositoryScanConfigArgsDict',
+    'RepositoryScanConfigSecretScanConfigArgs',
+    'RepositoryScanConfigSecretScanConfigArgsDict',
     'RepositoryUriArgs',
     'RepositoryUriArgsDict',
 ]
@@ -703,6 +707,87 @@ class RepositoryInitialConfigArgs:
     @readme.setter
     def readme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "readme", value)
+
+
+class RepositoryScanConfigArgsDict(TypedDict):
+    secret_scan_config: NotRequired[pulumi.Input[Optional['RepositoryScanConfigSecretScanConfigArgsDict']]]
+    """
+    Configuration for secret scanning.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class RepositoryScanConfigArgs:
+    def __init__(__self__, *,
+                 secret_scan_config: pulumi.Input[Optional['RepositoryScanConfigSecretScanConfigArgs']] = None):
+        """
+        :param pulumi.Input['RepositoryScanConfigSecretScanConfigArgs'] secret_scan_config: Configuration for secret scanning.
+               Structure is documented below.
+        """
+        if secret_scan_config is not None:
+            pulumi.set(__self__, "secret_scan_config", secret_scan_config)
+
+    @_builtins.property
+    @pulumi.getter(name="secretScanConfig")
+    def secret_scan_config(self) -> pulumi.Input[Optional['RepositoryScanConfigSecretScanConfigArgs']]:
+        """
+        Configuration for secret scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secret_scan_config")
+
+    @secret_scan_config.setter
+    def secret_scan_config(self, value: pulumi.Input[Optional['RepositoryScanConfigSecretScanConfigArgs']]):
+        pulumi.set(self, "secret_scan_config", value)
+
+
+class RepositoryScanConfigSecretScanConfigArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enables secret scanning for the repository.
+    """
+    inspect_template: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The DLP inspect template to use for secret scanning.
+    """
+
+@pulumi.input_type
+class RepositoryScanConfigSecretScanConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inspect_template: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enables secret scanning for the repository.
+        :param pulumi.Input[_builtins.str] inspect_template: The DLP inspect template to use for secret scanning.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if inspect_template is not None:
+            pulumi.set(__self__, "inspect_template", inspect_template)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables secret scanning for the repository.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inspectTemplate")
+    def inspect_template(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The DLP inspect template to use for secret scanning.
+        """
+        return pulumi.get(self, "inspect_template")
+
+    @inspect_template.setter
+    def inspect_template(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "inspect_template", value)
 
 
 class RepositoryUriArgsDict(TypedDict):

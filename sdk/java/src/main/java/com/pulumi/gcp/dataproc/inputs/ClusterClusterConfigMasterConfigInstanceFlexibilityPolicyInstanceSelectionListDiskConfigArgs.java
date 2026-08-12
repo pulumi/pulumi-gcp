@@ -5,8 +5,10 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs Empty = new ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs();
+
+    /**
+     * Attached disk configuration.
+     * 
+     */
+    @Import(name="attachedDiskConfigs")
+    private @Nullable Output<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs;
+
+    /**
+     * @return Attached disk configuration.
+     * 
+     */
+    public Optional<Output<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs>>> attachedDiskConfigs() {
+        return Optional.ofNullable(this.attachedDiskConfigs);
+    }
 
     /**
      * Indicates how many IOPS to provision for the disk.
@@ -109,6 +126,7 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
     private ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs() {}
 
     private ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs $) {
+        this.attachedDiskConfigs = $.attachedDiskConfigs;
         this.bootDiskProvisionedIops = $.bootDiskProvisionedIops;
         this.bootDiskProvisionedThroughput = $.bootDiskProvisionedThroughput;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
@@ -133,6 +151,37 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
 
         public Builder(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs defaults) {
             $ = new ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachedDiskConfigs Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(@Nullable Output<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs) {
+            $.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+
+        /**
+         * @param attachedDiskConfigs Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs> attachedDiskConfigs) {
+            return attachedDiskConfigs(Output.of(attachedDiskConfigs));
+        }
+
+        /**
+         * @param attachedDiskConfigs Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
         }
 
         /**

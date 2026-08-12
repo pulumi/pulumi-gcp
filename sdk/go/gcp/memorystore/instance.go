@@ -624,7 +624,8 @@ type Instance struct {
 
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH
+	// IAM_AUTH.
+	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 	AuthorizationMode pulumi.StringOutput `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -831,7 +832,8 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH
+	// IAM_AUTH.
+	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -995,7 +997,8 @@ type instanceState struct {
 type InstanceState struct {
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH
+	// IAM_AUTH.
+	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1163,7 +1166,8 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH
+	// IAM_AUTH.
+	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1270,7 +1274,8 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Optional. Immutable. Authorization mode of the instance. Possible values:
 	// AUTH_DISABLED
-	// IAM_AUTH
+	// IAM_AUTH.
+	// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 	AuthorizationMode pulumi.StringPtrInput
 	// The automated backup config for a instance.
 	// Structure is documented below.
@@ -1462,7 +1467,8 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 
 // Optional. Immutable. Authorization mode of the instance. Possible values:
 // AUTH_DISABLED
-// IAM_AUTH
+// IAM_AUTH.
+// TOKEN_AUTH is also supported, but only available in the google-beta provider.
 func (o InstanceOutput) AuthorizationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizationMode }).(pulumi.StringOutput)
 }

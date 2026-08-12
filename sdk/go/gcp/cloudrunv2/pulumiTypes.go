@@ -10928,6 +10928,12 @@ func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutp
 }
 
 type ServiceTemplateScaling struct {
+	// (Optional, Beta)
+	// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	ConcurrencyUtilization *float64 `pulumi:"concurrencyUtilization"`
+	// (Optional, Beta)
+	// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	CpuUtilization *float64 `pulumi:"cpuUtilization"`
 	// Combined maximum number of instances for all revisions receiving traffic.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -10946,6 +10952,12 @@ type ServiceTemplateScalingInput interface {
 }
 
 type ServiceTemplateScalingArgs struct {
+	// (Optional, Beta)
+	// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	ConcurrencyUtilization pulumi.Float64PtrInput `pulumi:"concurrencyUtilization"`
+	// (Optional, Beta)
+	// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	CpuUtilization pulumi.Float64PtrInput `pulumi:"cpuUtilization"`
 	// Combined maximum number of instances for all revisions receiving traffic.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
@@ -11029,6 +11041,18 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
+// (Optional, Beta)
+// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+func (o ServiceTemplateScalingOutput) ConcurrencyUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServiceTemplateScaling) *float64 { return v.ConcurrencyUtilization }).(pulumi.Float64PtrOutput)
+}
+
+// (Optional, Beta)
+// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+func (o ServiceTemplateScalingOutput) CpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ServiceTemplateScaling) *float64 { return v.CpuUtilization }).(pulumi.Float64PtrOutput)
+}
+
 // Combined maximum number of instances for all revisions receiving traffic.
 func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
@@ -11061,6 +11085,28 @@ func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
 		var ret ServiceTemplateScaling
 		return ret
 	}).(ServiceTemplateScalingOutput)
+}
+
+// (Optional, Beta)
+// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+func (o ServiceTemplateScalingPtrOutput) ConcurrencyUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateScaling) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ConcurrencyUtilization
+	}).(pulumi.Float64PtrOutput)
+}
+
+// (Optional, Beta)
+// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+func (o ServiceTemplateScalingPtrOutput) CpuUtilization() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateScaling) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuUtilization
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Combined maximum number of instances for all revisions receiving traffic.
@@ -26550,6 +26596,10 @@ func (o GetServiceTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetServiceTemplateScaling struct {
+	// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	ConcurrencyUtilization float64 `pulumi:"concurrencyUtilization"`
+	// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	CpuUtilization float64 `pulumi:"cpuUtilization"`
 	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
 	// a default value based on the project's available container instances quota in the region and specified instance size.
 	MaxInstanceCount int `pulumi:"maxInstanceCount"`
@@ -26569,6 +26619,10 @@ type GetServiceTemplateScalingInput interface {
 }
 
 type GetServiceTemplateScalingArgs struct {
+	// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	ConcurrencyUtilization pulumi.Float64Input `pulumi:"concurrencyUtilization"`
+	// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+	CpuUtilization pulumi.Float64Input `pulumi:"cpuUtilization"`
 	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
 	// a default value based on the project's available container instances quota in the region and specified instance size.
 	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
@@ -26625,6 +26679,16 @@ func (o GetServiceTemplateScalingOutput) ToGetServiceTemplateScalingOutput() Get
 
 func (o GetServiceTemplateScalingOutput) ToGetServiceTemplateScalingOutputWithContext(ctx context.Context) GetServiceTemplateScalingOutput {
 	return o
+}
+
+// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+func (o GetServiceTemplateScalingOutput) ConcurrencyUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServiceTemplateScaling) float64 { return v.ConcurrencyUtilization }).(pulumi.Float64Output)
+}
+
+// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+func (o GetServiceTemplateScalingOutput) CpuUtilization() pulumi.Float64Output {
+	return o.ApplyT(func(v GetServiceTemplateScaling) float64 { return v.CpuUtilization }).(pulumi.Float64Output)
 }
 
 // Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate

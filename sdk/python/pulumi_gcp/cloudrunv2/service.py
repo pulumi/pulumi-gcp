@@ -1319,6 +1319,30 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Scaling Controls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            template={
+                "scaling": {
+                    "min_instance_count": 1,
+                    "max_instance_count": 5,
+                    "cpu_utilization": 0.75,
+                    "concurrency_utilization": 0.5,
+                },
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
         ### Cloudrunv2 Service Limits
 
         ```python
@@ -2014,6 +2038,30 @@ class Service(pulumi.CustomResource):
                 "max_instance_count": 100,
             },
             template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Scaling Controls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            template={
+                "scaling": {
+                    "min_instance_count": 1,
+                    "max_instance_count": 5,
+                    "cpu_utilization": 0.75,
+                    "concurrency_utilization": 0.5,
+                },
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                 }],

@@ -620,7 +620,8 @@ namespace Pulumi.Gcp.MemoryStore
         /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
-        /// IAM_AUTH
+        /// IAM_AUTH.
+        /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
         /// </summary>
         [Output("authorizationMode")]
         public Output<string> AuthorizationMode { get; private set; } = null!;
@@ -1006,7 +1007,8 @@ namespace Pulumi.Gcp.MemoryStore
         /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
-        /// IAM_AUTH
+        /// IAM_AUTH.
+        /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }
@@ -1248,7 +1250,8 @@ namespace Pulumi.Gcp.MemoryStore
         /// <summary>
         /// Optional. Immutable. Authorization mode of the instance. Possible values:
         /// AUTH_DISABLED
-        /// IAM_AUTH
+        /// IAM_AUTH.
+        /// TOKEN_AUTH is also supported, but only available in the google-beta provider.
         /// </summary>
         [Input("authorizationMode")]
         public Input<string>? AuthorizationMode { get; set; }

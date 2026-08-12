@@ -125,7 +125,7 @@ type Transport struct {
 	// Name of the resource, see google.aip.dev/122 for resource naming.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
-	Network pulumi.StringOutput `pulumi:"network"`
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish.
 	PeeringNetwork pulumi.StringOutput `pulumi:"peeringNetwork"`
 	// The ID of the project in which the resource belongs.
@@ -160,9 +160,6 @@ func NewTransport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Network == nil {
-		return nil, errors.New("invalid value for required argument 'Network'")
-	}
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
@@ -360,7 +357,7 @@ type transportArgs struct {
 	// Name of the resource, see google.aip.dev/122 for resource naming.
 	Name *string `pulumi:"name"`
 	// Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
-	Network string `pulumi:"network"`
+	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -414,7 +411,7 @@ type TransportArgs struct {
 	// Name of the resource, see google.aip.dev/122 for resource naming.
 	Name pulumi.StringPtrInput
 	// Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
-	Network pulumi.StringInput
+	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -593,8 +590,8 @@ func (o TransportOutput) Name() pulumi.StringOutput {
 }
 
 // Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
-func (o TransportOutput) Network() pulumi.StringOutput {
-	return o.ApplyT(func(v *Transport) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+func (o TransportOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Transport) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 // VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish.

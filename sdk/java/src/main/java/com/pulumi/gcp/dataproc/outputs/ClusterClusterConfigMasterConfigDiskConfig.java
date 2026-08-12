@@ -4,14 +4,21 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigMasterConfigDiskConfig {
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    private @Nullable List<ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs;
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -53,6 +60,13 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
     private @Nullable Integer numLocalSsds;
 
     private ClusterClusterConfigMasterConfigDiskConfig() {}
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    public List<ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs() {
+        return this.attachedDiskConfigs == null ? List.of() : this.attachedDiskConfigs;
+    }
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -114,6 +128,7 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs;
         private @Nullable Integer bootDiskProvisionedIops;
         private @Nullable Integer bootDiskProvisionedThroughput;
         private @Nullable Integer bootDiskSizeGb;
@@ -123,6 +138,7 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
         public Builder() {}
         public Builder(ClusterClusterConfigMasterConfigDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachedDiskConfigs = defaults.attachedDiskConfigs;
     	      this.bootDiskProvisionedIops = defaults.bootDiskProvisionedIops;
     	      this.bootDiskProvisionedThroughput = defaults.bootDiskProvisionedThroughput;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
@@ -131,6 +147,15 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
+        @CustomType.Setter
+        public Builder attachedDiskConfigs(@Nullable List<ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig> attachedDiskConfigs) {
+
+            this.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+        public Builder attachedDiskConfigs(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
+        }
         @CustomType.Setter
         public Builder bootDiskProvisionedIops(@Nullable Integer bootDiskProvisionedIops) {
 
@@ -169,6 +194,7 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
         }
         public ClusterClusterConfigMasterConfigDiskConfig build() {
             final var _resultValue = new ClusterClusterConfigMasterConfigDiskConfig();
+            _resultValue.attachedDiskConfigs = attachedDiskConfigs;
             _resultValue.bootDiskProvisionedIops = bootDiskProvisionedIops;
             _resultValue.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;

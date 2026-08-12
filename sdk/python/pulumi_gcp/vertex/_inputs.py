@@ -111,6 +111,8 @@ __all__ = [
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict',
+    'AiEvaluationMetricEncryptionSpecArgs',
+    'AiEvaluationMetricEncryptionSpecArgsDict',
     'AiFeatureGroupBigQueryArgs',
     'AiFeatureGroupBigQueryArgsDict',
     'AiFeatureGroupBigQueryBigQuerySourceArgs',
@@ -269,6 +271,10 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgsDict',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs',
     'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict',
     'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs',
@@ -5524,6 +5530,44 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
         pulumi.set(self, "port", value)
 
 
+class AiEvaluationMetricEncryptionSpecArgsDict(TypedDict):
+    kms_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Required. The Cloud KMS resource identifier of the customer managed encryption key
+    used to protect a resource. Has the form:
+    `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+    The key needs to be in the same region as where the resource is created.
+    """
+
+@pulumi.input_type
+class AiEvaluationMetricEncryptionSpecArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key
+               used to protect a resource. Has the form:
+               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+               The key needs to be in the same region as where the resource is created.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key
+        used to protect a resource. Has the form:
+        `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
 class AiFeatureGroupBigQueryArgsDict(TypedDict):
     big_query_source: pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgsDict']
     """
@@ -9771,15 +9815,25 @@ class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict(Typed
     """
     The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
     """
+    generation_trigger_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgsDict']]]
+    """
+    Optional. Configuration for triggering memory generation.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs:
     def __init__(__self__, *,
-                 model: pulumi.Input[_builtins.str]):
+                 model: pulumi.Input[_builtins.str],
+                 generation_trigger_config: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] model: The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs'] generation_trigger_config: Optional. Configuration for triggering memory generation.
+               Structure is documented below.
         """
         pulumi.set(__self__, "model", model)
+        if generation_trigger_config is not None:
+            pulumi.set(__self__, "generation_trigger_config", generation_trigger_config)
 
     @_builtins.property
     @pulumi.getter
@@ -9792,6 +9846,152 @@ class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs:
     @model.setter
     def model(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "model", value)
+
+    @_builtins.property
+    @pulumi.getter(name="generationTriggerConfig")
+    def generation_trigger_config(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs']]:
+        """
+        Optional. Configuration for triggering memory generation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_trigger_config")
+
+    @generation_trigger_config.setter
+    def generation_trigger_config(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs']]):
+        pulumi.set(self, "generation_trigger_config", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgsDict(TypedDict):
+    generation_rule: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgsDict']]]
+    """
+    Optional. The active rule that determines when to flush the buffer. If not set,
+    then the stream will be force flushed immediately.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs:
+    def __init__(__self__, *,
+                 generation_rule: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs']] = None):
+        """
+        :param pulumi.Input['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs'] generation_rule: Optional. The active rule that determines when to flush the buffer. If not set,
+               then the stream will be force flushed immediately.
+               Structure is documented below.
+        """
+        if generation_rule is not None:
+            pulumi.set(__self__, "generation_rule", generation_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="generationRule")
+    def generation_rule(self) -> pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs']]:
+        """
+        Optional. The active rule that determines when to flush the buffer. If not set,
+        then the stream will be force flushed immediately.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_rule")
+
+    @generation_rule.setter
+    def generation_rule(self, value: pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs']]):
+        pulumi.set(self, "generation_rule", value)
+
+
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgsDict(TypedDict):
+    event_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Optional. Specifies to trigger generation when the event count reaches this limit.
+    """
+    fixed_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Specifies to trigger generation at a fixed interval. The duration
+    must have a minute-level granularity.
+    """
+    idle_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional. Specifies to trigger generation if the stream is inactive for the
+    specified duration after the most recent event. The duration must have a
+    minute-level granularity.
+    """
+    overlap_event_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Optional. Re-include the last N already-processed events in the next window.
+    """
+
+@pulumi.input_type
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs:
+    def __init__(__self__, *,
+                 event_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 overlap_event_count: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] event_count: Optional. Specifies to trigger generation when the event count reaches this limit.
+        :param pulumi.Input[_builtins.str] fixed_interval: Optional. Specifies to trigger generation at a fixed interval. The duration
+               must have a minute-level granularity.
+        :param pulumi.Input[_builtins.str] idle_duration: Optional. Specifies to trigger generation if the stream is inactive for the
+               specified duration after the most recent event. The duration must have a
+               minute-level granularity.
+        :param pulumi.Input[_builtins.int] overlap_event_count: Optional. Re-include the last N already-processed events in the next window.
+        """
+        if event_count is not None:
+            pulumi.set(__self__, "event_count", event_count)
+        if fixed_interval is not None:
+            pulumi.set(__self__, "fixed_interval", fixed_interval)
+        if idle_duration is not None:
+            pulumi.set(__self__, "idle_duration", idle_duration)
+        if overlap_event_count is not None:
+            pulumi.set(__self__, "overlap_event_count", overlap_event_count)
+
+    @_builtins.property
+    @pulumi.getter(name="eventCount")
+    def event_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optional. Specifies to trigger generation when the event count reaches this limit.
+        """
+        return pulumi.get(self, "event_count")
+
+    @event_count.setter
+    def event_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "event_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fixedInterval")
+    def fixed_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Specifies to trigger generation at a fixed interval. The duration
+        must have a minute-level granularity.
+        """
+        return pulumi.get(self, "fixed_interval")
+
+    @fixed_interval.setter
+    def fixed_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "fixed_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="idleDuration")
+    def idle_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Specifies to trigger generation if the stream is inactive for the
+        specified duration after the most recent event. The duration must have a
+        minute-level granularity.
+        """
+        return pulumi.get(self, "idle_duration")
+
+    @idle_duration.setter
+    def idle_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "idle_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="overlapEventCount")
+    def overlap_event_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Optional. Re-include the last N already-processed events in the next window.
+        """
+        return pulumi.get(self, "overlap_event_count")
+
+    @overlap_event_count.setter
+    def overlap_event_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "overlap_event_count", value)
 
 
 class AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict(TypedDict):

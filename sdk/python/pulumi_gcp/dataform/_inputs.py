@@ -66,7 +66,7 @@ class RepositoryGitRemoteSettingsArgsDict(TypedDict):
     token_status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
-    Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+    Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
     """
 
 @pulumi.input_type
@@ -86,7 +86,7 @@ class RepositoryGitRemoteSettingsArgs:
         :param pulumi.Input['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs'] ssh_authentication_config: Authentication fields for remote uris using SSH protocol.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] token_status: (Output)
-               Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+               Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
         """
         pulumi.set(__self__, "default_branch", default_branch)
         pulumi.set(__self__, "url", url)
@@ -165,7 +165,7 @@ class RepositoryGitRemoteSettingsArgs:
     def token_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Output)
-        Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
         """
         return pulumi.get(self, "token_status")
 

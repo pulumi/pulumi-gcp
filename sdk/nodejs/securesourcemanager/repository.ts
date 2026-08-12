@@ -60,6 +60,93 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "PREVENT",
  * });
  * ```
+ * ### Secure Source Manager Repository Service Account
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.securesourcemanager.Instance("instance", {
+ *     location: "us-central1",
+ *     instanceId: "my-instance",
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const sa = new gcp.serviceaccount.Account("sa", {
+ *     accountId: "my-sa",
+ *     displayName: "Test Service Account",
+ * });
+ * const _default = new gcp.securesourcemanager.Repository("default", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     instance: instance.name,
+ *     deletionPolicy: "PREVENT",
+ *     serviceAccount: sa.email,
+ * });
+ * ```
+ * ### Secure Source Manager Repository Secret Scanning
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.securesourcemanager.Instance("instance", {
+ *     location: "us-central1",
+ *     instanceId: "my-instance",
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const template = new gcp.dataloss.PreventionInspectTemplate("template", {
+ *     parent: "projects/my-project-name/locations/us-central1",
+ *     displayName: "Test Inspect Template",
+ *     inspectConfig: {
+ *         infoTypes: [{
+ *             name: "EMAIL_ADDRESS",
+ *         }],
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const ssmP4saDlpReader = new gcp.projects.IAMMember("ssm_p4sa_dlp_reader", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/dlp.inspectTemplatesReader",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`),
+ * });
+ * const _default = new gcp.securesourcemanager.Repository("default", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     instance: instance.name,
+ *     deletionPolicy: "PREVENT",
+ *     scanConfig: {
+ *         secretScanConfig: {
+ *             enabled: true,
+ *             inspectTemplate: template.id,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [ssmP4saDlpReader],
+ * });
+ * ```
+ * ### Secure Source Manager Repository Secret Scanning Default
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.securesourcemanager.Instance("instance", {
+ *     location: "us-central1",
+ *     instanceId: "my-instance",
+ *     deletionPolicy: "PREVENT",
+ * });
+ * const _default = new gcp.securesourcemanager.Repository("default", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     instance: instance.name,
+ *     deletionPolicy: "PREVENT",
+ *     scanConfig: {
+ *         secretScanConfig: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -151,6 +238,15 @@ export class Repository extends pulumi.CustomResource {
      */
     declare public readonly repositoryId: pulumi.Output<string>;
     /**
+     * Provides configuration for scanning.
+     * Structure is documented below.
+     */
+    declare public readonly scanConfig: pulumi.Output<outputs.securesourcemanager.RepositoryScanConfig | undefined>;
+    /**
+     * Repository level service account.
+     */
+    declare public readonly serviceAccount: pulumi.Output<string | undefined>;
+    /**
      * Unique identifier of the repository.
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
@@ -186,6 +282,8 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["repositoryId"] = state?.repositoryId;
+            resourceInputs["scanConfig"] = state?.scanConfig;
+            resourceInputs["serviceAccount"] = state?.serviceAccount;
             resourceInputs["uid"] = state?.uid;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["uris"] = state?.uris;
@@ -207,6 +305,8 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["repositoryId"] = args?.repositoryId;
+            resourceInputs["scanConfig"] = args?.scanConfig;
+            resourceInputs["serviceAccount"] = args?.serviceAccount;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -266,6 +366,15 @@ export interface RepositoryState {
      */
     repositoryId?: pulumi.Input<string | undefined>;
     /**
+     * Provides configuration for scanning.
+     * Structure is documented below.
+     */
+    scanConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryScanConfig | undefined>;
+    /**
+     * Repository level service account.
+     */
+    serviceAccount?: pulumi.Input<string | undefined>;
+    /**
      * Unique identifier of the repository.
      */
     uid?: pulumi.Input<string | undefined>;
@@ -319,4 +428,13 @@ export interface RepositoryArgs {
      * The ID for the Repository.
      */
     repositoryId: pulumi.Input<string>;
+    /**
+     * Provides configuration for scanning.
+     * Structure is documented below.
+     */
+    scanConfig?: pulumi.Input<inputs.securesourcemanager.RepositoryScanConfig | undefined>;
+    /**
+     * Repository level service account.
+     */
+    serviceAccount?: pulumi.Input<string | undefined>;
 }

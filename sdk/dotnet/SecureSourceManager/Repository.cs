@@ -85,6 +85,140 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// ### Secure Source Manager Repository Service Account
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InstanceId = "my-instance",
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
+    ///     {
+    ///         AccountId = "my-sa",
+    ///         DisplayName = "Test Service Account",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Instance = instance.Name,
+    ///         DeletionPolicy = "PREVENT",
+    ///         ServiceAccount = sa.Email,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secure Source Manager Repository Secret Scanning
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InstanceId = "my-instance",
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var template = new Gcp.DataLoss.PreventionInspectTemplate("template", new()
+    ///     {
+    ///         Parent = "projects/my-project-name/locations/us-central1",
+    ///         DisplayName = "Test Inspect Template",
+    ///         InspectConfig = new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigArgs
+    ///         {
+    ///             InfoTypes = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs
+    ///                 {
+    ///                     Name = "EMAIL_ADDRESS",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var ssmP4saDlpReader = new Gcp.Projects.IAMMember("ssm_p4sa_dlp_reader", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/dlp.inspectTemplatesReader",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Instance = instance.Name,
+    ///         DeletionPolicy = "PREVENT",
+    ///         ScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigArgs
+    ///         {
+    ///             SecretScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigSecretScanConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 InspectTemplate = template.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             ssmP4saDlpReader,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secure Source Manager Repository Secret Scanning Default
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var instance = new Gcp.SecureSourceManager.Instance("instance", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InstanceId = "my-instance",
+    ///         DeletionPolicy = "PREVENT",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Repository("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Instance = instance.Name,
+    ///         DeletionPolicy = "PREVENT",
+    ///         ScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigArgs
+    ///         {
+    ///             SecretScanConfig = new Gcp.SecureSourceManager.Inputs.RepositoryScanConfigSecretScanConfigArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -167,6 +301,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
+
+        /// <summary>
+        /// Provides configuration for scanning.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scanConfig")]
+        public Output<Outputs.RepositoryScanConfig?> ScanConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Repository level service account.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string?> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// Unique identifier of the repository.
@@ -282,6 +429,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
 
+        /// <summary>
+        /// Provides configuration for scanning.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scanConfig")]
+        public Input<Inputs.RepositoryScanConfigArgs>? ScanConfig { get; set; }
+
+        /// <summary>
+        /// Repository level service account.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
+
         public RepositoryArgs()
         {
         }
@@ -350,6 +510,19 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }
+
+        /// <summary>
+        /// Provides configuration for scanning.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scanConfig")]
+        public Input<Inputs.RepositoryScanConfigGetArgs>? ScanConfig { get; set; }
+
+        /// <summary>
+        /// Repository level service account.
+        /// </summary>
+        [Input("serviceAccount")]
+        public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
         /// Unique identifier of the repository.

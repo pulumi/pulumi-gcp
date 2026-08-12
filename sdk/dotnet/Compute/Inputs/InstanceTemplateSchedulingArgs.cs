@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<Inputs.InstanceTemplateSchedulingGracefulShutdownArgs>? GracefulShutdown { get; set; }
 
         /// <summary>
-        /// Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         [Input("hostErrorTimeoutSeconds")]
         public Input<int>? HostErrorTimeoutSeconds { get; set; }

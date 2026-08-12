@@ -26045,7 +26045,7 @@ class InstanceSchedulingArgsDict(TypedDict):
     """
     host_error_timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+    Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
     """
     instance_termination_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -26140,7 +26140,7 @@ class InstanceSchedulingArgs:
                Defaults to true.
         :param pulumi.Input[_builtins.int] availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param pulumi.Input['InstanceSchedulingGracefulShutdownArgs'] graceful_shutdown: Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
-        :param pulumi.Input[_builtins.int] host_error_timeout_seconds: Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param pulumi.Input[_builtins.int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[_builtins.str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         :param pulumi.Input[_builtins.str] maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -26246,7 +26246,7 @@ class InstanceSchedulingArgs:
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
 
@@ -29209,7 +29209,7 @@ class InstanceTemplateSchedulingArgsDict(TypedDict):
     """
     host_error_timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+    Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
     """
     instance_termination_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -29303,7 +29303,7 @@ class InstanceTemplateSchedulingArgs:
                terminated by a user). This defaults to true.
         :param pulumi.Input[_builtins.int] availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param pulumi.Input['InstanceTemplateSchedulingGracefulShutdownArgs'] graceful_shutdown: Beta Settings for the instance to perform a graceful shutdown. Structure is documented below.
-        :param pulumi.Input[_builtins.int] host_error_timeout_seconds: Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param pulumi.Input[_builtins.int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[_builtins.str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: (../guides/provider_versions.html.markdown) Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour. Structure is documented below.
         :param pulumi.Input[_builtins.str] maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
@@ -29408,7 +29408,7 @@ class InstanceTemplateSchedulingArgs:
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
 
@@ -49647,7 +49647,7 @@ class RegionInstanceTemplateSchedulingArgsDict(TypedDict):
     """
     host_error_timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+    Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
     """
     instance_termination_action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -49744,7 +49744,7 @@ class RegionInstanceTemplateSchedulingArgs:
                terminated by a user). This defaults to true.
         :param pulumi.Input[_builtins.int] availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param pulumi.Input['RegionInstanceTemplateSchedulingGracefulShutdownArgs'] graceful_shutdown: Settings for the instance to perform a graceful shutdown.
-        :param pulumi.Input[_builtins.int] host_error_timeout_seconds: Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        :param pulumi.Input[_builtins.int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[_builtins.str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -49852,7 +49852,7 @@ class RegionInstanceTemplateSchedulingArgs:
     @pulumi.getter(name="hostErrorTimeoutSeconds")
     def host_error_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         """
         return pulumi.get(self, "host_error_timeout_seconds")
 

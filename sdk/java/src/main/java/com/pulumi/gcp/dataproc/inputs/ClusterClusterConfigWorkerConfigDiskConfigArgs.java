@@ -5,8 +5,10 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ClusterClusterConfigWorkerConfigDiskConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterClusterConfigWorkerConfigDiskConfigArgs Empty = new ClusterClusterConfigWorkerConfigDiskConfigArgs();
+
+    /**
+     * Attached disk configuration.
+     * 
+     */
+    @Import(name="attachedDiskConfigs")
+    private @Nullable Output<List<ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs;
+
+    /**
+     * @return Attached disk configuration.
+     * 
+     */
+    public Optional<Output<List<ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs>>> attachedDiskConfigs() {
+        return Optional.ofNullable(this.attachedDiskConfigs);
+    }
 
     /**
      * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -119,6 +136,7 @@ public final class ClusterClusterConfigWorkerConfigDiskConfigArgs extends com.pu
     private ClusterClusterConfigWorkerConfigDiskConfigArgs() {}
 
     private ClusterClusterConfigWorkerConfigDiskConfigArgs(ClusterClusterConfigWorkerConfigDiskConfigArgs $) {
+        this.attachedDiskConfigs = $.attachedDiskConfigs;
         this.bootDiskProvisionedIops = $.bootDiskProvisionedIops;
         this.bootDiskProvisionedThroughput = $.bootDiskProvisionedThroughput;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
@@ -143,6 +161,37 @@ public final class ClusterClusterConfigWorkerConfigDiskConfigArgs extends com.pu
 
         public Builder(ClusterClusterConfigWorkerConfigDiskConfigArgs defaults) {
             $ = new ClusterClusterConfigWorkerConfigDiskConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachedDiskConfigs Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(@Nullable Output<List<ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs) {
+            $.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+
+        /**
+         * @param attachedDiskConfigs Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(List<ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs> attachedDiskConfigs) {
+            return attachedDiskConfigs(Output.of(attachedDiskConfigs));
+        }
+
+        /**
+         * @param attachedDiskConfigs Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
         }
 
         /**

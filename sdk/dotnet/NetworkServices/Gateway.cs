@@ -349,6 +349,14 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<bool?> AllPorts { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. If true, the gateway will allow traffic from clients outside
+        /// of the region where the gateway is located.
+        /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Output("allowGlobalAccess")]
+        public Output<bool?> AllowGlobalAccess { get; private set; } = null!;
+
+        /// <summary>
         /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
         /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         /// </summary>
@@ -590,6 +598,14 @@ namespace Pulumi.Gcp.NetworkServices
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
 
+        /// <summary>
+        /// Optional. If true, the gateway will allow traffic from clients outside
+        /// of the region where the gateway is located.
+        /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Input("allowGlobalAccess")]
+        public Input<bool>? AllowGlobalAccess { get; set; }
+
         [Input("certificateUrls")]
         private InputList<string>? _certificateUrls;
 
@@ -775,6 +791,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("allPorts")]
         public Input<bool>? AllPorts { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the gateway will allow traffic from clients outside
+        /// of the region where the gateway is located.
+        /// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Input("allowGlobalAccess")]
+        public Input<bool>? AllowGlobalAccess { get; set; }
 
         [Input("certificateUrls")]
         private InputList<string>? _certificateUrls;

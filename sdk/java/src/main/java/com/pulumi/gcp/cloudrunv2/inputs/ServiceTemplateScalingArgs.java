@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,40 @@ import javax.annotation.Nullable;
 public final class ServiceTemplateScalingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceTemplateScalingArgs Empty = new ServiceTemplateScalingArgs();
+
+    /**
+     * (Optional, Beta)
+     * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    @Import(name="concurrencyUtilization")
+    private @Nullable Output<Double> concurrencyUtilization;
+
+    /**
+     * @return (Optional, Beta)
+     * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    public Optional<Output<Double>> concurrencyUtilization() {
+        return Optional.ofNullable(this.concurrencyUtilization);
+    }
+
+    /**
+     * (Optional, Beta)
+     * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    @Import(name="cpuUtilization")
+    private @Nullable Output<Double> cpuUtilization;
+
+    /**
+     * @return (Optional, Beta)
+     * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    public Optional<Output<Double>> cpuUtilization() {
+        return Optional.ofNullable(this.cpuUtilization);
+    }
 
     /**
      * Combined maximum number of instances for all revisions receiving traffic.
@@ -48,6 +83,8 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     private ServiceTemplateScalingArgs() {}
 
     private ServiceTemplateScalingArgs(ServiceTemplateScalingArgs $) {
+        this.concurrencyUtilization = $.concurrencyUtilization;
+        this.cpuUtilization = $.cpuUtilization;
         this.maxInstanceCount = $.maxInstanceCount;
         this.minInstanceCount = $.minInstanceCount;
     }
@@ -68,6 +105,52 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
 
         public Builder(ServiceTemplateScalingArgs defaults) {
             $ = new ServiceTemplateScalingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param concurrencyUtilization (Optional, Beta)
+         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrencyUtilization(@Nullable Output<Double> concurrencyUtilization) {
+            $.concurrencyUtilization = concurrencyUtilization;
+            return this;
+        }
+
+        /**
+         * @param concurrencyUtilization (Optional, Beta)
+         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder concurrencyUtilization(Double concurrencyUtilization) {
+            return concurrencyUtilization(Output.of(concurrencyUtilization));
+        }
+
+        /**
+         * @param cpuUtilization (Optional, Beta)
+         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuUtilization(@Nullable Output<Double> cpuUtilization) {
+            $.cpuUtilization = cpuUtilization;
+            return this;
+        }
+
+        /**
+         * @param cpuUtilization (Optional, Beta)
+         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cpuUtilization(Double cpuUtilization) {
+            return cpuUtilization(Output.of(cpuUtilization));
         }
 
         /**

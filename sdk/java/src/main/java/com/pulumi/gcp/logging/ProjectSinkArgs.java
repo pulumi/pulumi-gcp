@@ -209,18 +209,24 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
+     * Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
+     * `writerIdentity` is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com` and the sink&#39;s destination must be in the
+     * same project as the sink. If `true` (the default), `writerIdentity` is a service agent shared by sinks with the same
+     * parent. You must set `uniqueWriterIdentity` to `true` to publish logs across projects or use `bigqueryOptions`.
+     * See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+     * for more information.
      * 
      */
     @Import(name="uniqueWriterIdentity")
     private @Nullable Output<Boolean> uniqueWriterIdentity;
 
     /**
-     * @return Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
+     * @return Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
+     * `writerIdentity` is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com` and the sink&#39;s destination must be in the
+     * same project as the sink. If `true` (the default), `writerIdentity` is a service agent shared by sinks with the same
+     * parent. You must set `uniqueWriterIdentity` to `true` to publish logs across projects or use `bigqueryOptions`.
+     * See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+     * for more information.
      * 
      */
     public Optional<Output<Boolean>> uniqueWriterIdentity() {
@@ -520,9 +526,12 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
-         * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-         * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
+         * @param uniqueWriterIdentity Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
+         * `writerIdentity` is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com` and the sink&#39;s destination must be in the
+         * same project as the sink. If `true` (the default), `writerIdentity` is a service agent shared by sinks with the same
+         * parent. You must set `uniqueWriterIdentity` to `true` to publish logs across projects or use `bigqueryOptions`.
+         * See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+         * for more information.
          * 
          * @return builder
          * 
@@ -533,9 +542,12 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uniqueWriterIdentity Whether or not to create a unique identity associated with this sink. If `false`, then the `writerIdentity` used is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com`. If `true` (the default),
-         * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-         * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
+         * @param uniqueWriterIdentity Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
+         * `writerIdentity` is `serviceAccount:cloud-logs{@literal @}system.gserviceaccount.com` and the sink&#39;s destination must be in the
+         * same project as the sink. If `true` (the default), `writerIdentity` is a service agent shared by sinks with the same
+         * parent. You must set `uniqueWriterIdentity` to `true` to publish logs across projects or use `bigqueryOptions`.
+         * See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+         * for more information.
          * 
          * @return builder
          * 

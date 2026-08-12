@@ -707,6 +707,12 @@ import (
 //					MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
 //						GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
 //							Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+//							GenerationTriggerConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{
+//								GenerationRule: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{
+//									IdleDuration:      pulumi.String("300s"),
+//									OverlapEventCount: pulumi.Int(1),
+//								},
+//							},
 //						},
 //						SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
 //							EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),

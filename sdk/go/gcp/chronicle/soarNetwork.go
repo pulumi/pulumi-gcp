@@ -14,12 +14,9 @@ import (
 
 // Manage networks in the platform using the Classless Inter-Domain Routing (CIDR) format. The system identifies network subnets to help Google Security Operations recognize internal assets and consider network sensitivity during playbook execution.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about SoarNetwork, see:
 //
-// * [API documentation](https://docs.cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.soarNetworks)
+// * [API documentation](https://docs.cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.soarNetworks)
 // * How-to Guides
 //   - [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 //

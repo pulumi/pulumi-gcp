@@ -5,11 +5,22 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateScaling {
+    /**
+     * @return Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    private Double concurrencyUtilization;
+    /**
+     * @return Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    private Double cpuUtilization;
     /**
      * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
      * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
@@ -23,6 +34,20 @@ public final class GetServiceTemplateScaling {
     private Integer minInstanceCount;
 
     private GetServiceTemplateScaling() {}
+    /**
+     * @return Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    public Double concurrencyUtilization() {
+        return this.concurrencyUtilization;
+    }
+    /**
+     * @return Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+     * 
+     */
+    public Double cpuUtilization() {
+        return this.cpuUtilization;
+    }
     /**
      * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
      * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
@@ -48,15 +73,35 @@ public final class GetServiceTemplateScaling {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Double concurrencyUtilization;
+        private Double cpuUtilization;
         private Integer maxInstanceCount;
         private Integer minInstanceCount;
         public Builder() {}
         public Builder(GetServiceTemplateScaling defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.concurrencyUtilization = defaults.concurrencyUtilization;
+    	      this.cpuUtilization = defaults.cpuUtilization;
     	      this.maxInstanceCount = defaults.maxInstanceCount;
     	      this.minInstanceCount = defaults.minInstanceCount;
         }
 
+        @CustomType.Setter
+        public Builder concurrencyUtilization(Double concurrencyUtilization) {
+            if (concurrencyUtilization == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateScaling", "concurrencyUtilization");
+            }
+            this.concurrencyUtilization = concurrencyUtilization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cpuUtilization(Double cpuUtilization) {
+            if (cpuUtilization == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateScaling", "cpuUtilization");
+            }
+            this.cpuUtilization = cpuUtilization;
+            return this;
+        }
         @CustomType.Setter
         public Builder maxInstanceCount(Integer maxInstanceCount) {
             if (maxInstanceCount == null) {
@@ -75,6 +120,8 @@ public final class GetServiceTemplateScaling {
         }
         public GetServiceTemplateScaling build() {
             final var _resultValue = new GetServiceTemplateScaling();
+            _resultValue.concurrencyUtilization = concurrencyUtilization;
+            _resultValue.cpuUtilization = cpuUtilization;
             _resultValue.maxInstanceCount = maxInstanceCount;
             _resultValue.minInstanceCount = minInstanceCount;
             return _resultValue;

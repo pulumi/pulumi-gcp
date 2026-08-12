@@ -58,16 +58,20 @@ __all__ = [
     'ClusterClusterConfigMasterConfig',
     'ClusterClusterConfigMasterConfigAccelerator',
     'ClusterClusterConfigMasterConfigDiskConfig',
+    'ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig',
+    'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig',
     'ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'ClusterClusterConfigMetastoreConfig',
     'ClusterClusterConfigPreemptibleWorkerConfig',
     'ClusterClusterConfigPreemptibleWorkerConfigDiskConfig',
+    'ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix',
     'ClusterClusterConfigSecurityConfig',
@@ -77,9 +81,11 @@ __all__ = [
     'ClusterClusterConfigWorkerConfig',
     'ClusterClusterConfigWorkerConfigAccelerator',
     'ClusterClusterConfigWorkerConfigDiskConfig',
+    'ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig',
+    'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig',
     'ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult',
     'ClusterIAMBindingCondition',
     'ClusterIAMMemberCondition',
@@ -3661,7 +3667,9 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskProvisionedIops":
+        if key == "attachedDiskConfigs":
+            suggest = "attached_disk_configs"
+        elif key == "bootDiskProvisionedIops":
             suggest = "boot_disk_provisioned_iops"
         elif key == "bootDiskProvisionedThroughput":
             suggest = "boot_disk_provisioned_throughput"
@@ -3686,6 +3694,7 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached_disk_configs: Optional[Sequence['outputs.ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig']] = None,
                  boot_disk_provisioned_iops: Optional[_builtins.int] = None,
                  boot_disk_provisioned_throughput: Optional[_builtins.int] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
@@ -3693,6 +3702,7 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
                  local_ssd_interface: Optional[_builtins.str] = None,
                  num_local_ssds: Optional[_builtins.int] = None):
         """
+        :param Sequence['ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs'] attached_disk_configs: Optional. Attached disk configuration.
         :param _builtins.int boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param _builtins.int boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param _builtins.int boot_disk_size_gb: Size of the primary disk attached to each node, specified
@@ -3709,6 +3719,8 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
         :param _builtins.int num_local_ssds: The amount of local SSD disks that will be
                attached to each master cluster node. Defaults to 0.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
         if boot_disk_provisioned_iops is not None:
             pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
         if boot_disk_provisioned_throughput is not None:
@@ -3721,6 +3733,14 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
             pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> Optional[Sequence['outputs.ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig']]:
+        """
+        Optional. Attached disk configuration.
+        """
+        return pulumi.get(self, "attached_disk_configs")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskProvisionedIops")
@@ -3778,6 +3798,84 @@ class ClusterClusterConfigMasterConfigDiskConfig(dict):
         attached to each master cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk_size_gb: Size of the attached disk, specified in GB.
+        :param _builtins.str disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
 
 @pulumi.output_type
@@ -3897,7 +3995,9 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskProvisionedIops":
+        if key == "attachedDiskConfigs":
+            suggest = "attached_disk_configs"
+        elif key == "bootDiskProvisionedIops":
             suggest = "boot_disk_provisioned_iops"
         elif key == "bootDiskProvisionedThroughput":
             suggest = "boot_disk_provisioned_throughput"
@@ -3922,6 +4022,7 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached_disk_configs: Optional[Sequence['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig']] = None,
                  boot_disk_provisioned_iops: Optional[_builtins.int] = None,
                  boot_disk_provisioned_throughput: Optional[_builtins.int] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
@@ -3929,6 +4030,7 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
                  local_ssd_interface: Optional[_builtins.str] = None,
                  num_local_ssds: Optional[_builtins.int] = None):
         """
+        :param Sequence['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs'] attached_disk_configs: Attached disk configuration.
         :param _builtins.int boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk.
         :param _builtins.int boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk.
         :param _builtins.int boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -3936,6 +4038,8 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
         :param _builtins.str local_ssd_interface: Interface type of local SSDs (no Local SSDs or NVMe).
         :param _builtins.int num_local_ssds: The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
         if boot_disk_provisioned_iops is not None:
             pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
         if boot_disk_provisioned_throughput is not None:
@@ -3948,6 +4052,14 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
             pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> Optional[Sequence['outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig']]:
+        """
+        Attached disk configuration.
+        """
+        return pulumi.get(self, "attached_disk_configs")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskProvisionedIops")
@@ -3996,6 +4108,84 @@ class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelection
         The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk_size_gb: Size of the attached disk, specified in GB.
+        :param _builtins.str disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
 
 @pulumi.output_type
@@ -4198,7 +4388,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskProvisionedIops":
+        if key == "attachedDiskConfigs":
+            suggest = "attached_disk_configs"
+        elif key == "bootDiskProvisionedIops":
             suggest = "boot_disk_provisioned_iops"
         elif key == "bootDiskProvisionedThroughput":
             suggest = "boot_disk_provisioned_throughput"
@@ -4223,6 +4415,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached_disk_configs: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig']] = None,
                  boot_disk_provisioned_iops: Optional[_builtins.int] = None,
                  boot_disk_provisioned_throughput: Optional[_builtins.int] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
@@ -4230,6 +4423,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
                  local_ssd_interface: Optional[_builtins.str] = None,
                  num_local_ssds: Optional[_builtins.int] = None):
         """
+        :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs'] attached_disk_configs: Optional. Attached disk configuration.
         :param _builtins.int boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param _builtins.int boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param _builtins.int boot_disk_size_gb: Size of the primary disk attached to each preemptible worker node, specified
@@ -4242,6 +4436,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
         :param _builtins.int num_local_ssds: The amount of local SSD disks that will be
                attached to each preemptible worker node. Defaults to 0.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
         if boot_disk_provisioned_iops is not None:
             pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
         if boot_disk_provisioned_throughput is not None:
@@ -4254,6 +4450,14 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
             pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig']]:
+        """
+        Optional. Attached disk configuration.
+        """
+        return pulumi.get(self, "attached_disk_configs")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskProvisionedIops")
@@ -4307,6 +4511,84 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfig(dict):
         attached to each preemptible worker node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk_size_gb: Size of the attached disk, specified in GB.
+        :param _builtins.str disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
 
 @pulumi.output_type
@@ -4440,7 +4722,9 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskProvisionedIops":
+        if key == "attachedDiskConfigs":
+            suggest = "attached_disk_configs"
+        elif key == "bootDiskProvisionedIops":
             suggest = "boot_disk_provisioned_iops"
         elif key == "bootDiskProvisionedThroughput":
             suggest = "boot_disk_provisioned_throughput"
@@ -4465,6 +4749,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached_disk_configs: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig']] = None,
                  boot_disk_provisioned_iops: Optional[_builtins.int] = None,
                  boot_disk_provisioned_throughput: Optional[_builtins.int] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
@@ -4472,6 +4757,7 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
                  local_ssd_interface: Optional[_builtins.str] = None,
                  num_local_ssds: Optional[_builtins.int] = None):
         """
+        :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs'] attached_disk_configs: Optional. Attached disk configuration.
         :param _builtins.int boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param _builtins.int boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param _builtins.int boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -4479,6 +4765,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         :param _builtins.str local_ssd_interface: Interface type of local SSDs (no Local SSDs or NVMe). Valid values: "scsi" (Small Computer System Interface), "nvme" (Non-Volatile Memory Express).
         :param _builtins.int num_local_ssds: The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
         if boot_disk_provisioned_iops is not None:
             pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
         if boot_disk_provisioned_throughput is not None:
@@ -4491,6 +4779,14 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
             pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig']]:
+        """
+        Optional. Attached disk configuration.
+        """
+        return pulumi.get(self, "attached_disk_configs")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskProvisionedIops")
@@ -4539,6 +4835,84 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk_size_gb: Size of the attached disk, specified in GB.
+        :param _builtins.str disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
 
 @pulumi.output_type
@@ -5331,7 +5705,9 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskProvisionedIops":
+        if key == "attachedDiskConfigs":
+            suggest = "attached_disk_configs"
+        elif key == "bootDiskProvisionedIops":
             suggest = "boot_disk_provisioned_iops"
         elif key == "bootDiskProvisionedThroughput":
             suggest = "boot_disk_provisioned_throughput"
@@ -5356,6 +5732,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached_disk_configs: Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig']] = None,
                  boot_disk_provisioned_iops: Optional[_builtins.int] = None,
                  boot_disk_provisioned_throughput: Optional[_builtins.int] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
@@ -5363,6 +5740,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
                  local_ssd_interface: Optional[_builtins.str] = None,
                  num_local_ssds: Optional[_builtins.int] = None):
         """
+        :param Sequence['ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs'] attached_disk_configs: Attached disk configuration.
         :param _builtins.int boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
         :param _builtins.int boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
         :param _builtins.int boot_disk_size_gb: Size of the primary disk attached to each worker node, specified
@@ -5375,6 +5753,8 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
         :param _builtins.int num_local_ssds: The amount of local SSD disks that will be
                attached to each worker cluster node. Defaults to 0.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
         if boot_disk_provisioned_iops is not None:
             pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
         if boot_disk_provisioned_throughput is not None:
@@ -5387,6 +5767,14 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
             pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig']]:
+        """
+        Attached disk configuration.
+        """
+        return pulumi.get(self, "attached_disk_configs")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskProvisionedIops")
@@ -5440,6 +5828,84 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
         attached to each worker cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk_size_gb: Size of the attached disk, specified in GB.
+        :param _builtins.str disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
 
 @pulumi.output_type
@@ -5559,7 +6025,9 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bootDiskProvisionedIops":
+        if key == "attachedDiskConfigs":
+            suggest = "attached_disk_configs"
+        elif key == "bootDiskProvisionedIops":
             suggest = "boot_disk_provisioned_iops"
         elif key == "bootDiskProvisionedThroughput":
             suggest = "boot_disk_provisioned_throughput"
@@ -5584,6 +6052,7 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 attached_disk_configs: Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig']] = None,
                  boot_disk_provisioned_iops: Optional[_builtins.int] = None,
                  boot_disk_provisioned_throughput: Optional[_builtins.int] = None,
                  boot_disk_size_gb: Optional[_builtins.int] = None,
@@ -5591,6 +6060,7 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
                  local_ssd_interface: Optional[_builtins.str] = None,
                  num_local_ssds: Optional[_builtins.int] = None):
         """
+        :param Sequence['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs'] attached_disk_configs: Attached disk configuration.
         :param _builtins.int boot_disk_provisioned_iops: Indicates how many IOPS to provision for the disk.
         :param _builtins.int boot_disk_provisioned_throughput: Indicates how much throughput to provision for the disk.
         :param _builtins.int boot_disk_size_gb: Size of the primary disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
@@ -5598,6 +6068,8 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
         :param _builtins.str local_ssd_interface: Interface type of local SSDs (no Local SSDs or NVMe).
         :param _builtins.int num_local_ssds: The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
         """
+        if attached_disk_configs is not None:
+            pulumi.set(__self__, "attached_disk_configs", attached_disk_configs)
         if boot_disk_provisioned_iops is not None:
             pulumi.set(__self__, "boot_disk_provisioned_iops", boot_disk_provisioned_iops)
         if boot_disk_provisioned_throughput is not None:
@@ -5610,6 +6082,14 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
             pulumi.set(__self__, "local_ssd_interface", local_ssd_interface)
         if num_local_ssds is not None:
             pulumi.set(__self__, "num_local_ssds", num_local_ssds)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedDiskConfigs")
+    def attached_disk_configs(self) -> Optional[Sequence['outputs.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig']]:
+        """
+        Attached disk configuration.
+        """
+        return pulumi.get(self, "attached_disk_configs")
 
     @_builtins.property
     @pulumi.getter(name="bootDiskProvisionedIops")
@@ -5658,6 +6138,84 @@ class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelection
         The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "num_local_ssds")
+
+
+@pulumi.output_type
+class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[_builtins.int] = None,
+                 disk_type: Optional[_builtins.str] = None,
+                 provisioned_iops: Optional[_builtins.int] = None,
+                 provisioned_throughput: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk_size_gb: Size of the attached disk, specified in GB.
+        :param _builtins.str disk_type: The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        :param _builtins.int provisioned_iops: Indicates how many IOPS to provision for the disk.
+        :param _builtins.int provisioned_throughput: Indicates how much throughput to provision for the disk.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
+
+    @_builtins.property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached disk, specified in GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @_builtins.property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[_builtins.str]:
+        """
+        The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+        """
+        return pulumi.get(self, "disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[_builtins.int]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @_builtins.property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[_builtins.int]:
+        """
+        Indicates how much throughput to provision for the disk.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
 
 @pulumi.output_type

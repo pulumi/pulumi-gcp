@@ -216,7 +216,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
 
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      */
     declare public readonly appEngineApis: pulumi.Output<boolean | undefined>;
     /**
@@ -422,7 +422,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
 export interface StandardAppVersionState {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      */
     appEngineApis?: pulumi.Input<boolean | undefined>;
     /**
@@ -548,7 +548,7 @@ export interface StandardAppVersionState {
 export interface StandardAppVersionArgs {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and 'app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      */
     appEngineApis?: pulumi.Input<boolean | undefined>;
     /**

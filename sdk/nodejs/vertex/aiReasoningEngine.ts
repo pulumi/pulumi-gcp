@@ -391,6 +391,12 @@ import * as utilities from "../utilities";
  *         memoryBankConfig: {
  *             generationConfig: {
  *                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+ *                 generationTriggerConfig: {
+ *                     generationRule: {
+ *                         idleDuration: "300s",
+ *                         overlapEventCount: 1,
+ *                     },
+ *                 },
  *             },
  *             similaritySearchConfig: {
  *                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),

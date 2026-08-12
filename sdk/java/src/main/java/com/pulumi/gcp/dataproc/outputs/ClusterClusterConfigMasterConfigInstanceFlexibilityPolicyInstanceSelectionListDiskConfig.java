@@ -4,14 +4,21 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+    /**
+     * @return Attached disk configuration.
+     * 
+     */
+    private @Nullable List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs;
     /**
      * @return Indicates how many IOPS to provision for the disk.
      * 
@@ -44,6 +51,13 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
     private @Nullable Integer numLocalSsds;
 
     private ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig() {}
+    /**
+     * @return Attached disk configuration.
+     * 
+     */
+    public List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs() {
+        return this.attachedDiskConfigs == null ? List.of() : this.attachedDiskConfigs;
+    }
     /**
      * @return Indicates how many IOPS to provision for the disk.
      * 
@@ -96,6 +110,7 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs;
         private @Nullable Integer bootDiskProvisionedIops;
         private @Nullable Integer bootDiskProvisionedThroughput;
         private @Nullable Integer bootDiskSizeGb;
@@ -105,6 +120,7 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
         public Builder() {}
         public Builder(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachedDiskConfigs = defaults.attachedDiskConfigs;
     	      this.bootDiskProvisionedIops = defaults.bootDiskProvisionedIops;
     	      this.bootDiskProvisionedThroughput = defaults.bootDiskProvisionedThroughput;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
@@ -113,6 +129,15 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
+        @CustomType.Setter
+        public Builder attachedDiskConfigs(@Nullable List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs) {
+
+            this.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+        public Builder attachedDiskConfigs(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
+        }
         @CustomType.Setter
         public Builder bootDiskProvisionedIops(@Nullable Integer bootDiskProvisionedIops) {
 
@@ -151,6 +176,7 @@ public final class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInst
         }
         public ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig build() {
             final var _resultValue = new ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig();
+            _resultValue.attachedDiskConfigs = attachedDiskConfigs;
             _resultValue.bootDiskProvisionedIops = bootDiskProvisionedIops;
             _resultValue.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;

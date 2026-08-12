@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.App;
  * import com.pulumi.gcp.ces.AppArgs;
  * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.AppVersion;
+ * import com.pulumi.gcp.ces.AppVersionArgs;
  * import com.pulumi.gcp.ces.Deployment;
  * import com.pulumi.gcp.ces.DeploymentArgs;
  * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
@@ -58,11 +60,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var my_app_version = new AppVersion("my-app-version", AppVersionArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app-version")
+ *             .app(my_app.name())
+ *             .appVersionId("app-version-id")
+ *             .description("example-app-version")
+ *             .build());
+ * 
  *         var my_deployment = new Deployment("my-deployment", DeploymentArgs.builder()
  *             .location("us")
  *             .displayName("my-deployment")
  *             .app(my_app.name())
- *             .appVersion("projects/example-project/locations/us/apps/example-app/versions/example-version")
+ *             .appVersion(my_app_version.id())
  *             .channelProfile(DeploymentChannelProfileArgs.builder()
  *                 .channelType("API")
  *                 .disableBargeInControl(true)
@@ -95,6 +105,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.App;
  * import com.pulumi.gcp.ces.AppArgs;
  * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.AppVersion;
+ * import com.pulumi.gcp.ces.AppVersionArgs;
  * import com.pulumi.gcp.ces.Deployment;
  * import com.pulumi.gcp.ces.DeploymentArgs;
  * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
@@ -123,11 +135,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var my_app_version = new AppVersion("my-app-version", AppVersionArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app-version")
+ *             .app(my_app.name())
+ *             .appVersionId("app-version-id")
+ *             .description("example-app-version")
+ *             .build());
+ * 
  *         var my_deployment = new Deployment("my-deployment", DeploymentArgs.builder()
  *             .location("us")
  *             .displayName("my-deployment")
  *             .app(my_app.name())
- *             .appVersion("projects/example-project/locations/us/apps/example-app/versions/example-version")
+ *             .appVersion(my_app_version.id())
  *             .channelProfile(DeploymentChannelProfileArgs.builder()
  *                 .channelType("API")
  *                 .disableBargeInControl(true)

@@ -4,14 +4,21 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs;
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -44,6 +51,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     private @Nullable Integer numLocalSsds;
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig() {}
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    public List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs() {
+        return this.attachedDiskConfigs == null ? List.of() : this.attachedDiskConfigs;
+    }
     /**
      * @return Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
      * 
@@ -96,6 +110,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs;
         private @Nullable Integer bootDiskProvisionedIops;
         private @Nullable Integer bootDiskProvisionedThroughput;
         private @Nullable Integer bootDiskSizeGb;
@@ -105,6 +120,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         public Builder() {}
         public Builder(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.attachedDiskConfigs = defaults.attachedDiskConfigs;
     	      this.bootDiskProvisionedIops = defaults.bootDiskProvisionedIops;
     	      this.bootDiskProvisionedThroughput = defaults.bootDiskProvisionedThroughput;
     	      this.bootDiskSizeGb = defaults.bootDiskSizeGb;
@@ -113,6 +129,15 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     	      this.numLocalSsds = defaults.numLocalSsds;
         }
 
+        @CustomType.Setter
+        public Builder attachedDiskConfigs(@Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig> attachedDiskConfigs) {
+
+            this.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+        public Builder attachedDiskConfigs(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
+        }
         @CustomType.Setter
         public Builder bootDiskProvisionedIops(@Nullable Integer bootDiskProvisionedIops) {
 
@@ -151,6 +176,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig build() {
             final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig();
+            _resultValue.attachedDiskConfigs = attachedDiskConfigs;
             _resultValue.bootDiskProvisionedIops = bootDiskProvisionedIops;
             _resultValue.bootDiskProvisionedThroughput = bootDiskProvisionedThroughput;
             _resultValue.bootDiskSizeGb = bootDiskSizeGb;

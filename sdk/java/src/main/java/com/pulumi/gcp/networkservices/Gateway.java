@@ -399,6 +399,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allPorts);
     }
     /**
+     * Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Export(name="allowGlobalAccess", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowGlobalAccess;
+
+    /**
+     * @return Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Output<Optional<Boolean>> allowGlobalAccess() {
+        return Codegen.optional(this.allowGlobalAccess);
+    }
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 

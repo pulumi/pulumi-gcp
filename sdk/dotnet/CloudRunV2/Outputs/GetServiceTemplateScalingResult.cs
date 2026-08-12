@@ -14,6 +14,14 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     public sealed class GetServiceTemplateScalingResult
     {
         /// <summary>
+        /// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        /// </summary>
+        public readonly double ConcurrencyUtilization;
+        /// <summary>
+        /// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        /// </summary>
+        public readonly double CpuUtilization;
+        /// <summary>
         /// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
         /// a default value based on the project's available container instances quota in the region and specified instance size.
         /// </summary>
@@ -25,10 +33,16 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private GetServiceTemplateScalingResult(
+            double concurrencyUtilization,
+
+            double cpuUtilization,
+
             int maxInstanceCount,
 
             int minInstanceCount)
         {
+            ConcurrencyUtilization = concurrencyUtilization;
+            CpuUtilization = cpuUtilization;
             MaxInstanceCount = maxInstanceCount;
             MinInstanceCount = minInstanceCount;
         }

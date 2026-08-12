@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigGcePersistentDiskC
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigGcsFuseCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigGkeBackupAgentConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHighScaleCheckpointingConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHorizontalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigIstioConfig;
@@ -71,6 +72,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs;
+    /**
+     * @return The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigHighScaleCheckpointingConfig> highScaleCheckpointingConfigs;
     /**
      * @return The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
      * 
@@ -195,6 +201,13 @@ public final class GetClusterAddonsConfig {
         return this.gkeBackupAgentConfigs;
     }
     /**
+     * @return The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigHighScaleCheckpointingConfig> highScaleCheckpointingConfigs() {
+        return this.highScaleCheckpointingConfigs;
+    }
+    /**
      * @return The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
      * 
      */
@@ -303,6 +316,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig> gcpFilestoreCsiDriverConfigs;
         private List<GetClusterAddonsConfigGcsFuseCsiDriverConfig> gcsFuseCsiDriverConfigs;
         private List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs;
+        private List<GetClusterAddonsConfigHighScaleCheckpointingConfig> highScaleCheckpointingConfigs;
         private List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings;
         private List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings;
         private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
@@ -327,6 +341,7 @@ public final class GetClusterAddonsConfig {
     	      this.gcpFilestoreCsiDriverConfigs = defaults.gcpFilestoreCsiDriverConfigs;
     	      this.gcsFuseCsiDriverConfigs = defaults.gcsFuseCsiDriverConfigs;
     	      this.gkeBackupAgentConfigs = defaults.gkeBackupAgentConfigs;
+    	      this.highScaleCheckpointingConfigs = defaults.highScaleCheckpointingConfigs;
     	      this.horizontalPodAutoscalings = defaults.horizontalPodAutoscalings;
     	      this.httpLoadBalancings = defaults.httpLoadBalancings;
     	      this.istioConfigs = defaults.istioConfigs;
@@ -429,6 +444,17 @@ public final class GetClusterAddonsConfig {
         }
         public Builder gkeBackupAgentConfigs(GetClusterAddonsConfigGkeBackupAgentConfig... gkeBackupAgentConfigs) {
             return gkeBackupAgentConfigs(List.of(gkeBackupAgentConfigs));
+        }
+        @CustomType.Setter
+        public Builder highScaleCheckpointingConfigs(List<GetClusterAddonsConfigHighScaleCheckpointingConfig> highScaleCheckpointingConfigs) {
+            if (highScaleCheckpointingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "highScaleCheckpointingConfigs");
+            }
+            this.highScaleCheckpointingConfigs = highScaleCheckpointingConfigs;
+            return this;
+        }
+        public Builder highScaleCheckpointingConfigs(GetClusterAddonsConfigHighScaleCheckpointingConfig... highScaleCheckpointingConfigs) {
+            return highScaleCheckpointingConfigs(List.of(highScaleCheckpointingConfigs));
         }
         @CustomType.Setter
         public Builder horizontalPodAutoscalings(List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings) {
@@ -583,6 +609,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.gcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
             _resultValue.gcsFuseCsiDriverConfigs = gcsFuseCsiDriverConfigs;
             _resultValue.gkeBackupAgentConfigs = gkeBackupAgentConfigs;
+            _resultValue.highScaleCheckpointingConfigs = highScaleCheckpointingConfigs;
             _resultValue.horizontalPodAutoscalings = horizontalPodAutoscalings;
             _resultValue.httpLoadBalancings = httpLoadBalancings;
             _resultValue.istioConfigs = istioConfigs;

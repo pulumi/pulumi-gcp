@@ -615,7 +615,7 @@ type RegionInstanceTemplateScheduling struct {
 	AvailabilityDomain *int `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdown *RegionInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdown"`
-	// Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+	// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds *int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction *string `pulumi:"instanceTerminationAction"`
@@ -681,7 +681,7 @@ type RegionInstanceTemplateSchedulingArgs struct {
 	AvailabilityDomain pulumi.IntPtrInput `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdown RegionInstanceTemplateSchedulingGracefulShutdownPtrInput `pulumi:"gracefulShutdown"`
-	// Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+	// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 	HostErrorTimeoutSeconds pulumi.IntPtrInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringPtrInput `pulumi:"instanceTerminationAction"`
@@ -823,7 +823,7 @@ func (o RegionInstanceTemplateSchedulingOutput) GracefulShutdown() RegionInstanc
 	}).(RegionInstanceTemplateSchedulingGracefulShutdownPtrOutput)
 }
 
-// Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o RegionInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionInstanceTemplateScheduling) *int { return v.HostErrorTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -976,7 +976,7 @@ func (o RegionInstanceTemplateSchedulingPtrOutput) GracefulShutdown() RegionInst
 	}).(RegionInstanceTemplateSchedulingGracefulShutdownPtrOutput)
 }
 
-// Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
 func (o RegionInstanceTemplateSchedulingPtrOutput) HostErrorTimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplateScheduling) *int {
 		if v == nil {

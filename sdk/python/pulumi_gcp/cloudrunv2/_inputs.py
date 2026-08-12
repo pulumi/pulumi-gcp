@@ -5854,6 +5854,16 @@ class ServiceTemplateNodeSelectorArgs:
 
 
 class ServiceTemplateScalingArgsDict(TypedDict):
+    concurrency_utilization: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Optional, Beta)
+    Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+    """
+    cpu_utilization: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    (Optional, Beta)
+    Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+    """
     max_instance_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Combined maximum number of instances for all revisions receiving traffic.
@@ -5866,16 +5876,52 @@ class ServiceTemplateScalingArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceTemplateScalingArgs:
     def __init__(__self__, *,
+                 concurrency_utilization: pulumi.Input[Optional[_builtins.float]] = None,
+                 cpu_utilization: pulumi.Input[Optional[_builtins.float]] = None,
                  max_instance_count: pulumi.Input[Optional[_builtins.int]] = None,
                  min_instance_count: pulumi.Input[Optional[_builtins.int]] = None):
         """
+        :param pulumi.Input[_builtins.float] concurrency_utilization: (Optional, Beta)
+               Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        :param pulumi.Input[_builtins.float] cpu_utilization: (Optional, Beta)
+               Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         :param pulumi.Input[_builtins.int] max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param pulumi.Input[_builtins.int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
+        if concurrency_utilization is not None:
+            pulumi.set(__self__, "concurrency_utilization", concurrency_utilization)
+        if cpu_utilization is not None:
+            pulumi.set(__self__, "cpu_utilization", cpu_utilization)
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrencyUtilization")
+    def concurrency_utilization(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Optional, Beta)
+        Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        """
+        return pulumi.get(self, "concurrency_utilization")
+
+    @concurrency_utilization.setter
+    def concurrency_utilization(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "concurrency_utilization", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUtilization")
+    def cpu_utilization(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        (Optional, Beta)
+        Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        """
+        return pulumi.get(self, "cpu_utilization")
+
+    @cpu_utilization.setter
+    def cpu_utilization(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "cpu_utilization", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")

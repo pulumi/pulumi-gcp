@@ -9964,7 +9964,7 @@ type GetInstanceScheduling struct {
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdowns []GetInstanceSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
-	// Beta Time in seconds for host error detection.
+	// Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
@@ -10019,7 +10019,7 @@ type GetInstanceSchedulingArgs struct {
 	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdowns GetInstanceSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
-	// Beta Time in seconds for host error detection.
+	// Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
@@ -10122,7 +10122,7 @@ func (o GetInstanceSchedulingOutput) GracefulShutdowns() GetInstanceSchedulingGr
 	return o.ApplyT(func(v GetInstanceScheduling) []GetInstanceSchedulingGracefulShutdown { return v.GracefulShutdowns }).(GetInstanceSchedulingGracefulShutdownArrayOutput)
 }
 
-// Beta Time in seconds for host error detection.
+// Time in seconds for host error detection.
 func (o GetInstanceSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -13614,7 +13614,7 @@ type GetInstanceTemplateScheduling struct {
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdowns []GetInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
-	// Beta Time in seconds for host error detection.
+	// Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
@@ -13676,7 +13676,7 @@ type GetInstanceTemplateSchedulingArgs struct {
 	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdowns GetInstanceTemplateSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
-	// Beta Time in seconds for host error detection.
+	// Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
@@ -13788,7 +13788,7 @@ func (o GetInstanceTemplateSchedulingOutput) GracefulShutdowns() GetInstanceTemp
 	}).(GetInstanceTemplateSchedulingGracefulShutdownArrayOutput)
 }
 
-// Beta Time in seconds for host error detection.
+// Time in seconds for host error detection.
 func (o GetInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
 }
@@ -27536,7 +27536,7 @@ type GetRegionInstanceTemplateScheduling struct {
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdowns []GetRegionInstanceTemplateSchedulingGracefulShutdown `pulumi:"gracefulShutdowns"`
-	// Beta Time in seconds for host error detection.
+	// Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
@@ -27598,7 +27598,7 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
 	// Settings for the instance to perform a graceful shutdown.
 	GracefulShutdowns GetRegionInstanceTemplateSchedulingGracefulShutdownArrayInput `pulumi:"gracefulShutdowns"`
-	// Beta Time in seconds for host error detection.
+	// Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
@@ -27710,7 +27710,7 @@ func (o GetRegionInstanceTemplateSchedulingOutput) GracefulShutdowns() GetRegion
 	}).(GetRegionInstanceTemplateSchedulingGracefulShutdownArrayOutput)
 }
 
-// Beta Time in seconds for host error detection.
+// Time in seconds for host error detection.
 func (o GetRegionInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
 }

@@ -74,14 +74,14 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     @Import(name="hostErrorTimeoutSeconds")
     private @Nullable Output<Integer> hostErrorTimeoutSeconds;
 
     /**
-     * @return Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     public Optional<Output<Integer>> hostErrorTimeoutSeconds() {
@@ -417,7 +417,7 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param hostErrorTimeoutSeconds Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * @param hostErrorTimeoutSeconds Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param hostErrorTimeoutSeconds Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * @param hostErrorTimeoutSeconds Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          * 
          * @return builder
          * 

@@ -9048,6 +9048,136 @@ func (o DbSystemPropertiesTimeZonePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ExadbVmClusterIdentityConnector struct {
+	// (Output)
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState *string `pulumi:"connectionState"`
+	// (Output)
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail *string `pulumi:"serviceAgentEmail"`
+}
+
+// ExadbVmClusterIdentityConnectorInput is an input type that accepts ExadbVmClusterIdentityConnectorArgs and ExadbVmClusterIdentityConnectorOutput values.
+// You can construct a concrete instance of `ExadbVmClusterIdentityConnectorInput` via:
+//
+//	ExadbVmClusterIdentityConnectorArgs{...}
+type ExadbVmClusterIdentityConnectorInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterIdentityConnectorOutput() ExadbVmClusterIdentityConnectorOutput
+	ToExadbVmClusterIdentityConnectorOutputWithContext(context.Context) ExadbVmClusterIdentityConnectorOutput
+}
+
+type ExadbVmClusterIdentityConnectorArgs struct {
+	// (Output)
+	// The connection state of the identity connector.
+	// Possible values:
+	// CONNECTION_STATE_UNSPECIFIED
+	// CONNECTED
+	// PARTIALLY_CONNECTED
+	// DISCONNECTED
+	// UNKNOWN
+	ConnectionState pulumi.StringPtrInput `pulumi:"connectionState"`
+	// (Output)
+	// A google managed service account on which customers can grant roles to access resources in the customer project.
+	ServiceAgentEmail pulumi.StringPtrInput `pulumi:"serviceAgentEmail"`
+}
+
+func (ExadbVmClusterIdentityConnectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i ExadbVmClusterIdentityConnectorArgs) ToExadbVmClusterIdentityConnectorOutput() ExadbVmClusterIdentityConnectorOutput {
+	return i.ToExadbVmClusterIdentityConnectorOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterIdentityConnectorArgs) ToExadbVmClusterIdentityConnectorOutputWithContext(ctx context.Context) ExadbVmClusterIdentityConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterIdentityConnectorOutput)
+}
+
+// ExadbVmClusterIdentityConnectorArrayInput is an input type that accepts ExadbVmClusterIdentityConnectorArray and ExadbVmClusterIdentityConnectorArrayOutput values.
+// You can construct a concrete instance of `ExadbVmClusterIdentityConnectorArrayInput` via:
+//
+//	ExadbVmClusterIdentityConnectorArray{ ExadbVmClusterIdentityConnectorArgs{...} }
+type ExadbVmClusterIdentityConnectorArrayInput interface {
+	pulumi.Input
+
+	ToExadbVmClusterIdentityConnectorArrayOutput() ExadbVmClusterIdentityConnectorArrayOutput
+	ToExadbVmClusterIdentityConnectorArrayOutputWithContext(context.Context) ExadbVmClusterIdentityConnectorArrayOutput
+}
+
+type ExadbVmClusterIdentityConnectorArray []ExadbVmClusterIdentityConnectorInput
+
+func (ExadbVmClusterIdentityConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExadbVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (i ExadbVmClusterIdentityConnectorArray) ToExadbVmClusterIdentityConnectorArrayOutput() ExadbVmClusterIdentityConnectorArrayOutput {
+	return i.ToExadbVmClusterIdentityConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i ExadbVmClusterIdentityConnectorArray) ToExadbVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) ExadbVmClusterIdentityConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExadbVmClusterIdentityConnectorArrayOutput)
+}
+
+type ExadbVmClusterIdentityConnectorOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterIdentityConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExadbVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o ExadbVmClusterIdentityConnectorOutput) ToExadbVmClusterIdentityConnectorOutput() ExadbVmClusterIdentityConnectorOutput {
+	return o
+}
+
+func (o ExadbVmClusterIdentityConnectorOutput) ToExadbVmClusterIdentityConnectorOutputWithContext(ctx context.Context) ExadbVmClusterIdentityConnectorOutput {
+	return o
+}
+
+// (Output)
+// The connection state of the identity connector.
+// Possible values:
+// CONNECTION_STATE_UNSPECIFIED
+// CONNECTED
+// PARTIALLY_CONNECTED
+// DISCONNECTED
+// UNKNOWN
+func (o ExadbVmClusterIdentityConnectorOutput) ConnectionState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterIdentityConnector) *string { return v.ConnectionState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A google managed service account on which customers can grant roles to access resources in the customer project.
+func (o ExadbVmClusterIdentityConnectorOutput) ServiceAgentEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExadbVmClusterIdentityConnector) *string { return v.ServiceAgentEmail }).(pulumi.StringPtrOutput)
+}
+
+type ExadbVmClusterIdentityConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ExadbVmClusterIdentityConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExadbVmClusterIdentityConnector)(nil)).Elem()
+}
+
+func (o ExadbVmClusterIdentityConnectorArrayOutput) ToExadbVmClusterIdentityConnectorArrayOutput() ExadbVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o ExadbVmClusterIdentityConnectorArrayOutput) ToExadbVmClusterIdentityConnectorArrayOutputWithContext(ctx context.Context) ExadbVmClusterIdentityConnectorArrayOutput {
+	return o
+}
+
+func (o ExadbVmClusterIdentityConnectorArrayOutput) Index(i pulumi.IntInput) ExadbVmClusterIdentityConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExadbVmClusterIdentityConnector {
+		return vs[0].([]ExadbVmClusterIdentityConnector)[vs[1].(int)]
+	}).(ExadbVmClusterIdentityConnectorOutput)
+}
+
 type ExadbVmClusterProperties struct {
 	// The number of additional ECPUs per node for an Exadata VM cluster on
 	// exascale infrastructure.
@@ -39302,6 +39432,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesDbSystemOptionsPtrInput)(nil)).Elem(), DbSystemPropertiesDbSystemOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesTimeZoneInput)(nil)).Elem(), DbSystemPropertiesTimeZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbSystemPropertiesTimeZonePtrInput)(nil)).Elem(), DbSystemPropertiesTimeZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterIdentityConnectorInput)(nil)).Elem(), ExadbVmClusterIdentityConnectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterIdentityConnectorArrayInput)(nil)).Elem(), ExadbVmClusterIdentityConnectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesInput)(nil)).Elem(), ExadbVmClusterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesPtrInput)(nil)).Elem(), ExadbVmClusterPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExadbVmClusterPropertiesDataCollectionOptionsInput)(nil)).Elem(), ExadbVmClusterPropertiesDataCollectionOptionsArgs{})
@@ -39598,6 +39730,8 @@ func init() {
 	pulumi.RegisterOutputType(DbSystemPropertiesDbSystemOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DbSystemPropertiesTimeZoneOutput{})
 	pulumi.RegisterOutputType(DbSystemPropertiesTimeZonePtrOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterIdentityConnectorOutput{})
+	pulumi.RegisterOutputType(ExadbVmClusterIdentityConnectorArrayOutput{})
 	pulumi.RegisterOutputType(ExadbVmClusterPropertiesOutput{})
 	pulumi.RegisterOutputType(ExadbVmClusterPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ExadbVmClusterPropertiesDataCollectionOptionsOutput{})

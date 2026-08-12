@@ -41,11 +41,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			my_app_version, err := ces.NewAppVersion(ctx, "my-app-version", &ces.AppVersionArgs{
+//				Location:     pulumi.String("us"),
+//				DisplayName:  pulumi.String("my-app-version"),
+//				App:          my_app.Name,
+//				AppVersionId: pulumi.String("app-version-id"),
+//				Description:  pulumi.String("example-app-version"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ces.NewDeployment(ctx, "my-deployment", &ces.DeploymentArgs{
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("my-deployment"),
 //				App:         my_app.Name,
-//				AppVersion:  pulumi.String("projects/example-project/locations/us/apps/example-app/versions/example-version"),
+//				AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
 //				ChannelProfile: &ces.DeploymentChannelProfileArgs{
 //					ChannelType:           pulumi.String("API"),
 //					DisableBargeInControl: pulumi.Bool(true),
@@ -94,11 +104,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			my_app_version, err := ces.NewAppVersion(ctx, "my-app-version", &ces.AppVersionArgs{
+//				Location:     pulumi.String("us"),
+//				DisplayName:  pulumi.String("my-app-version"),
+//				App:          my_app.Name,
+//				AppVersionId: pulumi.String("app-version-id"),
+//				Description:  pulumi.String("example-app-version"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ces.NewDeployment(ctx, "my-deployment", &ces.DeploymentArgs{
 //				Location:    pulumi.String("us"),
 //				DisplayName: pulumi.String("my-deployment"),
 //				App:         my_app.Name,
-//				AppVersion:  pulumi.String("projects/example-project/locations/us/apps/example-app/versions/example-version"),
+//				AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
 //				ChannelProfile: &ces.DeploymentChannelProfileArgs{
 //					ChannelType:           pulumi.String("API"),
 //					DisableBargeInControl: pulumi.Bool(true),

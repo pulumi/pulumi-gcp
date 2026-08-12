@@ -13,6 +13,240 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetClusterNodeConfigGcfsConfig struct {
+	// Whether or not GCFS is enabled
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigGcfsConfigInput is an input type that accepts GetClusterNodeConfigGcfsConfigArgs and GetClusterNodeConfigGcfsConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGcfsConfigInput` via:
+//
+//	GetClusterNodeConfigGcfsConfigArgs{...}
+type GetClusterNodeConfigGcfsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput
+	ToGetClusterNodeConfigGcfsConfigOutputWithContext(context.Context) GetClusterNodeConfigGcfsConfigOutput
+}
+
+type GetClusterNodeConfigGcfsConfigArgs struct {
+	// Whether or not GCFS is enabled
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigGcfsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGcfsConfigArgs) ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput {
+	return i.ToGetClusterNodeConfigGcfsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGcfsConfigArgs) ToGetClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGcfsConfigOutput)
+}
+
+// GetClusterNodeConfigGcfsConfigArrayInput is an input type that accepts GetClusterNodeConfigGcfsConfigArray and GetClusterNodeConfigGcfsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGcfsConfigArrayInput` via:
+//
+//	GetClusterNodeConfigGcfsConfigArray{ GetClusterNodeConfigGcfsConfigArgs{...} }
+type GetClusterNodeConfigGcfsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput
+	ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGcfsConfigArrayOutput
+}
+
+type GetClusterNodeConfigGcfsConfigArray []GetClusterNodeConfigGcfsConfigInput
+
+func (GetClusterNodeConfigGcfsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGcfsConfigArray) ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput {
+	return i.ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGcfsConfigArray) ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGcfsConfigArrayOutput)
+}
+
+type GetClusterNodeConfigGcfsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGcfsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGcfsConfigOutput) ToGetClusterNodeConfigGcfsConfigOutput() GetClusterNodeConfigGcfsConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigOutput) ToGetClusterNodeConfigGcfsConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigOutput {
+	return o
+}
+
+// Whether or not GCFS is enabled
+func (o GetClusterNodeConfigGcfsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGcfsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigGcfsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGcfsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGcfsConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGcfsConfigArrayOutput) ToGetClusterNodeConfigGcfsConfigArrayOutput() GetClusterNodeConfigGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigArrayOutput) ToGetClusterNodeConfigGcfsConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGcfsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGcfsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGcfsConfig {
+		return vs[0].([]GetClusterNodeConfigGcfsConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigGcfsConfigOutput)
+}
+
+type GetClusterNodeConfigGuestAccelerator struct {
+	// The number of the accelerator cards exposed to an instance.
+	Count int `pulumi:"count"`
+	// Configuration for auto installation of GPU driver.
+	GpuDriverInstallationConfigs []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfigs"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
+	// Configuration for GPU sharing.
+	GpuSharingConfigs []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfigs"`
+	// The accelerator type resource name.
+	Type string `pulumi:"type"`
+}
+
+// GetClusterNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArgs and GetClusterNodeConfigGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorArgs{...}
+type GetClusterNodeConfigGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorOutput() GetClusterNodeConfigGuestAcceleratorOutput
+	ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorArgs struct {
+	// The number of the accelerator cards exposed to an instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Configuration for auto installation of GPU driver.
+	GpuDriverInstallationConfigs GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput `pulumi:"gpuDriverInstallationConfigs"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
+	// Configuration for GPU sharing.
+	GpuSharingConfigs GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput `pulumi:"gpuSharingConfigs"`
+	// The accelerator type resource name.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorArgs) ToGetClusterNodeConfigGuestAcceleratorOutput() GetClusterNodeConfigGuestAcceleratorOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorArgs) ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorOutput)
+}
+
+// GetClusterNodeConfigGuestAcceleratorArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArray and GetClusterNodeConfigGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorArrayInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorArray{ GetClusterNodeConfigGuestAcceleratorArgs{...} }
+type GetClusterNodeConfigGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorArrayOutput() GetClusterNodeConfigGuestAcceleratorArrayOutput
+	ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorArrayOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorArray []GetClusterNodeConfigGuestAcceleratorInput
+
+func (GetClusterNodeConfigGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorArray) ToGetClusterNodeConfigGuestAcceleratorArrayOutput() GetClusterNodeConfigGuestAcceleratorArrayOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorArray) ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorArrayOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorOutput) ToGetClusterNodeConfigGuestAcceleratorOutput() GetClusterNodeConfigGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorOutput) ToGetClusterNodeConfigGuestAcceleratorOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the accelerator cards exposed to an instance.
+func (o GetClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Configuration for auto installation of GPU driver.
+func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfigs() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return v.GpuDriverInstallationConfigs
+	}).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
+}
+
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
+func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
+}
+
+// Configuration for GPU sharing.
+func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuSharingConfigs() GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
+		return v.GpuSharingConfigs
+	}).(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput)
+}
+
+// The accelerator type resource name.
+func (o GetClusterNodeConfigGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) ToGetClusterNodeConfigGuestAcceleratorArrayOutput() GetClusterNodeConfigGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) ToGetClusterNodeConfigGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
+		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
+	}).(GetClusterNodeConfigGuestAcceleratorOutput)
+}
+
 type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
 	// Mode for how the GPU driver is installed.
 	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
@@ -17914,6 +18148,10 @@ func (o GetClusterWorkloadIdentityConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
@@ -18220,6 +18458,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
