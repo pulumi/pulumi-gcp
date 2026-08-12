@@ -19649,6 +19649,9 @@
                                 "gke_backup_agent_config": {
                                     "maxItemsOne": true
                                 },
+                                "high_scale_checkpointing_config": {
+                                    "maxItemsOne": true
+                                },
                                 "horizontal_pod_autoscaling": {
                                     "maxItemsOne": true
                                 },
@@ -25143,7 +25146,14 @@
                                                 "maxItemsOne": false
                                             },
                                             "disk_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "attached_disk_config": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "instance_flexibility_policy": {
                                                 "maxItemsOne": true,
@@ -25154,7 +25164,14 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "disk_config": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "attached_disk_config": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "machine_types": {
                                                                         "maxItemsOne": false
@@ -25182,7 +25199,14 @@
                                     "elem": {
                                         "fields": {
                                             "disk_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "attached_disk_config": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "instance_flexibility_policy": {
                                                 "maxItemsOne": true,
@@ -25193,7 +25217,14 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "disk_config": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "attached_disk_config": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "machine_types": {
                                                                         "maxItemsOne": false
@@ -25247,7 +25278,14 @@
                                                 "maxItemsOne": false
                                             },
                                             "disk_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "attached_disk_config": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "instance_flexibility_policy": {
                                                 "maxItemsOne": true,
@@ -25258,7 +25296,14 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "disk_config": {
-                                                                        "maxItemsOne": true
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "attached_disk_config": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
                                                                     },
                                                                     "machine_types": {
                                                                         "maxItemsOne": false
@@ -39448,6 +39493,9 @@
                 "current": "gcp:oracledatabase/exadbVmCluster:ExadbVmCluster",
                 "majorVersion": 9,
                 "fields": {
+                    "identity_connector": {
+                        "maxItemsOne": false
+                    },
                     "properties": {
                         "maxItemsOne": true,
                         "elem": {
@@ -44050,6 +44098,16 @@
                             }
                         }
                     },
+                    "scan_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "secret_scan_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "uris": {
                         "maxItemsOne": false
                     }
@@ -46474,6 +46532,15 @@
                     }
                 }
             },
+            "google_vertex_ai_evaluation_metric": {
+                "current": "gcp:vertex/aiEvaluationMetric:AiEvaluationMetric",
+                "majorVersion": 9,
+                "fields": {
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_vertex_ai_feature_group": {
                 "current": "gcp:vertex/aiFeatureGroup:AiFeatureGroup",
                 "majorVersion": 9,
@@ -47021,7 +47088,21 @@
                                                 }
                                             },
                                             "generation_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "generation_trigger_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "generation_rule": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
                                             },
                                             "similarity_search_config": {
                                                 "maxItemsOne": true
@@ -53313,6 +53394,9 @@
                                     "maxItemsOne": false
                                 },
                                 "gke_backup_agent_config": {
+                                    "maxItemsOne": false
+                                },
+                                "high_scale_checkpointing_config": {
                                     "maxItemsOne": false
                                 },
                                 "horizontal_pod_autoscaling": {
@@ -60932,6 +61016,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_vertex_ai_evaluation_metric": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_vertex_ai_feature_group": [
                 "effective_labels",
                 "terraform_labels"
@@ -62722,6 +62810,7 @@
             "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": 0,
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": 0,
             "gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment": 0,
+            "gcp:vertex/aiEvaluationMetric:AiEvaluationMetric": 0,
             "gcp:vertex/aiFeatureGroup:AiFeatureGroup": 0,
             "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature": 0,
             "gcp:vertex/aiFeatureGroupIamBinding:AiFeatureGroupIamBinding": 0,
@@ -63294,6 +63383,8 @@
         "listResources": {
             "gcp:bigquery/dataset:Dataset": 1,
             "gcp:bigquery/datasetAccess:DatasetAccess": 1,
+            "gcp:bigquery/datasetIamMember:DatasetIamMember": 1,
+            "gcp:bigquery/table:Table": 1,
             "gcp:cloudrun/service:Service": 1,
             "gcp:cloudscheduler/job:Job": 1,
             "gcp:compute/address:Address": 1,
