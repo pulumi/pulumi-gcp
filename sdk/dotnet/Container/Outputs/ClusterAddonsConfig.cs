@@ -62,6 +62,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGkeBackupAgentConfig? GkeBackupAgentConfig;
         /// <summary>
+        /// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigHighScaleCheckpointingConfig? HighScaleCheckpointingConfig;
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.
@@ -175,6 +179,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigGkeBackupAgentConfig? gkeBackupAgentConfig,
 
+            Outputs.ClusterAddonsConfigHighScaleCheckpointingConfig? highScaleCheckpointingConfig,
+
             Outputs.ClusterAddonsConfigHorizontalPodAutoscaling? horizontalPodAutoscaling,
 
             Outputs.ClusterAddonsConfigHttpLoadBalancing? httpLoadBalancing,
@@ -209,6 +215,7 @@ namespace Pulumi.Gcp.Container.Outputs
             GcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
             GcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             GkeBackupAgentConfig = gkeBackupAgentConfig;
+            HighScaleCheckpointingConfig = highScaleCheckpointingConfig;
             HorizontalPodAutoscaling = horizontalPodAutoscaling;
             HttpLoadBalancing = httpLoadBalancing;
             IstioConfig = istioConfig;

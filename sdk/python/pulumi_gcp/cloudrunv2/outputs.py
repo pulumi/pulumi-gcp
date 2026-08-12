@@ -4511,7 +4511,11 @@ class ServiceTemplateScaling(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxInstanceCount":
+        if key == "concurrencyUtilization":
+            suggest = "concurrency_utilization"
+        elif key == "cpuUtilization":
+            suggest = "cpu_utilization"
+        elif key == "maxInstanceCount":
             suggest = "max_instance_count"
         elif key == "minInstanceCount":
             suggest = "min_instance_count"
@@ -4528,16 +4532,44 @@ class ServiceTemplateScaling(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 concurrency_utilization: Optional[_builtins.float] = None,
+                 cpu_utilization: Optional[_builtins.float] = None,
                  max_instance_count: Optional[_builtins.int] = None,
                  min_instance_count: Optional[_builtins.int] = None):
         """
+        :param _builtins.float concurrency_utilization: (Optional, Beta)
+               Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        :param _builtins.float cpu_utilization: (Optional, Beta)
+               Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         :param _builtins.int max_instance_count: Combined maximum number of instances for all revisions receiving traffic.
         :param _builtins.int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
+        if concurrency_utilization is not None:
+            pulumi.set(__self__, "concurrency_utilization", concurrency_utilization)
+        if cpu_utilization is not None:
+            pulumi.set(__self__, "cpu_utilization", cpu_utilization)
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrencyUtilization")
+    def concurrency_utilization(self) -> Optional[_builtins.float]:
+        """
+        (Optional, Beta)
+        Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        """
+        return pulumi.get(self, "concurrency_utilization")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUtilization")
+    def cpu_utilization(self) -> Optional[_builtins.float]:
+        """
+        (Optional, Beta)
+        Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        """
+        return pulumi.get(self, "cpu_utilization")
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")
@@ -10685,15 +10717,37 @@ class GetServiceTemplateNodeSelectorResult(dict):
 @pulumi.output_type
 class GetServiceTemplateScalingResult(dict):
     def __init__(__self__, *,
+                 concurrency_utilization: _builtins.float,
+                 cpu_utilization: _builtins.float,
                  max_instance_count: _builtins.int,
                  min_instance_count: _builtins.int):
         """
+        :param _builtins.float concurrency_utilization: Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        :param _builtins.float cpu_utilization: Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
         :param _builtins.int max_instance_count: Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
                a default value based on the project's available container instances quota in the region and specified instance size.
         :param _builtins.int min_instance_count: Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
         """
+        pulumi.set(__self__, "concurrency_utilization", concurrency_utilization)
+        pulumi.set(__self__, "cpu_utilization", cpu_utilization)
         pulumi.set(__self__, "max_instance_count", max_instance_count)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
+
+    @_builtins.property
+    @pulumi.getter(name="concurrencyUtilization")
+    def concurrency_utilization(self) -> _builtins.float:
+        """
+        Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        """
+        return pulumi.get(self, "concurrency_utilization")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUtilization")
+    def cpu_utilization(self) -> _builtins.float:
+        """
+        Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        """
+        return pulumi.get(self, "cpu_utilization")
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceCount")

@@ -64,6 +64,7 @@ __all__ = [
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeader',
     'AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocket',
+    'AiEvaluationMetricEncryptionSpec',
     'AiFeatureGroupBigQuery',
     'AiFeatureGroupBigQueryBigQuerySource',
     'AiFeatureGroupIamBindingCondition',
@@ -143,6 +144,8 @@ __all__ = [
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic',
     'AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic',
     'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig',
+    'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule',
     'AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig',
     'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig',
     'AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig',
@@ -4171,6 +4174,48 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcp
 
 
 @pulumi.output_type
+class AiEvaluationMetricEncryptionSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiEvaluationMetricEncryptionSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiEvaluationMetricEncryptionSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiEvaluationMetricEncryptionSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str kms_key_name: Required. The Cloud KMS resource identifier of the customer managed encryption key
+               used to protect a resource. Has the form:
+               `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+               The key needs to be in the same region as where the resource is created.
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[_builtins.str]:
+        """
+        Required. The Cloud KMS resource identifier of the customer managed encryption key
+        used to protect a resource. Has the form:
+        `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+        The key needs to be in the same region as where the resource is created.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
 class AiFeatureGroupBigQuery(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7894,12 +7939,34 @@ class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic
 
 @pulumi.output_type
 class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationTriggerConfig":
+            suggest = "generation_trigger_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 model: _builtins.str):
+                 model: _builtins.str,
+                 generation_trigger_config: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig'] = None):
         """
         :param _builtins.str model: The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs' generation_trigger_config: Optional. Configuration for triggering memory generation.
+               Structure is documented below.
         """
         pulumi.set(__self__, "model", model)
+        if generation_trigger_config is not None:
+            pulumi.set(__self__, "generation_trigger_config", generation_trigger_config)
 
     @_builtins.property
     @pulumi.getter
@@ -7908,6 +7975,139 @@ class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig(dict):
         The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
         """
         return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter(name="generationTriggerConfig")
+    def generation_trigger_config(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig']:
+        """
+        Optional. Configuration for triggering memory generation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_trigger_config")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationRule":
+            suggest = "generation_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generation_rule: Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule'] = None):
+        """
+        :param 'AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs' generation_rule: Optional. The active rule that determines when to flush the buffer. If not set,
+               then the stream will be force flushed immediately.
+               Structure is documented below.
+        """
+        if generation_rule is not None:
+            pulumi.set(__self__, "generation_rule", generation_rule)
+
+    @_builtins.property
+    @pulumi.getter(name="generationRule")
+    def generation_rule(self) -> Optional['outputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule']:
+        """
+        Optional. The active rule that determines when to flush the buffer. If not set,
+        then the stream will be force flushed immediately.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generation_rule")
+
+
+@pulumi.output_type
+class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventCount":
+            suggest = "event_count"
+        elif key == "fixedInterval":
+            suggest = "fixed_interval"
+        elif key == "idleDuration":
+            suggest = "idle_duration"
+        elif key == "overlapEventCount":
+            suggest = "overlap_event_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_count: Optional[_builtins.int] = None,
+                 fixed_interval: Optional[_builtins.str] = None,
+                 idle_duration: Optional[_builtins.str] = None,
+                 overlap_event_count: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int event_count: Optional. Specifies to trigger generation when the event count reaches this limit.
+        :param _builtins.str fixed_interval: Optional. Specifies to trigger generation at a fixed interval. The duration
+               must have a minute-level granularity.
+        :param _builtins.str idle_duration: Optional. Specifies to trigger generation if the stream is inactive for the
+               specified duration after the most recent event. The duration must have a
+               minute-level granularity.
+        :param _builtins.int overlap_event_count: Optional. Re-include the last N already-processed events in the next window.
+        """
+        if event_count is not None:
+            pulumi.set(__self__, "event_count", event_count)
+        if fixed_interval is not None:
+            pulumi.set(__self__, "fixed_interval", fixed_interval)
+        if idle_duration is not None:
+            pulumi.set(__self__, "idle_duration", idle_duration)
+        if overlap_event_count is not None:
+            pulumi.set(__self__, "overlap_event_count", overlap_event_count)
+
+    @_builtins.property
+    @pulumi.getter(name="eventCount")
+    def event_count(self) -> Optional[_builtins.int]:
+        """
+        Optional. Specifies to trigger generation when the event count reaches this limit.
+        """
+        return pulumi.get(self, "event_count")
+
+    @_builtins.property
+    @pulumi.getter(name="fixedInterval")
+    def fixed_interval(self) -> Optional[_builtins.str]:
+        """
+        Optional. Specifies to trigger generation at a fixed interval. The duration
+        must have a minute-level granularity.
+        """
+        return pulumi.get(self, "fixed_interval")
+
+    @_builtins.property
+    @pulumi.getter(name="idleDuration")
+    def idle_duration(self) -> Optional[_builtins.str]:
+        """
+        Optional. Specifies to trigger generation if the stream is inactive for the
+        specified duration after the most recent event. The duration must have a
+        minute-level granularity.
+        """
+        return pulumi.get(self, "idle_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="overlapEventCount")
+    def overlap_event_count(self) -> Optional[_builtins.int]:
+        """
+        Optional. Re-include the last N already-processed events in the next window.
+        """
+        return pulumi.get(self, "overlap_event_count")
 
 
 @pulumi.output_type

@@ -6,13 +6,33 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs Empty = new AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs();
+
+    /**
+     * Optional. Configuration for triggering memory generation.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="generationTriggerConfig")
+    private @Nullable Output<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs> generationTriggerConfig;
+
+    /**
+     * @return Optional. Configuration for triggering memory generation.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs>> generationTriggerConfig() {
+        return Optional.ofNullable(this.generationTriggerConfig);
+    }
 
     /**
      * The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
@@ -32,6 +52,7 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigA
     private AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs() {}
 
     private AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs $) {
+        this.generationTriggerConfig = $.generationTriggerConfig;
         this.model = $.model;
     }
 
@@ -51,6 +72,29 @@ public final class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigA
 
         public Builder(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs defaults) {
             $ = new AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param generationTriggerConfig Optional. Configuration for triggering memory generation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generationTriggerConfig(@Nullable Output<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs> generationTriggerConfig) {
+            $.generationTriggerConfig = generationTriggerConfig;
+            return this;
+        }
+
+        /**
+         * @param generationTriggerConfig Optional. Configuration for triggering memory generation.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder generationTriggerConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs generationTriggerConfig) {
+            return generationTriggerConfig(Output.of(generationTriggerConfig));
         }
 
         /**

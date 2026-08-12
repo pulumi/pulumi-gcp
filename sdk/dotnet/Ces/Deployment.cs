@@ -35,12 +35,21 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///     });
     /// 
+    ///     var my_app_version = new Gcp.Ces.AppVersion("my-app-version", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-app-version",
+    ///         App = my_app.Name,
+    ///         AppVersionId = "app-version-id",
+    ///         Description = "example-app-version",
+    ///     });
+    /// 
     ///     var my_deployment = new Gcp.Ces.Deployment("my-deployment", new()
     ///     {
     ///         Location = "us",
     ///         DisplayName = "my-deployment",
     ///         App = my_app.Name,
-    ///         AppVersion = "projects/example-project/locations/us/apps/example-app/versions/example-version",
+    ///         AppVersion = my_app_version.Id,
     ///         ChannelProfile = new Gcp.Ces.Inputs.DeploymentChannelProfileArgs
     ///         {
     ///             ChannelType = "API",
@@ -83,12 +92,21 @@ namespace Pulumi.Gcp.Ces
     ///         },
     ///     });
     /// 
+    ///     var my_app_version = new Gcp.Ces.AppVersion("my-app-version", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-app-version",
+    ///         App = my_app.Name,
+    ///         AppVersionId = "app-version-id",
+    ///         Description = "example-app-version",
+    ///     });
+    /// 
     ///     var my_deployment = new Gcp.Ces.Deployment("my-deployment", new()
     ///     {
     ///         Location = "us",
     ///         DisplayName = "my-deployment",
     ///         App = my_app.Name,
-    ///         AppVersion = "projects/example-project/locations/us/apps/example-app/versions/example-version",
+    ///         AppVersion = my_app_version.Id,
     ///         ChannelProfile = new Gcp.Ces.Inputs.DeploymentChannelProfileArgs
     ///         {
     ///             ChannelType = "API",

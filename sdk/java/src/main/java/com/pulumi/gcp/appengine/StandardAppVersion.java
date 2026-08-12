@@ -303,7 +303,7 @@ import javax.annotation.Nullable;
 public class StandardAppVersion extends com.pulumi.resources.CustomResource {
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      * 
      */
     @Export(name="appEngineApis", refs={Boolean.class}, tree="[0]")
@@ -311,7 +311,7 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      * 
      */
     public Output<Optional<Boolean>> appEngineApis() {

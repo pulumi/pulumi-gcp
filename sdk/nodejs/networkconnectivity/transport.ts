@@ -147,7 +147,7 @@ export class Transport extends pulumi.CustomResource {
     /**
      * Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      */
-    declare public readonly network: pulumi.Output<string>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish.
      */
@@ -232,9 +232,6 @@ export class Transport extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as TransportArgs | undefined;
-            if (args?.network === undefined && !opts.urn) {
-                throw new Error("Missing required property 'network'");
-            }
             if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
@@ -442,7 +439,7 @@ export interface TransportArgs {
     /**
      * Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      */
-    network: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

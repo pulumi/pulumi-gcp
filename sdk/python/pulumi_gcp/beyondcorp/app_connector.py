@@ -375,49 +375,6 @@ class AppConnector(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
 
-        ## Example Usage
-
-        ### Beyondcorp App Connector Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("app_connector",
-            name="my-app-connector",
-            principal_info={
-                "service_account": {
-                    "email": service_account.email,
-                },
-            })
-        ```
-        ### Beyondcorp App Connector Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("app_connector",
-            name="my-app-connector",
-            region="us-central1",
-            display_name="some display name",
-            principal_info={
-                "service_account": {
-                    "email": service_account.email,
-                },
-            },
-            labels={
-                "foo": "bar",
-                "bar": "baz",
-            })
-        ```
-
         ## Import
 
         AppConnector can be imported using any of these accepted formats:
@@ -474,49 +431,6 @@ class AppConnector(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/beyondcorp/docs/reference/rest#rest-resource:-v1.projects.locations.appconnectors)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/beyondcorp-enterprise/docs/enable-app-connector)
-
-        ## Example Usage
-
-        ### Beyondcorp App Connector Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("app_connector",
-            name="my-app-connector",
-            principal_info={
-                "service_account": {
-                    "email": service_account.email,
-                },
-            })
-        ```
-        ### Beyondcorp App Connector Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-account",
-            display_name="Test Service Account")
-        app_connector = gcp.beyondcorp.AppConnector("app_connector",
-            name="my-app-connector",
-            region="us-central1",
-            display_name="some display name",
-            principal_info={
-                "service_account": {
-                    "email": service_account.email,
-                },
-            },
-            labels={
-                "foo": "bar",
-                "bar": "baz",
-            })
-        ```
 
         ## Import
 

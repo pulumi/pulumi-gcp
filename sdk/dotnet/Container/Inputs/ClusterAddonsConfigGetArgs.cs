@@ -77,6 +77,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigGkeBackupAgentConfigGetArgs>? GkeBackupAgentConfig { get; set; }
 
         /// <summary>
+        /// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+        /// </summary>
+        [Input("highScaleCheckpointingConfig")]
+        public Input<Inputs.ClusterAddonsConfigHighScaleCheckpointingConfigGetArgs>? HighScaleCheckpointingConfig { get; set; }
+
+        /// <summary>
         /// The status of the Horizontal Pod Autoscaling
         /// addon, which increases or decreases the number of replica pods a replication controller
         /// has based on the resource usage of the existing pods.

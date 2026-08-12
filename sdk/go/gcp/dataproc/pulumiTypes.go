@@ -8180,6 +8180,8 @@ func (o ClusterClusterConfigMasterConfigAcceleratorArrayOutput) Index(i pulumi.I
 }
 
 type ClusterClusterConfigMasterConfigDiskConfig struct {
+	// Optional. Attached disk configuration.
+	AttachedDiskConfigs []ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -8215,6 +8217,8 @@ type ClusterClusterConfigMasterConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigMasterConfigDiskConfigArgs struct {
+	// Optional. Attached disk configuration.
+	AttachedDiskConfigs ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -8315,6 +8319,13 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) ToClusterClusterConfig
 	}).(ClusterClusterConfigMasterConfigDiskConfigPtrOutput)
 }
 
+// Optional. Attached disk configuration.
+func (o ClusterClusterConfigMasterConfigDiskConfigOutput) AttachedDiskConfigs() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) []ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.BootDiskProvisionedIops }).(pulumi.IntPtrOutput)
@@ -8376,6 +8387,16 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) Elem() ClusterClust
 		var ret ClusterClusterConfigMasterConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigMasterConfigDiskConfigOutput)
+}
+
+// Optional. Attached disk configuration.
+func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) AttachedDiskConfigs() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) []ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput)
 }
 
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -8445,6 +8466,132 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput` via:
+//
+//	ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs{...}
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput
+	ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Context) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput
+}
+
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return i.ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+// ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput is an input type that accepts ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray and ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray{ ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs{...} }
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput
+	ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray []ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput
+
+func (ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+		return vs[0].([]ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput)
 }
 
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy struct {
@@ -8729,6 +8876,8 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 }
 
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig struct {
+	// Attached disk configuration.
+	AttachedDiskConfigs []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk.
 	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk.
@@ -8755,6 +8904,8 @@ type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionL
 }
 
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs struct {
+	// Attached disk configuration.
+	AttachedDiskConfigs ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk.
 	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk.
@@ -8846,6 +8997,13 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
 }
 
+// Attached disk configuration.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) AttachedDiskConfigs() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk.
 func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
@@ -8912,6 +9070,16 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
 }
 
+// Attached disk configuration.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) AttachedDiskConfigs() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk.
 func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
@@ -8970,6 +9138,138 @@ func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelecti
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...}
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+// ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput is an input type that accepts ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray and ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{ ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...} }
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+	ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray []ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk.
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return vs[0].([]ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
 }
 
 type ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
@@ -9477,6 +9777,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigPtrOutput) Preemptibility() p
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
+	// Optional. Attached disk configuration.
+	AttachedDiskConfigs []ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -9508,6 +9810,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs struct {
+	// Optional. Attached disk configuration.
+	AttachedDiskConfigs ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -9604,6 +9908,13 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) ToClusterCl
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput)
 }
 
+// Optional. Attached disk configuration.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) AttachedDiskConfigs() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) []ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int { return v.BootDiskProvisionedIops }).(pulumi.IntPtrOutput)
@@ -9663,6 +9974,16 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) Elem() C
 		var ret ClusterClusterConfigPreemptibleWorkerConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput)
+}
+
+// Optional. Attached disk configuration.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) AttachedDiskConfigs() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) []ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
 }
 
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -9728,6 +10049,138 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) NumLocal
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigInput` via:
+//
+//	ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs{...}
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput
+	ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+// ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray and ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray{ ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs{...} }
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+	ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray []ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigInput
+
+func (ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig {
+		return vs[0].([]ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy struct {
@@ -10033,6 +10486,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig struct {
+	// Optional. Attached disk configuration.
+	AttachedDiskConfigs []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -10059,6 +10514,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs struct {
+	// Optional. Attached disk configuration.
+	AttachedDiskConfigs ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -10150,6 +10607,13 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
 }
 
+// Optional. Attached disk configuration.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) AttachedDiskConfigs() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
@@ -10216,6 +10680,16 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
 }
 
+// Optional. Attached disk configuration.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) AttachedDiskConfigs() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
@@ -10274,6 +10748,138 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput` via:
+//
+//	ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...}
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+// ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{ ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...} }
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return vs[0].([]ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
@@ -12044,6 +12650,8 @@ func (o ClusterClusterConfigWorkerConfigAcceleratorArrayOutput) Index(i pulumi.I
 }
 
 type ClusterClusterConfigWorkerConfigDiskConfig struct {
+	// Attached disk configuration.
+	AttachedDiskConfigs []ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -12075,6 +12683,8 @@ type ClusterClusterConfigWorkerConfigDiskConfigInput interface {
 }
 
 type ClusterClusterConfigWorkerConfigDiskConfigArgs struct {
+	// Attached disk configuration.
+	AttachedDiskConfigs ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
@@ -12171,6 +12781,13 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) ToClusterClusterConfig
 	}).(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput)
 }
 
+// Attached disk configuration.
+func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) AttachedDiskConfigs() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) []ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *int { return v.BootDiskProvisionedIops }).(pulumi.IntPtrOutput)
@@ -12228,6 +12845,16 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) Elem() ClusterClust
 		var ret ClusterClusterConfigWorkerConfigDiskConfig
 		return ret
 	}).(ClusterClusterConfigWorkerConfigDiskConfigOutput)
+}
+
+// Attached disk configuration.
+func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) AttachedDiskConfigs() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) []ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
 }
 
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -12293,6 +12920,132 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput` via:
+//
+//	ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs{...}
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput
+	ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput
+}
+
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return i.ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput)
+}
+
+// ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput is an input type that accepts ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray and ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray{ ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs{...} }
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+	ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray []ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput
+
+func (ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk.
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int { return v.ProvisionedIops }).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk.
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+		return vs[0].([]ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput)
 }
 
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy struct {
@@ -12577,6 +13330,8 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 }
 
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig struct {
+	// Attached disk configuration.
+	AttachedDiskConfigs []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk.
 	BootDiskProvisionedIops *int `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk.
@@ -12603,6 +13358,8 @@ type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionL
 }
 
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs struct {
+	// Attached disk configuration.
+	AttachedDiskConfigs ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput `pulumi:"attachedDiskConfigs"`
 	// Indicates how many IOPS to provision for the disk.
 	BootDiskProvisionedIops pulumi.IntPtrInput `pulumi:"bootDiskProvisionedIops"`
 	// Indicates how much throughput to provision for the disk.
@@ -12694,6 +13451,13 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput)
 }
 
+// Attached disk configuration.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) AttachedDiskConfigs() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk.
 func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
@@ -12760,6 +13524,16 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput)
 }
 
+// Attached disk configuration.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) AttachedDiskConfigs() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedDiskConfigs
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
 // Indicates how many IOPS to provision for the disk.
 func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput) BootDiskProvisionedIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig) *int {
@@ -12818,6 +13592,138 @@ func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelecti
 		}
 		return v.NumLocalSsds
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb *int `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType *string `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk.
+	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...}
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs struct {
+	// Size of the attached disk, specified in GB.
+	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
+	// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Indicates how many IOPS to provision for the disk.
+	ProvisionedIops pulumi.IntPtrInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk.
+	ProvisionedThroughput pulumi.IntPtrInput `pulumi:"provisionedThroughput"`
+}
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
+}
+
+// ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput is an input type that accepts ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray and ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput` via:
+//
+//	ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{ ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{...} }
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+	ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray []ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return i.ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return o
+}
+
+// Size of the attached disk, specified in GB.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.DiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) DiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *string {
+		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates how many IOPS to provision for the disk.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedIops
+	}).(pulumi.IntPtrOutput)
+}
+
+// Indicates how much throughput to provision for the disk.
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput) ProvisionedThroughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig) *int {
+		return v.ProvisionedThroughput
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput() ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) ToClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutputWithContext(ctx context.Context) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+		return vs[0].([]ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig)[vs[1].(int)]
+	}).(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput)
 }
 
 type ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
@@ -37746,12 +38652,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigAcceleratorArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigMasterConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigMasterConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigInput)(nil)).Elem(), ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigMetastoreConfigInput)(nil)).Elem(), ClusterClusterConfigMetastoreConfigArgs{})
@@ -37760,12 +38670,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
@@ -37784,12 +38698,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigAcceleratorArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
@@ -38164,12 +39082,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigMetastoreConfigOutput{})
@@ -38178,12 +39100,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput{})
@@ -38202,12 +39128,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
 	pulumi.RegisterOutputType(ClusterIAMBindingConditionOutput{})

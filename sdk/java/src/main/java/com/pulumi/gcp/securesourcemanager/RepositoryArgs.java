@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securesourcemanager.inputs.RepositoryInitialConfigArgs;
+import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -136,6 +137,38 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         return this.repositoryId;
     }
 
+    /**
+     * Provides configuration for scanning.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scanConfig")
+    private @Nullable Output<RepositoryScanConfigArgs> scanConfig;
+
+    /**
+     * @return Provides configuration for scanning.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryScanConfigArgs>> scanConfig() {
+        return Optional.ofNullable(this.scanConfig);
+    }
+
+    /**
+     * Repository level service account.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return Repository level service account.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
     private RepositoryArgs() {}
 
     private RepositoryArgs(RepositoryArgs $) {
@@ -146,6 +179,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.project = $.project;
         this.repositoryId = $.repositoryId;
+        this.scanConfig = $.scanConfig;
+        this.serviceAccount = $.serviceAccount;
     }
 
     public static Builder builder() {
@@ -325,6 +360,50 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder repositoryId(String repositoryId) {
             return repositoryId(Output.of(repositoryId));
+        }
+
+        /**
+         * @param scanConfig Provides configuration for scanning.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scanConfig(@Nullable Output<RepositoryScanConfigArgs> scanConfig) {
+            $.scanConfig = scanConfig;
+            return this;
+        }
+
+        /**
+         * @param scanConfig Provides configuration for scanning.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scanConfig(RepositoryScanConfigArgs scanConfig) {
+            return scanConfig(Output.of(scanConfig));
+        }
+
+        /**
+         * @param serviceAccount Repository level service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount Repository level service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         public RepositoryArgs build() {

@@ -378,6 +378,10 @@ type Gateway struct {
 	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
 	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 	AllPorts pulumi.BoolPtrOutput `pulumi:"allPorts"`
+	// Optional. If true, the gateway will allow traffic from clients outside
+	// of the region where the gateway is located.
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllowGlobalAccess pulumi.BoolPtrOutput `pulumi:"allowGlobalAccess"`
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls pulumi.StringArrayOutput `pulumi:"certificateUrls"`
@@ -503,6 +507,10 @@ type gatewayState struct {
 	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
 	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 	AllPorts *bool `pulumi:"allPorts"`
+	// Optional. If true, the gateway will allow traffic from clients outside
+	// of the region where the gateway is located.
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllowGlobalAccess *bool `pulumi:"allowGlobalAccess"`
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls []string `pulumi:"certificateUrls"`
@@ -591,6 +599,10 @@ type GatewayState struct {
 	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
 	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 	AllPorts pulumi.BoolPtrInput
+	// Optional. If true, the gateway will allow traffic from clients outside
+	// of the region where the gateway is located.
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllowGlobalAccess pulumi.BoolPtrInput
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls pulumi.StringArrayInput
@@ -683,6 +695,10 @@ type gatewayArgs struct {
 	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
 	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 	AllPorts *bool `pulumi:"allPorts"`
+	// Optional. If true, the gateway will allow traffic from clients outside
+	// of the region where the gateway is located.
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllowGlobalAccess *bool `pulumi:"allowGlobalAccess"`
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls []string `pulumi:"certificateUrls"`
@@ -761,6 +777,10 @@ type GatewayArgs struct {
 	// it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
 	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 	AllPorts pulumi.BoolPtrInput
+	// Optional. If true, the gateway will allow traffic from clients outside
+	// of the region where the gateway is located.
+	// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+	AllowGlobalAccess pulumi.BoolPtrInput
 	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
 	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
 	CertificateUrls pulumi.StringArrayInput
@@ -928,6 +948,13 @@ func (o GatewayOutput) Addresses() pulumi.StringArrayOutput {
 // This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
 func (o GatewayOutput) AllPorts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AllPorts }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If true, the gateway will allow traffic from clients outside
+// of the region where the gateway is located.
+// This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+func (o GatewayOutput) AllowGlobalAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.AllowGlobalAccess }).(pulumi.BoolPtrOutput)
 }
 
 // A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.

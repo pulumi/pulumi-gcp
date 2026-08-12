@@ -163,7 +163,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
         /// </summary>
         [Output("network")]
-        public Output<string> Network { get; private set; } = null!;
+        public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
         /// VPC Network URI that was created for the VPC Peering connection to the provided `Network`. If VPC Peering is disconnected, this can be used to re-establish.
@@ -366,8 +366,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// <summary>
         /// Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
         /// </summary>
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

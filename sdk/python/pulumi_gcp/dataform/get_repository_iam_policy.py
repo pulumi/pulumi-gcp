@@ -107,8 +107,6 @@ def get_repository_iam_policy(project: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepositoryIamPolicyResult:
     """
     Retrieves the current IAM policy data for repository
-    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 
@@ -149,8 +147,6 @@ def get_repository_iam_policy_output(project: pulumi.Input[Optional[Optional[_bu
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
     """
     Retrieves the current IAM policy data for repository
-    > **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
-    See Provider Versions for more details on beta resources.
 
     ## Example Usage
 

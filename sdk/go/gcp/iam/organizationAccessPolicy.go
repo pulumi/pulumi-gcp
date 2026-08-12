@@ -16,12 +16,9 @@ import (
 // defines rules that allow or deny access to resources within the specified organization based on principals and conditions.
 // See the Cloud IAM documentation for more details on Access Policies.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about OrganizationAccessPolicy, see:
 //
-// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3beta/organizations.locations.accessPolicies)
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.accessPolicies)
 //
 // ## Example Usage
 //

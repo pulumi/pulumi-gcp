@@ -29,7 +29,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      * 
      */
     @Import(name="appEngineApis")
@@ -37,7 +37,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Allows App Engine second generation runtimes to access the legacy bundled services.
-     * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
+     * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
      * 
      */
     public Optional<Output<Boolean>> appEngineApis() {
@@ -468,7 +468,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param appEngineApis Allows App Engine second generation runtimes to access the legacy bundled services.
-         * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
+         * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param appEngineApis Allows App Engine second generation runtimes to access the legacy bundled services.
-         * Cannot specify both `appEngineApis` and &#39;app_engine_bundled_services` together.
+         * Cannot specify both `appEngineApis` and `appEngineBundledServices` together.
          * 
          * @return builder
          * 

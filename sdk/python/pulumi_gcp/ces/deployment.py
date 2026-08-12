@@ -399,11 +399,17 @@ class Deployment(pulumi.CustomResource):
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
+        my_app_version = gcp.ces.AppVersion("my-app-version",
+            location="us",
+            display_name="my-app-version",
+            app=my_app.name,
+            app_version_id="app-version-id",
+            description="example-app-version")
         my_deployment = gcp.ces.Deployment("my-deployment",
             location="us",
             display_name="my-deployment",
             app=my_app.name,
-            app_version="projects/example-project/locations/us/apps/example-app/versions/example-version",
+            app_version=my_app_version.id,
             channel_profile={
                 "channel_type": "API",
                 "disable_barge_in_control": True,
@@ -432,11 +438,17 @@ class Deployment(pulumi.CustomResource):
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
+        my_app_version = gcp.ces.AppVersion("my-app-version",
+            location="us",
+            display_name="my-app-version",
+            app=my_app.name,
+            app_version_id="app-version-id",
+            description="example-app-version")
         my_deployment = gcp.ces.Deployment("my-deployment",
             location="us",
             display_name="my-deployment",
             app=my_app.name,
-            app_version="projects/example-project/locations/us/apps/example-app/versions/example-version",
+            app_version=my_app_version.id,
             channel_profile={
                 "channel_type": "API",
                 "disable_barge_in_control": True,
@@ -523,11 +535,17 @@ class Deployment(pulumi.CustomResource):
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
+        my_app_version = gcp.ces.AppVersion("my-app-version",
+            location="us",
+            display_name="my-app-version",
+            app=my_app.name,
+            app_version_id="app-version-id",
+            description="example-app-version")
         my_deployment = gcp.ces.Deployment("my-deployment",
             location="us",
             display_name="my-deployment",
             app=my_app.name,
-            app_version="projects/example-project/locations/us/apps/example-app/versions/example-version",
+            app_version=my_app_version.id,
             channel_profile={
                 "channel_type": "API",
                 "disable_barge_in_control": True,
@@ -556,11 +574,17 @@ class Deployment(pulumi.CustomResource):
             time_zone_settings={
                 "time_zone": "America/Los_Angeles",
             })
+        my_app_version = gcp.ces.AppVersion("my-app-version",
+            location="us",
+            display_name="my-app-version",
+            app=my_app.name,
+            app_version_id="app-version-id",
+            description="example-app-version")
         my_deployment = gcp.ces.Deployment("my-deployment",
             location="us",
             display_name="my-deployment",
             app=my_app.name,
-            app_version="projects/example-project/locations/us/apps/example-app/versions/example-version",
+            app_version=my_app_version.id,
             channel_profile={
                 "channel_type": "API",
                 "disable_barge_in_control": True,

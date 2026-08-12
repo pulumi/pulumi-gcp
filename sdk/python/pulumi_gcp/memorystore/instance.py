@@ -63,7 +63,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.int] shard_count: Required. Number of shards for the instance.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH
+               IAM_AUTH.
+               TOKEN_AUTH is also supported, but only available in the google-beta provider.
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
@@ -230,7 +231,8 @@ class InstanceArgs:
         """
         Optional. Immutable. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH
+        IAM_AUTH.
+        TOKEN_AUTH is also supported, but only available in the google-beta provider.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -607,7 +609,8 @@ class _InstanceState:
 
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH
+               IAM_AUTH.
+               TOKEN_AUTH is also supported, but only available in the google-beta provider.
         :param pulumi.Input['InstanceAutomatedBackupConfigArgs'] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -822,7 +825,8 @@ class _InstanceState:
         """
         Optional. Immutable. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH
+        IAM_AUTH.
+        TOKEN_AUTH is also supported, but only available in the google-beta provider.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -1842,7 +1846,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH
+               IAM_AUTH.
+               TOKEN_AUTH is also supported, but only available in the google-beta provider.
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
@@ -2468,7 +2473,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authorization_mode: Optional. Immutable. Authorization mode of the instance. Possible values:
                AUTH_DISABLED
-               IAM_AUTH
+               IAM_AUTH.
+               TOKEN_AUTH is also supported, but only available in the google-beta provider.
         :param pulumi.Input[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']] automated_backup_config: The automated backup config for a instance.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] available_maintenance_versions: This field is used to determine the available maintenance versions for the self service update.
@@ -2634,7 +2640,8 @@ class Instance(pulumi.CustomResource):
         """
         Optional. Immutable. Authorization mode of the instance. Possible values:
         AUTH_DISABLED
-        IAM_AUTH
+        IAM_AUTH.
+        TOKEN_AUTH is also supported, but only available in the google-beta provider.
         """
         return pulumi.get(self, "authorization_mode")
 

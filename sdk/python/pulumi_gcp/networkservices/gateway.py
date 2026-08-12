@@ -22,6 +22,7 @@ class GatewayArgs:
                  type: pulumi.Input[_builtins.str],
                  addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -51,6 +52,9 @@ class GatewayArgs:
         :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
                By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
                it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        :param pulumi.Input[_builtins.bool] allow_global_access: Optional. If true, the gateway will allow traffic from clients outside
+               of the region where the gateway is located.
                This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -102,6 +106,8 @@ class GatewayArgs:
             pulumi.set(__self__, "addresses", addresses)
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
+        if allow_global_access is not None:
+            pulumi.set(__self__, "allow_global_access", allow_global_access)
         if certificate_urls is not None:
             pulumi.set(__self__, "certificate_urls", certificate_urls)
         if delete_swg_autogen_router_on_destroy is not None:
@@ -179,6 +185,20 @@ class GatewayArgs:
     @all_ports.setter
     def all_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_ports", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowGlobalAccess")
+    def allow_global_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional. If true, the gateway will allow traffic from clients outside
+        of the region where the gateway is located.
+        This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "allow_global_access")
+
+    @allow_global_access.setter
+    def allow_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_global_access", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
@@ -417,6 +437,7 @@ class _GatewayState:
     def __init__(__self__, *,
                  addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -450,6 +471,9 @@ class _GatewayState:
         :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
                By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
                it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        :param pulumi.Input[_builtins.bool] allow_global_access: Optional. If true, the gateway will allow traffic from clients outside
+               of the region where the gateway is located.
                This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -508,6 +532,8 @@ class _GatewayState:
             pulumi.set(__self__, "addresses", addresses)
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
+        if allow_global_access is not None:
+            pulumi.set(__self__, "allow_global_access", allow_global_access)
         if certificate_urls is not None:
             pulumi.set(__self__, "certificate_urls", certificate_urls)
         if create_time is not None:
@@ -584,6 +610,20 @@ class _GatewayState:
     @all_ports.setter
     def all_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all_ports", value)
+
+    @_builtins.property
+    @pulumi.getter(name="allowGlobalAccess")
+    def allow_global_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional. If true, the gateway will allow traffic from clients outside
+        of the region where the gateway is located.
+        This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "allow_global_access")
+
+    @allow_global_access.setter
+    def allow_global_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "allow_global_access", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")
@@ -899,6 +939,7 @@ class Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1112,6 +1153,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
                By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
                it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        :param pulumi.Input[_builtins.bool] allow_global_access: Optional. If true, the gateway will allow traffic from clients outside
+               of the region where the gateway is located.
                This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1368,6 +1412,7 @@ class Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1397,6 +1442,7 @@ class Gateway(pulumi.CustomResource):
 
             __props__.__dict__["addresses"] = addresses
             __props__.__dict__["all_ports"] = all_ports
+            __props__.__dict__["allow_global_access"] = allow_global_access
             __props__.__dict__["certificate_urls"] = certificate_urls
             __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
             __props__.__dict__["deletion_policy"] = deletion_policy
@@ -1436,6 +1482,7 @@ class Gateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             all_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
             certificate_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_swg_autogen_router_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1473,6 +1520,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] all_ports: Configures this gateway to ​listen on all ports.
                By enabling the wildcard ports feature on​ ​your Secure Web Proxy Gateway,
                it will accept traffic destined for any port (1-65535) on its​ assigned IP address.​
+               This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        :param pulumi.Input[_builtins.bool] allow_global_access: Optional. If true, the gateway will allow traffic from clients outside
+               of the region where the gateway is located.
                This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
                This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
@@ -1533,6 +1583,7 @@ class Gateway(pulumi.CustomResource):
 
         __props__.__dict__["addresses"] = addresses
         __props__.__dict__["all_ports"] = all_ports
+        __props__.__dict__["allow_global_access"] = allow_global_access
         __props__.__dict__["certificate_urls"] = certificate_urls
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
@@ -1579,6 +1630,16 @@ class Gateway(pulumi.CustomResource):
         This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
         """
         return pulumi.get(self, "all_ports")
+
+    @_builtins.property
+    @pulumi.getter(name="allowGlobalAccess")
+    def allow_global_access(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Optional. If true, the gateway will allow traffic from clients outside
+        of the region where the gateway is located.
+        This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "allow_global_access")
 
     @_builtins.property
     @pulumi.getter(name="certificateUrls")

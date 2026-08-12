@@ -9841,6 +9841,155 @@ func (o AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeT
 	}).(pulumi.IntPtrOutput)
 }
 
+type AiEvaluationMetricEncryptionSpec struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key
+	// used to protect a resource. Has the form:
+	// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+	// The key needs to be in the same region as where the resource is created.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// AiEvaluationMetricEncryptionSpecInput is an input type that accepts AiEvaluationMetricEncryptionSpecArgs and AiEvaluationMetricEncryptionSpecOutput values.
+// You can construct a concrete instance of `AiEvaluationMetricEncryptionSpecInput` via:
+//
+//	AiEvaluationMetricEncryptionSpecArgs{...}
+type AiEvaluationMetricEncryptionSpecInput interface {
+	pulumi.Input
+
+	ToAiEvaluationMetricEncryptionSpecOutput() AiEvaluationMetricEncryptionSpecOutput
+	ToAiEvaluationMetricEncryptionSpecOutputWithContext(context.Context) AiEvaluationMetricEncryptionSpecOutput
+}
+
+type AiEvaluationMetricEncryptionSpecArgs struct {
+	// Required. The Cloud KMS resource identifier of the customer managed encryption key
+	// used to protect a resource. Has the form:
+	// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+	// The key needs to be in the same region as where the resource is created.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (AiEvaluationMetricEncryptionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationMetricEncryptionSpec)(nil)).Elem()
+}
+
+func (i AiEvaluationMetricEncryptionSpecArgs) ToAiEvaluationMetricEncryptionSpecOutput() AiEvaluationMetricEncryptionSpecOutput {
+	return i.ToAiEvaluationMetricEncryptionSpecOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationMetricEncryptionSpecArgs) ToAiEvaluationMetricEncryptionSpecOutputWithContext(ctx context.Context) AiEvaluationMetricEncryptionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationMetricEncryptionSpecOutput)
+}
+
+func (i AiEvaluationMetricEncryptionSpecArgs) ToAiEvaluationMetricEncryptionSpecPtrOutput() AiEvaluationMetricEncryptionSpecPtrOutput {
+	return i.ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AiEvaluationMetricEncryptionSpecArgs) ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEvaluationMetricEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationMetricEncryptionSpecOutput).ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(ctx)
+}
+
+// AiEvaluationMetricEncryptionSpecPtrInput is an input type that accepts AiEvaluationMetricEncryptionSpecArgs, AiEvaluationMetricEncryptionSpecPtr and AiEvaluationMetricEncryptionSpecPtrOutput values.
+// You can construct a concrete instance of `AiEvaluationMetricEncryptionSpecPtrInput` via:
+//
+//	        AiEvaluationMetricEncryptionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEvaluationMetricEncryptionSpecPtrInput interface {
+	pulumi.Input
+
+	ToAiEvaluationMetricEncryptionSpecPtrOutput() AiEvaluationMetricEncryptionSpecPtrOutput
+	ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(context.Context) AiEvaluationMetricEncryptionSpecPtrOutput
+}
+
+type aiEvaluationMetricEncryptionSpecPtrType AiEvaluationMetricEncryptionSpecArgs
+
+func AiEvaluationMetricEncryptionSpecPtr(v *AiEvaluationMetricEncryptionSpecArgs) AiEvaluationMetricEncryptionSpecPtrInput {
+	return (*aiEvaluationMetricEncryptionSpecPtrType)(v)
+}
+
+func (*aiEvaluationMetricEncryptionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationMetricEncryptionSpec)(nil)).Elem()
+}
+
+func (i *aiEvaluationMetricEncryptionSpecPtrType) ToAiEvaluationMetricEncryptionSpecPtrOutput() AiEvaluationMetricEncryptionSpecPtrOutput {
+	return i.ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEvaluationMetricEncryptionSpecPtrType) ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEvaluationMetricEncryptionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEvaluationMetricEncryptionSpecPtrOutput)
+}
+
+type AiEvaluationMetricEncryptionSpecOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationMetricEncryptionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEvaluationMetricEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiEvaluationMetricEncryptionSpecOutput) ToAiEvaluationMetricEncryptionSpecOutput() AiEvaluationMetricEncryptionSpecOutput {
+	return o
+}
+
+func (o AiEvaluationMetricEncryptionSpecOutput) ToAiEvaluationMetricEncryptionSpecOutputWithContext(ctx context.Context) AiEvaluationMetricEncryptionSpecOutput {
+	return o
+}
+
+func (o AiEvaluationMetricEncryptionSpecOutput) ToAiEvaluationMetricEncryptionSpecPtrOutput() AiEvaluationMetricEncryptionSpecPtrOutput {
+	return o.ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AiEvaluationMetricEncryptionSpecOutput) ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEvaluationMetricEncryptionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEvaluationMetricEncryptionSpec) *AiEvaluationMetricEncryptionSpec {
+		return &v
+	}).(AiEvaluationMetricEncryptionSpecPtrOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key
+// used to protect a resource. Has the form:
+// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+// The key needs to be in the same region as where the resource is created.
+func (o AiEvaluationMetricEncryptionSpecOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEvaluationMetricEncryptionSpec) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type AiEvaluationMetricEncryptionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEvaluationMetricEncryptionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEvaluationMetricEncryptionSpec)(nil)).Elem()
+}
+
+func (o AiEvaluationMetricEncryptionSpecPtrOutput) ToAiEvaluationMetricEncryptionSpecPtrOutput() AiEvaluationMetricEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiEvaluationMetricEncryptionSpecPtrOutput) ToAiEvaluationMetricEncryptionSpecPtrOutputWithContext(ctx context.Context) AiEvaluationMetricEncryptionSpecPtrOutput {
+	return o
+}
+
+func (o AiEvaluationMetricEncryptionSpecPtrOutput) Elem() AiEvaluationMetricEncryptionSpecOutput {
+	return o.ApplyT(func(v *AiEvaluationMetricEncryptionSpec) AiEvaluationMetricEncryptionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AiEvaluationMetricEncryptionSpec
+		return ret
+	}).(AiEvaluationMetricEncryptionSpecOutput)
+}
+
+// Required. The Cloud KMS resource identifier of the customer managed encryption key
+// used to protect a resource. Has the form:
+// `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+// The key needs to be in the same region as where the resource is created.
+func (o AiEvaluationMetricEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEvaluationMetricEncryptionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureGroupBigQuery struct {
 	// The BigQuery source URI that points to either a BigQuery Table or View.
 	// Structure is documented below.
@@ -21951,6 +22100,9 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTop
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig struct {
+	// Optional. Configuration for triggering memory generation.
+	// Structure is documented below.
+	GenerationTriggerConfig *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig `pulumi:"generationTriggerConfig"`
 	// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
 	Model string `pulumi:"model"`
 }
@@ -21967,6 +22119,9 @@ type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput interface
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs struct {
+	// Optional. Configuration for triggering memory generation.
+	// Structure is documented below.
+	GenerationTriggerConfig AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrInput `pulumi:"generationTriggerConfig"`
 	// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
 	Model pulumi.StringInput `pulumi:"model"`
 }
@@ -22048,6 +22203,14 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) ToAi
 	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput)
 }
 
+// Optional. Configuration for triggering memory generation.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) GenerationTriggerConfig() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig {
+		return v.GenerationTriggerConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput)
+}
+
 // The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
 func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) string { return v.Model }).(pulumi.StringOutput)
@@ -22077,6 +22240,17 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) E
 	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput)
 }
 
+// Optional. Configuration for triggering memory generation.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) GenerationTriggerConfig() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GenerationTriggerConfig
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput)
+}
+
 // The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
 func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig) *string {
@@ -22085,6 +22259,367 @@ func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput) M
 		}
 		return &v.Model
 	}).(pulumi.StringPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig struct {
+	// Optional. The active rule that determines when to flush the buffer. If not set,
+	// then the stream will be force flushed immediately.
+	// Structure is documented below.
+	GenerationRule *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule `pulumi:"generationRule"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs and AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs struct {
+	// Optional. The active rule that determines when to flush the buffer. If not set,
+	// then the stream will be force flushed immediately.
+	// Structure is documented below.
+	GenerationRule AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrInput `pulumi:"generationRule"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput).ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs, AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtr and AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrType AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtr(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrType) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput)
+}
+
+// Optional. The active rule that determines when to flush the buffer. If not set,
+// then the stream will be force flushed immediately.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput) GenerationRule() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule {
+		return v.GenerationRule
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput)
+}
+
+// Optional. The active rule that determines when to flush the buffer. If not set,
+// then the stream will be force flushed immediately.
+// Structure is documented below.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput) GenerationRule() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule {
+		if v == nil {
+			return nil
+		}
+		return v.GenerationRule
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule struct {
+	// Optional. Specifies to trigger generation when the event count reaches this limit.
+	EventCount *int `pulumi:"eventCount"`
+	// Optional. Specifies to trigger generation at a fixed interval. The duration
+	// must have a minute-level granularity.
+	FixedInterval *string `pulumi:"fixedInterval"`
+	// Optional. Specifies to trigger generation if the stream is inactive for the
+	// specified duration after the most recent event. The duration must have a
+	// minute-level granularity.
+	IdleDuration *string `pulumi:"idleDuration"`
+	// Optional. Re-include the last N already-processed events in the next window.
+	OverlapEventCount *int `pulumi:"overlapEventCount"`
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs and AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleInput` via:
+//
+//	AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{...}
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs struct {
+	// Optional. Specifies to trigger generation when the event count reaches this limit.
+	EventCount pulumi.IntPtrInput `pulumi:"eventCount"`
+	// Optional. Specifies to trigger generation at a fixed interval. The duration
+	// must have a minute-level granularity.
+	FixedInterval pulumi.StringPtrInput `pulumi:"fixedInterval"`
+	// Optional. Specifies to trigger generation if the stream is inactive for the
+	// specified duration after the most recent event. The duration must have a
+	// minute-level granularity.
+	IdleDuration pulumi.StringPtrInput `pulumi:"idleDuration"`
+	// Optional. Re-include the last N already-processed events in the next window.
+	OverlapEventCount pulumi.IntPtrInput `pulumi:"overlapEventCount"`
+}
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule)(nil)).Elem()
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput)
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(context.Background())
+}
+
+func (i AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput).ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(ctx)
+}
+
+// AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrInput is an input type that accepts AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs, AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtr and AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput values.
+// You can construct a concrete instance of `AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrInput` via:
+//
+//	        AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrInput interface {
+	pulumi.Input
+
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput
+	ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput
+}
+
+type aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrType AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs
+
+func AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtr(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrInput {
+	return (*aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrType)(v)
+}
+
+func (*aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule)(nil)).Elem()
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrType) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return i.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(context.Background())
+}
+
+func (i *aiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrType) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return o.ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(context.Background())
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule {
+		return &v
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput)
+}
+
+// Optional. Specifies to trigger generation when the event count reaches this limit.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) EventCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *int {
+		return v.EventCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies to trigger generation at a fixed interval. The duration
+// must have a minute-level granularity.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) FixedInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *string {
+		return v.FixedInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies to trigger generation if the stream is inactive for the
+// specified duration after the most recent event. The duration must have a
+// minute-level granularity.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) IdleDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *string {
+		return v.IdleDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Re-include the last N already-processed events in the next window.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput) OverlapEventCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *int {
+		return v.OverlapEventCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule)(nil)).Elem()
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) ToAiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutputWithContext(ctx context.Context) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput {
+	return o
+}
+
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) Elem() AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule {
+		if v != nil {
+			return *v
+		}
+		var ret AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule
+		return ret
+	}).(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput)
+}
+
+// Optional. Specifies to trigger generation when the event count reaches this limit.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) EventCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EventCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Specifies to trigger generation at a fixed interval. The duration
+// must have a minute-level granularity.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) FixedInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FixedInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies to trigger generation if the stream is inactive for the
+// specified duration after the most recent event. The duration must have a
+// minute-level granularity.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) IdleDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Re-include the last N already-processed events in the next window.
+func (o AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput) OverlapEventCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OverlapEventCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig struct {
@@ -33295,6 +33830,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrInput)(nil)).Elem(), AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationMetricEncryptionSpecInput)(nil)).Elem(), AiEvaluationMetricEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEvaluationMetricEncryptionSpecPtrInput)(nil)).Elem(), AiEvaluationMetricEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryPtrInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourceInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
@@ -33452,6 +33989,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigInput)(nil)).Elem(), AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigArgs{})
@@ -33677,6 +34218,8 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArrayOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketOutput{})
 	pulumi.RegisterOutputType(AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketPtrOutput{})
+	pulumi.RegisterOutputType(AiEvaluationMetricEncryptionSpecOutput{})
+	pulumi.RegisterOutputType(AiEvaluationMetricEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourceOutput{})
@@ -33834,6 +34377,10 @@ func init() {
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopicPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleOutput{})
+	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRulePtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigOutput{})

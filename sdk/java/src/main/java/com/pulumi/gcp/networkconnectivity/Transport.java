@@ -295,14 +295,14 @@ public class Transport extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="network", refs={String.class}, tree="[0]")
-    private Output<String> network;
+    private Output</* @Nullable */ String> network;
 
     /**
      * @return Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
     }
     /**
      * VPC Network URI that was created for the VPC Peering connection to the provided `network`. If VPC Peering is disconnected, this can be used to re-establish.

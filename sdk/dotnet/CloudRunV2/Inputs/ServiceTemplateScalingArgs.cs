@@ -13,6 +13,20 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
     public sealed class ServiceTemplateScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
+        /// Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        /// </summary>
+        [Input("concurrencyUtilization")]
+        public Input<double>? ConcurrencyUtilization { get; set; }
+
+        /// <summary>
+        /// (Optional, Beta)
+        /// Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+        /// </summary>
+        [Input("cpuUtilization")]
+        public Input<double>? CpuUtilization { get; set; }
+
+        /// <summary>
         /// Combined maximum number of instances for all revisions receiving traffic.
         /// </summary>
         [Input("maxInstanceCount")]

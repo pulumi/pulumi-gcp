@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGcePersistentDiskCsiD
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigGkeBackupAgentConfig;
+import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHighScaleCheckpointingConfig;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHorizontalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.ClusterAddonsConfigIstioConfig;
@@ -88,6 +89,11 @@ public final class ClusterAddonsConfig {
      * 
      */
     private @Nullable ClusterAddonsConfigGkeBackupAgentConfig gkeBackupAgentConfig;
+    /**
+     * @return The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterAddonsConfigHighScaleCheckpointingConfig highScaleCheckpointingConfig;
     /**
      * @return The status of the Horizontal Pod Autoscaling
      * addon, which increases or decreases the number of replica pods a replication controller
@@ -271,6 +277,13 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.gkeBackupAgentConfig);
     }
     /**
+     * @return The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterAddonsConfigHighScaleCheckpointingConfig> highScaleCheckpointingConfig() {
+        return Optional.ofNullable(this.highScaleCheckpointingConfig);
+    }
+    /**
      * @return The status of the Horizontal Pod Autoscaling
      * addon, which increases or decreases the number of replica pods a replication controller
      * has based on the resource usage of the existing pods.
@@ -422,6 +435,7 @@ public final class ClusterAddonsConfig {
         private @Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig;
         private @Nullable ClusterAddonsConfigGcsFuseCsiDriverConfig gcsFuseCsiDriverConfig;
         private @Nullable ClusterAddonsConfigGkeBackupAgentConfig gkeBackupAgentConfig;
+        private @Nullable ClusterAddonsConfigHighScaleCheckpointingConfig highScaleCheckpointingConfig;
         private @Nullable ClusterAddonsConfigHorizontalPodAutoscaling horizontalPodAutoscaling;
         private @Nullable ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing;
         private @Nullable ClusterAddonsConfigIstioConfig istioConfig;
@@ -446,6 +460,7 @@ public final class ClusterAddonsConfig {
     	      this.gcpFilestoreCsiDriverConfig = defaults.gcpFilestoreCsiDriverConfig;
     	      this.gcsFuseCsiDriverConfig = defaults.gcsFuseCsiDriverConfig;
     	      this.gkeBackupAgentConfig = defaults.gkeBackupAgentConfig;
+    	      this.highScaleCheckpointingConfig = defaults.highScaleCheckpointingConfig;
     	      this.horizontalPodAutoscaling = defaults.horizontalPodAutoscaling;
     	      this.httpLoadBalancing = defaults.httpLoadBalancing;
     	      this.istioConfig = defaults.istioConfig;
@@ -507,6 +522,12 @@ public final class ClusterAddonsConfig {
         public Builder gkeBackupAgentConfig(@Nullable ClusterAddonsConfigGkeBackupAgentConfig gkeBackupAgentConfig) {
 
             this.gkeBackupAgentConfig = gkeBackupAgentConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder highScaleCheckpointingConfig(@Nullable ClusterAddonsConfigHighScaleCheckpointingConfig highScaleCheckpointingConfig) {
+
+            this.highScaleCheckpointingConfig = highScaleCheckpointingConfig;
             return this;
         }
         @CustomType.Setter
@@ -600,6 +621,7 @@ public final class ClusterAddonsConfig {
             _resultValue.gcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
             _resultValue.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             _resultValue.gkeBackupAgentConfig = gkeBackupAgentConfig;
+            _resultValue.highScaleCheckpointingConfig = highScaleCheckpointingConfig;
             _resultValue.horizontalPodAutoscaling = horizontalPodAutoscaling;
             _resultValue.httpLoadBalancing = httpLoadBalancing;
             _resultValue.istioConfig = istioConfig;

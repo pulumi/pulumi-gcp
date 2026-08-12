@@ -39202,6 +39202,14 @@ export namespace cloudrunv2 {
 
     export interface GetServiceTemplateScaling {
         /**
+         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         */
+        concurrencyUtilization: number;
+        /**
+         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         */
+        cpuUtilization: number;
+        /**
          * Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
          * a default value based on the project's available container instances quota in the region and specified instance size.
          */
@@ -41299,9 +41307,19 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateScaling {
         /**
+         * (Optional, Beta)
+         * Determines a threshold for concurrency utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         */
+        concurrencyUtilization?: number;
+        /**
+         * (Optional, Beta)
+         * Determines a threshold for CPU utilization before scaling begins. Accepted values are between 0.1 and 0.95 (inclusive) or 0.0 to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
+         */
+        cpuUtilization?: number;
+        /**
          * Combined maximum number of instances for all revisions receiving traffic.
          */
-        maxInstanceCount?: number;
+        maxInstanceCount: number;
         /**
          * Minimum number of instances for the service, to be divided among all revisions receiving traffic.
          */
@@ -50392,7 +50410,7 @@ export namespace compute {
          */
         gracefulShutdowns: outputs.compute.GetInstanceSchedulingGracefulShutdown[];
         /**
-         * Beta Time in seconds for host error detection.
+         * Time in seconds for host error detection.
          */
         hostErrorTimeoutSeconds: number;
         /**
@@ -51025,7 +51043,7 @@ export namespace compute {
          */
         gracefulShutdowns: outputs.compute.GetInstanceTemplateSchedulingGracefulShutdown[];
         /**
-         * Beta Time in seconds for host error detection.
+         * Time in seconds for host error detection.
          */
         hostErrorTimeoutSeconds: number;
         /**
@@ -53281,7 +53299,7 @@ export namespace compute {
          */
         gracefulShutdowns: outputs.compute.GetRegionInstanceTemplateSchedulingGracefulShutdown[];
         /**
-         * Beta Time in seconds for host error detection.
+         * Time in seconds for host error detection.
          */
         hostErrorTimeoutSeconds: number;
         /**
@@ -59003,7 +59021,7 @@ export namespace compute {
          */
         gracefulShutdown?: outputs.compute.InstanceSchedulingGracefulShutdown;
         /**
-         * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: number;
         /**
@@ -59732,7 +59750,7 @@ export namespace compute {
          */
         gracefulShutdown?: outputs.compute.InstanceTemplateSchedulingGracefulShutdown;
         /**
-         * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: number;
         /**
@@ -64603,7 +64621,7 @@ export namespace compute {
          */
         gracefulShutdown?: outputs.compute.RegionInstanceTemplateSchedulingGracefulShutdown;
         /**
-         * Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: number;
         /**
@@ -76274,6 +76292,10 @@ export namespace container {
          */
         gkeBackupAgentConfig: outputs.container.ClusterAddonsConfigGkeBackupAgentConfig;
         /**
+         * The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+         */
+        highScaleCheckpointingConfig: outputs.container.ClusterAddonsConfigHighScaleCheckpointingConfig;
+        /**
          * The status of the Horizontal Pod Autoscaling
          * addon, which increases or decreases the number of replica pods a replication controller
          * has based on the resource usage of the existing pods.
@@ -76410,6 +76432,13 @@ export namespace container {
     }
 
     export interface ClusterAddonsConfigGkeBackupAgentConfig {
+        enabled: boolean;
+    }
+
+    export interface ClusterAddonsConfigHighScaleCheckpointingConfig {
+        /**
+         * Whether the High Scale Checkpointing addon is enabled.
+         */
         enabled: boolean;
     }
 
@@ -80564,6 +80593,10 @@ export namespace container {
          */
         gkeBackupAgentConfigs: outputs.container.GetClusterAddonsConfigGkeBackupAgentConfig[];
         /**
+         * The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+         */
+        highScaleCheckpointingConfigs: outputs.container.GetClusterAddonsConfigHighScaleCheckpointingConfig[];
+        /**
          * The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
          */
         horizontalPodAutoscalings: outputs.container.GetClusterAddonsConfigHorizontalPodAutoscaling[];
@@ -80650,6 +80683,10 @@ export namespace container {
     }
 
     export interface GetClusterAddonsConfigGkeBackupAgentConfig {
+        enabled: boolean;
+    }
+
+    export interface GetClusterAddonsConfigHighScaleCheckpointingConfig {
         enabled: boolean;
     }
 
@@ -86743,7 +86780,7 @@ export namespace dataform {
         sshAuthenticationConfig?: outputs.dataform.RepositoryGitRemoteSettingsSshAuthenticationConfig;
         /**
          * (Output)
-         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+         * Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
          */
         tokenStatus: string;
         /**
@@ -95689,6 +95726,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigMasterConfigDiskConfig {
         /**
+         * Optional. Attached disk configuration.
+         */
+        attachedDiskConfigs?: outputs.dataproc.ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig[];
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: number;
@@ -95723,6 +95764,25 @@ export namespace dataproc {
         numLocalSsds: number;
     }
 
+    export interface ClusterClusterConfigMasterConfigDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: string;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         */
+        provisionedIops?: number;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         */
+        provisionedThroughput?: number;
+    }
+
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
         /**
          * List of instance selection options that the group will use when creating new VMs.
@@ -95751,6 +95811,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
         /**
+         * Attached disk configuration.
+         */
+        attachedDiskConfigs?: outputs.dataproc.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig[];
+        /**
          * Indicates how many IOPS to provision for the disk.
          */
         bootDiskProvisionedIops?: number;
@@ -95774,6 +95838,25 @@ export namespace dataproc {
          * The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
          */
         numLocalSsds?: number;
+    }
+
+    export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: string;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         */
+        provisionedIops?: number;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         */
+        provisionedThroughput?: number;
     }
 
     export interface ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -95829,6 +95912,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigDiskConfig {
         /**
+         * Optional. Attached disk configuration.
+         */
+        attachedDiskConfigs?: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig[];
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: number;
@@ -95857,6 +95944,25 @@ export namespace dataproc {
          * attached to each preemptible worker node. Defaults to 0.
          */
         numLocalSsds: number;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: string;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         */
+        provisionedIops?: number;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         */
+        provisionedThroughput?: number;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy {
@@ -95891,6 +95997,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
         /**
+         * Optional. Attached disk configuration.
+         */
+        attachedDiskConfigs?: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig[];
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: number;
@@ -95914,6 +96024,25 @@ export namespace dataproc {
          * The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
          */
         numLocalSsds?: number;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: string;
+        /**
+         * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
+         */
+        provisionedIops?: number;
+        /**
+         * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle.
+         */
+        provisionedThroughput?: number;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -96141,6 +96270,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigWorkerConfigDiskConfig {
         /**
+         * Attached disk configuration.
+         */
+        attachedDiskConfigs?: outputs.dataproc.ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig[];
+        /**
          * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
          */
         bootDiskProvisionedIops?: number;
@@ -96171,6 +96304,25 @@ export namespace dataproc {
         numLocalSsds: number;
     }
 
+    export interface ClusterClusterConfigWorkerConfigDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: string;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         */
+        provisionedIops?: number;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         */
+        provisionedThroughput?: number;
+    }
+
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicy {
         /**
          * List of instance selection options that the group will use when creating new VMs.
@@ -96199,6 +96351,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfig {
         /**
+         * Attached disk configuration.
+         */
+        attachedDiskConfigs?: outputs.dataproc.ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig[];
+        /**
          * Indicates how many IOPS to provision for the disk.
          */
         bootDiskProvisionedIops?: number;
@@ -96222,6 +96378,25 @@ export namespace dataproc {
          * The amount of local SSD disks that will be attached to each cluster node. Defaults to 0.
          */
         numLocalSsds?: number;
+    }
+
+    export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfig {
+        /**
+         * Size of the attached disk, specified in GB.
+         */
+        diskSizeGb?: number;
+        /**
+         * The disk type of the attached disk. Such as "pd-ssd" or "pd-standard".
+         */
+        diskType?: string;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         */
+        provisionedIops?: number;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         */
+        provisionedThroughput?: number;
     }
 
     export interface ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
@@ -136488,6 +136663,25 @@ export namespace oracledatabase {
         id: string;
     }
 
+    export interface ExadbVmClusterIdentityConnector {
+        /**
+         * (Output)
+         * The connection state of the identity connector.
+         * Possible values:
+         * CONNECTION_STATE_UNSPECIFIED
+         * CONNECTED
+         * PARTIALLY_CONNECTED
+         * DISCONNECTED
+         * UNKNOWN
+         */
+        connectionState: string;
+        /**
+         * (Output)
+         * A google managed service account on which customers can grant roles to access resources in the customer project.
+         */
+        serviceAgentEmail: string;
+    }
+
     export interface ExadbVmClusterProperties {
         /**
          * The number of additional ECPUs per node for an Exadata VM cluster on
@@ -152818,6 +153012,25 @@ export namespace securesourcemanager {
         readme?: string;
     }
 
+    export interface RepositoryScanConfig {
+        /**
+         * Configuration for secret scanning.
+         * Structure is documented below.
+         */
+        secretScanConfig?: outputs.securesourcemanager.RepositoryScanConfigSecretScanConfig;
+    }
+
+    export interface RepositoryScanConfigSecretScanConfig {
+        /**
+         * Enables secret scanning for the repository.
+         */
+        enabled?: boolean;
+        /**
+         * The DLP inspect template to use for secret scanning.
+         */
+        inspectTemplate: string;
+    }
+
     export interface RepositoryUri {
         /**
          * (Output)
@@ -164150,6 +164363,16 @@ export namespace vertex {
         port?: number;
     }
 
+    export interface AiEvaluationMetricEncryptionSpec {
+        /**
+         * Required. The Cloud KMS resource identifier of the customer managed encryption key
+         * used to protect a resource. Has the form:
+         * `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
+         * The key needs to be in the same region as where the resource is created.
+         */
+        kmsKeyName?: string;
+    }
+
     export interface AiFeatureGroupBigQuery {
         /**
          * The BigQuery source URI that points to either a BigQuery Table or View.
@@ -165126,9 +165349,45 @@ export namespace vertex {
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
         /**
+         * Optional. Configuration for triggering memory generation.
+         * Structure is documented below.
+         */
+        generationTriggerConfig?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig;
+        /**
          * The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
          */
         model: string;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig {
+        /**
+         * Optional. The active rule that determines when to flush the buffer. If not set,
+         * then the stream will be force flushed immediately.
+         * Structure is documented below.
+         */
+        generationRule?: outputs.vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule;
+    }
+
+    export interface AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRule {
+        /**
+         * Optional. Specifies to trigger generation when the event count reaches this limit.
+         */
+        eventCount?: number;
+        /**
+         * Optional. Specifies to trigger generation at a fixed interval. The duration
+         * must have a minute-level granularity.
+         */
+        fixedInterval?: string;
+        /**
+         * Optional. Specifies to trigger generation if the stream is inactive for the
+         * specified duration after the most recent event. The duration must have a
+         * minute-level granularity.
+         */
+        idleDuration?: string;
+        /**
+         * Optional. Re-include the last N already-processed events in the next window.
+         */
+        overlapEventCount?: number;
     }
 
     export interface AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig {

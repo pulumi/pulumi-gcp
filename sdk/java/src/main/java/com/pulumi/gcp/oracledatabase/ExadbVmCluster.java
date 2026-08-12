@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.oracledatabase.ExadbVmClusterArgs;
 import com.pulumi.gcp.oracledatabase.inputs.ExadbVmClusterState;
+import com.pulumi.gcp.oracledatabase.outputs.ExadbVmClusterIdentityConnector;
 import com.pulumi.gcp.oracledatabase.outputs.ExadbVmClusterProperties;
 import java.lang.Boolean;
 import java.lang.String;
@@ -358,6 +359,24 @@ public class ExadbVmCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> gcpOracleZone() {
         return this.gcpOracleZone;
+    }
+    /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="identityConnectors", refs={List.class,ExadbVmClusterIdentityConnector.class}, tree="[0,1]")
+    private Output<List<ExadbVmClusterIdentityConnector>> identityConnectors;
+
+    /**
+     * @return The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ExadbVmClusterIdentityConnector>> identityConnectors() {
+        return this.identityConnectors;
     }
     /**
      * The labels or tags associated with the ExadbVmCluster.

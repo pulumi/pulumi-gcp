@@ -448,7 +448,8 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      */
     declare public readonly authorizationMode: pulumi.Output<string>;
     /**
@@ -826,7 +827,8 @@ export interface InstanceState {
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**
@@ -1083,7 +1085,8 @@ export interface InstanceArgs {
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      */
     authorizationMode?: pulumi.Input<string | undefined>;
     /**

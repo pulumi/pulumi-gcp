@@ -94,6 +94,7 @@ __all__ = [
     'ClusterAddonsConfigGcpFilestoreCsiDriverConfig',
     'ClusterAddonsConfigGcsFuseCsiDriverConfig',
     'ClusterAddonsConfigGkeBackupAgentConfig',
+    'ClusterAddonsConfigHighScaleCheckpointingConfig',
     'ClusterAddonsConfigHorizontalPodAutoscaling',
     'ClusterAddonsConfigHttpLoadBalancing',
     'ClusterAddonsConfigIstioConfig',
@@ -422,6 +423,7 @@ __all__ = [
     'GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult',
     'GetClusterAddonsConfigGcsFuseCsiDriverConfigResult',
     'GetClusterAddonsConfigGkeBackupAgentConfigResult',
+    'GetClusterAddonsConfigHighScaleCheckpointingConfigResult',
     'GetClusterAddonsConfigHorizontalPodAutoscalingResult',
     'GetClusterAddonsConfigHttpLoadBalancingResult',
     'GetClusterAddonsConfigIstioConfigResult',
@@ -4115,6 +4117,8 @@ class ClusterAddonsConfig(dict):
             suggest = "gcs_fuse_csi_driver_config"
         elif key == "gkeBackupAgentConfig":
             suggest = "gke_backup_agent_config"
+        elif key == "highScaleCheckpointingConfig":
+            suggest = "high_scale_checkpointing_config"
         elif key == "horizontalPodAutoscaling":
             suggest = "horizontal_pod_autoscaling"
         elif key == "httpLoadBalancing":
@@ -4162,6 +4166,7 @@ class ClusterAddonsConfig(dict):
                  gcp_filestore_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig'] = None,
                  gcs_fuse_csi_driver_config: Optional['outputs.ClusterAddonsConfigGcsFuseCsiDriverConfig'] = None,
                  gke_backup_agent_config: Optional['outputs.ClusterAddonsConfigGkeBackupAgentConfig'] = None,
+                 high_scale_checkpointing_config: Optional['outputs.ClusterAddonsConfigHighScaleCheckpointingConfig'] = None,
                  horizontal_pod_autoscaling: Optional['outputs.ClusterAddonsConfigHorizontalPodAutoscaling'] = None,
                  http_load_balancing: Optional['outputs.ClusterAddonsConfigHttpLoadBalancing'] = None,
                  istio_config: Optional['outputs.ClusterAddonsConfigIstioConfig'] = None,
@@ -4200,6 +4205,7 @@ class ClusterAddonsConfig(dict):
                See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
         :param 'ClusterAddonsConfigGkeBackupAgentConfigArgs' gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+        :param 'ClusterAddonsConfigHighScaleCheckpointingConfigArgs' high_scale_checkpointing_config: The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
         :param 'ClusterAddonsConfigHorizontalPodAutoscalingArgs' horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
@@ -4273,6 +4279,8 @@ class ClusterAddonsConfig(dict):
             pulumi.set(__self__, "gcs_fuse_csi_driver_config", gcs_fuse_csi_driver_config)
         if gke_backup_agent_config is not None:
             pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
+        if high_scale_checkpointing_config is not None:
+            pulumi.set(__self__, "high_scale_checkpointing_config", high_scale_checkpointing_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -4379,6 +4387,14 @@ class ClusterAddonsConfig(dict):
         The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
         """
         return pulumi.get(self, "gke_backup_agent_config")
+
+    @_builtins.property
+    @pulumi.getter(name="highScaleCheckpointingConfig")
+    def high_scale_checkpointing_config(self) -> Optional['outputs.ClusterAddonsConfigHighScaleCheckpointingConfig']:
+        """
+        The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+        """
+        return pulumi.get(self, "high_scale_checkpointing_config")
 
     @_builtins.property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -4664,6 +4680,24 @@ class ClusterAddonsConfigGkeBackupAgentConfig(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterAddonsConfigHighScaleCheckpointingConfig(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the High Scale Checkpointing addon is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the High Scale Checkpointing addon is enabled.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -24068,6 +24102,7 @@ class GetClusterAddonsConfigResult(dict):
                  gcp_filestore_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult'],
                  gcs_fuse_csi_driver_configs: Sequence['outputs.GetClusterAddonsConfigGcsFuseCsiDriverConfigResult'],
                  gke_backup_agent_configs: Sequence['outputs.GetClusterAddonsConfigGkeBackupAgentConfigResult'],
+                 high_scale_checkpointing_configs: Sequence['outputs.GetClusterAddonsConfigHighScaleCheckpointingConfigResult'],
                  horizontal_pod_autoscalings: Sequence['outputs.GetClusterAddonsConfigHorizontalPodAutoscalingResult'],
                  http_load_balancings: Sequence['outputs.GetClusterAddonsConfigHttpLoadBalancingResult'],
                  istio_configs: Sequence['outputs.GetClusterAddonsConfigIstioConfigResult'],
@@ -24090,6 +24125,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_configs: The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
         :param Sequence['GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_configs: The status of the GCS Fuse CSI driver addon, which allows the usage of gcs bucket as volumes. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_configs: The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigHighScaleCheckpointingConfigArgs'] high_scale_checkpointing_configs: The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscalings: The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
         :param Sequence['GetClusterAddonsConfigHttpLoadBalancingArgs'] http_load_balancings: The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. It is enabled by default; set disabled = true to disable.
         :param Sequence['GetClusterAddonsConfigIstioConfigArgs'] istio_configs: The status of the Istio addon.
@@ -24112,6 +24148,7 @@ class GetClusterAddonsConfigResult(dict):
         pulumi.set(__self__, "gcp_filestore_csi_driver_configs", gcp_filestore_csi_driver_configs)
         pulumi.set(__self__, "gcs_fuse_csi_driver_configs", gcs_fuse_csi_driver_configs)
         pulumi.set(__self__, "gke_backup_agent_configs", gke_backup_agent_configs)
+        pulumi.set(__self__, "high_scale_checkpointing_configs", high_scale_checkpointing_configs)
         pulumi.set(__self__, "horizontal_pod_autoscalings", horizontal_pod_autoscalings)
         pulumi.set(__self__, "http_load_balancings", http_load_balancings)
         pulumi.set(__self__, "istio_configs", istio_configs)
@@ -24189,6 +24226,14 @@ class GetClusterAddonsConfigResult(dict):
         The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
         """
         return pulumi.get(self, "gke_backup_agent_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="highScaleCheckpointingConfigs")
+    def high_scale_checkpointing_configs(self) -> Sequence['outputs.GetClusterAddonsConfigHighScaleCheckpointingConfigResult']:
+        """
+        The status of the High Scale Checkpointing addon. Defaults to disabled; set enabled = true to enable.
+        """
+        return pulumi.get(self, "high_scale_checkpointing_configs")
 
     @_builtins.property
     @pulumi.getter(name="horizontalPodAutoscalings")
@@ -24394,6 +24439,18 @@ class GetClusterAddonsConfigGcsFuseCsiDriverConfigResult(dict):
 
 @pulumi.output_type
 class GetClusterAddonsConfigGkeBackupAgentConfigResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterAddonsConfigHighScaleCheckpointingConfigResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
         pulumi.set(__self__, "enabled", enabled)

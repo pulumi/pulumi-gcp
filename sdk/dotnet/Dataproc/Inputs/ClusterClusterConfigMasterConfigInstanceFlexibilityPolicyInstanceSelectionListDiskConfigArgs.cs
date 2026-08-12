@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
     public sealed class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("attachedDiskConfigs")]
+        private InputList<Inputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs>? _attachedDiskConfigs;
+
+        /// <summary>
+        /// Attached disk configuration.
+        /// </summary>
+        public InputList<Inputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs> AttachedDiskConfigs
+        {
+            get => _attachedDiskConfigs ?? (_attachedDiskConfigs = new InputList<Inputs.ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListDiskConfigAttachedDiskConfigArgs>());
+            set => _attachedDiskConfigs = value;
+        }
+
         /// <summary>
         /// Indicates how many IOPS to provision for the disk.
         /// </summary>

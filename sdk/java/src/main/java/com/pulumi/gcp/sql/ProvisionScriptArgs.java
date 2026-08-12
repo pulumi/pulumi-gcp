@@ -91,6 +91,31 @@ public final class ProvisionScriptArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The resource name of the Secret Manager secret storing the
+     * password. The secret should be a regional secret and stored in the exact same region as the Cloud
+     * SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+     * When user and passwordSecretVersion are provided, the script is run using this user.
+     * Otherwise, the script is run using the identity account used to apply your Terraform config.
+     * Changing this field forces the script to be run again.
+     * 
+     */
+    @Import(name="passwordSecretVersion")
+    private @Nullable Output<String> passwordSecretVersion;
+
+    /**
+     * @return The resource name of the Secret Manager secret storing the
+     * password. The secret should be a regional secret and stored in the exact same region as the Cloud
+     * SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+     * When user and passwordSecretVersion are provided, the script is run using this user.
+     * Otherwise, the script is run using the identity account used to apply your Terraform config.
+     * Changing this field forces the script to be run again.
+     * 
+     */
+    public Optional<Output<String>> passwordSecretVersion() {
+        return Optional.ofNullable(this.passwordSecretVersion);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it is not provided,
      * the provider project is used.
      * 
@@ -130,6 +155,29 @@ public final class ProvisionScriptArgs extends com.pulumi.resources.ResourceArgs
         return this.script;
     }
 
+    /**
+     * The name of the built-in database user to authenticate as. For MySQL user,
+     * omit &#39;{@literal @}&#39; and the hostname. The user should exist as a built-in user in the database.
+     * When `user` and `passwordSecretVersion` are provided, the script is run using this user.
+     * Otherwise, the script is run using the identity account used to apply your Terraform config.
+     * Changing this forces the script to be run using the new user.
+     * 
+     */
+    @Import(name="user")
+    private @Nullable Output<String> user;
+
+    /**
+     * @return The name of the built-in database user to authenticate as. For MySQL user,
+     * omit &#39;{@literal @}&#39; and the hostname. The user should exist as a built-in user in the database.
+     * When `user` and `passwordSecretVersion` are provided, the script is run using this user.
+     * Otherwise, the script is run using the identity account used to apply your Terraform config.
+     * Changing this forces the script to be run using the new user.
+     * 
+     */
+    public Optional<Output<String>> user() {
+        return Optional.ofNullable(this.user);
+    }
+
     private ProvisionScriptArgs() {}
 
     private ProvisionScriptArgs(ProvisionScriptArgs $) {
@@ -137,8 +185,10 @@ public final class ProvisionScriptArgs extends com.pulumi.resources.ResourceArgs
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.instance = $.instance;
+        this.passwordSecretVersion = $.passwordSecretVersion;
         this.project = $.project;
         this.script = $.script;
+        this.user = $.user;
     }
 
     public static Builder builder() {
@@ -258,6 +308,37 @@ public final class ProvisionScriptArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param passwordSecretVersion The resource name of the Secret Manager secret storing the
+         * password. The secret should be a regional secret and stored in the exact same region as the Cloud
+         * SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+         * When user and passwordSecretVersion are provided, the script is run using this user.
+         * Otherwise, the script is run using the identity account used to apply your Terraform config.
+         * Changing this field forces the script to be run again.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordSecretVersion(@Nullable Output<String> passwordSecretVersion) {
+            $.passwordSecretVersion = passwordSecretVersion;
+            return this;
+        }
+
+        /**
+         * @param passwordSecretVersion The resource name of the Secret Manager secret storing the
+         * password. The secret should be a regional secret and stored in the exact same region as the Cloud
+         * SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
+         * When user and passwordSecretVersion are provided, the script is run using this user.
+         * Otherwise, the script is run using the identity account used to apply your Terraform config.
+         * Changing this field forces the script to be run again.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordSecretVersion(String passwordSecretVersion) {
+            return passwordSecretVersion(Output.of(passwordSecretVersion));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs. If it is not provided,
          * the provider project is used.
          * 
@@ -307,6 +388,35 @@ public final class ProvisionScriptArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder script(String script) {
             return script(Output.of(script));
+        }
+
+        /**
+         * @param user The name of the built-in database user to authenticate as. For MySQL user,
+         * omit &#39;{@literal @}&#39; and the hostname. The user should exist as a built-in user in the database.
+         * When `user` and `passwordSecretVersion` are provided, the script is run using this user.
+         * Otherwise, the script is run using the identity account used to apply your Terraform config.
+         * Changing this forces the script to be run using the new user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder user(@Nullable Output<String> user) {
+            $.user = user;
+            return this;
+        }
+
+        /**
+         * @param user The name of the built-in database user to authenticate as. For MySQL user,
+         * omit &#39;{@literal @}&#39; and the hostname. The user should exist as a built-in user in the database.
+         * When `user` and `passwordSecretVersion` are provided, the script is run using this user.
+         * Otherwise, the script is run using the identity account used to apply your Terraform config.
+         * Changing this forces the script to be run using the new user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder user(String user) {
+            return user(Output.of(user));
         }
 
         public ProvisionScriptArgs build() {

@@ -9,12 +9,9 @@ import * as utilities from "../utilities";
 /**
  * A resource represents a Dataform Git repository
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about Repository, see:
  *
- * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories)
+ * * [API documentation](https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/dataform/docs/)
  *

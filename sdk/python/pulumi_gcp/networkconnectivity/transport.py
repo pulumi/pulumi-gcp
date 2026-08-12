@@ -19,7 +19,6 @@ __all__ = ['TransportArgs', 'Transport']
 @pulumi.input_type
 class TransportArgs:
     def __init__(__self__, *,
-                 network: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  remote_profile: pulumi.Input[_builtins.str],
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -32,6 +31,7 @@ class TransportArgs:
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mtu_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  provided_activation_key: pulumi.Input[Optional[_builtins.str]] = None,
                  psc_routing_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -40,7 +40,6 @@ class TransportArgs:
         """
         The set of arguments for constructing a Transport resource.
 
-        :param pulumi.Input[_builtins.str] network: Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
         :param pulumi.Input[_builtins.str] region: The region of this resource. This is required to construct the resource name, but is not sent to the API since the region is already contained in the parent field.
         :param pulumi.Input[_builtins.str] remote_profile: Resource URL of the remoteTransportProfile that this Transport is
                connecting to.
@@ -64,6 +63,7 @@ class TransportArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.int] mtu_limit: [Output only] The maximum transmission unit (MTU) of a packet that can be sent over this transport.
         :param pulumi.Input[_builtins.str] name: Name of the resource, see google.aip.dev/122 for resource naming.
+        :param pulumi.Input[_builtins.str] network: Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] provided_activation_key: Key used for establishing a connection with the remote transport. This key can only be provided if the profile supports an INPUT key flow and the resource is in the PENDING_KEY state.
@@ -73,7 +73,6 @@ class TransportArgs:
         :param pulumi.Input[_builtins.str] stack_type: IP version stack for the established connectivity.
                Possible values are: `IPV4_IPV6`, `IPV4_ONLY`.
         """
-        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "remote_profile", remote_profile)
         if admin_enabled is not None:
@@ -96,6 +95,8 @@ class TransportArgs:
             pulumi.set(__self__, "mtu_limit", mtu_limit)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if provided_activation_key is not None:
@@ -106,18 +107,6 @@ class TransportArgs:
             pulumi.set(__self__, "remote_account_id", remote_account_id)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
@@ -273,6 +262,18 @@ class TransportArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
@@ -969,8 +970,6 @@ class Transport(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["mtu_limit"] = mtu_limit
             __props__.__dict__["name"] = name
-            if network is None and not opts.urn:
-                raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["provided_activation_key"] = provided_activation_key
@@ -1206,7 +1205,7 @@ class Transport(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Output[_builtins.str]:
+    def network(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
         """

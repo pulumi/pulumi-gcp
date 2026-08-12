@@ -271,7 +271,7 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Allows App Engine second generation runtimes to access the legacy bundled services.
-        /// Cannot specify both `AppEngineApis` and 'app_engine_bundled_services` together.
+        /// Cannot specify both `AppEngineApis` and `AppEngineBundledServices` together.
         /// </summary>
         [Output("appEngineApis")]
         public Output<bool?> AppEngineApis { get; private set; } = null!;
@@ -485,7 +485,7 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Allows App Engine second generation runtimes to access the legacy bundled services.
-        /// Cannot specify both `AppEngineApis` and 'app_engine_bundled_services` together.
+        /// Cannot specify both `AppEngineApis` and `AppEngineBundledServices` together.
         /// </summary>
         [Input("appEngineApis")]
         public Input<bool>? AppEngineApis { get; set; }
@@ -685,7 +685,7 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Allows App Engine second generation runtimes to access the legacy bundled services.
-        /// Cannot specify both `AppEngineApis` and 'app_engine_bundled_services` together.
+        /// Cannot specify both `AppEngineApis` and `AppEngineBundledServices` together.
         /// </summary>
         [Input("appEngineApis")]
         public Input<bool>? AppEngineApis { get; set; }

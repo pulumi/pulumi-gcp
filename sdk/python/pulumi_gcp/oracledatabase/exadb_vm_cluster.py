@@ -251,6 +251,7 @@ class _ExadbVmClusterState:
                  entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
                  exadb_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input['ExadbVmClusterIdentityConnectorArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -286,6 +287,9 @@ class _ExadbVmClusterState:
                Example: us-east4-b-r2.
                During creation, the system will pick the zone assigned to the
                ExascaleDbStorageVault.
+        :param pulumi.Input[Sequence[pulumi.Input['ExadbVmClusterIdentityConnectorArgs']]] identity_connectors: The identity connector details which will allow OCI to securely access
+               the resources in the customer project.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the ExadbVmCluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -324,6 +328,8 @@ class _ExadbVmClusterState:
             pulumi.set(__self__, "exadb_vm_cluster_id", exadb_vm_cluster_id)
         if gcp_oracle_zone is not None:
             pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
+        if identity_connectors is not None:
+            pulumi.set(__self__, "identity_connectors", identity_connectors)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -463,6 +469,20 @@ class _ExadbVmClusterState:
     @gcp_oracle_zone.setter
     def gcp_oracle_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_oracle_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityConnectors")
+    def identity_connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExadbVmClusterIdentityConnectorArgs']]]]:
+        """
+        The identity connector details which will allow OCI to securely access
+        the resources in the customer project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identity_connectors")
+
+    @identity_connectors.setter
+    def identity_connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExadbVmClusterIdentityConnectorArgs']]]]):
+        pulumi.set(self, "identity_connectors", value)
 
     @_builtins.property
     @pulumi.getter
@@ -937,6 +957,7 @@ class ExadbVmCluster(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["entitlement_id"] = None
             __props__.__dict__["gcp_oracle_zone"] = None
+            __props__.__dict__["identity_connectors"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -960,6 +981,7 @@ class ExadbVmCluster(pulumi.CustomResource):
             entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
             exadb_vm_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
             gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -999,6 +1021,9 @@ class ExadbVmCluster(pulumi.CustomResource):
                Example: us-east4-b-r2.
                During creation, the system will pick the zone assigned to the
                ExascaleDbStorageVault.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ExadbVmClusterIdentityConnectorArgs', 'ExadbVmClusterIdentityConnectorArgsDict']]]] identity_connectors: The identity connector details which will allow OCI to securely access
+               the resources in the customer project.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels or tags associated with the ExadbVmCluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1032,6 +1057,7 @@ class ExadbVmCluster(pulumi.CustomResource):
         __props__.__dict__["entitlement_id"] = entitlement_id
         __props__.__dict__["exadb_vm_cluster_id"] = exadb_vm_cluster_id
         __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
+        __props__.__dict__["identity_connectors"] = identity_connectors
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1128,6 +1154,16 @@ class ExadbVmCluster(pulumi.CustomResource):
         ExascaleDbStorageVault.
         """
         return pulumi.get(self, "gcp_oracle_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="identityConnectors")
+    def identity_connectors(self) -> pulumi.Output[Sequence['outputs.ExadbVmClusterIdentityConnector']]:
+        """
+        The identity connector details which will allow OCI to securely access
+        the resources in the customer project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identity_connectors")
 
     @_builtins.property
     @pulumi.getter

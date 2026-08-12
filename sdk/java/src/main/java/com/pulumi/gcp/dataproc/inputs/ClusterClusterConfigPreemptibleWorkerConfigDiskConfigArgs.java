@@ -5,8 +5,10 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs Empty = new ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs();
+
+    /**
+     * Optional. Attached disk configuration.
+     * 
+     */
+    @Import(name="attachedDiskConfigs")
+    private @Nullable Output<List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs;
+
+    /**
+     * @return Optional. Attached disk configuration.
+     * 
+     */
+    public Optional<Output<List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs>>> attachedDiskConfigs() {
+        return Optional.ofNullable(this.attachedDiskConfigs);
+    }
 
     /**
      * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle.
@@ -119,6 +136,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
     private ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs() {}
 
     private ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs $) {
+        this.attachedDiskConfigs = $.attachedDiskConfigs;
         this.bootDiskProvisionedIops = $.bootDiskProvisionedIops;
         this.bootDiskProvisionedThroughput = $.bootDiskProvisionedThroughput;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
@@ -143,6 +161,37 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs ext
 
         public Builder(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs defaults) {
             $ = new ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachedDiskConfigs Optional. Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(@Nullable Output<List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs>> attachedDiskConfigs) {
+            $.attachedDiskConfigs = attachedDiskConfigs;
+            return this;
+        }
+
+        /**
+         * @param attachedDiskConfigs Optional. Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(List<ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs> attachedDiskConfigs) {
+            return attachedDiskConfigs(Output.of(attachedDiskConfigs));
+        }
+
+        /**
+         * @param attachedDiskConfigs Optional. Attached disk configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachedDiskConfigs(ClusterClusterConfigPreemptibleWorkerConfigDiskConfigAttachedDiskConfigArgs... attachedDiskConfigs) {
+            return attachedDiskConfigs(List.of(attachedDiskConfigs));
         }
 
         /**

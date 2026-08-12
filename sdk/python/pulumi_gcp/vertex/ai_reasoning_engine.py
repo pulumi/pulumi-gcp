@@ -932,6 +932,12 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "memory_bank_config": {
                     "generation_config": {
                         "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                        "generation_trigger_config": {
+                            "generation_rule": {
+                                "idle_duration": "300s",
+                                "overlap_event_count": 1,
+                            },
+                        },
                     },
                     "similarity_search_config": {
                         "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
@@ -1514,6 +1520,12 @@ class AiReasoningEngine(pulumi.CustomResource):
                 "memory_bank_config": {
                     "generation_config": {
                         "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+                        "generation_trigger_config": {
+                            "generation_rule": {
+                                "idle_duration": "300s",
+                                "overlap_event_count": 1,
+                            },
+                        },
                     },
                     "similarity_search_config": {
                         "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",

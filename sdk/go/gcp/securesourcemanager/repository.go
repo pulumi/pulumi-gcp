@@ -103,6 +103,165 @@ import (
 //	}
 //
 // ```
+// ### Secure Source Manager Repository Service Account
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
+//				AccountId:   pulumi.String("my-sa"),
+//				DisplayName: pulumi.String("Test Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
+//				Location:       pulumi.String("us-central1"),
+//				RepositoryId:   pulumi.String("my-repository"),
+//				Instance:       instance.Name,
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//				ServiceAccount: sa.Email,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secure Source Manager Repository Secret Scanning
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			template, err := dataloss.NewPreventionInspectTemplate(ctx, "template", &dataloss.PreventionInspectTemplateArgs{
+//				Parent:      pulumi.String("projects/my-project-name/locations/us-central1"),
+//				DisplayName: pulumi.String("Test Inspect Template"),
+//				InspectConfig: &dataloss.PreventionInspectTemplateInspectConfigArgs{
+//					InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{
+//						&dataloss.PreventionInspectTemplateInspectConfigInfoTypeArgs{
+//							Name: pulumi.String("EMAIL_ADDRESS"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ssmP4saDlpReader, err := projects.NewIAMMember(ctx, "ssm_p4sa_dlp_reader", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/dlp.inspectTemplatesReader"),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
+//				Location:       pulumi.String("us-central1"),
+//				RepositoryId:   pulumi.String("my-repository"),
+//				Instance:       instance.Name,
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//				ScanConfig: &securesourcemanager.RepositoryScanConfigArgs{
+//					SecretScanConfig: &securesourcemanager.RepositoryScanConfigSecretScanConfigArgs{
+//						Enabled:         pulumi.Bool(true),
+//						InspectTemplate: template.ID().ToIDOutput().ToStringOutput(),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				ssmP4saDlpReader,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secure Source Manager Repository Secret Scanning Default
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			instance, err := securesourcemanager.NewInstance(ctx, "instance", &securesourcemanager.InstanceArgs{
+//				Location:       pulumi.String("us-central1"),
+//				InstanceId:     pulumi.String("my-instance"),
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securesourcemanager.NewRepository(ctx, "default", &securesourcemanager.RepositoryArgs{
+//				Location:       pulumi.String("us-central1"),
+//				RepositoryId:   pulumi.String("my-repository"),
+//				Instance:       instance.Name,
+//				DeletionPolicy: pulumi.String("PREVENT"),
+//				ScanConfig: &securesourcemanager.RepositoryScanConfigArgs{
+//					SecretScanConfig: &securesourcemanager.RepositoryScanConfigSecretScanConfigArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -149,6 +308,11 @@ type Repository struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The ID for the Repository.
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
+	// Provides configuration for scanning.
+	// Structure is documented below.
+	ScanConfig RepositoryScanConfigPtrOutput `pulumi:"scanConfig"`
+	// Repository level service account.
+	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
 	// Unique identifier of the repository.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Time the repository was updated in UTC.
@@ -222,6 +386,11 @@ type repositoryState struct {
 	Project *string `pulumi:"project"`
 	// The ID for the Repository.
 	RepositoryId *string `pulumi:"repositoryId"`
+	// Provides configuration for scanning.
+	// Structure is documented below.
+	ScanConfig *RepositoryScanConfig `pulumi:"scanConfig"`
+	// Repository level service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Unique identifier of the repository.
 	Uid *string `pulumi:"uid"`
 	// Time the repository was updated in UTC.
@@ -257,6 +426,11 @@ type RepositoryState struct {
 	Project pulumi.StringPtrInput
 	// The ID for the Repository.
 	RepositoryId pulumi.StringPtrInput
+	// Provides configuration for scanning.
+	// Structure is documented below.
+	ScanConfig RepositoryScanConfigPtrInput
+	// Repository level service account.
+	ServiceAccount pulumi.StringPtrInput
 	// Unique identifier of the repository.
 	Uid pulumi.StringPtrInput
 	// Time the repository was updated in UTC.
@@ -292,6 +466,11 @@ type repositoryArgs struct {
 	Project *string `pulumi:"project"`
 	// The ID for the Repository.
 	RepositoryId string `pulumi:"repositoryId"`
+	// Provides configuration for scanning.
+	// Structure is documented below.
+	ScanConfig *RepositoryScanConfig `pulumi:"scanConfig"`
+	// Repository level service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
 // The set of arguments for constructing a Repository resource.
@@ -317,6 +496,11 @@ type RepositoryArgs struct {
 	Project pulumi.StringPtrInput
 	// The ID for the Repository.
 	RepositoryId pulumi.StringInput
+	// Provides configuration for scanning.
+	// Structure is documented below.
+	ScanConfig RepositoryScanConfigPtrInput
+	// Repository level service account.
+	ServiceAccount pulumi.StringPtrInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {
@@ -456,6 +640,17 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 // The ID for the Repository.
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+// Provides configuration for scanning.
+// Structure is documented below.
+func (o RepositoryOutput) ScanConfig() RepositoryScanConfigPtrOutput {
+	return o.ApplyT(func(v *Repository) RepositoryScanConfigPtrOutput { return v.ScanConfig }).(RepositoryScanConfigPtrOutput)
+}
+
+// Repository level service account.
+func (o RepositoryOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the repository.

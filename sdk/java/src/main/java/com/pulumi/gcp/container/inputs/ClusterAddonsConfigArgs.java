@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGcePersistentDiskCsiDr
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGcsFuseCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHighScaleCheckpointingConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHorizontalPodAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHttpLoadBalancingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigIstioConfigArgs;
@@ -186,6 +187,21 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<ClusterAddonsConfigGkeBackupAgentConfigArgs>> gkeBackupAgentConfig() {
         return Optional.ofNullable(this.gkeBackupAgentConfig);
+    }
+
+    /**
+     * The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+     * 
+     */
+    @Import(name="highScaleCheckpointingConfig")
+    private @Nullable Output<ClusterAddonsConfigHighScaleCheckpointingConfigArgs> highScaleCheckpointingConfig;
+
+    /**
+     * @return The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigHighScaleCheckpointingConfigArgs>> highScaleCheckpointingConfig() {
+        return Optional.ofNullable(this.highScaleCheckpointingConfig);
     }
 
     /**
@@ -480,6 +496,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.gcpFilestoreCsiDriverConfig = $.gcpFilestoreCsiDriverConfig;
         this.gcsFuseCsiDriverConfig = $.gcsFuseCsiDriverConfig;
         this.gkeBackupAgentConfig = $.gkeBackupAgentConfig;
+        this.highScaleCheckpointingConfig = $.highScaleCheckpointingConfig;
         this.horizontalPodAutoscaling = $.horizontalPodAutoscaling;
         this.httpLoadBalancing = $.httpLoadBalancing;
         this.istioConfig = $.istioConfig;
@@ -711,6 +728,27 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder gkeBackupAgentConfig(ClusterAddonsConfigGkeBackupAgentConfigArgs gkeBackupAgentConfig) {
             return gkeBackupAgentConfig(Output.of(gkeBackupAgentConfig));
+        }
+
+        /**
+         * @param highScaleCheckpointingConfig The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder highScaleCheckpointingConfig(@Nullable Output<ClusterAddonsConfigHighScaleCheckpointingConfigArgs> highScaleCheckpointingConfig) {
+            $.highScaleCheckpointingConfig = highScaleCheckpointingConfig;
+            return this;
+        }
+
+        /**
+         * @param highScaleCheckpointingConfig The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder highScaleCheckpointingConfig(ClusterAddonsConfigHighScaleCheckpointingConfigArgs highScaleCheckpointingConfig) {
+            return highScaleCheckpointingConfig(Output.of(highScaleCheckpointingConfig));
         }
 
         /**

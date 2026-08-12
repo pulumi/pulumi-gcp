@@ -606,6 +606,14 @@ namespace Pulumi.Gcp.Vertex
     ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
     ///                 {
     ///                     Model = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+    ///                     GenerationTriggerConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs
+    ///                     {
+    ///                         GenerationRule = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs
+    ///                         {
+    ///                             IdleDuration = "300s",
+    ///                             OverlapEventCount = 1,
+    ///                         },
+    ///                     },
     ///                 },
     ///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
     ///                 {

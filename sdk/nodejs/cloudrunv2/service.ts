@@ -38,6 +38,31 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Scaling Controls
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     launchStage: "BETA",
+ *     template: {
+ *         scaling: {
+ *             minInstanceCount: 1,
+ *             maxInstanceCount: 5,
+ *             cpuUtilization: 0.75,
+ *             concurrencyUtilization: 0.5,
+ *         },
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Service Limits
  *
  * ```typescript

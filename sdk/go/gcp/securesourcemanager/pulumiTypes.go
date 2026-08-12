@@ -1735,6 +1735,303 @@ func (o RepositoryInitialConfigPtrOutput) Readme() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryScanConfig struct {
+	// Configuration for secret scanning.
+	// Structure is documented below.
+	SecretScanConfig *RepositoryScanConfigSecretScanConfig `pulumi:"secretScanConfig"`
+}
+
+// RepositoryScanConfigInput is an input type that accepts RepositoryScanConfigArgs and RepositoryScanConfigOutput values.
+// You can construct a concrete instance of `RepositoryScanConfigInput` via:
+//
+//	RepositoryScanConfigArgs{...}
+type RepositoryScanConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryScanConfigOutput() RepositoryScanConfigOutput
+	ToRepositoryScanConfigOutputWithContext(context.Context) RepositoryScanConfigOutput
+}
+
+type RepositoryScanConfigArgs struct {
+	// Configuration for secret scanning.
+	// Structure is documented below.
+	SecretScanConfig RepositoryScanConfigSecretScanConfigPtrInput `pulumi:"secretScanConfig"`
+}
+
+func (RepositoryScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryScanConfig)(nil)).Elem()
+}
+
+func (i RepositoryScanConfigArgs) ToRepositoryScanConfigOutput() RepositoryScanConfigOutput {
+	return i.ToRepositoryScanConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryScanConfigArgs) ToRepositoryScanConfigOutputWithContext(ctx context.Context) RepositoryScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryScanConfigOutput)
+}
+
+func (i RepositoryScanConfigArgs) ToRepositoryScanConfigPtrOutput() RepositoryScanConfigPtrOutput {
+	return i.ToRepositoryScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryScanConfigArgs) ToRepositoryScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryScanConfigOutput).ToRepositoryScanConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryScanConfigPtrInput is an input type that accepts RepositoryScanConfigArgs, RepositoryScanConfigPtr and RepositoryScanConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryScanConfigPtrInput` via:
+//
+//	        RepositoryScanConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryScanConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryScanConfigPtrOutput() RepositoryScanConfigPtrOutput
+	ToRepositoryScanConfigPtrOutputWithContext(context.Context) RepositoryScanConfigPtrOutput
+}
+
+type repositoryScanConfigPtrType RepositoryScanConfigArgs
+
+func RepositoryScanConfigPtr(v *RepositoryScanConfigArgs) RepositoryScanConfigPtrInput {
+	return (*repositoryScanConfigPtrType)(v)
+}
+
+func (*repositoryScanConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryScanConfig)(nil)).Elem()
+}
+
+func (i *repositoryScanConfigPtrType) ToRepositoryScanConfigPtrOutput() RepositoryScanConfigPtrOutput {
+	return i.ToRepositoryScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryScanConfigPtrType) ToRepositoryScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryScanConfigPtrOutput)
+}
+
+type RepositoryScanConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryScanConfig)(nil)).Elem()
+}
+
+func (o RepositoryScanConfigOutput) ToRepositoryScanConfigOutput() RepositoryScanConfigOutput {
+	return o
+}
+
+func (o RepositoryScanConfigOutput) ToRepositoryScanConfigOutputWithContext(ctx context.Context) RepositoryScanConfigOutput {
+	return o
+}
+
+func (o RepositoryScanConfigOutput) ToRepositoryScanConfigPtrOutput() RepositoryScanConfigPtrOutput {
+	return o.ToRepositoryScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryScanConfigOutput) ToRepositoryScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryScanConfig) *RepositoryScanConfig {
+		return &v
+	}).(RepositoryScanConfigPtrOutput)
+}
+
+// Configuration for secret scanning.
+// Structure is documented below.
+func (o RepositoryScanConfigOutput) SecretScanConfig() RepositoryScanConfigSecretScanConfigPtrOutput {
+	return o.ApplyT(func(v RepositoryScanConfig) *RepositoryScanConfigSecretScanConfig { return v.SecretScanConfig }).(RepositoryScanConfigSecretScanConfigPtrOutput)
+}
+
+type RepositoryScanConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryScanConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryScanConfig)(nil)).Elem()
+}
+
+func (o RepositoryScanConfigPtrOutput) ToRepositoryScanConfigPtrOutput() RepositoryScanConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryScanConfigPtrOutput) ToRepositoryScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryScanConfigPtrOutput) Elem() RepositoryScanConfigOutput {
+	return o.ApplyT(func(v *RepositoryScanConfig) RepositoryScanConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryScanConfig
+		return ret
+	}).(RepositoryScanConfigOutput)
+}
+
+// Configuration for secret scanning.
+// Structure is documented below.
+func (o RepositoryScanConfigPtrOutput) SecretScanConfig() RepositoryScanConfigSecretScanConfigPtrOutput {
+	return o.ApplyT(func(v *RepositoryScanConfig) *RepositoryScanConfigSecretScanConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SecretScanConfig
+	}).(RepositoryScanConfigSecretScanConfigPtrOutput)
+}
+
+type RepositoryScanConfigSecretScanConfig struct {
+	// Enables secret scanning for the repository.
+	Enabled *bool `pulumi:"enabled"`
+	// The DLP inspect template to use for secret scanning.
+	InspectTemplate *string `pulumi:"inspectTemplate"`
+}
+
+// RepositoryScanConfigSecretScanConfigInput is an input type that accepts RepositoryScanConfigSecretScanConfigArgs and RepositoryScanConfigSecretScanConfigOutput values.
+// You can construct a concrete instance of `RepositoryScanConfigSecretScanConfigInput` via:
+//
+//	RepositoryScanConfigSecretScanConfigArgs{...}
+type RepositoryScanConfigSecretScanConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryScanConfigSecretScanConfigOutput() RepositoryScanConfigSecretScanConfigOutput
+	ToRepositoryScanConfigSecretScanConfigOutputWithContext(context.Context) RepositoryScanConfigSecretScanConfigOutput
+}
+
+type RepositoryScanConfigSecretScanConfigArgs struct {
+	// Enables secret scanning for the repository.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The DLP inspect template to use for secret scanning.
+	InspectTemplate pulumi.StringPtrInput `pulumi:"inspectTemplate"`
+}
+
+func (RepositoryScanConfigSecretScanConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryScanConfigSecretScanConfig)(nil)).Elem()
+}
+
+func (i RepositoryScanConfigSecretScanConfigArgs) ToRepositoryScanConfigSecretScanConfigOutput() RepositoryScanConfigSecretScanConfigOutput {
+	return i.ToRepositoryScanConfigSecretScanConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryScanConfigSecretScanConfigArgs) ToRepositoryScanConfigSecretScanConfigOutputWithContext(ctx context.Context) RepositoryScanConfigSecretScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryScanConfigSecretScanConfigOutput)
+}
+
+func (i RepositoryScanConfigSecretScanConfigArgs) ToRepositoryScanConfigSecretScanConfigPtrOutput() RepositoryScanConfigSecretScanConfigPtrOutput {
+	return i.ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryScanConfigSecretScanConfigArgs) ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigSecretScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryScanConfigSecretScanConfigOutput).ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryScanConfigSecretScanConfigPtrInput is an input type that accepts RepositoryScanConfigSecretScanConfigArgs, RepositoryScanConfigSecretScanConfigPtr and RepositoryScanConfigSecretScanConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryScanConfigSecretScanConfigPtrInput` via:
+//
+//	        RepositoryScanConfigSecretScanConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryScanConfigSecretScanConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryScanConfigSecretScanConfigPtrOutput() RepositoryScanConfigSecretScanConfigPtrOutput
+	ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(context.Context) RepositoryScanConfigSecretScanConfigPtrOutput
+}
+
+type repositoryScanConfigSecretScanConfigPtrType RepositoryScanConfigSecretScanConfigArgs
+
+func RepositoryScanConfigSecretScanConfigPtr(v *RepositoryScanConfigSecretScanConfigArgs) RepositoryScanConfigSecretScanConfigPtrInput {
+	return (*repositoryScanConfigSecretScanConfigPtrType)(v)
+}
+
+func (*repositoryScanConfigSecretScanConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryScanConfigSecretScanConfig)(nil)).Elem()
+}
+
+func (i *repositoryScanConfigSecretScanConfigPtrType) ToRepositoryScanConfigSecretScanConfigPtrOutput() RepositoryScanConfigSecretScanConfigPtrOutput {
+	return i.ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryScanConfigSecretScanConfigPtrType) ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigSecretScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryScanConfigSecretScanConfigPtrOutput)
+}
+
+type RepositoryScanConfigSecretScanConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryScanConfigSecretScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryScanConfigSecretScanConfig)(nil)).Elem()
+}
+
+func (o RepositoryScanConfigSecretScanConfigOutput) ToRepositoryScanConfigSecretScanConfigOutput() RepositoryScanConfigSecretScanConfigOutput {
+	return o
+}
+
+func (o RepositoryScanConfigSecretScanConfigOutput) ToRepositoryScanConfigSecretScanConfigOutputWithContext(ctx context.Context) RepositoryScanConfigSecretScanConfigOutput {
+	return o
+}
+
+func (o RepositoryScanConfigSecretScanConfigOutput) ToRepositoryScanConfigSecretScanConfigPtrOutput() RepositoryScanConfigSecretScanConfigPtrOutput {
+	return o.ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryScanConfigSecretScanConfigOutput) ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigSecretScanConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryScanConfigSecretScanConfig) *RepositoryScanConfigSecretScanConfig {
+		return &v
+	}).(RepositoryScanConfigSecretScanConfigPtrOutput)
+}
+
+// Enables secret scanning for the repository.
+func (o RepositoryScanConfigSecretScanConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryScanConfigSecretScanConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The DLP inspect template to use for secret scanning.
+func (o RepositoryScanConfigSecretScanConfigOutput) InspectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryScanConfigSecretScanConfig) *string { return v.InspectTemplate }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryScanConfigSecretScanConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryScanConfigSecretScanConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryScanConfigSecretScanConfig)(nil)).Elem()
+}
+
+func (o RepositoryScanConfigSecretScanConfigPtrOutput) ToRepositoryScanConfigSecretScanConfigPtrOutput() RepositoryScanConfigSecretScanConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryScanConfigSecretScanConfigPtrOutput) ToRepositoryScanConfigSecretScanConfigPtrOutputWithContext(ctx context.Context) RepositoryScanConfigSecretScanConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryScanConfigSecretScanConfigPtrOutput) Elem() RepositoryScanConfigSecretScanConfigOutput {
+	return o.ApplyT(func(v *RepositoryScanConfigSecretScanConfig) RepositoryScanConfigSecretScanConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryScanConfigSecretScanConfig
+		return ret
+	}).(RepositoryScanConfigSecretScanConfigOutput)
+}
+
+// Enables secret scanning for the repository.
+func (o RepositoryScanConfigSecretScanConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryScanConfigSecretScanConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The DLP inspect template to use for secret scanning.
+func (o RepositoryScanConfigSecretScanConfigPtrOutput) InspectTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryScanConfigSecretScanConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InspectTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 type RepositoryUri struct {
 	// (Output)
 	// API is the URI for API access.
@@ -1880,6 +2177,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionPtrInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryInitialConfigInput)(nil)).Elem(), RepositoryInitialConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryInitialConfigPtrInput)(nil)).Elem(), RepositoryInitialConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryScanConfigInput)(nil)).Elem(), RepositoryScanConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryScanConfigPtrInput)(nil)).Elem(), RepositoryScanConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryScanConfigSecretScanConfigInput)(nil)).Elem(), RepositoryScanConfigSecretScanConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryScanConfigSecretScanConfigPtrInput)(nil)).Elem(), RepositoryScanConfigSecretScanConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryUriInput)(nil)).Elem(), RepositoryUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryUriArrayInput)(nil)).Elem(), RepositoryUriArray{})
 	pulumi.RegisterOutputType(HookPushOptionOutput{})
@@ -1902,6 +2203,10 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryInitialConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryInitialConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryScanConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryScanConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryScanConfigSecretScanConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryScanConfigSecretScanConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryUriOutput{})
 	pulumi.RegisterOutputType(RepositoryUriArrayOutput{})
 }

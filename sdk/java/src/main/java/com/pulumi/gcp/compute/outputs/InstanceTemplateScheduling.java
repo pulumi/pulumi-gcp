@@ -38,7 +38,7 @@ public final class InstanceTemplateScheduling {
      */
     private @Nullable InstanceTemplateSchedulingGracefulShutdown gracefulShutdown;
     /**
-     * @return Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     private @Nullable Integer hostErrorTimeoutSeconds;
@@ -146,7 +146,7 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.gracefulShutdown);
     }
     /**
-     * @return Beta Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
     public Optional<Integer> hostErrorTimeoutSeconds() {

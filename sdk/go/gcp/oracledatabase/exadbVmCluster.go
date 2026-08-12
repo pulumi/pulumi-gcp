@@ -211,6 +211,10 @@ type ExadbVmCluster struct {
 	// During creation, the system will pick the zone assigned to the
 	// ExascaleDbStorageVault.
 	GcpOracleZone pulumi.StringOutput `pulumi:"gcpOracleZone"`
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	// Structure is documented below.
+	IdentityConnectors ExadbVmClusterIdentityConnectorArrayOutput `pulumi:"identityConnectors"`
 	// The labels or tags associated with the ExadbVmCluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -326,6 +330,10 @@ type exadbVmClusterState struct {
 	// During creation, the system will pick the zone assigned to the
 	// ExascaleDbStorageVault.
 	GcpOracleZone *string `pulumi:"gcpOracleZone"`
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	// Structure is documented below.
+	IdentityConnectors []ExadbVmClusterIdentityConnector `pulumi:"identityConnectors"`
 	// The labels or tags associated with the ExadbVmCluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -389,6 +397,10 @@ type ExadbVmClusterState struct {
 	// During creation, the system will pick the zone assigned to the
 	// ExascaleDbStorageVault.
 	GcpOracleZone pulumi.StringPtrInput
+	// The identity connector details which will allow OCI to securely access
+	// the resources in the customer project.
+	// Structure is documented below.
+	IdentityConnectors ExadbVmClusterIdentityConnectorArrayInput
 	// The labels or tags associated with the ExadbVmCluster.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -660,6 +672,13 @@ func (o ExadbVmClusterOutput) ExadbVmClusterId() pulumi.StringOutput {
 // ExascaleDbStorageVault.
 func (o ExadbVmClusterOutput) GcpOracleZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExadbVmCluster) pulumi.StringOutput { return v.GcpOracleZone }).(pulumi.StringOutput)
+}
+
+// The identity connector details which will allow OCI to securely access
+// the resources in the customer project.
+// Structure is documented below.
+func (o ExadbVmClusterOutput) IdentityConnectors() ExadbVmClusterIdentityConnectorArrayOutput {
+	return o.ApplyT(func(v *ExadbVmCluster) ExadbVmClusterIdentityConnectorArrayOutput { return v.IdentityConnectors }).(ExadbVmClusterIdentityConnectorArrayOutput)
 }
 
 // The labels or tags associated with the ExadbVmCluster.

@@ -299,9 +299,12 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `False`, then the `WriterIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `True` (the default),
-        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-        /// `BigqueryOptions`, you must set `UniqueWriterIdentity` to true.
+        /// Whether to use a service agent as the `WriterIdentity` for this sink. If `False`,
+        /// `WriterIdentity` is `serviceAccount:cloud-logs@system.gserviceaccount.com` and the sink's destination must be in the
+        /// same project as the sink. If `True` (the default), `WriterIdentity` is a service agent shared by sinks with the same
+        /// parent. You must set `UniqueWriterIdentity` to `True` to publish logs across projects or use `BigqueryOptions`.
+        /// See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+        /// for more information.
         /// </summary>
         [Output("uniqueWriterIdentity")]
         public Output<bool?> UniqueWriterIdentity { get; private set; } = null!;
@@ -445,9 +448,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `False`, then the `WriterIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `True` (the default),
-        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-        /// `BigqueryOptions`, you must set `UniqueWriterIdentity` to true.
+        /// Whether to use a service agent as the `WriterIdentity` for this sink. If `False`,
+        /// `WriterIdentity` is `serviceAccount:cloud-logs@system.gserviceaccount.com` and the sink's destination must be in the
+        /// same project as the sink. If `True` (the default), `WriterIdentity` is a service agent shared by sinks with the same
+        /// parent. You must set `UniqueWriterIdentity` to `True` to publish logs across projects or use `BigqueryOptions`.
+        /// See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+        /// for more information.
         /// </summary>
         [Input("uniqueWriterIdentity")]
         public Input<bool>? UniqueWriterIdentity { get; set; }
@@ -546,9 +552,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Whether or not to create a unique identity associated with this sink. If `False`, then the `WriterIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `True` (the default),
-        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
-        /// `BigqueryOptions`, you must set `UniqueWriterIdentity` to true.
+        /// Whether to use a service agent as the `WriterIdentity` for this sink. If `False`,
+        /// `WriterIdentity` is `serviceAccount:cloud-logs@system.gserviceaccount.com` and the sink's destination must be in the
+        /// same project as the sink. If `True` (the default), `WriterIdentity` is a service agent shared by sinks with the same
+        /// parent. You must set `UniqueWriterIdentity` to `True` to publish logs across projects or use `BigqueryOptions`.
+        /// See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
+        /// for more information.
         /// </summary>
         [Input("uniqueWriterIdentity")]
         public Input<bool>? UniqueWriterIdentity { get; set; }

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Vertex.Inputs
     public sealed class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Configuration for triggering memory generation.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("generationTriggerConfig")]
+        public Input<Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs>? GenerationTriggerConfig { get; set; }
+
+        /// <summary>
         /// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
         /// </summary>
         [Input("model", required: true)]

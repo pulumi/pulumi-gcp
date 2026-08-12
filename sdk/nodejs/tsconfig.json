@@ -2055,6 +2055,7 @@
         "vertex/aiEndpointIamMember.ts",
         "vertex/aiEndpointIamPolicy.ts",
         "vertex/aiEndpointWithModelGardenDeployment.ts",
+        "vertex/aiEvaluationMetric.ts",
         "vertex/aiFeatureGroup.ts",
         "vertex/aiFeatureGroupFeature.ts",
         "vertex/aiFeatureGroupIamBinding.ts",

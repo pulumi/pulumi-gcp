@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
 import com.pulumi.gcp.securesourcemanager.inputs.RepositoryState;
 import com.pulumi.gcp.securesourcemanager.outputs.RepositoryInitialConfig;
+import com.pulumi.gcp.securesourcemanager.outputs.RepositoryScanConfig;
 import com.pulumi.gcp.securesourcemanager.outputs.RepositoryUri;
 import java.lang.String;
 import java.util.List;
@@ -116,6 +117,188 @@ import javax.annotation.Nullable;
  *                 .readme("default")
  *                 .build())
  *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Secure Source Manager Repository Service Account
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.securesourcemanager.Repository;
+ * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .location("us-central1")
+ *             .instanceId("my-instance")
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var sa = new Account("sa", AccountArgs.builder()
+ *             .accountId("my-sa")
+ *             .displayName("Test Service Account")
+ *             .build());
+ * 
+ *         var default_ = new Repository("default", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .instance(instance.name())
+ *             .deletionPolicy("PREVENT")
+ *             .serviceAccount(sa.email())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Secure Source Manager Repository Secret Scanning
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.dataloss.PreventionInspectTemplate;
+ * import com.pulumi.gcp.dataloss.PreventionInspectTemplateArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.securesourcemanager.Repository;
+ * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigSecretScanConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .location("us-central1")
+ *             .instanceId("my-instance")
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var template = new PreventionInspectTemplate("template", PreventionInspectTemplateArgs.builder()
+ *             .parent("projects/my-project-name/locations/us-central1")
+ *             .displayName("Test Inspect Template")
+ *             .inspectConfig(PreventionInspectTemplateInspectConfigArgs.builder()
+ *                 .infoTypes(PreventionInspectTemplateInspectConfigInfoTypeArgs.builder()
+ *                     .name("EMAIL_ADDRESS")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *         var ssmP4saDlpReader = new IAMMember("ssmP4saDlpReader", IAMMemberArgs.builder()
+ *             .project(project.projectId())
+ *             .role("roles/dlp.inspectTemplatesReader")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.number()))
+ *             .build());
+ * 
+ *         var default_ = new Repository("default", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .instance(instance.name())
+ *             .deletionPolicy("PREVENT")
+ *             .scanConfig(RepositoryScanConfigArgs.builder()
+ *                 .secretScanConfig(RepositoryScanConfigSecretScanConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .inspectTemplate(template.id())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(ssmP4saDlpReader)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Secure Source Manager Repository Secret Scanning Default
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.securesourcemanager.Repository;
+ * import com.pulumi.gcp.securesourcemanager.RepositoryArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.RepositoryScanConfigSecretScanConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .location("us-central1")
+ *             .instanceId("my-instance")
+ *             .deletionPolicy("PREVENT")
+ *             .build());
+ * 
+ *         var default_ = new Repository("default", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .instance(instance.name())
+ *             .deletionPolicy("PREVENT")
+ *             .scanConfig(RepositoryScanConfigArgs.builder()
+ *                 .secretScanConfig(RepositoryScanConfigSecretScanConfigArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -283,6 +466,36 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<String> repositoryId() {
         return this.repositoryId;
+    }
+    /**
+     * Provides configuration for scanning.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scanConfig", refs={RepositoryScanConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RepositoryScanConfig> scanConfig;
+
+    /**
+     * @return Provides configuration for scanning.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RepositoryScanConfig>> scanConfig() {
+        return Codegen.optional(this.scanConfig);
+    }
+    /**
+     * Repository level service account.
+     * 
+     */
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> serviceAccount;
+
+    /**
+     * @return Repository level service account.
+     * 
+     */
+    public Output<Optional<String>> serviceAccount() {
+        return Codegen.optional(this.serviceAccount);
     }
     /**
      * Unique identifier of the repository.

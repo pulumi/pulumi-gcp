@@ -62,6 +62,25 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Import(name="allowGlobalAccess")
+    private @Nullable Output<Boolean> allowGlobalAccess;
+
+    /**
+     * @return Optional. If true, the gateway will allow traffic from clients outside
+     * of the region where the gateway is located.
+     * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Optional<Output<Boolean>> allowGlobalAccess() {
+        return Optional.ofNullable(this.allowGlobalAccess);
+    }
+
+    /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
      * 
@@ -469,6 +488,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     private GatewayState(GatewayState $) {
         this.addresses = $.addresses;
         this.allPorts = $.allPorts;
+        this.allowGlobalAccess = $.allowGlobalAccess;
         this.certificateUrls = $.certificateUrls;
         this.createTime = $.createTime;
         this.deleteSwgAutogenRouterOnDestroy = $.deleteSwgAutogenRouterOnDestroy;
@@ -577,6 +597,31 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allPorts(Boolean allPorts) {
             return allPorts(Output.of(allPorts));
+        }
+
+        /**
+         * @param allowGlobalAccess Optional. If true, the gateway will allow traffic from clients outside
+         * of the region where the gateway is located.
+         * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowGlobalAccess(@Nullable Output<Boolean> allowGlobalAccess) {
+            $.allowGlobalAccess = allowGlobalAccess;
+            return this;
+        }
+
+        /**
+         * @param allowGlobalAccess Optional. If true, the gateway will allow traffic from clients outside
+         * of the region where the gateway is located.
+         * This field is configurable only for gateways of type SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowGlobalAccess(Boolean allowGlobalAccess) {
+            return allowGlobalAccess(Output.of(allowGlobalAccess));
         }
 
         /**

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Dataform.Inputs
 
         /// <summary>
         /// (Output)
-        /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
+        /// Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1/projects.locations.repositories#TokenStatus
         /// </summary>
         [Input("tokenStatus")]
         public Input<string>? TokenStatus { get; set; }

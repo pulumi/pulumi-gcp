@@ -39,7 +39,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      * 
      */
     @Import(name="authorizationMode")
@@ -48,7 +49,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Optional. Immutable. Authorization mode of the instance. Possible values:
      * AUTH_DISABLED
-     * IAM_AUTH
+     * IAM_AUTH.
+     * TOKEN_AUTH is also supported, but only available in the google-beta provider.
      * 
      */
     public Optional<Output<String>> authorizationMode() {
@@ -936,7 +938,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param authorizationMode Optional. Immutable. Authorization mode of the instance. Possible values:
          * AUTH_DISABLED
-         * IAM_AUTH
+         * IAM_AUTH.
+         * TOKEN_AUTH is also supported, but only available in the google-beta provider.
          * 
          * @return builder
          * 
@@ -949,7 +952,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param authorizationMode Optional. Immutable. Authorization mode of the instance. Possible values:
          * AUTH_DISABLED
-         * IAM_AUTH
+         * IAM_AUTH.
+         * TOKEN_AUTH is also supported, but only available in the google-beta provider.
          * 
          * @return builder
          * 

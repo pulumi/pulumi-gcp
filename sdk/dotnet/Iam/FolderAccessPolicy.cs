@@ -14,12 +14,9 @@ namespace Pulumi.Gcp.Iam
     /// that allow or deny access to resources within the specified folder based on principals and conditions.
     /// See the Cloud IAM documentation for more details on Access Policies.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about FolderAccessPolicy, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3beta/folders.locations.accessPolicies)
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.accessPolicies)
     /// 
     /// ## Example Usage
     /// 

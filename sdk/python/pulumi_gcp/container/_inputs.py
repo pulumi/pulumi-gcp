@@ -171,6 +171,8 @@ __all__ = [
     'ClusterAddonsConfigGcsFuseCsiDriverConfigArgsDict',
     'ClusterAddonsConfigGkeBackupAgentConfigArgs',
     'ClusterAddonsConfigGkeBackupAgentConfigArgsDict',
+    'ClusterAddonsConfigHighScaleCheckpointingConfigArgs',
+    'ClusterAddonsConfigHighScaleCheckpointingConfigArgsDict',
     'ClusterAddonsConfigHorizontalPodAutoscalingArgs',
     'ClusterAddonsConfigHorizontalPodAutoscalingArgsDict',
     'ClusterAddonsConfigHttpLoadBalancingArgs',
@@ -4638,6 +4640,10 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     .
     The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
     """
+    high_scale_checkpointing_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigHighScaleCheckpointingConfigArgsDict']]]
+    """
+    The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+    """
     horizontal_pod_autoscaling: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigHorizontalPodAutoscalingArgsDict']]]
     """
     The status of the Horizontal Pod Autoscaling
@@ -4745,6 +4751,7 @@ class ClusterAddonsConfigArgs:
                  gcp_filestore_csi_driver_config: pulumi.Input[Optional['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']] = None,
                  gcs_fuse_csi_driver_config: pulumi.Input[Optional['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs']] = None,
                  gke_backup_agent_config: pulumi.Input[Optional['ClusterAddonsConfigGkeBackupAgentConfigArgs']] = None,
+                 high_scale_checkpointing_config: pulumi.Input[Optional['ClusterAddonsConfigHighScaleCheckpointingConfigArgs']] = None,
                  horizontal_pod_autoscaling: pulumi.Input[Optional['ClusterAddonsConfigHorizontalPodAutoscalingArgs']] = None,
                  http_load_balancing: pulumi.Input[Optional['ClusterAddonsConfigHttpLoadBalancingArgs']] = None,
                  istio_config: pulumi.Input[Optional['ClusterAddonsConfigIstioConfigArgs']] = None,
@@ -4783,6 +4790,7 @@ class ClusterAddonsConfigArgs:
                See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
         :param pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_config: .
                The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
+        :param pulumi.Input['ClusterAddonsConfigHighScaleCheckpointingConfigArgs'] high_scale_checkpointing_config: The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
         :param pulumi.Input['ClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscaling: The status of the Horizontal Pod Autoscaling
                addon, which increases or decreases the number of replica pods a replication controller
                has based on the resource usage of the existing pods.
@@ -4856,6 +4864,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "gcs_fuse_csi_driver_config", gcs_fuse_csi_driver_config)
         if gke_backup_agent_config is not None:
             pulumi.set(__self__, "gke_backup_agent_config", gke_backup_agent_config)
+        if high_scale_checkpointing_config is not None:
+            pulumi.set(__self__, "high_scale_checkpointing_config", high_scale_checkpointing_config)
         if horizontal_pod_autoscaling is not None:
             pulumi.set(__self__, "horizontal_pod_autoscaling", horizontal_pod_autoscaling)
         if http_load_balancing is not None:
@@ -4994,6 +5004,18 @@ class ClusterAddonsConfigArgs:
     @gke_backup_agent_config.setter
     def gke_backup_agent_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigGkeBackupAgentConfigArgs']]):
         pulumi.set(self, "gke_backup_agent_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="highScaleCheckpointingConfig")
+    def high_scale_checkpointing_config(self) -> pulumi.Input[Optional['ClusterAddonsConfigHighScaleCheckpointingConfigArgs']]:
+        """
+        The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
+        """
+        return pulumi.get(self, "high_scale_checkpointing_config")
+
+    @high_scale_checkpointing_config.setter
+    def high_scale_checkpointing_config(self, value: pulumi.Input[Optional['ClusterAddonsConfigHighScaleCheckpointingConfigArgs']]):
+        pulumi.set(self, "high_scale_checkpointing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="horizontalPodAutoscaling")
@@ -5381,6 +5403,34 @@ class ClusterAddonsConfigGkeBackupAgentConfigArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[_builtins.bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+class ClusterAddonsConfigHighScaleCheckpointingConfigArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Whether the High Scale Checkpointing addon is enabled.
+    """
+
+@pulumi.input_type
+class ClusterAddonsConfigHighScaleCheckpointingConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the High Scale Checkpointing addon is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the High Scale Checkpointing addon is enabled.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter

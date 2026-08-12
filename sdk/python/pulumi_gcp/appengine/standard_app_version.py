@@ -54,7 +54,7 @@ class StandardAppVersionArgs:
         :param pulumi.Input[_builtins.str] runtime: Desired runtime. Example python27.
         :param pulumi.Input[_builtins.str] service: AppEngine service resource
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
-               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
                Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
                Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
@@ -193,7 +193,7 @@ class StandardAppVersionArgs:
     def app_engine_apis(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows App Engine second generation runtimes to access the legacy bundled services.
-        Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         """
         return pulumi.get(self, "app_engine_apis")
 
@@ -470,7 +470,7 @@ class _StandardAppVersionState:
         Input properties used for looking up and filtering StandardAppVersion resources.
 
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
-               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
                Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
                Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
@@ -572,7 +572,7 @@ class _StandardAppVersionState:
     def app_engine_apis(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allows App Engine second generation runtimes to access the legacy bundled services.
-        Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         """
         return pulumi.get(self, "app_engine_apis")
 
@@ -1095,7 +1095,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
-               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
                Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
                Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
@@ -1451,7 +1451,7 @@ class StandardAppVersion(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
-               Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+               Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] app_engine_bundled_services: A list of legacy bundled services to enable for this version on an App Engine second-generation runtime.
                Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
                Each value may be one of: `BUNDLED_SERVICE_TYPE_APP_IDENTITY_SERVICE`, `BUNDLED_SERVICE_TYPE_BLOBSTORE`, `BUNDLED_SERVICE_TYPE_CAPABILITY_SERVICE`, `BUNDLED_SERVICE_TYPE_DATASTORE_V3`, `BUNDLED_SERVICE_TYPE_IMAGES`, `BUNDLED_SERVICE_TYPE_MAIL`, `BUNDLED_SERVICE_TYPE_MEMCACHE`, `BUNDLED_SERVICE_TYPE_MODULES`, `BUNDLED_SERVICE_TYPE_SEARCH`, `BUNDLED_SERVICE_TYPE_TASKQUEUES`, `BUNDLED_SERVICE_TYPE_URLFETCH`, `BUNDLED_SERVICE_TYPE_USERS`.
@@ -1534,7 +1534,7 @@ class StandardAppVersion(pulumi.CustomResource):
     def app_engine_apis(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Allows App Engine second generation runtimes to access the legacy bundled services.
-        Cannot specify both `app_engine_apis` and 'app_engine_bundled_services` together.
+        Cannot specify both `app_engine_apis` and `app_engine_bundled_services` together.
         """
         return pulumi.get(self, "app_engine_apis")
 

@@ -194,15 +194,15 @@ public final class TransportArgs extends com.pulumi.resources.ResourceArgs {
      * Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      * 
      */
-    @Import(name="network", required=true)
-    private Output<String> network;
+    @Import(name="network")
+    private @Nullable Output<String> network;
 
     /**
      * @return Resource URL of the Network that will be peered with this Transport. This field must be provided during resource creation and cannot be changed.
      * 
      */
-    public Output<String> network() {
-        return this.network;
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
     }
 
     /**
@@ -605,7 +605,7 @@ public final class TransportArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder network(Output<String> network) {
+        public Builder network(@Nullable Output<String> network) {
             $.network = network;
             return this;
         }
@@ -776,9 +776,6 @@ public final class TransportArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TransportArgs build() {
-            if ($.network == null) {
-                throw new MissingRequiredPropertyException("TransportArgs", "network");
-            }
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("TransportArgs", "region");
             }

@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionInstanceTemplateSchedulingGracefulShutdownResult> GracefulShutdowns;
         /// <summary>
-        /// Beta Time in seconds for host error detection.
+        /// Time in seconds for host error detection.
         /// </summary>
         public readonly int HostErrorTimeoutSeconds;
         /// <summary>

@@ -27,7 +27,9 @@ class RepositoryArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_config: pulumi.Input[Optional['RepositoryInitialConfigArgs']] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_config: pulumi.Input[Optional['RepositoryScanConfigArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repository resource.
 
@@ -45,6 +47,9 @@ class RepositoryArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RepositoryScanConfigArgs'] scan_config: Provides configuration for scanning.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: Repository level service account.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "location", location)
@@ -57,6 +62,10 @@ class RepositoryArgs:
             pulumi.set(__self__, "initial_config", initial_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scan_config is not None:
+            pulumi.set(__self__, "scan_config", scan_config)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
 
     @_builtins.property
     @pulumi.getter
@@ -149,6 +158,31 @@ class RepositoryArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="scanConfig")
+    def scan_config(self) -> pulumi.Input[Optional['RepositoryScanConfigArgs']]:
+        """
+        Provides configuration for scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scan_config")
+
+    @scan_config.setter
+    def scan_config(self, value: pulumi.Input[Optional['RepositoryScanConfigArgs']]):
+        pulumi.set(self, "scan_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Repository level service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
 
 @pulumi.input_type
 class _RepositoryState:
@@ -162,6 +196,8 @@ class _RepositoryState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_config: pulumi.Input[Optional['RepositoryScanConfigArgs']] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  uris: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryUriArgs']]]] = None):
@@ -184,6 +220,9 @@ class _RepositoryState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
+        :param pulumi.Input['RepositoryScanConfigArgs'] scan_config: Provides configuration for scanning.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: Repository level service account.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the repository.
         :param pulumi.Input[_builtins.str] update_time: Time the repository was updated in UTC.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryUriArgs']]] uris: URIs for the repository.
@@ -207,6 +246,10 @@ class _RepositoryState:
             pulumi.set(__self__, "project", project)
         if repository_id is not None:
             pulumi.set(__self__, "repository_id", repository_id)
+        if scan_config is not None:
+            pulumi.set(__self__, "scan_config", scan_config)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
@@ -330,6 +373,31 @@ class _RepositoryState:
         pulumi.set(self, "repository_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="scanConfig")
+    def scan_config(self) -> pulumi.Input[Optional['RepositoryScanConfigArgs']]:
+        """
+        Provides configuration for scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scan_config")
+
+    @scan_config.setter
+    def scan_config(self, value: pulumi.Input[Optional['RepositoryScanConfigArgs']]):
+        pulumi.set(self, "scan_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Repository level service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -380,6 +448,8 @@ class Repository(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
@@ -431,6 +501,83 @@ class Repository(pulumi.CustomResource):
             },
             deletion_policy="PREVENT")
         ```
+        ### Secure Source Manager Repository Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="us-central1",
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-sa",
+            display_name="Test Service Account")
+        default = gcp.securesourcemanager.Repository("default",
+            location="us-central1",
+            repository_id="my-repository",
+            instance=instance.name,
+            deletion_policy="PREVENT",
+            service_account=sa.email)
+        ```
+        ### Secure Source Manager Repository Secret Scanning
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="us-central1",
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
+        template = gcp.dataloss.PreventionInspectTemplate("template",
+            parent="projects/my-project-name/locations/us-central1",
+            display_name="Test Inspect Template",
+            inspect_config={
+                "info_types": [{
+                    "name": "EMAIL_ADDRESS",
+                }],
+            })
+        project = gcp.organizations.get_project()
+        ssm_p4sa_dlp_reader = gcp.projects.IAMMember("ssm_p4sa_dlp_reader",
+            project=project.project_id,
+            role="roles/dlp.inspectTemplatesReader",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
+        default = gcp.securesourcemanager.Repository("default",
+            location="us-central1",
+            repository_id="my-repository",
+            instance=instance.name,
+            deletion_policy="PREVENT",
+            scan_config={
+                "secret_scan_config": {
+                    "enabled": True,
+                    "inspect_template": template.id,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
+        ```
+        ### Secure Source Manager Repository Secret Scanning Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="us-central1",
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
+        default = gcp.securesourcemanager.Repository("default",
+            location="us-central1",
+            repository_id="my-repository",
+            instance=instance.name,
+            deletion_policy="PREVENT",
+            scan_config={
+                "secret_scan_config": {
+                    "enabled": True,
+                },
+            })
+        ```
 
         ## Import
 
@@ -467,6 +614,9 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
+        :param pulumi.Input[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']] scan_config: Provides configuration for scanning.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: Repository level service account.
         """
         ...
     @overload
@@ -524,6 +674,83 @@ class Repository(pulumi.CustomResource):
             },
             deletion_policy="PREVENT")
         ```
+        ### Secure Source Manager Repository Service Account
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="us-central1",
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
+        sa = gcp.serviceaccount.Account("sa",
+            account_id="my-sa",
+            display_name="Test Service Account")
+        default = gcp.securesourcemanager.Repository("default",
+            location="us-central1",
+            repository_id="my-repository",
+            instance=instance.name,
+            deletion_policy="PREVENT",
+            service_account=sa.email)
+        ```
+        ### Secure Source Manager Repository Secret Scanning
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="us-central1",
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
+        template = gcp.dataloss.PreventionInspectTemplate("template",
+            parent="projects/my-project-name/locations/us-central1",
+            display_name="Test Inspect Template",
+            inspect_config={
+                "info_types": [{
+                    "name": "EMAIL_ADDRESS",
+                }],
+            })
+        project = gcp.organizations.get_project()
+        ssm_p4sa_dlp_reader = gcp.projects.IAMMember("ssm_p4sa_dlp_reader",
+            project=project.project_id,
+            role="roles/dlp.inspectTemplatesReader",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
+        default = gcp.securesourcemanager.Repository("default",
+            location="us-central1",
+            repository_id="my-repository",
+            instance=instance.name,
+            deletion_policy="PREVENT",
+            scan_config={
+                "secret_scan_config": {
+                    "enabled": True,
+                    "inspect_template": template.id,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[ssm_p4sa_dlp_reader]))
+        ```
+        ### Secure Source Manager Repository Secret Scanning Default
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.securesourcemanager.Instance("instance",
+            location="us-central1",
+            instance_id="my-instance",
+            deletion_policy="PREVENT")
+        default = gcp.securesourcemanager.Repository("default",
+            location="us-central1",
+            repository_id="my-repository",
+            instance=instance.name,
+            deletion_policy="PREVENT",
+            scan_config={
+                "secret_scan_config": {
+                    "enabled": True,
+                },
+            })
+        ```
 
         ## Import
 
@@ -566,6 +793,8 @@ class Repository(pulumi.CustomResource):
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,6 +817,8 @@ class Repository(pulumi.CustomResource):
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
+            __props__.__dict__["scan_config"] = scan_config
+            __props__.__dict__["service_account"] = service_account
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["uid"] = None
@@ -612,6 +843,8 @@ class Repository(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             repository_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_config: pulumi.Input[Optional[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']]] = None,
+            service_account: pulumi.Input[Optional[_builtins.str]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             uris: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]]] = None) -> 'Repository':
@@ -638,6 +871,9 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
+        :param pulumi.Input[Union['RepositoryScanConfigArgs', 'RepositoryScanConfigArgsDict']] scan_config: Provides configuration for scanning.
+               Structure is documented below.
+        :param pulumi.Input[_builtins.str] service_account: Repository level service account.
         :param pulumi.Input[_builtins.str] uid: Unique identifier of the repository.
         :param pulumi.Input[_builtins.str] update_time: Time the repository was updated in UTC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryUriArgs', 'RepositoryUriArgsDict']]]] uris: URIs for the repository.
@@ -656,6 +892,8 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["repository_id"] = repository_id
+        __props__.__dict__["scan_config"] = scan_config
+        __props__.__dict__["service_account"] = service_account
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["uris"] = uris
@@ -739,6 +977,23 @@ class Repository(pulumi.CustomResource):
         The ID for the Repository.
         """
         return pulumi.get(self, "repository_id")
+
+    @_builtins.property
+    @pulumi.getter(name="scanConfig")
+    def scan_config(self) -> pulumi.Output[Optional['outputs.RepositoryScanConfig']]:
+        """
+        Provides configuration for scanning.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scan_config")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Repository level service account.
+        """
+        return pulumi.get(self, "service_account")
 
     @_builtins.property
     @pulumi.getter
