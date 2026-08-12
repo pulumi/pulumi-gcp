@@ -3081,12 +3081,10 @@ github.com/gammazero/workerpool v1.1.3/go.mod h1:wPjyBLDbyKnUn2XwwyD3EEwo9dHutia
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/git-pkgs/manifests v0.4.1 h1:CWml+TrRXVzrfNJ2pTNKLqyi+9y/BFiQP/BX3pL4pPQ=
 github.com/git-pkgs/manifests v0.4.1/go.mod h1:7SPFwU9diUG1Az682/p4ZupHJkfpbWKwRvNPwCcOeVs=
-github.com/git-pkgs/packageurl-go v0.3.1 h1:WM3RBABQZLaRBxgKyYughc3cVBE8KyQxbSC6Jt5ak7M=
-github.com/git-pkgs/packageurl-go v0.3.1/go.mod h1:rcIxiG37BlQLB6FZfgdj9Fm7yjhRQd3l+5o7J0QPAk4=
-github.com/git-pkgs/purl v0.1.10 h1:NMjeF10nzFn3tdQlz6rbmHB+i+YkyrFQxho3e33ePTQ=
-github.com/git-pkgs/purl v0.1.10/go.mod h1:C5Vp/kyZ/wGckCLexx4wPVfUxEiToRkdsOPh5Z7ig/I=
-github.com/git-pkgs/vers v0.2.4 h1:Zr3jR/Xf1i/6cvBaJKPxhCwjzqz7uvYHE0Fhid/GPBk=
-github.com/git-pkgs/vers v0.2.4/go.mod h1:biTbSQK1qdbrsxDEKnqe3Jzclxz8vW6uDcwKjfUGcOo=
+github.com/git-pkgs/purl v0.1.15 h1:iQ3clh0Cw41rkM0rf24B7ShnN9Z+UtLMAFlNDUs+Qd4=
+github.com/git-pkgs/purl v0.1.15/go.mod h1:PqCLVBDeZrZgHysR803/AntMELgIr2LFZVNCcwLH2m0=
+github.com/git-pkgs/vers v0.3.0 h1:xM4LLUCRmqzdDfe+/pVQUx4SRyFXRVth6tOsJ14wMKU=
+github.com/git-pkgs/vers v0.3.0/go.mod h1:biTbSQK1qdbrsxDEKnqe3Jzclxz8vW6uDcwKjfUGcOo=
 github.com/gkampitakis/ciinfo v0.3.0 h1:gWZlOC2+RYYttL0hBqcoQhM7h1qNkVqvRCV1fOvpAv8=
 github.com/gkampitakis/ciinfo v0.3.0/go.mod h1:1NIwaOcFChN4fa/B0hEBdAb6npDlFL8Bwx4dfRLRqAo=
 github.com/gkampitakis/go-diff v1.3.2 h1:Qyn0J9XJSDTgnsgHRdz9Zp24RaJeKMUHg2+PDZZdC4M=
@@ -3813,6 +3811,8 @@ github.com/openzipkin/zipkin-go v0.1.6/go.mod h1:QgAqvLzwWbR/WpD4A3cGpPtJrZXNIiJ
 github.com/openzipkin/zipkin-go v0.2.1/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/openzipkin/zipkin-go v0.2.2/go.mod h1:NaW6tEwdmWMaCDZzg8sh+IBNOxHMPnhQw8ySjnjRyN4=
 github.com/orisano/pixelmatch v0.0.0-20220722002657-fb0b55479cde/go.mod h1:nZgzbfBr3hhjoZnS66nKrHmduYNpc34ny7RK4z5/HM0=
+github.com/package-url/packageurl-go v0.1.6 h1:YO3p6u1XmCUliivUg/qWphaY8vI6hxSnnPv7Bfg3m5M=
+github.com/package-url/packageurl-go v0.1.6/go.mod h1:nKAWB8E6uk1MHqiS/lQb9pYBGH2+mdJ2PJc2s50dQY0=
 github.com/pact-foundation/pact-go v1.0.4/go.mod h1:uExwJY4kCzNPcHRj+hCR/HBbOOIwwtUjcrb0b5/5kLM=
 github.com/pascaldekloe/goe v0.0.0-20180627143212-57f6aae5913c/go.mod h1:lzWF7FIEvWOWxwDKqyGYQf6ZUaNfKdP144TG7ZOy1lc=
 github.com/pborman/uuid v1.2.0/go.mod h1:X/NO0urCmaxf9VXbdlT7C2Yzkj2IKimNn4k+gtPdI/k=
@@ -3925,8 +3925,8 @@ github.com/pulumi/pulumi-java v1.36.0 h1:GGUMCftNU/KF4hPkaemEOD4RC3Yt8FVNdxyMhH7
 github.com/pulumi/pulumi-java v1.36.0/go.mod h1:EFNX9ntKIawIr51Sqp/9Rb17Mbi5GH5egKBt2AwyIsM=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.136.0 h1:MB+m/Rg1NKCAcxICoDR0nAE7SzjE7W7NnBBSOZouwc4=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.136.0/go.mod h1:XOQPUACb9ZTlly/7t7w4r2VnanhjnhlgZJOvMxfeTU0=
-github.com/pulumi/pulumi-yaml v1.38.1 h1:FquTa8vjvKXreiBHDmuUD9jaZc5y0WXYvRYey+Wrzd4=
-github.com/pulumi/pulumi-yaml v1.38.1/go.mod h1:Vh0fhfZGckj1Bqwdcr3buXjAP+VsseEuPjRl+SsOMdo=
+github.com/pulumi/pulumi-yaml v1.38.2 h1:pIHr89vfLLdomEE2KDUgImffEbJXkDJlU8gFb2YiF2k=
+github.com/pulumi/pulumi-yaml v1.38.2/go.mod h1:yEsmAeFUdW2Qa29VeqEMZ66l1LuO0b2IoBFTvhKmirQ=
 github.com/pulumi/pulumi/pkg/v3 v3.256.0 h1:uXTo11w2S5scowuuv6Z5yMzxz9NmpYnogNBCeCUziWc=
 github.com/pulumi/pulumi/pkg/v3 v3.256.0/go.mod h1:FdxtC8Mia2ZjO80xPOTNKusgF8Ae16GQe2LqhXv8pNw=
 github.com/pulumi/pulumi/sdk/v3 v3.256.0 h1:OrkIu7Iw3HUcMtoEy2uzpD21C32B5EYBLBgBoh/uQPM=

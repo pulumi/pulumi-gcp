@@ -111,9 +111,8 @@ require (
 	github.com/gammazero/deque v0.2.1 // indirect
 	github.com/gammazero/workerpool v1.1.3 // indirect
 	github.com/git-pkgs/manifests v0.4.1 // indirect
-	github.com/git-pkgs/packageurl-go v0.3.1 // indirect
-	github.com/git-pkgs/purl v0.1.10 // indirect
-	github.com/git-pkgs/vers v0.2.4 // indirect
+	github.com/git-pkgs/purl v0.1.15 // indirect
+	github.com/git-pkgs/vers v0.3.0 // indirect
 	github.com/go-git/gcfg/v2 v2.0.2 // indirect
 	github.com/go-git/go-billy/v6 v6.0.0-alpha.2 // indirect
 	github.com/go-git/go-git/v6 v6.0.0-alpha.5 // indirect
@@ -210,6 +209,7 @@ require (
 	github.com/opentofu/svchost v0.0.0-20250610175836-86c9e5e3d8c8 // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
+	github.com/package-url/packageurl-go v0.1.6 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/fx/v2 v2.0.12 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
@@ -225,7 +225,7 @@ require (
 	github.com/pulumi/inflector v0.2.1 // indirect
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.111.1 // indirect
 	github.com/pulumi/pulumi-java v1.36.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.38.1 // indirect
+	github.com/pulumi/pulumi-yaml v1.38.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
