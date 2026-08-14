@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CertificateTemplateIamPolicy("policy", CertificateTemplateIamPolicyArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CertificateTemplateIamPolicy("policy", CertificateTemplateIamPolicyArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new CertificateTemplateIamBinding("binding", CertificateTemplateIamBindingArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -186,7 +186,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new CertificateTemplateIamBinding("binding", CertificateTemplateIamBindingArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(CertificateTemplateIamBindingConditionArgs.builder()
@@ -225,7 +225,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new CertificateTemplateIamMember("member", CertificateTemplateIamMemberArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new CertificateTemplateIamMember("member", CertificateTemplateIamMemberArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(CertificateTemplateIamMemberConditionArgs.builder()
@@ -333,7 +333,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CertificateTemplateIamPolicy("policy", CertificateTemplateIamPolicyArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -383,7 +383,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new CertificateTemplateIamPolicy("policy", CertificateTemplateIamPolicyArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -416,7 +416,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new CertificateTemplateIamBinding("binding", CertificateTemplateIamBindingArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -452,7 +452,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new CertificateTemplateIamBinding("binding", CertificateTemplateIamBindingArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(CertificateTemplateIamBindingConditionArgs.builder()
@@ -491,7 +491,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new CertificateTemplateIamMember("member", CertificateTemplateIamMemberArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -527,7 +527,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new CertificateTemplateIamMember("member", CertificateTemplateIamMemberArgs.builder()
- *             .certificateTemplate(default_.id())
+ *             .certificateTemplate(default_.get("id"))
  *             .role("roles/privateca.templateUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(CertificateTemplateIamMemberConditionArgs.builder()

@@ -109,14 +109,14 @@ import javax.annotation.Nullable;
  *         var default_ = new Disk("default", DiskArgs.builder()
  *             .name("my-disk-name")
  *             .type("pd-ssd")
- *             .zone(igm.zone())
+ *             .zone(igm.get("zone"))
  *             .image("debian-11-bullseye-v20220719")
  *             .physicalBlockSizeBytes(4096)
  *             .build());
  * 
  *         var withDisk = new PerInstanceConfig("withDisk", PerInstanceConfigArgs.builder()
- *             .zone(igm.zone())
- *             .instanceGroupManager(igm.name())
+ *             .zone(igm.get("zone"))
+ *             .instanceGroupManager(igm.get("name"))
  *             .name("instance-1")
  *             .preservedState(PerInstanceConfigPreservedStateArgs.builder()
  *                 .metadata(Map.ofEntries(

@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new GatewayIamPolicy("policy", GatewayIamPolicyArgs.builder()
- *             .project(apiGw.project())
- *             .region(apiGw.region())
- *             .gateway(apiGw.gatewayId())
+ *             .project(apiGw.get("project"))
+ *             .region(apiGw.get("region"))
+ *             .gateway(apiGw.get("gatewayId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()
- *             .project(apiGw.project())
- *             .region(apiGw.region())
- *             .gateway(apiGw.gatewayId())
+ *             .project(apiGw.get("project"))
+ *             .region(apiGw.get("region"))
+ *             .gateway(apiGw.get("gatewayId"))
  *             .role("roles/apigateway.viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()
- *             .project(apiGw.project())
- *             .region(apiGw.region())
- *             .gateway(apiGw.gatewayId())
+ *             .project(apiGw.get("project"))
+ *             .region(apiGw.get("region"))
+ *             .gateway(apiGw.get("gatewayId"))
  *             .role("roles/apigateway.viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -209,9 +209,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new GatewayIamPolicy("policy", GatewayIamPolicyArgs.builder()
- *             .project(apiGw.project())
- *             .region(apiGw.region())
- *             .gateway(apiGw.gatewayId())
+ *             .project(apiGw.get("project"))
+ *             .region(apiGw.get("region"))
+ *             .gateway(apiGw.get("gatewayId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -245,9 +245,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new GatewayIamBinding("binding", GatewayIamBindingArgs.builder()
- *             .project(apiGw.project())
- *             .region(apiGw.region())
- *             .gateway(apiGw.gatewayId())
+ *             .project(apiGw.get("project"))
+ *             .region(apiGw.get("region"))
+ *             .gateway(apiGw.get("gatewayId"))
  *             .role("roles/apigateway.viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -282,9 +282,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new GatewayIamMember("member", GatewayIamMemberArgs.builder()
- *             .project(apiGw.project())
- *             .region(apiGw.region())
- *             .gateway(apiGw.gatewayId())
+ *             .project(apiGw.get("project"))
+ *             .region(apiGw.get("region"))
+ *             .gateway(apiGw.get("gatewayId"))
  *             .role("roles/apigateway.viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

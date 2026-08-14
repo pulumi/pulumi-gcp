@@ -60,8 +60,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveCatalogIamPolicy(GetHiveCatalogIamPolicyArgs.builder()
-     *             .project(myHiveCatalog.project())
-     *             .name(myHiveCatalog.name())
+     *             .project(myHiveCatalog.get("project"))
+     *             .name(myHiveCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -103,8 +103,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveCatalogIamPolicy(GetHiveCatalogIamPolicyArgs.builder()
-     *             .project(myHiveCatalog.project())
-     *             .name(myHiveCatalog.name())
+     *             .project(myHiveCatalog.get("project"))
+     *             .name(myHiveCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -146,8 +146,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveCatalogIamPolicy(GetHiveCatalogIamPolicyArgs.builder()
-     *             .project(myHiveCatalog.project())
-     *             .name(myHiveCatalog.name())
+     *             .project(myHiveCatalog.get("project"))
+     *             .name(myHiveCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -189,8 +189,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveCatalogIamPolicy(GetHiveCatalogIamPolicyArgs.builder()
-     *             .project(myHiveCatalog.project())
-     *             .name(myHiveCatalog.name())
+     *             .project(myHiveCatalog.get("project"))
+     *             .name(myHiveCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -232,8 +232,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveCatalogIamPolicy(GetHiveCatalogIamPolicyArgs.builder()
-     *             .project(myHiveCatalog.project())
-     *             .name(myHiveCatalog.name())
+     *             .project(myHiveCatalog.get("project"))
+     *             .name(myHiveCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -275,9 +275,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
-     *             .project(myHiveDatabase.project())
-     *             .catalog(myHiveDatabase.catalog())
-     *             .name(myHiveDatabase.name())
+     *             .project(myHiveDatabase.get("project"))
+     *             .catalog(myHiveDatabase.get("catalog"))
+     *             .name(myHiveDatabase.get("name"))
      *             .build());
      * 
      *     }
@@ -319,9 +319,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
-     *             .project(myHiveDatabase.project())
-     *             .catalog(myHiveDatabase.catalog())
-     *             .name(myHiveDatabase.name())
+     *             .project(myHiveDatabase.get("project"))
+     *             .catalog(myHiveDatabase.get("catalog"))
+     *             .name(myHiveDatabase.get("name"))
      *             .build());
      * 
      *     }
@@ -363,9 +363,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
-     *             .project(myHiveDatabase.project())
-     *             .catalog(myHiveDatabase.catalog())
-     *             .name(myHiveDatabase.name())
+     *             .project(myHiveDatabase.get("project"))
+     *             .catalog(myHiveDatabase.get("catalog"))
+     *             .name(myHiveDatabase.get("name"))
      *             .build());
      * 
      *     }
@@ -407,9 +407,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
-     *             .project(myHiveDatabase.project())
-     *             .catalog(myHiveDatabase.catalog())
-     *             .name(myHiveDatabase.name())
+     *             .project(myHiveDatabase.get("project"))
+     *             .catalog(myHiveDatabase.get("catalog"))
+     *             .name(myHiveDatabase.get("name"))
      *             .build());
      * 
      *     }
@@ -451,9 +451,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveDatabaseIamPolicy(GetHiveDatabaseIamPolicyArgs.builder()
-     *             .project(myHiveDatabase.project())
-     *             .catalog(myHiveDatabase.catalog())
-     *             .name(myHiveDatabase.name())
+     *             .project(myHiveDatabase.get("project"))
+     *             .catalog(myHiveDatabase.get("catalog"))
+     *             .name(myHiveDatabase.get("name"))
      *             .build());
      * 
      *     }
@@ -495,10 +495,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveTableIamPolicy(GetHiveTableIamPolicyArgs.builder()
-     *             .project(myHiveTable.project())
-     *             .catalog(myHiveTable.catalog())
-     *             .database(myHiveTable.database())
-     *             .name(myHiveTable.name())
+     *             .project(myHiveTable.get("project"))
+     *             .catalog(myHiveTable.get("catalog"))
+     *             .database(myHiveTable.get("database"))
+     *             .name(myHiveTable.get("name"))
      *             .build());
      * 
      *     }
@@ -540,10 +540,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveTableIamPolicy(GetHiveTableIamPolicyArgs.builder()
-     *             .project(myHiveTable.project())
-     *             .catalog(myHiveTable.catalog())
-     *             .database(myHiveTable.database())
-     *             .name(myHiveTable.name())
+     *             .project(myHiveTable.get("project"))
+     *             .catalog(myHiveTable.get("catalog"))
+     *             .database(myHiveTable.get("database"))
+     *             .name(myHiveTable.get("name"))
      *             .build());
      * 
      *     }
@@ -585,10 +585,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveTableIamPolicy(GetHiveTableIamPolicyArgs.builder()
-     *             .project(myHiveTable.project())
-     *             .catalog(myHiveTable.catalog())
-     *             .database(myHiveTable.database())
-     *             .name(myHiveTable.name())
+     *             .project(myHiveTable.get("project"))
+     *             .catalog(myHiveTable.get("catalog"))
+     *             .database(myHiveTable.get("database"))
+     *             .name(myHiveTable.get("name"))
      *             .build());
      * 
      *     }
@@ -630,10 +630,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveTableIamPolicy(GetHiveTableIamPolicyArgs.builder()
-     *             .project(myHiveTable.project())
-     *             .catalog(myHiveTable.catalog())
-     *             .database(myHiveTable.database())
-     *             .name(myHiveTable.name())
+     *             .project(myHiveTable.get("project"))
+     *             .catalog(myHiveTable.get("catalog"))
+     *             .database(myHiveTable.get("database"))
+     *             .name(myHiveTable.get("name"))
      *             .build());
      * 
      *     }
@@ -675,10 +675,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getHiveTableIamPolicy(GetHiveTableIamPolicyArgs.builder()
-     *             .project(myHiveTable.project())
-     *             .catalog(myHiveTable.catalog())
-     *             .database(myHiveTable.database())
-     *             .name(myHiveTable.name())
+     *             .project(myHiveTable.get("project"))
+     *             .catalog(myHiveTable.get("catalog"))
+     *             .database(myHiveTable.get("database"))
+     *             .name(myHiveTable.get("name"))
      *             .build());
      * 
      *     }
@@ -718,8 +718,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergCatalogIamPolicy(GetIcebergCatalogIamPolicyArgs.builder()
-     *             .project(myIcebergCatalog.project())
-     *             .name(myIcebergCatalog.name())
+     *             .project(myIcebergCatalog.get("project"))
+     *             .name(myIcebergCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -759,8 +759,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergCatalogIamPolicy(GetIcebergCatalogIamPolicyArgs.builder()
-     *             .project(myIcebergCatalog.project())
-     *             .name(myIcebergCatalog.name())
+     *             .project(myIcebergCatalog.get("project"))
+     *             .name(myIcebergCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -800,8 +800,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergCatalogIamPolicy(GetIcebergCatalogIamPolicyArgs.builder()
-     *             .project(myIcebergCatalog.project())
-     *             .name(myIcebergCatalog.name())
+     *             .project(myIcebergCatalog.get("project"))
+     *             .name(myIcebergCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -841,8 +841,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergCatalogIamPolicy(GetIcebergCatalogIamPolicyArgs.builder()
-     *             .project(myIcebergCatalog.project())
-     *             .name(myIcebergCatalog.name())
+     *             .project(myIcebergCatalog.get("project"))
+     *             .name(myIcebergCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -882,8 +882,8 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergCatalogIamPolicy(GetIcebergCatalogIamPolicyArgs.builder()
-     *             .project(myIcebergCatalog.project())
-     *             .name(myIcebergCatalog.name())
+     *             .project(myIcebergCatalog.get("project"))
+     *             .name(myIcebergCatalog.get("name"))
      *             .build());
      * 
      *     }
@@ -923,9 +923,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
-     *             .project(myIcebergNamespace.project())
-     *             .catalog(myIcebergNamespace.catalog())
-     *             .namespaceId(myIcebergNamespace.id())
+     *             .project(myIcebergNamespace.get("project"))
+     *             .catalog(myIcebergNamespace.get("catalog"))
+     *             .namespaceId(myIcebergNamespace.get("id"))
      *             .build());
      * 
      *     }
@@ -965,9 +965,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
-     *             .project(myIcebergNamespace.project())
-     *             .catalog(myIcebergNamespace.catalog())
-     *             .namespaceId(myIcebergNamespace.id())
+     *             .project(myIcebergNamespace.get("project"))
+     *             .catalog(myIcebergNamespace.get("catalog"))
+     *             .namespaceId(myIcebergNamespace.get("id"))
      *             .build());
      * 
      *     }
@@ -1007,9 +1007,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
-     *             .project(myIcebergNamespace.project())
-     *             .catalog(myIcebergNamespace.catalog())
-     *             .namespaceId(myIcebergNamespace.id())
+     *             .project(myIcebergNamespace.get("project"))
+     *             .catalog(myIcebergNamespace.get("catalog"))
+     *             .namespaceId(myIcebergNamespace.get("id"))
      *             .build());
      * 
      *     }
@@ -1049,9 +1049,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
-     *             .project(myIcebergNamespace.project())
-     *             .catalog(myIcebergNamespace.catalog())
-     *             .namespaceId(myIcebergNamespace.id())
+     *             .project(myIcebergNamespace.get("project"))
+     *             .catalog(myIcebergNamespace.get("catalog"))
+     *             .namespaceId(myIcebergNamespace.get("id"))
      *             .build());
      * 
      *     }
@@ -1091,9 +1091,9 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergNamespaceIamPolicy(GetIcebergNamespaceIamPolicyArgs.builder()
-     *             .project(myIcebergNamespace.project())
-     *             .catalog(myIcebergNamespace.catalog())
-     *             .namespaceId(myIcebergNamespace.id())
+     *             .project(myIcebergNamespace.get("project"))
+     *             .catalog(myIcebergNamespace.get("catalog"))
+     *             .namespaceId(myIcebergNamespace.get("id"))
      *             .build());
      * 
      *     }
@@ -1133,10 +1133,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergTableIamPolicy(GetIcebergTableIamPolicyArgs.builder()
-     *             .project(myIcebergTable.project())
-     *             .catalog(myIcebergTable.catalog())
-     *             .namespace(myIcebergTable.namespace())
-     *             .name(myIcebergTable.name())
+     *             .project(myIcebergTable.get("project"))
+     *             .catalog(myIcebergTable.get("catalog"))
+     *             .namespace(myIcebergTable.get("namespace"))
+     *             .name(myIcebergTable.get("name"))
      *             .build());
      * 
      *     }
@@ -1176,10 +1176,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergTableIamPolicy(GetIcebergTableIamPolicyArgs.builder()
-     *             .project(myIcebergTable.project())
-     *             .catalog(myIcebergTable.catalog())
-     *             .namespace(myIcebergTable.namespace())
-     *             .name(myIcebergTable.name())
+     *             .project(myIcebergTable.get("project"))
+     *             .catalog(myIcebergTable.get("catalog"))
+     *             .namespace(myIcebergTable.get("namespace"))
+     *             .name(myIcebergTable.get("name"))
      *             .build());
      * 
      *     }
@@ -1219,10 +1219,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergTableIamPolicy(GetIcebergTableIamPolicyArgs.builder()
-     *             .project(myIcebergTable.project())
-     *             .catalog(myIcebergTable.catalog())
-     *             .namespace(myIcebergTable.namespace())
-     *             .name(myIcebergTable.name())
+     *             .project(myIcebergTable.get("project"))
+     *             .catalog(myIcebergTable.get("catalog"))
+     *             .namespace(myIcebergTable.get("namespace"))
+     *             .name(myIcebergTable.get("name"))
      *             .build());
      * 
      *     }
@@ -1262,10 +1262,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergTableIamPolicy(GetIcebergTableIamPolicyArgs.builder()
-     *             .project(myIcebergTable.project())
-     *             .catalog(myIcebergTable.catalog())
-     *             .namespace(myIcebergTable.namespace())
-     *             .name(myIcebergTable.name())
+     *             .project(myIcebergTable.get("project"))
+     *             .catalog(myIcebergTable.get("catalog"))
+     *             .namespace(myIcebergTable.get("namespace"))
+     *             .name(myIcebergTable.get("name"))
      *             .build());
      * 
      *     }
@@ -1305,10 +1305,10 @@ public final class BiglakeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BiglakeFunctions.getIcebergTableIamPolicy(GetIcebergTableIamPolicyArgs.builder()
-     *             .project(myIcebergTable.project())
-     *             .catalog(myIcebergTable.catalog())
-     *             .namespace(myIcebergTable.namespace())
-     *             .name(myIcebergTable.name())
+     *             .project(myIcebergTable.get("project"))
+     *             .catalog(myIcebergTable.get("catalog"))
+     *             .namespace(myIcebergTable.get("namespace"))
+     *             .name(myIcebergTable.get("name"))
      *             .build());
      * 
      *     }

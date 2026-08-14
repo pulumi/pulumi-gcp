@@ -179,34 +179,34 @@ namespace Pulumi.Gcp.Composer
     ///                 Scheduler = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs
     ///                 {
     ///                     Cpu = 0.5,
-    ///                     MemoryGb = 2,
-    ///                     StorageGb = 1,
+    ///                     MemoryGb = 2.0,
+    ///                     StorageGb = 1.0,
     ///                     Count = 1,
     ///                 },
     ///                 Triggerer = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigTriggererArgs
     ///                 {
     ///                     Cpu = 0.5,
-    ///                     MemoryGb = 1,
+    ///                     MemoryGb = 1.0,
     ///                     Count = 1,
     ///                 },
     ///                 DagProcessor = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigDagProcessorArgs
     ///                 {
-    ///                     Cpu = 1,
-    ///                     MemoryGb = 2,
-    ///                     StorageGb = 1,
+    ///                     Cpu = 1.0,
+    ///                     MemoryGb = 2.0,
+    ///                     StorageGb = 1.0,
     ///                     Count = 1,
     ///                 },
     ///                 WebServer = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigWebServerArgs
     ///                 {
     ///                     Cpu = 0.5,
-    ///                     MemoryGb = 2,
-    ///                     StorageGb = 1,
+    ///                     MemoryGb = 2.0,
+    ///                     StorageGb = 1.0,
     ///                 },
     ///                 Worker = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigWorkerArgs
     ///                 {
     ///                     Cpu = 0.5,
-    ///                     MemoryGb = 2,
-    ///                     StorageGb = 1,
+    ///                     MemoryGb = 2.0,
+    ///                     StorageGb = 1.0,
     ///                     MinCount = 1,
     ///                     MaxCount = 3,
     ///                 },
@@ -275,20 +275,20 @@ namespace Pulumi.Gcp.Composer
     ///                 {
     ///                     Cpu = 0.5,
     ///                     MemoryGb = 1.875,
-    ///                     StorageGb = 1,
+    ///                     StorageGb = 1.0,
     ///                     Count = 1,
     ///                 },
     ///                 WebServer = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigWebServerArgs
     ///                 {
     ///                     Cpu = 0.5,
     ///                     MemoryGb = 1.875,
-    ///                     StorageGb = 1,
+    ///                     StorageGb = 1.0,
     ///                 },
     ///                 Worker = new Gcp.Composer.Inputs.EnvironmentConfigWorkloadsConfigWorkerArgs
     ///                 {
     ///                     Cpu = 0.5,
     ///                     MemoryGb = 1.875,
-    ///                     StorageGb = 1,
+    ///                     StorageGb = 1.0,
     ///                     MinCount = 1,
     ///                     MaxCount = 3,
     ///                 },
@@ -461,7 +461,7 @@ namespace Pulumi.Gcp.Composer
     ///         {
     ///             NodeConfig = new Gcp.Composer.Inputs.EnvironmentConfigNodeConfigArgs
     ///             {
-    ///                 ComposerNetworkAttachment = projects / example_project / regions / us_central1 / networkAttachments / example_network_attachment,
+    ///                 ComposerNetworkAttachment = (double.Parse(projects, System.Globalization.CultureInfo.InvariantCulture) / double.Parse(example_project, System.Globalization.CultureInfo.InvariantCulture) / double.Parse(regions, System.Globalization.CultureInfo.InvariantCulture) / double.Parse(us_central1, System.Globalization.CultureInfo.InvariantCulture) / double.Parse(networkAttachments, System.Globalization.CultureInfo.InvariantCulture) / double.Parse(example_network_attachment, System.Globalization.CultureInfo.InvariantCulture)).ToString(System.Globalization.CultureInfo.InvariantCulture),
     ///             },
     ///         },
     ///     });

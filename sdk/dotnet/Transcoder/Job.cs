@@ -721,7 +721,7 @@ namespace Pulumi.Gcp.Transcoder
     ///                                 EndTimeOffset = "3.500s",
     ///                                 Xy = new Gcp.Transcoder.Inputs.JobConfigOverlayAnimationAnimationFadeXyArgs
     ///                                 {
-    ///                                     X = 1,
+    ///                                     X = 1.0,
     ///                                     Y = 0.5,
     ///                                 },
     ///                             },

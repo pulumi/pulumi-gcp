@@ -882,10 +882,10 @@ public final class DiscoveryengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .collectionId(basic.collectionId())
-     *             .engineId(basic.engineId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .collectionId(basic.get("collectionId"))
+     *             .engineId(basic.get("engineId"))
      *             .build());
      * 
      *     }
@@ -925,10 +925,10 @@ public final class DiscoveryengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .collectionId(basic.collectionId())
-     *             .engineId(basic.engineId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .collectionId(basic.get("collectionId"))
+     *             .engineId(basic.get("engineId"))
      *             .build());
      * 
      *     }
@@ -968,10 +968,10 @@ public final class DiscoveryengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .collectionId(basic.collectionId())
-     *             .engineId(basic.engineId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .collectionId(basic.get("collectionId"))
+     *             .engineId(basic.get("engineId"))
      *             .build());
      * 
      *     }
@@ -1011,10 +1011,10 @@ public final class DiscoveryengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .collectionId(basic.collectionId())
-     *             .engineId(basic.engineId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .collectionId(basic.get("collectionId"))
+     *             .engineId(basic.get("engineId"))
      *             .build());
      * 
      *     }
@@ -1054,10 +1054,10 @@ public final class DiscoveryengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DiscoveryengineFunctions.getSearchEngineIamPolicy(GetSearchEngineIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .collectionId(basic.collectionId())
-     *             .engineId(basic.engineId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .collectionId(basic.get("collectionId"))
+     *             .engineId(basic.get("engineId"))
      *             .build());
      * 
      *     }

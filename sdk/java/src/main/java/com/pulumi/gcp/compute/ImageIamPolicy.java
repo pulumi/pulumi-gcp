@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(ImageIamBindingConditionArgs.builder()
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(ImageIamMemberConditionArgs.builder()
@@ -337,8 +337,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ImageIamPolicy("policy", ImageIamPolicyArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -422,8 +422,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -459,8 +459,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ImageIamBinding("binding", ImageIamBindingArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(ImageIamBindingConditionArgs.builder()
@@ -499,8 +499,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -536,8 +536,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ImageIamMember("member", ImageIamMemberArgs.builder()
- *             .project(example.project())
- *             .image(example.name())
+ *             .project(example.get("project"))
+ *             .image(example.get("name"))
  *             .role("roles/compute.imageUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(ImageIamMemberConditionArgs.builder()

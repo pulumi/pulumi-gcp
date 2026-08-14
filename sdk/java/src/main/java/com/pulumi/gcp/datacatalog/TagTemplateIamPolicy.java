@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()
- *             .tagTemplate(basicTagTemplate.name())
+ *             .tagTemplate(basicTagTemplate.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()
- *             .tagTemplate(basicTagTemplate.name())
+ *             .tagTemplate(basicTagTemplate.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()
- *             .tagTemplate(basicTagTemplate.name())
+ *             .tagTemplate(basicTagTemplate.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagTemplateIamPolicy("policy", TagTemplateIamPolicyArgs.builder()
- *             .tagTemplate(basicTagTemplate.name())
+ *             .tagTemplate(basicTagTemplate.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TagTemplateIamBinding("binding", TagTemplateIamBindingArgs.builder()
- *             .tagTemplate(basicTagTemplate.name())
+ *             .tagTemplate(basicTagTemplate.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TagTemplateIamMember("member", TagTemplateIamMemberArgs.builder()
- *             .tagTemplate(basicTagTemplate.name())
+ *             .tagTemplate(basicTagTemplate.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

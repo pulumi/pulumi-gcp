@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkstationConfigIamPolicy("policy", WorkstationConfigIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,10 +100,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkstationConfigIamBinding("binding", WorkstationConfigIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,10 +138,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkstationConfigIamMember("member", WorkstationConfigIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,10 +206,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkstationConfigIamPolicy("policy", WorkstationConfigIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -243,10 +243,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkstationConfigIamBinding("binding", WorkstationConfigIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -281,10 +281,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkstationConfigIamMember("member", WorkstationConfigIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

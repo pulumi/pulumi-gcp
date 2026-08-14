@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
- *             .name(String.format("private-instance-%s", dbNameSuffix.hex()))
+ *             .name(String.format("private-instance-%s", dbNameSuffix.get("hex")))
  *             .region("us-central1")
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()

@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebBackendServiceIamBindingConditionArgs.builder()
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebBackendServiceIamMemberConditionArgs.builder()
@@ -337,8 +337,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebBackendServiceIamPolicy("policy", WebBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -422,8 +422,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -459,8 +459,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebBackendServiceIamBinding("binding", WebBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebBackendServiceIamBindingConditionArgs.builder()
@@ -499,8 +499,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -536,8 +536,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebBackendServiceIamMember("member", WebBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .webBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .webBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebBackendServiceIamMemberConditionArgs.builder()

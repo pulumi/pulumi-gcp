@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.BigQuery
     ///     var reservation = new Gcp.BigQuery.BiReservation("reservation", new()
     ///     {
     ///         Location = "us-west2",
-    ///         Size = 3000000000,
+    ///         Size = (int)3000000000,
     ///     });
     /// 
     /// });

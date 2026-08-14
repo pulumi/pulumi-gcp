@@ -100,8 +100,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         ctx.export("sparkStatus", spark.statuses().applyValue(_statuses -> _statuses[0].state()));
- *         ctx.export("pysparkStatus", pyspark.statuses().applyValue(_statuses -> _statuses[0].state()));
+ *         ctx.export("sparkStatus", spark.statuses().applyValue(_statuses -> _statuses.get(0).state()));
+ *         ctx.export("pysparkStatus", pyspark.statuses().applyValue(_statuses -> _statuses.get(0).state()));
  *     }
  * }
  * }

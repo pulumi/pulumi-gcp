@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataPolicyIamPolicy("policy", DataPolicyIamPolicyArgs.builder()
- *             .project(dataPolicy.project())
- *             .location(dataPolicy.location())
- *             .dataPolicyId(dataPolicy.dataPolicyId())
+ *             .project(dataPolicy.get("project"))
+ *             .location(dataPolicy.get("location"))
+ *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DataPolicyIamBinding("binding", DataPolicyIamBindingArgs.builder()
- *             .project(dataPolicy.project())
- *             .location(dataPolicy.location())
- *             .dataPolicyId(dataPolicy.dataPolicyId())
+ *             .project(dataPolicy.get("project"))
+ *             .location(dataPolicy.get("location"))
+ *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DataPolicyIamMember("member", DataPolicyIamMemberArgs.builder()
- *             .project(dataPolicy.project())
- *             .location(dataPolicy.location())
- *             .dataPolicyId(dataPolicy.dataPolicyId())
+ *             .project(dataPolicy.get("project"))
+ *             .location(dataPolicy.get("location"))
+ *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataPolicyIamPolicy("policy", DataPolicyIamPolicyArgs.builder()
- *             .project(dataPolicy.project())
- *             .location(dataPolicy.location())
- *             .dataPolicyId(dataPolicy.dataPolicyId())
+ *             .project(dataPolicy.get("project"))
+ *             .location(dataPolicy.get("location"))
+ *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DataPolicyIamBinding("binding", DataPolicyIamBindingArgs.builder()
- *             .project(dataPolicy.project())
- *             .location(dataPolicy.location())
- *             .dataPolicyId(dataPolicy.dataPolicyId())
+ *             .project(dataPolicy.get("project"))
+ *             .location(dataPolicy.get("location"))
+ *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DataPolicyIamMember("member", DataPolicyIamMemberArgs.builder()
- *             .project(dataPolicy.project())
- *             .location(dataPolicy.location())
- *             .dataPolicyId(dataPolicy.dataPolicyId())
+ *             .project(dataPolicy.get("project"))
+ *             .location(dataPolicy.get("location"))
+ *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

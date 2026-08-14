@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *             .description("example google_file_service.filestore datastore.")
  *             .nfsDatastore(DatastoreNfsDatastoreArgs.builder()
  *                 .googleFileService(DatastoreNfsDatastoreGoogleFileServiceArgs.builder()
- *                     .filestoreInstance(testInstanceGoogleFilestoreInstance.id())
+ *                     .filestoreInstance(testInstanceGoogleFilestoreInstance.get("id"))
  *                     .build())
  *                 .build())
  *             .build());

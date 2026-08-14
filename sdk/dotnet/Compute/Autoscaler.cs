@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.Compute
     ///                 {
     ///                     Name = "pubsub.googleapis.com/subscription/num_undelivered_messages",
     ///                     Filter = "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription",
-    ///                     SingleInstanceAssignment = 65535,
+    ///                     SingleInstanceAssignment = 65535.0,
     ///                 },
     ///             },
     ///         },

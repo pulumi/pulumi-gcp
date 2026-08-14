@@ -46,7 +46,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getNamespaceIamPolicy(GetNamespaceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -86,7 +86,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getNamespaceIamPolicy(GetNamespaceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -126,7 +126,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getNamespaceIamPolicy(GetNamespaceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -166,7 +166,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getNamespaceIamPolicy(GetNamespaceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -206,7 +206,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getNamespaceIamPolicy(GetNamespaceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -246,7 +246,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -286,7 +286,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -326,7 +326,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -366,7 +366,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -406,7 +406,7 @@ public final class ServicedirectoryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ServicedirectoryFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }

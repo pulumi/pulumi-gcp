@@ -71,9 +71,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -123,9 +123,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -158,9 +158,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -196,9 +196,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendBucketIamBindingConditionArgs.builder()
@@ -237,9 +237,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -275,9 +275,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendBucketIamMemberConditionArgs.builder()
@@ -352,9 +352,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -404,9 +404,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendBucketIamPolicy("policy", RegionBackendBucketIamPolicyArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -439,9 +439,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -477,9 +477,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendBucketIamBinding("binding", RegionBackendBucketIamBindingArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendBucketIamBindingConditionArgs.builder()
@@ -518,9 +518,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -556,9 +556,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendBucketIamMember("member", RegionBackendBucketIamMemberArgs.builder()
- *             .project(imageBackend.project())
- *             .region(imageBackend.region())
- *             .name(imageBackend.name())
+ *             .project(imageBackend.get("project"))
+ *             .region(imageBackend.get("region"))
+ *             .name(imageBackend.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendBucketIamMemberConditionArgs.builder()

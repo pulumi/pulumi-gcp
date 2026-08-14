@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .repositoryId(default_.repositoryId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .repositoryId(default_.get("repositoryId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .repositoryId(default_.repositoryId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .repositoryId(default_.get("repositoryId"))
  *             .role("roles/securesourcemanager.repoAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .repositoryId(default_.repositoryId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .repositoryId(default_.get("repositoryId"))
  *             .role("roles/securesourcemanager.repoAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -205,9 +205,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .repositoryId(default_.repositoryId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .repositoryId(default_.get("repositoryId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,9 +241,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .repositoryId(default_.repositoryId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .repositoryId(default_.get("repositoryId"))
  *             .role("roles/securesourcemanager.repoAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,9 +278,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .repositoryId(default_.repositoryId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .repositoryId(default_.get("repositoryId"))
  *             .role("roles/securesourcemanager.repoAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

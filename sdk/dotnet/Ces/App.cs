@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Ces
     ///                 {
     ///                     LanguageCode = "en-US",
     ///                     Voice = "en-US-Standard-A",
-    ///                     SpeakingRate = 1,
+    ///                     SpeakingRate = 1.0,
     ///                 },
     ///                 new Gcp.Ces.Inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs
     ///                 {
@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.Ces
     ///             AmbientSoundConfig = new Gcp.Ces.Inputs.AppAudioProcessingConfigAmbientSoundConfigArgs
     ///             {
     ///                 PrebuiltAmbientSound = "room_2",
-    ///                 VolumeGainDb = -6,
+    ///                 VolumeGainDb = -6.0,
     ///             },
     ///         },
     ///         LoggingSettings = new Gcp.Ces.Inputs.AppLoggingSettingsArgs
@@ -144,11 +144,11 @@ namespace Pulumi.Gcp.Ces
     ///                 TurnLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs
     ///                 {
     ///                     SemanticSimilaritySuccessThreshold = 3,
-    ///                     OverallToolInvocationCorrectnessThreshold = 1,
+    ///                     OverallToolInvocationCorrectnessThreshold = 1.0,
     ///                 },
     ///                 ExpectationLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs
     ///                 {
-    ///                     ToolInvocationParameterCorrectnessThreshold = 1,
+    ///                     ToolInvocationParameterCorrectnessThreshold = 1.0,
     ///                 },
     ///             },
     ///         },
@@ -295,7 +295,7 @@ namespace Pulumi.Gcp.Ces
     ///                 {
     ///                     LanguageCode = "en-US",
     ///                     Voice = "en-US-Standard-A",
-    ///                     SpeakingRate = 1,
+    ///                     SpeakingRate = 1.0,
     ///                 },
     ///                 new Gcp.Ces.Inputs.AppAudioProcessingConfigSynthesizeSpeechConfigArgs
     ///                 {
@@ -312,7 +312,7 @@ namespace Pulumi.Gcp.Ces
     ///             AmbientSoundConfig = new Gcp.Ces.Inputs.AppAudioProcessingConfigAmbientSoundConfigArgs
     ///             {
     ///                 GcsUri = "gs://fake-bucket/sounds/ambient.wav",
-    ///                 VolumeGainDb = -6,
+    ///                 VolumeGainDb = -6.0,
     ///             },
     ///         },
     ///         LoggingSettings = new Gcp.Ces.Inputs.AppLoggingSettingsArgs
@@ -355,11 +355,11 @@ namespace Pulumi.Gcp.Ces
     ///                 TurnLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs
     ///                 {
     ///                     SemanticSimilaritySuccessThreshold = 3,
-    ///                     OverallToolInvocationCorrectnessThreshold = 1,
+    ///                     OverallToolInvocationCorrectnessThreshold = 1.0,
     ///                 },
     ///                 ExpectationLevelMetricsThresholds = new Gcp.Ces.Inputs.AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs
     ///                 {
-    ///                     ToolInvocationParameterCorrectnessThreshold = 1,
+    ///                     ToolInvocationParameterCorrectnessThreshold = 1.0,
     ///                 },
     ///             },
     ///         },

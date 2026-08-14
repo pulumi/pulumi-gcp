@@ -43,8 +43,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(note.project())
-     *             .note(note.name())
+     *             .project(note.get("project"))
+     *             .note(note.get("name"))
      *             .build());
      * 
      *     }
@@ -84,8 +84,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(note.project())
-     *             .note(note.name())
+     *             .project(note.get("project"))
+     *             .note(note.get("name"))
      *             .build());
      * 
      *     }
@@ -125,8 +125,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(note.project())
-     *             .note(note.name())
+     *             .project(note.get("project"))
+     *             .note(note.get("name"))
      *             .build());
      * 
      *     }
@@ -166,8 +166,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(note.project())
-     *             .note(note.name())
+     *             .project(note.get("project"))
+     *             .note(note.get("name"))
      *             .build());
      * 
      *     }
@@ -207,8 +207,8 @@ public final class ContaineranalysisFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ContaineranalysisFunctions.getNoteIamPolicy(GetNoteIamPolicyArgs.builder()
-     *             .project(note.project())
-     *             .note(note.name())
+     *             .project(note.get("project"))
+     *             .note(note.get("name"))
      *             .build());
      * 
      *     }

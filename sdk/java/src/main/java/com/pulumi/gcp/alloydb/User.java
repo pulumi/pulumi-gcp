@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .clusterId("alloydb-cluster")
  *             .location("us-central1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
- *                 .network(defaultGoogleComputeNetwork.id())
+ *                 .network(defaultGoogleComputeNetwork.get("id"))
  *                 .build())
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password("cluster_secret")

@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkerPoolIamPolicy("policy", WorkerPoolIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkerPoolIamBinding("binding", WorkerPoolIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkerPoolIamMember("member", WorkerPoolIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -205,9 +205,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkerPoolIamPolicy("policy", WorkerPoolIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,9 +241,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkerPoolIamBinding("binding", WorkerPoolIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,9 +278,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkerPoolIamMember("member", WorkerPoolIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

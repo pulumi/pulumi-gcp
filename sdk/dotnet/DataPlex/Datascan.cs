@@ -96,7 +96,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///         DataProfileSpec = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecArgs
     ///         {
-    ///             SamplingPercent = 80,
+    ///             SamplingPercent = 80.0,
     ///             RowFilter = "word_count &gt; 10",
     ///             IncludeFields = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecIncludeFieldsArgs
     ///             {
@@ -249,7 +249,7 @@ namespace Pulumi.Gcp.DataPlex
     ///         },
     ///         DataQualitySpec = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecArgs
     ///         {
-    ///             SamplingPercent = 5,
+    ///             SamplingPercent = 5.0,
     ///             RowFilter = "station_id &gt; 1000",
     ///             CatalogPublishingEnabled = true,
     ///             Filter = "attributes.priority = 'high'",
@@ -266,7 +266,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                     },
     ///                     ScoreThresholdTrigger = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs
     ///                     {
-    ///                         ScoreThreshold = 86,
+    ///                         ScoreThreshold = 86.0,
     ///                     },
     ///                 },
     ///             },

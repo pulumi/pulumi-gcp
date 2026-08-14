@@ -418,7 +418,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(key.name())
+     *             .tagKey(key.get("name"))
      *             .build());
      * 
      *     }
@@ -458,7 +458,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(key.name())
+     *             .tagKey(key.get("name"))
      *             .build());
      * 
      *     }
@@ -498,7 +498,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(key.name())
+     *             .tagKey(key.get("name"))
      *             .build());
      * 
      *     }
@@ -538,7 +538,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(key.name())
+     *             .tagKey(key.get("name"))
      *             .build());
      * 
      *     }
@@ -578,7 +578,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
-     *             .tagKey(key.name())
+     *             .tagKey(key.get("name"))
      *             .build());
      * 
      *     }
@@ -1173,7 +1173,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(value.name())
+     *             .tagValue(value.get("name"))
      *             .build());
      * 
      *     }
@@ -1213,7 +1213,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(value.name())
+     *             .tagValue(value.get("name"))
      *             .build());
      * 
      *     }
@@ -1253,7 +1253,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(value.name())
+     *             .tagValue(value.get("name"))
      *             .build());
      * 
      *     }
@@ -1293,7 +1293,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(value.name())
+     *             .tagValue(value.get("name"))
      *             .build());
      * 
      *     }
@@ -1333,7 +1333,7 @@ public final class TagsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
-     *             .tagValue(value.name())
+     *             .tagValue(value.get("name"))
      *             .build());
      * 
      *     }

@@ -46,8 +46,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(apigeeEnvironment.orgId())
-     *             .envId(apigeeEnvironment.name())
+     *             .orgId(apigeeEnvironment.get("orgId"))
+     *             .envId(apigeeEnvironment.get("name"))
      *             .build());
      * 
      *     }
@@ -87,8 +87,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(apigeeEnvironment.orgId())
-     *             .envId(apigeeEnvironment.name())
+     *             .orgId(apigeeEnvironment.get("orgId"))
+     *             .envId(apigeeEnvironment.get("name"))
      *             .build());
      * 
      *     }
@@ -128,8 +128,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(apigeeEnvironment.orgId())
-     *             .envId(apigeeEnvironment.name())
+     *             .orgId(apigeeEnvironment.get("orgId"))
+     *             .envId(apigeeEnvironment.get("name"))
      *             .build());
      * 
      *     }
@@ -169,8 +169,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(apigeeEnvironment.orgId())
-     *             .envId(apigeeEnvironment.name())
+     *             .orgId(apigeeEnvironment.get("orgId"))
+     *             .envId(apigeeEnvironment.get("name"))
      *             .build());
      * 
      *     }
@@ -210,8 +210,8 @@ public final class ApigeeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigeeFunctions.getEnvironmentIamPolicy(GetEnvironmentIamPolicyArgs.builder()
-     *             .orgId(apigeeEnvironment.orgId())
-     *             .envId(apigeeEnvironment.name())
+     *             .orgId(apigeeEnvironment.get("orgId"))
+     *             .envId(apigeeEnvironment.get("name"))
      *             .build());
      * 
      *     }

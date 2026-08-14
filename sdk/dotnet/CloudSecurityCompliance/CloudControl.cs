@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                 IsRequired = false,
     ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
     ///                 {
-    ///                     NumberValue = 10,
+    ///                     NumberValue = 10.0,
     ///                 },
     ///                 SubstitutionRules = new[]
     ///                 {
@@ -232,7 +232,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                             },
     ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
     ///                             {
-    ///                                 NumberValue = 1,
+    ///                                 NumberValue = 1.0,
     ///                             },
     ///                         },
     ///                     },
@@ -360,7 +360,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                 IsRequired = false,
     ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
     ///                 {
-    ///                     NumberValue = 10,
+    ///                     NumberValue = 10.0,
     ///                 },
     ///                 SubstitutionRules = new[]
     ///                 {
@@ -459,7 +459,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                             },
     ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
     ///                             {
-    ///                                 NumberValue = 1,
+    ///                                 NumberValue = 1.0,
     ///                             },
     ///                         },
     ///                     },
@@ -585,7 +585,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                 IsRequired = false,
     ///                 DefaultValue = new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecDefaultValueArgs
     ///                 {
-    ///                     NumberValue = 10,
+    ///                     NumberValue = 10.0,
     ///                 },
     ///                 SubstitutionRules = new[]
     ///                 {
@@ -684,7 +684,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                             },
     ///                             new Gcp.CloudSecurityCompliance.Inputs.CloudControlParameterSpecValidationAllowedValuesValueArgs
     ///                             {
-    ///                                 NumberValue = 1,
+    ///                                 NumberValue = 1.0,
     ///                             },
     ///                         },
     ///                     },

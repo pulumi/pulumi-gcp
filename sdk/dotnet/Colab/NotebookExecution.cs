@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.Colab
     ///                 var name = values.Item2;
     ///                 return $"gs://{bucket}/{name}";
     ///             }),
-    ///             Generation = notebook.Generation,
+    ///             Generation = notebook.Generation.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         },
     ///         ServiceAccount = "my@service-account.com",
     ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),

@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.NetworkServices
     ///         LogConfig = new Gcp.NetworkServices.Inputs.WasmPluginLogConfigArgs
     ///         {
     ///             Enable = true,
-    ///             SampleRate = 1,
+    ///             SampleRate = 1.0,
     ///             MinLogLevel = "WARN",
     ///         },
     ///         Versions = new[]

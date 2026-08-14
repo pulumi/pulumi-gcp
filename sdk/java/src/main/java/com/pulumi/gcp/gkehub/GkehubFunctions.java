@@ -263,9 +263,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getFeatureIamPolicy(GetFeatureIamPolicyArgs.builder()
-     *             .project(feature.project())
-     *             .location(feature.location())
-     *             .name(feature.name())
+     *             .project(feature.get("project"))
+     *             .location(feature.get("location"))
+     *             .name(feature.get("name"))
      *             .build());
      * 
      *     }
@@ -305,9 +305,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getFeatureIamPolicy(GetFeatureIamPolicyArgs.builder()
-     *             .project(feature.project())
-     *             .location(feature.location())
-     *             .name(feature.name())
+     *             .project(feature.get("project"))
+     *             .location(feature.get("location"))
+     *             .name(feature.get("name"))
      *             .build());
      * 
      *     }
@@ -347,9 +347,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getFeatureIamPolicy(GetFeatureIamPolicyArgs.builder()
-     *             .project(feature.project())
-     *             .location(feature.location())
-     *             .name(feature.name())
+     *             .project(feature.get("project"))
+     *             .location(feature.get("location"))
+     *             .name(feature.get("name"))
      *             .build());
      * 
      *     }
@@ -389,9 +389,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getFeatureIamPolicy(GetFeatureIamPolicyArgs.builder()
-     *             .project(feature.project())
-     *             .location(feature.location())
-     *             .name(feature.name())
+     *             .project(feature.get("project"))
+     *             .location(feature.get("location"))
+     *             .name(feature.get("name"))
      *             .build());
      * 
      *     }
@@ -431,9 +431,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getFeatureIamPolicy(GetFeatureIamPolicyArgs.builder()
-     *             .project(feature.project())
-     *             .location(feature.location())
-     *             .name(feature.name())
+     *             .project(feature.get("project"))
+     *             .location(feature.get("location"))
+     *             .name(feature.get("name"))
      *             .build());
      * 
      *     }
@@ -908,9 +908,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
-     *             .project(membership.project())
-     *             .location(membership.location())
-     *             .membershipId(membership.membershipId())
+     *             .project(membership.get("project"))
+     *             .location(membership.get("location"))
+     *             .membershipId(membership.get("membershipId"))
      *             .build());
      * 
      *     }
@@ -950,9 +950,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
-     *             .project(membership.project())
-     *             .location(membership.location())
-     *             .membershipId(membership.membershipId())
+     *             .project(membership.get("project"))
+     *             .location(membership.get("location"))
+     *             .membershipId(membership.get("membershipId"))
      *             .build());
      * 
      *     }
@@ -992,9 +992,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
-     *             .project(membership.project())
-     *             .location(membership.location())
-     *             .membershipId(membership.membershipId())
+     *             .project(membership.get("project"))
+     *             .location(membership.get("location"))
+     *             .membershipId(membership.get("membershipId"))
      *             .build());
      * 
      *     }
@@ -1034,9 +1034,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
-     *             .project(membership.project())
-     *             .location(membership.location())
-     *             .membershipId(membership.membershipId())
+     *             .project(membership.get("project"))
+     *             .location(membership.get("location"))
+     *             .membershipId(membership.get("membershipId"))
      *             .build());
      * 
      *     }
@@ -1076,9 +1076,9 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getMembershipIamPolicy(GetMembershipIamPolicyArgs.builder()
-     *             .project(membership.project())
-     *             .location(membership.location())
-     *             .membershipId(membership.membershipId())
+     *             .project(membership.get("project"))
+     *             .location(membership.get("location"))
+     *             .membershipId(membership.get("membershipId"))
      *             .build());
      * 
      *     }
@@ -1118,8 +1118,8 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
-     *             .project(scope.project())
-     *             .scopeId(scope.scopeId())
+     *             .project(scope.get("project"))
+     *             .scopeId(scope.get("scopeId"))
      *             .build());
      * 
      *     }
@@ -1159,8 +1159,8 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
-     *             .project(scope.project())
-     *             .scopeId(scope.scopeId())
+     *             .project(scope.get("project"))
+     *             .scopeId(scope.get("scopeId"))
      *             .build());
      * 
      *     }
@@ -1200,8 +1200,8 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
-     *             .project(scope.project())
-     *             .scopeId(scope.scopeId())
+     *             .project(scope.get("project"))
+     *             .scopeId(scope.get("scopeId"))
      *             .build());
      * 
      *     }
@@ -1241,8 +1241,8 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
-     *             .project(scope.project())
-     *             .scopeId(scope.scopeId())
+     *             .project(scope.get("project"))
+     *             .scopeId(scope.get("scopeId"))
      *             .build());
      * 
      *     }
@@ -1282,8 +1282,8 @@ public final class GkehubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
-     *             .project(scope.project())
-     *             .scopeId(scope.scopeId())
+     *             .project(scope.get("project"))
+     *             .scopeId(scope.get("scopeId"))
      *             .build());
      * 
      *     }

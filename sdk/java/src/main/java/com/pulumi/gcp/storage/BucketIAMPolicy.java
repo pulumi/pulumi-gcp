@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -148,7 +148,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -184,7 +184,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(BucketIAMBindingConditionArgs.builder()
@@ -223,7 +223,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -259,7 +259,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(BucketIAMMemberConditionArgs.builder()
@@ -330,7 +330,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -380,7 +380,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BucketIAMPolicy("policy", BucketIAMPolicyArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -413,7 +413,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -449,7 +449,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BucketIAMBinding("binding", BucketIAMBindingArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(BucketIAMBindingConditionArgs.builder()
@@ -488,7 +488,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -524,7 +524,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BucketIAMMember("member", BucketIAMMemberArgs.builder()
- *             .bucket(default_.name())
+ *             .bucket(default_.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(BucketIAMMemberConditionArgs.builder()

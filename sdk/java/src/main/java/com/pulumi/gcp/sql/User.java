@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
  *             .databaseVersion("POSTGRES_15")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
  *             .databaseVersion("POSTGRES_15")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * 
  *         var iamServiceAccountUser = new User("iamServiceAccountUser", UserArgs.builder()
  *             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
- *                 .input(serviceAccount.email())
+ *                 .input(serviceAccount.get("email"))
  *                 .suffix(".gserviceaccount.com")
  *                 .build()).result())
  *             .instance(main.name())
@@ -239,7 +239,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+ *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
  *             .databaseVersion("MYSQL_8_0")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")

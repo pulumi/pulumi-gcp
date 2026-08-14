@@ -43,9 +43,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class CloudtasksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudtasksFunctions.getQueueIamPolicy(GetQueueIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }

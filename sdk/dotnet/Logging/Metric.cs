@@ -69,8 +69,8 @@ namespace Pulumi.Gcp.Logging
     ///             LinearBuckets = new Gcp.Logging.Inputs.MetricBucketOptionsLinearBucketsArgs
     ///             {
     ///                 NumFiniteBuckets = 3,
-    ///                 Width = 1,
-    ///                 Offset = 1,
+    ///                 Width = 1.0,
+    ///                 Offset = 1.0,
     ///             },
     ///         },
     ///     });

@@ -69,9 +69,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs.builder()
-     *             .project(endpoint.project())
-     *             .location(endpoint.location())
-     *             .endpoint(endpoint.name())
+     *             .project(endpoint.get("project"))
+     *             .location(endpoint.get("location"))
+     *             .endpoint(endpoint.get("name"))
      *             .build());
      * 
      *     }
@@ -113,9 +113,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs.builder()
-     *             .project(endpoint.project())
-     *             .location(endpoint.location())
-     *             .endpoint(endpoint.name())
+     *             .project(endpoint.get("project"))
+     *             .location(endpoint.get("location"))
+     *             .endpoint(endpoint.get("name"))
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs.builder()
-     *             .project(endpoint.project())
-     *             .location(endpoint.location())
-     *             .endpoint(endpoint.name())
+     *             .project(endpoint.get("project"))
+     *             .location(endpoint.get("location"))
+     *             .endpoint(endpoint.get("name"))
      *             .build());
      * 
      *     }
@@ -201,9 +201,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs.builder()
-     *             .project(endpoint.project())
-     *             .location(endpoint.location())
-     *             .endpoint(endpoint.name())
+     *             .project(endpoint.get("project"))
+     *             .location(endpoint.get("location"))
+     *             .endpoint(endpoint.get("name"))
      *             .build());
      * 
      *     }
@@ -245,9 +245,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs.builder()
-     *             .project(endpoint.project())
-     *             .location(endpoint.location())
-     *             .endpoint(endpoint.name())
+     *             .project(endpoint.get("project"))
+     *             .location(endpoint.get("location"))
+     *             .endpoint(endpoint.get("name"))
      *             .build());
      * 
      *     }
@@ -289,8 +289,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
-     *             .region(featureGroup.region())
-     *             .featureGroup(featureGroup.name())
+     *             .region(featureGroup.get("region"))
+     *             .featureGroup(featureGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -332,8 +332,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
-     *             .region(featureGroup.region())
-     *             .featureGroup(featureGroup.name())
+     *             .region(featureGroup.get("region"))
+     *             .featureGroup(featureGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -375,8 +375,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
-     *             .region(featureGroup.region())
-     *             .featureGroup(featureGroup.name())
+     *             .region(featureGroup.get("region"))
+     *             .featureGroup(featureGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -418,8 +418,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
-     *             .region(featureGroup.region())
-     *             .featureGroup(featureGroup.name())
+     *             .region(featureGroup.get("region"))
+     *             .featureGroup(featureGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -461,8 +461,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureGroupIamPolicy(GetAiFeatureGroupIamPolicyArgs.builder()
-     *             .region(featureGroup.region())
-     *             .featureGroup(featureGroup.name())
+     *             .region(featureGroup.get("region"))
+     *             .featureGroup(featureGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -504,9 +504,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
-     *             .region(featureview.region())
-     *             .featureOnlineStore(featureview.featureOnlineStore())
-     *             .featureView(featureview.name())
+     *             .region(featureview.get("region"))
+     *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+     *             .featureView(featureview.get("name"))
      *             .build());
      * 
      *     }
@@ -548,9 +548,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
-     *             .region(featureview.region())
-     *             .featureOnlineStore(featureview.featureOnlineStore())
-     *             .featureView(featureview.name())
+     *             .region(featureview.get("region"))
+     *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+     *             .featureView(featureview.get("name"))
      *             .build());
      * 
      *     }
@@ -592,9 +592,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
-     *             .region(featureview.region())
-     *             .featureOnlineStore(featureview.featureOnlineStore())
-     *             .featureView(featureview.name())
+     *             .region(featureview.get("region"))
+     *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+     *             .featureView(featureview.get("name"))
      *             .build());
      * 
      *     }
@@ -636,9 +636,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
-     *             .region(featureview.region())
-     *             .featureOnlineStore(featureview.featureOnlineStore())
-     *             .featureView(featureview.name())
+     *             .region(featureview.get("region"))
+     *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+     *             .featureView(featureview.get("name"))
      *             .build());
      * 
      *     }
@@ -680,9 +680,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreFeatureviewIamPolicy(GetAiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
-     *             .region(featureview.region())
-     *             .featureOnlineStore(featureview.featureOnlineStore())
-     *             .featureView(featureview.name())
+     *             .region(featureview.get("region"))
+     *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+     *             .featureView(featureview.get("name"))
      *             .build());
      * 
      *     }
@@ -724,8 +724,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
-     *             .region(featureOnlineStore.region())
-     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .region(featureOnlineStore.get("region"))
+     *             .featureOnlineStore(featureOnlineStore.get("name"))
      *             .build());
      * 
      *     }
@@ -767,8 +767,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
-     *             .region(featureOnlineStore.region())
-     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .region(featureOnlineStore.get("region"))
+     *             .featureOnlineStore(featureOnlineStore.get("name"))
      *             .build());
      * 
      *     }
@@ -810,8 +810,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
-     *             .region(featureOnlineStore.region())
-     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .region(featureOnlineStore.get("region"))
+     *             .featureOnlineStore(featureOnlineStore.get("name"))
      *             .build());
      * 
      *     }
@@ -853,8 +853,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
-     *             .region(featureOnlineStore.region())
-     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .region(featureOnlineStore.get("region"))
+     *             .featureOnlineStore(featureOnlineStore.get("name"))
      *             .build());
      * 
      *     }
@@ -896,8 +896,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeatureOnlineStoreIamPolicy(GetAiFeatureOnlineStoreIamPolicyArgs.builder()
-     *             .region(featureOnlineStore.region())
-     *             .featureOnlineStore(featureOnlineStore.name())
+     *             .region(featureOnlineStore.get("region"))
+     *             .featureOnlineStore(featureOnlineStore.get("name"))
      *             .build());
      * 
      *     }
@@ -939,8 +939,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs.builder()
-     *             .featurestore(entity.featurestore())
-     *             .entitytype(entity.name())
+     *             .featurestore(entity.get("featurestore"))
+     *             .entitytype(entity.get("name"))
      *             .build());
      * 
      *     }
@@ -982,8 +982,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs.builder()
-     *             .featurestore(entity.featurestore())
-     *             .entitytype(entity.name())
+     *             .featurestore(entity.get("featurestore"))
+     *             .entitytype(entity.get("name"))
      *             .build());
      * 
      *     }
@@ -1025,8 +1025,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs.builder()
-     *             .featurestore(entity.featurestore())
-     *             .entitytype(entity.name())
+     *             .featurestore(entity.get("featurestore"))
+     *             .entitytype(entity.get("name"))
      *             .build());
      * 
      *     }
@@ -1068,8 +1068,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs.builder()
-     *             .featurestore(entity.featurestore())
-     *             .entitytype(entity.name())
+     *             .featurestore(entity.get("featurestore"))
+     *             .entitytype(entity.get("name"))
      *             .build());
      * 
      *     }
@@ -1111,8 +1111,8 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs.builder()
-     *             .featurestore(entity.featurestore())
-     *             .entitytype(entity.name())
+     *             .featurestore(entity.get("featurestore"))
+     *             .entitytype(entity.get("name"))
      *             .build());
      * 
      *     }
@@ -1154,9 +1154,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs.builder()
-     *             .project(featurestore.project())
-     *             .region(featurestore.region())
-     *             .featurestore(featurestore.name())
+     *             .project(featurestore.get("project"))
+     *             .region(featurestore.get("region"))
+     *             .featurestore(featurestore.get("name"))
      *             .build());
      * 
      *     }
@@ -1198,9 +1198,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs.builder()
-     *             .project(featurestore.project())
-     *             .region(featurestore.region())
-     *             .featurestore(featurestore.name())
+     *             .project(featurestore.get("project"))
+     *             .region(featurestore.get("region"))
+     *             .featurestore(featurestore.get("name"))
      *             .build());
      * 
      *     }
@@ -1242,9 +1242,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs.builder()
-     *             .project(featurestore.project())
-     *             .region(featurestore.region())
-     *             .featurestore(featurestore.name())
+     *             .project(featurestore.get("project"))
+     *             .region(featurestore.get("region"))
+     *             .featurestore(featurestore.get("name"))
      *             .build());
      * 
      *     }
@@ -1286,9 +1286,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs.builder()
-     *             .project(featurestore.project())
-     *             .region(featurestore.region())
-     *             .featurestore(featurestore.name())
+     *             .project(featurestore.get("project"))
+     *             .region(featurestore.get("region"))
+     *             .featurestore(featurestore.get("name"))
      *             .build());
      * 
      *     }
@@ -1330,9 +1330,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs.builder()
-     *             .project(featurestore.project())
-     *             .region(featurestore.region())
-     *             .featurestore(featurestore.name())
+     *             .project(featurestore.get("project"))
+     *             .region(featurestore.get("region"))
+     *             .featurestore(featurestore.get("name"))
      *             .build());
      * 
      *     }
@@ -1407,9 +1407,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
-     *             .project(reasoningEngine.project())
-     *             .region(reasoningEngine.region())
-     *             .reasoningEngine(reasoningEngine.name())
+     *             .project(reasoningEngine.get("project"))
+     *             .region(reasoningEngine.get("region"))
+     *             .reasoningEngine(reasoningEngine.get("name"))
      *             .build());
      * 
      *     }
@@ -1449,9 +1449,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
-     *             .project(reasoningEngine.project())
-     *             .region(reasoningEngine.region())
-     *             .reasoningEngine(reasoningEngine.name())
+     *             .project(reasoningEngine.get("project"))
+     *             .region(reasoningEngine.get("region"))
+     *             .reasoningEngine(reasoningEngine.get("name"))
      *             .build());
      * 
      *     }
@@ -1491,9 +1491,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
-     *             .project(reasoningEngine.project())
-     *             .region(reasoningEngine.region())
-     *             .reasoningEngine(reasoningEngine.name())
+     *             .project(reasoningEngine.get("project"))
+     *             .region(reasoningEngine.get("region"))
+     *             .reasoningEngine(reasoningEngine.get("name"))
      *             .build());
      * 
      *     }
@@ -1533,9 +1533,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
-     *             .project(reasoningEngine.project())
-     *             .region(reasoningEngine.region())
-     *             .reasoningEngine(reasoningEngine.name())
+     *             .project(reasoningEngine.get("project"))
+     *             .region(reasoningEngine.get("region"))
+     *             .reasoningEngine(reasoningEngine.get("name"))
      *             .build());
      * 
      *     }
@@ -1575,9 +1575,9 @@ public final class VertexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = VertexFunctions.getAiReasoningEngineIamPolicy(GetAiReasoningEngineIamPolicyArgs.builder()
-     *             .project(reasoningEngine.project())
-     *             .region(reasoningEngine.region())
-     *             .reasoningEngine(reasoningEngine.name())
+     *             .project(reasoningEngine.get("project"))
+     *             .region(reasoningEngine.get("region"))
+     *             .reasoningEngine(reasoningEngine.get("name"))
      *             .build());
      * 
      *     }

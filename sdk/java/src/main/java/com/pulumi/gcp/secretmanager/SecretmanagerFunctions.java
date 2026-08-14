@@ -275,9 +275,9 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getRegionalSecretIamPolicy(GetRegionalSecretIamPolicyArgs.builder()
-     *             .project(regional_secret_basic.project())
-     *             .location(regional_secret_basic.location())
-     *             .secretId(regional_secret_basic.secretId())
+     *             .project(regional_secret_basic.get("project"))
+     *             .location(regional_secret_basic.get("location"))
+     *             .secretId(regional_secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -317,9 +317,9 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getRegionalSecretIamPolicy(GetRegionalSecretIamPolicyArgs.builder()
-     *             .project(regional_secret_basic.project())
-     *             .location(regional_secret_basic.location())
-     *             .secretId(regional_secret_basic.secretId())
+     *             .project(regional_secret_basic.get("project"))
+     *             .location(regional_secret_basic.get("location"))
+     *             .secretId(regional_secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -359,9 +359,9 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getRegionalSecretIamPolicy(GetRegionalSecretIamPolicyArgs.builder()
-     *             .project(regional_secret_basic.project())
-     *             .location(regional_secret_basic.location())
-     *             .secretId(regional_secret_basic.secretId())
+     *             .project(regional_secret_basic.get("project"))
+     *             .location(regional_secret_basic.get("location"))
+     *             .secretId(regional_secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -401,9 +401,9 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getRegionalSecretIamPolicy(GetRegionalSecretIamPolicyArgs.builder()
-     *             .project(regional_secret_basic.project())
-     *             .location(regional_secret_basic.location())
-     *             .secretId(regional_secret_basic.secretId())
+     *             .project(regional_secret_basic.get("project"))
+     *             .location(regional_secret_basic.get("location"))
+     *             .secretId(regional_secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -443,9 +443,9 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getRegionalSecretIamPolicy(GetRegionalSecretIamPolicyArgs.builder()
-     *             .project(regional_secret_basic.project())
-     *             .location(regional_secret_basic.location())
-     *             .secretId(regional_secret_basic.secretId())
+     *             .project(regional_secret_basic.get("project"))
+     *             .location(regional_secret_basic.get("location"))
+     *             .secretId(regional_secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -1375,8 +1375,8 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
-     *             .project(secret_basic.project())
-     *             .secretId(secret_basic.secretId())
+     *             .project(secret_basic.get("project"))
+     *             .secretId(secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -1416,8 +1416,8 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
-     *             .project(secret_basic.project())
-     *             .secretId(secret_basic.secretId())
+     *             .project(secret_basic.get("project"))
+     *             .secretId(secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -1457,8 +1457,8 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
-     *             .project(secret_basic.project())
-     *             .secretId(secret_basic.secretId())
+     *             .project(secret_basic.get("project"))
+     *             .secretId(secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -1498,8 +1498,8 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
-     *             .project(secret_basic.project())
-     *             .secretId(secret_basic.secretId())
+     *             .project(secret_basic.get("project"))
+     *             .secretId(secret_basic.get("secretId"))
      *             .build());
      * 
      *     }
@@ -1539,8 +1539,8 @@ public final class SecretmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
-     *             .project(secret_basic.project())
-     *             .secretId(secret_basic.secretId())
+     *             .project(secret_basic.get("project"))
+     *             .secretId(secret_basic.get("secretId"))
      *             .build());
      * 
      *     }

@@ -995,7 +995,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                         {
     ///                             Bucket = sourcebucket.Name,
     ///                             Object = sourceTar.Name,
-    ///                             Generation = sourceTar.Generation,
+    ///                             Generation = sourceTar.Generation.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///                         },
     ///                     },
     ///                 },

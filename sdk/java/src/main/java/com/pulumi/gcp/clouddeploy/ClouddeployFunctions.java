@@ -49,9 +49,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getCustomTargetTypeIamPolicy(GetCustomTargetTypeIamPolicyArgs.builder()
-     *             .project(custom_target_type.project())
-     *             .location(custom_target_type.location())
-     *             .name(custom_target_type.name())
+     *             .project(custom_target_type.get("project"))
+     *             .location(custom_target_type.get("location"))
+     *             .name(custom_target_type.get("name"))
      *             .build());
      * 
      *     }
@@ -91,9 +91,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getCustomTargetTypeIamPolicy(GetCustomTargetTypeIamPolicyArgs.builder()
-     *             .project(custom_target_type.project())
-     *             .location(custom_target_type.location())
-     *             .name(custom_target_type.name())
+     *             .project(custom_target_type.get("project"))
+     *             .location(custom_target_type.get("location"))
+     *             .name(custom_target_type.get("name"))
      *             .build());
      * 
      *     }
@@ -133,9 +133,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getCustomTargetTypeIamPolicy(GetCustomTargetTypeIamPolicyArgs.builder()
-     *             .project(custom_target_type.project())
-     *             .location(custom_target_type.location())
-     *             .name(custom_target_type.name())
+     *             .project(custom_target_type.get("project"))
+     *             .location(custom_target_type.get("location"))
+     *             .name(custom_target_type.get("name"))
      *             .build());
      * 
      *     }
@@ -175,9 +175,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getCustomTargetTypeIamPolicy(GetCustomTargetTypeIamPolicyArgs.builder()
-     *             .project(custom_target_type.project())
-     *             .location(custom_target_type.location())
-     *             .name(custom_target_type.name())
+     *             .project(custom_target_type.get("project"))
+     *             .location(custom_target_type.get("location"))
+     *             .name(custom_target_type.get("name"))
      *             .build());
      * 
      *     }
@@ -217,9 +217,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getCustomTargetTypeIamPolicy(GetCustomTargetTypeIamPolicyArgs.builder()
-     *             .project(custom_target_type.project())
-     *             .location(custom_target_type.location())
-     *             .name(custom_target_type.name())
+     *             .project(custom_target_type.get("project"))
+     *             .location(custom_target_type.get("location"))
+     *             .name(custom_target_type.get("name"))
      *             .build());
      * 
      *     }
@@ -259,9 +259,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -301,9 +301,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -343,9 +343,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -385,9 +385,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -427,9 +427,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getDeliveryPipelineIamPolicy(GetDeliveryPipelineIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -469,9 +469,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -511,9 +511,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -553,9 +553,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -595,9 +595,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -637,9 +637,9 @@ public final class ClouddeployFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ClouddeployFunctions.getTargetIamPolicy(GetTargetIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }

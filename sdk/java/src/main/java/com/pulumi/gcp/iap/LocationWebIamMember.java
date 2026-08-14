@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LocationWebIamPolicy("policy", LocationWebIamPolicyArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .policyData(admin.policyData())
  *             .build());
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LocationWebIamPolicy("policy", LocationWebIamPolicyArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .policyData(admin.policyData())
  *             .build());
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LocationWebIamBinding("binding", LocationWebIamBindingArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
@@ -189,7 +189,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LocationWebIamBinding("binding", LocationWebIamBindingArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LocationWebIamMember("member", LocationWebIamMemberArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LocationWebIamMember("member", LocationWebIamMemberArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
@@ -339,7 +339,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LocationWebIamPolicy("policy", LocationWebIamPolicyArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .policyData(admin.policyData())
  *             .build());
@@ -390,7 +390,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LocationWebIamPolicy("policy", LocationWebIamPolicyArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .policyData(admin.policyData())
  *             .build());
@@ -424,7 +424,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LocationWebIamBinding("binding", LocationWebIamBindingArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
@@ -461,7 +461,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LocationWebIamBinding("binding", LocationWebIamBindingArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
@@ -501,7 +501,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LocationWebIamMember("member", LocationWebIamMemberArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
@@ -538,7 +538,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LocationWebIamMember("member", LocationWebIamMemberArgs.builder()
- *             .project(projectService.project())
+ *             .project(projectService.get("project"))
  *             .location("us-central1")
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")

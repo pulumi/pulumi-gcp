@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var apigeeEnvironmentKeyvaluemaps = new EnvironmentKeyvaluemaps("apigeeEnvironmentKeyvaluemaps", EnvironmentKeyvaluemapsArgs.builder()
- *             .envId(createApigeeEnvironment.id())
+ *             .envId(createApigeeEnvironment.get("id"))
  *             .name("tf-test-env-kvms")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                

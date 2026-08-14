@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()
- *             .project(basicProfile.project())
- *             .location(basicProfile.location())
- *             .dataScanId(basicProfile.dataScanId())
+ *             .project(basicProfile.get("project"))
+ *             .location(basicProfile.get("location"))
+ *             .dataScanId(basicProfile.get("dataScanId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
- *             .project(basicProfile.project())
- *             .location(basicProfile.location())
- *             .dataScanId(basicProfile.dataScanId())
+ *             .project(basicProfile.get("project"))
+ *             .location(basicProfile.get("location"))
+ *             .dataScanId(basicProfile.get("dataScanId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
- *             .project(basicProfile.project())
- *             .location(basicProfile.location())
- *             .dataScanId(basicProfile.dataScanId())
+ *             .project(basicProfile.get("project"))
+ *             .location(basicProfile.get("location"))
+ *             .dataScanId(basicProfile.get("dataScanId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -205,9 +205,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DatascanIamPolicy("policy", DatascanIamPolicyArgs.builder()
- *             .project(basicProfile.project())
- *             .location(basicProfile.location())
- *             .dataScanId(basicProfile.dataScanId())
+ *             .project(basicProfile.get("project"))
+ *             .location(basicProfile.get("location"))
+ *             .dataScanId(basicProfile.get("dataScanId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,9 +241,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DatascanIamBinding("binding", DatascanIamBindingArgs.builder()
- *             .project(basicProfile.project())
- *             .location(basicProfile.location())
- *             .dataScanId(basicProfile.dataScanId())
+ *             .project(basicProfile.get("project"))
+ *             .location(basicProfile.get("location"))
+ *             .dataScanId(basicProfile.get("dataScanId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,9 +278,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DatascanIamMember("member", DatascanIamMemberArgs.builder()
- *             .project(basicProfile.project())
- *             .location(basicProfile.location())
- *             .dataScanId(basicProfile.dataScanId())
+ *             .project(basicProfile.get("project"))
+ *             .location(basicProfile.get("location"))
+ *             .dataScanId(basicProfile.get("dataScanId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

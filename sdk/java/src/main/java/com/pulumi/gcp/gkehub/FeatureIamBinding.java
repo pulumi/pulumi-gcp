@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new FeatureIamPolicy("policy", FeatureIamPolicyArgs.builder()
- *             .project(feature.project())
- *             .location(feature.location())
- *             .name(feature.name())
+ *             .project(feature.get("project"))
+ *             .location(feature.get("location"))
+ *             .name(feature.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new FeatureIamBinding("binding", FeatureIamBindingArgs.builder()
- *             .project(feature.project())
- *             .location(feature.location())
- *             .name(feature.name())
+ *             .project(feature.get("project"))
+ *             .location(feature.get("location"))
+ *             .name(feature.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new FeatureIamMember("member", FeatureIamMemberArgs.builder()
- *             .project(feature.project())
- *             .location(feature.location())
- *             .name(feature.name())
+ *             .project(feature.get("project"))
+ *             .location(feature.get("location"))
+ *             .name(feature.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new FeatureIamPolicy("policy", FeatureIamPolicyArgs.builder()
- *             .project(feature.project())
- *             .location(feature.location())
- *             .name(feature.name())
+ *             .project(feature.get("project"))
+ *             .location(feature.get("location"))
+ *             .name(feature.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new FeatureIamBinding("binding", FeatureIamBindingArgs.builder()
- *             .project(feature.project())
- *             .location(feature.location())
- *             .name(feature.name())
+ *             .project(feature.get("project"))
+ *             .location(feature.get("location"))
+ *             .name(feature.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new FeatureIamMember("member", FeatureIamMemberArgs.builder()
- *             .project(feature.project())
- *             .location(feature.location())
- *             .name(feature.name())
+ *             .project(feature.get("project"))
+ *             .location(feature.get("location"))
+ *             .name(feature.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

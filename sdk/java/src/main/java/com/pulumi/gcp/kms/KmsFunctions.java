@@ -313,7 +313,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(cryptoKey.id())
+     *             .cryptoKeyId(cryptoKey.get("id"))
      *             .build());
      * 
      *     }
@@ -353,7 +353,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(cryptoKey.id())
+     *             .cryptoKeyId(cryptoKey.get("id"))
      *             .build());
      * 
      *     }
@@ -393,7 +393,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(cryptoKey.id())
+     *             .cryptoKeyId(cryptoKey.get("id"))
      *             .build());
      * 
      *     }
@@ -433,7 +433,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(cryptoKey.id())
+     *             .cryptoKeyId(cryptoKey.get("id"))
      *             .build());
      * 
      *     }
@@ -473,7 +473,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
-     *             .cryptoKeyId(cryptoKey.id())
+     *             .cryptoKeyId(cryptoKey.get("id"))
      *             .build());
      * 
      *     }
@@ -528,7 +528,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -583,7 +583,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -638,7 +638,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -693,7 +693,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -748,7 +748,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyLatestVersion = KmsFunctions.getCryptoKeyLatestVersion(GetCryptoKeyLatestVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -803,7 +803,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -858,7 +858,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -913,7 +913,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -968,7 +968,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -1023,7 +1023,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersions = KmsFunctions.getCryptoKeyVersions(GetCryptoKeyVersionsArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -1128,9 +1128,9 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
-     *             .project(example_ekmconnection.project())
-     *             .location(example_ekmconnection.location())
-     *             .name(example_ekmconnection.name())
+     *             .project(example_ekmconnection.get("project"))
+     *             .location(example_ekmconnection.get("location"))
+     *             .name(example_ekmconnection.get("name"))
      *             .build());
      * 
      *     }
@@ -1170,9 +1170,9 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
-     *             .project(example_ekmconnection.project())
-     *             .location(example_ekmconnection.location())
-     *             .name(example_ekmconnection.name())
+     *             .project(example_ekmconnection.get("project"))
+     *             .location(example_ekmconnection.get("location"))
+     *             .name(example_ekmconnection.get("name"))
      *             .build());
      * 
      *     }
@@ -1212,9 +1212,9 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
-     *             .project(example_ekmconnection.project())
-     *             .location(example_ekmconnection.location())
-     *             .name(example_ekmconnection.name())
+     *             .project(example_ekmconnection.get("project"))
+     *             .location(example_ekmconnection.get("location"))
+     *             .name(example_ekmconnection.get("name"))
      *             .build());
      * 
      *     }
@@ -1254,9 +1254,9 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
-     *             .project(example_ekmconnection.project())
-     *             .location(example_ekmconnection.location())
-     *             .name(example_ekmconnection.name())
+     *             .project(example_ekmconnection.get("project"))
+     *             .location(example_ekmconnection.get("location"))
+     *             .name(example_ekmconnection.get("name"))
      *             .build());
      * 
      *     }
@@ -1296,9 +1296,9 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = KmsFunctions.getEkmConnectionIamPolicy(GetEkmConnectionIamPolicyArgs.builder()
-     *             .project(example_ekmconnection.project())
-     *             .location(example_ekmconnection.location())
-     *             .name(example_ekmconnection.name())
+     *             .project(example_ekmconnection.get("project"))
+     *             .location(example_ekmconnection.get("location"))
+     *             .name(example_ekmconnection.get("name"))
      *             .build());
      * 
      *     }
@@ -1620,7 +1620,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -1677,7 +1677,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -1734,7 +1734,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -1791,7 +1791,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -1848,7 +1848,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         final var myCryptoKeyVersion = KmsFunctions.getKMSCryptoKeyVersion(GetKMSCryptoKeyVersionArgs.builder()
-     *             .cryptoKey(myKey.id())
+     *             .cryptoKey(myKey.get("id"))
      *             .build());
      * 
      *     }
@@ -2186,7 +2186,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
@@ -2195,7 +2195,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2311,7 +2311,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
@@ -2320,7 +2320,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2436,7 +2436,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
@@ -2445,7 +2445,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2561,7 +2561,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
@@ -2570,7 +2570,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2686,7 +2686,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecret(GetKMSSecretArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .ciphertext("CiQAqD+xX4SXOSziF4a8JYvq4spfAuWhhYSNul33H85HnVtNQW4SOgDu2UZ46dQCRFl5MF6ekabviN8xq+F+2035ZJ85B+xTYXqNf4mZs0RJitnWWuXlYQh6axnnJYu3kDU=")
      *             .build());
      * 
@@ -2695,7 +2695,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2822,7 +2822,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
-     *             .cryptoKeyVersion(myCryptoKey.id())
+     *             .cryptoKeyVersion(myCryptoKey.get("id"))
      *             .crc32("12c59e54")
      *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
@@ -2844,7 +2844,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2855,7 +2855,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+     *             .password(sqlUserPasswordGoogleKmsSecret.get("plaintext"))
      *             .build());
      * 
      *     }
@@ -2971,7 +2971,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
-     *             .cryptoKeyVersion(myCryptoKey.id())
+     *             .cryptoKeyVersion(myCryptoKey.get("id"))
      *             .crc32("12c59e54")
      *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
@@ -2993,7 +2993,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3004,7 +3004,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+     *             .password(sqlUserPasswordGoogleKmsSecret.get("plaintext"))
      *             .build());
      * 
      *     }
@@ -3120,7 +3120,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
-     *             .cryptoKeyVersion(myCryptoKey.id())
+     *             .cryptoKeyVersion(myCryptoKey.get("id"))
      *             .crc32("12c59e54")
      *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
@@ -3142,7 +3142,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3153,7 +3153,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+     *             .password(sqlUserPasswordGoogleKmsSecret.get("plaintext"))
      *             .build());
      * 
      *     }
@@ -3269,7 +3269,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
-     *             .cryptoKeyVersion(myCryptoKey.id())
+     *             .cryptoKeyVersion(myCryptoKey.get("id"))
      *             .crc32("12c59e54")
      *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
@@ -3291,7 +3291,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3302,7 +3302,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+     *             .password(sqlUserPasswordGoogleKmsSecret.get("plaintext"))
      *             .build());
      * 
      *     }
@@ -3418,7 +3418,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sqlUserPassword = KmsFunctions.getKMSSecretAsymmetric(GetKMSSecretAsymmetricArgs.builder()
-     *             .cryptoKeyVersion(myCryptoKey.id())
+     *             .cryptoKeyVersion(myCryptoKey.get("id"))
      *             .crc32("12c59e54")
      *             .ciphertext("""
      *     M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
@@ -3440,7 +3440,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.get("hex")))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -3451,7 +3451,7 @@ public final class KmsFunctions {
      *             .name("me")
      *             .instance(main.name())
      *             .host("me.com")
-     *             .password(sqlUserPasswordGoogleKmsSecret.plaintext())
+     *             .password(sqlUserPasswordGoogleKmsSecret.get("plaintext"))
      *             .build());
      * 
      *     }
@@ -3554,7 +3554,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .plaintext("my-secret-password")
      *             .build());
      * 
@@ -3676,7 +3676,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .plaintext("my-secret-password")
      *             .build());
      * 
@@ -3798,7 +3798,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .plaintext("my-secret-password")
      *             .build());
      * 
@@ -3920,7 +3920,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .plaintext("my-secret-password")
      *             .build());
      * 
@@ -4042,7 +4042,7 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPassword = KmsFunctions.getKMSSecretCiphertext(GetKMSSecretCiphertextArgs.builder()
-     *             .cryptoKey(myCryptoKey.id())
+     *             .cryptoKey(myCryptoKey.get("id"))
      *             .plaintext("my-secret-password")
      *             .build());
      * 

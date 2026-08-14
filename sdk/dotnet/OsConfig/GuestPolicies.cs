@@ -218,7 +218,7 @@ namespace Pulumi.Gcp.OsConfig
     ///                         {
     ///                             Bucket = "my-bucket",
     ///                             Object = "executable.msi",
-    ///                             Generation = 1546030865175603,
+    ///                             Generation = (int)1546030865175603,
     ///                         },
     ///                     },
     ///                 },

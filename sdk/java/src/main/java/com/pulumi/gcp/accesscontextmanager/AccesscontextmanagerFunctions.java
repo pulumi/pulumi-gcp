@@ -276,7 +276,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(access_policy.name())
+     *             .name(access_policy.get("name"))
      *             .build());
      * 
      *     }
@@ -316,7 +316,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(access_policy.name())
+     *             .name(access_policy.get("name"))
      *             .build());
      * 
      *     }
@@ -356,7 +356,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(access_policy.name())
+     *             .name(access_policy.get("name"))
      *             .build());
      * 
      *     }
@@ -396,7 +396,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(access_policy.name())
+     *             .name(access_policy.get("name"))
      *             .build());
      * 
      *     }
@@ -436,7 +436,7 @@ public final class AccesscontextmanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
-     *             .name(access_policy.name())
+     *             .name(access_policy.get("name"))
      *             .build());
      * 
      *     }

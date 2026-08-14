@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -119,9 +119,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -154,9 +154,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -192,9 +192,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(TunnelDestGroupIamBindingConditionArgs.builder()
@@ -233,9 +233,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -271,9 +271,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(TunnelDestGroupIamMemberConditionArgs.builder()
@@ -345,9 +345,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -397,9 +397,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TunnelDestGroupIamPolicy("policy", TunnelDestGroupIamPolicyArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -432,9 +432,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -470,9 +470,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TunnelDestGroupIamBinding("binding", TunnelDestGroupIamBindingArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(TunnelDestGroupIamBindingConditionArgs.builder()
@@ -511,9 +511,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -549,9 +549,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TunnelDestGroupIamMember("member", TunnelDestGroupIamMemberArgs.builder()
- *             .project(destGroup.project())
- *             .region(destGroup.region())
- *             .destGroup(destGroup.groupName())
+ *             .project(destGroup.get("project"))
+ *             .region(destGroup.get("region"))
+ *             .destGroup(destGroup.get("groupName"))
  *             .role("roles/iap.tunnelResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(TunnelDestGroupIamMemberConditionArgs.builder()

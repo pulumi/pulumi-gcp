@@ -967,7 +967,7 @@ import javax.annotation.Nullable;
  *         var endpoint = new NetworkEndpoint("endpoint", NetworkEndpointArgs.builder()
  *             .networkEndpointGroup(neg.name())
  *             .instance(endpoint_instance.name())
- *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *             .build());
  * 
  *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()

@@ -458,7 +458,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             {
     ///                 Group = pscNeg.Id,
     ///                 BalancingMode = "UTILIZATION",
-    ///                 CapacityScaler = 1,
+    ///                 CapacityScaler = 1.0,
     ///             },
     ///         },
     ///     });

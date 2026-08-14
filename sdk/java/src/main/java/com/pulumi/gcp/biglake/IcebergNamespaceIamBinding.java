@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IcebergNamespaceIamPolicy("policy", IcebergNamespaceIamPolicyArgs.builder()
- *             .project(myIcebergNamespace.project())
- *             .catalog(myIcebergNamespace.catalog())
- *             .namespaceId(myIcebergNamespace.id())
+ *             .project(myIcebergNamespace.get("project"))
+ *             .catalog(myIcebergNamespace.get("catalog"))
+ *             .namespaceId(myIcebergNamespace.get("id"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IcebergNamespaceIamBinding("binding", IcebergNamespaceIamBindingArgs.builder()
- *             .project(myIcebergNamespace.project())
- *             .catalog(myIcebergNamespace.catalog())
- *             .namespaceId(myIcebergNamespace.id())
+ *             .project(myIcebergNamespace.get("project"))
+ *             .catalog(myIcebergNamespace.get("catalog"))
+ *             .namespaceId(myIcebergNamespace.get("id"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IcebergNamespaceIamMember("member", IcebergNamespaceIamMemberArgs.builder()
- *             .project(myIcebergNamespace.project())
- *             .catalog(myIcebergNamespace.catalog())
- *             .namespaceId(myIcebergNamespace.id())
+ *             .project(myIcebergNamespace.get("project"))
+ *             .catalog(myIcebergNamespace.get("catalog"))
+ *             .namespaceId(myIcebergNamespace.get("id"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IcebergNamespaceIamPolicy("policy", IcebergNamespaceIamPolicyArgs.builder()
- *             .project(myIcebergNamespace.project())
- *             .catalog(myIcebergNamespace.catalog())
- *             .namespaceId(myIcebergNamespace.id())
+ *             .project(myIcebergNamespace.get("project"))
+ *             .catalog(myIcebergNamespace.get("catalog"))
+ *             .namespaceId(myIcebergNamespace.get("id"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IcebergNamespaceIamBinding("binding", IcebergNamespaceIamBindingArgs.builder()
- *             .project(myIcebergNamespace.project())
- *             .catalog(myIcebergNamespace.catalog())
- *             .namespaceId(myIcebergNamespace.id())
+ *             .project(myIcebergNamespace.get("project"))
+ *             .catalog(myIcebergNamespace.get("catalog"))
+ *             .namespaceId(myIcebergNamespace.get("id"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IcebergNamespaceIamMember("member", IcebergNamespaceIamMemberArgs.builder()
- *             .project(myIcebergNamespace.project())
- *             .catalog(myIcebergNamespace.catalog())
- *             .namespaceId(myIcebergNamespace.id())
+ *             .project(myIcebergNamespace.get("project"))
+ *             .catalog(myIcebergNamespace.get("catalog"))
+ *             .namespaceId(myIcebergNamespace.get("id"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -119,8 +119,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -153,8 +153,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,8 +190,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebForwardingRuleServiceIamBindingConditionArgs.builder()
@@ -230,8 +230,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -267,8 +267,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebForwardingRuleServiceIamMemberConditionArgs.builder()
@@ -340,8 +340,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -391,8 +391,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebForwardingRuleServiceIamPolicy("policy", WebForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -425,8 +425,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -462,8 +462,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebForwardingRuleServiceIamBinding("binding", WebForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebForwardingRuleServiceIamBindingConditionArgs.builder()
@@ -502,8 +502,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -539,8 +539,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebForwardingRuleServiceIamMember("member", WebForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .forwardingRuleServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .forwardingRuleServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebForwardingRuleServiceIamMemberConditionArgs.builder()

@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiReasoningEngineIamPolicy("policy", AiReasoningEngineIamPolicyArgs.builder()
- *             .project(reasoningEngine.project())
- *             .region(reasoningEngine.region())
- *             .reasoningEngine(reasoningEngine.name())
+ *             .project(reasoningEngine.get("project"))
+ *             .region(reasoningEngine.get("region"))
+ *             .reasoningEngine(reasoningEngine.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiReasoningEngineIamBinding("binding", AiReasoningEngineIamBindingArgs.builder()
- *             .project(reasoningEngine.project())
- *             .region(reasoningEngine.region())
- *             .reasoningEngine(reasoningEngine.name())
+ *             .project(reasoningEngine.get("project"))
+ *             .region(reasoningEngine.get("region"))
+ *             .reasoningEngine(reasoningEngine.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiReasoningEngineIamMember("member", AiReasoningEngineIamMemberArgs.builder()
- *             .project(reasoningEngine.project())
- *             .region(reasoningEngine.region())
- *             .reasoningEngine(reasoningEngine.name())
+ *             .project(reasoningEngine.get("project"))
+ *             .region(reasoningEngine.get("region"))
+ *             .reasoningEngine(reasoningEngine.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiReasoningEngineIamPolicy("policy", AiReasoningEngineIamPolicyArgs.builder()
- *             .project(reasoningEngine.project())
- *             .region(reasoningEngine.region())
- *             .reasoningEngine(reasoningEngine.name())
+ *             .project(reasoningEngine.get("project"))
+ *             .region(reasoningEngine.get("region"))
+ *             .reasoningEngine(reasoningEngine.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiReasoningEngineIamBinding("binding", AiReasoningEngineIamBindingArgs.builder()
- *             .project(reasoningEngine.project())
- *             .region(reasoningEngine.region())
- *             .reasoningEngine(reasoningEngine.name())
+ *             .project(reasoningEngine.get("project"))
+ *             .region(reasoningEngine.get("region"))
+ *             .reasoningEngine(reasoningEngine.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiReasoningEngineIamMember("member", AiReasoningEngineIamMemberArgs.builder()
- *             .project(reasoningEngine.project())
- *             .region(reasoningEngine.region())
- *             .reasoningEngine(reasoningEngine.name())
+ *             .project(reasoningEngine.get("project"))
+ *             .region(reasoningEngine.get("region"))
+ *             .reasoningEngine(reasoningEngine.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

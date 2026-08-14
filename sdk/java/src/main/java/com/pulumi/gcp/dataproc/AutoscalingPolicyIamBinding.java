@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AutoscalingPolicyIamPolicy("policy", AutoscalingPolicyIamPolicyArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .policyId(basic.policyId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .policyId(basic.get("policyId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AutoscalingPolicyIamBinding("binding", AutoscalingPolicyIamBindingArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .policyId(basic.policyId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .policyId(basic.get("policyId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AutoscalingPolicyIamMember("member", AutoscalingPolicyIamMemberArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .policyId(basic.policyId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .policyId(basic.get("policyId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AutoscalingPolicyIamPolicy("policy", AutoscalingPolicyIamPolicyArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .policyId(basic.policyId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .policyId(basic.get("policyId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AutoscalingPolicyIamBinding("binding", AutoscalingPolicyIamBindingArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .policyId(basic.policyId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .policyId(basic.get("policyId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AutoscalingPolicyIamMember("member", AutoscalingPolicyIamMemberArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .policyId(basic.policyId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .policyId(basic.get("policyId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

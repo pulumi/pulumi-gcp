@@ -64,9 +64,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .policyId(basic.policyId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .policyId(basic.get("policyId"))
      *             .build());
      * 
      *     }
@@ -106,9 +106,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .policyId(basic.policyId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .policyId(basic.get("policyId"))
      *             .build());
      * 
      *     }
@@ -148,9 +148,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .policyId(basic.policyId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .policyId(basic.get("policyId"))
      *             .build());
      * 
      *     }
@@ -190,9 +190,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .policyId(basic.policyId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .policyId(basic.get("policyId"))
      *             .build());
      * 
      *     }
@@ -232,9 +232,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
-     *             .project(basic.project())
-     *             .location(basic.location())
-     *             .policyId(basic.policyId())
+     *             .project(basic.get("project"))
+     *             .location(basic.get("location"))
+     *             .policyId(basic.get("policyId"))
      *             .build());
      * 
      *     }
@@ -274,7 +274,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(cluster.name())
+     *             .cluster(cluster.get("name"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -315,7 +315,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(cluster.name())
+     *             .cluster(cluster.get("name"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -356,7 +356,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(cluster.name())
+     *             .cluster(cluster.get("name"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -397,7 +397,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(cluster.name())
+     *             .cluster(cluster.get("name"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -438,7 +438,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
-     *             .cluster(cluster.name())
+     *             .cluster(cluster.get("name"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -479,7 +479,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(pyspark.reference()[0].jobId())
+     *             .jobId(pyspark.get("reference")[0].get("jobId"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -520,7 +520,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(pyspark.reference()[0].jobId())
+     *             .jobId(pyspark.get("reference")[0].get("jobId"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -561,7 +561,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(pyspark.reference()[0].jobId())
+     *             .jobId(pyspark.get("reference")[0].get("jobId"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -602,7 +602,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(pyspark.reference()[0].jobId())
+     *             .jobId(pyspark.get("reference")[0].get("jobId"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -643,7 +643,7 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
-     *             .jobId(pyspark.reference()[0].jobId())
+     *             .jobId(pyspark.get("reference")[0].get("jobId"))
      *             .region("us-central1")
      *             .build());
      * 
@@ -684,10 +684,10 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
      *             .build());
      * 
      *     }
@@ -727,10 +727,10 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
      *             .build());
      * 
      *     }
@@ -770,10 +770,10 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
      *             .build());
      * 
      *     }
@@ -813,10 +813,10 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
      *             .build());
      * 
      *     }
@@ -856,10 +856,10 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreDatabaseIamPolicy(GetMetastoreDatabaseIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .database(hive.hiveConfig()[0].properties().database())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
      *             .build());
      * 
      *     }
@@ -899,9 +899,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .federationId(default_.federationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .federationId(default_.get("federationId"))
      *             .build());
      * 
      *     }
@@ -941,9 +941,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .federationId(default_.federationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .federationId(default_.get("federationId"))
      *             .build());
      * 
      *     }
@@ -983,9 +983,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .federationId(default_.federationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .federationId(default_.get("federationId"))
      *             .build());
      * 
      *     }
@@ -1025,9 +1025,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .federationId(default_.federationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .federationId(default_.get("federationId"))
      *             .build());
      * 
      *     }
@@ -1067,9 +1067,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .federationId(default_.federationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .federationId(default_.get("federationId"))
      *             .build());
      * 
      *     }
@@ -1314,9 +1314,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .serviceId(default_.serviceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .serviceId(default_.get("serviceId"))
      *             .build());
      * 
      *     }
@@ -1356,9 +1356,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .serviceId(default_.serviceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .serviceId(default_.get("serviceId"))
      *             .build());
      * 
      *     }
@@ -1398,9 +1398,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .serviceId(default_.serviceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .serviceId(default_.get("serviceId"))
      *             .build());
      * 
      *     }
@@ -1440,9 +1440,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .serviceId(default_.serviceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .serviceId(default_.get("serviceId"))
      *             .build());
      * 
      *     }
@@ -1482,9 +1482,9 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .serviceId(default_.serviceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .serviceId(default_.get("serviceId"))
      *             .build());
      * 
      *     }
@@ -1524,11 +1524,11 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .databaseId(hive.hiveConfig()[0].properties().database())
-     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+     *             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
      *             .build());
      * 
      *     }
@@ -1568,11 +1568,11 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .databaseId(hive.hiveConfig()[0].properties().database())
-     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+     *             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
      *             .build());
      * 
      *     }
@@ -1612,11 +1612,11 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .databaseId(hive.hiveConfig()[0].properties().database())
-     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+     *             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
      *             .build());
      * 
      *     }
@@ -1656,11 +1656,11 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .databaseId(hive.hiveConfig()[0].properties().database())
-     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+     *             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
      *             .build());
      * 
      *     }
@@ -1700,11 +1700,11 @@ public final class DataprocFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataprocFunctions.getMetastoreTableIamPolicy(GetMetastoreTableIamPolicyArgs.builder()
-     *             .project(dpmsService.project())
-     *             .location(dpmsService.location())
-     *             .serviceId(dpmsService.serviceId())
-     *             .databaseId(hive.hiveConfig()[0].properties().database())
-     *             .table(hive.hiveConfig()[0].properties().table())
+     *             .project(dpmsService.get("project"))
+     *             .location(dpmsService.get("location"))
+     *             .serviceId(dpmsService.get("serviceId"))
+     *             .databaseId(hive.get("hiveConfig")[0].get("properties").get("database"))
+     *             .table(hive.get("hiveConfig")[0].get("properties").get("table"))
      *             .build());
      * 
      *     }

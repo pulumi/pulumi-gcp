@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_ = new AttachedDisk("default", AttachedDiskArgs.builder()
- *             .disk(defaultGoogleComputeDisk.id())
+ *             .disk(defaultGoogleComputeDisk.get("id"))
  *             .instance(defaultInstance.id())
  *             .build());
  * 

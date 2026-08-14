@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *         var cryptoKeyBinding = new CryptoKeyIAMBinding("cryptoKeyBinding", CryptoKeyIAMBindingArgs.builder()
  *             .cryptoKeyId(exampleKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataform.iam.gserviceaccount.com", project.number()))
+ *             .members(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-dataform.iam.gserviceaccount.com", project.get("number")))
  *             .build());
  * 
  *         var dataformRepository = new Repository("dataformRepository", RepositoryArgs.builder()

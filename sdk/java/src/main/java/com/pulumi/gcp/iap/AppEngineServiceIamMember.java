@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AppEngineServiceIamPolicy("policy", AppEngineServiceIamPolicyArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -119,9 +119,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AppEngineServiceIamPolicy("policy", AppEngineServiceIamPolicyArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -154,9 +154,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AppEngineServiceIamBinding("binding", AppEngineServiceIamBindingArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -192,9 +192,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AppEngineServiceIamBinding("binding", AppEngineServiceIamBindingArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(AppEngineServiceIamBindingConditionArgs.builder()
@@ -233,9 +233,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AppEngineServiceIamMember("member", AppEngineServiceIamMemberArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -271,9 +271,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AppEngineServiceIamMember("member", AppEngineServiceIamMemberArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(AppEngineServiceIamMemberConditionArgs.builder()
@@ -345,9 +345,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AppEngineServiceIamPolicy("policy", AppEngineServiceIamPolicyArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -397,9 +397,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AppEngineServiceIamPolicy("policy", AppEngineServiceIamPolicyArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -432,9 +432,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AppEngineServiceIamBinding("binding", AppEngineServiceIamBindingArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -470,9 +470,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AppEngineServiceIamBinding("binding", AppEngineServiceIamBindingArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(AppEngineServiceIamBindingConditionArgs.builder()
@@ -511,9 +511,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AppEngineServiceIamMember("member", AppEngineServiceIamMemberArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -549,9 +549,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AppEngineServiceIamMember("member", AppEngineServiceIamMemberArgs.builder()
- *             .project(version.project())
- *             .appId(version.project())
- *             .service(version.service())
+ *             .project(version.get("project"))
+ *             .appId(version.get("project"))
+ *             .service(version.get("service"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(AppEngineServiceIamMemberConditionArgs.builder()

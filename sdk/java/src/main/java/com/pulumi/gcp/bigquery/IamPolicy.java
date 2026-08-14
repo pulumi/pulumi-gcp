@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
- *             .project(test.project())
- *             .datasetId(test.datasetId())
- *             .tableId(test.tableId())
+ *             .project(test.get("project"))
+ *             .datasetId(test.get("datasetId"))
+ *             .tableId(test.get("tableId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IamBinding("binding", IamBindingArgs.builder()
- *             .project(test.project())
- *             .datasetId(test.datasetId())
- *             .tableId(test.tableId())
+ *             .project(test.get("project"))
+ *             .datasetId(test.get("datasetId"))
+ *             .tableId(test.get("tableId"))
  *             .role("roles/bigquery.dataOwner")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IamMember("member", IamMemberArgs.builder()
- *             .project(test.project())
- *             .datasetId(test.datasetId())
- *             .tableId(test.tableId())
+ *             .project(test.get("project"))
+ *             .datasetId(test.get("datasetId"))
+ *             .tableId(test.get("tableId"))
  *             .role("roles/bigquery.dataOwner")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IamPolicy("policy", IamPolicyArgs.builder()
- *             .project(test.project())
- *             .datasetId(test.datasetId())
- *             .tableId(test.tableId())
+ *             .project(test.get("project"))
+ *             .datasetId(test.get("datasetId"))
+ *             .tableId(test.get("tableId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IamBinding("binding", IamBindingArgs.builder()
- *             .project(test.project())
- *             .datasetId(test.datasetId())
- *             .tableId(test.tableId())
+ *             .project(test.get("project"))
+ *             .datasetId(test.get("datasetId"))
+ *             .tableId(test.get("tableId"))
  *             .role("roles/bigquery.dataOwner")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IamMember("member", IamMemberArgs.builder()
- *             .project(test.project())
- *             .datasetId(test.datasetId())
- *             .tableId(test.tableId())
+ *             .project(test.get("project"))
+ *             .datasetId(test.get("datasetId"))
+ *             .tableId(test.get("tableId"))
  *             .role("roles/bigquery.dataOwner")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new V2OrganizationSourceIamPolicy("policy", V2OrganizationSourceIamPolicyArgs.builder()
- *             .source(customSource.name())
+ *             .source(customSource.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new V2OrganizationSourceIamBinding("binding", V2OrganizationSourceIamBindingArgs.builder()
- *             .source(customSource.name())
+ *             .source(customSource.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new V2OrganizationSourceIamMember("member", V2OrganizationSourceIamMemberArgs.builder()
- *             .source(customSource.name())
+ *             .source(customSource.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new V2OrganizationSourceIamPolicy("policy", V2OrganizationSourceIamPolicyArgs.builder()
- *             .source(customSource.name())
+ *             .source(customSource.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new V2OrganizationSourceIamBinding("binding", V2OrganizationSourceIamBindingArgs.builder()
- *             .source(customSource.name())
+ *             .source(customSource.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -270,7 +270,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new V2OrganizationSourceIamMember("member", V2OrganizationSourceIamMemberArgs.builder()
- *             .source(customSource.name())
+ *             .source(customSource.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

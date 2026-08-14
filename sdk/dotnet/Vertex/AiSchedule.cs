@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Vertex
     ///                         var notebookName = values.Item2;
     ///                         return $"gs://{bucketName}/{notebookName}";
     ///                     }),
-    ///                     Generation = notebook.Generation,
+    ///                     Generation = notebook.Generation.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///                 },
     ///                 CustomEnvironmentSpec = new Gcp.Vertex.Inputs.AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs
     ///                 {

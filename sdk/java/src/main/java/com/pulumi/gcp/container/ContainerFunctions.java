@@ -498,7 +498,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -540,7 +540,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -582,7 +582,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -624,7 +624,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -666,7 +666,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -708,7 +708,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -750,7 +750,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -792,7 +792,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -834,7 +834,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -876,7 +876,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -918,7 +918,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -960,7 +960,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -1002,7 +1002,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }
@@ -1044,7 +1044,7 @@ public final class ContainerFunctions {
      *             .project("my-project")
      *             .build());
      * 
-     *         ctx.export("firstAvailableVersion", versions.validVersions()[0]);
+     *         ctx.export("firstAvailableVersion", versions.get("validVersions")[0]);
      *     }
      * }
      * }

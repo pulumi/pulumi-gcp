@@ -81,7 +81,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(endpointsService.serviceName())
+     *             .serviceName(endpointsService.get("serviceName"))
      *             .build());
      * 
      *     }
@@ -121,7 +121,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(endpointsService.serviceName())
+     *             .serviceName(endpointsService.get("serviceName"))
      *             .build());
      * 
      *     }
@@ -161,7 +161,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(endpointsService.serviceName())
+     *             .serviceName(endpointsService.get("serviceName"))
      *             .build());
      * 
      *     }
@@ -201,7 +201,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(endpointsService.serviceName())
+     *             .serviceName(endpointsService.get("serviceName"))
      *             .build());
      * 
      *     }
@@ -241,7 +241,7 @@ public final class EndpointsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = EndpointsFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .serviceName(endpointsService.serviceName())
+     *             .serviceName(endpointsService.get("serviceName"))
      *             .build());
      * 
      *     }

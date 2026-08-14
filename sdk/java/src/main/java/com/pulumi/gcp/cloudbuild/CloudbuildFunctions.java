@@ -48,7 +48,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project("your-project-id")
-     *             .triggerId(filename_trigger.triggerId())
+     *             .triggerId(filename_trigger.get("triggerId"))
      *             .location("location of trigger build")
      *             .build());
      * 
@@ -94,7 +94,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project("your-project-id")
-     *             .triggerId(filename_trigger.triggerId())
+     *             .triggerId(filename_trigger.get("triggerId"))
      *             .location("location of trigger build")
      *             .build());
      * 
@@ -140,7 +140,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project("your-project-id")
-     *             .triggerId(filename_trigger.triggerId())
+     *             .triggerId(filename_trigger.get("triggerId"))
      *             .location("location of trigger build")
      *             .build());
      * 
@@ -186,7 +186,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project("your-project-id")
-     *             .triggerId(filename_trigger.triggerId())
+     *             .triggerId(filename_trigger.get("triggerId"))
      *             .location("location of trigger build")
      *             .build());
      * 
@@ -232,7 +232,7 @@ public final class CloudbuildFunctions {
      *     public static void stack(Context ctx) {
      *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
      *             .project("your-project-id")
-     *             .triggerId(filename_trigger.triggerId())
+     *             .triggerId(filename_trigger.get("triggerId"))
      *             .location("location of trigger build")
      *             .build());
      * 

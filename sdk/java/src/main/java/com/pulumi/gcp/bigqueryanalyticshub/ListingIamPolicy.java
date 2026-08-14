@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()
- *             .project(listing.project())
- *             .location(listing.location())
- *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(listing.listingId())
+ *             .project(listing.get("project"))
+ *             .location(listing.get("location"))
+ *             .dataExchangeId(listing.get("dataExchangeId"))
+ *             .listingId(listing.get("listingId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,10 +100,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()
- *             .project(listing.project())
- *             .location(listing.location())
- *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(listing.listingId())
+ *             .project(listing.get("project"))
+ *             .location(listing.get("location"))
+ *             .dataExchangeId(listing.get("dataExchangeId"))
+ *             .listingId(listing.get("listingId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,10 +138,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()
- *             .project(listing.project())
- *             .location(listing.location())
- *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(listing.listingId())
+ *             .project(listing.get("project"))
+ *             .location(listing.get("location"))
+ *             .dataExchangeId(listing.get("dataExchangeId"))
+ *             .listingId(listing.get("listingId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,10 +206,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ListingIamPolicy("policy", ListingIamPolicyArgs.builder()
- *             .project(listing.project())
- *             .location(listing.location())
- *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(listing.listingId())
+ *             .project(listing.get("project"))
+ *             .location(listing.get("location"))
+ *             .dataExchangeId(listing.get("dataExchangeId"))
+ *             .listingId(listing.get("listingId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -243,10 +243,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ListingIamBinding("binding", ListingIamBindingArgs.builder()
- *             .project(listing.project())
- *             .location(listing.location())
- *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(listing.listingId())
+ *             .project(listing.get("project"))
+ *             .location(listing.get("location"))
+ *             .dataExchangeId(listing.get("dataExchangeId"))
+ *             .listingId(listing.get("listingId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -281,10 +281,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ListingIamMember("member", ListingIamMemberArgs.builder()
- *             .project(listing.project())
- *             .location(listing.location())
- *             .dataExchangeId(listing.dataExchangeId())
- *             .listingId(listing.listingId())
+ *             .project(listing.get("project"))
+ *             .location(listing.get("location"))
+ *             .dataExchangeId(listing.get("dataExchangeId"))
+ *             .listingId(listing.get("listingId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

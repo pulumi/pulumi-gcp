@@ -363,7 +363,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Group = rigm.InstanceGroup,
     ///                 BalancingMode = "UTILIZATION",
-    ///                 CapacityScaler = 1,
+    ///                 CapacityScaler = 1.0,
     ///             },
     ///         },
     ///         Region = "us-central1",

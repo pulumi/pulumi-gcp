@@ -216,7 +216,7 @@ import javax.annotation.Nullable;
  *             .region("us-central1")
  *             .instance(defaultInstance.selfLink())
  *             .port(80)
- *             .ipAddress(defaultInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *             .ipAddress(defaultInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *             .clientDestinationPort(8080)
  *             .build());
  * 

@@ -46,9 +46,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .instanceId(default_.instanceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .instanceId(default_.get("instanceId"))
      *             .build());
      * 
      *     }
@@ -88,9 +88,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .instanceId(default_.instanceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .instanceId(default_.get("instanceId"))
      *             .build());
      * 
      *     }
@@ -130,9 +130,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .instanceId(default_.instanceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .instanceId(default_.get("instanceId"))
      *             .build());
      * 
      *     }
@@ -172,9 +172,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .instanceId(default_.instanceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .instanceId(default_.get("instanceId"))
      *             .build());
      * 
      *     }
@@ -214,9 +214,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .instanceId(default_.instanceId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .instanceId(default_.get("instanceId"))
      *             .build());
      * 
      *     }
@@ -256,9 +256,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .repositoryId(default_.repositoryId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .repositoryId(default_.get("repositoryId"))
      *             .build());
      * 
      *     }
@@ -298,9 +298,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .repositoryId(default_.repositoryId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .repositoryId(default_.get("repositoryId"))
      *             .build());
      * 
      *     }
@@ -340,9 +340,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .repositoryId(default_.repositoryId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .repositoryId(default_.get("repositoryId"))
      *             .build());
      * 
      *     }
@@ -382,9 +382,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .repositoryId(default_.repositoryId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .repositoryId(default_.get("repositoryId"))
      *             .build());
      * 
      *     }
@@ -424,9 +424,9 @@ public final class SecuresourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SecuresourcemanagerFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .repositoryId(default_.repositoryId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .repositoryId(default_.get("repositoryId"))
      *             .build());
      * 
      *     }

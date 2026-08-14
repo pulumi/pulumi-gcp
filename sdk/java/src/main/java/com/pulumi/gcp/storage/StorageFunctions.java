@@ -324,7 +324,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(default_.name())
+     *             .bucket(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -364,7 +364,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(default_.name())
+     *             .bucket(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -404,7 +404,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(default_.name())
+     *             .bucket(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -444,7 +444,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(default_.name())
+     *             .bucket(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -484,7 +484,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
-     *             .bucket(default_.name())
+     *             .bucket(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -1879,7 +1879,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1919,7 +1919,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1959,7 +1959,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1999,7 +1999,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2039,7 +2039,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlFolderIntelligenceConfig(GetControlFolderIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2279,7 +2279,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2319,7 +2319,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2359,7 +2359,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2399,7 +2399,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2439,7 +2439,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlOrganizationIntelligenceConfig(GetControlOrganizationIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2679,7 +2679,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2719,7 +2719,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2759,7 +2759,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2799,7 +2799,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2839,7 +2839,7 @@ public final class StorageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = StorageFunctions.getControlProjectIntelligenceConfig(GetControlProjectIntelligenceConfigArgs.builder()
-     *             .name(example.name())
+     *             .name(example.get("name"))
      *             .build());
      * 
      *     }
@@ -4787,7 +4787,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
@@ -4921,7 +4921,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
@@ -5055,7 +5055,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
@@ -5189,7 +5189,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
@@ -5323,7 +5323,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
@@ -5457,7 +5457,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());
@@ -5591,7 +5591,7 @@ public final class StorageFunctions {
      *             .build());
      * 
      *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
-     *             .topic(topic.name())
+     *             .topic(topic.get("name"))
      *             .role("roles/pubsub.publisher")
      *             .members(String.format("serviceAccount:%s", gcsAccount.emailAddress()))
      *             .build());

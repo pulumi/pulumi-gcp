@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureOnlineStoreFeatureviewIamPolicy("policy", AiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
- *             .region(featureview.region())
- *             .featureOnlineStore(featureview.featureOnlineStore())
- *             .featureView(featureview.name())
+ *             .region(featureview.get("region"))
+ *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+ *             .featureView(featureview.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureOnlineStoreFeatureviewIamBinding("binding", AiFeatureOnlineStoreFeatureviewIamBindingArgs.builder()
- *             .region(featureview.region())
- *             .featureOnlineStore(featureview.featureOnlineStore())
- *             .featureView(featureview.name())
+ *             .region(featureview.get("region"))
+ *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+ *             .featureView(featureview.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureOnlineStoreFeatureviewIamMember("member", AiFeatureOnlineStoreFeatureviewIamMemberArgs.builder()
- *             .region(featureview.region())
- *             .featureOnlineStore(featureview.featureOnlineStore())
- *             .featureView(featureview.name())
+ *             .region(featureview.get("region"))
+ *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+ *             .featureView(featureview.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -209,9 +209,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureOnlineStoreFeatureviewIamPolicy("policy", AiFeatureOnlineStoreFeatureviewIamPolicyArgs.builder()
- *             .region(featureview.region())
- *             .featureOnlineStore(featureview.featureOnlineStore())
- *             .featureView(featureview.name())
+ *             .region(featureview.get("region"))
+ *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+ *             .featureView(featureview.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -245,9 +245,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureOnlineStoreFeatureviewIamBinding("binding", AiFeatureOnlineStoreFeatureviewIamBindingArgs.builder()
- *             .region(featureview.region())
- *             .featureOnlineStore(featureview.featureOnlineStore())
- *             .featureView(featureview.name())
+ *             .region(featureview.get("region"))
+ *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+ *             .featureView(featureview.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -282,9 +282,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureOnlineStoreFeatureviewIamMember("member", AiFeatureOnlineStoreFeatureviewIamMemberArgs.builder()
- *             .region(featureview.region())
- *             .featureOnlineStore(featureview.featureOnlineStore())
- *             .featureView(featureview.name())
+ *             .region(featureview.get("region"))
+ *             .featureOnlineStore(featureview.get("featureOnlineStore"))
+ *             .featureView(featureview.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

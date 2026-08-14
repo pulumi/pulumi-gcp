@@ -43,9 +43,9 @@ public final class DataformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataformFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(dataformRepository.project())
-     *             .region(dataformRepository.region())
-     *             .repository(dataformRepository.name())
+     *             .project(dataformRepository.get("project"))
+     *             .region(dataformRepository.get("region"))
+     *             .repository(dataformRepository.get("name"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class DataformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataformFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(dataformRepository.project())
-     *             .region(dataformRepository.region())
-     *             .repository(dataformRepository.name())
+     *             .project(dataformRepository.get("project"))
+     *             .region(dataformRepository.get("region"))
+     *             .repository(dataformRepository.get("name"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class DataformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataformFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(dataformRepository.project())
-     *             .region(dataformRepository.region())
-     *             .repository(dataformRepository.name())
+     *             .project(dataformRepository.get("project"))
+     *             .region(dataformRepository.get("region"))
+     *             .repository(dataformRepository.get("name"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class DataformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataformFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(dataformRepository.project())
-     *             .region(dataformRepository.region())
-     *             .repository(dataformRepository.name())
+     *             .project(dataformRepository.get("project"))
+     *             .region(dataformRepository.get("region"))
+     *             .repository(dataformRepository.get("name"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class DataformFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataformFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(dataformRepository.project())
-     *             .region(dataformRepository.region())
-     *             .repository(dataformRepository.name())
+     *             .project(dataformRepository.get("project"))
+     *             .region(dataformRepository.get("region"))
+     *             .repository(dataformRepository.get("name"))
      *             .build());
      * 
      *     }

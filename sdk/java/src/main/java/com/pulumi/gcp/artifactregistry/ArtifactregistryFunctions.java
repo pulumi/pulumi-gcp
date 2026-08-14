@@ -3474,9 +3474,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .location(my_repo.location())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .location(my_repo.get("location"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -3516,9 +3516,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .location(my_repo.location())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .location(my_repo.get("location"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -3558,9 +3558,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .location(my_repo.location())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .location(my_repo.get("location"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -3600,9 +3600,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .location(my_repo.location())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .location(my_repo.get("location"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -3642,9 +3642,9 @@ public final class ArtifactregistryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .location(my_repo.location())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .location(my_repo.get("location"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }

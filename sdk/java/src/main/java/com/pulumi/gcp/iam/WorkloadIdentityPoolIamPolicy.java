@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkloadIdentityPoolIamPolicy("policy", WorkloadIdentityPoolIamPolicyArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkloadIdentityPoolIamPolicy("policy", WorkloadIdentityPoolIamPolicyArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkloadIdentityPoolIamBinding("binding", WorkloadIdentityPoolIamBindingArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkloadIdentityPoolIamBinding("binding", WorkloadIdentityPoolIamBindingArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WorkloadIdentityPoolIamBindingConditionArgs.builder()
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkloadIdentityPoolIamMember("member", WorkloadIdentityPoolIamMemberArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkloadIdentityPoolIamMember("member", WorkloadIdentityPoolIamMemberArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WorkloadIdentityPoolIamMemberConditionArgs.builder()
@@ -337,8 +337,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkloadIdentityPoolIamPolicy("policy", WorkloadIdentityPoolIamPolicyArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkloadIdentityPoolIamPolicy("policy", WorkloadIdentityPoolIamPolicyArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -422,8 +422,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkloadIdentityPoolIamBinding("binding", WorkloadIdentityPoolIamBindingArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -459,8 +459,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkloadIdentityPoolIamBinding("binding", WorkloadIdentityPoolIamBindingArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WorkloadIdentityPoolIamBindingConditionArgs.builder()
@@ -499,8 +499,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkloadIdentityPoolIamMember("member", WorkloadIdentityPoolIamMemberArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -536,8 +536,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkloadIdentityPoolIamMember("member", WorkloadIdentityPoolIamMemberArgs.builder()
- *             .project(example.project())
- *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+ *             .project(example.get("project"))
+ *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
  *             .role("roles/iam.workloadIdentityPoolViewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WorkloadIdentityPoolIamMemberConditionArgs.builder()

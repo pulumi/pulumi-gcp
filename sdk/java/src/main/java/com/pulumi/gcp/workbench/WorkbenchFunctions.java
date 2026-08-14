@@ -43,9 +43,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .name(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .name(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .name(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .name(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .name(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .name(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .name(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .name(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class WorkbenchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .name(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .name(instance.get("name"))
      *             .build());
      * 
      *     }

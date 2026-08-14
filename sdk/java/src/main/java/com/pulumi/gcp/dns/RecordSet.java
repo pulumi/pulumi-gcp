@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(prod.name())
- *             .rrdatas(frontendInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].accessConfigs()[0].natIp()))
+ *             .rrdatas(frontendInstance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).accessConfigs().get(0).natIp()))
  *             .build());
  * 
  *     }
@@ -304,8 +304,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var geo = new RecordSet("geo", RecordSetArgs.builder()
- *             .name(String.format("backend.%s", prod.dnsName()))
- *             .managedZone(prod.name())
+ *             .name(String.format("backend.%s", prod.get("dnsName")))
+ *             .managedZone(prod.get("name"))
  *             .type("A")
  *             .ttl(300)
  *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()

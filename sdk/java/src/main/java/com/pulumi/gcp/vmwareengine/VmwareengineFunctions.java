@@ -499,8 +499,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .location(exampleThirdparty.location())
-     *             .name(exampleThirdparty.name())
+     *             .location(exampleThirdparty.get("location"))
+     *             .name(exampleThirdparty.get("name"))
      *             .build());
      * 
      *     }
@@ -540,8 +540,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .location(exampleThirdparty.location())
-     *             .name(exampleThirdparty.name())
+     *             .location(exampleThirdparty.get("location"))
+     *             .name(exampleThirdparty.get("name"))
      *             .build());
      * 
      *     }
@@ -581,8 +581,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .location(exampleThirdparty.location())
-     *             .name(exampleThirdparty.name())
+     *             .location(exampleThirdparty.get("location"))
+     *             .name(exampleThirdparty.get("name"))
      *             .build());
      * 
      *     }
@@ -622,8 +622,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .location(exampleThirdparty.location())
-     *             .name(exampleThirdparty.name())
+     *             .location(exampleThirdparty.get("location"))
+     *             .name(exampleThirdparty.get("name"))
      *             .build());
      * 
      *     }
@@ -663,8 +663,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .location(exampleThirdparty.location())
-     *             .name(exampleThirdparty.name())
+     *             .location(exampleThirdparty.get("location"))
+     *             .name(exampleThirdparty.get("name"))
      *             .build());
      * 
      *     }

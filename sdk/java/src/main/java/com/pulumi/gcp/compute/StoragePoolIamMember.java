@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new StoragePoolIamPolicy("policy", StoragePoolIamPolicyArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -119,9 +119,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new StoragePoolIamPolicy("policy", StoragePoolIamPolicyArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -154,9 +154,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new StoragePoolIamBinding("binding", StoragePoolIamBindingArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -192,9 +192,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new StoragePoolIamBinding("binding", StoragePoolIamBindingArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(StoragePoolIamBindingConditionArgs.builder()
@@ -233,9 +233,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new StoragePoolIamMember("member", StoragePoolIamMemberArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -271,9 +271,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new StoragePoolIamMember("member", StoragePoolIamMemberArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(StoragePoolIamMemberConditionArgs.builder()
@@ -345,9 +345,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new StoragePoolIamPolicy("policy", StoragePoolIamPolicyArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -397,9 +397,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new StoragePoolIamPolicy("policy", StoragePoolIamPolicyArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -432,9 +432,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new StoragePoolIamBinding("binding", StoragePoolIamBindingArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -470,9 +470,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new StoragePoolIamBinding("binding", StoragePoolIamBindingArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(StoragePoolIamBindingConditionArgs.builder()
@@ -511,9 +511,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new StoragePoolIamMember("member", StoragePoolIamMemberArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -549,9 +549,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new StoragePoolIamMember("member", StoragePoolIamMemberArgs.builder()
- *             .project(test_storage_pool_basic.project())
- *             .zone(test_storage_pool_basic.zone())
- *             .name(test_storage_pool_basic.name())
+ *             .project(test_storage_pool_basic.get("project"))
+ *             .zone(test_storage_pool_basic.get("zone"))
+ *             .name(test_storage_pool_basic.get("name"))
  *             .role("roles/compute.viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(StoragePoolIamMemberConditionArgs.builder()

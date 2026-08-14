@@ -261,9 +261,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .location(function.location())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .location(function.get("location"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -303,9 +303,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .location(function.location())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .location(function.get("location"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -345,9 +345,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .location(function.location())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .location(function.get("location"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -387,9 +387,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .location(function.location())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .location(function.get("location"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -429,9 +429,9 @@ public final class Cloudfunctionsv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .location(function.location())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .location(function.get("location"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }

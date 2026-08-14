@@ -266,7 +266,7 @@ import javax.annotation.Nullable;
  *         var devconnect_secret = new IAMMember("devconnect-secret", IAMMemberArgs.builder()
  *             .project("my-project-name")
  *             .role("roles/secretmanager.admin")
- *             .member(devconnect_p4sa.member())
+ *             .member(devconnect_p4sa.get("member"))
  *             .build());
  * 
  *         //##

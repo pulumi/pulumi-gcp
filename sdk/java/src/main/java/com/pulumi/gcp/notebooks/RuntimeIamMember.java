@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()
- *             .project(runtime.project())
- *             .location(runtime.location())
- *             .runtimeName(runtime.name())
+ *             .project(runtime.get("project"))
+ *             .location(runtime.get("location"))
+ *             .runtimeName(runtime.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -103,9 +103,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()
- *             .project(runtime.project())
- *             .location(runtime.location())
- *             .runtimeName(runtime.name())
+ *             .project(runtime.get("project"))
+ *             .location(runtime.get("location"))
+ *             .runtimeName(runtime.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -140,9 +140,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()
- *             .project(runtime.project())
- *             .location(runtime.location())
- *             .runtimeName(runtime.name())
+ *             .project(runtime.get("project"))
+ *             .location(runtime.get("location"))
+ *             .runtimeName(runtime.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,9 +208,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RuntimeIamPolicy("policy", RuntimeIamPolicyArgs.builder()
- *             .project(runtime.project())
- *             .location(runtime.location())
- *             .runtimeName(runtime.name())
+ *             .project(runtime.get("project"))
+ *             .location(runtime.get("location"))
+ *             .runtimeName(runtime.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -244,9 +244,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RuntimeIamBinding("binding", RuntimeIamBindingArgs.builder()
- *             .project(runtime.project())
- *             .location(runtime.location())
- *             .runtimeName(runtime.name())
+ *             .project(runtime.get("project"))
+ *             .location(runtime.get("location"))
+ *             .runtimeName(runtime.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -281,9 +281,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RuntimeIamMember("member", RuntimeIamMemberArgs.builder()
- *             .project(runtime.project())
- *             .location(runtime.location())
- *             .runtimeName(runtime.name())
+ *             .project(runtime.get("project"))
+ *             .location(runtime.get("location"))
+ *             .runtimeName(runtime.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

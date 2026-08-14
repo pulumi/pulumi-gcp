@@ -43,9 +43,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(dataPolicy.project())
-     *             .location(dataPolicy.location())
-     *             .dataPolicyId(dataPolicy.dataPolicyId())
+     *             .project(dataPolicy.get("project"))
+     *             .location(dataPolicy.get("location"))
+     *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(dataPolicy.project())
-     *             .location(dataPolicy.location())
-     *             .dataPolicyId(dataPolicy.dataPolicyId())
+     *             .project(dataPolicy.get("project"))
+     *             .location(dataPolicy.get("location"))
+     *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(dataPolicy.project())
-     *             .location(dataPolicy.location())
-     *             .dataPolicyId(dataPolicy.dataPolicyId())
+     *             .project(dataPolicy.get("project"))
+     *             .location(dataPolicy.get("location"))
+     *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(dataPolicy.project())
-     *             .location(dataPolicy.location())
-     *             .dataPolicyId(dataPolicy.dataPolicyId())
+     *             .project(dataPolicy.get("project"))
+     *             .location(dataPolicy.get("location"))
+     *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class BigquerydatapolicyFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .project(dataPolicy.project())
-     *             .location(dataPolicy.location())
-     *             .dataPolicyId(dataPolicy.dataPolicyId())
+     *             .project(dataPolicy.get("project"))
+     *             .location(dataPolicy.get("location"))
+     *             .dataPolicyId(dataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }

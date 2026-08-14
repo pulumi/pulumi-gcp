@@ -46,10 +46,10 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
      *             .build());
      * 
      *     }
@@ -89,10 +89,10 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
      *             .build());
      * 
      *     }
@@ -132,10 +132,10 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
      *             .build());
      * 
      *     }
@@ -175,10 +175,10 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
      *             .build());
      * 
      *     }
@@ -218,10 +218,10 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
      *             .build());
      * 
      *     }
@@ -261,11 +261,11 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
-     *             .workstationId(default_.workstationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
+     *             .workstationId(default_.get("workstationId"))
      *             .build());
      * 
      *     }
@@ -305,11 +305,11 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
-     *             .workstationId(default_.workstationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
+     *             .workstationId(default_.get("workstationId"))
      *             .build());
      * 
      *     }
@@ -349,11 +349,11 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
-     *             .workstationId(default_.workstationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
+     *             .workstationId(default_.get("workstationId"))
      *             .build());
      * 
      *     }
@@ -393,11 +393,11 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
-     *             .workstationId(default_.workstationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
+     *             .workstationId(default_.get("workstationId"))
      *             .build());
      * 
      *     }
@@ -437,11 +437,11 @@ public final class WorkstationsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = WorkstationsFunctions.getWorkstationIamPolicy(GetWorkstationIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .workstationClusterId(default_.workstationClusterId())
-     *             .workstationConfigId(default_.workstationConfigId())
-     *             .workstationId(default_.workstationId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .workstationClusterId(default_.get("workstationClusterId"))
+     *             .workstationConfigId(default_.get("workstationConfigId"))
+     *             .workstationId(default_.get("workstationId"))
      *             .build());
      * 
      *     }

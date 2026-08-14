@@ -97,9 +97,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .agentId(default_.agentId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .agentId(default_.get("agentId"))
      *             .build());
      * 
      *     }
@@ -139,9 +139,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .agentId(default_.agentId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .agentId(default_.get("agentId"))
      *             .build());
      * 
      *     }
@@ -181,9 +181,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .agentId(default_.agentId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .agentId(default_.get("agentId"))
      *             .build());
      * 
      *     }
@@ -223,9 +223,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .agentId(default_.agentId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .agentId(default_.get("agentId"))
      *             .build());
      * 
      *     }
@@ -265,9 +265,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryAgentIamPolicy(GetAgentRegistryAgentIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .agentId(default_.agentId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .agentId(default_.get("agentId"))
      *             .build());
      * 
      *     }
@@ -307,9 +307,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .endpointId(default_.endpointId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .endpointId(default_.get("endpointId"))
      *             .build());
      * 
      *     }
@@ -349,9 +349,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .endpointId(default_.endpointId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .endpointId(default_.get("endpointId"))
      *             .build());
      * 
      *     }
@@ -391,9 +391,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .endpointId(default_.endpointId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .endpointId(default_.get("endpointId"))
      *             .build());
      * 
      *     }
@@ -433,9 +433,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .endpointId(default_.endpointId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .endpointId(default_.get("endpointId"))
      *             .build());
      * 
      *     }
@@ -475,9 +475,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryEndpointIamPolicy(GetAgentRegistryEndpointIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .endpointId(default_.endpointId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .endpointId(default_.get("endpointId"))
      *             .build());
      * 
      *     }
@@ -517,7 +517,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -558,7 +558,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -599,7 +599,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -640,7 +640,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -681,7 +681,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryIamPolicy(GetAgentRegistryIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -722,9 +722,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .mcpServerId(default_.mcpServerId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .mcpServerId(default_.get("mcpServerId"))
      *             .build());
      * 
      *     }
@@ -764,9 +764,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .mcpServerId(default_.mcpServerId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .mcpServerId(default_.get("mcpServerId"))
      *             .build());
      * 
      *     }
@@ -806,9 +806,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .mcpServerId(default_.mcpServerId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .mcpServerId(default_.get("mcpServerId"))
      *             .build());
      * 
      *     }
@@ -848,9 +848,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .mcpServerId(default_.mcpServerId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .mcpServerId(default_.get("mcpServerId"))
      *             .build());
      * 
      *     }
@@ -890,9 +890,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAgentRegistryMcpServerIamPolicy(GetAgentRegistryMcpServerIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .mcpServerId(default_.mcpServerId())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .mcpServerId(default_.get("mcpServerId"))
      *             .build());
      * 
      *     }
@@ -932,9 +932,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
      *             .build());
      * 
      *     }
@@ -974,9 +974,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
      *             .build());
      * 
      *     }
@@ -1016,9 +1016,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
      *             .build());
      * 
      *     }
@@ -1058,9 +1058,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
      *             .build());
      * 
      *     }
@@ -1100,9 +1100,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
      *             .build());
      * 
      *     }
@@ -1142,10 +1142,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
-     *             .versionId(version.versionId())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
+     *             .versionId(version.get("versionId"))
      *             .build());
      * 
      *     }
@@ -1185,10 +1185,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
-     *             .versionId(version.versionId())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
+     *             .versionId(version.get("versionId"))
      *             .build());
      * 
      *     }
@@ -1228,10 +1228,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
-     *             .versionId(version.versionId())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
+     *             .versionId(version.get("versionId"))
      *             .build());
      * 
      *     }
@@ -1271,10 +1271,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
-     *             .versionId(version.versionId())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
+     *             .versionId(version.get("versionId"))
      *             .build());
      * 
      *     }
@@ -1314,10 +1314,10 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
-     *             .project(version.project())
-     *             .appId(version.project())
-     *             .service(version.service())
-     *             .versionId(version.versionId())
+     *             .project(version.get("project"))
+     *             .appId(version.get("project"))
+     *             .service(version.get("service"))
+     *             .versionId(version.get("versionId"))
      *             .build());
      * 
      *     }
@@ -1357,8 +1357,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(projectClient.brand())
-     *             .clientId(projectClient.clientId())
+     *             .brand(projectClient.get("brand"))
+     *             .clientId(projectClient.get("clientId"))
      *             .build());
      * 
      *     }
@@ -1398,8 +1398,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(projectClient.brand())
-     *             .clientId(projectClient.clientId())
+     *             .brand(projectClient.get("brand"))
+     *             .clientId(projectClient.get("clientId"))
      *             .build());
      * 
      *     }
@@ -1439,8 +1439,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(projectClient.brand())
-     *             .clientId(projectClient.clientId())
+     *             .brand(projectClient.get("brand"))
+     *             .clientId(projectClient.get("clientId"))
      *             .build());
      * 
      *     }
@@ -1480,8 +1480,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(projectClient.brand())
-     *             .clientId(projectClient.clientId())
+     *             .brand(projectClient.get("brand"))
+     *             .clientId(projectClient.get("clientId"))
      *             .build());
      * 
      *     }
@@ -1521,8 +1521,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(projectClient.brand())
-     *             .clientId(projectClient.clientId())
+     *             .brand(projectClient.get("brand"))
+     *             .clientId(projectClient.get("clientId"))
      *             .build());
      * 
      *     }
@@ -1562,7 +1562,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -1603,7 +1603,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -1644,7 +1644,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -1685,7 +1685,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -1726,7 +1726,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getLocationWebIamPolicy(GetLocationWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .location("us-central1")
      *             .build());
      * 
@@ -1767,9 +1767,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
-     *             .project(destGroup.project())
-     *             .region(destGroup.region())
-     *             .destGroup(destGroup.groupName())
+     *             .project(destGroup.get("project"))
+     *             .region(destGroup.get("region"))
+     *             .destGroup(destGroup.get("groupName"))
      *             .build());
      * 
      *     }
@@ -1809,9 +1809,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
-     *             .project(destGroup.project())
-     *             .region(destGroup.region())
-     *             .destGroup(destGroup.groupName())
+     *             .project(destGroup.get("project"))
+     *             .region(destGroup.get("region"))
+     *             .destGroup(destGroup.get("groupName"))
      *             .build());
      * 
      *     }
@@ -1851,9 +1851,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
-     *             .project(destGroup.project())
-     *             .region(destGroup.region())
-     *             .destGroup(destGroup.groupName())
+     *             .project(destGroup.get("project"))
+     *             .region(destGroup.get("region"))
+     *             .destGroup(destGroup.get("groupName"))
      *             .build());
      * 
      *     }
@@ -1893,9 +1893,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
-     *             .project(destGroup.project())
-     *             .region(destGroup.region())
-     *             .destGroup(destGroup.groupName())
+     *             .project(destGroup.get("project"))
+     *             .region(destGroup.get("region"))
+     *             .destGroup(destGroup.get("groupName"))
      *             .build());
      * 
      *     }
@@ -1935,9 +1935,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
-     *             .project(destGroup.project())
-     *             .region(destGroup.region())
-     *             .destGroup(destGroup.groupName())
+     *             .project(destGroup.get("project"))
+     *             .region(destGroup.get("region"))
+     *             .destGroup(destGroup.get("groupName"))
      *             .build());
      * 
      *     }
@@ -1977,7 +1977,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2017,7 +2017,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2057,7 +2057,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2097,7 +2097,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2137,7 +2137,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2177,7 +2177,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2217,7 +2217,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -2257,9 +2257,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(tunnelvm.project())
-     *             .zone(tunnelvm.zone())
-     *             .instance(tunnelvm.name())
+     *             .project(tunnelvm.get("project"))
+     *             .zone(tunnelvm.get("zone"))
+     *             .instance(tunnelvm.get("name"))
      *             .build());
      * 
      *     }
@@ -2299,9 +2299,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(tunnelvm.project())
-     *             .zone(tunnelvm.zone())
-     *             .instance(tunnelvm.name())
+     *             .project(tunnelvm.get("project"))
+     *             .zone(tunnelvm.get("zone"))
+     *             .instance(tunnelvm.get("name"))
      *             .build());
      * 
      *     }
@@ -2341,9 +2341,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(tunnelvm.project())
-     *             .zone(tunnelvm.zone())
-     *             .instance(tunnelvm.name())
+     *             .project(tunnelvm.get("project"))
+     *             .zone(tunnelvm.get("zone"))
+     *             .instance(tunnelvm.get("name"))
      *             .build());
      * 
      *     }
@@ -2383,9 +2383,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(tunnelvm.project())
-     *             .zone(tunnelvm.zone())
-     *             .instance(tunnelvm.name())
+     *             .project(tunnelvm.get("project"))
+     *             .zone(tunnelvm.get("zone"))
+     *             .instance(tunnelvm.get("name"))
      *             .build());
      * 
      *     }
@@ -2425,9 +2425,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
-     *             .project(tunnelvm.project())
-     *             .zone(tunnelvm.zone())
-     *             .instance(tunnelvm.name())
+     *             .project(tunnelvm.get("project"))
+     *             .zone(tunnelvm.get("zone"))
+     *             .instance(tunnelvm.get("name"))
      *             .build());
      * 
      *     }
@@ -2467,8 +2467,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .webBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .webBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2508,8 +2508,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .webBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .webBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2549,8 +2549,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .webBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .webBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2590,8 +2590,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .webBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .webBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2631,8 +2631,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .webBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .webBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2672,9 +2672,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebCloudRunServiceIamPolicy(GetWebCloudRunServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .cloudRunServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .cloudRunServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2714,9 +2714,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebCloudRunServiceIamPolicy(GetWebCloudRunServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .cloudRunServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .cloudRunServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2756,9 +2756,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebCloudRunServiceIamPolicy(GetWebCloudRunServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .cloudRunServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .cloudRunServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2798,9 +2798,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebCloudRunServiceIamPolicy(GetWebCloudRunServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .cloudRunServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .cloudRunServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2840,9 +2840,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebCloudRunServiceIamPolicy(GetWebCloudRunServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .location(default_.location())
-     *             .cloudRunServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .location(default_.get("location"))
+     *             .cloudRunServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2882,8 +2882,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .forwardingRuleServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .forwardingRuleServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2923,8 +2923,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .forwardingRuleServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .forwardingRuleServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2964,8 +2964,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .forwardingRuleServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .forwardingRuleServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3005,8 +3005,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .forwardingRuleServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .forwardingRuleServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3046,8 +3046,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebForwardingRuleServiceIamPolicy(GetWebForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .forwardingRuleServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .forwardingRuleServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3087,7 +3087,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3127,7 +3127,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3167,7 +3167,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3207,7 +3207,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3247,7 +3247,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3287,7 +3287,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3327,7 +3327,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -3367,9 +3367,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .webRegionBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .webRegionBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3409,9 +3409,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .webRegionBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .webRegionBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3451,9 +3451,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .webRegionBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .webRegionBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3493,9 +3493,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .webRegionBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .webRegionBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3535,9 +3535,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .webRegionBackendService(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .webRegionBackendService(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3577,9 +3577,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .forwardingRuleRegionServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .forwardingRuleRegionServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3619,9 +3619,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .forwardingRuleRegionServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .forwardingRuleRegionServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3661,9 +3661,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .forwardingRuleRegionServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .forwardingRuleRegionServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3703,9 +3703,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .forwardingRuleRegionServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .forwardingRuleRegionServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3745,9 +3745,9 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebRegionForwardingRuleServiceIamPolicy(GetWebRegionForwardingRuleServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .forwardingRuleRegionServiceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .forwardingRuleRegionServiceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3787,8 +3787,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(app.project())
-     *             .appId(app.appId())
+     *             .project(app.get("project"))
+     *             .appId(app.get("appId"))
      *             .build());
      * 
      *     }
@@ -3828,8 +3828,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(app.project())
-     *             .appId(app.appId())
+     *             .project(app.get("project"))
+     *             .appId(app.get("appId"))
      *             .build());
      * 
      *     }
@@ -3869,8 +3869,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(app.project())
-     *             .appId(app.appId())
+     *             .project(app.get("project"))
+     *             .appId(app.get("appId"))
      *             .build());
      * 
      *     }
@@ -3910,8 +3910,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(app.project())
-     *             .appId(app.appId())
+     *             .project(app.get("project"))
+     *             .appId(app.get("appId"))
      *             .build());
      * 
      *     }
@@ -3951,8 +3951,8 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
-     *             .project(app.project())
-     *             .appId(app.appId())
+     *             .project(app.get("project"))
+     *             .appId(app.get("appId"))
      *             .build());
      * 
      *     }
@@ -3992,7 +3992,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -4032,7 +4032,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -4072,7 +4072,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -4112,7 +4112,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -4152,7 +4152,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -4192,7 +4192,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }
@@ -4232,7 +4232,7 @@ public final class IapFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
-     *             .project(projectService.project())
+     *             .project(projectService.get("project"))
      *             .build());
      * 
      *     }

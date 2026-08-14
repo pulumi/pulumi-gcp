@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureGroupIamPolicy("policy", AiFeatureGroupIamPolicyArgs.builder()
- *             .region(featureGroup.region())
- *             .featureGroup(featureGroup.name())
+ *             .region(featureGroup.get("region"))
+ *             .featureGroup(featureGroup.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -103,8 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureGroupIamBinding("binding", AiFeatureGroupIamBindingArgs.builder()
- *             .region(featureGroup.region())
- *             .featureGroup(featureGroup.name())
+ *             .region(featureGroup.get("region"))
+ *             .featureGroup(featureGroup.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,8 +139,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureGroupIamMember("member", AiFeatureGroupIamMemberArgs.builder()
- *             .region(featureGroup.region())
- *             .featureGroup(featureGroup.name())
+ *             .region(featureGroup.get("region"))
+ *             .featureGroup(featureGroup.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,8 +208,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureGroupIamPolicy("policy", AiFeatureGroupIamPolicyArgs.builder()
- *             .region(featureGroup.region())
- *             .featureGroup(featureGroup.name())
+ *             .region(featureGroup.get("region"))
+ *             .featureGroup(featureGroup.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -243,8 +243,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureGroupIamBinding("binding", AiFeatureGroupIamBindingArgs.builder()
- *             .region(featureGroup.region())
- *             .featureGroup(featureGroup.name())
+ *             .region(featureGroup.get("region"))
+ *             .featureGroup(featureGroup.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,8 +279,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureGroupIamMember("member", AiFeatureGroupIamMemberArgs.builder()
- *             .region(featureGroup.region())
- *             .featureGroup(featureGroup.name())
+ *             .region(featureGroup.get("region"))
+ *             .featureGroup(featureGroup.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -63,10 +63,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ZoneIamPolicy("policy", ZoneIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,10 +100,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ZoneIamBinding("binding", ZoneIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,10 +138,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ZoneIamMember("member", ZoneIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,10 +206,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ZoneIamPolicy("policy", ZoneIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -243,10 +243,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ZoneIamBinding("binding", ZoneIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -281,10 +281,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ZoneIamMember("member", ZoneIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

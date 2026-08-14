@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureStoreEntityTypeIamPolicy("policy", AiFeatureStoreEntityTypeIamPolicyArgs.builder()
- *             .featurestore(entity.featurestore())
- *             .entitytype(entity.name())
+ *             .featurestore(entity.get("featurestore"))
+ *             .entitytype(entity.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureStoreEntityTypeIamBinding("binding", AiFeatureStoreEntityTypeIamBindingArgs.builder()
- *             .featurestore(entity.featurestore())
- *             .entitytype(entity.name())
+ *             .featurestore(entity.get("featurestore"))
+ *             .entitytype(entity.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureStoreEntityTypeIamMember("member", AiFeatureStoreEntityTypeIamMemberArgs.builder()
- *             .featurestore(entity.featurestore())
- *             .entitytype(entity.name())
+ *             .featurestore(entity.get("featurestore"))
+ *             .entitytype(entity.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -207,8 +207,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureStoreEntityTypeIamPolicy("policy", AiFeatureStoreEntityTypeIamPolicyArgs.builder()
- *             .featurestore(entity.featurestore())
- *             .entitytype(entity.name())
+ *             .featurestore(entity.get("featurestore"))
+ *             .entitytype(entity.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,8 +242,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureStoreEntityTypeIamBinding("binding", AiFeatureStoreEntityTypeIamBindingArgs.builder()
- *             .featurestore(entity.featurestore())
- *             .entitytype(entity.name())
+ *             .featurestore(entity.get("featurestore"))
+ *             .entitytype(entity.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,8 +278,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureStoreEntityTypeIamMember("member", AiFeatureStoreEntityTypeIamMemberArgs.builder()
- *             .featurestore(entity.featurestore())
- *             .entitytype(entity.name())
+ *             .featurestore(entity.get("featurestore"))
+ *             .entitytype(entity.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

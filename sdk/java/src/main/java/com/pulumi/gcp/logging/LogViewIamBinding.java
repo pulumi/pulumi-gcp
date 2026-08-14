@@ -68,10 +68,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -121,10 +121,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -157,10 +157,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -196,10 +196,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(LogViewIamBindingConditionArgs.builder()
@@ -238,10 +238,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -277,10 +277,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(LogViewIamMemberConditionArgs.builder()
@@ -353,10 +353,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -406,10 +406,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LogViewIamPolicy("policy", LogViewIamPolicyArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -442,10 +442,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -481,10 +481,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LogViewIamBinding("binding", LogViewIamBindingArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(LogViewIamBindingConditionArgs.builder()
@@ -523,10 +523,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -562,10 +562,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LogViewIamMember("member", LogViewIamMemberArgs.builder()
- *             .parent(loggingLogView.parent())
- *             .location(loggingLogView.location())
- *             .bucket(loggingLogView.bucket())
- *             .name(loggingLogView.name())
+ *             .parent(loggingLogView.get("parent"))
+ *             .location(loggingLogView.get("location"))
+ *             .bucket(loggingLogView.get("bucket"))
+ *             .name(loggingLogView.get("name"))
  *             .role("roles/logging.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(LogViewIamMemberConditionArgs.builder()

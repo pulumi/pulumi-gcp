@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -117,9 +117,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -152,9 +152,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,9 +190,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(SubnetworkIAMBindingConditionArgs.builder()
@@ -231,9 +231,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,9 +269,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(SubnetworkIAMMemberConditionArgs.builder()
@@ -343,9 +343,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -395,9 +395,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SubnetworkIAMPolicy("policy", SubnetworkIAMPolicyArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,9 +430,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -468,9 +468,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SubnetworkIAMBinding("binding", SubnetworkIAMBindingArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(SubnetworkIAMBindingConditionArgs.builder()
@@ -509,9 +509,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -547,9 +547,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SubnetworkIAMMember("member", SubnetworkIAMMemberArgs.builder()
- *             .project(network_with_private_secondary_ip_ranges.project())
- *             .region(network_with_private_secondary_ip_ranges.region())
- *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+ *             .project(network_with_private_secondary_ip_ranges.get("project"))
+ *             .region(network_with_private_secondary_ip_ranges.get("region"))
+ *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
  *             .role("roles/compute.networkUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(SubnetworkIAMMemberConditionArgs.builder()

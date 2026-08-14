@@ -63,11 +63,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkstationIamPolicy("policy", WorkstationIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
- *             .workstationId(default_.workstationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
+ *             .workstationId(default_.get("workstationId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,11 +101,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkstationIamBinding("binding", WorkstationIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
- *             .workstationId(default_.workstationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
+ *             .workstationId(default_.get("workstationId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -140,11 +140,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkstationIamMember("member", WorkstationIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
- *             .workstationId(default_.workstationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
+ *             .workstationId(default_.get("workstationId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -209,11 +209,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkstationIamPolicy("policy", WorkstationIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
- *             .workstationId(default_.workstationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
+ *             .workstationId(default_.get("workstationId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -247,11 +247,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkstationIamBinding("binding", WorkstationIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
- *             .workstationId(default_.workstationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
+ *             .workstationId(default_.get("workstationId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -286,11 +286,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkstationIamMember("member", WorkstationIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .workstationClusterId(default_.workstationClusterId())
- *             .workstationConfigId(default_.workstationConfigId())
- *             .workstationId(default_.workstationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .workstationClusterId(default_.get("workstationClusterId"))
+ *             .workstationConfigId(default_.get("workstationConfigId"))
+ *             .workstationId(default_.get("workstationId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

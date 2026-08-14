@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryAgentIamPolicy("policy", AgentRegistryAgentIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -120,9 +120,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryAgentIamPolicy("policy", AgentRegistryAgentIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -155,9 +155,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryAgentIamBinding("binding", AgentRegistryAgentIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -193,9 +193,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryAgentIamBinding("binding", AgentRegistryAgentIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryAgentIamBindingConditionArgs.builder()
@@ -234,9 +234,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryAgentIamMember("member", AgentRegistryAgentIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryAgentIamMember("member", AgentRegistryAgentIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryAgentIamMemberConditionArgs.builder()
@@ -346,9 +346,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryAgentIamPolicy("policy", AgentRegistryAgentIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -398,9 +398,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryAgentIamPolicy("policy", AgentRegistryAgentIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -433,9 +433,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryAgentIamBinding("binding", AgentRegistryAgentIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -471,9 +471,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryAgentIamBinding("binding", AgentRegistryAgentIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryAgentIamBindingConditionArgs.builder()
@@ -512,9 +512,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryAgentIamMember("member", AgentRegistryAgentIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -550,9 +550,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryAgentIamMember("member", AgentRegistryAgentIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .agentId(default_.agentId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .agentId(default_.get("agentId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryAgentIamMemberConditionArgs.builder()

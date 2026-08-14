@@ -125,8 +125,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new GCPolicy("policy", GCPolicyArgs.builder()
- *             .instanceName(instance.name())
- *             .table(table.name())
+ *             .instanceName(instance.get("name"))
+ *             .table(table.get("name"))
  *             .columnFamily("name")
  *             .deletionPolicy("ABANDON")
  *             .gcRules("""

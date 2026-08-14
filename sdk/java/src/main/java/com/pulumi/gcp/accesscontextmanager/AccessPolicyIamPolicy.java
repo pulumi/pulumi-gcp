@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AccessPolicyIamPolicy("policy", AccessPolicyIamPolicyArgs.builder()
- *             .name(access_policy.name())
+ *             .name(access_policy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AccessPolicyIamBinding("binding", AccessPolicyIamBindingArgs.builder()
- *             .name(access_policy.name())
+ *             .name(access_policy.get("name"))
  *             .role("roles/accesscontextmanager.policyAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AccessPolicyIamMember("member", AccessPolicyIamMemberArgs.builder()
- *             .name(access_policy.name())
+ *             .name(access_policy.get("name"))
  *             .role("roles/accesscontextmanager.policyAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -198,7 +198,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AccessPolicyIamPolicy("policy", AccessPolicyIamPolicyArgs.builder()
- *             .name(access_policy.name())
+ *             .name(access_policy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -232,7 +232,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AccessPolicyIamBinding("binding", AccessPolicyIamBindingArgs.builder()
- *             .name(access_policy.name())
+ *             .name(access_policy.get("name"))
  *             .role("roles/accesscontextmanager.policyAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AccessPolicyIamMember("member", AccessPolicyIamMemberArgs.builder()
- *             .name(access_policy.name())
+ *             .name(access_policy.get("name"))
  *             .role("roles/accesscontextmanager.policyAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Colab
     ///                         var name = values.Item2;
     ///                         return $"gs://{bucket}/{name}";
     ///                     }),
-    ///                     Generation = notebook.Generation,
+    ///                     Generation = notebook.Generation.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///                 },
     ///                 NotebookRuntimeTemplateResourceName = Output.Tuple(myRuntimeTemplate.Project, myRuntimeTemplate.Location, myRuntimeTemplate.Name).Apply(values =&gt;
     ///                 {
@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Colab
     ///                         var name = values.Item2;
     ///                         return $"gs://{bucket}/{name}";
     ///                     }),
-    ///                     Generation = notebook.Generation,
+    ///                     Generation = notebook.Generation.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///                 },
     ///                 NotebookRuntimeTemplateResourceName = Output.Tuple(myRuntimeTemplate.Project, myRuntimeTemplate.Location, myRuntimeTemplate.Name).Apply(values =&gt;
     ///                 {
@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.Colab
     ///                         var name = values.Item2;
     ///                         return $"gs://{bucket}/{name}";
     ///                     }),
-    ///                     Generation = notebook.Generation,
+    ///                     Generation = notebook.Generation.Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///                 },
     ///                 CustomEnvironmentSpec = new Gcp.Colab.Inputs.ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobCustomEnvironmentSpecArgs
     ///                 {

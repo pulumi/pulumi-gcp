@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.Compute
     ///                 Group = igm.InstanceGroup,
     ///                 BalancingMode = "RATE",
     ///                 CapacityScaler = 0.4,
-    ///                 MaxRatePerInstance = 50,
+    ///                 MaxRatePerInstance = 50.0,
     ///             },
     ///         },
     ///         HealthChecks = defaultHealthCheck.Id,
@@ -421,7 +421,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Group = defaultNetworkEndpointGroup.Id,
     ///                 BalancingMode = "RATE",
-    ///                 MaxRatePerEndpoint = 10,
+    ///                 MaxRatePerEndpoint = 10.0,
     ///             },
     ///         },
     ///         HealthChecks = defaultHealthCheck.Id,
@@ -440,7 +440,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Group = hybrid.Id,
     ///                 BalancingMode = "RATE",
-    ///                 MaxRatePerEndpoint = 10,
+    ///                 MaxRatePerEndpoint = 10.0,
     ///             },
     ///         },
     ///         HealthChecks = defaultHealthCheck.Id,

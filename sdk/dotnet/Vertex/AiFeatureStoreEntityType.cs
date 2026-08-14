@@ -71,7 +71,7 @@ namespace Pulumi.Gcp.Vertex
     ///             },
     ///             CategoricalThresholdConfig = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs
     ///             {
-    ///                 Value = 10,
+    ///                 Value = 10.0,
     ///             },
     ///             ImportFeaturesAnalysis = new Gcp.Vertex.Inputs.AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs
     ///             {

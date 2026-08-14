@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()
- *             .project(attestor.project())
- *             .attestor(attestor.name())
+ *             .project(attestor.get("project"))
+ *             .attestor(attestor.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -98,8 +98,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AttestorIamBinding("binding", AttestorIamBindingArgs.builder()
- *             .project(attestor.project())
- *             .attestor(attestor.name())
+ *             .project(attestor.get("project"))
+ *             .attestor(attestor.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -134,8 +134,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AttestorIamMember("member", AttestorIamMemberArgs.builder()
- *             .project(attestor.project())
- *             .attestor(attestor.name())
+ *             .project(attestor.get("project"))
+ *             .attestor(attestor.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -200,8 +200,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AttestorIamPolicy("policy", AttestorIamPolicyArgs.builder()
- *             .project(attestor.project())
- *             .attestor(attestor.name())
+ *             .project(attestor.get("project"))
+ *             .attestor(attestor.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -235,8 +235,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AttestorIamBinding("binding", AttestorIamBindingArgs.builder()
- *             .project(attestor.project())
- *             .attestor(attestor.name())
+ *             .project(attestor.get("project"))
+ *             .attestor(attestor.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -271,8 +271,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AttestorIamMember("member", AttestorIamMemberArgs.builder()
- *             .project(attestor.project())
- *             .attestor(attestor.name())
+ *             .project(attestor.get("project"))
+ *             .attestor(attestor.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
         ///     {
-        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+        ///         MachineType = Output.Create(Output.Tuple(example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Compute
         ///                     }).ToList(),
         ///                 },
         ///             });
-        ///         }).Apply(invoke =&gt; invoke.Result[0]),
+        ///         }).Apply(invoke =&gt; invoke.Result[0])).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         Disks = new[]
         ///         {
         ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
         ///     {
-        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+        ///         MachineType = Output.Create(Output.Tuple(example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.Compute
         ///                     }).ToList(),
         ///                 },
         ///             });
-        ///         }).Apply(invoke =&gt; invoke.Result[0]),
+        ///         }).Apply(invoke =&gt; invoke.Result[0])).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         Disks = new[]
         ///         {
         ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
@@ -335,7 +335,7 @@ namespace Pulumi.Gcp.Compute
         /// 
         ///     var exampleInstanceTemplate = new Gcp.Compute.InstanceTemplate("example", new()
         ///     {
-        ///         MachineType = Output.Tuple(example, Std.Startswith.Invoke(new()
+        ///         MachineType = Output.Create(Output.Tuple(example, Std.Startswith.Invoke(new()
         ///         {
         ///             Input = mt.Name,
         ///             Prefix = "c3-",
@@ -371,7 +371,7 @@ namespace Pulumi.Gcp.Compute
         ///                     }).ToList(),
         ///                 },
         ///             });
-        ///         }).Apply(invoke =&gt; invoke.Result[0]),
+        ///         }).Apply(invoke =&gt; invoke.Result[0])).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
         ///         Disks = new[]
         ///         {
         ///             new Gcp.Compute.Inputs.InstanceTemplateDiskArgs

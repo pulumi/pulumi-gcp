@@ -51,8 +51,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiConfigIamPolicy(GetApiConfigIamPolicyArgs.builder()
-     *             .api(apiCfg.api())
-     *             .apiConfig(apiCfg.apiConfigId())
+     *             .api(apiCfg.get("api"))
+     *             .apiConfig(apiCfg.get("apiConfigId"))
      *             .build());
      * 
      *     }
@@ -94,8 +94,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiConfigIamPolicy(GetApiConfigIamPolicyArgs.builder()
-     *             .api(apiCfg.api())
-     *             .apiConfig(apiCfg.apiConfigId())
+     *             .api(apiCfg.get("api"))
+     *             .apiConfig(apiCfg.get("apiConfigId"))
      *             .build());
      * 
      *     }
@@ -137,8 +137,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiConfigIamPolicy(GetApiConfigIamPolicyArgs.builder()
-     *             .api(apiCfg.api())
-     *             .apiConfig(apiCfg.apiConfigId())
+     *             .api(apiCfg.get("api"))
+     *             .apiConfig(apiCfg.get("apiConfigId"))
      *             .build());
      * 
      *     }
@@ -180,8 +180,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiConfigIamPolicy(GetApiConfigIamPolicyArgs.builder()
-     *             .api(apiCfg.api())
-     *             .apiConfig(apiCfg.apiConfigId())
+     *             .api(apiCfg.get("api"))
+     *             .apiConfig(apiCfg.get("apiConfigId"))
      *             .build());
      * 
      *     }
@@ -223,8 +223,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiConfigIamPolicy(GetApiConfigIamPolicyArgs.builder()
-     *             .api(apiCfg.api())
-     *             .apiConfig(apiCfg.apiConfigId())
+     *             .api(apiCfg.get("api"))
+     *             .apiConfig(apiCfg.get("apiConfigId"))
      *             .build());
      * 
      *     }
@@ -266,8 +266,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiIamPolicy(GetApiIamPolicyArgs.builder()
-     *             .project(api.project())
-     *             .api(api.apiId())
+     *             .project(api.get("project"))
+     *             .api(api.get("apiId"))
      *             .build());
      * 
      *     }
@@ -309,8 +309,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiIamPolicy(GetApiIamPolicyArgs.builder()
-     *             .project(api.project())
-     *             .api(api.apiId())
+     *             .project(api.get("project"))
+     *             .api(api.get("apiId"))
      *             .build());
      * 
      *     }
@@ -352,8 +352,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiIamPolicy(GetApiIamPolicyArgs.builder()
-     *             .project(api.project())
-     *             .api(api.apiId())
+     *             .project(api.get("project"))
+     *             .api(api.get("apiId"))
      *             .build());
      * 
      *     }
@@ -395,8 +395,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiIamPolicy(GetApiIamPolicyArgs.builder()
-     *             .project(api.project())
-     *             .api(api.apiId())
+     *             .project(api.get("project"))
+     *             .api(api.get("apiId"))
      *             .build());
      * 
      *     }
@@ -438,8 +438,8 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getApiIamPolicy(GetApiIamPolicyArgs.builder()
-     *             .project(api.project())
-     *             .api(api.apiId())
+     *             .project(api.get("project"))
+     *             .api(api.get("apiId"))
      *             .build());
      * 
      *     }
@@ -481,9 +481,9 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getGatewayIamPolicy(GetGatewayIamPolicyArgs.builder()
-     *             .project(apiGw.project())
-     *             .region(apiGw.region())
-     *             .gateway(apiGw.gatewayId())
+     *             .project(apiGw.get("project"))
+     *             .region(apiGw.get("region"))
+     *             .gateway(apiGw.get("gatewayId"))
      *             .build());
      * 
      *     }
@@ -525,9 +525,9 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getGatewayIamPolicy(GetGatewayIamPolicyArgs.builder()
-     *             .project(apiGw.project())
-     *             .region(apiGw.region())
-     *             .gateway(apiGw.gatewayId())
+     *             .project(apiGw.get("project"))
+     *             .region(apiGw.get("region"))
+     *             .gateway(apiGw.get("gatewayId"))
      *             .build());
      * 
      *     }
@@ -569,9 +569,9 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getGatewayIamPolicy(GetGatewayIamPolicyArgs.builder()
-     *             .project(apiGw.project())
-     *             .region(apiGw.region())
-     *             .gateway(apiGw.gatewayId())
+     *             .project(apiGw.get("project"))
+     *             .region(apiGw.get("region"))
+     *             .gateway(apiGw.get("gatewayId"))
      *             .build());
      * 
      *     }
@@ -613,9 +613,9 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getGatewayIamPolicy(GetGatewayIamPolicyArgs.builder()
-     *             .project(apiGw.project())
-     *             .region(apiGw.region())
-     *             .gateway(apiGw.gatewayId())
+     *             .project(apiGw.get("project"))
+     *             .region(apiGw.get("region"))
+     *             .gateway(apiGw.get("gatewayId"))
      *             .build());
      * 
      *     }
@@ -657,9 +657,9 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ApigatewayFunctions.getGatewayIamPolicy(GetGatewayIamPolicyArgs.builder()
-     *             .project(apiGw.project())
-     *             .region(apiGw.region())
-     *             .gateway(apiGw.gatewayId())
+     *             .project(apiGw.get("project"))
+     *             .region(apiGw.get("region"))
+     *             .gateway(apiGw.get("gatewayId"))
      *             .build());
      * 
      *     }

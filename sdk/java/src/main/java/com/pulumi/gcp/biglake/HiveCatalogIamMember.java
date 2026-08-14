@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HiveCatalogIamPolicy("policy", HiveCatalogIamPolicyArgs.builder()
- *             .project(myHiveCatalog.project())
- *             .name(myHiveCatalog.name())
+ *             .project(myHiveCatalog.get("project"))
+ *             .name(myHiveCatalog.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -103,8 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HiveCatalogIamBinding("binding", HiveCatalogIamBindingArgs.builder()
- *             .project(myHiveCatalog.project())
- *             .name(myHiveCatalog.name())
+ *             .project(myHiveCatalog.get("project"))
+ *             .name(myHiveCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,8 +139,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HiveCatalogIamMember("member", HiveCatalogIamMemberArgs.builder()
- *             .project(myHiveCatalog.project())
- *             .name(myHiveCatalog.name())
+ *             .project(myHiveCatalog.get("project"))
+ *             .name(myHiveCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,8 +208,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HiveCatalogIamPolicy("policy", HiveCatalogIamPolicyArgs.builder()
- *             .project(myHiveCatalog.project())
- *             .name(myHiveCatalog.name())
+ *             .project(myHiveCatalog.get("project"))
+ *             .name(myHiveCatalog.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -243,8 +243,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HiveCatalogIamBinding("binding", HiveCatalogIamBindingArgs.builder()
- *             .project(myHiveCatalog.project())
- *             .name(myHiveCatalog.name())
+ *             .project(myHiveCatalog.get("project"))
+ *             .name(myHiveCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,8 +279,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HiveCatalogIamMember("member", HiveCatalogIamMemberArgs.builder()
- *             .project(myHiveCatalog.project())
- *             .name(myHiveCatalog.name())
+ *             .project(myHiveCatalog.get("project"))
+ *             .name(myHiveCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

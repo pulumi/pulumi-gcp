@@ -194,8 +194,8 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 Id = "UTC",
     ///             },
     ///             NodeCount = 2,
-    ///             OcpuCount = 4,
-    ///             DataStorageSizeTb = 2,
+    ///             OcpuCount = 4.0,
+    ///             DataStorageSizeTb = 2.0,
     ///             DbNodeStorageSizeGb = 120,
     ///             DbServerOcids = new[]
     ///             {

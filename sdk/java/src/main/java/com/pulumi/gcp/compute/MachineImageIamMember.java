@@ -70,8 +70,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -121,8 +121,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -155,8 +155,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -192,8 +192,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(MachineImageIamBindingConditionArgs.builder()
@@ -232,8 +232,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,8 +269,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(MachineImageIamMemberConditionArgs.builder()
@@ -345,8 +345,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -396,8 +396,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MachineImageIamPolicy("policy", MachineImageIamPolicyArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,8 +430,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -467,8 +467,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MachineImageIamBinding("binding", MachineImageIamBindingArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(MachineImageIamBindingConditionArgs.builder()
@@ -507,8 +507,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -544,8 +544,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MachineImageIamMember("member", MachineImageIamMemberArgs.builder()
- *             .project(image.project())
- *             .machineImage(image.name())
+ *             .project(image.get("project"))
+ *             .machineImage(image.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(MachineImageIamMemberConditionArgs.builder()

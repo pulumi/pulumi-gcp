@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
- *             .dataset(my_consent.dataset())
- *             .consentStoreId(my_consent.name())
+ *             .dataset(my_consent.get("dataset"))
+ *             .consentStoreId(my_consent.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()
- *             .dataset(my_consent.dataset())
- *             .consentStoreId(my_consent.name())
+ *             .dataset(my_consent.get("dataset"))
+ *             .consentStoreId(my_consent.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()
- *             .dataset(my_consent.dataset())
- *             .consentStoreId(my_consent.name())
+ *             .dataset(my_consent.get("dataset"))
+ *             .consentStoreId(my_consent.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -204,8 +204,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConsentStoreIamPolicy("policy", ConsentStoreIamPolicyArgs.builder()
- *             .dataset(my_consent.dataset())
- *             .consentStoreId(my_consent.name())
+ *             .dataset(my_consent.get("dataset"))
+ *             .consentStoreId(my_consent.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,8 +239,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ConsentStoreIamBinding("binding", ConsentStoreIamBindingArgs.builder()
- *             .dataset(my_consent.dataset())
- *             .consentStoreId(my_consent.name())
+ *             .dataset(my_consent.get("dataset"))
+ *             .consentStoreId(my_consent.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -275,8 +275,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ConsentStoreIamMember("member", ConsentStoreIamMemberArgs.builder()
- *             .dataset(my_consent.dataset())
- *             .consentStoreId(my_consent.name())
+ *             .dataset(my_consent.get("dataset"))
+ *             .consentStoreId(my_consent.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

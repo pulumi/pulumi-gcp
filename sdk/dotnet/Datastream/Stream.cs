@@ -878,7 +878,7 @@ namespace Pulumi.Gcp.Datastream
     ///         DatabaseVersion = "MYSQL_8_0",
     ///         Region = "us-central1",
     ///         RootPassword = "&lt;%= ctx[:vars]['mysql_root_password'] %&gt;",
-    ///         DeletionProtection = "&lt;%= ctx[:vars]['deletion_protection'] %&gt;",
+    ///         DeletionProtection = "&lt;%= ctx[:vars]['deletion_protection'] %&gt;" == "true",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
     ///             Tier = "db-custom-2-4096",

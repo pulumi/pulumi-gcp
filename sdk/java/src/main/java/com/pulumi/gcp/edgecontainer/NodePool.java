@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultNodePool = new NodePool("defaultNodePool", NodePoolArgs.builder()
  *             .name("nodepool-1")
- *             .cluster(cluster.name())
+ *             .cluster(cluster.get("name"))
  *             .location("us-central1")
  *             .nodeLocation("us-central1-edge-example-edgesite")
  *             .nodeCount(3)
