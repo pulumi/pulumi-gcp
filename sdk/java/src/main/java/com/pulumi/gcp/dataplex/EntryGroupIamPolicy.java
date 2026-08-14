@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
- *             .project(testEntryGroupBasic.project())
- *             .location(testEntryGroupBasic.location())
- *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+ *             .project(testEntryGroupBasic.get("project"))
+ *             .location(testEntryGroupBasic.get("location"))
+ *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()
- *             .project(testEntryGroupBasic.project())
- *             .location(testEntryGroupBasic.location())
- *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+ *             .project(testEntryGroupBasic.get("project"))
+ *             .location(testEntryGroupBasic.get("location"))
+ *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()
- *             .project(testEntryGroupBasic.project())
- *             .location(testEntryGroupBasic.location())
- *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+ *             .project(testEntryGroupBasic.get("project"))
+ *             .location(testEntryGroupBasic.get("location"))
+ *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EntryGroupIamPolicy("policy", EntryGroupIamPolicyArgs.builder()
- *             .project(testEntryGroupBasic.project())
- *             .location(testEntryGroupBasic.location())
- *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+ *             .project(testEntryGroupBasic.get("project"))
+ *             .location(testEntryGroupBasic.get("location"))
+ *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EntryGroupIamBinding("binding", EntryGroupIamBindingArgs.builder()
- *             .project(testEntryGroupBasic.project())
- *             .location(testEntryGroupBasic.location())
- *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+ *             .project(testEntryGroupBasic.get("project"))
+ *             .location(testEntryGroupBasic.get("location"))
+ *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EntryGroupIamMember("member", EntryGroupIamMemberArgs.builder()
- *             .project(testEntryGroupBasic.project())
- *             .location(testEntryGroupBasic.location())
- *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+ *             .project(testEntryGroupBasic.get("project"))
+ *             .location(testEntryGroupBasic.get("location"))
+ *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

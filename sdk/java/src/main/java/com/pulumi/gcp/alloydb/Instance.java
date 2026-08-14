@@ -207,7 +207,7 @@ import javax.annotation.Nullable;
  *             .clusterId("alloydb-secondary-cluster")
  *             .location("us-east1")
  *             .networkConfig(ClusterNetworkConfigArgs.builder()
- *                 .network(defaultGoogleComputeNetwork.id())
+ *                 .network(defaultGoogleComputeNetwork.get("id"))
  *                 .build())
  *             .clusterType("SECONDARY")
  *             .continuousBackupConfig(ClusterContinuousBackupConfigArgs.builder()

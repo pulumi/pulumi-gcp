@@ -82,7 +82,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys().get(0).dsRecord()));
      *     }
      * }
      * }
@@ -144,7 +144,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys().get(0).dsRecord()));
      *     }
      * }
      * }
@@ -206,7 +206,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys().get(0).dsRecord()));
      *     }
      * }
      * }
@@ -268,7 +268,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys().get(0).dsRecord()));
      *     }
      * }
      * }
@@ -330,7 +330,7 @@ public final class DnsFunctions {
      *             .managedZone(foo.id())
      *             .build());
      * 
-     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys()[0].dsRecord()));
+     *         ctx.export("fooDnsDsRecord", fooDnsKeys.applyValue(_fooDnsKeys -> _fooDnsKeys.keySigningKeys().get(0).dsRecord()));
      *     }
      * }
      * }
@@ -628,8 +628,8 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .managedZone(default_.name())
+     *             .project(default_.get("project"))
+     *             .managedZone(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -669,8 +669,8 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .managedZone(default_.name())
+     *             .project(default_.get("project"))
+     *             .managedZone(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -710,8 +710,8 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .managedZone(default_.name())
+     *             .project(default_.get("project"))
+     *             .managedZone(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -751,8 +751,8 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .managedZone(default_.name())
+     *             .project(default_.get("project"))
+     *             .managedZone(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -792,8 +792,8 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .managedZone(default_.name())
+     *             .project(default_.get("project"))
+     *             .managedZone(default_.get("name"))
      *             .build());
      * 
      *     }

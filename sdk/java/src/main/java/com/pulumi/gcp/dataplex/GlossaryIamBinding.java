@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new GlossaryIamPolicy("policy", GlossaryIamPolicyArgs.builder()
- *             .project(glossaryTestId.project())
- *             .location(glossaryTestId.location())
- *             .glossaryId(glossaryTestId.glossaryId())
+ *             .project(glossaryTestId.get("project"))
+ *             .location(glossaryTestId.get("location"))
+ *             .glossaryId(glossaryTestId.get("glossaryId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new GlossaryIamBinding("binding", GlossaryIamBindingArgs.builder()
- *             .project(glossaryTestId.project())
- *             .location(glossaryTestId.location())
- *             .glossaryId(glossaryTestId.glossaryId())
+ *             .project(glossaryTestId.get("project"))
+ *             .location(glossaryTestId.get("location"))
+ *             .glossaryId(glossaryTestId.get("glossaryId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new GlossaryIamMember("member", GlossaryIamMemberArgs.builder()
- *             .project(glossaryTestId.project())
- *             .location(glossaryTestId.location())
- *             .glossaryId(glossaryTestId.glossaryId())
+ *             .project(glossaryTestId.get("project"))
+ *             .location(glossaryTestId.get("location"))
+ *             .glossaryId(glossaryTestId.get("glossaryId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new GlossaryIamPolicy("policy", GlossaryIamPolicyArgs.builder()
- *             .project(glossaryTestId.project())
- *             .location(glossaryTestId.location())
- *             .glossaryId(glossaryTestId.glossaryId())
+ *             .project(glossaryTestId.get("project"))
+ *             .location(glossaryTestId.get("location"))
+ *             .glossaryId(glossaryTestId.get("glossaryId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new GlossaryIamBinding("binding", GlossaryIamBindingArgs.builder()
- *             .project(glossaryTestId.project())
- *             .location(glossaryTestId.location())
- *             .glossaryId(glossaryTestId.glossaryId())
+ *             .project(glossaryTestId.get("project"))
+ *             .location(glossaryTestId.get("location"))
+ *             .glossaryId(glossaryTestId.get("glossaryId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new GlossaryIamMember("member", GlossaryIamMemberArgs.builder()
- *             .project(glossaryTestId.project())
- *             .location(glossaryTestId.location())
- *             .glossaryId(glossaryTestId.glossaryId())
+ *             .project(glossaryTestId.get("project"))
+ *             .location(glossaryTestId.get("location"))
+ *             .glossaryId(glossaryTestId.get("glossaryId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

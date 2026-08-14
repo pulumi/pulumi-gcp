@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionDiskIamPolicy("policy", RegionDiskIamPolicyArgs.builder()
- *             .project(regiondisk.project())
- *             .region(regiondisk.region())
- *             .name(regiondisk.name())
+ *             .project(regiondisk.get("project"))
+ *             .region(regiondisk.get("region"))
+ *             .name(regiondisk.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionDiskIamBinding("binding", RegionDiskIamBindingArgs.builder()
- *             .project(regiondisk.project())
- *             .region(regiondisk.region())
- *             .name(regiondisk.name())
+ *             .project(regiondisk.get("project"))
+ *             .region(regiondisk.get("region"))
+ *             .name(regiondisk.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionDiskIamMember("member", RegionDiskIamMemberArgs.builder()
- *             .project(regiondisk.project())
- *             .region(regiondisk.region())
- *             .name(regiondisk.name())
+ *             .project(regiondisk.get("project"))
+ *             .region(regiondisk.get("region"))
+ *             .name(regiondisk.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -205,9 +205,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionDiskIamPolicy("policy", RegionDiskIamPolicyArgs.builder()
- *             .project(regiondisk.project())
- *             .region(regiondisk.region())
- *             .name(regiondisk.name())
+ *             .project(regiondisk.get("project"))
+ *             .region(regiondisk.get("region"))
+ *             .name(regiondisk.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,9 +241,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionDiskIamBinding("binding", RegionDiskIamBindingArgs.builder()
- *             .project(regiondisk.project())
- *             .region(regiondisk.region())
- *             .name(regiondisk.name())
+ *             .project(regiondisk.get("project"))
+ *             .region(regiondisk.get("region"))
+ *             .name(regiondisk.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,9 +278,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionDiskIamMember("member", RegionDiskIamMemberArgs.builder()
- *             .project(regiondisk.project())
- *             .region(regiondisk.region())
- *             .name(regiondisk.name())
+ *             .project(regiondisk.get("project"))
+ *             .region(regiondisk.get("region"))
+ *             .name(regiondisk.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

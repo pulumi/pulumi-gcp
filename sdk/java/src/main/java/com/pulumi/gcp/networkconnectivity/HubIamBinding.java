@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HubIamPolicy("policy", HubIamPolicyArgs.builder()
- *             .project(primary.project())
- *             .hub(primary.name())
+ *             .project(primary.get("project"))
+ *             .hub(primary.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HubIamBinding("binding", HubIamBindingArgs.builder()
- *             .project(primary.project())
- *             .hub(primary.name())
+ *             .project(primary.get("project"))
+ *             .hub(primary.get("name"))
  *             .role("roles/networkconnectivity.hubViewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HubIamMember("member", HubIamMemberArgs.builder()
- *             .project(primary.project())
- *             .hub(primary.name())
+ *             .project(primary.get("project"))
+ *             .hub(primary.get("name"))
  *             .role("roles/networkconnectivity.hubViewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,8 +203,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HubIamPolicy("policy", HubIamPolicyArgs.builder()
- *             .project(primary.project())
- *             .hub(primary.name())
+ *             .project(primary.get("project"))
+ *             .hub(primary.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -238,8 +238,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HubIamBinding("binding", HubIamBindingArgs.builder()
- *             .project(primary.project())
- *             .hub(primary.name())
+ *             .project(primary.get("project"))
+ *             .hub(primary.get("name"))
  *             .role("roles/networkconnectivity.hubViewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -274,8 +274,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HubIamMember("member", HubIamMemberArgs.builder()
- *             .project(primary.project())
- *             .hub(primary.name())
+ *             .project(primary.get("project"))
+ *             .hub(primary.get("name"))
  *             .role("roles/networkconnectivity.hubViewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

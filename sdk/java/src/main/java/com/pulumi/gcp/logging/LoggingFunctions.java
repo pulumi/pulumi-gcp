@@ -521,10 +521,10 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
-     *             .parent(loggingLogView.parent())
-     *             .location(loggingLogView.location())
-     *             .bucket(loggingLogView.bucket())
-     *             .name(loggingLogView.name())
+     *             .parent(loggingLogView.get("parent"))
+     *             .location(loggingLogView.get("location"))
+     *             .bucket(loggingLogView.get("bucket"))
+     *             .name(loggingLogView.get("name"))
      *             .build());
      * 
      *     }
@@ -564,10 +564,10 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
-     *             .parent(loggingLogView.parent())
-     *             .location(loggingLogView.location())
-     *             .bucket(loggingLogView.bucket())
-     *             .name(loggingLogView.name())
+     *             .parent(loggingLogView.get("parent"))
+     *             .location(loggingLogView.get("location"))
+     *             .bucket(loggingLogView.get("bucket"))
+     *             .name(loggingLogView.get("name"))
      *             .build());
      * 
      *     }
@@ -607,10 +607,10 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
-     *             .parent(loggingLogView.parent())
-     *             .location(loggingLogView.location())
-     *             .bucket(loggingLogView.bucket())
-     *             .name(loggingLogView.name())
+     *             .parent(loggingLogView.get("parent"))
+     *             .location(loggingLogView.get("location"))
+     *             .bucket(loggingLogView.get("bucket"))
+     *             .name(loggingLogView.get("name"))
      *             .build());
      * 
      *     }
@@ -650,10 +650,10 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
-     *             .parent(loggingLogView.parent())
-     *             .location(loggingLogView.location())
-     *             .bucket(loggingLogView.bucket())
-     *             .name(loggingLogView.name())
+     *             .parent(loggingLogView.get("parent"))
+     *             .location(loggingLogView.get("location"))
+     *             .bucket(loggingLogView.get("bucket"))
+     *             .name(loggingLogView.get("name"))
      *             .build());
      * 
      *     }
@@ -693,10 +693,10 @@ public final class LoggingFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
-     *             .parent(loggingLogView.parent())
-     *             .location(loggingLogView.location())
-     *             .bucket(loggingLogView.bucket())
-     *             .name(loggingLogView.name())
+     *             .parent(loggingLogView.get("parent"))
+     *             .location(loggingLogView.get("location"))
+     *             .bucket(loggingLogView.get("bucket"))
+     *             .name(loggingLogView.get("name"))
      *             .build());
      * 
      *     }

@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataProductIamPolicy("policy", DataProductIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .dataProductId(example.dataProductId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .dataProductId(example.get("dataProductId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DataProductIamBinding("binding", DataProductIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .dataProductId(example.dataProductId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .dataProductId(example.get("dataProductId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DataProductIamMember("member", DataProductIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .dataProductId(example.dataProductId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .dataProductId(example.get("dataProductId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataProductIamPolicy("policy", DataProductIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .dataProductId(example.dataProductId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .dataProductId(example.get("dataProductId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DataProductIamBinding("binding", DataProductIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .dataProductId(example.dataProductId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .dataProductId(example.get("dataProductId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DataProductIamMember("member", DataProductIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .dataProductId(example.dataProductId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .dataProductId(example.get("dataProductId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
  *             .vpcPeeringConfig(PrivateConnectionVpcPeeringConfigArgs.builder()
- *                 .vpcName(googleComputeNetwork.default().id())
+ *                 .vpcName(googleComputeNetwork.get("default").get("id"))
  *                 .subnet("10.0.0.0/29")
  *                 .build())
  *             .createWithoutValidation(false)
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
  *             .pscInterfaceConfig(PrivateConnectionPscInterfaceConfigArgs.builder()
- *                 .networkAttachment(googleComputeNetworkAttachment.default().id())
+ *                 .networkAttachment(googleComputeNetworkAttachment.get("default").get("id"))
  *                 .build())
  *             .createWithoutValidation(false)
  *             .build());
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .name("my-attachment")
  *             .region("us-west1")
  *             .connectionPreference("ACCEPT_AUTOMATIC")
- *             .subnetworks(googleComputeSubnetwork.default().id())
+ *             .subnetworks(googleComputeSubnetwork.get("default").get("id"))
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()

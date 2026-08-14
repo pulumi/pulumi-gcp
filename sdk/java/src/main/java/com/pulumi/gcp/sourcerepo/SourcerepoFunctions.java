@@ -261,8 +261,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -302,8 +302,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -343,8 +343,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -384,8 +384,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }
@@ -425,8 +425,8 @@ public final class SourcerepoFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
-     *             .project(my_repo.project())
-     *             .repository(my_repo.name())
+     *             .project(my_repo.get("project"))
+     *             .repository(my_repo.get("name"))
      *             .build());
      * 
      *     }

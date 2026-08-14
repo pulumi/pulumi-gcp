@@ -161,9 +161,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // Grant Dataproc service account KMS permissions at project level
  *         var dataprocKmsEncrypterDecrypter = new IAMMember("dataprocKmsEncrypterDecrypter", IAMMemberArgs.builder()
- *             .project(project.name())
+ *             .project(project.get("name"))
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code dataproc-accounts.iam.gserviceaccount.com", project.number()))
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code dataproc-accounts.iam.gserviceaccount.com", project.get("number")))
  *             .build());
  * 
  *         var example = new WorkflowTemplate("example", WorkflowTemplateArgs.builder()

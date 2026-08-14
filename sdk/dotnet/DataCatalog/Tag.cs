@@ -352,7 +352,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///             new Gcp.DataCatalog.Inputs.TagFieldArgs
     ///             {
     ///                 FieldName = "num_rows",
-    ///                 DoubleValue = 5,
+    ///                 DoubleValue = 5.0,
     ///             },
     ///             new Gcp.DataCatalog.Inputs.TagFieldArgs
     ///             {

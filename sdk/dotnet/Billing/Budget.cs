@@ -100,7 +100,7 @@ namespace Pulumi.Gcp.Billing
     ///         {
     ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
     ///             {
-    ///                 ThresholdPercent = 10,
+    ///                 ThresholdPercent = 10.0,
     ///             },
     ///         },
     ///     });
@@ -223,11 +223,11 @@ namespace Pulumi.Gcp.Billing
     ///         {
     ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
     ///             {
-    ///                 ThresholdPercent = 1,
+    ///                 ThresholdPercent = 1.0,
     ///             },
     ///             new Gcp.Billing.Inputs.BudgetThresholdRuleArgs
     ///             {
-    ///                 ThresholdPercent = 1,
+    ///                 ThresholdPercent = 1.0,
     ///                 SpendBasis = "FORECASTED_SPEND",
     ///             },
     ///         },

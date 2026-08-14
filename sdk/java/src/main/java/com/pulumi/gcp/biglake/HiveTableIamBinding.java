@@ -69,10 +69,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HiveTableIamPolicy("policy", HiveTableIamPolicyArgs.builder()
- *             .project(myHiveTable.project())
- *             .catalog(myHiveTable.catalog())
- *             .database(myHiveTable.database())
- *             .name(myHiveTable.name())
+ *             .project(myHiveTable.get("project"))
+ *             .catalog(myHiveTable.get("catalog"))
+ *             .database(myHiveTable.get("database"))
+ *             .name(myHiveTable.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -106,10 +106,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HiveTableIamBinding("binding", HiveTableIamBindingArgs.builder()
- *             .project(myHiveTable.project())
- *             .catalog(myHiveTable.catalog())
- *             .database(myHiveTable.database())
- *             .name(myHiveTable.name())
+ *             .project(myHiveTable.get("project"))
+ *             .catalog(myHiveTable.get("catalog"))
+ *             .database(myHiveTable.get("database"))
+ *             .name(myHiveTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -144,10 +144,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HiveTableIamMember("member", HiveTableIamMemberArgs.builder()
- *             .project(myHiveTable.project())
- *             .catalog(myHiveTable.catalog())
- *             .database(myHiveTable.database())
- *             .name(myHiveTable.name())
+ *             .project(myHiveTable.get("project"))
+ *             .catalog(myHiveTable.get("catalog"))
+ *             .database(myHiveTable.get("database"))
+ *             .name(myHiveTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -215,10 +215,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HiveTableIamPolicy("policy", HiveTableIamPolicyArgs.builder()
- *             .project(myHiveTable.project())
- *             .catalog(myHiveTable.catalog())
- *             .database(myHiveTable.database())
- *             .name(myHiveTable.name())
+ *             .project(myHiveTable.get("project"))
+ *             .catalog(myHiveTable.get("catalog"))
+ *             .database(myHiveTable.get("database"))
+ *             .name(myHiveTable.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -252,10 +252,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HiveTableIamBinding("binding", HiveTableIamBindingArgs.builder()
- *             .project(myHiveTable.project())
- *             .catalog(myHiveTable.catalog())
- *             .database(myHiveTable.database())
- *             .name(myHiveTable.name())
+ *             .project(myHiveTable.get("project"))
+ *             .catalog(myHiveTable.get("catalog"))
+ *             .database(myHiveTable.get("database"))
+ *             .name(myHiveTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -290,10 +290,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HiveTableIamMember("member", HiveTableIamMemberArgs.builder()
- *             .project(myHiveTable.project())
- *             .catalog(myHiveTable.catalog())
- *             .database(myHiveTable.database())
- *             .name(myHiveTable.name())
+ *             .project(myHiveTable.get("project"))
+ *             .catalog(myHiveTable.get("catalog"))
+ *             .database(myHiveTable.get("database"))
+ *             .name(myHiveTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

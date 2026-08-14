@@ -214,7 +214,7 @@ namespace Pulumi.Gcp.Ces
     ///                 ModelSettings = new Gcp.Ces.Inputs.GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs
     ///                 {
     ///                     Model = "gemini-3.0-flash-001",
-    ///                     Temperature = 50,
+    ///                     Temperature = 50.0,
     ///                 },
     ///                 Prompt = "example_prompt",
     ///                 PolicyScope = "USER_QUERY",
@@ -475,7 +475,7 @@ namespace Pulumi.Gcp.Ces
     ///             ModelSettings = new Gcp.Ces.Inputs.GuardrailLlmPolicyModelSettingsArgs
     ///             {
     ///                 Model = "gemini-3.0-flash-001",
-    ///                 Temperature = 50,
+    ///                 Temperature = 50.0,
     ///             },
     ///             Prompt = "example_prompt",
     ///             PolicyScope = "USER_QUERY",

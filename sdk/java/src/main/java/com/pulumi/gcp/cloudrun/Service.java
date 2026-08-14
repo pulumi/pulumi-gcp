@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .name("pubsub_subscription")
  *             .topic(topic.name())
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
- *                 .pushEndpoint(default_.statuses().applyValue(_statuses -> _statuses[0].url()))
+ *                 .pushEndpoint(default_.statuses().applyValue(_statuses -> _statuses.get(0).url()))
  *                 .oidcToken(SubscriptionPushConfigOidcTokenArgs.builder()
  *                     .serviceAccountEmail(sa.email())
  *                     .build())

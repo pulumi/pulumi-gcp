@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Chronicle
     ///         WatchlistId = "watchlist-id",
     ///         Description = "watchlist-description",
     ///         DisplayName = "watchlist_name",
-    ///         MultiplyingFactor = 1,
+    ///         MultiplyingFactor = 1.0,
     ///         EntityPopulationMechanism = new Gcp.Chronicle.Inputs.WatchlistEntityPopulationMechanismArgs
     ///         {
     ///             Manual = null,
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Chronicle
     ///         Instance = "00000000-0000-0000-0000-000000000000",
     ///         Description = "watchlist-description",
     ///         DisplayName = "watchlist-name",
-    ///         MultiplyingFactor = 1,
+    ///         MultiplyingFactor = 1.0,
     ///         EntityPopulationMechanism = new Gcp.Chronicle.Inputs.WatchlistEntityPopulationMechanismArgs
     ///         {
     ///             Manual = null,

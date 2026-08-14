@@ -65,10 +65,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SearchEngineIamPolicy("policy", SearchEngineIamPolicyArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .collectionId(basic.collectionId())
- *             .engineId(basic.engineId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .collectionId(basic.get("collectionId"))
+ *             .engineId(basic.get("engineId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,10 +102,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SearchEngineIamBinding("binding", SearchEngineIamBindingArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .collectionId(basic.collectionId())
- *             .engineId(basic.engineId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .collectionId(basic.get("collectionId"))
+ *             .engineId(basic.get("engineId"))
  *             .role("roles/discoveryengine.agentspaceUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -140,10 +140,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SearchEngineIamMember("member", SearchEngineIamMemberArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .collectionId(basic.collectionId())
- *             .engineId(basic.engineId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .collectionId(basic.get("collectionId"))
+ *             .engineId(basic.get("engineId"))
  *             .role("roles/discoveryengine.agentspaceUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,10 +208,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SearchEngineIamPolicy("policy", SearchEngineIamPolicyArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .collectionId(basic.collectionId())
- *             .engineId(basic.engineId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .collectionId(basic.get("collectionId"))
+ *             .engineId(basic.get("engineId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -245,10 +245,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SearchEngineIamBinding("binding", SearchEngineIamBindingArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .collectionId(basic.collectionId())
- *             .engineId(basic.engineId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .collectionId(basic.get("collectionId"))
+ *             .engineId(basic.get("engineId"))
  *             .role("roles/discoveryengine.agentspaceUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -283,10 +283,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SearchEngineIamMember("member", SearchEngineIamMemberArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .collectionId(basic.collectionId())
- *             .engineId(basic.engineId())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .collectionId(basic.get("collectionId"))
+ *             .engineId(basic.get("engineId"))
  *             .role("roles/discoveryengine.agentspaceUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

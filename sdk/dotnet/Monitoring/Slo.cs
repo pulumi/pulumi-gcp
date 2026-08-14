@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.Monitoring
     ///                 }).Apply(invoke =&gt; invoke.Result),
     ///                 Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs
     ///                 {
-    ///                     Max = 5,
+    ///                     Max = 5.0,
     ///                 },
     ///             },
     ///         },
@@ -229,7 +229,7 @@ namespace Pulumi.Gcp.Monitoring
     ///                 }).Apply(invoke =&gt; invoke.Result),
     ///                 Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliMetricSumInRangeRangeArgs
     ///                 {
-    ///                     Max = 5000,
+    ///                     Max = 5000.0,
     ///                 },
     ///             },
     ///         },
@@ -281,8 +281,8 @@ namespace Pulumi.Gcp.Monitoring
     ///                         }).Apply(invoke =&gt; invoke.Result),
     ///                         Range = new Gcp.Monitoring.Inputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRangeArgs
     ///                         {
-    ///                             Min = 1,
-    ///                             Max = 9,
+    ///                             Min = 1.0,
+    ///                             Max = 9.0,
     ///                         },
     ///                     },
     ///                 },

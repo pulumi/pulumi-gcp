@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
- *             .project(my_repo.project())
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
+ *             .project(my_repo.get("project"))
+ *             .location(my_repo.get("location"))
+ *             .repository(my_repo.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
- *             .project(my_repo.project())
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
+ *             .project(my_repo.get("project"))
+ *             .location(my_repo.get("location"))
+ *             .repository(my_repo.get("name"))
  *             .role("roles/artifactregistry.reader")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
- *             .project(my_repo.project())
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
+ *             .project(my_repo.get("project"))
+ *             .location(my_repo.get("location"))
+ *             .repository(my_repo.get("name"))
  *             .role("roles/artifactregistry.reader")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryIamPolicy("policy", RepositoryIamPolicyArgs.builder()
- *             .project(my_repo.project())
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
+ *             .project(my_repo.get("project"))
+ *             .location(my_repo.get("location"))
+ *             .repository(my_repo.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryIamBinding("binding", RepositoryIamBindingArgs.builder()
- *             .project(my_repo.project())
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
+ *             .project(my_repo.get("project"))
+ *             .location(my_repo.get("location"))
+ *             .repository(my_repo.get("name"))
  *             .role("roles/artifactregistry.reader")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryIamMember("member", RepositoryIamMemberArgs.builder()
- *             .project(my_repo.project())
- *             .location(my_repo.location())
- *             .repository(my_repo.name())
+ *             .project(my_repo.get("project"))
+ *             .location(my_repo.get("location"))
+ *             .repository(my_repo.get("name"))
  *             .role("roles/artifactregistry.reader")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

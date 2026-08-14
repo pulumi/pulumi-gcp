@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()
- *             .project(instance.project())
- *             .location(instance.location())
- *             .instanceName(instance.name())
+ *             .project(instance.get("project"))
+ *             .location(instance.get("location"))
+ *             .instanceName(instance.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()
- *             .project(instance.project())
- *             .location(instance.location())
- *             .instanceName(instance.name())
+ *             .project(instance.get("project"))
+ *             .location(instance.get("location"))
+ *             .instanceName(instance.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()
- *             .project(instance.project())
- *             .location(instance.location())
- *             .instanceName(instance.name())
+ *             .project(instance.get("project"))
+ *             .location(instance.get("location"))
+ *             .instanceName(instance.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceIamPolicy("policy", InstanceIamPolicyArgs.builder()
- *             .project(instance.project())
- *             .location(instance.location())
- *             .instanceName(instance.name())
+ *             .project(instance.get("project"))
+ *             .location(instance.get("location"))
+ *             .instanceName(instance.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstanceIamBinding("binding", InstanceIamBindingArgs.builder()
- *             .project(instance.project())
- *             .location(instance.location())
- *             .instanceName(instance.name())
+ *             .project(instance.get("project"))
+ *             .location(instance.get("location"))
+ *             .instanceName(instance.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstanceIamMember("member", InstanceIamMemberArgs.builder()
- *             .project(instance.project())
- *             .location(instance.location())
- *             .instanceName(instance.name())
+ *             .project(instance.get("project"))
+ *             .location(instance.get("location"))
+ *             .instanceName(instance.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

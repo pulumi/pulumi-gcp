@@ -286,8 +286,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = RuntimeconfigFunctions.getConfigIamPolicy(GetConfigIamPolicyArgs.builder()
-     *             .project(config.project())
-     *             .config(config.name())
+     *             .project(config.get("project"))
+     *             .config(config.get("name"))
      *             .build());
      * 
      *     }
@@ -329,8 +329,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = RuntimeconfigFunctions.getConfigIamPolicy(GetConfigIamPolicyArgs.builder()
-     *             .project(config.project())
-     *             .config(config.name())
+     *             .project(config.get("project"))
+     *             .config(config.get("name"))
      *             .build());
      * 
      *     }
@@ -372,8 +372,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = RuntimeconfigFunctions.getConfigIamPolicy(GetConfigIamPolicyArgs.builder()
-     *             .project(config.project())
-     *             .config(config.name())
+     *             .project(config.get("project"))
+     *             .config(config.get("name"))
      *             .build());
      * 
      *     }
@@ -415,8 +415,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = RuntimeconfigFunctions.getConfigIamPolicy(GetConfigIamPolicyArgs.builder()
-     *             .project(config.project())
-     *             .config(config.name())
+     *             .project(config.get("project"))
+     *             .config(config.get("name"))
      *             .build());
      * 
      *     }
@@ -458,8 +458,8 @@ public final class RuntimeconfigFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = RuntimeconfigFunctions.getConfigIamPolicy(GetConfigIamPolicyArgs.builder()
-     *             .project(config.project())
-     *             .config(config.name())
+     *             .project(config.get("project"))
+     *             .config(config.get("name"))
      *             .build());
      * 
      *     }

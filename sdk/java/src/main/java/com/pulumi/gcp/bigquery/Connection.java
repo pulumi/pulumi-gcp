@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var connection = new Connection("connection", ConnectionArgs.builder()
@@ -209,7 +209,7 @@ import javax.annotation.Nullable;
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var connection = new Connection("connection", ConnectionArgs.builder()

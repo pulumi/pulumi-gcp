@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackupPlanIamPolicy("policy", BackupPlanIamPolicyArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .name(basic.name())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .name(basic.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BackupPlanIamBinding("binding", BackupPlanIamBindingArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .name(basic.name())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .name(basic.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BackupPlanIamMember("member", BackupPlanIamMemberArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .name(basic.name())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .name(basic.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackupPlanIamPolicy("policy", BackupPlanIamPolicyArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .name(basic.name())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .name(basic.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BackupPlanIamBinding("binding", BackupPlanIamBindingArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .name(basic.name())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .name(basic.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BackupPlanIamMember("member", BackupPlanIamMemberArgs.builder()
- *             .project(basic.project())
- *             .location(basic.location())
- *             .name(basic.name())
+ *             .project(basic.get("project"))
+ *             .location(basic.get("location"))
+ *             .name(basic.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

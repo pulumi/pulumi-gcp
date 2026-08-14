@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(SecretIamBindingConditionArgs.builder()
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(SecretIamMemberConditionArgs.builder()
@@ -337,8 +337,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -422,8 +422,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -459,8 +459,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecretIamBinding("binding", SecretIamBindingArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(SecretIamBindingConditionArgs.builder()
@@ -499,8 +499,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -536,8 +536,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecretIamMember("member", SecretIamMemberArgs.builder()
- *             .project(secret_basic.project())
- *             .secretId(secret_basic.secretId())
+ *             .project(secret_basic.get("project"))
+ *             .secretId(secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(SecretIamMemberConditionArgs.builder()

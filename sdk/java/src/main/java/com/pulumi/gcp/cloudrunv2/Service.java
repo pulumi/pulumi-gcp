@@ -927,7 +927,7 @@ import javax.annotation.Nullable;
  *                 .volumes(ServiceTemplateVolumeArgs.builder()
  *                     .name("nfs")
  *                     .nfs(ServiceTemplateVolumeNfsArgs.builder()
- *                         .server(defaultInstance.networks().applyValue(_networks -> _networks[0].ipAddresses()[0]))
+ *                         .server(defaultInstance.networks().applyValue(_networks -> _networks.get(0).ipAddresses().get(0)))
  *                         .path("/share1")
  *                         .readOnly(false)
  *                         .build())

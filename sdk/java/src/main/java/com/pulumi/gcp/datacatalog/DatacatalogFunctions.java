@@ -57,7 +57,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(basicEntryGroup.name())
+     *             .entryGroup(basicEntryGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -99,7 +99,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(basicEntryGroup.name())
+     *             .entryGroup(basicEntryGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -141,7 +141,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(basicEntryGroup.name())
+     *             .entryGroup(basicEntryGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -183,7 +183,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(basicEntryGroup.name())
+     *             .entryGroup(basicEntryGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -225,7 +225,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .entryGroup(basicEntryGroup.name())
+     *             .entryGroup(basicEntryGroup.get("name"))
      *             .build());
      * 
      *     }
@@ -265,7 +265,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(basicPolicyTag.name())
+     *             .policyTag(basicPolicyTag.get("name"))
      *             .build());
      * 
      *     }
@@ -305,7 +305,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(basicPolicyTag.name())
+     *             .policyTag(basicPolicyTag.get("name"))
      *             .build());
      * 
      *     }
@@ -345,7 +345,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(basicPolicyTag.name())
+     *             .policyTag(basicPolicyTag.get("name"))
      *             .build());
      * 
      *     }
@@ -385,7 +385,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(basicPolicyTag.name())
+     *             .policyTag(basicPolicyTag.get("name"))
      *             .build());
      * 
      *     }
@@ -425,7 +425,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
-     *             .policyTag(basicPolicyTag.name())
+     *             .policyTag(basicPolicyTag.get("name"))
      *             .build());
      * 
      *     }
@@ -467,7 +467,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(basicTagTemplate.name())
+     *             .tagTemplate(basicTagTemplate.get("name"))
      *             .build());
      * 
      *     }
@@ -509,7 +509,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(basicTagTemplate.name())
+     *             .tagTemplate(basicTagTemplate.get("name"))
      *             .build());
      * 
      *     }
@@ -551,7 +551,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(basicTagTemplate.name())
+     *             .tagTemplate(basicTagTemplate.get("name"))
      *             .build());
      * 
      *     }
@@ -593,7 +593,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(basicTagTemplate.name())
+     *             .tagTemplate(basicTagTemplate.get("name"))
      *             .build());
      * 
      *     }
@@ -635,7 +635,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
-     *             .tagTemplate(basicTagTemplate.name())
+     *             .tagTemplate(basicTagTemplate.get("name"))
      *             .build());
      * 
      *     }
@@ -935,7 +935,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(basicTaxonomy.name())
+     *             .taxonomy(basicTaxonomy.get("name"))
      *             .build());
      * 
      *     }
@@ -975,7 +975,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(basicTaxonomy.name())
+     *             .taxonomy(basicTaxonomy.get("name"))
      *             .build());
      * 
      *     }
@@ -1015,7 +1015,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(basicTaxonomy.name())
+     *             .taxonomy(basicTaxonomy.get("name"))
      *             .build());
      * 
      *     }
@@ -1055,7 +1055,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(basicTaxonomy.name())
+     *             .taxonomy(basicTaxonomy.get("name"))
      *             .build());
      * 
      *     }
@@ -1095,7 +1095,7 @@ public final class DatacatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
-     *             .taxonomy(basicTaxonomy.name())
+     *             .taxonomy(basicTaxonomy.get("name"))
      *             .build());
      * 
      *     }

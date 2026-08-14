@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  * 
  *         var backendKey = new BackendServiceSignedUrlKey("backendKey", BackendServiceSignedUrlKeyArgs.builder()
  *             .name("test-key")
- *             .keyValue(urlSignature.b64Url())
+ *             .keyValue(urlSignature.get("b64Url"))
  *             .backendService(exampleBackend.name())
  *             .build());
  * 

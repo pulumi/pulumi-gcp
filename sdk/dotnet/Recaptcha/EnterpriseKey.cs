@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Recaptcha
     ///         Project = "my-project-name",
     ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
     ///         {
-    ///             TestingScore = 1,
+    ///             TestingScore = 1.0,
     ///         },
     ///         Labels = 
     ///         {

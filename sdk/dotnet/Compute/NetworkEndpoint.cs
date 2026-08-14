@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         NetworkEndpointGroup = neg.Name,
     ///         Instance = endpoint_instance.Name,
-    ///         Port = neg.DefaultPort,
+    ///         Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
     ///         IpAddress = endpoint_instance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
     ///     });
     /// 

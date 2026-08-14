@@ -48,9 +48,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .instanceName(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .instanceName(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -92,9 +92,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .instanceName(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .instanceName(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -136,9 +136,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .instanceName(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .instanceName(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -180,9 +180,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .instanceName(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .instanceName(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -224,9 +224,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(instance.project())
-     *             .location(instance.location())
-     *             .instanceName(instance.name())
+     *             .project(instance.get("project"))
+     *             .location(instance.get("location"))
+     *             .instanceName(instance.get("name"))
      *             .build());
      * 
      *     }
@@ -268,9 +268,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(runtime.project())
-     *             .location(runtime.location())
-     *             .runtimeName(runtime.name())
+     *             .project(runtime.get("project"))
+     *             .location(runtime.get("location"))
+     *             .runtimeName(runtime.get("name"))
      *             .build());
      * 
      *     }
@@ -312,9 +312,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(runtime.project())
-     *             .location(runtime.location())
-     *             .runtimeName(runtime.name())
+     *             .project(runtime.get("project"))
+     *             .location(runtime.get("location"))
+     *             .runtimeName(runtime.get("name"))
      *             .build());
      * 
      *     }
@@ -356,9 +356,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(runtime.project())
-     *             .location(runtime.location())
-     *             .runtimeName(runtime.name())
+     *             .project(runtime.get("project"))
+     *             .location(runtime.get("location"))
+     *             .runtimeName(runtime.get("name"))
      *             .build());
      * 
      *     }
@@ -400,9 +400,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(runtime.project())
-     *             .location(runtime.location())
-     *             .runtimeName(runtime.name())
+     *             .project(runtime.get("project"))
+     *             .location(runtime.get("location"))
+     *             .runtimeName(runtime.get("name"))
      *             .build());
      * 
      *     }
@@ -444,9 +444,9 @@ public final class NotebooksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NotebooksFunctions.getRuntimeIamPolicy(GetRuntimeIamPolicyArgs.builder()
-     *             .project(runtime.project())
-     *             .location(runtime.location())
-     *             .runtimeName(runtime.name())
+     *             .project(runtime.get("project"))
+     *             .location(runtime.get("location"))
+     *             .runtimeName(runtime.get("name"))
      *             .build());
      * 
      *     }

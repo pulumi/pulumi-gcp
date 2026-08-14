@@ -1996,7 +1996,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(testAccount.name())
+     *             .serviceAccountId(testAccount.get("name"))
      *             .build());
      * 
      *     }
@@ -2036,7 +2036,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(testAccount.name())
+     *             .serviceAccountId(testAccount.get("name"))
      *             .build());
      * 
      *     }
@@ -2076,7 +2076,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(testAccount.name())
+     *             .serviceAccountId(testAccount.get("name"))
      *             .build());
      * 
      *     }
@@ -2116,7 +2116,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(testAccount.name())
+     *             .serviceAccountId(testAccount.get("name"))
      *             .build());
      * 
      *     }
@@ -2156,7 +2156,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = ServiceaccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .serviceAccountId(testAccount.name())
+     *             .serviceAccountId(testAccount.get("name"))
      *             .build());
      * 
      *     }

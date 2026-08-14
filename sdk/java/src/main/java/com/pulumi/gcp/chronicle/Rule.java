@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *         var example = new Rule("example", RuleArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")
- *             .scope(googleChronicleDataAccessScope.dataAccessScopeTest().name())
+ *             .scope(googleChronicleDataAccessScope.get("dataAccessScopeTest").get("name"))
  *             .text("""
  * rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
  *             """)

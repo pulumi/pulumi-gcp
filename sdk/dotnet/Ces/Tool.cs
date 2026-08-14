@@ -89,9 +89,9 @@ namespace Pulumi.Gcp.Ces
     ///                     ["description"] = "An array",
     ///                 }),
     ///                 MaxItems = 32,
-    ///                 Maximum = 64,
+    ///                 Maximum = 64.0,
     ///                 MinItems = 1,
-    ///                 Minimum = 2,
+    ///                 Minimum = 2.0,
     ///                 Nullable = true,
     ///                 PrefixItems = JsonSerializer.Serialize(new[]
     ///                 {
@@ -153,9 +153,9 @@ namespace Pulumi.Gcp.Ces
     ///                     ["description"] = "An array",
     ///                 }),
     ///                 MaxItems = 32,
-    ///                 Maximum = 64,
+    ///                 Maximum = 64.0,
     ///                 MinItems = 1,
-    ///                 Minimum = 2,
+    ///                 Minimum = 2.0,
     ///                 Nullable = true,
     ///                 PrefixItems = JsonSerializer.Serialize(new[]
     ///                 {
@@ -262,7 +262,7 @@ namespace Pulumi.Gcp.Ces
     ///                                 new Gcp.Ces.Inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs
     ///                                 {
     ///                                     Condition = "(lang_code: ANY(\"en\", \"fr\"))",
-    ///                                     Boost = 1,
+    ///                                     Boost = 1.0,
     ///                                     BoostControlSpec = new Gcp.Ces.Inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs
     ///                                     {
     ///                                         FieldName = "example-field",
@@ -273,7 +273,7 @@ namespace Pulumi.Gcp.Ces
     ///                                             new Gcp.Ces.Inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs
     ///                                             {
     ///                                                 AttributeValue = "1",
-    ///                                                 BoostAmount = 1,
+    ///                                                 BoostAmount = 1.0,
     ///                                             },
     ///                                         },
     ///                                     },
@@ -293,7 +293,7 @@ namespace Pulumi.Gcp.Ces
     ///                         ModelSettings = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs
     ///                         {
     ///                             Model = "gemini-3.0-flash-001",
-    ///                             Temperature = 1,
+    ///                             Temperature = 1.0,
     ///                         },
     ///                         Prompt = "example-prompt",
     ///                         Disabled = false,
@@ -303,14 +303,14 @@ namespace Pulumi.Gcp.Ces
     ///                         ModelSettings = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs
     ///                         {
     ///                             Model = "gemini-3.0-flash-001",
-    ///                             Temperature = 1,
+    ///                             Temperature = 1.0,
     ///                         },
     ///                         Prompt = "example-prompt",
     ///                         Disabled = false,
     ///                     },
     ///                     GroundingConfig = new Gcp.Ces.Inputs.ToolDataStoreToolModalityConfigGroundingConfigArgs
     ///                     {
-    ///                         GroundingLevel = 3,
+    ///                         GroundingLevel = 3.0,
     ///                         Disabled = false,
     ///                     },
     ///                 },

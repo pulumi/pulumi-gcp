@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var withDisk = new RegionPerInstanceConfig("withDisk", RegionPerInstanceConfigArgs.builder()
- *             .region(igm.region())
+ *             .region(igm.get("region"))
  *             .regionInstanceGroupManager(rigm.name())
  *             .name("instance-1")
  *             .preservedState(RegionPerInstanceConfigPreservedStateArgs.builder()

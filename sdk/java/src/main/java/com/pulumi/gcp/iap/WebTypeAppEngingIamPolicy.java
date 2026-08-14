@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebTypeAppEngingIamBinding("binding", WebTypeAppEngingIamBindingArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebTypeAppEngingIamBinding("binding", WebTypeAppEngingIamBindingArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebTypeAppEngingIamBindingConditionArgs.builder()
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebTypeAppEngingIamMember("member", WebTypeAppEngingIamMemberArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebTypeAppEngingIamMember("member", WebTypeAppEngingIamMemberArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebTypeAppEngingIamMemberConditionArgs.builder()
@@ -337,8 +337,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebTypeAppEngingIamPolicy("policy", WebTypeAppEngingIamPolicyArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -422,8 +422,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebTypeAppEngingIamBinding("binding", WebTypeAppEngingIamBindingArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -459,8 +459,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebTypeAppEngingIamBinding("binding", WebTypeAppEngingIamBindingArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebTypeAppEngingIamBindingConditionArgs.builder()
@@ -499,8 +499,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebTypeAppEngingIamMember("member", WebTypeAppEngingIamMemberArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -536,8 +536,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebTypeAppEngingIamMember("member", WebTypeAppEngingIamMemberArgs.builder()
- *             .project(app.project())
- *             .appId(app.appId())
+ *             .project(app.get("project"))
+ *             .appId(app.get("appId"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebTypeAppEngingIamMemberConditionArgs.builder()

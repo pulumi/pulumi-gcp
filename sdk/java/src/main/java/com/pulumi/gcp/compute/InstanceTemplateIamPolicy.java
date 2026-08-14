@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -116,8 +116,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -150,8 +150,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstanceTemplateIamBinding("binding", InstanceTemplateIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,8 +187,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstanceTemplateIamBinding("binding", InstanceTemplateIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(InstanceTemplateIamBindingConditionArgs.builder()
@@ -227,8 +227,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstanceTemplateIamMember("member", InstanceTemplateIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstanceTemplateIamMember("member", InstanceTemplateIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(InstanceTemplateIamMemberConditionArgs.builder()
@@ -337,8 +337,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -388,8 +388,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstanceTemplateIamPolicy("policy", InstanceTemplateIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -422,8 +422,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstanceTemplateIamBinding("binding", InstanceTemplateIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -459,8 +459,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstanceTemplateIamBinding("binding", InstanceTemplateIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(InstanceTemplateIamBindingConditionArgs.builder()
@@ -499,8 +499,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstanceTemplateIamMember("member", InstanceTemplateIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -536,8 +536,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstanceTemplateIamMember("member", InstanceTemplateIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.instanceAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(InstanceTemplateIamMemberConditionArgs.builder()

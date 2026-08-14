@@ -66,11 +66,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AssetIamPolicy("policy", AssetIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.dataplexZone())
- *             .asset(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("dataplexZone"))
+ *             .asset(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -104,11 +104,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AssetIamBinding("binding", AssetIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.dataplexZone())
- *             .asset(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("dataplexZone"))
+ *             .asset(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -143,11 +143,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AssetIamMember("member", AssetIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.dataplexZone())
- *             .asset(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("dataplexZone"))
+ *             .asset(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -212,11 +212,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AssetIamPolicy("policy", AssetIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.dataplexZone())
- *             .asset(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("dataplexZone"))
+ *             .asset(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -250,11 +250,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AssetIamBinding("binding", AssetIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.dataplexZone())
- *             .asset(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("dataplexZone"))
+ *             .asset(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -289,11 +289,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AssetIamMember("member", AssetIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .dataplexZone(example.dataplexZone())
- *             .asset(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .dataplexZone(example.get("dataplexZone"))
+ *             .asset(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

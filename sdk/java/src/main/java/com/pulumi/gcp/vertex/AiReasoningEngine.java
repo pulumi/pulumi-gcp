@@ -275,7 +275,7 @@ import javax.annotation.Nullable;
  *             .role("roles/artifactregistry.reader")
  *             .member(StdFunctions.jsondecode(JsondecodeArgs.builder()
  *                 .input(tenantMds.applyValue(_tenantMds -> _tenantMds.output()))
- *                 .build()).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().output())))
+ *                 .build()).applyValue(_invoke -> String.format("serviceAccount:%s", _invoke.result().get("output"))))
  *             .build());
  * 
  *         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()

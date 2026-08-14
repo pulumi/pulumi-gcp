@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var natVm = new Instance("natVm", InstanceArgs.builder()
@@ -245,7 +245,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .connectionProfileId("my-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
- *                 .hostname(natVm.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *                 .hostname(natVm.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *                 .username(user.name())
  *                 .password(user.password())
  *                 .database(db.name())
@@ -377,7 +377,7 @@ import javax.annotation.Nullable;
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var default_ = new ConnectionProfile("default", ConnectionProfileArgs.builder()

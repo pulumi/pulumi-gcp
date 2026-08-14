@@ -1000,7 +1000,7 @@ namespace Pulumi.Gcp.Compute
     ///             RequestMirrorPolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionRequestMirrorPolicyArgs
     ///             {
     ///                 BackendService = mirror.Id,
-    ///                 MirrorPercent = 50,
+    ///                 MirrorPercent = 50.0,
     ///             },
     ///         },
     ///         HostRules = new[]
@@ -1075,7 +1075,7 @@ namespace Pulumi.Gcp.Compute
     ///             RequestMirrorPolicy = new Gcp.Compute.Inputs.URLMapDefaultRouteActionRequestMirrorPolicyArgs
     ///             {
     ///                 BackendService = mirror.Id,
-    ///                 MirrorPercent = 50,
+    ///                 MirrorPercent = 50.0,
     ///             },
     ///         },
     ///         HostRules = new[]
@@ -1463,7 +1463,7 @@ namespace Pulumi.Gcp.Compute
     ///                     RequestMirrorPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherDefaultRouteActionRequestMirrorPolicyArgs
     ///                     {
     ///                         BackendService = mirror.Id,
-    ///                         MirrorPercent = 75,
+    ///                         MirrorPercent = 75.0,
     ///                     },
     ///                 },
     ///             },
@@ -1547,7 +1547,7 @@ namespace Pulumi.Gcp.Compute
     ///                             RequestMirrorPolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs
     ///                             {
     ///                                 BackendService = mirror.Id,
-    ///                                 MirrorPercent = 25,
+    ///                                 MirrorPercent = 25.0,
     ///                             },
     ///                         },
     ///                     },

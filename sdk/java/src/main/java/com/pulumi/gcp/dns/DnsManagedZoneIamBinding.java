@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -119,8 +119,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -153,8 +153,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,8 +190,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(DnsManagedZoneIamBindingConditionArgs.builder()
@@ -230,8 +230,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -267,8 +267,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(DnsManagedZoneIamMemberConditionArgs.builder()
@@ -340,8 +340,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -391,8 +391,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DnsManagedZoneIamPolicy("policy", DnsManagedZoneIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -425,8 +425,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -462,8 +462,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DnsManagedZoneIamBinding("binding", DnsManagedZoneIamBindingArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(DnsManagedZoneIamBindingConditionArgs.builder()
@@ -502,8 +502,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -539,8 +539,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DnsManagedZoneIamMember("member", DnsManagedZoneIamMemberArgs.builder()
- *             .project(default_.project())
- *             .managedZone(default_.name())
+ *             .project(default_.get("project"))
+ *             .managedZone(default_.get("name"))
  *             .role("roles/dns.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(DnsManagedZoneIamMemberConditionArgs.builder()

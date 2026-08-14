@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
- *             .parent(String.format("//run.googleapis.com/projects/%s/locations/%s/services/%s", projectGoogleProject.number(),default_.location(),default_.name()))
+ *             .parent(String.format("//run.googleapis.com/projects/%s/locations/%s/services/%s", projectGoogleProject.get("number"),default_.get("location"),default_.get("name")))
  *             .tagValue(value.id())
  *             .location("us-central1")
  *             .build());
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
- *             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.instanceId())))
+ *             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.get("instanceId"))))
  *             .tagValue(value.id())
  *             .location("us-central1-a")
  *             .build());
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
- *             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.instanceId())))
+ *             .parent(project.number().applyValue(_number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", _number,instance.get("instanceId"))))
  *             .tagValue(key.namespacedName().applyValue(_namespacedName -> String.format("%s/test-value", _namespacedName)))
  *             .location("us-central1-a")
  *             .build());

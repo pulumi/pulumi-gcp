@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DiskIamPolicy("policy", DiskIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DiskIamBinding("binding", DiskIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DiskIamMember("member", DiskIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

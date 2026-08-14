@@ -117,13 +117,13 @@ namespace Pulumi.Gcp.Compute
     ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
     ///             {
     ///                 Instance = endpoint_instance1.Name,
-    ///                 Port = neg.DefaultPort,
+    ///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
     ///                 IpAddress = endpoint_instance1.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
     ///             },
     ///             new Gcp.Compute.Inputs.NetworkEndpointListNetworkEndpointArgs
     ///             {
     ///                 Instance = endpoint_instance2.Name,
-    ///                 Port = neg.DefaultPort,
+    ///                 Port = int.Parse(neg.DefaultPort, System.Globalization.CultureInfo.InvariantCulture),
     ///                 IpAddress = endpoint_instance2.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].NetworkIp),
     ///             },
     ///         },

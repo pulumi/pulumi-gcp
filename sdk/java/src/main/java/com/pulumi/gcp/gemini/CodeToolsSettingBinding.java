@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleCodeToolsSettingBinding = new CodeToolsSettingBinding("exampleCodeToolsSettingBinding", CodeToolsSettingBindingArgs.builder()
- *             .codeToolsSettingId(basic.codeToolsSettingId())
+ *             .codeToolsSettingId(basic.get("codeToolsSettingId"))
  *             .settingBindingId("ls-tf1b1")
  *             .location("global")
  *             .target("projects/980109375338")

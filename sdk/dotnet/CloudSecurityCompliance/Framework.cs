@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                         Name = "location",
     ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
     ///                         {
-    ///                             NumberValue = 1,
+    ///                             NumberValue = 1.0,
     ///                         },
     ///                     },
     ///                 },
@@ -200,7 +200,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                         Name = "location",
     ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
     ///                         {
-    ///                             NumberValue = 1,
+    ///                             NumberValue = 1.0,
     ///                         },
     ///                     },
     ///                 },
@@ -295,7 +295,7 @@ namespace Pulumi.Gcp.CloudSecurityCompliance
     ///                         Name = "location",
     ///                         ParameterValue = new Gcp.CloudSecurityCompliance.Inputs.FrameworkCloudControlDetailParameterParameterValueArgs
     ///                         {
-    ///                             NumberValue = 1,
+    ///                             NumberValue = 1.0,
     ///                         },
     ///                     },
     ///                 },

@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreFederationIamPolicy("policy", MetastoreFederationIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .federationId(default_.federationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .federationId(default_.get("federationId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MetastoreFederationIamBinding("binding", MetastoreFederationIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .federationId(default_.federationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .federationId(default_.get("federationId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MetastoreFederationIamMember("member", MetastoreFederationIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .federationId(default_.federationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .federationId(default_.get("federationId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreFederationIamPolicy("policy", MetastoreFederationIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .federationId(default_.federationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .federationId(default_.get("federationId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MetastoreFederationIamBinding("binding", MetastoreFederationIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .federationId(default_.federationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .federationId(default_.get("federationId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MetastoreFederationIamMember("member", MetastoreFederationIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .federationId(default_.federationId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .federationId(default_.get("federationId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

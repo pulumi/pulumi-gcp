@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureOnlineStoreIamPolicy("policy", AiFeatureOnlineStoreIamPolicyArgs.builder()
- *             .region(featureOnlineStore.region())
- *             .featureOnlineStore(featureOnlineStore.name())
+ *             .region(featureOnlineStore.get("region"))
+ *             .featureOnlineStore(featureOnlineStore.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureOnlineStoreIamBinding("binding", AiFeatureOnlineStoreIamBindingArgs.builder()
- *             .region(featureOnlineStore.region())
- *             .featureOnlineStore(featureOnlineStore.name())
+ *             .region(featureOnlineStore.get("region"))
+ *             .featureOnlineStore(featureOnlineStore.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureOnlineStoreIamMember("member", AiFeatureOnlineStoreIamMemberArgs.builder()
- *             .region(featureOnlineStore.region())
- *             .featureOnlineStore(featureOnlineStore.name())
+ *             .region(featureOnlineStore.get("region"))
+ *             .featureOnlineStore(featureOnlineStore.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,8 +206,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AiFeatureOnlineStoreIamPolicy("policy", AiFeatureOnlineStoreIamPolicyArgs.builder()
- *             .region(featureOnlineStore.region())
- *             .featureOnlineStore(featureOnlineStore.name())
+ *             .region(featureOnlineStore.get("region"))
+ *             .featureOnlineStore(featureOnlineStore.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,8 +241,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AiFeatureOnlineStoreIamBinding("binding", AiFeatureOnlineStoreIamBindingArgs.builder()
- *             .region(featureOnlineStore.region())
- *             .featureOnlineStore(featureOnlineStore.name())
+ *             .region(featureOnlineStore.get("region"))
+ *             .featureOnlineStore(featureOnlineStore.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -277,8 +277,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AiFeatureOnlineStoreIamMember("member", AiFeatureOnlineStoreIamMemberArgs.builder()
- *             .region(featureOnlineStore.region())
- *             .featureOnlineStore(featureOnlineStore.name())
+ *             .region(featureOnlineStore.get("region"))
+ *             .featureOnlineStore(featureOnlineStore.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

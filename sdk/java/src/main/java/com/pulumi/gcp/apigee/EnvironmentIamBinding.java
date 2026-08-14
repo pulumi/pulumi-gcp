@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
- *             .orgId(apigeeEnvironment.orgId())
- *             .envId(apigeeEnvironment.name())
+ *             .orgId(apigeeEnvironment.get("orgId"))
+ *             .envId(apigeeEnvironment.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
- *             .orgId(apigeeEnvironment.orgId())
- *             .envId(apigeeEnvironment.name())
+ *             .orgId(apigeeEnvironment.get("orgId"))
+ *             .envId(apigeeEnvironment.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
- *             .orgId(apigeeEnvironment.orgId())
- *             .envId(apigeeEnvironment.name())
+ *             .orgId(apigeeEnvironment.get("orgId"))
+ *             .envId(apigeeEnvironment.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -204,8 +204,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EnvironmentIamPolicy("policy", EnvironmentIamPolicyArgs.builder()
- *             .orgId(apigeeEnvironment.orgId())
- *             .envId(apigeeEnvironment.name())
+ *             .orgId(apigeeEnvironment.get("orgId"))
+ *             .envId(apigeeEnvironment.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,8 +239,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EnvironmentIamBinding("binding", EnvironmentIamBindingArgs.builder()
- *             .orgId(apigeeEnvironment.orgId())
- *             .envId(apigeeEnvironment.name())
+ *             .orgId(apigeeEnvironment.get("orgId"))
+ *             .envId(apigeeEnvironment.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -275,8 +275,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EnvironmentIamMember("member", EnvironmentIamMemberArgs.builder()
- *             .orgId(apigeeEnvironment.orgId())
- *             .envId(apigeeEnvironment.name())
+ *             .orgId(apigeeEnvironment.get("orgId"))
+ *             .envId(apigeeEnvironment.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

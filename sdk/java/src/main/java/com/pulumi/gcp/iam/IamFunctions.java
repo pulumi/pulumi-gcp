@@ -478,8 +478,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
-     *             .location(example.location())
-     *             .workforcePoolId(example.workforcePoolId())
+     *             .location(example.get("location"))
+     *             .workforcePoolId(example.get("workforcePoolId"))
      *             .build());
      * 
      *     }
@@ -519,8 +519,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
-     *             .location(example.location())
-     *             .workforcePoolId(example.workforcePoolId())
+     *             .location(example.get("location"))
+     *             .workforcePoolId(example.get("workforcePoolId"))
      *             .build());
      * 
      *     }
@@ -560,8 +560,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
-     *             .location(example.location())
-     *             .workforcePoolId(example.workforcePoolId())
+     *             .location(example.get("location"))
+     *             .workforcePoolId(example.get("workforcePoolId"))
      *             .build());
      * 
      *     }
@@ -601,8 +601,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
-     *             .location(example.location())
-     *             .workforcePoolId(example.workforcePoolId())
+     *             .location(example.get("location"))
+     *             .workforcePoolId(example.get("workforcePoolId"))
      *             .build());
      * 
      *     }
@@ -642,8 +642,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkforcePoolIamPolicy(GetWorkforcePoolIamPolicyArgs.builder()
-     *             .location(example.location())
-     *             .workforcePoolId(example.workforcePoolId())
+     *             .location(example.get("location"))
+     *             .workforcePoolId(example.get("workforcePoolId"))
      *             .build());
      * 
      *     }
@@ -908,8 +908,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .project(example.get("project"))
+     *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
      *             .build());
      * 
      *     }
@@ -949,8 +949,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .project(example.get("project"))
+     *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
      *             .build());
      * 
      *     }
@@ -990,8 +990,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .project(example.get("project"))
+     *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
      *             .build());
      * 
      *     }
@@ -1031,8 +1031,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .project(example.get("project"))
+     *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
      *             .build());
      * 
      *     }
@@ -1072,8 +1072,8 @@ public final class IamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = IamFunctions.getWorkloadIdentityPoolIamPolicy(GetWorkloadIdentityPoolIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .workloadIdentityPoolId(example.workloadIdentityPoolId())
+     *             .project(example.get("project"))
+     *             .workloadIdentityPoolId(example.get("workloadIdentityPoolId"))
      *             .build());
      * 
      *     }

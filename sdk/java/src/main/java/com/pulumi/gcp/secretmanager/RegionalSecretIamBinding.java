@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionalSecretIamPolicy("policy", RegionalSecretIamPolicyArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -120,9 +120,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionalSecretIamPolicy("policy", RegionalSecretIamPolicyArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -155,9 +155,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionalSecretIamBinding("binding", RegionalSecretIamBindingArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -193,9 +193,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionalSecretIamBinding("binding", RegionalSecretIamBindingArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionalSecretIamBindingConditionArgs.builder()
@@ -234,9 +234,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionalSecretIamMember("member", RegionalSecretIamMemberArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionalSecretIamMember("member", RegionalSecretIamMemberArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionalSecretIamMemberConditionArgs.builder()
@@ -346,9 +346,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionalSecretIamPolicy("policy", RegionalSecretIamPolicyArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -398,9 +398,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionalSecretIamPolicy("policy", RegionalSecretIamPolicyArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -433,9 +433,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionalSecretIamBinding("binding", RegionalSecretIamBindingArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -471,9 +471,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionalSecretIamBinding("binding", RegionalSecretIamBindingArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionalSecretIamBindingConditionArgs.builder()
@@ -512,9 +512,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionalSecretIamMember("member", RegionalSecretIamMemberArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -550,9 +550,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionalSecretIamMember("member", RegionalSecretIamMemberArgs.builder()
- *             .project(regional_secret_basic.project())
- *             .location(regional_secret_basic.location())
- *             .secretId(regional_secret_basic.secretId())
+ *             .project(regional_secret_basic.get("project"))
+ *             .location(regional_secret_basic.get("location"))
+ *             .secretId(regional_secret_basic.get("secretId"))
  *             .role("roles/secretmanager.secretAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionalSecretIamMemberConditionArgs.builder()

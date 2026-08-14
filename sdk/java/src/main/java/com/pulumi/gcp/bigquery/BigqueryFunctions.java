@@ -70,9 +70,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(connection.project())
-     *             .location(connection.location())
-     *             .connectionId(connection.connectionId())
+     *             .project(connection.get("project"))
+     *             .location(connection.get("location"))
+     *             .connectionId(connection.get("connectionId"))
      *             .build());
      * 
      *     }
@@ -112,9 +112,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(connection.project())
-     *             .location(connection.location())
-     *             .connectionId(connection.connectionId())
+     *             .project(connection.get("project"))
+     *             .location(connection.get("location"))
+     *             .connectionId(connection.get("connectionId"))
      *             .build());
      * 
      *     }
@@ -154,9 +154,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(connection.project())
-     *             .location(connection.location())
-     *             .connectionId(connection.connectionId())
+     *             .project(connection.get("project"))
+     *             .location(connection.get("location"))
+     *             .connectionId(connection.get("connectionId"))
      *             .build());
      * 
      *     }
@@ -196,9 +196,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(connection.project())
-     *             .location(connection.location())
-     *             .connectionId(connection.connectionId())
+     *             .project(connection.get("project"))
+     *             .location(connection.get("location"))
+     *             .connectionId(connection.get("connectionId"))
      *             .build());
      * 
      *     }
@@ -238,9 +238,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(connection.project())
-     *             .location(connection.location())
-     *             .connectionId(connection.connectionId())
+     *             .project(connection.get("project"))
+     *             .location(connection.get("location"))
+     *             .connectionId(connection.get("connectionId"))
      *             .build());
      * 
      *     }
@@ -280,9 +280,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
-     *             .project(basicDataPolicy.project())
-     *             .location(basicDataPolicy.location())
-     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .project(basicDataPolicy.get("project"))
+     *             .location(basicDataPolicy.get("location"))
+     *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -322,9 +322,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
-     *             .project(basicDataPolicy.project())
-     *             .location(basicDataPolicy.location())
-     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .project(basicDataPolicy.get("project"))
+     *             .location(basicDataPolicy.get("location"))
+     *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -364,9 +364,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
-     *             .project(basicDataPolicy.project())
-     *             .location(basicDataPolicy.location())
-     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .project(basicDataPolicy.get("project"))
+     *             .location(basicDataPolicy.get("location"))
+     *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -406,9 +406,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
-     *             .project(basicDataPolicy.project())
-     *             .location(basicDataPolicy.location())
-     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .project(basicDataPolicy.get("project"))
+     *             .location(basicDataPolicy.get("location"))
+     *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -448,9 +448,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatapolicyv2DataPolicyIamPolicy(GetDatapolicyv2DataPolicyIamPolicyArgs.builder()
-     *             .project(basicDataPolicy.project())
-     *             .location(basicDataPolicy.location())
-     *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+     *             .project(basicDataPolicy.get("project"))
+     *             .location(basicDataPolicy.get("location"))
+     *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
      *             .build());
      * 
      *     }
@@ -705,7 +705,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.datasetId())
+     *             .datasetId(dataset.get("datasetId"))
      *             .build());
      * 
      *     }
@@ -745,7 +745,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.datasetId())
+     *             .datasetId(dataset.get("datasetId"))
      *             .build());
      * 
      *     }
@@ -785,7 +785,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.datasetId())
+     *             .datasetId(dataset.get("datasetId"))
      *             .build());
      * 
      *     }
@@ -825,7 +825,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.datasetId())
+     *             .datasetId(dataset.get("datasetId"))
      *             .build());
      * 
      *     }
@@ -865,7 +865,7 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.datasetId())
+     *             .datasetId(dataset.get("datasetId"))
      *             .build());
      * 
      *     }
@@ -1212,7 +1212,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1267,7 +1267,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1322,7 +1322,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1377,7 +1377,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1432,7 +1432,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1487,7 +1487,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1542,7 +1542,7 @@ public final class BigqueryFunctions {
      *             .build());
      * 
      *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
-     *             .cryptoKeyId(key.id())
+     *             .cryptoKeyId(key.get("id"))
      *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
      *             .member(String.format("serviceAccount:%s", bqSa.email()))
      *             .build());
@@ -1584,9 +1584,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
-     *             .project(sproc.project())
-     *             .datasetId(sproc.datasetId())
-     *             .routineId(sproc.routineId())
+     *             .project(sproc.get("project"))
+     *             .datasetId(sproc.get("datasetId"))
+     *             .routineId(sproc.get("routineId"))
      *             .build());
      * 
      *     }
@@ -1626,9 +1626,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
-     *             .project(sproc.project())
-     *             .datasetId(sproc.datasetId())
-     *             .routineId(sproc.routineId())
+     *             .project(sproc.get("project"))
+     *             .datasetId(sproc.get("datasetId"))
+     *             .routineId(sproc.get("routineId"))
      *             .build());
      * 
      *     }
@@ -1668,9 +1668,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
-     *             .project(sproc.project())
-     *             .datasetId(sproc.datasetId())
-     *             .routineId(sproc.routineId())
+     *             .project(sproc.get("project"))
+     *             .datasetId(sproc.get("datasetId"))
+     *             .routineId(sproc.get("routineId"))
      *             .build());
      * 
      *     }
@@ -1710,9 +1710,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
-     *             .project(sproc.project())
-     *             .datasetId(sproc.datasetId())
-     *             .routineId(sproc.routineId())
+     *             .project(sproc.get("project"))
+     *             .datasetId(sproc.get("datasetId"))
+     *             .routineId(sproc.get("routineId"))
      *             .build());
      * 
      *     }
@@ -1752,9 +1752,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getRoutineIamPolicy(GetRoutineIamPolicyArgs.builder()
-     *             .project(sproc.project())
-     *             .datasetId(sproc.datasetId())
-     *             .routineId(sproc.routineId())
+     *             .project(sproc.get("project"))
+     *             .datasetId(sproc.get("datasetId"))
+     *             .routineId(sproc.get("routineId"))
      *             .build());
      * 
      *     }
@@ -2014,9 +2014,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(test.project())
-     *             .datasetId(test.datasetId())
-     *             .tableId(test.tableId())
+     *             .project(test.get("project"))
+     *             .datasetId(test.get("datasetId"))
+     *             .tableId(test.get("tableId"))
      *             .build());
      * 
      *     }
@@ -2056,9 +2056,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(test.project())
-     *             .datasetId(test.datasetId())
-     *             .tableId(test.tableId())
+     *             .project(test.get("project"))
+     *             .datasetId(test.get("datasetId"))
+     *             .tableId(test.get("tableId"))
      *             .build());
      * 
      *     }
@@ -2098,9 +2098,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(test.project())
-     *             .datasetId(test.datasetId())
-     *             .tableId(test.tableId())
+     *             .project(test.get("project"))
+     *             .datasetId(test.get("datasetId"))
+     *             .tableId(test.get("tableId"))
      *             .build());
      * 
      *     }
@@ -2140,9 +2140,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(test.project())
-     *             .datasetId(test.datasetId())
-     *             .tableId(test.tableId())
+     *             .project(test.get("project"))
+     *             .datasetId(test.get("datasetId"))
+     *             .tableId(test.get("tableId"))
      *             .build());
      * 
      *     }
@@ -2182,9 +2182,9 @@ public final class BigqueryFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
-     *             .project(test.project())
-     *             .datasetId(test.datasetId())
-     *             .tableId(test.tableId())
+     *             .project(test.get("project"))
+     *             .datasetId(test.get("datasetId"))
+     *             .tableId(test.get("tableId"))
      *             .build());
      * 
      *     }

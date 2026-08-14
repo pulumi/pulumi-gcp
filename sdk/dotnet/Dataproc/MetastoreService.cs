@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         },
     ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
     ///         {
-    ///             ScalingFactor = 2,
+    ///             ScalingFactor = 2.0,
     ///         },
     ///     });
     /// 
@@ -348,7 +348,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                 AutoscalingEnabled = true,
     ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
     ///                 {
-    ///                     MaxScalingFactor = 1,
+    ///                     MaxScalingFactor = 1.0,
     ///                 },
     ///             },
     ///         },
@@ -383,7 +383,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                 LimitConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs
     ///                 {
     ///                     MinScalingFactor = 0.1,
-    ///                     MaxScalingFactor = 1,
+    ///                     MaxScalingFactor = 1.0,
     ///                 },
     ///             },
     ///         },

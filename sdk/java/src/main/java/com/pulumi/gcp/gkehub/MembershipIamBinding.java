@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()
- *             .project(membership.project())
- *             .location(membership.location())
- *             .membershipId(membership.membershipId())
+ *             .project(membership.get("project"))
+ *             .location(membership.get("location"))
+ *             .membershipId(membership.get("membershipId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()
- *             .project(membership.project())
- *             .location(membership.location())
- *             .membershipId(membership.membershipId())
+ *             .project(membership.get("project"))
+ *             .location(membership.get("location"))
+ *             .membershipId(membership.get("membershipId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()
- *             .project(membership.project())
- *             .location(membership.location())
- *             .membershipId(membership.membershipId())
+ *             .project(membership.get("project"))
+ *             .location(membership.get("location"))
+ *             .membershipId(membership.get("membershipId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MembershipIamPolicy("policy", MembershipIamPolicyArgs.builder()
- *             .project(membership.project())
- *             .location(membership.location())
- *             .membershipId(membership.membershipId())
+ *             .project(membership.get("project"))
+ *             .location(membership.get("location"))
+ *             .membershipId(membership.get("membershipId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MembershipIamBinding("binding", MembershipIamBindingArgs.builder()
- *             .project(membership.project())
- *             .location(membership.location())
- *             .membershipId(membership.membershipId())
+ *             .project(membership.get("project"))
+ *             .location(membership.get("location"))
+ *             .membershipId(membership.get("membershipId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MembershipIamMember("member", MembershipIamMemberArgs.builder()
- *             .project(membership.project())
- *             .location(membership.location())
- *             .membershipId(membership.membershipId())
+ *             .project(membership.get("project"))
+ *             .location(membership.get("location"))
+ *             .membershipId(membership.get("membershipId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

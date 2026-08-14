@@ -256,9 +256,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .region(function.region())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .region(function.get("region"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -298,9 +298,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .region(function.region())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .region(function.get("region"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -340,9 +340,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .region(function.region())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .region(function.get("region"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -382,9 +382,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .region(function.region())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .region(function.get("region"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }
@@ -424,9 +424,9 @@ public final class CloudfunctionsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudfunctionsFunctions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
-     *             .project(function.project())
-     *             .region(function.region())
-     *             .cloudFunction(function.name())
+     *             .project(function.get("project"))
+     *             .region(function.get("region"))
+     *             .cloudFunction(function.get("name"))
      *             .build());
      * 
      *     }

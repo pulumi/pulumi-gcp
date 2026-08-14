@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryEndpointIamPolicy("policy", AgentRegistryEndpointIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -120,9 +120,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryEndpointIamPolicy("policy", AgentRegistryEndpointIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -155,9 +155,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryEndpointIamBinding("binding", AgentRegistryEndpointIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -193,9 +193,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryEndpointIamBinding("binding", AgentRegistryEndpointIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryEndpointIamBindingConditionArgs.builder()
@@ -234,9 +234,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryEndpointIamMember("member", AgentRegistryEndpointIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryEndpointIamMember("member", AgentRegistryEndpointIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryEndpointIamMemberConditionArgs.builder()
@@ -346,9 +346,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryEndpointIamPolicy("policy", AgentRegistryEndpointIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -398,9 +398,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AgentRegistryEndpointIamPolicy("policy", AgentRegistryEndpointIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -433,9 +433,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryEndpointIamBinding("binding", AgentRegistryEndpointIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -471,9 +471,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AgentRegistryEndpointIamBinding("binding", AgentRegistryEndpointIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryEndpointIamBindingConditionArgs.builder()
@@ -512,9 +512,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryEndpointIamMember("member", AgentRegistryEndpointIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -550,9 +550,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AgentRegistryEndpointIamMember("member", AgentRegistryEndpointIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .endpointId(default_.endpointId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .endpointId(default_.get("endpointId"))
  *             .role("roles/iap.egressor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(AgentRegistryEndpointIamMemberConditionArgs.builder()

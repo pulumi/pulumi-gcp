@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreServiceIamPolicy("policy", MetastoreServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .serviceId(default_.serviceId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .serviceId(default_.get("serviceId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MetastoreServiceIamBinding("binding", MetastoreServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .serviceId(default_.serviceId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .serviceId(default_.get("serviceId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MetastoreServiceIamMember("member", MetastoreServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .serviceId(default_.serviceId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .serviceId(default_.get("serviceId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreServiceIamPolicy("policy", MetastoreServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .serviceId(default_.serviceId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .serviceId(default_.get("serviceId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MetastoreServiceIamBinding("binding", MetastoreServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .serviceId(default_.serviceId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .serviceId(default_.get("serviceId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MetastoreServiceIamMember("member", MetastoreServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .location(default_.location())
- *             .serviceId(default_.serviceId())
+ *             .project(default_.get("project"))
+ *             .location(default_.get("location"))
+ *             .serviceId(default_.get("serviceId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -55,8 +55,8 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
-     *             .dataset(my_consent.dataset())
-     *             .consentStoreId(my_consent.name())
+     *             .dataset(my_consent.get("dataset"))
+     *             .consentStoreId(my_consent.get("name"))
      *             .build());
      * 
      *     }
@@ -96,8 +96,8 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
-     *             .dataset(my_consent.dataset())
-     *             .consentStoreId(my_consent.name())
+     *             .dataset(my_consent.get("dataset"))
+     *             .consentStoreId(my_consent.get("name"))
      *             .build());
      * 
      *     }
@@ -137,8 +137,8 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
-     *             .dataset(my_consent.dataset())
-     *             .consentStoreId(my_consent.name())
+     *             .dataset(my_consent.get("dataset"))
+     *             .consentStoreId(my_consent.get("name"))
      *             .build());
      * 
      *     }
@@ -178,8 +178,8 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
-     *             .dataset(my_consent.dataset())
-     *             .consentStoreId(my_consent.name())
+     *             .dataset(my_consent.get("dataset"))
+     *             .consentStoreId(my_consent.get("name"))
      *             .build());
      * 
      *     }
@@ -219,8 +219,8 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
-     *             .dataset(my_consent.dataset())
-     *             .consentStoreId(my_consent.name())
+     *             .dataset(my_consent.get("dataset"))
+     *             .consentStoreId(my_consent.get("name"))
      *             .build());
      * 
      *     }
@@ -260,7 +260,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.id())
+     *             .datasetId(dataset.get("id"))
      *             .build());
      * 
      *     }
@@ -300,7 +300,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.id())
+     *             .datasetId(dataset.get("id"))
      *             .build());
      * 
      *     }
@@ -340,7 +340,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.id())
+     *             .datasetId(dataset.get("id"))
      *             .build());
      * 
      *     }
@@ -380,7 +380,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.id())
+     *             .datasetId(dataset.get("id"))
      *             .build());
      * 
      *     }
@@ -420,7 +420,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
-     *             .datasetId(dataset.id())
+     *             .datasetId(dataset.get("id"))
      *             .build());
      * 
      *     }
@@ -460,7 +460,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
-     *             .dicomStoreId(dicomStore.id())
+     *             .dicomStoreId(dicomStore.get("id"))
      *             .build());
      * 
      *     }
@@ -500,7 +500,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
-     *             .dicomStoreId(dicomStore.id())
+     *             .dicomStoreId(dicomStore.get("id"))
      *             .build());
      * 
      *     }
@@ -540,7 +540,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
-     *             .dicomStoreId(dicomStore.id())
+     *             .dicomStoreId(dicomStore.get("id"))
      *             .build());
      * 
      *     }
@@ -580,7 +580,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
-     *             .dicomStoreId(dicomStore.id())
+     *             .dicomStoreId(dicomStore.get("id"))
      *             .build());
      * 
      *     }
@@ -620,7 +620,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
-     *             .dicomStoreId(dicomStore.id())
+     *             .dicomStoreId(dicomStore.get("id"))
      *             .build());
      * 
      *     }
@@ -660,7 +660,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
-     *             .fhirStoreId(fhirStore.id())
+     *             .fhirStoreId(fhirStore.get("id"))
      *             .build());
      * 
      *     }
@@ -700,7 +700,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
-     *             .fhirStoreId(fhirStore.id())
+     *             .fhirStoreId(fhirStore.get("id"))
      *             .build());
      * 
      *     }
@@ -740,7 +740,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
-     *             .fhirStoreId(fhirStore.id())
+     *             .fhirStoreId(fhirStore.get("id"))
      *             .build());
      * 
      *     }
@@ -780,7 +780,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
-     *             .fhirStoreId(fhirStore.id())
+     *             .fhirStoreId(fhirStore.get("id"))
      *             .build());
      * 
      *     }
@@ -820,7 +820,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
-     *             .fhirStoreId(fhirStore.id())
+     *             .fhirStoreId(fhirStore.get("id"))
      *             .build());
      * 
      *     }
@@ -860,7 +860,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
-     *             .hl7V2StoreId(hl7V2Store.id())
+     *             .hl7V2StoreId(hl7V2Store.get("id"))
      *             .build());
      * 
      *     }
@@ -900,7 +900,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
-     *             .hl7V2StoreId(hl7V2Store.id())
+     *             .hl7V2StoreId(hl7V2Store.get("id"))
      *             .build());
      * 
      *     }
@@ -940,7 +940,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
-     *             .hl7V2StoreId(hl7V2Store.id())
+     *             .hl7V2StoreId(hl7V2Store.get("id"))
      *             .build());
      * 
      *     }
@@ -980,7 +980,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
-     *             .hl7V2StoreId(hl7V2Store.id())
+     *             .hl7V2StoreId(hl7V2Store.get("id"))
      *             .build());
      * 
      *     }
@@ -1020,7 +1020,7 @@ public final class HealthcareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
-     *             .hl7V2StoreId(hl7V2Store.id())
+     *             .hl7V2StoreId(hl7V2Store.get("id"))
      *             .build());
      * 
      *     }

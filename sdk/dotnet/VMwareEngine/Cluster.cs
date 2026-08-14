@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.VMwareEngine
     ///         Name = "test-fs-filestore",
     ///         Location = "",
     ///         Tier = "ZONAL",
-    ///         DeletionProtectionEnabled = "yes",
+    ///         DeletionProtectionEnabled = "yes" == "true",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
     ///             CapacityGb = 1024,

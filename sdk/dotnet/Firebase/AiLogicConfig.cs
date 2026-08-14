@@ -170,7 +170,7 @@ namespace Pulumi.Gcp.Firebase
     ///         TelemetryConfig = new Gcp.Firebase.Inputs.AiLogicConfigTelemetryConfigArgs
     ///         {
     ///             Mode = "ALL",
-    ///             SamplingRate = 1,
+    ///             SamplingRate = 1.0,
     ///         },
     ///         TrafficFilter = new Gcp.Firebase.Inputs.AiLogicConfigTrafficFilterArgs
     ///         {

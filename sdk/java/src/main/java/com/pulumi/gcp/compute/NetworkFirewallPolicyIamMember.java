@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new NetworkFirewallPolicyIamPolicy("policy", NetworkFirewallPolicyIamPolicyArgs.builder()
- *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
- *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+ *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+ *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,8 +100,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new NetworkFirewallPolicyIamBinding("binding", NetworkFirewallPolicyIamBindingArgs.builder()
- *             .project(policy.project())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,8 +136,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new NetworkFirewallPolicyIamMember("member", NetworkFirewallPolicyIamMemberArgs.builder()
- *             .project(policy.project())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -202,8 +202,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new NetworkFirewallPolicyIamPolicy("policy", NetworkFirewallPolicyIamPolicyArgs.builder()
- *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
- *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+ *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+ *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -237,8 +237,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new NetworkFirewallPolicyIamBinding("binding", NetworkFirewallPolicyIamBindingArgs.builder()
- *             .project(policy.project())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -273,8 +273,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new NetworkFirewallPolicyIamMember("member", NetworkFirewallPolicyIamMemberArgs.builder()
- *             .project(policy.project())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -105,10 +105,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_endpoint = new NetworkEndpoint("default-endpoint", NetworkEndpointArgs.builder()
- *             .networkEndpointGroup(neg.name())
+ *             .networkEndpointGroup(neg.get("name"))
  *             .instance(endpoint_instance.name())
- *             .port(neg.defaultPort())
- *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *             .port(((Number) neg.get("defaultPort")).intValue())
+ *             .ipAddress(endpoint_instance.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *             .build());
  * 
  *         var group = new NetworkEndpointGroup("group", NetworkEndpointGroupArgs.builder()

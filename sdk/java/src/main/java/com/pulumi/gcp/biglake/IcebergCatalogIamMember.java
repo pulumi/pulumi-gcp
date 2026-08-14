@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IcebergCatalogIamPolicy("policy", IcebergCatalogIamPolicyArgs.builder()
- *             .project(myIcebergCatalog.project())
- *             .name(myIcebergCatalog.name())
+ *             .project(myIcebergCatalog.get("project"))
+ *             .name(myIcebergCatalog.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,8 +100,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IcebergCatalogIamBinding("binding", IcebergCatalogIamBindingArgs.builder()
- *             .project(myIcebergCatalog.project())
- *             .name(myIcebergCatalog.name())
+ *             .project(myIcebergCatalog.get("project"))
+ *             .name(myIcebergCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,8 +136,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IcebergCatalogIamMember("member", IcebergCatalogIamMemberArgs.builder()
- *             .project(myIcebergCatalog.project())
- *             .name(myIcebergCatalog.name())
+ *             .project(myIcebergCatalog.get("project"))
+ *             .name(myIcebergCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -202,8 +202,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IcebergCatalogIamPolicy("policy", IcebergCatalogIamPolicyArgs.builder()
- *             .project(myIcebergCatalog.project())
- *             .name(myIcebergCatalog.name())
+ *             .project(myIcebergCatalog.get("project"))
+ *             .name(myIcebergCatalog.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -237,8 +237,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IcebergCatalogIamBinding("binding", IcebergCatalogIamBindingArgs.builder()
- *             .project(myIcebergCatalog.project())
- *             .name(myIcebergCatalog.name())
+ *             .project(myIcebergCatalog.get("project"))
+ *             .name(myIcebergCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -273,8 +273,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IcebergCatalogIamMember("member", IcebergCatalogIamMemberArgs.builder()
- *             .project(myIcebergCatalog.project())
- *             .name(myIcebergCatalog.name())
+ *             .project(myIcebergCatalog.get("project"))
+ *             .name(myIcebergCatalog.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

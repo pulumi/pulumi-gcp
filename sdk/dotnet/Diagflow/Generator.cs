@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         InferenceParameter = new Gcp.Diagflow.Inputs.GeneratorInferenceParameterArgs
     ///         {
     ///             MaxOutputTokens = 1024,
-    ///             Temperature = 0,
+    ///             Temperature = 0.0,
     ///             TopK = 40,
     ///             TopP = 0.95,
     ///         },

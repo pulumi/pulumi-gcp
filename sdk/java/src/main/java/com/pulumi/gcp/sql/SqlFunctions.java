@@ -64,7 +64,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .mostRecent(true)
      *             .build());
      * 
@@ -105,7 +105,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .mostRecent(true)
      *             .build());
      * 
@@ -146,7 +146,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .mostRecent(true)
      *             .build());
      * 
@@ -187,7 +187,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .mostRecent(true)
      *             .build());
      * 
@@ -228,7 +228,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .mostRecent(true)
      *             .build());
      * 
@@ -320,7 +320,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name("test-sql-database")
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -361,7 +361,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name("test-sql-database")
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -402,7 +402,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name("test-sql-database")
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -443,7 +443,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name("test-sql-database")
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -484,7 +484,7 @@ public final class SqlFunctions {
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
      *             .name("test-sql-database")
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -1223,7 +1223,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -1262,7 +1262,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -1301,7 +1301,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -1340,7 +1340,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }
@@ -1379,7 +1379,7 @@ public final class SqlFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .instance(main.name())
+     *             .instance(main.get("name"))
      *             .build());
      * 
      *     }

@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.CloudTasks
     ///         RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
     ///         {
     ///             MaxConcurrentDispatches = 3,
-    ///             MaxDispatchesPerSecond = 2,
+    ///             MaxDispatchesPerSecond = 2.0,
     ///         },
     ///         RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
     ///         {

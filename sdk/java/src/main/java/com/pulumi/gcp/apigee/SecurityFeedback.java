@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .feedbackContexts(            
  *                 SecurityFeedbackFeedbackContextArgs.builder()
  *                     .attribute("ATTRIBUTE_ENVIRONMENTS")
- *                     .values(apigeeEnvironment.name())
+ *                     .values(apigeeEnvironment.get("name"))
  *                     .build(),
  *                 SecurityFeedbackFeedbackContextArgs.builder()
  *                     .attribute("ATTRIBUTE_IP_ADDRESS_RANGES")

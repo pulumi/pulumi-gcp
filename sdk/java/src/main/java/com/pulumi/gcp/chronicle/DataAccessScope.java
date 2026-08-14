@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .dataAccessScopeId("scope-id")
  *             .description("scope-description")
  *             .allowedDataAccessLabels(DataAccessScopeAllowedDataAccessLabelArgs.builder()
- *                 .dataAccessLabel(googleChronicleDataAccessLabel.customDataAccessLabel().dataAccessLabelId())
+ *                 .dataAccessLabel(googleChronicleDataAccessLabel.get("customDataAccessLabel").get("dataAccessLabelId"))
  *                 .build())
  *             .build());
  * 
@@ -248,7 +248,7 @@ import javax.annotation.Nullable;
  *                     .logType("GCP_CLOUDAUDIT")
  *                     .build(),
  *                 DataAccessScopeDeniedDataAccessLabelArgs.builder()
- *                     .dataAccessLabel(googleChronicleDataAccessLabel.customDataAccessLabel().dataAccessLabelId())
+ *                     .dataAccessLabel(googleChronicleDataAccessLabel.get("customDataAccessLabel").get("dataAccessLabelId"))
  *                     .build(),
  *                 DataAccessScopeDeniedDataAccessLabelArgs.builder()
  *                     .ingestionLabel(DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs.builder()

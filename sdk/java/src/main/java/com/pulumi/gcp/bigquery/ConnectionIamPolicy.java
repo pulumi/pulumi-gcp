@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()
- *             .project(connection.project())
- *             .location(connection.location())
- *             .connectionId(connection.connectionId())
+ *             .project(connection.get("project"))
+ *             .location(connection.get("location"))
+ *             .connectionId(connection.get("connectionId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()
- *             .project(connection.project())
- *             .location(connection.location())
- *             .connectionId(connection.connectionId())
+ *             .project(connection.get("project"))
+ *             .location(connection.get("location"))
+ *             .connectionId(connection.get("connectionId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()
- *             .project(connection.project())
- *             .location(connection.location())
- *             .connectionId(connection.connectionId())
+ *             .project(connection.get("project"))
+ *             .location(connection.get("location"))
+ *             .connectionId(connection.get("connectionId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConnectionIamPolicy("policy", ConnectionIamPolicyArgs.builder()
- *             .project(connection.project())
- *             .location(connection.location())
- *             .connectionId(connection.connectionId())
+ *             .project(connection.get("project"))
+ *             .location(connection.get("location"))
+ *             .connectionId(connection.get("connectionId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ConnectionIamBinding("binding", ConnectionIamBindingArgs.builder()
- *             .project(connection.project())
- *             .location(connection.location())
- *             .connectionId(connection.connectionId())
+ *             .project(connection.get("project"))
+ *             .location(connection.get("location"))
+ *             .connectionId(connection.get("connectionId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ConnectionIamMember("member", ConnectionIamMemberArgs.builder()
- *             .project(connection.project())
- *             .location(connection.location())
- *             .connectionId(connection.connectionId())
+ *             .project(connection.get("project"))
+ *             .location(connection.get("location"))
+ *             .connectionId(connection.get("connectionId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

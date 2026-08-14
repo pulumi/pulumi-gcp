@@ -246,8 +246,8 @@ import javax.annotation.Nullable;
  *                 .dataStorageSizeTb(2.0)
  *                 .dbNodeStorageSizeGb(120)
  *                 .dbServerOcids(                
- *                     mydbserver.applyValue(_mydbserver -> _mydbserver.dbServers()[0].properties()[0].ocid()),
- *                     mydbserver.applyValue(_mydbserver -> _mydbserver.dbServers()[1].properties()[0].ocid()))
+ *                     mydbserver.applyValue(_mydbserver -> _mydbserver.dbServers().get(0).properties().get(0).ocid()),
+ *                     mydbserver.applyValue(_mydbserver -> _mydbserver.dbServers().get(1).properties().get(0).ocid()))
  *                 .diskRedundancy("HIGH")
  *                 .sparseDiskgroupEnabled(false)
  *                 .localBackupEnabled(false)
@@ -372,8 +372,8 @@ import javax.annotation.Nullable;
  *                 .memorySizeGb(60)
  *                 .dbNodeStorageSizeGb(120)
  *                 .dbServerOcids(                
- *                     dbServers.applyValue(_dbServers -> _dbServers.dbServers()[0].properties()[0].ocid()),
- *                     dbServers.applyValue(_dbServers -> _dbServers.dbServers()[1].properties()[0].ocid()))
+ *                     dbServers.applyValue(_dbServers -> _dbServers.dbServers().get(0).properties().get(0).ocid()),
+ *                     dbServers.applyValue(_dbServers -> _dbServers.dbServers().get(1).properties().get(0).ocid()))
  *                 .build())
  *             .deletionProtection(true)
  *             .build(), CustomResourceOptions.builder()

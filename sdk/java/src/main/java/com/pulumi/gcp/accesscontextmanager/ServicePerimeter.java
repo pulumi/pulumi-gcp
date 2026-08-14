@@ -210,8 +210,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var test_access = new ServicePerimeter("test-access", ServicePerimeterArgs.builder()
- *             .parent(String.format("accessPolicies/%s", test_accessGoogleAccessContextManagerAccessPolicy.name()))
- *             .name(String.format("accessPolicies/%s/servicePerimeters/%s", test_accessGoogleAccessContextManagerAccessPolicy.name()))
+ *             .parent(String.format("accessPolicies/%s", test_accessGoogleAccessContextManagerAccessPolicy.get("name")))
+ *             .name(String.format("accessPolicies/%s/servicePerimeters/%s", test_accessGoogleAccessContextManagerAccessPolicy.get("name")))
  *             .title("%s")
  *             .perimeterType("PERIMETER_TYPE_REGULAR")
  *             .status(ServicePerimeterStatusArgs.builder()
@@ -228,7 +228,7 @@ import javax.annotation.Nullable;
  *                 .ingressPolicies(ServicePerimeterStatusIngressPolicyArgs.builder()
  *                     .ingressFrom(ServicePerimeterStatusIngressPolicyIngressFromArgs.builder()
  *                         .sources(ServicePerimeterStatusIngressPolicyIngressFromSourceArgs.builder()
- *                             .accessLevel(test_accessGoogleAccessContextManagerAccessLevel.name())
+ *                             .accessLevel(test_accessGoogleAccessContextManagerAccessLevel.get("name"))
  *                             .build())
  *                         .identityType("ANY_IDENTITY")
  *                         .build())

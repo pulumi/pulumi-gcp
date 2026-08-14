@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -117,9 +117,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -152,9 +152,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,9 +190,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(EkmConnectionIamBindingConditionArgs.builder()
@@ -231,9 +231,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,9 +269,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(EkmConnectionIamMemberConditionArgs.builder()
@@ -343,9 +343,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -395,9 +395,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EkmConnectionIamPolicy("policy", EkmConnectionIamPolicyArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,9 +430,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -468,9 +468,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EkmConnectionIamBinding("binding", EkmConnectionIamBindingArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(EkmConnectionIamBindingConditionArgs.builder()
@@ -509,9 +509,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -547,9 +547,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EkmConnectionIamMember("member", EkmConnectionIamMemberArgs.builder()
- *             .project(example_ekmconnection.project())
- *             .location(example_ekmconnection.location())
- *             .name(example_ekmconnection.name())
+ *             .project(example_ekmconnection.get("project"))
+ *             .location(example_ekmconnection.get("location"))
+ *             .name(example_ekmconnection.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(EkmConnectionIamMemberConditionArgs.builder()

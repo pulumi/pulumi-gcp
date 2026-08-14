@@ -43,8 +43,8 @@ public final class NetworkconnectivityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NetworkconnectivityFunctions.getHubIamPolicy(GetHubIamPolicyArgs.builder()
-     *             .project(primary.project())
-     *             .hub(primary.name())
+     *             .project(primary.get("project"))
+     *             .hub(primary.get("name"))
      *             .build());
      * 
      *     }
@@ -84,8 +84,8 @@ public final class NetworkconnectivityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NetworkconnectivityFunctions.getHubIamPolicy(GetHubIamPolicyArgs.builder()
-     *             .project(primary.project())
-     *             .hub(primary.name())
+     *             .project(primary.get("project"))
+     *             .hub(primary.get("name"))
      *             .build());
      * 
      *     }
@@ -125,8 +125,8 @@ public final class NetworkconnectivityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NetworkconnectivityFunctions.getHubIamPolicy(GetHubIamPolicyArgs.builder()
-     *             .project(primary.project())
-     *             .hub(primary.name())
+     *             .project(primary.get("project"))
+     *             .hub(primary.get("name"))
      *             .build());
      * 
      *     }
@@ -166,8 +166,8 @@ public final class NetworkconnectivityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NetworkconnectivityFunctions.getHubIamPolicy(GetHubIamPolicyArgs.builder()
-     *             .project(primary.project())
-     *             .hub(primary.name())
+     *             .project(primary.get("project"))
+     *             .hub(primary.get("name"))
      *             .build());
      * 
      *     }
@@ -207,8 +207,8 @@ public final class NetworkconnectivityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = NetworkconnectivityFunctions.getHubIamPolicy(GetHubIamPolicyArgs.builder()
-     *             .project(primary.project())
-     *             .hub(primary.name())
+     *             .project(primary.get("project"))
+     *             .hub(primary.get("name"))
      *             .build());
      * 
      *     }

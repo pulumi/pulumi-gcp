@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -205,9 +205,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new LakeIamPolicy("policy", LakeIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,9 +241,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new LakeIamBinding("binding", LakeIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,9 +278,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new LakeIamMember("member", LakeIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.name())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

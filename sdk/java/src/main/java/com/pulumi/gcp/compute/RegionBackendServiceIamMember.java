@@ -70,9 +70,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -122,9 +122,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -157,9 +157,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -195,9 +195,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendServiceIamBindingConditionArgs.builder()
@@ -236,9 +236,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -274,9 +274,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendServiceIamMemberConditionArgs.builder()
@@ -351,9 +351,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -403,9 +403,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionBackendServiceIamPolicy("policy", RegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -438,9 +438,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -476,9 +476,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionBackendServiceIamBinding("binding", RegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendServiceIamBindingConditionArgs.builder()
@@ -517,9 +517,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -555,9 +555,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionBackendServiceIamMember("member", RegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(RegionBackendServiceIamMemberConditionArgs.builder()

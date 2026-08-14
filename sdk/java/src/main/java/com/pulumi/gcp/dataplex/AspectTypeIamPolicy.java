@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AspectTypeIamPolicy("policy", AspectTypeIamPolicyArgs.builder()
- *             .project(testAspectTypeBasic.project())
- *             .location(testAspectTypeBasic.location())
- *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+ *             .project(testAspectTypeBasic.get("project"))
+ *             .location(testAspectTypeBasic.get("location"))
+ *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AspectTypeIamBinding("binding", AspectTypeIamBindingArgs.builder()
- *             .project(testAspectTypeBasic.project())
- *             .location(testAspectTypeBasic.location())
- *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+ *             .project(testAspectTypeBasic.get("project"))
+ *             .location(testAspectTypeBasic.get("location"))
+ *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AspectTypeIamMember("member", AspectTypeIamMemberArgs.builder()
- *             .project(testAspectTypeBasic.project())
- *             .location(testAspectTypeBasic.location())
- *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+ *             .project(testAspectTypeBasic.get("project"))
+ *             .location(testAspectTypeBasic.get("location"))
+ *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new AspectTypeIamPolicy("policy", AspectTypeIamPolicyArgs.builder()
- *             .project(testAspectTypeBasic.project())
- *             .location(testAspectTypeBasic.location())
- *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+ *             .project(testAspectTypeBasic.get("project"))
+ *             .location(testAspectTypeBasic.get("location"))
+ *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new AspectTypeIamBinding("binding", AspectTypeIamBindingArgs.builder()
- *             .project(testAspectTypeBasic.project())
- *             .location(testAspectTypeBasic.location())
- *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+ *             .project(testAspectTypeBasic.get("project"))
+ *             .location(testAspectTypeBasic.get("location"))
+ *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new AspectTypeIamMember("member", AspectTypeIamMemberArgs.builder()
- *             .project(testAspectTypeBasic.project())
- *             .location(testAspectTypeBasic.location())
- *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+ *             .project(testAspectTypeBasic.get("project"))
+ *             .location(testAspectTypeBasic.get("location"))
+ *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

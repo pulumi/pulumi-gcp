@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RoutineIamPolicy("policy", RoutineIamPolicyArgs.builder()
- *             .project(sproc.project())
- *             .datasetId(sproc.datasetId())
- *             .routineId(sproc.routineId())
+ *             .project(sproc.get("project"))
+ *             .datasetId(sproc.get("datasetId"))
+ *             .routineId(sproc.get("routineId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RoutineIamBinding("binding", RoutineIamBindingArgs.builder()
- *             .project(sproc.project())
- *             .datasetId(sproc.datasetId())
- *             .routineId(sproc.routineId())
+ *             .project(sproc.get("project"))
+ *             .datasetId(sproc.get("datasetId"))
+ *             .routineId(sproc.get("routineId"))
  *             .role("roles/bigquery.dataOwner")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RoutineIamMember("member", RoutineIamMemberArgs.builder()
- *             .project(sproc.project())
- *             .datasetId(sproc.datasetId())
- *             .routineId(sproc.routineId())
+ *             .project(sproc.get("project"))
+ *             .datasetId(sproc.get("datasetId"))
+ *             .routineId(sproc.get("routineId"))
  *             .role("roles/bigquery.dataOwner")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RoutineIamPolicy("policy", RoutineIamPolicyArgs.builder()
- *             .project(sproc.project())
- *             .datasetId(sproc.datasetId())
- *             .routineId(sproc.routineId())
+ *             .project(sproc.get("project"))
+ *             .datasetId(sproc.get("datasetId"))
+ *             .routineId(sproc.get("routineId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RoutineIamBinding("binding", RoutineIamBindingArgs.builder()
- *             .project(sproc.project())
- *             .datasetId(sproc.datasetId())
- *             .routineId(sproc.routineId())
+ *             .project(sproc.get("project"))
+ *             .datasetId(sproc.get("datasetId"))
+ *             .routineId(sproc.get("routineId"))
  *             .role("roles/bigquery.dataOwner")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RoutineIamMember("member", RoutineIamMemberArgs.builder()
- *             .project(sproc.project())
- *             .datasetId(sproc.datasetId())
- *             .routineId(sproc.routineId())
+ *             .project(sproc.get("project"))
+ *             .datasetId(sproc.get("datasetId"))
+ *             .routineId(sproc.get("routineId"))
  *             .role("roles/bigquery.dataOwner")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

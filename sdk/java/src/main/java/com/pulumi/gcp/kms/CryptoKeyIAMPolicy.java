@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()
- *             .cryptoKeyId(key.id())
+ *             .cryptoKeyId(key.get("id"))
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var cryptoKey = new CryptoKeyIAMBinding("cryptoKey", CryptoKeyIAMBindingArgs.builder()
- *             .cryptoKeyId(key.id())
+ *             .cryptoKeyId(key.get("id"))
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(CryptoKeyIAMBindingConditionArgs.builder()
@@ -221,7 +221,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(key.id())
+ *             .cryptoKeyId(key.get("id"))
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -257,7 +257,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var cryptoKey = new CryptoKeyIAMMember("cryptoKey", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(key.id())
+ *             .cryptoKeyId(key.get("id"))
  *             .role("roles/cloudkms.cryptoKeyEncrypter")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(CryptoKeyIAMMemberConditionArgs.builder()

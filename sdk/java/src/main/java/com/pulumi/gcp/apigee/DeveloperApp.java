@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
  *             .analyticsRegion("us-central1")
- *             .projectId(projectGoogleProject.projectId())
+ *             .projectId(projectGoogleProject.get("projectId"))
  *             .disableVpcPeering(true)
  *             .build());
  * 

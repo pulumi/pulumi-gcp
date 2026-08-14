@@ -65,10 +65,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .taskId(example.taskId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .taskId(example.get("taskId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,10 +102,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .taskId(example.taskId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .taskId(example.get("taskId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -140,10 +140,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .taskId(example.taskId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .taskId(example.get("taskId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,10 +208,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TaskIamPolicy("policy", TaskIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .taskId(example.taskId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .taskId(example.get("taskId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -245,10 +245,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TaskIamBinding("binding", TaskIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .taskId(example.taskId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .taskId(example.get("taskId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -283,10 +283,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TaskIamMember("member", TaskIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .lake(example.lake())
- *             .taskId(example.taskId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .lake(example.get("lake"))
+ *             .taskId(example.get("taskId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -858,9 +858,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayApplicationIamPolicy(GetSecurityGatewayApplicationIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .securityGatewayId(example.securityGatewayId())
-     *             .applicationId(example.applicationId())
+     *             .project(example.get("project"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
+     *             .applicationId(example.get("applicationId"))
      *             .build());
      * 
      *     }
@@ -900,9 +900,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayApplicationIamPolicy(GetSecurityGatewayApplicationIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .securityGatewayId(example.securityGatewayId())
-     *             .applicationId(example.applicationId())
+     *             .project(example.get("project"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
+     *             .applicationId(example.get("applicationId"))
      *             .build());
      * 
      *     }
@@ -942,9 +942,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayApplicationIamPolicy(GetSecurityGatewayApplicationIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .securityGatewayId(example.securityGatewayId())
-     *             .applicationId(example.applicationId())
+     *             .project(example.get("project"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
+     *             .applicationId(example.get("applicationId"))
      *             .build());
      * 
      *     }
@@ -984,9 +984,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayApplicationIamPolicy(GetSecurityGatewayApplicationIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .securityGatewayId(example.securityGatewayId())
-     *             .applicationId(example.applicationId())
+     *             .project(example.get("project"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
+     *             .applicationId(example.get("applicationId"))
      *             .build());
      * 
      *     }
@@ -1026,9 +1026,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayApplicationIamPolicy(GetSecurityGatewayApplicationIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .securityGatewayId(example.securityGatewayId())
-     *             .applicationId(example.applicationId())
+     *             .project(example.get("project"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
+     *             .applicationId(example.get("applicationId"))
      *             .build());
      * 
      *     }
@@ -1068,9 +1068,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayIamPolicy(GetSecurityGatewayIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .securityGatewayId(example.securityGatewayId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
      *             .build());
      * 
      *     }
@@ -1110,9 +1110,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayIamPolicy(GetSecurityGatewayIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .securityGatewayId(example.securityGatewayId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
      *             .build());
      * 
      *     }
@@ -1152,9 +1152,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayIamPolicy(GetSecurityGatewayIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .securityGatewayId(example.securityGatewayId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
      *             .build());
      * 
      *     }
@@ -1194,9 +1194,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayIamPolicy(GetSecurityGatewayIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .securityGatewayId(example.securityGatewayId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
      *             .build());
      * 
      *     }
@@ -1236,9 +1236,9 @@ public final class BeyondcorpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BeyondcorpFunctions.getSecurityGatewayIamPolicy(GetSecurityGatewayIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .securityGatewayId(example.securityGatewayId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .securityGatewayId(example.get("securityGatewayId"))
      *             .build());
      * 
      *     }

@@ -65,10 +65,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryGroupIamPolicy("policy", RepositoryGroupIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .codeRepositoryIndex(example.codeRepositoryIndex())
- *             .repositoryGroupId(example.repositoryGroupId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+ *             .repositoryGroupId(example.get("repositoryGroupId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,10 +102,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryGroupIamBinding("binding", RepositoryGroupIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .codeRepositoryIndex(example.codeRepositoryIndex())
- *             .repositoryGroupId(example.repositoryGroupId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+ *             .repositoryGroupId(example.get("repositoryGroupId"))
  *             .role("roles/cloudaicompanion.repositoryGroupsUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -140,10 +140,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryGroupIamMember("member", RepositoryGroupIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .codeRepositoryIndex(example.codeRepositoryIndex())
- *             .repositoryGroupId(example.repositoryGroupId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+ *             .repositoryGroupId(example.get("repositoryGroupId"))
  *             .role("roles/cloudaicompanion.repositoryGroupsUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,10 +208,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RepositoryGroupIamPolicy("policy", RepositoryGroupIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .codeRepositoryIndex(example.codeRepositoryIndex())
- *             .repositoryGroupId(example.repositoryGroupId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+ *             .repositoryGroupId(example.get("repositoryGroupId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -245,10 +245,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RepositoryGroupIamBinding("binding", RepositoryGroupIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .codeRepositoryIndex(example.codeRepositoryIndex())
- *             .repositoryGroupId(example.repositoryGroupId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+ *             .repositoryGroupId(example.get("repositoryGroupId"))
  *             .role("roles/cloudaicompanion.repositoryGroupsUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -283,10 +283,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RepositoryGroupIamMember("member", RepositoryGroupIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .codeRepositoryIndex(example.codeRepositoryIndex())
- *             .repositoryGroupId(example.repositoryGroupId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+ *             .repositoryGroupId(example.get("repositoryGroupId"))
  *             .role("roles/cloudaicompanion.repositoryGroupsUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

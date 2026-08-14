@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         Cidr = "10.5.0.0/24",
     ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
     ///         {
-    ///             ComputeCount = 2,
+    ///             ComputeCount = 2.0,
     ///             DataStorageSizeTb = 1,
     ///             DbVersion = "19c",
     ///             DbWorkload = "OLTP",
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         },
     ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
     ///         {
-    ///             ComputeCount = 2,
+    ///             ComputeCount = 2.0,
     ///             DataStorageSizeGb = 48,
     ///             DbVersion = "19c",
     ///             DbEdition = "STANDARD_EDITION",
@@ -140,7 +140,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         OdbSubnet = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet",
     ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
     ///         {
-    ///             ComputeCount = 2,
+    ///             ComputeCount = 2.0,
     ///             DataStorageSizeTb = 1,
     ///             DbVersion = "19c",
     ///             DbWorkload = "OLTP",
@@ -170,7 +170,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         AdminPassword = "123Abpassword",
     ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
     ///         {
-    ///             ComputeCount = 2,
+    ///             ComputeCount = 2.0,
     ///             DataStorageSizeTb = 1,
     ///             DbVersion = "19c",
     ///             DbWorkload = "OLTP",
@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         AdminPassword = "123Abpassword",
     ///         Properties = new Gcp.OracleDatabase.Inputs.AutonomousDatabasePropertiesArgs
     ///         {
-    ///             ComputeCount = 2,
+    ///             ComputeCount = 2.0,
     ///             DataStorageSizeGb = 20,
     ///             DbVersion = "19c",
     ///             DbWorkload = "OLTP",

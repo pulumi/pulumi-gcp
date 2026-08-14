@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataExchangeIamPolicy("policy", DataExchangeIamPolicyArgs.builder()
- *             .project(dataExchange.project())
- *             .location(dataExchange.location())
- *             .dataExchangeId(dataExchange.dataExchangeId())
+ *             .project(dataExchange.get("project"))
+ *             .location(dataExchange.get("location"))
+ *             .dataExchangeId(dataExchange.get("dataExchangeId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DataExchangeIamBinding("binding", DataExchangeIamBindingArgs.builder()
- *             .project(dataExchange.project())
- *             .location(dataExchange.location())
- *             .dataExchangeId(dataExchange.dataExchangeId())
+ *             .project(dataExchange.get("project"))
+ *             .location(dataExchange.get("location"))
+ *             .dataExchangeId(dataExchange.get("dataExchangeId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DataExchangeIamMember("member", DataExchangeIamMemberArgs.builder()
- *             .project(dataExchange.project())
- *             .location(dataExchange.location())
- *             .dataExchangeId(dataExchange.dataExchangeId())
+ *             .project(dataExchange.get("project"))
+ *             .location(dataExchange.get("location"))
+ *             .dataExchangeId(dataExchange.get("dataExchangeId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new DataExchangeIamPolicy("policy", DataExchangeIamPolicyArgs.builder()
- *             .project(dataExchange.project())
- *             .location(dataExchange.location())
- *             .dataExchangeId(dataExchange.dataExchangeId())
+ *             .project(dataExchange.get("project"))
+ *             .location(dataExchange.get("location"))
+ *             .dataExchangeId(dataExchange.get("dataExchangeId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new DataExchangeIamBinding("binding", DataExchangeIamBindingArgs.builder()
- *             .project(dataExchange.project())
- *             .location(dataExchange.location())
- *             .dataExchangeId(dataExchange.dataExchangeId())
+ *             .project(dataExchange.get("project"))
+ *             .location(dataExchange.get("location"))
+ *             .dataExchangeId(dataExchange.get("dataExchangeId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new DataExchangeIamMember("member", DataExchangeIamMemberArgs.builder()
- *             .project(dataExchange.project())
- *             .location(dataExchange.location())
- *             .dataExchangeId(dataExchange.dataExchangeId())
+ *             .project(dataExchange.get("project"))
+ *             .location(dataExchange.get("location"))
+ *             .dataExchangeId(dataExchange.get("dataExchangeId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -367,8 +367,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(defaultGoogleCloudRunService.location())
-     *             .name(defaultGoogleCloudRunService.name())
+     *             .location(defaultGoogleCloudRunService.get("location"))
+     *             .name(defaultGoogleCloudRunService.get("name"))
      *             .build());
      * 
      *     }
@@ -411,8 +411,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(defaultGoogleCloudRunService.location())
-     *             .name(defaultGoogleCloudRunService.name())
+     *             .location(defaultGoogleCloudRunService.get("location"))
+     *             .name(defaultGoogleCloudRunService.get("name"))
      *             .build());
      * 
      *     }
@@ -455,8 +455,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(defaultGoogleCloudRunService.location())
-     *             .name(defaultGoogleCloudRunService.name())
+     *             .location(defaultGoogleCloudRunService.get("location"))
+     *             .name(defaultGoogleCloudRunService.get("name"))
      *             .build());
      * 
      *     }
@@ -499,8 +499,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(defaultGoogleCloudRunService.location())
-     *             .name(defaultGoogleCloudRunService.name())
+     *             .location(defaultGoogleCloudRunService.get("location"))
+     *             .name(defaultGoogleCloudRunService.get("name"))
      *             .build());
      * 
      *     }
@@ -543,8 +543,8 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudrunFunctions.getService(GetServiceArgs.builder()
-     *             .location(defaultGoogleCloudRunService.location())
-     *             .name(defaultGoogleCloudRunService.name())
+     *             .location(defaultGoogleCloudRunService.get("location"))
+     *             .name(defaultGoogleCloudRunService.get("name"))
      *             .build());
      * 
      *     }
@@ -584,9 +584,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(default_.location())
-     *             .project(default_.project())
-     *             .service(default_.name())
+     *             .location(default_.get("location"))
+     *             .project(default_.get("project"))
+     *             .service(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -626,9 +626,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(default_.location())
-     *             .project(default_.project())
-     *             .service(default_.name())
+     *             .location(default_.get("location"))
+     *             .project(default_.get("project"))
+     *             .service(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -668,9 +668,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(default_.location())
-     *             .project(default_.project())
-     *             .service(default_.name())
+     *             .location(default_.get("location"))
+     *             .project(default_.get("project"))
+     *             .service(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -710,9 +710,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(default_.location())
-     *             .project(default_.project())
-     *             .service(default_.name())
+     *             .location(default_.get("location"))
+     *             .project(default_.get("project"))
+     *             .service(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -752,9 +752,9 @@ public final class CloudrunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
-     *             .location(default_.location())
-     *             .project(default_.project())
-     *             .service(default_.name())
+     *             .location(default_.get("location"))
+     *             .project(default_.get("project"))
+     *             .service(default_.get("name"))
      *             .build());
      * 
      *     }

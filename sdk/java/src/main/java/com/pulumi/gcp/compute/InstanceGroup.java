@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .name("test")
  *             .description("Test instance group")
  *             .zone("us-central1-a")
- *             .network(default_.id())
+ *             .network(default_.get("id"))
  *             .build());
  * 
  *     }
@@ -89,8 +89,8 @@ import javax.annotation.Nullable;
  *             .name("webservers")
  *             .description("Test instance group")
  *             .instances(            
- *                 test.id(),
- *                 test2.id())
+ *                 test.get("id"),
+ *                 test2.get("id"))
  *             .namedPorts(            
  *                 InstanceGroupNamedPortArgs.builder()
  *                     .name("http")

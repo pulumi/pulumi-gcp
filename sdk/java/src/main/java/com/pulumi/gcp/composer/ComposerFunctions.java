@@ -65,7 +65,7 @@ public final class ComposerFunctions {
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(test.name())
+     *             .name(test.get("name"))
      *             .build());
      * 
      *         ctx.export("debug", composerEnv.configs());
@@ -119,7 +119,7 @@ public final class ComposerFunctions {
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(test.name())
+     *             .name(test.get("name"))
      *             .build());
      * 
      *         ctx.export("debug", composerEnv.configs());
@@ -173,7 +173,7 @@ public final class ComposerFunctions {
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(test.name())
+     *             .name(test.get("name"))
      *             .build());
      * 
      *         ctx.export("debug", composerEnv.configs());
@@ -227,7 +227,7 @@ public final class ComposerFunctions {
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(test.name())
+     *             .name(test.get("name"))
      *             .build());
      * 
      *         ctx.export("debug", composerEnv.configs());
@@ -281,7 +281,7 @@ public final class ComposerFunctions {
      *             .build());
      * 
      *         final var composerEnv = ComposerFunctions.getEnvironment(GetEnvironmentArgs.builder()
-     *             .name(test.name())
+     *             .name(test.get("name"))
      *             .build());
      * 
      *         ctx.export("debug", composerEnv.configs());
@@ -766,7 +766,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .name(googleComposerUserWorkloadsConfigMap.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -838,7 +838,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .name(googleComposerUserWorkloadsConfigMap.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -910,7 +910,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .name(googleComposerUserWorkloadsConfigMap.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -982,7 +982,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .name(googleComposerUserWorkloadsConfigMap.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -1054,7 +1054,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsConfigMap.example().name())
+     *             .name(googleComposerUserWorkloadsConfigMap.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -1133,7 +1133,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .name(googleComposerUserWorkloadsSecret.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -1212,7 +1212,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .name(googleComposerUserWorkloadsSecret.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -1291,7 +1291,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .name(googleComposerUserWorkloadsSecret.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -1370,7 +1370,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .name(googleComposerUserWorkloadsSecret.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);
@@ -1449,7 +1449,7 @@ public final class ComposerFunctions {
      * 
      *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
      *             .environment(exampleEnvironment.name())
-     *             .name(googleComposerUserWorkloadsSecret.example().name())
+     *             .name(googleComposerUserWorkloadsSecret.get("example").get("name"))
      *             .build());
      * 
      *         ctx.export("debug", example);

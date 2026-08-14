@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Datapolicyv2DataPolicyIamPolicy("policy", Datapolicyv2DataPolicyIamPolicyArgs.builder()
- *             .project(basicDataPolicy.project())
- *             .location(basicDataPolicy.location())
- *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+ *             .project(basicDataPolicy.get("project"))
+ *             .location(basicDataPolicy.get("location"))
+ *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,9 +101,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new Datapolicyv2DataPolicyIamBinding("binding", Datapolicyv2DataPolicyIamBindingArgs.builder()
- *             .project(basicDataPolicy.project())
- *             .location(basicDataPolicy.location())
- *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+ *             .project(basicDataPolicy.get("project"))
+ *             .location(basicDataPolicy.get("location"))
+ *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -138,9 +138,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new Datapolicyv2DataPolicyIamMember("member", Datapolicyv2DataPolicyIamMemberArgs.builder()
- *             .project(basicDataPolicy.project())
- *             .location(basicDataPolicy.location())
- *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+ *             .project(basicDataPolicy.get("project"))
+ *             .location(basicDataPolicy.get("location"))
+ *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -205,9 +205,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Datapolicyv2DataPolicyIamPolicy("policy", Datapolicyv2DataPolicyIamPolicyArgs.builder()
- *             .project(basicDataPolicy.project())
- *             .location(basicDataPolicy.location())
- *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+ *             .project(basicDataPolicy.get("project"))
+ *             .location(basicDataPolicy.get("location"))
+ *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -241,9 +241,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new Datapolicyv2DataPolicyIamBinding("binding", Datapolicyv2DataPolicyIamBindingArgs.builder()
- *             .project(basicDataPolicy.project())
- *             .location(basicDataPolicy.location())
- *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+ *             .project(basicDataPolicy.get("project"))
+ *             .location(basicDataPolicy.get("location"))
+ *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -278,9 +278,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new Datapolicyv2DataPolicyIamMember("member", Datapolicyv2DataPolicyIamMemberArgs.builder()
- *             .project(basicDataPolicy.project())
- *             .location(basicDataPolicy.location())
- *             .dataPolicyId(basicDataPolicy.dataPolicyId())
+ *             .project(basicDataPolicy.get("project"))
+ *             .location(basicDataPolicy.get("location"))
+ *             .dataPolicyId(basicDataPolicy.get("dataPolicyId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

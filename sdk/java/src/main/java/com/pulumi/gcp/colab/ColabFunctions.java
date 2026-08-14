@@ -43,9 +43,9 @@ public final class ColabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ColabFunctions.getRuntimeTemplateIamPolicy(GetRuntimeTemplateIamPolicyArgs.builder()
-     *             .project(runtime_template.project())
-     *             .location(runtime_template.location())
-     *             .runtimeTemplate(runtime_template.name())
+     *             .project(runtime_template.get("project"))
+     *             .location(runtime_template.get("location"))
+     *             .runtimeTemplate(runtime_template.get("name"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class ColabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ColabFunctions.getRuntimeTemplateIamPolicy(GetRuntimeTemplateIamPolicyArgs.builder()
-     *             .project(runtime_template.project())
-     *             .location(runtime_template.location())
-     *             .runtimeTemplate(runtime_template.name())
+     *             .project(runtime_template.get("project"))
+     *             .location(runtime_template.get("location"))
+     *             .runtimeTemplate(runtime_template.get("name"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class ColabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ColabFunctions.getRuntimeTemplateIamPolicy(GetRuntimeTemplateIamPolicyArgs.builder()
-     *             .project(runtime_template.project())
-     *             .location(runtime_template.location())
-     *             .runtimeTemplate(runtime_template.name())
+     *             .project(runtime_template.get("project"))
+     *             .location(runtime_template.get("location"))
+     *             .runtimeTemplate(runtime_template.get("name"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class ColabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ColabFunctions.getRuntimeTemplateIamPolicy(GetRuntimeTemplateIamPolicyArgs.builder()
-     *             .project(runtime_template.project())
-     *             .location(runtime_template.location())
-     *             .runtimeTemplate(runtime_template.name())
+     *             .project(runtime_template.get("project"))
+     *             .location(runtime_template.get("location"))
+     *             .runtimeTemplate(runtime_template.get("name"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class ColabFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ColabFunctions.getRuntimeTemplateIamPolicy(GetRuntimeTemplateIamPolicyArgs.builder()
-     *             .project(runtime_template.project())
-     *             .location(runtime_template.location())
-     *             .runtimeTemplate(runtime_template.name())
+     *             .project(runtime_template.get("project"))
+     *             .location(runtime_template.get("location"))
+     *             .runtimeTemplate(runtime_template.get("name"))
      *             .build());
      * 
      *     }

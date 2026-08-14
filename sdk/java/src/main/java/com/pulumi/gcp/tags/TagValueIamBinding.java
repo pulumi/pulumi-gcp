@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagValueIamPolicy("policy", TagValueIamPolicyArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagValueIamPolicy("policy", TagValueIamPolicyArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TagValueIamBinding("binding", TagValueIamBindingArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -187,7 +187,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TagValueIamBinding("binding", TagValueIamBindingArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(TagValueIamBindingConditionArgs.builder()
@@ -226,7 +226,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TagValueIamMember("member", TagValueIamMemberArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -262,7 +262,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TagValueIamMember("member", TagValueIamMemberArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(TagValueIamMemberConditionArgs.builder()
@@ -335,7 +335,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagValueIamPolicy("policy", TagValueIamPolicyArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -385,7 +385,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TagValueIamPolicy("policy", TagValueIamPolicyArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -418,7 +418,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TagValueIamBinding("binding", TagValueIamBindingArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -454,7 +454,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TagValueIamBinding("binding", TagValueIamBindingArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(TagValueIamBindingConditionArgs.builder()
@@ -493,7 +493,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TagValueIamMember("member", TagValueIamMemberArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -529,7 +529,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TagValueIamMember("member", TagValueIamMemberArgs.builder()
- *             .tagValue(value.name())
+ *             .tagValue(value.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(TagValueIamMemberConditionArgs.builder()

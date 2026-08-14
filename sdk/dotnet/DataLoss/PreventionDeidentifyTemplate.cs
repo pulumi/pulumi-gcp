@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.DataLoss
     ///                         RedactionColor = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs
     ///                         {
     ///                             Red = 0.5,
-    ///                             Blue = 1,
+    ///                             Blue = 1.0,
     ///                             Green = 0.2,
     ///                         },
     ///                         SelectedInfoTypes = new Gcp.DataLoss.Inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs

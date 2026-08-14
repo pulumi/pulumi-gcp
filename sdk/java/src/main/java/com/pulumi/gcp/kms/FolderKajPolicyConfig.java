@@ -83,8 +83,8 @@ import javax.annotation.Nullable;
  * 
  *         // Create a project for enabling KMS API.
  *         var kmsProject = new Project("kmsProject", ProjectArgs.builder()
- *             .projectId(String.format("kms-api-project%s", projectSuffix.hex()))
- *             .name(String.format("kms-api-project%s", projectSuffix.hex()))
+ *             .projectId(String.format("kms-api-project%s", projectSuffix.get("hex")))
+ *             .name(String.format("kms-api-project%s", projectSuffix.get("hex")))
  *             .folderId(kajFolder.folderId())
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

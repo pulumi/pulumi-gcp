@@ -48,8 +48,8 @@ public final class FirestoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var mydoc = new Document("mydoc", DocumentArgs.builder()
-     *             .project(database.project())
-     *             .database(database.name())
+     *             .project(database.get("project"))
+     *             .database(database.get("name"))
      *             .collection("somenewcollection")
      *             .documentId("my-doc-id")
      *             .build());
@@ -96,8 +96,8 @@ public final class FirestoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var mydoc = new Document("mydoc", DocumentArgs.builder()
-     *             .project(database.project())
-     *             .database(database.name())
+     *             .project(database.get("project"))
+     *             .database(database.get("name"))
      *             .collection("somenewcollection")
      *             .documentId("my-doc-id")
      *             .build());
@@ -144,8 +144,8 @@ public final class FirestoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var mydoc = new Document("mydoc", DocumentArgs.builder()
-     *             .project(database.project())
-     *             .database(database.name())
+     *             .project(database.get("project"))
+     *             .database(database.get("name"))
      *             .collection("somenewcollection")
      *             .documentId("my-doc-id")
      *             .build());
@@ -192,8 +192,8 @@ public final class FirestoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var mydoc = new Document("mydoc", DocumentArgs.builder()
-     *             .project(database.project())
-     *             .database(database.name())
+     *             .project(database.get("project"))
+     *             .database(database.get("name"))
      *             .collection("somenewcollection")
      *             .documentId("my-doc-id")
      *             .build());
@@ -240,8 +240,8 @@ public final class FirestoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var mydoc = new Document("mydoc", DocumentArgs.builder()
-     *             .project(database.project())
-     *             .database(database.name())
+     *             .project(database.get("project"))
+     *             .database(database.get("name"))
      *             .collection("somenewcollection")
      *             .documentId("my-doc-id")
      *             .build());

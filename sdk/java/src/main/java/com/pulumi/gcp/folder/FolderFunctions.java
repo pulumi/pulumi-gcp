@@ -46,7 +46,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(permissiontest.name())
+     *             .folder(permissiontest.get("name"))
      *             .build());
      * 
      *     }
@@ -86,7 +86,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(permissiontest.name())
+     *             .folder(permissiontest.get("name"))
      *             .build());
      * 
      *     }
@@ -126,7 +126,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(permissiontest.name())
+     *             .folder(permissiontest.get("name"))
      *             .build());
      * 
      *     }
@@ -166,7 +166,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(permissiontest.name())
+     *             .folder(permissiontest.get("name"))
      *             .build());
      * 
      *     }
@@ -206,7 +206,7 @@ public final class FolderFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
-     *             .folder(permissiontest.name())
+     *             .folder(permissiontest.get("name"))
      *             .build());
      * 
      *     }

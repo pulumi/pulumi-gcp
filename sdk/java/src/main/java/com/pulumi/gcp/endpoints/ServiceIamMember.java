@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()
- *             .serviceName(endpointsService.serviceName())
+ *             .serviceName(endpointsService.get("serviceName"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()
- *             .serviceName(endpointsService.serviceName())
+ *             .serviceName(endpointsService.get("serviceName"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()
- *             .serviceName(endpointsService.serviceName())
+ *             .serviceName(endpointsService.get("serviceName"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ServiceIamPolicy("policy", ServiceIamPolicyArgs.builder()
- *             .serviceName(endpointsService.serviceName())
+ *             .serviceName(endpointsService.get("serviceName"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ServiceIamBinding("binding", ServiceIamBindingArgs.builder()
- *             .serviceName(endpointsService.serviceName())
+ *             .serviceName(endpointsService.get("serviceName"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ServiceIamMember("member", ServiceIamMemberArgs.builder()
- *             .serviceName(endpointsService.serviceName())
+ *             .serviceName(endpointsService.get("serviceName"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

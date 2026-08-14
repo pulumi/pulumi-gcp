@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .identifier(default_.urn())
  *                 .build())
  *             .authProviderBinding(BindingAuthProviderBindingArgs.builder()
- *                 .authProvider(defaultIamConnectorsConnector.id())
+ *                 .authProvider(defaultIamConnectorsConnector.get("id"))
  *                 .scopes("https://www.googleapis.com/auth/cloud-platform")
  *                 .continueUri("https://example.com/continue")
  *                 .build())

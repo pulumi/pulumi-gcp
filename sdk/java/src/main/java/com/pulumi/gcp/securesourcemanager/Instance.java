@@ -587,7 +587,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].html())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).html())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -595,7 +595,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].api())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).api())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -603,7 +603,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].gitHttp())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).gitHttp())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -792,7 +792,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceHtmlRecord = new RecordSet("ssmInstanceHtmlRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].html())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).html())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -800,7 +800,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceApiRecord = new RecordSet("ssmInstanceApiRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].api())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).api())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())
@@ -808,7 +808,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ssmInstanceGitRecord = new RecordSet("ssmInstanceGitRecord", RecordSetArgs.builder()
- *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs[0].gitHttp())))
+ *             .name(default_.hostConfigs().applyValue(_hostConfigs -> String.format("%s.", _hostConfigs.get(0).gitHttp())))
  *             .type("A")
  *             .ttl(300)
  *             .managedZone(privateZone.name())

@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -118,8 +118,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -152,8 +152,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -189,8 +189,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(ManagedFolderIamBindingConditionArgs.builder()
@@ -229,8 +229,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -266,8 +266,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(ManagedFolderIamMemberConditionArgs.builder()
@@ -339,8 +339,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -390,8 +390,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ManagedFolderIamPolicy("policy", ManagedFolderIamPolicyArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -424,8 +424,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -461,8 +461,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ManagedFolderIamBinding("binding", ManagedFolderIamBindingArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(ManagedFolderIamBindingConditionArgs.builder()
@@ -501,8 +501,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -538,8 +538,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ManagedFolderIamMember("member", ManagedFolderIamMemberArgs.builder()
- *             .bucket(folder.bucket())
- *             .managedFolder(folder.name())
+ *             .bucket(folder.get("bucket"))
+ *             .managedFolder(folder.get("name"))
  *             .role("roles/storage.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(ManagedFolderIamMemberConditionArgs.builder()

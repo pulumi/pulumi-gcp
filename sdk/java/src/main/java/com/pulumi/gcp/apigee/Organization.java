@@ -240,8 +240,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var apigeeSa = new ServiceIdentity("apigeeSa", ServiceIdentityArgs.builder()
- *             .project(project.projectId())
- *             .service(apigee.service())
+ *             .project(project.get("projectId"))
+ *             .service(apigee.get("service"))
  *             .build());
  * 
  *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()
@@ -314,8 +314,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var apigeeSa = new ServiceIdentity("apigeeSa", ServiceIdentityArgs.builder()
- *             .project(project.projectId())
- *             .service(apigee.service())
+ *             .project(project.get("projectId"))
+ *             .service(apigee.get("service"))
  *             .build());
  * 
  *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()

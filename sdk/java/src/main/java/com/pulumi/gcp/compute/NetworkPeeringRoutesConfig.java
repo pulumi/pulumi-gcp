@@ -189,8 +189,8 @@ import javax.annotation.Nullable;
  *                 .masterIpv4CidrBlock("10.42.0.0/28")
  *                 .build())
  *             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
- *                 .clusterSecondaryRangeName(gkeSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[0].rangeName()))
- *                 .servicesSecondaryRangeName(gkeSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges[1].rangeName()))
+ *                 .clusterSecondaryRangeName(gkeSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges.get(0).rangeName()))
+ *                 .servicesSecondaryRangeName(gkeSubnetwork.secondaryIpRanges().applyValue(_secondaryIpRanges -> _secondaryIpRanges.get(1).rangeName()))
  *                 .build())
  *             .deletionProtection(true)
  *             .build());

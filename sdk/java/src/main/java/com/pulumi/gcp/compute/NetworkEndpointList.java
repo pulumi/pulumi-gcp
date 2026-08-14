@@ -125,17 +125,17 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var default_endpoints = new NetworkEndpointList("default-endpoints", NetworkEndpointListArgs.builder()
- *             .networkEndpointGroup(neg.name())
+ *             .networkEndpointGroup(neg.get("name"))
  *             .networkEndpoints(            
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance1.name())
- *                     .port(neg.defaultPort())
- *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *                     .port(((Number) neg.get("defaultPort")).intValue())
+ *                     .ipAddress(endpoint_instance1.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *                     .build(),
  *                 NetworkEndpointListNetworkEndpointArgs.builder()
  *                     .instance(endpoint_instance2.name())
- *                     .port(neg.defaultPort())
- *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces[0].networkIp()))
+ *                     .port(((Number) neg.get("defaultPort")).intValue())
+ *                     .ipAddress(endpoint_instance2.networkInterfaces().applyValue(_networkInterfaces -> _networkInterfaces.get(0).networkIp()))
  *                     .build())
  *             .build());
  * 

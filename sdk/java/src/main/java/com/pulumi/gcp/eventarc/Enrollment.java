@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var primary = new Enrollment("primary", EnrollmentArgs.builder()
  *             .location("us-central1")
  *             .enrollmentId("some-enrollment")
- *             .messageBus(primaryGoogleEventarcMessageBus.id())
+ *             .messageBus(primaryGoogleEventarcMessageBus.get("id"))
  *             .destination(pipeline.id())
  *             .celMatch("message.type == 'google.cloud.dataflow.job.v1beta3.statusChanged'")
  *             .build());

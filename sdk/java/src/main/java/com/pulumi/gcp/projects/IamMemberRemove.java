@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  * 
  *         var foo = new IamMemberRemove("foo", IamMemberRemoveArgs.builder()
  *             .role("roles/editor")
- *             .project(targetProjectGoogleProject.projectId())
- *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", targetProjectGoogleProject.number()))
+ *             .project(targetProjectGoogleProject.get("projectId"))
+ *             .member(String.format("serviceAccount:%s-compute}{@literal @}{@code developer.gserviceaccount.com", targetProjectGoogleProject.get("number")))
  *             .build());
  * 
  *     }}{@code

@@ -73,9 +73,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
-     *             .project(testAspectTypeBasic.project())
-     *             .location(testAspectTypeBasic.location())
-     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .project(testAspectTypeBasic.get("project"))
+     *             .location(testAspectTypeBasic.get("location"))
+     *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
      *             .build());
      * 
      *     }
@@ -115,9 +115,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
-     *             .project(testAspectTypeBasic.project())
-     *             .location(testAspectTypeBasic.location())
-     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .project(testAspectTypeBasic.get("project"))
+     *             .location(testAspectTypeBasic.get("location"))
+     *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
      *             .build());
      * 
      *     }
@@ -157,9 +157,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
-     *             .project(testAspectTypeBasic.project())
-     *             .location(testAspectTypeBasic.location())
-     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .project(testAspectTypeBasic.get("project"))
+     *             .location(testAspectTypeBasic.get("location"))
+     *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
      *             .build());
      * 
      *     }
@@ -199,9 +199,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
-     *             .project(testAspectTypeBasic.project())
-     *             .location(testAspectTypeBasic.location())
-     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .project(testAspectTypeBasic.get("project"))
+     *             .location(testAspectTypeBasic.get("location"))
+     *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
      *             .build());
      * 
      *     }
@@ -241,9 +241,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAspectTypeIamPolicy(GetAspectTypeIamPolicyArgs.builder()
-     *             .project(testAspectTypeBasic.project())
-     *             .location(testAspectTypeBasic.location())
-     *             .aspectTypeId(testAspectTypeBasic.aspectTypeId())
+     *             .project(testAspectTypeBasic.get("project"))
+     *             .location(testAspectTypeBasic.get("location"))
+     *             .aspectTypeId(testAspectTypeBasic.get("aspectTypeId"))
      *             .build());
      * 
      *     }
@@ -283,11 +283,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.dataplexZone())
-     *             .asset(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("dataplexZone"))
+     *             .asset(example.get("name"))
      *             .build());
      * 
      *     }
@@ -327,11 +327,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.dataplexZone())
-     *             .asset(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("dataplexZone"))
+     *             .asset(example.get("name"))
      *             .build());
      * 
      *     }
@@ -371,11 +371,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.dataplexZone())
-     *             .asset(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("dataplexZone"))
+     *             .asset(example.get("name"))
      *             .build());
      * 
      *     }
@@ -415,11 +415,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.dataplexZone())
-     *             .asset(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("dataplexZone"))
+     *             .asset(example.get("name"))
      *             .build());
      * 
      *     }
@@ -459,11 +459,11 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getAssetIamPolicy(GetAssetIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.dataplexZone())
-     *             .asset(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("dataplexZone"))
+     *             .asset(example.get("name"))
      *             .build());
      * 
      *     }
@@ -503,9 +503,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDataProductIamPolicy(GetDataProductIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .dataProductId(example.dataProductId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataProductId(example.get("dataProductId"))
      *             .build());
      * 
      *     }
@@ -545,9 +545,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDataProductIamPolicy(GetDataProductIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .dataProductId(example.dataProductId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataProductId(example.get("dataProductId"))
      *             .build());
      * 
      *     }
@@ -587,9 +587,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDataProductIamPolicy(GetDataProductIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .dataProductId(example.dataProductId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataProductId(example.get("dataProductId"))
      *             .build());
      * 
      *     }
@@ -629,9 +629,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDataProductIamPolicy(GetDataProductIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .dataProductId(example.dataProductId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataProductId(example.get("dataProductId"))
      *             .build());
      * 
      *     }
@@ -671,9 +671,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDataProductIamPolicy(GetDataProductIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .dataProductId(example.dataProductId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .dataProductId(example.get("dataProductId"))
      *             .build());
      * 
      *     }
@@ -938,9 +938,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(basicProfile.project())
-     *             .location(basicProfile.location())
-     *             .dataScanId(basicProfile.dataScanId())
+     *             .project(basicProfile.get("project"))
+     *             .location(basicProfile.get("location"))
+     *             .dataScanId(basicProfile.get("dataScanId"))
      *             .build());
      * 
      *     }
@@ -980,9 +980,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(basicProfile.project())
-     *             .location(basicProfile.location())
-     *             .dataScanId(basicProfile.dataScanId())
+     *             .project(basicProfile.get("project"))
+     *             .location(basicProfile.get("location"))
+     *             .dataScanId(basicProfile.get("dataScanId"))
      *             .build());
      * 
      *     }
@@ -1022,9 +1022,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(basicProfile.project())
-     *             .location(basicProfile.location())
-     *             .dataScanId(basicProfile.dataScanId())
+     *             .project(basicProfile.get("project"))
+     *             .location(basicProfile.get("location"))
+     *             .dataScanId(basicProfile.get("dataScanId"))
      *             .build());
      * 
      *     }
@@ -1064,9 +1064,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(basicProfile.project())
-     *             .location(basicProfile.location())
-     *             .dataScanId(basicProfile.dataScanId())
+     *             .project(basicProfile.get("project"))
+     *             .location(basicProfile.get("location"))
+     *             .dataScanId(basicProfile.get("dataScanId"))
      *             .build());
      * 
      *     }
@@ -1106,9 +1106,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getDatascanIamPolicy(GetDatascanIamPolicyArgs.builder()
-     *             .project(basicProfile.project())
-     *             .location(basicProfile.location())
-     *             .dataScanId(basicProfile.dataScanId())
+     *             .project(basicProfile.get("project"))
+     *             .location(basicProfile.get("location"))
+     *             .dataScanId(basicProfile.get("dataScanId"))
      *             .build());
      * 
      *     }
@@ -1148,9 +1148,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .project(testEntryGroupBasic.project())
-     *             .location(testEntryGroupBasic.location())
-     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .project(testEntryGroupBasic.get("project"))
+     *             .location(testEntryGroupBasic.get("location"))
+     *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
      *             .build());
      * 
      *     }
@@ -1190,9 +1190,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .project(testEntryGroupBasic.project())
-     *             .location(testEntryGroupBasic.location())
-     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .project(testEntryGroupBasic.get("project"))
+     *             .location(testEntryGroupBasic.get("location"))
+     *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
      *             .build());
      * 
      *     }
@@ -1232,9 +1232,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .project(testEntryGroupBasic.project())
-     *             .location(testEntryGroupBasic.location())
-     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .project(testEntryGroupBasic.get("project"))
+     *             .location(testEntryGroupBasic.get("location"))
+     *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
      *             .build());
      * 
      *     }
@@ -1274,9 +1274,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .project(testEntryGroupBasic.project())
-     *             .location(testEntryGroupBasic.location())
-     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .project(testEntryGroupBasic.get("project"))
+     *             .location(testEntryGroupBasic.get("location"))
+     *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
      *             .build());
      * 
      *     }
@@ -1316,9 +1316,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
-     *             .project(testEntryGroupBasic.project())
-     *             .location(testEntryGroupBasic.location())
-     *             .entryGroupId(testEntryGroupBasic.entryGroupId())
+     *             .project(testEntryGroupBasic.get("project"))
+     *             .location(testEntryGroupBasic.get("location"))
+     *             .entryGroupId(testEntryGroupBasic.get("entryGroupId"))
      *             .build());
      * 
      *     }
@@ -1358,9 +1358,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryTypeIamPolicy(GetEntryTypeIamPolicyArgs.builder()
-     *             .project(testEntryTypeBasic.project())
-     *             .location(testEntryTypeBasic.location())
-     *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+     *             .project(testEntryTypeBasic.get("project"))
+     *             .location(testEntryTypeBasic.get("location"))
+     *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
      *             .build());
      * 
      *     }
@@ -1400,9 +1400,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryTypeIamPolicy(GetEntryTypeIamPolicyArgs.builder()
-     *             .project(testEntryTypeBasic.project())
-     *             .location(testEntryTypeBasic.location())
-     *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+     *             .project(testEntryTypeBasic.get("project"))
+     *             .location(testEntryTypeBasic.get("location"))
+     *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
      *             .build());
      * 
      *     }
@@ -1442,9 +1442,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryTypeIamPolicy(GetEntryTypeIamPolicyArgs.builder()
-     *             .project(testEntryTypeBasic.project())
-     *             .location(testEntryTypeBasic.location())
-     *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+     *             .project(testEntryTypeBasic.get("project"))
+     *             .location(testEntryTypeBasic.get("location"))
+     *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
      *             .build());
      * 
      *     }
@@ -1484,9 +1484,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryTypeIamPolicy(GetEntryTypeIamPolicyArgs.builder()
-     *             .project(testEntryTypeBasic.project())
-     *             .location(testEntryTypeBasic.location())
-     *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+     *             .project(testEntryTypeBasic.get("project"))
+     *             .location(testEntryTypeBasic.get("location"))
+     *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
      *             .build());
      * 
      *     }
@@ -1526,9 +1526,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getEntryTypeIamPolicy(GetEntryTypeIamPolicyArgs.builder()
-     *             .project(testEntryTypeBasic.project())
-     *             .location(testEntryTypeBasic.location())
-     *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+     *             .project(testEntryTypeBasic.get("project"))
+     *             .location(testEntryTypeBasic.get("location"))
+     *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
      *             .build());
      * 
      *     }
@@ -1568,9 +1568,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
-     *             .project(glossaryTestId.project())
-     *             .location(glossaryTestId.location())
-     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .project(glossaryTestId.get("project"))
+     *             .location(glossaryTestId.get("location"))
+     *             .glossaryId(glossaryTestId.get("glossaryId"))
      *             .build());
      * 
      *     }
@@ -1610,9 +1610,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
-     *             .project(glossaryTestId.project())
-     *             .location(glossaryTestId.location())
-     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .project(glossaryTestId.get("project"))
+     *             .location(glossaryTestId.get("location"))
+     *             .glossaryId(glossaryTestId.get("glossaryId"))
      *             .build());
      * 
      *     }
@@ -1652,9 +1652,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
-     *             .project(glossaryTestId.project())
-     *             .location(glossaryTestId.location())
-     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .project(glossaryTestId.get("project"))
+     *             .location(glossaryTestId.get("location"))
+     *             .glossaryId(glossaryTestId.get("glossaryId"))
      *             .build());
      * 
      *     }
@@ -1694,9 +1694,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
-     *             .project(glossaryTestId.project())
-     *             .location(glossaryTestId.location())
-     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .project(glossaryTestId.get("project"))
+     *             .location(glossaryTestId.get("location"))
+     *             .glossaryId(glossaryTestId.get("glossaryId"))
      *             .build());
      * 
      *     }
@@ -1736,9 +1736,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getGlossaryIamPolicy(GetGlossaryIamPolicyArgs.builder()
-     *             .project(glossaryTestId.project())
-     *             .location(glossaryTestId.location())
-     *             .glossaryId(glossaryTestId.glossaryId())
+     *             .project(glossaryTestId.get("project"))
+     *             .location(glossaryTestId.get("location"))
+     *             .glossaryId(glossaryTestId.get("glossaryId"))
      *             .build());
      * 
      *     }
@@ -1778,9 +1778,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1820,9 +1820,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1862,9 +1862,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1904,9 +1904,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1946,9 +1946,9 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getLakeIamPolicy(GetLakeIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("name"))
      *             .build());
      * 
      *     }
@@ -1988,10 +1988,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .taskId(example.taskId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .taskId(example.get("taskId"))
      *             .build());
      * 
      *     }
@@ -2031,10 +2031,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .taskId(example.taskId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .taskId(example.get("taskId"))
      *             .build());
      * 
      *     }
@@ -2074,10 +2074,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .taskId(example.taskId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .taskId(example.get("taskId"))
      *             .build());
      * 
      *     }
@@ -2117,10 +2117,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .taskId(example.taskId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .taskId(example.get("taskId"))
      *             .build());
      * 
      *     }
@@ -2160,10 +2160,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getTaskIamPolicy(GetTaskIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .taskId(example.taskId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .taskId(example.get("taskId"))
      *             .build());
      * 
      *     }
@@ -2203,10 +2203,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2246,10 +2246,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2289,10 +2289,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2332,10 +2332,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("name"))
      *             .build());
      * 
      *     }
@@ -2375,10 +2375,10 @@ public final class DataplexFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DataplexFunctions.getZoneIamPolicy(GetZoneIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .lake(example.lake())
-     *             .dataplexZone(example.name())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .lake(example.get("lake"))
+     *             .dataplexZone(example.get("name"))
      *             .build());
      * 
      *     }

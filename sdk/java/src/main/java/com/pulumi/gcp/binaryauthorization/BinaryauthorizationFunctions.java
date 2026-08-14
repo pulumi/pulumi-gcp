@@ -43,8 +43,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(attestor.project())
-     *             .attestor(attestor.name())
+     *             .project(attestor.get("project"))
+     *             .attestor(attestor.get("name"))
      *             .build());
      * 
      *     }
@@ -84,8 +84,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(attestor.project())
-     *             .attestor(attestor.name())
+     *             .project(attestor.get("project"))
+     *             .attestor(attestor.get("name"))
      *             .build());
      * 
      *     }
@@ -125,8 +125,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(attestor.project())
-     *             .attestor(attestor.name())
+     *             .project(attestor.get("project"))
+     *             .attestor(attestor.get("name"))
      *             .build());
      * 
      *     }
@@ -166,8 +166,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(attestor.project())
-     *             .attestor(attestor.name())
+     *             .project(attestor.get("project"))
+     *             .attestor(attestor.get("name"))
      *             .build());
      * 
      *     }
@@ -207,8 +207,8 @@ public final class BinaryauthorizationFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
-     *             .project(attestor.project())
-     *             .attestor(attestor.name())
+     *             .project(attestor.get("project"))
+     *             .attestor(attestor.get("name"))
      *             .build());
      * 
      *     }

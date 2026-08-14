@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionNetworkFirewallPolicyIamPolicy("policy", RegionNetworkFirewallPolicyIamPolicyArgs.builder()
- *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
- *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
- *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+ *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+ *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+ *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionNetworkFirewallPolicyIamBinding("binding", RegionNetworkFirewallPolicyIamBindingArgs.builder()
- *             .project(policy.project())
- *             .region(policy.region())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .region(policy.get("region"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,9 +139,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionNetworkFirewallPolicyIamMember("member", RegionNetworkFirewallPolicyIamMemberArgs.builder()
- *             .project(policy.project())
- *             .region(policy.region())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .region(policy.get("region"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -206,9 +206,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RegionNetworkFirewallPolicyIamPolicy("policy", RegionNetworkFirewallPolicyIamPolicyArgs.builder()
- *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
- *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
- *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+ *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+ *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+ *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -242,9 +242,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RegionNetworkFirewallPolicyIamBinding("binding", RegionNetworkFirewallPolicyIamBindingArgs.builder()
- *             .project(policy.project())
- *             .region(policy.region())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .region(policy.get("region"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,9 +279,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RegionNetworkFirewallPolicyIamMember("member", RegionNetworkFirewallPolicyIamMemberArgs.builder()
- *             .project(policy.project())
- *             .region(policy.region())
- *             .name(policy.name())
+ *             .project(policy.get("project"))
+ *             .region(policy.get("region"))
+ *             .name(policy.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -1108,7 +1108,7 @@ import javax.annotation.Nullable;
  *             .name("my-user")
  *             .instance(instance.name())
  *             .host("%")
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -1256,7 +1256,7 @@ import javax.annotation.Nullable;
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -1454,7 +1454,7 @@ import javax.annotation.Nullable;
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -1603,7 +1603,7 @@ import javax.annotation.Nullable;
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var sourceConnectionProfile = new ConnectionProfile("sourceConnectionProfile", ConnectionProfileArgs.builder()
@@ -1756,7 +1756,7 @@ import javax.annotation.Nullable;
  *             .name("user")
  *             .instance(instance.name())
  *             .host("%")
- *             .password(pwd.result())
+ *             .password(pwd.get("result"))
  *             .build());
  * 
  *         var blmtBucket = new Bucket("blmtBucket", BucketArgs.builder()

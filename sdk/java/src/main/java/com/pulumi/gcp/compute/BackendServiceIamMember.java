@@ -70,8 +70,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackendServiceIamPolicy("policy", BackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -121,8 +121,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackendServiceIamPolicy("policy", BackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -155,8 +155,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BackendServiceIamBinding("binding", BackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -192,8 +192,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BackendServiceIamBinding("binding", BackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(BackendServiceIamBindingConditionArgs.builder()
@@ -232,8 +232,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BackendServiceIamMember("member", BackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,8 +269,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BackendServiceIamMember("member", BackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(BackendServiceIamMemberConditionArgs.builder()
@@ -345,8 +345,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackendServiceIamPolicy("policy", BackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -396,8 +396,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new BackendServiceIamPolicy("policy", BackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,8 +430,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BackendServiceIamBinding("binding", BackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -467,8 +467,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new BackendServiceIamBinding("binding", BackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(BackendServiceIamBindingConditionArgs.builder()
@@ -507,8 +507,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BackendServiceIamMember("member", BackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -544,8 +544,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new BackendServiceIamMember("member", BackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.admin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(BackendServiceIamMemberConditionArgs.builder()

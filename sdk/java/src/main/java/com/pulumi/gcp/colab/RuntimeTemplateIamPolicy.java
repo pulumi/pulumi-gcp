@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RuntimeTemplateIamPolicy("policy", RuntimeTemplateIamPolicyArgs.builder()
- *             .project(runtime_template.project())
- *             .location(runtime_template.location())
- *             .runtimeTemplate(runtime_template.name())
+ *             .project(runtime_template.get("project"))
+ *             .location(runtime_template.get("location"))
+ *             .runtimeTemplate(runtime_template.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RuntimeTemplateIamBinding("binding", RuntimeTemplateIamBindingArgs.builder()
- *             .project(runtime_template.project())
- *             .location(runtime_template.location())
- *             .runtimeTemplate(runtime_template.name())
+ *             .project(runtime_template.get("project"))
+ *             .location(runtime_template.get("location"))
+ *             .runtimeTemplate(runtime_template.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RuntimeTemplateIamMember("member", RuntimeTemplateIamMemberArgs.builder()
- *             .project(runtime_template.project())
- *             .location(runtime_template.location())
- *             .runtimeTemplate(runtime_template.name())
+ *             .project(runtime_template.get("project"))
+ *             .location(runtime_template.get("location"))
+ *             .runtimeTemplate(runtime_template.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new RuntimeTemplateIamPolicy("policy", RuntimeTemplateIamPolicyArgs.builder()
- *             .project(runtime_template.project())
- *             .location(runtime_template.location())
- *             .runtimeTemplate(runtime_template.name())
+ *             .project(runtime_template.get("project"))
+ *             .location(runtime_template.get("location"))
+ *             .runtimeTemplate(runtime_template.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new RuntimeTemplateIamBinding("binding", RuntimeTemplateIamBindingArgs.builder()
- *             .project(runtime_template.project())
- *             .location(runtime_template.location())
- *             .runtimeTemplate(runtime_template.name())
+ *             .project(runtime_template.get("project"))
+ *             .location(runtime_template.get("location"))
+ *             .runtimeTemplate(runtime_template.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new RuntimeTemplateIamMember("member", RuntimeTemplateIamMemberArgs.builder()
- *             .project(runtime_template.project())
- *             .location(runtime_template.location())
- *             .runtimeTemplate(runtime_template.name())
+ *             .project(runtime_template.get("project"))
+ *             .location(runtime_template.get("location"))
+ *             .runtimeTemplate(runtime_template.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

@@ -350,7 +350,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(default_.id())
+     *             .caPool(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -390,7 +390,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(default_.id())
+     *             .caPool(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -430,7 +430,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(default_.id())
+     *             .caPool(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -470,7 +470,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(default_.id())
+     *             .caPool(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -510,7 +510,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
-     *             .caPool(default_.id())
+     *             .caPool(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -550,7 +550,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(default_.id())
+     *             .certificateTemplate(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -590,7 +590,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(default_.id())
+     *             .certificateTemplate(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -630,7 +630,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(default_.id())
+     *             .certificateTemplate(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -670,7 +670,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(default_.id())
+     *             .certificateTemplate(default_.get("id"))
      *             .build());
      * 
      *     }
@@ -710,7 +710,7 @@ public final class CertificateauthorityFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
-     *             .certificateTemplate(default_.id())
+     *             .certificateTemplate(default_.get("id"))
      *             .build());
      * 
      *     }

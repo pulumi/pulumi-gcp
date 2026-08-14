@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionForwardingRuleServiceIamPolicy("policy", WebRegionForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -117,9 +117,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionForwardingRuleServiceIamPolicy("policy", WebRegionForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -152,9 +152,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionForwardingRuleServiceIamBinding("binding", WebRegionForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,9 +190,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionForwardingRuleServiceIamBinding("binding", WebRegionForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionForwardingRuleServiceIamBindingConditionArgs.builder()
@@ -231,9 +231,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionForwardingRuleServiceIamMember("member", WebRegionForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,9 +269,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionForwardingRuleServiceIamMember("member", WebRegionForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionForwardingRuleServiceIamMemberConditionArgs.builder()
@@ -343,9 +343,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionForwardingRuleServiceIamPolicy("policy", WebRegionForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -395,9 +395,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionForwardingRuleServiceIamPolicy("policy", WebRegionForwardingRuleServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,9 +430,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionForwardingRuleServiceIamBinding("binding", WebRegionForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -468,9 +468,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionForwardingRuleServiceIamBinding("binding", WebRegionForwardingRuleServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionForwardingRuleServiceIamBindingConditionArgs.builder()
@@ -509,9 +509,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionForwardingRuleServiceIamMember("member", WebRegionForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -547,9 +547,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionForwardingRuleServiceIamMember("member", WebRegionForwardingRuleServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .forwardingRuleRegionServiceName(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .forwardingRuleRegionServiceName(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionForwardingRuleServiceIamMemberConditionArgs.builder()

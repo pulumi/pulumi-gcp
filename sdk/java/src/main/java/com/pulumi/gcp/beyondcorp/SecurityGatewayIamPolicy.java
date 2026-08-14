@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -117,9 +117,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -152,9 +152,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,9 +190,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(SecurityGatewayIamBindingConditionArgs.builder()
@@ -231,9 +231,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,9 +269,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(SecurityGatewayIamMemberConditionArgs.builder()
@@ -343,9 +343,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -395,9 +395,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SecurityGatewayIamPolicy("policy", SecurityGatewayIamPolicyArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,9 +430,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -468,9 +468,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SecurityGatewayIamBinding("binding", SecurityGatewayIamBindingArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(SecurityGatewayIamBindingConditionArgs.builder()
@@ -509,9 +509,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -547,9 +547,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SecurityGatewayIamMember("member", SecurityGatewayIamMemberArgs.builder()
- *             .project(example.project())
- *             .location(example.location())
- *             .securityGatewayId(example.securityGatewayId())
+ *             .project(example.get("project"))
+ *             .location(example.get("location"))
+ *             .securityGatewayId(example.get("securityGatewayId"))
  *             .role("roles/beyondcorp.securityGatewayUser")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(SecurityGatewayIamMemberConditionArgs.builder()

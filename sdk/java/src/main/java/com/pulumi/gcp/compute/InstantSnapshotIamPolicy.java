@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstantSnapshotIamPolicy("policy", InstantSnapshotIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -117,9 +117,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstantSnapshotIamPolicy("policy", InstantSnapshotIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -152,9 +152,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstantSnapshotIamBinding("binding", InstantSnapshotIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -190,9 +190,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstantSnapshotIamBinding("binding", InstantSnapshotIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(InstantSnapshotIamBindingConditionArgs.builder()
@@ -231,9 +231,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstantSnapshotIamMember("member", InstantSnapshotIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,9 +269,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstantSnapshotIamMember("member", InstantSnapshotIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(InstantSnapshotIamMemberConditionArgs.builder()
@@ -343,9 +343,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstantSnapshotIamPolicy("policy", InstantSnapshotIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -395,9 +395,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new InstantSnapshotIamPolicy("policy", InstantSnapshotIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -430,9 +430,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstantSnapshotIamBinding("binding", InstantSnapshotIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -468,9 +468,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new InstantSnapshotIamBinding("binding", InstantSnapshotIamBindingArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(InstantSnapshotIamBindingConditionArgs.builder()
@@ -509,9 +509,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstantSnapshotIamMember("member", InstantSnapshotIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -547,9 +547,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new InstantSnapshotIamMember("member", InstantSnapshotIamMemberArgs.builder()
- *             .project(default_.project())
- *             .zone(default_.zone())
- *             .name(default_.name())
+ *             .project(default_.get("project"))
+ *             .zone(default_.get("zone"))
+ *             .name(default_.get("name"))
  *             .role("roles/compute.storageAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(InstantSnapshotIamMemberConditionArgs.builder()

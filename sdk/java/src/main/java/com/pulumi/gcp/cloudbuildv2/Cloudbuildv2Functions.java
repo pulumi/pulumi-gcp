@@ -43,9 +43,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(my_connection.project())
-     *             .location(my_connection.location())
-     *             .name(my_connection.name())
+     *             .project(my_connection.get("project"))
+     *             .location(my_connection.get("location"))
+     *             .name(my_connection.get("name"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(my_connection.project())
-     *             .location(my_connection.location())
-     *             .name(my_connection.name())
+     *             .project(my_connection.get("project"))
+     *             .location(my_connection.get("location"))
+     *             .name(my_connection.get("name"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(my_connection.project())
-     *             .location(my_connection.location())
-     *             .name(my_connection.name())
+     *             .project(my_connection.get("project"))
+     *             .location(my_connection.get("location"))
+     *             .name(my_connection.get("name"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(my_connection.project())
-     *             .location(my_connection.location())
-     *             .name(my_connection.name())
+     *             .project(my_connection.get("project"))
+     *             .location(my_connection.get("location"))
+     *             .name(my_connection.get("name"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class Cloudbuildv2Functions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
-     *             .project(my_connection.project())
-     *             .location(my_connection.location())
-     *             .name(my_connection.name())
+     *             .project(my_connection.get("project"))
+     *             .location(my_connection.get("location"))
+     *             .name(my_connection.get("name"))
      *             .build());
      * 
      *     }

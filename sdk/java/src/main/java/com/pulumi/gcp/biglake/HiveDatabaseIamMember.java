@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HiveDatabaseIamPolicy("policy", HiveDatabaseIamPolicyArgs.builder()
- *             .project(myHiveDatabase.project())
- *             .catalog(myHiveDatabase.catalog())
- *             .name(myHiveDatabase.name())
+ *             .project(myHiveDatabase.get("project"))
+ *             .catalog(myHiveDatabase.get("catalog"))
+ *             .name(myHiveDatabase.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -104,9 +104,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HiveDatabaseIamBinding("binding", HiveDatabaseIamBindingArgs.builder()
- *             .project(myHiveDatabase.project())
- *             .catalog(myHiveDatabase.catalog())
- *             .name(myHiveDatabase.name())
+ *             .project(myHiveDatabase.get("project"))
+ *             .catalog(myHiveDatabase.get("catalog"))
+ *             .name(myHiveDatabase.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -141,9 +141,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HiveDatabaseIamMember("member", HiveDatabaseIamMemberArgs.builder()
- *             .project(myHiveDatabase.project())
- *             .catalog(myHiveDatabase.catalog())
- *             .name(myHiveDatabase.name())
+ *             .project(myHiveDatabase.get("project"))
+ *             .catalog(myHiveDatabase.get("catalog"))
+ *             .name(myHiveDatabase.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -211,9 +211,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new HiveDatabaseIamPolicy("policy", HiveDatabaseIamPolicyArgs.builder()
- *             .project(myHiveDatabase.project())
- *             .catalog(myHiveDatabase.catalog())
- *             .name(myHiveDatabase.name())
+ *             .project(myHiveDatabase.get("project"))
+ *             .catalog(myHiveDatabase.get("catalog"))
+ *             .name(myHiveDatabase.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -247,9 +247,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new HiveDatabaseIamBinding("binding", HiveDatabaseIamBindingArgs.builder()
- *             .project(myHiveDatabase.project())
- *             .catalog(myHiveDatabase.catalog())
- *             .name(myHiveDatabase.name())
+ *             .project(myHiveDatabase.get("project"))
+ *             .catalog(myHiveDatabase.get("catalog"))
+ *             .name(myHiveDatabase.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -284,9 +284,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new HiveDatabaseIamMember("member", HiveDatabaseIamMemberArgs.builder()
- *             .project(myHiveDatabase.project())
- *             .catalog(myHiveDatabase.catalog())
- *             .name(myHiveDatabase.name())
+ *             .project(myHiveDatabase.get("project"))
+ *             .catalog(myHiveDatabase.get("catalog"))
+ *             .name(myHiveDatabase.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

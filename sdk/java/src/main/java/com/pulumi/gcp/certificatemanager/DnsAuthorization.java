@@ -53,9 +53,9 @@ import javax.annotation.Nullable;
  *             .domain("subdomain.hashicorptest.com")
  *             .build());
  * 
- *         ctx.export("recordNameToInsert", default_.dnsResourceRecords().applyValue(_dnsResourceRecords -> _dnsResourceRecords[0].name()));
- *         ctx.export("recordTypeToInsert", default_.dnsResourceRecords().applyValue(_dnsResourceRecords -> _dnsResourceRecords[0].type()));
- *         ctx.export("recordDataToInsert", default_.dnsResourceRecords().applyValue(_dnsResourceRecords -> _dnsResourceRecords[0].data()));
+ *         ctx.export("recordNameToInsert", default_.dnsResourceRecords().applyValue(_dnsResourceRecords -> _dnsResourceRecords.get(0).name()));
+ *         ctx.export("recordTypeToInsert", default_.dnsResourceRecords().applyValue(_dnsResourceRecords -> _dnsResourceRecords.get(0).type()));
+ *         ctx.export("recordDataToInsert", default_.dnsResourceRecords().applyValue(_dnsResourceRecords -> _dnsResourceRecords.get(0).data()));
  *     }
  * }
  * }

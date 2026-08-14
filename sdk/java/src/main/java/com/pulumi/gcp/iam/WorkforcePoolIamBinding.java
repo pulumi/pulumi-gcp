@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkforcePoolIamPolicy("policy", WorkforcePoolIamPolicyArgs.builder()
- *             .location(example.location())
- *             .workforcePoolId(example.workforcePoolId())
+ *             .location(example.get("location"))
+ *             .workforcePoolId(example.get("workforcePoolId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkforcePoolIamBinding("binding", WorkforcePoolIamBindingArgs.builder()
- *             .location(example.location())
- *             .workforcePoolId(example.workforcePoolId())
+ *             .location(example.get("location"))
+ *             .workforcePoolId(example.get("workforcePoolId"))
  *             .role("roles/iam.workforcePoolAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkforcePoolIamMember("member", WorkforcePoolIamMemberArgs.builder()
- *             .location(example.location())
- *             .workforcePoolId(example.workforcePoolId())
+ *             .location(example.get("location"))
+ *             .workforcePoolId(example.get("workforcePoolId"))
  *             .role("roles/iam.workforcePoolAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -204,8 +204,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WorkforcePoolIamPolicy("policy", WorkforcePoolIamPolicyArgs.builder()
- *             .location(example.location())
- *             .workforcePoolId(example.workforcePoolId())
+ *             .location(example.get("location"))
+ *             .workforcePoolId(example.get("workforcePoolId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,8 +239,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WorkforcePoolIamBinding("binding", WorkforcePoolIamBindingArgs.builder()
- *             .location(example.location())
- *             .workforcePoolId(example.workforcePoolId())
+ *             .location(example.get("location"))
+ *             .workforcePoolId(example.get("workforcePoolId"))
  *             .role("roles/iam.workforcePoolAdmin")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -275,8 +275,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WorkforcePoolIamMember("member", WorkforcePoolIamMemberArgs.builder()
- *             .location(example.location())
- *             .workforcePoolId(example.workforcePoolId())
+ *             .location(example.get("location"))
+ *             .workforcePoolId(example.get("workforcePoolId"))
  *             .role("roles/iam.workforcePoolAdmin")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

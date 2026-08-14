@@ -55,8 +55,8 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
-    ///             return invoke.Result[length - 1];
-    ///         }),
+    ///             return invoke.Result[(int)(length - 1)];
+    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = true,
     ///         Alerting = true,
     ///         Archived = false,
@@ -100,8 +100,8 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
-    ///             return invoke.Result[length - 1];
-    ///         }),
+    ///             return invoke.Result[(int)(length - 1)];
+    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = false,
     ///         RunFrequency = "LIVE",
     ///     });
@@ -143,8 +143,8 @@ namespace Pulumi.Gcp.Chronicle
     ///         {
     ///             var invoke = values.Item1;
     ///             var length = values.Item2;
-    ///             return invoke.Result[length - 1];
-    ///         }),
+    ///             return invoke.Result[(int)(length - 1)];
+    ///         }).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         Enabled = true,
     ///         Alerting = true,
     ///         Archived = false,

@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var apigeeDnsZone = new DnsZone("apigeeDnsZone", DnsZoneArgs.builder()
- *             .orgId(apigeeOrg.id())
+ *             .orgId(apigeeOrg.get("id"))
  *             .dnsZoneId("test1")
  *             .domain("foo.com")
  *             .description("test")

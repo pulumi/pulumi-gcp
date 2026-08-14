@@ -1199,8 +1199,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -1242,8 +1242,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -1285,8 +1285,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -1328,8 +1328,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -1371,8 +1371,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -1659,8 +1659,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -1702,8 +1702,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -1745,8 +1745,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -1788,8 +1788,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -1831,8 +1831,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2632,9 +2632,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2674,9 +2674,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2716,9 +2716,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2758,9 +2758,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2800,9 +2800,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2842,7 +2842,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
-     *             .name(default_.name())
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2882,7 +2882,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
-     *             .name(default_.name())
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2922,7 +2922,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
-     *             .name(default_.name())
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -2962,7 +2962,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
-     *             .name(default_.name())
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -3002,7 +3002,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getFirewallPolicyIamPolicy(GetFirewallPolicyIamPolicyArgs.builder()
-     *             .name(default_.name())
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -4797,8 +4797,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .image(example.name())
+     *             .project(example.get("project"))
+     *             .image(example.get("name"))
      *             .build());
      * 
      *     }
@@ -4838,8 +4838,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .image(example.name())
+     *             .project(example.get("project"))
+     *             .image(example.get("name"))
      *             .build());
      * 
      *     }
@@ -4879,8 +4879,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .image(example.name())
+     *             .project(example.get("project"))
+     *             .image(example.get("name"))
      *             .build());
      * 
      *     }
@@ -4920,8 +4920,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .image(example.name())
+     *             .project(example.get("project"))
+     *             .image(example.get("name"))
      *             .build());
      * 
      *     }
@@ -4961,8 +4961,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .image(example.name())
+     *             .project(example.get("project"))
+     *             .image(example.get("name"))
      *             .build());
      * 
      *     }
@@ -5021,7 +5021,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -5081,7 +5081,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -5141,7 +5141,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -5201,7 +5201,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -5261,7 +5261,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -5321,7 +5321,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -5381,7 +5381,7 @@ public final class ComputeFunctions {
      *                     .build())
      *                 .build())
      *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
-     *                 .network(defaultGoogleComputeNetwork.name())
+     *                 .network(defaultGoogleComputeNetwork.get("name"))
      *                 .build())
      *             .build());
      * 
@@ -7063,9 +7063,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .instanceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .instanceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -7105,9 +7105,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .instanceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .instanceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -7147,9 +7147,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .instanceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .instanceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -7189,9 +7189,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .instanceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .instanceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -7231,9 +7231,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .instanceName(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .instanceName(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -7962,8 +7962,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8003,8 +8003,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8044,8 +8044,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8085,8 +8085,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8126,8 +8126,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8167,9 +8167,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8209,9 +8209,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8251,9 +8251,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8293,9 +8293,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8335,9 +8335,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getInstantSnapshotIamPolicy(GetInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .zone(default_.zone())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .zone(default_.get("zone"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -8916,7 +8916,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -8969,7 +8969,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -9022,7 +9022,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -9075,7 +9075,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -9128,7 +9128,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -9181,7 +9181,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -9234,7 +9234,7 @@ public final class ComputeFunctions {
      * 
      *         var lb = new Firewall("lb", FirewallArgs.builder()
      *             .name("lb-firewall")
-     *             .network(main.name())
+     *             .network(main.get("name"))
      *             .allows(FirewallAllowArgs.builder()
      *                 .protocol("tcp")
      *                 .ports("80")
@@ -9282,8 +9282,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getMachineImageIamPolicy(GetMachineImageIamPolicyArgs.builder()
-     *             .project(image.project())
-     *             .machineImage(image.name())
+     *             .project(image.get("project"))
+     *             .machineImage(image.get("name"))
      *             .build());
      * 
      *     }
@@ -9325,8 +9325,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getMachineImageIamPolicy(GetMachineImageIamPolicyArgs.builder()
-     *             .project(image.project())
-     *             .machineImage(image.name())
+     *             .project(image.get("project"))
+     *             .machineImage(image.get("name"))
      *             .build());
      * 
      *     }
@@ -9368,8 +9368,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getMachineImageIamPolicy(GetMachineImageIamPolicyArgs.builder()
-     *             .project(image.project())
-     *             .machineImage(image.name())
+     *             .project(image.get("project"))
+     *             .machineImage(image.get("name"))
      *             .build());
      * 
      *     }
@@ -9411,8 +9411,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getMachineImageIamPolicy(GetMachineImageIamPolicyArgs.builder()
-     *             .project(image.project())
-     *             .machineImage(image.name())
+     *             .project(image.get("project"))
+     *             .machineImage(image.get("name"))
      *             .build());
      * 
      *     }
@@ -9454,8 +9454,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getMachineImageIamPolicy(GetMachineImageIamPolicyArgs.builder()
-     *             .project(image.project())
-     *             .machineImage(image.name())
+     *             .project(image.get("project"))
+     *             .machineImage(image.get("name"))
      *             .build());
      * 
      *     }
@@ -11794,8 +11794,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
-     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -11835,8 +11835,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
-     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -11876,8 +11876,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
-     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -11917,8 +11917,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
-     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -11958,8 +11958,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getNetworkFirewallPolicyIamPolicy(GetNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeNetworkFirewallPolicy.project())
-     *             .name(policyGoogleComputeNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeNetworkFirewallPolicy.get("project"))
+     *             .name(policyGoogleComputeNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -12638,7 +12638,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12687,7 +12687,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12736,7 +12736,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12785,7 +12785,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12834,7 +12834,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12883,7 +12883,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12932,7 +12932,7 @@ public final class ComputeFunctions {
      *         var tmpl = new NodeTemplate("tmpl", NodeTemplateArgs.builder()
      *             .name("test-tmpl")
      *             .region("us-central1")
-     *             .nodeType(types.names()[0])
+     *             .nodeType(types.get("names")[0])
      *             .build());
      * 
      *     }
@@ -12974,9 +12974,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .region(imageBackend.region())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .region(imageBackend.get("region"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -13018,9 +13018,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .region(imageBackend.region())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .region(imageBackend.get("region"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -13062,9 +13062,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .region(imageBackend.region())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .region(imageBackend.get("region"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -13106,9 +13106,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .region(imageBackend.region())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .region(imageBackend.get("region"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -13150,9 +13150,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendBucketIamPolicy(GetRegionBackendBucketIamPolicyArgs.builder()
-     *             .project(imageBackend.project())
-     *             .region(imageBackend.region())
-     *             .name(imageBackend.name())
+     *             .project(imageBackend.get("project"))
+     *             .region(imageBackend.get("region"))
+     *             .name(imageBackend.get("name"))
      *             .build());
      * 
      *     }
@@ -13409,9 +13409,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -13453,9 +13453,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -13497,9 +13497,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -13541,9 +13541,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -13585,9 +13585,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -13682,9 +13682,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(regiondisk.project())
-     *             .region(regiondisk.region())
-     *             .name(regiondisk.name())
+     *             .project(regiondisk.get("project"))
+     *             .region(regiondisk.get("region"))
+     *             .name(regiondisk.get("name"))
      *             .build());
      * 
      *     }
@@ -13724,9 +13724,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(regiondisk.project())
-     *             .region(regiondisk.region())
-     *             .name(regiondisk.name())
+     *             .project(regiondisk.get("project"))
+     *             .region(regiondisk.get("region"))
+     *             .name(regiondisk.get("name"))
      *             .build());
      * 
      *     }
@@ -13766,9 +13766,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(regiondisk.project())
-     *             .region(regiondisk.region())
-     *             .name(regiondisk.name())
+     *             .project(regiondisk.get("project"))
+     *             .region(regiondisk.get("region"))
+     *             .name(regiondisk.get("name"))
      *             .build());
      * 
      *     }
@@ -13808,9 +13808,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(regiondisk.project())
-     *             .region(regiondisk.region())
-     *             .name(regiondisk.name())
+     *             .project(regiondisk.get("project"))
+     *             .region(regiondisk.get("region"))
+     *             .name(regiondisk.get("name"))
      *             .build());
      * 
      *     }
@@ -13850,9 +13850,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
-     *             .project(regiondisk.project())
-     *             .region(regiondisk.region())
-     *             .name(regiondisk.name())
+     *             .project(regiondisk.get("project"))
+     *             .region(regiondisk.get("region"))
+     *             .name(regiondisk.get("name"))
      *             .build());
      * 
      *     }
@@ -14830,9 +14830,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -14872,9 +14872,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -14914,9 +14914,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -14956,9 +14956,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -14998,9 +14998,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionInstantSnapshotIamPolicy(GetRegionInstantSnapshotIamPolicyArgs.builder()
-     *             .project(default_.project())
-     *             .region(default_.region())
-     *             .name(default_.name())
+     *             .project(default_.get("project"))
+     *             .region(default_.get("region"))
+     *             .name(default_.get("name"))
      *             .build());
      * 
      *     }
@@ -15369,9 +15369,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
-     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
-     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -15411,9 +15411,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
-     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
-     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -15453,9 +15453,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
-     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
-     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -15495,9 +15495,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
-     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
-     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -15537,9 +15537,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getRegionNetworkFirewallPolicyIamPolicy(GetRegionNetworkFirewallPolicyIamPolicyArgs.builder()
-     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.project())
-     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.region())
-     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.name())
+     *             .project(policyGoogleComputeRegionNetworkFirewallPolicy.get("project"))
+     *             .region(policyGoogleComputeRegionNetworkFirewallPolicy.get("region"))
+     *             .name(policyGoogleComputeRegionNetworkFirewallPolicy.get("name"))
      *             .build());
      * 
      *     }
@@ -16207,7 +16207,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16250,7 +16250,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16293,7 +16293,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16336,7 +16336,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16379,7 +16379,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpProxy(GetRegionTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16422,7 +16422,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16465,7 +16465,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16508,7 +16508,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16551,7 +16551,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -16594,7 +16594,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getRegionTargetHttpsProxy(GetRegionTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeRegionTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -18532,8 +18532,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -18574,8 +18574,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -18616,8 +18616,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -18658,8 +18658,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -18700,8 +18700,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -18742,8 +18742,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -18784,8 +18784,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var all = ComputeFunctions.getRouters(GetRoutersArgs.builder()
-     *             .project(foobar.project())
-     *             .region(foobar.region())
+     *             .project(foobar.get("project"))
+     *             .region(foobar.get("region"))
      *             .build());
      * 
      *     }
@@ -19950,8 +19950,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(snapshot.project())
-     *             .name(snapshot.name())
+     *             .project(snapshot.get("project"))
+     *             .name(snapshot.get("name"))
      *             .build());
      * 
      *     }
@@ -19991,8 +19991,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(snapshot.project())
-     *             .name(snapshot.name())
+     *             .project(snapshot.get("project"))
+     *             .name(snapshot.get("name"))
      *             .build());
      * 
      *     }
@@ -20032,8 +20032,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(snapshot.project())
-     *             .name(snapshot.name())
+     *             .project(snapshot.get("project"))
+     *             .name(snapshot.get("name"))
      *             .build());
      * 
      *     }
@@ -20073,8 +20073,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(snapshot.project())
-     *             .name(snapshot.name())
+     *             .project(snapshot.get("project"))
+     *             .name(snapshot.get("name"))
      *             .build());
      * 
      *     }
@@ -20114,8 +20114,8 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
-     *             .project(snapshot.project())
-     *             .name(snapshot.name())
+     *             .project(snapshot.get("project"))
+     *             .name(snapshot.get("name"))
      *             .build());
      * 
      *     }
@@ -20395,9 +20395,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
-     *             .project(test_storage_pool_basic.project())
-     *             .zone(test_storage_pool_basic.zone())
-     *             .name(test_storage_pool_basic.name())
+     *             .project(test_storage_pool_basic.get("project"))
+     *             .zone(test_storage_pool_basic.get("zone"))
+     *             .name(test_storage_pool_basic.get("name"))
      *             .build());
      * 
      *     }
@@ -20437,9 +20437,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
-     *             .project(test_storage_pool_basic.project())
-     *             .zone(test_storage_pool_basic.zone())
-     *             .name(test_storage_pool_basic.name())
+     *             .project(test_storage_pool_basic.get("project"))
+     *             .zone(test_storage_pool_basic.get("zone"))
+     *             .name(test_storage_pool_basic.get("name"))
      *             .build());
      * 
      *     }
@@ -20479,9 +20479,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
-     *             .project(test_storage_pool_basic.project())
-     *             .zone(test_storage_pool_basic.zone())
-     *             .name(test_storage_pool_basic.name())
+     *             .project(test_storage_pool_basic.get("project"))
+     *             .zone(test_storage_pool_basic.get("zone"))
+     *             .name(test_storage_pool_basic.get("name"))
      *             .build());
      * 
      *     }
@@ -20521,9 +20521,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
-     *             .project(test_storage_pool_basic.project())
-     *             .zone(test_storage_pool_basic.zone())
-     *             .name(test_storage_pool_basic.name())
+     *             .project(test_storage_pool_basic.get("project"))
+     *             .zone(test_storage_pool_basic.get("zone"))
+     *             .name(test_storage_pool_basic.get("name"))
      *             .build());
      * 
      *     }
@@ -20563,9 +20563,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getStoragePoolIamPolicy(GetStoragePoolIamPolicyArgs.builder()
-     *             .project(test_storage_pool_basic.project())
-     *             .zone(test_storage_pool_basic.zone())
-     *             .name(test_storage_pool_basic.name())
+     *             .project(test_storage_pool_basic.get("project"))
+     *             .zone(test_storage_pool_basic.get("zone"))
+     *             .name(test_storage_pool_basic.get("name"))
      *             .build());
      * 
      *     }
@@ -20907,9 +20907,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(network_with_private_secondary_ip_ranges.project())
-     *             .region(network_with_private_secondary_ip_ranges.region())
-     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+     *             .project(network_with_private_secondary_ip_ranges.get("project"))
+     *             .region(network_with_private_secondary_ip_ranges.get("region"))
+     *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
      *             .build());
      * 
      *     }
@@ -20949,9 +20949,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(network_with_private_secondary_ip_ranges.project())
-     *             .region(network_with_private_secondary_ip_ranges.region())
-     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+     *             .project(network_with_private_secondary_ip_ranges.get("project"))
+     *             .region(network_with_private_secondary_ip_ranges.get("region"))
+     *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
      *             .build());
      * 
      *     }
@@ -20991,9 +20991,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(network_with_private_secondary_ip_ranges.project())
-     *             .region(network_with_private_secondary_ip_ranges.region())
-     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+     *             .project(network_with_private_secondary_ip_ranges.get("project"))
+     *             .region(network_with_private_secondary_ip_ranges.get("region"))
+     *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
      *             .build());
      * 
      *     }
@@ -21033,9 +21033,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(network_with_private_secondary_ip_ranges.project())
-     *             .region(network_with_private_secondary_ip_ranges.region())
-     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+     *             .project(network_with_private_secondary_ip_ranges.get("project"))
+     *             .region(network_with_private_secondary_ip_ranges.get("region"))
+     *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
      *             .build());
      * 
      *     }
@@ -21075,9 +21075,9 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
-     *             .project(network_with_private_secondary_ip_ranges.project())
-     *             .region(network_with_private_secondary_ip_ranges.region())
-     *             .subnetwork(network_with_private_secondary_ip_ranges.name())
+     *             .project(network_with_private_secondary_ip_ranges.get("project"))
+     *             .region(network_with_private_secondary_ip_ranges.get("region"))
+     *             .subnetwork(network_with_private_secondary_ip_ranges.get("name"))
      *             .build());
      * 
      *     }
@@ -21428,7 +21428,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21471,7 +21471,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21514,7 +21514,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21557,7 +21557,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21600,7 +21600,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpProxy(GetTargetHttpProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21643,7 +21643,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21686,7 +21686,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21729,7 +21729,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21772,7 +21772,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -21815,7 +21815,7 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ComputeFunctions.getTargetHttpsProxy(GetTargetHttpsProxyArgs.builder()
-     *             .name(defaultGoogleComputeTargetHttpsProxy.name())
+     *             .name(defaultGoogleComputeTargetHttpsProxy.get("name"))
      *             .build());
      * 
      *     }
@@ -22062,7 +22062,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)
@@ -22114,7 +22114,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)
@@ -22166,7 +22166,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)
@@ -22218,7 +22218,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)
@@ -22270,7 +22270,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)
@@ -22322,7 +22322,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)
@@ -22374,7 +22374,7 @@ public final class ComputeFunctions {
      *         for (var i = 0; i < available.names().size(); i++) {
      *             new InstanceGroupManager("foo-" + i, InstanceGroupManagerArgs.builder()
      *                 .name(String.format("test-%s", range.value()))
-     *                 .instanceTemplate(foobar.selfLink())
+     *                 .instanceTemplate(foobar.get("selfLink"))
      *                 .baseInstanceName(String.format("foobar-%s", range.value()))
      *                 .zone(available.names()[range.value()])
      *                 .targetSize(1)

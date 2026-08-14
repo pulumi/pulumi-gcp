@@ -46,9 +46,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(dataExchange.project())
-     *             .location(dataExchange.location())
-     *             .dataExchangeId(dataExchange.dataExchangeId())
+     *             .project(dataExchange.get("project"))
+     *             .location(dataExchange.get("location"))
+     *             .dataExchangeId(dataExchange.get("dataExchangeId"))
      *             .build());
      * 
      *     }
@@ -88,9 +88,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(dataExchange.project())
-     *             .location(dataExchange.location())
-     *             .dataExchangeId(dataExchange.dataExchangeId())
+     *             .project(dataExchange.get("project"))
+     *             .location(dataExchange.get("location"))
+     *             .dataExchangeId(dataExchange.get("dataExchangeId"))
      *             .build());
      * 
      *     }
@@ -130,9 +130,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(dataExchange.project())
-     *             .location(dataExchange.location())
-     *             .dataExchangeId(dataExchange.dataExchangeId())
+     *             .project(dataExchange.get("project"))
+     *             .location(dataExchange.get("location"))
+     *             .dataExchangeId(dataExchange.get("dataExchangeId"))
      *             .build());
      * 
      *     }
@@ -172,9 +172,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(dataExchange.project())
-     *             .location(dataExchange.location())
-     *             .dataExchangeId(dataExchange.dataExchangeId())
+     *             .project(dataExchange.get("project"))
+     *             .location(dataExchange.get("location"))
+     *             .dataExchangeId(dataExchange.get("dataExchangeId"))
      *             .build());
      * 
      *     }
@@ -214,9 +214,9 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
-     *             .project(dataExchange.project())
-     *             .location(dataExchange.location())
-     *             .dataExchangeId(dataExchange.dataExchangeId())
+     *             .project(dataExchange.get("project"))
+     *             .location(dataExchange.get("location"))
+     *             .dataExchangeId(dataExchange.get("dataExchangeId"))
      *             .build());
      * 
      *     }
@@ -256,10 +256,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(listing.project())
-     *             .location(listing.location())
-     *             .dataExchangeId(listing.dataExchangeId())
-     *             .listingId(listing.listingId())
+     *             .project(listing.get("project"))
+     *             .location(listing.get("location"))
+     *             .dataExchangeId(listing.get("dataExchangeId"))
+     *             .listingId(listing.get("listingId"))
      *             .build());
      * 
      *     }
@@ -299,10 +299,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(listing.project())
-     *             .location(listing.location())
-     *             .dataExchangeId(listing.dataExchangeId())
-     *             .listingId(listing.listingId())
+     *             .project(listing.get("project"))
+     *             .location(listing.get("location"))
+     *             .dataExchangeId(listing.get("dataExchangeId"))
+     *             .listingId(listing.get("listingId"))
      *             .build());
      * 
      *     }
@@ -342,10 +342,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(listing.project())
-     *             .location(listing.location())
-     *             .dataExchangeId(listing.dataExchangeId())
-     *             .listingId(listing.listingId())
+     *             .project(listing.get("project"))
+     *             .location(listing.get("location"))
+     *             .dataExchangeId(listing.get("dataExchangeId"))
+     *             .listingId(listing.get("listingId"))
      *             .build());
      * 
      *     }
@@ -385,10 +385,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(listing.project())
-     *             .location(listing.location())
-     *             .dataExchangeId(listing.dataExchangeId())
-     *             .listingId(listing.listingId())
+     *             .project(listing.get("project"))
+     *             .location(listing.get("location"))
+     *             .dataExchangeId(listing.get("dataExchangeId"))
+     *             .listingId(listing.get("listingId"))
      *             .build());
      * 
      *     }
@@ -428,10 +428,10 @@ public final class BigqueryanalyticshubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
-     *             .project(listing.project())
-     *             .location(listing.location())
-     *             .dataExchangeId(listing.dataExchangeId())
-     *             .listingId(listing.listingId())
+     *             .project(listing.get("project"))
+     *             .location(listing.get("location"))
+     *             .dataExchangeId(listing.get("dataExchangeId"))
+     *             .listingId(listing.get("listingId"))
      *             .build());
      * 
      *     }

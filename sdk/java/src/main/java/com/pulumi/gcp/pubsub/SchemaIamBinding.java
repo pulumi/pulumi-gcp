@@ -66,8 +66,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
- *             .project(example.project())
- *             .schema(example.name())
+ *             .project(example.get("project"))
+ *             .schema(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -101,8 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
- *             .project(example.project())
- *             .schema(example.name())
+ *             .project(example.get("project"))
+ *             .schema(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
- *             .project(example.project())
- *             .schema(example.name())
+ *             .project(example.get("project"))
+ *             .schema(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,8 +203,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new SchemaIamPolicy("policy", SchemaIamPolicyArgs.builder()
- *             .project(example.project())
- *             .schema(example.name())
+ *             .project(example.get("project"))
+ *             .schema(example.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -238,8 +238,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new SchemaIamBinding("binding", SchemaIamBindingArgs.builder()
- *             .project(example.project())
- *             .schema(example.name())
+ *             .project(example.get("project"))
+ *             .schema(example.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -274,8 +274,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new SchemaIamMember("member", SchemaIamMemberArgs.builder()
- *             .project(example.project())
- *             .schema(example.name())
+ *             .project(example.get("project"))
+ *             .schema(example.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

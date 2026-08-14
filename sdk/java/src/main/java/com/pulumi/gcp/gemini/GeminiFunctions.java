@@ -43,10 +43,10 @@ public final class GeminiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .codeRepositoryIndex(example.codeRepositoryIndex())
-     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+     *             .repositoryGroupId(example.get("repositoryGroupId"))
      *             .build());
      * 
      *     }
@@ -86,10 +86,10 @@ public final class GeminiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .codeRepositoryIndex(example.codeRepositoryIndex())
-     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+     *             .repositoryGroupId(example.get("repositoryGroupId"))
      *             .build());
      * 
      *     }
@@ -129,10 +129,10 @@ public final class GeminiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .codeRepositoryIndex(example.codeRepositoryIndex())
-     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+     *             .repositoryGroupId(example.get("repositoryGroupId"))
      *             .build());
      * 
      *     }
@@ -172,10 +172,10 @@ public final class GeminiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .codeRepositoryIndex(example.codeRepositoryIndex())
-     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+     *             .repositoryGroupId(example.get("repositoryGroupId"))
      *             .build());
      * 
      *     }
@@ -215,10 +215,10 @@ public final class GeminiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
-     *             .project(example.project())
-     *             .location(example.location())
-     *             .codeRepositoryIndex(example.codeRepositoryIndex())
-     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .project(example.get("project"))
+     *             .location(example.get("location"))
+     *             .codeRepositoryIndex(example.get("codeRepositoryIndex"))
+     *             .repositoryGroupId(example.get("repositoryGroupId"))
      *             .build());
      * 
      *     }

@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConfigIamPolicy("policy", ConfigIamPolicyArgs.builder()
- *             .project(config.project())
- *             .config(config.name())
+ *             .project(config.get("project"))
+ *             .config(config.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -103,8 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ConfigIamBinding("binding", ConfigIamBindingArgs.builder()
- *             .project(config.project())
- *             .config(config.name())
+ *             .project(config.get("project"))
+ *             .config(config.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -139,8 +139,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ConfigIamMember("member", ConfigIamMemberArgs.builder()
- *             .project(config.project())
- *             .config(config.name())
+ *             .project(config.get("project"))
+ *             .config(config.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,8 +208,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new ConfigIamPolicy("policy", ConfigIamPolicyArgs.builder()
- *             .project(config.project())
- *             .config(config.name())
+ *             .project(config.get("project"))
+ *             .config(config.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -243,8 +243,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new ConfigIamBinding("binding", ConfigIamBindingArgs.builder()
- *             .project(config.project())
- *             .config(config.name())
+ *             .project(config.get("project"))
+ *             .config(config.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -279,8 +279,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new ConfigIamMember("member", ConfigIamMemberArgs.builder()
- *             .project(config.project())
- *             .config(config.name())
+ *             .project(config.get("project"))
+ *             .config(config.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

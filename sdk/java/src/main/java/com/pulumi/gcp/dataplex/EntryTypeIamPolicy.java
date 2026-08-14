@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EntryTypeIamPolicy("policy", EntryTypeIamPolicyArgs.builder()
- *             .project(testEntryTypeBasic.project())
- *             .location(testEntryTypeBasic.location())
- *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+ *             .project(testEntryTypeBasic.get("project"))
+ *             .location(testEntryTypeBasic.get("location"))
+ *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -99,9 +99,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EntryTypeIamBinding("binding", EntryTypeIamBindingArgs.builder()
- *             .project(testEntryTypeBasic.project())
- *             .location(testEntryTypeBasic.location())
- *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+ *             .project(testEntryTypeBasic.get("project"))
+ *             .location(testEntryTypeBasic.get("location"))
+ *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -136,9 +136,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EntryTypeIamMember("member", EntryTypeIamMemberArgs.builder()
- *             .project(testEntryTypeBasic.project())
- *             .location(testEntryTypeBasic.location())
- *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+ *             .project(testEntryTypeBasic.get("project"))
+ *             .location(testEntryTypeBasic.get("location"))
+ *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -203,9 +203,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new EntryTypeIamPolicy("policy", EntryTypeIamPolicyArgs.builder()
- *             .project(testEntryTypeBasic.project())
- *             .location(testEntryTypeBasic.location())
- *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+ *             .project(testEntryTypeBasic.get("project"))
+ *             .location(testEntryTypeBasic.get("location"))
+ *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -239,9 +239,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new EntryTypeIamBinding("binding", EntryTypeIamBindingArgs.builder()
- *             .project(testEntryTypeBasic.project())
- *             .location(testEntryTypeBasic.location())
- *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+ *             .project(testEntryTypeBasic.get("project"))
+ *             .location(testEntryTypeBasic.get("location"))
+ *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -276,9 +276,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new EntryTypeIamMember("member", EntryTypeIamMemberArgs.builder()
- *             .project(testEntryTypeBasic.project())
- *             .location(testEntryTypeBasic.location())
- *             .entryTypeId(testEntryTypeBasic.entryTypeId())
+ *             .project(testEntryTypeBasic.get("project"))
+ *             .location(testEntryTypeBasic.get("location"))
+ *             .entryTypeId(testEntryTypeBasic.get("entryTypeId"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

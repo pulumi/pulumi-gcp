@@ -43,9 +43,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(basicInstance.project())
-     *             .region(basicInstance.region())
-     *             .name(basicInstance.name())
+     *             .project(basicInstance.get("project"))
+     *             .region(basicInstance.get("region"))
+     *             .name(basicInstance.get("name"))
      *             .build());
      * 
      *     }
@@ -85,9 +85,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(basicInstance.project())
-     *             .region(basicInstance.region())
-     *             .name(basicInstance.name())
+     *             .project(basicInstance.get("project"))
+     *             .region(basicInstance.get("region"))
+     *             .name(basicInstance.get("name"))
      *             .build());
      * 
      *     }
@@ -127,9 +127,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(basicInstance.project())
-     *             .region(basicInstance.region())
-     *             .name(basicInstance.name())
+     *             .project(basicInstance.get("project"))
+     *             .region(basicInstance.get("region"))
+     *             .name(basicInstance.get("name"))
      *             .build());
      * 
      *     }
@@ -169,9 +169,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(basicInstance.project())
-     *             .region(basicInstance.region())
-     *             .name(basicInstance.name())
+     *             .project(basicInstance.get("project"))
+     *             .region(basicInstance.get("region"))
+     *             .name(basicInstance.get("name"))
      *             .build());
      * 
      *     }
@@ -211,9 +211,9 @@ public final class DatafusionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policy = DatafusionFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
-     *             .project(basicInstance.project())
-     *             .region(basicInstance.region())
-     *             .name(basicInstance.name())
+     *             .project(basicInstance.get("project"))
+     *             .region(basicInstance.get("region"))
+     *             .name(basicInstance.get("name"))
      *             .build());
      * 
      *     }

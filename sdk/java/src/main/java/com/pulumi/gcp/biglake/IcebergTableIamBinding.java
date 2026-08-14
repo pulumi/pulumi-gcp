@@ -66,10 +66,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IcebergTableIamPolicy("policy", IcebergTableIamPolicyArgs.builder()
- *             .project(myIcebergTable.project())
- *             .catalog(myIcebergTable.catalog())
- *             .namespace(myIcebergTable.namespace())
- *             .name(myIcebergTable.name())
+ *             .project(myIcebergTable.get("project"))
+ *             .catalog(myIcebergTable.get("catalog"))
+ *             .namespace(myIcebergTable.get("namespace"))
+ *             .name(myIcebergTable.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -103,10 +103,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IcebergTableIamBinding("binding", IcebergTableIamBindingArgs.builder()
- *             .project(myIcebergTable.project())
- *             .catalog(myIcebergTable.catalog())
- *             .namespace(myIcebergTable.namespace())
- *             .name(myIcebergTable.name())
+ *             .project(myIcebergTable.get("project"))
+ *             .catalog(myIcebergTable.get("catalog"))
+ *             .namespace(myIcebergTable.get("namespace"))
+ *             .name(myIcebergTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -141,10 +141,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IcebergTableIamMember("member", IcebergTableIamMemberArgs.builder()
- *             .project(myIcebergTable.project())
- *             .catalog(myIcebergTable.catalog())
- *             .namespace(myIcebergTable.namespace())
- *             .name(myIcebergTable.name())
+ *             .project(myIcebergTable.get("project"))
+ *             .catalog(myIcebergTable.get("catalog"))
+ *             .namespace(myIcebergTable.get("namespace"))
+ *             .name(myIcebergTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -209,10 +209,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new IcebergTableIamPolicy("policy", IcebergTableIamPolicyArgs.builder()
- *             .project(myIcebergTable.project())
- *             .catalog(myIcebergTable.catalog())
- *             .namespace(myIcebergTable.namespace())
- *             .name(myIcebergTable.name())
+ *             .project(myIcebergTable.get("project"))
+ *             .catalog(myIcebergTable.get("catalog"))
+ *             .namespace(myIcebergTable.get("namespace"))
+ *             .name(myIcebergTable.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -246,10 +246,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new IcebergTableIamBinding("binding", IcebergTableIamBindingArgs.builder()
- *             .project(myIcebergTable.project())
- *             .catalog(myIcebergTable.catalog())
- *             .namespace(myIcebergTable.namespace())
- *             .name(myIcebergTable.name())
+ *             .project(myIcebergTable.get("project"))
+ *             .catalog(myIcebergTable.get("catalog"))
+ *             .namespace(myIcebergTable.get("namespace"))
+ *             .name(myIcebergTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -284,10 +284,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new IcebergTableIamMember("member", IcebergTableIamMemberArgs.builder()
- *             .project(myIcebergTable.project())
- *             .catalog(myIcebergTable.catalog())
- *             .namespace(myIcebergTable.namespace())
- *             .name(myIcebergTable.name())
+ *             .project(myIcebergTable.get("project"))
+ *             .catalog(myIcebergTable.get("catalog"))
+ *             .namespace(myIcebergTable.get("namespace"))
+ *             .name(myIcebergTable.get("name"))
  *             .role("roles/biglake.editor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

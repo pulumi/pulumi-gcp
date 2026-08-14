@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TaxonomyIamPolicy("policy", TaxonomyIamPolicyArgs.builder()
- *             .taxonomy(basicTaxonomy.name())
+ *             .taxonomy(basicTaxonomy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TaxonomyIamBinding("binding", TaxonomyIamBindingArgs.builder()
- *             .taxonomy(basicTaxonomy.name())
+ *             .taxonomy(basicTaxonomy.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -135,7 +135,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TaxonomyIamMember("member", TaxonomyIamMemberArgs.builder()
- *             .taxonomy(basicTaxonomy.name())
+ *             .taxonomy(basicTaxonomy.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new TaxonomyIamPolicy("policy", TaxonomyIamPolicyArgs.builder()
- *             .taxonomy(basicTaxonomy.name())
+ *             .taxonomy(basicTaxonomy.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -234,7 +234,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new TaxonomyIamBinding("binding", TaxonomyIamBindingArgs.builder()
- *             .taxonomy(basicTaxonomy.name())
+ *             .taxonomy(basicTaxonomy.get("name"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new TaxonomyIamMember("member", TaxonomyIamMemberArgs.builder()
- *             .taxonomy(basicTaxonomy.name())
+ *             .taxonomy(basicTaxonomy.get("name"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

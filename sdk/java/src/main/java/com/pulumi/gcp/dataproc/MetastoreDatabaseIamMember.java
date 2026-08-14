@@ -65,10 +65,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreDatabaseIamPolicy("policy", MetastoreDatabaseIamPolicyArgs.builder()
- *             .project(dpmsService.project())
- *             .location(dpmsService.location())
- *             .serviceId(dpmsService.serviceId())
- *             .database(hive.hiveConfig()[0].properties().database())
+ *             .project(dpmsService.get("project"))
+ *             .location(dpmsService.get("location"))
+ *             .serviceId(dpmsService.get("serviceId"))
+ *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -102,10 +102,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MetastoreDatabaseIamBinding("binding", MetastoreDatabaseIamBindingArgs.builder()
- *             .project(dpmsService.project())
- *             .location(dpmsService.location())
- *             .serviceId(dpmsService.serviceId())
- *             .database(hive.hiveConfig()[0].properties().database())
+ *             .project(dpmsService.get("project"))
+ *             .location(dpmsService.get("location"))
+ *             .serviceId(dpmsService.get("serviceId"))
+ *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -140,10 +140,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MetastoreDatabaseIamMember("member", MetastoreDatabaseIamMemberArgs.builder()
- *             .project(dpmsService.project())
- *             .location(dpmsService.location())
- *             .serviceId(dpmsService.serviceId())
- *             .database(hive.hiveConfig()[0].properties().database())
+ *             .project(dpmsService.get("project"))
+ *             .location(dpmsService.get("location"))
+ *             .serviceId(dpmsService.get("serviceId"))
+ *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -208,10 +208,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new MetastoreDatabaseIamPolicy("policy", MetastoreDatabaseIamPolicyArgs.builder()
- *             .project(dpmsService.project())
- *             .location(dpmsService.location())
- *             .serviceId(dpmsService.serviceId())
- *             .database(hive.hiveConfig()[0].properties().database())
+ *             .project(dpmsService.get("project"))
+ *             .location(dpmsService.get("location"))
+ *             .serviceId(dpmsService.get("serviceId"))
+ *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -245,10 +245,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new MetastoreDatabaseIamBinding("binding", MetastoreDatabaseIamBindingArgs.builder()
- *             .project(dpmsService.project())
- *             .location(dpmsService.location())
- *             .serviceId(dpmsService.serviceId())
- *             .database(hive.hiveConfig()[0].properties().database())
+ *             .project(dpmsService.get("project"))
+ *             .location(dpmsService.get("location"))
+ *             .serviceId(dpmsService.get("serviceId"))
+ *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
  *             .role("roles/viewer")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -283,10 +283,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new MetastoreDatabaseIamMember("member", MetastoreDatabaseIamMemberArgs.builder()
- *             .project(dpmsService.project())
- *             .location(dpmsService.location())
- *             .serviceId(dpmsService.serviceId())
- *             .database(hive.hiveConfig()[0].properties().database())
+ *             .project(dpmsService.get("project"))
+ *             .location(dpmsService.get("location"))
+ *             .serviceId(dpmsService.get("serviceId"))
+ *             .database(hive.get("hiveConfig")[0].get("properties").get("database"))
  *             .role("roles/viewer")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());

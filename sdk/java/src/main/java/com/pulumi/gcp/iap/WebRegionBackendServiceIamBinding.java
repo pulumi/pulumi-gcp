@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -120,9 +120,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -155,9 +155,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -193,9 +193,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionBackendServiceIamBindingConditionArgs.builder()
@@ -234,9 +234,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -272,9 +272,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionBackendServiceIamMemberConditionArgs.builder()
@@ -346,9 +346,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -398,9 +398,9 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new WebRegionBackendServiceIamPolicy("policy", WebRegionBackendServiceIamPolicyArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .policyData(admin.policyData())
  *             .build());
  * 
@@ -433,9 +433,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -471,9 +471,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var binding = new WebRegionBackendServiceIamBinding("binding", WebRegionBackendServiceIamBindingArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .members("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionBackendServiceIamBindingConditionArgs.builder()
@@ -512,9 +512,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .build());
@@ -550,9 +550,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var member = new WebRegionBackendServiceIamMember("member", WebRegionBackendServiceIamMemberArgs.builder()
- *             .project(default_.project())
- *             .region(default_.region())
- *             .webRegionBackendService(default_.name())
+ *             .project(default_.get("project"))
+ *             .region(default_.get("region"))
+ *             .webRegionBackendService(default_.get("name"))
  *             .role("roles/iap.httpsResourceAccessor")
  *             .member("user:jane}{@literal @}{@code example.com")
  *             .condition(WebRegionBackendServiceIamMemberConditionArgs.builder()
