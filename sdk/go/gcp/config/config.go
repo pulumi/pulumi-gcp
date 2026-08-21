@@ -32,6 +32,9 @@ func GetAgentIdentityCustomEndpoint(ctx *pulumi.Context) string {
 func GetAgentRegistryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:agentRegistryCustomEndpoint")
 }
+func GetAgenticApplicationsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:agenticApplicationsCustomEndpoint")
+}
 func GetAlloydbCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:alloydbCustomEndpoint")
 }

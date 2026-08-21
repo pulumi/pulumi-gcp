@@ -272,6 +272,261 @@ func (o BackupScheduleWeeklyRecurrencePtrOutput) Day() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ChangeStreamCollectionGroupScope struct {
+	// The ID of the collection group to track.
+	CollectionGroupId string `pulumi:"collectionGroupId"`
+}
+
+// ChangeStreamCollectionGroupScopeInput is an input type that accepts ChangeStreamCollectionGroupScopeArgs and ChangeStreamCollectionGroupScopeOutput values.
+// You can construct a concrete instance of `ChangeStreamCollectionGroupScopeInput` via:
+//
+//	ChangeStreamCollectionGroupScopeArgs{...}
+type ChangeStreamCollectionGroupScopeInput interface {
+	pulumi.Input
+
+	ToChangeStreamCollectionGroupScopeOutput() ChangeStreamCollectionGroupScopeOutput
+	ToChangeStreamCollectionGroupScopeOutputWithContext(context.Context) ChangeStreamCollectionGroupScopeOutput
+}
+
+type ChangeStreamCollectionGroupScopeArgs struct {
+	// The ID of the collection group to track.
+	CollectionGroupId pulumi.StringInput `pulumi:"collectionGroupId"`
+}
+
+func (ChangeStreamCollectionGroupScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamCollectionGroupScope)(nil)).Elem()
+}
+
+func (i ChangeStreamCollectionGroupScopeArgs) ToChangeStreamCollectionGroupScopeOutput() ChangeStreamCollectionGroupScopeOutput {
+	return i.ToChangeStreamCollectionGroupScopeOutputWithContext(context.Background())
+}
+
+func (i ChangeStreamCollectionGroupScopeArgs) ToChangeStreamCollectionGroupScopeOutputWithContext(ctx context.Context) ChangeStreamCollectionGroupScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamCollectionGroupScopeOutput)
+}
+
+func (i ChangeStreamCollectionGroupScopeArgs) ToChangeStreamCollectionGroupScopePtrOutput() ChangeStreamCollectionGroupScopePtrOutput {
+	return i.ToChangeStreamCollectionGroupScopePtrOutputWithContext(context.Background())
+}
+
+func (i ChangeStreamCollectionGroupScopeArgs) ToChangeStreamCollectionGroupScopePtrOutputWithContext(ctx context.Context) ChangeStreamCollectionGroupScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamCollectionGroupScopeOutput).ToChangeStreamCollectionGroupScopePtrOutputWithContext(ctx)
+}
+
+// ChangeStreamCollectionGroupScopePtrInput is an input type that accepts ChangeStreamCollectionGroupScopeArgs, ChangeStreamCollectionGroupScopePtr and ChangeStreamCollectionGroupScopePtrOutput values.
+// You can construct a concrete instance of `ChangeStreamCollectionGroupScopePtrInput` via:
+//
+//	        ChangeStreamCollectionGroupScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ChangeStreamCollectionGroupScopePtrInput interface {
+	pulumi.Input
+
+	ToChangeStreamCollectionGroupScopePtrOutput() ChangeStreamCollectionGroupScopePtrOutput
+	ToChangeStreamCollectionGroupScopePtrOutputWithContext(context.Context) ChangeStreamCollectionGroupScopePtrOutput
+}
+
+type changeStreamCollectionGroupScopePtrType ChangeStreamCollectionGroupScopeArgs
+
+func ChangeStreamCollectionGroupScopePtr(v *ChangeStreamCollectionGroupScopeArgs) ChangeStreamCollectionGroupScopePtrInput {
+	return (*changeStreamCollectionGroupScopePtrType)(v)
+}
+
+func (*changeStreamCollectionGroupScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeStreamCollectionGroupScope)(nil)).Elem()
+}
+
+func (i *changeStreamCollectionGroupScopePtrType) ToChangeStreamCollectionGroupScopePtrOutput() ChangeStreamCollectionGroupScopePtrOutput {
+	return i.ToChangeStreamCollectionGroupScopePtrOutputWithContext(context.Background())
+}
+
+func (i *changeStreamCollectionGroupScopePtrType) ToChangeStreamCollectionGroupScopePtrOutputWithContext(ctx context.Context) ChangeStreamCollectionGroupScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamCollectionGroupScopePtrOutput)
+}
+
+type ChangeStreamCollectionGroupScopeOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamCollectionGroupScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamCollectionGroupScope)(nil)).Elem()
+}
+
+func (o ChangeStreamCollectionGroupScopeOutput) ToChangeStreamCollectionGroupScopeOutput() ChangeStreamCollectionGroupScopeOutput {
+	return o
+}
+
+func (o ChangeStreamCollectionGroupScopeOutput) ToChangeStreamCollectionGroupScopeOutputWithContext(ctx context.Context) ChangeStreamCollectionGroupScopeOutput {
+	return o
+}
+
+func (o ChangeStreamCollectionGroupScopeOutput) ToChangeStreamCollectionGroupScopePtrOutput() ChangeStreamCollectionGroupScopePtrOutput {
+	return o.ToChangeStreamCollectionGroupScopePtrOutputWithContext(context.Background())
+}
+
+func (o ChangeStreamCollectionGroupScopeOutput) ToChangeStreamCollectionGroupScopePtrOutputWithContext(ctx context.Context) ChangeStreamCollectionGroupScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChangeStreamCollectionGroupScope) *ChangeStreamCollectionGroupScope {
+		return &v
+	}).(ChangeStreamCollectionGroupScopePtrOutput)
+}
+
+// The ID of the collection group to track.
+func (o ChangeStreamCollectionGroupScopeOutput) CollectionGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v ChangeStreamCollectionGroupScope) string { return v.CollectionGroupId }).(pulumi.StringOutput)
+}
+
+type ChangeStreamCollectionGroupScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamCollectionGroupScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeStreamCollectionGroupScope)(nil)).Elem()
+}
+
+func (o ChangeStreamCollectionGroupScopePtrOutput) ToChangeStreamCollectionGroupScopePtrOutput() ChangeStreamCollectionGroupScopePtrOutput {
+	return o
+}
+
+func (o ChangeStreamCollectionGroupScopePtrOutput) ToChangeStreamCollectionGroupScopePtrOutputWithContext(ctx context.Context) ChangeStreamCollectionGroupScopePtrOutput {
+	return o
+}
+
+func (o ChangeStreamCollectionGroupScopePtrOutput) Elem() ChangeStreamCollectionGroupScopeOutput {
+	return o.ApplyT(func(v *ChangeStreamCollectionGroupScope) ChangeStreamCollectionGroupScope {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeStreamCollectionGroupScope
+		return ret
+	}).(ChangeStreamCollectionGroupScopeOutput)
+}
+
+// The ID of the collection group to track.
+func (o ChangeStreamCollectionGroupScopePtrOutput) CollectionGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeStreamCollectionGroupScope) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CollectionGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ChangeStreamDatabaseScope struct {
+}
+
+// ChangeStreamDatabaseScopeInput is an input type that accepts ChangeStreamDatabaseScopeArgs and ChangeStreamDatabaseScopeOutput values.
+// You can construct a concrete instance of `ChangeStreamDatabaseScopeInput` via:
+//
+//	ChangeStreamDatabaseScopeArgs{...}
+type ChangeStreamDatabaseScopeInput interface {
+	pulumi.Input
+
+	ToChangeStreamDatabaseScopeOutput() ChangeStreamDatabaseScopeOutput
+	ToChangeStreamDatabaseScopeOutputWithContext(context.Context) ChangeStreamDatabaseScopeOutput
+}
+
+type ChangeStreamDatabaseScopeArgs struct {
+}
+
+func (ChangeStreamDatabaseScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamDatabaseScope)(nil)).Elem()
+}
+
+func (i ChangeStreamDatabaseScopeArgs) ToChangeStreamDatabaseScopeOutput() ChangeStreamDatabaseScopeOutput {
+	return i.ToChangeStreamDatabaseScopeOutputWithContext(context.Background())
+}
+
+func (i ChangeStreamDatabaseScopeArgs) ToChangeStreamDatabaseScopeOutputWithContext(ctx context.Context) ChangeStreamDatabaseScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamDatabaseScopeOutput)
+}
+
+func (i ChangeStreamDatabaseScopeArgs) ToChangeStreamDatabaseScopePtrOutput() ChangeStreamDatabaseScopePtrOutput {
+	return i.ToChangeStreamDatabaseScopePtrOutputWithContext(context.Background())
+}
+
+func (i ChangeStreamDatabaseScopeArgs) ToChangeStreamDatabaseScopePtrOutputWithContext(ctx context.Context) ChangeStreamDatabaseScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamDatabaseScopeOutput).ToChangeStreamDatabaseScopePtrOutputWithContext(ctx)
+}
+
+// ChangeStreamDatabaseScopePtrInput is an input type that accepts ChangeStreamDatabaseScopeArgs, ChangeStreamDatabaseScopePtr and ChangeStreamDatabaseScopePtrOutput values.
+// You can construct a concrete instance of `ChangeStreamDatabaseScopePtrInput` via:
+//
+//	        ChangeStreamDatabaseScopeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ChangeStreamDatabaseScopePtrInput interface {
+	pulumi.Input
+
+	ToChangeStreamDatabaseScopePtrOutput() ChangeStreamDatabaseScopePtrOutput
+	ToChangeStreamDatabaseScopePtrOutputWithContext(context.Context) ChangeStreamDatabaseScopePtrOutput
+}
+
+type changeStreamDatabaseScopePtrType ChangeStreamDatabaseScopeArgs
+
+func ChangeStreamDatabaseScopePtr(v *ChangeStreamDatabaseScopeArgs) ChangeStreamDatabaseScopePtrInput {
+	return (*changeStreamDatabaseScopePtrType)(v)
+}
+
+func (*changeStreamDatabaseScopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeStreamDatabaseScope)(nil)).Elem()
+}
+
+func (i *changeStreamDatabaseScopePtrType) ToChangeStreamDatabaseScopePtrOutput() ChangeStreamDatabaseScopePtrOutput {
+	return i.ToChangeStreamDatabaseScopePtrOutputWithContext(context.Background())
+}
+
+func (i *changeStreamDatabaseScopePtrType) ToChangeStreamDatabaseScopePtrOutputWithContext(ctx context.Context) ChangeStreamDatabaseScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ChangeStreamDatabaseScopePtrOutput)
+}
+
+type ChangeStreamDatabaseScopeOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamDatabaseScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeStreamDatabaseScope)(nil)).Elem()
+}
+
+func (o ChangeStreamDatabaseScopeOutput) ToChangeStreamDatabaseScopeOutput() ChangeStreamDatabaseScopeOutput {
+	return o
+}
+
+func (o ChangeStreamDatabaseScopeOutput) ToChangeStreamDatabaseScopeOutputWithContext(ctx context.Context) ChangeStreamDatabaseScopeOutput {
+	return o
+}
+
+func (o ChangeStreamDatabaseScopeOutput) ToChangeStreamDatabaseScopePtrOutput() ChangeStreamDatabaseScopePtrOutput {
+	return o.ToChangeStreamDatabaseScopePtrOutputWithContext(context.Background())
+}
+
+func (o ChangeStreamDatabaseScopeOutput) ToChangeStreamDatabaseScopePtrOutputWithContext(ctx context.Context) ChangeStreamDatabaseScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChangeStreamDatabaseScope) *ChangeStreamDatabaseScope {
+		return &v
+	}).(ChangeStreamDatabaseScopePtrOutput)
+}
+
+type ChangeStreamDatabaseScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ChangeStreamDatabaseScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeStreamDatabaseScope)(nil)).Elem()
+}
+
+func (o ChangeStreamDatabaseScopePtrOutput) ToChangeStreamDatabaseScopePtrOutput() ChangeStreamDatabaseScopePtrOutput {
+	return o
+}
+
+func (o ChangeStreamDatabaseScopePtrOutput) ToChangeStreamDatabaseScopePtrOutputWithContext(ctx context.Context) ChangeStreamDatabaseScopePtrOutput {
+	return o
+}
+
+func (o ChangeStreamDatabaseScopePtrOutput) Elem() ChangeStreamDatabaseScopeOutput {
+	return o.ApplyT(func(v *ChangeStreamDatabaseScope) ChangeStreamDatabaseScope {
+		if v != nil {
+			return *v
+		}
+		var ret ChangeStreamDatabaseScope
+		return ret
+	}).(ChangeStreamDatabaseScopeOutput)
+}
+
 type DatabaseCmekConfig struct {
 	// (Output)
 	// Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
@@ -2023,6 +2278,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleDailyRecurrencePtrInput)(nil)).Elem(), BackupScheduleDailyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleWeeklyRecurrenceInput)(nil)).Elem(), BackupScheduleWeeklyRecurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleWeeklyRecurrencePtrInput)(nil)).Elem(), BackupScheduleWeeklyRecurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamCollectionGroupScopeInput)(nil)).Elem(), ChangeStreamCollectionGroupScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamCollectionGroupScopePtrInput)(nil)).Elem(), ChangeStreamCollectionGroupScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamDatabaseScopeInput)(nil)).Elem(), ChangeStreamDatabaseScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStreamDatabaseScopePtrInput)(nil)).Elem(), ChangeStreamDatabaseScopeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseCmekConfigInput)(nil)).Elem(), DatabaseCmekConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseCmekConfigPtrInput)(nil)).Elem(), DatabaseCmekConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldIndexConfigInput)(nil)).Elem(), FieldIndexConfigArgs{})
@@ -2051,6 +2310,10 @@ func init() {
 	pulumi.RegisterOutputType(BackupScheduleDailyRecurrencePtrOutput{})
 	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrenceOutput{})
 	pulumi.RegisterOutputType(BackupScheduleWeeklyRecurrencePtrOutput{})
+	pulumi.RegisterOutputType(ChangeStreamCollectionGroupScopeOutput{})
+	pulumi.RegisterOutputType(ChangeStreamCollectionGroupScopePtrOutput{})
+	pulumi.RegisterOutputType(ChangeStreamDatabaseScopeOutput{})
+	pulumi.RegisterOutputType(ChangeStreamDatabaseScopePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseCmekConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseCmekConfigPtrOutput{})
 	pulumi.RegisterOutputType(FieldIndexConfigOutput{})

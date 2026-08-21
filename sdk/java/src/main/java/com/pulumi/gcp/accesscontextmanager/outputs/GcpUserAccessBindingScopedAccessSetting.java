@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GcpUserAccessBindingScopedAccessSetting {
     /**
-     * @return Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+     * @return Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
      * Structure is documented below.
      * 
      */
     private @Nullable GcpUserAccessBindingScopedAccessSettingActiveSettings activeSettings;
     /**
-     * @return Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+     * @return Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
      * Structure is documented below.
      * 
      */
@@ -34,7 +34,7 @@ public final class GcpUserAccessBindingScopedAccessSetting {
 
     private GcpUserAccessBindingScopedAccessSetting() {}
     /**
-     * @return Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+     * @return Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
      * Structure is documented below.
      * 
      */
@@ -42,7 +42,7 @@ public final class GcpUserAccessBindingScopedAccessSetting {
         return Optional.ofNullable(this.activeSettings);
     }
     /**
-     * @return Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+     * @return Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
      * Structure is documented below.
      * 
      */

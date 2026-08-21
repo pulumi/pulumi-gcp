@@ -26,6 +26,11 @@ namespace Pulumi.Gcp.Workbench.Outputs
         /// </summary>
         public readonly Outputs.InstanceGceSetupBootDisk? BootDisk;
         /// <summary>
+        /// (Output)
+        /// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+        /// </summary>
+        public readonly string? ComputeInstanceId;
+        /// <summary>
         /// Confidential instance configuration.
         /// Structure is documented below.
         /// </summary>
@@ -101,6 +106,8 @@ namespace Pulumi.Gcp.Workbench.Outputs
 
             Outputs.InstanceGceSetupBootDisk? bootDisk,
 
+            string? computeInstanceId,
+
             Outputs.InstanceGceSetupConfidentialInstanceConfig? confidentialInstanceConfig,
 
             Outputs.InstanceGceSetupContainerImage? containerImage,
@@ -131,6 +138,7 @@ namespace Pulumi.Gcp.Workbench.Outputs
         {
             AcceleratorConfigs = acceleratorConfigs;
             BootDisk = bootDisk;
+            ComputeInstanceId = computeInstanceId;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             ContainerImage = containerImage;
             DataDisks = dataDisks;

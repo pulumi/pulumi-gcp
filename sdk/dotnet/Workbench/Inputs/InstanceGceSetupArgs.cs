@@ -35,6 +35,13 @@ namespace Pulumi.Gcp.Workbench.Inputs
         public Input<Inputs.InstanceGceSetupBootDiskArgs>? BootDisk { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+        /// </summary>
+        [Input("computeInstanceId")]
+        public Input<string>? ComputeInstanceId { get; set; }
+
+        /// <summary>
         /// Confidential instance configuration.
         /// Structure is documented below.
         /// </summary>

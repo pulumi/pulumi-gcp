@@ -1928,6 +1928,56 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Sandbox Templates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="ALPHA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "sandbox_launcher": True,
+                    "volume_mounts": [{
+                        "name": "empty-dir-volume",
+                        "mount_path": "/mnt",
+                    }],
+                }],
+                "sandboxes": {
+                    "templates": [{
+                        "name": "hello",
+                        "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                        "commands": ["/bin/sh"],
+                        "args": [
+                            "-c",
+                            "echo hello",
+                        ],
+                        "envs": [{
+                            "name": "PORT",
+                            "value": "9000",
+                        }],
+                        "volume_mounts": [{
+                            "name": "empty-dir-volume",
+                            "mount_path": "/mnt",
+                            "sub_path": "/home/user",
+                        }],
+                        "working_dir": "/mnt/app",
+                    }],
+                },
+                "volumes": [{
+                    "name": "empty-dir-volume",
+                    "empty_dir": {
+                        "medium": "MEMORY",
+                        "size_limit": "256Mi",
+                    },
+                }],
+            })
+        ```
 
         ## Import
 
@@ -2649,6 +2699,56 @@ class Service(pulumi.CustomResource):
                 "containers": [{
                     "image": "us-docker.pkg.dev/cloudrun/container/hello",
                     "sandbox_launcher": True,
+                }],
+            })
+        ```
+        ### Cloudrunv2 Service Sandbox Templates
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            launch_stage="ALPHA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "sandbox_launcher": True,
+                    "volume_mounts": [{
+                        "name": "empty-dir-volume",
+                        "mount_path": "/mnt",
+                    }],
+                }],
+                "sandboxes": {
+                    "templates": [{
+                        "name": "hello",
+                        "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                        "commands": ["/bin/sh"],
+                        "args": [
+                            "-c",
+                            "echo hello",
+                        ],
+                        "envs": [{
+                            "name": "PORT",
+                            "value": "9000",
+                        }],
+                        "volume_mounts": [{
+                            "name": "empty-dir-volume",
+                            "mount_path": "/mnt",
+                            "sub_path": "/home/user",
+                        }],
+                        "working_dir": "/mnt/app",
+                    }],
+                },
+                "volumes": [{
+                    "name": "empty-dir-volume",
+                    "empty_dir": {
+                        "medium": "MEMORY",
+                        "size_limit": "256Mi",
+                    },
                 }],
             })
         ```

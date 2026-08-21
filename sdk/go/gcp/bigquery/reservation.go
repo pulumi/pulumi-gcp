@@ -46,6 +46,9 @@ import (
 //				Autoscale: &bigquery.ReservationAutoscaleArgs{
 //					MaxSlots: pulumi.Int(100),
 //				},
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("production"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -88,10 +91,18 @@ type Reservation struct {
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringOutput `pulumi:"edition"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrOutput `pulumi:"ignoreIdleSlots"`
+	// The labels associated with this reservation. You can use these to
+	// organize and group your reservations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -141,6 +152,9 @@ type Reservation struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The Disaster Recovery(DR) replication status of the reservation. This is only available for
 	// the primary replicas of DR/failover reservations and provides information about the both the
 	// staleness of the secondary and the last error encountered while trying to replicate changes
@@ -206,6 +220,11 @@ func NewReservation(ctx *pulumi.Context,
 	if args.SlotCapacity == nil {
 		return nil, errors.New("invalid value for required argument 'SlotCapacity'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Reservation
 	err := ctx.RegisterResource("gcp:bigquery/reservation:Reservation", name, args, &resource, opts...)
@@ -243,10 +262,18 @@ type reservationState struct {
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
 	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
+	// The labels associated with this reservation. You can use these to
+	// organize and group your reservations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
@@ -296,6 +323,9 @@ type reservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The Disaster Recovery(DR) replication status of the reservation. This is only available for
 	// the primary replicas of DR/failover reservations and provides information about the both the
 	// staleness of the secondary and the last error encountered while trying to replicate changes
@@ -366,10 +396,18 @@ type ReservationState struct {
 	DeletionPolicy pulumi.StringPtrInput
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
+	// The labels associated with this reservation. You can use these to
+	// organize and group your reservations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
@@ -419,6 +457,9 @@ type ReservationState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The Disaster Recovery(DR) replication status of the reservation. This is only available for
 	// the primary replicas of DR/failover reservations and provides information about the both the
 	// staleness of the secondary and the last error encountered while trying to replicate changes
@@ -497,6 +538,12 @@ type reservationArgs struct {
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
 	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
+	// The labels associated with this reservation. You can use these to
+	// organize and group your reservations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
@@ -606,6 +653,12 @@ type ReservationArgs struct {
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
+	// The labels associated with this reservation. You can use these to
+	// organize and group your reservations.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
@@ -808,11 +861,25 @@ func (o ReservationOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o ReservationOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // If false, any query using this reservation will use idle slots from other reservations within
 // the same admin project. If true, a query using this reservation will execute with the slot
 // capacity specified above at most.
 func (o ReservationOutput) IgnoreIdleSlots() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolPtrOutput { return v.IgnoreIdleSlots }).(pulumi.BoolPtrOutput)
+}
+
+// The labels associated with this reservation. You can use these to
+// organize and group your reservations.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o ReservationOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The geographic location where the transfer config should reside.
@@ -880,6 +947,13 @@ func (o ReservationOutput) PrimaryLocation() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ReservationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o ReservationOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The Disaster Recovery(DR) replication status of the reservation. This is only available for

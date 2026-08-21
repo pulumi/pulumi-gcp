@@ -19,6 +19,9 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
 //
+// > **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+// Read more about Write-only Arguments.
+//
 // ## Example Usage
 //
 // ### Certificate Manager Google Managed Certificate Dns
@@ -212,6 +215,67 @@ import (
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
 //					PemCertificate: pulumi.String(invokeFile.Result),
 //					PemPrivateKey:  pulumi.String(invokeFile1.Result),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Certificate Manager Self Managed Certificate Write Only
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/cert.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/private-key.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeParseint2, err := std.Parseint(ctx, &std.ParseintArgs{
+//				Input: std.Filesha256(ctx, std.Filesha256Args{
+//					Input: "test-fixtures/private-key.pem",
+//				}, nil).Result,
+//				Base: pulumi.IntRef(16),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokePow3, err := std.Pow(ctx, &std.PowArgs{
+//				Base:     2,
+//				Exponent: 32,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
+//				Name:        pulumi.String("self-managed-cert"),
+//				Description: pulumi.String("Global cert"),
+//				Scope:       pulumi.String("ALL_REGIONS"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate:         pulumi.String(invokeFile.Result),
+//					PemPrivateKeyWo:        pulumi.String(invokeFile1.Result),
+//					PemPrivateKeyWoVersion: pulumi.String(pulumi.Float64(invokeParseint2.Result) % pulumi.Float64(invokePow3.Result)),
 //				},
 //			})
 //			if err != nil {

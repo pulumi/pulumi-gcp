@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateNodeSelectorArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateServiceMeshArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
@@ -196,6 +197,23 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sandboxes")
+    private @Nullable Output<ServiceTemplateSandboxesArgs> sandboxes;
+
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateSandboxesArgs>> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+
+    /**
      * Scaling settings for this Revision.
      * Structure is documented below.
      * 
@@ -325,6 +343,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.maxInstanceRequestConcurrency = $.maxInstanceRequestConcurrency;
         this.nodeSelector = $.nodeSelector;
         this.revision = $.revision;
+        this.sandboxes = $.sandboxes;
         this.scaling = $.scaling;
         this.serviceAccount = $.serviceAccount;
         this.serviceMesh = $.serviceMesh;
@@ -591,6 +610,29 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder revision(String revision) {
             return revision(Output.of(revision));
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(@Nullable Output<ServiceTemplateSandboxesArgs> sandboxes) {
+            $.sandboxes = sandboxes;
+            return this;
+        }
+
+        /**
+         * @param sandboxes Configuration for sandboxes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sandboxes(ServiceTemplateSandboxesArgs sandboxes) {
+            return sandboxes(Output.of(sandboxes));
         }
 
         /**

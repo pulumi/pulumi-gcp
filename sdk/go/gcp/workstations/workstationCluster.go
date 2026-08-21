@@ -311,7 +311,7 @@ import (
 //				Network:                     defaultNetwork.ID().ToIDOutput().ToStringOutput(),
 //				Subnetwork:                  defaultSubnetwork.ID().ToIDOutput().ToStringOutput(),
 //				Location:                    pulumi.String("us-central1"),
-//				WorkstationAuthorizationUrl: pulumi.String("https://workstations.cloud.google.com/ui/auth"),
+//				WorkstationAuthorizationUrl: pulumi.String("https://console.cloud.google.com/workstations/auth"),
 //				WorkstationLaunchUrl:        pulumi.String("https://console.cloud.google.com/workstations/launch"),
 //			})
 //			if err != nil {

@@ -50621,6 +50621,166 @@ func (o RuleCompilationDiagnosticPositionPtrOutput) StartLine() pulumi.IntPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
+type RuleDeploymentScheduleCustomizations struct {
+	// Indicates whether to add additional delays and runs to rules to ensure
+	// enrichment completeness, with the trade-off of more late-arriving detections.
+	EnsureEnrichmentCompleteness *bool `pulumi:"ensureEnrichmentCompleteness"`
+	// Delay the first rule execution run to account for late-arriving data.
+	LateArrivingDataAdjustment *string `pulumi:"lateArrivingDataAdjustment"`
+}
+
+// RuleDeploymentScheduleCustomizationsInput is an input type that accepts RuleDeploymentScheduleCustomizationsArgs and RuleDeploymentScheduleCustomizationsOutput values.
+// You can construct a concrete instance of `RuleDeploymentScheduleCustomizationsInput` via:
+//
+//	RuleDeploymentScheduleCustomizationsArgs{...}
+type RuleDeploymentScheduleCustomizationsInput interface {
+	pulumi.Input
+
+	ToRuleDeploymentScheduleCustomizationsOutput() RuleDeploymentScheduleCustomizationsOutput
+	ToRuleDeploymentScheduleCustomizationsOutputWithContext(context.Context) RuleDeploymentScheduleCustomizationsOutput
+}
+
+type RuleDeploymentScheduleCustomizationsArgs struct {
+	// Indicates whether to add additional delays and runs to rules to ensure
+	// enrichment completeness, with the trade-off of more late-arriving detections.
+	EnsureEnrichmentCompleteness pulumi.BoolPtrInput `pulumi:"ensureEnrichmentCompleteness"`
+	// Delay the first rule execution run to account for late-arriving data.
+	LateArrivingDataAdjustment pulumi.StringPtrInput `pulumi:"lateArrivingDataAdjustment"`
+}
+
+func (RuleDeploymentScheduleCustomizationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleDeploymentScheduleCustomizations)(nil)).Elem()
+}
+
+func (i RuleDeploymentScheduleCustomizationsArgs) ToRuleDeploymentScheduleCustomizationsOutput() RuleDeploymentScheduleCustomizationsOutput {
+	return i.ToRuleDeploymentScheduleCustomizationsOutputWithContext(context.Background())
+}
+
+func (i RuleDeploymentScheduleCustomizationsArgs) ToRuleDeploymentScheduleCustomizationsOutputWithContext(ctx context.Context) RuleDeploymentScheduleCustomizationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleDeploymentScheduleCustomizationsOutput)
+}
+
+func (i RuleDeploymentScheduleCustomizationsArgs) ToRuleDeploymentScheduleCustomizationsPtrOutput() RuleDeploymentScheduleCustomizationsPtrOutput {
+	return i.ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(context.Background())
+}
+
+func (i RuleDeploymentScheduleCustomizationsArgs) ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(ctx context.Context) RuleDeploymentScheduleCustomizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleDeploymentScheduleCustomizationsOutput).ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(ctx)
+}
+
+// RuleDeploymentScheduleCustomizationsPtrInput is an input type that accepts RuleDeploymentScheduleCustomizationsArgs, RuleDeploymentScheduleCustomizationsPtr and RuleDeploymentScheduleCustomizationsPtrOutput values.
+// You can construct a concrete instance of `RuleDeploymentScheduleCustomizationsPtrInput` via:
+//
+//	        RuleDeploymentScheduleCustomizationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleDeploymentScheduleCustomizationsPtrInput interface {
+	pulumi.Input
+
+	ToRuleDeploymentScheduleCustomizationsPtrOutput() RuleDeploymentScheduleCustomizationsPtrOutput
+	ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(context.Context) RuleDeploymentScheduleCustomizationsPtrOutput
+}
+
+type ruleDeploymentScheduleCustomizationsPtrType RuleDeploymentScheduleCustomizationsArgs
+
+func RuleDeploymentScheduleCustomizationsPtr(v *RuleDeploymentScheduleCustomizationsArgs) RuleDeploymentScheduleCustomizationsPtrInput {
+	return (*ruleDeploymentScheduleCustomizationsPtrType)(v)
+}
+
+func (*ruleDeploymentScheduleCustomizationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleDeploymentScheduleCustomizations)(nil)).Elem()
+}
+
+func (i *ruleDeploymentScheduleCustomizationsPtrType) ToRuleDeploymentScheduleCustomizationsPtrOutput() RuleDeploymentScheduleCustomizationsPtrOutput {
+	return i.ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleDeploymentScheduleCustomizationsPtrType) ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(ctx context.Context) RuleDeploymentScheduleCustomizationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleDeploymentScheduleCustomizationsPtrOutput)
+}
+
+type RuleDeploymentScheduleCustomizationsOutput struct{ *pulumi.OutputState }
+
+func (RuleDeploymentScheduleCustomizationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleDeploymentScheduleCustomizations)(nil)).Elem()
+}
+
+func (o RuleDeploymentScheduleCustomizationsOutput) ToRuleDeploymentScheduleCustomizationsOutput() RuleDeploymentScheduleCustomizationsOutput {
+	return o
+}
+
+func (o RuleDeploymentScheduleCustomizationsOutput) ToRuleDeploymentScheduleCustomizationsOutputWithContext(ctx context.Context) RuleDeploymentScheduleCustomizationsOutput {
+	return o
+}
+
+func (o RuleDeploymentScheduleCustomizationsOutput) ToRuleDeploymentScheduleCustomizationsPtrOutput() RuleDeploymentScheduleCustomizationsPtrOutput {
+	return o.ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(context.Background())
+}
+
+func (o RuleDeploymentScheduleCustomizationsOutput) ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(ctx context.Context) RuleDeploymentScheduleCustomizationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleDeploymentScheduleCustomizations) *RuleDeploymentScheduleCustomizations {
+		return &v
+	}).(RuleDeploymentScheduleCustomizationsPtrOutput)
+}
+
+// Indicates whether to add additional delays and runs to rules to ensure
+// enrichment completeness, with the trade-off of more late-arriving detections.
+func (o RuleDeploymentScheduleCustomizationsOutput) EnsureEnrichmentCompleteness() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuleDeploymentScheduleCustomizations) *bool { return v.EnsureEnrichmentCompleteness }).(pulumi.BoolPtrOutput)
+}
+
+// Delay the first rule execution run to account for late-arriving data.
+func (o RuleDeploymentScheduleCustomizationsOutput) LateArrivingDataAdjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleDeploymentScheduleCustomizations) *string { return v.LateArrivingDataAdjustment }).(pulumi.StringPtrOutput)
+}
+
+type RuleDeploymentScheduleCustomizationsPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleDeploymentScheduleCustomizationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleDeploymentScheduleCustomizations)(nil)).Elem()
+}
+
+func (o RuleDeploymentScheduleCustomizationsPtrOutput) ToRuleDeploymentScheduleCustomizationsPtrOutput() RuleDeploymentScheduleCustomizationsPtrOutput {
+	return o
+}
+
+func (o RuleDeploymentScheduleCustomizationsPtrOutput) ToRuleDeploymentScheduleCustomizationsPtrOutputWithContext(ctx context.Context) RuleDeploymentScheduleCustomizationsPtrOutput {
+	return o
+}
+
+func (o RuleDeploymentScheduleCustomizationsPtrOutput) Elem() RuleDeploymentScheduleCustomizationsOutput {
+	return o.ApplyT(func(v *RuleDeploymentScheduleCustomizations) RuleDeploymentScheduleCustomizations {
+		if v != nil {
+			return *v
+		}
+		var ret RuleDeploymentScheduleCustomizations
+		return ret
+	}).(RuleDeploymentScheduleCustomizationsOutput)
+}
+
+// Indicates whether to add additional delays and runs to rules to ensure
+// enrichment completeness, with the trade-off of more late-arriving detections.
+func (o RuleDeploymentScheduleCustomizationsPtrOutput) EnsureEnrichmentCompleteness() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuleDeploymentScheduleCustomizations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnsureEnrichmentCompleteness
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Delay the first rule execution run to account for late-arriving data.
+func (o RuleDeploymentScheduleCustomizationsPtrOutput) LateArrivingDataAdjustment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RuleDeploymentScheduleCustomizations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LateArrivingDataAdjustment
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuleSeverity struct {
 	// The display name of the severity level. Extracted from the meta section of
 	// the rule text.
@@ -51798,6 +51958,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticArrayInput)(nil)).Elem(), RuleCompilationDiagnosticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticPositionInput)(nil)).Elem(), RuleCompilationDiagnosticPositionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticPositionPtrInput)(nil)).Elem(), RuleCompilationDiagnosticPositionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleDeploymentScheduleCustomizationsInput)(nil)).Elem(), RuleDeploymentScheduleCustomizationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleDeploymentScheduleCustomizationsPtrInput)(nil)).Elem(), RuleDeploymentScheduleCustomizationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleSeverityInput)(nil)).Elem(), RuleSeverityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleSeverityArrayInput)(nil)).Elem(), RuleSeverityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityCountInput)(nil)).Elem(), WatchlistEntityCountArgs{})
@@ -52380,6 +52542,8 @@ func init() {
 	pulumi.RegisterOutputType(RuleCompilationDiagnosticArrayOutput{})
 	pulumi.RegisterOutputType(RuleCompilationDiagnosticPositionOutput{})
 	pulumi.RegisterOutputType(RuleCompilationDiagnosticPositionPtrOutput{})
+	pulumi.RegisterOutputType(RuleDeploymentScheduleCustomizationsOutput{})
+	pulumi.RegisterOutputType(RuleDeploymentScheduleCustomizationsPtrOutput{})
 	pulumi.RegisterOutputType(RuleSeverityOutput{})
 	pulumi.RegisterOutputType(RuleSeverityArrayOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityCountOutput{})

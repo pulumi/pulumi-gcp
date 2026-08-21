@@ -10,8 +10,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
  *
  * * `gcp.iap.AppEngineServiceIamPolicy`: Authoritative. Sets the IAM policy for the appengineservice and replaces any existing policy already attached.
- * * `gcp.iap.AppEngineServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineservice are preserved.
- * * `gcp.iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineservice are preserved.
+ * * `gcp.iap.AppEngineServiceIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the appengineservice are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the appengineservice are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineServiceIamBinding` and `gcp.iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -145,8 +145,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Identity-Aware Proxy AppEngineService. Each of these resources serves a different use case:
  *
  * * `gcp.iap.AppEngineServiceIamPolicy`: Authoritative. Sets the IAM policy for the appengineservice and replaces any existing policy already attached.
- * * `gcp.iap.AppEngineServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the appengineservice are preserved.
- * * `gcp.iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the appengineservice are preserved.
+ * * `gcp.iap.AppEngineServiceIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the appengineservice are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.iap.AppEngineServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the appengineservice are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -154,7 +154,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.AppEngineServiceIamBinding` and `gcp.iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -365,7 +365,7 @@ export class AppEngineServiceIamMember extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.AppEngineServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     declare public readonly role: pulumi.Output<string>;
@@ -460,7 +460,7 @@ export interface AppEngineServiceIamMemberState {
     project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
-     * `gcp.iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.AppEngineServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string | undefined>;
@@ -505,7 +505,7 @@ export interface AppEngineServiceIamMemberArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
-     * `gcp.iap.AppEngineServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.AppEngineServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

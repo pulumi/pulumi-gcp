@@ -10,6 +10,11 @@ export type BackupSchedule = import("./backupSchedule").BackupSchedule;
 export const BackupSchedule: typeof import("./backupSchedule").BackupSchedule = null as any;
 utilities.lazyLoad(exports, ["BackupSchedule"], () => require("./backupSchedule"));
 
+export { ChangeStreamArgs, ChangeStreamState } from "./changeStream";
+export type ChangeStream = import("./changeStream").ChangeStream;
+export const ChangeStream: typeof import("./changeStream").ChangeStream = null as any;
+utilities.lazyLoad(exports, ["ChangeStream"], () => require("./changeStream"));
+
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
@@ -47,6 +52,8 @@ const _module = {
         switch (type) {
             case "gcp:firestore/backupSchedule:BackupSchedule":
                 return new BackupSchedule(name, <any>undefined, { urn })
+            case "gcp:firestore/changeStream:ChangeStream":
+                return new ChangeStream(name, <any>undefined, { urn })
             case "gcp:firestore/database:Database":
                 return new Database(name, <any>undefined, { urn })
             case "gcp:firestore/document:Document":
@@ -63,6 +70,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "firestore/backupSchedule", _module)
+pulumi.runtime.registerResourceModule("gcp", "firestore/changeStream", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/database", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/document", _module)
 pulumi.runtime.registerResourceModule("gcp", "firestore/field", _module)

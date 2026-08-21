@@ -1306,6 +1306,87 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Cloudrunv2 Service Sandbox Templates
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesTemplateEnvArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateSandboxesTemplateVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .launchStage("ALPHA")
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .sandboxLauncher(true)
+ *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+ *                         .name("empty-dir-volume")
+ *                         .mountPath("/mnt")
+ *                         .build())
+ *                     .build())
+ *                 .sandboxes(ServiceTemplateSandboxesArgs.builder()
+ *                     .templates(ServiceTemplateSandboxesTemplateArgs.builder()
+ *                         .name("hello")
+ *                         .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                         .commands("/bin/sh")
+ *                         .args(                        
+ *                             "-c",
+ *                             "echo hello")
+ *                         .envs(ServiceTemplateSandboxesTemplateEnvArgs.builder()
+ *                             .name("PORT")
+ *                             .value("9000")
+ *                             .build())
+ *                         .volumeMounts(ServiceTemplateSandboxesTemplateVolumeMountArgs.builder()
+ *                             .name("empty-dir-volume")
+ *                             .mountPath("/mnt")
+ *                             .subPath("/home/user")
+ *                             .build())
+ *                         .workingDir("/mnt/app")
+ *                         .build())
+ *                     .build())
+ *                 .volumes(ServiceTemplateVolumeArgs.builder()
+ *                     .name("empty-dir-volume")
+ *                     .emptyDir(ServiceTemplateVolumeEmptyDirArgs.builder()
+ *                         .medium("MEMORY")
+ *                         .sizeLimit("256Mi")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

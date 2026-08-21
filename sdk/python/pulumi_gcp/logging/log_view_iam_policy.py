@@ -235,8 +235,8 @@ class LogViewIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 
         * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+        * `logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -244,7 +244,7 @@ class LogViewIamPolicy(pulumi.CustomResource):
 
         > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -367,8 +367,8 @@ class LogViewIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 
         * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+        * `logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -376,7 +376,7 @@ class LogViewIamPolicy(pulumi.CustomResource):
 
         > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -540,8 +540,8 @@ class LogViewIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 
         * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+        * `logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -549,7 +549,7 @@ class LogViewIamPolicy(pulumi.CustomResource):
 
         > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -672,8 +672,8 @@ class LogViewIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 
         * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-        * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+        * `logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -681,7 +681,7 @@ class LogViewIamPolicy(pulumi.CustomResource):
 
         > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 

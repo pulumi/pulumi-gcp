@@ -15,6 +15,7 @@ from .get_testable_permissions import *
 from .get_workforce_pool_iam_policy import *
 from .get_workload_identity_pool import *
 from .get_workload_identity_pool_iam_policy import *
+from .get_workload_identity_pool_openid_config import *
 from .get_workload_identity_pool_provider import *
 from .oauth_client import *
 from .oauth_client_credential import *

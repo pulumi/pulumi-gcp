@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RuleDeploymentArgs', 'RuleDeployment']
 
@@ -26,7 +28,8 @@ class RuleDeploymentArgs:
                  archived: pulumi.Input[Optional[_builtins.bool]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None):
+                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_customizations: pulumi.Input[Optional['RuleDeploymentScheduleCustomizationsArgs']] = None):
         """
         The set of arguments for constructing a RuleDeployment resource.
 
@@ -50,6 +53,15 @@ class RuleDeploymentArgs:
                LIVE
                HOURLY
                DAILY
+               LIVE_CUSTOMIZABLE
+               HOURLY_CUSTOMIZABLE
+               Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+               Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+               For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+               suppress the diff and ignore the changes to prevent infinite update loops.
+        :param pulumi.Input['RuleDeploymentScheduleCustomizationsArgs'] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
+               customizable run frequencies.
+               Structure is documented below.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "location", location)
@@ -64,6 +76,8 @@ class RuleDeploymentArgs:
             pulumi.set(__self__, "project", project)
         if run_frequency is not None:
             pulumi.set(__self__, "run_frequency", run_frequency)
+        if schedule_customizations is not None:
+            pulumi.set(__self__, "schedule_customizations", schedule_customizations)
 
     @_builtins.property
     @pulumi.getter
@@ -166,12 +180,32 @@ class RuleDeploymentArgs:
         LIVE
         HOURLY
         DAILY
+        LIVE_CUSTOMIZABLE
+        HOURLY_CUSTOMIZABLE
+        Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+        Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+        For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+        suppress the diff and ignore the changes to prevent infinite update loops.
         """
         return pulumi.get(self, "run_frequency")
 
     @run_frequency.setter
     def run_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_frequency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleCustomizations")
+    def schedule_customizations(self) -> pulumi.Input[Optional['RuleDeploymentScheduleCustomizationsArgs']]:
+        """
+        The schedule customizations of the rule deployment. Only valid for
+        customizable run frequencies.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_customizations")
+
+    @schedule_customizations.setter
+    def schedule_customizations(self, value: pulumi.Input[Optional['RuleDeploymentScheduleCustomizationsArgs']]):
+        pulumi.set(self, "schedule_customizations", value)
 
 
 @pulumi.input_type
@@ -190,7 +224,8 @@ class _RuleDeploymentState:
                  producer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
-                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None):
+                 run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_customizations: pulumi.Input[Optional['RuleDeploymentScheduleCustomizationsArgs']] = None):
         """
         Input properties used for looking up and filtering RuleDeployment resources.
 
@@ -235,6 +270,15 @@ class _RuleDeploymentState:
                LIVE
                HOURLY
                DAILY
+               LIVE_CUSTOMIZABLE
+               HOURLY_CUSTOMIZABLE
+               Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+               Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+               For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+               suppress the diff and ignore the changes to prevent infinite update loops.
+        :param pulumi.Input['RuleDeploymentScheduleCustomizationsArgs'] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
+               customizable run frequencies.
+               Structure is documented below.
         """
         if alerting is not None:
             pulumi.set(__self__, "alerting", alerting)
@@ -264,6 +308,8 @@ class _RuleDeploymentState:
             pulumi.set(__self__, "rule", rule)
         if run_frequency is not None:
             pulumi.set(__self__, "run_frequency", run_frequency)
+        if schedule_customizations is not None:
+            pulumi.set(__self__, "schedule_customizations", schedule_customizations)
 
     @_builtins.property
     @pulumi.getter
@@ -453,12 +499,32 @@ class _RuleDeploymentState:
         LIVE
         HOURLY
         DAILY
+        LIVE_CUSTOMIZABLE
+        HOURLY_CUSTOMIZABLE
+        Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+        Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+        For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+        suppress the diff and ignore the changes to prevent infinite update loops.
         """
         return pulumi.get(self, "run_frequency")
 
     @run_frequency.setter
     def run_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_frequency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleCustomizations")
+    def schedule_customizations(self) -> pulumi.Input[Optional['RuleDeploymentScheduleCustomizationsArgs']]:
+        """
+        The schedule customizations of the rule deployment. Only valid for
+        customizable run frequencies.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_customizations")
+
+    @schedule_customizations.setter
+    def schedule_customizations(self, value: pulumi.Input[Optional['RuleDeploymentScheduleCustomizationsArgs']]):
+        pulumi.set(self, "schedule_customizations", value)
 
 
 @pulumi.type_token("gcp:chronicle/ruleDeployment:RuleDeployment")
@@ -475,6 +541,7 @@ class RuleDeployment(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']]] = None,
                  __props__=None):
         """
         The RuleDeployment resource represents the deployment state of a Rule.
@@ -507,7 +574,7 @@ class RuleDeployment(pulumi.CustomResource):
             enabled=True,
             alerting=True,
             archived=False,
-            run_frequency="DAILY")
+            run_frequency="LIVE")
         ```
         ### Chronicle Ruledeployment Disabled
 
@@ -590,6 +657,15 @@ class RuleDeployment(pulumi.CustomResource):
                LIVE
                HOURLY
                DAILY
+               LIVE_CUSTOMIZABLE
+               HOURLY_CUSTOMIZABLE
+               Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+               Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+               For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+               suppress the diff and ignore the changes to prevent infinite update loops.
+        :param pulumi.Input[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
+               customizable run frequencies.
+               Structure is documented below.
         """
         ...
     @overload
@@ -628,7 +704,7 @@ class RuleDeployment(pulumi.CustomResource):
             enabled=True,
             alerting=True,
             archived=False,
-            run_frequency="DAILY")
+            run_frequency="LIVE")
         ```
         ### Chronicle Ruledeployment Disabled
 
@@ -712,6 +788,7 @@ class RuleDeployment(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  rule: pulumi.Input[Optional[_builtins.str]] = None,
                  run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -735,6 +812,7 @@ class RuleDeployment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'rule'")
             __props__.__dict__["rule"] = rule
             __props__.__dict__["run_frequency"] = run_frequency
+            __props__.__dict__["schedule_customizations"] = schedule_customizations
             __props__.__dict__["archive_time"] = None
             __props__.__dict__["consumer_rules"] = None
             __props__.__dict__["execution_state"] = None
@@ -764,7 +842,8 @@ class RuleDeployment(pulumi.CustomResource):
             producer_rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             rule: pulumi.Input[Optional[_builtins.str]] = None,
-            run_frequency: pulumi.Input[Optional[_builtins.str]] = None) -> 'RuleDeployment':
+            run_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_customizations: pulumi.Input[Optional[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']]] = None) -> 'RuleDeployment':
         """
         Get an existing RuleDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -813,6 +892,15 @@ class RuleDeployment(pulumi.CustomResource):
                LIVE
                HOURLY
                DAILY
+               LIVE_CUSTOMIZABLE
+               HOURLY_CUSTOMIZABLE
+               Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+               Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+               For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+               suppress the diff and ignore the changes to prevent infinite update loops.
+        :param pulumi.Input[Union['RuleDeploymentScheduleCustomizationsArgs', 'RuleDeploymentScheduleCustomizationsArgsDict']] schedule_customizations: The schedule customizations of the rule deployment. Only valid for
+               customizable run frequencies.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -832,6 +920,7 @@ class RuleDeployment(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["rule"] = rule
         __props__.__dict__["run_frequency"] = run_frequency
+        __props__.__dict__["schedule_customizations"] = schedule_customizations
         return RuleDeployment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -970,6 +1059,22 @@ class RuleDeployment(pulumi.CustomResource):
         LIVE
         HOURLY
         DAILY
+        LIVE_CUSTOMIZABLE
+        HOURLY_CUSTOMIZABLE
+        Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+        Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+        For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+        suppress the diff and ignore the changes to prevent infinite update loops.
         """
         return pulumi.get(self, "run_frequency")
+
+    @_builtins.property
+    @pulumi.getter(name="scheduleCustomizations")
+    def schedule_customizations(self) -> pulumi.Output[Optional['outputs.RuleDeploymentScheduleCustomizations']]:
+        """
+        The schedule customizations of the rule deployment. Only valid for
+        customizable run frequencies.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule_customizations")
 

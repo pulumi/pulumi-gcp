@@ -23,6 +23,8 @@ if typing.TYPE_CHECKING:
     accesscontextmanager = __accesscontextmanager
     import pulumi_gcp.activedirectory as __activedirectory
     activedirectory = __activedirectory
+    import pulumi_gcp.agenticapplications as __agenticapplications
+    agenticapplications = __agenticapplications
     import pulumi_gcp.agentidentity as __agentidentity
     agentidentity = __agentidentity
     import pulumi_gcp.agentregistry as __agentregistry
@@ -311,6 +313,7 @@ else:
     accessapproval = _utilities.lazy_import('pulumi_gcp.accessapproval')
     accesscontextmanager = _utilities.lazy_import('pulumi_gcp.accesscontextmanager')
     activedirectory = _utilities.lazy_import('pulumi_gcp.activedirectory')
+    agenticapplications = _utilities.lazy_import('pulumi_gcp.agenticapplications')
     agentidentity = _utilities.lazy_import('pulumi_gcp.agentidentity')
     agentregistry = _utilities.lazy_import('pulumi_gcp.agentregistry')
     alloydb = _utilities.lazy_import('pulumi_gcp.alloydb')
@@ -631,6 +634,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.activedirectory",
   "classes": {
    "gcp:activedirectory/peering:Peering": "Peering"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "agenticapplications/analystAgentPersona",
+  "fqn": "pulumi_gcp.agenticapplications",
+  "classes": {
+   "gcp:agenticapplications/analystAgentPersona:AnalystAgentPersona": "AnalystAgentPersona"
   }
  },
  {
@@ -6975,6 +6986,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.firestore",
   "classes": {
    "gcp:firestore/backupSchedule:BackupSchedule": "BackupSchedule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "firestore/changeStream",
+  "fqn": "pulumi_gcp.firestore",
+  "classes": {
+   "gcp:firestore/changeStream:ChangeStream": "ChangeStream"
   }
  },
  {

@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.DataPlex
     /// Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
     /// 
     /// * `gcp.dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.
-    /// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved.
-    /// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved.
+    /// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+    /// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved. Members added outside of Terraform will **not** be detected as drift.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
@@ -119,8 +119,8 @@ namespace Pulumi.Gcp.DataPlex
     /// Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
     /// 
     /// * `gcp.dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.
-    /// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved.
-    /// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved.
+    /// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+    /// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved. Members added outside of Terraform will **not** be detected as drift.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 

@@ -511,6 +511,8 @@ __all__ = [
     'ToolDataStoreToolModalityConfigRewriterConfigArgsDict',
     'ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs',
     'ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgsDict',
+    'ToolDataStoreToolModalityConfigSnippetsConfigArgs',
+    'ToolDataStoreToolModalityConfigSnippetsConfigArgsDict',
     'ToolDataStoreToolModalityConfigSummarizationConfigArgs',
     'ToolDataStoreToolModalityConfigSummarizationConfigArgsDict',
     'ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs',
@@ -563,6 +565,8 @@ __all__ = [
     'ToolOpenApiToolTlsConfigCaCertArgsDict',
     'ToolPythonFunctionArgs',
     'ToolPythonFunctionArgsDict',
+    'ToolPythonFunctionServiceDirectoryConfigArgs',
+    'ToolPythonFunctionServiceDirectoryConfigArgsDict',
     'ToolRemoteAgentToolArgs',
     'ToolRemoteAgentToolArgsDict',
     'ToolRemoteAgentToolAgentCardArgs',
@@ -24673,6 +24677,11 @@ class ToolDataStoreToolModalityConfigArgsDict(TypedDict):
     Rewriter configuration.
     Structure is documented below.
     """
+    snippets_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigSnippetsConfigArgsDict']]]
+    """
+    Snippets configuration.
+    Structure is documented below.
+    """
     summarization_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]]
     """
     Summarization configuration.
@@ -24685,6 +24694,7 @@ class ToolDataStoreToolModalityConfigArgs:
                  modality_type: pulumi.Input[_builtins.str],
                  grounding_config: pulumi.Input[Optional['ToolDataStoreToolModalityConfigGroundingConfigArgs']] = None,
                  rewriter_config: pulumi.Input[Optional['ToolDataStoreToolModalityConfigRewriterConfigArgs']] = None,
+                 snippets_config: pulumi.Input[Optional['ToolDataStoreToolModalityConfigSnippetsConfigArgs']] = None,
                  summarization_config: pulumi.Input[Optional['ToolDataStoreToolModalityConfigSummarizationConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] modality_type: The modality type.
@@ -24695,6 +24705,8 @@ class ToolDataStoreToolModalityConfigArgs:
                Structure is documented below.
         :param pulumi.Input['ToolDataStoreToolModalityConfigRewriterConfigArgs'] rewriter_config: Rewriter configuration.
                Structure is documented below.
+        :param pulumi.Input['ToolDataStoreToolModalityConfigSnippetsConfigArgs'] snippets_config: Snippets configuration.
+               Structure is documented below.
         :param pulumi.Input['ToolDataStoreToolModalityConfigSummarizationConfigArgs'] summarization_config: Summarization configuration.
                Structure is documented below.
         """
@@ -24703,6 +24715,8 @@ class ToolDataStoreToolModalityConfigArgs:
             pulumi.set(__self__, "grounding_config", grounding_config)
         if rewriter_config is not None:
             pulumi.set(__self__, "rewriter_config", rewriter_config)
+        if snippets_config is not None:
+            pulumi.set(__self__, "snippets_config", snippets_config)
         if summarization_config is not None:
             pulumi.set(__self__, "summarization_config", summarization_config)
 
@@ -24746,6 +24760,19 @@ class ToolDataStoreToolModalityConfigArgs:
     @rewriter_config.setter
     def rewriter_config(self, value: pulumi.Input[Optional['ToolDataStoreToolModalityConfigRewriterConfigArgs']]):
         pulumi.set(self, "rewriter_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="snippetsConfig")
+    def snippets_config(self) -> pulumi.Input[Optional['ToolDataStoreToolModalityConfigSnippetsConfigArgs']]:
+        """
+        Snippets configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "snippets_config")
+
+    @snippets_config.setter
+    def snippets_config(self, value: pulumi.Input[Optional['ToolDataStoreToolModalityConfigSnippetsConfigArgs']]):
+        pulumi.set(self, "snippets_config", value)
 
     @_builtins.property
     @pulumi.getter(name="summarizationConfig")
@@ -24958,6 +24985,35 @@ class ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs:
     @temperature.setter
     def temperature(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "temperature", value)
+
+
+class ToolDataStoreToolModalityConfigSnippetsConfigArgsDict(TypedDict):
+    enable_snippets: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether snippets are enabled.
+    """
+
+@pulumi.input_type
+class ToolDataStoreToolModalityConfigSnippetsConfigArgs:
+    def __init__(__self__, *,
+                 enable_snippets: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_snippets: Whether snippets are enabled.
+        """
+        if enable_snippets is not None:
+            pulumi.set(__self__, "enable_snippets", enable_snippets)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSnippets")
+    def enable_snippets(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether snippets are enabled.
+        """
+        return pulumi.get(self, "enable_snippets")
+
+    @enable_snippets.setter
+    def enable_snippets(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_snippets", value)
 
 
 class ToolDataStoreToolModalityConfigSummarizationConfigArgsDict(TypedDict):
@@ -26187,13 +26243,8 @@ class ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
 class ToolMcpToolServiceDirectoryConfigArgsDict(TypedDict):
     service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Output)
-    The name of [Service
-    Directory](https://cloud.google.com/service-directory) service.
-    Format:
-    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-    Location of the service directory must be the same as the location of the
-    app.
+    The name of Service Directory service.
+    Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
     """
 
 @pulumi.input_type
@@ -26201,13 +26252,8 @@ class ToolMcpToolServiceDirectoryConfigArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] service: (Output)
-               The name of [Service
-               Directory](https://cloud.google.com/service-directory) service.
-               Format:
-               `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-               Location of the service directory must be the same as the location of the
-               app.
+        :param pulumi.Input[_builtins.str] service: The name of Service Directory service.
+               Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -26216,13 +26262,8 @@ class ToolMcpToolServiceDirectoryConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Output)
-        The name of [Service
-        Directory](https://cloud.google.com/service-directory) service.
-        Format:
-        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        Location of the service directory must be the same as the location of the
-        app.
+        The name of Service Directory service.
+        Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
         """
         return pulumi.get(self, "service")
 
@@ -27045,13 +27086,8 @@ class ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs:
 class ToolOpenApiToolServiceDirectoryConfigArgsDict(TypedDict):
     service: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    (Output)
-    The name of [Service
-    Directory](https://cloud.google.com/service-directory) service.
-    Format:
-    `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-    Location of the service directory must be the same as the location of the
-    app.
+    The name of Service Directory service.
+    Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
     """
 
 @pulumi.input_type
@@ -27059,13 +27095,8 @@ class ToolOpenApiToolServiceDirectoryConfigArgs:
     def __init__(__self__, *,
                  service: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] service: (Output)
-               The name of [Service
-               Directory](https://cloud.google.com/service-directory) service.
-               Format:
-               `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-               Location of the service directory must be the same as the location of the
-               app.
+        :param pulumi.Input[_builtins.str] service: The name of Service Directory service.
+               Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -27074,13 +27105,8 @@ class ToolOpenApiToolServiceDirectoryConfigArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Output)
-        The name of [Service
-        Directory](https://cloud.google.com/service-directory) service.
-        Format:
-        `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        Location of the service directory must be the same as the location of the
-        app.
+        The name of Service Directory service.
+        Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
         """
         return pulumi.get(self, "service")
 
@@ -27232,13 +27258,19 @@ class ToolPythonFunctionArgsDict(TypedDict):
     """
     Optional. The Python code to execute for the tool.
     """
+    service_directory_config: NotRequired[pulumi.Input[Optional['ToolPythonFunctionServiceDirectoryConfigArgsDict']]]
+    """
+    Service Directory configuration for the tool.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class ToolPythonFunctionArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 python_code: pulumi.Input[Optional[_builtins.str]] = None):
+                 python_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_directory_config: pulumi.Input[Optional['ToolPythonFunctionServiceDirectoryConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] description: (Output)
                The description of the Python function, parsed from the python code's
@@ -27247,6 +27279,8 @@ class ToolPythonFunctionArgs:
                name defined in the python code. Case sensitive. If the name is not
                provided, the first function defined in the python code will be used.
         :param pulumi.Input[_builtins.str] python_code: Optional. The Python code to execute for the tool.
+        :param pulumi.Input['ToolPythonFunctionServiceDirectoryConfigArgs'] service_directory_config: Service Directory configuration for the tool.
+               Structure is documented below.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -27254,6 +27288,8 @@ class ToolPythonFunctionArgs:
             pulumi.set(__self__, "name", name)
         if python_code is not None:
             pulumi.set(__self__, "python_code", python_code)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
 
     @_builtins.property
     @pulumi.getter
@@ -27294,6 +27330,50 @@ class ToolPythonFunctionArgs:
     @python_code.setter
     def python_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "python_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> pulumi.Input[Optional['ToolPythonFunctionServiceDirectoryConfigArgs']]:
+        """
+        Service Directory configuration for the tool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: pulumi.Input[Optional['ToolPythonFunctionServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+
+class ToolPythonFunctionServiceDirectoryConfigArgsDict(TypedDict):
+    service: pulumi.Input[_builtins.str]
+    """
+    The name of Service Directory service.
+    Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+    """
+
+@pulumi.input_type
+class ToolPythonFunctionServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] service: The name of Service Directory service.
+               Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+        """
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of Service Directory service.
+        Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service", value)
 
 
 class ToolRemoteAgentToolArgsDict(TypedDict):

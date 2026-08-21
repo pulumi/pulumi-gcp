@@ -2976,7 +2976,13 @@ class DatabaseInstanceSettingsPerformanceCaptureConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "probeThreshold":
+        if key == "cpuUtilizationThresholdPercent":
+            suggest = "cpu_utilization_threshold_percent"
+        elif key == "historyListLengthThresholdCount":
+            suggest = "history_list_length_threshold_count"
+        elif key == "memoryUsageThresholdPercent":
+            suggest = "memory_usage_threshold_percent"
+        elif key == "probeThreshold":
             suggest = "probe_threshold"
         elif key == "probingIntervalSeconds":
             suggest = "probing_interval_seconds"
@@ -2984,8 +2990,18 @@ class DatabaseInstanceSettingsPerformanceCaptureConfig(dict):
             suggest = "running_threads_threshold"
         elif key == "secondsBehindSourceThreshold":
             suggest = "seconds_behind_source_threshold"
+        elif key == "semaphoreWaitThresholdCount":
+            suggest = "semaphore_wait_threshold_count"
         elif key == "transactionDurationThreshold":
             suggest = "transaction_duration_threshold"
+        elif key == "transactionKillExcludedUserHosts":
+            suggest = "transaction_kill_excluded_user_hosts"
+        elif key == "transactionKillThresholdSeconds":
+            suggest = "transaction_kill_threshold_seconds"
+        elif key == "transactionKillType":
+            suggest = "transaction_kill_type"
+        elif key == "transactionLockWaitThresholdCount":
+            suggest = "transaction_lock_wait_threshold_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsPerformanceCaptureConfig. Access the value via the '{suggest}' property getter instead.")
@@ -2999,22 +3015,44 @@ class DatabaseInstanceSettingsPerformanceCaptureConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cpu_utilization_threshold_percent: Optional[_builtins.int] = None,
                  enabled: Optional[_builtins.bool] = None,
+                 history_list_length_threshold_count: Optional[_builtins.int] = None,
+                 memory_usage_threshold_percent: Optional[_builtins.int] = None,
                  probe_threshold: Optional[_builtins.int] = None,
                  probing_interval_seconds: Optional[_builtins.int] = None,
                  running_threads_threshold: Optional[_builtins.int] = None,
                  seconds_behind_source_threshold: Optional[_builtins.int] = None,
-                 transaction_duration_threshold: Optional[_builtins.int] = None):
+                 semaphore_wait_threshold_count: Optional[_builtins.int] = None,
+                 transaction_duration_threshold: Optional[_builtins.int] = None,
+                 transaction_kill_excluded_user_hosts: Optional[Sequence[_builtins.str]] = None,
+                 transaction_kill_threshold_seconds: Optional[_builtins.int] = None,
+                 transaction_kill_type: Optional[_builtins.str] = None,
+                 transaction_lock_wait_threshold_count: Optional[_builtins.int] = None):
         """
+        :param _builtins.int cpu_utilization_threshold_percent: The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
         :param _builtins.bool enabled: Enable or disable the Performance Capture.
+        :param _builtins.int history_list_length_threshold_count: The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        :param _builtins.int memory_usage_threshold_percent: The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
         :param _builtins.int probe_threshold: The minimum number of consecutive readings above threshold that triggers instance state capture.
         :param _builtins.int probing_interval_seconds: The time interval in seconds between any two probes.
         :param _builtins.int running_threads_threshold: The minimum number of server threads running to trigger the capture on primary.
         :param _builtins.int seconds_behind_source_threshold: The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+        :param _builtins.int semaphore_wait_threshold_count: The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
         :param _builtins.int transaction_duration_threshold: The amount of time in seconds that a transaction needs to have been open before getting recorded.
+        :param Sequence[_builtins.str] transaction_kill_excluded_user_hosts: A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        :param _builtins.int transaction_kill_threshold_seconds: The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        :param _builtins.str transaction_kill_type: Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        :param _builtins.int transaction_lock_wait_threshold_count: The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
         """
+        if cpu_utilization_threshold_percent is not None:
+            pulumi.set(__self__, "cpu_utilization_threshold_percent", cpu_utilization_threshold_percent)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if history_list_length_threshold_count is not None:
+            pulumi.set(__self__, "history_list_length_threshold_count", history_list_length_threshold_count)
+        if memory_usage_threshold_percent is not None:
+            pulumi.set(__self__, "memory_usage_threshold_percent", memory_usage_threshold_percent)
         if probe_threshold is not None:
             pulumi.set(__self__, "probe_threshold", probe_threshold)
         if probing_interval_seconds is not None:
@@ -3023,8 +3061,26 @@ class DatabaseInstanceSettingsPerformanceCaptureConfig(dict):
             pulumi.set(__self__, "running_threads_threshold", running_threads_threshold)
         if seconds_behind_source_threshold is not None:
             pulumi.set(__self__, "seconds_behind_source_threshold", seconds_behind_source_threshold)
+        if semaphore_wait_threshold_count is not None:
+            pulumi.set(__self__, "semaphore_wait_threshold_count", semaphore_wait_threshold_count)
         if transaction_duration_threshold is not None:
             pulumi.set(__self__, "transaction_duration_threshold", transaction_duration_threshold)
+        if transaction_kill_excluded_user_hosts is not None:
+            pulumi.set(__self__, "transaction_kill_excluded_user_hosts", transaction_kill_excluded_user_hosts)
+        if transaction_kill_threshold_seconds is not None:
+            pulumi.set(__self__, "transaction_kill_threshold_seconds", transaction_kill_threshold_seconds)
+        if transaction_kill_type is not None:
+            pulumi.set(__self__, "transaction_kill_type", transaction_kill_type)
+        if transaction_lock_wait_threshold_count is not None:
+            pulumi.set(__self__, "transaction_lock_wait_threshold_count", transaction_lock_wait_threshold_count)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUtilizationThresholdPercent")
+    def cpu_utilization_threshold_percent(self) -> Optional[_builtins.int]:
+        """
+        The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        """
+        return pulumi.get(self, "cpu_utilization_threshold_percent")
 
     @_builtins.property
     @pulumi.getter
@@ -3033,6 +3089,22 @@ class DatabaseInstanceSettingsPerformanceCaptureConfig(dict):
         Enable or disable the Performance Capture.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="historyListLengthThresholdCount")
+    def history_list_length_threshold_count(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        """
+        return pulumi.get(self, "history_list_length_threshold_count")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryUsageThresholdPercent")
+    def memory_usage_threshold_percent(self) -> Optional[_builtins.int]:
+        """
+        The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        """
+        return pulumi.get(self, "memory_usage_threshold_percent")
 
     @_builtins.property
     @pulumi.getter(name="probeThreshold")
@@ -3067,12 +3139,52 @@ class DatabaseInstanceSettingsPerformanceCaptureConfig(dict):
         return pulumi.get(self, "seconds_behind_source_threshold")
 
     @_builtins.property
+    @pulumi.getter(name="semaphoreWaitThresholdCount")
+    def semaphore_wait_threshold_count(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        """
+        return pulumi.get(self, "semaphore_wait_threshold_count")
+
+    @_builtins.property
     @pulumi.getter(name="transactionDurationThreshold")
     def transaction_duration_threshold(self) -> Optional[_builtins.int]:
         """
         The amount of time in seconds that a transaction needs to have been open before getting recorded.
         """
         return pulumi.get(self, "transaction_duration_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillExcludedUserHosts")
+    def transaction_kill_excluded_user_hosts(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        """
+        return pulumi.get(self, "transaction_kill_excluded_user_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillThresholdSeconds")
+    def transaction_kill_threshold_seconds(self) -> Optional[_builtins.int]:
+        """
+        The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        """
+        return pulumi.get(self, "transaction_kill_threshold_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillType")
+    def transaction_kill_type(self) -> Optional[_builtins.str]:
+        """
+        Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        """
+        return pulumi.get(self, "transaction_kill_type")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionLockWaitThresholdCount")
+    def transaction_lock_wait_threshold_count(self) -> Optional[_builtins.int]:
+        """
+        The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        """
+        return pulumi.get(self, "transaction_lock_wait_threshold_count")
 
 
 @pulumi.output_type
@@ -5450,26 +5562,58 @@ class GetDatabaseInstanceSettingPasswordValidationPolicyResult(dict):
 @pulumi.output_type
 class GetDatabaseInstanceSettingPerformanceCaptureConfigResult(dict):
     def __init__(__self__, *,
+                 cpu_utilization_threshold_percent: _builtins.int,
                  enabled: _builtins.bool,
+                 history_list_length_threshold_count: _builtins.int,
+                 memory_usage_threshold_percent: _builtins.int,
                  probe_threshold: _builtins.int,
                  probing_interval_seconds: _builtins.int,
                  running_threads_threshold: _builtins.int,
                  seconds_behind_source_threshold: _builtins.int,
-                 transaction_duration_threshold: _builtins.int):
+                 semaphore_wait_threshold_count: _builtins.int,
+                 transaction_duration_threshold: _builtins.int,
+                 transaction_kill_excluded_user_hosts: Sequence[_builtins.str],
+                 transaction_kill_threshold_seconds: _builtins.int,
+                 transaction_kill_type: _builtins.str,
+                 transaction_lock_wait_threshold_count: _builtins.int):
         """
+        :param _builtins.int cpu_utilization_threshold_percent: The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
         :param _builtins.bool enabled: Enable or disable the Performance Capture.
+        :param _builtins.int history_list_length_threshold_count: The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        :param _builtins.int memory_usage_threshold_percent: The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
         :param _builtins.int probe_threshold: The minimum number of consecutive readings above threshold that triggers instance state capture.
         :param _builtins.int probing_interval_seconds: The time interval in seconds between any two probes.
         :param _builtins.int running_threads_threshold: The minimum number of server threads running to trigger the capture on primary.
         :param _builtins.int seconds_behind_source_threshold: The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+        :param _builtins.int semaphore_wait_threshold_count: The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
         :param _builtins.int transaction_duration_threshold: The amount of time in seconds that a transaction needs to have been open before getting recorded.
+        :param Sequence[_builtins.str] transaction_kill_excluded_user_hosts: A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        :param _builtins.int transaction_kill_threshold_seconds: The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        :param _builtins.str transaction_kill_type: Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        :param _builtins.int transaction_lock_wait_threshold_count: The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
         """
+        pulumi.set(__self__, "cpu_utilization_threshold_percent", cpu_utilization_threshold_percent)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "history_list_length_threshold_count", history_list_length_threshold_count)
+        pulumi.set(__self__, "memory_usage_threshold_percent", memory_usage_threshold_percent)
         pulumi.set(__self__, "probe_threshold", probe_threshold)
         pulumi.set(__self__, "probing_interval_seconds", probing_interval_seconds)
         pulumi.set(__self__, "running_threads_threshold", running_threads_threshold)
         pulumi.set(__self__, "seconds_behind_source_threshold", seconds_behind_source_threshold)
+        pulumi.set(__self__, "semaphore_wait_threshold_count", semaphore_wait_threshold_count)
         pulumi.set(__self__, "transaction_duration_threshold", transaction_duration_threshold)
+        pulumi.set(__self__, "transaction_kill_excluded_user_hosts", transaction_kill_excluded_user_hosts)
+        pulumi.set(__self__, "transaction_kill_threshold_seconds", transaction_kill_threshold_seconds)
+        pulumi.set(__self__, "transaction_kill_type", transaction_kill_type)
+        pulumi.set(__self__, "transaction_lock_wait_threshold_count", transaction_lock_wait_threshold_count)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUtilizationThresholdPercent")
+    def cpu_utilization_threshold_percent(self) -> _builtins.int:
+        """
+        The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        """
+        return pulumi.get(self, "cpu_utilization_threshold_percent")
 
     @_builtins.property
     @pulumi.getter
@@ -5478,6 +5622,22 @@ class GetDatabaseInstanceSettingPerformanceCaptureConfigResult(dict):
         Enable or disable the Performance Capture.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="historyListLengthThresholdCount")
+    def history_list_length_threshold_count(self) -> _builtins.int:
+        """
+        The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        """
+        return pulumi.get(self, "history_list_length_threshold_count")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryUsageThresholdPercent")
+    def memory_usage_threshold_percent(self) -> _builtins.int:
+        """
+        The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        """
+        return pulumi.get(self, "memory_usage_threshold_percent")
 
     @_builtins.property
     @pulumi.getter(name="probeThreshold")
@@ -5512,12 +5672,52 @@ class GetDatabaseInstanceSettingPerformanceCaptureConfigResult(dict):
         return pulumi.get(self, "seconds_behind_source_threshold")
 
     @_builtins.property
+    @pulumi.getter(name="semaphoreWaitThresholdCount")
+    def semaphore_wait_threshold_count(self) -> _builtins.int:
+        """
+        The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        """
+        return pulumi.get(self, "semaphore_wait_threshold_count")
+
+    @_builtins.property
     @pulumi.getter(name="transactionDurationThreshold")
     def transaction_duration_threshold(self) -> _builtins.int:
         """
         The amount of time in seconds that a transaction needs to have been open before getting recorded.
         """
         return pulumi.get(self, "transaction_duration_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillExcludedUserHosts")
+    def transaction_kill_excluded_user_hosts(self) -> Sequence[_builtins.str]:
+        """
+        A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        """
+        return pulumi.get(self, "transaction_kill_excluded_user_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillThresholdSeconds")
+    def transaction_kill_threshold_seconds(self) -> _builtins.int:
+        """
+        The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        """
+        return pulumi.get(self, "transaction_kill_threshold_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillType")
+    def transaction_kill_type(self) -> _builtins.str:
+        """
+        Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        """
+        return pulumi.get(self, "transaction_kill_type")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionLockWaitThresholdCount")
+    def transaction_lock_wait_threshold_count(self) -> _builtins.int:
+        """
+        The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        """
+        return pulumi.get(self, "transaction_lock_wait_threshold_count")
 
 
 @pulumi.output_type
@@ -7985,26 +8185,58 @@ class GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult(dict):
 @pulumi.output_type
 class GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult(dict):
     def __init__(__self__, *,
+                 cpu_utilization_threshold_percent: _builtins.int,
                  enabled: _builtins.bool,
+                 history_list_length_threshold_count: _builtins.int,
+                 memory_usage_threshold_percent: _builtins.int,
                  probe_threshold: _builtins.int,
                  probing_interval_seconds: _builtins.int,
                  running_threads_threshold: _builtins.int,
                  seconds_behind_source_threshold: _builtins.int,
-                 transaction_duration_threshold: _builtins.int):
+                 semaphore_wait_threshold_count: _builtins.int,
+                 transaction_duration_threshold: _builtins.int,
+                 transaction_kill_excluded_user_hosts: Sequence[_builtins.str],
+                 transaction_kill_threshold_seconds: _builtins.int,
+                 transaction_kill_type: _builtins.str,
+                 transaction_lock_wait_threshold_count: _builtins.int):
         """
+        :param _builtins.int cpu_utilization_threshold_percent: The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
         :param _builtins.bool enabled: Enable or disable the Performance Capture.
+        :param _builtins.int history_list_length_threshold_count: The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        :param _builtins.int memory_usage_threshold_percent: The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
         :param _builtins.int probe_threshold: The minimum number of consecutive readings above threshold that triggers instance state capture.
         :param _builtins.int probing_interval_seconds: The time interval in seconds between any two probes.
         :param _builtins.int running_threads_threshold: The minimum number of server threads running to trigger the capture on primary.
         :param _builtins.int seconds_behind_source_threshold: The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
+        :param _builtins.int semaphore_wait_threshold_count: The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
         :param _builtins.int transaction_duration_threshold: The amount of time in seconds that a transaction needs to have been open before getting recorded.
+        :param Sequence[_builtins.str] transaction_kill_excluded_user_hosts: A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        :param _builtins.int transaction_kill_threshold_seconds: The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        :param _builtins.str transaction_kill_type: Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        :param _builtins.int transaction_lock_wait_threshold_count: The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
         """
+        pulumi.set(__self__, "cpu_utilization_threshold_percent", cpu_utilization_threshold_percent)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "history_list_length_threshold_count", history_list_length_threshold_count)
+        pulumi.set(__self__, "memory_usage_threshold_percent", memory_usage_threshold_percent)
         pulumi.set(__self__, "probe_threshold", probe_threshold)
         pulumi.set(__self__, "probing_interval_seconds", probing_interval_seconds)
         pulumi.set(__self__, "running_threads_threshold", running_threads_threshold)
         pulumi.set(__self__, "seconds_behind_source_threshold", seconds_behind_source_threshold)
+        pulumi.set(__self__, "semaphore_wait_threshold_count", semaphore_wait_threshold_count)
         pulumi.set(__self__, "transaction_duration_threshold", transaction_duration_threshold)
+        pulumi.set(__self__, "transaction_kill_excluded_user_hosts", transaction_kill_excluded_user_hosts)
+        pulumi.set(__self__, "transaction_kill_threshold_seconds", transaction_kill_threshold_seconds)
+        pulumi.set(__self__, "transaction_kill_type", transaction_kill_type)
+        pulumi.set(__self__, "transaction_lock_wait_threshold_count", transaction_lock_wait_threshold_count)
+
+    @_builtins.property
+    @pulumi.getter(name="cpuUtilizationThresholdPercent")
+    def cpu_utilization_threshold_percent(self) -> _builtins.int:
+        """
+        The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        """
+        return pulumi.get(self, "cpu_utilization_threshold_percent")
 
     @_builtins.property
     @pulumi.getter
@@ -8013,6 +8245,22 @@ class GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult(dict):
         Enable or disable the Performance Capture.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="historyListLengthThresholdCount")
+    def history_list_length_threshold_count(self) -> _builtins.int:
+        """
+        The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        """
+        return pulumi.get(self, "history_list_length_threshold_count")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryUsageThresholdPercent")
+    def memory_usage_threshold_percent(self) -> _builtins.int:
+        """
+        The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        """
+        return pulumi.get(self, "memory_usage_threshold_percent")
 
     @_builtins.property
     @pulumi.getter(name="probeThreshold")
@@ -8047,12 +8295,52 @@ class GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult(dict):
         return pulumi.get(self, "seconds_behind_source_threshold")
 
     @_builtins.property
+    @pulumi.getter(name="semaphoreWaitThresholdCount")
+    def semaphore_wait_threshold_count(self) -> _builtins.int:
+        """
+        The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        """
+        return pulumi.get(self, "semaphore_wait_threshold_count")
+
+    @_builtins.property
     @pulumi.getter(name="transactionDurationThreshold")
     def transaction_duration_threshold(self) -> _builtins.int:
         """
         The amount of time in seconds that a transaction needs to have been open before getting recorded.
         """
         return pulumi.get(self, "transaction_duration_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillExcludedUserHosts")
+    def transaction_kill_excluded_user_hosts(self) -> Sequence[_builtins.str]:
+        """
+        A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        """
+        return pulumi.get(self, "transaction_kill_excluded_user_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillThresholdSeconds")
+    def transaction_kill_threshold_seconds(self) -> _builtins.int:
+        """
+        The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        """
+        return pulumi.get(self, "transaction_kill_threshold_seconds")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionKillType")
+    def transaction_kill_type(self) -> _builtins.str:
+        """
+        Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        """
+        return pulumi.get(self, "transaction_kill_type")
+
+    @_builtins.property
+    @pulumi.getter(name="transactionLockWaitThresholdCount")
+    def transaction_lock_wait_threshold_count(self) -> _builtins.int:
+        """
+        The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        """
+        return pulumi.get(self, "transaction_lock_wait_threshold_count")
 
 
 @pulumi.output_type

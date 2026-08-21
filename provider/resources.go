@@ -181,6 +181,7 @@ var moduleMapping = map[string]string{
 	"active_directory":                gcpActiveDirectory,
 	"agent_identity":                  "AgentIdentity",
 	"agent_registry":                  "AgentRegistry",
+	"agentic_applications":            "AgenticApplications",
 	"alloydb":                         gcpAlloydb,
 	"api_gateway":                     gcpApiGateway,
 	"apihub":                          gcpApiHub,

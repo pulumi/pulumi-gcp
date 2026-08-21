@@ -686,6 +686,57 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Sandbox Templates
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     launchStage: "ALPHA",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             sandboxLauncher: true,
+ *             volumeMounts: [{
+ *                 name: "empty-dir-volume",
+ *                 mountPath: "/mnt",
+ *             }],
+ *         }],
+ *         sandboxes: {
+ *             templates: [{
+ *                 name: "hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                 commands: ["/bin/sh"],
+ *                 args: [
+ *                     "-c",
+ *                     "echo hello",
+ *                 ],
+ *                 envs: [{
+ *                     name: "PORT",
+ *                     value: "9000",
+ *                 }],
+ *                 volumeMounts: [{
+ *                     name: "empty-dir-volume",
+ *                     mountPath: "/mnt",
+ *                     subPath: "/home/user",
+ *                 }],
+ *                 workingDir: "/mnt/app",
+ *             }],
+ *         },
+ *         volumes: [{
+ *             name: "empty-dir-volume",
+ *             emptyDir: {
+ *                 medium: "MEMORY",
+ *                 sizeLimit: "256Mi",
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

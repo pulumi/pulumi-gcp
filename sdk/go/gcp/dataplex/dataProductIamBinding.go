@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for Dataplex DataProduct. Each of these resources serves a different use case:
 //
 // * `dataplex.DataProductIamPolicy`: Authoritative. Sets the IAM policy for the dataproduct and replaces any existing policy already attached.
-// * `dataplex.DataProductIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataproduct are preserved.
-// * `dataplex.DataProductIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataproduct are preserved.
+// * `dataplex.DataProductIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataproduct are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+// * `dataplex.DataProductIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataproduct are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -140,8 +140,8 @@ import (
 // Three different resources help you manage your IAM policy for Dataplex DataProduct. Each of these resources serves a different use case:
 //
 // * `dataplex.DataProductIamPolicy`: Authoritative. Sets the IAM policy for the dataproduct and replaces any existing policy already attached.
-// * `dataplex.DataProductIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataproduct are preserved.
-// * `dataplex.DataProductIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataproduct are preserved.
+// * `dataplex.DataProductIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataproduct are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+// * `dataplex.DataProductIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataproduct are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //

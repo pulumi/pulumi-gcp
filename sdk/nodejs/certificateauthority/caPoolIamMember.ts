@@ -10,8 +10,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
  *
  * * `gcp.certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
- * * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
- * * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
+ * * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the capool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the capool are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CaPoolIamBinding` and `gcp.certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -133,8 +133,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Certificate Authority Service CaPool. Each of these resources serves a different use case:
  *
  * * `gcp.certificateauthority.CaPoolIamPolicy`: Authoritative. Sets the IAM policy for the capool and replaces any existing policy already attached.
- * * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the capool are preserved.
- * * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the capool are preserved.
+ * * `gcp.certificateauthority.CaPoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the capool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.certificateauthority.CaPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the capool are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -142,7 +142,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.certificateauthority.CaPoolIamPolicy` **cannot** be used in conjunction with `gcp.certificateauthority.CaPoolIamBinding` and `gcp.certificateauthority.CaPoolIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.certificateauthority.CaPoolIamBinding` resources **can be** used in conjunction with `gcp.certificateauthority.CaPoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -348,7 +348,7 @@ export class CaPoolIamMember extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.certificateauthority.CaPoolIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.certificateauthority.CaPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     declare public readonly role: pulumi.Output<string>;
@@ -444,7 +444,7 @@ export interface CaPoolIamMemberState {
     project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
-     * `gcp.certificateauthority.CaPoolIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.certificateauthority.CaPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string | undefined>;
@@ -493,7 +493,7 @@ export interface CaPoolIamMemberArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
-     * `gcp.certificateauthority.CaPoolIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.certificateauthority.CaPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

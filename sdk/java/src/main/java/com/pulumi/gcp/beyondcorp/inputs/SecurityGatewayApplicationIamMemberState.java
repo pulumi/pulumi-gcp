@@ -119,7 +119,7 @@ public final class SecurityGatewayApplicationIamMemberState extends com.pulumi.r
 
     /**
      * The role that should be applied. Only one
-     * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -128,7 +128,7 @@ public final class SecurityGatewayApplicationIamMemberState extends com.pulumi.r
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -314,7 +314,7 @@ public final class SecurityGatewayApplicationIamMemberState extends com.pulumi.r
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -327,7 +327,7 @@ public final class SecurityGatewayApplicationIamMemberState extends com.pulumi.r
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder

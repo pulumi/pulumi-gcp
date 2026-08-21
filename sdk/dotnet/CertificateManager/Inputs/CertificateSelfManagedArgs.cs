@@ -59,6 +59,33 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
             }
         }
 
+        [Input("pemPrivateKeyWo")]
+        private Input<string>? _pemPrivateKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// (Optional, Write-Only)
+        /// The private key of the leaf certificate in PEM-encoded form.
+        /// **Note**: This property is write-only and will not be read from the API.
+        /// 
+        /// &gt; **Note:** One of `PemPrivateKey` or `PemPrivateKeyWo` can only be set.
+        /// </summary>
+        public Input<string>? PemPrivateKeyWo
+        {
+            get => _pemPrivateKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _pemPrivateKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Triggers update of `PemPrivateKeyWo` write-only. Increment this value when an update to `PemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        /// </summary>
+        [Input("pemPrivateKeyWoVersion")]
+        public Input<string>? PemPrivateKeyWoVersion { get; set; }
+
         [Input("privateKeyPem")]
         private Input<string>? _privateKeyPem;
 

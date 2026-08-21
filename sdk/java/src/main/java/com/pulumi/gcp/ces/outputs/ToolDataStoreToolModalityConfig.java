@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreToolModalityConfigGroundingConfig;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreToolModalityConfigRewriterConfig;
+import com.pulumi.gcp.ces.outputs.ToolDataStoreToolModalityConfigSnippetsConfig;
 import com.pulumi.gcp.ces.outputs.ToolDataStoreToolModalityConfigSummarizationConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -35,6 +36,12 @@ public final class ToolDataStoreToolModalityConfig {
      * 
      */
     private @Nullable ToolDataStoreToolModalityConfigRewriterConfig rewriterConfig;
+    /**
+     * @return Snippets configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ToolDataStoreToolModalityConfigSnippetsConfig snippetsConfig;
     /**
      * @return Summarization configuration.
      * Structure is documented below.
@@ -70,6 +77,14 @@ public final class ToolDataStoreToolModalityConfig {
         return Optional.ofNullable(this.rewriterConfig);
     }
     /**
+     * @return Snippets configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ToolDataStoreToolModalityConfigSnippetsConfig> snippetsConfig() {
+        return Optional.ofNullable(this.snippetsConfig);
+    }
+    /**
      * @return Summarization configuration.
      * Structure is documented below.
      * 
@@ -90,6 +105,7 @@ public final class ToolDataStoreToolModalityConfig {
         private @Nullable ToolDataStoreToolModalityConfigGroundingConfig groundingConfig;
         private String modalityType;
         private @Nullable ToolDataStoreToolModalityConfigRewriterConfig rewriterConfig;
+        private @Nullable ToolDataStoreToolModalityConfigSnippetsConfig snippetsConfig;
         private @Nullable ToolDataStoreToolModalityConfigSummarizationConfig summarizationConfig;
         public Builder() {}
         public Builder(ToolDataStoreToolModalityConfig defaults) {
@@ -97,6 +113,7 @@ public final class ToolDataStoreToolModalityConfig {
     	      this.groundingConfig = defaults.groundingConfig;
     	      this.modalityType = defaults.modalityType;
     	      this.rewriterConfig = defaults.rewriterConfig;
+    	      this.snippetsConfig = defaults.snippetsConfig;
     	      this.summarizationConfig = defaults.summarizationConfig;
         }
 
@@ -121,6 +138,12 @@ public final class ToolDataStoreToolModalityConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder snippetsConfig(@Nullable ToolDataStoreToolModalityConfigSnippetsConfig snippetsConfig) {
+
+            this.snippetsConfig = snippetsConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder summarizationConfig(@Nullable ToolDataStoreToolModalityConfigSummarizationConfig summarizationConfig) {
 
             this.summarizationConfig = summarizationConfig;
@@ -131,6 +154,7 @@ public final class ToolDataStoreToolModalityConfig {
             _resultValue.groundingConfig = groundingConfig;
             _resultValue.modalityType = modalityType;
             _resultValue.rewriterConfig = rewriterConfig;
+            _resultValue.snippetsConfig = snippetsConfig;
             _resultValue.summarizationConfig = summarizationConfig;
             return _resultValue;
         }

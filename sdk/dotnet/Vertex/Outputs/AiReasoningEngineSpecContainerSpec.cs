@@ -19,11 +19,19 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// container image that is to be run on each worker replica.
         /// </summary>
         public readonly string ImageUri;
+        /// <summary>
+        /// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+        /// </summary>
+        public readonly int? Port;
 
         [OutputConstructor]
-        private AiReasoningEngineSpecContainerSpec(string imageUri)
+        private AiReasoningEngineSpecContainerSpec(
+            string imageUri,
+
+            int? port)
         {
             ImageUri = imageUri;
+            Port = port;
         }
     }
 }

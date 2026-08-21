@@ -43,6 +43,8 @@ class InstanceGceSetup(dict):
             suggest = "accelerator_configs"
         elif key == "bootDisk":
             suggest = "boot_disk"
+        elif key == "computeInstanceId":
+            suggest = "compute_instance_id"
         elif key == "confidentialInstanceConfig":
             suggest = "confidential_instance_config"
         elif key == "containerImage":
@@ -82,6 +84,7 @@ class InstanceGceSetup(dict):
     def __init__(__self__, *,
                  accelerator_configs: Optional[Sequence['outputs.InstanceGceSetupAcceleratorConfig']] = None,
                  boot_disk: Optional['outputs.InstanceGceSetupBootDisk'] = None,
+                 compute_instance_id: Optional[_builtins.str] = None,
                  confidential_instance_config: Optional['outputs.InstanceGceSetupConfidentialInstanceConfig'] = None,
                  container_image: Optional['outputs.InstanceGceSetupContainerImage'] = None,
                  data_disks: Optional['outputs.InstanceGceSetupDataDisks'] = None,
@@ -103,6 +106,8 @@ class InstanceGceSetup(dict):
                Structure is documented below.
         :param 'InstanceGceSetupBootDiskArgs' boot_disk: The definition of a boot disk.
                Structure is documented below.
+        :param _builtins.str compute_instance_id: (Output)
+               Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
         :param 'InstanceGceSetupConfidentialInstanceConfigArgs' confidential_instance_config: Confidential instance configuration.
                Structure is documented below.
         :param 'InstanceGceSetupContainerImageArgs' container_image: Use a container image to start the workbench instance.
@@ -135,6 +140,8 @@ class InstanceGceSetup(dict):
             pulumi.set(__self__, "accelerator_configs", accelerator_configs)
         if boot_disk is not None:
             pulumi.set(__self__, "boot_disk", boot_disk)
+        if compute_instance_id is not None:
+            pulumi.set(__self__, "compute_instance_id", compute_instance_id)
         if confidential_instance_config is not None:
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if container_image is not None:
@@ -183,6 +190,15 @@ class InstanceGceSetup(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "boot_disk")
+
+    @_builtins.property
+    @pulumi.getter(name="computeInstanceId")
+    def compute_instance_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+        """
+        return pulumi.get(self, "compute_instance_id")
 
     @_builtins.property
     @pulumi.getter(name="confidentialInstanceConfig")

@@ -33,6 +33,13 @@ namespace Pulumi.Gcp.Colab.Inputs
         [Input("persistentDiskSpec")]
         public Input<Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs>? PersistentDiskSpec { get; set; }
 
+        /// <summary>
+        /// Shielded VM configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
         public NotebookExecutionCustomEnvironmentSpecArgs()
         {
         }

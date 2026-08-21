@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for Cloud Key Management Service EkmConnection. Each of these resources serves a different use case:
 //
 // * `kms.EkmConnectionIamPolicy`: Authoritative. Sets the IAM policy for the ekmconnection and replaces any existing policy already attached.
-// * `kms.EkmConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the ekmconnection are preserved.
-// * `kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the ekmconnection are preserved.
+// * `kms.EkmConnectionIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the ekmconnection are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the ekmconnection are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -24,7 +24,7 @@ import (
 //
 // > **Note:** `kms.EkmConnectionIamPolicy` **cannot** be used in conjunction with `kms.EkmConnectionIamBinding` and `kms.EkmConnectionIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -260,8 +260,8 @@ import (
 // Three different resources help you manage your IAM policy for Cloud Key Management Service EkmConnection. Each of these resources serves a different use case:
 //
 // * `kms.EkmConnectionIamPolicy`: Authoritative. Sets the IAM policy for the ekmconnection and replaces any existing policy already attached.
-// * `kms.EkmConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the ekmconnection are preserved.
-// * `kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the ekmconnection are preserved.
+// * `kms.EkmConnectionIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the ekmconnection are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `kms.EkmConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the ekmconnection are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -269,7 +269,7 @@ import (
 //
 // > **Note:** `kms.EkmConnectionIamPolicy` **cannot** be used in conjunction with `kms.EkmConnectionIamBinding` and `kms.EkmConnectionIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `kms.EkmConnectionIamBinding` resources **can be** used in conjunction with `kms.EkmConnectionIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -559,7 +559,7 @@ type EkmConnectionIamMember struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -630,7 +630,7 @@ type ekmConnectionIamMemberState struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
@@ -666,7 +666,7 @@ type EkmConnectionIamMemberState struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -704,7 +704,7 @@ type ekmConnectionIamMemberArgs struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
@@ -739,7 +739,7 @@ type EkmConnectionIamMemberArgs struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
@@ -879,7 +879,7 @@ func (o EkmConnectionIamMemberOutput) Project() pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `kms.EkmConnectionIamBinding` can be used per role. Note that custom roles must be of the format
+// `kms.EkmConnectionIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o EkmConnectionIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnectionIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

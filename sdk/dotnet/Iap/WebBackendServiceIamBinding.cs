@@ -13,8 +13,8 @@ namespace Pulumi.Gcp.Iap
     /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebBackendService. Each of these resources serves a different use case:
     /// 
     /// * `gcp.iap.WebBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the webbackendservice and replaces any existing policy already attached.
-    /// * `gcp.iap.WebBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webbackendservice are preserved.
-    /// * `gcp.iap.WebBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webbackendservice are preserved.
+    /// * `gcp.iap.WebBackendServiceIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the webbackendservice are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+    /// * `gcp.iap.WebBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the webbackendservice are preserved. Members added outside of Terraform will **not** be detected as drift.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// &gt; **Note:** `gcp.iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebBackendServiceIamBinding` and `gcp.iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
@@ -211,8 +211,8 @@ namespace Pulumi.Gcp.Iap
     /// Three different resources help you manage your IAM policy for Identity-Aware Proxy WebBackendService. Each of these resources serves a different use case:
     /// 
     /// * `gcp.iap.WebBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the webbackendservice and replaces any existing policy already attached.
-    /// * `gcp.iap.WebBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webbackendservice are preserved.
-    /// * `gcp.iap.WebBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webbackendservice are preserved.
+    /// * `gcp.iap.WebBackendServiceIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the webbackendservice are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+    /// * `gcp.iap.WebBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the webbackendservice are preserved. Members added outside of Terraform will **not** be detected as drift.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
@@ -220,7 +220,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// &gt; **Note:** `gcp.iap.WebBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebBackendServiceIamBinding` and `gcp.iap.WebBackendServiceIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.iap.WebBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebBackendServiceIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
@@ -472,7 +472,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.iap.WebBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.iap.WebBackendServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `Condition` block (or one has no condition). Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -569,7 +569,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.iap.WebBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.iap.WebBackendServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `Condition` block (or one has no condition). Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -634,7 +634,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.iap.WebBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.iap.WebBackendServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `Condition` block (or one has no condition). Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]

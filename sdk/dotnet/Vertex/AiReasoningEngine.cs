@@ -209,6 +209,7 @@ namespace Pulumi.Gcp.Vertex
     ///             ContainerSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecContainerSpecArgs
     ///             {
     ///                 ImageUri = $"us-central1-docker.pkg.dev/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/vertex-byoc/byoc-agent:latest",
+    ///                 Port = 8080,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

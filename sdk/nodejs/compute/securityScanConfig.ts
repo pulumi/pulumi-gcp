@@ -53,6 +53,20 @@ import * as utilities from "../utilities";
  *     dependsOn: [wait15Seconds],
  * });
  * ```
+ * ### Scan Config Static Ip
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scannerStaticIp = new gcp.compute.Address("scanner_static_ip", {name: "scan-static-ip"});
+ * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
+ *     displayName: "scan-config",
+ *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
+ *     targetPlatforms: ["COMPUTE"],
+ *     staticIpScan: true,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -157,6 +171,11 @@ export class SecurityScanConfig extends pulumi.CustomResource {
      */
     declare public readonly startingUrls: pulumi.Output<string[]>;
     /**
+     * Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     */
+    declare public readonly staticIpScan: pulumi.Output<boolean | undefined>;
+    /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
      * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      */
@@ -192,6 +211,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["schedule"] = state?.schedule;
             resourceInputs["startingUrls"] = state?.startingUrls;
+            resourceInputs["staticIpScan"] = state?.staticIpScan;
             resourceInputs["targetPlatforms"] = state?.targetPlatforms;
             resourceInputs["userAgent"] = state?.userAgent;
         } else {
@@ -212,6 +232,7 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["schedule"] = args?.schedule;
             resourceInputs["startingUrls"] = args?.startingUrls;
+            resourceInputs["staticIpScan"] = args?.staticIpScan;
             resourceInputs["targetPlatforms"] = args?.targetPlatforms;
             resourceInputs["userAgent"] = args?.userAgent;
             resourceInputs["name"] = undefined /*out*/;
@@ -284,6 +305,11 @@ export interface SecurityScanConfigState {
      */
     startingUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     */
+    staticIpScan?: pulumi.Input<boolean | undefined>;
+    /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
      * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      */
@@ -353,6 +379,11 @@ export interface SecurityScanConfigArgs {
      * The starting URLs from which the scanner finds site pages.
      */
     startingUrls: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     */
+    staticIpScan?: pulumi.Input<boolean | undefined>;
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
      * Each value may be one of: `APP_ENGINE`, `COMPUTE`.

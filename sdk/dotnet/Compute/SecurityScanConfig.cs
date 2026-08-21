@@ -102,6 +102,37 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Scan Config Static Ip
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var scannerStaticIp = new Gcp.Compute.Address("scanner_static_ip", new()
+    ///     {
+    ///         Name = "scan-static-ip",
+    ///     });
+    /// 
+    ///     var scan_config = new Gcp.Compute.SecurityScanConfig("scan-config", new()
+    ///     {
+    ///         DisplayName = "scan-config",
+    ///         StartingUrls = new[]
+    ///         {
+    ///             scannerStaticIp.IPAddress.Apply(address =&gt; $"http://{address}"),
+    ///         },
+    ///         TargetPlatforms = new[]
+    ///         {
+    ///             "COMPUTE",
+    ///         },
+    ///         StaticIpScan = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -201,6 +232,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("startingUrls")]
         public Output<ImmutableArray<string>> StartingUrls { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the scan configuration has enabled static IP address scan feature.
+        /// If enabled, the scanner will access applications from static IP addresses.
+        /// </summary>
+        [Output("staticIpScan")]
+        public Output<bool?> StaticIpScan { get; private set; } = null!;
 
         /// <summary>
         /// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
@@ -348,6 +386,13 @@ namespace Pulumi.Gcp.Compute
             set => _startingUrls = value;
         }
 
+        /// <summary>
+        /// Whether the scan configuration has enabled static IP address scan feature.
+        /// If enabled, the scanner will access applications from static IP addresses.
+        /// </summary>
+        [Input("staticIpScan")]
+        public Input<bool>? StaticIpScan { get; set; }
+
         [Input("targetPlatforms")]
         private InputList<string>? _targetPlatforms;
 
@@ -468,6 +513,13 @@ namespace Pulumi.Gcp.Compute
             get => _startingUrls ?? (_startingUrls = new InputList<string>());
             set => _startingUrls = value;
         }
+
+        /// <summary>
+        /// Whether the scan configuration has enabled static IP address scan feature.
+        /// If enabled, the scanner will access applications from static IP addresses.
+        /// </summary>
+        [Input("staticIpScan")]
+        public Input<bool>? StaticIpScan { get; set; }
 
         [Input("targetPlatforms")]
         private InputList<string>? _targetPlatforms;

@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
     public sealed class GcpUserAccessBindingScopedAccessSetting
     {
         /// <summary>
-        /// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+        /// Optional. Access settings for this scoped access settings. This field may be empty if `DryRunSettings` is set.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GcpUserAccessBindingScopedAccessSettingActiveSettings? ActiveSettings;
         /// <summary>
-        /// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+        /// Optional. Dry-run access settings for this scoped access settings. This field may be empty if `ActiveSettings` is set. Cannot contain session settings.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.GcpUserAccessBindingScopedAccessSettingDryRunSettings? DryRunSettings;

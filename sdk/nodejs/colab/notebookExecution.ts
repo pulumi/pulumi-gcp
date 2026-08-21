@@ -173,6 +173,163 @@ import * as utilities from "../utilities";
  *             network: myNetwork.id,
  *             subnetwork: mySubnetwork.id,
  *         },
+ *         shieldedInstanceConfig: {
+ *             enableIntegrityMonitoring: true,
+ *             enableSecureBoot: true,
+ *             enableVtpm: true,
+ *         },
+ *     },
+ *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+ *     serviceAccount: "my@service-account.com",
+ * }, {
+ *     dependsOn: [outputBucket],
+ * });
+ * ```
+ * ### Colab Notebook Execution Workbench Runtime Vm
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const outputBucket = new gcp.storage.Bucket("output_bucket", {
+ *     name: "my_bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+ *     displayName: "Notebook execution workbench runtime vm",
+ *     location: "us-central1",
+ *     directNotebookSource: {
+ *         content: std.base64encode({
+ *             input: `    {
+ *       \\"cells\\": [
+ *         {
+ *           \\"cell_type\\": \\"code\\",
+ *           \\"execution_count\\": null,
+ *           \\"metadata\\": {},
+ *           \\"outputs\\": [],
+ *           \\"source\\": [
+ *             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+ *           ]
+ *         }
+ *       ],
+ *       \\"metadata\\": {
+ *         \\"kernelspec\\": {
+ *           \\"display_name\\": \\"Python 3\\",
+ *           \\"language\\": \\"python\\",
+ *           \\"name\\": \\"python3\\"
+ *         },
+ *         \\"language_info\\": {
+ *           \\"codemirror_mode\\": {
+ *             \\"name\\": \\"ipython\\",
+ *             \\"version\\": 3
+ *           },
+ *           \\"file_extension\\": \\".py\\",
+ *           \\"mimetype\\": \\"text/x-python\\",
+ *           \\"name\\": \\"python\\",
+ *           \\"nbconvert_exporter\\": \\"python\\",
+ *           \\"pygments_lexer\\": \\"ipython3\\",
+ *           \\"version\\": \\"3.8.5\\"
+ *         }
+ *       },
+ *       \\"nbformat\\": 4,
+ *       \\"nbformat_minor\\": 4
+ *     }
+ * `,
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     customEnvironmentSpec: {
+ *         machineSpec: {
+ *             machineType: "n1-standard-2",
+ *         },
+ *         persistentDiskSpec: {
+ *             diskType: "pd-standard",
+ *             diskSizeGb: "200",
+ *         },
+ *     },
+ *     workbenchRuntime: {
+ *         vmImage: {
+ *             project: "cloud-notebooks-managed",
+ *             family: "workbench-instances",
+ *         },
+ *     },
+ *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
+ *     serviceAccount: "my@service-account.com",
+ * }, {
+ *     dependsOn: [outputBucket],
+ * });
+ * ```
+ * ### Colab Notebook Execution Workbench Runtime Vm Name
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const outputBucket = new gcp.storage.Bucket("output_bucket", {
+ *     name: "my_bucket",
+ *     location: "US",
+ *     forceDestroy: true,
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const notebook_execution = new gcp.colab.NotebookExecution("notebook-execution", {
+ *     displayName: "Notebook execution workbench runtime vm name",
+ *     location: "us-central1",
+ *     directNotebookSource: {
+ *         content: std.base64encode({
+ *             input: `    {
+ *       \\"cells\\": [
+ *         {
+ *           \\"cell_type\\": \\"code\\",
+ *           \\"execution_count\\": null,
+ *           \\"metadata\\": {},
+ *           \\"outputs\\": [],
+ *           \\"source\\": [
+ *             \\"print(\\\\\\"Hello, World!\\\\\\")\\"
+ *           ]
+ *         }
+ *       ],
+ *       \\"metadata\\": {
+ *         \\"kernelspec\\": {
+ *           \\"display_name\\": \\"Python 3\\",
+ *           \\"language\\": \\"python\\",
+ *           \\"name\\": \\"python3\\"
+ *         },
+ *         \\"language_info\\": {
+ *           \\"codemirror_mode\\": {
+ *             \\"name\\": \\"ipython\\",
+ *             \\"version\\": 3
+ *           },
+ *           \\"file_extension\\": \\".py\\",
+ *           \\"mimetype\\": \\"text/x-python\\",
+ *           \\"name\\": \\"python\\",
+ *           \\"nbconvert_exporter\\": \\"python\\",
+ *           \\"pygments_lexer\\": \\"ipython3\\",
+ *           \\"version\\": \\"3.8.5\\"
+ *         }
+ *       },
+ *       \\"nbformat\\": 4,
+ *       \\"nbformat_minor\\": 4
+ *     }
+ * `,
+ *         }).then(invoke => invoke.result),
+ *     },
+ *     customEnvironmentSpec: {
+ *         machineSpec: {
+ *             machineType: "n1-standard-2",
+ *         },
+ *         persistentDiskSpec: {
+ *             diskType: "pd-standard",
+ *             diskSizeGb: "200",
+ *         },
+ *     },
+ *     workbenchRuntime: {
+ *         vmImage: {
+ *             project: "cloud-notebooks-managed",
+ *             name: "workbench-instances-v20260713",
+ *         },
  *     },
  *     gcsOutputUri: pulumi.interpolate`gs://${outputBucket.name}`,
  *     serviceAccount: "my@service-account.com",
@@ -445,6 +602,11 @@ export class NotebookExecution extends pulumi.CustomResource {
      * The service account to run the execution as.
      */
     declare public readonly serviceAccount: pulumi.Output<string | undefined>;
+    /**
+     * Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     */
+    declare public readonly workbenchRuntime: pulumi.Output<outputs.colab.NotebookExecutionWorkbenchRuntime | undefined>;
 
     /**
      * Create a NotebookExecution resource with the given unique name, arguments, and options.
@@ -473,6 +635,7 @@ export class NotebookExecution extends pulumi.CustomResource {
             resourceInputs["notebookRuntimeTemplateResourceName"] = state?.notebookRuntimeTemplateResourceName;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceAccount"] = state?.serviceAccount;
+            resourceInputs["workbenchRuntime"] = state?.workbenchRuntime;
         } else {
             const args = argsOrState as NotebookExecutionArgs | undefined;
             if (args?.displayName === undefined && !opts.urn) {
@@ -498,6 +661,7 @@ export class NotebookExecution extends pulumi.CustomResource {
             resourceInputs["notebookRuntimeTemplateResourceName"] = args?.notebookRuntimeTemplateResourceName;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceAccount"] = args?.serviceAccount;
+            resourceInputs["workbenchRuntime"] = args?.workbenchRuntime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(NotebookExecution.__pulumiType, name, resourceInputs, opts);
@@ -574,6 +738,11 @@ export interface NotebookExecutionState {
      * The service account to run the execution as.
      */
     serviceAccount?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     */
+    workbenchRuntime?: pulumi.Input<inputs.colab.NotebookExecutionWorkbenchRuntime | undefined>;
 }
 
 /**
@@ -646,4 +815,9 @@ export interface NotebookExecutionArgs {
      * The service account to run the execution as.
      */
     serviceAccount?: pulumi.Input<string | undefined>;
+    /**
+     * Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     */
+    workbenchRuntime?: pulumi.Input<inputs.colab.NotebookExecutionWorkbenchRuntime | undefined>;
 }

@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
 //
 // * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
-// * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
-// * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+// * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the workloadidentitypool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the workloadidentitypool are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -24,7 +24,7 @@ import (
 //
 // > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -254,8 +254,8 @@ import (
 // Three different resources help you manage your IAM policy for Cloud IAM WorkloadIdentityPool. Each of these resources serves a different use case:
 //
 // * `iam.WorkloadIdentityPoolIamPolicy`: Authoritative. Sets the IAM policy for the workloadidentitypool and replaces any existing policy already attached.
-// * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the workloadidentitypool are preserved.
-// * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the workloadidentitypool are preserved.
+// * `iam.WorkloadIdentityPoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the workloadidentitypool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `iam.WorkloadIdentityPoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the workloadidentitypool are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -263,7 +263,7 @@ import (
 //
 // > **Note:** `iam.WorkloadIdentityPoolIamPolicy` **cannot** be used in conjunction with `iam.WorkloadIdentityPoolIamBinding` and `iam.WorkloadIdentityPoolIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `iam.WorkloadIdentityPoolIamBinding` resources **can be** used in conjunction with `iam.WorkloadIdentityPoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -539,7 +539,7 @@ type WorkloadIdentityPoolIamBinding struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iam.WorkloadIdentityPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -607,7 +607,7 @@ type workloadIdentityPoolIamBindingState struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iam.WorkloadIdentityPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -637,7 +637,7 @@ type WorkloadIdentityPoolIamBindingState struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iam.WorkloadIdentityPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -669,7 +669,7 @@ type workloadIdentityPoolIamBindingArgs struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iam.WorkloadIdentityPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -698,7 +698,7 @@ type WorkloadIdentityPoolIamBindingArgs struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iam.WorkloadIdentityPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -828,7 +828,7 @@ func (o WorkloadIdentityPoolIamBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `iam.WorkloadIdentityPoolIamBinding` can be used per role. Note that custom roles must be of the format
+// `iam.WorkloadIdentityPoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o WorkloadIdentityPoolIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

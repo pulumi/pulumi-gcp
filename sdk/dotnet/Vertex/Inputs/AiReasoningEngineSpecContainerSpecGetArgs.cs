@@ -20,6 +20,12 @@ namespace Pulumi.Gcp.Vertex.Inputs
         [Input("imageUri", required: true)]
         public Input<string> ImageUri { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
         public AiReasoningEngineSpecContainerSpecGetArgs()
         {
         }

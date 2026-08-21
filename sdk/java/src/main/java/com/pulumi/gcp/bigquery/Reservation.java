@@ -16,6 +16,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -65,6 +66,7 @@ import javax.annotation.Nullable;
  *             .autoscale(ReservationAutoscaleArgs.builder()
  *                 .maxSlots(100)
  *                 .build())
+ *             .labels(Map.of("environment", "production"))
  *             .build());
  * 
  *     }
@@ -160,6 +162,20 @@ public class Reservation extends com.pulumi.resources.CustomResource {
         return this.edition;
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
@@ -176,6 +192,28 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> ignoreIdleSlots() {
         return Codegen.optional(this.ignoreIdleSlots);
+    }
+    /**
+     * The labels associated with this reservation. You can use these to
+     * organize and group your reservations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return The labels associated with this reservation. You can use these to
+     * organize and group your reservations.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The geographic location where the transfer config should reside.
@@ -334,6 +372,22 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * The Disaster Recovery(DR) replication status of the reservation. This is only available for
@@ -531,6 +585,10 @@ public class Reservation extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

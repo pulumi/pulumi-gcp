@@ -1120,6 +1120,95 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Sandbox Templates
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         LaunchStage = "ALPHA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     SandboxLauncher = true,
+    ///                     VolumeMounts = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+    ///                         {
+    ///                             Name = "empty-dir-volume",
+    ///                             MountPath = "/mnt",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Sandboxes = new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesArgs
+    ///             {
+    ///                 Templates = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesTemplateArgs
+    ///                     {
+    ///                         Name = "hello",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Commands = new[]
+    ///                         {
+    ///                             "/bin/sh",
+    ///                         },
+    ///                         Args = new[]
+    ///                         {
+    ///                             "-c",
+    ///                             "echo hello",
+    ///                         },
+    ///                         Envs = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesTemplateEnvArgs
+    ///                             {
+    ///                                 Name = "PORT",
+    ///                                 Value = "9000",
+    ///                             },
+    ///                         },
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRunV2.Inputs.ServiceTemplateSandboxesTemplateVolumeMountArgs
+    ///                             {
+    ///                                 Name = "empty-dir-volume",
+    ///                                 MountPath = "/mnt",
+    ///                                 SubPath = "/home/user",
+    ///                             },
+    ///                         },
+    ///                         WorkingDir = "/mnt/app",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Volumes = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+    ///                 {
+    ///                     Name = "empty-dir-volume",
+    ///                     EmptyDir = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeEmptyDirArgs
+    ///                     {
+    ///                         Medium = "MEMORY",
+    ///                         SizeLimit = "256Mi",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

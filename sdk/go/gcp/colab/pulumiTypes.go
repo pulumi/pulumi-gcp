@@ -23,6 +23,9 @@ type NotebookExecutionCustomEnvironmentSpec struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	PersistentDiskSpec *NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec `pulumi:"persistentDiskSpec"`
+	// Shielded VM configuration.
+	// Structure is documented below.
+	ShieldedInstanceConfig *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 }
 
 // NotebookExecutionCustomEnvironmentSpecInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecArgs and NotebookExecutionCustomEnvironmentSpecOutput values.
@@ -46,6 +49,9 @@ type NotebookExecutionCustomEnvironmentSpecArgs struct {
 	// The configuration for the data disk of the runtime.
 	// Structure is documented below.
 	PersistentDiskSpec NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput `pulumi:"persistentDiskSpec"`
+	// Shielded VM configuration.
+	// Structure is documented below.
+	ShieldedInstanceConfig NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 }
 
 func (NotebookExecutionCustomEnvironmentSpecArgs) ElementType() reflect.Type {
@@ -149,6 +155,14 @@ func (o NotebookExecutionCustomEnvironmentSpecOutput) PersistentDiskSpec() Noteb
 	}).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
 }
 
+// Shielded VM configuration.
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecOutput) ShieldedInstanceConfig() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig {
+		return v.ShieldedInstanceConfig
+	}).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput)
+}
+
 type NotebookExecutionCustomEnvironmentSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (NotebookExecutionCustomEnvironmentSpecPtrOutput) ElementType() reflect.Type {
@@ -204,6 +218,17 @@ func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) PersistentDiskSpec() No
 		}
 		return v.PersistentDiskSpec
 	}).(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput)
+}
+
+// Shielded VM configuration.
+// Structure is documented below.
+func (o NotebookExecutionCustomEnvironmentSpecPtrOutput) ShieldedInstanceConfig() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpec) *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ShieldedInstanceConfig
+	}).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput)
 }
 
 type NotebookExecutionCustomEnvironmentSpecMachineSpec struct {
@@ -712,6 +737,183 @@ func (o NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput) DiskT
 	}).(pulumi.StringPtrOutput)
 }
 
+type NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig struct {
+	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled. Enabled by default.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs and NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigInput` via:
+//
+//	NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{...}
+type NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput
+	ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput
+}
+
+type NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs struct {
+	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled. Enabled by default.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput)
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput).ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrInput is an input type that accepts NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs, NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtr and NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrInput` via:
+//
+//	        NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput
+	ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput
+}
+
+type notebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrType NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs
+
+func NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtr(v *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrInput {
+	return (*notebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrType)(v)
+}
+
+func (*notebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrType) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return i.ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrType) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return o.ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig {
+		return &v
+	}).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *bool {
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled. Enabled by default.
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) ToNotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) Elem() NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig
+		return ret
+	}).(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled. Enabled by default.
+func (o NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
 type NotebookExecutionDataformRepositorySource struct {
 	// The commit SHA to read repository with. If unset, the file will be read at HEAD.
 	CommitSha *string `pulumi:"commitSha"`
@@ -1158,6 +1360,322 @@ func (o NotebookExecutionGcsNotebookSourcePtrOutput) Uri() pulumi.StringPtrOutpu
 			return nil
 		}
 		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntime struct {
+	// Custom Compute Engine VM image for the Workbench instance.
+	// Structure is documented below.
+	VmImage NotebookExecutionWorkbenchRuntimeVmImage `pulumi:"vmImage"`
+}
+
+// NotebookExecutionWorkbenchRuntimeInput is an input type that accepts NotebookExecutionWorkbenchRuntimeArgs and NotebookExecutionWorkbenchRuntimeOutput values.
+// You can construct a concrete instance of `NotebookExecutionWorkbenchRuntimeInput` via:
+//
+//	NotebookExecutionWorkbenchRuntimeArgs{...}
+type NotebookExecutionWorkbenchRuntimeInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionWorkbenchRuntimeOutput() NotebookExecutionWorkbenchRuntimeOutput
+	ToNotebookExecutionWorkbenchRuntimeOutputWithContext(context.Context) NotebookExecutionWorkbenchRuntimeOutput
+}
+
+type NotebookExecutionWorkbenchRuntimeArgs struct {
+	// Custom Compute Engine VM image for the Workbench instance.
+	// Structure is documented below.
+	VmImage NotebookExecutionWorkbenchRuntimeVmImageInput `pulumi:"vmImage"`
+}
+
+func (NotebookExecutionWorkbenchRuntimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionWorkbenchRuntime)(nil)).Elem()
+}
+
+func (i NotebookExecutionWorkbenchRuntimeArgs) ToNotebookExecutionWorkbenchRuntimeOutput() NotebookExecutionWorkbenchRuntimeOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionWorkbenchRuntimeArgs) ToNotebookExecutionWorkbenchRuntimeOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeOutput)
+}
+
+func (i NotebookExecutionWorkbenchRuntimeArgs) ToNotebookExecutionWorkbenchRuntimePtrOutput() NotebookExecutionWorkbenchRuntimePtrOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionWorkbenchRuntimeArgs) ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeOutput).ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionWorkbenchRuntimePtrInput is an input type that accepts NotebookExecutionWorkbenchRuntimeArgs, NotebookExecutionWorkbenchRuntimePtr and NotebookExecutionWorkbenchRuntimePtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionWorkbenchRuntimePtrInput` via:
+//
+//	        NotebookExecutionWorkbenchRuntimeArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionWorkbenchRuntimePtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionWorkbenchRuntimePtrOutput() NotebookExecutionWorkbenchRuntimePtrOutput
+	ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(context.Context) NotebookExecutionWorkbenchRuntimePtrOutput
+}
+
+type notebookExecutionWorkbenchRuntimePtrType NotebookExecutionWorkbenchRuntimeArgs
+
+func NotebookExecutionWorkbenchRuntimePtr(v *NotebookExecutionWorkbenchRuntimeArgs) NotebookExecutionWorkbenchRuntimePtrInput {
+	return (*notebookExecutionWorkbenchRuntimePtrType)(v)
+}
+
+func (*notebookExecutionWorkbenchRuntimePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionWorkbenchRuntime)(nil)).Elem()
+}
+
+func (i *notebookExecutionWorkbenchRuntimePtrType) ToNotebookExecutionWorkbenchRuntimePtrOutput() NotebookExecutionWorkbenchRuntimePtrOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionWorkbenchRuntimePtrType) ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimePtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionWorkbenchRuntimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionWorkbenchRuntime)(nil)).Elem()
+}
+
+func (o NotebookExecutionWorkbenchRuntimeOutput) ToNotebookExecutionWorkbenchRuntimeOutput() NotebookExecutionWorkbenchRuntimeOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeOutput) ToNotebookExecutionWorkbenchRuntimeOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeOutput) ToNotebookExecutionWorkbenchRuntimePtrOutput() NotebookExecutionWorkbenchRuntimePtrOutput {
+	return o.ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionWorkbenchRuntimeOutput) ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionWorkbenchRuntime) *NotebookExecutionWorkbenchRuntime {
+		return &v
+	}).(NotebookExecutionWorkbenchRuntimePtrOutput)
+}
+
+// Custom Compute Engine VM image for the Workbench instance.
+// Structure is documented below.
+func (o NotebookExecutionWorkbenchRuntimeOutput) VmImage() NotebookExecutionWorkbenchRuntimeVmImageOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntime) NotebookExecutionWorkbenchRuntimeVmImage { return v.VmImage }).(NotebookExecutionWorkbenchRuntimeVmImageOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimePtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionWorkbenchRuntimePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionWorkbenchRuntime)(nil)).Elem()
+}
+
+func (o NotebookExecutionWorkbenchRuntimePtrOutput) ToNotebookExecutionWorkbenchRuntimePtrOutput() NotebookExecutionWorkbenchRuntimePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimePtrOutput) ToNotebookExecutionWorkbenchRuntimePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimePtrOutput) Elem() NotebookExecutionWorkbenchRuntimeOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntime) NotebookExecutionWorkbenchRuntime {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionWorkbenchRuntime
+		return ret
+	}).(NotebookExecutionWorkbenchRuntimeOutput)
+}
+
+// Custom Compute Engine VM image for the Workbench instance.
+// Structure is documented below.
+func (o NotebookExecutionWorkbenchRuntimePtrOutput) VmImage() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntime) *NotebookExecutionWorkbenchRuntimeVmImage {
+		if v == nil {
+			return nil
+		}
+		return &v.VmImage
+	}).(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeVmImage struct {
+	// Use this VM image family to find the image; the newest image in this family will be used.
+	Family *string `pulumi:"family"`
+	// Use VM image name to find the image.
+	Name *string `pulumi:"name"`
+	// The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+	Project *string `pulumi:"project"`
+}
+
+// NotebookExecutionWorkbenchRuntimeVmImageInput is an input type that accepts NotebookExecutionWorkbenchRuntimeVmImageArgs and NotebookExecutionWorkbenchRuntimeVmImageOutput values.
+// You can construct a concrete instance of `NotebookExecutionWorkbenchRuntimeVmImageInput` via:
+//
+//	NotebookExecutionWorkbenchRuntimeVmImageArgs{...}
+type NotebookExecutionWorkbenchRuntimeVmImageInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionWorkbenchRuntimeVmImageOutput() NotebookExecutionWorkbenchRuntimeVmImageOutput
+	ToNotebookExecutionWorkbenchRuntimeVmImageOutputWithContext(context.Context) NotebookExecutionWorkbenchRuntimeVmImageOutput
+}
+
+type NotebookExecutionWorkbenchRuntimeVmImageArgs struct {
+	// Use this VM image family to find the image; the newest image in this family will be used.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// Use VM image name to find the image.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (NotebookExecutionWorkbenchRuntimeVmImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeVmImage)(nil)).Elem()
+}
+
+func (i NotebookExecutionWorkbenchRuntimeVmImageArgs) ToNotebookExecutionWorkbenchRuntimeVmImageOutput() NotebookExecutionWorkbenchRuntimeVmImageOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeVmImageOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionWorkbenchRuntimeVmImageArgs) ToNotebookExecutionWorkbenchRuntimeVmImageOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeVmImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeVmImageOutput)
+}
+
+func (i NotebookExecutionWorkbenchRuntimeVmImageArgs) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutput() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(context.Background())
+}
+
+func (i NotebookExecutionWorkbenchRuntimeVmImageArgs) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeVmImageOutput).ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(ctx)
+}
+
+// NotebookExecutionWorkbenchRuntimeVmImagePtrInput is an input type that accepts NotebookExecutionWorkbenchRuntimeVmImageArgs, NotebookExecutionWorkbenchRuntimeVmImagePtr and NotebookExecutionWorkbenchRuntimeVmImagePtrOutput values.
+// You can construct a concrete instance of `NotebookExecutionWorkbenchRuntimeVmImagePtrInput` via:
+//
+//	        NotebookExecutionWorkbenchRuntimeVmImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type NotebookExecutionWorkbenchRuntimeVmImagePtrInput interface {
+	pulumi.Input
+
+	ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutput() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput
+	ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(context.Context) NotebookExecutionWorkbenchRuntimeVmImagePtrOutput
+}
+
+type notebookExecutionWorkbenchRuntimeVmImagePtrType NotebookExecutionWorkbenchRuntimeVmImageArgs
+
+func NotebookExecutionWorkbenchRuntimeVmImagePtr(v *NotebookExecutionWorkbenchRuntimeVmImageArgs) NotebookExecutionWorkbenchRuntimeVmImagePtrInput {
+	return (*notebookExecutionWorkbenchRuntimeVmImagePtrType)(v)
+}
+
+func (*notebookExecutionWorkbenchRuntimeVmImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionWorkbenchRuntimeVmImage)(nil)).Elem()
+}
+
+func (i *notebookExecutionWorkbenchRuntimeVmImagePtrType) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutput() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return i.ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(context.Background())
+}
+
+func (i *notebookExecutionWorkbenchRuntimeVmImagePtrType) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeVmImageOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionWorkbenchRuntimeVmImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeVmImage)(nil)).Elem()
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) ToNotebookExecutionWorkbenchRuntimeVmImageOutput() NotebookExecutionWorkbenchRuntimeVmImageOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) ToNotebookExecutionWorkbenchRuntimeVmImageOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeVmImageOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutput() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return o.ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(context.Background())
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotebookExecutionWorkbenchRuntimeVmImage) *NotebookExecutionWorkbenchRuntimeVmImage {
+		return &v
+	}).(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput)
+}
+
+// Use this VM image family to find the image; the newest image in this family will be used.
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntimeVmImage) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// Use VM image name to find the image.
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntimeVmImage) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+func (o NotebookExecutionWorkbenchRuntimeVmImageOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotebookExecutionWorkbenchRuntimeVmImage) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type NotebookExecutionWorkbenchRuntimeVmImagePtrOutput struct{ *pulumi.OutputState }
+
+func (NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotebookExecutionWorkbenchRuntimeVmImage)(nil)).Elem()
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutput() NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) ToNotebookExecutionWorkbenchRuntimeVmImagePtrOutputWithContext(ctx context.Context) NotebookExecutionWorkbenchRuntimeVmImagePtrOutput {
+	return o
+}
+
+func (o NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) Elem() NotebookExecutionWorkbenchRuntimeVmImageOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeVmImage) NotebookExecutionWorkbenchRuntimeVmImage {
+		if v != nil {
+			return *v
+		}
+		var ret NotebookExecutionWorkbenchRuntimeVmImage
+		return ret
+	}).(NotebookExecutionWorkbenchRuntimeVmImageOutput)
+}
+
+// Use this VM image family to find the image; the newest image in this family will be used.
+func (o NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeVmImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use VM image name to find the image.
+func (o NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeVmImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+func (o NotebookExecutionWorkbenchRuntimeVmImagePtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotebookExecutionWorkbenchRuntimeVmImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7096,12 +7614,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrInput)(nil)).Elem(), NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDataformRepositorySourceInput)(nil)).Elem(), NotebookExecutionDataformRepositorySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDataformRepositorySourcePtrInput)(nil)).Elem(), NotebookExecutionDataformRepositorySourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDirectNotebookSourceInput)(nil)).Elem(), NotebookExecutionDirectNotebookSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionDirectNotebookSourcePtrInput)(nil)).Elem(), NotebookExecutionDirectNotebookSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionGcsNotebookSourceInput)(nil)).Elem(), NotebookExecutionGcsNotebookSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionGcsNotebookSourcePtrInput)(nil)).Elem(), NotebookExecutionGcsNotebookSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimePtrInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeVmImageInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeVmImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotebookExecutionWorkbenchRuntimeVmImagePtrInput)(nil)).Elem(), NotebookExecutionWorkbenchRuntimeVmImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeNotebookRuntimeTemplateRefInput)(nil)).Elem(), RuntimeNotebookRuntimeTemplateRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeNotebookRuntimeTemplateRefPtrInput)(nil)).Elem(), RuntimeNotebookRuntimeTemplateRefArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeTemplateDataPersistentDiskSpecInput)(nil)).Elem(), RuntimeTemplateDataPersistentDiskSpecArgs{})
@@ -7176,12 +7700,18 @@ func init() {
 	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecNetworkSpecPtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecPtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDataformRepositorySourceOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDataformRepositorySourcePtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDirectNotebookSourceOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionDirectNotebookSourcePtrOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionGcsNotebookSourceOutput{})
 	pulumi.RegisterOutputType(NotebookExecutionGcsNotebookSourcePtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimePtrOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeVmImageOutput{})
+	pulumi.RegisterOutputType(NotebookExecutionWorkbenchRuntimeVmImagePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeNotebookRuntimeTemplateRefOutput{})
 	pulumi.RegisterOutputType(RuntimeNotebookRuntimeTemplateRefPtrOutput{})
 	pulumi.RegisterOutputType(RuntimeTemplateDataPersistentDiskSpecOutput{})

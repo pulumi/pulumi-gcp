@@ -483,6 +483,10 @@ class CertificateSelfManaged(dict):
             suggest = "pem_certificate"
         elif key == "pemPrivateKey":
             suggest = "pem_private_key"
+        elif key == "pemPrivateKeyWo":
+            suggest = "pem_private_key_wo"
+        elif key == "pemPrivateKeyWoVersion":
+            suggest = "pem_private_key_wo_version"
         elif key == "privateKeyPem":
             suggest = "private_key_pem"
 
@@ -501,6 +505,8 @@ class CertificateSelfManaged(dict):
                  certificate_pem: Optional[_builtins.str] = None,
                  pem_certificate: Optional[_builtins.str] = None,
                  pem_private_key: Optional[_builtins.str] = None,
+                 pem_private_key_wo: Optional[_builtins.str] = None,
+                 pem_private_key_wo_version: Optional[_builtins.str] = None,
                  private_key_pem: Optional[_builtins.str] = None):
         """
         :param _builtins.str certificate_pem: (Optional, Deprecated)
@@ -514,6 +520,13 @@ class CertificateSelfManaged(dict):
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param _builtins.str pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param _builtins.str pem_private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The private key of the leaf certificate in PEM-encoded form.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `pem_private_key` or `pem_private_key_wo` can only be set.
+        :param _builtins.str pem_private_key_wo_version: Triggers update of `pem_private_key_wo` write-only. Increment this value when an update to `pem_private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param _builtins.str private_key_pem: (Optional, Deprecated)
                The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -526,6 +539,10 @@ class CertificateSelfManaged(dict):
             pulumi.set(__self__, "pem_certificate", pem_certificate)
         if pem_private_key is not None:
             pulumi.set(__self__, "pem_private_key", pem_private_key)
+        if pem_private_key_wo is not None:
+            pulumi.set(__self__, "pem_private_key_wo", pem_private_key_wo)
+        if pem_private_key_wo_version is not None:
+            pulumi.set(__self__, "pem_private_key_wo_version", pem_private_key_wo_version)
         if private_key_pem is not None:
             pulumi.set(__self__, "private_key_pem", private_key_pem)
 
@@ -561,6 +578,27 @@ class CertificateSelfManaged(dict):
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
         return pulumi.get(self, "pem_private_key")
+
+    @_builtins.property
+    @pulumi.getter(name="pemPrivateKeyWo")
+    def pem_private_key_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The private key of the leaf certificate in PEM-encoded form.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `pem_private_key` or `pem_private_key_wo` can only be set.
+        """
+        return pulumi.get(self, "pem_private_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="pemPrivateKeyWoVersion")
+    def pem_private_key_wo_version(self) -> Optional[_builtins.str]:
+        """
+        Triggers update of `pem_private_key_wo` write-only. Increment this value when an update to `pem_private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "pem_private_key_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="privateKeyPem")

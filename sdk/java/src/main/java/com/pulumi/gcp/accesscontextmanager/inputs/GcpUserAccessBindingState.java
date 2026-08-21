@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingPrincipalArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingScopedAccessSettingArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingSessionSettingsArgs;
 import java.lang.String;
@@ -59,14 +60,43 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * 
+     */
+    @Import(name="dryRunAccessLevels")
+    private @Nullable Output<String> dryRunAccessLevels;
+
+    /**
+     * @return Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * 
+     */
+    public Optional<Output<String>> dryRunAccessLevels() {
+        return Optional.ofNullable(this.dryRunAccessLevels);
+    }
+
+    /**
+     * Immutable. Google Group id whose members are subject to this binding&#39;s restrictions.
+     * See &#34;id&#34; in the Google Workspace Directory API&#39;s Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: &#34;01d520gv4vjcrht&#34;
      * 
      */
     @Import(name="groupKey")
     private @Nullable Output<String> groupKey;
 
     /**
-     * @return Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
+     * @return Immutable. Google Group id whose members are subject to this binding&#39;s restrictions.
+     * See &#34;id&#34; in the Google Workspace Directory API&#39;s Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: &#34;01d520gv4vjcrht&#34;
      * 
      */
     public Optional<Output<String>> groupKey() {
@@ -101,6 +131,23 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> organizationId() {
         return Optional.ofNullable(this.organizationId);
+    }
+
+    /**
+     * Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="principal")
+    private @Nullable Output<GcpUserAccessBindingPrincipalArgs> principal;
+
+    /**
+     * @return Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GcpUserAccessBindingPrincipalArgs>> principal() {
+        return Optional.ofNullable(this.principal);
     }
 
     /**
@@ -142,9 +189,11 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
     private GcpUserAccessBindingState(GcpUserAccessBindingState $) {
         this.accessLevels = $.accessLevels;
         this.deletionPolicy = $.deletionPolicy;
+        this.dryRunAccessLevels = $.dryRunAccessLevels;
         this.groupKey = $.groupKey;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.principal = $.principal;
         this.scopedAccessSettings = $.scopedAccessSettings;
         this.sessionSettings = $.sessionSettings;
     }
@@ -220,7 +269,38 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupKey Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
+         * @param dryRunAccessLevels Optional. Dry run access level that will be evaluated but will not be enforced. The
+         * access denial based on dry run policy will be logged. Only one access
+         * level is supported, not multiple. This list must have exactly one element.
+         * Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRunAccessLevels(@Nullable Output<String> dryRunAccessLevels) {
+            $.dryRunAccessLevels = dryRunAccessLevels;
+            return this;
+        }
+
+        /**
+         * @param dryRunAccessLevels Optional. Dry run access level that will be evaluated but will not be enforced. The
+         * access denial based on dry run policy will be logged. Only one access
+         * level is supported, not multiple. This list must have exactly one element.
+         * Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRunAccessLevels(String dryRunAccessLevels) {
+            return dryRunAccessLevels(Output.of(dryRunAccessLevels));
+        }
+
+        /**
+         * @param groupKey Immutable. Google Group id whose members are subject to this binding&#39;s restrictions.
+         * See &#34;id&#34; in the Google Workspace Directory API&#39;s Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+         * If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group.
+         * This field does not accept group email addresses or aliases.
+         * Example: &#34;01d520gv4vjcrht&#34;
          * 
          * @return builder
          * 
@@ -231,7 +311,11 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param groupKey Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
+         * @param groupKey Immutable. Google Group id whose members are subject to this binding&#39;s restrictions.
+         * See &#34;id&#34; in the Google Workspace Directory API&#39;s Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+         * If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group.
+         * This field does not accept group email addresses or aliases.
+         * Example: &#34;01d520gv4vjcrht&#34;
          * 
          * @return builder
          * 
@@ -280,6 +364,29 @@ public final class GcpUserAccessBindingState extends com.pulumi.resources.Resour
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param principal Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder principal(@Nullable Output<GcpUserAccessBindingPrincipalArgs> principal) {
+            $.principal = principal;
+            return this;
+        }
+
+        /**
+         * @param principal Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder principal(GcpUserAccessBindingPrincipalArgs principal) {
+            return principal(Output.of(principal));
         }
 
         /**

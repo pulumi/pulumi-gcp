@@ -43,7 +43,7 @@ class SubnetworkIAMBindingArgs:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
                * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+               `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] subnetwork: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input['SubnetworkIAMBindingConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -93,7 +93,7 @@ class SubnetworkIAMBindingArgs:
     def role(self) -> pulumi.Input[_builtins.str]:
         """
         The role that should be applied. Only one
-        `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+        `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -191,7 +191,7 @@ class _SubnetworkIAMBindingState:
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+               `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] subnetwork: Used to find the parent resource to bind the IAM policy to
         """
@@ -291,7 +291,7 @@ class _SubnetworkIAMBindingState:
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
-        `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+        `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -330,8 +330,8 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 
         * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-        * `compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+        * `compute.SubnetworkIAMBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the subnetwork are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the subnetwork are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -339,7 +339,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
         > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -455,8 +455,8 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 
         * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-        * `compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+        * `compute.SubnetworkIAMBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the subnetwork are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the subnetwork are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -464,7 +464,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
         > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -626,7 +626,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+               `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] subnetwork: Used to find the parent resource to bind the IAM policy to
         """
@@ -640,8 +640,8 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 
         * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-        * `compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+        * `compute.SubnetworkIAMBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the subnetwork are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the subnetwork are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -649,7 +649,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
         > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -765,8 +765,8 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 
         * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-        * `compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+        * `compute.SubnetworkIAMBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the subnetwork are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the subnetwork are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -774,7 +774,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
 
         > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -1002,7 +1002,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
                the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
                region is specified, it is taken from the provider configuration.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+               `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] subnetwork: Used to find the parent resource to bind the IAM policy to
         """
@@ -1080,7 +1080,7 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
     def role(self) -> pulumi.Output[_builtins.str]:
         """
         The role that should be applied. Only one
-        `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+        `compute.SubnetworkIAMBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

@@ -44,7 +44,7 @@ class SecurityGatewayApplicationIamMemberArgs:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
                * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input['SecurityGatewayApplicationIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -101,7 +101,7 @@ class SecurityGatewayApplicationIamMemberArgs:
     def role(self) -> pulumi.Input[_builtins.str]:
         """
         The role that should be applied. Only one
-        `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+        `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -181,7 +181,7 @@ class _SecurityGatewayApplicationIamMemberState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
         """
@@ -278,7 +278,7 @@ class _SecurityGatewayApplicationIamMemberState:
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
-        `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+        `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -317,8 +317,8 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for BeyondCorp SecurityGatewayApplication. Each of these resources serves a different use case:
 
         * `beyondcorp.SecurityGatewayApplicationIamPolicy`: Authoritative. Sets the IAM policy for the securitygatewayapplication and replaces any existing policy already attached.
-        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the securitygatewayapplication are preserved.
-        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the securitygatewayapplication are preserved.
+        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the securitygatewayapplication are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the securitygatewayapplication are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -326,7 +326,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
 
         > **Note:** `beyondcorp.SecurityGatewayApplicationIamPolicy` **cannot** be used in conjunction with `beyondcorp.SecurityGatewayApplicationIamBinding` and `beyondcorp.SecurityGatewayApplicationIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -442,8 +442,8 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for BeyondCorp SecurityGatewayApplication. Each of these resources serves a different use case:
 
         * `beyondcorp.SecurityGatewayApplicationIamPolicy`: Authoritative. Sets the IAM policy for the securitygatewayapplication and replaces any existing policy already attached.
-        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the securitygatewayapplication are preserved.
-        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the securitygatewayapplication are preserved.
+        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the securitygatewayapplication are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the securitygatewayapplication are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -451,7 +451,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
 
         > **Note:** `beyondcorp.SecurityGatewayApplicationIamPolicy` **cannot** be used in conjunction with `beyondcorp.SecurityGatewayApplicationIamBinding` and `beyondcorp.SecurityGatewayApplicationIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -610,7 +610,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
         """
@@ -624,8 +624,8 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for BeyondCorp SecurityGatewayApplication. Each of these resources serves a different use case:
 
         * `beyondcorp.SecurityGatewayApplicationIamPolicy`: Authoritative. Sets the IAM policy for the securitygatewayapplication and replaces any existing policy already attached.
-        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the securitygatewayapplication are preserved.
-        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the securitygatewayapplication are preserved.
+        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the securitygatewayapplication are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the securitygatewayapplication are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -633,7 +633,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
 
         > **Note:** `beyondcorp.SecurityGatewayApplicationIamPolicy` **cannot** be used in conjunction with `beyondcorp.SecurityGatewayApplicationIamBinding` and `beyondcorp.SecurityGatewayApplicationIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -749,8 +749,8 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for BeyondCorp SecurityGatewayApplication. Each of these resources serves a different use case:
 
         * `beyondcorp.SecurityGatewayApplicationIamPolicy`: Authoritative. Sets the IAM policy for the securitygatewayapplication and replaces any existing policy already attached.
-        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the securitygatewayapplication are preserved.
-        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the securitygatewayapplication are preserved.
+        * `beyondcorp.SecurityGatewayApplicationIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the securitygatewayapplication are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `beyondcorp.SecurityGatewayApplicationIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the securitygatewayapplication are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -758,7 +758,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
 
         > **Note:** `beyondcorp.SecurityGatewayApplicationIamPolicy` **cannot** be used in conjunction with `beyondcorp.SecurityGatewayApplicationIamBinding` and `beyondcorp.SecurityGatewayApplicationIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `beyondcorp.SecurityGatewayApplicationIamBinding` resources **can be** used in conjunction with `beyondcorp.SecurityGatewayApplicationIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -985,7 +985,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+               `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[_builtins.str] security_gateway_id: ID of the Security Gateway resource this belongs to. Used to find the parent resource to bind the IAM policy to
         """
@@ -1060,7 +1060,7 @@ class SecurityGatewayApplicationIamMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[_builtins.str]:
         """
         The role that should be applied. Only one
-        `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role. Note that custom roles must be of the format
+        `beyondcorp.SecurityGatewayApplicationIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

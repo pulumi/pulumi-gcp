@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
     public sealed class GcpUserAccessBindingScopedAccessSettingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+        /// Optional. Access settings for this scoped access settings. This field may be empty if `DryRunSettings` is set.
         /// Structure is documented below.
         /// </summary>
         [Input("activeSettings")]
         public Input<Inputs.GcpUserAccessBindingScopedAccessSettingActiveSettingsGetArgs>? ActiveSettings { get; set; }
 
         /// <summary>
-        /// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+        /// Optional. Dry-run access settings for this scoped access settings. This field may be empty if `ActiveSettings` is set. Cannot contain session settings.
         /// Structure is documented below.
         /// </summary>
         [Input("dryRunSettings")]

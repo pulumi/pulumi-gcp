@@ -208,8 +208,8 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine InstantSnapshot. Each of these resources serves a different use case:
 
         * `compute.InstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the instantsnapshot and replaces any existing policy already attached.
-        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instantsnapshot are preserved.
-        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instantsnapshot are preserved.
+        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the instantsnapshot are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the instantsnapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -217,7 +217,7 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.InstantSnapshotIamPolicy` **cannot** be used in conjunction with `compute.InstantSnapshotIamBinding` and `compute.InstantSnapshotIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -333,8 +333,8 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine InstantSnapshot. Each of these resources serves a different use case:
 
         * `compute.InstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the instantsnapshot and replaces any existing policy already attached.
-        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instantsnapshot are preserved.
-        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instantsnapshot are preserved.
+        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the instantsnapshot are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the instantsnapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -342,7 +342,7 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.InstantSnapshotIamPolicy` **cannot** be used in conjunction with `compute.InstantSnapshotIamBinding` and `compute.InstantSnapshotIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -502,8 +502,8 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine InstantSnapshot. Each of these resources serves a different use case:
 
         * `compute.InstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the instantsnapshot and replaces any existing policy already attached.
-        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instantsnapshot are preserved.
-        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instantsnapshot are preserved.
+        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the instantsnapshot are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the instantsnapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -511,7 +511,7 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.InstantSnapshotIamPolicy` **cannot** be used in conjunction with `compute.InstantSnapshotIamBinding` and `compute.InstantSnapshotIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -627,8 +627,8 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine InstantSnapshot. Each of these resources serves a different use case:
 
         * `compute.InstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the instantsnapshot and replaces any existing policy already attached.
-        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instantsnapshot are preserved.
-        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instantsnapshot are preserved.
+        * `compute.InstantSnapshotIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the instantsnapshot are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.InstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the instantsnapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -636,7 +636,7 @@ class InstantSnapshotIamPolicy(pulumi.CustomResource):
 
         > **Note:** `compute.InstantSnapshotIamPolicy` **cannot** be used in conjunction with `compute.InstantSnapshotIamBinding` and `compute.InstantSnapshotIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.InstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.InstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -68,12 +69,30 @@ public final class NotebookExecutionCustomEnvironmentSpecArgs extends com.pulumi
         return Optional.ofNullable(this.persistentDiskSpec);
     }
 
+    /**
+     * Shielded VM configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="shieldedInstanceConfig")
+    private @Nullable Output<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs> shieldedInstanceConfig;
+
+    /**
+     * @return Shielded VM configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs>> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
+
     private NotebookExecutionCustomEnvironmentSpecArgs() {}
 
     private NotebookExecutionCustomEnvironmentSpecArgs(NotebookExecutionCustomEnvironmentSpecArgs $) {
         this.machineSpec = $.machineSpec;
         this.networkSpec = $.networkSpec;
         this.persistentDiskSpec = $.persistentDiskSpec;
+        this.shieldedInstanceConfig = $.shieldedInstanceConfig;
     }
 
     public static Builder builder() {
@@ -161,6 +180,29 @@ public final class NotebookExecutionCustomEnvironmentSpecArgs extends com.pulumi
          */
         public Builder persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs persistentDiskSpec) {
             return persistentDiskSpec(Output.of(persistentDiskSpec));
+        }
+
+        /**
+         * @param shieldedInstanceConfig Shielded VM configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(@Nullable Output<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs> shieldedInstanceConfig) {
+            $.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param shieldedInstanceConfig Shielded VM configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shieldedInstanceConfig(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs shieldedInstanceConfig) {
+            return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
         }
 
         public NotebookExecutionCustomEnvironmentSpecArgs build() {

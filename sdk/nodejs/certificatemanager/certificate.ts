@@ -15,6 +15,9 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
  *
+ * > **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+ * Read more about Write-only Arguments.
+ *
  * ## Example Usage
  *
  * ### Certificate Manager Google Managed Certificate Dns
@@ -142,6 +145,36 @@ import * as utilities from "../utilities";
  *         pemPrivateKey: std.file({
  *             input: "test-fixtures/private-key.pem",
  *         }).then(invoke => invoke.result),
+ *     },
+ * });
+ * ```
+ * ### Certificate Manager Self Managed Certificate Write Only
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     name: "self-managed-cert",
+ *     description: "Global cert",
+ *     scope: "ALL_REGIONS",
+ *     selfManaged: {
+ *         pemCertificate: std.file({
+ *             input: "test-fixtures/cert.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKeyWo: std.file({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => invoke.result),
+ *         pemPrivateKeyWoVersion: output(Promise.all([std.filesha256({
+ *             input: "test-fixtures/private-key.pem",
+ *         }).then(invoke => std.parseint({
+ *             input: invoke.result,
+ *             base: 16,
+ *         })), std.pow({
+ *             base: 2,
+ *             exponent: 32,
+ *         })]).then(([invoke, invoke1]) => invoke.result % invoke1.result)).apply(x =>String(x)),
  *     },
  * });
  * ```

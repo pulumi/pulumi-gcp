@@ -10,8 +10,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Compute Engine RegionBackendBucket. Each of these resources serves a different use case:
  *
  * * `gcp.compute.RegionBackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendbucket and replaces any existing policy already attached.
- * * `gcp.compute.RegionBackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendbucket are preserved.
- * * `gcp.compute.RegionBackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendbucket are preserved.
+ * * `gcp.compute.RegionBackendBucketIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the regionbackendbucket are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.compute.RegionBackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the regionbackendbucket are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.compute.RegionBackendBucketIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendBucketIamBinding` and `gcp.compute.RegionBackendBucketIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.compute.RegionBackendBucketIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.compute.RegionBackendBucketIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendBucketIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -148,8 +148,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Compute Engine RegionBackendBucket. Each of these resources serves a different use case:
  *
  * * `gcp.compute.RegionBackendBucketIamPolicy`: Authoritative. Sets the IAM policy for the regionbackendbucket and replaces any existing policy already attached.
- * * `gcp.compute.RegionBackendBucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regionbackendbucket are preserved.
- * * `gcp.compute.RegionBackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regionbackendbucket are preserved.
+ * * `gcp.compute.RegionBackendBucketIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the regionbackendbucket are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.compute.RegionBackendBucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the regionbackendbucket are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  *
  * > **Note:** `gcp.compute.RegionBackendBucketIamPolicy` **cannot** be used in conjunction with `gcp.compute.RegionBackendBucketIamBinding` and `gcp.compute.RegionBackendBucketIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.compute.RegionBackendBucketIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendBucketIamMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.compute.RegionBackendBucketIamBinding` resources **can be** used in conjunction with `gcp.compute.RegionBackendBucketIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -378,7 +378,7 @@ export class RegionBackendBucketIamMember extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     declare public readonly role: pulumi.Output<string>;
@@ -470,7 +470,7 @@ export interface RegionBackendBucketIamMemberState {
     region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string | undefined>;
@@ -518,7 +518,7 @@ export interface RegionBackendBucketIamMemberArgs {
     region?: pulumi.Input<string | undefined>;
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

@@ -9,6 +9,7 @@ import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionDataformRepositorySourceArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
 import com.pulumi.gcp.colab.inputs.NotebookExecutionGcsNotebookSourceArgs;
+import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -249,6 +250,23 @@ public final class NotebookExecutionState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.serviceAccount);
     }
 
+    /**
+     * Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workbenchRuntime")
+    private @Nullable Output<NotebookExecutionWorkbenchRuntimeArgs> workbenchRuntime;
+
+    /**
+     * @return Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<NotebookExecutionWorkbenchRuntimeArgs>> workbenchRuntime() {
+        return Optional.ofNullable(this.workbenchRuntime);
+    }
+
     private NotebookExecutionState() {}
 
     private NotebookExecutionState(NotebookExecutionState $) {
@@ -266,6 +284,7 @@ public final class NotebookExecutionState extends com.pulumi.resources.ResourceA
         this.notebookRuntimeTemplateResourceName = $.notebookRuntimeTemplateResourceName;
         this.project = $.project;
         this.serviceAccount = $.serviceAccount;
+        this.workbenchRuntime = $.workbenchRuntime;
     }
 
     public static Builder builder() {
@@ -598,6 +617,29 @@ public final class NotebookExecutionState extends com.pulumi.resources.ResourceA
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param workbenchRuntime Configuration for a Workbench Instances-based environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workbenchRuntime(@Nullable Output<NotebookExecutionWorkbenchRuntimeArgs> workbenchRuntime) {
+            $.workbenchRuntime = workbenchRuntime;
+            return this;
+        }
+
+        /**
+         * @param workbenchRuntime Configuration for a Workbench Instances-based environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs workbenchRuntime) {
+            return workbenchRuntime(Output.of(workbenchRuntime));
         }
 
         public NotebookExecutionState build() {

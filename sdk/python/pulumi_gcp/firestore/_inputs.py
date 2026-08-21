@@ -19,6 +19,10 @@ __all__ = [
     'BackupScheduleDailyRecurrenceArgsDict',
     'BackupScheduleWeeklyRecurrenceArgs',
     'BackupScheduleWeeklyRecurrenceArgsDict',
+    'ChangeStreamCollectionGroupScopeArgs',
+    'ChangeStreamCollectionGroupScopeArgsDict',
+    'ChangeStreamDatabaseScopeArgs',
+    'ChangeStreamDatabaseScopeArgsDict',
     'DatabaseCmekConfigArgs',
     'DatabaseCmekConfigArgsDict',
     'FieldIndexConfigArgs',
@@ -84,6 +88,43 @@ class BackupScheduleWeeklyRecurrenceArgs:
     @day.setter
     def day(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "day", value)
+
+
+class ChangeStreamCollectionGroupScopeArgsDict(TypedDict):
+    collection_group_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the collection group to track.
+    """
+
+@pulumi.input_type
+class ChangeStreamCollectionGroupScopeArgs:
+    def __init__(__self__, *,
+                 collection_group_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] collection_group_id: The ID of the collection group to track.
+        """
+        pulumi.set(__self__, "collection_group_id", collection_group_id)
+
+    @_builtins.property
+    @pulumi.getter(name="collectionGroupId")
+    def collection_group_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the collection group to track.
+        """
+        return pulumi.get(self, "collection_group_id")
+
+    @collection_group_id.setter
+    def collection_group_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "collection_group_id", value)
+
+
+class ChangeStreamDatabaseScopeArgsDict(TypedDict):
+    pass
+
+@pulumi.input_type
+class ChangeStreamDatabaseScopeArgs:
+    def __init__(__self__):
+        pass
 
 
 class DatabaseCmekConfigArgsDict(TypedDict):

@@ -61,6 +61,8 @@ __all__ = [
     'AccessPolicyIamBindingConditionArgsDict',
     'AccessPolicyIamMemberConditionArgs',
     'AccessPolicyIamMemberConditionArgsDict',
+    'GcpUserAccessBindingPrincipalArgs',
+    'GcpUserAccessBindingPrincipalArgsDict',
     'GcpUserAccessBindingScopedAccessSettingArgs',
     'GcpUserAccessBindingScopedAccessSettingArgsDict',
     'GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs',
@@ -2220,15 +2222,76 @@ class AccessPolicyIamMemberConditionArgs:
         pulumi.set(self, "description", value)
 
 
+class GcpUserAccessBindingPrincipalArgsDict(TypedDict):
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Immutable. Service account email used to assign policies to a single service account.
+    If a service account is subject to multiple policies (e.g., if there is a policy for all
+    service accounts in a project and a policy for the service account), the closest (i.e.
+    the most specific) dry-run policy will be used for the dry-run functionality and the
+    closest policy will be used for the enforcement.
+    """
+    service_account_project_number: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+    """
+
+@pulumi.input_type
+class GcpUserAccessBindingPrincipalArgs:
+    def __init__(__self__, *,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_project_number: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] service_account: Immutable. Service account email used to assign policies to a single service account.
+               If a service account is subject to multiple policies (e.g., if there is a policy for all
+               service accounts in a project and a policy for the service account), the closest (i.e.
+               the most specific) dry-run policy will be used for the dry-run functionality and the
+               closest policy will be used for the enforcement.
+        :param pulumi.Input[_builtins.str] service_account_project_number: Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+        """
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if service_account_project_number is not None:
+            pulumi.set(__self__, "service_account_project_number", service_account_project_number)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. Service account email used to assign policies to a single service account.
+        If a service account is subject to multiple policies (e.g., if there is a policy for all
+        service accounts in a project and a policy for the service account), the closest (i.e.
+        the most specific) dry-run policy will be used for the dry-run functionality and the
+        closest policy will be used for the enforcement.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountProjectNumber")
+    def service_account_project_number(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+        """
+        return pulumi.get(self, "service_account_project_number")
+
+    @service_account_project_number.setter
+    def service_account_project_number(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account_project_number", value)
+
+
 class GcpUserAccessBindingScopedAccessSettingArgsDict(TypedDict):
     active_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingActiveSettingsArgsDict']]]
     """
-    Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+    Optional. Access settings for this scoped access settings. This field may be empty if `dry_run_settings` is set.
     Structure is documented below.
     """
     dry_run_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgsDict']]]
     """
-    Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+    Optional. Dry-run access settings for this scoped access settings. This field may be empty if `active_settings` is set. Cannot contain session settings.
     Structure is documented below.
     """
     scope: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeArgsDict']]]
@@ -2244,9 +2307,9 @@ class GcpUserAccessBindingScopedAccessSettingArgs:
                  dry_run_settings: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs']] = None,
                  scope: pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeArgs']] = None):
         """
-        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs'] active_settings: Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs'] active_settings: Optional. Access settings for this scoped access settings. This field may be empty if `dry_run_settings` is set.
                Structure is documented below.
-        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs'] dry_run_settings: Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+        :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs'] dry_run_settings: Optional. Dry-run access settings for this scoped access settings. This field may be empty if `active_settings` is set. Cannot contain session settings.
                Structure is documented below.
         :param pulumi.Input['GcpUserAccessBindingScopedAccessSettingScopeArgs'] scope: Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
                Structure is documented below.
@@ -2262,7 +2325,7 @@ class GcpUserAccessBindingScopedAccessSettingArgs:
     @pulumi.getter(name="activeSettings")
     def active_settings(self) -> pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs']]:
         """
-        Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+        Optional. Access settings for this scoped access settings. This field may be empty if `dry_run_settings` is set.
         Structure is documented below.
         """
         return pulumi.get(self, "active_settings")
@@ -2275,7 +2338,7 @@ class GcpUserAccessBindingScopedAccessSettingArgs:
     @pulumi.getter(name="dryRunSettings")
     def dry_run_settings(self) -> pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs']]:
         """
-        Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+        Optional. Dry-run access settings for this scoped access settings. This field may be empty if `active_settings` is set. Cannot contain session settings.
         Structure is documented below.
         """
         return pulumi.get(self, "dry_run_settings")
@@ -2358,10 +2421,12 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgsDi
     session_length: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+    If this field is set to zero, `session_length_enabled` must be set to false or left unset.
     """
     session_length_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+    If `session_length` is set to zero, this field must be false.
     """
     session_reauth_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2384,7 +2449,9 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs:
         """
         :param pulumi.Input[_builtins.str] max_inactivity: Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
         :param pulumi.Input[_builtins.str] session_length: Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+               If this field is set to zero, `session_length_enabled` must be set to false or left unset.
         :param pulumi.Input[_builtins.bool] session_length_enabled: Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+               If `session_length` is set to zero, this field must be false.
         :param pulumi.Input[_builtins.str] session_reauth_method: Optional. The session challenges proposed to users when the Google Cloud session length is up.
                Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
         :param pulumi.Input[_builtins.bool] use_oidc_max_age: Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
@@ -2417,6 +2484,7 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs:
     def session_length(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        If this field is set to zero, `session_length_enabled` must be set to false or left unset.
         """
         return pulumi.get(self, "session_length")
 
@@ -2429,6 +2497,7 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs:
     def session_length_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        If `session_length` is set to zero, this field must be false.
         """
         return pulumi.get(self, "session_length_enabled")
 
@@ -2612,10 +2681,12 @@ class GcpUserAccessBindingSessionSettingsArgsDict(TypedDict):
     session_length: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+    If this field is set to zero, `session_length_enabled` must be set to false or left unset.
     """
     session_length_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+    If `session_length` is set to zero, this field must be false.
     """
     session_reauth_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -2638,7 +2709,9 @@ class GcpUserAccessBindingSessionSettingsArgs:
         """
         :param pulumi.Input[_builtins.str] max_inactivity: Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
         :param pulumi.Input[_builtins.str] session_length: Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+               If this field is set to zero, `session_length_enabled` must be set to false or left unset.
         :param pulumi.Input[_builtins.bool] session_length_enabled: Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+               If `session_length` is set to zero, this field must be false.
         :param pulumi.Input[_builtins.str] session_reauth_method: Optional. The session challenges proposed to users when the Google Cloud session length is up.
                Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
         :param pulumi.Input[_builtins.bool] use_oidc_max_age: Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
@@ -2671,6 +2744,7 @@ class GcpUserAccessBindingSessionSettingsArgs:
     def session_length(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC max_age param.
+        If this field is set to zero, `session_length_enabled` must be set to false or left unset.
         """
         return pulumi.get(self, "session_length")
 
@@ -2683,6 +2757,7 @@ class GcpUserAccessBindingSessionSettingsArgs:
     def session_length_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        If `session_length` is set to zero, this field must be false.
         """
         return pulumi.get(self, "session_length_enabled")
 

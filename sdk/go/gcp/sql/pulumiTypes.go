@@ -6015,8 +6015,14 @@ func (o DatabaseInstanceSettingsPasswordValidationPolicyPtrOutput) ReuseInterval
 }
 
 type DatabaseInstanceSettingsPerformanceCaptureConfig struct {
+	// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	CpuUtilizationThresholdPercent *int `pulumi:"cpuUtilizationThresholdPercent"`
 	// Enable or disable the Performance Capture.
 	Enabled *bool `pulumi:"enabled"`
+	// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+	HistoryListLengthThresholdCount *int `pulumi:"historyListLengthThresholdCount"`
+	// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	MemoryUsageThresholdPercent *int `pulumi:"memoryUsageThresholdPercent"`
 	// The minimum number of consecutive readings above threshold that triggers instance state capture.
 	ProbeThreshold *int `pulumi:"probeThreshold"`
 	// The time interval in seconds between any two probes.
@@ -6025,8 +6031,18 @@ type DatabaseInstanceSettingsPerformanceCaptureConfig struct {
 	RunningThreadsThreshold *int `pulumi:"runningThreadsThreshold"`
 	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
 	SecondsBehindSourceThreshold *int `pulumi:"secondsBehindSourceThreshold"`
+	// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	SemaphoreWaitThresholdCount *int `pulumi:"semaphoreWaitThresholdCount"`
 	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
 	TransactionDurationThreshold *int `pulumi:"transactionDurationThreshold"`
+	// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+	TransactionKillExcludedUserHosts []string `pulumi:"transactionKillExcludedUserHosts"`
+	// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+	TransactionKillThresholdSeconds *int `pulumi:"transactionKillThresholdSeconds"`
+	// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+	TransactionKillType *string `pulumi:"transactionKillType"`
+	// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	TransactionLockWaitThresholdCount *int `pulumi:"transactionLockWaitThresholdCount"`
 }
 
 // DatabaseInstanceSettingsPerformanceCaptureConfigInput is an input type that accepts DatabaseInstanceSettingsPerformanceCaptureConfigArgs and DatabaseInstanceSettingsPerformanceCaptureConfigOutput values.
@@ -6041,8 +6057,14 @@ type DatabaseInstanceSettingsPerformanceCaptureConfigInput interface {
 }
 
 type DatabaseInstanceSettingsPerformanceCaptureConfigArgs struct {
+	// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	CpuUtilizationThresholdPercent pulumi.IntPtrInput `pulumi:"cpuUtilizationThresholdPercent"`
 	// Enable or disable the Performance Capture.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+	HistoryListLengthThresholdCount pulumi.IntPtrInput `pulumi:"historyListLengthThresholdCount"`
+	// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	MemoryUsageThresholdPercent pulumi.IntPtrInput `pulumi:"memoryUsageThresholdPercent"`
 	// The minimum number of consecutive readings above threshold that triggers instance state capture.
 	ProbeThreshold pulumi.IntPtrInput `pulumi:"probeThreshold"`
 	// The time interval in seconds between any two probes.
@@ -6051,8 +6073,18 @@ type DatabaseInstanceSettingsPerformanceCaptureConfigArgs struct {
 	RunningThreadsThreshold pulumi.IntPtrInput `pulumi:"runningThreadsThreshold"`
 	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
 	SecondsBehindSourceThreshold pulumi.IntPtrInput `pulumi:"secondsBehindSourceThreshold"`
+	// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	SemaphoreWaitThresholdCount pulumi.IntPtrInput `pulumi:"semaphoreWaitThresholdCount"`
 	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
 	TransactionDurationThreshold pulumi.IntPtrInput `pulumi:"transactionDurationThreshold"`
+	// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+	TransactionKillExcludedUserHosts pulumi.StringArrayInput `pulumi:"transactionKillExcludedUserHosts"`
+	// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+	TransactionKillThresholdSeconds pulumi.IntPtrInput `pulumi:"transactionKillThresholdSeconds"`
+	// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+	TransactionKillType pulumi.StringPtrInput `pulumi:"transactionKillType"`
+	// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	TransactionLockWaitThresholdCount pulumi.IntPtrInput `pulumi:"transactionLockWaitThresholdCount"`
 }
 
 func (DatabaseInstanceSettingsPerformanceCaptureConfigArgs) ElementType() reflect.Type {
@@ -6132,9 +6164,26 @@ func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) ToDatabaseInstan
 	}).(DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput)
 }
 
+// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) CpuUtilizationThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.CpuUtilizationThresholdPercent }).(pulumi.IntPtrOutput)
+}
+
 // Enable or disable the Performance Capture.
 func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) HistoryListLengthThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		return v.HistoryListLengthThresholdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) MemoryUsageThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.MemoryUsageThresholdPercent }).(pulumi.IntPtrOutput)
 }
 
 // The minimum number of consecutive readings above threshold that triggers instance state capture.
@@ -6157,9 +6206,40 @@ func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) SecondsBehindSou
 	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.SecondsBehindSourceThreshold }).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) SemaphoreWaitThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.SemaphoreWaitThresholdCount }).(pulumi.IntPtrOutput)
+}
+
 // The amount of time in seconds that a transaction needs to have been open before getting recorded.
 func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) TransactionDurationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int { return v.TransactionDurationThreshold }).(pulumi.IntPtrOutput)
+}
+
+// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) TransactionKillExcludedUserHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) []string {
+		return v.TransactionKillExcludedUserHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) TransactionKillThresholdSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		return v.TransactionKillThresholdSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) TransactionKillType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *string { return v.TransactionKillType }).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigOutput) TransactionLockWaitThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		return v.TransactionLockWaitThresholdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput struct{ *pulumi.OutputState }
@@ -6186,6 +6266,16 @@ func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) Elem() Databa
 	}).(DatabaseInstanceSettingsPerformanceCaptureConfigOutput)
 }
 
+// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) CpuUtilizationThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuUtilizationThresholdPercent
+	}).(pulumi.IntPtrOutput)
+}
+
 // Enable or disable the Performance Capture.
 func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *bool {
@@ -6194,6 +6284,26 @@ func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) Enabled() pul
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) HistoryListLengthThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HistoryListLengthThresholdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) MemoryUsageThresholdPercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryUsageThresholdPercent
+	}).(pulumi.IntPtrOutput)
 }
 
 // The minimum number of consecutive readings above threshold that triggers instance state capture.
@@ -6236,6 +6346,16 @@ func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) SecondsBehind
 	}).(pulumi.IntPtrOutput)
 }
 
+// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) SemaphoreWaitThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SemaphoreWaitThresholdCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // The amount of time in seconds that a transaction needs to have been open before getting recorded.
 func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionDurationThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
@@ -6243,6 +6363,46 @@ func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionDu
 			return nil
 		}
 		return v.TransactionDurationThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionKillExcludedUserHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionKillExcludedUserHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionKillThresholdSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionKillThresholdSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionKillType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionKillType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o DatabaseInstanceSettingsPerformanceCaptureConfigPtrOutput) TransactionLockWaitThresholdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsPerformanceCaptureConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLockWaitThresholdCount
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -11274,8 +11434,14 @@ func (o GetDatabaseInstanceSettingPasswordValidationPolicyArrayOutput) Index(i p
 }
 
 type GetDatabaseInstanceSettingPerformanceCaptureConfig struct {
+	// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	CpuUtilizationThresholdPercent int `pulumi:"cpuUtilizationThresholdPercent"`
 	// Enable or disable the Performance Capture.
 	Enabled bool `pulumi:"enabled"`
+	// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+	HistoryListLengthThresholdCount int `pulumi:"historyListLengthThresholdCount"`
+	// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	MemoryUsageThresholdPercent int `pulumi:"memoryUsageThresholdPercent"`
 	// The minimum number of consecutive readings above threshold that triggers instance state capture.
 	ProbeThreshold int `pulumi:"probeThreshold"`
 	// The time interval in seconds between any two probes.
@@ -11284,8 +11450,18 @@ type GetDatabaseInstanceSettingPerformanceCaptureConfig struct {
 	RunningThreadsThreshold int `pulumi:"runningThreadsThreshold"`
 	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
 	SecondsBehindSourceThreshold int `pulumi:"secondsBehindSourceThreshold"`
+	// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	SemaphoreWaitThresholdCount int `pulumi:"semaphoreWaitThresholdCount"`
 	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
 	TransactionDurationThreshold int `pulumi:"transactionDurationThreshold"`
+	// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+	TransactionKillExcludedUserHosts []string `pulumi:"transactionKillExcludedUserHosts"`
+	// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+	TransactionKillThresholdSeconds int `pulumi:"transactionKillThresholdSeconds"`
+	// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+	TransactionKillType string `pulumi:"transactionKillType"`
+	// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	TransactionLockWaitThresholdCount int `pulumi:"transactionLockWaitThresholdCount"`
 }
 
 // GetDatabaseInstanceSettingPerformanceCaptureConfigInput is an input type that accepts GetDatabaseInstanceSettingPerformanceCaptureConfigArgs and GetDatabaseInstanceSettingPerformanceCaptureConfigOutput values.
@@ -11300,8 +11476,14 @@ type GetDatabaseInstanceSettingPerformanceCaptureConfigInput interface {
 }
 
 type GetDatabaseInstanceSettingPerformanceCaptureConfigArgs struct {
+	// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	CpuUtilizationThresholdPercent pulumi.IntInput `pulumi:"cpuUtilizationThresholdPercent"`
 	// Enable or disable the Performance Capture.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+	HistoryListLengthThresholdCount pulumi.IntInput `pulumi:"historyListLengthThresholdCount"`
+	// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	MemoryUsageThresholdPercent pulumi.IntInput `pulumi:"memoryUsageThresholdPercent"`
 	// The minimum number of consecutive readings above threshold that triggers instance state capture.
 	ProbeThreshold pulumi.IntInput `pulumi:"probeThreshold"`
 	// The time interval in seconds between any two probes.
@@ -11310,8 +11492,18 @@ type GetDatabaseInstanceSettingPerformanceCaptureConfigArgs struct {
 	RunningThreadsThreshold pulumi.IntInput `pulumi:"runningThreadsThreshold"`
 	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
 	SecondsBehindSourceThreshold pulumi.IntInput `pulumi:"secondsBehindSourceThreshold"`
+	// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	SemaphoreWaitThresholdCount pulumi.IntInput `pulumi:"semaphoreWaitThresholdCount"`
 	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
 	TransactionDurationThreshold pulumi.IntInput `pulumi:"transactionDurationThreshold"`
+	// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+	TransactionKillExcludedUserHosts pulumi.StringArrayInput `pulumi:"transactionKillExcludedUserHosts"`
+	// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+	TransactionKillThresholdSeconds pulumi.IntInput `pulumi:"transactionKillThresholdSeconds"`
+	// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+	TransactionKillType pulumi.StringInput `pulumi:"transactionKillType"`
+	// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	TransactionLockWaitThresholdCount pulumi.IntInput `pulumi:"transactionLockWaitThresholdCount"`
 }
 
 func (GetDatabaseInstanceSettingPerformanceCaptureConfigArgs) ElementType() reflect.Type {
@@ -11365,9 +11557,28 @@ func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) ToGetDatabaseI
 	return o
 }
 
+// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) CpuUtilizationThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int {
+		return v.CpuUtilizationThresholdPercent
+	}).(pulumi.IntOutput)
+}
+
 // Enable or disable the Performance Capture.
 func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) HistoryListLengthThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int {
+		return v.HistoryListLengthThresholdCount
+	}).(pulumi.IntOutput)
+}
+
+// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) MemoryUsageThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.MemoryUsageThresholdPercent }).(pulumi.IntOutput)
 }
 
 // The minimum number of consecutive readings above threshold that triggers instance state capture.
@@ -11390,9 +11601,40 @@ func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) SecondsBehindS
 	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.SecondsBehindSourceThreshold }).(pulumi.IntOutput)
 }
 
+// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) SemaphoreWaitThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.SemaphoreWaitThresholdCount }).(pulumi.IntOutput)
+}
+
 // The amount of time in seconds that a transaction needs to have been open before getting recorded.
 func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) TransactionDurationThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int { return v.TransactionDurationThreshold }).(pulumi.IntOutput)
+}
+
+// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) TransactionKillExcludedUserHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) []string {
+		return v.TransactionKillExcludedUserHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) TransactionKillThresholdSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int {
+		return v.TransactionKillThresholdSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) TransactionKillType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) string { return v.TransactionKillType }).(pulumi.StringOutput)
+}
+
+// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o GetDatabaseInstanceSettingPerformanceCaptureConfigOutput) TransactionLockWaitThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingPerformanceCaptureConfig) int {
+		return v.TransactionLockWaitThresholdCount
+	}).(pulumi.IntOutput)
 }
 
 type GetDatabaseInstanceSettingPerformanceCaptureConfigArrayOutput struct{ *pulumi.OutputState }
@@ -16204,8 +16446,14 @@ func (o GetDatabaseInstancesInstanceSettingPasswordValidationPolicyArrayOutput) 
 }
 
 type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig struct {
+	// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	CpuUtilizationThresholdPercent int `pulumi:"cpuUtilizationThresholdPercent"`
 	// Enable or disable the Performance Capture.
 	Enabled bool `pulumi:"enabled"`
+	// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+	HistoryListLengthThresholdCount int `pulumi:"historyListLengthThresholdCount"`
+	// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	MemoryUsageThresholdPercent int `pulumi:"memoryUsageThresholdPercent"`
 	// The minimum number of consecutive readings above threshold that triggers instance state capture.
 	ProbeThreshold int `pulumi:"probeThreshold"`
 	// The time interval in seconds between any two probes.
@@ -16214,8 +16462,18 @@ type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig struct {
 	RunningThreadsThreshold int `pulumi:"runningThreadsThreshold"`
 	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
 	SecondsBehindSourceThreshold int `pulumi:"secondsBehindSourceThreshold"`
+	// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	SemaphoreWaitThresholdCount int `pulumi:"semaphoreWaitThresholdCount"`
 	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
 	TransactionDurationThreshold int `pulumi:"transactionDurationThreshold"`
+	// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+	TransactionKillExcludedUserHosts []string `pulumi:"transactionKillExcludedUserHosts"`
+	// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+	TransactionKillThresholdSeconds int `pulumi:"transactionKillThresholdSeconds"`
+	// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+	TransactionKillType string `pulumi:"transactionKillType"`
+	// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	TransactionLockWaitThresholdCount int `pulumi:"transactionLockWaitThresholdCount"`
 }
 
 // GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs and GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput values.
@@ -16230,8 +16488,14 @@ type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigInput interface 
 }
 
 type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs struct {
+	// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	CpuUtilizationThresholdPercent pulumi.IntInput `pulumi:"cpuUtilizationThresholdPercent"`
 	// Enable or disable the Performance Capture.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+	HistoryListLengthThresholdCount pulumi.IntInput `pulumi:"historyListLengthThresholdCount"`
+	// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+	MemoryUsageThresholdPercent pulumi.IntInput `pulumi:"memoryUsageThresholdPercent"`
 	// The minimum number of consecutive readings above threshold that triggers instance state capture.
 	ProbeThreshold pulumi.IntInput `pulumi:"probeThreshold"`
 	// The time interval in seconds between any two probes.
@@ -16240,8 +16504,18 @@ type GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs struct {
 	RunningThreadsThreshold pulumi.IntInput `pulumi:"runningThreadsThreshold"`
 	// The minimum number of seconds replica must be lagging behind primary to trigger capture on replica.
 	SecondsBehindSourceThreshold pulumi.IntInput `pulumi:"secondsBehindSourceThreshold"`
+	// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	SemaphoreWaitThresholdCount pulumi.IntInput `pulumi:"semaphoreWaitThresholdCount"`
 	// The amount of time in seconds that a transaction needs to have been open before getting recorded.
 	TransactionDurationThreshold pulumi.IntInput `pulumi:"transactionDurationThreshold"`
+	// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+	TransactionKillExcludedUserHosts pulumi.StringArrayInput `pulumi:"transactionKillExcludedUserHosts"`
+	// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+	TransactionKillThresholdSeconds pulumi.IntInput `pulumi:"transactionKillThresholdSeconds"`
+	// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+	TransactionKillType pulumi.StringInput `pulumi:"transactionKillType"`
+	// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+	TransactionLockWaitThresholdCount pulumi.IntInput `pulumi:"transactionLockWaitThresholdCount"`
 }
 
 func (GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigArgs) ElementType() reflect.Type {
@@ -16295,9 +16569,30 @@ func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) ToGet
 	return o
 }
 
+// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) CpuUtilizationThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.CpuUtilizationThresholdPercent
+	}).(pulumi.IntOutput)
+}
+
 // Enable or disable the Performance Capture.
 func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) HistoryListLengthThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.HistoryListLengthThresholdCount
+	}).(pulumi.IntOutput)
+}
+
+// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) MemoryUsageThresholdPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.MemoryUsageThresholdPercent
+	}).(pulumi.IntOutput)
 }
 
 // The minimum number of consecutive readings above threshold that triggers instance state capture.
@@ -16326,10 +16621,45 @@ func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) Secon
 	}).(pulumi.IntOutput)
 }
 
+// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) SemaphoreWaitThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.SemaphoreWaitThresholdCount
+	}).(pulumi.IntOutput)
+}
+
 // The amount of time in seconds that a transaction needs to have been open before getting recorded.
 func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) TransactionDurationThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
 		return v.TransactionDurationThreshold
+	}).(pulumi.IntOutput)
+}
+
+// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) TransactionKillExcludedUserHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) []string {
+		return v.TransactionKillExcludedUserHosts
+	}).(pulumi.StringArrayOutput)
+}
+
+// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) TransactionKillThresholdSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.TransactionKillThresholdSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) TransactionKillType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) string {
+		return v.TransactionKillType
+	}).(pulumi.StringOutput)
+}
+
+// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+func (o GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigOutput) TransactionLockWaitThresholdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig) int {
+		return v.TransactionLockWaitThresholdCount
 	}).(pulumi.IntOutput)
 }
 

@@ -43,7 +43,7 @@ class MachineImageIamMemberArgs:
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
                * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+               `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input['MachineImageIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
@@ -98,7 +98,7 @@ class MachineImageIamMemberArgs:
     def role(self) -> pulumi.Input[_builtins.str]:
         """
         The role that should be applied. Only one
-        `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+        `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -165,7 +165,7 @@ class _MachineImageIamMemberState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+               `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
@@ -259,7 +259,7 @@ class _MachineImageIamMemberState:
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that should be applied. Only one
-        `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+        `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -285,8 +285,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
 
         * `compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
-        * `compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
-        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+        * `compute.MachineImageIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the machineimage are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the machineimage are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -294,7 +294,7 @@ class MachineImageIamMember(pulumi.CustomResource):
 
         > **Note:** `compute.MachineImageIamPolicy` **cannot** be used in conjunction with `compute.MachineImageIamBinding` and `compute.MachineImageIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -407,8 +407,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
 
         * `compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
-        * `compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
-        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+        * `compute.MachineImageIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the machineimage are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the machineimage are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -416,7 +416,7 @@ class MachineImageIamMember(pulumi.CustomResource):
 
         > **Note:** `compute.MachineImageIamPolicy` **cannot** be used in conjunction with `compute.MachineImageIamBinding` and `compute.MachineImageIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -571,7 +571,7 @@ class MachineImageIamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+               `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
@@ -584,8 +584,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
 
         * `compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
-        * `compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
-        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+        * `compute.MachineImageIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the machineimage are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the machineimage are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -593,7 +593,7 @@ class MachineImageIamMember(pulumi.CustomResource):
 
         > **Note:** `compute.MachineImageIamPolicy` **cannot** be used in conjunction with `compute.MachineImageIamBinding` and `compute.MachineImageIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -706,8 +706,8 @@ class MachineImageIamMember(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine MachineImage. Each of these resources serves a different use case:
 
         * `compute.MachineImageIamPolicy`: Authoritative. Sets the IAM policy for the machineimage and replaces any existing policy already attached.
-        * `compute.MachineImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the machineimage are preserved.
-        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the machineimage are preserved.
+        * `compute.MachineImageIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the machineimage are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+        * `compute.MachineImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the machineimage are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -715,7 +715,7 @@ class MachineImageIamMember(pulumi.CustomResource):
 
         > **Note:** `compute.MachineImageIamPolicy` **cannot** be used in conjunction with `compute.MachineImageIamBinding` and `compute.MachineImageIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `compute.MachineImageIamBinding` resources **can be** used in conjunction with `compute.MachineImageIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -933,7 +933,7 @@ class MachineImageIamMember(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
         :param pulumi.Input[_builtins.str] role: The role that should be applied. Only one
-               `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+               `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1006,7 +1006,7 @@ class MachineImageIamMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[_builtins.str]:
         """
         The role that should be applied. Only one
-        `compute.MachineImageIamBinding` can be used per role. Note that custom roles must be of the format
+        `compute.MachineImageIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

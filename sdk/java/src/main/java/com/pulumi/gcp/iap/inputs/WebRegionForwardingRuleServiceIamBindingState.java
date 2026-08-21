@@ -139,7 +139,7 @@ public final class WebRegionForwardingRuleServiceIamBindingState extends com.pul
 
     /**
      * The role that should be applied. Only one
-     * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -148,7 +148,7 @@ public final class WebRegionForwardingRuleServiceIamBindingState extends com.pul
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -365,7 +365,7 @@ public final class WebRegionForwardingRuleServiceIamBindingState extends com.pul
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -378,7 +378,7 @@ public final class WebRegionForwardingRuleServiceIamBindingState extends com.pul
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.iap.WebRegionForwardingRuleServiceIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder

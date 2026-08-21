@@ -285,6 +285,7 @@ import javax.annotation.Nullable;
  *             .spec(AiReasoningEngineSpecArgs.builder()
  *                 .containerSpec(AiReasoningEngineSpecContainerSpecArgs.builder()
  *                     .imageUri(String.format("us-central1-docker.pkg.dev/%s/vertex-byoc/byoc-agent:latest", project.projectId()))
+ *                     .port(8080)
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

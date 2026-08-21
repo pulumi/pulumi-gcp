@@ -21,16 +21,17 @@ __all__ = ['GcpUserAccessBindingArgs', 'GcpUserAccessBinding']
 @pulumi.input_type
 class GcpUserAccessBindingArgs:
     def __init__(__self__, *,
-                 group_key: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
                  access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional['GcpUserAccessBindingPrincipalArgs']] = None,
                  scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]] = None,
                  session_settings: pulumi.Input[Optional['GcpUserAccessBindingSessionSettingsArgs']] = None):
         """
         The set of arguments for constructing a GcpUserAccessBinding resource.
 
-        :param pulumi.Input[_builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[_builtins.str] organization_id: Required. ID of the parent organization.
         :param pulumi.Input[_builtins.str] access_levels: Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -39,33 +40,37 @@ class GcpUserAccessBindingArgs:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] dry_run_access_levels: Optional. Dry run access level that will be evaluated but will not be enforced. The
+               access denial based on dry run policy will be logged. Only one access
+               level is supported, not multiple. This list must have exactly one element.
+               Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[_builtins.str] group_key: Immutable. Google Group id whose members are subject to this binding's restrictions.
+               See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+               If a group's email address/alias is changed, this resource will continue to point at the changed group.
+               This field does not accept group email addresses or aliases.
+               Example: "01d520gv4vjcrht"
+        :param pulumi.Input['GcpUserAccessBindingPrincipalArgs'] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
                Structure is documented below.
         """
-        pulumi.set(__self__, "group_key", group_key)
         pulumi.set(__self__, "organization_id", organization_id)
         if access_levels is not None:
             pulumi.set(__self__, "access_levels", access_levels)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if dry_run_access_levels is not None:
+            pulumi.set(__self__, "dry_run_access_levels", dry_run_access_levels)
+        if group_key is not None:
+            pulumi.set(__self__, "group_key", group_key)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
         if scoped_access_settings is not None:
             pulumi.set(__self__, "scoped_access_settings", scoped_access_settings)
         if session_settings is not None:
             pulumi.set(__self__, "session_settings", session_settings)
-
-    @_builtins.property
-    @pulumi.getter(name="groupKey")
-    def group_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
-        """
-        return pulumi.get(self, "group_key")
-
-    @group_key.setter
-    def group_key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "group_key", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
@@ -109,6 +114,50 @@ class GcpUserAccessBindingArgs:
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="dryRunAccessLevels")
+    def dry_run_access_levels(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Dry run access level that will be evaluated but will not be enforced. The
+        access denial based on dry run policy will be logged. Only one access
+        level is supported, not multiple. This list must have exactly one element.
+        Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "dry_run_access_levels")
+
+    @dry_run_access_levels.setter
+    def dry_run_access_levels(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dry_run_access_levels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Immutable. Google Group id whose members are subject to this binding's restrictions.
+        See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+        If a group's email address/alias is changed, this resource will continue to point at the changed group.
+        This field does not accept group email addresses or aliases.
+        Example: "01d520gv4vjcrht"
+        """
+        return pulumi.get(self, "group_key")
+
+    @group_key.setter
+    def group_key(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Input[Optional['GcpUserAccessBindingPrincipalArgs']]:
+        """
+        Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[Optional['GcpUserAccessBindingPrincipalArgs']]):
+        pulumi.set(self, "principal", value)
+
+    @_builtins.property
     @pulumi.getter(name="scopedAccessSettings")
     def scoped_access_settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]]:
         """
@@ -140,9 +189,11 @@ class _GcpUserAccessBindingState:
     def __init__(__self__, *,
                  access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional['GcpUserAccessBindingPrincipalArgs']] = None,
                  scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]]] = None,
                  session_settings: pulumi.Input[Optional['GcpUserAccessBindingSessionSettingsArgs']] = None):
         """
@@ -155,9 +206,19 @@ class _GcpUserAccessBindingState:
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[_builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        :param pulumi.Input[_builtins.str] dry_run_access_levels: Optional. Dry run access level that will be evaluated but will not be enforced. The
+               access denial based on dry run policy will be logged. Only one access
+               level is supported, not multiple. This list must have exactly one element.
+               Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[_builtins.str] group_key: Immutable. Google Group id whose members are subject to this binding's restrictions.
+               See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+               If a group's email address/alias is changed, this resource will continue to point at the changed group.
+               This field does not accept group email addresses or aliases.
+               Example: "01d520gv4vjcrht"
         :param pulumi.Input[_builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[_builtins.str] organization_id: Required. ID of the parent organization.
+        :param pulumi.Input['GcpUserAccessBindingPrincipalArgs'] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['GcpUserAccessBindingScopedAccessSettingArgs']]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input['GcpUserAccessBindingSessionSettingsArgs'] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
@@ -167,12 +228,16 @@ class _GcpUserAccessBindingState:
             pulumi.set(__self__, "access_levels", access_levels)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if dry_run_access_levels is not None:
+            pulumi.set(__self__, "dry_run_access_levels", dry_run_access_levels)
         if group_key is not None:
             pulumi.set(__self__, "group_key", group_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
+        if principal is not None:
+            pulumi.set(__self__, "principal", principal)
         if scoped_access_settings is not None:
             pulumi.set(__self__, "scoped_access_settings", scoped_access_settings)
         if session_settings is not None:
@@ -208,10 +273,29 @@ class _GcpUserAccessBindingState:
         pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="dryRunAccessLevels")
+    def dry_run_access_levels(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional. Dry run access level that will be evaluated but will not be enforced. The
+        access denial based on dry run policy will be logged. Only one access
+        level is supported, not multiple. This list must have exactly one element.
+        Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "dry_run_access_levels")
+
+    @dry_run_access_levels.setter
+    def dry_run_access_levels(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dry_run_access_levels", value)
+
+    @_builtins.property
     @pulumi.getter(name="groupKey")
     def group_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        Immutable. Google Group id whose members are subject to this binding's restrictions.
+        See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+        If a group's email address/alias is changed, this resource will continue to point at the changed group.
+        This field does not accept group email addresses or aliases.
+        Example: "01d520gv4vjcrht"
         """
         return pulumi.get(self, "group_key")
 
@@ -242,6 +326,19 @@ class _GcpUserAccessBindingState:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Input[Optional['GcpUserAccessBindingPrincipalArgs']]:
+        """
+        Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[Optional['GcpUserAccessBindingPrincipalArgs']]):
+        pulumi.set(self, "principal", value)
 
     @_builtins.property
     @pulumi.getter(name="scopedAccessSettings")
@@ -278,8 +375,10 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']]] = None,
                  scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
                  session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
                  __props__=None):
@@ -355,8 +454,18 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[_builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        :param pulumi.Input[_builtins.str] dry_run_access_levels: Optional. Dry run access level that will be evaluated but will not be enforced. The
+               access denial based on dry run policy will be logged. Only one access
+               level is supported, not multiple. This list must have exactly one element.
+               Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[_builtins.str] group_key: Immutable. Google Group id whose members are subject to this binding's restrictions.
+               See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+               If a group's email address/alias is changed, this resource will continue to point at the changed group.
+               This field does not accept group email addresses or aliases.
+               Example: "01d520gv4vjcrht"
         :param pulumi.Input[_builtins.str] organization_id: Required. ID of the parent organization.
+        :param pulumi.Input[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
@@ -448,8 +557,10 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
                  group_key: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']]] = None,
                  scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
                  session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None,
                  __props__=None):
@@ -463,12 +574,12 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
             __props__.__dict__["access_levels"] = access_levels
             __props__.__dict__["deletion_policy"] = deletion_policy
-            if group_key is None and not opts.urn:
-                raise TypeError("Missing required property 'group_key'")
+            __props__.__dict__["dry_run_access_levels"] = dry_run_access_levels
             __props__.__dict__["group_key"] = group_key
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["principal"] = principal
             __props__.__dict__["scoped_access_settings"] = scoped_access_settings
             __props__.__dict__["session_settings"] = session_settings
             __props__.__dict__["name"] = None
@@ -484,9 +595,11 @@ class GcpUserAccessBinding(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_levels: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run_access_levels: pulumi.Input[Optional[_builtins.str]] = None,
             group_key: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']]] = None,
             scoped_access_settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]]] = None,
             session_settings: pulumi.Input[Optional[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']]] = None) -> 'GcpUserAccessBinding':
         """
@@ -503,9 +616,19 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                When set to "ABANDON", the command will remove the resource from Terraform
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
-        :param pulumi.Input[_builtins.str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        :param pulumi.Input[_builtins.str] dry_run_access_levels: Optional. Dry run access level that will be evaluated but will not be enforced. The
+               access denial based on dry run policy will be logged. Only one access
+               level is supported, not multiple. This list must have exactly one element.
+               Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[_builtins.str] group_key: Immutable. Google Group id whose members are subject to this binding's restrictions.
+               See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+               If a group's email address/alias is changed, this resource will continue to point at the changed group.
+               This field does not accept group email addresses or aliases.
+               Example: "01d520gv4vjcrht"
         :param pulumi.Input[_builtins.str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         :param pulumi.Input[_builtins.str] organization_id: Required. ID of the parent organization.
+        :param pulumi.Input[Union['GcpUserAccessBindingPrincipalArgs', 'GcpUserAccessBindingPrincipalArgsDict']] principal: Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GcpUserAccessBindingScopedAccessSettingArgs', 'GcpUserAccessBindingScopedAccessSettingArgsDict']]]] scoped_access_settings: Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
                Structure is documented below.
         :param pulumi.Input[Union['GcpUserAccessBindingSessionSettingsArgs', 'GcpUserAccessBindingSessionSettingsArgsDict']] session_settings: Optional. The Google Cloud session length (GCSL) policy for the group key.
@@ -517,9 +640,11 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         __props__.__dict__["access_levels"] = access_levels
         __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["dry_run_access_levels"] = dry_run_access_levels
         __props__.__dict__["group_key"] = group_key
         __props__.__dict__["name"] = name
         __props__.__dict__["organization_id"] = organization_id
+        __props__.__dict__["principal"] = principal
         __props__.__dict__["scoped_access_settings"] = scoped_access_settings
         __props__.__dict__["session_settings"] = session_settings
         return GcpUserAccessBinding(resource_name, opts=opts, __props__=__props__)
@@ -546,10 +671,25 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
-    @pulumi.getter(name="groupKey")
-    def group_key(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="dryRunAccessLevels")
+    def dry_run_access_levels(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        Optional. Dry run access level that will be evaluated but will not be enforced. The
+        access denial based on dry run policy will be logged. Only one access
+        level is supported, not multiple. This list must have exactly one element.
+        Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "dry_run_access_levels")
+
+    @_builtins.property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Immutable. Google Group id whose members are subject to this binding's restrictions.
+        See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+        If a group's email address/alias is changed, this resource will continue to point at the changed group.
+        This field does not accept group email addresses or aliases.
+        Example: "01d520gv4vjcrht"
         """
         return pulumi.get(self, "group_key")
 
@@ -568,6 +708,15 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         Required. ID of the parent organization.
         """
         return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def principal(self) -> pulumi.Output[Optional['outputs.GcpUserAccessBindingPrincipal']]:
+        """
+        Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "principal")
 
     @_builtins.property
     @pulumi.getter(name="scopedAccessSettings")

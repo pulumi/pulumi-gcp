@@ -14,6 +14,7 @@ import com.pulumi.gcp.colab.outputs.NotebookExecutionCustomEnvironmentSpec;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionDataformRepositorySource;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionDirectNotebookSource;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionGcsNotebookSource;
+import com.pulumi.gcp.colab.outputs.NotebookExecutionWorkbenchRuntime;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -165,6 +166,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
  * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
  * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.Base64encodeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -257,6 +259,231 @@ import javax.annotation.Nullable;
  *                     .enableInternetAccess(true)
  *                     .network(myNetwork.id())
  *                     .subnetwork(mySubnetwork.id())
+ *                     .build())
+ *                 .shieldedInstanceConfig(NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs.builder()
+ *                     .enableIntegrityMonitoring(true)
+ *                     .enableSecureBoot(true)
+ *                     .enableVtpm(true)
+ *                     .build())
+ *                 .build())
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *             .serviceAccount("my}{@literal @}{@code service-account.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(outputBucket)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Colab Notebook Execution Workbench Runtime Vm
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.colab.NotebookExecution;
+ * import com.pulumi.gcp.colab.NotebookExecutionArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var outputBucket = new Bucket("outputBucket", BucketArgs.builder()
+ *             .name("my_bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var notebook_execution = new NotebookExecution("notebook-execution", NotebookExecutionArgs.builder()
+ *             .displayName("Notebook execution workbench runtime vm")
+ *             .location("us-central1")
+ *             .directNotebookSource(NotebookExecutionDirectNotebookSourceArgs.builder()
+ *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("""
+ *     }{{@code
+ *       \"cells\": [
+ *         }{{@code
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
+ *           ]
+ *         }}{@code
+ *       ],
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
+ *         }}{@code ,
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
+ *           }}{@code ,
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
+ *         }}{@code
+ *       }}{@code ,
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
+ *     }}{@code
+ *                     """)
+ *                     .build()).result())
+ *                 .build())
+ *             .customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs.builder()
+ *                 .machineSpec(NotebookExecutionCustomEnvironmentSpecMachineSpecArgs.builder()
+ *                     .machineType("n1-standard-2")
+ *                     .build())
+ *                 .persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+ *                     .diskType("pd-standard")
+ *                     .diskSizeGb("200")
+ *                     .build())
+ *                 .build())
+ *             .workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs.builder()
+ *                 .vmImage(NotebookExecutionWorkbenchRuntimeVmImageArgs.builder()
+ *                     .project("cloud-notebooks-managed")
+ *                     .family("workbench-instances")
+ *                     .build())
+ *                 .build())
+ *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
+ *             .serviceAccount("my}{@literal @}{@code service-account.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(outputBucket)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * ### Colab Notebook Execution Workbench Runtime Vm Name
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.colab.NotebookExecution;
+ * import com.pulumi.gcp.colab.NotebookExecutionArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionDirectNotebookSourceArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeArgs;
+ * import com.pulumi.gcp.colab.inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Base64encodeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var outputBucket = new Bucket("outputBucket", BucketArgs.builder()
+ *             .name("my_bucket")
+ *             .location("US")
+ *             .forceDestroy(true)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var notebook_execution = new NotebookExecution("notebook-execution", NotebookExecutionArgs.builder()
+ *             .displayName("Notebook execution workbench runtime vm name")
+ *             .location("us-central1")
+ *             .directNotebookSource(NotebookExecutionDirectNotebookSourceArgs.builder()
+ *                 .content(StdFunctions.base64encode(Base64encodeArgs.builder()
+ *                     .input("""
+ *     }{{@code
+ *       \"cells\": [
+ *         }{{@code
+ *           \"cell_type\": \"code\",
+ *           \"execution_count\": null,
+ *           \"metadata\": }{}{@code ,
+ *           \"outputs\": [],
+ *           \"source\": [
+ *             \"print(\\\"Hello, World!\\\")\"
+ *           ]
+ *         }}{@code
+ *       ],
+ *       \"metadata\": }{{@code
+ *         \"kernelspec\": }{{@code
+ *           \"display_name\": \"Python 3\",
+ *           \"language\": \"python\",
+ *           \"name\": \"python3\"
+ *         }}{@code ,
+ *         \"language_info\": }{{@code
+ *           \"codemirror_mode\": }{{@code
+ *             \"name\": \"ipython\",
+ *             \"version\": 3
+ *           }}{@code ,
+ *           \"file_extension\": \".py\",
+ *           \"mimetype\": \"text/x-python\",
+ *           \"name\": \"python\",
+ *           \"nbconvert_exporter\": \"python\",
+ *           \"pygments_lexer\": \"ipython3\",
+ *           \"version\": \"3.8.5\"
+ *         }}{@code
+ *       }}{@code ,
+ *       \"nbformat\": 4,
+ *       \"nbformat_minor\": 4
+ *     }}{@code
+ *                     """)
+ *                     .build()).result())
+ *                 .build())
+ *             .customEnvironmentSpec(NotebookExecutionCustomEnvironmentSpecArgs.builder()
+ *                 .machineSpec(NotebookExecutionCustomEnvironmentSpecMachineSpecArgs.builder()
+ *                     .machineType("n1-standard-2")
+ *                     .build())
+ *                 .persistentDiskSpec(NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs.builder()
+ *                     .diskType("pd-standard")
+ *                     .diskSizeGb("200")
+ *                     .build())
+ *                 .build())
+ *             .workbenchRuntime(NotebookExecutionWorkbenchRuntimeArgs.builder()
+ *                 .vmImage(NotebookExecutionWorkbenchRuntimeVmImageArgs.builder()
+ *                     .project("cloud-notebooks-managed")
+ *                     .name("workbench-instances-v20260713")
  *                     .build())
  *                 .build())
  *             .gcsOutputUri(outputBucket.name().applyValue(_name -> String.format("gs://%s", _name)))
@@ -755,6 +982,22 @@ public class NotebookExecution extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serviceAccount() {
         return Codegen.optional(this.serviceAccount);
+    }
+    /**
+     * Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="workbenchRuntime", refs={NotebookExecutionWorkbenchRuntime.class}, tree="[0]")
+    private Output</* @Nullable */ NotebookExecutionWorkbenchRuntime> workbenchRuntime;
+
+    /**
+     * @return Configuration for a Workbench Instances-based environment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<NotebookExecutionWorkbenchRuntime>> workbenchRuntime() {
+        return Codegen.optional(this.workbenchRuntime);
     }
 
     /**

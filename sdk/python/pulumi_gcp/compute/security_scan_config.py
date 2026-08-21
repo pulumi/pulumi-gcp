@@ -31,6 +31,7 @@ class SecurityScanConfigArgs:
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']] = None,
+                 static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_agent: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -59,6 +60,8 @@ class SecurityScanConfigArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
                Structure is documented below.
+        :param pulumi.Input[_builtins.bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature.
+               If enabled, the scanner will access applications from static IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[_builtins.str] user_agent: Type of the user agents used for scanning
@@ -83,6 +86,8 @@ class SecurityScanConfigArgs:
             pulumi.set(__self__, "project", project)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
+        if static_ip_scan is not None:
+            pulumi.set(__self__, "static_ip_scan", static_ip_scan)
         if target_platforms is not None:
             pulumi.set(__self__, "target_platforms", target_platforms)
         if user_agent is not None:
@@ -222,6 +227,19 @@ class SecurityScanConfigArgs:
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
+    @pulumi.getter(name="staticIpScan")
+    def static_ip_scan(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the scan configuration has enabled static IP address scan feature.
+        If enabled, the scanner will access applications from static IP addresses.
+        """
+        return pulumi.get(self, "static_ip_scan")
+
+    @static_ip_scan.setter
+    def static_ip_scan(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "static_ip_scan", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetPlatforms")
     def target_platforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -263,6 +281,7 @@ class _SecurityScanConfigState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional['SecurityScanConfigScheduleArgs']] = None,
                  starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_agent: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -293,6 +312,8 @@ class _SecurityScanConfigState:
         :param pulumi.Input['SecurityScanConfigScheduleArgs'] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
+        :param pulumi.Input[_builtins.bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature.
+               If enabled, the scanner will access applications from static IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[_builtins.str] user_agent: Type of the user agents used for scanning
@@ -321,6 +342,8 @@ class _SecurityScanConfigState:
             pulumi.set(__self__, "schedule", schedule)
         if starting_urls is not None:
             pulumi.set(__self__, "starting_urls", starting_urls)
+        if static_ip_scan is not None:
+            pulumi.set(__self__, "static_ip_scan", static_ip_scan)
         if target_platforms is not None:
             pulumi.set(__self__, "target_platforms", target_platforms)
         if user_agent is not None:
@@ -473,6 +496,19 @@ class _SecurityScanConfigState:
         pulumi.set(self, "starting_urls", value)
 
     @_builtins.property
+    @pulumi.getter(name="staticIpScan")
+    def static_ip_scan(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the scan configuration has enabled static IP address scan feature.
+        If enabled, the scanner will access applications from static IP addresses.
+        """
+        return pulumi.get(self, "static_ip_scan")
+
+    @static_ip_scan.setter
+    def static_ip_scan(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "static_ip_scan", value)
+
+    @_builtins.property
     @pulumi.getter(name="targetPlatforms")
     def target_platforms(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -516,6 +552,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
                  starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -562,6 +599,19 @@ class SecurityScanConfig(pulumi.CustomResource):
             ignore_http_status_errors=True,
             opts = pulumi.ResourceOptions(depends_on=[wait15_seconds]))
         ```
+        ### Scan Config Static Ip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-static-ip")
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            static_ip_scan=True)
+        ```
 
         ## Import
 
@@ -605,6 +655,8 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
+        :param pulumi.Input[_builtins.bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature.
+               If enabled, the scanner will access applications from static IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[_builtins.str] user_agent: Type of the user agents used for scanning
@@ -660,6 +712,19 @@ class SecurityScanConfig(pulumi.CustomResource):
             ignore_http_status_errors=True,
             opts = pulumi.ResourceOptions(depends_on=[wait15_seconds]))
         ```
+        ### Scan Config Static Ip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scanner_static_ip", name="scan-static-ip")
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            static_ip_scan=True)
+        ```
 
         ## Import
 
@@ -703,6 +768,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
                  starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
                  target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  user_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -728,6 +794,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             if starting_urls is None and not opts.urn:
                 raise TypeError("Missing required property 'starting_urls'")
             __props__.__dict__["starting_urls"] = starting_urls
+            __props__.__dict__["static_ip_scan"] = static_ip_scan
             __props__.__dict__["target_platforms"] = target_platforms
             __props__.__dict__["user_agent"] = user_agent
             __props__.__dict__["name"] = None
@@ -752,6 +819,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             schedule: pulumi.Input[Optional[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']]] = None,
             starting_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            static_ip_scan: pulumi.Input[Optional[_builtins.bool]] = None,
             target_platforms: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             user_agent: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityScanConfig':
         """
@@ -786,6 +854,8 @@ class SecurityScanConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityScanConfigScheduleArgs', 'SecurityScanConfigScheduleArgsDict']] schedule: The schedule of the ScanConfig
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] starting_urls: The starting URLs from which the scanner finds site pages.
+        :param pulumi.Input[_builtins.bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature.
+               If enabled, the scanner will access applications from static IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] target_platforms: Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
                Each value may be one of: `APP_ENGINE`, `COMPUTE`.
         :param pulumi.Input[_builtins.str] user_agent: Type of the user agents used for scanning
@@ -807,6 +877,7 @@ class SecurityScanConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["starting_urls"] = starting_urls
+        __props__.__dict__["static_ip_scan"] = static_ip_scan
         __props__.__dict__["target_platforms"] = target_platforms
         __props__.__dict__["user_agent"] = user_agent
         return SecurityScanConfig(resource_name, opts=opts, __props__=__props__)
@@ -912,6 +983,15 @@ class SecurityScanConfig(pulumi.CustomResource):
         The starting URLs from which the scanner finds site pages.
         """
         return pulumi.get(self, "starting_urls")
+
+    @_builtins.property
+    @pulumi.getter(name="staticIpScan")
+    def static_ip_scan(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether the scan configuration has enabled static IP address scan feature.
+        If enabled, the scanner will access applications from static IP addresses.
+        """
+        return pulumi.get(self, "static_ip_scan")
 
     @_builtins.property
     @pulumi.getter(name="targetPlatforms")

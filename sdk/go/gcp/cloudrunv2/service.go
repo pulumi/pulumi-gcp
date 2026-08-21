@@ -1150,6 +1150,86 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Sandbox Templates
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				LaunchStage:        pulumi.String("ALPHA"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image:           pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							SandboxLauncher: pulumi.Bool(true),
+//							VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+//								&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+//									Name:      pulumi.String("empty-dir-volume"),
+//									MountPath: pulumi.String("/mnt"),
+//								},
+//							},
+//						},
+//					},
+//					Sandboxes: &cloudrunv2.ServiceTemplateSandboxesArgs{
+//						Templates: cloudrunv2.ServiceTemplateSandboxesTemplateArray{
+//							&cloudrunv2.ServiceTemplateSandboxesTemplateArgs{
+//								Name:  pulumi.String("hello"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Commands: pulumi.StringArray{
+//									pulumi.String("/bin/sh"),
+//								},
+//								Args: pulumi.StringArray{
+//									pulumi.String("-c"),
+//									pulumi.String("echo hello"),
+//								},
+//								Envs: cloudrunv2.ServiceTemplateSandboxesTemplateEnvArray{
+//									&cloudrunv2.ServiceTemplateSandboxesTemplateEnvArgs{
+//										Name:  pulumi.String("PORT"),
+//										Value: pulumi.String("9000"),
+//									},
+//								},
+//								VolumeMounts: cloudrunv2.ServiceTemplateSandboxesTemplateVolumeMountArray{
+//									&cloudrunv2.ServiceTemplateSandboxesTemplateVolumeMountArgs{
+//										Name:      pulumi.String("empty-dir-volume"),
+//										MountPath: pulumi.String("/mnt"),
+//										SubPath:   pulumi.String("/home/user"),
+//									},
+//								},
+//								WorkingDir: pulumi.String("/mnt/app"),
+//							},
+//						},
+//					},
+//					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+//						&cloudrunv2.ServiceTemplateVolumeArgs{
+//							Name: pulumi.String("empty-dir-volume"),
+//							EmptyDir: &cloudrunv2.ServiceTemplateVolumeEmptyDirArgs{
+//								Medium:    pulumi.String("MEMORY"),
+//								SizeLimit: pulumi.String("256Mi"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

@@ -39,6 +39,12 @@ public final class InstanceGceSetup {
      */
     private @Nullable InstanceGceSetupBootDisk bootDisk;
     /**
+     * @return (Output)
+     * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+     * 
+     */
+    private @Nullable String computeInstanceId;
+    /**
      * @return Confidential instance configuration.
      * Structure is documented below.
      * 
@@ -140,6 +146,14 @@ public final class InstanceGceSetup {
      */
     public Optional<InstanceGceSetupBootDisk> bootDisk() {
         return Optional.ofNullable(this.bootDisk);
+    }
+    /**
+     * @return (Output)
+     * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+     * 
+     */
+    public Optional<String> computeInstanceId() {
+        return Optional.ofNullable(this.computeInstanceId);
     }
     /**
      * @return Confidential instance configuration.
@@ -264,6 +278,7 @@ public final class InstanceGceSetup {
     public static final class Builder {
         private @Nullable List<InstanceGceSetupAcceleratorConfig> acceleratorConfigs;
         private @Nullable InstanceGceSetupBootDisk bootDisk;
+        private @Nullable String computeInstanceId;
         private @Nullable InstanceGceSetupConfidentialInstanceConfig confidentialInstanceConfig;
         private @Nullable InstanceGceSetupContainerImage containerImage;
         private @Nullable InstanceGceSetupDataDisks dataDisks;
@@ -283,6 +298,7 @@ public final class InstanceGceSetup {
     	      Objects.requireNonNull(defaults);
     	      this.acceleratorConfigs = defaults.acceleratorConfigs;
     	      this.bootDisk = defaults.bootDisk;
+    	      this.computeInstanceId = defaults.computeInstanceId;
     	      this.confidentialInstanceConfig = defaults.confidentialInstanceConfig;
     	      this.containerImage = defaults.containerImage;
     	      this.dataDisks = defaults.dataDisks;
@@ -312,6 +328,12 @@ public final class InstanceGceSetup {
         public Builder bootDisk(@Nullable InstanceGceSetupBootDisk bootDisk) {
 
             this.bootDisk = bootDisk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder computeInstanceId(@Nullable String computeInstanceId) {
+
+            this.computeInstanceId = computeInstanceId;
             return this;
         }
         @CustomType.Setter
@@ -411,6 +433,7 @@ public final class InstanceGceSetup {
             final var _resultValue = new InstanceGceSetup();
             _resultValue.acceleratorConfigs = acceleratorConfigs;
             _resultValue.bootDisk = bootDisk;
+            _resultValue.computeInstanceId = computeInstanceId;
             _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
             _resultValue.containerImage = containerImage;
             _resultValue.dataDisks = dataDisks;

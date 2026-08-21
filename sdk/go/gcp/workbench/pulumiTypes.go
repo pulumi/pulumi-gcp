@@ -22,6 +22,9 @@ type InstanceGceSetup struct {
 	// The definition of a boot disk.
 	// Structure is documented below.
 	BootDisk *InstanceGceSetupBootDisk `pulumi:"bootDisk"`
+	// (Output)
+	// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+	ComputeInstanceId *string `pulumi:"computeInstanceId"`
 	// Confidential instance configuration.
 	// Structure is documented below.
 	ConfidentialInstanceConfig *InstanceGceSetupConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
@@ -85,6 +88,9 @@ type InstanceGceSetupArgs struct {
 	// The definition of a boot disk.
 	// Structure is documented below.
 	BootDisk InstanceGceSetupBootDiskPtrInput `pulumi:"bootDisk"`
+	// (Output)
+	// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+	ComputeInstanceId pulumi.StringPtrInput `pulumi:"computeInstanceId"`
 	// Confidential instance configuration.
 	// Structure is documented below.
 	ConfidentialInstanceConfig InstanceGceSetupConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
@@ -219,6 +225,12 @@ func (o InstanceGceSetupOutput) BootDisk() InstanceGceSetupBootDiskPtrOutput {
 	return o.ApplyT(func(v InstanceGceSetup) *InstanceGceSetupBootDisk { return v.BootDisk }).(InstanceGceSetupBootDiskPtrOutput)
 }
 
+// (Output)
+// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+func (o InstanceGceSetupOutput) ComputeInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGceSetup) *string { return v.ComputeInstanceId }).(pulumi.StringPtrOutput)
+}
+
 // Confidential instance configuration.
 // Structure is documented below.
 func (o InstanceGceSetupOutput) ConfidentialInstanceConfig() InstanceGceSetupConfidentialInstanceConfigPtrOutput {
@@ -350,6 +362,17 @@ func (o InstanceGceSetupPtrOutput) BootDisk() InstanceGceSetupBootDiskPtrOutput 
 		}
 		return v.BootDisk
 	}).(InstanceGceSetupBootDiskPtrOutput)
+}
+
+// (Output)
+// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+func (o InstanceGceSetupPtrOutput) ComputeInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGceSetup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeInstanceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Confidential instance configuration.

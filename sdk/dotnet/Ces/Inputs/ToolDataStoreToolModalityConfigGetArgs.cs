@@ -36,6 +36,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         public Input<Inputs.ToolDataStoreToolModalityConfigRewriterConfigGetArgs>? RewriterConfig { get; set; }
 
         /// <summary>
+        /// Snippets configuration.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("snippetsConfig")]
+        public Input<Inputs.ToolDataStoreToolModalityConfigSnippetsConfigGetArgs>? SnippetsConfig { get; set; }
+
+        /// <summary>
         /// Summarization configuration.
         /// Structure is documented below.
         /// </summary>

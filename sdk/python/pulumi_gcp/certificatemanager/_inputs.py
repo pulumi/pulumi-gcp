@@ -575,6 +575,19 @@ class CertificateSelfManagedArgsDict(TypedDict):
     The private key of the leaf certificate in PEM-encoded form.
     **Note**: This property is sensitive and will not be displayed in the plan.
     """
+    pem_private_key_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    (Optional, Write-Only)
+    The private key of the leaf certificate in PEM-encoded form.
+    **Note**: This property is write-only and will not be read from the API.
+
+    > **Note:** One of `pem_private_key` or `pem_private_key_wo` can only be set.
+    """
+    pem_private_key_wo_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Triggers update of `pem_private_key_wo` write-only. Increment this value when an update to `pem_private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+    """
     private_key_pem: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Optional, Deprecated)
@@ -590,6 +603,8 @@ class CertificateSelfManagedArgs:
                  certificate_pem: pulumi.Input[Optional[_builtins.str]] = None,
                  pem_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  pem_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_private_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 pem_private_key_wo_version: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key_pem: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] certificate_pem: (Optional, Deprecated)
@@ -603,6 +618,13 @@ class CertificateSelfManagedArgs:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[_builtins.str] pem_private_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               (Optional, Write-Only)
+               The private key of the leaf certificate in PEM-encoded form.
+               **Note**: This property is write-only and will not be read from the API.
+               
+               > **Note:** One of `pem_private_key` or `pem_private_key_wo` can only be set.
+        :param pulumi.Input[_builtins.str] pem_private_key_wo_version: Triggers update of `pem_private_key_wo` write-only. Increment this value when an update to `pem_private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
         :param pulumi.Input[_builtins.str] private_key_pem: (Optional, Deprecated)
                The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
@@ -618,6 +640,10 @@ class CertificateSelfManagedArgs:
             pulumi.set(__self__, "pem_certificate", pem_certificate)
         if pem_private_key is not None:
             pulumi.set(__self__, "pem_private_key", pem_private_key)
+        if pem_private_key_wo is not None:
+            pulumi.set(__self__, "pem_private_key_wo", pem_private_key_wo)
+        if pem_private_key_wo_version is not None:
+            pulumi.set(__self__, "pem_private_key_wo_version", pem_private_key_wo_version)
         if private_key_pem is not None:
             warnings.warn("""`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""", DeprecationWarning)
             pulumi.log.warn("""private_key_pem is deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""")
@@ -668,6 +694,35 @@ class CertificateSelfManagedArgs:
     @pem_private_key.setter
     def pem_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pem_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pemPrivateKeyWo")
+    def pem_private_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        (Optional, Write-Only)
+        The private key of the leaf certificate in PEM-encoded form.
+        **Note**: This property is write-only and will not be read from the API.
+
+        > **Note:** One of `pem_private_key` or `pem_private_key_wo` can only be set.
+        """
+        return pulumi.get(self, "pem_private_key_wo")
+
+    @pem_private_key_wo.setter
+    def pem_private_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pem_private_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pemPrivateKeyWoVersion")
+    def pem_private_key_wo_version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Triggers update of `pem_private_key_wo` write-only. Increment this value when an update to `pem_private_key_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+        """
+        return pulumi.get(self, "pem_private_key_wo_version")
+
+    @pem_private_key_wo_version.setter
+    def pem_private_key_wo_version(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "pem_private_key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyPem")

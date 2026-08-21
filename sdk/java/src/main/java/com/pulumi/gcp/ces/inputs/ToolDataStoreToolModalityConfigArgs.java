@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigGroundingConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigRewriterConfigArgs;
+import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSnippetsConfigArgs;
 import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -75,6 +76,23 @@ public final class ToolDataStoreToolModalityConfigArgs extends com.pulumi.resour
     }
 
     /**
+     * Snippets configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="snippetsConfig")
+    private @Nullable Output<ToolDataStoreToolModalityConfigSnippetsConfigArgs> snippetsConfig;
+
+    /**
+     * @return Snippets configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolDataStoreToolModalityConfigSnippetsConfigArgs>> snippetsConfig() {
+        return Optional.ofNullable(this.snippetsConfig);
+    }
+
+    /**
      * Summarization configuration.
      * Structure is documented below.
      * 
@@ -97,6 +115,7 @@ public final class ToolDataStoreToolModalityConfigArgs extends com.pulumi.resour
         this.groundingConfig = $.groundingConfig;
         this.modalityType = $.modalityType;
         this.rewriterConfig = $.rewriterConfig;
+        this.snippetsConfig = $.snippetsConfig;
         this.summarizationConfig = $.summarizationConfig;
     }
 
@@ -189,6 +208,29 @@ public final class ToolDataStoreToolModalityConfigArgs extends com.pulumi.resour
          */
         public Builder rewriterConfig(ToolDataStoreToolModalityConfigRewriterConfigArgs rewriterConfig) {
             return rewriterConfig(Output.of(rewriterConfig));
+        }
+
+        /**
+         * @param snippetsConfig Snippets configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snippetsConfig(@Nullable Output<ToolDataStoreToolModalityConfigSnippetsConfigArgs> snippetsConfig) {
+            $.snippetsConfig = snippetsConfig;
+            return this;
+        }
+
+        /**
+         * @param snippetsConfig Snippets configuration.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snippetsConfig(ToolDataStoreToolModalityConfigSnippetsConfigArgs snippetsConfig) {
+            return snippetsConfig(Output.of(snippetsConfig));
         }
 
         /**

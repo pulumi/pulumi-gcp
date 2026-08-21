@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionCustomEnvironmentSpecMachineSpec;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionCustomEnvironmentSpecNetworkSpec;
 import com.pulumi.gcp.colab.outputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec;
+import com.pulumi.gcp.colab.outputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +32,12 @@ public final class NotebookExecutionCustomEnvironmentSpec {
      * 
      */
     private @Nullable NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec persistentDiskSpec;
+    /**
+     * @return Shielded VM configuration.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig shieldedInstanceConfig;
 
     private NotebookExecutionCustomEnvironmentSpec() {}
     /**
@@ -57,6 +64,14 @@ public final class NotebookExecutionCustomEnvironmentSpec {
     public Optional<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec> persistentDiskSpec() {
         return Optional.ofNullable(this.persistentDiskSpec);
     }
+    /**
+     * @return Shielded VM configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig> shieldedInstanceConfig() {
+        return Optional.ofNullable(this.shieldedInstanceConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,12 +85,14 @@ public final class NotebookExecutionCustomEnvironmentSpec {
         private @Nullable NotebookExecutionCustomEnvironmentSpecMachineSpec machineSpec;
         private @Nullable NotebookExecutionCustomEnvironmentSpecNetworkSpec networkSpec;
         private @Nullable NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec persistentDiskSpec;
+        private @Nullable NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig shieldedInstanceConfig;
         public Builder() {}
         public Builder(NotebookExecutionCustomEnvironmentSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.machineSpec = defaults.machineSpec;
     	      this.networkSpec = defaults.networkSpec;
     	      this.persistentDiskSpec = defaults.persistentDiskSpec;
+    	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
         }
 
         @CustomType.Setter
@@ -96,11 +113,18 @@ public final class NotebookExecutionCustomEnvironmentSpec {
             this.persistentDiskSpec = persistentDiskSpec;
             return this;
         }
+        @CustomType.Setter
+        public Builder shieldedInstanceConfig(@Nullable NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig shieldedInstanceConfig) {
+
+            this.shieldedInstanceConfig = shieldedInstanceConfig;
+            return this;
+        }
         public NotebookExecutionCustomEnvironmentSpec build() {
             final var _resultValue = new NotebookExecutionCustomEnvironmentSpec();
             _resultValue.machineSpec = machineSpec;
             _resultValue.networkSpec = networkSpec;
             _resultValue.persistentDiskSpec = persistentDiskSpec;
+            _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             return _resultValue;
         }
     }
