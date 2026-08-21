@@ -1,0 +1,27 @@
+v7.43.0 (c1a4c311722ebacc3e768641f41bdfa6b2d9f0d4)
+  https://github.com/hashicorp/terraform-provider-google-beta/releases/tag/v7.43.0
+  CHANGELOG section: 7.43.0 (Unreleased)
+
+* New Resource: google_cloud_support_support_event_subscription
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12783
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18377
+    product: mmv1/products/cloudsupport/product.yaml
+      name: cloud_support -> CloudSupport
+
+* New Resource: google_compute_region_network_policy_traffic_classification_rule
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12778
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18087
+    product: mmv1/products/compute/product.yaml
+      name: compute -> Compute
+
+* New Resource: google_apihub_runtime_project_attachment
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12764
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18360
+    product: mmv1/products/apihub/product.yaml
+      name: apihub -> Apihub
+
+* New Resource: google_netapp_trial
+    tfp PR: https://github.com/hashicorp/terraform-provider-google-beta/pull/12777
+    mm  PR: https://github.com/GoogleCloudPlatform/magic-modules/pull/18102
+    product: mmv1/products/netapp/product.yaml
+      name: netapp -> Netapp
