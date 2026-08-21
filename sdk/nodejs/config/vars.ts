@@ -65,6 +65,14 @@ Object.defineProperty(exports, "agentRegistryCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const agenticApplicationsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "agenticApplicationsCustomEndpoint", {
+    get() {
+        return __config.get("agenticApplicationsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const alloydbCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "alloydbCustomEndpoint", {
     get() {

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.accesscontextmanager.GcpUserAccessBindingArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GcpUserAccessBindingState;
+import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingPrincipal;
 import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingScopedAccessSetting;
 import com.pulumi.gcp.accesscontextmanager.outputs.GcpUserAccessBindingSessionSettings;
 import java.lang.String;
@@ -162,18 +163,46 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
         return this.deletionPolicy;
     }
     /**
-     * Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * 
+     */
+    @Export(name="dryRunAccessLevels", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dryRunAccessLevels;
+
+    /**
+     * @return Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: &#34;accessPolicies/9522/accessLevels/device_trusted&#34;
+     * 
+     */
+    public Output<Optional<String>> dryRunAccessLevels() {
+        return Codegen.optional(this.dryRunAccessLevels);
+    }
+    /**
+     * Immutable. Google Group id whose members are subject to this binding&#39;s restrictions.
+     * See &#34;id&#34; in the Google Workspace Directory API&#39;s Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: &#34;01d520gv4vjcrht&#34;
      * 
      */
     @Export(name="groupKey", refs={String.class}, tree="[0]")
-    private Output<String> groupKey;
+    private Output</* @Nullable */ String> groupKey;
 
     /**
-     * @return Required. Immutable. Google Group id whose members are subject to this binding&#39;s restrictions. See &#34;id&#34; in the G Suite Directory API&#39;s Groups resource. If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: &#34;01d520gv4vjcrht&#34;
+     * @return Immutable. Google Group id whose members are subject to this binding&#39;s restrictions.
+     * See &#34;id&#34; in the Google Workspace Directory API&#39;s Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group&#39;s email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: &#34;01d520gv4vjcrht&#34;
      * 
      */
-    public Output<String> groupKey() {
-        return this.groupKey;
+    public Output<Optional<String>> groupKey() {
+        return Codegen.optional(this.groupKey);
     }
     /**
      * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: &#34;organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N&#34;
@@ -202,6 +231,22 @@ public class GcpUserAccessBinding extends com.pulumi.resources.CustomResource {
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+    /**
+     * Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="principal", refs={GcpUserAccessBindingPrincipal.class}, tree="[0]")
+    private Output</* @Nullable */ GcpUserAccessBindingPrincipal> principal;
+
+    /**
+     * @return Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<GcpUserAccessBindingPrincipal>> principal() {
+        return Codegen.optional(this.principal);
     }
     /**
      * Optional. A list of scoped access settings that set this binding&#39;s restrictions on a subset of applications.

@@ -320,8 +320,8 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 
         * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
-        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
-        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -380,8 +380,8 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 
         * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
-        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
-        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -499,8 +499,8 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 
         * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
-        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
-        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -559,8 +559,8 @@ class TagTemplateIamBinding(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Data Catalog TagTemplate. Each of these resources serves a different use case:
 
         * `datacatalog.TagTemplateIamPolicy`: Authoritative. Sets the IAM policy for the tagtemplate and replaces any existing policy already attached.
-        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved.
-        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved.
+        * `datacatalog.TagTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tagtemplate are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `datacatalog.TagTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tagtemplate are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 

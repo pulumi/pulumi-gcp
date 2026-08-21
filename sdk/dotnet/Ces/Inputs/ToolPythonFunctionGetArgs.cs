@@ -34,6 +34,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("pythonCode")]
         public Input<string>? PythonCode { get; set; }
 
+        /// <summary>
+        /// Service Directory configuration for the tool.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("serviceDirectoryConfig")]
+        public Input<Inputs.ToolPythonFunctionServiceDirectoryConfigGetArgs>? ServiceDirectoryConfig { get; set; }
+
         public ToolPythonFunctionGetArgs()
         {
         }

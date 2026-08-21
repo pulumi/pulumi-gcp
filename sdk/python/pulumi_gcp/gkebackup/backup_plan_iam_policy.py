@@ -212,8 +212,8 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
 
         * `gkebackup.BackupPlanIamPolicy`: Authoritative. Sets the IAM policy for the backupplan and replaces any existing policy already attached.
-        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved.
-        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved.
+        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -277,8 +277,8 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
 
         * `gkebackup.BackupPlanIamPolicy`: Authoritative. Sets the IAM policy for the backupplan and replaces any existing policy already attached.
-        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved.
-        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved.
+        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -387,8 +387,8 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
 
         * `gkebackup.BackupPlanIamPolicy`: Authoritative. Sets the IAM policy for the backupplan and replaces any existing policy already attached.
-        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved.
-        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved.
+        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -452,8 +452,8 @@ class BackupPlanIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Backup for GKE BackupPlan. Each of these resources serves a different use case:
 
         * `gkebackup.BackupPlanIamPolicy`: Authoritative. Sets the IAM policy for the backupplan and replaces any existing policy already attached.
-        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved.
-        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved.
+        * `gkebackup.BackupPlanIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the backupplan are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `gkebackup.BackupPlanIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the backupplan are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 

@@ -119,6 +119,48 @@ import (
 //	}
 //
 // ```
+// ### Scan Config Static Ip
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			scannerStaticIp, err := compute.NewAddress(ctx, "scanner_static_ip", &compute.AddressArgs{
+//				Name: pulumi.String("scan-static-ip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSecurityScanConfig(ctx, "scan-config", &compute.SecurityScanConfigArgs{
+//				DisplayName: pulumi.String("scan-config"),
+//				StartingUrls: pulumi.StringArray{
+//					scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
+//						return fmt.Sprintf("http://%v", address), nil
+//					}).(pulumi.StringOutput),
+//				},
+//				TargetPlatforms: pulumi.StringArray{
+//					pulumi.String("COMPUTE"),
+//				},
+//				StaticIpScan: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -174,6 +216,9 @@ type SecurityScanConfig struct {
 	Schedule SecurityScanConfigSchedulePtrOutput `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
+	// Whether the scan configuration has enabled static IP address scan feature.
+	// If enabled, the scanner will access applications from static IP addresses.
+	StaticIpScan pulumi.BoolPtrOutput `pulumi:"staticIpScan"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayOutput `pulumi:"targetPlatforms"`
@@ -255,6 +300,9 @@ type securityScanConfigState struct {
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
+	// Whether the scan configuration has enabled static IP address scan feature.
+	// If enabled, the scanner will access applications from static IP addresses.
+	StaticIpScan *bool `pulumi:"staticIpScan"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
@@ -301,6 +349,9 @@ type SecurityScanConfigState struct {
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
+	// Whether the scan configuration has enabled static IP address scan feature.
+	// If enabled, the scanner will access applications from static IP addresses.
+	StaticIpScan pulumi.BoolPtrInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayInput
@@ -348,6 +399,9 @@ type securityScanConfigArgs struct {
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
+	// Whether the scan configuration has enabled static IP address scan feature.
+	// If enabled, the scanner will access applications from static IP addresses.
+	StaticIpScan *bool `pulumi:"staticIpScan"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
@@ -392,6 +446,9 @@ type SecurityScanConfigArgs struct {
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
+	// Whether the scan configuration has enabled static IP address scan feature.
+	// If enabled, the scanner will access applications from static IP addresses.
+	StaticIpScan pulumi.BoolPtrInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
 	TargetPlatforms pulumi.StringArrayInput
@@ -555,6 +612,12 @@ func (o SecurityScanConfigOutput) Schedule() SecurityScanConfigSchedulePtrOutput
 // The starting URLs from which the scanner finds site pages.
 func (o SecurityScanConfigOutput) StartingUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringArrayOutput { return v.StartingUrls }).(pulumi.StringArrayOutput)
+}
+
+// Whether the scan configuration has enabled static IP address scan feature.
+// If enabled, the scanner will access applications from static IP addresses.
+func (o SecurityScanConfigOutput) StaticIpScan() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityScanConfig) pulumi.BoolPtrOutput { return v.StaticIpScan }).(pulumi.BoolPtrOutput)
 }
 
 // Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.

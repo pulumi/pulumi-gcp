@@ -300,7 +300,7 @@ type StandardAppVersion struct {
 	AppEngineBundledServices pulumi.StringArrayOutput `pulumi:"appEngineBundledServices"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics.
 	// Structure is documented below.
-	AutomaticScaling StandardAppVersionAutomaticScalingPtrOutput `pulumi:"automaticScaling"`
+	AutomaticScaling StandardAppVersionAutomaticScalingOutput `pulumi:"automaticScaling"`
 	// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
 	// Structure is documented below.
 	BasicScaling StandardAppVersionBasicScalingPtrOutput `pulumi:"basicScaling"`
@@ -809,8 +809,8 @@ func (o StandardAppVersionOutput) AppEngineBundledServices() pulumi.StringArrayO
 
 // Automatic scaling is based on request rate, response latencies, and other application metrics.
 // Structure is documented below.
-func (o StandardAppVersionOutput) AutomaticScaling() StandardAppVersionAutomaticScalingPtrOutput {
-	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionAutomaticScalingPtrOutput { return v.AutomaticScaling }).(StandardAppVersionAutomaticScalingPtrOutput)
+func (o StandardAppVersionOutput) AutomaticScaling() StandardAppVersionAutomaticScalingOutput {
+	return o.ApplyT(func(v *StandardAppVersion) StandardAppVersionAutomaticScalingOutput { return v.AutomaticScaling }).(StandardAppVersionAutomaticScalingOutput)
 }
 
 // Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.

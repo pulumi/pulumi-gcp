@@ -33,6 +33,9 @@ import * as utilities from "../utilities";
  *     autoscale: {
  *         maxSlots: 100,
  *     },
+ *     labels: {
+ *         environment: "production",
+ *     },
  * });
  * ```
  *
@@ -103,11 +106,23 @@ export class Reservation extends pulumi.CustomResource {
      */
     declare public readonly edition: pulumi.Output<string>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
     declare public readonly ignoreIdleSlots: pulumi.Output<boolean | undefined>;
+    /**
+     * The labels associated with this reservation. You can use these to
+     * organize and group your reservations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
@@ -169,6 +184,11 @@ export class Reservation extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     declare public readonly project: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * The Disaster Recovery(DR) replication status of the reservation. This is only available for
      * the primary replicas of DR/failover reservations and provides information about the both the
@@ -250,13 +270,16 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["concurrency"] = state?.concurrency;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["edition"] = state?.edition;
+            resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["ignoreIdleSlots"] = state?.ignoreIdleSlots;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["maxSlots"] = state?.maxSlots;
             resourceInputs["name"] = state?.name;
             resourceInputs["originalPrimaryLocation"] = state?.originalPrimaryLocation;
             resourceInputs["primaryLocation"] = state?.primaryLocation;
             resourceInputs["project"] = state?.project;
+            resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["replicationStatuses"] = state?.replicationStatuses;
             resourceInputs["reservationGroup"] = state?.reservationGroup;
             resourceInputs["scalingMode"] = state?.scalingMode;
@@ -272,6 +295,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["edition"] = args?.edition;
             resourceInputs["ignoreIdleSlots"] = args?.ignoreIdleSlots;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["maxSlots"] = args?.maxSlots;
             resourceInputs["name"] = args?.name;
@@ -280,11 +304,15 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["scalingMode"] = args?.scalingMode;
             resourceInputs["secondaryLocation"] = args?.secondaryLocation;
             resourceInputs["slotCapacity"] = args?.slotCapacity;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["originalPrimaryLocation"] = undefined /*out*/;
             resourceInputs["primaryLocation"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["replicationStatuses"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Reservation.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -316,11 +344,23 @@ export interface ReservationState {
      */
     edition?: pulumi.Input<string | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot
      * capacity specified above at most.
      */
     ignoreIdleSlots?: pulumi.Input<boolean | undefined>;
+    /**
+     * The labels associated with this reservation. You can use these to
+     * organize and group your reservations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
@@ -382,6 +422,11 @@ export interface ReservationState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The combination of labels configured directly on the resource
+     *  and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Disaster Recovery(DR) replication status of the reservation. This is only available for
      * the primary replicas of DR/failover reservations and provides information about the both the
@@ -479,6 +524,14 @@ export interface ReservationArgs {
      * capacity specified above at most.
      */
     ignoreIdleSlots?: pulumi.Input<boolean | undefined>;
+    /**
+     * The labels associated with this reservation. You can use these to
+     * organize and group your reservations.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.

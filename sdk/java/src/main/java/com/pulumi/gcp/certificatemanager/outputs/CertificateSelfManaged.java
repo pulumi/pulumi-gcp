@@ -39,6 +39,21 @@ public final class CertificateSelfManaged {
      */
     private @Nullable String pemPrivateKey;
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+     * 
+     */
+    private @Nullable String pemPrivateKeyWo;
+    /**
+     * @return Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    private @Nullable String pemPrivateKeyWoVersion;
+    /**
      * @return (Optional, Deprecated)
      * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -87,6 +102,25 @@ public final class CertificateSelfManaged {
         return Optional.ofNullable(this.pemPrivateKey);
     }
     /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+     * 
+     */
+    public Optional<String> pemPrivateKeyWo() {
+        return Optional.ofNullable(this.pemPrivateKeyWo);
+    }
+    /**
+     * @return Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<String> pemPrivateKeyWoVersion() {
+        return Optional.ofNullable(this.pemPrivateKeyWoVersion);
+    }
+    /**
      * @return (Optional, Deprecated)
      * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -114,6 +148,8 @@ public final class CertificateSelfManaged {
         private @Nullable String certificatePem;
         private @Nullable String pemCertificate;
         private @Nullable String pemPrivateKey;
+        private @Nullable String pemPrivateKeyWo;
+        private @Nullable String pemPrivateKeyWoVersion;
         private @Nullable String privateKeyPem;
         public Builder() {}
         public Builder(CertificateSelfManaged defaults) {
@@ -121,6 +157,8 @@ public final class CertificateSelfManaged {
     	      this.certificatePem = defaults.certificatePem;
     	      this.pemCertificate = defaults.pemCertificate;
     	      this.pemPrivateKey = defaults.pemPrivateKey;
+    	      this.pemPrivateKeyWo = defaults.pemPrivateKeyWo;
+    	      this.pemPrivateKeyWoVersion = defaults.pemPrivateKeyWoVersion;
     	      this.privateKeyPem = defaults.privateKeyPem;
         }
 
@@ -143,6 +181,18 @@ public final class CertificateSelfManaged {
             return this;
         }
         @CustomType.Setter
+        public Builder pemPrivateKeyWo(@Nullable String pemPrivateKeyWo) {
+
+            this.pemPrivateKeyWo = pemPrivateKeyWo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pemPrivateKeyWoVersion(@Nullable String pemPrivateKeyWoVersion) {
+
+            this.pemPrivateKeyWoVersion = pemPrivateKeyWoVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateKeyPem(@Nullable String privateKeyPem) {
 
             this.privateKeyPem = privateKeyPem;
@@ -153,6 +203,8 @@ public final class CertificateSelfManaged {
             _resultValue.certificatePem = certificatePem;
             _resultValue.pemCertificate = pemCertificate;
             _resultValue.pemPrivateKey = pemPrivateKey;
+            _resultValue.pemPrivateKeyWo = pemPrivateKeyWo;
+            _resultValue.pemPrivateKeyWoVersion = pemPrivateKeyWoVersion;
             _resultValue.privateKeyPem = privateKeyPem;
             return _resultValue;
         }

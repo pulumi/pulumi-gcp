@@ -687,6 +687,7 @@ class AiReasoningEngine(pulumi.CustomResource):
             spec={
                 "container_spec": {
                     "image_uri": f"us-central1-docker.pkg.dev/{project.project_id}/vertex-byoc/byoc-agent:latest",
+                    "port": 8080,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1275,6 +1276,7 @@ class AiReasoningEngine(pulumi.CustomResource):
             spec={
                 "container_spec": {
                     "image_uri": f"us-central1-docker.pkg.dev/{project.project_id}/vertex-byoc/byoc-agent:latest",
+                    "port": 8080,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[

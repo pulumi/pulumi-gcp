@@ -27,6 +27,7 @@ class ReservationArgs:
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_slots: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,11 @@ class ReservationArgs:
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this reservation. You can use these to
+               organize and group your reservations.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
@@ -141,6 +147,8 @@ class ReservationArgs:
             pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if max_slots is not None:
@@ -236,6 +244,22 @@ class ReservationArgs:
     @ignore_idle_slots.setter
     def ignore_idle_slots(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_idle_slots", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels associated with this reservation. You can use these to
+        organize and group your reservations.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -399,13 +423,16 @@ class _ReservationState:
                  concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_slots: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  original_primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  primary_location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]]] = None,
                  reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
                  scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -424,9 +451,15 @@ class _ReservationState:
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this reservation. You can use these to
+               organize and group your reservations.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
@@ -470,6 +503,8 @@ class _ReservationState:
                reservations using the managed disaster recovery feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input['ReservationReplicationStatusArgs']]] replication_statuses: The Disaster Recovery(DR) replication status of the reservation. This is only available for
                the primary replicas of DR/failover reservations and provides information about the both the
                staleness of the secondary and the last error encountered while trying to replicate changes
@@ -527,8 +562,12 @@ class _ReservationState:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if max_slots is not None:
@@ -541,6 +580,8 @@ class _ReservationState:
             pulumi.set(__self__, "primary_location", primary_location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if replication_statuses is not None:
             pulumi.set(__self__, "replication_statuses", replication_statuses)
         if reservation_group is not None:
@@ -607,6 +648,18 @@ class _ReservationState:
         pulumi.set(self, "edition", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @_builtins.property
     @pulumi.getter(name="ignoreIdleSlots")
     def ignore_idle_slots(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -619,6 +672,22 @@ class _ReservationState:
     @ignore_idle_slots.setter
     def ignore_idle_slots(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_idle_slots", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The labels associated with this reservation. You can use these to
+        organize and group your reservations.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -728,6 +797,19 @@ class _ReservationState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationStatuses")
@@ -844,6 +926,7 @@ class Reservation(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_slots: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -879,6 +962,9 @@ class Reservation(pulumi.CustomResource):
             concurrency=0,
             autoscale={
                 "max_slots": 100,
+            },
+            labels={
+                "environment": "production",
             })
         ```
 
@@ -914,6 +1000,11 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this reservation. You can use these to
+               organize and group your reservations.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
@@ -1026,6 +1117,9 @@ class Reservation(pulumi.CustomResource):
             concurrency=0,
             autoscale={
                 "max_slots": 100,
+            },
+            labels={
+                "environment": "production",
             })
         ```
 
@@ -1066,6 +1160,7 @@ class Reservation(pulumi.CustomResource):
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  max_slots: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1088,6 +1183,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["edition"] = edition
             __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["max_slots"] = max_slots
             __props__.__dict__["name"] = name
@@ -1098,9 +1194,13 @@ class Reservation(pulumi.CustomResource):
             if slot_capacity is None and not opts.urn:
                 raise TypeError("Missing required property 'slot_capacity'")
             __props__.__dict__["slot_capacity"] = slot_capacity
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["original_primary_location"] = None
             __props__.__dict__["primary_location"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["replication_statuses"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Reservation, __self__).__init__(
             'gcp:bigquery/reservation:Reservation',
             resource_name,
@@ -1115,13 +1215,16 @@ class Reservation(pulumi.CustomResource):
             concurrency: pulumi.Input[Optional[_builtins.int]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ignore_idle_slots: pulumi.Input[Optional[_builtins.bool]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             max_slots: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             original_primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             primary_location: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             replication_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]]] = None,
             reservation_group: pulumi.Input[Optional[_builtins.str]] = None,
             scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1144,9 +1247,15 @@ class Reservation(pulumi.CustomResource):
                management without updating or deleting the resource in the API.
                When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within
                the same admin project. If true, a query using this reservation will execute with the slot
                capacity specified above at most.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: The labels associated with this reservation. You can use these to
+               organize and group your reservations.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: The geographic location where the transfer config should reside.
                Examples: US, EU, asia-northeast1. The default value is US.
         :param pulumi.Input[_builtins.int] max_slots: (Optional, Beta)
@@ -1190,6 +1299,8 @@ class Reservation(pulumi.CustomResource):
                reservations using the managed disaster recovery feature.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ReservationReplicationStatusArgs', 'ReservationReplicationStatusArgsDict']]]] replication_statuses: The Disaster Recovery(DR) replication status of the reservation. This is only available for
                the primary replicas of DR/failover reservations and provides information about the both the
                staleness of the secondary and the last error encountered while trying to replicate changes
@@ -1247,13 +1358,16 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["concurrency"] = concurrency
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["edition"] = edition
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["max_slots"] = max_slots
         __props__.__dict__["name"] = name
         __props__.__dict__["original_primary_location"] = original_primary_location
         __props__.__dict__["primary_location"] = primary_location
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["replication_statuses"] = replication_statuses
         __props__.__dict__["reservation_group"] = reservation_group
         __props__.__dict__["scaling_mode"] = scaling_mode
@@ -1300,6 +1414,14 @@ class Reservation(pulumi.CustomResource):
         return pulumi.get(self, "edition")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @_builtins.property
     @pulumi.getter(name="ignoreIdleSlots")
     def ignore_idle_slots(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
@@ -1308,6 +1430,18 @@ class Reservation(pulumi.CustomResource):
         capacity specified above at most.
         """
         return pulumi.get(self, "ignore_idle_slots")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        The labels associated with this reservation. You can use these to
+        organize and group your reservations.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -1393,6 +1527,15 @@ class Reservation(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @_builtins.property
     @pulumi.getter(name="replicationStatuses")

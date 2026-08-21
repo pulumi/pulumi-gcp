@@ -14,9 +14,21 @@ namespace Pulumi.Gcp.Sql.Outputs
     public sealed class GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult
     {
         /// <summary>
+        /// The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        /// </summary>
+        public readonly int CpuUtilizationThresholdPercent;
+        /// <summary>
         /// Enable or disable the Performance Capture.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+        /// </summary>
+        public readonly int HistoryListLengthThresholdCount;
+        /// <summary>
+        /// The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+        /// </summary>
+        public readonly int MemoryUsageThresholdPercent;
         /// <summary>
         /// The minimum number of consecutive readings above threshold that triggers instance state capture.
         /// </summary>
@@ -34,13 +46,39 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int SecondsBehindSourceThreshold;
         /// <summary>
+        /// The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        /// </summary>
+        public readonly int SemaphoreWaitThresholdCount;
+        /// <summary>
         /// The amount of time in seconds that a transaction needs to have been open before getting recorded.
         /// </summary>
         public readonly int TransactionDurationThreshold;
+        /// <summary>
+        /// A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+        /// </summary>
+        public readonly ImmutableArray<string> TransactionKillExcludedUserHosts;
+        /// <summary>
+        /// The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+        /// </summary>
+        public readonly int TransactionKillThresholdSeconds;
+        /// <summary>
+        /// Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+        /// </summary>
+        public readonly string TransactionKillType;
+        /// <summary>
+        /// The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+        /// </summary>
+        public readonly int TransactionLockWaitThresholdCount;
 
         [OutputConstructor]
         private GetDatabaseInstancesInstanceSettingPerformanceCaptureConfigResult(
+            int cpuUtilizationThresholdPercent,
+
             bool enabled,
+
+            int historyListLengthThresholdCount,
+
+            int memoryUsageThresholdPercent,
 
             int probeThreshold,
 
@@ -50,14 +88,32 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             int secondsBehindSourceThreshold,
 
-            int transactionDurationThreshold)
+            int semaphoreWaitThresholdCount,
+
+            int transactionDurationThreshold,
+
+            ImmutableArray<string> transactionKillExcludedUserHosts,
+
+            int transactionKillThresholdSeconds,
+
+            string transactionKillType,
+
+            int transactionLockWaitThresholdCount)
         {
+            CpuUtilizationThresholdPercent = cpuUtilizationThresholdPercent;
             Enabled = enabled;
+            HistoryListLengthThresholdCount = historyListLengthThresholdCount;
+            MemoryUsageThresholdPercent = memoryUsageThresholdPercent;
             ProbeThreshold = probeThreshold;
             ProbingIntervalSeconds = probingIntervalSeconds;
             RunningThreadsThreshold = runningThreadsThreshold;
             SecondsBehindSourceThreshold = secondsBehindSourceThreshold;
+            SemaphoreWaitThresholdCount = semaphoreWaitThresholdCount;
             TransactionDurationThreshold = transactionDurationThreshold;
+            TransactionKillExcludedUserHosts = transactionKillExcludedUserHosts;
+            TransactionKillThresholdSeconds = transactionKillThresholdSeconds;
+            TransactionKillType = transactionKillType;
+            TransactionLockWaitThresholdCount = transactionLockWaitThresholdCount;
         }
     }
 }

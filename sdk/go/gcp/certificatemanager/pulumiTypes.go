@@ -1076,6 +1076,15 @@ type CertificateSelfManaged struct {
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemPrivateKey *string `pulumi:"pemPrivateKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The private key of the leaf certificate in PEM-encoded form.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+	PemPrivateKeyWo *string `pulumi:"pemPrivateKeyWo"`
+	// Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PemPrivateKeyWoVersion *string `pulumi:"pemPrivateKeyWoVersion"`
 	// (Optional, Deprecated)
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1114,6 +1123,15 @@ type CertificateSelfManagedArgs struct {
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	PemPrivateKey pulumi.StringPtrInput `pulumi:"pemPrivateKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// (Optional, Write-Only)
+	// The private key of the leaf certificate in PEM-encoded form.
+	// **Note**: This property is write-only and will not be read from the API.
+	//
+	// > **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+	PemPrivateKeyWo pulumi.StringPtrInput `pulumi:"pemPrivateKeyWo"`
+	// Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+	PemPrivateKeyWoVersion pulumi.StringPtrInput `pulumi:"pemPrivateKeyWoVersion"`
 	// (Optional, Deprecated)
 	// The private key of the leaf certificate in PEM-encoded form.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1226,6 +1244,21 @@ func (o CertificateSelfManagedOutput) PemPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemPrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The private key of the leaf certificate in PEM-encoded form.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+func (o CertificateSelfManagedOutput) PemPrivateKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemPrivateKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o CertificateSelfManagedOutput) PemPrivateKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateSelfManaged) *string { return v.PemPrivateKeyWoVersion }).(pulumi.StringPtrOutput)
+}
+
 // (Optional, Deprecated)
 // The private key of the leaf certificate in PEM-encoded form.
 // **Note**: This property is sensitive and will not be displayed in the plan.
@@ -1298,6 +1331,31 @@ func (o CertificateSelfManagedPtrOutput) PemPrivateKey() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.PemPrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// (Optional, Write-Only)
+// The private key of the leaf certificate in PEM-encoded form.
+// **Note**: This property is write-only and will not be read from the API.
+//
+// > **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+func (o CertificateSelfManagedPtrOutput) PemPrivateKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateSelfManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PemPrivateKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+func (o CertificateSelfManagedPtrOutput) PemPrivateKeyWoVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateSelfManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PemPrivateKeyWoVersion
 	}).(pulumi.StringPtrOutput)
 }
 

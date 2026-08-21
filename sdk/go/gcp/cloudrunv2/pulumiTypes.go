@@ -6400,6 +6400,9 @@ type ServiceTemplate struct {
 	NodeSelector *ServiceTemplateNodeSelector `pulumi:"nodeSelector"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision *string `pulumi:"revision"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes *ServiceTemplateSandboxes `pulumi:"sandboxes"`
 	// Scaling settings for this Revision.
 	// Structure is documented below.
 	Scaling *ServiceTemplateScaling `pulumi:"scaling"`
@@ -6464,6 +6467,9 @@ type ServiceTemplateArgs struct {
 	NodeSelector ServiceTemplateNodeSelectorPtrInput `pulumi:"nodeSelector"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
+	// Configuration for sandboxes.
+	// Structure is documented below.
+	Sandboxes ServiceTemplateSandboxesPtrInput `pulumi:"sandboxes"`
 	// Scaling settings for this Revision.
 	// Structure is documented below.
 	Scaling ServiceTemplateScalingPtrInput `pulumi:"scaling"`
@@ -6621,6 +6627,12 @@ func (o ServiceTemplateOutput) NodeSelector() ServiceTemplateNodeSelectorPtrOutp
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 func (o ServiceTemplateOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.Revision }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o ServiceTemplateOutput) Sandboxes() ServiceTemplateSandboxesPtrOutput {
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateSandboxes { return v.Sandboxes }).(ServiceTemplateSandboxesPtrOutput)
 }
 
 // Scaling settings for this Revision.
@@ -6796,6 +6808,17 @@ func (o ServiceTemplatePtrOutput) Revision() pulumi.StringPtrOutput {
 		}
 		return v.Revision
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for sandboxes.
+// Structure is documented below.
+func (o ServiceTemplatePtrOutput) Sandboxes() ServiceTemplateSandboxesPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateSandboxes {
+		if v == nil {
+			return nil
+		}
+		return v.Sandboxes
+	}).(ServiceTemplateSandboxesPtrOutput)
 }
 
 // Scaling settings for this Revision.
@@ -10925,6 +10948,527 @@ func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutp
 		}
 		return &v.Accelerator
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSandboxes struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates []ServiceTemplateSandboxesTemplate `pulumi:"templates"`
+}
+
+// ServiceTemplateSandboxesInput is an input type that accepts ServiceTemplateSandboxesArgs and ServiceTemplateSandboxesOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesInput` via:
+//
+//	ServiceTemplateSandboxesArgs{...}
+type ServiceTemplateSandboxesInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesOutput() ServiceTemplateSandboxesOutput
+	ToServiceTemplateSandboxesOutputWithContext(context.Context) ServiceTemplateSandboxesOutput
+}
+
+type ServiceTemplateSandboxesArgs struct {
+	// Sandbox templates that can be launched through the `sandbox` CLI.
+	// Structure is documented below.
+	Templates ServiceTemplateSandboxesTemplateArrayInput `pulumi:"templates"`
+}
+
+func (ServiceTemplateSandboxesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxes)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesArgs) ToServiceTemplateSandboxesOutput() ServiceTemplateSandboxesOutput {
+	return i.ToServiceTemplateSandboxesOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesArgs) ToServiceTemplateSandboxesOutputWithContext(ctx context.Context) ServiceTemplateSandboxesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesOutput)
+}
+
+func (i ServiceTemplateSandboxesArgs) ToServiceTemplateSandboxesPtrOutput() ServiceTemplateSandboxesPtrOutput {
+	return i.ToServiceTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesArgs) ToServiceTemplateSandboxesPtrOutputWithContext(ctx context.Context) ServiceTemplateSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesOutput).ToServiceTemplateSandboxesPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSandboxesPtrInput is an input type that accepts ServiceTemplateSandboxesArgs, ServiceTemplateSandboxesPtr and ServiceTemplateSandboxesPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesPtrInput` via:
+//
+//	        ServiceTemplateSandboxesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSandboxesPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesPtrOutput() ServiceTemplateSandboxesPtrOutput
+	ToServiceTemplateSandboxesPtrOutputWithContext(context.Context) ServiceTemplateSandboxesPtrOutput
+}
+
+type serviceTemplateSandboxesPtrType ServiceTemplateSandboxesArgs
+
+func ServiceTemplateSandboxesPtr(v *ServiceTemplateSandboxesArgs) ServiceTemplateSandboxesPtrInput {
+	return (*serviceTemplateSandboxesPtrType)(v)
+}
+
+func (*serviceTemplateSandboxesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSandboxes)(nil)).Elem()
+}
+
+func (i *serviceTemplateSandboxesPtrType) ToServiceTemplateSandboxesPtrOutput() ServiceTemplateSandboxesPtrOutput {
+	return i.ToServiceTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSandboxesPtrType) ToServiceTemplateSandboxesPtrOutputWithContext(ctx context.Context) ServiceTemplateSandboxesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesPtrOutput)
+}
+
+type ServiceTemplateSandboxesOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxes)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesOutput) ToServiceTemplateSandboxesOutput() ServiceTemplateSandboxesOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesOutput) ToServiceTemplateSandboxesOutputWithContext(ctx context.Context) ServiceTemplateSandboxesOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesOutput) ToServiceTemplateSandboxesPtrOutput() ServiceTemplateSandboxesPtrOutput {
+	return o.ToServiceTemplateSandboxesPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSandboxesOutput) ToServiceTemplateSandboxesPtrOutputWithContext(ctx context.Context) ServiceTemplateSandboxesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSandboxes) *ServiceTemplateSandboxes {
+		return &v
+	}).(ServiceTemplateSandboxesPtrOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o ServiceTemplateSandboxesOutput) Templates() ServiceTemplateSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxes) []ServiceTemplateSandboxesTemplate { return v.Templates }).(ServiceTemplateSandboxesTemplateArrayOutput)
+}
+
+type ServiceTemplateSandboxesPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSandboxes)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesPtrOutput) ToServiceTemplateSandboxesPtrOutput() ServiceTemplateSandboxesPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesPtrOutput) ToServiceTemplateSandboxesPtrOutputWithContext(ctx context.Context) ServiceTemplateSandboxesPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesPtrOutput) Elem() ServiceTemplateSandboxesOutput {
+	return o.ApplyT(func(v *ServiceTemplateSandboxes) ServiceTemplateSandboxes {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSandboxes
+		return ret
+	}).(ServiceTemplateSandboxesOutput)
+}
+
+// Sandbox templates that can be launched through the `sandbox` CLI.
+// Structure is documented below.
+func (o ServiceTemplateSandboxesPtrOutput) Templates() ServiceTemplateSandboxesTemplateArrayOutput {
+	return o.ApplyT(func(v *ServiceTemplateSandboxes) []ServiceTemplateSandboxesTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.Templates
+	}).(ServiceTemplateSandboxesTemplateArrayOutput)
+}
+
+type ServiceTemplateSandboxesTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs []ServiceTemplateSandboxesTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts []ServiceTemplateSandboxesTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir *string `pulumi:"workingDir"`
+}
+
+// ServiceTemplateSandboxesTemplateInput is an input type that accepts ServiceTemplateSandboxesTemplateArgs and ServiceTemplateSandboxesTemplateOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesTemplateInput` via:
+//
+//	ServiceTemplateSandboxesTemplateArgs{...}
+type ServiceTemplateSandboxesTemplateInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesTemplateOutput() ServiceTemplateSandboxesTemplateOutput
+	ToServiceTemplateSandboxesTemplateOutputWithContext(context.Context) ServiceTemplateSandboxesTemplateOutput
+}
+
+type ServiceTemplateSandboxesTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	// Structure is documented below.
+	Envs ServiceTemplateSandboxesTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	// Structure is documented below.
+	VolumeMounts ServiceTemplateSandboxesTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
+}
+
+func (ServiceTemplateSandboxesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesTemplateArgs) ToServiceTemplateSandboxesTemplateOutput() ServiceTemplateSandboxesTemplateOutput {
+	return i.ToServiceTemplateSandboxesTemplateOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesTemplateArgs) ToServiceTemplateSandboxesTemplateOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesTemplateOutput)
+}
+
+// ServiceTemplateSandboxesTemplateArrayInput is an input type that accepts ServiceTemplateSandboxesTemplateArray and ServiceTemplateSandboxesTemplateArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesTemplateArrayInput` via:
+//
+//	ServiceTemplateSandboxesTemplateArray{ ServiceTemplateSandboxesTemplateArgs{...} }
+type ServiceTemplateSandboxesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesTemplateArrayOutput() ServiceTemplateSandboxesTemplateArrayOutput
+	ToServiceTemplateSandboxesTemplateArrayOutputWithContext(context.Context) ServiceTemplateSandboxesTemplateArrayOutput
+}
+
+type ServiceTemplateSandboxesTemplateArray []ServiceTemplateSandboxesTemplateInput
+
+func (ServiceTemplateSandboxesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesTemplateArray) ToServiceTemplateSandboxesTemplateArrayOutput() ServiceTemplateSandboxesTemplateArrayOutput {
+	return i.ToServiceTemplateSandboxesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesTemplateArray) ToServiceTemplateSandboxesTemplateArrayOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesTemplateArrayOutput)
+}
+
+type ServiceTemplateSandboxesTemplateOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesTemplateOutput) ToServiceTemplateSandboxesTemplateOutput() ServiceTemplateSandboxesTemplateOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateOutput) ToServiceTemplateSandboxesTemplateOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o ServiceTemplateSandboxesTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o ServiceTemplateSandboxesTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+// Structure is documented below.
+func (o ServiceTemplateSandboxesTemplateOutput) Envs() ServiceTemplateSandboxesTemplateEnvArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) []ServiceTemplateSandboxesTemplateEnv { return v.Envs }).(ServiceTemplateSandboxesTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o ServiceTemplateSandboxesTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+func (o ServiceTemplateSandboxesTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+// Structure is documented below.
+func (o ServiceTemplateSandboxesTemplateOutput) VolumeMounts() ServiceTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) []ServiceTemplateSandboxesTemplateVolumeMount {
+		return v.VolumeMounts
+	}).(ServiceTemplateSandboxesTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o ServiceTemplateSandboxesTemplateOutput) WorkingDir() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplate) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSandboxesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSandboxesTemplate)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesTemplateArrayOutput) ToServiceTemplateSandboxesTemplateArrayOutput() ServiceTemplateSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateArrayOutput) ToServiceTemplateSandboxesTemplateArrayOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSandboxesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSandboxesTemplate {
+		return vs[0].([]ServiceTemplateSandboxesTemplate)[vs[1].(int)]
+	}).(ServiceTemplateSandboxesTemplateOutput)
+}
+
+type ServiceTemplateSandboxesTemplateEnv struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value *string `pulumi:"value"`
+}
+
+// ServiceTemplateSandboxesTemplateEnvInput is an input type that accepts ServiceTemplateSandboxesTemplateEnvArgs and ServiceTemplateSandboxesTemplateEnvOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesTemplateEnvInput` via:
+//
+//	ServiceTemplateSandboxesTemplateEnvArgs{...}
+type ServiceTemplateSandboxesTemplateEnvInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesTemplateEnvOutput() ServiceTemplateSandboxesTemplateEnvOutput
+	ToServiceTemplateSandboxesTemplateEnvOutputWithContext(context.Context) ServiceTemplateSandboxesTemplateEnvOutput
+}
+
+type ServiceTemplateSandboxesTemplateEnvArgs struct {
+	// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServiceTemplateSandboxesTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesTemplateEnvArgs) ToServiceTemplateSandboxesTemplateEnvOutput() ServiceTemplateSandboxesTemplateEnvOutput {
+	return i.ToServiceTemplateSandboxesTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesTemplateEnvArgs) ToServiceTemplateSandboxesTemplateEnvOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesTemplateEnvOutput)
+}
+
+// ServiceTemplateSandboxesTemplateEnvArrayInput is an input type that accepts ServiceTemplateSandboxesTemplateEnvArray and ServiceTemplateSandboxesTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesTemplateEnvArrayInput` via:
+//
+//	ServiceTemplateSandboxesTemplateEnvArray{ ServiceTemplateSandboxesTemplateEnvArgs{...} }
+type ServiceTemplateSandboxesTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesTemplateEnvArrayOutput() ServiceTemplateSandboxesTemplateEnvArrayOutput
+	ToServiceTemplateSandboxesTemplateEnvArrayOutputWithContext(context.Context) ServiceTemplateSandboxesTemplateEnvArrayOutput
+}
+
+type ServiceTemplateSandboxesTemplateEnvArray []ServiceTemplateSandboxesTemplateEnvInput
+
+func (ServiceTemplateSandboxesTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesTemplateEnvArray) ToServiceTemplateSandboxesTemplateEnvArrayOutput() ServiceTemplateSandboxesTemplateEnvArrayOutput {
+	return i.ToServiceTemplateSandboxesTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesTemplateEnvArray) ToServiceTemplateSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesTemplateEnvArrayOutput)
+}
+
+type ServiceTemplateSandboxesTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesTemplateEnvOutput) ToServiceTemplateSandboxesTemplateEnvOutput() ServiceTemplateSandboxesTemplateEnvOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateEnvOutput) ToServiceTemplateSandboxesTemplateEnvOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateEnvOutput {
+	return o
+}
+
+// Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+func (o ServiceTemplateSandboxesTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o ServiceTemplateSandboxesTemplateEnvOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplateEnv) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSandboxesTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSandboxesTemplateEnv)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesTemplateEnvArrayOutput) ToServiceTemplateSandboxesTemplateEnvArrayOutput() ServiceTemplateSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateEnvArrayOutput) ToServiceTemplateSandboxesTemplateEnvArrayOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateEnvArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateEnvArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSandboxesTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSandboxesTemplateEnv {
+		return vs[0].([]ServiceTemplateSandboxesTemplateEnv)[vs[1].(int)]
+	}).(ServiceTemplateSandboxesTemplateEnvOutput)
+}
+
+type ServiceTemplateSandboxesTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath *string `pulumi:"subPath"`
+}
+
+// ServiceTemplateSandboxesTemplateVolumeMountInput is an input type that accepts ServiceTemplateSandboxesTemplateVolumeMountArgs and ServiceTemplateSandboxesTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesTemplateVolumeMountInput` via:
+//
+//	ServiceTemplateSandboxesTemplateVolumeMountArgs{...}
+type ServiceTemplateSandboxesTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesTemplateVolumeMountOutput() ServiceTemplateSandboxesTemplateVolumeMountOutput
+	ToServiceTemplateSandboxesTemplateVolumeMountOutputWithContext(context.Context) ServiceTemplateSandboxesTemplateVolumeMountOutput
+}
+
+type ServiceTemplateSandboxesTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// This must match the Name of a Volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
+}
+
+func (ServiceTemplateSandboxesTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesTemplateVolumeMountArgs) ToServiceTemplateSandboxesTemplateVolumeMountOutput() ServiceTemplateSandboxesTemplateVolumeMountOutput {
+	return i.ToServiceTemplateSandboxesTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesTemplateVolumeMountArgs) ToServiceTemplateSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesTemplateVolumeMountOutput)
+}
+
+// ServiceTemplateSandboxesTemplateVolumeMountArrayInput is an input type that accepts ServiceTemplateSandboxesTemplateVolumeMountArray and ServiceTemplateSandboxesTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `ServiceTemplateSandboxesTemplateVolumeMountArrayInput` via:
+//
+//	ServiceTemplateSandboxesTemplateVolumeMountArray{ ServiceTemplateSandboxesTemplateVolumeMountArgs{...} }
+type ServiceTemplateSandboxesTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSandboxesTemplateVolumeMountArrayOutput() ServiceTemplateSandboxesTemplateVolumeMountArrayOutput
+	ToServiceTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(context.Context) ServiceTemplateSandboxesTemplateVolumeMountArrayOutput
+}
+
+type ServiceTemplateSandboxesTemplateVolumeMountArray []ServiceTemplateSandboxesTemplateVolumeMountInput
+
+func (ServiceTemplateSandboxesTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i ServiceTemplateSandboxesTemplateVolumeMountArray) ToServiceTemplateSandboxesTemplateVolumeMountArrayOutput() ServiceTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return i.ToServiceTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSandboxesTemplateVolumeMountArray) ToServiceTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSandboxesTemplateVolumeMountArrayOutput)
+}
+
+type ServiceTemplateSandboxesTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesTemplateVolumeMountOutput) ToServiceTemplateSandboxesTemplateVolumeMountOutput() ServiceTemplateSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateVolumeMountOutput) ToServiceTemplateSandboxesTemplateVolumeMountOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o ServiceTemplateSandboxesTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// This must match the Name of a Volume.
+func (o ServiceTemplateSandboxesTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o ServiceTemplateSandboxesTemplateVolumeMountOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSandboxesTemplateVolumeMount) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSandboxesTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSandboxesTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceTemplateSandboxesTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o ServiceTemplateSandboxesTemplateVolumeMountArrayOutput) ToServiceTemplateSandboxesTemplateVolumeMountArrayOutput() ServiceTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateVolumeMountArrayOutput) ToServiceTemplateSandboxesTemplateVolumeMountArrayOutputWithContext(ctx context.Context) ServiceTemplateSandboxesTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o ServiceTemplateSandboxesTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) ServiceTemplateSandboxesTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSandboxesTemplateVolumeMount {
+		return vs[0].([]ServiceTemplateSandboxesTemplateVolumeMount)[vs[1].(int)]
+	}).(ServiceTemplateSandboxesTemplateVolumeMountOutput)
 }
 
 type ServiceTemplateScaling struct {
@@ -23439,6 +23983,8 @@ type GetServiceTemplate struct {
 	NodeSelectors []GetServiceTemplateNodeSelector `pulumi:"nodeSelectors"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision string `pulumi:"revision"`
+	// Configuration for sandboxes.
+	Sandboxes []GetServiceTemplateSandbox `pulumi:"sandboxes"`
 	// Scaling settings for this Revision.
 	Scalings []GetServiceTemplateScaling `pulumi:"scalings"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -23499,6 +24045,8 @@ type GetServiceTemplateArgs struct {
 	NodeSelectors GetServiceTemplateNodeSelectorArrayInput `pulumi:"nodeSelectors"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringInput `pulumi:"revision"`
+	// Configuration for sandboxes.
+	Sandboxes GetServiceTemplateSandboxArrayInput `pulumi:"sandboxes"`
 	// Scaling settings for this Revision.
 	Scalings GetServiceTemplateScalingArrayInput `pulumi:"scalings"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -23626,6 +24174,11 @@ func (o GetServiceTemplateOutput) NodeSelectors() GetServiceTemplateNodeSelector
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 func (o GetServiceTemplateOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// Configuration for sandboxes.
+func (o GetServiceTemplateOutput) Sandboxes() GetServiceTemplateSandboxArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateSandbox { return v.Sandboxes }).(GetServiceTemplateSandboxArrayOutput)
 }
 
 // Scaling settings for this Revision.
@@ -26593,6 +27146,477 @@ func (o GetServiceTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) GetS
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateNodeSelector {
 		return vs[0].([]GetServiceTemplateNodeSelector)[vs[1].(int)]
 	}).(GetServiceTemplateNodeSelectorOutput)
+}
+
+type GetServiceTemplateSandbox struct {
+	// Sandbox templates that can be launched through the 'sandbox' CLI.
+	Templates []GetServiceTemplateSandboxTemplate `pulumi:"templates"`
+}
+
+// GetServiceTemplateSandboxInput is an input type that accepts GetServiceTemplateSandboxArgs and GetServiceTemplateSandboxOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxInput` via:
+//
+//	GetServiceTemplateSandboxArgs{...}
+type GetServiceTemplateSandboxInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxOutput() GetServiceTemplateSandboxOutput
+	ToGetServiceTemplateSandboxOutputWithContext(context.Context) GetServiceTemplateSandboxOutput
+}
+
+type GetServiceTemplateSandboxArgs struct {
+	// Sandbox templates that can be launched through the 'sandbox' CLI.
+	Templates GetServiceTemplateSandboxTemplateArrayInput `pulumi:"templates"`
+}
+
+func (GetServiceTemplateSandboxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandbox)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxArgs) ToGetServiceTemplateSandboxOutput() GetServiceTemplateSandboxOutput {
+	return i.ToGetServiceTemplateSandboxOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxArgs) ToGetServiceTemplateSandboxOutputWithContext(ctx context.Context) GetServiceTemplateSandboxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxOutput)
+}
+
+// GetServiceTemplateSandboxArrayInput is an input type that accepts GetServiceTemplateSandboxArray and GetServiceTemplateSandboxArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxArrayInput` via:
+//
+//	GetServiceTemplateSandboxArray{ GetServiceTemplateSandboxArgs{...} }
+type GetServiceTemplateSandboxArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxArrayOutput() GetServiceTemplateSandboxArrayOutput
+	ToGetServiceTemplateSandboxArrayOutputWithContext(context.Context) GetServiceTemplateSandboxArrayOutput
+}
+
+type GetServiceTemplateSandboxArray []GetServiceTemplateSandboxInput
+
+func (GetServiceTemplateSandboxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandbox)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxArray) ToGetServiceTemplateSandboxArrayOutput() GetServiceTemplateSandboxArrayOutput {
+	return i.ToGetServiceTemplateSandboxArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxArray) ToGetServiceTemplateSandboxArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxArrayOutput)
+}
+
+type GetServiceTemplateSandboxOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandbox)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxOutput) ToGetServiceTemplateSandboxOutput() GetServiceTemplateSandboxOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxOutput) ToGetServiceTemplateSandboxOutputWithContext(ctx context.Context) GetServiceTemplateSandboxOutput {
+	return o
+}
+
+// Sandbox templates that can be launched through the 'sandbox' CLI.
+func (o GetServiceTemplateSandboxOutput) Templates() GetServiceTemplateSandboxTemplateArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandbox) []GetServiceTemplateSandboxTemplate { return v.Templates }).(GetServiceTemplateSandboxTemplateArrayOutput)
+}
+
+type GetServiceTemplateSandboxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandbox)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxArrayOutput) ToGetServiceTemplateSandboxArrayOutput() GetServiceTemplateSandboxArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxArrayOutput) ToGetServiceTemplateSandboxArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSandboxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSandbox {
+		return vs[0].([]GetServiceTemplateSandbox)[vs[1].(int)]
+	}).(GetServiceTemplateSandboxOutput)
+}
+
+type GetServiceTemplateSandboxTemplate struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args []string `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands []string `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	Envs []GetServiceTemplateSandboxTemplateEnv `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image string `pulumi:"image"`
+	// The name of the Cloud Run v2 Service.
+	Name string `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts []GetServiceTemplateSandboxTemplateVolumeMount `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir string `pulumi:"workingDir"`
+}
+
+// GetServiceTemplateSandboxTemplateInput is an input type that accepts GetServiceTemplateSandboxTemplateArgs and GetServiceTemplateSandboxTemplateOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxTemplateInput` via:
+//
+//	GetServiceTemplateSandboxTemplateArgs{...}
+type GetServiceTemplateSandboxTemplateInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxTemplateOutput() GetServiceTemplateSandboxTemplateOutput
+	ToGetServiceTemplateSandboxTemplateOutputWithContext(context.Context) GetServiceTemplateSandboxTemplateOutput
+}
+
+type GetServiceTemplateSandboxTemplateArgs struct {
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+	Commands pulumi.StringArrayInput `pulumi:"commands"`
+	// List of environment variables to set in the sandbox.
+	Envs GetServiceTemplateSandboxTemplateEnvArrayInput `pulumi:"envs"`
+	// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+	Image pulumi.StringInput `pulumi:"image"`
+	// The name of the Cloud Run v2 Service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume to mount into the container's filesystem.
+	VolumeMounts GetServiceTemplateSandboxTemplateVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+	WorkingDir pulumi.StringInput `pulumi:"workingDir"`
+}
+
+func (GetServiceTemplateSandboxTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxTemplateArgs) ToGetServiceTemplateSandboxTemplateOutput() GetServiceTemplateSandboxTemplateOutput {
+	return i.ToGetServiceTemplateSandboxTemplateOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxTemplateArgs) ToGetServiceTemplateSandboxTemplateOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxTemplateOutput)
+}
+
+// GetServiceTemplateSandboxTemplateArrayInput is an input type that accepts GetServiceTemplateSandboxTemplateArray and GetServiceTemplateSandboxTemplateArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxTemplateArrayInput` via:
+//
+//	GetServiceTemplateSandboxTemplateArray{ GetServiceTemplateSandboxTemplateArgs{...} }
+type GetServiceTemplateSandboxTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxTemplateArrayOutput() GetServiceTemplateSandboxTemplateArrayOutput
+	ToGetServiceTemplateSandboxTemplateArrayOutputWithContext(context.Context) GetServiceTemplateSandboxTemplateArrayOutput
+}
+
+type GetServiceTemplateSandboxTemplateArray []GetServiceTemplateSandboxTemplateInput
+
+func (GetServiceTemplateSandboxTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxTemplateArray) ToGetServiceTemplateSandboxTemplateArrayOutput() GetServiceTemplateSandboxTemplateArrayOutput {
+	return i.ToGetServiceTemplateSandboxTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxTemplateArray) ToGetServiceTemplateSandboxTemplateArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxTemplateArrayOutput)
+}
+
+type GetServiceTemplateSandboxTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxTemplateOutput) ToGetServiceTemplateSandboxTemplateOutput() GetServiceTemplateSandboxTemplateOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateOutput) ToGetServiceTemplateSandboxTemplateOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateOutput {
+	return o
+}
+
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+func (o GetServiceTemplateSandboxTemplateOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+func (o GetServiceTemplateSandboxTemplateOutput) Commands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) []string { return v.Commands }).(pulumi.StringArrayOutput)
+}
+
+// List of environment variables to set in the sandbox.
+func (o GetServiceTemplateSandboxTemplateOutput) Envs() GetServiceTemplateSandboxTemplateEnvArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) []GetServiceTemplateSandboxTemplateEnv { return v.Envs }).(GetServiceTemplateSandboxTemplateEnvArrayOutput)
+}
+
+// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+func (o GetServiceTemplateSandboxTemplateOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) string { return v.Image }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateSandboxTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume to mount into the container's filesystem.
+func (o GetServiceTemplateSandboxTemplateOutput) VolumeMounts() GetServiceTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) []GetServiceTemplateSandboxTemplateVolumeMount {
+		return v.VolumeMounts
+	}).(GetServiceTemplateSandboxTemplateVolumeMountArrayOutput)
+}
+
+// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+func (o GetServiceTemplateSandboxTemplateOutput) WorkingDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplate) string { return v.WorkingDir }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSandboxTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandboxTemplate)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxTemplateArrayOutput) ToGetServiceTemplateSandboxTemplateArrayOutput() GetServiceTemplateSandboxTemplateArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateArrayOutput) ToGetServiceTemplateSandboxTemplateArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSandboxTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSandboxTemplate {
+		return vs[0].([]GetServiceTemplateSandboxTemplate)[vs[1].(int)]
+	}).(GetServiceTemplateSandboxTemplateOutput)
+}
+
+type GetServiceTemplateSandboxTemplateEnv struct {
+	// The name of the Cloud Run v2 Service.
+	Name string `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value string `pulumi:"value"`
+}
+
+// GetServiceTemplateSandboxTemplateEnvInput is an input type that accepts GetServiceTemplateSandboxTemplateEnvArgs and GetServiceTemplateSandboxTemplateEnvOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxTemplateEnvInput` via:
+//
+//	GetServiceTemplateSandboxTemplateEnvArgs{...}
+type GetServiceTemplateSandboxTemplateEnvInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxTemplateEnvOutput() GetServiceTemplateSandboxTemplateEnvOutput
+	ToGetServiceTemplateSandboxTemplateEnvOutputWithContext(context.Context) GetServiceTemplateSandboxTemplateEnvOutput
+}
+
+type GetServiceTemplateSandboxTemplateEnvArgs struct {
+	// The name of the Cloud Run v2 Service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceTemplateSandboxTemplateEnvArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxTemplateEnvArgs) ToGetServiceTemplateSandboxTemplateEnvOutput() GetServiceTemplateSandboxTemplateEnvOutput {
+	return i.ToGetServiceTemplateSandboxTemplateEnvOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxTemplateEnvArgs) ToGetServiceTemplateSandboxTemplateEnvOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateEnvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxTemplateEnvOutput)
+}
+
+// GetServiceTemplateSandboxTemplateEnvArrayInput is an input type that accepts GetServiceTemplateSandboxTemplateEnvArray and GetServiceTemplateSandboxTemplateEnvArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxTemplateEnvArrayInput` via:
+//
+//	GetServiceTemplateSandboxTemplateEnvArray{ GetServiceTemplateSandboxTemplateEnvArgs{...} }
+type GetServiceTemplateSandboxTemplateEnvArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxTemplateEnvArrayOutput() GetServiceTemplateSandboxTemplateEnvArrayOutput
+	ToGetServiceTemplateSandboxTemplateEnvArrayOutputWithContext(context.Context) GetServiceTemplateSandboxTemplateEnvArrayOutput
+}
+
+type GetServiceTemplateSandboxTemplateEnvArray []GetServiceTemplateSandboxTemplateEnvInput
+
+func (GetServiceTemplateSandboxTemplateEnvArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxTemplateEnvArray) ToGetServiceTemplateSandboxTemplateEnvArrayOutput() GetServiceTemplateSandboxTemplateEnvArrayOutput {
+	return i.ToGetServiceTemplateSandboxTemplateEnvArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxTemplateEnvArray) ToGetServiceTemplateSandboxTemplateEnvArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateEnvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxTemplateEnvArrayOutput)
+}
+
+type GetServiceTemplateSandboxTemplateEnvOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxTemplateEnvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxTemplateEnvOutput) ToGetServiceTemplateSandboxTemplateEnvOutput() GetServiceTemplateSandboxTemplateEnvOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateEnvOutput) ToGetServiceTemplateSandboxTemplateEnvOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateEnvOutput {
+	return o
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateSandboxTemplateEnvOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplateEnv) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+func (o GetServiceTemplateSandboxTemplateEnvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplateEnv) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSandboxTemplateEnvArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxTemplateEnvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandboxTemplateEnv)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxTemplateEnvArrayOutput) ToGetServiceTemplateSandboxTemplateEnvArrayOutput() GetServiceTemplateSandboxTemplateEnvArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateEnvArrayOutput) ToGetServiceTemplateSandboxTemplateEnvArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateEnvArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateEnvArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSandboxTemplateEnvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSandboxTemplateEnv {
+		return vs[0].([]GetServiceTemplateSandboxTemplateEnv)[vs[1].(int)]
+	}).(GetServiceTemplateSandboxTemplateEnvOutput)
+}
+
+type GetServiceTemplateSandboxTemplateVolumeMount struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath string `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Service.
+	Name string `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath string `pulumi:"subPath"`
+}
+
+// GetServiceTemplateSandboxTemplateVolumeMountInput is an input type that accepts GetServiceTemplateSandboxTemplateVolumeMountArgs and GetServiceTemplateSandboxTemplateVolumeMountOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxTemplateVolumeMountInput` via:
+//
+//	GetServiceTemplateSandboxTemplateVolumeMountArgs{...}
+type GetServiceTemplateSandboxTemplateVolumeMountInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxTemplateVolumeMountOutput() GetServiceTemplateSandboxTemplateVolumeMountOutput
+	ToGetServiceTemplateSandboxTemplateVolumeMountOutputWithContext(context.Context) GetServiceTemplateSandboxTemplateVolumeMountOutput
+}
+
+type GetServiceTemplateSandboxTemplateVolumeMountArgs struct {
+	// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+	MountPath pulumi.StringInput `pulumi:"mountPath"`
+	// The name of the Cloud Run v2 Service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path within the volume from which the container's volume should be mounted.
+	SubPath pulumi.StringInput `pulumi:"subPath"`
+}
+
+func (GetServiceTemplateSandboxTemplateVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxTemplateVolumeMountArgs) ToGetServiceTemplateSandboxTemplateVolumeMountOutput() GetServiceTemplateSandboxTemplateVolumeMountOutput {
+	return i.ToGetServiceTemplateSandboxTemplateVolumeMountOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxTemplateVolumeMountArgs) ToGetServiceTemplateSandboxTemplateVolumeMountOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxTemplateVolumeMountOutput)
+}
+
+// GetServiceTemplateSandboxTemplateVolumeMountArrayInput is an input type that accepts GetServiceTemplateSandboxTemplateVolumeMountArray and GetServiceTemplateSandboxTemplateVolumeMountArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSandboxTemplateVolumeMountArrayInput` via:
+//
+//	GetServiceTemplateSandboxTemplateVolumeMountArray{ GetServiceTemplateSandboxTemplateVolumeMountArgs{...} }
+type GetServiceTemplateSandboxTemplateVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutput() GetServiceTemplateSandboxTemplateVolumeMountArrayOutput
+	ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutputWithContext(context.Context) GetServiceTemplateSandboxTemplateVolumeMountArrayOutput
+}
+
+type GetServiceTemplateSandboxTemplateVolumeMountArray []GetServiceTemplateSandboxTemplateVolumeMountInput
+
+func (GetServiceTemplateSandboxTemplateVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSandboxTemplateVolumeMountArray) ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutput() GetServiceTemplateSandboxTemplateVolumeMountArrayOutput {
+	return i.ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSandboxTemplateVolumeMountArray) ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSandboxTemplateVolumeMountArrayOutput)
+}
+
+type GetServiceTemplateSandboxTemplateVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxTemplateVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxTemplateVolumeMountOutput) ToGetServiceTemplateSandboxTemplateVolumeMountOutput() GetServiceTemplateSandboxTemplateVolumeMountOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateVolumeMountOutput) ToGetServiceTemplateSandboxTemplateVolumeMountOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateVolumeMountOutput {
+	return o
+}
+
+// Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+func (o GetServiceTemplateSandboxTemplateVolumeMountOutput) MountPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplateVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceTemplateSandboxTemplateVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplateVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path within the volume from which the container's volume should be mounted.
+func (o GetServiceTemplateSandboxTemplateVolumeMountOutput) SubPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSandboxTemplateVolumeMount) string { return v.SubPath }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSandboxTemplateVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSandboxTemplateVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSandboxTemplateVolumeMount)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSandboxTemplateVolumeMountArrayOutput) ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutput() GetServiceTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateVolumeMountArrayOutput) ToGetServiceTemplateSandboxTemplateVolumeMountArrayOutputWithContext(ctx context.Context) GetServiceTemplateSandboxTemplateVolumeMountArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSandboxTemplateVolumeMountArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSandboxTemplateVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSandboxTemplateVolumeMount {
+		return vs[0].([]GetServiceTemplateSandboxTemplateVolumeMount)[vs[1].(int)]
+	}).(GetServiceTemplateSandboxTemplateVolumeMountOutput)
 }
 
 type GetServiceTemplateScaling struct {
@@ -32519,6 +33543,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateNodeSelectorInput)(nil)).Elem(), ServiceTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateNodeSelectorPtrInput)(nil)).Elem(), ServiceTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesInput)(nil)).Elem(), ServiceTemplateSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesPtrInput)(nil)).Elem(), ServiceTemplateSandboxesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesTemplateInput)(nil)).Elem(), ServiceTemplateSandboxesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesTemplateArrayInput)(nil)).Elem(), ServiceTemplateSandboxesTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesTemplateEnvInput)(nil)).Elem(), ServiceTemplateSandboxesTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesTemplateEnvArrayInput)(nil)).Elem(), ServiceTemplateSandboxesTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesTemplateVolumeMountInput)(nil)).Elem(), ServiceTemplateSandboxesTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSandboxesTemplateVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateSandboxesTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateScalingInput)(nil)).Elem(), ServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateScalingPtrInput)(nil)).Elem(), ServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateServiceMeshInput)(nil)).Elem(), ServiceTemplateServiceMeshArgs{})
@@ -32733,6 +33765,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateNodeSelectorInput)(nil)).Elem(), GetServiceTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateNodeSelectorArrayInput)(nil)).Elem(), GetServiceTemplateNodeSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxInput)(nil)).Elem(), GetServiceTemplateSandboxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxArrayInput)(nil)).Elem(), GetServiceTemplateSandboxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxTemplateInput)(nil)).Elem(), GetServiceTemplateSandboxTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxTemplateArrayInput)(nil)).Elem(), GetServiceTemplateSandboxTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxTemplateEnvInput)(nil)).Elem(), GetServiceTemplateSandboxTemplateEnvArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxTemplateEnvArrayInput)(nil)).Elem(), GetServiceTemplateSandboxTemplateEnvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxTemplateVolumeMountInput)(nil)).Elem(), GetServiceTemplateSandboxTemplateVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSandboxTemplateVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateSandboxTemplateVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingInput)(nil)).Elem(), GetServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingArrayInput)(nil)).Elem(), GetServiceTemplateScalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateServiceMeshInput)(nil)).Elem(), GetServiceTemplateServiceMeshArgs{})
@@ -32951,6 +33991,14 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateNodeSelectorOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateNodeSelectorPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesTemplateOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesTemplateArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesTemplateEnvOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSandboxesTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateScalingOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateScalingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateServiceMeshOutput{})
@@ -33165,6 +34213,14 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateNodeSelectorOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateNodeSelectorArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxTemplateOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxTemplateEnvOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxTemplateEnvArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxTemplateVolumeMountOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSandboxTemplateVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateScalingOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateScalingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateServiceMeshOutput{})

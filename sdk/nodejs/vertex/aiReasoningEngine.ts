@@ -147,6 +147,7 @@ import * as utilities from "../utilities";
  *     spec: {
  *         containerSpec: {
  *             imageUri: project.then(project => `us-central1-docker.pkg.dev/${project.projectId}/vertex-byoc/byoc-agent:latest`),
+ *             port: 8080,
  *         },
  *     },
  * }, {

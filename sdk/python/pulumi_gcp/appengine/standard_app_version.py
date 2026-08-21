@@ -1550,7 +1550,7 @@ class StandardAppVersion(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="automaticScaling")
-    def automatic_scaling(self) -> pulumi.Output[Optional['outputs.StandardAppVersionAutomaticScaling']]:
+    def automatic_scaling(self) -> pulumi.Output['outputs.StandardAppVersionAutomaticScaling']:
         """
         Automatic scaling is based on request rate, response latencies, and other application metrics.
         Structure is documented below.

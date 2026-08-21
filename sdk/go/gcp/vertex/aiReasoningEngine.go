@@ -239,6 +239,7 @@ import (
 //				Spec: &vertex.AiReasoningEngineSpecArgs{
 //					ContainerSpec: &vertex.AiReasoningEngineSpecContainerSpecArgs{
 //						ImageUri: pulumi.Sprintf("us-central1-docker.pkg.dev/%v/vertex-byoc/byoc-agent:latest", project.ProjectId),
+//						Port:     pulumi.Int(8080),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

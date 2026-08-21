@@ -116,9 +116,20 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      */
     declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
-     * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
-    declare public readonly groupKey: pulumi.Output<string>;
+    declare public readonly dryRunAccessLevels: pulumi.Output<string | undefined>;
+    /**
+     * Immutable. Google Group id whose members are subject to this binding's restrictions.
+     * See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group's email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: "01d520gv4vjcrht"
+     */
+    declare public readonly groupKey: pulumi.Output<string | undefined>;
     /**
      * Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
      */
@@ -127,6 +138,11 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      * Required. ID of the parent organization.
      */
     declare public readonly organizationId: pulumi.Output<string>;
+    /**
+     * Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     */
+    declare public readonly principal: pulumi.Output<outputs.accesscontextmanager.GcpUserAccessBindingPrincipal | undefined>;
     /**
      * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
      * Structure is documented below.
@@ -153,23 +169,24 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             const state = argsOrState as GcpUserAccessBindingState | undefined;
             resourceInputs["accessLevels"] = state?.accessLevels;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["dryRunAccessLevels"] = state?.dryRunAccessLevels;
             resourceInputs["groupKey"] = state?.groupKey;
             resourceInputs["name"] = state?.name;
             resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["principal"] = state?.principal;
             resourceInputs["scopedAccessSettings"] = state?.scopedAccessSettings;
             resourceInputs["sessionSettings"] = state?.sessionSettings;
         } else {
             const args = argsOrState as GcpUserAccessBindingArgs | undefined;
-            if (args?.groupKey === undefined && !opts.urn) {
-                throw new Error("Missing required property 'groupKey'");
-            }
             if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             resourceInputs["accessLevels"] = args?.accessLevels;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["dryRunAccessLevels"] = args?.dryRunAccessLevels;
             resourceInputs["groupKey"] = args?.groupKey;
             resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["principal"] = args?.principal;
             resourceInputs["scopedAccessSettings"] = args?.scopedAccessSettings;
             resourceInputs["sessionSettings"] = args?.sessionSettings;
             resourceInputs["name"] = undefined /*out*/;
@@ -197,7 +214,18 @@ export interface GcpUserAccessBindingState {
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: "accessPolicies/9522/accessLevels/device_trusted"
+     */
+    dryRunAccessLevels?: pulumi.Input<string | undefined>;
+    /**
+     * Immutable. Google Group id whose members are subject to this binding's restrictions.
+     * See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group's email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: "01d520gv4vjcrht"
      */
     groupKey?: pulumi.Input<string | undefined>;
     /**
@@ -208,6 +236,11 @@ export interface GcpUserAccessBindingState {
      * Required. ID of the parent organization.
      */
     organizationId?: pulumi.Input<string | undefined>;
+    /**
+     * Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     */
+    principal?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingPrincipal | undefined>;
     /**
      * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
      * Structure is documented below.
@@ -238,13 +271,29 @@ export interface GcpUserAccessBindingArgs {
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+     * Optional. Dry run access level that will be evaluated but will not be enforced. The
+     * access denial based on dry run policy will be logged. Only one access
+     * level is supported, not multiple. This list must have exactly one element.
+     * Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
-    groupKey: pulumi.Input<string>;
+    dryRunAccessLevels?: pulumi.Input<string | undefined>;
+    /**
+     * Immutable. Google Group id whose members are subject to this binding's restrictions.
+     * See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+     * If a group's email address/alias is changed, this resource will continue to point at the changed group.
+     * This field does not accept group email addresses or aliases.
+     * Example: "01d520gv4vjcrht"
+     */
+    groupKey?: pulumi.Input<string | undefined>;
     /**
      * Required. ID of the parent organization.
      */
     organizationId: pulumi.Input<string>;
+    /**
+     * Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+     * Structure is documented below.
+     */
+    principal?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingPrincipal | undefined>;
     /**
      * Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
      * Structure is documented below.

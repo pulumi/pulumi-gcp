@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy AgentRegistry. Each of these resources serves a different use case:
 //
 // * `iap.AgentRegistryIamPolicy`: Authoritative. Sets the IAM policy for the agentregistry and replaces any existing policy already attached.
-// * `iap.AgentRegistryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the agentregistry are preserved.
-// * `iap.AgentRegistryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the agentregistry are preserved.
+// * `iap.AgentRegistryIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the agentregistry are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `iap.AgentRegistryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the agentregistry are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -24,7 +24,7 @@ import (
 //
 // > **Note:** `iap.AgentRegistryIamPolicy` **cannot** be used in conjunction with `iap.AgentRegistryIamBinding` and `iap.AgentRegistryIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `iap.AgentRegistryIamBinding` resources **can be** used in conjunction with `iap.AgentRegistryIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `iap.AgentRegistryIamBinding` resources **can be** used in conjunction with `iap.AgentRegistryIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -254,8 +254,8 @@ import (
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy AgentRegistry. Each of these resources serves a different use case:
 //
 // * `iap.AgentRegistryIamPolicy`: Authoritative. Sets the IAM policy for the agentregistry and replaces any existing policy already attached.
-// * `iap.AgentRegistryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the agentregistry are preserved.
-// * `iap.AgentRegistryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the agentregistry are preserved.
+// * `iap.AgentRegistryIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the agentregistry are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `iap.AgentRegistryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the agentregistry are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -263,7 +263,7 @@ import (
 //
 // > **Note:** `iap.AgentRegistryIamPolicy` **cannot** be used in conjunction with `iap.AgentRegistryIamBinding` and `iap.AgentRegistryIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `iap.AgentRegistryIamBinding` resources **can be** used in conjunction with `iap.AgentRegistryIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `iap.AgentRegistryIamBinding` resources **can be** used in conjunction with `iap.AgentRegistryIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -542,7 +542,7 @@ type AgentRegistryIamBinding struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `iap.AgentRegistryIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iap.AgentRegistryIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -610,7 +610,7 @@ type agentRegistryIamBindingState struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `iap.AgentRegistryIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iap.AgentRegistryIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
@@ -640,7 +640,7 @@ type AgentRegistryIamBindingState struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `iap.AgentRegistryIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iap.AgentRegistryIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -672,7 +672,7 @@ type agentRegistryIamBindingArgs struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `iap.AgentRegistryIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iap.AgentRegistryIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
@@ -701,7 +701,7 @@ type AgentRegistryIamBindingArgs struct {
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `iap.AgentRegistryIamBinding` can be used per role. Note that custom roles must be of the format
+	// `iap.AgentRegistryIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
@@ -832,7 +832,7 @@ func (o AgentRegistryIamBindingOutput) Project() pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `iap.AgentRegistryIamBinding` can be used per role. Note that custom roles must be of the format
+// `iap.AgentRegistryIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o AgentRegistryIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentRegistryIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

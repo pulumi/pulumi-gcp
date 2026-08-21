@@ -41190,6 +41190,9 @@ type ToolDataStoreToolModalityConfig struct {
 	// Rewriter configuration.
 	// Structure is documented below.
 	RewriterConfig *ToolDataStoreToolModalityConfigRewriterConfig `pulumi:"rewriterConfig"`
+	// Snippets configuration.
+	// Structure is documented below.
+	SnippetsConfig *ToolDataStoreToolModalityConfigSnippetsConfig `pulumi:"snippetsConfig"`
 	// Summarization configuration.
 	// Structure is documented below.
 	SummarizationConfig *ToolDataStoreToolModalityConfigSummarizationConfig `pulumi:"summarizationConfig"`
@@ -41218,6 +41221,9 @@ type ToolDataStoreToolModalityConfigArgs struct {
 	// Rewriter configuration.
 	// Structure is documented below.
 	RewriterConfig ToolDataStoreToolModalityConfigRewriterConfigPtrInput `pulumi:"rewriterConfig"`
+	// Snippets configuration.
+	// Structure is documented below.
+	SnippetsConfig ToolDataStoreToolModalityConfigSnippetsConfigPtrInput `pulumi:"snippetsConfig"`
 	// Summarization configuration.
 	// Structure is documented below.
 	SummarizationConfig ToolDataStoreToolModalityConfigSummarizationConfigPtrInput `pulumi:"summarizationConfig"`
@@ -41296,6 +41302,14 @@ func (o ToolDataStoreToolModalityConfigOutput) RewriterConfig() ToolDataStoreToo
 	return o.ApplyT(func(v ToolDataStoreToolModalityConfig) *ToolDataStoreToolModalityConfigRewriterConfig {
 		return v.RewriterConfig
 	}).(ToolDataStoreToolModalityConfigRewriterConfigPtrOutput)
+}
+
+// Snippets configuration.
+// Structure is documented below.
+func (o ToolDataStoreToolModalityConfigOutput) SnippetsConfig() ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfig) *ToolDataStoreToolModalityConfigSnippetsConfig {
+		return v.SnippetsConfig
+	}).(ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput)
 }
 
 // Summarization configuration.
@@ -41857,6 +41871,143 @@ func (o ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput) Tem
 		}
 		return v.Temperature
 	}).(pulumi.Float64PtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSnippetsConfig struct {
+	// Whether snippets are enabled.
+	EnableSnippets *bool `pulumi:"enableSnippets"`
+}
+
+// ToolDataStoreToolModalityConfigSnippetsConfigInput is an input type that accepts ToolDataStoreToolModalityConfigSnippetsConfigArgs and ToolDataStoreToolModalityConfigSnippetsConfigOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigSnippetsConfigInput` via:
+//
+//	ToolDataStoreToolModalityConfigSnippetsConfigArgs{...}
+type ToolDataStoreToolModalityConfigSnippetsConfigInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigSnippetsConfigOutput() ToolDataStoreToolModalityConfigSnippetsConfigOutput
+	ToToolDataStoreToolModalityConfigSnippetsConfigOutputWithContext(context.Context) ToolDataStoreToolModalityConfigSnippetsConfigOutput
+}
+
+type ToolDataStoreToolModalityConfigSnippetsConfigArgs struct {
+	// Whether snippets are enabled.
+	EnableSnippets pulumi.BoolPtrInput `pulumi:"enableSnippets"`
+}
+
+func (ToolDataStoreToolModalityConfigSnippetsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigSnippetsConfig)(nil)).Elem()
+}
+
+func (i ToolDataStoreToolModalityConfigSnippetsConfigArgs) ToToolDataStoreToolModalityConfigSnippetsConfigOutput() ToolDataStoreToolModalityConfigSnippetsConfigOutput {
+	return i.ToToolDataStoreToolModalityConfigSnippetsConfigOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigSnippetsConfigArgs) ToToolDataStoreToolModalityConfigSnippetsConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSnippetsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSnippetsConfigOutput)
+}
+
+func (i ToolDataStoreToolModalityConfigSnippetsConfigArgs) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutput() ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolDataStoreToolModalityConfigSnippetsConfigArgs) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSnippetsConfigOutput).ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(ctx)
+}
+
+// ToolDataStoreToolModalityConfigSnippetsConfigPtrInput is an input type that accepts ToolDataStoreToolModalityConfigSnippetsConfigArgs, ToolDataStoreToolModalityConfigSnippetsConfigPtr and ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput values.
+// You can construct a concrete instance of `ToolDataStoreToolModalityConfigSnippetsConfigPtrInput` via:
+//
+//	        ToolDataStoreToolModalityConfigSnippetsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolDataStoreToolModalityConfigSnippetsConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutput() ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput
+	ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(context.Context) ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput
+}
+
+type toolDataStoreToolModalityConfigSnippetsConfigPtrType ToolDataStoreToolModalityConfigSnippetsConfigArgs
+
+func ToolDataStoreToolModalityConfigSnippetsConfigPtr(v *ToolDataStoreToolModalityConfigSnippetsConfigArgs) ToolDataStoreToolModalityConfigSnippetsConfigPtrInput {
+	return (*toolDataStoreToolModalityConfigSnippetsConfigPtrType)(v)
+}
+
+func (*toolDataStoreToolModalityConfigSnippetsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigSnippetsConfig)(nil)).Elem()
+}
+
+func (i *toolDataStoreToolModalityConfigSnippetsConfigPtrType) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutput() ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return i.ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolDataStoreToolModalityConfigSnippetsConfigPtrType) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSnippetsConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigSnippetsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolDataStoreToolModalityConfigSnippetsConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) ToToolDataStoreToolModalityConfigSnippetsConfigOutput() ToolDataStoreToolModalityConfigSnippetsConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) ToToolDataStoreToolModalityConfigSnippetsConfigOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSnippetsConfigOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutput() ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return o.ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolDataStoreToolModalityConfigSnippetsConfig) *ToolDataStoreToolModalityConfigSnippetsConfig {
+		return &v
+	}).(ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput)
+}
+
+// Whether snippets are enabled.
+func (o ToolDataStoreToolModalityConfigSnippetsConfigOutput) EnableSnippets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ToolDataStoreToolModalityConfigSnippetsConfig) *bool { return v.EnableSnippets }).(pulumi.BoolPtrOutput)
+}
+
+type ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolDataStoreToolModalityConfigSnippetsConfig)(nil)).Elem()
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutput() ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) ToToolDataStoreToolModalityConfigSnippetsConfigPtrOutputWithContext(ctx context.Context) ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput {
+	return o
+}
+
+func (o ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) Elem() ToolDataStoreToolModalityConfigSnippetsConfigOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSnippetsConfig) ToolDataStoreToolModalityConfigSnippetsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolDataStoreToolModalityConfigSnippetsConfig
+		return ret
+	}).(ToolDataStoreToolModalityConfigSnippetsConfigOutput)
+}
+
+// Whether snippets are enabled.
+func (o ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput) EnableSnippets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ToolDataStoreToolModalityConfigSnippetsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSnippets
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ToolDataStoreToolModalityConfigSummarizationConfig struct {
@@ -43916,13 +44067,8 @@ func (o ToolMcpToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput) In
 }
 
 type ToolMcpToolServiceDirectoryConfig struct {
-	// (Output)
-	// The name of [Service
-	// Directory](https://cloud.google.com/service-directory) service.
-	// Format:
-	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-	// Location of the service directory must be the same as the location of the
-	// app.
+	// The name of Service Directory service.
+	// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
 	Service *string `pulumi:"service"`
 }
 
@@ -43938,13 +44084,8 @@ type ToolMcpToolServiceDirectoryConfigInput interface {
 }
 
 type ToolMcpToolServiceDirectoryConfigArgs struct {
-	// (Output)
-	// The name of [Service
-	// Directory](https://cloud.google.com/service-directory) service.
-	// Format:
-	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-	// Location of the service directory must be the same as the location of the
-	// app.
+	// The name of Service Directory service.
+	// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -43999,13 +44140,8 @@ func (o ToolMcpToolServiceDirectoryConfigOutput) ToToolMcpToolServiceDirectoryCo
 	return o
 }
 
-// (Output)
-// The name of [Service
-// Directory](https://cloud.google.com/service-directory) service.
-// Format:
-// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-// Location of the service directory must be the same as the location of the
-// app.
+// The name of Service Directory service.
+// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
 func (o ToolMcpToolServiceDirectoryConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolMcpToolServiceDirectoryConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -45277,13 +45413,8 @@ func (o ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArrayOutput
 }
 
 type ToolOpenApiToolServiceDirectoryConfig struct {
-	// (Output)
-	// The name of [Service
-	// Directory](https://cloud.google.com/service-directory) service.
-	// Format:
-	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-	// Location of the service directory must be the same as the location of the
-	// app.
+	// The name of Service Directory service.
+	// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
 	Service *string `pulumi:"service"`
 }
 
@@ -45299,13 +45430,8 @@ type ToolOpenApiToolServiceDirectoryConfigInput interface {
 }
 
 type ToolOpenApiToolServiceDirectoryConfigArgs struct {
-	// (Output)
-	// The name of [Service
-	// Directory](https://cloud.google.com/service-directory) service.
-	// Format:
-	// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-	// Location of the service directory must be the same as the location of the
-	// app.
+	// The name of Service Directory service.
+	// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
 	Service pulumi.StringPtrInput `pulumi:"service"`
 }
 
@@ -45360,13 +45486,8 @@ func (o ToolOpenApiToolServiceDirectoryConfigOutput) ToToolOpenApiToolServiceDir
 	return o
 }
 
-// (Output)
-// The name of [Service
-// Directory](https://cloud.google.com/service-directory) service.
-// Format:
-// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-// Location of the service directory must be the same as the location of the
-// app.
+// The name of Service Directory service.
+// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
 func (o ToolOpenApiToolServiceDirectoryConfigOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolOpenApiToolServiceDirectoryConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
 }
@@ -45653,6 +45774,9 @@ type ToolPythonFunction struct {
 	Name *string `pulumi:"name"`
 	// Optional. The Python code to execute for the tool.
 	PythonCode *string `pulumi:"pythonCode"`
+	// Service Directory configuration for the tool.
+	// Structure is documented below.
+	ServiceDirectoryConfig *ToolPythonFunctionServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
 }
 
 // ToolPythonFunctionInput is an input type that accepts ToolPythonFunctionArgs and ToolPythonFunctionOutput values.
@@ -45677,6 +45801,9 @@ type ToolPythonFunctionArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Optional. The Python code to execute for the tool.
 	PythonCode pulumi.StringPtrInput `pulumi:"pythonCode"`
+	// Service Directory configuration for the tool.
+	// Structure is documented below.
+	ServiceDirectoryConfig ToolPythonFunctionServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
 }
 
 func (ToolPythonFunctionArgs) ElementType() reflect.Type {
@@ -45775,6 +45902,12 @@ func (o ToolPythonFunctionOutput) PythonCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ToolPythonFunction) *string { return v.PythonCode }).(pulumi.StringPtrOutput)
 }
 
+// Service Directory configuration for the tool.
+// Structure is documented below.
+func (o ToolPythonFunctionOutput) ServiceDirectoryConfig() ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ToolPythonFunction) *ToolPythonFunctionServiceDirectoryConfig { return v.ServiceDirectoryConfig }).(ToolPythonFunctionServiceDirectoryConfigPtrOutput)
+}
+
 type ToolPythonFunctionPtrOutput struct{ *pulumi.OutputState }
 
 func (ToolPythonFunctionPtrOutput) ElementType() reflect.Type {
@@ -45830,6 +45963,158 @@ func (o ToolPythonFunctionPtrOutput) PythonCode() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.PythonCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service Directory configuration for the tool.
+// Structure is documented below.
+func (o ToolPythonFunctionPtrOutput) ServiceDirectoryConfig() ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *ToolPythonFunction) *ToolPythonFunctionServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ToolPythonFunctionServiceDirectoryConfigPtrOutput)
+}
+
+type ToolPythonFunctionServiceDirectoryConfig struct {
+	// The name of Service Directory service.
+	// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+	Service string `pulumi:"service"`
+}
+
+// ToolPythonFunctionServiceDirectoryConfigInput is an input type that accepts ToolPythonFunctionServiceDirectoryConfigArgs and ToolPythonFunctionServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ToolPythonFunctionServiceDirectoryConfigInput` via:
+//
+//	ToolPythonFunctionServiceDirectoryConfigArgs{...}
+type ToolPythonFunctionServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToToolPythonFunctionServiceDirectoryConfigOutput() ToolPythonFunctionServiceDirectoryConfigOutput
+	ToToolPythonFunctionServiceDirectoryConfigOutputWithContext(context.Context) ToolPythonFunctionServiceDirectoryConfigOutput
+}
+
+type ToolPythonFunctionServiceDirectoryConfigArgs struct {
+	// The name of Service Directory service.
+	// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ToolPythonFunctionServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolPythonFunctionServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ToolPythonFunctionServiceDirectoryConfigArgs) ToToolPythonFunctionServiceDirectoryConfigOutput() ToolPythonFunctionServiceDirectoryConfigOutput {
+	return i.ToToolPythonFunctionServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ToolPythonFunctionServiceDirectoryConfigArgs) ToToolPythonFunctionServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolPythonFunctionServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolPythonFunctionServiceDirectoryConfigOutput)
+}
+
+func (i ToolPythonFunctionServiceDirectoryConfigArgs) ToToolPythonFunctionServiceDirectoryConfigPtrOutput() ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return i.ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ToolPythonFunctionServiceDirectoryConfigArgs) ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolPythonFunctionServiceDirectoryConfigOutput).ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ToolPythonFunctionServiceDirectoryConfigPtrInput is an input type that accepts ToolPythonFunctionServiceDirectoryConfigArgs, ToolPythonFunctionServiceDirectoryConfigPtr and ToolPythonFunctionServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ToolPythonFunctionServiceDirectoryConfigPtrInput` via:
+//
+//	        ToolPythonFunctionServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ToolPythonFunctionServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToToolPythonFunctionServiceDirectoryConfigPtrOutput() ToolPythonFunctionServiceDirectoryConfigPtrOutput
+	ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(context.Context) ToolPythonFunctionServiceDirectoryConfigPtrOutput
+}
+
+type toolPythonFunctionServiceDirectoryConfigPtrType ToolPythonFunctionServiceDirectoryConfigArgs
+
+func ToolPythonFunctionServiceDirectoryConfigPtr(v *ToolPythonFunctionServiceDirectoryConfigArgs) ToolPythonFunctionServiceDirectoryConfigPtrInput {
+	return (*toolPythonFunctionServiceDirectoryConfigPtrType)(v)
+}
+
+func (*toolPythonFunctionServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolPythonFunctionServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *toolPythonFunctionServiceDirectoryConfigPtrType) ToToolPythonFunctionServiceDirectoryConfigPtrOutput() ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return i.ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *toolPythonFunctionServiceDirectoryConfigPtrType) ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ToolPythonFunctionServiceDirectoryConfigPtrOutput)
+}
+
+type ToolPythonFunctionServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ToolPythonFunctionServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ToolPythonFunctionServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigOutput) ToToolPythonFunctionServiceDirectoryConfigOutput() ToolPythonFunctionServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigOutput) ToToolPythonFunctionServiceDirectoryConfigOutputWithContext(ctx context.Context) ToolPythonFunctionServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigOutput) ToToolPythonFunctionServiceDirectoryConfigPtrOutput() ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return o.ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigOutput) ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ToolPythonFunctionServiceDirectoryConfig) *ToolPythonFunctionServiceDirectoryConfig {
+		return &v
+	}).(ToolPythonFunctionServiceDirectoryConfigPtrOutput)
+}
+
+// The name of Service Directory service.
+// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+func (o ToolPythonFunctionServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolPythonFunctionServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ToolPythonFunctionServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ToolPythonFunctionServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ToolPythonFunctionServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigPtrOutput) ToToolPythonFunctionServiceDirectoryConfigPtrOutput() ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigPtrOutput) ToToolPythonFunctionServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ToolPythonFunctionServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ToolPythonFunctionServiceDirectoryConfigPtrOutput) Elem() ToolPythonFunctionServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ToolPythonFunctionServiceDirectoryConfig) ToolPythonFunctionServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ToolPythonFunctionServiceDirectoryConfig
+		return ret
+	}).(ToolPythonFunctionServiceDirectoryConfigOutput)
+}
+
+// The name of Service Directory service.
+// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+func (o ToolPythonFunctionServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ToolPythonFunctionServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -52904,6 +53189,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigModelSettingsInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSnippetsConfigInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSnippetsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSnippetsConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSnippetsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigPtrInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsInput)(nil)).Elem(), ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs{})
@@ -52956,6 +53243,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolOpenApiToolTlsConfigCaCertArrayInput)(nil)).Elem(), ToolOpenApiToolTlsConfigCaCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionInput)(nil)).Elem(), ToolPythonFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionPtrInput)(nil)).Elem(), ToolPythonFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionServiceDirectoryConfigInput)(nil)).Elem(), ToolPythonFunctionServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ToolPythonFunctionServiceDirectoryConfigPtrInput)(nil)).Elem(), ToolPythonFunctionServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolInput)(nil)).Elem(), ToolRemoteAgentToolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolArrayInput)(nil)).Elem(), ToolRemoteAgentToolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ToolRemoteAgentToolAgentCardInput)(nil)).Elem(), ToolRemoteAgentToolAgentCardArgs{})
@@ -53519,6 +53808,8 @@ func init() {
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigRewriterConfigModelSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSnippetsConfigOutput{})
+	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSnippetsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsOutput{})
@@ -53571,6 +53862,8 @@ func init() {
 	pulumi.RegisterOutputType(ToolOpenApiToolTlsConfigCaCertArrayOutput{})
 	pulumi.RegisterOutputType(ToolPythonFunctionOutput{})
 	pulumi.RegisterOutputType(ToolPythonFunctionPtrOutput{})
+	pulumi.RegisterOutputType(ToolPythonFunctionServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ToolPythonFunctionServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ToolRemoteAgentToolOutput{})
 	pulumi.RegisterOutputType(ToolRemoteAgentToolArrayOutput{})
 	pulumi.RegisterOutputType(ToolRemoteAgentToolAgentCardOutput{})

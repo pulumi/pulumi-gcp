@@ -28,6 +28,11 @@ namespace Pulumi.Gcp.Colab.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec? PersistentDiskSpec;
+        /// <summary>
+        /// Shielded VM configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig? ShieldedInstanceConfig;
 
         [OutputConstructor]
         private NotebookExecutionCustomEnvironmentSpec(
@@ -35,11 +40,14 @@ namespace Pulumi.Gcp.Colab.Outputs
 
             Outputs.NotebookExecutionCustomEnvironmentSpecNetworkSpec? networkSpec,
 
-            Outputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec? persistentDiskSpec)
+            Outputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec? persistentDiskSpec,
+
+            Outputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig? shieldedInstanceConfig)
         {
             MachineSpec = machineSpec;
             NetworkSpec = networkSpec;
             PersistentDiskSpec = persistentDiskSpec;
+            ShieldedInstanceConfig = shieldedInstanceConfig;
         }
     }
 }

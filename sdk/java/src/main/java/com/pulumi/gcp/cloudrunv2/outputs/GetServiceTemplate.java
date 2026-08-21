@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateNodeSelector;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateSandbox;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolume;
@@ -80,6 +81,11 @@ public final class GetServiceTemplate {
      * 
      */
     private String revision;
+    /**
+     * @return Configuration for sandboxes.
+     * 
+     */
+    private List<GetServiceTemplateSandbox> sandboxes;
     /**
      * @return Scaling settings for this Revision.
      * 
@@ -200,6 +206,13 @@ public final class GetServiceTemplate {
         return this.revision;
     }
     /**
+     * @return Configuration for sandboxes.
+     * 
+     */
+    public List<GetServiceTemplateSandbox> sandboxes() {
+        return this.sandboxes;
+    }
+    /**
      * @return Scaling settings for this Revision.
      * 
      */
@@ -270,6 +283,7 @@ public final class GetServiceTemplate {
         private Integer maxInstanceRequestConcurrency;
         private List<GetServiceTemplateNodeSelector> nodeSelectors;
         private String revision;
+        private List<GetServiceTemplateSandbox> sandboxes;
         private List<GetServiceTemplateScaling> scalings;
         private String serviceAccount;
         private List<GetServiceTemplateServiceMesh> serviceMeshes;
@@ -290,6 +304,7 @@ public final class GetServiceTemplate {
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.nodeSelectors = defaults.nodeSelectors;
     	      this.revision = defaults.revision;
+    	      this.sandboxes = defaults.sandboxes;
     	      this.scalings = defaults.scalings;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceMeshes = defaults.serviceMeshes;
@@ -386,6 +401,17 @@ public final class GetServiceTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxes(List<GetServiceTemplateSandbox> sandboxes) {
+            if (sandboxes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "sandboxes");
+            }
+            this.sandboxes = sandboxes;
+            return this;
+        }
+        public Builder sandboxes(GetServiceTemplateSandbox... sandboxes) {
+            return sandboxes(List.of(sandboxes));
+        }
+        @CustomType.Setter
         public Builder scalings(List<GetServiceTemplateScaling> scalings) {
             if (scalings == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplate", "scalings");
@@ -465,6 +491,7 @@ public final class GetServiceTemplate {
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             _resultValue.nodeSelectors = nodeSelectors;
             _resultValue.revision = revision;
+            _resultValue.sandboxes = sandboxes;
             _resultValue.scalings = scalings;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.serviceMeshes = serviceMeshes;

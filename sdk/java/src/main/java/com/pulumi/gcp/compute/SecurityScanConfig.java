@@ -125,6 +125,47 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Scan Config Static Ip
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.SecurityScanConfig;
+ * import com.pulumi.gcp.compute.SecurityScanConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var scannerStaticIp = new Address("scannerStaticIp", AddressArgs.builder()
+ *             .name("scan-static-ip")
+ *             .build());
+ * 
+ *         var scan_config = new SecurityScanConfig("scan-config", SecurityScanConfigArgs.builder()
+ *             .displayName("scan-config")
+ *             .startingUrls(scannerStaticIp.address().applyValue(_address -> String.format("http://%s", _address)))
+ *             .targetPlatforms("COMPUTE")
+ *             .staticIpScan(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -326,6 +367,22 @@ public class SecurityScanConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> startingUrls() {
         return this.startingUrls;
+    }
+    /**
+     * Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     * 
+     */
+    @Export(name="staticIpScan", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> staticIpScan;
+
+    /**
+     * @return Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     * 
+     */
+    public Output<Optional<Boolean>> staticIpScan() {
+        return Codegen.optional(this.staticIpScan);
     }
     /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.

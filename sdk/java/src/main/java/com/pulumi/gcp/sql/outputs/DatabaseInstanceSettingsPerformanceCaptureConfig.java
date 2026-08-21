@@ -6,6 +6,8 @@ package com.pulumi.gcp.sql.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -13,10 +15,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseInstanceSettingsPerformanceCaptureConfig {
     /**
+     * @return The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+     * 
+     */
+    private @Nullable Integer cpuUtilizationThresholdPercent;
+    /**
      * @return Enable or disable the Performance Capture.
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+     * 
+     */
+    private @Nullable Integer historyListLengthThresholdCount;
+    /**
+     * @return The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+     * 
+     */
+    private @Nullable Integer memoryUsageThresholdPercent;
     /**
      * @return The minimum number of consecutive readings above threshold that triggers instance state capture.
      * 
@@ -38,18 +55,64 @@ public final class DatabaseInstanceSettingsPerformanceCaptureConfig {
      */
     private @Nullable Integer secondsBehindSourceThreshold;
     /**
+     * @return The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+     * 
+     */
+    private @Nullable Integer semaphoreWaitThresholdCount;
+    /**
      * @return The amount of time in seconds that a transaction needs to have been open before getting recorded.
      * 
      */
     private @Nullable Integer transactionDurationThreshold;
+    /**
+     * @return A list of users to exclude from transaction termination. Entries can be in the format &#39;user{@literal @}host&#39; or just &#39;user&#39;.
+     * 
+     */
+    private @Nullable List<String> transactionKillExcludedUserHosts;
+    /**
+     * @return The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+     * 
+     */
+    private @Nullable Integer transactionKillThresholdSeconds;
+    /**
+     * @return Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: &#34;TRANSACTION_KILL_TYPE_UNSPECIFIED&#34;, &#34;READ_ONLY_TRANSACTIONS&#34;, &#34;ALL_TRANSACTIONS&#34;.
+     * 
+     */
+    private @Nullable String transactionKillType;
+    /**
+     * @return The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+     * 
+     */
+    private @Nullable Integer transactionLockWaitThresholdCount;
 
     private DatabaseInstanceSettingsPerformanceCaptureConfig() {}
+    /**
+     * @return The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+     * 
+     */
+    public Optional<Integer> cpuUtilizationThresholdPercent() {
+        return Optional.ofNullable(this.cpuUtilizationThresholdPercent);
+    }
     /**
      * @return Enable or disable the Performance Capture.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+     * 
+     */
+    public Optional<Integer> historyListLengthThresholdCount() {
+        return Optional.ofNullable(this.historyListLengthThresholdCount);
+    }
+    /**
+     * @return The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+     * 
+     */
+    public Optional<Integer> memoryUsageThresholdPercent() {
+        return Optional.ofNullable(this.memoryUsageThresholdPercent);
     }
     /**
      * @return The minimum number of consecutive readings above threshold that triggers instance state capture.
@@ -80,11 +143,46 @@ public final class DatabaseInstanceSettingsPerformanceCaptureConfig {
         return Optional.ofNullable(this.secondsBehindSourceThreshold);
     }
     /**
+     * @return The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+     * 
+     */
+    public Optional<Integer> semaphoreWaitThresholdCount() {
+        return Optional.ofNullable(this.semaphoreWaitThresholdCount);
+    }
+    /**
      * @return The amount of time in seconds that a transaction needs to have been open before getting recorded.
      * 
      */
     public Optional<Integer> transactionDurationThreshold() {
         return Optional.ofNullable(this.transactionDurationThreshold);
+    }
+    /**
+     * @return A list of users to exclude from transaction termination. Entries can be in the format &#39;user{@literal @}host&#39; or just &#39;user&#39;.
+     * 
+     */
+    public List<String> transactionKillExcludedUserHosts() {
+        return this.transactionKillExcludedUserHosts == null ? List.of() : this.transactionKillExcludedUserHosts;
+    }
+    /**
+     * @return The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+     * 
+     */
+    public Optional<Integer> transactionKillThresholdSeconds() {
+        return Optional.ofNullable(this.transactionKillThresholdSeconds);
+    }
+    /**
+     * @return Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: &#34;TRANSACTION_KILL_TYPE_UNSPECIFIED&#34;, &#34;READ_ONLY_TRANSACTIONS&#34;, &#34;ALL_TRANSACTIONS&#34;.
+     * 
+     */
+    public Optional<String> transactionKillType() {
+        return Optional.ofNullable(this.transactionKillType);
+    }
+    /**
+     * @return The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+     * 
+     */
+    public Optional<Integer> transactionLockWaitThresholdCount() {
+        return Optional.ofNullable(this.transactionLockWaitThresholdCount);
     }
 
     public static Builder builder() {
@@ -96,27 +194,61 @@ public final class DatabaseInstanceSettingsPerformanceCaptureConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer cpuUtilizationThresholdPercent;
         private @Nullable Boolean enabled;
+        private @Nullable Integer historyListLengthThresholdCount;
+        private @Nullable Integer memoryUsageThresholdPercent;
         private @Nullable Integer probeThreshold;
         private @Nullable Integer probingIntervalSeconds;
         private @Nullable Integer runningThreadsThreshold;
         private @Nullable Integer secondsBehindSourceThreshold;
+        private @Nullable Integer semaphoreWaitThresholdCount;
         private @Nullable Integer transactionDurationThreshold;
+        private @Nullable List<String> transactionKillExcludedUserHosts;
+        private @Nullable Integer transactionKillThresholdSeconds;
+        private @Nullable String transactionKillType;
+        private @Nullable Integer transactionLockWaitThresholdCount;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsPerformanceCaptureConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cpuUtilizationThresholdPercent = defaults.cpuUtilizationThresholdPercent;
     	      this.enabled = defaults.enabled;
+    	      this.historyListLengthThresholdCount = defaults.historyListLengthThresholdCount;
+    	      this.memoryUsageThresholdPercent = defaults.memoryUsageThresholdPercent;
     	      this.probeThreshold = defaults.probeThreshold;
     	      this.probingIntervalSeconds = defaults.probingIntervalSeconds;
     	      this.runningThreadsThreshold = defaults.runningThreadsThreshold;
     	      this.secondsBehindSourceThreshold = defaults.secondsBehindSourceThreshold;
+    	      this.semaphoreWaitThresholdCount = defaults.semaphoreWaitThresholdCount;
     	      this.transactionDurationThreshold = defaults.transactionDurationThreshold;
+    	      this.transactionKillExcludedUserHosts = defaults.transactionKillExcludedUserHosts;
+    	      this.transactionKillThresholdSeconds = defaults.transactionKillThresholdSeconds;
+    	      this.transactionKillType = defaults.transactionKillType;
+    	      this.transactionLockWaitThresholdCount = defaults.transactionLockWaitThresholdCount;
         }
 
+        @CustomType.Setter
+        public Builder cpuUtilizationThresholdPercent(@Nullable Integer cpuUtilizationThresholdPercent) {
+
+            this.cpuUtilizationThresholdPercent = cpuUtilizationThresholdPercent;
+            return this;
+        }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
 
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder historyListLengthThresholdCount(@Nullable Integer historyListLengthThresholdCount) {
+
+            this.historyListLengthThresholdCount = historyListLengthThresholdCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder memoryUsageThresholdPercent(@Nullable Integer memoryUsageThresholdPercent) {
+
+            this.memoryUsageThresholdPercent = memoryUsageThresholdPercent;
             return this;
         }
         @CustomType.Setter
@@ -144,19 +276,60 @@ public final class DatabaseInstanceSettingsPerformanceCaptureConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder semaphoreWaitThresholdCount(@Nullable Integer semaphoreWaitThresholdCount) {
+
+            this.semaphoreWaitThresholdCount = semaphoreWaitThresholdCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder transactionDurationThreshold(@Nullable Integer transactionDurationThreshold) {
 
             this.transactionDurationThreshold = transactionDurationThreshold;
             return this;
         }
+        @CustomType.Setter
+        public Builder transactionKillExcludedUserHosts(@Nullable List<String> transactionKillExcludedUserHosts) {
+
+            this.transactionKillExcludedUserHosts = transactionKillExcludedUserHosts;
+            return this;
+        }
+        public Builder transactionKillExcludedUserHosts(String... transactionKillExcludedUserHosts) {
+            return transactionKillExcludedUserHosts(List.of(transactionKillExcludedUserHosts));
+        }
+        @CustomType.Setter
+        public Builder transactionKillThresholdSeconds(@Nullable Integer transactionKillThresholdSeconds) {
+
+            this.transactionKillThresholdSeconds = transactionKillThresholdSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transactionKillType(@Nullable String transactionKillType) {
+
+            this.transactionKillType = transactionKillType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transactionLockWaitThresholdCount(@Nullable Integer transactionLockWaitThresholdCount) {
+
+            this.transactionLockWaitThresholdCount = transactionLockWaitThresholdCount;
+            return this;
+        }
         public DatabaseInstanceSettingsPerformanceCaptureConfig build() {
             final var _resultValue = new DatabaseInstanceSettingsPerformanceCaptureConfig();
+            _resultValue.cpuUtilizationThresholdPercent = cpuUtilizationThresholdPercent;
             _resultValue.enabled = enabled;
+            _resultValue.historyListLengthThresholdCount = historyListLengthThresholdCount;
+            _resultValue.memoryUsageThresholdPercent = memoryUsageThresholdPercent;
             _resultValue.probeThreshold = probeThreshold;
             _resultValue.probingIntervalSeconds = probingIntervalSeconds;
             _resultValue.runningThreadsThreshold = runningThreadsThreshold;
             _resultValue.secondsBehindSourceThreshold = secondsBehindSourceThreshold;
+            _resultValue.semaphoreWaitThresholdCount = semaphoreWaitThresholdCount;
             _resultValue.transactionDurationThreshold = transactionDurationThreshold;
+            _resultValue.transactionKillExcludedUserHosts = transactionKillExcludedUserHosts;
+            _resultValue.transactionKillThresholdSeconds = transactionKillThresholdSeconds;
+            _resultValue.transactionKillType = transactionKillType;
+            _resultValue.transactionLockWaitThresholdCount = transactionLockWaitThresholdCount;
             return _resultValue;
         }
     }

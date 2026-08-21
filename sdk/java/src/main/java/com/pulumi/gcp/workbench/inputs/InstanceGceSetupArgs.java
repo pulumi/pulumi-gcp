@@ -67,6 +67,23 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Output)
+     * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+     * 
+     */
+    @Import(name="computeInstanceId")
+    private @Nullable Output<String> computeInstanceId;
+
+    /**
+     * @return (Output)
+     * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+     * 
+     */
+    public Optional<Output<String>> computeInstanceId() {
+        return Optional.ofNullable(this.computeInstanceId);
+    }
+
+    /**
      * Confidential instance configuration.
      * Structure is documented below.
      * 
@@ -307,6 +324,7 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
     private InstanceGceSetupArgs(InstanceGceSetupArgs $) {
         this.acceleratorConfigs = $.acceleratorConfigs;
         this.bootDisk = $.bootDisk;
+        this.computeInstanceId = $.computeInstanceId;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.containerImage = $.containerImage;
         this.dataDisks = $.dataDisks;
@@ -402,6 +420,29 @@ public final class InstanceGceSetupArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder bootDisk(InstanceGceSetupBootDiskArgs bootDisk) {
             return bootDisk(Output.of(bootDisk));
+        }
+
+        /**
+         * @param computeInstanceId (Output)
+         * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeInstanceId(@Nullable Output<String> computeInstanceId) {
+            $.computeInstanceId = computeInstanceId;
+            return this;
+        }
+
+        /**
+         * @param computeInstanceId (Output)
+         * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder computeInstanceId(String computeInstanceId) {
+            return computeInstanceId(Output.of(computeInstanceId));
         }
 
         /**

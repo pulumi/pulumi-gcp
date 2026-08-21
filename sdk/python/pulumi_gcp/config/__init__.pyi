@@ -29,6 +29,8 @@ agentIdentityCustomEndpoint: Optional[str]
 
 agentRegistryCustomEndpoint: Optional[str]
 
+agenticApplicationsCustomEndpoint: Optional[str]
+
 alloydbCustomEndpoint: Optional[str]
 
 apiGatewayCustomEndpoint: Optional[str]

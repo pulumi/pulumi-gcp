@@ -29,6 +29,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// Optional. The Python code to execute for the tool.
         /// </summary>
         public readonly string? PythonCode;
+        /// <summary>
+        /// Service Directory configuration for the tool.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ToolPythonFunctionServiceDirectoryConfig? ServiceDirectoryConfig;
 
         [OutputConstructor]
         private ToolPythonFunction(
@@ -36,11 +41,14 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             string? name,
 
-            string? pythonCode)
+            string? pythonCode,
+
+            Outputs.ToolPythonFunctionServiceDirectoryConfig? serviceDirectoryConfig)
         {
             Description = description;
             Name = name;
             PythonCode = pythonCode;
+            ServiceDirectoryConfig = serviceDirectoryConfig;
         }
     }
 }

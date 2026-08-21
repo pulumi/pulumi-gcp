@@ -27,6 +27,9 @@ import javax.annotation.Nullable;
  * * How-to Guides
  *     * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
  * 
+ * &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+ * Read more about Write-only Arguments.
+ * 
  * ## Example Usage
  * 
  * ### Certificate Manager Google Managed Certificate Dns
@@ -242,6 +245,67 @@ import javax.annotation.Nullable;
  *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
  *                     .input("test-fixtures/private-key.pem")
  *                     .build()).result())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Certificate Manager Self Managed Certificate Write Only
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
+ * import com.pulumi.std.inputs.Filesha256Args;
+ * import com.pulumi.std.inputs.ParseintArgs;
+ * import com.pulumi.std.inputs.PowArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
+ *             .name("self-managed-cert")
+ *             .description("Global cert")
+ *             .scope("ALL_REGIONS")
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/cert.pem")
+ *                     .build()).result())
+ *                 .pemPrivateKeyWo(StdFunctions.file(FileArgs.builder()
+ *                     .input("test-fixtures/private-key.pem")
+ *                     .build()).result())
+ *                 .pemPrivateKeyWoVersion(Output.tuple(StdFunctions.parseint(ParseintArgs.builder()
+ *                     .input(StdFunctions.filesha256(Filesha256Args.builder()
+ *                         .input("test-fixtures/private-key.pem")
+ *                         .build()).result())
+ *                     .base(16)
+ *                     .build()).result(), StdFunctions.pow(PowArgs.builder()
+ *                     .base(2.0)
+ *                     .exponent(32.0)
+ *                     .build()).result()).applyValue(values -> {
+ *                     var __convert = values.t1;
+ *                     var __convert1 = values.t2;
+ *                     return __convert % __convert1;
+ *                 }))
  *                 .build())
  *             .build());
  * 

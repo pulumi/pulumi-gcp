@@ -3929,11 +3929,183 @@ func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type GcpUserAccessBindingPrincipal struct {
+	// Immutable. Service account email used to assign policies to a single service account.
+	// If a service account is subject to multiple policies (e.g., if there is a policy for all
+	// service accounts in a project and a policy for the service account), the closest (i.e.
+	// the most specific) dry-run policy will be used for the dry-run functionality and the
+	// closest policy will be used for the enforcement.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+	ServiceAccountProjectNumber *string `pulumi:"serviceAccountProjectNumber"`
+}
+
+// GcpUserAccessBindingPrincipalInput is an input type that accepts GcpUserAccessBindingPrincipalArgs and GcpUserAccessBindingPrincipalOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingPrincipalInput` via:
+//
+//	GcpUserAccessBindingPrincipalArgs{...}
+type GcpUserAccessBindingPrincipalInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingPrincipalOutput() GcpUserAccessBindingPrincipalOutput
+	ToGcpUserAccessBindingPrincipalOutputWithContext(context.Context) GcpUserAccessBindingPrincipalOutput
+}
+
+type GcpUserAccessBindingPrincipalArgs struct {
+	// Immutable. Service account email used to assign policies to a single service account.
+	// If a service account is subject to multiple policies (e.g., if there is a policy for all
+	// service accounts in a project and a policy for the service account), the closest (i.e.
+	// the most specific) dry-run policy will be used for the dry-run functionality and the
+	// closest policy will be used for the enforcement.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+	ServiceAccountProjectNumber pulumi.StringPtrInput `pulumi:"serviceAccountProjectNumber"`
+}
+
+func (GcpUserAccessBindingPrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingPrincipal)(nil)).Elem()
+}
+
+func (i GcpUserAccessBindingPrincipalArgs) ToGcpUserAccessBindingPrincipalOutput() GcpUserAccessBindingPrincipalOutput {
+	return i.ToGcpUserAccessBindingPrincipalOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingPrincipalArgs) ToGcpUserAccessBindingPrincipalOutputWithContext(ctx context.Context) GcpUserAccessBindingPrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingPrincipalOutput)
+}
+
+func (i GcpUserAccessBindingPrincipalArgs) ToGcpUserAccessBindingPrincipalPtrOutput() GcpUserAccessBindingPrincipalPtrOutput {
+	return i.ToGcpUserAccessBindingPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i GcpUserAccessBindingPrincipalArgs) ToGcpUserAccessBindingPrincipalPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingPrincipalOutput).ToGcpUserAccessBindingPrincipalPtrOutputWithContext(ctx)
+}
+
+// GcpUserAccessBindingPrincipalPtrInput is an input type that accepts GcpUserAccessBindingPrincipalArgs, GcpUserAccessBindingPrincipalPtr and GcpUserAccessBindingPrincipalPtrOutput values.
+// You can construct a concrete instance of `GcpUserAccessBindingPrincipalPtrInput` via:
+//
+//	        GcpUserAccessBindingPrincipalArgs{...}
+//
+//	or:
+//
+//	        nil
+type GcpUserAccessBindingPrincipalPtrInput interface {
+	pulumi.Input
+
+	ToGcpUserAccessBindingPrincipalPtrOutput() GcpUserAccessBindingPrincipalPtrOutput
+	ToGcpUserAccessBindingPrincipalPtrOutputWithContext(context.Context) GcpUserAccessBindingPrincipalPtrOutput
+}
+
+type gcpUserAccessBindingPrincipalPtrType GcpUserAccessBindingPrincipalArgs
+
+func GcpUserAccessBindingPrincipalPtr(v *GcpUserAccessBindingPrincipalArgs) GcpUserAccessBindingPrincipalPtrInput {
+	return (*gcpUserAccessBindingPrincipalPtrType)(v)
+}
+
+func (*gcpUserAccessBindingPrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingPrincipal)(nil)).Elem()
+}
+
+func (i *gcpUserAccessBindingPrincipalPtrType) ToGcpUserAccessBindingPrincipalPtrOutput() GcpUserAccessBindingPrincipalPtrOutput {
+	return i.ToGcpUserAccessBindingPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *gcpUserAccessBindingPrincipalPtrType) ToGcpUserAccessBindingPrincipalPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingPrincipalPtrOutput)
+}
+
+type GcpUserAccessBindingPrincipalOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingPrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBindingPrincipal)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingPrincipalOutput) ToGcpUserAccessBindingPrincipalOutput() GcpUserAccessBindingPrincipalOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingPrincipalOutput) ToGcpUserAccessBindingPrincipalOutputWithContext(ctx context.Context) GcpUserAccessBindingPrincipalOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingPrincipalOutput) ToGcpUserAccessBindingPrincipalPtrOutput() GcpUserAccessBindingPrincipalPtrOutput {
+	return o.ToGcpUserAccessBindingPrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o GcpUserAccessBindingPrincipalOutput) ToGcpUserAccessBindingPrincipalPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPrincipalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcpUserAccessBindingPrincipal) *GcpUserAccessBindingPrincipal {
+		return &v
+	}).(GcpUserAccessBindingPrincipalPtrOutput)
+}
+
+// Immutable. Service account email used to assign policies to a single service account.
+// If a service account is subject to multiple policies (e.g., if there is a policy for all
+// service accounts in a project and a policy for the service account), the closest (i.e.
+// the most specific) dry-run policy will be used for the dry-run functionality and the
+// closest policy will be used for the enforcement.
+func (o GcpUserAccessBindingPrincipalOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingPrincipal) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+func (o GcpUserAccessBindingPrincipalOutput) ServiceAccountProjectNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GcpUserAccessBindingPrincipal) *string { return v.ServiceAccountProjectNumber }).(pulumi.StringPtrOutput)
+}
+
+type GcpUserAccessBindingPrincipalPtrOutput struct{ *pulumi.OutputState }
+
+func (GcpUserAccessBindingPrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcpUserAccessBindingPrincipal)(nil)).Elem()
+}
+
+func (o GcpUserAccessBindingPrincipalPtrOutput) ToGcpUserAccessBindingPrincipalPtrOutput() GcpUserAccessBindingPrincipalPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingPrincipalPtrOutput) ToGcpUserAccessBindingPrincipalPtrOutputWithContext(ctx context.Context) GcpUserAccessBindingPrincipalPtrOutput {
+	return o
+}
+
+func (o GcpUserAccessBindingPrincipalPtrOutput) Elem() GcpUserAccessBindingPrincipalOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingPrincipal) GcpUserAccessBindingPrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret GcpUserAccessBindingPrincipal
+		return ret
+	}).(GcpUserAccessBindingPrincipalOutput)
+}
+
+// Immutable. Service account email used to assign policies to a single service account.
+// If a service account is subject to multiple policies (e.g., if there is a policy for all
+// service accounts in a project and a policy for the service account), the closest (i.e.
+// the most specific) dry-run policy will be used for the dry-run functionality and the
+// closest policy will be used for the enforcement.
+func (o GcpUserAccessBindingPrincipalPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingPrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+func (o GcpUserAccessBindingPrincipalPtrOutput) ServiceAccountProjectNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GcpUserAccessBindingPrincipal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountProjectNumber
+	}).(pulumi.StringPtrOutput)
+}
+
 type GcpUserAccessBindingScopedAccessSetting struct {
-	// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+	// Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
 	// Structure is documented below.
 	ActiveSettings *GcpUserAccessBindingScopedAccessSettingActiveSettings `pulumi:"activeSettings"`
-	// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+	// Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
 	// Structure is documented below.
 	DryRunSettings *GcpUserAccessBindingScopedAccessSettingDryRunSettings `pulumi:"dryRunSettings"`
 	// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
@@ -3953,10 +4125,10 @@ type GcpUserAccessBindingScopedAccessSettingInput interface {
 }
 
 type GcpUserAccessBindingScopedAccessSettingArgs struct {
-	// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+	// Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
 	// Structure is documented below.
 	ActiveSettings GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrInput `pulumi:"activeSettings"`
-	// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+	// Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
 	// Structure is documented below.
 	DryRunSettings GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrInput `pulumi:"dryRunSettings"`
 	// Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
@@ -4015,7 +4187,7 @@ func (o GcpUserAccessBindingScopedAccessSettingOutput) ToGcpUserAccessBindingSco
 	return o
 }
 
-// Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+// Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
 // Structure is documented below.
 func (o GcpUserAccessBindingScopedAccessSettingOutput) ActiveSettings() GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSetting) *GcpUserAccessBindingScopedAccessSettingActiveSettings {
@@ -4023,7 +4195,7 @@ func (o GcpUserAccessBindingScopedAccessSettingOutput) ActiveSettings() GcpUserA
 	}).(GcpUserAccessBindingScopedAccessSettingActiveSettingsPtrOutput)
 }
 
-// Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+// Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
 // Structure is documented below.
 func (o GcpUserAccessBindingScopedAccessSettingOutput) DryRunSettings() GcpUserAccessBindingScopedAccessSettingDryRunSettingsPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSetting) *GcpUserAccessBindingScopedAccessSettingDryRunSettings {
@@ -4225,8 +4397,10 @@ type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings struct
 	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
 	MaxInactivity *string `pulumi:"maxInactivity"`
 	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 	SessionLength *string `pulumi:"sessionLength"`
 	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	// If `sessionLength` is set to zero, this field must be false.
 	SessionLengthEnabled *bool `pulumi:"sessionLengthEnabled"`
 	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
 	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
@@ -4250,8 +4424,10 @@ type GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs st
 	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
 	MaxInactivity pulumi.StringPtrInput `pulumi:"maxInactivity"`
 	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 	SessionLength pulumi.StringPtrInput `pulumi:"sessionLength"`
 	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	// If `sessionLength` is set to zero, this field must be false.
 	SessionLengthEnabled pulumi.BoolPtrInput `pulumi:"sessionLengthEnabled"`
 	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
 	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
@@ -4345,6 +4521,7 @@ func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutp
 }
 
 // Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) SessionLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
 		return v.SessionLength
@@ -4352,6 +4529,7 @@ func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutp
 }
 
 // Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+// If `sessionLength` is set to zero, this field must be false.
 func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *bool {
 		return v.SessionLengthEnabled
@@ -4408,6 +4586,7 @@ func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrO
 }
 
 // Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) SessionLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *string {
 		if v == nil {
@@ -4418,6 +4597,7 @@ func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrO
 }
 
 // Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+// If `sessionLength` is set to zero, this field must be false.
 func (o GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsPtrOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings) *bool {
 		if v == nil {
@@ -5035,8 +5215,10 @@ type GcpUserAccessBindingSessionSettings struct {
 	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
 	MaxInactivity *string `pulumi:"maxInactivity"`
 	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 	SessionLength *string `pulumi:"sessionLength"`
 	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	// If `sessionLength` is set to zero, this field must be false.
 	SessionLengthEnabled *bool `pulumi:"sessionLengthEnabled"`
 	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
 	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
@@ -5060,8 +5242,10 @@ type GcpUserAccessBindingSessionSettingsArgs struct {
 	// Optional. How long a user is allowed to take between actions before a new access token must be issued. Only set for Google Cloud apps.
 	MaxInactivity pulumi.StringPtrInput `pulumi:"maxInactivity"`
 	// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+	// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 	SessionLength pulumi.StringPtrInput `pulumi:"sessionLength"`
 	// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+	// If `sessionLength` is set to zero, this field must be false.
 	SessionLengthEnabled pulumi.BoolPtrInput `pulumi:"sessionLengthEnabled"`
 	// Optional. The session challenges proposed to users when the Google Cloud session length is up.
 	// Possible values are: `LOGIN`, `SECURITY_KEY`, `PASSWORD`.
@@ -5153,11 +5337,13 @@ func (o GcpUserAccessBindingSessionSettingsOutput) MaxInactivity() pulumi.String
 }
 
 // Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 func (o GcpUserAccessBindingSessionSettingsOutput) SessionLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *string { return v.SessionLength }).(pulumi.StringPtrOutput)
 }
 
 // Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+// If `sessionLength` is set to zero, this field must be false.
 func (o GcpUserAccessBindingSessionSettingsOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GcpUserAccessBindingSessionSettings) *bool { return v.SessionLengthEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -5208,6 +5394,7 @@ func (o GcpUserAccessBindingSessionSettingsPtrOutput) MaxInactivity() pulumi.Str
 }
 
 // Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+// If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
 func (o GcpUserAccessBindingSessionSettingsPtrOutput) SessionLength() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *string {
 		if v == nil {
@@ -5218,6 +5405,7 @@ func (o GcpUserAccessBindingSessionSettingsPtrOutput) SessionLength() pulumi.Str
 }
 
 // Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+// If `sessionLength` is set to zero, this field must be false.
 func (o GcpUserAccessBindingSessionSettingsPtrOutput) SessionLengthEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GcpUserAccessBindingSessionSettings) *bool {
 		if v == nil {
@@ -22274,6 +22462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamBindingConditionPtrInput)(nil)).Elem(), AccessPolicyIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIamMemberConditionPtrInput)(nil)).Elem(), AccessPolicyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingPrincipalInput)(nil)).Elem(), GcpUserAccessBindingPrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingPrincipalPtrInput)(nil)).Elem(), GcpUserAccessBindingPrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingArrayInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcpUserAccessBindingScopedAccessSettingActiveSettingsInput)(nil)).Elem(), GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs{})
@@ -22542,6 +22732,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingPrincipalOutput{})
+	pulumi.RegisterOutputType(GcpUserAccessBindingPrincipalPtrOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingArrayOutput{})
 	pulumi.RegisterOutputType(GcpUserAccessBindingScopedAccessSettingActiveSettingsOutput{})

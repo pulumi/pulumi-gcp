@@ -127,10 +127,23 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        /// Optional. Dry run access level that will be evaluated but will not be enforced. The
+        /// access denial based on dry run policy will be logged. Only one access
+        /// level is supported, not multiple. This list must have exactly one element.
+        /// Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// </summary>
+        [Output("dryRunAccessLevels")]
+        public Output<string?> DryRunAccessLevels { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. Google Group id whose members are subject to this binding's restrictions.
+        /// See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+        /// If a group's email address/alias is changed, this resource will continue to point at the changed group.
+        /// This field does not accept group email addresses or aliases.
+        /// Example: "01d520gv4vjcrht"
         /// </summary>
         [Output("groupKey")]
-        public Output<string> GroupKey { get; private set; } = null!;
+        public Output<string?> GroupKey { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by RFC 3986 Section 2.3). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
@@ -143,6 +156,13 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("principal")]
+        public Output<Outputs.GcpUserAccessBindingPrincipal?> Principal { get; private set; } = null!;
 
         /// <summary>
         /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
@@ -222,16 +242,36 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        /// Optional. Dry run access level that will be evaluated but will not be enforced. The
+        /// access denial based on dry run policy will be logged. Only one access
+        /// level is supported, not multiple. This list must have exactly one element.
+        /// Example: "accessPolicies/9522/accessLevels/device_trusted"
         /// </summary>
-        [Input("groupKey", required: true)]
-        public Input<string> GroupKey { get; set; } = null!;
+        [Input("dryRunAccessLevels")]
+        public Input<string>? DryRunAccessLevels { get; set; }
+
+        /// <summary>
+        /// Immutable. Google Group id whose members are subject to this binding's restrictions.
+        /// See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+        /// If a group's email address/alias is changed, this resource will continue to point at the changed group.
+        /// This field does not accept group email addresses or aliases.
+        /// Example: "01d520gv4vjcrht"
+        /// </summary>
+        [Input("groupKey")]
+        public Input<string>? GroupKey { get; set; }
 
         /// <summary>
         /// Required. ID of the parent organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("principal")]
+        public Input<Inputs.GcpUserAccessBindingPrincipalArgs>? Principal { get; set; }
 
         [Input("scopedAccessSettings")]
         private InputList<Inputs.GcpUserAccessBindingScopedAccessSettingArgs>? _scopedAccessSettings;
@@ -279,7 +319,20 @@ namespace Pulumi.Gcp.AccessContextManager
         public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        /// Optional. Dry run access level that will be evaluated but will not be enforced. The
+        /// access denial based on dry run policy will be logged. Only one access
+        /// level is supported, not multiple. This list must have exactly one element.
+        /// Example: "accessPolicies/9522/accessLevels/device_trusted"
+        /// </summary>
+        [Input("dryRunAccessLevels")]
+        public Input<string>? DryRunAccessLevels { get; set; }
+
+        /// <summary>
+        /// Immutable. Google Group id whose members are subject to this binding's restrictions.
+        /// See "id" in the Google Workspace Directory API's Group Resource (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource).
+        /// If a group's email address/alias is changed, this resource will continue to point at the changed group.
+        /// This field does not accept group email addresses or aliases.
+        /// Example: "01d520gv4vjcrht"
         /// </summary>
         [Input("groupKey")]
         public Input<string>? GroupKey { get; set; }
@@ -295,6 +348,13 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The principal that is subject to the access policies in this policy binding.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("principal")]
+        public Input<Inputs.GcpUserAccessBindingPrincipalGetArgs>? Principal { get; set; }
 
         [Input("scopedAccessSettings")]
         private InputList<Inputs.GcpUserAccessBindingScopedAccessSettingGetArgs>? _scopedAccessSettings;

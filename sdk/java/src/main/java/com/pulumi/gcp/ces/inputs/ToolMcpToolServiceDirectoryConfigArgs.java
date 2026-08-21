@@ -16,26 +16,16 @@ public final class ToolMcpToolServiceDirectoryConfigArgs extends com.pulumi.reso
     public static final ToolMcpToolServiceDirectoryConfigArgs Empty = new ToolMcpToolServiceDirectoryConfigArgs();
 
     /**
-     * (Output)
-     * The name of [Service
-     * Directory](https://cloud.google.com/service-directory) service.
-     * Format:
-     * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-     * Location of the service directory must be the same as the location of the
-     * app.
+     * The name of Service Directory service.
+     * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
      * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
-     * @return (Output)
-     * The name of [Service
-     * Directory](https://cloud.google.com/service-directory) service.
-     * Format:
-     * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-     * Location of the service directory must be the same as the location of the
-     * app.
+     * @return The name of Service Directory service.
+     * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
      * 
      */
     public Optional<Output<String>> service() {
@@ -67,13 +57,8 @@ public final class ToolMcpToolServiceDirectoryConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service (Output)
-         * The name of [Service
-         * Directory](https://cloud.google.com/service-directory) service.
-         * Format:
-         * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-         * Location of the service directory must be the same as the location of the
-         * app.
+         * @param service The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
          * 
          * @return builder
          * 
@@ -84,13 +69,8 @@ public final class ToolMcpToolServiceDirectoryConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param service (Output)
-         * The name of [Service
-         * Directory](https://cloud.google.com/service-directory) service.
-         * Format:
-         * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-         * Location of the service directory must be the same as the location of the
-         * app.
+         * @param service The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
          * 
          * @return builder
          * 

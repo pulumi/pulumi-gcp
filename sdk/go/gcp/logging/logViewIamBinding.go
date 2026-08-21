@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 //
 // * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-// * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-// * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+// * `logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -24,7 +24,7 @@ import (
 //
 // > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -267,8 +267,8 @@ import (
 // Three different resources help you manage your IAM policy for Cloud (Stackdriver) Logging LogView. Each of these resources serves a different use case:
 //
 // * `logging.LogViewIamPolicy`: Authoritative. Sets the IAM policy for the logview and replaces any existing policy already attached.
-// * `logging.LogViewIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the logview are preserved.
-// * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the logview are preserved.
+// * `logging.LogViewIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the logview are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `logging.LogViewIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the logview are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -276,7 +276,7 @@ import (
 //
 // > **Note:** `logging.LogViewIamPolicy` **cannot** be used in conjunction with `logging.LogViewIamBinding` and `logging.LogViewIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `logging.LogViewIamBinding` resources **can be** used in conjunction with `logging.LogViewIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -570,7 +570,7 @@ type LogViewIamBinding struct {
 	// The parent of the resource. Used to find the parent resource to bind the IAM policy to
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The role that should be applied. Only one
-	// `logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+	// `logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -646,7 +646,7 @@ type logViewIamBindingState struct {
 	// The parent of the resource. Used to find the parent resource to bind the IAM policy to
 	Parent *string `pulumi:"parent"`
 	// The role that should be applied. Only one
-	// `logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+	// `logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
@@ -681,7 +681,7 @@ type LogViewIamBindingState struct {
 	// The parent of the resource. Used to find the parent resource to bind the IAM policy to
 	Parent pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+	// `logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -718,7 +718,7 @@ type logViewIamBindingArgs struct {
 	// The parent of the resource. Used to find the parent resource to bind the IAM policy to
 	Parent string `pulumi:"parent"`
 	// The role that should be applied. Only one
-	// `logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+	// `logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
@@ -752,7 +752,7 @@ type LogViewIamBindingArgs struct {
 	// The parent of the resource. Used to find the parent resource to bind the IAM policy to
 	Parent pulumi.StringInput
 	// The role that should be applied. Only one
-	// `logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+	// `logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
@@ -894,7 +894,7 @@ func (o LogViewIamBindingOutput) Parent() pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `logging.LogViewIamBinding` can be used per role. Note that custom roles must be of the format
+// `logging.LogViewIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o LogViewIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogViewIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

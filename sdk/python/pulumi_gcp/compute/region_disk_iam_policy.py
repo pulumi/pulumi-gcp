@@ -208,8 +208,8 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
 
         * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
-        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
-        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -273,8 +273,8 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
 
         * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
-        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
-        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -382,8 +382,8 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
 
         * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
-        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
-        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -447,8 +447,8 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Compute Engine RegionDisk. Each of these resources serves a different use case:
 
         * `compute.RegionDiskIamPolicy`: Authoritative. Sets the IAM policy for the regiondisk and replaces any existing policy already attached.
-        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved.
-        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved.
+        * `compute.RegionDiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regiondisk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `compute.RegionDiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regiondisk are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 

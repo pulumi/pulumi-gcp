@@ -198,6 +198,23 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     * 
+     */
+    @Import(name="staticIpScan")
+    private @Nullable Output<Boolean> staticIpScan;
+
+    /**
+     * @return Whether the scan configuration has enabled static IP address scan feature.
+     * If enabled, the scanner will access applications from static IP addresses.
+     * 
+     */
+    public Optional<Output<Boolean>> staticIpScan() {
+        return Optional.ofNullable(this.staticIpScan);
+    }
+
+    /**
      * Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
      * Each value may be one of: `APP_ENGINE`, `COMPUTE`.
      * 
@@ -246,6 +263,7 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.schedule = $.schedule;
         this.startingUrls = $.startingUrls;
+        this.staticIpScan = $.staticIpScan;
         this.targetPlatforms = $.targetPlatforms;
         this.userAgent = $.userAgent;
     }
@@ -523,6 +541,29 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder startingUrls(String... startingUrls) {
             return startingUrls(List.of(startingUrls));
+        }
+
+        /**
+         * @param staticIpScan Whether the scan configuration has enabled static IP address scan feature.
+         * If enabled, the scanner will access applications from static IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticIpScan(@Nullable Output<Boolean> staticIpScan) {
+            $.staticIpScan = staticIpScan;
+            return this;
+        }
+
+        /**
+         * @param staticIpScan Whether the scan configuration has enabled static IP address scan feature.
+         * If enabled, the scanner will access applications from static IP addresses.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder staticIpScan(Boolean staticIpScan) {
+            return staticIpScan(Output.of(staticIpScan));
         }
 
         /**

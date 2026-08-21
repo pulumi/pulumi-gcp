@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for Compute Engine RegionInstantSnapshot. Each of these resources serves a different use case:
 //
 // * `compute.RegionInstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the regioninstantsnapshot and replaces any existing policy already attached.
-// * `compute.RegionInstantSnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regioninstantsnapshot are preserved.
-// * `compute.RegionInstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regioninstantsnapshot are preserved.
+// * `compute.RegionInstantSnapshotIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the regioninstantsnapshot are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `compute.RegionInstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the regioninstantsnapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -24,7 +24,7 @@ import (
 //
 // > **Note:** `compute.RegionInstantSnapshotIamPolicy` **cannot** be used in conjunction with `compute.RegionInstantSnapshotIamBinding` and `compute.RegionInstantSnapshotIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `compute.RegionInstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.RegionInstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `compute.RegionInstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.RegionInstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -260,8 +260,8 @@ import (
 // Three different resources help you manage your IAM policy for Compute Engine RegionInstantSnapshot. Each of these resources serves a different use case:
 //
 // * `compute.RegionInstantSnapshotIamPolicy`: Authoritative. Sets the IAM policy for the regioninstantsnapshot and replaces any existing policy already attached.
-// * `compute.RegionInstantSnapshotIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the regioninstantsnapshot are preserved.
-// * `compute.RegionInstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the regioninstantsnapshot are preserved.
+// * `compute.RegionInstantSnapshotIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the regioninstantsnapshot are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+// * `compute.RegionInstantSnapshotIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the regioninstantsnapshot are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -269,7 +269,7 @@ import (
 //
 // > **Note:** `compute.RegionInstantSnapshotIamPolicy` **cannot** be used in conjunction with `compute.RegionInstantSnapshotIamBinding` and `compute.RegionInstantSnapshotIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `compute.RegionInstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.RegionInstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `compute.RegionInstantSnapshotIamBinding` resources **can be** used in conjunction with `compute.RegionInstantSnapshotIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -558,7 +558,7 @@ type RegionInstantSnapshotIamMember struct {
 	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `compute.RegionInstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.RegionInstantSnapshotIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -627,7 +627,7 @@ type regionInstantSnapshotIamMemberState struct {
 	// region is specified, it is taken from the provider configuration.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `compute.RegionInstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.RegionInstantSnapshotIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
@@ -661,7 +661,7 @@ type RegionInstantSnapshotIamMemberState struct {
 	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `compute.RegionInstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.RegionInstantSnapshotIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -697,7 +697,7 @@ type regionInstantSnapshotIamMemberArgs struct {
 	// region is specified, it is taken from the provider configuration.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `compute.RegionInstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.RegionInstantSnapshotIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
@@ -730,7 +730,7 @@ type RegionInstantSnapshotIamMemberArgs struct {
 	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `compute.RegionInstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.RegionInstantSnapshotIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
@@ -870,7 +870,7 @@ func (o RegionInstantSnapshotIamMemberOutput) Region() pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `compute.RegionInstantSnapshotIamBinding` can be used per role. Note that custom roles must be of the format
+// `compute.RegionInstantSnapshotIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o RegionInstantSnapshotIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstantSnapshotIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

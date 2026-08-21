@@ -339,7 +339,7 @@ import javax.annotation.Nullable;
  *             .network(defaultNetwork.id())
  *             .subnetwork(defaultSubnetwork.id())
  *             .location("us-central1")
- *             .workstationAuthorizationUrl("https://workstations.cloud.google.com/ui/auth")
+ *             .workstationAuthorizationUrl("https://console.cloud.google.com/workstations/auth")
  *             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
  *             .build());
  * 

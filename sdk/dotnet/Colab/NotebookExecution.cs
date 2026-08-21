@@ -216,6 +216,204 @@ namespace Pulumi.Gcp.Colab
     ///                 Network = myNetwork.Id,
     ///                 Subnetwork = mySubnetwork.Id,
     ///             },
+    ///             ShieldedInstanceConfig = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs
+    ///             {
+    ///                 EnableIntegrityMonitoring = true,
+    ///                 EnableSecureBoot = true,
+    ///                 EnableVtpm = true,
+    ///             },
+    ///         },
+    ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         ServiceAccount = "my@service-account.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             outputBucket,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Colab Notebook Execution Workbench Runtime Vm
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+    ///     {
+    ///         Name = "my_bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+    ///     {
+    ///         DisplayName = "Notebook execution workbench runtime vm",
+    ///         Location = "us-central1",
+    ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+    ///         {
+    ///             Content = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = @"    {
+    ///       \""cells\"": [
+    ///         {
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
+    ///           ]
+    ///         }
+    ///       ],
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
+    ///         },
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
+    ///           },
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
+    ///         }
+    ///       },
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
+    ///     }
+    /// ",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+    ///         {
+    ///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+    ///             {
+    ///                 MachineType = "n1-standard-2",
+    ///             },
+    ///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+    ///             {
+    ///                 DiskType = "pd-standard",
+    ///                 DiskSizeGb = "200",
+    ///             },
+    ///         },
+    ///         WorkbenchRuntime = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeArgs
+    ///         {
+    ///             VmImage = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs
+    ///             {
+    ///                 Project = "cloud-notebooks-managed",
+    ///                 Family = "workbench-instances",
+    ///             },
+    ///         },
+    ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),
+    ///         ServiceAccount = "my@service-account.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             outputBucket,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Colab Notebook Execution Workbench Runtime Vm Name
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var outputBucket = new Gcp.Storage.Bucket("output_bucket", new()
+    ///     {
+    ///         Name = "my_bucket",
+    ///         Location = "US",
+    ///         ForceDestroy = true,
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var notebook_execution = new Gcp.Colab.NotebookExecution("notebook-execution", new()
+    ///     {
+    ///         DisplayName = "Notebook execution workbench runtime vm name",
+    ///         Location = "us-central1",
+    ///         DirectNotebookSource = new Gcp.Colab.Inputs.NotebookExecutionDirectNotebookSourceArgs
+    ///         {
+    ///             Content = Std.Base64encode.Invoke(new()
+    ///             {
+    ///                 Input = @"    {
+    ///       \""cells\"": [
+    ///         {
+    ///           \""cell_type\"": \""code\"",
+    ///           \""execution_count\"": null,
+    ///           \""metadata\"": {},
+    ///           \""outputs\"": [],
+    ///           \""source\"": [
+    ///             \""print(\\\""Hello, World!\\\"")\""
+    ///           ]
+    ///         }
+    ///       ],
+    ///       \""metadata\"": {
+    ///         \""kernelspec\"": {
+    ///           \""display_name\"": \""Python 3\"",
+    ///           \""language\"": \""python\"",
+    ///           \""name\"": \""python3\""
+    ///         },
+    ///         \""language_info\"": {
+    ///           \""codemirror_mode\"": {
+    ///             \""name\"": \""ipython\"",
+    ///             \""version\"": 3
+    ///           },
+    ///           \""file_extension\"": \"".py\"",
+    ///           \""mimetype\"": \""text/x-python\"",
+    ///           \""name\"": \""python\"",
+    ///           \""nbconvert_exporter\"": \""python\"",
+    ///           \""pygments_lexer\"": \""ipython3\"",
+    ///           \""version\"": \""3.8.5\""
+    ///         }
+    ///       },
+    ///       \""nbformat\"": 4,
+    ///       \""nbformat_minor\"": 4
+    ///     }
+    /// ",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///         CustomEnvironmentSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecArgs
+    ///         {
+    ///             MachineSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs
+    ///             {
+    ///                 MachineType = "n1-standard-2",
+    ///             },
+    ///             PersistentDiskSpec = new Gcp.Colab.Inputs.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs
+    ///             {
+    ///                 DiskType = "pd-standard",
+    ///                 DiskSizeGb = "200",
+    ///             },
+    ///         },
+    ///         WorkbenchRuntime = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeArgs
+    ///         {
+    ///             VmImage = new Gcp.Colab.Inputs.NotebookExecutionWorkbenchRuntimeVmImageArgs
+    ///             {
+    ///                 Project = "cloud-notebooks-managed",
+    ///                 Name = "workbench-instances-v20260713",
+    ///             },
     ///         },
     ///         GcsOutputUri = outputBucket.Name.Apply(name =&gt; $"gs://{name}"),
     ///         ServiceAccount = "my@service-account.com",
@@ -564,6 +762,13 @@ namespace Pulumi.Gcp.Colab
         [Output("serviceAccount")]
         public Output<string?> ServiceAccount { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for a Workbench Instances-based environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("workbenchRuntime")]
+        public Output<Outputs.NotebookExecutionWorkbenchRuntime?> WorkbenchRuntime { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a NotebookExecution resource with the given unique name, arguments, and options.
@@ -704,6 +909,13 @@ namespace Pulumi.Gcp.Colab
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Configuration for a Workbench Instances-based environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workbenchRuntime")]
+        public Input<Inputs.NotebookExecutionWorkbenchRuntimeArgs>? WorkbenchRuntime { get; set; }
+
         public NotebookExecutionArgs()
         {
         }
@@ -805,6 +1017,13 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Configuration for a Workbench Instances-based environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workbenchRuntime")]
+        public Input<Inputs.NotebookExecutionWorkbenchRuntimeGetArgs>? WorkbenchRuntime { get; set; }
 
         public NotebookExecutionState()
         {

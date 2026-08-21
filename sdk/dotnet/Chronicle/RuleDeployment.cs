@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Chronicle
     ///         Enabled = true,
     ///         Alerting = true,
     ///         Archived = false,
-    ///         RunFrequency = "DAILY",
+    ///         RunFrequency = "LIVE",
     ///     });
     /// 
     /// });
@@ -279,9 +279,23 @@ namespace Pulumi.Gcp.Chronicle
         /// LIVE
         /// HOURLY
         /// DAILY
+        /// LIVE_CUSTOMIZABLE
+        /// HOURLY_CUSTOMIZABLE
+        /// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+        /// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+        /// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+        /// suppress the diff and ignore the changes to prevent infinite update loops.
         /// </summary>
         [Output("runFrequency")]
         public Output<string?> RunFrequency { get; private set; } = null!;
+
+        /// <summary>
+        /// The schedule customizations of the rule deployment. Only valid for
+        /// customizable run frequencies.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scheduleCustomizations")]
+        public Output<Outputs.RuleDeploymentScheduleCustomizations?> ScheduleCustomizations { get; private set; } = null!;
 
 
         /// <summary>
@@ -385,9 +399,23 @@ namespace Pulumi.Gcp.Chronicle
         /// LIVE
         /// HOURLY
         /// DAILY
+        /// LIVE_CUSTOMIZABLE
+        /// HOURLY_CUSTOMIZABLE
+        /// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+        /// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+        /// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+        /// suppress the diff and ignore the changes to prevent infinite update loops.
         /// </summary>
         [Input("runFrequency")]
         public Input<string>? RunFrequency { get; set; }
+
+        /// <summary>
+        /// The schedule customizations of the rule deployment. Only valid for
+        /// customizable run frequencies.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduleCustomizations")]
+        public Input<Inputs.RuleDeploymentScheduleCustomizationsArgs>? ScheduleCustomizations { get; set; }
 
         public RuleDeploymentArgs()
         {
@@ -516,9 +544,23 @@ namespace Pulumi.Gcp.Chronicle
         /// LIVE
         /// HOURLY
         /// DAILY
+        /// LIVE_CUSTOMIZABLE
+        /// HOURLY_CUSTOMIZABLE
+        /// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+        /// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+        /// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+        /// suppress the diff and ignore the changes to prevent infinite update loops.
         /// </summary>
         [Input("runFrequency")]
         public Input<string>? RunFrequency { get; set; }
+
+        /// <summary>
+        /// The schedule customizations of the rule deployment. Only valid for
+        /// customizable run frequencies.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scheduleCustomizations")]
+        public Input<Inputs.RuleDeploymentScheduleCustomizationsGetArgs>? ScheduleCustomizations { get; set; }
 
         public RuleDeploymentState()
         {

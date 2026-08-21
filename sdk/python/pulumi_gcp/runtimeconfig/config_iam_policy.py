@@ -166,8 +166,8 @@ class ConfigIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
 
         * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
-        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
-        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -231,8 +231,8 @@ class ConfigIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
 
         * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
-        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
-        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -336,8 +336,8 @@ class ConfigIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
 
         * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
-        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
-        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
@@ -401,8 +401,8 @@ class ConfigIamPolicy(pulumi.CustomResource):
         Three different resources help you manage your IAM policy for Runtime Configurator Config. Each of these resources serves a different use case:
 
         * `runtimeconfig.ConfigIamPolicy`: Authoritative. Sets the IAM policy for the config and replaces any existing policy already attached.
-        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved.
-        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved.
+        * `runtimeconfig.ConfigIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the config are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+        * `runtimeconfig.ConfigIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the config are preserved. Members added outside of Terraform will **not** be detected as drift.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 

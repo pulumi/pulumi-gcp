@@ -5,8 +5,11 @@ package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AiReasoningEngineSpecContainerSpec {
@@ -17,6 +20,11 @@ public final class AiReasoningEngineSpecContainerSpec {
      * 
      */
     private String imageUri;
+    /**
+     * @return Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+     * 
+     */
+    private @Nullable Integer port;
 
     private AiReasoningEngineSpecContainerSpec() {}
     /**
@@ -27,6 +35,13 @@ public final class AiReasoningEngineSpecContainerSpec {
      */
     public String imageUri() {
         return this.imageUri;
+    }
+    /**
+     * @return Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+     * 
+     */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
 
     public static Builder builder() {
@@ -39,10 +54,12 @@ public final class AiReasoningEngineSpecContainerSpec {
     @CustomType.Builder
     public static final class Builder {
         private String imageUri;
+        private @Nullable Integer port;
         public Builder() {}
         public Builder(AiReasoningEngineSpecContainerSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageUri = defaults.imageUri;
+    	      this.port = defaults.port;
         }
 
         @CustomType.Setter
@@ -53,9 +70,16 @@ public final class AiReasoningEngineSpecContainerSpec {
             this.imageUri = imageUri;
             return this;
         }
+        @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+
+            this.port = port;
+            return this;
+        }
         public AiReasoningEngineSpecContainerSpec build() {
             final var _resultValue = new AiReasoningEngineSpecContainerSpec();
             _resultValue.imageUri = imageUri;
+            _resultValue.port = port;
             return _resultValue;
         }
     }

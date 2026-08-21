@@ -8,8 +8,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
  *
  * * `gcp.compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
- * * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
- * * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+ * * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
@@ -78,8 +78,8 @@ import * as utilities from "../utilities";
  * Three different resources help you manage your IAM policy for Compute Engine Disk. Each of these resources serves a different use case:
  *
  * * `gcp.compute.DiskIamPolicy`: Authoritative. Sets the IAM policy for the disk and replaces any existing policy already attached.
- * * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved.
- * * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved.
+ * * `gcp.compute.DiskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the disk are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.compute.DiskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the disk are preserved. Members added outside of Terraform will **not** be detected as drift.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *

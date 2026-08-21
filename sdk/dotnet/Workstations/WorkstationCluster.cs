@@ -252,7 +252,7 @@ namespace Pulumi.Gcp.Workstations
     ///         Network = defaultNetwork.Id,
     ///         Subnetwork = defaultSubnetwork.Id,
     ///         Location = "us-central1",
-    ///         WorkstationAuthorizationUrl = "https://workstations.cloud.google.com/ui/auth",
+    ///         WorkstationAuthorizationUrl = "https://console.cloud.google.com/workstations/auth",
     ///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
     ///     });
     /// 

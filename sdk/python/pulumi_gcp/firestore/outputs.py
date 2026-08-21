@@ -18,6 +18,8 @@ from . import outputs
 __all__ = [
     'BackupScheduleDailyRecurrence',
     'BackupScheduleWeeklyRecurrence',
+    'ChangeStreamCollectionGroupScope',
+    'ChangeStreamDatabaseScope',
     'DatabaseCmekConfig',
     'FieldIndexConfig',
     'FieldIndexConfigIndex',
@@ -57,6 +59,47 @@ class BackupScheduleWeeklyRecurrence(dict):
         Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
         """
         return pulumi.get(self, "day")
+
+
+@pulumi.output_type
+class ChangeStreamCollectionGroupScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "collectionGroupId":
+            suggest = "collection_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChangeStreamCollectionGroupScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChangeStreamCollectionGroupScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChangeStreamCollectionGroupScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 collection_group_id: _builtins.str):
+        """
+        :param _builtins.str collection_group_id: The ID of the collection group to track.
+        """
+        pulumi.set(__self__, "collection_group_id", collection_group_id)
+
+    @_builtins.property
+    @pulumi.getter(name="collectionGroupId")
+    def collection_group_id(self) -> _builtins.str:
+        """
+        The ID of the collection group to track.
+        """
+        return pulumi.get(self, "collection_group_id")
+
+
+@pulumi.output_type
+class ChangeStreamDatabaseScope(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

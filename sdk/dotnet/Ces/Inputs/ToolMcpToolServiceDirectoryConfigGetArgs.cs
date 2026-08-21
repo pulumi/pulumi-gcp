@@ -13,13 +13,8 @@ namespace Pulumi.Gcp.Ces.Inputs
     public sealed class ToolMcpToolServiceDirectoryConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
-        /// The name of [Service
-        /// Directory](https://cloud.google.com/service-directory) service.
-        /// Format:
-        /// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-        /// Location of the service directory must be the same as the location of the
-        /// app.
+        /// The name of Service Directory service.
+        /// Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
         /// </summary>
         [Input("service")]
         public Input<string>? Service { get; set; }

@@ -24,6 +24,7 @@ type Provider struct {
 	ActiveDirectoryCustomEndpoint          pulumi.StringPtrOutput `pulumi:"activeDirectoryCustomEndpoint"`
 	AgentIdentityCustomEndpoint            pulumi.StringPtrOutput `pulumi:"agentIdentityCustomEndpoint"`
 	AgentRegistryCustomEndpoint            pulumi.StringPtrOutput `pulumi:"agentRegistryCustomEndpoint"`
+	AgenticApplicationsCustomEndpoint      pulumi.StringPtrOutput `pulumi:"agenticApplicationsCustomEndpoint"`
 	AlloydbCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint               pulumi.StringPtrOutput `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
@@ -273,6 +274,7 @@ type providerArgs struct {
 	AddPulumiAttributionLabel              *bool                        `pulumi:"addPulumiAttributionLabel"`
 	AgentIdentityCustomEndpoint            *string                      `pulumi:"agentIdentityCustomEndpoint"`
 	AgentRegistryCustomEndpoint            *string                      `pulumi:"agentRegistryCustomEndpoint"`
+	AgenticApplicationsCustomEndpoint      *string                      `pulumi:"agenticApplicationsCustomEndpoint"`
 	AlloydbCustomEndpoint                  *string                      `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint               *string                      `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint                   *string                      `pulumi:"apigeeCustomEndpoint"`
@@ -494,6 +496,7 @@ type ProviderArgs struct {
 	AddPulumiAttributionLabel              pulumi.BoolPtrInput
 	AgentIdentityCustomEndpoint            pulumi.StringPtrInput
 	AgentRegistryCustomEndpoint            pulumi.StringPtrInput
+	AgenticApplicationsCustomEndpoint      pulumi.StringPtrInput
 	AlloydbCustomEndpoint                  pulumi.StringPtrInput
 	ApiGatewayCustomEndpoint               pulumi.StringPtrInput
 	ApigeeCustomEndpoint                   pulumi.StringPtrInput
@@ -788,6 +791,10 @@ func (o ProviderOutput) AgentIdentityCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) AgentRegistryCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AgentRegistryCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) AgenticApplicationsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AgenticApplicationsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) AlloydbCustomEndpoint() pulumi.StringPtrOutput {

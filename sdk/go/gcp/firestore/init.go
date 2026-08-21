@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:firestore/backupSchedule:BackupSchedule":
 		r = &BackupSchedule{}
+	case "gcp:firestore/changeStream:ChangeStream":
+		r = &ChangeStream{}
 	case "gcp:firestore/database:Database":
 		r = &Database{}
 	case "gcp:firestore/document:Document":
@@ -49,6 +51,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firestore/backupSchedule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firestore/changeStream",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

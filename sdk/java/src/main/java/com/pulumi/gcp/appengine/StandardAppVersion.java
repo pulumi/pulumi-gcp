@@ -341,15 +341,15 @@ public class StandardAppVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="automaticScaling", refs={StandardAppVersionAutomaticScaling.class}, tree="[0]")
-    private Output</* @Nullable */ StandardAppVersionAutomaticScaling> automaticScaling;
+    private Output<StandardAppVersionAutomaticScaling> automaticScaling;
 
     /**
      * @return Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<StandardAppVersionAutomaticScaling>> automaticScaling() {
-        return Codegen.optional(this.automaticScaling);
+    public Output<StandardAppVersionAutomaticScaling> automaticScaling() {
+        return this.automaticScaling;
     }
     /**
      * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.

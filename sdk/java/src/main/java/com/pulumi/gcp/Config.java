@@ -37,6 +37,9 @@ public final class Config {
     public Optional<String> agentRegistryCustomEndpoint() {
         return Codegen.stringProp("agentRegistryCustomEndpoint").config(config).get();
     }
+    public Optional<String> agenticApplicationsCustomEndpoint() {
+        return Codegen.stringProp("agenticApplicationsCustomEndpoint").config(config).get();
+    }
     public Optional<String> alloydbCustomEndpoint() {
         return Codegen.stringProp("alloydbCustomEndpoint").config(config).get();
     }

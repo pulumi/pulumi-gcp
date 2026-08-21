@@ -302,6 +302,7 @@ __all__ = [
     'RetrohuntProcessInterval',
     'RuleCompilationDiagnostic',
     'RuleCompilationDiagnosticPosition',
+    'RuleDeploymentScheduleCustomizations',
     'RuleSeverity',
     'WatchlistEntityCount',
     'WatchlistEntityPopulationMechanism',
@@ -18225,6 +18226,58 @@ class RuleCompilationDiagnosticPosition(dict):
         Output only. Start line number, beginning at 1.
         """
         return pulumi.get(self, "start_line")
+
+
+@pulumi.output_type
+class RuleDeploymentScheduleCustomizations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ensureEnrichmentCompleteness":
+            suggest = "ensure_enrichment_completeness"
+        elif key == "lateArrivingDataAdjustment":
+            suggest = "late_arriving_data_adjustment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleDeploymentScheduleCustomizations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleDeploymentScheduleCustomizations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleDeploymentScheduleCustomizations.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ensure_enrichment_completeness: Optional[_builtins.bool] = None,
+                 late_arriving_data_adjustment: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool ensure_enrichment_completeness: Indicates whether to add additional delays and runs to rules to ensure
+               enrichment completeness, with the trade-off of more late-arriving detections.
+        :param _builtins.str late_arriving_data_adjustment: Delay the first rule execution run to account for late-arriving data.
+        """
+        if ensure_enrichment_completeness is not None:
+            pulumi.set(__self__, "ensure_enrichment_completeness", ensure_enrichment_completeness)
+        if late_arriving_data_adjustment is not None:
+            pulumi.set(__self__, "late_arriving_data_adjustment", late_arriving_data_adjustment)
+
+    @_builtins.property
+    @pulumi.getter(name="ensureEnrichmentCompleteness")
+    def ensure_enrichment_completeness(self) -> Optional[_builtins.bool]:
+        """
+        Indicates whether to add additional delays and runs to rules to ensure
+        enrichment completeness, with the trade-off of more late-arriving detections.
+        """
+        return pulumi.get(self, "ensure_enrichment_completeness")
+
+    @_builtins.property
+    @pulumi.getter(name="lateArrivingDataAdjustment")
+    def late_arriving_data_adjustment(self) -> Optional[_builtins.str]:
+        """
+        Delay the first rule execution run to account for late-arriving data.
+        """
+        return pulumi.get(self, "late_arriving_data_adjustment")
 
 
 @pulumi.output_type

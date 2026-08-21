@@ -15,8 +15,8 @@ import (
 // Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
 //
 // * `apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.
-// * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved.
-// * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved.
+// * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+// * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
@@ -140,8 +140,8 @@ import (
 // Three different resources help you manage your IAM policy for API Gateway Api. Each of these resources serves a different use case:
 //
 // * `apigateway.ApiIamPolicy`: Authoritative. Sets the IAM policy for the api and replaces any existing policy already attached.
-// * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved.
-// * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved.
+// * `apigateway.ApiIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the api are preserved. Members added outside of Terraform for the same role will be detected as drift and removed on the next `pulumi up`.
+// * `apigateway.ApiIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the api are preserved. Members added outside of Terraform will **not** be detected as drift.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //

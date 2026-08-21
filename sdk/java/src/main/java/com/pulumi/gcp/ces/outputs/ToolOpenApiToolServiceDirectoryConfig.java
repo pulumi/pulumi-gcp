@@ -12,26 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ToolOpenApiToolServiceDirectoryConfig {
     /**
-     * @return (Output)
-     * The name of [Service
-     * Directory](https://cloud.google.com/service-directory) service.
-     * Format:
-     * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-     * Location of the service directory must be the same as the location of the
-     * app.
+     * @return The name of Service Directory service.
+     * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
      * 
      */
     private @Nullable String service;
 
     private ToolOpenApiToolServiceDirectoryConfig() {}
     /**
-     * @return (Output)
-     * The name of [Service
-     * Directory](https://cloud.google.com/service-directory) service.
-     * Format:
-     * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-     * Location of the service directory must be the same as the location of the
-     * app.
+     * @return The name of Service Directory service.
+     * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
      * 
      */
     public Optional<String> service() {

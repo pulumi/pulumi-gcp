@@ -289,7 +289,7 @@ namespace Pulumi.Gcp.AppEngine
         /// Structure is documented below.
         /// </summary>
         [Output("automaticScaling")]
-        public Output<Outputs.StandardAppVersionAutomaticScaling?> AutomaticScaling { get; private set; } = null!;
+        public Output<Outputs.StandardAppVersionAutomaticScaling> AutomaticScaling { get; private set; } = null!;
 
         /// <summary>
         /// Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.

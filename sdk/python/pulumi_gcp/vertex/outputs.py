@@ -8755,13 +8755,17 @@ class AiReasoningEngineSpecContainerSpec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 image_uri: _builtins.str):
+                 image_uri: _builtins.str,
+                 port: Optional[_builtins.int] = None):
         """
         :param _builtins.str image_uri: The Artifact Registry Docker image URI (e.g.,
                `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
                container image that is to be run on each worker replica.
+        :param _builtins.int port: Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
         """
         pulumi.set(__self__, "image_uri", image_uri)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter(name="imageUri")
@@ -8772,6 +8776,14 @@ class AiReasoningEngineSpecContainerSpec(dict):
         container image that is to be run on each worker replica.
         """
         return pulumi.get(self, "image_uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

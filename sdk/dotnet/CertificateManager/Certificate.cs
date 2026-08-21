@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.CertificateManager
     /// * How-to Guides
     ///     * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
     /// 
+    /// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+    /// Read more about Write-only Arguments.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Certificate Manager Google Managed Certificate Dns
@@ -204,6 +207,54 @@ namespace Pulumi.Gcp.CertificateManager
     ///             {
     ///                 Input = "test-fixtures/private-key.pem",
     ///             }).Apply(invoke =&gt; invoke.Result),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Certificate Manager Self Managed Certificate Write Only
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
+    ///     {
+    ///         Name = "self-managed-cert",
+    ///         Description = "Global cert",
+    ///         Scope = "ALL_REGIONS",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/cert.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKeyWo = Std.File.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             PemPrivateKeyWoVersion = Output.Create(Output.Tuple(Std.Filesha256.Invoke(new()
+    ///             {
+    ///                 Input = "test-fixtures/private-key.pem",
+    ///             }).Apply(invoke =&gt; Std.Parseint.Invoke(new()
+    ///             {
+    ///                 Input = invoke.Result,
+    ///                 Base = 16,
+    ///             })), Std.Pow.Invoke(new()
+    ///             {
+    ///                 Base = 2.0,
+    ///                 Exponent = 32.0,
+    ///             })).Apply(values =&gt;
+    ///             {
+    ///                 var invoke = values.Item1;
+    ///                 var invoke1 = values.Item2;
+    ///                 return (double)invoke.Result % invoke1.Result;
+    ///             })).Apply(x =&gt; x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
     ///         },
     ///     });
     /// 

@@ -36,6 +36,9 @@ namespace Pulumi.Gcp
         [Output("agentRegistryCustomEndpoint")]
         public Output<string?> AgentRegistryCustomEndpoint { get; private set; } = null!;
 
+        [Output("agenticApplicationsCustomEndpoint")]
+        public Output<string?> AgenticApplicationsCustomEndpoint { get; private set; } = null!;
+
         [Output("alloydbCustomEndpoint")]
         public Output<string?> AlloydbCustomEndpoint { get; private set; } = null!;
 
@@ -706,6 +709,9 @@ namespace Pulumi.Gcp
 
         [Input("agentRegistryCustomEndpoint")]
         public Input<string>? AgentRegistryCustomEndpoint { get; set; }
+
+        [Input("agenticApplicationsCustomEndpoint")]
+        public Input<string>? AgenticApplicationsCustomEndpoint { get; set; }
 
         [Input("alloydbCustomEndpoint")]
         public Input<string>? AlloydbCustomEndpoint { get; set; }

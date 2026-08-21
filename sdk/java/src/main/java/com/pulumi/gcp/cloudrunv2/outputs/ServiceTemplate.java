@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateNodeSelector;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateSandboxes;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolume;
@@ -81,6 +82,12 @@ public final class ServiceTemplate {
      * 
      */
     private @Nullable String revision;
+    /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateSandboxes sandboxes;
     /**
      * @return Scaling settings for this Revision.
      * Structure is documented below.
@@ -205,6 +212,14 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.revision);
     }
     /**
+     * @return Configuration for sandboxes.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateSandboxes> sandboxes() {
+        return Optional.ofNullable(this.sandboxes);
+    }
+    /**
      * @return Scaling settings for this Revision.
      * Structure is documented below.
      * 
@@ -279,6 +294,7 @@ public final class ServiceTemplate {
         private @Nullable Integer maxInstanceRequestConcurrency;
         private @Nullable ServiceTemplateNodeSelector nodeSelector;
         private @Nullable String revision;
+        private @Nullable ServiceTemplateSandboxes sandboxes;
         private @Nullable ServiceTemplateScaling scaling;
         private @Nullable String serviceAccount;
         private @Nullable ServiceTemplateServiceMesh serviceMesh;
@@ -299,6 +315,7 @@ public final class ServiceTemplate {
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
     	      this.nodeSelector = defaults.nodeSelector;
     	      this.revision = defaults.revision;
+    	      this.sandboxes = defaults.sandboxes;
     	      this.scaling = defaults.scaling;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.serviceMesh = defaults.serviceMesh;
@@ -372,6 +389,12 @@ public final class ServiceTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder sandboxes(@Nullable ServiceTemplateSandboxes sandboxes) {
+
+            this.sandboxes = sandboxes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scaling(@Nullable ServiceTemplateScaling scaling) {
 
             this.scaling = scaling;
@@ -428,6 +451,7 @@ public final class ServiceTemplate {
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             _resultValue.nodeSelector = nodeSelector;
             _resultValue.revision = revision;
+            _resultValue.sandboxes = sandboxes;
             _resultValue.scaling = scaling;
             _resultValue.serviceAccount = serviceAccount;
             _resultValue.serviceMesh = serviceMesh;

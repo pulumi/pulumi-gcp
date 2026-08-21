@@ -507,6 +507,9 @@ class Certificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Certificate Manager Google Managed Certificate Dns
@@ -622,6 +625,25 @@ class Certificate(pulumi.CustomResource):
             self_managed={
                 "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
+            })
+        ```
+        ### Certificate Manager Self Managed Certificate Write Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificatemanager.Certificate("default",
+            name="self-managed-cert",
+            description="Global cert",
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key_wo": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_private_key_wo_version": output(output(std.parseint(input=std.filesha256(input="test-fixtures/private-key.pem").result,
+                    base=16).result).apply(lambda x: float(x)) % std.pow(base=2,
+                    exponent=32).result).apply(lambda x: str(x)),
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional
@@ -844,6 +866,9 @@ class Certificate(pulumi.CustomResource):
         * How-to Guides
             * [Official Documentation](https://docs.cloud.google.com/certificate-manager/docs/certificates)
 
+        > **Note:**  All arguments marked as write-only values will not be stored in the state: `self_managed.pem_private_key_wo`.
+        Read more about Write-only Arguments.
+
         ## Example Usage
 
         ### Certificate Manager Google Managed Certificate Dns
@@ -959,6 +984,25 @@ class Certificate(pulumi.CustomResource):
             self_managed={
                 "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
                 "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
+            })
+        ```
+        ### Certificate Manager Self Managed Certificate Write Only
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default = gcp.certificatemanager.Certificate("default",
+            name="self-managed-cert",
+            description="Global cert",
+            scope="ALL_REGIONS",
+            self_managed={
+                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
+                "pem_private_key_wo": std.file(input="test-fixtures/private-key.pem").result,
+                "pem_private_key_wo_version": output(output(std.parseint(input=std.filesha256(input="test-fixtures/private-key.pem").result,
+                    base=16).result).apply(lambda x: float(x)) % std.pow(base=2,
+                    exponent=32).result).apply(lambda x: str(x)),
             })
         ```
         ### Certificate Manager Self Managed Certificate Regional

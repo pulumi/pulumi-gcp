@@ -64,6 +64,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string? Revision;
         /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateSandboxes? Sandboxes;
+        /// <summary>
         /// Scaling settings for this Revision.
         /// Structure is documented below.
         /// </summary>
@@ -120,6 +125,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string? revision,
 
+            Outputs.ServiceTemplateSandboxes? sandboxes,
+
             Outputs.ServiceTemplateScaling? scaling,
 
             string? serviceAccount,
@@ -144,6 +151,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             NodeSelector = nodeSelector;
             Revision = revision;
+            Sandboxes = sandboxes;
             Scaling = scaling;
             ServiceAccount = serviceAccount;
             ServiceMesh = serviceMesh;

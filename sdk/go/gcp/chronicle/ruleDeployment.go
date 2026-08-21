@@ -66,7 +66,7 @@ import (
 // Enabled: pulumi.Bool(true),
 // Alerting: pulumi.Bool(true),
 // Archived: pulumi.Bool(false),
-// RunFrequency: pulumi.String("DAILY"),
+// RunFrequency: pulumi.String("LIVE"),
 // })
 // if err != nil {
 // return err
@@ -251,7 +251,17 @@ type RuleDeployment struct {
 	// LIVE
 	// HOURLY
 	// DAILY
+	// LIVE_CUSTOMIZABLE
+	// HOURLY_CUSTOMIZABLE
+	// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+	// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+	// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+	// suppress the diff and ignore the changes to prevent infinite update loops.
 	RunFrequency pulumi.StringPtrOutput `pulumi:"runFrequency"`
+	// The schedule customizations of the rule deployment. Only valid for
+	// customizable run frequencies.
+	// Structure is documented below.
+	ScheduleCustomizations RuleDeploymentScheduleCustomizationsPtrOutput `pulumi:"scheduleCustomizations"`
 }
 
 // NewRuleDeployment registers a new resource with the given unique name, arguments, and options.
@@ -347,7 +357,17 @@ type ruleDeploymentState struct {
 	// LIVE
 	// HOURLY
 	// DAILY
+	// LIVE_CUSTOMIZABLE
+	// HOURLY_CUSTOMIZABLE
+	// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+	// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+	// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+	// suppress the diff and ignore the changes to prevent infinite update loops.
 	RunFrequency *string `pulumi:"runFrequency"`
+	// The schedule customizations of the rule deployment. Only valid for
+	// customizable run frequencies.
+	// Structure is documented below.
+	ScheduleCustomizations *RuleDeploymentScheduleCustomizations `pulumi:"scheduleCustomizations"`
 }
 
 type RuleDeploymentState struct {
@@ -405,7 +425,17 @@ type RuleDeploymentState struct {
 	// LIVE
 	// HOURLY
 	// DAILY
+	// LIVE_CUSTOMIZABLE
+	// HOURLY_CUSTOMIZABLE
+	// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+	// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+	// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+	// suppress the diff and ignore the changes to prevent infinite update loops.
 	RunFrequency pulumi.StringPtrInput
+	// The schedule customizations of the rule deployment. Only valid for
+	// customizable run frequencies.
+	// Structure is documented below.
+	ScheduleCustomizations RuleDeploymentScheduleCustomizationsPtrInput
 }
 
 func (RuleDeploymentState) ElementType() reflect.Type {
@@ -440,7 +470,17 @@ type ruleDeploymentArgs struct {
 	// LIVE
 	// HOURLY
 	// DAILY
+	// LIVE_CUSTOMIZABLE
+	// HOURLY_CUSTOMIZABLE
+	// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+	// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+	// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+	// suppress the diff and ignore the changes to prevent infinite update loops.
 	RunFrequency *string `pulumi:"runFrequency"`
+	// The schedule customizations of the rule deployment. Only valid for
+	// customizable run frequencies.
+	// Structure is documented below.
+	ScheduleCustomizations *RuleDeploymentScheduleCustomizations `pulumi:"scheduleCustomizations"`
 }
 
 // The set of arguments for constructing a RuleDeployment resource.
@@ -472,7 +512,17 @@ type RuleDeploymentArgs struct {
 	// LIVE
 	// HOURLY
 	// DAILY
+	// LIVE_CUSTOMIZABLE
+	// HOURLY_CUSTOMIZABLE
+	// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+	// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+	// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+	// suppress the diff and ignore the changes to prevent infinite update loops.
 	RunFrequency pulumi.StringPtrInput
+	// The schedule customizations of the rule deployment. Only valid for
+	// customizable run frequencies.
+	// Structure is documented below.
+	ScheduleCustomizations RuleDeploymentScheduleCustomizationsPtrInput
 }
 
 func (RuleDeploymentArgs) ElementType() reflect.Type {
@@ -655,8 +705,21 @@ func (o RuleDeploymentOutput) Rule() pulumi.StringOutput {
 // LIVE
 // HOURLY
 // DAILY
+// LIVE_CUSTOMIZABLE
+// HOURLY_CUSTOMIZABLE
+// Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows <=2d), or DAILY (for match windows >2d).
+// Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for <=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+// For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+// suppress the diff and ignore the changes to prevent infinite update loops.
 func (o RuleDeploymentOutput) RunFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleDeployment) pulumi.StringPtrOutput { return v.RunFrequency }).(pulumi.StringPtrOutput)
+}
+
+// The schedule customizations of the rule deployment. Only valid for
+// customizable run frequencies.
+// Structure is documented below.
+func (o RuleDeploymentOutput) ScheduleCustomizations() RuleDeploymentScheduleCustomizationsPtrOutput {
+	return o.ApplyT(func(v *RuleDeployment) RuleDeploymentScheduleCustomizationsPtrOutput { return v.ScheduleCustomizations }).(RuleDeploymentScheduleCustomizationsPtrOutput)
 }
 
 type RuleDeploymentArrayOutput struct{ *pulumi.OutputState }

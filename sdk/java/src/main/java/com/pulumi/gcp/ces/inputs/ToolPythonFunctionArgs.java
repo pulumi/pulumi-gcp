@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.ces.inputs.ToolPythonFunctionServiceDirectoryConfigArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,12 +69,30 @@ public final class ToolPythonFunctionArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.pythonCode);
     }
 
+    /**
+     * Service Directory configuration for the tool.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceDirectoryConfig")
+    private @Nullable Output<ToolPythonFunctionServiceDirectoryConfigArgs> serviceDirectoryConfig;
+
+    /**
+     * @return Service Directory configuration for the tool.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ToolPythonFunctionServiceDirectoryConfigArgs>> serviceDirectoryConfig() {
+        return Optional.ofNullable(this.serviceDirectoryConfig);
+    }
+
     private ToolPythonFunctionArgs() {}
 
     private ToolPythonFunctionArgs(ToolPythonFunctionArgs $) {
         this.description = $.description;
         this.name = $.name;
         this.pythonCode = $.pythonCode;
+        this.serviceDirectoryConfig = $.serviceDirectoryConfig;
     }
 
     public static Builder builder() {
@@ -163,6 +182,29 @@ public final class ToolPythonFunctionArgs extends com.pulumi.resources.ResourceA
          */
         public Builder pythonCode(String pythonCode) {
             return pythonCode(Output.of(pythonCode));
+        }
+
+        /**
+         * @param serviceDirectoryConfig Service Directory configuration for the tool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDirectoryConfig(@Nullable Output<ToolPythonFunctionServiceDirectoryConfigArgs> serviceDirectoryConfig) {
+            $.serviceDirectoryConfig = serviceDirectoryConfig;
+            return this;
+        }
+
+        /**
+         * @param serviceDirectoryConfig Service Directory configuration for the tool.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceDirectoryConfig(ToolPythonFunctionServiceDirectoryConfigArgs serviceDirectoryConfig) {
+            return serviceDirectoryConfig(Output.of(serviceDirectoryConfig));
         }
 
         public ToolPythonFunctionArgs build() {

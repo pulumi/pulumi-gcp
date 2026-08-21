@@ -18,7 +18,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
     public static final GcpUserAccessBindingScopedAccessSettingArgs Empty = new GcpUserAccessBindingScopedAccessSettingArgs();
 
     /**
-     * Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+     * Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
     private @Nullable Output<GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs> activeSettings;
 
     /**
-     * @return Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+     * @return Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
     }
 
     /**
-     * Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+     * Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
      * Structure is documented below.
      * 
      */
@@ -43,7 +43,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
     private @Nullable Output<GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs> dryRunSettings;
 
     /**
-     * @return Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+     * @return Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
         }
 
         /**
-         * @param activeSettings Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+         * @param activeSettings Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
         }
 
         /**
-         * @param activeSettings Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+         * @param activeSettings Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
          * Structure is documented below.
          * 
          * @return builder
@@ -118,7 +118,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
         }
 
         /**
-         * @param dryRunSettings Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+         * @param dryRunSettings Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
          * Structure is documented below.
          * 
          * @return builder
@@ -130,7 +130,7 @@ public final class GcpUserAccessBindingScopedAccessSettingArgs extends com.pulum
         }
 
         /**
-         * @param dryRunSettings Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+         * @param dryRunSettings Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
          * Structure is documented below.
          * 
          * @return builder

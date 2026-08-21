@@ -4,6 +4,7 @@
 package com.pulumi.gcp.ces.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.ces.outputs.ToolPythonFunctionServiceDirectoryConfig;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,12 @@ public final class ToolPythonFunction {
      * 
      */
     private @Nullable String pythonCode;
+    /**
+     * @return Service Directory configuration for the tool.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ToolPythonFunctionServiceDirectoryConfig serviceDirectoryConfig;
 
     private ToolPythonFunction() {}
     /**
@@ -57,6 +64,14 @@ public final class ToolPythonFunction {
     public Optional<String> pythonCode() {
         return Optional.ofNullable(this.pythonCode);
     }
+    /**
+     * @return Service Directory configuration for the tool.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ToolPythonFunctionServiceDirectoryConfig> serviceDirectoryConfig() {
+        return Optional.ofNullable(this.serviceDirectoryConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -70,12 +85,14 @@ public final class ToolPythonFunction {
         private @Nullable String description;
         private @Nullable String name;
         private @Nullable String pythonCode;
+        private @Nullable ToolPythonFunctionServiceDirectoryConfig serviceDirectoryConfig;
         public Builder() {}
         public Builder(ToolPythonFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.name = defaults.name;
     	      this.pythonCode = defaults.pythonCode;
+    	      this.serviceDirectoryConfig = defaults.serviceDirectoryConfig;
         }
 
         @CustomType.Setter
@@ -96,11 +113,18 @@ public final class ToolPythonFunction {
             this.pythonCode = pythonCode;
             return this;
         }
+        @CustomType.Setter
+        public Builder serviceDirectoryConfig(@Nullable ToolPythonFunctionServiceDirectoryConfig serviceDirectoryConfig) {
+
+            this.serviceDirectoryConfig = serviceDirectoryConfig;
+            return this;
+        }
         public ToolPythonFunction build() {
             final var _resultValue = new ToolPythonFunction();
             _resultValue.description = description;
             _resultValue.name = name;
             _resultValue.pythonCode = pythonCode;
+            _resultValue.serviceDirectoryConfig = serviceDirectoryConfig;
             return _resultValue;
         }
     }

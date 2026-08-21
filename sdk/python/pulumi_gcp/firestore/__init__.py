@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .backup_schedule import *
+from .change_stream import *
 from .database import *
 from .document import *
 from .field import *

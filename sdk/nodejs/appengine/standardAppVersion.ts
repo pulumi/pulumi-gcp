@@ -229,7 +229,7 @@ export class StandardAppVersion extends pulumi.CustomResource {
      * Automatic scaling is based on request rate, response latencies, and other application metrics.
      * Structure is documented below.
      */
-    declare public readonly automaticScaling: pulumi.Output<outputs.appengine.StandardAppVersionAutomaticScaling | undefined>;
+    declare public readonly automaticScaling: pulumi.Output<outputs.appengine.StandardAppVersionAutomaticScaling>;
     /**
      * Basic scaling creates instances when your application receives requests. Each instance will be shut down when the application becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
      * Structure is documented below.

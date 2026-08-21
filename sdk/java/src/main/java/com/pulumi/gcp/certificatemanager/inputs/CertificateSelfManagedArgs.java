@@ -85,6 +85,46 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+     * 
+     */
+    @Import(name="pemPrivateKeyWo")
+    private @Nullable Output<String> pemPrivateKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * (Optional, Write-Only)
+     * The private key of the leaf certificate in PEM-encoded form.
+     * **Note**: This property is write-only and will not be read from the API.
+     * 
+     * &gt; **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+     * 
+     */
+    public Optional<Output<String>> pemPrivateKeyWo() {
+        return Optional.ofNullable(this.pemPrivateKeyWo);
+    }
+
+    /**
+     * Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    @Import(name="pemPrivateKeyWoVersion")
+    private @Nullable Output<String> pemPrivateKeyWoVersion;
+
+    /**
+     * @return Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+     * 
+     */
+    public Optional<Output<String>> pemPrivateKeyWoVersion() {
+        return Optional.ofNullable(this.pemPrivateKeyWoVersion);
+    }
+
+    /**
      * (Optional, Deprecated)
      * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -121,6 +161,8 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
         this.certificatePem = $.certificatePem;
         this.pemCertificate = $.pemCertificate;
         this.pemPrivateKey = $.pemPrivateKey;
+        this.pemPrivateKeyWo = $.pemPrivateKeyWo;
+        this.pemPrivateKeyWoVersion = $.pemPrivateKeyWoVersion;
         this.privateKeyPem = $.privateKeyPem;
     }
 
@@ -227,6 +269,58 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
          */
         public Builder pemPrivateKey(String pemPrivateKey) {
             return pemPrivateKey(Output.of(pemPrivateKey));
+        }
+
+        /**
+         * @param pemPrivateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemPrivateKeyWo(@Nullable Output<String> pemPrivateKeyWo) {
+            $.pemPrivateKeyWo = pemPrivateKeyWo;
+            return this;
+        }
+
+        /**
+         * @param pemPrivateKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is write-only and will not be read from the API.
+         * 
+         * &gt; **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemPrivateKeyWo(String pemPrivateKeyWo) {
+            return pemPrivateKeyWo(Output.of(pemPrivateKeyWo));
+        }
+
+        /**
+         * @param pemPrivateKeyWoVersion Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemPrivateKeyWoVersion(@Nullable Output<String> pemPrivateKeyWoVersion) {
+            $.pemPrivateKeyWoVersion = pemPrivateKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param pemPrivateKeyWoVersion Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pemPrivateKeyWoVersion(String pemPrivateKeyWoVersion) {
+            return pemPrivateKeyWoVersion(Output.of(pemPrivateKeyWoVersion));
         }
 
         /**

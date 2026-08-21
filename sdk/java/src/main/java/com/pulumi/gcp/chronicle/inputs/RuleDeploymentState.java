@@ -5,6 +5,7 @@ package com.pulumi.gcp.chronicle.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.chronicle.inputs.RuleDeploymentScheduleCustomizationsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -264,6 +265,12 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
      * LIVE
      * HOURLY
      * DAILY
+     * LIVE_CUSTOMIZABLE
+     * HOURLY_CUSTOMIZABLE
+     * Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+     * Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+     * For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+     * suppress the diff and ignore the changes to prevent infinite update loops.
      * 
      */
     @Import(name="runFrequency")
@@ -275,10 +282,35 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
      * LIVE
      * HOURLY
      * DAILY
+     * LIVE_CUSTOMIZABLE
+     * HOURLY_CUSTOMIZABLE
+     * Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+     * Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+     * For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+     * suppress the diff and ignore the changes to prevent infinite update loops.
      * 
      */
     public Optional<Output<String>> runFrequency() {
         return Optional.ofNullable(this.runFrequency);
+    }
+
+    /**
+     * The schedule customizations of the rule deployment. Only valid for
+     * customizable run frequencies.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scheduleCustomizations")
+    private @Nullable Output<RuleDeploymentScheduleCustomizationsArgs> scheduleCustomizations;
+
+    /**
+     * @return The schedule customizations of the rule deployment. Only valid for
+     * customizable run frequencies.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RuleDeploymentScheduleCustomizationsArgs>> scheduleCustomizations() {
+        return Optional.ofNullable(this.scheduleCustomizations);
     }
 
     private RuleDeploymentState() {}
@@ -298,6 +330,7 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
         this.project = $.project;
         this.rule = $.rule;
         this.runFrequency = $.runFrequency;
+        this.scheduleCustomizations = $.scheduleCustomizations;
     }
 
     public static Builder builder() {
@@ -669,6 +702,12 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
          * LIVE
          * HOURLY
          * DAILY
+         * LIVE_CUSTOMIZABLE
+         * HOURLY_CUSTOMIZABLE
+         * Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+         * Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+         * For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+         * suppress the diff and ignore the changes to prevent infinite update loops.
          * 
          * @return builder
          * 
@@ -684,12 +723,43 @@ public final class RuleDeploymentState extends com.pulumi.resources.ResourceArgs
          * LIVE
          * HOURLY
          * DAILY
+         * LIVE_CUSTOMIZABLE
+         * HOURLY_CUSTOMIZABLE
+         * Note: Certain legacy run frequencies are deprecated. For multi-event rules, use LIVE_CUSTOMIZABLE or HOURLY_CUSTOMIZABLE (for match windows &lt;=2d), or DAILY (for match windows &gt;2d).
+         * Legacy values LIVE and HOURLY are mapped to their customizable counterparts on the backend. DAILY for &lt;=2d match window multi-event rules will be happed to HOURLY_CUSTOMIZABLE.
+         * For single-event rules, HOURLY and DAILY are deprecated and mapped to LIVE. If you continue to use deprecated values in your Terraform configuration, Terraform will silently
+         * suppress the diff and ignore the changes to prevent infinite update loops.
          * 
          * @return builder
          * 
          */
         public Builder runFrequency(String runFrequency) {
             return runFrequency(Output.of(runFrequency));
+        }
+
+        /**
+         * @param scheduleCustomizations The schedule customizations of the rule deployment. Only valid for
+         * customizable run frequencies.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleCustomizations(@Nullable Output<RuleDeploymentScheduleCustomizationsArgs> scheduleCustomizations) {
+            $.scheduleCustomizations = scheduleCustomizations;
+            return this;
+        }
+
+        /**
+         * @param scheduleCustomizations The schedule customizations of the rule deployment. Only valid for
+         * customizable run frequencies.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scheduleCustomizations(RuleDeploymentScheduleCustomizationsArgs scheduleCustomizations) {
+            return scheduleCustomizations(Output.of(scheduleCustomizations));
         }
 
         public RuleDeploymentState build() {

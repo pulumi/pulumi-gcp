@@ -19,11 +19,13 @@ public final class GcpUserAccessBindingSessionSettings {
     private @Nullable String maxInactivity;
     /**
      * @return Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+     * If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
      * 
      */
     private @Nullable String sessionLength;
     /**
      * @return Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+     * If `sessionLength` is set to zero, this field must be false.
      * 
      */
     private @Nullable Boolean sessionLengthEnabled;
@@ -49,6 +51,7 @@ public final class GcpUserAccessBindingSessionSettings {
     }
     /**
      * @return Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+     * If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
      * 
      */
     public Optional<String> sessionLength() {
@@ -56,6 +59,7 @@ public final class GcpUserAccessBindingSessionSettings {
     }
     /**
      * @return Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+     * If `sessionLength` is set to zero, this field must be false.
      * 
      */
     public Optional<Boolean> sessionLengthEnabled() {

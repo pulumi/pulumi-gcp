@@ -24391,6 +24391,8 @@ type AiReasoningEngineSpecContainerSpec struct {
 	// `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
 	// container image that is to be run on each worker replica.
 	ImageUri string `pulumi:"imageUri"`
+	// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+	Port *int `pulumi:"port"`
 }
 
 // AiReasoningEngineSpecContainerSpecInput is an input type that accepts AiReasoningEngineSpecContainerSpecArgs and AiReasoningEngineSpecContainerSpecOutput values.
@@ -24409,6 +24411,8 @@ type AiReasoningEngineSpecContainerSpecArgs struct {
 	// `us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag`) of the
 	// container image that is to be run on each worker replica.
 	ImageUri pulumi.StringInput `pulumi:"imageUri"`
+	// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (AiReasoningEngineSpecContainerSpecArgs) ElementType() reflect.Type {
@@ -24495,6 +24499,11 @@ func (o AiReasoningEngineSpecContainerSpecOutput) ImageUri() pulumi.StringOutput
 	return o.ApplyT(func(v AiReasoningEngineSpecContainerSpec) string { return v.ImageUri }).(pulumi.StringOutput)
 }
 
+// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+func (o AiReasoningEngineSpecContainerSpecOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiReasoningEngineSpecContainerSpec) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type AiReasoningEngineSpecContainerSpecPtrOutput struct{ *pulumi.OutputState }
 
 func (AiReasoningEngineSpecContainerSpecPtrOutput) ElementType() reflect.Type {
@@ -24529,6 +24538,16 @@ func (o AiReasoningEngineSpecContainerSpecPtrOutput) ImageUri() pulumi.StringPtr
 		}
 		return &v.ImageUri
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+func (o AiReasoningEngineSpecContainerSpecPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiReasoningEngineSpecContainerSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type AiReasoningEngineSpecDeploymentSpec struct {

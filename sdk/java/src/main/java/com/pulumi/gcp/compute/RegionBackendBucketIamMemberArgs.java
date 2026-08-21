@@ -126,7 +126,7 @@ public final class RegionBackendBucketIamMemberArgs extends com.pulumi.resources
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -135,7 +135,7 @@ public final class RegionBackendBucketIamMemberArgs extends com.pulumi.resources
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -311,7 +311,7 @@ public final class RegionBackendBucketIamMemberArgs extends com.pulumi.resources
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -324,7 +324,7 @@ public final class RegionBackendBucketIamMemberArgs extends com.pulumi.resources
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.RegionBackendBucketIamBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.RegionBackendBucketIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder

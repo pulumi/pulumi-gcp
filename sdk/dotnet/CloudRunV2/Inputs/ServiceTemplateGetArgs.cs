@@ -101,6 +101,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<string>? Revision { get; set; }
 
         /// <summary>
+        /// Configuration for sandboxes.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sandboxes")]
+        public Input<Inputs.ServiceTemplateSandboxesGetArgs>? Sandboxes { get; set; }
+
+        /// <summary>
         /// Scaling settings for this Revision.
         /// Structure is documented below.
         /// </summary>

@@ -471,14 +471,29 @@ export namespace accesscontextmanager {
         title: pulumi.Input<string>;
     }
 
+    export interface GcpUserAccessBindingPrincipal {
+        /**
+         * Immutable. Service account email used to assign policies to a single service account.
+         * If a service account is subject to multiple policies (e.g., if there is a policy for all
+         * service accounts in a project and a policy for the service account), the closest (i.e.
+         * the most specific) dry-run policy will be used for the dry-run functionality and the
+         * closest policy will be used for the enforcement.
+         */
+        serviceAccount?: pulumi.Input<string | undefined>;
+        /**
+         * Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+         */
+        serviceAccountProjectNumber?: pulumi.Input<string | undefined>;
+    }
+
     export interface GcpUserAccessBindingScopedAccessSetting {
         /**
-         * Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+         * Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
          * Structure is documented below.
          */
         activeSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingActiveSettings | undefined>;
         /**
-         * Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+         * Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
          * Structure is documented below.
          */
         dryRunSettings?: pulumi.Input<inputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingDryRunSettings | undefined>;
@@ -508,10 +523,12 @@ export namespace accesscontextmanager {
         maxInactivity?: pulumi.Input<string | undefined>;
         /**
          * Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+         * If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
          */
         sessionLength?: pulumi.Input<string | undefined>;
         /**
          * Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+         * If `sessionLength` is set to zero, this field must be false.
          */
         sessionLengthEnabled?: pulumi.Input<boolean | undefined>;
         /**
@@ -566,10 +583,12 @@ export namespace accesscontextmanager {
         maxInactivity?: pulumi.Input<string | undefined>;
         /**
          * Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+         * If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
          */
         sessionLength?: pulumi.Input<string | undefined>;
         /**
          * Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+         * If `sessionLength` is set to zero, this field must be false.
          */
         sessionLengthEnabled?: pulumi.Input<boolean | undefined>;
         /**
@@ -2616,6 +2635,884 @@ export namespace accesscontextmanager {
          * HTTP header value.
          */
         value: pulumi.Input<string>;
+    }
+}
+
+export namespace agenticapplications {
+    export interface AnalystAgentPersonaArtifactExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         * Structure is documented below.
+         */
+        resource: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactExampleResource>;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceBigqueryResource | undefined>;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: pulumi.Input<string | undefined>;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceF1Resource | undefined>;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource | undefined>;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceGoogleDriveResource | undefined>;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: pulumi.Input<string | undefined>;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceRawFileResource | undefined>;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: pulumi.Input<string | undefined>;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: pulumi.Input<string | undefined>;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: pulumi.Input<string>;
+        /**
+         * The title of the file.
+         */
+        fileTitle: pulumi.Input<string>;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfig {
+        /**
+         * Options for document generation.
+         */
+        documentGenerationOptions?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions | undefined>;
+        /**
+         * Options for slide generation.
+         */
+        slideGenerationOptions?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions | undefined>;
+        /**
+         * Options for visualizations.
+         */
+        visualizationOptions?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptions | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions {
+        /**
+         * Examples for document generation.
+         */
+        documentExamples?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample>[] | undefined>;
+        /**
+         * Format for document export.
+         * Possible values:
+         * PDF
+         * DOCX
+         * GOOGLE_DOCS
+         */
+        exportFormat?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         */
+        resource: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResource>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceBigqueryResource | undefined>;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: pulumi.Input<string | undefined>;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource | undefined>;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleCloudStorageResource | undefined>;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResource | undefined>;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: pulumi.Input<string | undefined>;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource | undefined>;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: pulumi.Input<string | undefined>;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: pulumi.Input<string | undefined>;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: pulumi.Input<string>;
+        /**
+         * The title of the file.
+         */
+        fileTitle: pulumi.Input<string>;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptions {
+        /**
+         * Format for slide export.
+         * Possible values:
+         * PDF
+         * PNG
+         * PPTX
+         * GOOGLE_SLIDES
+         */
+        exportFormat?: pulumi.Input<string | undefined>;
+        /**
+         * Examples for slide generation.
+         */
+        slideExamples?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample>[] | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         */
+        resource: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceBigqueryResource | undefined>;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: pulumi.Input<string | undefined>;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceF1Resource | undefined>;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleCloudStorageResource | undefined>;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleDriveResource | undefined>;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: pulumi.Input<string | undefined>;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceRawFileResource | undefined>;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: pulumi.Input<string | undefined>;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: pulumi.Input<string | undefined>;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: pulumi.Input<string>;
+        /**
+         * The title of the file.
+         */
+        fileTitle: pulumi.Input<string>;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptions {
+        /**
+         * Examples for visualizations.
+         */
+        visualizationExamples?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample>[] | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         */
+        resource: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResource>;
+        /**
+         * The type of the visualization (e.g. "Bar Chart", "Line Chart").
+         */
+        visualizationType: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceBigqueryResource | undefined>;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: pulumi.Input<string | undefined>;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceF1Resource | undefined>;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleCloudStorageResource | undefined>;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleDriveResource | undefined>;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: pulumi.Input<string | undefined>;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceRawFileResource | undefined>;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: pulumi.Input<string | undefined>;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: pulumi.Input<string | undefined>;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: pulumi.Input<string>;
+        /**
+         * The title of the file.
+         */
+        fileTitle: pulumi.Input<string>;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaExternalDataSource {
+        /**
+         * Configurations for the AirQuality external data source.
+         */
+        airQuality?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceAirQuality | undefined>;
+        /**
+         * Configurations for the BureauLaborStatistics external data source.
+         */
+        bureauLaborStatistics?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceBureauLaborStatistics | undefined>;
+        /**
+         * Configurations for the Coindesk external data source.
+         */
+        coindesk?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceCoindesk | undefined>;
+        /**
+         * Whether this external data source is enabled for the current analysis.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * Configurations for the Finnhub external data source.
+         */
+        finnhub?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceFinnhub | undefined>;
+        /**
+         * Configurations for the Fred external data source.
+         */
+        fred?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceFred | undefined>;
+        /**
+         * Configurations for the SecEdgar external data source.
+         */
+        secEdgar?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceSecEdgar | undefined>;
+        /**
+         * The name of the external data source, used for custom org policy
+         * evaluation. Output-only (populated automatically with the selection case
+         * name).
+         */
+        selectionName?: pulumi.Input<string | undefined>;
+        /**
+         * Configurations for the TreasurySecuritiesAuctions external data source.
+         */
+        treasurySecuritiesAuctions?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceTreasurySecuritiesAuctions | undefined>;
+        /**
+         * Configurations for the USDA external data source.
+         */
+        usda?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaExternalDataSourceUsda | undefined>;
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceAirQuality {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceBureauLaborStatistics {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceCoindesk {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceFinnhub {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceFred {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceSecEdgar {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceTreasurySecuritiesAuctions {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceUsda {
+    }
+
+    export interface AnalystAgentPersonaMcpDataSource {
+        /**
+         * Input only. The API key of the MCP server.
+         */
+        apiKey?: pulumi.Input<string | undefined>;
+        /**
+         * The API key parameter name.
+         */
+        apiKeyName?: pulumi.Input<string | undefined>;
+        /**
+         * The client ID for authentication.
+         */
+        clientId?: pulumi.Input<string | undefined>;
+        /**
+         * Input only. The client secret for authentication.
+         */
+        clientSecret?: pulumi.Input<string | undefined>;
+        /**
+         * The description of the MCP agent.
+         */
+        description: pulumi.Input<string>;
+        /**
+         * The display name of the persona, shown to users.
+         */
+        displayName: pulumi.Input<string>;
+        /**
+         * Whether this external data source is enabled for the current analysis.
+         */
+        enabled: pulumi.Input<boolean>;
+        /**
+         * The URL to use for retrieving the OAuth token.
+         */
+        oauthTokenUrl?: pulumi.Input<string | undefined>;
+        /**
+         * The custom prompt for the MCP agent.
+         */
+        prompt?: pulumi.Input<string | undefined>;
+        /**
+         * The URL of the MCP server.
+         */
+        serverUrl: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaResource {
+        /**
+         * Represents a BigQuery resource.
+         */
+        bigqueryResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaResourceBigqueryResource | undefined>;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: pulumi.Input<string | undefined>;
+        /**
+         * - Represents an F1 resource.
+         */
+        f1Resource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaResourceF1Resource | undefined>;
+        /**
+         * Represents a Google Cloud Storage resource.
+         */
+        googleCloudStorageResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaResourceGoogleCloudStorageResource | undefined>;
+        /**
+         * Represents a Google Drive resource.
+         */
+        googleDriveResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaResourceGoogleDriveResource | undefined>;
+        /**
+         * The description of the persona review, used by the model.
+         */
+        modelDescription?: pulumi.Input<string | undefined>;
+        /**
+         * Represents a raw file resource.
+         */
+        rawFileResource?: pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaResourceRawFileResource | undefined>;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         *
+         * Must only be set for file-based resources.
+         */
+        useRag?: pulumi.Input<boolean | undefined>;
+    }
+
+    export interface AnalystAgentPersonaResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: pulumi.Input<string | undefined>;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: pulumi.Input<string | undefined>;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    }
+
+    export interface AnalystAgentPersonaResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: pulumi.Input<string | undefined>;
+    }
+
+    export interface AnalystAgentPersonaResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: pulumi.Input<string>;
+        /**
+         * The title of the file.
+         */
+        fileTitle: pulumi.Input<string>;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaSkill {
+        /**
+         * The markdown text content of the skill.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The description of the skill.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * References for the skill.
+         */
+        references?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaSkillReference>[] | undefined>;
+        /**
+         * The identifier of the skill. Use a descriptive string that reflects the
+         * skill's function.
+         */
+        skillId: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaSkillReference {
+        /**
+         * The content of the reference.
+         */
+        content: pulumi.Input<string>;
+        /**
+         * The identifier of the reference within the skill. Use a descriptive
+         * string that reflects the reference's function.
+         */
+        referenceId: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaTable {
+        /**
+         * The columns in the table.
+         */
+        columns?: pulumi.Input<pulumi.Input<inputs.agenticapplications.AnalystAgentPersonaTableColumn>[] | undefined>;
+        /**
+         * The description of the table.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * Identifier. The resource name of the analyst agent persona.
+         * Format:
+         * projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface AnalystAgentPersonaTableColumn {
+        /**
+         * The data type of the column. This should be a GoogleSQL data type.
+         * Parameterized types such as PROTO, ENUM, ARRAY, STRUCT<...>, and
+         * RANGE are not supported.
+         */
+        dataType: pulumi.Input<string>;
+        /**
+         * The description of the column.
+         */
+        description?: pulumi.Input<string | undefined>;
+        /**
+         * Identifier. The resource name of the analyst agent persona.
+         * Format:
+         * projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}
+         */
+        name: pulumi.Input<string>;
     }
 }
 
@@ -14370,6 +15267,19 @@ export namespace certificatemanager {
          */
         pemPrivateKey?: pulumi.Input<string | undefined>;
         /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+         */
+        pemPrivateKeyWo?: pulumi.Input<string | undefined>;
+        /**
+         * Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        pemPrivateKeyWoVersion?: pulumi.Input<string | undefined>;
+        /**
          * (Optional, Deprecated)
          * The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -20218,6 +21128,11 @@ export namespace ces {
          */
         rewriterConfig?: pulumi.Input<inputs.ces.ToolDataStoreToolModalityConfigRewriterConfig | undefined>;
         /**
+         * Snippets configuration.
+         * Structure is documented below.
+         */
+        snippetsConfig?: pulumi.Input<inputs.ces.ToolDataStoreToolModalityConfigSnippetsConfig | undefined>;
+        /**
          * Summarization configuration.
          * Structure is documented below.
          */
@@ -20270,6 +21185,13 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: pulumi.Input<number | undefined>;
+    }
+
+    export interface ToolDataStoreToolModalityConfigSnippetsConfig {
+        /**
+         * Whether snippets are enabled.
+         */
+        enableSnippets?: pulumi.Input<boolean | undefined>;
     }
 
     export interface ToolDataStoreToolModalityConfigSummarizationConfig {
@@ -20568,13 +21490,8 @@ export namespace ces {
 
     export interface ToolMcpToolServiceDirectoryConfig {
         /**
-         * (Output)
-         * The name of [Service
-         * Directory](https://cloud.google.com/service-directory) service.
-         * Format:
-         * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-         * Location of the service directory must be the same as the location of the
-         * app.
+         * The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
          */
         service?: pulumi.Input<string | undefined>;
     }
@@ -20782,13 +21699,8 @@ export namespace ces {
 
     export interface ToolOpenApiToolServiceDirectoryConfig {
         /**
-         * (Output)
-         * The name of [Service
-         * Directory](https://cloud.google.com/service-directory) service.
-         * Format:
-         * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-         * Location of the service directory must be the same as the location of the
-         * app.
+         * The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
          */
         service?: pulumi.Input<string | undefined>;
     }
@@ -20844,6 +21756,19 @@ export namespace ces {
          * Optional. The Python code to execute for the tool.
          */
         pythonCode?: pulumi.Input<string | undefined>;
+        /**
+         * Service Directory configuration for the tool.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: pulumi.Input<inputs.ces.ToolPythonFunctionServiceDirectoryConfig | undefined>;
+    }
+
+    export interface ToolPythonFunctionServiceDirectoryConfig {
+        /**
+         * The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+         */
+        service: pulumi.Input<string>;
     }
 
     export interface ToolRemoteAgentTool {
@@ -26780,6 +27705,18 @@ export namespace chronicle {
         startLine?: pulumi.Input<number | undefined>;
     }
 
+    export interface RuleDeploymentScheduleCustomizations {
+        /**
+         * Indicates whether to add additional delays and runs to rules to ensure
+         * enrichment completeness, with the trade-off of more late-arriving detections.
+         */
+        ensureEnrichmentCompleteness?: pulumi.Input<boolean | undefined>;
+        /**
+         * Delay the first rule execution run to account for late-arriving data.
+         */
+        lateArrivingDataAdjustment?: pulumi.Input<string | undefined>;
+    }
+
     export interface RuleSeverity {
         /**
          * The display name of the severity level. Extracted from the meta section of
@@ -32544,6 +33481,11 @@ export namespace cloudrunv2 {
          */
         revision?: pulumi.Input<string | undefined>;
         /**
+         * Configuration for sandboxes.
+         * Structure is documented below.
+         */
+        sandboxes?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateSandboxes | undefined>;
+        /**
          * Scaling settings for this Revision.
          * Structure is documented below.
          */
@@ -33011,6 +33953,73 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
          */
         accelerator: pulumi.Input<string>;
+    }
+
+    export interface ServiceTemplateSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateSandboxesTemplate>[] | undefined>;
+    }
+
+    export interface ServiceTemplateSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateSandboxesTemplateEnv>[] | undefined>;
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: pulumi.Input<string>;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceTemplateSandboxesTemplateVolumeMount>[] | undefined>;
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ServiceTemplateSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: pulumi.Input<string | undefined>;
+    }
+
+    export interface ServiceTemplateSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: pulumi.Input<string>;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: pulumi.Input<string | undefined>;
     }
 
     export interface ServiceTemplateScaling {
@@ -35263,6 +36272,11 @@ export namespace colab {
          * Structure is documented below.
          */
         persistentDiskSpec?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec | undefined>;
+        /**
+         * Shielded VM configuration.
+         * Structure is documented below.
+         */
+        shieldedInstanceConfig?: pulumi.Input<inputs.colab.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig | undefined>;
     }
 
     export interface NotebookExecutionCustomEnvironmentSpecMachineSpec {
@@ -35306,6 +36320,21 @@ export namespace colab {
         diskType?: pulumi.Input<string | undefined>;
     }
 
+    export interface NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+         */
+        enableIntegrityMonitoring?: pulumi.Input<boolean | undefined>;
+        /**
+         * Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+         */
+        enableSecureBoot?: pulumi.Input<boolean | undefined>;
+        /**
+         * Defines whether the instance has the vTPM enabled. Enabled by default.
+         */
+        enableVtpm?: pulumi.Input<boolean | undefined>;
+    }
+
     export interface NotebookExecutionDataformRepositorySource {
         /**
          * The commit SHA to read repository with. If unset, the file will be read at HEAD.
@@ -35333,6 +36362,29 @@ export namespace colab {
          * The Cloud Storage uri pointing to the ipynb file.
          */
         uri: pulumi.Input<string>;
+    }
+
+    export interface NotebookExecutionWorkbenchRuntime {
+        /**
+         * Custom Compute Engine VM image for the Workbench instance.
+         * Structure is documented below.
+         */
+        vmImage: pulumi.Input<inputs.colab.NotebookExecutionWorkbenchRuntimeVmImage>;
+    }
+
+    export interface NotebookExecutionWorkbenchRuntimeVmImage {
+        /**
+         * Use this VM image family to find the image; the newest image in this family will be used.
+         */
+        family?: pulumi.Input<string | undefined>;
+        /**
+         * Use VM image name to find the image.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+         */
+        project?: pulumi.Input<string | undefined>;
     }
 
     export interface RuntimeNotebookRuntimeTemplateRef {
@@ -89908,6 +90960,16 @@ export namespace firestore {
         day?: pulumi.Input<string | undefined>;
     }
 
+    export interface ChangeStreamCollectionGroupScope {
+        /**
+         * The ID of the collection group to track.
+         */
+        collectionGroupId: pulumi.Input<string>;
+    }
+
+    export interface ChangeStreamDatabaseScope {
+    }
+
     export interface DatabaseCmekConfig {
         /**
          * (Output)
@@ -126065,9 +127127,21 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsPerformanceCaptureConfig {
         /**
+         * The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        cpuUtilizationThresholdPercent?: pulumi.Input<number | undefined>;
+        /**
          * Enable or disable the Performance Capture.
          */
         enabled?: pulumi.Input<boolean | undefined>;
+        /**
+         * The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+         */
+        historyListLengthThresholdCount?: pulumi.Input<number | undefined>;
+        /**
+         * The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        memoryUsageThresholdPercent?: pulumi.Input<number | undefined>;
         /**
          * The minimum number of consecutive readings above threshold that triggers instance state capture.
          */
@@ -126085,9 +127159,29 @@ export namespace sql {
          */
         secondsBehindSourceThreshold?: pulumi.Input<number | undefined>;
         /**
+         * The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        semaphoreWaitThresholdCount?: pulumi.Input<number | undefined>;
+        /**
          * The amount of time in seconds that a transaction needs to have been open before getting recorded.
          */
         transactionDurationThreshold?: pulumi.Input<number | undefined>;
+        /**
+         * A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+         */
+        transactionKillExcludedUserHosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+        /**
+         * The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+         */
+        transactionKillThresholdSeconds?: pulumi.Input<number | undefined>;
+        /**
+         * Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+         */
+        transactionKillType?: pulumi.Input<string | undefined>;
+        /**
+         * The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        transactionLockWaitThresholdCount?: pulumi.Input<number | undefined>;
     }
 
     export interface DatabaseInstanceSettingsReadPoolAutoScaleConfig {
@@ -131455,6 +132549,10 @@ export namespace vertex {
          * container image that is to be run on each worker replica.
          */
         imageUri: pulumi.Input<string>;
+        /**
+         * Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+         */
+        port?: pulumi.Input<number | undefined>;
     }
 
     export interface AiReasoningEngineSpecDeploymentSpec {
@@ -132887,6 +133985,11 @@ export namespace workbench {
          * Structure is documented below.
          */
         bootDisk?: pulumi.Input<inputs.workbench.InstanceGceSetupBootDisk | undefined>;
+        /**
+         * (Output)
+         * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+         */
+        computeInstanceId?: pulumi.Input<string | undefined>;
         /**
          * Confidential instance configuration.
          * Structure is documented below.

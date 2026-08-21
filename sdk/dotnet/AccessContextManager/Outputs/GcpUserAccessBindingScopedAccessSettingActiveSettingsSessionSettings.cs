@@ -19,10 +19,12 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         public readonly string? MaxInactivity;
         /// <summary>
         /// Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC MaxAge param.
+        /// If this field is set to zero, `SessionLengthEnabled` must be set to false or left unset.
         /// </summary>
         public readonly string? SessionLength;
         /// <summary>
         /// Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+        /// If `SessionLength` is set to zero, this field must be false.
         /// </summary>
         public readonly bool? SessionLengthEnabled;
         /// <summary>

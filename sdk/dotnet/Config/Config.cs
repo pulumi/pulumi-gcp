@@ -81,6 +81,13 @@ namespace Pulumi.Gcp
             set => _agentRegistryCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _agenticApplicationsCustomEndpoint = new __Value<string?>(() => __config.Get("agenticApplicationsCustomEndpoint"));
+        public static string? AgenticApplicationsCustomEndpoint
+        {
+            get => _agenticApplicationsCustomEndpoint.Get();
+            set => _agenticApplicationsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _alloydbCustomEndpoint = new __Value<string?>(() => __config.Get("alloydbCustomEndpoint"));
         public static string? AlloydbCustomEndpoint
         {

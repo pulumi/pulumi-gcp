@@ -461,14 +461,29 @@ export namespace accesscontextmanager {
         title: string;
     }
 
+    export interface GcpUserAccessBindingPrincipal {
+        /**
+         * Immutable. Service account email used to assign policies to a single service account.
+         * If a service account is subject to multiple policies (e.g., if there is a policy for all
+         * service accounts in a project and a policy for the service account), the closest (i.e.
+         * the most specific) dry-run policy will be used for the dry-run functionality and the
+         * closest policy will be used for the enforcement.
+         */
+        serviceAccount?: string;
+        /**
+         * Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
+         */
+        serviceAccountProjectNumber?: string;
+    }
+
     export interface GcpUserAccessBindingScopedAccessSetting {
         /**
-         * Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
+         * Optional. Access settings for this scoped access settings. This field may be empty if `dryRunSettings` is set.
          * Structure is documented below.
          */
         activeSettings?: outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingActiveSettings;
         /**
-         * Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
+         * Optional. Dry-run access settings for this scoped access settings. This field may be empty if `activeSettings` is set. Cannot contain session settings.
          * Structure is documented below.
          */
         dryRunSettings?: outputs.accesscontextmanager.GcpUserAccessBindingScopedAccessSettingDryRunSettings;
@@ -498,10 +513,12 @@ export namespace accesscontextmanager {
         maxInactivity?: string;
         /**
          * Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+         * If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
          */
         sessionLength?: string;
         /**
          * Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+         * If `sessionLength` is set to zero, this field must be false.
          */
         sessionLengthEnabled?: boolean;
         /**
@@ -556,10 +573,12 @@ export namespace accesscontextmanager {
         maxInactivity?: string;
         /**
          * Optional. The session length. Setting this field to zero is equal to disabling session. Also can set infinite session by flipping the enabled bit to false below. If useOidcMaxAge is true, for OIDC apps, the session length will be the minimum of this field and OIDC maxAge param.
+         * If this field is set to zero, `sessionLengthEnabled` must be set to false or left unset.
          */
         sessionLength?: string;
         /**
          * Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
+         * If `sessionLength` is set to zero, this field must be false.
          */
         sessionLengthEnabled?: boolean;
         /**
@@ -2644,6 +2663,885 @@ export namespace accesscontextmanager {
          * HTTP header value.
          */
         value: string;
+    }
+
+}
+
+export namespace agenticapplications {
+    export interface AnalystAgentPersonaArtifactExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         * Structure is documented below.
+         */
+        resource: outputs.agenticapplications.AnalystAgentPersonaArtifactExampleResource;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceBigqueryResource;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: string;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: outputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceF1Resource;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceGoogleDriveResource;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: string;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactExampleResourceRawFileResource;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: boolean;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: string;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: string;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: {[key: string]: string};
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: string;
+        /**
+         * The title of the file.
+         */
+        fileTitle: string;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfig {
+        /**
+         * Options for document generation.
+         */
+        documentGenerationOptions?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions;
+        /**
+         * Options for slide generation.
+         */
+        slideGenerationOptions?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptions;
+        /**
+         * Options for visualizations.
+         */
+        visualizationOptions?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptions;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions {
+        /**
+         * Examples for document generation.
+         */
+        documentExamples?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample[];
+        /**
+         * Format for document export.
+         * Possible values:
+         * PDF
+         * DOCX
+         * GOOGLE_DOCS
+         */
+        exportFormat?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         */
+        resource: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResource;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceBigqueryResource;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: string;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleCloudStorageResource;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResource;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: string;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: boolean;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: string;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: string;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: {[key: string]: string};
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: string;
+        /**
+         * The title of the file.
+         */
+        fileTitle: string;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptions {
+        /**
+         * Format for slide export.
+         * Possible values:
+         * PDF
+         * PNG
+         * PPTX
+         * GOOGLE_SLIDES
+         */
+        exportFormat?: string;
+        /**
+         * Examples for slide generation.
+         */
+        slideExamples?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample[];
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         */
+        resource: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceBigqueryResource;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: string;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceF1Resource;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleCloudStorageResource;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleDriveResource;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: string;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceRawFileResource;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: boolean;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: string;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: string;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: {[key: string]: string};
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: string;
+        /**
+         * The title of the file.
+         */
+        fileTitle: string;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptions {
+        /**
+         * Examples for visualizations.
+         */
+        visualizationExamples?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample[];
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample {
+        /**
+         * Represents a resource that can be used by the Analyst Agent.
+         */
+        resource: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResource;
+        /**
+         * The type of the visualization (e.g. "Bar Chart", "Line Chart").
+         */
+        visualizationType: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResource {
+        /**
+         * Represents a BigQuery resource.
+         * Structure is documented below.
+         */
+        bigqueryResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceBigqueryResource;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: string;
+        /**
+         * - Represents an F1 resource.
+         *   Structure is documented below.
+         */
+        f1Resource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceF1Resource;
+        /**
+         * Represents a Google Cloud Storage resource.
+         * Structure is documented below.
+         */
+        googleCloudStorageResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleCloudStorageResource;
+        /**
+         * Represents a Google Drive resource.
+         * Structure is documented below.
+         */
+        googleDriveResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleDriveResource;
+        /**
+         * A description of the resource. The model may use this, it will not be
+         * shown to users.
+         */
+        modelDescription?: string;
+        /**
+         * Represents a raw file resource.
+         * Structure is documented below.
+         */
+        rawFileResource?: outputs.agenticapplications.AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceRawFileResource;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         * Must only be set for file-based resources.
+         */
+        useRag?: boolean;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: string;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: string;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: {[key: string]: string};
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: string;
+    }
+
+    export interface AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExampleResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: string;
+        /**
+         * The title of the file.
+         */
+        fileTitle: string;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: string;
+    }
+
+    export interface AnalystAgentPersonaExternalDataSource {
+        /**
+         * Configurations for the AirQuality external data source.
+         */
+        airQuality?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceAirQuality;
+        /**
+         * Configurations for the BureauLaborStatistics external data source.
+         */
+        bureauLaborStatistics?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceBureauLaborStatistics;
+        /**
+         * Configurations for the Coindesk external data source.
+         */
+        coindesk?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceCoindesk;
+        /**
+         * Whether this external data source is enabled for the current analysis.
+         */
+        enabled: boolean;
+        /**
+         * Configurations for the Finnhub external data source.
+         */
+        finnhub?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceFinnhub;
+        /**
+         * Configurations for the Fred external data source.
+         */
+        fred?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceFred;
+        /**
+         * Configurations for the SecEdgar external data source.
+         */
+        secEdgar?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceSecEdgar;
+        /**
+         * The name of the external data source, used for custom org policy
+         * evaluation. Output-only (populated automatically with the selection case
+         * name).
+         */
+        selectionName: string;
+        /**
+         * Configurations for the TreasurySecuritiesAuctions external data source.
+         */
+        treasurySecuritiesAuctions?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceTreasurySecuritiesAuctions;
+        /**
+         * Configurations for the USDA external data source.
+         */
+        usda?: outputs.agenticapplications.AnalystAgentPersonaExternalDataSourceUsda;
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceAirQuality {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceBureauLaborStatistics {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceCoindesk {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceFinnhub {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceFred {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceSecEdgar {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceTreasurySecuritiesAuctions {
+    }
+
+    export interface AnalystAgentPersonaExternalDataSourceUsda {
+    }
+
+    export interface AnalystAgentPersonaMcpDataSource {
+        /**
+         * Input only. The API key of the MCP server.
+         */
+        apiKey?: string;
+        /**
+         * The API key parameter name.
+         */
+        apiKeyName?: string;
+        /**
+         * The client ID for authentication.
+         */
+        clientId?: string;
+        /**
+         * Input only. The client secret for authentication.
+         */
+        clientSecret?: string;
+        /**
+         * The description of the MCP agent.
+         */
+        description: string;
+        /**
+         * The display name of the persona, shown to users.
+         */
+        displayName: string;
+        /**
+         * Whether this external data source is enabled for the current analysis.
+         */
+        enabled: boolean;
+        /**
+         * The URL to use for retrieving the OAuth token.
+         */
+        oauthTokenUrl?: string;
+        /**
+         * The custom prompt for the MCP agent.
+         */
+        prompt?: string;
+        /**
+         * The URL of the MCP server.
+         */
+        serverUrl: string;
+    }
+
+    export interface AnalystAgentPersonaResource {
+        /**
+         * Represents a BigQuery resource.
+         */
+        bigqueryResource?: outputs.agenticapplications.AnalystAgentPersonaResourceBigqueryResource;
+        /**
+         * A user-friendly name for this resource. This can be shown to the user
+         * and used by the model.
+         */
+        displayLabel?: string;
+        /**
+         * - Represents an F1 resource.
+         */
+        f1Resource?: outputs.agenticapplications.AnalystAgentPersonaResourceF1Resource;
+        /**
+         * Represents a Google Cloud Storage resource.
+         */
+        googleCloudStorageResource?: outputs.agenticapplications.AnalystAgentPersonaResourceGoogleCloudStorageResource;
+        /**
+         * Represents a Google Drive resource.
+         */
+        googleDriveResource?: outputs.agenticapplications.AnalystAgentPersonaResourceGoogleDriveResource;
+        /**
+         * The description of the persona review, used by the model.
+         */
+        modelDescription?: string;
+        /**
+         * Represents a raw file resource.
+         */
+        rawFileResource?: outputs.agenticapplications.AnalystAgentPersonaResourceRawFileResource;
+        /**
+         * If true, use RAG to retrieve relevant information from the resources.
+         *
+         * Must only be set for file-based resources.
+         */
+        useRag?: boolean;
+    }
+
+    export interface AnalystAgentPersonaResourceBigqueryResource {
+        /**
+         * Points to a bigquery dataset to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}
+         */
+        bigqueryDataset?: string;
+        /**
+         * Points to a bigquery table to use.
+         * Expected Format:
+         * projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
+         */
+        bigqueryTable?: string;
+        /**
+         * A map of column names to column descriptions for the bigquery_table.
+         *
+         * <a name="nestedArtifactExamplesResourceF1Resource"></a>The `f1Resource` block supports:
+         */
+        columnDescriptions?: {[key: string]: string};
+    }
+
+    export interface AnalystAgentPersonaResourceF1Resource {
+        /**
+         * ## - Points to an f1 table to use.
+         *
+         * - Expected Format:
+         * - {group}.{table_name}
+         */
+        f1Table?: string;
+    }
+
+    export interface AnalystAgentPersonaResourceGoogleCloudStorageResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * The Google Cloud Storage object or folder.
+         *
+         * Format: /
+         * or: //
+         *
+         * Note that to refer to a folder, it _must_ end in a slash.
+         */
+        googleCloudStorageObject: string;
+    }
+
+    export interface AnalystAgentPersonaResourceGoogleDriveResource {
+        /**
+         * If non-empty, only files with these extensions are included when
+         * expanding the resource.  If empty, all files are included.
+         */
+        fileExtensionRestrictions?: string[];
+        /**
+         * Points to a drive file to use. May refer to workspace files or folders
+         * as well.  If folder is specifically, all files in the folder
+         * (recursively) are used.
+         *
+         * Expected Format:
+         * files/{file_id}
+         */
+        fileReference?: string;
+    }
+
+    export interface AnalystAgentPersonaResourceRawFileResource {
+        /**
+         * The raw file content.
+         */
+        fileContent: string;
+        /**
+         * The title of the file.
+         */
+        fileTitle: string;
+        /**
+         * The mime type of the file.
+         */
+        mimeType: string;
+    }
+
+    export interface AnalystAgentPersonaSkill {
+        /**
+         * The markdown text content of the skill.
+         */
+        content: string;
+        /**
+         * The description of the skill.
+         */
+        description?: string;
+        /**
+         * References for the skill.
+         */
+        references?: outputs.agenticapplications.AnalystAgentPersonaSkillReference[];
+        /**
+         * The identifier of the skill. Use a descriptive string that reflects the
+         * skill's function.
+         */
+        skillId: string;
+    }
+
+    export interface AnalystAgentPersonaSkillReference {
+        /**
+         * The content of the reference.
+         */
+        content: string;
+        /**
+         * The identifier of the reference within the skill. Use a descriptive
+         * string that reflects the reference's function.
+         */
+        referenceId: string;
+    }
+
+    export interface AnalystAgentPersonaTable {
+        /**
+         * The columns in the table.
+         */
+        columns?: outputs.agenticapplications.AnalystAgentPersonaTableColumn[];
+        /**
+         * The description of the table.
+         */
+        description?: string;
+        /**
+         * Identifier. The resource name of the analyst agent persona.
+         * Format:
+         * projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}
+         */
+        name: string;
+    }
+
+    export interface AnalystAgentPersonaTableColumn {
+        /**
+         * The data type of the column. This should be a GoogleSQL data type.
+         * Parameterized types such as PROTO, ENUM, ARRAY, STRUCT<...>, and
+         * RANGE are not supported.
+         */
+        dataType: string;
+        /**
+         * The description of the column.
+         */
+        description?: string;
+        /**
+         * Identifier. The resource name of the analyst agent persona.
+         * Format:
+         * projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}
+         */
+        name: string;
     }
 
 }
@@ -17703,6 +18601,19 @@ export namespace certificatemanager {
          */
         pemPrivateKey?: string;
         /**
+         * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * (Optional, Write-Only)
+         * The private key of the leaf certificate in PEM-encoded form.
+         * **Note**: This property is write-only and will not be read from the API.
+         *
+         * > **Note:** One of `pemPrivateKey` or `pemPrivateKeyWo` can only be set.
+         */
+        pemPrivateKeyWo?: string;
+        /**
+         * Triggers update of `pemPrivateKeyWo` write-only. Increment this value when an update to `pemPrivateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+         */
+        pemPrivateKeyWoVersion?: string;
+        /**
          * (Optional, Deprecated)
          * The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
@@ -23735,6 +24646,11 @@ export namespace ces {
          */
         rewriterConfig?: outputs.ces.ToolDataStoreToolModalityConfigRewriterConfig;
         /**
+         * Snippets configuration.
+         * Structure is documented below.
+         */
+        snippetsConfig?: outputs.ces.ToolDataStoreToolModalityConfigSnippetsConfig;
+        /**
          * Summarization configuration.
          * Structure is documented below.
          */
@@ -23787,6 +24703,13 @@ export namespace ces {
          * responses that are more creative.
          */
         temperature?: number;
+    }
+
+    export interface ToolDataStoreToolModalityConfigSnippetsConfig {
+        /**
+         * Whether snippets are enabled.
+         */
+        enableSnippets?: boolean;
     }
 
     export interface ToolDataStoreToolModalityConfigSummarizationConfig {
@@ -24085,13 +25008,8 @@ export namespace ces {
 
     export interface ToolMcpToolServiceDirectoryConfig {
         /**
-         * (Output)
-         * The name of [Service
-         * Directory](https://cloud.google.com/service-directory) service.
-         * Format:
-         * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-         * Location of the service directory must be the same as the location of the
-         * app.
+         * The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
          */
         service: string;
     }
@@ -24299,13 +25217,8 @@ export namespace ces {
 
     export interface ToolOpenApiToolServiceDirectoryConfig {
         /**
-         * (Output)
-         * The name of [Service
-         * Directory](https://cloud.google.com/service-directory) service.
-         * Format:
-         * `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
-         * Location of the service directory must be the same as the location of the
-         * app.
+         * The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
          */
         service: string;
     }
@@ -24361,6 +25274,19 @@ export namespace ces {
          * Optional. The Python code to execute for the tool.
          */
         pythonCode?: string;
+        /**
+         * Service Directory configuration for the tool.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: outputs.ces.ToolPythonFunctionServiceDirectoryConfig;
+    }
+
+    export interface ToolPythonFunctionServiceDirectoryConfig {
+        /**
+         * The name of Service Directory service.
+         * Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}
+         */
+        service: string;
     }
 
     export interface ToolRemoteAgentTool {
@@ -30296,6 +31222,18 @@ export namespace chronicle {
          * Output only. Start line number, beginning at 1.
          */
         startLine: number;
+    }
+
+    export interface RuleDeploymentScheduleCustomizations {
+        /**
+         * Indicates whether to add additional delays and runs to rules to ensure
+         * enrichment completeness, with the trade-off of more late-arriving detections.
+         */
+        ensureEnrichmentCompleteness?: boolean;
+        /**
+         * Delay the first rule execution run to account for late-arriving data.
+         */
+        lateArrivingDataAdjustment?: string;
     }
 
     export interface RuleSeverity {
@@ -38763,6 +39701,10 @@ export namespace cloudrunv2 {
          */
         revision: string;
         /**
+         * Configuration for sandboxes.
+         */
+        sandboxes: outputs.cloudrunv2.GetServiceTemplateSandbox[];
+        /**
          * Scaling settings for this Revision.
          */
         scalings: outputs.cloudrunv2.GetServiceTemplateScaling[];
@@ -39198,6 +40140,70 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
          */
         accelerator: string;
+    }
+
+    export interface GetServiceTemplateSandbox {
+        /**
+         * Sandbox templates that can be launched through the 'sandbox' CLI.
+         */
+        templates: outputs.cloudrunv2.GetServiceTemplateSandboxTemplate[];
+    }
+
+    export interface GetServiceTemplateSandboxTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         */
+        envs: outputs.cloudrunv2.GetServiceTemplateSandboxTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * The name of the Cloud Run v2 Service.
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         */
+        volumeMounts: outputs.cloudrunv2.GetServiceTemplateSandboxTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir: string;
+    }
+
+    export interface GetServiceTemplateSandboxTemplateEnv {
+        /**
+         * The name of the Cloud Run v2 Service.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value: string;
+    }
+
+    export interface GetServiceTemplateSandboxTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * The name of the Cloud Run v2 Service.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath: string;
     }
 
     export interface GetServiceTemplateScaling {
@@ -40836,6 +41842,11 @@ export namespace cloudrunv2 {
          */
         revision?: string;
         /**
+         * Configuration for sandboxes.
+         * Structure is documented below.
+         */
+        sandboxes?: outputs.cloudrunv2.ServiceTemplateSandboxes;
+        /**
          * Scaling settings for this Revision.
          * Structure is documented below.
          */
@@ -41303,6 +42314,73 @@ export namespace cloudrunv2 {
          * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
          */
         accelerator: string;
+    }
+
+    export interface ServiceTemplateSandboxes {
+        /**
+         * Sandbox templates that can be launched through the `sandbox` CLI.
+         * Structure is documented below.
+         */
+        templates?: outputs.cloudrunv2.ServiceTemplateSandboxesTemplate[];
+    }
+
+    export interface ServiceTemplateSandboxesTemplate {
+        /**
+         * Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
+         */
+        args?: string[];
+        /**
+         * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
+         */
+        commands?: string[];
+        /**
+         * List of environment variables to set in the sandbox.
+         * Structure is documented below.
+         */
+        envs?: outputs.cloudrunv2.ServiceTemplateSandboxesTemplateEnv[];
+        /**
+         * Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
+         */
+        image: string;
+        /**
+         * Name of the sandbox specified as a DNS_LABEL (RFC 1123).
+         */
+        name: string;
+        /**
+         * Volume to mount into the container's filesystem.
+         * Structure is documented below.
+         */
+        volumeMounts?: outputs.cloudrunv2.ServiceTemplateSandboxesTemplateVolumeMount[];
+        /**
+         * Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+         */
+        workingDir?: string;
+    }
+
+    export interface ServiceTemplateSandboxesTemplateEnv {
+        /**
+         * Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
+         */
+        name: string;
+        /**
+         * Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
+         */
+        value?: string;
+    }
+
+    export interface ServiceTemplateSandboxesTemplateVolumeMount {
+        /**
+         * Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be /cloudsql. All instances defined in the Volume will be available as /cloudsql/[instance]. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+         */
+        mountPath: string;
+        /**
+         * This must match the Name of a Volume.
+         */
+        name: string;
+        /**
+         * Path within the volume from which the container's volume should be mounted.
+         */
+        subPath?: string;
     }
 
     export interface ServiceTemplateScaling {
@@ -43559,6 +44637,11 @@ export namespace colab {
          * Structure is documented below.
          */
         persistentDiskSpec?: outputs.colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec;
+        /**
+         * Shielded VM configuration.
+         * Structure is documented below.
+         */
+        shieldedInstanceConfig?: outputs.colab.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig;
     }
 
     export interface NotebookExecutionCustomEnvironmentSpecMachineSpec {
@@ -43602,6 +44685,21 @@ export namespace colab {
         diskType?: string;
     }
 
+    export interface NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+         */
+        enableIntegrityMonitoring?: boolean;
+        /**
+         * Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+         */
+        enableSecureBoot?: boolean;
+        /**
+         * Defines whether the instance has the vTPM enabled. Enabled by default.
+         */
+        enableVtpm?: boolean;
+    }
+
     export interface NotebookExecutionDataformRepositorySource {
         /**
          * The commit SHA to read repository with. If unset, the file will be read at HEAD.
@@ -43629,6 +44727,29 @@ export namespace colab {
          * The Cloud Storage uri pointing to the ipynb file.
          */
         uri: string;
+    }
+
+    export interface NotebookExecutionWorkbenchRuntime {
+        /**
+         * Custom Compute Engine VM image for the Workbench instance.
+         * Structure is documented below.
+         */
+        vmImage: outputs.colab.NotebookExecutionWorkbenchRuntimeVmImage;
+    }
+
+    export interface NotebookExecutionWorkbenchRuntimeVmImage {
+        /**
+         * Use this VM image family to find the image; the newest image in this family will be used.
+         */
+        family?: string;
+        /**
+         * Use VM image name to find the image.
+         */
+        name?: string;
+        /**
+         * The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+         */
+        project?: string;
     }
 
     export interface RuntimeNotebookRuntimeTemplateRef {
@@ -70350,7 +71471,7 @@ export namespace compute {
         /**
          * If set to true, enables CAAP for L7 DDoS detection.
          */
-        enable?: boolean;
+        enable: boolean;
         /**
          * Rule visibility. Supported values include: "STANDARD", "PREMIUM".
          */
@@ -112041,6 +113162,16 @@ export namespace firestore {
          * Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
          */
         day?: string;
+    }
+
+    export interface ChangeStreamCollectionGroupScope {
+        /**
+         * The ID of the collection group to track.
+         */
+        collectionGroupId: string;
+    }
+
+    export interface ChangeStreamDatabaseScope {
     }
 
     export interface DatabaseCmekConfig {
@@ -155722,9 +156853,21 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsPerformanceCaptureConfig {
         /**
+         * The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        cpuUtilizationThresholdPercent: number;
+        /**
          * Enable or disable the Performance Capture.
          */
         enabled: boolean;
+        /**
+         * The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+         */
+        historyListLengthThresholdCount: number;
+        /**
+         * The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        memoryUsageThresholdPercent: number;
         /**
          * The minimum number of consecutive readings above threshold that triggers instance state capture.
          */
@@ -155742,9 +156885,29 @@ export namespace sql {
          */
         secondsBehindSourceThreshold: number;
         /**
+         * The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        semaphoreWaitThresholdCount: number;
+        /**
          * The amount of time in seconds that a transaction needs to have been open before getting recorded.
          */
         transactionDurationThreshold: number;
+        /**
+         * A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+         */
+        transactionKillExcludedUserHosts?: string[];
+        /**
+         * The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+         */
+        transactionKillThresholdSeconds: number;
+        /**
+         * Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+         */
+        transactionKillType: string;
+        /**
+         * The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        transactionLockWaitThresholdCount: number;
     }
 
     export interface DatabaseInstanceSettingsReadPoolAutoScaleConfig {
@@ -156508,9 +157671,21 @@ export namespace sql {
 
     export interface GetDatabaseInstanceSettingPerformanceCaptureConfig {
         /**
+         * The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        cpuUtilizationThresholdPercent: number;
+        /**
          * Enable or disable the Performance Capture.
          */
         enabled: boolean;
+        /**
+         * The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+         */
+        historyListLengthThresholdCount: number;
+        /**
+         * The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        memoryUsageThresholdPercent: number;
         /**
          * The minimum number of consecutive readings above threshold that triggers instance state capture.
          */
@@ -156528,9 +157703,29 @@ export namespace sql {
          */
         secondsBehindSourceThreshold: number;
         /**
+         * The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        semaphoreWaitThresholdCount: number;
+        /**
          * The amount of time in seconds that a transaction needs to have been open before getting recorded.
          */
         transactionDurationThreshold: number;
+        /**
+         * A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+         */
+        transactionKillExcludedUserHosts: string[];
+        /**
+         * The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+         */
+        transactionKillThresholdSeconds: number;
+        /**
+         * Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+         */
+        transactionKillType: string;
+        /**
+         * The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        transactionLockWaitThresholdCount: number;
     }
 
     export interface GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
@@ -157414,9 +158609,21 @@ export namespace sql {
 
     export interface GetDatabaseInstancesInstanceSettingPerformanceCaptureConfig {
         /**
+         * The minimum percentage of CPU utilization that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        cpuUtilizationThresholdPercent: number;
+        /**
          * Enable or disable the Performance Capture.
          */
         enabled: boolean;
+        /**
+         * The minimum number of undo log entries in the history list length that triggers the performance capture. Valid range is 10000 to 10000000. 0 disables the check.
+         */
+        historyListLengthThresholdCount: number;
+        /**
+         * The minimum percentage of memory usage that triggers the performance capture. Valid range is 10 to 99. 0 disables the check.
+         */
+        memoryUsageThresholdPercent: number;
         /**
          * The minimum number of consecutive readings above threshold that triggers instance state capture.
          */
@@ -157434,9 +158641,29 @@ export namespace sql {
          */
         secondsBehindSourceThreshold: number;
         /**
+         * The minimum number of semaphore waits that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        semaphoreWaitThresholdCount: number;
+        /**
          * The amount of time in seconds that a transaction needs to have been open before getting recorded.
          */
         transactionDurationThreshold: number;
+        /**
+         * A list of users to exclude from transaction termination. Entries can be in the format 'user@host' or just 'user'.
+         */
+        transactionKillExcludedUserHosts: string[];
+        /**
+         * The amount of time in seconds that a transaction needs to have been open before the watcher starts terminating it. Valid range is 60 to 604800. 0 disables termination.
+         */
+        transactionKillThresholdSeconds: number;
+        /**
+         * Determines which transactions are allowed to be terminated when they exceed transaction_kill_threshold_seconds. Possible values are: "TRANSACTION_KILL_TYPE_UNSPECIFIED", "READ_ONLY_TRANSACTIONS", "ALL_TRANSACTIONS".
+         */
+        transactionKillType: string;
+        /**
+         * The minimum number of transactions in lock wait state that triggers the performance capture. Valid range is 10 to 10000. 0 disables the check.
+         */
+        transactionLockWaitThresholdCount: number;
     }
 
     export interface GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig {
@@ -165558,6 +166785,10 @@ export namespace vertex {
          * container image that is to be run on each worker replica.
          */
         imageUri: string;
+        /**
+         * Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+         */
+        port: number;
     }
 
     export interface AiReasoningEngineSpecDeploymentSpec {
@@ -167837,6 +169068,11 @@ export namespace workbench {
          * Structure is documented below.
          */
         bootDisk: outputs.workbench.InstanceGceSetupBootDisk;
+        /**
+         * (Output)
+         * Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
+         */
+        computeInstanceId: string;
         /**
          * Confidential instance configuration.
          * Structure is documented below.

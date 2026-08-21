@@ -6,8 +6,11 @@ package com.pulumi.gcp.vertex.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AiReasoningEngineSpecContainerSpecArgs extends com.pulumi.resources.ResourceArgs {
@@ -33,10 +36,26 @@ public final class AiReasoningEngineSpecContainerSpecArgs extends com.pulumi.res
         return this.imageUri;
     }
 
+    /**
+     * Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+     * 
+     */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
     private AiReasoningEngineSpecContainerSpecArgs() {}
 
     private AiReasoningEngineSpecContainerSpecArgs(AiReasoningEngineSpecContainerSpecArgs $) {
         this.imageUri = $.imageUri;
+        this.port = $.port;
     }
 
     public static Builder builder() {
@@ -80,6 +99,27 @@ public final class AiReasoningEngineSpecContainerSpecArgs extends com.pulumi.res
          */
         public Builder imageUri(String imageUri) {
             return imageUri(Output.of(imageUri));
+        }
+
+        /**
+         * @param port Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port Optional. The port that the container listens on for incoming requests. If not specified, defaults to 8080.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Integer port) {
+            return port(Output.of(port));
         }
 
         public AiReasoningEngineSpecContainerSpecArgs build() {

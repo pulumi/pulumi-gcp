@@ -38,6 +38,7 @@ utilities.lazyLoad(exports, ["zoneFromId","zoneFromIdOutput"], () => require("./
 import * as accessapproval from "./accessapproval";
 import * as accesscontextmanager from "./accesscontextmanager";
 import * as activedirectory from "./activedirectory";
+import * as agenticapplications from "./agenticapplications";
 import * as agentidentity from "./agentidentity";
 import * as agentregistry from "./agentregistry";
 import * as alloydb from "./alloydb";
@@ -186,6 +187,7 @@ export {
     accessapproval,
     accesscontextmanager,
     activedirectory,
+    agenticapplications,
     agentidentity,
     agentregistry,
     alloydb,

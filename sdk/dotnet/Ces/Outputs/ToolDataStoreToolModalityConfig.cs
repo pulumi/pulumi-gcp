@@ -31,6 +31,11 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// </summary>
         public readonly Outputs.ToolDataStoreToolModalityConfigRewriterConfig? RewriterConfig;
         /// <summary>
+        /// Snippets configuration.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ToolDataStoreToolModalityConfigSnippetsConfig? SnippetsConfig;
+        /// <summary>
         /// Summarization configuration.
         /// Structure is documented below.
         /// </summary>
@@ -44,11 +49,14 @@ namespace Pulumi.Gcp.Ces.Outputs
 
             Outputs.ToolDataStoreToolModalityConfigRewriterConfig? rewriterConfig,
 
+            Outputs.ToolDataStoreToolModalityConfigSnippetsConfig? snippetsConfig,
+
             Outputs.ToolDataStoreToolModalityConfigSummarizationConfig? summarizationConfig)
         {
             GroundingConfig = groundingConfig;
             ModalityType = modalityType;
             RewriterConfig = rewriterConfig;
+            SnippetsConfig = snippetsConfig;
             SummarizationConfig = summarizationConfig;
         }
     }

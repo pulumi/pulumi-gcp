@@ -23,12 +23,18 @@ __all__ = [
     'NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict',
     'NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs',
     'NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict',
+    'NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs',
+    'NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgsDict',
     'NotebookExecutionDataformRepositorySourceArgs',
     'NotebookExecutionDataformRepositorySourceArgsDict',
     'NotebookExecutionDirectNotebookSourceArgs',
     'NotebookExecutionDirectNotebookSourceArgsDict',
     'NotebookExecutionGcsNotebookSourceArgs',
     'NotebookExecutionGcsNotebookSourceArgsDict',
+    'NotebookExecutionWorkbenchRuntimeArgs',
+    'NotebookExecutionWorkbenchRuntimeArgsDict',
+    'NotebookExecutionWorkbenchRuntimeVmImageArgs',
+    'NotebookExecutionWorkbenchRuntimeVmImageArgsDict',
     'RuntimeNotebookRuntimeTemplateRefArgs',
     'RuntimeNotebookRuntimeTemplateRefArgsDict',
     'RuntimeTemplateDataPersistentDiskSpecArgs',
@@ -113,19 +119,27 @@ class NotebookExecutionCustomEnvironmentSpecArgsDict(TypedDict):
     The configuration for the data disk of the runtime.
     Structure is documented below.
     """
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgsDict']]]
+    """
+    Shielded VM configuration.
+    Structure is documented below.
+    """
 
 @pulumi.input_type
 class NotebookExecutionCustomEnvironmentSpecArgs:
     def __init__(__self__, *,
                  machine_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']] = None,
                  network_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']] = None,
-                 persistent_disk_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']] = None):
+                 persistent_disk_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']] = None,
+                 shielded_instance_config: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs']] = None):
         """
         :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs'] machine_spec: 'The machine configuration of the runtime.'
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs'] network_spec: The network configuration for the runtime.
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs'] persistent_disk_spec: The configuration for the data disk of the runtime.
+               Structure is documented below.
+        :param pulumi.Input['NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs'] shielded_instance_config: Shielded VM configuration.
                Structure is documented below.
         """
         if machine_spec is not None:
@@ -134,6 +148,8 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
             pulumi.set(__self__, "network_spec", network_spec)
         if persistent_disk_spec is not None:
             pulumi.set(__self__, "persistent_disk_spec", persistent_disk_spec)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
 
     @_builtins.property
     @pulumi.getter(name="machineSpec")
@@ -173,6 +189,19 @@ class NotebookExecutionCustomEnvironmentSpecArgs:
     @persistent_disk_spec.setter
     def persistent_disk_spec(self, value: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]):
         pulumi.set(self, "persistent_disk_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs']]:
+        """
+        Shielded VM configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
 
 
 class NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict(TypedDict):
@@ -362,6 +391,75 @@ class NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs:
         pulumi.set(self, "disk_type", value)
 
 
+class NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgsDict(TypedDict):
+    enable_integrity_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+    """
+    enable_secure_boot: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+    """
+    enable_vtpm: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Defines whether the instance has the vTPM enabled. Enabled by default.
+    """
+
+@pulumi.input_type
+class NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_secure_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_vtpm: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+        :param pulumi.Input[_builtins.bool] enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+        :param pulumi.Input[_builtins.bool] enable_vtpm: Defines whether the instance has the vTPM enabled. Enabled by default.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @_builtins.property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Defines whether the instance has the vTPM enabled. Enabled by default.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+    @enable_vtpm.setter
+    def enable_vtpm(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_vtpm", value)
+
+
 class NotebookExecutionDataformRepositorySourceArgsDict(TypedDict):
     dataform_repository_resource_name: pulumi.Input[_builtins.str]
     """
@@ -484,6 +582,106 @@ class NotebookExecutionGcsNotebookSourceArgs:
     @generation.setter
     def generation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generation", value)
+
+
+class NotebookExecutionWorkbenchRuntimeArgsDict(TypedDict):
+    vm_image: pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgsDict']
+    """
+    Custom Compute Engine VM image for the Workbench instance.
+    Structure is documented below.
+    """
+
+@pulumi.input_type
+class NotebookExecutionWorkbenchRuntimeArgs:
+    def __init__(__self__, *,
+                 vm_image: pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs']):
+        """
+        :param pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs'] vm_image: Custom Compute Engine VM image for the Workbench instance.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "vm_image", vm_image)
+
+    @_builtins.property
+    @pulumi.getter(name="vmImage")
+    def vm_image(self) -> pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs']:
+        """
+        Custom Compute Engine VM image for the Workbench instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vm_image")
+
+    @vm_image.setter
+    def vm_image(self, value: pulumi.Input['NotebookExecutionWorkbenchRuntimeVmImageArgs']):
+        pulumi.set(self, "vm_image", value)
+
+
+class NotebookExecutionWorkbenchRuntimeVmImageArgsDict(TypedDict):
+    family: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Use this VM image family to find the image; the newest image in this family will be used.
+    """
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Use VM image name to find the image.
+    """
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+    """
+
+@pulumi.input_type
+class NotebookExecutionWorkbenchRuntimeVmImageArgs:
+    def __init__(__self__, *,
+                 family: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] family: Use this VM image family to find the image; the newest image in this family will be used.
+        :param pulumi.Input[_builtins.str] name: Use VM image name to find the image.
+        :param pulumi.Input[_builtins.str] project: The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+        """
+        if family is not None:
+            pulumi.set(__self__, "family", family)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @_builtins.property
+    @pulumi.getter
+    def family(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Use this VM image family to find the image; the newest image in this family will be used.
+        """
+        return pulumi.get(self, "family")
+
+    @family.setter
+    def family(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "family", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Use VM image name to find the image.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the Google Cloud project that this VM image belongs to. Format: {project_id}
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project", value)
 
 
 class RuntimeNotebookRuntimeTemplateRefArgsDict(TypedDict):

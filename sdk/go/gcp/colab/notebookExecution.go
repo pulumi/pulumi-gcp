@@ -240,6 +240,221 @@ import (
 //						Network:              myNetwork.ID().ToIDOutput().ToStringOutput(),
 //						Subnetwork:           mySubnetwork.ID().ToIDOutput().ToStringOutput(),
 //					},
+//					ShieldedInstanceConfig: &colab.NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfigArgs{
+//						EnableIntegrityMonitoring: pulumi.Bool(true),
+//						EnableSecureBoot:          pulumi.Bool(true),
+//						EnableVtpm:                pulumi.Bool(true),
+//					},
+//				},
+//				GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("gs://%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ServiceAccount: pulumi.String("my@service-account.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				outputBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Colab Notebook Execution Workbench Runtime Vm
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
+//				Location:                 pulumi.String("US"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: `    {
+//	      \"cells\": [
+//	        {
+//	          \"cell_type\": \"code\",
+//	          \"execution_count\": null,
+//	          \"metadata\": {},
+//	          \"outputs\": [],
+//	          \"source\": [
+//	            \"print(\\\"Hello, World!\\\")\"
+//	          ]
+//	        }
+//	      ],
+//	      \"metadata\": {
+//	        \"kernelspec\": {
+//	          \"display_name\": \"Python 3\",
+//	          \"language\": \"python\",
+//	          \"name\": \"python3\"
+//	        },
+//	        \"language_info\": {
+//	          \"codemirror_mode\": {
+//	            \"name\": \"ipython\",
+//	            \"version\": 3
+//	          },
+//	          \"file_extension\": \".py\",
+//	          \"mimetype\": \"text/x-python\",
+//	          \"name\": \"python\",
+//	          \"nbconvert_exporter\": \"python\",
+//	          \"pygments_lexer\": \"ipython3\",
+//	          \"version\": \"3.8.5\"
+//	        }
+//	      },
+//	      \"nbformat\": 4,
+//	      \"nbformat_minor\": 4
+//	    }
+//
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+//				DisplayName: pulumi.String("Notebook execution workbench runtime vm"),
+//				Location:    pulumi.String("us-central1"),
+//				DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+//					Content: pulumi.String(invokeBase64encode.Result),
+//				},
+//				CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+//					MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+//						MachineType: pulumi.String("n1-standard-2"),
+//					},
+//					PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+//						DiskType:   pulumi.String("pd-standard"),
+//						DiskSizeGb: pulumi.String("200"),
+//					},
+//				},
+//				WorkbenchRuntime: &colab.NotebookExecutionWorkbenchRuntimeArgs{
+//					VmImage: &colab.NotebookExecutionWorkbenchRuntimeVmImageArgs{
+//						Project: pulumi.String("cloud-notebooks-managed"),
+//						Family:  pulumi.String("workbench-instances"),
+//					},
+//				},
+//				GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("gs://%v", name), nil
+//				}).(pulumi.StringOutput),
+//				ServiceAccount: pulumi.String("my@service-account.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				outputBucket,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Colab Notebook Execution Workbench Runtime Vm Name
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			outputBucket, err := storage.NewBucket(ctx, "output_bucket", &storage.BucketArgs{
+//				Name:                     pulumi.String("my_bucket"),
+//				Location:                 pulumi.String("US"),
+//				ForceDestroy:             pulumi.Bool(true),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
+//				Input: `    {
+//	      \"cells\": [
+//	        {
+//	          \"cell_type\": \"code\",
+//	          \"execution_count\": null,
+//	          \"metadata\": {},
+//	          \"outputs\": [],
+//	          \"source\": [
+//	            \"print(\\\"Hello, World!\\\")\"
+//	          ]
+//	        }
+//	      ],
+//	      \"metadata\": {
+//	        \"kernelspec\": {
+//	          \"display_name\": \"Python 3\",
+//	          \"language\": \"python\",
+//	          \"name\": \"python3\"
+//	        },
+//	        \"language_info\": {
+//	          \"codemirror_mode\": {
+//	            \"name\": \"ipython\",
+//	            \"version\": 3
+//	          },
+//	          \"file_extension\": \".py\",
+//	          \"mimetype\": \"text/x-python\",
+//	          \"name\": \"python\",
+//	          \"nbconvert_exporter\": \"python\",
+//	          \"pygments_lexer\": \"ipython3\",
+//	          \"version\": \"3.8.5\"
+//	        }
+//	      },
+//	      \"nbformat\": 4,
+//	      \"nbformat_minor\": 4
+//	    }
+//
+// `,
+//
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = colab.NewNotebookExecution(ctx, "notebook-execution", &colab.NotebookExecutionArgs{
+//				DisplayName: pulumi.String("Notebook execution workbench runtime vm name"),
+//				Location:    pulumi.String("us-central1"),
+//				DirectNotebookSource: &colab.NotebookExecutionDirectNotebookSourceArgs{
+//					Content: pulumi.String(invokeBase64encode.Result),
+//				},
+//				CustomEnvironmentSpec: &colab.NotebookExecutionCustomEnvironmentSpecArgs{
+//					MachineSpec: &colab.NotebookExecutionCustomEnvironmentSpecMachineSpecArgs{
+//						MachineType: pulumi.String("n1-standard-2"),
+//					},
+//					PersistentDiskSpec: &colab.NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs{
+//						DiskType:   pulumi.String("pd-standard"),
+//						DiskSizeGb: pulumi.String("200"),
+//					},
+//				},
+//				WorkbenchRuntime: &colab.NotebookExecutionWorkbenchRuntimeArgs{
+//					VmImage: &colab.NotebookExecutionWorkbenchRuntimeVmImageArgs{
+//						Project: pulumi.String("cloud-notebooks-managed"),
+//						Name:    pulumi.String("workbench-instances-v20260713"),
+//					},
 //				},
 //				GcsOutputUri: outputBucket.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("gs://%v", name), nil
@@ -550,6 +765,9 @@ type NotebookExecution struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service account to run the execution as.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
+	// Configuration for a Workbench Instances-based environment.
+	// Structure is documented below.
+	WorkbenchRuntime NotebookExecutionWorkbenchRuntimePtrOutput `pulumi:"workbenchRuntime"`
 }
 
 // NewNotebookExecution registers a new resource with the given unique name, arguments, and options.
@@ -629,6 +847,9 @@ type notebookExecutionState struct {
 	Project *string `pulumi:"project"`
 	// The service account to run the execution as.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Configuration for a Workbench Instances-based environment.
+	// Structure is documented below.
+	WorkbenchRuntime *NotebookExecutionWorkbenchRuntime `pulumi:"workbenchRuntime"`
 }
 
 type NotebookExecutionState struct {
@@ -670,6 +891,9 @@ type NotebookExecutionState struct {
 	Project pulumi.StringPtrInput
 	// The service account to run the execution as.
 	ServiceAccount pulumi.StringPtrInput
+	// Configuration for a Workbench Instances-based environment.
+	// Structure is documented below.
+	WorkbenchRuntime NotebookExecutionWorkbenchRuntimePtrInput
 }
 
 func (NotebookExecutionState) ElementType() reflect.Type {
@@ -715,6 +939,9 @@ type notebookExecutionArgs struct {
 	Project *string `pulumi:"project"`
 	// The service account to run the execution as.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Configuration for a Workbench Instances-based environment.
+	// Structure is documented below.
+	WorkbenchRuntime *NotebookExecutionWorkbenchRuntime `pulumi:"workbenchRuntime"`
 }
 
 // The set of arguments for constructing a NotebookExecution resource.
@@ -757,6 +984,9 @@ type NotebookExecutionArgs struct {
 	Project pulumi.StringPtrInput
 	// The service account to run the execution as.
 	ServiceAccount pulumi.StringPtrInput
+	// Configuration for a Workbench Instances-based environment.
+	// Structure is documented below.
+	WorkbenchRuntime NotebookExecutionWorkbenchRuntimePtrInput
 }
 
 func (NotebookExecutionArgs) ElementType() reflect.Type {
@@ -930,6 +1160,12 @@ func (o NotebookExecutionOutput) Project() pulumi.StringOutput {
 // The service account to run the execution as.
 func (o NotebookExecutionOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotebookExecution) pulumi.StringPtrOutput { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for a Workbench Instances-based environment.
+// Structure is documented below.
+func (o NotebookExecutionOutput) WorkbenchRuntime() NotebookExecutionWorkbenchRuntimePtrOutput {
+	return o.ApplyT(func(v *NotebookExecution) NotebookExecutionWorkbenchRuntimePtrOutput { return v.WorkbenchRuntime }).(NotebookExecutionWorkbenchRuntimePtrOutput)
 }
 
 type NotebookExecutionArrayOutput struct{ *pulumi.OutputState }

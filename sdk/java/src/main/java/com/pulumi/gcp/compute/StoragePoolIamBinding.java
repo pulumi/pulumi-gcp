@@ -20,8 +20,8 @@ import javax.annotation.Nullable;
  * Three different resources help you manage your IAM policy for Compute Engine StoragePool. Each of these resources serves a different use case:
  * 
  * * `gcp.compute.StoragePoolIamPolicy`: Authoritative. Sets the IAM policy for the storagepool and replaces any existing policy already attached.
- * * `gcp.compute.StoragePoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storagepool are preserved.
- * * `gcp.compute.StoragePoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storagepool are preserved.
+ * * `gcp.compute.StoragePoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the storagepool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.compute.StoragePoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the storagepool are preserved. Members added outside of Terraform will **not** be detected as drift.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.compute.StoragePoolIamPolicy` **cannot** be used in conjunction with `gcp.compute.StoragePoolIamBinding` and `gcp.compute.StoragePoolIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.compute.StoragePoolIamBinding` resources **can be** used in conjunction with `gcp.compute.StoragePoolIamMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.compute.StoragePoolIamBinding` resources **can be** used in conjunction with `gcp.compute.StoragePoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
@@ -298,8 +298,8 @@ import javax.annotation.Nullable;
  * Three different resources help you manage your IAM policy for Compute Engine StoragePool. Each of these resources serves a different use case:
  * 
  * * `gcp.compute.StoragePoolIamPolicy`: Authoritative. Sets the IAM policy for the storagepool and replaces any existing policy already attached.
- * * `gcp.compute.StoragePoolIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the storagepool are preserved.
- * * `gcp.compute.StoragePoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the storagepool are preserved.
+ * * `gcp.compute.StoragePoolIamBinding`: Authoritative for a given role and condition combination (the condition can be omitted). Updates the IAM policy to grant a role to a list of members. Other role and condition combinations within the IAM policy for the storagepool are preserved. Members added outside of Terraform for the same role and condition combination will be detected as drift and removed on the next `pulumi up`.
+ * * `gcp.compute.StoragePoolIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the same role and condition combination for the storagepool are preserved. Members added outside of Terraform will **not** be detected as drift.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
@@ -307,7 +307,7 @@ import javax.annotation.Nullable;
  * 
  * &gt; **Note:** `gcp.compute.StoragePoolIamPolicy` **cannot** be used in conjunction with `gcp.compute.StoragePoolIamBinding` and `gcp.compute.StoragePoolIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.compute.StoragePoolIamBinding` resources **can be** used in conjunction with `gcp.compute.StoragePoolIamMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.compute.StoragePoolIamBinding` resources **can be** used in conjunction with `gcp.compute.StoragePoolIamMember` resources **only if** they do not grant privilege to the same role and condition combination.
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
@@ -699,7 +699,7 @@ public class StoragePoolIamBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.StoragePoolIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.StoragePoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -708,7 +708,7 @@ public class StoragePoolIamBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.StoragePoolIamBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.StoragePoolIamBinding` can be used per role and condition combination. Multiple bindings for the same role are allowed if each has a different `condition` block (or one has no condition). Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
