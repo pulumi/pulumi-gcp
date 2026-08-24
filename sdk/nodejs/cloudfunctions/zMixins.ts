@@ -268,7 +268,15 @@ async function computeCodePaths(
 // generate the new package.json to be uploaded to GCP.
 // GCP will restore the packages itself.
 async function producePackageJson(excludedPackages: Set<string>): Promise<string> {
-    const packageJson = JSON.parse(await fs.promises.readFile("./package.json", "utf8"));
+    let packageJson: any;
+    try {
+        // Strip a leading UTF-8 BOM: JSON.parse rejects it, but package.json files
+        // written by some Windows tooling carry one.
+        const raw = await fs.promises.readFile("./package.json", "utf8");
+        packageJson = JSON.parse(raw.replace(/^\uFEFF/, ""));
+    } catch (err) {
+        throw new Error(`Could not read package.json: ${err}`);
+    }
 
     // Override dependencies by removing @pulumi and excludedPackages
     const dependencies = Object.keys(packageJson.dependencies || {})
