@@ -18,6 +18,7 @@ import * as cloudfunctions from ".";
 import * as storage from "../storage";
 import * as inputs from "../types/input";
 
+import * as fs from "fs";
 import * as filepath from "path";
 
 import * as utils from "../utils";
@@ -267,9 +268,7 @@ async function computeCodePaths(
 // generate the new package.json to be uploaded to GCP.
 // GCP will restore the packages itself.
 async function producePackageJson(excludedPackages: Set<string>): Promise<string> {
-    const PackageJson = require("@npmcli/package-json");
-    const pkgJson = await PackageJson.load('./');
-    const packageJson = pkgJson.content;
+    const packageJson = JSON.parse(await fs.promises.readFile("./package.json", "utf8"));
 
     // Override dependencies by removing @pulumi and excludedPackages
     const dependencies = Object.keys(packageJson.dependencies || {})
