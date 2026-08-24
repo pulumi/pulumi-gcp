@@ -2906,8 +2906,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@npmcli/package-json": "^6.2.0",
-				"@types/express":       "^4.16.0",
+				"@types/express": "^4.16.0",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^18.0.0", // so we can access strongly typed node definitions.
